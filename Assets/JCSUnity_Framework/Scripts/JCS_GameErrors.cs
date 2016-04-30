@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class JCS_GameErrors : MonoBehaviour
+namespace JCSUnity
 {
-
-    public static void JcsErrors(string script, int line = -1, string desc = "")
+    public class JCS_GameErrors : MonoBehaviour
     {
-        Debug.Log("*** [" + script + "](" + line + ")" + desc + " ***");
+
+        public static void JcsErrors(string script, int line = -1, string desc = "")
+        {
+            Debug.Log("*** [" + script + "](" + line + ")" + desc + " ***");
+        }
     }
 }

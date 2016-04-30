@@ -1,0 +1,3 @@
+Player does not jump at the first jump.
+Platform implementation 2 script!
+

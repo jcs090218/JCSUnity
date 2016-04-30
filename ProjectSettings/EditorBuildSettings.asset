@@ -6,4 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/JCSUnity_Framework/Scenes/Demo.unity
+    path: Assets/JCSUnity_Framework/Scenes/JCS_Patcher.unity
+  - enabled: 1
+    path: Assets/JCSUnity_Framework/Scenes/JCS_LogoScene.unity
+  - enabled: 1
+    path: Assets/JCSUnity_Framework/Scenes/2D/JCS_SideScrollerDemo.unity
+  - enabled: 1
+    path: Assets/JCSUnity_Framework/Scenes/JCS_ApplicationCloseSimulateScene.unity
+  - enabled: 1
+    path: Assets/RunningCrush_Assets/Scenes/Logo_Scene.unity
+  - enabled: 1
+    path: Assets/RunningCrush_Assets/Scenes/RunningCrush.unity

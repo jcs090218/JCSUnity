@@ -1,0 +1,11 @@
+Name: Jen-Chieh Shen <lkk440456@gmail.com>
+File Name: Update_Log.txt
+Last Edit Date: 2016-04-30
+-----------------------------------
+
+
+2016-04-30 
+* Multi Track Camera
+* Sound Fade in/out while switching the scene
+* Bug Fix (Logo Scene)
+* Top Down Player added

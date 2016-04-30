@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: a85f02af30f3b1e4ba8512858f9c4316
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: FW190ALL
+    100004: FW190ALR
+    100006: FW190CAB
+    100008: FW190FLP
+    100010: FW190FUS
+    100012: FW190GLF
+    100014: FW190GLR
+    100016: FW190MT1
+    100018: FW190PRO
+    100020: FW190REN
+    100022: FW190RIN
+    100024: FW190RUD
+    100026: FW190SPN
+    100028: FW190TP
+    400000: //RootNode
+    400002: FW190ALL
+    400004: FW190ALR
+    400006: FW190CAB
+    400008: FW190FLP
+    400010: FW190FUS
+    400012: FW190GLF
+    400014: FW190GLR
+    400016: FW190MT1
+    400018: FW190PRO
+    400020: FW190REN
+    400022: FW190RIN
+    400024: FW190RUD
+    400026: FW190SPN
+    400028: FW190TP
+    2300000: FW190ALL
+    2300002: FW190ALR
+    2300004: FW190CAB
+    2300006: FW190FLP
+    2300008: FW190FUS
+    2300010: FW190GLF
+    2300012: FW190GLR
+    2300014: FW190MT1
+    2300016: FW190PRO
+    2300018: FW190REN
+    2300020: FW190RIN
+    2300022: FW190RUD
+    2300024: FW190SPN
+    2300026: FW190TP
+    3300000: FW190ALL
+    3300002: FW190ALR
+    3300004: FW190CAB
+    3300006: FW190FLP
+    3300008: FW190FUS
+    3300010: FW190GLF
+    3300012: FW190GLR
+    3300014: FW190MT1
+    3300016: FW190PRO
+    3300018: FW190REN
+    3300020: FW190RIN
+    3300022: FW190RUD
+    3300024: FW190SPN
+    3300026: FW190TP
+    4300000: FW190FLP
+    4300002: FW190ALR
+    4300004: FW190FUS
+    4300006: FW190RIN
+    4300008: FW190GLF
+    4300010: FW190GLR
+    4300012: FW190RUD
+    4300014: FW190CAB
+    4300016: FW190TP
+    4300018: FW190ALL
+    4300020: FW190REN
+    4300022: FW190PRO
+    4300024: FW190MT1
+    4300026: FW190SPN
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

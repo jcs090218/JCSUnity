@@ -15,7 +15,7 @@ it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
+JCSUnity_Framework is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -24,6 +24,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ======
+
+(*) Following Listed Files/Directories have there own individual 
+	license. Therefore they do not fall under this license.
+
+        - 'Libraries' directory 
 
 (*)
 Jen-Chieh's email is lkk440456@gmail.com

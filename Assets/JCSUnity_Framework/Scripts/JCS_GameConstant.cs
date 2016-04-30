@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class JCS_GameConstant : MonoBehaviour
+namespace JCSUnity
 {
-    public static float GRAVITY = 9.81f;
-	
+    public class JCS_GameConstant : MonoBehaviour
+    {
+        public static float GRAVITY = 9.81f;
+
+    }
 }
