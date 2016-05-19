@@ -100,6 +100,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+        private void RotateRelativeToCamera()
+        {
+
+        }
 
     }
 }

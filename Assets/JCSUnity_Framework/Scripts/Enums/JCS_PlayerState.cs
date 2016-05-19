@@ -20,6 +20,7 @@ namespace JCSUnity
         FLY = 6,
         LADDER = 7,
         ROPE = 8,
-        SIT = 9
+        SIT = 9,
+        HIT = 10        // when player get hit
     }
 }

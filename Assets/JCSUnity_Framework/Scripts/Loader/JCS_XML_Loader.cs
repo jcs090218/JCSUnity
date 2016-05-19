@@ -14,6 +14,8 @@ namespace JCSUnity
 {
     public class JCS_XML_Loader
     {
+        private XmlNodeList mNodeList = null;
+
         private XmlDocument mXmlFile = null;
 
         public XmlDocument GetXmlFile() { return this.mXmlFile; }
@@ -22,6 +24,8 @@ namespace JCSUnity
         {
             mXmlFile = new XmlDocument();
             mXmlFile.LoadXml(file.text);
+
+            mNodeList = mXmlFile.GetElementsByTagName("DialogueContainer");
         }
 
     }

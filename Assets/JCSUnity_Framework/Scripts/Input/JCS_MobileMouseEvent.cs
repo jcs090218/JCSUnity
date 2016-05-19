@@ -1,15 +1,18 @@
 ﻿/**
- * $File: $
+ * $File: JCS_MobileMouseEvent.cs $
  * $Date: $
- * $Reveision: $
+ * $Revision: $
  * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information $
+ *		                Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_MobileMouseEvent : MonoBehaviour
+    public class JCS_MobileMouseEvent 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -35,6 +38,9 @@ namespace JCSUnity
         {
             if (mCamera == null)
                 this.mCamera = JCS_GameManager.instance.GetJCSCamera().GetCamera();
+
+            // set to manager in order to get manage by "JCS_InputManager"
+            JCS_InputManager.instance.SetJCSMobileMouseEvent(this);
         }
 
         private void Update()

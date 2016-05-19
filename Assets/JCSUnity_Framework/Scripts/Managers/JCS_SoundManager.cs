@@ -10,7 +10,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_SoundManager : MonoBehaviour
+
+    public class JCS_SoundManager 
+        : MonoBehaviour
     {
 
         //----------------------

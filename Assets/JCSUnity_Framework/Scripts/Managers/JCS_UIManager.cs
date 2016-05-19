@@ -12,7 +12,8 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-    public class JCS_UIManager : MonoBehaviour
+    public class JCS_UIManager 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -21,18 +22,27 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private JCS_Canvas mJCSCanvas = null;
+
+        // Application Rect (Window)
+        private RectTransform mAppRect = null;
+
+        [SerializeField]
+        private JCS_Canvas mJCSCanvas = null;
         // Game Play UI (Game Layer - Only One)
-        [SerializeField] private JCS_DialogueObject mGameUI = null;          // the most common one!
+        [SerializeField]
+        private JCS_DialogueObject mGameUI = null;          // the most common one!
         // System dialogue (Application Layer - Only One)
-        [SerializeField] private JCS_DialogueObject mForceDialogue = null;
+        [SerializeField]
+        private JCS_DialogueObject mForceDialogue = null;
 
         // Game Dialogue (Game Layer - could have multiple one)
         // Dialogue player are focusing
-        [SerializeField] private JCS_DialogueObject mFocusGameDialogue = null;
-        private JCS_Vector<JCS_DialogueObject> mGameDialogues = null;
+        [SerializeField]
+        private JCS_DialogueObject mFocusGameDialogue = null;
 
+        // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
+
 
         //----------------------
         // Protected Variables
@@ -57,7 +67,7 @@ namespace JCSUnity
                         this.mGameUI = jdo;
                     }
                     break;
-                case JCS_DialogueType.GAME_DIALOGUE:
+                case JCS_DialogueType.PLAYER_DIALOGUE:
                     {
                         //if (mFocusGameDialogue != null)
                         //{
@@ -68,7 +78,7 @@ namespace JCSUnity
                         this.mFocusGameDialogue = jdo;
                     }
                     break;
-                case JCS_DialogueType.FORCE_DIALOGUE:
+                case JCS_DialogueType.SYSTEM_DIALOGUE:
                     {
                         if (mForceDialogue != null)
                         {
@@ -90,17 +100,18 @@ namespace JCSUnity
                     return this.mGameUI;
 
                 // Dialogue Box
-                case JCS_DialogueType.GAME_DIALOGUE:
+                case JCS_DialogueType.PLAYER_DIALOGUE:
                     return this.mFocusGameDialogue;
-                case JCS_DialogueType.FORCE_DIALOGUE:
+                case JCS_DialogueType.SYSTEM_DIALOGUE:
                     return this.mForceDialogue;
             }
 
             JCS_GameErrors.JcsErrors("JCS_GameManager", -1, "Failed to get Dialogue -> " + type);
             return null;
         }
-        public JCS_Vector<JCS_DialogueObject> GetGameDialogues() { return this.mGameDialogues; }
         public LinkedList<JCS_DialogueObject> GetOpenWindow() { return this.mOpenWindow; }
+        public void SetAppRect(RectTransform rt) { this.mAppRect = rt; }
+        public RectTransform GetAppRect() { return this.mAppRect; }
 
         //========================================
         //      Unity's function
@@ -109,19 +120,12 @@ namespace JCSUnity
         {
             instance = this;
 
-            mGameDialogues = new JCS_Vector<JCS_DialogueObject>();
             mOpenWindow = new LinkedList<JCS_DialogueObject>();
         }
         private void Start()
         {
             if (JCS_GameSettings.instance == null)
                 return;
-
-            if (JCS_GameSettings.instance.THIS_IS_GAME_SCENE)
-            {
-                if (GetJCSDialogue(JCS_DialogueType.GAME_UI) == null)
-                    JCS_ButtonFunctions.PopInGameUI();
-            }
         }
 
         private void Update()
@@ -131,18 +135,13 @@ namespace JCSUnity
             //DialogueTest();
 #endif
 
-            if (JCS_GameSettings.instance.THIS_IS_GAME_SCENE)
-            {
-                if (GetJCSDialogue(JCS_DialogueType.GAME_UI) == null)
-                    JCS_ButtonFunctions.PopInGameUI();
-            }
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
 
             // Exit in game diagloue not in game UI!!
             // (Admin input)
             if (Input.GetKeyDown(KeyCode.Escape))
-                JCS_ButtonFunctions.DestoryCurrentDialogue(JCS_DialogueType.GAME_DIALOGUE);
+                JCS_ButtonFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
 #endif
         }
 
@@ -163,12 +162,6 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
-        public int AddGameDialogueAndGetIndex(JCS_DialogueObject stuff)
-        {
-            mGameDialogues.push(stuff);
-
-            return mGameDialogues.length - 1;
-        }
         public void HideTheLastOpenDialogue()
         {
             // return if nothing in the list

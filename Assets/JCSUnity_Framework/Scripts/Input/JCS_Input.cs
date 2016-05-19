@@ -11,7 +11,7 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_Input : MonoBehaviour
+    public class JCS_Input 
     {
         private static bool mClick = false;
         private static float mClickTime = 0.25f;
@@ -62,6 +62,30 @@ namespace JCSUnity
             mLasDeltaPosition = currentPosition;
 
             return mMouseDeltaPosition;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> mouse position on canvas </returns>
+        public static Vector3 CanvasMousePosition()
+        {
+            Vector2 pos;
+            Canvas myCanvas = JCS_UIManager.instance.GetJCSCanvas().GetCanvas();
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
+            return myCanvas.transform.TransformPoint(pos);
+        }
+
+        public static Vector3 MousePositionOnGUILayer()
+        {
+            Vector3 guiMousePosition = Input.mousePosition;
+
+            // original point is at the center of the screen,  
+            // so set (0, 0) back to bottom left
+            guiMousePosition.x -= Screen.width / 2;
+            guiMousePosition.y -= Screen.height / 2;
+
+            return guiMousePosition;
         }
 
 

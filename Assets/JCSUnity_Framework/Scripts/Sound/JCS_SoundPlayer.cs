@@ -17,7 +17,8 @@ namespace JCSUnity
     /// Sound Player for any object that need to player sound effect
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
-    public class JCS_SoundPlayer : MonoBehaviour
+    public class JCS_SoundPlayer 
+        : MonoBehaviour
     {
 
         //----------------------

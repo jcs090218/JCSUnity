@@ -1,14 +1,21 @@
-﻿using UnityEngine;
+﻿/**
+ * $File: JCS_GameManager.cs $
+ * $Date: $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information $
+ *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
 using System.Collections;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Make sure u have this execute first!!!
-    /// 
-    /// by Jen-Chieh Shen<lkk440456@gmail.com>
     /// </summary>
-    public class JCS_GameManager : MonoBehaviour
+    public class JCS_GameManager 
+        : MonoBehaviour
     {
         public static JCS_GameManager instance = null;
 
@@ -27,6 +34,8 @@ namespace JCSUnity
         public void SetJCSPlayer(JCS_Player player)
         {
             this.mJCSPlayer = player;
+
+            GetPlatformGap(player);
         }
         public JCS_Player GetJCSPlayer() { return this.mJCSPlayer; }
         public void SetJCSGameSettings(JCS_GameSettings gs) { this.mJCSGameSettings = gs; }
@@ -38,6 +47,20 @@ namespace JCSUnity
         private void Awake()
         {
             instance = this;
+        }
+
+        /// <summary>
+        /// Get the gap between player and platform
+        /// 
+        /// Gap 的長度等於CharacterController's height的一半
+        /// </summary>
+        /// <param name="player"></param>
+        private void GetPlatformGap(JCS_Player player)
+        {
+            if (player == null)
+                return;
+
+            JCS_GameSettings.instance.PLATFORM_AND_PLAYER_GAP = player.GetCharacterController().height / 2;
         }
 
     }

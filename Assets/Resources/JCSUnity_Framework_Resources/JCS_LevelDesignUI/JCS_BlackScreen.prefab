@@ -58,10 +58,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fb28bcdbdd8c448b4d7b82a860f238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mFitScreenSize: 0
+  mDialogueIndex: -1
+  mKeyCode: 0
   mDialogueType: 1
   mAsOriginalSize: 1
   mAsOriginalPosition: 0
   mAsOriginalRotation: 0
+  mPanelType: 0
+  mOpenWindowClip: {fileID: 0}
+  mCloseWindowClip: {fileID: 0}
 --- !u!114 &11425318
 MonoBehaviour:
   m_ObjectHideFlags: 1

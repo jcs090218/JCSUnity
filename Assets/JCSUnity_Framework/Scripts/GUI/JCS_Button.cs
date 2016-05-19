@@ -13,6 +13,8 @@ namespace JCSUnity
 {
     public abstract class JCS_Button : MonoBehaviour
     {
+        [SerializeField] protected int mDialogueIndex = -1;
+
         public abstract void JCS_ButtonClick();
     }
 }

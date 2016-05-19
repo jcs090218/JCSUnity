@@ -8,7 +8,7 @@ namespace JCSUnity
 
         public static void JcsErrors(string script, int line = -1, string desc = "")
         {
-            Debug.Log("*** [" + script + "](" + line + ")" + desc + " ***");
+            Debug.Log("*** JCSUnity - [" + script + "](" + line + ")" + desc + " ***");
         }
     }
 }

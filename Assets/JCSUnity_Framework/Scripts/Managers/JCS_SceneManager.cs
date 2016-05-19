@@ -12,7 +12,9 @@ using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
-    public class JCS_SceneManager : MonoBehaviour
+
+    public class JCS_SceneManager 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -28,6 +30,7 @@ namespace JCSUnity
         private string mNextSceneName = "";
 
         [SerializeField] private JCS_BlackScreen mJCSBlackScreen = null;
+        [SerializeField] private JCS_WhiteScreen mJCSWhiteScreen = null;
 
         [SerializeField] private float mFadeInTime = 1.0f;
         [SerializeField] private float mFadeOutTime = 1.0f;
@@ -41,7 +44,11 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public void SetJCSBlackScreen(JCS_BlackScreen bs) { this.mJCSBlackScreen = bs; }
+        public void SetJCSWhiteScreen(JCS_WhiteScreen ws) { this.mJCSWhiteScreen = ws; }
+        public JCS_WhiteScreen GetJCSWhiteScreen() { return this.mJCSWhiteScreen; }
         private JCS_BlackScreen GetJCSBlackScreen() { return this.mJCSBlackScreen; }
+        public float SceneFadeInTime { get { return this.mFadeInTime; } set { this.mFadeInTime = value; } }
+        public float SceneFadeOutTime { get { return this.mFadeOutTime; } set { this.mFadeOutTime = value; } }
 
         //========================================
         //      Unity's function
@@ -108,6 +115,8 @@ namespace JCSUnity
             // start fading sound
             if (JCS_SoundSettings.instance.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
             {
+                mJCSFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBackgroundMusic());
+
                 // fade out sound to zero
                 mJCSFadeSound.FadeOut(0, mFadeInTime);
             }

@@ -12,8 +12,9 @@ using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
-    [RequireComponent(typeof(JCS_AlphaObject))]
-    public class JCS_Logo : MonoBehaviour
+    
+    public class JCS_Logo 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -21,18 +22,15 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private float mFadeOutTime = 1.0f;
-        [SerializeField] private float mFadeInTime = 1.0f;
-        private JCS_AlphaObject mJCSAlphaObject = null;
+        [Header("** Note: Fade Time can be set at JCS_SceneManager **")]
+
         [SerializeField] private string mNextLevel = "JCS_Demo";
 
         // second to show logo
-        [SerializeField]
-        private float mDelayTime = 1.0f;
+        [SerializeField] private float mDelayTime = 1.0f;
         private float mDelayTimer = 0.0f;
 
         private bool mCycleThrough = false;
-        private bool mShowing = false;
 
         //----------------------
         // Protected Variables
@@ -44,54 +42,30 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
-        {
-            // Fade In/Out time cannot be lower than zero
-            if (mFadeOutTime <= 0)
-                mFadeOutTime = 1.0f;
-            if (mFadeInTime <= 0)
-                mFadeInTime = 1.0f;
-
-            this.mJCSAlphaObject = this.GetComponent<JCS_AlphaObject>();
-        }
 
         private void Start()
         {
-            JCS_GameManager.instance.GAME_PAUSE = true;
+            // Hide all the open dialogue
             JCS_UIManager.instance.HideAllOpenDialogue();
+
+            // Plus the fade out time
+            mDelayTime += JCS_SceneManager.instance.SceneFadeOutTime;
         }
 
         private void Update()
         {
+            JCS_GameManager.instance.GAME_PAUSE = true;
 
-            // Fade out first
-            if (mJCSAlphaObject.IsFadeIn() && !mCycleThrough)
+            mDelayTimer += Time.deltaTime;
+            if (mDelayTime < mDelayTimer)
             {
-                mJCSAlphaObject.FadeOut(mFadeOutTime);
-                mShowing = true;
-            }
-            // check fade in later
-            else if (mJCSAlphaObject.IsFadeOut() && !mShowing)
-            {
-                mJCSAlphaObject.FadeIn(mFadeInTime);
                 mCycleThrough = true;
             }
 
-            if (mShowing)
-            {
-                mDelayTimer += Time.deltaTime;
-
-                if (mDelayTime < mDelayTimer)
-                {
-                    mShowing = false;
-                    mDelayTimer = 0;
-                }
-            }
-
-            if (mCycleThrough && mJCSAlphaObject.IsFadeIn())
+            if (mCycleThrough)
             {
                 JCS_GameManager.instance.GAME_PAUSE = false;
-                SceneManager.LoadScene(mNextLevel);
+                JCS_SceneManager.instance.LoadScene(mNextLevel);
             }
         }
 

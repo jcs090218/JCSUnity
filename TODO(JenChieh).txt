@@ -1,3 +1,16 @@
-Player does not jump at the first jump.
-Platform implementation 2 script!
+Name: Jen-Chieh Shen <lkk440456@gmail.com>
+File Name: TODO(JenChieh).txt
+Last Edit Date: 2016-5-11
+-----------------------------------
 
+//-- General
+Weather Data
+Dialogue System
+
+//-- 2D
+Player does not jump at the first jump.
+2D shoot smooth
+item shadow under effect
+
+//-- 3D
+Control player like Monster Hunter game did.

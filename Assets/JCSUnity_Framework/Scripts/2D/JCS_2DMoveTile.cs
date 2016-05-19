@@ -3,14 +3,19 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: usually Background $
+ * $Notice: See LICENSE.txt for modification and distribution information $
+ *		                Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_2DMoveTile : MonoBehaviour
+    /// <summary>
+    /// usually Background
+    /// </summary>
+    public class JCS_2DMoveTile 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -18,16 +23,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField]
-        private float mMoveSpeed = 10.0f;
+        [SerializeField] private float mMoveSpeed = 10.0f;
         private Vector3 mVelocity = Vector3.zero;
         private Vector3 mOriginPosition = Vector3.zero;
-        [SerializeField]
-        private bool mIsYAxis = false;
-        [SerializeField]
-        private float mWidth = 0.0f;
-        [SerializeField]
-        private float mHeight = 0.0f;
+        [SerializeField] private bool mIsYAxis = false;
+        [SerializeField] private float mWidth = 0.0f;
+        [SerializeField] private float mHeight = 0.0f;
 
         //----------------------
         // Protected Variables

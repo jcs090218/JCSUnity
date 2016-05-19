@@ -1,17 +1,29 @@
-﻿using UnityEngine;
+﻿/**
+ * $File: JCS_2DCamera.cs $
+ * $Date: $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information $
+ *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
 using System.Collections;
 
 namespace JCSUnity
 {
 
     [RequireComponent(typeof(JCS_BGMPlayer))]     // for background music
-    public class JCS_2DCamera : JCS_Camera
+    public class JCS_2DCamera 
+        : JCS_Camera
     {
+        public static string JCS_2DCAMERA_PATH = "JCSUnity_Framework_Resources/JCS_Camera/JCS_2DCamera";
+
         private const float MAX_ZOOM_DISTANCE = 30.0f;
         private const float MIN_ZOOM_DISTANCE = 4.0f;
         private const float MAX_MOVE_SPEED = 20.0f;
         private const float MIN_MOVE_SPEED = 4.0f;
 
+        [Header("** Runtime Variables **")]
         //-- Target information
         [SerializeField]
         private Transform mTargetTransform = null;
@@ -24,7 +36,8 @@ namespace JCSUnity
         [SerializeField] private bool mSmoothMoveY = true;
 
         //-- Scroll
-        // [IMPOTATN]: 這個變量剛好是Camera到最邊邊的值! (Width)
+        [Header("** Scroll Setting **")]
+        // [IMPOTANT]: 這個變量剛好是Camera到最邊邊的值! (Width)
         [SerializeField]
         [Range(MIN_ZOOM_DISTANCE, MAX_ZOOM_DISTANCE)]
         private float mCameraDepth = 10.0f;
@@ -33,10 +46,12 @@ namespace JCSUnity
 
         //-- Move
         [SerializeField] private float mDampTime = 0.7f;
-        [SerializeField] private float mMax_X_PositionInScene = 10.0f;
-        [SerializeField] private float mMin_X_PositionInScene = -10.0f;
-        [SerializeField] private float mMax_Y_PositionInScene = 10.0f;
-        [SerializeField] private float mMin_Y_PositionInScene = -10.0f;
+        [Header("** Scene Setting **")]
+        [SerializeField] private float mMax_X_PositionInScene = float.PositiveInfinity;
+        [SerializeField] private float mMin_X_PositionInScene = float.NegativeInfinity;
+        [SerializeField] private float mMax_Y_PositionInScene = float.PositiveInfinity;
+        [SerializeField] private float mMin_Y_PositionInScene = float.NegativeInfinity;
+        [Header("** Camera Scope Setting **")]
         [SerializeField] private float mOutOfScopeDampeTime = 0.4f;
         [SerializeField] private float mOutOfScopeDistanceX = 10;
         [SerializeField] private float mOutOfScopeDistanceY = 10;
@@ -44,7 +59,6 @@ namespace JCSUnity
 
         private Vector3 mRecordPosition = Vector3.zero;
 
-        private Vector3 mPosition = Vector3.zero;
         [SerializeField] private Vector3 mVelocity = Vector3.zero;
 
         //-- Audio References
@@ -89,7 +103,6 @@ namespace JCSUnity
                     SetFollowTarget(player.transform);
             }
 
-            this.mPosition = this.transform.position;
         }
 
         private void Update()
@@ -152,13 +165,26 @@ namespace JCSUnity
                 transform.position = Vector3.SmoothDamp(transform.position, destination, ref mVelocity, mDampTime);
 
             // Update self position
-            this.transform.position = this.mPosition;
-            this.mPosition += this.mVelocity * Time.deltaTime;
+            this.transform.position += this.mVelocity * Time.deltaTime;
         }
 
         //========================================
         //      Self-Define
         //------------------------------
+        public void SetToTargetImmediate()
+        {
+            if (GetTargetTransform() == null)
+                return;
+
+            Vector3 targetPos = GetTargetTransform().position;
+
+            Vector3 newPos = this.transform.position;
+
+            newPos.x = targetPos.x;
+            newPos.y = targetPos.y;
+
+            this.transform.position = newPos;
+        }
 
         /// <summary>
         /// Do the zooming in Z axis!!
@@ -176,7 +202,10 @@ namespace JCSUnity
             else if (mCameraDepth > MAX_ZOOM_DISTANCE)
                 mCameraDepth = MAX_ZOOM_DISTANCE;
 
-            mPosition.z = mTargetPosition.z - mCameraDepth;
+
+            Vector3 newPos = this.transform.position;
+            newPos.z = mTargetPosition.z - mCameraDepth;
+            this.transform.position = newPos;
         }
         /// <summary>
         /// if the camera and target have certain amount of distance

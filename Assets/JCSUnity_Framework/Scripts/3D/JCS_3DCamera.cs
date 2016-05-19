@@ -13,6 +13,7 @@ using System.IO;
 
 namespace JCSUnity
 {
+
     [RequireComponent(typeof(AudioListener))]
     public class JCS_3DCamera : JCS_Camera
     {
@@ -23,19 +24,17 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+        [Header("** Runtime Variables **")]
         [SerializeField] private Transform mTarget = null;
         [SerializeField] private float mRadius = 2.0f;
         [SerializeField] private float mRadiusSpeed = 0.5f;
         [SerializeField] private float mRotateSpeed = 10.0f;
-        [SerializeField] private float mLockRotateSpeed = 300.0f;
-        [SerializeField] private JCS_Axis mLockAxis = JCS_Axis.AXIS_X;
-        private Vector3 mLockAxisVec = Vector3.one;
 
-        [SerializeField] private float mRotatedAngle = 0.0f;
-        private float mTargetRotateAngle = 0.0f;
         private bool mDoReset = false;
-        private float mTargetAngle = 0.0f;
-        private float mAcceptedRange = 1.0f;
+        [SerializeField] private float mTargetAngle = 0.0f;
+        [SerializeField] private float mFriction = 0.1f;
+        [SerializeField] private float mAcceptedRange = 1.0f;
 
         //----------------------
         // Protected Variables
@@ -55,21 +54,17 @@ namespace JCSUnity
         {
             transform.position = (transform.position - mTarget.position).normalized * mRadius + mTarget.position;
 
-            switch (mLockAxis)
-            {
-                case JCS_Axis.AXIS_X:
-                    break;
-                case JCS_Axis.AXIS_Y:
-                    mLockAxisVec = Vector3.up;
-                    break;
-                case JCS_Axis.AXIS_Z:
-                    break;
-            }
         }
 
         private void Update()
         {
             DoResetToAxis();
+
+            // update the angle from target we are following
+            if (mTarget != null)
+                mTargetAngle = mTarget.localEulerAngles.y;
+            
+
 
             if (JCS_Input.GetKey(KeyCode.A))
             {
@@ -79,7 +74,7 @@ namespace JCSUnity
             {
                 RotateAroundLeft();
             }
-            if (JCS_Input.GetKey(KeyCode.L))
+            if (JCS_Input.GetKey(KeyCode.R))
             {
                 ResetCamera();
             }
@@ -90,21 +85,24 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
-        public override void TakeScreenShot()
-        {
-
-        }
 
         public void RotateAroundRight()
         {
-            RotateAround(mRotateSpeed);
+
+            RotateAround(-mRotateSpeed);
         }
         public void RotateAroundLeft()
         {
-            RotateAround(-mRotateSpeed);
+            RotateAround(mRotateSpeed);
         }
         public void ResetCamera()
         {
+            if (mTarget == null)
+            {
+                JCS_GameErrors.JcsErrors("JCS_3DCamera", -1, "There is no target to reset the camera!");
+                return;
+            }
+
             ResetCameraToAxis();
         }
 
@@ -115,6 +113,16 @@ namespace JCSUnity
         // Private Functions
         private void RotateAround(float speed)
         {
+            // if still doing the effect
+            if (mDoReset)
+                return;
+
+            if (mTarget == null)
+            {
+                JCS_GameErrors.JcsErrors("JCS_3DCamera", -1, "There is no target to reset the camera!");
+                return;
+            }
+
             this.transform.RotateAround(mTarget.position, Vector3.up, speed * Time.deltaTime);
 
             Vector3 desiredPosition = (transform.position - mTarget.position).normalized * mRadius + mTarget.position;
@@ -122,72 +130,62 @@ namespace JCSUnity
         }
         private void ResetCameraToAxis()
         {
-            Vector3 camRotation = this.transform.rotation.eulerAngles;
-            Vector3 targetRotation = mTarget.transform.rotation.eulerAngles;
-
-            mTargetRotateAngle = camRotation.y - targetRotation.y;
-
-            // set the angle to absolute value
-            mTargetRotateAngle = JCS_Mathf.AbsoluteValue(mTargetRotateAngle);
-
-            if (camRotation.y < targetRotation.y)
+            if (mTargetAngle <= -1 || mTargetAngle >= 361)
             {
-                if (camRotation.y - mAcceptedRange > mTargetRotateAngle)
-                    return;
-                mLockRotateSpeed = JCS_Mathf.ToPositive(mLockRotateSpeed);
-            }
-            else if (camRotation.y > targetRotation.y)
-            {
-                if (camRotation.y + mAcceptedRange < mTargetRotateAngle)
-                    return;
-                mLockRotateSpeed = JCS_Mathf.ToNegative(mLockRotateSpeed);
+                JCS_GameErrors.JcsErrors("JCS_3DCamera", -1, "Target Angle should be within the Range of 0 ~ 360!");
+                return;
             }
 
             mDoReset = true;
-            
         }
         private void DoResetToAxis()
         {
             if (!mDoReset)
                 return;
 
-            float anglePerSecond = mLockRotateSpeed * Time.deltaTime;
-            
+            Vector3 newRotation = this.transform.rotation.eulerAngles;
 
-            bool achieve = false;
-
-            if (JCS_Mathf.isPositive(mLockRotateSpeed))
+            if (newRotation.y + mAcceptedRange > mTargetAngle &&
+                newRotation.y - mAcceptedRange < mTargetAngle)
             {
-                if (mRotatedAngle + mAcceptedRange > mTargetRotateAngle)
-                {
-                    achieve = true;
-                }
-            }
-            else if (JCS_Mathf.isNegative(mLockRotateSpeed))
-            {
-                if (mRotatedAngle - mAcceptedRange < mTargetRotateAngle)
-                {
-                    achieve = true;
-                }
-            }
-            else
-            {
-                achieve = true;
-            }
-
-            if (achieve)
-            {
-                mRotatedAngle = 0;
                 mDoReset = false;
                 return;
             }
 
-            // record the turned angle per frame, do not forget to reset back
-            // to zero after camera have been reset
-            this.mRotatedAngle += anglePerSecond;
+            float speed = (mTargetAngle - newRotation.y) / mFriction;
 
-            // do rotation
-            this.transform.RotateAround(mTarget.position, mLockAxisVec, anglePerSecond);
+            int direction = CheckRotateDirectionToTheClosest();
+
+            if (direction == -1)
+            {
+                // please treat new rotation as current rotation here
+                float diffAngle = 360 - newRotation.y;
+
+                speed = (mTargetAngle - diffAngle) / mFriction;
+            }
+
+            speed *= direction;
+
+            this.transform.RotateAround(mTarget.position, Vector3.up, speed * Time.deltaTime);
+        }
+
+        private int CheckRotateDirectionToTheClosest()
+        {
+            int direction = 1;
+
+            Vector3 currentRotatetion = this.transform.rotation.eulerAngles;
+
+            float middleOfTheAngle;
+
+            if (mTargetAngle < 180)
+                middleOfTheAngle = mTargetAngle + 180;
+            else
+                middleOfTheAngle = mTargetAngle - 180;
+
+            if (currentRotatetion.y < middleOfTheAngle)
+                return direction;
+            else
+                return -direction;
         }
 
     }

@@ -12,7 +12,9 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-    public class JCS_PlayerManager : MonoBehaviour
+
+    public class JCS_PlayerManager 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -30,6 +32,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public List<JCS_Player> GetJCSPlayerList() { return this.mPlayers; }
+        public JCS_Player GetJCSPlayerAt(int index) { return this.mPlayers[index]; }
 
         //========================================
         //      Unity's function
@@ -42,9 +45,6 @@ namespace JCSUnity
 
         private void Start()
         {
-            if (JCS_GameSettings.instance == null)
-                return;
-
             if (JCS_GameSettings.instance.PLAYER_IGNORE_EACH_OTHER)
             {
                 // Make all the player ignore each other
@@ -67,6 +67,7 @@ namespace JCSUnity
             ActiveOnePlayer(JCS_GameManager.instance.GetJCSPlayer());
         }
 
+#if (UNITY_EDITOR)
         private void Update()
         {
             if (JCS_GameSettings.instance.GAME_TYPE == JCS_GameType.GAME_2D)
@@ -90,6 +91,8 @@ namespace JCSUnity
                 ActiveOnePlayer(1);
             }
         }
+
+#endif
 
         //========================================
         //      Self-Define

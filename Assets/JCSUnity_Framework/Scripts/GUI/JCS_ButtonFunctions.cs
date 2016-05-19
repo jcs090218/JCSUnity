@@ -52,8 +52,9 @@ namespace JCSUnity
 
             switch (type)
             {
-                case JCS_DialogueType.FORCE_DIALOGUE:
-                case JCS_DialogueType.GAME_DIALOGUE:
+                case JCS_DialogueType.SYSTEM_DIALOGUE:
+                case JCS_DialogueType.NPC_DIALOGUE:
+                case JCS_DialogueType.PLAYER_DIALOGUE:
                     PauseGame(false);
                     break;
             }
@@ -108,20 +109,34 @@ namespace JCSUnity
             JCS_SceneManager.instance.SetJCSBlackScreen(bs);
         }
 
+        public static void PopJCSWhiteScreen()
+        {
+            string path = JCS_GameSettings.WHITE_SCREEN_PATH;
+            JCS_WhiteScreen ws = JCS_UsefualFunctions.SpawnGameObject(path).GetComponent<JCS_WhiteScreen>();
+
+            if (ws == null)
+            {
+                JCS_GameErrors.JcsErrors("JCS_ButtonFunctions", -1, "GameObject without \"JCS_WhiteScreen\" Component attached!!!");
+                return;
+            }
+
+            JCS_SceneManager.instance.SetJCSWhiteScreen(ws);
+        }
+
         //** Game UI (Game Layer)
         public static void PopInGameUI()
         {
             if (!CheckIfOkayToSpawnGameUI(JCS_DialogueType.GAME_UI))
                 return;
 
-            string path = JCS_GameSettings.instance.GAME_UI_PATH;
-            JCS_UsefualFunctions.SpawnGameObject(path);
+            //string path = JCS_GameSettings.instance.GAME_UI_PATH;
+            //JCS_UsefualFunctions.SpawnGameObject(path);
         }
 
         //** (Application Layer)
         public static void PopIsConnectDialogue()
         {
-            if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.FORCE_DIALOGUE))
+            if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.SYSTEM_DIALOGUE))
                 return;
 
             JCS_UsefualFunctions.SpawnGameObject(IS_CONNECT_DIALOGUE);
@@ -132,7 +147,7 @@ namespace JCSUnity
         //** In Game Dialogue (Game Layer)
         public static void PopSettingDialogue()
         {
-            if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.GAME_DIALOGUE))
+            if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.PLAYER_DIALOGUE))
                 return;
 
             JCS_UsefualFunctions.SpawnGameObject(SETTING_PANEL);
@@ -142,7 +157,7 @@ namespace JCSUnity
 
         public static void PopTalkDialogue()
         {
-            if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.GAME_DIALOGUE))
+            if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.PLAYER_DIALOGUE))
                 return;
 
             JCS_UsefualFunctions.SpawnGameObject(TALK_DIALOGUE);

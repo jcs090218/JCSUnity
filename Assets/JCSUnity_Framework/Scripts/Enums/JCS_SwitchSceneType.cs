@@ -15,7 +15,8 @@ namespace JCSUnity
     {
         NONE,
 
-        BLACK_SCREEN
+        BLACK_SCREEN,
+        SLIDE_SCREEN
 
     }
 }

@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &110776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22423156}
+  - 114: {fileID: 11486696}
+  - 114: {fileID: 11462614}
+  - 114: {fileID: 11409156}
+  m_Layer: 5
+  m_Name: Conversation_Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &117026
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,7 +54,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &173136
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -94,11 +112,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22425836}
-  - 114: {fileID: 11405690}
-  - 114: {fileID: 11418392}
-  - 114: {fileID: 11470804}
   m_Layer: 5
-  m_Name: Conversation_Dialogue
+  m_Name: TextContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,18 +178,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11405690
+--- !u!114 &11409156
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197404}
+  m_GameObject: {fileID: 110776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fb28bcdbdd8c448b4d7b82a860f238, type: 3}
+  m_Script: {fileID: 11500000, guid: bb208d196628fa64785fef78c9b23d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDialogueType: 2
+  mType: 0
 --- !u!114 &11415292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,18 +250,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11418392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae789a904dd46ec498ac6c05b5edb819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mType: 0
 --- !u!114 &11424008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,12 +318,12 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Next
---- !u!114 &11470804
+--- !u!114 &11462614
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197404}
+  m_GameObject: {fileID: 110776}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -331,7 +334,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11418392}
+        - m_Target: {fileID: 11409156}
           m_MethodName: JCS_OnDrag
           m_Mode: 1
           m_Arguments:
@@ -348,7 +351,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11418392}
+        - m_Target: {fileID: 11409156}
           m_MethodName: JCS_OnDrop
           m_Mode: 1
           m_Arguments:
@@ -430,6 +433,29 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11486696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33fb28bcdbdd8c448b4d7b82a860f238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mAsOriginalSize: 0
+  mAsOriginalPosition: 0
+  mAsOriginalRotation: 0
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
+  mFitScreenSize: 1
+  mDialogueIndex: -1
+  mKeyCode: 0
+  mDialogueType: 2
+  mPanelType: 0
+  mOpenWindowClip: {fileID: 0}
+  mCloseWindowClip: {fileID: 0}
 --- !u!114 &11492612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,12 +529,33 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.48056087, y: 0.3252434, z: 0.15505086}
   m_Children: []
-  m_Father: {fileID: 22425836}
+  m_Father: {fileID: 22423156}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -155}
+  m_AnchoredPosition: {x: 0, y: -321}
   m_SizeDelta: {x: 1488, y: 643}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &22423156
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 22410042}
+  - {fileID: 22480734}
+  - {fileID: 22426168}
+  - {fileID: 22425836}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22425836
 RectTransform:
@@ -520,15 +567,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 22410042}
   - {fileID: 22496368}
-  - {fileID: 22480734}
-  - {fileID: 22426168}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 22423156}
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -166}
   m_SizeDelta: {x: 480, y: 121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22426168
@@ -542,11 +586,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22464734}
-  m_Father: {fileID: 22425836}
-  m_RootOrder: 3
+  m_Father: {fileID: 22423156}
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285.99994, y: -235}
+  m_AnchoredPosition: {x: 285.99994, y: -401}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22433086
@@ -594,11 +638,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22433086}
-  m_Father: {fileID: 22425836}
-  m_RootOrder: 2
+  m_Father: {fileID: 22423156}
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 173.99997, y: -235}
+  m_AnchoredPosition: {x: 173.99997, y: -401}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22496368
@@ -609,14 +653,14 @@ RectTransform:
   m_GameObject: {fileID: 173136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.93, y: 0.93, z: 0.93}
+  m_LocalScale: {x: 0.93000007, y: 0.93000007, z: 0.93000007}
   m_Children: []
   m_Father: {fileID: 22425836}
-  m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.625027, y: -142}
-  m_SizeDelta: {x: 217.25, y: 21.331238}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -8.6250305, y: -142}
+  m_SizeDelta: {x: 697.25, y: 141.33124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
@@ -627,5 +671,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 197404}
+  m_RootGameObject: {fileID: 110776}
   m_IsPrefabParent: 1

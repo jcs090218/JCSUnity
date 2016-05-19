@@ -9,7 +9,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class JCS_Managers : MonoBehaviour 
+namespace JCSUnity
 {
-    // empty   
+    public class JCS_Managers : MonoBehaviour
+    {
+        // empty   
+    }
 }

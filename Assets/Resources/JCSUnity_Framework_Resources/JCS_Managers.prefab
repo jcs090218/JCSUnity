@@ -10,11 +10,13 @@ GameObject:
   - 4: {fileID: 442828}
   - 114: {fileID: 11455940}
   - 114: {fileID: 11496914}
+  - 114: {fileID: 11474736}
   - 114: {fileID: 11441358}
   - 114: {fileID: 11414256}
   - 114: {fileID: 11439248}
   - 114: {fileID: 11491538}
   - 114: {fileID: 11476444}
+  - 114: {fileID: 11436796}
   - 114: {fileID: 11461692}
   m_Layer: 0
   m_Name: JCS_Managers
@@ -47,6 +49,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GAME_PAUSE: 0
+--- !u!114 &11436796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3ddae32cc8033418ec9a10bad8be7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSlideInput: {fileID: 0}
+  mMobileMouseEvent: {fileID: 0}
 --- !u!114 &11439248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mType: 1
   mJCSBlackScreen: {fileID: 0}
+  mJCSWhiteScreen: {fileID: 0}
   mFadeInTime: 1.5
   mFadeOutTime: 1.5
 --- !u!114 &11441358
@@ -96,6 +112,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mPlayers: []
+--- !u!114 &11474736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17e6ac0439920b44911c3e7951faaa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCurrentTimeRange: 0
 --- !u!114 &11476444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,6 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459ea8803bb23694290d894d24e5c1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SIMULATE_PLATFORM_TYPE: 0
+  PLATFORM_TYPE: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

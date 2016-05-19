@@ -1,8 +1,48 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: Update_Log.txt
-Last Edit Date: 2016-04-30
+Last Edit Date: 2016-05-14
 -----------------------------------
 
+2016-05-15
+* Season implemented. 
+
+2016-05-14
+* 2D&3D Tracking Action Implemented!
+* Hit Event implemented!
+* Created new category "Event"
+* Shake Effect implemented!
+* Cos-sine wave effect implemented!
+
+2016-05-11
+* Mix Damage Text Pool implemented!
+* JCS_3DCamera implemented!
+
+2016-05-10
+* Damage Text Pool implemented!
+
+2016-05-09
+* Damage Text implemented!
+
+2016-05-8
+* Checkable feature implemented (when have ur mouse over a checkable 
+    object it will appear a small description menu)
+* Clean Code (there was duplicate code)
+
+2016-05-07
+* Resolution for all platform feature added (Tested! and it work!)
+* Slide Input implemented (for touch pad)
+* Application Manager managing the platform type form now on! 
+
+2016-05-06
+* Slide Switch Scene Function Completed
+* Resolution for all platform feature added (Not Tested!)
+* Bug Fix ("JCS_GameWindow" script)
+* Bug Fix (Logog Scene)
+
+2016-05-01
+* Multi Track Camera 2D feature add
+* Pair Key Panel and Button Panel up
+* Scene Manager bug fixed
 
 2016-04-30 
 * Multi Track Camera 2D

@@ -17,7 +17,7 @@ namespace JCSUnity
         {
             JCS_ButtonFunctions.ToOfficailWebpage();
 
-            JCS_ButtonFunctions.DestoryCurrentDialogue(JCS_DialogueType.FORCE_DIALOGUE);
+            JCS_ButtonFunctions.DestoryCurrentDialogue(JCS_DialogueType.SYSTEM_DIALOGUE);
 
             JCS_ButtonFunctions.QuitApplication();
         }

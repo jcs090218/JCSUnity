@@ -12,7 +12,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_2DPlatform : MonoBehaviour
+
+    public class JCS_2DPlatform 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -20,10 +22,8 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField]
-        private BoxCollider mPlatformCollider = null;
-        [SerializeField]
-        private BoxCollider mPlatformTrigger = null;
+        [SerializeField] private BoxCollider mPlatformCollider = null;
+        [SerializeField] private BoxCollider mPlatformTrigger = null;
 
         //----------------------
         // Protected Variables

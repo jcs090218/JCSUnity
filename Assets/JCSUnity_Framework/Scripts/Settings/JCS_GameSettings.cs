@@ -12,7 +12,8 @@ using System.IO;
 
 namespace JCSUnity
 {
-    public class JCS_GameSettings : MonoBehaviour
+    public class JCS_GameSettings 
+        : MonoBehaviour
     {
         public static JCS_GameSettings instance = null;
 
@@ -30,15 +31,23 @@ namespace JCSUnity
         [Header("** Player Settings **")]
         [SerializeField] public bool PLAYER_IGNORE_EACH_OTHER = true;
 
-        //-- Canvas
-        [Header("** Canvas Settings **")]
-        [SerializeField] public string GAME_UI_PATH = "JCSUnity_Framework_Resources/JCS_InGameDialogue/JCS_InGameUI";
-        public static string GAME_UI_NAME = "JCS_InGameUI";
+        [Header("** Platform Settings **")]
+        [Tooltip("Name all the player as this.")]
+        [SerializeField] public string PLAYER_NAME = "JCS_MOVEABLEOBJECT";
+        [Tooltip("Name all the platform trigger as this.")]
+        [SerializeField] public string PLATFORM_TRIGGER_NAME = "JCS_PlatformTrigger";
+        [SerializeField] public float PLATFORM_AND_PLAYER_GAP = 0;
+
+        // according to player's character controller's height will
+        // should modefied a bit.
+        public float GAP_ACCEPT_RANGE = 0.5f;
 
         // no one care about how black screen look so i
         // just make it unseen in the inspector.
         public static string BLACK_SCREEN_PATH = "JCSUnity_Framework_Resources/JCS_LevelDesignUI/JCS_BlackScreen";
         public static string BLACK_SCREEN_NAME = "JCS_BlackScreen";
+        public static string WHITE_SCREEN_PATH = "JCSUnity_Framework_Resources/JCS_LevelDesignUI/JCS_WhiteScreen";
+        public static string WHITE_SCREEN_NAME = "JCS_WhiteScreen";
 
         //-- Sound
         public static bool BGM_MUTE = false;
@@ -54,9 +63,13 @@ namespace JCSUnity
         public static string SCREENSHOT_FILENAME = "Screenshot_"; // Screen shot file name [Default: Screenshot_]
         public static string SAVED_IMG_EXTENSION = ".png"; // Extension [Default: .png]
 
+        //-- Game Data Path
+        public static string GAME_DATA_PATH = "/JCS_GameData/";
+        
         //-- UI
         [Header("** User Interface Settings **")]
         [SerializeField] public bool RESIZE_UI = true;
+
 
         //--------------------------------
         // setter / getter
@@ -83,6 +96,20 @@ namespace JCSUnity
             return SKILLS_SOUND;
         }
 
+        public static float GetSoundBaseOnType(JCS_SoundSettingType type)
+        {
+            switch (type)
+            {
+                case JCS_SoundSettingType.BGM_SOUND: return GetBGM_Volume();
+                case JCS_SoundSettingType.SFX_SOUND: return GetSFXSound_Volume();
+                case JCS_SoundSettingType.SKILLS_SOUND: return GetSkillsSound_Volume();
+            }
+
+            JCS_GameErrors.JcsErrors("JCS_GameSetting", -1, "Get unknown volume...");
+
+            return 0;
+        }
+
         //--------------------------------
         // Unity's functions
         //--------------------------------
@@ -100,8 +127,6 @@ namespace JCSUnity
 
             // attach the new one
             instance = this;
-
-            GetGameData();
         }
 
         private void Update()
@@ -119,13 +144,6 @@ namespace JCSUnity
             // ResizeUI option should always be the same!
             _new.RESIZE_UI = _old.RESIZE_UI;
 
-        }
-
-        private void GetGameData()
-        {
-            // Game UI path,
-            // 
-            GAME_UI_NAME = Path.GetFileNameWithoutExtension(GAME_UI_PATH);
         }
 
     }

@@ -1,8 +1,10 @@
 ﻿/**
- * $File: $
+ * $File: JCS_OrderLayerObject.cs $
  * $Date: $
- * $Reveision: $
+ * $Revision: $
  * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information $
+ *		                Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -10,7 +12,8 @@ using System.Collections;
 namespace JCSUnity
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class JCS_OrderLayerObject : MonoBehaviour
+    public class JCS_OrderLayerObject 
+        : MonoBehaviour
     {
 
         //----------------------

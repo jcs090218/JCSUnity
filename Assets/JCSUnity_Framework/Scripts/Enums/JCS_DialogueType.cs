@@ -22,8 +22,16 @@ namespace JCSUnity
 
         //*** Low Priority ***//
 
-        GAME_DIALOGUE,      // any screen in game
-        FORCE_DIALOGUE      // screen from application layer so it have the authroized to break the game
+        // any screen in game, only allow one type
+        // Conversation Dialogue
+        NPC_DIALOGUE,
+
+        // can have multiple same type at the same time
+        // For instance, inventory, equip, use, etc.
+        PLAYER_DIALOGUE,
+
+        // application layer
+        SYSTEM_DIALOGUE      // screen from application layer so it have the authroized to break the game
 
 
         //*** Hight Priority ***//

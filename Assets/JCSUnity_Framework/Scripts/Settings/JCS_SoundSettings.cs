@@ -12,7 +12,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_SoundSettings : MonoBehaviour
+
+    public class JCS_SoundSettings 
+        : MonoBehaviour
     {
 
         //----------------------

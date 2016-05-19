@@ -14,7 +14,8 @@ namespace JCSUnity
 {
 
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_ResizeUI : MonoBehaviour
+    public class JCS_ResizeUI 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -50,7 +51,7 @@ namespace JCSUnity
             {
 
                 string black_screen_name = JCS_GameSettings.BLACK_SCREEN_NAME;
-                string game_ui_name = JCS_GameSettings.GAME_UI_NAME;
+                string white_screen_name = JCS_GameSettings.WHITE_SCREEN_NAME;
 
                 // cuz the transform list will change while we set the transform to 
                 // the transform, 
@@ -66,11 +67,15 @@ namespace JCSUnity
                         child.name == (black_screen_name + "(Clone)"))
                         continue;
 
-                    if (child.name == game_ui_name ||
-                        child.name == (game_ui_name + "(Clone)"))
+                    if (child.name == white_screen_name ||
+                        child.name == (white_screen_name + "(Clone)"))
                         continue;
 
                     if (child.name == "JCS_IgnorePanel")
+                        continue;
+
+                    // TODO(JenChieh): optimize this?
+                    if (child.GetComponent<JCS_IgnoreDialogueObject>() != null)
                         continue;
 
                     // add to set list ready to set to the new transform as parent

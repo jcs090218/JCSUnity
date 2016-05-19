@@ -11,7 +11,8 @@ using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
-    public class JCS_PatchManager : MonoBehaviour
+    public class JCS_PatchManager 
+        : MonoBehaviour
     {
 
         //----------------------

@@ -10,7 +10,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_NetworkManager : MonoBehaviour
+    public class JCS_NetworkManager 
+        : MonoBehaviour
     {
 
         //----------------------

@@ -14,7 +14,9 @@ namespace JCSUnity
     {
         public override void JCS_ButtonClick()
         {
-            JCS_ButtonFunctions.PopSettingDialogue();
+            //JCS_ButtonFunctions.PopSettingDialogue();
+
+            JCS_GameWindowHandler.instance.GetPlayerDialogueAt(mDialogueIndex).ShowDialogue();
         }
     }
 }

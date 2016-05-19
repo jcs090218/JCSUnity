@@ -135,11 +135,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mDialogueIndex: -1
   mKeyCode: 0
-  mDialogueType: 3
+  mDialogueType: 4
   mAsOriginalSize: 0
   mAsOriginalPosition: 0
   mAsOriginalRotation: 0
   mPanelType: 0
+  mOpenWindowClip: {fileID: 0}
+  mCloseWindowClip: {fileID: 0}
 --- !u!114 &11409250
 MonoBehaviour:
   m_ObjectHideFlags: 1

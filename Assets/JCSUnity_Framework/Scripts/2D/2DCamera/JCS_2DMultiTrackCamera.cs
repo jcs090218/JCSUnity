@@ -13,8 +13,16 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Game Scene Camera.
+    /// For game that we need to track multiple objects at
+    /// the same time.
+    /// 
+    /// Using JCS_2DCamera for additional help!
+    /// </summary>
     [RequireComponent(typeof(AudioListener))]
-    public class JCS_2DMultiTrackCamera : MonoBehaviour
+    public class JCS_2DMultiTrackCamera 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -29,7 +37,26 @@ namespace JCSUnity
         private AudioListener mAudioListener = null;
 
         [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;
-        private string mJCS_2DCameraPath = "JCSUnity_Framework_Resources/JCS_2DCamera";
+        
+
+        private float mLastDiffDistanceX = 0;
+        private float mLastDiffDistanceY = 0;
+
+        private float mTargetFieldOfView = 0;
+
+        [Header("Variables to control camera")]
+        [SerializeField] private float mCamerSpeed = 8;
+        [SerializeField] private float mCameraFriction = 0.7f;
+
+        // Range under this will not do the scale effect,
+        // otherwise do the scale effect
+        [Header("Above these range do field of view")]
+        [SerializeField] private float mViewHeight = 5;
+        [SerializeField] private float mViewWidth = 15;
+
+        [Header("Min & Max of field of view")]
+        [SerializeField] private float mMinFieldOfView = 60;
+        [SerializeField] private float mMaxFieldOfView = 100;
 
         //----------------------
         // Protected Variables
@@ -37,7 +64,6 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        
         public AudioListener GetAudioListener() { return this.mAudioListener; }
 
         //========================================
@@ -55,7 +81,7 @@ namespace JCSUnity
 
                 // Spawn a Default one!
                 this.mJCS_2DCamera = JCS_UsefualFunctions.SpawnGameObject(
-                    mJCS_2DCameraPath,
+                    JCS_2DCamera.JCS_2DCAMERA_PATH,
                     transform.position,
                     transform.rotation).GetComponent<JCS_2DCamera>();
             }
@@ -68,6 +94,9 @@ namespace JCSUnity
             }
 
             mJCS_2DCamera.SetFollowTarget(this.transform);
+
+            // record down the fild of view
+            mTargetFieldOfView = mJCS_2DCamera.fieldOfView;
         }
 
         private void Start()
@@ -78,6 +107,13 @@ namespace JCSUnity
         private void Update()
         {
             this.transform.position = CalculateTheCameraPosition();
+
+            mJCS_2DCamera.fieldOfView += (mTargetFieldOfView - mJCS_2DCamera.fieldOfView) / mCameraFriction * Time.deltaTime;
+
+            if (mJCS_2DCamera.fieldOfView < mMinFieldOfView)
+                mJCS_2DCamera.fieldOfView = mMinFieldOfView;
+            else if (mJCS_2DCamera.fieldOfView > mMaxFieldOfView)
+                mJCS_2DCamera.fieldOfView = mMaxFieldOfView;
         }
 
         //========================================
@@ -137,9 +173,37 @@ namespace JCSUnity
                 }
             }
 
-            float finalPosY = ((maxHeight - minHeight) / 2) + minHeight;
-            float finalPosX = ((maxWidth - minWidth) / 2) + minWidth;
+            // 找出兩個物體最遠的距離
+            float currentDiffDistanceX = maxWidth - minWidth;
+            float currentDiffDistanceY = maxHeight - minHeight;
 
+            // 如果超出一定距離, 則把鏡頭往後拉
+            // 這樣才能 keep track of all the object
+            {
+                // X-axis
+                if (currentDiffDistanceX > mViewWidth)
+                {
+                    float temp = (currentDiffDistanceX - mLastDiffDistanceX) * mCamerSpeed;
+                    //mJCS_2DCamera.DeltaFieldOfView(temp);
+                    mTargetFieldOfView += temp;
+                }
+                // Y-axis
+                if (currentDiffDistanceY > mViewHeight)
+                {
+                    float temp = (currentDiffDistanceY - mLastDiffDistanceY) * mCamerSpeed;
+                    //mJCS_2DCamera.DeltaFieldOfView(temp);
+                    mTargetFieldOfView += temp;
+                }
+            }
+
+            // record down the last distance
+            mLastDiffDistanceX = currentDiffDistanceX;
+            mLastDiffDistanceY = currentDiffDistanceY;
+
+
+            // position
+            float finalPosX = ((maxWidth - minWidth) / 2) + minWidth;
+            float finalPosY = ((maxHeight - minHeight) / 2) + minHeight;
 
             return new Vector3(finalPosX, finalPosY, transform.position.z);
         }

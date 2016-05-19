@@ -11,7 +11,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_2DScrollPlatform : JCS_2DPlatform
+    public class JCS_2DScrollPlatform 
+        : JCS_2DPlatform
     {
 
         //----------------------

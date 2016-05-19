@@ -14,7 +14,8 @@ namespace JCSUnity
 {
     
     [RequireComponent(typeof(JCS_2DTopDownPlayerAudioController))]
-    public class JCS_2DTopDownPlayer : JCS_Player
+    public class JCS_2DTopDownPlayer 
+        : JCS_Player
     {
 
         //----------------------

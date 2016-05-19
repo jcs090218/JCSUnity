@@ -6,6 +6,7 @@
 /Library
 /obj
 /Build
+/Tutorials
 
 # ignore the following extension file
 *.svd

@@ -11,7 +11,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_UISettings : MonoBehaviour
+
+    public class JCS_UISettings 
+        : MonoBehaviour
     {
 
         //----------------------
