@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
 
-    [RequireComponent(typeof(JCS_AlphaObject))]
+    [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_BlackScreen : MonoBehaviour
     {
 
@@ -22,7 +22,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private JCS_AlphaObject mAO = null;
+        private JCS_FadeObject mAO = null;
 
         //----------------------
         // Protected Variables
@@ -36,7 +36,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            this.mAO = this.GetComponent<JCS_AlphaObject>();
+            this.mAO = this.GetComponent<JCS_FadeObject>();
         }
 
         //========================================

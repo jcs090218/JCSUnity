@@ -173,13 +173,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fb28bcdbdd8c448b4d7b82a860f238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAsOriginalSize: 0
+  mAsOriginalPosition: 0
+  mAsOriginalRotation: 0
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 0
   mDialogueIndex: -1
   mKeyCode: 0
   mDialogueType: 1
-  mAsOriginalSize: 0
-  mAsOriginalPosition: 0
-  mAsOriginalRotation: 0
   mPanelType: 0
   mOpenWindowClip: {fileID: 0}
   mCloseWindowClip: {fileID: 0}
@@ -194,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45615b6dd23b56f459d954b52ad1fdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mFadeObjectType: 1
+  mObjectType: 1
   mFadeTime: 1
   mOverriteFade: 0
 --- !u!222 &22265766

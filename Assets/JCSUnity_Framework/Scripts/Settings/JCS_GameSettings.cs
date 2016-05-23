@@ -12,6 +12,7 @@ using System.IO;
 
 namespace JCSUnity
 {
+
     public class JCS_GameSettings 
         : MonoBehaviour
     {
@@ -38,6 +39,11 @@ namespace JCSUnity
         // according to player's character controller's height will
         // should modefied a bit.
         public float GAP_ACCEPT_RANGE = 0.5f;
+
+        [Header("** Scene Settings **")]
+        [Tooltip(@"if the object does not set under the 
+            JCS_OrderLayer transform this will be activate!")]
+        [SerializeField] public int DEFAULT_ORDER_LAYER = 15;
 
         // no one care about how black screen look so i
         // just make it unseen in the inspector.

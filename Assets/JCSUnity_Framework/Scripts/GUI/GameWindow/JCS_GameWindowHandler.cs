@@ -12,6 +12,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Object to create the instance of Game Window.
+    /// </summary>
     public class JCS_GameWindowHandler 
         : MonoBehaviour
     {

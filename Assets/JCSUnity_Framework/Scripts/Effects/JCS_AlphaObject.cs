@@ -10,42 +10,38 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-
 namespace JCSUnity
 {
 
-    public class JCS_AlphaObject 
+    public class JCS_AlphaObject
         : JCS_UnityObject
     {
 
+        //----------------------
+        // Public Variables
 
-        [SerializeField] private JCS_UnityObjectType mFadeObjectType = JCS_UnityObjectType.GAME_OBJECT;
-        private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
-
-        private float mAlpha = 1.0f;
-        [SerializeField] private float mFadeTime = 1.0f;
-        [SerializeField] private bool mOverriteFade = false;
+        //----------------------
+        // Private Variables
 
         private Color mRecordColor;
 
-        private bool mEffect = false;
-        private bool mVisible = true;
+        private float mAlpha = 1;
+        [Tooltip("Can only be within range: 0 ~ 1 .")]
+        [SerializeField] private float mTargetAlpha = 1;
 
-        public JCS_UnityObjectType FadeObjecType { get { return this.mFadeObjectType; } set { this.mFadeObjectType = value; } }
-        public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
-        public float GetAlpha() { return this.mAlpha; }
+        [SerializeField] private float mFadeFriction = 1;        
 
-        public bool IsFadeIn()
-        {
-            return (this.mAlpha >= 1.0f);
-        }
+        //----------------------
+        // Protected Variables
 
-        public bool IsFadeOut()
-        {
-            return (this.mAlpha <= 0.0f);
-        }
+        //========================================
+        //      setter / getter
+        //------------------------------
+        public float TargetAlpha { get { return this.mTargetAlpha; } set { this.mTargetAlpha = value; } }
 
-
+        //========================================
+        //      Unity's function
+        //------------------------------
         private void Awake()
         {
             UpdateUnityData();
@@ -53,55 +49,12 @@ namespace JCSUnity
 
         private void Update()
         {
-
-            if (mFadeObjectType == JCS_UnityObjectType.GAME_OBJECT &&
-                JCS_ApplicationManager.APP_PAUSE)
+            if (mAlpha == mTargetAlpha)
                 return;
 
-            if (!mEffect)
-                return;
+            this.mAlpha += (mTargetAlpha - mAlpha) / mFadeFriction * Time.deltaTime;
 
-
-            switch (mFadeType)
-            {
-                case JCS_FadeType.FADE_OUT:
-                    {
-                        // Fade out effect complete
-                        if (mAlpha < 0.0f)
-                        {
-                            switch (mFadeObjectType)
-                            {
-                                case JCS_UnityObjectType.GAME_OBJECT:
-                                    this.gameObject.SetActive(false);
-                                    break;
-                                case JCS_UnityObjectType.UI:
-                                    mImage.enabled = false;
-                                    break;
-                            }
-
-                            mEffect = false;
-                            return;
-                        }
-
-                        mAlpha -= Time.deltaTime / mFadeTime;
-                    }
-                    break;
-
-                case JCS_FadeType.FADE_IN:
-                    {
-                        // Fade in effect complete
-                        if (mAlpha > 1.0f)
-                        {
-                            mEffect = false;
-                            return;
-                        }
-
-                        mAlpha += Time.deltaTime / mFadeTime;
-                    }
-                    break;
-            }
-
-            switch (mFadeObjectType)
+            switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
                     this.mRenderer.material.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
@@ -113,70 +66,16 @@ namespace JCSUnity
                     this.mSpriteRenderer.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
                     break;
             }
-
         }
 
-        public void FadeOut() { FadeOut(mFadeTime); }
-        public void FadeIn() { FadeIn(mFadeTime); }
-        public void FadeOut(float time) { FadeEffect(JCS_FadeType.FADE_OUT, time); }
-        public void FadeIn(float time) { this.FadeEffect(JCS_FadeType.FADE_IN, time); }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="type"> Type to fade </param>
-        /// <param name="time"> time to fade in/out, in seconds </param>
-        private void FadeEffect(JCS_FadeType type, float time)
-        {
-            if (!mOverriteFade)
-            {
-                // Check is already fade out or fade in!
-                if ((mVisible && type == JCS_FadeType.FADE_IN) ||
-                    (!mVisible && type == JCS_FadeType.FADE_OUT))
-                    return;
-            }
-
-            // enable the effect component
-            switch (mFadeObjectType)
-            {
-                // enable the shader
-                case JCS_UnityObjectType.GAME_OBJECT:
-                    this.gameObject.SetActive(true);
-                    break;
-                // enable "Image" component
-                case JCS_UnityObjectType.UI:
-                    mImage.enabled = true;
-                    break;
-                case JCS_UnityObjectType.SPRITE:
-                    mSpriteRenderer.enabled = true;
-                    break;
-            }
-
-            switch (type)
-            {
-                case JCS_FadeType.FADE_OUT:
-                    {
-                        mAlpha = 1.0f;
-                        this.mVisible = false;
-                    }
-                    break;
-                case JCS_FadeType.FADE_IN:
-                    {
-                        mAlpha = 0.0f;
-
-                        
-                        this.mVisible = true;
-                    }
-                    break;
-            }
-
-            this.mFadeTime = time;
-            this.mFadeType = type;
-            this.mEffect = true;
-        }
+        //========================================
+        //      Self-Define
+        //------------------------------
+        //----------------------
+        // Public Functions
         public override void UpdateUnityData()
         {
-            switch (mFadeObjectType)
+            switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
                     this.mRenderer = this.GetComponent<Renderer>();
@@ -192,6 +91,17 @@ namespace JCSUnity
                     break;
             }
         }
+        public void FadeTo(float alpha, float friction)
+        {
+            mTargetAlpha = alpha;
+            mFadeFriction = friction;
+        }
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
 
     }
 }

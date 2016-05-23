@@ -25,12 +25,16 @@ namespace JCSUnity
         // Private Variables
         [SerializeField] private List<JCS_Player> mPlayers = null;
 
+        // current player that are active
+        private JCS_Player mActivePlayer = null;
+
         //----------------------
         // Protected Variables
 
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_Player GetActivePlayer() { return this.mActivePlayer; }
         public List<JCS_Player> GetJCSPlayerList() { return this.mPlayers; }
         public JCS_Player GetJCSPlayerAt(int index) { return this.mPlayers[index]; }
 
@@ -119,7 +123,10 @@ namespace JCSUnity
             foreach (JCS_Player p in mPlayers)
             {
                 if (p == player)
+                {
                     p.ControlEnable(true);
+                    mActivePlayer = p;
+                }
                 else
                     p.ControlEnable(false);
             }
@@ -134,8 +141,59 @@ namespace JCSUnity
                 Physics.IgnoreCollision(
                             mPlayers[index].GetCharacterController(), 
                             cc, true);
-
             }
+        }
+        public void EnablePhysicsToAllPlayer(Collider cc)
+        {
+            // Make all the player ignore each other
+            for (int index = 0;
+                index < mPlayers.Count;
+                ++index)
+            {
+                Physics.IgnoreCollision(
+                            mPlayers[index].GetCharacterController(),
+                            cc, false);
+            }
+        }
+
+        /// <summary>
+        /// Comparing to the transform see if the same
+        /// transform as player did. (typeid method)
+        /// </summary>
+        /// <param name="trans"></param>
+        /// <returns></returns>
+        public bool IsPlayerTransform(Transform trans)
+        {
+            if (trans == null)
+                return false;
+
+            foreach (JCS_Player player in mPlayers)
+            {
+                if (trans == player.transform)
+                    return true;
+            }
+
+            return false;
+        }
+        public bool IsActivePlayerTransform(Transform tran)
+        {
+            if (tran == mActivePlayer.transform)
+                return true;
+
+            return false;
+        }
+        public void IgnorePhysicsToAllExceptActivePlayer(Collider cc)
+        {
+            // ignore all
+            IgnorePhysicsToAllPlayer(cc);
+
+            if (mActivePlayer == null)
+                return;
+
+            // active
+            Physics.IgnoreCollision(
+                            mActivePlayer.GetCharacterController(),
+                            cc, true);
         }
 
         //----------------------

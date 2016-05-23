@@ -1,13 +1,13 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: TODO(JenChieh).txt
-Last Edit Date: 2016-5-11
+Last Edit Date: 2016-5-23
 -----------------------------------
 
 //-- General
-Weather Data
-Dialogue System
-Timer
-Text Delta counter
+Weather Data (System)
+Dialogue System (GUI)
+Timer (GUI)
+Text Delta counter (GUI)
 
 //-- 2D
 Player does not jump at the first jump.

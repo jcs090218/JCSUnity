@@ -12,7 +12,7 @@ using System.Collections;
 namespace JCSUnity
 {
 
-    [RequireComponent(typeof(JCS_AlphaObject))]
+    [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_DestroyObjectWithTime
         : MonoBehaviour
     {
@@ -27,7 +27,7 @@ namespace JCSUnity
         private float mTimer = 0;
 
         [SerializeField] private bool mDestroyWithAlphaEffect = true;
-        private JCS_AlphaObject mAlphaObject = null;
+        private JCS_FadeObject mAlphaObject = null;
 
         //----------------------
         // Protected Variables
@@ -35,7 +35,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public JCS_AlphaObject GetAlphaObject() { return this.mAlphaObject; }
+        public JCS_FadeObject GetAlphaObject() { return this.mAlphaObject; }
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
 
         //========================================
@@ -43,7 +43,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
+            this.mAlphaObject = this.GetComponent<JCS_FadeObject>();
         }
         private void Update()
         {

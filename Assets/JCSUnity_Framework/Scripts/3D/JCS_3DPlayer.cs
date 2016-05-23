@@ -35,7 +35,7 @@ namespace JCSUnity
         //      Unity's function
         //------------------------------
 
-        private void Update()
+        protected override void Update()
         {
             PlayerInput();
 

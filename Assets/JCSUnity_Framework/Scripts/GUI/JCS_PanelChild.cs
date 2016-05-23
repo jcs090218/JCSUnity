@@ -39,16 +39,19 @@ namespace JCSUnity
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
-            JCS_PanelRoot jpr = this.GetComponentInParent<JCS_PanelRoot>();
+            // Rely on "Script Execution Order"
+            {
+                JCS_PanelRoot jpr = this.GetComponentInParent<JCS_PanelRoot>();
 
-            FitPerfectSize(
-                jpr.mPanelDeltaWidthRatio,
-                jpr.mPanelDeltaHeightRatio);
+                FitPerfectSize(
+                    jpr.mPanelDeltaWidthRatio,
+                    jpr.mPanelDeltaHeightRatio);
 
-            // since we add this script assuming we are 
-            // int the fit perfect size mode
-            // see "JCS_PanelRoot" -> mFitScreenSize variables
-            AddPanelChild();
+                // since we add this script assuming we are 
+                // int the fit perfect size mode
+                // see "JCS_PanelRoot" -> mFitScreenSize variables
+                AddPanelChild();
+            }
         }
 
 

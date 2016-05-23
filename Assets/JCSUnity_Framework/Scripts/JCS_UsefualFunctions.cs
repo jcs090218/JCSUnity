@@ -37,6 +37,22 @@ namespace JCSUnity
             return "** " + desc + " **";
         }
 
+        public static bool WithInAcceptRange(float range, float acceptRange, float currentVal)
+        {
+            return WithInRange(range - acceptRange, range + acceptRange, currentVal);
+        }
+
+        public static bool WithInRange(float minRange, float maxRange, float currentVal)
+        {
+            if (currentVal >= minRange &&
+                currentVal <= maxRange)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static Vector2 GetImageRect(Image img)
         {
             RectTransform rt = img.transform.GetComponent<RectTransform>();
@@ -86,11 +102,11 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check the mouse is over the GUI
+        /// Solve the flash problem! (JCS_CheckableObject)
+        /// 
+        /// Check if the mouse still on top of the image!
         /// </summary>
-        /// <param name="imageRect"></param>
-        /// <param name="rootPanel"></param>
-        /// <returns>true, is hover over. flase, not hover over</returns>
+        /// <returns></returns>
         public static bool MouseOverGUI(RectTransform imageRect, RectTransform rootPanel = null)
         {
             Vector2 mousePos = JCS_Input.MousePositionOnGUILayer();

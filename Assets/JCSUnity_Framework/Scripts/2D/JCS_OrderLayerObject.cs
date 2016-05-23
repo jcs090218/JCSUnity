@@ -11,6 +11,7 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
     [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_OrderLayerObject 
         : MonoBehaviour
@@ -38,7 +39,13 @@ namespace JCSUnity
             JCS_OrderLayer jcsOrderLayer = this.GetComponentInParent<JCS_OrderLayer>();
             if (jcsOrderLayer != null)
             {
+                // override the current order layer.
                 spriteRenderer.sortingOrder = jcsOrderLayer.GetOrderLayer();
+            }
+            else
+            {
+                // set to default order layer
+                spriteRenderer.sortingOrder = JCS_GameSettings.instance.DEFAULT_ORDER_LAYER;
             }
         }
 

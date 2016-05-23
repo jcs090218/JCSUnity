@@ -149,7 +149,7 @@ namespace JCSUnity
 
 #if (UNITY_STANDALONE || UNITY_EDITOR)
             // is is still on top of the image, return it
-            if (CheckMouseOver())
+            if (JCS_UsefualFunctions.MouseOverGUI(mRectTransform, mRootPanel))
                 return;
 #endif
 
@@ -165,42 +165,6 @@ namespace JCSUnity
         private void FollowMouse()
         {
             mDescDialogue.FollowMouse(mSpawnPosition);
-        }
-        /// <summary>
-        /// Solve the flash problem!
-        /// 
-        /// Check if the mouse still on top of the image!
-        /// </summary>
-        /// <returns></returns>
-        private bool CheckMouseOver()
-        {
-            Vector2 mousePos = JCS_Input.MousePositionOnGUILayer();
-            Vector2 checkPos = this.mRectTransform.localPosition;
-
-            if (mRootPanel != null)
-                checkPos += new Vector2(mRootPanel.localPosition.x, mRootPanel.localPosition.y);
-
-            // this item image size
-            Vector2 slotRect = this.mRectTransform.sizeDelta;
-
-            float halfSlotWidth = slotRect.x / 2 * mRectTransform.localScale.x;
-            float halfSlotHeight = slotRect.y / 2 * mRectTransform.localScale.y;
-
-            float leftBorder = checkPos.x - halfSlotWidth;
-            float rightBorder = checkPos.x + halfSlotWidth;
-            float topBorder = checkPos.y + halfSlotHeight;
-            float bottomBorder = checkPos.y - halfSlotHeight;
-
-            // Basic AABB collide math
-            if (mousePos.x <= rightBorder && 
-                mousePos.x >= leftBorder &&
-                mousePos.y <= topBorder && 
-                mousePos.y >= bottomBorder)
-            {
-                return true;
-            }
-
-            return false;
         }
 
     }

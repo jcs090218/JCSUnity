@@ -12,6 +12,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Currently for GUI use.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(BoxCollider))]
     public class JCS_OneJump
@@ -59,10 +62,6 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
-            if (JCS_Input.GetKeyDown(KeyCode.Z))
-                DoForce();
-#endif 
             if (!mEffect)
                 return;
 
@@ -74,7 +73,6 @@ namespace JCSUnity
         {
             if (mVelocity.y > 0)
                 return;
-
 
             JCS_Item tempItem = this.GetComponent<JCS_Item>();
             // if itself it a item, we check other is a item or not.
@@ -89,6 +87,9 @@ namespace JCSUnity
 
             mVelocity.y = 0;
             mEffect = false;
+
+            // enable the physic once on the ground
+            JCS_PlayerManager.instance.EnablePhysicsToAllPlayer(this.mBoxCollider);
         }
 
         //========================================
@@ -104,6 +105,8 @@ namespace JCSUnity
         {
             mVelocity.y = jumpForce;
             mVelocity.x = moveForce;
+            this.mMoveForce = moveForce;
+            this.mJumpForce = jumpForce;
             mEffect = true;
         }
 

@@ -142,7 +142,6 @@ namespace JCSUnity
                 item,
                 this.transform.position, 
                 this.transform.rotation);
-            jcsi.Drop();
 
             bool isEvenIndex = ((index % 2) == 0) ? true : false;
 
@@ -208,7 +207,7 @@ namespace JCSUnity
                 JCS_DestroyObjectWithTime jcsao = jcsi.gameObject.AddComponent<JCS_DestroyObjectWithTime>();
                 jcsao.GetAlphaObject().FadeTime = mFadeTime;
                 jcsao.DestroyTime = mDestroyTime;
-                jcsao.GetAlphaObject().FadeObjecType = JCS_UnityObjectType.SPRITE;
+                jcsao.GetAlphaObject().SetObjectType(JCS_UnityObjectType.SPRITE);
                 jcsao.GetAlphaObject().UpdateUnityData();
             }
 

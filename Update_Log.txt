@@ -1,11 +1,14 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: Update_Log.txt
-Last Edit Date: 2016-05-14
+Last Edit Date: 2016-05-23
 -----------------------------------
 
 2016-05-23
 * Drop Item (only with sprite renderer layer.)
 * GUI Button Slide.
+* Pick up Item action
+* Throw Action! (2D only for right now.)
+* Update "JCS_PlayerManager".
 
 2016-05-21
 * Liquid Container(only on X axis!)
