@@ -22,9 +22,11 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private BoxCollider mPlatformCollider = null;
+        [Header("** Runtime Variables **")]
+        [Tooltip("Collider will detect to see if the player close to the actual one")]
         [SerializeField] private BoxCollider mPlatformTrigger = null;
-
+        [Tooltip("Collider will actually stop the player")]
+        [SerializeField] private BoxCollider mPlatformCollider = null;
 
         //----------------------
         // Protected Variables
@@ -32,29 +34,43 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public BoxCollider GetPlatformTrigger() { return this.mPlatformTrigger; }
+        public BoxCollider GetPlatformCollider() { return this.mPlatformCollider; }
 
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected void Start()
         {
-            mPlatformTrigger.name = JCS_GameSettings.instance.PLATFORM_TRIGGER_NAME;
+            if (mPlatformTrigger != null)
+                mPlatformTrigger.name = JCS_GameSettings.instance.PLATFORM_TRIGGER_NAME;
+
+            // add to list
+            JCS_2DGameManager.instance.AddPlatformList(this);
         }
 
-        private void OnTriggerStay(Collider other)
+        protected void OnTriggerStay(Collider other)
         {
             JCS_GameSettings gs = JCS_GameSettings.instance;
-
-            if (other.name != gs.PLAYER_NAME)
-                return;
 
             if (mPlatformTrigger.name != gs.PLATFORM_TRIGGER_NAME)
                 return;
 
-            Vector3 targetPos = other.transform.position;
-            Vector3 thisPos = this.transform.position;
+            CharacterController cc = other.transform.GetComponent<CharacterController>();
 
-            if ((targetPos.y - (gs.PLATFORM_AND_PLAYER_GAP + gs.GAP_ACCEPT_RANGE)) > thisPos.y)
+            if (cc == null)
+                return;
+
+            Vector3 targetPos = other.transform.position;
+            Vector3 platformPos = this.transform.position;
+
+            float halfOfCharacterControllerHeight = ((cc.height / 2) + cc.radius) * cc.transform.localScale.y;
+
+            // TODO(JenChieh): missing the offset
+            float platformUpperBound = platformPos.y;
+
+            if ((targetPos.y - halfOfCharacterControllerHeight) > 
+                platformUpperBound)
             {
                 mPlatformCollider.isTrigger = false;
             }
@@ -64,7 +80,7 @@ namespace JCSUnity
             }
         }
 
-        private void OnTriggerExit()
+        protected void OnTriggerExit()
         {
             mPlatformCollider.isTrigger = true;
         }

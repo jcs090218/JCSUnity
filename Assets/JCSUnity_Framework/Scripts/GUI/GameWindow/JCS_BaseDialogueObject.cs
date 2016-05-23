@@ -62,15 +62,19 @@ namespace JCSUnity
             mOriginalScale = mRectTransform.localScale;
             mOriginalPosition = mRectTransform.localPosition;
             mOriginalRotation = mRectTransform.localRotation;
-        }
-        protected virtual void Start()
-        {
+
             // Find the correct parent depend on the mode
-            // developer choose and do the command
+            // developer choose and do the command.
+            //     - Either "ResizeUI" or "JCS_Canvas"
             SetParentObjectByMode();
 
             ResetDialogue();
         }
+        protected virtual void Start()
+        {
+            
+        }
+
         //========================================
         //      Self-Define
         //------------------------------

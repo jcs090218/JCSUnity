@@ -40,28 +40,7 @@ namespace JCSUnity
 
         //----------------------
         // Protected Functions
-        protected override bool OnTriggerEnter(Collider other)
-        {
-            if (base.OnTriggerEnter(other))
-            {
-
-
-                return true;
-            }
-
-            return false;
-        }
-        protected override bool OnTriggerExit(Collider other)
-        {
-            if (base.OnTriggerExit(other))
-            {
-
-
-                return true;
-            }
-
-            return false;
-        }
+        
         //----------------------
         // Private Functions
 

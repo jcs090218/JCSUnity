@@ -11,6 +11,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    [RequireComponent(typeof(JCS_AlphaObject))]
     public class JCS_DestroyObjectWithTime
         : MonoBehaviour
     {
@@ -21,7 +23,11 @@ namespace JCSUnity
         //----------------------
         // Private Variables
         [Header("** Runtime Variables **")]
-        [SerializeField] private float mTime = 10.0f;
+        [SerializeField] private float mDestroyTime = 10.0f;
+        private float mTimer = 0;
+
+        [SerializeField] private bool mDestroyWithAlphaEffect = true;
+        private JCS_AlphaObject mAlphaObject = null;
 
         //----------------------
         // Protected Variables
@@ -29,13 +35,27 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_AlphaObject GetAlphaObject() { return this.mAlphaObject; }
+        public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
+        private void Awake()
+        {
+            this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
+        }
         private void Update()
         {
-            Destroy(this.gameObject, mTime);
+            if (mDestroyWithAlphaEffect)
+            {
+                mTimer += Time.deltaTime;
+
+                if (mDestroyTime - mTimer <= mAlphaObject.FadeTime)
+                    mAlphaObject.FadeOut();
+            }
+
+            Destroy(this.gameObject, mDestroyTime);
         }
 
         //========================================

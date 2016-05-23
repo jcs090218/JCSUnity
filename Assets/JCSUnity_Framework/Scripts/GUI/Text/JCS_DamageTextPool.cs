@@ -90,30 +90,7 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
-            Test();
-#endif
-
             ProccessSequences();
-        }
-
-        private void Test()
-        {
-            if (JCS_Input.GetKeyDown(KeyCode.M))
-            {
-                int[] damages = new int[16];
-
-                for (int index = 0;
-                    index < damages.Length;
-                    ++index)
-                {
-                    int dm = Random.Range(5000, 12000);
-                    damages[index] = dm;
-                }
-
-                SpawnDamagetTexts(damages, Vector2.zero);
-            }
-
         }
 
         //========================================

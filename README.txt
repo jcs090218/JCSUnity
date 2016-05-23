@@ -1,8 +1,9 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: README.txt
-Last Edit Date: 2016-04-30
+Project Version: 1.2
 Version Control Page: https://github.com/mike316mike316/JCSUnity_Framework.git
 Unity Version: 5.3.4f1 (64-bit)
+Last Edit Date: 2016-05-23
 -----------------------------------
 
 //==================================
@@ -18,10 +19,12 @@ Following Scirpt should have lower execute order then "JCS_GameManager"
 * JCS_MobileMouseEvent
 * JCS_Canvas
 
+
 #########################
 ### Level Design Rule ###
 #########################
 - Every Scene must need "JCS_Managers" and "JCS_Settings" object in the "Hierarchy"
+
 
 //==================================
 //      System Explaination
@@ -33,6 +36,7 @@ Following Scirpt should have lower execute order then "JCS_GameManager"
     (see "JCS_PlayerState" have more detail, 
     if just a animation without changing use IDLE!)
 
+    
 ####################
 ### Sound System ###
 ####################
@@ -42,6 +46,7 @@ Following Scirpt should have lower execute order then "JCS_GameManager"
 (Scripter)
 * Anyone who want to call the effect of switching the scene should call "LoadScene(string)" 
  in "JCS_SceneManager" script
+    
     
 #######################
 ### Dialogue System ###
@@ -63,17 +68,25 @@ Following Scirpt should have lower execute order then "JCS_GameManager"
     2) Add "Event Trigger" component
     3) use "Event Trigger" add the drag event and pull the object into the appearing slot.
     4) choose the function call in the script
-
+    
+###########
+### GUI ###
+###########
+* Liquid Bar 
+    - 請參考spr_sao_health_bar_under的美術製作方法. (那個bar)
+    
 ###################
 ### Logo System ###
 ###################
 * Logo Screen relate variables can be set at "JCS_Logo" script in "JCS_LogoScene"!
 
-**********************
-*** Network System ***
-**********************
+
+######################
+### Network System ###
+######################
 * Enable/Disable socket can be set at "JCS_ApplicationManager" script.
 * Host Name, Port and relate variables can be set at "JCS_NetworkConstant" script.
+
 
 #####################
 ### Player System ###
@@ -84,10 +97,12 @@ Basic Jump = size 1;
 Double Jump = size 2;
 Triple Jump = size 3;
 
+
 ####################
 ### Scene System ###
 ####################
 * If is not a online game you can ignore the scene "JCS_Patcher", can directly go into Logo Scene.
+
 
 ##########################
 ### Screen Shot System ###
@@ -97,7 +112,9 @@ Triple Jump = size 3;
 * Screen shot extension, can be set at "JCS_GameSetting" script under Screen Shot section
 * function call "JCS_2DCamera->TakeScreenShot"
 
+
 #####################
 ### Sprite System ###
 #####################
 * Defualt Sprite is facing left so make sure the sprite you are using default are facing left.
+

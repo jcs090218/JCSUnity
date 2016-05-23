@@ -94,36 +94,11 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
-            // Only for debug!
-            Test();
-#endif
-
             if (!mActive)
                 return;
 
             // Do active thing
             DoEffect();
-        }
-
-        private void Test()
-        {
-            if (JCS_Input.GetKeyDown(KeyCode.K))
-            {
-                SpawnDamageText(3363, new Vector2(1, 1));
-                //print(GetSingleDigit(5, 1234));
-            }
-
-            if (JCS_Input.GetKeyDown(KeyCode.J))
-            {
-                SpawnDamageText(4805, new Vector2(1, 1));
-                //print(GetSingleDigit(2, 4805));
-            }
-
-            if (JCS_Input.GetKeyDown(KeyCode.D))
-            {
-                RemoveAllTheChild();
-            }
         }
 
         //========================================

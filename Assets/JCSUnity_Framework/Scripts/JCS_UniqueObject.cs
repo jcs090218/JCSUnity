@@ -11,7 +11,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_UniqueObject : MonoBehaviour
+
+    public class JCS_UniqueObject 
+        : MonoBehaviour
     {
 
         //----------------------

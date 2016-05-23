@@ -6,11 +6,12 @@ Last Edit Date: 2016-5-11
 //-- General
 Weather Data
 Dialogue System
+Timer
+Text Delta counter
 
 //-- 2D
 Player does not jump at the first jump.
 2D shoot smooth
-item shadow under effect
 
 //-- 3D
 Control player like Monster Hunter game did.

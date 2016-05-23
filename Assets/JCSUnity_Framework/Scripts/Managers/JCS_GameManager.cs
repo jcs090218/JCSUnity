@@ -34,8 +34,6 @@ namespace JCSUnity
         public void SetJCSPlayer(JCS_Player player)
         {
             this.mJCSPlayer = player;
-
-            GetPlatformGap(player);
         }
         public JCS_Player GetJCSPlayer() { return this.mJCSPlayer; }
         public void SetJCSGameSettings(JCS_GameSettings gs) { this.mJCSGameSettings = gs; }
@@ -47,20 +45,21 @@ namespace JCSUnity
         private void Awake()
         {
             instance = this;
+
+            
+            SetSpecificGameTypeGameManager();
         }
 
-        /// <summary>
-        /// Get the gap between player and platform
-        /// 
-        /// Gap 的長度等於CharacterController's height的一半
-        /// </summary>
-        /// <param name="player"></param>
-        private void GetPlatformGap(JCS_Player player)
+        private void SetSpecificGameTypeGameManager()
         {
-            if (player == null)
-                return;
+            JCS_GameSettings gs = JCS_GameSettings.instance;
 
-            JCS_GameSettings.instance.PLATFORM_AND_PLAYER_GAP = player.GetCharacterController().height / 2;
+            switch (gs.GAME_TYPE)
+            {
+                case JCS_GameType.GAME_2D:
+                        this.gameObject.AddComponent<JCS_2DGameManager>();
+                        break;
+            }
         }
 
     }

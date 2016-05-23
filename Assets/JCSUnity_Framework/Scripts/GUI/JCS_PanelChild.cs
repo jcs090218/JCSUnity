@@ -38,29 +38,19 @@ namespace JCSUnity
         private void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
-        }
 
-        private void Start()
-        {
             JCS_PanelRoot jpr = this.GetComponentInParent<JCS_PanelRoot>();
 
             FitPerfectSize(
-                jpr.mPanelDeltaWidthRatio, 
+                jpr.mPanelDeltaWidthRatio,
                 jpr.mPanelDeltaHeightRatio);
 
             // since we add this script assuming we are 
             // int the fit perfect size mode
             // see "JCS_PanelRoot" -> mFitScreenSize variables
-            Transform tempTrans = this.transform;
-            for (int index = 0;
-                index < transform.childCount;
-                ++index)
-            {
-                Transform child = tempTrans.GetChild(index);
-
-                child.gameObject.AddComponent<JCS_PanelChild>();
-            }
+            AddPanelChild();
         }
+
 
         //========================================
         //      Self-Define
@@ -91,6 +81,19 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        private void AddPanelChild()
+        {
+            Transform tempTrans = this.transform;
+            for (int index = 0;
+                index < transform.childCount;
+                ++index)
+            {
+                Transform child = tempTrans.GetChild(index);
+
+                child.gameObject.AddComponent<JCS_PanelChild>();
+            }
+        }
 
     }
 }

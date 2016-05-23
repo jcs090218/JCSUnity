@@ -15,16 +15,11 @@ namespace JCSUnity
 {
 
     public class JCS_AlphaObject 
-        : MonoBehaviour
+        : JCS_UnityObject
     {
-        enum FadeObjectType
-        {
-            GAME_OBJECT,
-            UI
-        };
 
 
-        [SerializeField] private FadeObjectType mFadeObjectType = FadeObjectType.GAME_OBJECT;
+        [SerializeField] private JCS_UnityObjectType mFadeObjectType = JCS_UnityObjectType.GAME_OBJECT;
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
 
         private float mAlpha = 1.0f;
@@ -32,11 +27,12 @@ namespace JCSUnity
         [SerializeField] private bool mOverriteFade = false;
 
         private Color mRecordColor;
-        private Image mImage = null;
 
         private bool mEffect = false;
         private bool mVisible = true;
 
+        public JCS_UnityObjectType FadeObjecType { get { return this.mFadeObjectType; } set { this.mFadeObjectType = value; } }
+        public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public float GetAlpha() { return this.mAlpha; }
 
         public bool IsFadeIn()
@@ -52,26 +48,13 @@ namespace JCSUnity
 
         private void Awake()
         {
-            switch (mFadeObjectType)
-            {
-                case FadeObjectType.GAME_OBJECT:
-                    
-                    break;
-                case FadeObjectType.UI:
-                    this.mImage = this.GetComponent<Image>();
-                    break;
-            }
-
-            if (mFadeObjectType == FadeObjectType.GAME_OBJECT)
-                this.mRecordColor = this.transform.GetComponent<Renderer>().material.color;
-            else if (mFadeObjectType == FadeObjectType.UI)
-                this.mRecordColor = this.transform.GetComponent<Image>().color;
+            UpdateUnityData();
         }
 
         private void Update()
         {
 
-            if (mFadeObjectType == FadeObjectType.GAME_OBJECT &&
+            if (mFadeObjectType == JCS_UnityObjectType.GAME_OBJECT &&
                 JCS_ApplicationManager.APP_PAUSE)
                 return;
 
@@ -88,10 +71,10 @@ namespace JCSUnity
                         {
                             switch (mFadeObjectType)
                             {
-                                case FadeObjectType.GAME_OBJECT:
+                                case JCS_UnityObjectType.GAME_OBJECT:
                                     this.gameObject.SetActive(false);
                                     break;
-                                case FadeObjectType.UI:
+                                case JCS_UnityObjectType.UI:
                                     mImage.enabled = false;
                                     break;
                             }
@@ -120,16 +103,21 @@ namespace JCSUnity
 
             switch (mFadeObjectType)
             {
-                case FadeObjectType.GAME_OBJECT:
-                    this.transform.GetComponent<Renderer>().material.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                case JCS_UnityObjectType.GAME_OBJECT:
+                    this.mRenderer.material.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
                     break;
-                case FadeObjectType.UI:
-                    this.transform.GetComponent<Image>().color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                case JCS_UnityObjectType.UI:
+                    this.mImage.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                    break;
+                case JCS_UnityObjectType.SPRITE:
+                    this.mSpriteRenderer.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
                     break;
             }
 
         }
 
+        public void FadeOut() { FadeOut(mFadeTime); }
+        public void FadeIn() { FadeIn(mFadeTime); }
         public void FadeOut(float time) { FadeEffect(JCS_FadeType.FADE_OUT, time); }
         public void FadeIn(float time) { this.FadeEffect(JCS_FadeType.FADE_IN, time); }
 
@@ -152,12 +140,15 @@ namespace JCSUnity
             switch (mFadeObjectType)
             {
                 // enable the shader
-                case FadeObjectType.GAME_OBJECT:
+                case JCS_UnityObjectType.GAME_OBJECT:
                     this.gameObject.SetActive(true);
                     break;
                 // enable "Image" component
-                case FadeObjectType.UI:
+                case JCS_UnityObjectType.UI:
                     mImage.enabled = true;
+                    break;
+                case JCS_UnityObjectType.SPRITE:
+                    mSpriteRenderer.enabled = true;
                     break;
             }
 
@@ -183,5 +174,24 @@ namespace JCSUnity
             this.mFadeType = type;
             this.mEffect = true;
         }
+        public override void UpdateUnityData()
+        {
+            switch (mFadeObjectType)
+            {
+                case JCS_UnityObjectType.GAME_OBJECT:
+                    this.mRenderer = this.GetComponent<Renderer>();
+                    this.mRecordColor = this.transform.GetComponent<Renderer>().material.color;
+                    break;
+                case JCS_UnityObjectType.UI:
+                    this.mImage = this.GetComponent<Image>();
+                    this.mRecordColor = this.transform.GetComponent<Image>().color;
+                    break;
+                case JCS_UnityObjectType.SPRITE:
+                    this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+                    this.mRecordColor = this.mSpriteRenderer.color;
+                    break;
+            }
+        }
+
     }
 }

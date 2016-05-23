@@ -124,6 +124,19 @@ namespace JCSUnity
                     p.ControlEnable(false);
             }
         }
+        public void IgnorePhysicsToAllPlayer(Collider cc)
+        {
+            // Make all the player ignore each other
+            for (int index = 0;
+                index < mPlayers.Count;
+                ++index)
+            {
+                Physics.IgnoreCollision(
+                            mPlayers[index].GetCharacterController(), 
+                            cc, true);
+
+            }
+        }
 
         //----------------------
         // Protected Functions

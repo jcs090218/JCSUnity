@@ -32,11 +32,8 @@ namespace JCSUnity
         [SerializeField] public bool PLAYER_IGNORE_EACH_OTHER = true;
 
         [Header("** Platform Settings **")]
-        [Tooltip("Name all the player as this.")]
-        [SerializeField] public string PLAYER_NAME = "JCS_MOVEABLEOBJECT";
         [Tooltip("Name all the platform trigger as this.")]
         [SerializeField] public string PLATFORM_TRIGGER_NAME = "JCS_PlatformTrigger";
-        [SerializeField] public float PLATFORM_AND_PLAYER_GAP = 0;
 
         // according to player's character controller's height will
         // should modefied a bit.

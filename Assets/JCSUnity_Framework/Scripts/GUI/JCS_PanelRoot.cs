@@ -45,23 +45,11 @@ namespace JCSUnity
 
         protected override void Start()
         {
-            // Find the correct parent depend on the mode
-            // developer choose and do the command
-            base.Start();
-
             if (mFitScreenSize)
             {
                 FitPerfectSize();
 
-                Transform tempTrans = this.transform;
-                for (int index = 0;
-                    index < transform.childCount;
-                    ++index)
-                {
-                    Transform child = tempTrans.GetChild(index);
-
-                    child.gameObject.AddComponent<JCS_PanelChild>();
-                }
+                AddPanelChild();
             }
         }
 
@@ -108,6 +96,18 @@ namespace JCSUnity
 
             // set the width and height from app rect
             mRectTransform.sizeDelta = appRect.sizeDelta;
+        }
+        private void AddPanelChild()
+        {
+            Transform tempTrans = this.transform;
+            for (int index = 0;
+                index < transform.childCount;
+                ++index)
+            {
+                Transform child = tempTrans.GetChild(index);
+
+                child.gameObject.AddComponent<JCS_PanelChild>();
+            }
         }
 
     }

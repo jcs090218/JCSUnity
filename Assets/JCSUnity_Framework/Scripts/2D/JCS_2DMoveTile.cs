@@ -44,8 +44,10 @@ namespace JCSUnity
         {
             SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
 
-            mWidth = sp.bounds.extents[0] * 2;
-            mHeight = sp.bounds.extents[1] * 2;
+            Vector2 spriteRect = JCS_UsefualFunctions.GetSpriteRendererRect(sp);
+
+            mWidth = spriteRect.x;
+            mHeight = spriteRect.y;
 
             mOriginPosition = this.transform.position;
         }

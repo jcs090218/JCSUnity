@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace JCSUnity
 {
@@ -36,6 +37,29 @@ namespace JCSUnity
             return "** " + desc + " **";
         }
 
+        public static Vector2 GetImageRect(Image img)
+        {
+            RectTransform rt = img.transform.GetComponent<RectTransform>();
+            if (rt == null)
+            {
+                JCS_GameErrors.JcsErrors("JCS_UsefulFunctions", -1, "No RectTransform on ur image!");
+                return Vector2.one;
+            }
+
+            float width = rt.sizeDelta.x * rt.localPosition.x;
+            float height = rt.sizeDelta.y * rt.localPosition.y;
+
+            return new Vector2(width, height);
+        }
+
+        public static Vector2 GetSpriteRendererRect(SpriteRenderer sr)
+        {
+            float width = sr.bounds.extents[0] * 2;
+            float height = sr.bounds.extents[1] * 2;
+
+            return new Vector2(width, height);
+        }
+
         /// <summary>
         /// Return normal random range (Integer)
         /// </summary>
@@ -46,6 +70,10 @@ namespace JCSUnity
         {
             return Random.Range(min, max);
         }
+        public static uint JCS_IntRange(uint min, uint max)
+        {
+            return (uint)Random.Range(min, max);
+        }
         /// <summary>
         /// Return normal random range (Float)
         /// </summary>
@@ -55,6 +83,43 @@ namespace JCSUnity
         public static float JCS_FloatRange(float min, float max)
         {
             return Random.Range(min, max);
+        }
+
+        /// <summary>
+        /// Check the mouse is over the GUI
+        /// </summary>
+        /// <param name="imageRect"></param>
+        /// <param name="rootPanel"></param>
+        /// <returns>true, is hover over. flase, not hover over</returns>
+        public static bool MouseOverGUI(RectTransform imageRect, RectTransform rootPanel = null)
+        {
+            Vector2 mousePos = JCS_Input.MousePositionOnGUILayer();
+            Vector2 checkPos = imageRect.localPosition;
+
+            if (rootPanel != null)
+                checkPos += new Vector2(rootPanel.localPosition.x, rootPanel.localPosition.y);
+
+            // this item image size
+            Vector2 slotRect = imageRect.sizeDelta;
+
+            float halfSlotWidth = slotRect.x / 2 * imageRect.localScale.x;
+            float halfSlotHeight = slotRect.y / 2 * imageRect.localScale.y;
+
+            float leftBorder = checkPos.x - halfSlotWidth;
+            float rightBorder = checkPos.x + halfSlotWidth;
+            float topBorder = checkPos.y + halfSlotHeight;
+            float bottomBorder = checkPos.y - halfSlotHeight;
+
+            // Basic AABB collide math
+            if (mousePos.x <= rightBorder &&
+                mousePos.x >= leftBorder &&
+                mousePos.y <= topBorder &&
+                mousePos.y >= bottomBorder)
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }

@@ -3,6 +3,13 @@ File Name: Update_Log.txt
 Last Edit Date: 2016-05-14
 -----------------------------------
 
+2016-05-23
+* Drop Item (only with sprite renderer layer.)
+* GUI Button Slide.
+
+2016-05-21
+* Liquid Container(only on X axis!)
+
 2016-05-15
 * Season implemented. 
 
