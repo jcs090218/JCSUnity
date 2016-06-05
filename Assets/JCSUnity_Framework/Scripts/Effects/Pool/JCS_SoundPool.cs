@@ -39,6 +39,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_SoundSettingType SoundType { get { return this.mSoundSettingType; } }
 
         //========================================
         //      Unity's function

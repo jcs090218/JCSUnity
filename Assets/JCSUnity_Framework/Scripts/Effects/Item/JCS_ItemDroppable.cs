@@ -18,6 +18,7 @@ namespace JCSUnity
     /// Make the object drop,
     /// plz attach this script.
     /// </summary>
+    [RequireComponent(typeof(JCS_ItemIgnore))]
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_ItemDroppable
         : MonoBehaviour

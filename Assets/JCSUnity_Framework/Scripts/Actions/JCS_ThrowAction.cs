@@ -14,7 +14,8 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// Do the throw action like "Plants vs Zombies"'s corn plants.
+    /// Do the throw action like "Plants vs Zombies"'s 
+    /// corn plants.
     /// </summary>
     public class JCS_ThrowAction
         : MonoBehaviour
@@ -34,7 +35,7 @@ namespace JCSUnity
         private Vector3 mVelocity = Vector3.zero;
 
         private bool mReachInflectionPoint = false;
-        private float mInflectionPointX = 0;
+        private float mInflectionPoint = 0;
         [Tooltip("Speed of x")]
         [SerializeField] private float mHorizontalFriction = 0.4f; // x & z axis
         [Tooltip("Speed of y")]
@@ -103,21 +104,26 @@ namespace JCSUnity
             {
                 // calculate inflection point
                 {
-                    mInflectionPointX = ((mTargetTransform.localPosition.x - this.mStartingPosition.x) / 2) + this.mStartingPosition.x;
+                    // calcualte the position not the distance.
+
+                    float pointX = ((mTargetTransform.localPosition.x - this.mStartingPosition.x) / 2) + this.mStartingPosition.x;
+                    float pointZ = ((mTargetTransform.localPosition.z - this.mStartingPosition.z) / 2) + this.mStartingPosition.z;
+                    mInflectionPoint = Mathf.Sqrt(Mathf.Pow(pointX, 2) + Mathf.Pow(pointZ, 2));
+
 
                     if (mVelocity.x > 0)
                     {
-                        if (currentPos.x >= mInflectionPointX)
+                        if (currentPos.x >= mInflectionPoint)
                             mReachInflectionPoint = true;
                     }
                     else
                     {
-                        if (currentPos.x <= mInflectionPointX)
+                        if (currentPos.x <= mInflectionPoint)
                             mReachInflectionPoint = true;
                     }
                 }
 
-                mVelocity.y = JCS_Mathf.ToPositive((mInflectionPointX - currentPos.x) * mVerticalForce * Time.deltaTime);
+                mVelocity.y = JCS_Mathf.ToPositive((mInflectionPoint - currentPos.x) * mVerticalForce * Time.deltaTime);
             }
             // after reach to inflection point
             else {

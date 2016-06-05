@@ -92,7 +92,7 @@ public class FitPushScreen_Test : MonoBehaviour
         float panelTopBorder = panelPos.y + halfSlotHeight;
         float panelBottomBorder = panelPos.y - halfSlotHeight;
 
-        Camera cam = JCS_GameManager.instance.GetJCSCamera().GetCamera();
+        Camera cam = JCS_Camera.main.GetCamera();
         Vector3 camPos = cam.transform.localPosition;
 
         Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);

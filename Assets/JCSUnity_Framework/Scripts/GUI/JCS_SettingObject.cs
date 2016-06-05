@@ -13,10 +13,12 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
+
     /// <summary>
     /// Object need to get the information in order to get the correct setting
     /// </summary>
-    public class JCS_SettingObject : MonoBehaviour
+    public class JCS_SettingObject 
+        : MonoBehaviour
     {
 
         //----------------------

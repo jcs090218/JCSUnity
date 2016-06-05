@@ -17,21 +17,27 @@ public class Player : JCS_2DSideScrollerPlayer
     {
         base.Update();
 
+
         
+
         if (JCS_Input.GetKeyDown(KeyCode.LeftAlt) || 
             Input.GetKeyDown(KeyCode.RightAlt))
             Jump();
 
+
         if (JCS_Input.GetKey(KeyCode.Space))
             Attack();
+        else if (JCS_Input.GetKey(KeyCode.UpArrow))
+            ClimbOrTeleport();
         else if (JCS_Input.GetKey(KeyCode.RightArrow))
             MoveRight();
         else if (JCS_Input.GetKey(KeyCode.LeftArrow))
             MoveLeft();
+        else if (JCS_Input.GetKey(KeyCode.DownArrow))
+            Prone();
         else
             Stand();
 
-        
 
     }
 }

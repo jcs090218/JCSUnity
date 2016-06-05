@@ -1,7 +1,54 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: Update_Log.txt
-Last Edit Date: 2016-05-23
+Last Edit Date: 2016-06-05
 -----------------------------------
+
+2016-06-05
+* Work on Example Project. (Running Crush)
+
+2016-06-04
+* Perspective Camera detect weather the collider area render on the screen or not. (using Game Depth)
+
+2016-05-31
+* Full Screen Atk implemented.
+
+2016-05-30
+* Player had the better movement.
+* After Jump Effect.
+
+2016-05-29
+* Particle System
+* Weather Particle Interface
+* Snow Flake (Weather Particle)
+* Rain Drop (Weather Particle)
+
+2016-05-28
+* Fix Player Settings.
+
+2016-05-27
+* Swing Attack Action
+* Absorb Effect (JCS_ShootAction)
+* Sequence Shoot in order right now. (Logic Error fixed.)
+* Speed Layer.
+
+2016-05-26
+* Ignore Item Tag
+* Miss Damage Text Code.
+* Sprite Auto Facing
+* Ability Format working.
+* Shoot in sequence
+* Bug Fix
+* Auto Detect and attack.
+
+2016-05-25
+* Deviation Throw
+* Layer Friction Implemented.
+* Abitilty Format interface.
+* Hit and Damage Text(JCS_ApplyDamageTextAction)
+
+2016-05-24
+* Throw Action! (support for 3D right now but not tested yet.)
+* Detect Area implemented!
 
 2016-05-23
 * Drop Item (only with sprite renderer layer.)

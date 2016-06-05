@@ -13,7 +13,8 @@ namespace JCSUnity
     // Player must have the animation implemented
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(JCS_OrderLayerObject))]
-    public class JCS_Animator : MonoBehaviour
+    public class JCS_Animator 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -33,7 +34,7 @@ namespace JCSUnity
         // Control the animation state with code are much easier to programmer.
         [SerializeField] protected string mAnimationState = "State";
 
-        private float mAnimationTimer = 0.0f;
+        [SerializeField] private float mAnimationTimer = 0.0f;
         private AnimatorStateInfo mAnimatorStateInfo;
         [SerializeField] private float mAnimationOffset = 0.05f;
         [SerializeField] private string mFullClipState = "Player_01_Attack";
@@ -65,7 +66,7 @@ namespace JCSUnity
             {
                 mAnimationTimer += Time.deltaTime;
 
-                if (mAnimationTimer > mAnimatorStateInfo.length + mAnimationOffset)
+                if (mAnimationTimer >= mAnimatorStateInfo.length + mAnimationOffset)
                 {
                     mAnimationTimer = 0;
                     mEndAttackStage = true;
@@ -92,8 +93,19 @@ namespace JCSUnity
             GetAnimator().SetInteger(GetAnimationState(), (int)state);
 
             this.mCurrentState = state;
+
             if (mCurrentState == JCS_PlayerState.ATTACK)
                 mEndAttackStage = false;
+        }
+
+        public void StopAnimationInFrame()
+        {
+            GetAnimator().enabled = false;
+        }
+
+        public void PlayAnimationInFrame()
+        {
+            GetAnimator().enabled = true;
         }
 
 
@@ -102,6 +114,21 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+        private AnimationClip FindClip(AnimationClip[] arr, string animClipName)
+        {
+
+            for (int index = 0;
+                index < arr.Length;
+                ++index)
+            {
+                if (arr[index].name == animClipName)
+                    return arr[index];
+            }
+
+
+            JCS_GameErrors.JcsErrors("JCS_Animator", -1, "No animation clip found...");
+            return null;
+        }
 
     }
 }

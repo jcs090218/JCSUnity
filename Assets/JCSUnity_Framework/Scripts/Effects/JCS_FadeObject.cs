@@ -51,9 +51,12 @@ namespace JCSUnity
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+                FadeOut();
+
 
             if (GetObjectType() == JCS_UnityObjectType.GAME_OBJECT &&
-                JCS_ApplicationManager.APP_PAUSE)
+                JCS_GameManager.instance.GAME_PAUSE)
                 return;
 
             if (!mEffect)
@@ -110,7 +113,7 @@ namespace JCSUnity
                 case JCS_UnityObjectType.SPRITE:
                     this.mSpriteRenderer.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
                     break;
-            }
+            }           
 
         }
 

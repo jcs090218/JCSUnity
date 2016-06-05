@@ -9,6 +9,7 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
     public enum JCS_PlayerState
     {
         STAND = 0,
@@ -21,6 +22,10 @@ namespace JCSUnity
         LADDER = 7,
         ROPE = 8,
         SIT = 9,
-        HIT = 10        // when player get hit
+        HIT = 10,        // when player get hit
+        DANCE = 11,
+        SWIM = 12,
+        DEAD = 13,       // when player is dead. (墓碑!)
+        GHOST = 14
     }
 }

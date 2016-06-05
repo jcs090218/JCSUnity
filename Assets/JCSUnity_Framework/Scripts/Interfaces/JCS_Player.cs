@@ -25,7 +25,7 @@ namespace JCSUnity
 
         public bool GetIsControllable() { return this.mIsControllable; }
         public void SetIsControllable(bool act) { this.mIsControllable = act; }
-        public Vector3 Veclotiy { get { return this.mVelocity; } set { this.mVelocity = value; } }
+        public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
         public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
         public float VelY { get { return this.mVelocity.y; } set { this.mVelocity.y = value; } }
         public float VelZ { get { return this.mVelocity.z; } set { this.mVelocity.z = value; } }

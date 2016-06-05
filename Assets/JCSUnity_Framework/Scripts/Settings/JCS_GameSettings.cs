@@ -30,12 +30,12 @@ namespace JCSUnity
 
         //-- Player
         [Header("** Player Settings **")]
+        [Tooltip("Game only allows control one player.")]
+        [SerializeField] public bool ACTIVE_ONE_PLAYER = true;
+        [Tooltip("Do collusion happen with eacth other. (Player)")]
         [SerializeField] public bool PLAYER_IGNORE_EACH_OTHER = true;
 
         [Header("** Platform Settings **")]
-        [Tooltip("Name all the platform trigger as this.")]
-        [SerializeField] public string PLATFORM_TRIGGER_NAME = "JCS_PlatformTrigger";
-
         // according to player's character controller's height will
         // should modefied a bit.
         public float GAP_ACCEPT_RANGE = 0.5f;
@@ -59,7 +59,7 @@ namespace JCSUnity
 
         private static float BGM_SOUND = 0.5f; // Background music [Default: 0.5f]
         private static float SFX_SOUND = 0.5f; // Sound from other player/environment [Default: 0.5f]
-        private static float SKILLS_SOUND = 0.75f; // Sound from player [Default: 0.75f]
+        private static float SKILLS_SOUND = 0.5f; // Sound from player [Default: 0.75f]
 
         //-- Screen Shot
         public static string SCREENSHOT_PATH = "/JCS_ScreenShot/"; // Screen shot folder path [Default: /JCS_ScreenShot/]

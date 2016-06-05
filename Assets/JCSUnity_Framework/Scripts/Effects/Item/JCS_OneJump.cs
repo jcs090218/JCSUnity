@@ -85,6 +85,11 @@ namespace JCSUnity
                     return;
             }
 
+            // meet ignore object
+            JCS_ItemIgnore jcsii = other.GetComponent<JCS_ItemIgnore>();
+            if (jcsii != null)
+                return;
+
             mVelocity.y = 0;
             mEffect = false;
 

@@ -17,17 +17,48 @@ namespace JCSUnity
     public abstract class JCS_Camera 
         : MonoBehaviour
     {
-        protected Camera mCamera = null;
+        public static JCS_Camera main = null;
 
+
+        protected Camera mCamera = null;
+        protected Vector3 mVelocity = Vector3.zero;
+
+        protected Vector3 mCameraRect = Vector3.one;
+
+        [Header("** Initialize Variables (JCS_Camera) **")]
+        [Tooltip("Distance as game origin depth.")]
+        [SerializeField] protected float mGameDepth = 0;
+        [SerializeField] protected bool mDisplayGameDepthCamera = false;
+        [SerializeField] protected Color mGameCamColor = Color.white;
+
+        //========================================
+        //      setter / getter
+        //------------------------------
+        public Vector3 CameraRect { get { return this.mCameraRect; } set { this.mCameraRect = value; } }
         public Camera GetCamera() { return this.mCamera; }
         public float fieldOfView { get { return this.mCamera.fieldOfView; } set { this.mCamera.fieldOfView = value; } }
+        public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
 
-
+        //========================================
+        //      Unity's function
+        //------------------------------
         protected virtual void Awake()
         {
+            main = this;
+
             this.mCamera = this.GetComponent<Camera>();
         }
+        protected virtual void LateUpdate()
+        {
+#if (UNITY_EDITOR)
+            DisplayGameDepthCamera();
+#endif
+        }
 
+
+        //========================================
+        //      Self-Define
+        //------------------------------
         /// <summary>
         /// Weather if we want to take a screen shot, call
         /// this function will do the trick!
@@ -86,8 +117,252 @@ namespace JCSUnity
 
             return last_saved_screenshot;
         }
-        
 
+#if (UNITY_EDITOR)
+        private void DisplayGameDepthCamera()
+        {
+            if (!mDisplayGameDepthCamera)
+                return;
+
+            // Next step: find camera 4 bounds.
+            Camera cam = JCS_Camera.main.GetCamera();
+
+            JCS_UIManager um = JCS_UIManager.instance;
+
+            Vector3 camPos = cam.transform.position;
+            // only need to know the depth.
+            {
+                camPos.x = 0;
+                camPos.y = 0;
+            }
+            Vector3 canvasPos = um.GetJCSCanvas().transform.position;
+            // only need to know the depth.
+            {
+                canvasPos.x = 0;
+                canvasPos.y = 0;
+            }
+            float camToCanvasDistance = Vector3.Distance(camPos, canvasPos);
+
+            Vector3 gameDepth = new Vector3(0, mGameDepth, 0);
+            float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
+
+            //print("To Game depth Distance: " + camToGameDepthDistance);
+            //print("To Cavas Distnace: " + camToCanvasDistance);
+
+            Vector2 canvasRect = um.GetJCSCanvas().GetAppRect().sizeDelta;
+            // transfer rect from screen space to world space
+            {
+                canvasRect.x *= um.GetJCSCanvas().GetAppRect().localScale.x;
+                canvasRect.y *= um.GetJCSCanvas().GetAppRect().localScale.y;
+            }
+
+            mCameraRect = new Vector3(
+                camToGameDepthDistance * canvasRect.x / camToCanvasDistance,
+                camToGameDepthDistance * canvasRect.y / camToCanvasDistance,
+                0);
+
+            // camPos name are named up there.
+            // cannot name the same.
+            Vector3 cCamPos = cam.transform.position;
+
+            float camTopBound = cCamPos.y + mCameraRect.y / 2;
+            float camBotBound = cCamPos.y - mCameraRect.y / 2;
+            float camRightBound = cCamPos.x + mCameraRect.x / 2;
+            float camLeftBound = cCamPos.x - mCameraRect.x / 2;
+
+            Vector3 topLeft = cam.transform.position;
+            topLeft.x -= mCameraRect.x / 2;
+            topLeft.y += mCameraRect.y / 2;
+
+            Vector3 topRight = cam.transform.position;
+            topRight.x += mCameraRect.x / 2;
+            topRight.y += mCameraRect.y / 2;
+
+            Vector3 botLeft = cam.transform.position;
+            botLeft.x -= mCameraRect.x / 2;
+            botLeft.y -= mCameraRect.y / 2;
+
+            Vector3 botRight = cam.transform.position;
+            botRight.x += mCameraRect.x / 2;
+            botRight.y -= mCameraRect.y / 2;
+
+            // set depth to the same
+            topLeft.z = mGameDepth;
+            topRight.z = mGameDepth;
+            botLeft.z = mGameDepth;
+            botRight.z = mGameDepth;
+
+            // Draw the box
+            JCS_Debug.DrawRect(topLeft, topRight, botRight, botLeft, mGameCamColor);
+
+        }
+#endif
+        public bool CheckInScreenSpace(CharacterController cap)
+        {
+            // First Step: Find CharacterController's 4 bounds.
+            Vector3 capScale = cap.transform.localScale;
+
+            capScale = JCS_Mathf.AbsoluteValue(capScale);
+
+            Vector3 cCenter = new Vector3(
+                cap.center.x * capScale.x,
+                cap.center.y * capScale.y,
+                cap.center.z * capScale.z);
+
+            float cR = cap.radius * capScale.x;
+            float cH = (cap.height - (cap.radius * 2.0f)) * capScale.y;
+
+            if (cH < 0)
+                cH = 0;
+
+            float cTopBound = cap.transform.position.y + cCenter.y + (cH / 2.0f) + cR;
+            float cBotBound = cap.transform.position.y + cCenter.y - (cH / 2.0f) - cR;
+            float cRightBound = cap.transform.position.x + cCenter.x + cR;
+            float cLeftBound = cap.transform.position.x + cCenter.x - cR;
+
+#if (UNITY_EDITOR)
+            Vector3 cOrigin = cap.transform.position + cCenter;
+            Debug.DrawLine(cOrigin, 
+                new Vector3(cOrigin.x, cTopBound, cOrigin.z));
+            Debug.DrawLine(cOrigin,
+                new Vector3(cOrigin.x, cBotBound, cOrigin.z));
+            Debug.DrawLine(cOrigin,
+                new Vector3(cRightBound, cOrigin.y, cOrigin.z));
+            Debug.DrawLine(cOrigin,
+                new Vector3(cLeftBound, cOrigin.y, cOrigin.z));
+#endif
+
+            // Next step: find camera 4 bounds.
+            Camera cam = JCS_Camera.main.GetCamera();
+
+            JCS_UIManager um = JCS_UIManager.instance;
+
+            Vector3 camPos = cam.transform.position;
+            // only need to know the depth.
+            {
+                camPos.x = 0;
+                camPos.y = 0;
+            }
+            Vector3 canvasPos = um.GetJCSCanvas().transform.position;
+            // only need to know the depth.
+            {
+                canvasPos.x = 0;
+                canvasPos.y = 0;
+            }
+            float camToCanvasDistance = Vector3.Distance(camPos, canvasPos);
+
+            Vector3 gameDepth = new Vector3(0, cap.transform.position.z, 0);
+            float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
+
+            //print("To Game depth Distance: " + camToGameDepthDistance);
+            //print("To Cavas Distnace: " + camToCanvasDistance);
+
+            Vector2 canvasRect = um.GetJCSCanvas().GetAppRect().sizeDelta;
+            // transfer rect from screen space to world space
+            {
+                canvasRect.x *= um.GetJCSCanvas().GetAppRect().localScale.x;
+                canvasRect.y *= um.GetJCSCanvas().GetAppRect().localScale.y;
+            }
+
+            Vector3 gameRect = new Vector3(
+                camToGameDepthDistance * canvasRect.x / camToCanvasDistance,
+                camToGameDepthDistance * canvasRect.y / camToCanvasDistance, 
+                0);
+
+            // camPos name are named up there.
+            // cannot name the same.
+            Vector3 cCamPos = cam.transform.position;
+
+            float camTopBound = cCamPos.y + gameRect.y / 2;
+            float camBotBound = cCamPos.y - gameRect.y / 2;
+            float camRightBound = cCamPos.x + gameRect.x / 2;
+            float camLeftBound = cCamPos.x - gameRect.x / 2;
+
+#if (UNITY_EDITOR)
+            Vector3 topLeft = cam.transform.position;
+            topLeft.x -= gameRect.x / 2;
+            topLeft.y += gameRect.y / 2;
+
+            Vector3 topRight = cam.transform.position;
+            topRight.x += gameRect.x / 2;
+            topRight.y += gameRect.y / 2;
+
+            Vector3 botLeft = cam.transform.position;
+            botLeft.x -= gameRect.x / 2;
+            botLeft.y -= gameRect.y / 2;
+
+            Vector3 botRight = cam.transform.position;
+            botRight.x += gameRect.x / 2;
+            botRight.y -= gameRect.y / 2;
+
+            // set depth to the same
+            topLeft.z = mGameDepth;
+            topRight.z = mGameDepth;
+            botLeft.z = mGameDepth;
+            botRight.z = mGameDepth;
+
+            // Draw the box
+            JCS_Debug.DrawRect(topLeft, topRight, botRight, botLeft);
+#endif
+
+            if (cRightBound < camLeftBound ||
+                camRightBound < cLeftBound || 
+                cTopBound < camBotBound ||
+                camTopBound < cBotBound)
+            {
+                // no in the screen
+                return false;
+            }
+
+            // in screen
+            return true;
+        }
+        public bool CheckInScreenSpace(SpriteRenderer checkTrans)
+        {
+            Vector2 objectRect = JCS_UsefualFunctions.GetSpriteRendererRect(checkTrans);
+
+            Camera cam = JCS_Camera.main.GetCamera();
+            Vector2 objPos = cam.WorldToViewportPoint(checkTrans.transform.position);
+            Vector2 camPos = cam.WorldToViewportPoint(cam.transform.position);
+
+            float objLeft = objPos.x - (objectRect.x / 2);
+            float objRight = objPos.x + (objectRect.x / 2);
+            float objTop = objPos.y + (objectRect.y / 2);
+            float objBot = objPos.y - (objectRect.y / 2);
+
+            Vector3 topLeft = new Vector3(objLeft, objTop, 0);
+            Vector3 topRight = new Vector3(objRight, objTop, 0);
+            Vector3 botRight = new Vector3(objRight, objBot, 0);
+            Vector3 botLeft = new Vector3(objLeft, objBot, 0);
+
+            RectTransform appRect = JCS_UIManager.instance.GetAppRect();
+
+            float camWidth = appRect.sizeDelta.x;
+            float camHeight = appRect.sizeDelta.y;
+
+            float camLeft = camPos.x - (camWidth / 2);
+            float camRight = camPos.x + (camWidth / 2);
+            float camTop = camPos.y + (camHeight / 2);
+            float camBot = camPos.y - (camHeight / 2);
+
+#if (UNITY_EDITOR)
+            Debug.DrawLine(topLeft, topRight);
+            Debug.DrawLine(topLeft, botLeft);
+            Debug.DrawLine(botRight, botLeft);
+            Debug.DrawLine(topRight, botRight);
+#endif
+
+            // TODO(JenChieh): Not done.
+
+            if ((objRight < camLeft || objLeft > camRight) && 
+                (objTop < camBot || objBot > camTop))
+            {
+                // out of screen.
+                return false;
+            }
+
+            return true;
+        }
         public bool CheckInScreenSpace(Transform checkTrans)
         {
             // TODO(JenChieh): continue finish the function?
@@ -107,7 +382,7 @@ namespace JCSUnity
             float panelTopBorder = panelPos.y + halfSlotHeight;
             float panelBottomBorder = panelPos.y - halfSlotHeight;
 
-            Camera cam = JCS_GameManager.instance.GetJCSCamera().GetCamera();
+            Camera cam = JCS_Camera.main.GetCamera();
             Vector3 camPos = cam.transform.position;
             // Transfer 3D space to 2D space
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
@@ -131,6 +406,7 @@ namespace JCSUnity
 
             return true;
         }
+
 
     }
 }

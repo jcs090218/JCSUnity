@@ -79,7 +79,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_Camera gm = (JCS_2DCamera)JCS_GameManager.instance.GetJCSCamera();
+            JCS_Camera gm = (JCS_2DCamera)JCS_Camera.main;
             if (gm == null)
             {
                 JCS_GameErrors.JcsErrors("JCS_SoundManager", -1, "There is no \"JCS_Camera\" assign!");

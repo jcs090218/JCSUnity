@@ -127,7 +127,7 @@ namespace JCSUnity
             float panelTopBorder = panelPos.y + halfSlotHeight;
             float panelBottomBorder = panelPos.y - halfSlotHeight;
 
-            Camera cam = JCS_GameManager.instance.GetJCSCamera().GetCamera();
+            Camera cam = JCS_Camera.main.GetCamera();
             Vector3 camPos = cam.transform.position;
             // Transfer 3D space to 2D space
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);

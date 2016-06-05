@@ -36,7 +36,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public AudioSource GetAudioSource() { return this.mAudioSource; }
-
+        public JCS_SoundSettingType GetSoundSettingType() { return this.mSoundSettingType; }
 
         //========================================
         //      Unity's function
@@ -57,12 +57,36 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+        public void PlayOneShot(AudioClip clip, JCS_SoundSettingType type)
+        {
+            float volume = 0;
+            switch (type)
+            {
+                case JCS_SoundSettingType.BGM_SOUND:
+                    volume = JCS_GameSettings.GetBGM_Volume();
+                    break;
+                case JCS_SoundSettingType.SFX_SOUND:
+                    volume = JCS_GameSettings.GetSFXSound_Volume();
+                    break;
+                case JCS_SoundSettingType.SKILLS_SOUND:
+                    volume = JCS_GameSettings.GetSkillsSound_Volume();
+                    break;
+            }
+
+            PlayOneShot(clip, volume);
+        }
         public void PlayOneShot(AudioClip clip)
         {
+            if (clip == null)
+                return;
+
             GetAudioSource().PlayOneShot(clip);
         }
         public void PlayOneShot(AudioClip clip, float volume)
         {
+            if (clip == null)
+                return;
+
             GetAudioSource().PlayOneShot(clip, volume);
         }
         public void PlayOneShot(AudioClip clip, float volume, JCS_SoundType type)

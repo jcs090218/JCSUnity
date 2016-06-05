@@ -26,6 +26,7 @@ namespace JCSUnity
         {
             NORMAL,
             CRITICAL,
+            GET_DAMAGE,
             HEAL
         };
 
@@ -35,6 +36,8 @@ namespace JCSUnity
         [Header("NOTE: Plz put the whole set of Damage Text here!")]
         [SerializeField] private JCS_DamageTextPool mCritDamageTextPool = null;
         [SerializeField] private JCS_DamageTextPool mNormalDamageTextPool = null;
+        [SerializeField] private JCS_DamageTextPool mGetDamageDamageTextPool = null;
+        [SerializeField] private JCS_DamageTextPool mHealDamageTextPool = null;
 
         [Header("** Runtime Variables **")]
         [SerializeField] private float mSpacingPerText = 1;
@@ -69,13 +72,14 @@ namespace JCSUnity
         //------------------------------
         private JCS_DamageTextPool GetCriticalDamageTextPool() { return this.mCritDamageTextPool; }
         private JCS_DamageTextPool GetNormralDamageTextPool() { return this.mNormalDamageTextPool; }
+        private JCS_DamageTextPool GetGetDamageDamageTextPool() { return this.mGetDamageDamageTextPool; }
+        private JCS_DamageTextPool GetHealDamageTextPoll() { return this.mHealDamageTextPool; }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void Awake()
         {
-
 
             // spawn all the sequence
             mSequenceThread = new JCS_Vector<int>();
@@ -84,6 +88,12 @@ namespace JCSUnity
             mSequenceTypeData = new JCS_Vector<DamageTextType[]>();
             mSequenceSpanwTimer = new JCS_Vector<float>();
             mSequenceSpawnCount = new JCS_Vector<int>();
+        }
+
+        private void Start()
+        {
+            // set to global!
+            JCS_GameManager.instance.SetMixDamageTextPool(this);
         }
 
         private void Update()
@@ -101,7 +111,7 @@ namespace JCSUnity
             {
                 // Testing helper function so spawn sequence of damage
                 // Showing u can get the damage from ite
-                int[] damages = DamageTextSpawnerSimple(50000, 120000, Vector2.zero, 6, 60);
+                int[] damages = DamageTextSpawnerSimple(0, 1, new Vector2(0, 0), 6, 60);
             }
         }
 
@@ -175,7 +185,7 @@ namespace JCSUnity
                     types[index] = DamageTextType.NORMAL;
             }
 
-            SpawnDamageTextsFromPoolByType(damages, Vector2.zero, types);
+            SpawnDamageTextsFromPoolByType(damages, pos, types);
 
             // return the damages we just create!
             return damages;
@@ -255,11 +265,13 @@ namespace JCSUnity
             switch (type)
             {
                 case DamageTextType.NORMAL:
-                    return GetNormralDamageTextPool();
+                    return this.GetNormralDamageTextPool();
                 case DamageTextType.CRITICAL:
-                    return GetCriticalDamageTextPool();
+                    return this.GetCriticalDamageTextPool();
+                case DamageTextType.GET_DAMAGE:
+                    return this.GetGetDamageDamageTextPool();
                 case DamageTextType.HEAL:
-                    return null;
+                    return this.GetHealDamageTextPoll();
             }
 
             return null;

@@ -21,6 +21,7 @@ GameObject:
   - 114: {fileID: 11445356}
   - 114: {fileID: 11454792}
   - 114: {fileID: 11493480}
+  - 114: {fileID: 11409640}
   m_Layer: 0
   m_Name: JCS_2DBullet
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.102, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.41619456, y: 0.41619456, z: 0.41619456}
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,6 +74,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103114}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11409640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45615b6dd23b56f459d954b52ad1fdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObjectType: 0
+  mFadeTime: 2
+  mOverriteFade: 0
 --- !u!114 &11413542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMoveSpeed: 10
-  mAxis: 1
+  mAxis: 0
 --- !u!114 &11414296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAxis: 2
-  mMoveSpeed: 10
+  mMoveSpeed: 3
   mKeepOverride: 1
 --- !u!114 &11421048
 MonoBehaviour:

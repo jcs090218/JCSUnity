@@ -81,7 +81,7 @@ namespace JCSUnity
             Vector3 newPosition = mRectTransform.localPosition;
 
             // make toward to the camera position
-            Camera cam = JCS_GameManager.instance.GetJCSCamera().GetCamera();
+            Camera cam = JCS_Camera.main.GetCamera();
 
 
             // Find the distance between the dialogue object and the center (which is camera in this case)

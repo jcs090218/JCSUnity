@@ -110,7 +110,6 @@ namespace JCSUnity
         {
             this.transform.position = pos;
 
-
             int totalDigit = damage.ToString().Length;
 
             bool isEvenNumber = false;
@@ -128,7 +127,11 @@ namespace JCSUnity
                 mSpriteRenderers.Add(sr);
 
                 // get single digit
-                int digitNum = GetSingleDigit(digit, damage);
+                int digitNum;
+                if (damage <= 0)
+                    digitNum = 11;      // miss text
+                else
+                    digitNum = GetSingleDigit(digit, damage);
 
                 // set the sprite base on digit number
                 sr.sprite = GetSingleDigitSprite(digitNum);
@@ -182,7 +185,8 @@ namespace JCSUnity
             }
 
             // Check if critical texture exist and spawn it
-            if (mCritialStrike != null)
+            if (mCritialStrike != null && 
+                damage != 0)
             {
                 GameObject gm = new GameObject();
                 SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
@@ -267,6 +271,7 @@ namespace JCSUnity
                 case 8: return mDamageText8;
                 case 9: return mDamageText9;
                 case 10: return mCritialStrike;
+                case 11: return mDamageTextMiss;
             }
 
             // careful!

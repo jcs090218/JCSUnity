@@ -21,16 +21,14 @@ namespace JCSUnity
 
         [SerializeField] public bool GAME_PAUSE = false;
 
-        private JCS_Camera mJCSCamera = null;
         private JCS_Player mJCSPlayer = null;
         private JCS_GameSettings mJCSGameSettings = null;
+        private JCS_MixDamageTextPool mMixDamageTextPool = null;
 
 
         //--------------------------------
         // setter / getter
         //--------------------------------
-        public void SetJCSCamera(JCS_Camera cam) { this.mJCSCamera = cam; }
-        public JCS_Camera GetJCSCamera() { return this.mJCSCamera; }
         public void SetJCSPlayer(JCS_Player player)
         {
             this.mJCSPlayer = player;
@@ -38,6 +36,8 @@ namespace JCSUnity
         public JCS_Player GetJCSPlayer() { return this.mJCSPlayer; }
         public void SetJCSGameSettings(JCS_GameSettings gs) { this.mJCSGameSettings = gs; }
         public JCS_GameSettings GetJCSGameSettings() { return this.mJCSGameSettings; }
+        public void SetMixDamageTextPool(JCS_MixDamageTextPool tp) { this.mMixDamageTextPool = tp; }
+        public JCS_MixDamageTextPool GetMixDamageTextPool() { return this.mMixDamageTextPool; }
 
         //--------------------------------
         // Unity's functions

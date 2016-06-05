@@ -1,6 +1,6 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: README.txt
-Project Version: 1.2.1
+Project Version: 1.3.0
 Version Control Page: https://github.com/mike316mike316/JCSUnity_Framework.git
 Unity Version: 5.3.4f1 (64-bit)
 Last Edit Date: 2016-05-23

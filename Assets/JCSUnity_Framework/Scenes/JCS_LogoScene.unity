@@ -602,7 +602,7 @@ Prefab:
     - target: {fileID: 11447550, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
       propertyPath: BACKGROUND_MUSIC
       value: 
-      objectReference: {fileID: 8300000, guid: 546950ff40ad1554c827f4baba0e375a, type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
   m_IsPrefabParent: 0

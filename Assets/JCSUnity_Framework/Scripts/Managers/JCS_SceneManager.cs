@@ -28,6 +28,7 @@ namespace JCSUnity
         // Private Variables
         private bool mSwitchSceneEffect = false;
         private string mNextSceneName = "";
+        private AsyncOperation mAsyncOperation = null;
 
         [SerializeField] private JCS_BlackScreen mJCSBlackScreen = null;
         [SerializeField] private JCS_WhiteScreen mJCSWhiteScreen = null;
@@ -89,7 +90,9 @@ namespace JCSUnity
             if (mJCSBlackScreen.IsFadeIn())
             {
                 mSwitchSceneEffect = false;
-                SceneManager.LoadScene(mNextSceneName);
+
+                // load the scene if is ready
+                mAsyncOperation.allowSceneActivation = true;
             }
         }
 
@@ -100,9 +103,16 @@ namespace JCSUnity
         // Public Functions
         public void LoadScene(string sceneName)
         {
+            // if is loading already, dont load it agian
+            if (mSwitchSceneEffect)
+                return;
+
             // set the next scene name
             this.mNextSceneName = sceneName;
 
+            // preload the scene
+            mAsyncOperation = SceneManager.LoadSceneAsync(mNextSceneName);
+            mAsyncOperation.allowSceneActivation = false;
 
             // move to the last child in order
             // to render the black screen in front of 

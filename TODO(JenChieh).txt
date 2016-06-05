@@ -1,6 +1,6 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: TODO(JenChieh).txt
-Last Edit Date: 2016-5-23
+Last Edit Date: 2016-06-04
 -----------------------------------
 
 //-- General
@@ -8,10 +8,13 @@ Weather Data (System)
 Dialogue System (GUI)
 Timer (GUI)
 Text Delta counter (GUI)
+Game Pad to work(System)
 
 //-- 2D
 Player does not jump at the first jump.
-2D shoot smooth
+After Attack do effect on the Enemy. (After Effect effect)
+
+Ladder (Important)
 
 //-- 3D
 Control player like Monster Hunter game did.

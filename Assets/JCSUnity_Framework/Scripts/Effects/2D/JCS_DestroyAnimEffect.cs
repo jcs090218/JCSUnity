@@ -24,14 +24,18 @@ namespace JCSUnity
         //----------------------
         // Private Variables
         [Header("** Runtime Variables **")]
-        [Tooltip("Animation when destory this game object")]
-        [SerializeField] private JCS_AnimPool mDestroyAnim = null;
+        private JCS_AnimPool mDestroyAnim = null;
         [SerializeField] private int mOrderLayer = 1;
         [Tooltip("How many times to animate then destroy.")]
         [SerializeField] private uint mLoopTimes = 1;
 
-        [SerializeField] private bool mActiveOnlyWhenGetHit = true;
+        //-- Hit List
+        [SerializeField] private bool mDestroyWithHitList = true;
         private JCS_HitListEvent mHitList = null;
+
+        //-- Time
+        [SerializeField] private bool mDestroyWithTime = false;
+        private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
         [Header("** Settings **")]
         [Tooltip("The same position as the destroyed game object?")]
@@ -75,6 +79,8 @@ namespace JCSUnity
         {
             this.mHitList = this.GetComponent<JCS_HitListEvent>();
             this.mDestroyAnim = this.GetComponent<JCS_AnimPool>();
+
+            mDestroyObjectWithTime = this.GetComponent<JCS_DestroyObjectWithTime>();
         }
 
         private void OnDestroy()
@@ -84,10 +90,20 @@ namespace JCSUnity
             if (JCS_ApplicationManager.APP_QUITTING)
                 return;
 
-            if (mActiveOnlyWhenGetHit)
+            if (mDestroyWithHitList)
             {
                 if (!mHitList.IsHit)
                     return;
+            }
+
+            if (mDestroyWithTime)
+            {
+
+                if (mDestroyObjectWithTime != null)
+                {
+                    if (mDestroyObjectWithTime.TimesUp)
+                        return;
+                }
             }
 
             GameObject gm = new GameObject();

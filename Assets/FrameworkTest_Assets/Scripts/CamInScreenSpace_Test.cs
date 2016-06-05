@@ -39,7 +39,7 @@ public class CamInScreenSpace_Test : MonoBehaviour
 	
 	private void Update() 
     {
-        print(JCS_GameManager.instance.GetJCSCamera().CheckInScreenSpace(mRectTransform));
+        print(JCS_Camera.main.CheckInScreenSpace(mRectTransform));
 	}
     
     //========================================

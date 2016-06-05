@@ -12,7 +12,9 @@ using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
-    public class JCS_ButtonFunctions : MonoBehaviour
+
+    public class JCS_ButtonFunctions 
+        : MonoBehaviour
     {
         private static string IS_CONNECT_DIALOGUE = "JCSUnity_Framework_Resources/JCS_ForceDialogue/JCS_MessageBox_YesNo";
         private static string SETTING_PANEL = "JCSUnity_Framework_Resources/JCS_InGameDialogue/Setting_Panel";

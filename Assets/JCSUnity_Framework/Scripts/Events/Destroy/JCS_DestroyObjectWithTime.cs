@@ -25,6 +25,7 @@ namespace JCSUnity
         [Header("** Runtime Variables **")]
         [SerializeField] private float mDestroyTime = 10.0f;
         private float mTimer = 0;
+        private bool mTimesUp = false;
 
         [SerializeField] private bool mDestroyWithAlphaEffect = true;
         private JCS_FadeObject mAlphaObject = null;
@@ -37,6 +38,7 @@ namespace JCSUnity
         //------------------------------
         public JCS_FadeObject GetAlphaObject() { return this.mAlphaObject; }
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
+        public bool TimesUp { get { return this.mTimesUp; } set { this.mTimesUp = value; } }
 
         //========================================
         //      Unity's function
@@ -47,15 +49,19 @@ namespace JCSUnity
         }
         private void Update()
         {
+            mTimer += Time.deltaTime;
+
             if (mDestroyWithAlphaEffect)
             {
-                mTimer += Time.deltaTime;
-
                 if (mDestroyTime - mTimer <= mAlphaObject.FadeTime)
                     mAlphaObject.FadeOut();
             }
 
-            Destroy(this.gameObject, mDestroyTime);
+            if (mDestroyTime < mTimer)
+            {
+                TimesUp = true;
+                Destroy(this.gameObject);
+            }
         }
 
         //========================================

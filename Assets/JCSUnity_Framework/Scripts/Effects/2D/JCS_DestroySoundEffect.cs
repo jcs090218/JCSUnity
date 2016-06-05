@@ -27,9 +27,13 @@ namespace JCSUnity
         [Tooltip("Sound to display when this occurs")]
         [SerializeField] private JCS_SoundPool mRandomSoundAction = null;
 
-        [SerializeField] private bool mActiveOnlyWhenGetHit = true;
+        //-- Hit List
+        [SerializeField] private bool mDestroyWithHitList = true;
         private JCS_HitListEvent mHitList = null;
 
+        //-- Time
+        [SerializeField] private bool mDestroyWithTime = false;
+        private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
         //----------------------
         // Protected Variables
@@ -45,6 +49,8 @@ namespace JCSUnity
         {
             this.mHitList = this.GetComponent<JCS_HitListEvent>();
             this.mRandomSoundAction = this.GetComponent<JCS_SoundPool>();
+
+            mDestroyObjectWithTime = this.GetComponent<JCS_DestroyObjectWithTime>();
         }
 
         private void OnDestroy()
@@ -54,10 +60,20 @@ namespace JCSUnity
             if (JCS_ApplicationManager.APP_QUITTING)
                 return;
 
-            if (mActiveOnlyWhenGetHit)
+            if (mDestroyWithHitList)
             {
                 if (!mHitList.IsHit)
                     return;
+            }
+
+            if (mDestroyWithTime)
+            {
+                
+                if (mDestroyObjectWithTime != null)
+                {
+                    if (mDestroyObjectWithTime.TimesUp)
+                        return;
+                }
             }
 
             // Add Destroy Sound
@@ -68,7 +84,7 @@ namespace JCSUnity
 #endif
             AudioClip ac = this.mRandomSoundAction.GetRandomSound();
             if (ac != null)
-                dse.SetAudioClipAndPlayOneShot(ac);
+                dse.SetAudioClipAndPlayOneShot(ac, mRandomSoundAction.SoundType);
         }
 
         //========================================

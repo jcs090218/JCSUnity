@@ -138,5 +138,75 @@ namespace JCSUnity
             return false;
         }
 
+        public static GameObject SpawnAnimateObject(RuntimeAnimatorController anim, int orderLayer = 15)
+        {
+            GameObject gm = new GameObject();
+
+            SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = orderLayer;
+            Animator animator = gm.AddComponent<Animator>();
+            animator.runtimeAnimatorController = anim;
+
+            return gm;
+        }
+
+        public static GameObject SpawnAnimateObjectDeathEvent(RuntimeAnimatorController anim, int orderLayer = 15)
+        {
+            GameObject gm = SpawnAnimateObject(anim, orderLayer);
+
+            gm.AddComponent<JCS_DestroyAnimEndEvent>();
+
+            return gm;
+        }
+
+        public static Vector3 SetVecX(ref Vector3 val, float x)
+        {
+            return SetVec3(ref val, x, val.y, val.z);
+        }
+        public static Vector3 SetVecY(ref Vector3 val, float y)
+        {
+            return SetVec3(ref val, val.x, y, val.z);
+        }
+        public static Vector3 SetVecZ(ref Vector3 val, float z)
+        {
+            return SetVec3(ref val, val.x, val.y, z);
+        }
+        public static Vector3 SetVec3(ref Vector3 val, float x, float y, float z)
+        {
+            Vector3 newVec = val;
+
+            newVec.x = x;
+            newVec.y = y;
+            newVec.z = z;
+
+            val = newVec;
+
+            return newVec;
+        }
+        public static Vector3 IncVecX(ref Vector3 val, float x)
+        {
+            return IncVec3(ref val, x, val.y, val.z);
+        }
+        public static Vector3 IncVecY(ref Vector3 val, float y)
+        {
+            return IncVec3(ref val, val.x, y, val.z);
+        }
+        public static Vector3 IncVecZ(ref Vector3 val, float z)
+        {
+            return IncVec3(ref val, val.x, val.y, z);
+        }
+        public static Vector3 IncVec3(ref Vector3 val, float x, float y = 0, float z = 0)
+        {
+            Vector3 newVec = val;
+
+            newVec.x += x;
+            newVec.y += y;
+            newVec.z += z;
+
+            val = newVec;
+
+            return newVec;
+        }
+
     }
 }

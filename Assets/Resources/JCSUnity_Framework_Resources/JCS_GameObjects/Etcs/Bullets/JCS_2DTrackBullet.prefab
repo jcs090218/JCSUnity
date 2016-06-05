@@ -53,6 +53,7 @@ GameObject:
   - 114: {fileID: 11418302}
   - 114: {fileID: 11461064}
   - 114: {fileID: 11476942}
+  - 114: {fileID: 11437280}
   m_Layer: 0
   m_Name: JCS_2DTrackBullet
   m_TagString: Untagged
@@ -325,6 +326,20 @@ MonoBehaviour:
   mTargetTransform: {fileID: 0}
   mMoveFriction: 0.2
   mAxis: 2
+--- !u!114 &11437280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45615b6dd23b56f459d954b52ad1fdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObjectType: 0
+  mFadeTime: 1
+  mOverriteFade: 0
 --- !u!114 &11451426
 MonoBehaviour:
   m_ObjectHideFlags: 1

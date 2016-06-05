@@ -20,4 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RunningCrush_Assets/Scenes/JCS_LogoScene.unity
   - enabled: 1
-    path: Assets/RunningCrush_Assets/Scenes/RunningCrush.unity
+    path: Assets/JCSUnity_Framework/Scenes/2D/JCS_2DMultiTrackDemo.unity

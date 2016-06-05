@@ -15,6 +15,8 @@ namespace JCSUnity
     public abstract class JCS_Bullet
         : MonoBehaviour
     {
+        [SerializeField] private float mMoveSpeed = 10.0f;
 
+        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
     }
 }
