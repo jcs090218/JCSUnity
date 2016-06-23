@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     // Character controll of player
-    [RequireComponent(typeof(JCS_Animator))]
+    [RequireComponent(typeof(JCS_CharacterAnimator))]
     [RequireComponent(typeof(JCS_2DSideScrollerPlayerAudioController))]
     [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_2DSideScrollerPlayer
@@ -42,7 +42,7 @@ namespace JCSUnity
             = JCS_2DCharacterMode.NORMAL;
 
         //-- Jumping
-        [Header("Jump Settings")]
+        [Header("** Jump Settings **")]
         [SerializeField]
         private JCS_JumpeType mJumpType = JCS_JumpeType.BASIC_JUMP;
         private bool mDoubleJump = false;
@@ -50,16 +50,16 @@ namespace JCSUnity
         private int mJumpCount = 0;
 
         [Tooltip("Force apply when it jump. (Horizontal)")]
-        [SerializeField] private float[] mJumpYForces = null;
+        [SerializeField] protected float[] mJumpYForces = null;
         [Tooltip("Force apply when it jump. (Vertical)")]
-        [SerializeField] private float[] mJumpXForces = null;
+        [SerializeField] protected float[] mJumpXForces = null;
 
         [SerializeField] private float mTerminalSpeed = 10;
         [SerializeField] private bool[] mForceXAfterJump = null;
 
         //-- Animator Control
         [Header("** Animation Settings **")]
-        private JCS_Animator mJCSAnimator = null;
+        private JCS_CharacterAnimator mJCSAnimator = null;
         [Tooltip("Animation display when it jump event occurs.")]
         [SerializeField]
         private RuntimeAnimatorController[] mJumpAnim = null;
@@ -85,10 +85,16 @@ namespace JCSUnity
         private bool mAttackedInAir = false;
         [SerializeField] private float mAirFriction = 0.5f;
 
+        [Header("** Climb Settings **")]
+        [SerializeField] private bool mAutoClimb = false;
+        [SerializeField] private JCS_ClimbMoveType mAutoClimbDirection = JCS_ClimbMoveType.MOVE_UP;
+
 
         //========================================
         //      setter / getter
         //------------------------------
+        public bool AutoClimb { get { return this.mAutoClimb; } set { this.mAutoClimb = value; } }
+        public JCS_ClimbMoveType AutoClimbDirection { get { return this.mAutoClimbDirection; } set { this.mAutoClimbDirection = value; } }
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public bool ResetingCollision { get { return this.mResetingCollision; } set { this.mResetingCollision = value; } }
         public bool ExitingClimbing { get { return this.mExitingClimbing; } set { this.mExitingClimbing = value; } }
@@ -99,7 +105,7 @@ namespace JCSUnity
         public bool CanRope { get { return this.mCanRope; } set { this.mCanRope = value; } }
         public void SetJumpType(JCS_JumpeType type) { this.mJumpType = type; }
         public JCS_JumpeType GetJumpType() { return this.mJumpType; }
-        private JCS_Animator GetJCSAnimator() { return this.mJCSAnimator; }
+        private JCS_CharacterAnimator GetJCSAnimator() { return this.mJCSAnimator; }
         public Animator GetAnimator() { return this.mJCSAnimator.GetAnimator(); }
         public string GetAnimationState() { return this.mJCSAnimator.GetAnimationState(); }
         public bool isGrounded() { return this.mCharacterController.isGrounded; }
@@ -110,7 +116,7 @@ namespace JCSUnity
         protected override void Awake()
         {
             base.Awake();
-            this.mJCSAnimator = this.GetComponent<JCS_Animator>();
+            this.mJCSAnimator = this.GetComponent<JCS_CharacterAnimator>();
             this.mAudioController = this.GetComponent<JCS_2DSideScrollerPlayerAudioController>();
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
         }
@@ -561,15 +567,23 @@ namespace JCSUnity
 
             JCS_ClimbMoveType status = JCS_ClimbMoveType.IDLE;
 
-            // process input
-            if (JCS_Input.GetKey(KeyCode.UpArrow))
-                status = JCS_ClimbMoveType.MOVE_UP;
-            else if (JCS_Input.GetKey(KeyCode.DownArrow))
-                status = JCS_ClimbMoveType.MOVE_DOWN;
+
+            if (mAutoClimb)
+            {
+                status = mAutoClimbDirection;
+            }
             else
             {
-                status = JCS_ClimbMoveType.IDLE;
-                mJCSAnimator.StopAnimationInFrame();
+                // process input
+                if (JCS_Input.GetKey(KeyCode.UpArrow))
+                    status = JCS_ClimbMoveType.MOVE_UP;
+                else if (JCS_Input.GetKey(KeyCode.DownArrow))
+                    status = JCS_ClimbMoveType.MOVE_DOWN;
+                else
+                {
+                    status = JCS_ClimbMoveType.IDLE;
+                    mJCSAnimator.StopAnimationInFrame();
+                }
             }
 
             bool climbing = false;

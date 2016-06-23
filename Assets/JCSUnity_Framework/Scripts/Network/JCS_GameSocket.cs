@@ -217,7 +217,7 @@ namespace JCSUnity
 
         private void PrintSendPacket(System.Object message)
         {
-            if (!JCS_GameSettings.DEBUG_MODE)
+            if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 
             byte[] encryptedBuffer = (byte[])message;
@@ -233,7 +233,7 @@ namespace JCSUnity
         }
         private void PrintRecievedPacket(System.Object message)
         {
-            if (!JCS_GameSettings.DEBUG_MODE)
+            if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 
             byte[] decryptedBuffer = (byte[])message;
@@ -259,7 +259,7 @@ namespace JCSUnity
 
         private void PrintBuffer(byte[] buffer)
         {
-            if (!JCS_GameSettings.DEBUG_MODE)
+            if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 
             for (int index = 0; index < buffer.Length; ++index)

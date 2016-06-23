@@ -37,7 +37,7 @@ namespace JCSUnity
 
         public static void QuitApplication()
         {
-#if UNITY_EDITOR
+#if (UNITY_EDITOR)
             SceneManager.LoadScene("JCS_ApplicationCloseSimulateScene");
             JCS_ApplicationManager.APP_PAUSE = true;
 #endif
@@ -88,7 +88,7 @@ namespace JCSUnity
             }
 
 
-            if (JCS_UIManager.instance.GetJCSCanvas() == null)
+            if (JCS_Canvas.instance == null)
             {
                 JCS_GameErrors.JcsErrors("JCS_ButtonFunctions", -1, "No able to spawn Dialogue cuz Canvas are null...");
                 return false;

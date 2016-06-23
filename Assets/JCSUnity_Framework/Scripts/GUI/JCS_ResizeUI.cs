@@ -96,7 +96,7 @@ namespace JCSUnity
 
             instance = this;
 
-            JCS_UIManager.instance.GetJCSCanvas().SetResizeUI(this);
+            JCS_Canvas.instance.SetResizeUI(this);
         }
 
         private void Update()

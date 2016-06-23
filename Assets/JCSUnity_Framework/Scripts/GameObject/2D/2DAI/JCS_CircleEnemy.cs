@@ -15,7 +15,7 @@ namespace JCSUnity
 
     [RequireComponent(typeof(JCS_2DCircleAction))]
     public class JCS_CircleEnemy 
-        : JCS_Enemy
+        : JCS_LiveObject
     {
 
         //----------------------

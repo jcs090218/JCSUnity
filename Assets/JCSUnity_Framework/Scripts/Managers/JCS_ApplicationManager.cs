@@ -68,6 +68,14 @@ namespace JCSUnity
         private void OnApplicationQuit()
         {
             APP_QUITTING = true;
+
+            JCS_GameSettings gs = JCS_GameSettings.instance;
+            if (gs.SAVE_ON_EXIT_APP && 
+                gs.SAVE_GAME_DATA_FUNC != null)
+            {
+                // save when exit app
+                gs.SAVE_GAME_DATA_FUNC.Invoke();
+            }
         }
 
         //========================================

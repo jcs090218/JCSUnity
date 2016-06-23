@@ -9,10 +9,15 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using UnityEngine.UI;
+
 
 namespace JCSUnity
 {
-    public class JCS_Webcam : MonoBehaviour
+
+    [RequireComponent(typeof(JCS_SoundPlayer))]
+    public class JCS_Webcam 
+        : JCS_UnityObject
     {
 
         //----------------------
@@ -26,7 +31,16 @@ namespace JCSUnity
         private WebCamTexture mWebCamTexture = null;
         private int mCaptureCounter = 0;
 
+        [Header("** Runtime Variables **")]
+        [SerializeField] private float mResumeTime = 0;
+        private float mResumeTimer = 0;
+        private bool mResumeTrigger = false;
+
+        [Header("** Key Settings **")]
+        [SerializeField] private KeyCode mTakePic = KeyCode.None;
+
         [Header("** Image Path **")]
+        [Tooltip("Webcam u take will save into this path.")]
         [SerializeField] private string mSavePath = "/JCS_GameData/WebcamShot/"; //Change the path here!
 
         [Header("** Resolution **")]
@@ -39,6 +53,11 @@ namespace JCSUnity
         private bool mSplashEffectTrigger = false;
         [SerializeField] private float mDelay = 1.0f;
         private float mDelayTimer = 0;
+
+        [Header("** Sound Settings **")]
+        [SerializeField]
+        private AudioClip mTakePhotoSound = null;
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         //----------------------
         // Protected Variables
@@ -56,6 +75,51 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
+            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+
+            ActiveWebcam();
+        }
+
+        private void Update()
+        {
+#if (UNITY_STANDALONE || UNITY_EDITOR)
+            ProcessInput();
+#endif
+
+            if (mResumeTrigger)
+            {
+                mResumeTimer += Time.deltaTime;
+
+                if (mResumeTime < mResumeTimer)
+                {
+                    if (mWebCamTexture != null)
+                        mWebCamTexture.Play();
+
+                    // done resume.
+                    mResumeTrigger = false;
+                }
+            }
+
+            if (mSplashEffectTrigger)
+            {
+                mDelayTimer += Time.deltaTime;
+
+                if (mDelayTimer > mDelay)
+                {
+                    mDelayTimer = 0;
+                    JCS_SceneManager.instance.GetJCSWhiteScreen().FadeOut();
+                    mSplashEffectTrigger = false;
+                }
+            }
+        }
+
+        //========================================
+        //      Self-Define
+        //------------------------------
+        //----------------------
+        // Public Functions
+        public void ActiveWebcam()
+        {
             WebCamDevice[] devices = WebCamTexture.devices;
 
             // check if there is webcam avaliable in the platform
@@ -68,38 +132,10 @@ namespace JCSUnity
 
             mDeviceName = devices[0].name;
             mWebCamTexture = new WebCamTexture(mDeviceName, mWebcamResolutionWidth, mWebcamResolutionHeight, 12);
-            this.GetComponent<Renderer>().material.mainTexture = mWebCamTexture;
+            UpdateUnityData();
+
             mWebCamTexture.Play();
         }
-
-        private void Update()
-        {
-#if (UNITY_STANDALONE || UNITY_EDITOR)
-
-            if (JCS_Input.GetKeyDown(KeyCode.T))
-            {
-                TakeSnapshotWebcam();
-            }
-#endif 
-
-            if (!mSplashEffectTrigger)
-                return;
-
-            mDelayTimer += Time.deltaTime;
-
-            if (mDelayTimer > mDelay)
-            {
-                mDelayTimer = 0;
-                JCS_SceneManager.instance.GetJCSWhiteScreen().FadeOut();
-                mSplashEffectTrigger = false;
-            }
-        }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
         public void TakeSnapshotWebcam()
         {
             // No device detected!!
@@ -140,6 +176,37 @@ namespace JCSUnity
 
             // Stop the camera
             mWebCamTexture.Stop();
+
+            // start the timer wait for resume
+            mResumeTrigger = true;
+
+            // play sound.
+            mSoundPlayer.PlayOneShot(mTakePhotoSound);
+        }
+        public override void UpdateUnityData()
+        {
+            switch (GetObjectType())
+            {
+                case JCS_UnityObjectType.GAME_OBJECT:
+                    this.mRenderer = this.GetComponent<Renderer>();
+
+                    // set texture to webcam texture (Mesh)
+                    this.mRenderer.material.mainTexture = mWebCamTexture;
+                    break;
+                case JCS_UnityObjectType.UI:
+                    this.mImage = this.GetComponent<Image>();
+                    this.mRectTransform = this.GetComponent<RectTransform>();
+
+                    // set texture to webcam texture (UI)
+                    this.mImage.material.mainTexture = mWebCamTexture;
+                    break;
+                case JCS_UnityObjectType.SPRITE:
+                    this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+
+                    // set texture to webcam texture (Sprite)
+                    this.mSpriteRenderer.material.mainTexture = mWebCamTexture;
+                    break;
+            }
         }
 
         //----------------------
@@ -147,6 +214,15 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+#if (UNITY_STANDALONE || UNITY_EDITOR)
+        private void ProcessInput()
+        {
+            if (JCS_Input.GetKeyDown(mTakePic))
+            {
+                TakeSnapshotWebcam();
+            }
+        }
+#endif
 
     }
 }

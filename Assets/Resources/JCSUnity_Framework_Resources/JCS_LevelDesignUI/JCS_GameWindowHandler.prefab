@@ -40,10 +40,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSystemUI:
-  - {fileID: 22443936, guid: 21f436a2ee301264683c7fce34f9b977, type: 2}
-  mGameUI: {fileID: 22457838, guid: 54868688a5730db489ffe4e3cc32a371, type: 2}
-  mGameWindowList:
-  - {fileID: 22425816, guid: a3018a063e3584046bcc56bd08e0dc9e, type: 2}
+  - {fileID: 0}
+  mGameUI: {fileID: 0}
+  mNPCDialogue: {fileID: 0}
+  mPlayerDialogue: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -23,11 +23,8 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        // Application Rect (Window)
-        private RectTransform mAppRect = null;
+        
 
-        [SerializeField]
-        private JCS_Canvas mJCSCanvas = null;
         // Game Play UI (Game Layer - Only One)
         [SerializeField]
         private JCS_DialogueObject mGameUI = null;          // the most common one!
@@ -50,8 +47,6 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public void SetJCSCanvas(JCS_Canvas can) { this.mJCSCanvas = can; }
-        public JCS_Canvas GetJCSCanvas() { return this.mJCSCanvas; }
         public void SetJCSDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
         {
             switch (type)
@@ -110,8 +105,6 @@ namespace JCSUnity
             return null;
         }
         public LinkedList<JCS_DialogueObject> GetOpenWindow() { return this.mOpenWindow; }
-        public void SetAppRect(RectTransform rt) { this.mAppRect = rt; }
-        public RectTransform GetAppRect() { return this.mAppRect; }
 
         //========================================
         //      Unity's function

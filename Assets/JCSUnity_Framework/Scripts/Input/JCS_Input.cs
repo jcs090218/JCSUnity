@@ -16,10 +16,21 @@ namespace JCSUnity
         private static bool mClick = false;
         private static float mClickTime = 0.25f;
         private static float mClickTimer = 0;
+
+        /// <summary>
+        /// This sould be in the Update() function.
+        /// </summary>
+        /// <param name="type"> type by JCS_InputType (self-define) </param>
+        /// <returns> true: if double click, false nothing happens </returns>
         public static bool OnMouseDoubleClick(JCS_InputType type)
         {
             return OnMouseDoubleClick((int)type);
         }
+        /// <summary>
+        /// This sould be in the Update() function.
+        /// </summary>
+        /// <param name="button"> type by keycode (Unity built-in) </param>
+        /// <returns> true: if double click, false nothing happens </returns>
         public static bool OnMouseDoubleClick(int button)
         {
             // Check first click
@@ -71,7 +82,7 @@ namespace JCSUnity
         public static Vector3 CanvasMousePosition()
         {
             Vector2 pos;
-            Canvas myCanvas = JCS_UIManager.instance.GetJCSCanvas().GetCanvas();
+            Canvas myCanvas = JCS_Canvas.instance.GetCanvas();
             RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
             return myCanvas.transform.TransformPoint(pos);
         }

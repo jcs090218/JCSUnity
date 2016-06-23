@@ -30,7 +30,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mSlideFrictionX: 0.2
   mSlideFrictionY: 0.2
-  mTargetPosition: {x: 0, y: 0, z: 0}
   mSlidePanels:
   - {fileID: 0}
   - {fileID: 0}

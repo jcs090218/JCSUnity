@@ -52,24 +52,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            if (JCS_GameSettings.instance.PLAYER_IGNORE_EACH_OTHER)
-            {
-                // Make all the player ignore each other
-                for (int index = 0;
-                    index < mPlayers.Count;
-                    ++index)
-                {
-                    for (int pairIndex = index + 1;
-                        pairIndex < mPlayers.Count;
-                        ++pairIndex)
-                    {
-
-                        Physics.IgnoreCollision(
-                                mPlayers[index].GetCharacterController(),
-                                mPlayers[pairIndex].GetCharacterController(), true);
-                    }
-                }
-            }
+            DoIgnorePlayersToEachOthers();
 
             // if the game only allow one play do the function
             // in order to take the effect.
@@ -83,7 +66,9 @@ namespace JCSUnity
             if (JCS_GameSettings.instance.GAME_TYPE == JCS_GameType.GAME_2D)
                 PlayerManageTest();
         }
+#endif
 
+#if (UNITY_EDITOR)
         private void PlayerManageTest()
         {
             if (JCS_Input.GetKeyDown(KeyCode.L))
@@ -109,6 +94,7 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+        
         public void AddPlayerToManage(JCS_Player player)
         {
             if (player == null)
@@ -135,6 +121,27 @@ namespace JCSUnity
                 }
                 else
                     p.ControlEnable(false);
+            }
+        }
+        public void DoIgnorePlayersToEachOthers()
+        {
+            if (JCS_GameSettings.instance.PLAYER_IGNORE_EACH_OTHER)
+            {
+                // Make all the player ignore each other
+                for (int index = 0;
+                    index < mPlayers.Count;
+                    ++index)
+                {
+                    for (int pairIndex = index + 1;
+                        pairIndex < mPlayers.Count;
+                        ++pairIndex)
+                    {
+
+                        Physics.IgnoreCollision(
+                                mPlayers[index].GetCharacterController(),
+                                mPlayers[pairIndex].GetCharacterController(), true);
+                    }
+                }
             }
         }
         public void IgnorePhysicsToAllPlayer(Collider cc)
@@ -183,8 +190,11 @@ namespace JCSUnity
         }
         public bool IsActivePlayerTransform(Transform tran)
         {
-            if (tran == mActivePlayer.transform)
-                return true;
+            if (mActivePlayer != null)
+            {
+                if (tran == mActivePlayer.transform)
+                    return true;
+            }
 
             return false;
         }
@@ -409,11 +419,33 @@ namespace JCSUnity
             return players[foundIndex];
         }
 
+        public void AddAllPlayerToMultiTrack()
+        {
+            // find the object in the scene.
+            JCS_2DMultiTrackCamera jcs2dmtc = (JCS_2DMultiTrackCamera)FindObjectOfType(typeof(JCS_2DMultiTrackCamera));
+
+            foreach (JCS_Player p in mPlayers)
+            {
+                jcs2dmtc.AddTargetToTrackList(p);
+            }
+        }
+        public void RemoveAllPlayerToMultiTrack()
+        {
+            // find the object in the scene.
+            JCS_2DMultiTrackCamera jcs2dmtc = (JCS_2DMultiTrackCamera)FindObjectOfType(typeof(JCS_2DMultiTrackCamera));
+
+            foreach (JCS_Player p in mPlayers)
+            {
+                jcs2dmtc.RemoveTargetFromTrackList(p);
+            }
+        }
+
         //----------------------
         // Protected Functions
 
         //----------------------
         // Private Functions
+
 
     }
 }

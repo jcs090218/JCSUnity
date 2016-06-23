@@ -133,7 +133,7 @@ namespace JCSUnity
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
 
             // Get application rect
-            RectTransform appRect = JCS_UIManager.instance.GetAppRect();
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
             Vector2 screenRect = appRect.sizeDelta;
 
             float camLeftBorder = camPosToScreen.x - screenRect.x / 2;

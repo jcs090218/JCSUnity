@@ -18,6 +18,8 @@ public class RC_Camera
 
     //----------------------
     // Public Variables
+    public static RC_Camera instance = null;
+
     public enum TrackingTarget
     {
         LEFT,
@@ -36,18 +38,23 @@ public class RC_Camera
     private JCS_2D4Direction mTrackingTarget 
         = JCS_2D4Direction.RIGHT;
 
+    private RC_Player mTrackingPlayer = null;
+
     //----------------------
     // Protected Variables
 
     //========================================
     //      setter / getter
     //------------------------------
+    public RC_Player GetTrackingPlayer() { return this.mTrackingPlayer; }
 
     //========================================
     //      Unity's function
     //------------------------------
     private void Awake() 
     {
+        instance = this;
+
         mJCSCamera = this.GetComponent<JCS_2DCamera>();
     }
 	
@@ -74,6 +81,14 @@ public class RC_Camera
     /// </summary>
     private void DecideTrack()
     {
+        if (RC_GameSettings.instance.GAME_OVER)
+        {
+            // stop tracking if the game is over.
+            mJCSCamera.SetFollowing(false);
+            return;
+        }
+
+
         JCS_PlayerManager pm = JCS_PlayerManager.instance;
 
         JCS_Player target = FindActivePlayer();
@@ -86,6 +101,9 @@ public class RC_Camera
         }
         else
             mJCSCamera.SetFollowing(false);
+
+        // down cast to rc player.
+        mTrackingPlayer = (RC_Player)target;
     }
 
     private RC_Player FindActivePlayer()

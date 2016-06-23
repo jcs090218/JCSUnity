@@ -13,6 +13,8 @@ namespace JCSUnity
 { 
     public enum JCS_PlatformType 
     {
+        NONE,   // or "all platform"
+
         PC,
         MOBILE,
         PS,

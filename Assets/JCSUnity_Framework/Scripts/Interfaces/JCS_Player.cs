@@ -14,7 +14,8 @@ namespace JCSUnity
 {
 
     [RequireComponent(typeof(CharacterController))]
-    public abstract class JCS_Player : MonoBehaviour
+    public abstract class JCS_Player 
+        : MonoBehaviour
     {
         [SerializeField] protected float mPlayerGravity = 2.0f;
         [SerializeField] protected Vector3 mVelocity = Vector3.zero;

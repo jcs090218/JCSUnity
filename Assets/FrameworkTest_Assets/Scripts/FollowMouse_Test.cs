@@ -39,7 +39,7 @@ public class FollowMouse_Test : MonoBehaviour
         //this.transform.position = Input.mousePosition;
 
         Vector2 pos;
-        Canvas myCanvas = JCS_UIManager.instance.GetJCSCanvas().GetCanvas();
+        Canvas myCanvas = JCS_Canvas.instance.GetCanvas();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
         transform.position = JCS_Input.CanvasMousePosition();
 

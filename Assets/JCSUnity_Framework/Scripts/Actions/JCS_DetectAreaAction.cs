@@ -13,6 +13,10 @@ using System.Collections.Generic;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Anything with can dectect area must be living thing.
+    /// </summary>
+    [RequireComponent(typeof(JCS_LiveObject))]
     public class JCS_DetectAreaAction
         : MonoBehaviour
     {
@@ -22,7 +26,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private Collider mDetectCollider = null;
+
+        [Header("** Check Variables **")]
+        [SerializeField] private JCS_LiveObject mLiveObject = null;
+
+        [Header("** Initialize Variables **")]
+        [SerializeField] private Collider[] mDetectCollider = null;
         private JCS_Vector<JCS_DetectAreaObject> mDetectedObjects = null;
 
         //----------------------
@@ -31,20 +40,29 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_LiveObject GetLiveObject() { return this.mLiveObject; }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void Awake()
         {
-            if (mDetectCollider != null)
-            {
-                // let the detect area know his parent class (this)
-                JCS_DetectArea da = mDetectCollider.gameObject.AddComponent<JCS_DetectArea>();
-                da.SetAction(this);
+            this.mLiveObject = this.GetComponent<JCS_LiveObject>();
 
-                // force the collider equals to true!!
-                mDetectCollider.isTrigger = true;
+            for (int index = 0;
+                index < mDetectCollider.Length;
+                ++index)
+            {
+
+                if (mDetectCollider[index] != null)
+                {
+                    // let the detect area know his parent class (this)
+                    JCS_DetectArea da = mDetectCollider[index].gameObject.AddComponent<JCS_DetectArea>();
+                    da.SetAction(this);
+
+                    // force the collider equals to true!!
+                    mDetectCollider[index].isTrigger = true;
+                }
             }
 
             // create list to manage all detected object
@@ -80,6 +98,10 @@ namespace JCSUnity
             mDetectedObjects.slice(jcsDo);
         }
 
+        /// <summary>
+        /// Return the furthest object in the array.
+        /// </summary>
+        /// <returns></returns>
         public JCS_DetectAreaObject FindTheFurthest()
         {
             int furthestIndex = -1;
@@ -121,6 +143,10 @@ namespace JCSUnity
             // return result
             return mDetectedObjects.at(furthestIndex);
         }
+        /// <summary>
+        /// Return the closest object in the array.
+        /// </summary>
+        /// <returns></returns>
         public JCS_DetectAreaObject FindTheClosest()
         {
             int closestIndex = -1;

@@ -29,6 +29,7 @@ namespace JCSUnity
         [SerializeField] private JCS_ResizeUI mResizeUI = null;
         [SerializeField] private string mResizeUI_path = "JCSUnity_Framework_Resources/JCS_LevelDesignUI/ResizeUI";
 
+        // Application Rect (Window)
         private RectTransform mAppRect = null;
 
         //----------------------
@@ -53,7 +54,10 @@ namespace JCSUnity
 
             if (instance != null)
             {
-                JCS_GameErrors.JcsErrors("JCS_Canvas", -1, "There are too many Canvas object in the scene. (Delete)");
+                JCS_GameErrors.JcsWarnings(
+                    "JCS_Canvas", 
+                    -1, 
+                    "There are too many Canvas object in the scene. (Delete)");
 
                 string black_screen_name = JCS_GameSettings.BLACK_SCREEN_NAME;
                 string white_screen_name = JCS_GameSettings.WHITE_SCREEN_NAME;
@@ -103,12 +107,8 @@ namespace JCSUnity
             // attach the new one
             instance = this;
 
-
             this.mAppRect = this.GetComponent<RectTransform>();
             this.mCanvas = this.GetComponent<Canvas>();
-
-            JCS_UIManager.instance.SetJCSCanvas(this);
-            JCS_UIManager.instance.SetAppRect(this.mAppRect);
 
             if (JCS_GameSettings.instance.RESIZE_UI)
             {

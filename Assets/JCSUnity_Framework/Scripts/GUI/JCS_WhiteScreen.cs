@@ -27,8 +27,6 @@ namespace JCSUnity
         [SerializeField] private float mFadeOutTime = 1.0f;
         [SerializeField] private float mFadeInTime = 0.2f;
 
-        [SerializeField] private AudioClip mTakePhotoSound = null;
-
         //----------------------
         // Protected Variables
 
@@ -42,19 +40,6 @@ namespace JCSUnity
         private void Awake()
         {
             this.mAO = this.GetComponent<JCS_FadeObject>();
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                FadeIn();
-            }
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                FadeOut();
-            }
         }
 
         //========================================

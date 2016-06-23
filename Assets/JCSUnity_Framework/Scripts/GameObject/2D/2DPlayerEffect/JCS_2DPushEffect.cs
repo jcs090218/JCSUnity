@@ -38,8 +38,8 @@ namespace JCSUnity
         //------------------------------
         private void OnTriggerStay(Collider other)
         {
-            JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
-            if (other.gameObject.name == player.name)
+            JCS_Player player = other.GetComponent<JCS_Player>();
+            if (player != null)
             {
                 if (player.GetCharacterController().isGrounded)
                     player.VelX += mPushSpeed * -(int)mDirection;

@@ -19,6 +19,25 @@ namespace JCSUnity
     public class JCS_ItemIgnore
         : MonoBehaviour
     {
-        // tag.
+        [SerializeField] private bool mEffectToAllChild = true;
+
+        private void Start()
+        {
+            AddEffectToAllChild();
+        }
+
+        private void AddEffectToAllChild()
+        {
+            if (!mEffectToAllChild)
+                return;
+
+            // add to all the child as the same effect
+            for (int index = 0;
+                index < this.transform.childCount;
+                ++index)
+            {
+                transform.GetChild(index).gameObject.AddComponent<JCS_ItemIgnore>();
+            }
+        }
     }
 }

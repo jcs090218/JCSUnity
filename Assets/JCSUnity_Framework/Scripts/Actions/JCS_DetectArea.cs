@@ -46,6 +46,18 @@ namespace JCSUnity
             if (jcsDo == null)
                 return;
 
+            // if cannot damage
+            if (!jcsDo.GetLiveObject().CanDamage)
+                return;
+
+            if (!JCS_GameSettings.instance.TRIBE_DAMAGE_EACH_OTHER)
+            {
+                // if both player does not need to add in to list.
+                // or if both enemy does not need to add in to list.
+                if (jcsDo.GetLiveObject().IsPlayer == mDetectAreaAction.GetLiveObject().IsPlayer)
+                    return;
+            }
+
             // add it to the list
             mDetectAreaAction.AddDetectedObject(jcsDo);
         }

@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderLayer: 5
+  mLayerFriction: 0
 --- !u!114 &11417434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderLayer: 0
+  mLayerFriction: 0
 --- !u!114 &11436024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderLayer: 2
+  mLayerFriction: 0
 --- !u!114 &11464966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderLayer: 1
+  mLayerFriction: 0
 --- !u!114 &11473696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderLayer: 4
+  mLayerFriction: 0
 --- !u!114 &11479254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderLayer: 3
+  mLayerFriction: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

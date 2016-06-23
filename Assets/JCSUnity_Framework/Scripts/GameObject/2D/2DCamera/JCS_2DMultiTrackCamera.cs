@@ -31,14 +31,13 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("Target List to track")]
-        [SerializeField] private JCS_Player[] mTargets = null;
+        private JCS_Vector<JCS_Player> mTargetList = null;
 
         private AudioListener mAudioListener = null;
 
+        [Header("Plz add the camera u want to use in the scene.")]
         [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;
         
-
         private float mLastDiffDistanceX = 0;
         private float mLastDiffDistanceY = 0;
 
@@ -72,9 +71,14 @@ namespace JCSUnity
         protected void Awake()
         {
 
+            mTargetList = new JCS_Vector<JCS_Player>();
+
             mAudioListener = this.GetComponent<AudioListener>();
 
+            // find the camera in the scene first
+            mJCS_2DCamera = (JCS_2DCamera)FindObjectOfType(typeof(JCS_2DCamera));
 
+            // if still null spawn a default one!
             if (mJCS_2DCamera == null)
             {
                 JCS_GameErrors.JcsErrors("JCS_2DMultiTrackCamera", -1, "There is not JCS_2DCamera attach to, spawn a default one!");
@@ -84,13 +88,6 @@ namespace JCSUnity
                     JCS_2DCamera.JCS_2DCAMERA_PATH,
                     transform.position,
                     transform.rotation).GetComponent<JCS_2DCamera>();
-            }
-
-            // if still null, setting error!!
-            if (mJCS_2DCamera == null)
-            {
-                JCS_GameErrors.JcsErrors("JCS_2DMultiTrackCamera", -1, "The object spawn does not have the \"JCS_2DCamera\" components...");
-                return;
             }
 
             mJCS_2DCamera.SetFollowTarget(this.transform);
@@ -121,6 +118,14 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+        public void AddTargetToTrackList(JCS_Player p)
+        {
+            mTargetList.push(p);
+        }
+        public void RemoveTargetFromTrackList(JCS_Player p)
+        {
+            mTargetList.slice(p);
+        }
 
         //----------------------
         // Protected Functions
@@ -130,7 +135,7 @@ namespace JCSUnity
         private Vector3 CalculateTheCameraPosition()
         {
             // no target trackable
-            if (mTargets.Length == 0)
+            if (mTargetList.length == 0)
                 return transform.position;
 
             float minHeight = 0, 
@@ -140,8 +145,14 @@ namespace JCSUnity
 
             bool firstAssign = false;
 
-            foreach (JCS_Player p in mTargets)
+            JCS_Player p = null;
+
+            for (int index = 0;
+                index < mTargetList.length;
+                ++index)
             {
+                p = mTargetList.at(index);
+
                 if (p == null)
                     continue;
 

@@ -1,6 +1,6 @@
 Name: Jen-Chieh Shen <lkk440456@gmail.com>
 File Name: TODO(JenChieh).txt
-Last Edit Date: 2016-06-04
+Last Edit Date: 2016-06-22
 -----------------------------------
 
 //-- General
@@ -10,6 +10,9 @@ Timer (GUI)
 Text Delta counter (GUI)
 Game Pad to work(System)
 
+// GUI
+GUI Slide Button Series
+
 //-- 2D
 Player does not jump at the first jump.
 After Attack do effect on the Enemy. (After Effect effect)
@@ -18,3 +21,12 @@ Ladder (Important)
 
 //-- 3D
 Control player like Monster Hunter game did.
+
+// Boss Fight
+
+
+// Running Crush
+Shop Scene and System.
+Design End Game.
+Gold System.
+Game System

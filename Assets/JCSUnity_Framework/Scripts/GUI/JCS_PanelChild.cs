@@ -43,9 +43,18 @@ namespace JCSUnity
             {
                 JCS_PanelRoot jpr = this.GetComponentInParent<JCS_PanelRoot>();
 
-                FitPerfectSize(
+                // get all the same class object on this game object.
+                JCS_PanelChild[] tempPanelChild = null;
+                tempPanelChild = this.GetComponents<JCS_PanelChild>();
+
+                // only do it once.
+                if (tempPanelChild.Length == 1 &&
+                    tempPanelChild[0] == this)
+                {
+                    FitPerfectSize(
                     jpr.mPanelDeltaWidthRatio,
                     jpr.mPanelDeltaHeightRatio);
+                }
 
                 // since we add this script assuming we are 
                 // int the fit perfect size mode
@@ -88,6 +97,7 @@ namespace JCSUnity
         private void AddPanelChild()
         {
             Transform tempTrans = this.transform;
+
             for (int index = 0;
                 index < transform.childCount;
                 ++index)

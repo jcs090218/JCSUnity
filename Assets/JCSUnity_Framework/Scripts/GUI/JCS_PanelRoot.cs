@@ -67,7 +67,7 @@ namespace JCSUnity
         private void FitPerfectSize()
         {
             // get app rect
-            RectTransform appRect = JCS_UIManager.instance.GetJCSCanvas().GetAppRect();
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
             float newWidth = appRect.sizeDelta.x;
             float newHeight = appRect.sizeDelta.y;

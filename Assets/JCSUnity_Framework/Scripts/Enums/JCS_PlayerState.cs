@@ -26,6 +26,7 @@ namespace JCSUnity
         DANCE = 11,
         SWIM = 12,
         DEAD = 13,       // when player is dead. (墓碑!)
-        GHOST = 14
+        GHOST = 14,     // 當玩家死掉了之後
+        LOSE = 15       // 當玩家輸掉的時候
     }
 }

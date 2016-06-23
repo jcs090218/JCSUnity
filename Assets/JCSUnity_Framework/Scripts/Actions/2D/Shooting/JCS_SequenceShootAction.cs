@@ -118,15 +118,6 @@ namespace JCSUnity
                 return;
             }
 
-            // thread itself
-            mThread.push(mThread.length);
-
-            // needed data
-            mTimers.push(0);
-            mShootCount.push(hit);
-            mShootCounter.push(0);
-            mShootPos.push(pos);
-
             // after finding once is still null,
             // try it agian!
             if (mDetectedObject == null)
@@ -144,11 +135,22 @@ namespace JCSUnity
 
             }
 
-            // push null as a defaul value
+            // does not found the target to damage
             if (mDetectedObject == null)
-                mTargetsPerSequence.push(null);
-            else
-                mTargetsPerSequence.push(mDetectedObject.transform);
+                return;
+
+            // found target to damage, add in to data segment
+            mTargetsPerSequence.push(mDetectedObject.transform);
+
+
+            // thread itself
+            mThread.push(mThread.length);
+
+            // needed data
+            mTimers.push(0);
+            mShootCount.push(hit);
+            mShootCounter.push(0);
+            mShootPos.push(pos);
 
 
             bool isLeft = true;

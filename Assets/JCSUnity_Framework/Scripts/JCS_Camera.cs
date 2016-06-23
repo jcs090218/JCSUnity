@@ -22,8 +22,15 @@ namespace JCSUnity
 
         protected Camera mCamera = null;
         protected Vector3 mVelocity = Vector3.zero;
+        [Header("** Runtime Variables (JCS_Camera) **")]
+        [SerializeField] protected bool mFollowing = true;
 
-        protected Vector3 mCameraRect = Vector3.one;
+        // x = width, y = height, z = 0 (no involve in depth.)
+        protected Vector3 mCamRectSize = Vector3.one;
+
+        // x = left, y = top, width = right, height = bottom.
+        // TopLeft -> BottomLeft
+        protected Rect mCamRect = new Rect();
 
         [Header("** Initialize Variables (JCS_Camera) **")]
         [Tooltip("Distance as game origin depth.")]
@@ -34,10 +41,12 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public Vector3 CameraRect { get { return this.mCameraRect; } set { this.mCameraRect = value; } }
+        public Vector3 CamRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
+        public Rect CamRect { get { return this.mCamRect; } }
         public Camera GetCamera() { return this.mCamera; }
         public float fieldOfView { get { return this.mCamera.fieldOfView; } set { this.mCamera.fieldOfView = value; } }
         public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
+        public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
 
         //========================================
         //      Unity's function
@@ -54,7 +63,6 @@ namespace JCSUnity
             DisplayGameDepthCamera();
 #endif
         }
-
 
         //========================================
         //      Self-Define
@@ -74,7 +82,8 @@ namespace JCSUnity
 
             // get the last saved screen shot's index
             int last_saved_index = SearchDirectory(
-                Application.dataPath + JCS_GameSettings.SCREENSHOT_PATH,
+                Application.dataPath + 
+                JCS_GameSettings.SCREENSHOT_PATH,
                 JCS_GameSettings.SCREENSHOT_FILENAME) + 1;
 
             Application.CaptureScreenshot(
@@ -110,7 +119,7 @@ namespace JCSUnity
                 string endOfString = fileName.Substring(index + len);
                 string cleanPath = startOfString + endOfString;
 
-                print(cleanPath);
+                //print(cleanPath);
 
                 last_saved_screenshot = System.Int32.Parse(cleanPath);
             }
@@ -127,7 +136,7 @@ namespace JCSUnity
             // Next step: find camera 4 bounds.
             Camera cam = JCS_Camera.main.GetCamera();
 
-            JCS_UIManager um = JCS_UIManager.instance;
+            JCS_Canvas jcsCanvas = JCS_Canvas.instance;
 
             Vector3 camPos = cam.transform.position;
             // only need to know the depth.
@@ -135,7 +144,7 @@ namespace JCSUnity
                 camPos.x = 0;
                 camPos.y = 0;
             }
-            Vector3 canvasPos = um.GetJCSCanvas().transform.position;
+            Vector3 canvasPos = JCS_Canvas.instance.transform.position;
             // only need to know the depth.
             {
                 canvasPos.x = 0;
@@ -149,14 +158,14 @@ namespace JCSUnity
             //print("To Game depth Distance: " + camToGameDepthDistance);
             //print("To Cavas Distnace: " + camToCanvasDistance);
 
-            Vector2 canvasRect = um.GetJCSCanvas().GetAppRect().sizeDelta;
+            Vector2 canvasRect = jcsCanvas.GetAppRect().sizeDelta;
             // transfer rect from screen space to world space
             {
-                canvasRect.x *= um.GetJCSCanvas().GetAppRect().localScale.x;
-                canvasRect.y *= um.GetJCSCanvas().GetAppRect().localScale.y;
+                canvasRect.x *= jcsCanvas.GetAppRect().localScale.x;
+                canvasRect.y *= jcsCanvas.GetAppRect().localScale.y;
             }
 
-            mCameraRect = new Vector3(
+            mCamRectSize = new Vector3(
                 camToGameDepthDistance * canvasRect.x / camToCanvasDistance,
                 camToGameDepthDistance * canvasRect.y / camToCanvasDistance,
                 0);
@@ -165,26 +174,32 @@ namespace JCSUnity
             // cannot name the same.
             Vector3 cCamPos = cam.transform.position;
 
-            float camTopBound = cCamPos.y + mCameraRect.y / 2;
-            float camBotBound = cCamPos.y - mCameraRect.y / 2;
-            float camRightBound = cCamPos.x + mCameraRect.x / 2;
-            float camLeftBound = cCamPos.x - mCameraRect.x / 2;
+            float camTopBound = cCamPos.y + mCamRectSize.y / 2;
+            float camBotBound = cCamPos.y - mCamRectSize.y / 2;
+            float camRightBound = cCamPos.x + mCamRectSize.x / 2;
+            float camLeftBound = cCamPos.x - mCamRectSize.x / 2;
+
+            // top left -> bot right
+            mCamRect.x = camLeftBound;
+            mCamRect.y = camTopBound;
+            mCamRect.width = camRightBound;
+            mCamRect.height = camBotBound;
 
             Vector3 topLeft = cam.transform.position;
-            topLeft.x -= mCameraRect.x / 2;
-            topLeft.y += mCameraRect.y / 2;
+            topLeft.x -= mCamRectSize.x / 2;
+            topLeft.y += mCamRectSize.y / 2;
 
             Vector3 topRight = cam.transform.position;
-            topRight.x += mCameraRect.x / 2;
-            topRight.y += mCameraRect.y / 2;
+            topRight.x += mCamRectSize.x / 2;
+            topRight.y += mCamRectSize.y / 2;
 
             Vector3 botLeft = cam.transform.position;
-            botLeft.x -= mCameraRect.x / 2;
-            botLeft.y -= mCameraRect.y / 2;
+            botLeft.x -= mCamRectSize.x / 2;
+            botLeft.y -= mCamRectSize.y / 2;
 
             Vector3 botRight = cam.transform.position;
-            botRight.x += mCameraRect.x / 2;
-            botRight.y -= mCameraRect.y / 2;
+            botRight.x += mCamRectSize.x / 2;
+            botRight.y -= mCamRectSize.y / 2;
 
             // set depth to the same
             topLeft.z = mGameDepth;
@@ -235,7 +250,7 @@ namespace JCSUnity
             // Next step: find camera 4 bounds.
             Camera cam = JCS_Camera.main.GetCamera();
 
-            JCS_UIManager um = JCS_UIManager.instance;
+            JCS_Canvas jcsCanvas = JCS_Canvas.instance;
 
             Vector3 camPos = cam.transform.position;
             // only need to know the depth.
@@ -243,7 +258,7 @@ namespace JCSUnity
                 camPos.x = 0;
                 camPos.y = 0;
             }
-            Vector3 canvasPos = um.GetJCSCanvas().transform.position;
+            Vector3 canvasPos = jcsCanvas.transform.position;
             // only need to know the depth.
             {
                 canvasPos.x = 0;
@@ -257,11 +272,11 @@ namespace JCSUnity
             //print("To Game depth Distance: " + camToGameDepthDistance);
             //print("To Cavas Distnace: " + camToCanvasDistance);
 
-            Vector2 canvasRect = um.GetJCSCanvas().GetAppRect().sizeDelta;
+            Vector2 canvasRect = jcsCanvas.GetAppRect().sizeDelta;
             // transfer rect from screen space to world space
             {
-                canvasRect.x *= um.GetJCSCanvas().GetAppRect().localScale.x;
-                canvasRect.y *= um.GetJCSCanvas().GetAppRect().localScale.y;
+                canvasRect.x *= jcsCanvas.GetAppRect().localScale.x;
+                canvasRect.y *= jcsCanvas.GetAppRect().localScale.y;
             }
 
             Vector3 gameRect = new Vector3(
@@ -335,7 +350,7 @@ namespace JCSUnity
             Vector3 botRight = new Vector3(objRight, objBot, 0);
             Vector3 botLeft = new Vector3(objLeft, objBot, 0);
 
-            RectTransform appRect = JCS_UIManager.instance.GetAppRect();
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
             float camWidth = appRect.sizeDelta.x;
             float camHeight = appRect.sizeDelta.y;
@@ -388,7 +403,7 @@ namespace JCSUnity
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
 
             // Get application rect
-            RectTransform appRect = JCS_UIManager.instance.GetAppRect();
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
             Vector2 screenRect = appRect.sizeDelta;
 
             float camLeftBorder = camPosToScreen.x - screenRect.x / 2;

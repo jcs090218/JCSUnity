@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 123352}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 115.8}
-  m_LocalScale: {x: 7.9751663, y: 7.9751706, z: -7.9751706}
+  m_LocalScale: {x: 10.4956455, y: 7.9751706, z: -7.9751706}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,11 +74,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bb57e0b45cf2a4cbad22f8cc09f4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTakePic: 0
   mSavePath: /JCS_GameData/WebcamShot/
   mWebcamResolutionWidth: 1920
   mWebcamResolutionHeight: 1080
-  mDelay: 0.5
   mSplash: 1
+  mDelay: 0.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

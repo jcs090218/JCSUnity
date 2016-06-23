@@ -81,6 +81,32 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+        public void ShowGameUI()
+        {
+            if (mGameUI == null)
+            {
+                JCS_GameErrors.JcsErrors(
+                    "JCS_GameWindowHandler", 
+                    -1, 
+                    "Game UI is not avialiable references...");
+                return;
+            }
+
+            mGameUI.ShowDialogueWithoutSound();
+        }
+        public void HideGameUI()
+        {
+            if (mGameUI == null)
+            {
+                JCS_GameErrors.JcsErrors(
+                    "JCS_GameWindowHandler", 
+                    -1, 
+                    "Game UI is not avialiable references...");
+                return;
+            }
+
+            mGameUI.HideDialogueWithoutSound();
+        }
 
         //----------------------
         // Protected Functions
@@ -90,11 +116,11 @@ namespace JCSUnity
         
         private void PopNPCDialogue()
         {
-            PopDialogue(mNPCDialogue);
+            PopDialogue(ref mNPCDialogue);
         }
         private void PopGameUI()
         {
-            PopDialogue(mGameUI);
+            PopDialogue(ref mGameUI);
         }
         private void PopPlayerDialogue()
         {
@@ -104,7 +130,7 @@ namespace JCSUnity
         {
             PopDialogue(mSystemUI);
         }
-        private void PopDialogue(JCS_DialogueObject obj)
+        private void PopDialogue(ref JCS_DialogueObject obj)
         {
             if (obj == null)
                 return;
@@ -117,7 +143,10 @@ namespace JCSUnity
         {
             if (list.Length == 0)
             {
-                JCS_GameErrors.JcsErrors("JCS_GameWindowHandler", -1, "No Game Window in the scene!");
+                JCS_GameErrors.JcsReminders(
+                    "JCS_GameWindowHandler", 
+                    -1, 
+                    "No Game Window in the scene!");
                 return;
             }
 

@@ -11,10 +11,11 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    
+
     /// <summary>
     /// Tag for "JCS_DetectAreaAction"
     /// </summary>
+    [RequireComponent(typeof(JCS_LiveObject))]
     public class JCS_DetectAreaObject
         : MonoBehaviour
     {
@@ -24,8 +25,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
         [Header("** Check Variables **")]
-        [SerializeField] private bool mIsEnemy = false;
-        private JCS_Enemy mEnemy = null;
+        [SerializeField] private JCS_LiveObject mLiveObject = null;
 
         //----------------------
         // Protected Variables
@@ -33,19 +33,14 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public bool IsEnemy { get { return this.mIsEnemy; } set { this.mIsEnemy = value; } }
-        public JCS_Enemy GetEnemy() { return this.mEnemy; }
+        public JCS_LiveObject GetLiveObject() { return this.mLiveObject; }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void Awake()
         {
-            mEnemy = this.GetComponent<JCS_Enemy>();
-            if (mEnemy == null)
-                return;
-
-            mIsEnemy = true;
+            mLiveObject = this.GetComponent<JCS_LiveObject>();
         }
 
         //========================================

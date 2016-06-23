@@ -15,5 +15,12 @@ public enum RC_EffectType
     BLOCK,      // defualt
     
     SPEED_UP,
-    SPEED_DOWN
+    SPEED_DOWN,
+
+    WEAK,           // reduce jump force
+    ENERGETIC,
+
+    // get push by something.
+    PUSH_UP, 
+    PUSH_DOWN
 }

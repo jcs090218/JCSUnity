@@ -95,6 +95,16 @@ namespace JCSUnity
 
             PlayOneShot(clip, volume);
         }
+        /// <summary>
+        /// play sound when is not playing
+        /// </summary>
+        public void PlayOneShotWhileNotPlaying(AudioClip clip)
+        {
+            if (GetAudioSource().isPlaying)
+                return;
+
+            PlayOneShot(clip);
+        }
         public void PlayOneShot(AudioClip clip, JCS_SoundType type)
         {
             SetSounType(type);

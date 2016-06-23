@@ -12,14 +12,17 @@ using System.IO;
 
 namespace JCSUnity
 {
+    
 
     public class JCS_GameSettings 
         : MonoBehaviour
     {
         public static JCS_GameSettings instance = null;
 
+        
+        
         [Header("** Game Settings **")]
-        public static bool DEBUG_MODE = true;
+        [SerializeField] public bool DEBUG_MODE = true;
         [SerializeField] public bool THIS_IS_GAME_SCENE = false;
         [SerializeField] public bool LEVEL_DESIGN_MODE = true;
         [SerializeField] public JCS_GameType GAME_TYPE = JCS_GameType.GAME_2D;
@@ -34,6 +37,8 @@ namespace JCSUnity
         [SerializeField] public bool ACTIVE_ONE_PLAYER = true;
         [Tooltip("Do collusion happen with eacth other. (Player)")]
         [SerializeField] public bool PLAYER_IGNORE_EACH_OTHER = true;
+        [Tooltip("Can player damage each other?")]
+        [SerializeField] public bool TRIBE_DAMAGE_EACH_OTHER = false;
 
         [Header("** Platform Settings **")]
         // according to player's character controller's height will
@@ -68,10 +73,27 @@ namespace JCSUnity
 
         //-- Game Data Path
         public static string GAME_DATA_PATH = "/JCS_GameData/";
+        public static string JCS_EXTENSION = ".jcs";
         
         //-- UI
         [Header("** User Interface Settings **")]
         [SerializeField] public bool RESIZE_UI = true;
+
+        //-- Save Load Settings 
+        [Header("** Save Load Settings **")]
+        [Tooltip("Save when switching the scene.")]
+        [SerializeField] public bool SAVE_ON_SWITCH_SCENE = true;
+        [Tooltip("Save when app exit.")]
+        [SerializeField] public bool SAVE_ON_EXIT_APP = true;
+
+        public delegate void SavedGameDataDelegate();
+        public SavedGameDataDelegate SAVE_GAME_DATA_FUNC = null;
+
+        
+        public delegate void LoadGameDataDelegate();    // NOT USED
+        public LoadGameDataDelegate LOAD_GAME_DATA_FUNC = null; // NOT USED
+
+        public static JCS_GameData GAME_DATA = null;    // NOT USED
 
 
         //--------------------------------
@@ -98,7 +120,6 @@ namespace JCSUnity
         {
             return SKILLS_SOUND;
         }
-
         public static float GetSoundBaseOnType(JCS_SoundSettingType type)
         {
             switch (type)
@@ -120,7 +141,10 @@ namespace JCSUnity
         {
             if (instance != null)
             {
-                JCS_GameErrors.JcsErrors("JCS_GameSettings", -1, "There are too many GameSetting object in the scene. (Delete)");
+                JCS_GameErrors.JcsWarnings(
+                    "JCS_GameSettings", 
+                    -1, 
+                    "There are too many GameSetting object in the scene. (Delete)");
 
                 TransferData(instance, this);
 
@@ -130,6 +154,26 @@ namespace JCSUnity
 
             // attach the new one
             instance = this;
+        }
+
+        private void Start()
+        {
+            JCS_GameWindowHandler gwh = JCS_GameWindowHandler.instance;
+
+            // if this is the game scene, 
+            // enable the game ui.
+            if (THIS_IS_GAME_SCENE)
+            {
+                if (gwh != null)
+                    gwh.ShowGameUI();
+            }
+            // if this is NOT the game scene, 
+            // dis-enable the game ui.
+            else
+            {
+                if (gwh != null)
+                    gwh.HideGameUI();
+            }
         }
 
         private void Update()
@@ -146,6 +190,10 @@ namespace JCSUnity
         {
             // ResizeUI option should always be the same!
             _new.RESIZE_UI = _old.RESIZE_UI;
+
+            // System Settings should always the same.
+            _new.SAVE_ON_EXIT_APP = _old.SAVE_ON_EXIT_APP;
+            _new.SAVE_ON_SWITCH_SCENE = _old.SAVE_ON_SWITCH_SCENE;
 
         }
 

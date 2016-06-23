@@ -26,6 +26,11 @@ namespace JCSUnity
         // Private Variables
         private AudioListener mAudioListener = null;
 
+        // NOTE(JenChieh): according to Unity's low level architecture
+        //                Canvas size will change 
+        private Vector2 mRecordGUIScreenSize = Vector2.one;
+
+
         [Header("** Runtime Variables **")]
         // Notice important that Designer should know what 
         // Unity GUI type they are going to use!
@@ -70,11 +75,30 @@ namespace JCSUnity
         private void Start()
         {
             JCS_SoundManager.instance.SetAudioListener(GetAudioListener());
+
+            GetInitGUIScreenSize();
         }
 
         private void Update()
         {
 #if (UNITY_EDITOR)
+            Test();
+#endif
+
+            if (mPanelHolder != null)
+            {
+                JCS_SlideInput si = JCS_InputManager.instance.GetJCSSlideInput();
+                if (si != null)
+                {
+                    mPanelHolder.AddForce(-si.DeltaPos.x, JCS_Axis.AXIS_X);
+                    mPanelHolder.AddForce(-si.DeltaPos.y, JCS_Axis.AXIS_Y);
+                }
+            }
+        }
+
+#if (UNITY_EDITOR)
+        private void Test()
+        {
             if (JCS_Input.GetKeyDown(KeyCode.W))
                 SwitchScene(JCS_2D4Direction.TOP);
             if (JCS_Input.GetKeyDown(KeyCode.D))
@@ -92,18 +116,8 @@ namespace JCSUnity
                 SwitchScene(JCS_2D8Direction.BOTTOM_RIGHT);
             if (JCS_Input.GetKeyDown(KeyCode.Z))
                 SwitchScene(JCS_2D8Direction.BOTTOM_LEFT);
-#endif
-
-            if (mPanelHolder != null)
-            {
-                JCS_SlideInput si = JCS_InputManager.instance.GetJCSSlideInput();
-                if (si != null)
-                {
-                    mPanelHolder.AddForce(-si.DeltaPos.x, JCS_Axis.AXIS_X);
-                    mPanelHolder.AddForce(-si.DeltaPos.y, JCS_Axis.AXIS_Y);
-                }
-            }
         }
+#endif
 
         //========================================
         //      Self-Define
@@ -165,12 +179,24 @@ namespace JCSUnity
             // set target to follow!
             mJCS_2DCamera.SetFollowTarget(this.transform);
         }
+        /// <summary>
+        /// According to Unity's low level code architecture,
+        /// Unity Engine itself start handle the screen size resolution
+        /// only during runtime, so we just have to get the screen size once
+        /// for GUI(UGUI) switch scene functions.
+        /// </summary>
+        private void GetInitGUIScreenSize()
+        {
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
+            Vector2 appScreenSize = appRect.sizeDelta;
+
+            // get the gui screen size the first time
+            mRecordGUIScreenSize = appScreenSize;
+        }
         private void UGUISwitchScene(JCS_2D4Direction towardDirection)
         {
-            RectTransform appRect = JCS_UIManager.instance.GetJCSCanvas().GetAppRect();
-
             // get the Screen Width and Screen Height
-            Vector2 appScreenSize = appRect.sizeDelta;
+            Vector2 appScreenSize = mRecordGUIScreenSize;
             float screenWidth = appScreenSize.x;
             float screenHeight = appScreenSize.y;
 
@@ -197,10 +223,8 @@ namespace JCSUnity
         }
         private void UGUISwitchScene(JCS_2D8Direction towardDirection)
         {
-            RectTransform appRect = JCS_UIManager.instance.GetJCSCanvas().GetAppRect();
-
             // get the Screen Width and Screen Height
-            Vector2 appScreenSize = appRect.sizeDelta;
+            Vector2 appScreenSize = mRecordGUIScreenSize;
             float screenWidth = appScreenSize.x;
             float screenHeight = appScreenSize.y;
 
@@ -246,13 +270,12 @@ namespace JCSUnity
         // 3D
         private void NGUISwitchScene(JCS_2D4Direction towardDirection)
         {
-            RectTransform appRect = JCS_UIManager.instance.GetJCSCanvas().GetAppRect();
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
             // get the Screen Width and Screen Height
             Vector2 appScreenSize = appRect.sizeDelta;
-            float screenWidth = appScreenSize.x;
-            float screenHeight = appScreenSize.y;
-
+            float screenWidth = appScreenSize.x * appRect.localScale.x;
+            float screenHeight = appScreenSize.y * appRect.localScale.y;
 
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
@@ -276,17 +299,18 @@ namespace JCSUnity
                     break;
             }
 
+            // set this position to new position
+            // so the camera will follow this object!
             this.transform.position = newScenePosition;
         }
         private void NGUISwitchScene(JCS_2D8Direction towardDirection)
         {
-            RectTransform appRect = JCS_UIManager.instance.GetJCSCanvas().GetAppRect();
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
             // get the Screen Width and Screen Height
             Vector2 appScreenSize = appRect.sizeDelta;
-            float screenWidth = appScreenSize.x;
-            float screenHeight = appScreenSize.y;
-
+            float screenWidth = appScreenSize.x * appRect.localScale.x;
+            float screenHeight = appScreenSize.y * appRect.localScale.y;
 
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
@@ -333,6 +357,8 @@ namespace JCSUnity
                     break;
             }
 
+            // set this position to new position
+            // so the camera will follow this object!
             this.transform.position = newScenePosition;
         }
 

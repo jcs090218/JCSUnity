@@ -33,12 +33,12 @@ namespace JCSUnity
         [Header("** Runtime Variables **")]
         [SerializeField] private Transform mTargetTransform = null;
         [Tooltip("Accept range to destroy this object.(circle)")]
-        [SerializeField] private float mDestroyDistance = 0.5f;
+        [SerializeField] private float mDestroyDistance = 0.3f;
 
         [Header("** Fade Effect **")]
         [SerializeField] private bool mFadeEffect = true;
         [SerializeField] private FadeType mFadeType = FadeType.IN;
-        [SerializeField] private float mFadeDistance = 5;
+        [SerializeField] private float mFadeDistance = 500;
         private JCS_AlphaObject mAlphaObject = null;
 
 
@@ -49,6 +49,8 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public void SetTargetTransform(Transform pos) { this.mTargetTransform = pos; }
+        public float FadeDistance { get { return this.mFadeDistance; } set { this.mFadeDistance = value; } }
+        public float DestroyDistance { get { return this.mDestroyDistance; } set { this.mDestroyDistance = value; } }
 
         //========================================
         //      Unity's function
@@ -64,6 +66,16 @@ namespace JCSUnity
 
         private void Update()
         {
+            if (mTargetTransform == null)
+            {
+                JCS_GameErrors.JcsErrors(
+                    "JCS_DestinationDestroy",
+                    -1,
+                    "No target found...");
+
+                return;
+            }
+
             float currentDistance = Vector3.Distance(this.transform.localPosition, mTargetTransform.localPosition);
 
             if (mFadeEffect)

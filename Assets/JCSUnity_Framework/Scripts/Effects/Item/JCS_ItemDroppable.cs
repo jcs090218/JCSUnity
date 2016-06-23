@@ -58,11 +58,11 @@ namespace JCSUnity
 
         [Header("Spread Effect (Item)")]
         [SerializeField] private bool mSpreadEffect = true;
-        [SerializeField] private float mSpreadGap = 1;
+        [SerializeField] private float mSpreadGap = 0.4f;
 
         [Header("Destroy Effect (Item)")]
         [SerializeField] private bool mDestroyFadeOutEffect = true;
-        [SerializeField] private float mDestroyTime = 3;
+        [SerializeField] private float mDestroyTime = 30;
         [SerializeField] private float mFadeTime = 1;
 
         [Header("Others (Item)")]

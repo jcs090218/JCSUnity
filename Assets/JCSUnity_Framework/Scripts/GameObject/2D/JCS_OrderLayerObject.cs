@@ -54,6 +54,13 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+        public void SetOrderLayer(int orderLayer)
+        {
+            SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
+
+            // set the order layer by runtime. (shortcut)
+            spriteRenderer.sortingOrder = orderLayer;
+        }
 
         //----------------------
         // Protected Functions

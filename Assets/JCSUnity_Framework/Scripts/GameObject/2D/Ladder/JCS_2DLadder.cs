@@ -42,7 +42,7 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected virtual void Awake()
         {
 
             mSpriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -59,7 +59,7 @@ namespace JCSUnity
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
             if (p == null)
@@ -71,7 +71,7 @@ namespace JCSUnity
                 p.SetClimbingTransform(this.transform);
             }
         }
-        private void OnTriggerStay(Collider other)
+        protected virtual void OnTriggerStay(Collider other)
         {
             JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
             if (p == null)
@@ -89,7 +89,7 @@ namespace JCSUnity
                 p.SetClimbingTransform(null);
             }
         }
-        private void OnTriggerExit(Collider other)
+        protected virtual void OnTriggerExit(Collider other)
         {
             JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
             if (p == null)

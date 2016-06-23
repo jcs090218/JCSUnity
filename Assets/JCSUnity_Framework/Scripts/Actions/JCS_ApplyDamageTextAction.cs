@@ -95,7 +95,7 @@ namespace JCSUnity
                     DestroyWithAction();
             }
 
-            JCS_Enemy enemy = other.GetComponent<JCS_Enemy>();
+            JCS_LiveObject enemy = other.GetComponent<JCS_LiveObject>();
             if (enemy == null)
                 return;
 
@@ -112,8 +112,12 @@ namespace JCSUnity
                 mMaxDamage = mAbilityFormat.GetMaxDamage();
                 mCriticalChance = mAbilityFormat.GetCriticalChance();
             }
-            else
-                JCS_GameErrors.JcsReminders("JCS_ApplyDamageTextAction", -1, "You sure to not using any \"JCS_AbilityFormat\"?");
+            else {
+                JCS_GameErrors.JcsReminders(
+                    "JCS_ApplyDamageTextAction", 
+                    -1, 
+                    "You sure to not using any \"JCS_AbilityFormat\"?");
+            }
 
             Vector3 currentPos = enemy.transform.position + mDamageTextPositionOffset;
 

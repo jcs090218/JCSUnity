@@ -13,6 +13,7 @@ using System;
 namespace JCSUnity
 {
 
+    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_2DShakeEffect 
         : JCS_2DEffect
     {
@@ -38,6 +39,10 @@ namespace JCSUnity
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
         [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;
 
+        [Header("** Sound Settings **")]
+        [SerializeField] private AudioClip mShakeSound = null;
+        private JCS_SoundPlayer mSoundPlayer = null;
+
 
         //----------------------
         // Protected Variables
@@ -51,6 +56,8 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
+            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+
             if (mJCS_2DCamera == null)
                 mJCS_2DCamera = this.GetComponent<JCS_2DCamera>();
         }
@@ -88,7 +95,7 @@ namespace JCSUnity
                 // if is doing the effect
                 if (mEffect)
                 {
-                    JCS_GameErrors.JcsErrors("JCS_2DShakeEffect");
+                    // is effecting.
                     return;
                 }
             }
@@ -106,6 +113,9 @@ namespace JCSUnity
             // Dis-enable the input
             if (mStopInputWhileThisEffect)
                 JCS_GameManager.instance.GAME_PAUSE = true;
+
+            // play sound effect!
+            mSoundPlayer.PlayOneShot(mShakeSound);
         }
 
         //----------------------

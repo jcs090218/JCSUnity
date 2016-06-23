@@ -28,6 +28,8 @@ namespace JCSUnity
         // Private Variables
         private bool mSwitchSceneEffect = false;
         private string mNextSceneName = "";
+
+        // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;
 
         [SerializeField] private JCS_BlackScreen mJCSBlackScreen = null;
@@ -38,12 +40,19 @@ namespace JCSUnity
 
         private JCS_FadeSound mJCSFadeSound = null;
 
+        // Scene in the game so is dynamic instead of Unity's scene system's scene
+        // Unity 自帶就有Scene這個物件. 在這個Unity Scene裡面自己宣告Scene
+        // 比起Unity的Scene比較動態, 因為自己宣告的操控比較多.
+        private JCS_DynamicScene mDynamicScene = null;
+
         //----------------------
         // Protected Variables
 
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_DynamicScene GetDynamicScene() { return this.mDynamicScene; }
+        public void SetDynamicScene(JCS_DynamicScene ds) { this.mDynamicScene = ds; }
         public void SetJCSBlackScreen(JCS_BlackScreen bs) { this.mJCSBlackScreen = bs; }
         public void SetJCSWhiteScreen(JCS_WhiteScreen ws) { this.mJCSWhiteScreen = ws; }
         public JCS_WhiteScreen GetJCSWhiteScreen() { return this.mJCSWhiteScreen; }
@@ -109,6 +118,14 @@ namespace JCSUnity
 
             // set the next scene name
             this.mNextSceneName = sceneName;
+
+            JCS_GameSettings gs = JCS_GameSettings.instance;
+            if (gs.SAVE_ON_SWITCH_SCENE &&
+                gs.SAVE_GAME_DATA_FUNC != null)
+            {
+                // do the saving.
+                gs.SAVE_GAME_DATA_FUNC.Invoke();
+            }
 
             // preload the scene
             mAsyncOperation = SceneManager.LoadSceneAsync(mNextSceneName);

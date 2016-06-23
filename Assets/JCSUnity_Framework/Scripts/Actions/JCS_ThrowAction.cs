@@ -37,7 +37,7 @@ namespace JCSUnity
         private bool mReachInflectionPoint = false;
         private float mInflectionPoint = 0;
         [Tooltip("Speed of x")]
-        [SerializeField] private float mHorizontalFriction = 0.4f; // x & z axis
+        [SerializeField] private float mHorizontalFriction = 0.2f; // x & z axis
         [Tooltip("Speed of y")]
         [SerializeField] private float mVerticalForce = 5;        // y axis
 

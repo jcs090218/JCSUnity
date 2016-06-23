@@ -23,14 +23,11 @@ namespace JCSUnity
         private const float MAX_MOVE_SPEED = 20.0f;
         private const float MIN_MOVE_SPEED = 4.0f;
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_2DCamera) **")]
         //-- Target information
-        [SerializeField]
-        private Transform mTargetTransform = null;
+        [SerializeField] private Transform mTargetTransform = null;
         private Vector3 mTargetPosition = Vector3.zero;
         [SerializeField] private Vector3 mPositionOffset = Vector3.zero;
-
-        [SerializeField] private bool mFollowing = true;
 
         // effect: camera will do the smooth movement
         [SerializeField] private bool mSmoothMoveX = true;

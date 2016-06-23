@@ -3,7 +3,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_GameErrors : MonoBehaviour
+
+    public class JCS_GameErrors 
+        : MonoBehaviour
     {
 
         public static void JcsErrors(string script, int line = -1, string desc = "")

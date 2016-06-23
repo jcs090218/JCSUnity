@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#if (UNITY_EDITOR)
+using System.IO;
 using System.Threading;
 
 public class CpuInfo
@@ -18,7 +19,7 @@ public class CpuInfo
         new Thread(Update2).Start();
     }
 
-    private static void Update2()
+    public static void Update2()
     {
         string line;
         string[] values;
@@ -56,3 +57,4 @@ public class CpuInfo
     }
 
 }
+#endif

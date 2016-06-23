@@ -11,6 +11,7 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SoundManager 
         : MonoBehaviour
     {
@@ -32,6 +33,8 @@ namespace JCSUnity
         // personal stuff, personal skill, personal jump walk, etc.
         private JCS_Vector<AudioSource> mSkillsSounds = null;
 
+        private JCS_SoundPlayer mGlobalSoundPlayer = null;
+
         //----------------------
         // Protected Variables
 
@@ -49,24 +52,23 @@ namespace JCSUnity
             this.mBGM.mute = JCS_GameSettings.BGM_MUTE;
         }
         public JCS_Vector<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
+        public JCS_SoundPlayer GetGlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void OnApplicationFocus(bool focusStatus)
         {
-            if (GetAudioListener() == null)
-                return;
-
             // turn off all the sound effect
             if (!focusStatus)
             {
-                GetAudioListener().enabled = false;
+                // mute all the sound
+                AudioListener.volume = 0;
             }
             else
             {
-                
-                GetAudioListener().enabled = true;
+                // enable all the sound
+                AudioListener.volume = 1;
             }
         }
         private void Awake()
@@ -75,6 +77,8 @@ namespace JCSUnity
 
             mSFXSounds = new JCS_Vector<AudioSource>();
             mSkillsSounds = new JCS_Vector<AudioSource>();
+
+            mGlobalSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
 
         private void Start()

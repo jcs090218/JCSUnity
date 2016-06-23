@@ -168,17 +168,17 @@ namespace JCSUnity
         // Protected Functions
         protected void SetParentObjectByMode()
         {
-            JCS_UIManager uim = JCS_UIManager.instance;
+            JCS_Canvas jcsCanvas = JCS_Canvas.instance;
 
             Transform parentObject = null;
 
             // if is Resize UI is enable than add Dialogue under
             // resize ui transform
             if (JCS_GameSettings.instance.RESIZE_UI)
-                parentObject = uim.GetJCSCanvas().GetResizeUI().transform;
+                parentObject = jcsCanvas.GetResizeUI().transform;
             // Else we add it directly under the Canvas
             else
-                parentObject = uim.GetJCSCanvas().GetCanvas().transform;
+                parentObject = jcsCanvas.GetCanvas().transform;
 
             // set it to parent
             this.gameObject.transform.SetParent(parentObject);
