@@ -1,4 +1,4 @@
-Name: Jen-Chieh Shen <lkk440456@gmail.com>
+Name: Jen-Chieh Shen <jcs090218@gmail.com>
 File Name: README.txt
 Project Version: 1.3.3
 Version Control Page: https://github.com/mike316mike316/JCSUnity_Framework.git
