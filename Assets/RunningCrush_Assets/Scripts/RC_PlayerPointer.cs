@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -78,7 +78,7 @@ Photo Order Layer will minus one in case the photo does not be ontop of the fram
             {
                 JCS_GameErrors.JcsErrors(
                     "RC_PlayerPointer",
-                    -1,
+                     
                     "No Photo sprite renderer assigned.");
             }
         }

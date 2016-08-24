@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -19,7 +19,6 @@ public class RC_GameSettings
     // Public Variables
     public static RC_GameSettings instance = null;
 
-
     // at least 1 player in game.
     [Tooltip("How many player in the game. (Default: at least one player in game.)")]
     public int PLAYER_IN_GAME = 1;
@@ -27,9 +26,13 @@ public class RC_GameSettings
     public bool GAME_OVER = true;
 
     public bool WEBCAM_MODE = true;
+    public bool LIQUID_MODE = true;
 
     [Header("** Game Settings **")]
     public RC_GameMode GAME_MODE = RC_GameMode.SINGLE_PLAYERS;
+    public string LEVEL_SELECTED_NAME = "RC_Game";
+    [Tooltip("Any button u need to load the correct level.")]
+    public JCS_LoadSceneButton[] SCENE_BUTTONS = null;
 
     [Header("** Save Load Settings **")]
     public string FILE_PATH = "SavedData/";
@@ -40,6 +43,8 @@ public class RC_GameSettings
     private string mFullFileName = "";
 
     [Header("** Player Settings **")]
+    public JCS_3DLiquidBar GLOBAL_LIQUIDBAR = null;
+    public Vector3 LIQUIDBAR_OFFSET = Vector3.zero;
     public RC_Player[] PLAYERS = null;
     public RC_PlayerPointer[] PLAYER_POINTERS = null;
     public RC_RevivePointer[] PLAYER_REVIVE_POINTERS = null;
@@ -94,17 +99,59 @@ public class RC_GameSettings
     //----------------------
     // Public Functions
 
+    /// <summary>
+    /// In order to let the designer do all the job needed, 
+    /// set any button that will use to load the game scene
+    /// in the array than call this function after scene
+    /// name have been set, then it will make all the possible
+    /// buttons that will load the game scene in the RC_Lobby to
+    /// the correct scene name!
+    /// </summary>
+    public void SetCorrectSceneNameToAllButtonInScene()
+    {
+        foreach (JCS_LoadSceneButton btn in SCENE_BUTTONS)
+        {
+            if (btn == null)
+            {
+                JCS_GameErrors.JcsErrors(
+                    "RC_GameSettings",
+                     
+                    "You have open a space for button load in the scene, but does not assigned...");
+
+                continue;
+            }
+
+            btn.SceneName = LEVEL_SELECTED_NAME;
+        }
+    }
+
     //----------------------
     // Protected Functions
 
     //----------------------
     // Private Functions
+
+    /// <summary>
+    /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
+    /// I would like to use own define to transfer the old instance
+    /// to the newer instance.
+    /// 
+    /// Every time when unity load the scene. The script have been
+    /// reset, in order not to lose the original setting.
+    /// transfer the data from old instance to new instance.
+    /// </summary>
+    /// <param name="_old"> old instance </param>
+    /// <param name="_new"> new instance </param>
     private void TransferData(RC_GameSettings _old, RC_GameSettings _new)
     {
         _new.PLAYER_IN_GAME = _old.PLAYER_IN_GAME;
         _new.WEBCAM_MODE = _old.WEBCAM_MODE;
     }
 
+    /// <summary>
+    /// Initialize the path base on the JCSUnity Framework's 
+    /// format.
+    /// </summary>
     private void InitPath()
     {
         mFullFilePath =
@@ -130,7 +177,7 @@ public class RC_GameSettings
         }
 
         // else we just load the data commonly.
-        RC_GAME_DATA = RC_GameData.LoadFromFile(mFullFilePath, mFullFileName);
+        RC_GAME_DATA = JCS_XMLGameData.LoadFromFile<RC_GameData>(mFullFilePath, mFullFileName);
     }
     /// <summary>
     /// Use only when player "First" play this game or 
@@ -153,13 +200,13 @@ public class RC_GameSettings
         {
             JCS_GameErrors.JcsErrors(
                 "RC_GameSetting", 
-                -1, 
+                  
                 "Save Data without data??? (Fatal Error)");
 
             return;
         }
 
-        RC_GAME_DATA.Save(mFullFilePath, mFullFileName);
+        RC_GAME_DATA.Save<RC_GameData>(mFullFilePath, mFullFileName);
     }
 
     private RC_GameMode FindGameMode(int players)
@@ -179,7 +226,7 @@ public class RC_GameSettings
         // This should not happens...
         JCS_GameErrors.JcsErrors(
             "RC_GameSetting",
-            -1,
+             
             "Game Mode Undefined...");
 
         return RC_GameMode.SINGLE_PLAYERS;

@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -36,11 +36,11 @@ public class CamInScreenSpace_Test : MonoBehaviour
         mRectTransform = this.GetComponent<RectTransform>();
 
     }
-	
-	private void Update() 
+    
+    private void Update() 
     {
         print(JCS_Camera.main.CheckInScreenSpace(mRectTransform));
-	}
+    }
     
     //========================================
     //      Self-Define

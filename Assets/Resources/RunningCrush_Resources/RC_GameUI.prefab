@@ -474,6 +474,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
+  mPlatformType: 0
   mSceneName: RC_Lobby
 --- !u!114 &11407446
 MonoBehaviour:
@@ -676,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
+  mSoundSettingType: 1
 --- !u!114 &11426208
 MonoBehaviour:
   m_ObjectHideFlags: 1

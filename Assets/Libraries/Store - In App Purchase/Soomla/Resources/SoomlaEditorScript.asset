@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e0a197f1a5042dc8fb2cd6ad519b70, type: 3}
+  m_Name: SoomlaEditorScript
+  m_EditorClassIdentifier: 
+  SoomlaSettings:
+    values:
+    - name: 536f6f6d6c61536563726574
+      value: 534554204f4e4c59204f4e4345
+    - name: 4465627567556e6974794d65737361676573
+      value: 54727565

@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -28,6 +28,8 @@ public class BF_AbilityFormat
     [SerializeField] private int mMinDamage = 87536;
     [SerializeField] private int mMaxDamage = 125432;
     [SerializeField] private int mCriticalChance = 60;
+    [SerializeField] private int mAttackValue = 0;
+    [SerializeField] private int mDefenseValue = 0;
 
 
     //----------------------
@@ -66,6 +68,18 @@ public class BF_AbilityFormat
     public override int GetCriticalChance()
     {
         return mCriticalChance;
+    }
+
+    public override int GetAttackValue()
+    {
+        // Do calculation about attack value
+        return mAttackValue;
+    }
+
+    public override int GetDefenseValue()
+    {
+        // Do calculation about defense value
+        return mDefenseValue;
     }
     //----------------------
     // Protected Functions

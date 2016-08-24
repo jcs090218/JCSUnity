@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -29,12 +29,12 @@ public class FollowMouse_Test : MonoBehaviour
     //========================================
     //      Unity's function
     //------------------------------
-	private void Awake() 
+    private void Awake() 
     {
         
-	}
-	
-	private void Update() 
+    }
+    
+    private void Update() 
     {
         //this.transform.position = Input.mousePosition;
 

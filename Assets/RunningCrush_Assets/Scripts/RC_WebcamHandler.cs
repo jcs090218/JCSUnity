@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -120,7 +120,7 @@ public class RC_WebcamHandler
         {
             JCS_GameErrors.JcsErrors(
                 "RC_WebcamHandler",
-                -1,
+                 
                 "Out of range index.");
 
             return;
@@ -130,7 +130,7 @@ public class RC_WebcamHandler
         {
             JCS_GameErrors.JcsErrors(
                 "RC_WebcamHandler",
-                -1,
+                 
                 "Call the function but does not assign panel at [" + mPanelIndex + "]...");
 
             return;

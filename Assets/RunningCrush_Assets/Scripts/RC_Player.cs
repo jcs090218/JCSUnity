@@ -3,15 +3,19 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
 
-public class RC_Player : JCS_2DSideScrollerPlayer
+/// <summary>
+/// 
+/// </summary>
+public class RC_Player 
+    : JCS_2DSideScrollerPlayer
 {
 
     //----------------------
@@ -19,7 +23,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
     //----------------------
     // Private Variables
-    [Header("** RC_Player Settings **")]
+    [Header("** RC_Player Settings (RC_Player) **")]
     [SerializeField] private int mControlIndex = 0;
 
     // Original speed starting of the game.
@@ -43,12 +47,15 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     [SerializeField] private float mReviveTime = 3.0f;
     private float mReviveTimer = 0;
 
+    // every player have a liquid bar.
+    private JCS_3DLiquidBar mLiquidBar = null;
+
     // actions
     private bool mReviving = false;
     private bool mWait = false;
 
     // golds
-    [Header("** Check Variables **")]
+    [Header("** Check Variables (RC_Player) **")]
     // player hold his own gold. (for multi-player system.)
     // if is multi-player mode then we threat this as a point.
     [SerializeField] private int mCurrentGold = -1;
@@ -69,6 +76,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         this.mWait = act;
     }
     public int CurrentGold { get { return this.mCurrentGold; } set { this.mCurrentGold = value; } }
+    public void SetLiquidBar(JCS_3DLiquidBar rb) { this.mLiquidBar = rb; }
 
     //========================================
     //      Unity's function
@@ -119,21 +127,34 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             }
         }
 
+#if (UNITY_EDITOR)
+        Test();
+#endif
 
         if (mWait)
             MoveSpeed = 0;
-    }
 
-    private void LateUpdate()
-    {
-        DoIsDead();
-
-        // this should be the last check.
         WinLose();
     }
 
-   
-    
+    protected override void LateUpdate()
+    {
+        base.LateUpdate();
+
+        UpdateBar();
+
+        DoIsDead();
+    }
+
+#if (UNITY_EDITOR)
+    private void Test()
+    {
+        if (JCS_Input.GetKey(KeyCode.V))
+            Die();
+    }
+#endif
+
+
     //========================================
     //      Self-Define
     //------------------------------
@@ -161,26 +182,34 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     public void ToggleWait()
     {
         // if is climbing return!
-        if (CharacterMode == JCS_2DCharacterMode.CLIMBING)
+        if (CharacterState == JCS_2DCharacterState.CLIMBING)
             return;
 
         mWait = !mWait;
 
         // Waiting animation trigger!
         if (mWait)
-            DoAnimation(JCS_PlayerState.SIT);
+            DoAnimation(JCS_LiveObjectState.SIT);
     }
 
-    public void Dead()
+    public override void Die()
     {
+        base.Die();
+        mMoveSpeed = 0;
 
+        mIsDead = true;
+        mReviving = true;
     }
 
     public void PushY(float val)
     {
         this.mVelocity.y += val;
     }
-    
+    public void DeltaPoint(float val)
+    {
+        mLiquidBar.DeltaCurrentValue(val);
+    }
+
     //----------------------
     // Protected Functions
     
@@ -188,7 +217,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     // Private Functions
     private void ProcessInput()
     {
-        // if the game is over does not input
         if (RC_GameSettings.instance.GAME_OVER)
             return;
 
@@ -213,8 +241,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
                 {
                     if (JCS_Input.GetKey(KeyCode.W))
                         Jump();
-                    else
-                        MoveRight();
 
                     if (JCS_Input.GetKeyDown(KeyCode.E))
                         ToggleWait();
@@ -225,8 +251,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
                 {
                     if (JCS_Input.GetKey(KeyCode.UpArrow))
                         Jump();
-                    else
-                        MoveRight();
 
                     if (JCS_Input.GetKeyDown(KeyCode.RightControl))
                         ToggleWait();
@@ -237,8 +261,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
                 {
                     if (JCS_Input.GetKey(KeyCode.I))
                         Jump();
-                    else
-                        MoveRight();
 
                     if (JCS_Input.GetKeyDown(KeyCode.O))
                         ToggleWait();
@@ -249,8 +271,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
                 {
                     if (JCS_Input.GetKey(KeyCode.Keypad8))
                         Jump();
-                    else
-                        MoveRight();
 
                     if (JCS_Input.GetKeyDown(KeyCode.Keypad9))
                         ToggleWait();
@@ -258,7 +278,9 @@ public class RC_Player : JCS_2DSideScrollerPlayer
                 break;
         }
 
-        if (JCS_Input.GetKeyDown(KeyCode.K))
+        MoveRight();
+
+        if (JCS_Input.GetKeyDown(KeyCode.P))
             JCS_SceneManager.instance.LoadScene("RC_LogoScene");
 
     }
@@ -281,7 +303,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
                 // minus a live
                 --mLife;
 
-                mSpriteRenderer.enabled = false;
+                Die();
 
                 JCS_DynamicScene jcsds = JCS_SceneManager.instance.GetDynamicScene();
                 JCS_2DShakeEffect jcsse = jcsds.GetComponent<JCS_2DShakeEffect>();
@@ -350,8 +372,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         newPos.y = mReviveHeight;
         newPos.x = JCS_Camera.main.transform.position.x;
         this.transform.position = newPos;
-
-        mSpriteRenderer.enabled = true;
     }
     private void WinLose()
     {
@@ -362,17 +382,26 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         if (RC_Camera.instance.GetTrackingPlayer().transform == this.transform)
         {
             // Do Win animation
-            DoAnimation(JCS_PlayerState.ALERT);
+            DoAnimation(JCS_LiveObjectState.STAND);
         }
         else
         {
             // Do lose animation
-            DoAnimation(JCS_PlayerState.PRONE);
+            DoAnimation(JCS_LiveObjectState.PRONE);
         }
         
 
         // dont move.
         mVelocity.x = 0;
+    }
+    private void UpdateBar()
+    {
+        if (mLiquidBar == null)
+            return;
+
+        Vector3 newPos = this.transform.position;
+        newPos += RC_GameSettings.instance.LIQUIDBAR_OFFSET;
+        mLiquidBar.transform.position = newPos;
     }
 
 }

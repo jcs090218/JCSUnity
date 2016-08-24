@@ -6,12 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateScene.unity
+  - enabled: 1
     path: Assets/RunningCrush_Assets/Scenes/RC_LogoScene.unity
   - enabled: 1
     path: Assets/RunningCrush_Assets/Scenes/RC_Lobby.unity
   - enabled: 1
-    path: Assets/RunningCrush_Assets/Scenes/RC_Game.unity
+    path: Assets/RunningCrush_Assets/Scenes/RC_Level_01.unity
+  - enabled: 1
+    path: Assets/RunningCrush_Assets/Scenes/RC_EndGame.unity
   - enabled: 1
     path: Assets/RunningCrush_Assets/Scenes/RC_Shop.unity
   - enabled: 1
-    path: Assets/JCSUnity_Framework/Scenes/JCS_ApplicationCloseSimulateScene.unity
+    path: Assets/BossFight_Assets/Scenes/BF_LogoScene.unity
+  - enabled: 1
+    path: Assets/BossFight_Assets/Scenes/BF_Lobby.unity
+  - enabled: 1
+    path: Assets/BossFight_Assets/Scenes/BF_Game.unity

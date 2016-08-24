@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<BF_GameData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Copyright>Copyright 2016 JCSUnity, Taiwan</Copyright>
+  <Version>Package file v1.0</Version>
+  <ItemsInclude>
+    <ItemIdInclude>
+      <ItemInclude>false</ItemInclude>
+      <ItemId>NORMAL_STAR</ItemId>
+    </ItemIdInclude>
+    <ItemIdInclude>
+      <ItemInclude>false</ItemInclude>
+      <ItemId>STRONG_STAR</ItemId>
+    </ItemIdInclude>
+    <ItemIdInclude>
+      <ItemInclude>false</ItemInclude>
+      <ItemId>NORMAL_ARROW</ItemId>
+    </ItemIdInclude>
+    <ItemIdInclude>
+      <ItemInclude>false</ItemInclude>
+      <ItemId>STRONG_ARROW</ItemId>
+    </ItemIdInclude>
+  </ItemsInclude>
+  <Name />
+  <Cash>9113</Cash>
+</BF_GameData>

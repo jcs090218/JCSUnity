@@ -1,7 +1,200 @@
-Name: Jen-Chieh Shen <jcs090218@gmail.com>
-File Name: Update_Log.txt
-Last Edit Date: 2016-06-22
------------------------------------
+========================================================================
+$File: Update_Log.txt $
+$Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
+$Date: 2016-03-29 $
+$Notice: See LICENSE.txt for modification and distribution information 
+                  Copyright (c) 2016 by Shen, Jen-Chieh $
+========================================================================
+
+
+2016-08-24
+* README.txt file updated. (JCSUnity)
+* Working on Dialogue Scripting system. (JCSUnity)
+
+2016-08-20
+* Update damage text system, so now enemy and player 
+ can have different damage text set. (JCSUnity)
+* README.txt file updated. (JCSUnity)
+
+2016-08-19
+* In Game Log System implemented. (JCSUnity)
+* JCS_Settings interface implemented. (JCSUnity)
+* Log system implemented into Boss Fight Game. (Boss Fight)
+* JCS_Settings implemented. (JCSUnity)
+* JCS_Managers implemented. (JCSUnity)
+
+2016-08-18
+* Damage Text stackover flow logic bug fixed. (JCSUnity)
+* XML Save and Load implemented. (JCSUnity)
+* Get back recover value. (JCSUnity)
+* Health target cannot be damage while the game is over. (Boss Fight)
+* BF_CashText implemented. (Boss Fight)
+
+2016-08-11
+* Limit the monster in the scene so it won't spawn too many monster. (Boss Fight)
+
+2016-08-10
+* JCS_2DBullet huge updated. (JCSUnity)
+* Character animation fixed. (JCSUnity)
+
+2016-08-06
+* Sequence Shoot in Cursor. (JCSUnity & Boss Fight)
+* Push Skill implemented. (JCSUnity & Boss Fight)
+* Multiple attack implemented. (JCSUnity)
+
+2016-08-01
+* JCS_3DMouseMovement implemented. (JCSUnity)
+* BF_HealthTarget implemented. (Boss Fight)
+* JCS_LiquidBarInfo implemented. (JCSUnity)
+
+2016-07-31
+* IAP System using Soomla open source project. (Libraries)
+* randomize the cash value. (JCSUnity)
+* Item effect object implemented. (Boss Fight)
+
+2016-07-29
+* 目前最強的射擊武器. (Boss Fight)
+* JCS_2DInitLookByTypeAction implemented. (JCSUnity)
+* JCS_LiveObjectManager, JCS_2DLiveObjectManager implemented. (JCSUnity)
+* 全圖殺怪. (JCSUnity)
+
+2016-07-28
+* JCS_3DLiquidBar implemented. (JCSUnity)
+* JCS_HueController implemented. (JCSUnity)
+* Update Level Text. (Boss Fight)
+
+2016-07-27
+* Update inspector controll within the GUI function. (JCSUnity)
+    - JCS_SlideEffect
+
+2016-07-26
+* JCS_2DCamera smooth scroll implemeneted. (JCSUnity)
+* Mana System game machnice implemented. (JCSUnity)
+* JCS_LiquidBarText implemented. (JCSUnity)
+* use JCS_LiquidBarText into game. (Boss Fight)
+
+2016-07-24
+* 打幣系統. (Boss Fight)
+* End Game System implemented. (Boss Fight)
+* BF_RainFaller impelemented. (Boss Fight)
+* JCS_Reflect object more functional with position offset. (JCSUnity)
+
+2016-07-23
+* Collision Fixed. (Boss Fight)
+* Cash System implemented. (Boss Fight)
+
+2016-07-22
+* Bug Fixed. (JCSUnity)
+* BF_AutoAttacker implemented. (Boss Fight)
+* Boss Fight game scene updated. (Boss Fight)
+
+2016-07-20
+* Fixed the collision overlapping by using FixedUpdate() function call
+ from Unity Engine. (JCS_Unity)
+
+2016-07-19
+* JCS_2DFlyActionIgnore. (JCSUnity)
+* Fly Object ignore all platform in the scene now. (JCSUnity)
+* Arrow Rain implemented (Boss Fight)
+
+2016-07-18
+* AOE function implemented. (JCSUnity)
+* JCS_2DReflectBulletAction. (JCSUnity)
+* JCS_ButtonSoundEffect will have refuse sound when is not interactable. (JCSUnity)
+* JCS_Button interactable function updated. (JCSUnity)
+* JCS_2dFlyAction's basic function implemneted. (JCSUnity)
+
+2016-07-17
+* Player attack will wait all star hit the object before die. (JCSUnity)
+* Boss Fight game scene updated. (Boss Fight)
+* Memory Leak bug fixed. (Boss Fight & JCSUnity)
+
+2016-07-16
+* Wave handler implmented. (Boss Fight)
+* Game Level up implemented. (Boss Fight)
+* JCS_2DDeadAction implmented. (JCSUnity)
+
+2016-07-15
+* Update Log Viewer Packages. (Libraries)
+* JCS_3DDragDropObject implemented. (JCSUnity)
+* Stars can shoot down each other. (Boss Fight)
+* JCSUnity System updated. (JCSUnity)
+* Player will attack according to the mouse click. (Boss Fight)
+* Live Object animation functional. (Boss Fight & JCSUnity)
+
+2016-07-14
+* Boss Fight wave handler implemented but not finish yet. (Boss Fight)
+* JCS_GUIStarterScene implemented. (JCSUnity)
+* JCS_2DWalkAction add the random walk speed function at initilzie time. (JCSUnity)
+* JCS_2DJumpAction add the random jump force function at initilzie time. (JCSUnity)
+* JCS_GameErros function update, so no need to enter type the name out anymore, 
+ but the line number isnt update yet. (JCSUnity)
+* BF_CharacterSpawnHandler implemented, now we can design our own character 
+ spawn positions. (Boss Fight)
+
+
+2016-07-11
+* Mad effect for JCS_WalkAction implemented. (JCSUnity)
+* Start the design of the BF. (BossFight)
+
+2016-07-10
+* LiveObject can now attack player/each other. (JCSUnity)
+* KnowBack algorithm implemented. (JCSUnity)
+* Abiltiy Fromat provide attack and defense value. (JCSUnity)
+
+2016-07-09
+* JCS_2DWalkAction bug fixed. (JCSUnity)
+* JCS_VelcotiyInfo more function implemented. MoveSpeed & RecordSpeed. (JCSUnity)
+* JCS_LiveObject more function implemented. (JCSUnity)
+
+2016-07-08
+* JCS_2DCursorShootAction implemented. (JCSUnity)
+* JCS_3DCursorShootAction implemented. (JCSUnity)
+* JCS_2DJumpAction implemented. (JCSUnity)
+* JCS_2DWalkAction implemented. (JCSUnity)
+* JCS_VelocityInfo implemented. (JCSUnity)
+
+2016-07-07
+* JCS_2DLadder complete! (JCSUnity)
+
+2016-07-05
+* JCS_2DLadder bug fixed. (JCSUnity)
+* Player improvement. (Test)
+* JCS_Physics upgrade. (JCSUnity)
+* JCSUnity Bugs fixed.
+
+2016-07-03
+* JCS_2DLadder big upgrade.
+* JCS_Physics more colliding functions implemented. (JCSUnity)
+* JCS_2DSideScrolldPlayer more functions implemented. (JCSUnity)
+
+2016-07-01
+* JCS_3DCamera updated.
+* JCS_3DDemo scene make changes.
+
+2016-06-30
+* Complete Running Crush core system. (Running Crush, The rest will have to discuss 
+                                      with level designer and art team.)
+* Optimized JCSUnity a bit. (JCSUnity)
+* Start design the new game Boss Fight. (Boss Fight)
+
+2016-06-29
+* Select a level before taking image from webcam. (Running Crush)
+* JCS_RollButtonSelector functional. (JCSUnity)
+
+2016-06-28
+* Liquid Bar for Running Crush functional. (Running Crush)
+* JCS_TweenerPanel new added. (JCSUnity)
+
+2016-06-26
+* Liquid Bar for Running Crush. (Running Crush)
+* SpriteMash liberaris implemented. (Libraries)
+
+2016-06-23
+* Update JCS_ButtonSoundEffect, now we does not need to add to trigger event manully.
+* JCS_EnvironmentSoundPlayer added.
+* JCS_Lightning effect.
+* JCS_StaticLightning effect.
 
 2016-06-22
 * Update Detection area to multiple collider.

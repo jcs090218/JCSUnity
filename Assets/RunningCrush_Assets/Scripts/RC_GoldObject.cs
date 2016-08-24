@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -33,10 +33,14 @@ public class RC_GoldObject
     //========================================
     //      Unity's function
     //------------------------------
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // set to auto pick auto matically.
-        mAutoPick = true;
+        mAutoPickColliderTouched = true;
+
+        SetPickCallback(PickCallback);
     }
 
     //========================================
@@ -44,10 +48,15 @@ public class RC_GoldObject
     //------------------------------
     //----------------------
     // Public Functions
-    public override void SubclassCallBack(Collider other)
+
+
+    //----------------------
+    // Protected Functions
+
+    //----------------------
+    // Private Functions
+    private void PickCallback(Collider other)
     {
-        // current empty base function...
-        base.SubclassCallBack(other);
 
         // apply value to gold system.
         RC_Player p = other.GetComponent<RC_Player>();
@@ -55,7 +64,6 @@ public class RC_GoldObject
         {
             JCS_GameErrors.JcsErrors(
                 "RC_GoldObjec",
-                -1,
                 "U are using RC game object but the player isn't RC gameobject...");
 
             return;
@@ -68,11 +76,5 @@ public class RC_GoldObject
         if (RC_GameSettings.instance.GAME_MODE == RC_GameMode.SINGLE_PLAYERS)
             RC_GameSettings.RC_GAME_DATA.Gold += mCashValue;
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
 }

@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -47,6 +47,10 @@ public class RC_GameManager
 
     private void Update()
     {
+#if (UNITY_EDITOR)
+        Test();
+#endif
+
         if (!mDoIgnoreOnce)
         {
             if (JCS_PlayerManager.instance.GetJCSPlayerList().Count == RC_GameSettings.instance.PLAYER_IN_GAME)
@@ -59,6 +63,10 @@ public class RC_GameManager
         }
     }
 
+    private void Test()
+    {
+        
+    }
     
     //========================================
     //      Self-Define
@@ -83,16 +91,13 @@ public class RC_GameManager
             {
                 JCS_GameErrors.JcsErrors(
                     "RC_GameManager",
-                    -1,
+                     
                     "Player List in RC_GameSetting are null...");
 
                 return;
             }
 
-            RC_Player rcp = (RC_Player)JCS_UsefualFunctions.SpawnGameObject(gs.PLAYERS[index]);
-
-            // set back to list so it could be manage.
-            //gs.PLAYERS[index] = rcp;
+            RC_Player rcp = (RC_Player)JCS_Utility.SpawnGameObject(gs.PLAYERS[index]);
 
             // set control index
             rcp.ControlIndex = index;
@@ -104,19 +109,32 @@ public class RC_GameManager
                 jcs2ddsm.SetObjectParentToOrderLayerByOrderLayerIndex(ref jcsOlo, 4);
             }
 
+            if (gs.LIQUID_MODE)
+            {
+                if (gs.GLOBAL_LIQUIDBAR != null)
+                {
+                    // spawn a 3d liquid bar
+                    JCS_3DLiquidBar lb = (JCS_3DLiquidBar)JCS_Utility.SpawnGameObject(gs.GLOBAL_LIQUIDBAR);
+                    rcp.SetLiquidBar(lb);
+                }
+                else {
+                    JCS_GameErrors.JcsErrors(
+                        "RC_GameManager",
+                         
+                        "No liquid bar attach to \"RC_GameSetting\" and u still want to access it.");
+                }
+            }
+
             // only webcam mode need the pointer.
             if (gs.WEBCAM_MODE)
             {
-                RC_PlayerPointer rcpp = (RC_PlayerPointer)JCS_UsefualFunctions.SpawnGameObject(gs.PLAYER_POINTERS[index]);
+                RC_PlayerPointer rcpp = (RC_PlayerPointer)JCS_Utility.SpawnGameObject(gs.PLAYER_POINTERS[index]);
 
                 // let rc pp knows the rc player.
                 rcpp.SetRCPlayer(rcp);
 
                 // let rc player know his rc player pointer
                 rcp.SetRCPlayerPointer(rcpp);
-
-                // set back to list so it could be manage.
-                //gs.PLAYER_POINTERS[index] = rcpp;
 
                 // set player to player pointer's transform.
                 // so the player can follow the player
@@ -125,7 +143,7 @@ public class RC_GameManager
 
             // create Revive Pointer
             {
-                RC_RevivePointer rcrp = (RC_RevivePointer)JCS_UsefualFunctions.SpawnGameObject(gs.PLAYER_REVIVE_POINTERS[index]);
+                RC_RevivePointer rcrp = (RC_RevivePointer)JCS_Utility.SpawnGameObject(gs.PLAYER_REVIVE_POINTERS[index]);
                 rcrp.SetRCPlayer(rcp);
                 rcp.SetRCRevivePointer(rcrp);
 

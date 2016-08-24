@@ -1,0 +1,153 @@
+﻿/**
+ * $File: JCS_VelocityInfo.cs $
+ * $Date: $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
+using System.Collections;
+
+
+namespace JCSUnity
+{
+
+    /// <summary>
+    /// Velocity Object must have "CharacterController"
+    /// componenet involved.
+    /// </summary>
+    [RequireComponent(typeof(CharacterController))]
+    public class JCS_VelocityInfo
+        : MonoBehaviour
+    {
+
+        //----------------------
+        // Public Variables
+
+        //----------------------
+        // Private Variables
+
+        [Header("** Check Variables (JCS_VelocityInfo) **")]
+        [SerializeField] private Vector3 mVelocity = Vector3.zero;
+
+        [Header("** Runtime Variables (JCS_VelocityInfo) **")]
+        [SerializeField] private bool mApplyGravity = true;
+        private CharacterController mCharacterController = null;
+
+        [Tooltip("How fast it get back to original speed?")]
+        [SerializeField] private float mSpeedFriction = 0.2f;
+        // 原本速度的變化量
+        private float mMoveSpeed = 0;
+        // 如果你要換他原本的速度, 就用這個變量
+        private float mRecordSpeed = 0;
+
+        [Tooltip("Freeze Velocity Horizontal Direction. (X Axis)")]
+        [SerializeField] private bool mFreezeX = false;
+        [Tooltip("Freeze Velocity Verticl Direction. (Y Axis)")]
+        [SerializeField] private bool mFreezeY = false;
+        [Tooltip("Freeze Velocity Depth Direction. (Z Axis)")]
+        [SerializeField] private bool mFreezeZ = false;
+
+        //----------------------
+        // Protected Variables
+
+        //========================================
+        //      setter / getter
+        //------------------------------
+        public CharacterController GetCharacterController() { return this.mCharacterController; }
+        public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
+        public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
+        public float VelY { get { return this.mVelocity.y; } set { this.mVelocity.y = value; } }
+        public float VelZ { get { return this.mVelocity.z; } set { this.mVelocity.z = value; } }
+        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
+        public float RecordSpeed { get { return this.mRecordSpeed; } set { this.mRecordSpeed = value; } }
+        public bool ApplyGravity { get { return this.mApplyGravity; } set { this.mApplyGravity = value; } }
+        public bool isGrounded { get { return this.mCharacterController.isGrounded; } }
+        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
+        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
+        public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
+
+        //========================================
+        //      Unity's function
+        //------------------------------
+        private void Awake()
+        {
+            mCharacterController = this.GetComponent<CharacterController>();
+        }
+
+        private void FixedUpdate()
+        {
+            // do freezing before move the character.
+            DoFreeze();
+
+            if (mCharacterController.enabled)
+            {
+                // apply force (moving the character)
+                mCharacterController.Move(Velocity * Time.deltaTime);
+            }
+
+            // getting back speed
+            this.mMoveSpeed += (this.mRecordSpeed - this.mMoveSpeed) / mSpeedFriction * Time.deltaTime;
+            this.VelX = MoveSpeed;
+
+            // apply gravit
+            if (ApplyGravity)
+            {
+                if (!isGrounded)
+                {
+                    VelY -= 
+                        JCS_GameConstant.GRAVITY *
+                        Time.deltaTime *
+                        JCS_GameSettings.instance.GRAVITY_PRODUCT;
+                }
+                // if touches the ground set to negative one.
+                else {
+                    VelY = -1;
+                }
+            }
+        }
+
+        //========================================
+        //      Self-Define
+        //------------------------------
+        //----------------------
+        // Public Functions
+
+        /// <summary>
+        /// Set all freeze axis to the act
+        /// </summary>
+        /// <param name="act"> default is true </param>
+        public void Freeze(bool act = true)
+        {
+            mFreezeX = act;
+            mFreezeY = act;
+            mFreezeZ = act;
+        }
+        /// <summary>
+        /// Set all freeze axis to false, 
+        /// so it no longer freezing.
+        /// </summary>
+        public void UnFreeze()
+        {
+            Freeze(false);
+        }
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
+
+        private void DoFreeze()
+        {
+            if (mFreezeX)
+                VelX = 0;
+            if (mFreezeY)
+                VelY = 0;
+            if (mFreezeZ)
+                VelZ = 0;
+        }
+
+    }
+}

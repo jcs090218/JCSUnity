@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -16,8 +16,10 @@ public class RC_BackToMenuButton
 {
     private JCS_2DSlideScreenCamera mSlideCamera = null;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // lazy code
         mSlideCamera = GameObject.Find("JCS_2DSlideScreenCamera").GetComponent<JCS_2DSlideScreenCamera>();
     }
@@ -28,7 +30,7 @@ public class RC_BackToMenuButton
         {
             JCS_GameErrors.JcsErrors(
                 "RC_BackToMenuButton",
-                -1,
+                 
                 "No JCS_2DSlideScreenCamera in the scene...");
             return;
         }

@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -23,6 +23,8 @@ public class RC_EffectItem
     // Private Variables
     private RC_EffectObject mEffectObject = null;
 
+    
+
     //----------------------
     // Protected Variables
 
@@ -36,12 +38,14 @@ public class RC_EffectItem
     private void Awake()
     {
         // set to auto pick auto matically.
-        mAutoPick = true;
+        mAutoPickColliderTouched = true;
 
         mEffectObject = this.GetComponent<RC_EffectObject>();
 
         // disable auto detect
         mEffectObject.AutoEffect = false;
+
+        SetPickCallback(PickCallback);
     }
 
     //========================================
@@ -49,9 +53,15 @@ public class RC_EffectItem
     //------------------------------
     //----------------------
     // Public Functions
-    public override void SubclassCallBack(Collider other)
+
+
+    //----------------------
+    // Protected Functions
+
+    //----------------------
+    // Private Functions
+    private void PickCallback(Collider other)
     {
-        base.SubclassCallBack(other);
 
         // apply effect to player
         RC_Player p = other.GetComponent<RC_Player>();
@@ -59,7 +69,7 @@ public class RC_EffectItem
         {
             JCS_GameErrors.JcsErrors(
                 "RC_GoldObjec",
-                -1,
+
                 "U are using RC game object but the player isn't RC gameobject...");
 
             return;
@@ -67,11 +77,5 @@ public class RC_EffectItem
 
         mEffectObject.DoEffect(p);
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
 }

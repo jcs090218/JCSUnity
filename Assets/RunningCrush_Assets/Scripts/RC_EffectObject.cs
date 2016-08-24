@@ -3,12 +3,12 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
-
+using JCSUnity;
 
 public class RC_EffectObject 
     : MonoBehaviour 
@@ -32,6 +32,10 @@ public class RC_EffectObject
     [Header("Jump Force")]
     [SerializeField] private float mJumpForceUp = 10;
     [SerializeField] private float mJumpForceDown = -10;
+
+    [Header("Point Type")]
+    [Tooltip("If add point absolute number of this value, if lose point then opposite of this method.")]
+    [SerializeField] private float mPoint = 10;
 
     //----------------------
     // Protected Variables
@@ -85,6 +89,12 @@ public class RC_EffectObject
                 break;
             case RC_EffectType.ENERGETIC:
                 p.DeltaJumpForce(mJumpForceUp, 0);
+                break;
+            case RC_EffectType.ADD_POINT:
+                p.DeltaPoint(JCS_Mathf.ToPositive(mPoint));
+                break;
+            case RC_EffectType.LOSE_POINT:
+                p.DeltaPoint(JCS_Mathf.ToNegative(mPoint));
                 break;
 
         }

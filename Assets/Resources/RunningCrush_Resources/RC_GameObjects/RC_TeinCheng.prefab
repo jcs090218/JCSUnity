@@ -67,6 +67,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.0033296298, z: 0, w: 0.99999446}
   m_LocalPosition: {x: 4.12, y: 5.12, z: 0}
   m_LocalScale: {x: 3.0821762, y: 3.082177, z: 3.0821762}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.3816, z: 0}
   m_Children:
   - {fileID: 467442}
   - {fileID: 451218}
@@ -81,6 +82,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 433362}
   m_RootOrder: 1
@@ -93,6 +95,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.84, y: 0, z: 0.07}
   m_LocalScale: {x: 21.692272, y: 11.659571, z: 21.692263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 433362}
   m_RootOrder: 0
@@ -217,14 +220,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e984153925b7abe4195e27d029adce0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mJumpSound:
-  - {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
-  - {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
-  - {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mStandSound: {fileID: 0}
   mWalkSound: {fileID: 0}
   mAttackSounds:
   - {fileID: 8300000, guid: 1608039c4ef0dbb4e8bdb7ae265f19f3, type: 3}
   - {fileID: 8300000, guid: 9ddc3d435db7ab44ea990d4bbbe7a5c4, type: 3}
+  mJumpSound:
+  - {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  - {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  - {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mProneSound: {fileID: 0}
+  mAlertSound: {fileID: 0}
+  mFlySound: {fileID: 0}
+  mLadderSound: {fileID: 0}
+  mRopeSound: {fileID: 0}
+  mSitSound: {fileID: 0}
+  mHitSound: {fileID: 0}
+  mDanceSound: {fileID: 0}
+  mSwimSound: {fileID: 0}
+  mDeadSound: {fileID: 8300000, guid: 6f9399fcef83c5e43a99225b4f0a2129, type: 3}
+  mGhostSound: {fileID: 0}
 --- !u!114 &11415818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,18 +262,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c995562cfabed4893400c206e440ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mPlayerGravity: 2
   mVelocity: {x: 0, y: 0, z: 0}
   mMoveSpeed: 10
   mIsControllable: 1
   mCanLadder: 0
   mCanRope: 0
-  mCharacterMode: 0
+  mClimbingTransform: {fileID: 0}
+  mCharacterState: 0
   mJumpType: 1
+  mJumpCount: 0
   mJumpYForces:
-  - 12
-  - 12
-  - 12
+  - 16
+  - 17
+  - 22
   mJumpXForces:
   - 0
   - 12
@@ -274,14 +290,26 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   mAirFriction: 0.1
-  mAutoClimb: 0
+  mUpKey: 273
+  mDownKey: 274
+  mRightKey: 275
+  mLeftKey: 276
+  mJumpKey: 308
+  mClimbUpKey: 273
+  mClimbDownKey: 274
+  mAutoClimb: 1
   mAutoClimbDirection: 1
+  mExitClimbForceY: 10
+  mHitEffect: 1
+  mHitVelX: 5
+  mHitVelY: 5
   mControlIndex: 1
   mSpeedFriction: 0.5
   mJumpFriction: 0.5
   mLife: 3
   mReviveHeight: 25
   mReviveTime: 1
+  mCurrentGold: -1
 --- !u!114 &11427408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cee80b3694ffa439fd84b0041a1606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mEffectToAllChild: 1
 --- !u!114 &11470932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -333,11 +362,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50f951a41cb4a4494e41f7ae2ce1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mCurrentStateName: 
   mCurrentState: 0
   mAnimationState: State
   mAnimationTimer: 0
   mAnimationOffset: 0.05
-  mFullClipState: TeinCheng_swing_normal
+  mFullClipStateName: Player_01_%jcs
+  mAtkClipStateName: Player_01_Attack
 --- !u!143 &14388718
 CharacterController:
   m_ObjectHideFlags: 1

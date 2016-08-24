@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &165316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427038}
+  - 114: {fileID: 11423690}
+  - 114: {fileID: 11476276}
+  - 114: {fileID: 11477830}
+  m_Layer: 0
+  m_Name: BF_Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &427038
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11423690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mType: 0
+--- !u!114 &11476276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9764ce3382cb2f94a9fe5100d919e8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CHARACTERS_IN_TEAM: 4
+  CHARACTERS_IN_GAME:
+  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
+  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
+  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
+  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
+  FILE_PATH: SavedData/
+  FILE_NAME: BF_GameData
+  TOTAL_MOB_IN_SCENE: 15
+  FREEZE_COLOR: {r: 0.7058823, g: 0.7058823, b: 1, a: 1}
+  BURN_COLOR: {r: 1, g: 0.75735295, b: 0.75735295, a: 1}
+--- !u!114 &11477830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9163d7bc70d879d4fa24769c3703d4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EXP_BASE: 'Get exp '
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 165316}
+  m_IsPrefabParent: 1

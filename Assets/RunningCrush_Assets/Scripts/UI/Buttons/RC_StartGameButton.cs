@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -40,7 +40,7 @@ public class RC_StartGameButton
         mImage = this.GetComponent<Image>();
 
         mImage.enabled = false;
-        JCS_UsefualFunctions.SetActiveToAllChildren(this.transform, false);
+        JCS_Utility.SetActiveToAllChildren(this.transform, false);
     }
 
     private void Update()
@@ -48,7 +48,7 @@ public class RC_StartGameButton
         if (RC_GameSettings.instance.READY_TO_START_GAME)
         {
             mImage.enabled = true;
-            JCS_UsefualFunctions.SetActiveToAllChildren(this.transform, true);
+            JCS_Utility.SetActiveToAllChildren(this.transform, true);
         }
     }
     

@@ -3,8 +3,8 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information $
- *		                Copyright (c) 2016 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -16,8 +16,10 @@ public class RC_PlayButton
 {
     private JCS_2DSlideScreenCamera mSlideCamera = null;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // OPTIMIZE(JenChieh): if the game is too slow.
         //                  this can be one thing we need to optimize.
         mSlideCamera = GameObject.Find("JCS_2DSlideScreenCamera").GetComponent<JCS_2DSlideScreenCamera>();
@@ -29,7 +31,7 @@ public class RC_PlayButton
         {
             JCS_GameErrors.JcsErrors(
                 "RC_PlayButton", 
-                -1, 
+                  
                 "No JCS_2DSlideScreenCamera in the scene...");
             return;
         }

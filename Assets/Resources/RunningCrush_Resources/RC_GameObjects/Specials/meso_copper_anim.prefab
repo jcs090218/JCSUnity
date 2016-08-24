@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.33, y: 0, z: 0}
   m_LocalScale: {x: 3.082176, y: 3.082176, z: 3.082176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -89,13 +89,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cac044d8e866d14c957df86f6fbc30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mEffectType: 2
+  mEffectType: 8
   mAutoEffect: 1
   mSpeedUp: 10
   mSpeedDown: -5
   mPushForce: 10
   mJumpForceUp: 10
   mJumpForceDown: -10
+  mPoint: 10
 --- !u!114 &11495330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,9 +109,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 2
-  mPickSound: {fileID: 0}
   mPickKey: 122
   mAutoPick: 0
+  mPickSound: {fileID: 0}
+  mEffectSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
 --- !u!212 &21298064
 SpriteRenderer:
   m_ObjectHideFlags: 1

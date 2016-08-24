@@ -22,15 +22,15 @@ public class SlideInput_SwitchScene_Test
     //========================================
     //      Unity's function
     //------------------------------
-	private void Awake() 
+    private void Awake() 
     {
         
-	}
-	
-	private void Update() 
+    }
+    
+    private void Update() 
     {
         
-	}
+    }
     
     //========================================
     //      Self-Define
