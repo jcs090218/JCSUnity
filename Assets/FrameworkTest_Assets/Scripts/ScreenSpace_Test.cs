@@ -39,6 +39,7 @@ public class ScreenSpace_Test
     //========================================
     //      setter / getter
     //------------------------------
+    public SpriteRenderer SpriteRenderer { get { return this.mSpriteRenderer; } }
 
     //========================================
     //      Unity's function

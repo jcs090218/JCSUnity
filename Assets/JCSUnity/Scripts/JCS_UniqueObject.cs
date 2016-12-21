@@ -24,7 +24,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private JCS_SingletonObject mType = JCS_SingletonObject.NONE;
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_SingletonObject mType = JCS_SingletonObject.NONE;
 
         //----------------------
         // Protected Variables
@@ -32,6 +35,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_SingletonObject GetSingletonObjectType() { return this.mType; }
 
         //========================================
         //      Unity's function
@@ -40,7 +44,14 @@ namespace JCSUnity
         {
             CheckByType();
 
-            DontDestroyOnLoad(this.gameObject);
+            // only the root object can do this.
+            if (this.transform.parent == null)
+                DontDestroyOnLoad(this.gameObject);
+            else
+            {
+                JCS_Debug.JcsWarnings(
+                    this, "Only the root object can be use DontDestoryOnLoad...");
+            }
         }
 
         //========================================
@@ -68,7 +79,7 @@ namespace JCSUnity
 
             //            if (jc.Length != 1)
             //            {
-            //                JCS_GameErrors.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
+            //                JCS_Debug.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
             //                DestroyImmediate(this.gameObject);
             //                return;
             //            }
@@ -81,7 +92,7 @@ namespace JCSUnity
 
             //            if (jc.Length != 1)
             //            {
-            //                JCS_GameErrors.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
+            //                JCS_Debug.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
             //                DestroyImmediate(this.gameObject);
             //                return;
             //            }
@@ -95,7 +106,7 @@ namespace JCSUnity
 
             //            if (jc.Length != 1)
             //            {
-            //                JCS_GameErrors.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
+            //                JCS_Debug.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
             //                DestroyImmediate(this.gameObject);
             //                return;
             //            }

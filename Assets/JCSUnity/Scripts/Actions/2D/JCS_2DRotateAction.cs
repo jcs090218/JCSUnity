@@ -12,6 +12,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Do the rotate action.
+    /// </summary>
     public class JCS_2DRotateAction
         : MonoBehaviour
         , JCS_Action
@@ -22,11 +26,18 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private float mStartingDegree = 0.0f;
-        // How fast it rotate
+
+        [Header("** Runtime Variables (JCS_2DRotateAction) **")]
+
+        [Tooltip("Do the rotate action?")]
         [SerializeField]
+        private bool mAction = true;
+
+        [Tooltip("How fast it rotate?")]
+        [SerializeField] [Range(-1000.0f, 1000.0f)]
         private float mTurnSpeed = 1000.0f;
 
+        [Tooltip("")]
         [SerializeField]
         private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 
@@ -36,19 +47,18 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool Action { get { return this.mAction; } set { this.mAction = value; } }
+        public JCS_2DFaceType RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
+        public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
-        {
-
-            // apply the starting position
-            this.transform.Rotate(Vector3.forward, -mStartingDegree);
-        }
-
         private void Update()
         {
+            if (!mAction)
+                return;
+
             this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * Time.deltaTime);
         }
 

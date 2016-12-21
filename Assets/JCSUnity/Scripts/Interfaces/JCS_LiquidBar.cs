@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 namespace JCSUnity
@@ -16,6 +17,9 @@ namespace JCSUnity
     // when value is zero do this call back
     public delegate void ZeroCallback();
 
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class JCS_LiquidBar
         : MonoBehaviour
     {
@@ -23,11 +27,15 @@ namespace JCSUnity
         //      Variable-Define
         //------------------------------
 
+        private const float MIN_LIQUID_BAR_VALUE = -9999999;
+        private const float MAX_LIQUID_BAR_VALUE = 9999999;
+
         // when value is zero do this call back
         protected ZeroCallback mZeroCallbackFunc = null;
 
 
         [Header("** Check Variables (JCS_LiquidBar) **")]
+
         [SerializeField]
         protected JCS_LiquidBarInfo mInfo = null;
 
@@ -40,14 +48,44 @@ namespace JCSUnity
         // check if object do zero.
         protected bool mZeroed = false;
 
+
+        [Header("** Initialize Variables (JCS_LiquidBar) **")]
+
+        [Tooltip("Align on which side? (top/bottom/right/left)")]
+        [SerializeField]
+        protected JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
+
+
         [Header("** Runtime Variables (JCS_LiquidBar) **")]
-        [SerializeField] protected float mDeltaFriction = 0.2f;
-        [SerializeField] protected float mMinValue = 0;
-        [SerializeField] protected float mMaxValue = 100;
-        [SerializeField] protected float mCurrentValue = 50;
+
+        [Tooltip(@"How fast the liquid bar move approach to 
+target position/value.")]
+        [SerializeField]
+        protected float mDeltaFriction = 0.2f;
+
+        [Tooltip("Mininum value of the liquid bar.")]
+        [SerializeField]
+        [Range(MIN_LIQUID_BAR_VALUE, MAX_LIQUID_BAR_VALUE)]
+        protected float mMinValue = 0;
+
+        [Tooltip("Maxinum value of the liquid bar.")]
+        [SerializeField]
+        [Range(MIN_LIQUID_BAR_VALUE, MAX_LIQUID_BAR_VALUE)]
+        protected float mMaxValue = 100;
+
+        [Tooltip("")]
+        [SerializeField]
+        protected float mCurrentValue = 50;
 
         protected float mMinPos = 0;
         protected float mMaxPos = 0;
+
+
+        [Header("** Optional Variables (JCS_LiquidBar) **")]
+
+        [Tooltip("Information Image set here.")]
+        [SerializeField]
+        protected Image mInfoImage = null;
 
 
         [Header("** Asmptotic Recover Effect (JCS_LiquidBar) **")]
@@ -90,6 +128,7 @@ recover can be damage too.")]
         public ZeroCallback ZeroCallbackFunc { get { return this.mZeroCallbackFunc; } set { this.mZeroCallbackFunc = value; } }
 
         public JCS_LiquidBarInfo Info { get { return this.mInfo; } }
+        public Image InfoImage { get { return this.mInfoImage; } }
 
         public bool RecoverEffect { get { return this.mRecoverEffect; } set { this.mRecoverEffect = value; } }
         public float TimeToRecover { get { return this.mTimeToRecover; } set { this.mTimeToRecover = value; } }
@@ -97,6 +136,8 @@ recover can be damage too.")]
 
         public float MinValue { get { return this.mMinValue; } }
         public float MaxValue { get { return this.mMaxValue; } }
+
+        public JCS_Align GetAlign() { return this.mAlign; }
 
         //========================================
         //      Unity's function
@@ -106,6 +147,10 @@ recover can be damage too.")]
         { 
             // record down the recover value.
             this.mRecordValue = this.mRecoverValue;
+
+            // get the image 
+            if (mInfoImage == null)
+                this.mInfoImage = this.GetComponent<Image>();
         }
 
         protected virtual void Update()
@@ -198,5 +243,23 @@ recover can be damage too.")]
         /// </summary>
         /// <param name="val"> value to max </param>
         public abstract void SetMaxValue(float val);
+
+        /// <summary>
+        /// Set the source sprite from the Image component.
+        /// in Unity Engine.
+        /// </summary>
+        /// <param name="sprite"></param>
+        public void SetInfoSprite(Sprite sprite)
+        {
+            if (mInfoImage == null)
+            {
+                JCS_Debug.JcsErrors(
+                    this, "Cannot set the sprite without the image component.");
+
+                return;
+            }
+
+            mInfoImage.sprite = sprite;
+        }
     }
 }

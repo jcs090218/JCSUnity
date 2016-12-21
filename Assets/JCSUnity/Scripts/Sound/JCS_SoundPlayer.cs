@@ -14,7 +14,8 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// Sound Player for any object that need to player sound effect
+    /// Sound Player for any object that need to player 
+    /// sound effect.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
     public class JCS_SoundPlayer 
@@ -26,8 +27,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private AudioSource mAudioSource = null;
-        [SerializeField] private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
+
+        [Tooltip("Sound setting type for this perfab.")]
+        [SerializeField]
+        private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
         //----------------------
         // Protected Variables
@@ -45,6 +50,7 @@ namespace JCSUnity
         {
             mAudioSource = this.GetComponent<AudioSource>();
         }
+
         protected virtual void Start()
         {
             // let sound manager know we are here and ready
@@ -57,6 +63,12 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clip"></param>
+        /// <param name="type"></param>
         public void PlayOneShot(AudioClip clip, JCS_SoundSettingType type)
         {
             float volume = 0;
@@ -75,6 +87,11 @@ namespace JCSUnity
 
             PlayOneShot(clip, volume);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clip"></param>
         public void PlayOneShot(AudioClip clip)
         {
             if (clip == null)
@@ -82,6 +99,12 @@ namespace JCSUnity
 
             GetAudioSource().PlayOneShot(clip);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clip"></param>
+        /// <param name="volume"></param>
         public void PlayOneShot(AudioClip clip, float volume)
         {
             if (clip == null)
@@ -89,22 +112,39 @@ namespace JCSUnity
 
             GetAudioSource().PlayOneShot(clip, volume);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clip"></param>
+        /// <param name="volume"></param>
+        /// <param name="type"></param>
         public void PlayOneShot(AudioClip clip, float volume, JCS_SoundType type)
         {
             SetSoundType(type);
 
             PlayOneShot(clip, volume);
         }
+
         /// <summary>
         /// play sound when is not playing
         /// </summary>
         public void PlayOneShotWhileNotPlaying(AudioClip clip)
         {
+            if (GetAudioSource() == null)
+                return;
+
             if (GetAudioSource().isPlaying)
                 return;
 
             PlayOneShot(clip);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clip"></param>
+        /// <param name="type"></param>
         public void PlayOneShot(AudioClip clip, JCS_SoundType type)
         {
             SetSoundType(type);
@@ -112,10 +152,13 @@ namespace JCSUnity
             GetAudioSource().PlayOneShot(clip);
         }
 
-
-
         //----------------------
         // Protected Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
         protected void SetSoundType(JCS_SoundType type)
         {
             switch (type)

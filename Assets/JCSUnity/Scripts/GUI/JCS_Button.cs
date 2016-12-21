@@ -26,13 +26,31 @@ namespace JCSUnity
         protected Button mButton = null;
         protected Image mImage = null;
 
+
+        public delegate void CallBackFunc();
+        // JCSUnity framework only callback, do not override this callback.
+        private CallBackFunc mBtnClickSystemCallBack = null;
+        // for user's callback.
+        protected CallBackFunc mBtnClickCallBack = null;
+
+
+        [Header("** Optional Variables (JCS_Button) **")]
+
+        [Tooltip("text under the button, no necessary.")]
+        [SerializeField]
+        protected Text mButtonText = null;
+
+
         [Header("** Initialize Variables (JCS_Button) **")]
+
         [Tooltip("Auto add listner to button click event?")]
         [SerializeField] protected bool mAutoListener = true;
         [Tooltip("Index pairing with Dialogue, in order to call the correct index.")]
         [SerializeField] protected int mDialogueIndex = -1;
 
+
         [Header("** Runtime Variables (JCS_Button) **")]
+
         [Tooltip("Is the button interactable or not. (Default: true)")]
         [SerializeField]
         protected bool mInteractable = true;
@@ -45,11 +63,6 @@ namespace JCSUnity
         [SerializeField]
         protected Color mNotInteractColor = new Color(1, 1, 1, 0.5f);
 
-        public delegate void CallBackFunc();
-        // JCSUnity framework only callback, do not override this callback.
-        private CallBackFunc mBtnClickSystemCallBack =null;
-        // for user's callback.
-        protected CallBackFunc mBtnClickCallBack = null;
 
         //========================================
         //      setter / getter
@@ -70,6 +83,7 @@ namespace JCSUnity
                 SetInteractable();
             }
         }
+        public Text ButtonText { get { return this.mButtonText; } }
 
         //========================================
         //      Unity's function
@@ -79,7 +93,10 @@ namespace JCSUnity
             mRectTransform = this.GetComponent<RectTransform>();
             mButton = this.GetComponent<Button>();
             mImage = this.GetComponent<Image>();
-            
+
+            // try to get the text from the child.
+            mButtonText = this.GetComponentInChildren<Text>();
+
             if (mAutoListener)
             {
                 // add listener itself, but it won't show in the inspector.

@@ -38,38 +38,54 @@ namespace JCSUnity
         [Header("** Pre Calculate Effect **")]
 
         [Tooltip("Enable this the attack will be calculate before hit the object.")]
-        [SerializeField] private bool mPreCalculateEffect = false;
+        [SerializeField]
+        private bool mPreCalculateEffect = false;
 
         [Tooltip("Damages that store in here ready to apply to the target.")]
-        [SerializeField] private int[] mDamageApplying = null;
+        [SerializeField]
+        private int[] mDamageApplying = null;
 
 
         [Header("** Lock Effect **")]
 
         [Tooltip("Enable/Disable the effect.")]
-        [SerializeField] private bool mOnlyWithTarget = false;
+        [SerializeField]
+        private bool mOnlyWithTarget = false;
 
         [Tooltip("Target we lock on!")]
-        [SerializeField] private Transform mTargetTransform = null;
+        [SerializeField]
+        private Transform mTargetTransform = null;
 
 
         [Header("** Runtime Variables **")]
+
         // Ability Format
         [Tooltip("Ability decide the min and max damage possibility.")]
-        [SerializeField] private JCS_AbilityFormat mAbilityFormat = null;
+        [SerializeField]
+        private JCS_AbilityFormat mAbilityFormat = null;
+
         // Offset
         [Tooltip("Position + this.Offset where damage text will spawn.")]
-        [SerializeField] private Vector3 mDamageTextPositionOffset = Vector3.zero;
+        [SerializeField]
+        private Vector3 mDamageTextPositionOffset = Vector3.zero;
+
 
         [Header("** Random Effect **")]
+
         [Tooltip("Enable/Disable Random Position Effect")]
-        [SerializeField] private bool mRandPos = false;
         [SerializeField]
+        private bool mRandPos = false;
+        
         [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)] private float mRandPosRange = 0;
+        [SerializeField] [Range(0, 10)]
+        private float mRandPosRange = 0;
+
 
         [Header("** Destroy Setting **")]
-        [SerializeField] private bool mDestroyByThisAction = true;
+
+        [SerializeField]
+        private bool mDestroyByThisAction = true;
+
 
         [Header("** AOE Effect **")]
 
@@ -214,7 +230,7 @@ namespace JCSUnity
                 mCriticalChance = mAbilityFormat.GetCriticalChance();
             }
             else {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     "JCS_ApplyDamageTextToLiveObjectAction", 
                     "You sure to not using any \"JCS_AbilityFormat\"?");
             }

@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_DestroySoundEndEvent
         : MonoBehaviour
@@ -23,7 +27,6 @@ namespace JCSUnity
         //----------------------
         // Private Variables
         private JCS_SoundPlayer mSoundPlayer = null;
-        private bool mPlayed = false;
 
         //----------------------
         // Protected Variables

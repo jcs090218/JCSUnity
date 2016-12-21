@@ -15,11 +15,11 @@ namespace JCSUnity
     {
         public override void JCS_ButtonClick()
         {
-            JCS_ButtonFunctions.ToOfficailWebpage();
+            JCS_UtilityFunctions.ToOfficailWebpage();
 
-            JCS_ButtonFunctions.DestoryCurrentDialogue(JCS_DialogueType.SYSTEM_DIALOGUE);
+            JCS_UtilityFunctions.DestoryCurrentDialogue(JCS_DialogueType.SYSTEM_DIALOGUE);
 
-            JCS_ButtonFunctions.QuitApplication();
+            JCS_UtilityFunctions.QuitApplication();
         }
     }
 }

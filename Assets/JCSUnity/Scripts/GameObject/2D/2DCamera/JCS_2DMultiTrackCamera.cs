@@ -36,7 +36,8 @@ namespace JCSUnity
         private AudioListener mAudioListener = null;
 
         [Header("Plz add the camera u want to use in the scene.")]
-        [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;
+        [SerializeField]
+        private JCS_2DCamera mJCS_2DCamera = null;
         
         private float mLastDiffDistanceX = 0;
         private float mLastDiffDistanceY = 0;
@@ -81,7 +82,7 @@ namespace JCSUnity
             // if still null spawn a default one!
             if (mJCS_2DCamera == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_2DMultiTrackCamera",   "There is not JCS_2DCamera attach to, spawn a default one!");
+                JCS_Debug.JcsErrors("JCS_2DMultiTrackCamera",   "There is not JCS_2DCamera attach to, spawn a default one!");
 
                 // Spawn a Default one!
                 this.mJCS_2DCamera = JCS_Utility.SpawnGameObject(

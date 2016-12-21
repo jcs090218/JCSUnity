@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
     public delegate void PickCallback(Collider other);
@@ -33,42 +34,61 @@ namespace JCSUnity
         protected bool mCanPick = true;
         protected BoxCollider mBoxCollider = null;
 
-        [Header("** System Settings **")]
-        [SerializeField] protected bool mMustBeActivePlayer = true;
+        [Header("** Check Variables (JCS_Item) **")]
 
-        [Header("** System Settings **")]
+        [Tooltip(@"Collider detect can be picked.
+u can set this directly in order to get the pick effect too.
+Once u set this, the object will do tween 
+effect to this transform.")]
+        [SerializeField]
+        protected Collider mPickCollider = null;
+
+
+        [Header("** Player Specific Settings (JCS_Item) **")]
+
+        [Tooltip("Is the auto pick collider must be player?")]
+        [SerializeField]
+        protected bool mMustBeActivePlayer = true;
+
         [Tooltip("Key to active pick event.")]
-        [SerializeField] protected KeyCode mPickKey = KeyCode.Z;
+        [SerializeField]
+        protected KeyCode mPickKey = KeyCode.Z;
+
+
+        [Header("** System Settings (JCS_Item) **")]
 
         [Tooltip("Pick item by click/mouse?")]
-        [SerializeField] protected bool mPickByMouseDown = false;
+        [SerializeField]
+        protected bool mPickByMouseDown = false;
 
         [Tooltip("When player hit this object pick it up automatically.")]
-        [SerializeField] protected bool mAutoPickColliderTouched = false;
+        [SerializeField]
+        protected bool mAutoPickColliderTouched = false;
 
         [Tooltip(@"When the item are on the ground, pick it up when there 
 is object that we target.")]
-        [SerializeField] protected bool mAutoPickWhileCan = false;
+        [SerializeField]
+        protected bool mAutoPickWhileCan = false;
 
-        [Header("** Sound Settings **")]
+
+        [Header("** Sound Settings (JCS_Item) **")]
+
         [Tooltip("Audio sound when u pick up this item")]
-        [SerializeField] protected AudioClip mPickSound = null;
-        [Tooltip("Sound base on the item, what will do?")]
-        [SerializeField] protected AudioClip mEffectSound = null;
+        [SerializeField]
+        protected AudioClip mPickSound = null;
 
-        // collider detect can be picked.
-        // u can set this directly in order to get the pick effect too.
-        // Once u set this, the object will do tween 
-        // effect to this transform.
-        protected Collider mPickCollider = null;
-
+        [Tooltip("Audio sound when u pick up this item (Global) ")]
+        [SerializeField]
+        protected AudioClip mEffectSound = null;
 
         protected PickCallback mPickCallback = DefaultPickCallback;
 
 
         [Header("** Optional Variables (JCS_UnityObject) **")]
-        [SerializeField] private JCS_Tweener mTweener = null;
-        [SerializeField] private JCS_DestinationDestroy mDestinationDestroy = null;
+        [SerializeField]
+        private JCS_Tweener mTweener = null;
+        [SerializeField]
+        private JCS_DestinationDestroy mDestinationDestroy = null;
 
         //========================================
         //      setter / getter
@@ -87,7 +107,7 @@ is object that we target.")]
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected virtual void Awake()
         {
             mBoxCollider = this.GetComponent<BoxCollider>();
 
@@ -96,7 +116,7 @@ is object that we target.")]
             UpdateUnityData();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             if (mTweener == null)
                 mTweener = this.GetComponent<JCS_Tweener>();
@@ -104,12 +124,12 @@ is object that we target.")]
                 mDestinationDestroy = this.GetComponent<JCS_DestinationDestroy>();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             DoAutoPickWhileCan();
         }
 
-        private void OnTriggerStay(Collider other)
+        protected virtual void OnTriggerStay(Collider other)
         {
             if (mAutoPickColliderTouched)
             {
@@ -125,14 +145,14 @@ is object that we target.")]
             }
         }
 
-        private void OnMouseDown()
+        protected virtual void OnMouseDown()
         {
             if (!mPickByMouseDown)
                 return;
 
             if (mPickCollider == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this, "Cannot pick the item cuz there is no collider set.");
 
                 return;
@@ -165,7 +185,7 @@ is object that we target.")]
                     return;
             }
 
-            RC_Player p = other.GetComponent<RC_Player>();
+            JCS_Player p = other.GetComponent<JCS_Player>();
 
             if (mAutoPickColliderTouched && p != null)
             {
@@ -251,7 +271,7 @@ is object that we target.")]
                 mTweener.DoTweenContinue(other.transform);
             }
 
-            
+
             if (mDestinationDestroy == null)
             {
                 // default settings
@@ -260,7 +280,6 @@ is object that we target.")]
             }
             mDestinationDestroy.SetTargetTransform(other.transform);
         }
-
 
         /// <summary>
         /// If the Pick Collider is not null, 

@@ -9,8 +9,10 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
     /// <summary>
     /// While hit the destination destroy it
     /// </summary>
@@ -30,17 +32,34 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Runtime Variables **")]
-        [SerializeField] private Transform mTargetTransform = null;
-        [Tooltip("Accept range to destroy this object.(circle)")]
-        [SerializeField] private float mDestroyDistance = 0.3f;
-
-        [Header("** Fade Effect **")]
-        [SerializeField] private bool mFadeEffect = true;
-        [SerializeField] private FadeType mFadeType = FadeType.IN;
-        [SerializeField] private float mFadeDistance = 500;
         private JCS_AlphaObject mAlphaObject = null;
 
+        [Header("** Runtime Variables *(JCS_DestinationDestroy) **")]
+
+        [Tooltip("Do the action?")]
+        [SerializeField]
+        private bool mAction = true;
+
+        [SerializeField]
+        private Transform mTargetTransform = null;
+
+        [Tooltip("Accept range to destroy this object.(circle)")]
+        [SerializeField]
+        private float mDestroyDistance = 0.3f;
+
+
+        [Header("** Fade Effect (JCS_DestinationDestroy) **")]
+
+        [SerializeField]
+        private bool mFadeEffect = true;
+
+        [Tooltip("How kind of fade?")]
+        [SerializeField]
+        private FadeType mFadeType = FadeType.IN;
+
+        [Tooltip("How far start to fade?")]
+        [SerializeField]
+        private float mFadeDistance = 500;
 
         //----------------------
         // Protected Variables
@@ -48,6 +67,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool Action { get { return this.mAction; } set { this.mAction = value; } }
         public void SetTargetTransform(Transform pos) { this.mTargetTransform = pos; }
         public float FadeDistance { get { return this.mFadeDistance; } set { this.mFadeDistance = value; } }
         public float DestroyDistance { get { return this.mDestroyDistance; } set { this.mDestroyDistance = value; } }
@@ -66,12 +86,16 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (mTargetTransform == null)
+            // check if action triggered?
+            if (!mAction || mTargetTransform == null)
             {
-                JCS_GameErrors.JcsErrors(
-                    "JCS_DestinationDestroy",
-                     
-                    "No target found...");
+#if (UNITY_EDITOR)
+                if (JCS_GameSettings.instance.DEBUG_MODE)
+                {
+                    JCS_Debug.JcsErrors(
+                        this, "No target found...");
+                }
+#endif
 
                 return;
             }
@@ -91,7 +115,7 @@ namespace JCSUnity
             }
 
 
-            if (currentDistance <= mDestroyDistance)
+            if (currentDistance < mDestroyDistance)
             {
                 Destroy(this.gameObject);
             }

@@ -48,7 +48,7 @@ namespace JCSUnity
 
             if (mCollider == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this, "No collider attached to do the dectect action...");
             }
             else

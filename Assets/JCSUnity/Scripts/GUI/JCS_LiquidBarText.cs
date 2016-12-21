@@ -79,7 +79,7 @@ namespace JCSUnity
         {
             if (mCounterText == null)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     this, "No counter text can be render...");
 
                 return;
@@ -89,7 +89,7 @@ namespace JCSUnity
 
             if (mFullText == null)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     this, "No full text can be render...");
 
                 return;

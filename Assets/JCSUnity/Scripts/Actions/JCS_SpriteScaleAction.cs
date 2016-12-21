@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -58,7 +59,7 @@ namespace JCSUnity
         //      Unity's function
         //------------------------------
 
-        private void Update()
+        private void LateUpdate()
         {
             Vector3 currentPos = this.transform.position;
 

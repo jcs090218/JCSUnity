@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     public abstract class JCS_Player 
         : MonoBehaviour

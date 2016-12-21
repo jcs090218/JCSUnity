@@ -34,7 +34,6 @@ namespace JCSUnity
         [SerializeField] private JCS_Axis mEffectAxis = JCS_Axis.AXIS_X;
 
         private float mEffectTime = 0;
-        private float mEffectPeriod = 0;
 
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
         [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;

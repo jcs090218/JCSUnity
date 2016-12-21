@@ -23,3 +23,5 @@ EditorBuildSettings:
     path: Assets/BossFight_Assets/Scenes/BF_Lobby.unity
   - enabled: 1
     path: Assets/BossFight_Assets/Scenes/BF_Game.unity
+  - enabled: 1
+    path: Assets/JCSUnity/Scenes/Demo/2D/JCS_SideScrollerDemo.unity

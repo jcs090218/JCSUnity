@@ -10,9 +10,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class JCS_ResizeUI 
         : MonoBehaviour
@@ -99,11 +103,34 @@ namespace JCSUnity
             JCS_Canvas.instance.SetResizeUI(this);
         }
 
+        private void Start()
+        {
+            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
+
+            // TODO(JenChieh): unknown reason that 
+            //                something changes this to 
+            //                somewhere else. (since 5.4.0f3)
+            Vector3 tempPos = appRect.localPosition;
+            tempPos.z = 0;
+            this.transform.localPosition = Vector3.zero;
+
+            this.transform.localEulerAngles = Vector3.zero;
+        }
+
         private void Update()
         {
             ResizeUI();
         }
 
+        //========================================
+        //      Self-Define
+        //------------------------------
+        //----------------------
+        // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ResizeUI()
         {
             if (mRect == null)
@@ -114,12 +141,6 @@ namespace JCSUnity
             mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
             transform.localScale = Vector3.one * mTargetScale;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         //----------------------
         // Protected Functions

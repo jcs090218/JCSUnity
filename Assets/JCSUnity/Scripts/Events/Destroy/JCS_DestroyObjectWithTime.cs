@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_DestroyObjectWithTime
         : MonoBehaviour
@@ -22,13 +26,19 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         [Header("** Runtime Variables **")]
-        [SerializeField] private float mDestroyTime = 10.0f;
+
+        [SerializeField]
+        private float mDestroyTime = 10.0f;
+
         private float mTimer = 0;
         private bool mTimesUp = false;
 
-        [SerializeField] private bool mDestroyWithAlphaEffect = true;
-        private JCS_FadeObject mAlphaObject = null;
+        [SerializeField]
+        private bool mDestroyWithAlphaEffect = true;
+
+        private JCS_FadeObject mFadeObject = null;
 
         //----------------------
         // Protected Variables
@@ -36,7 +46,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public JCS_FadeObject GetAlphaObject() { return this.mAlphaObject; }
+        public JCS_FadeObject GetFadeObject() { return this.mFadeObject; }
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
         public bool TimesUp { get { return this.mTimesUp; } set { this.mTimesUp = value; } }
 
@@ -45,7 +55,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            this.mAlphaObject = this.GetComponent<JCS_FadeObject>();
+            this.mFadeObject = this.GetComponent<JCS_FadeObject>();
         }
         private void Update()
         {
@@ -53,8 +63,8 @@ namespace JCSUnity
 
             if (mDestroyWithAlphaEffect)
             {
-                if (mDestroyTime - mTimer <= mAlphaObject.FadeTime)
-                    mAlphaObject.FadeOut();
+                if (mDestroyTime - mTimer <= mFadeObject.FadeTime)
+                    mFadeObject.FadeOut();
             }
 
             if (mDestroyTime < mTimer)

@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -284,7 +285,7 @@ namespace JCSUnity
         {
             if (mAtkAnim == null)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     "JCS_SwingAttackAction", 
                     @"No animation assign but u 
                     still want to spawn a animation...");

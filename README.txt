@@ -2,23 +2,40 @@
 $File: README.txt $
 $Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
 $Date: 2016-03-29 $
-$Revision: 1.3.5 $
-$Version Control Page: https://github.com/mike316mike316/JCSUnity_Framework.git $
-$Unity Version: 5.3.5f1 (64-bit) $
+$Revision: 1.3.7 $
+$Version Control Page: https://github.com/jcs090218/JCSUnity_Framework $
+$Unity Version: 5.4.2f2 (64-bit) $
 $Notice: See LICENSE.txt for modification and distribution information 
                   Copyright (c) 2016 by Shen, Jen-Chieh $
 ========================================================================
 
 
-    //==================================
-    //      Acknowledge
-    //----------------------------
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    =-=      Acknowledge
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     Demo Scene are all avialiable in "Assets/JCSUnity_Framework/Scenes"
 
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
-    =-= Execution Order Explaination
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    =-= Libraries List
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Plz download these library urself.
+    
+    ■ Necessary:
+        * SpriteMask : https://www.assetstore.unity3d.com/en/#!/content/27642
+        * Tweener : https://github.com/PeterVuorela/Tweener
+        
+    ■ Recommanded:
+        * Photon PUN+ : https://www.assetstore.unity3d.com/en/#!/content/12080
+        * Gaussian Blur : https://www.assetstore.unity3d.com/en/#!/content/42388
+        * Infinity Code : https://www.assetstore.unity3d.com/en/#!/content/3810
+        * Reporter : https://www.assetstore.unity3d.com/en/#!/content/12047
+        * Store - In App Purchase : https://www.assetstore.unity3d.com/en/#!/content/6103
+        * Unity Ads : https://www.assetstore.unity3d.com/en/#!/content/21027
+    
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    =-= Execution Order List
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     Following Scirpt should have lower execute order then "JCS_GameManager"
     (Notice: "Edit->Project Settings->Script Execution Order" to set the execution order!)
 
@@ -48,10 +65,11 @@ $Notice: See LICENSE.txt for modification and distribution information
         * JCS_TweenPanel
         * JCS_RollBtnSelector
         * JCS_DialgoueSystem
+        * JCS_PortalManager
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Naming Explaination
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * [Check Variables] - variable only for checking, do not adjust the value of 
      the variables, but you can use to check to see the effect during runtime.
      
@@ -65,27 +83,27 @@ $Notice: See LICENSE.txt for modification and distribution information
      exist in the final build. Usually the helper tool in for level designer.
 
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Level Design Rule 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * Every Scene must need "JCS_Managers" and "JCS_Settings" object in the "Hierarchy"
     * Use Start Scene in the Folder "Assets/JCSUnity/Scenes/StarterScene"
 
 
-    //==================================
-    //      System Explaination
-    //----------------------------
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    =-=      System Explaination
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Animator System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * Using Integer to represent the state! 
         (see "JCS_PlayerState" have more detail, 
         if just a animation without changing use IDLE!)
 
         
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Sound System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     (Level Designer)
     * Sound related variables can be set at "JCS_SoundSettings" script at "JCS_Settings" object!
     * Add BGM plz add "JCS_BGMPlayer" on Camera object.
@@ -95,9 +113,9 @@ $Notice: See LICENSE.txt for modification and distribution information
      in "JCS_SceneManager" script
         
         
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Dialogue System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     (Level Designer)
     * Create Dialogue and attach "JCS_DialogueObject" script
     * After modefied the whole scene pull it into Resource folder so in order to load.
@@ -116,28 +134,28 @@ $Notice: See LICENSE.txt for modification and distribution information
         3) use "Event Trigger" add the drag event and pull the object into the appearing slot.
         4) choose the function call in the script
         
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= GUI 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * Liquid Bar 
         - 請參考spr_sao_health_bar_under的美術製作方法. (那個bar)
         
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Logo System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * Logo Screen relate variables can be set at "JCS_Logo" script in "JCS_LogoScene"!
 
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Network System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * Enable/Disable socket can be set at "JCS_ApplicationManager" script.
     * Host Name, Port and relate variables can be set at "JCS_NetworkConstant" script.
 
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Player System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //-- Jump --//
     * Set "JumpType" accordingly to "Jump Forces"'s size (Maximize to Triple Jump = 3)
     Basic Jump = size 1;
@@ -145,23 +163,23 @@ $Notice: See LICENSE.txt for modification and distribution information
     Triple Jump = size 3;
 
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Scene System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * If is not a online game you can ignore the scene "JCS_Patcher", can directly go into Logo Scene.
 
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Screen Shot System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * Screen shot path, can be set at "JCS_GameSetting" script under Screen Shot section
     * Screen shot file name, can be set at "JCS_GameSetting" script under Screen Shot section
     * Screen shot extension, can be set at "JCS_GameSetting" script under Screen Shot section
     * function call "JCS_2DCamera->TakeScreenShot"
 
 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Sprite System 
-    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     * Defualt Sprite is facing left so make sure the sprite you are using default are facing left.
     

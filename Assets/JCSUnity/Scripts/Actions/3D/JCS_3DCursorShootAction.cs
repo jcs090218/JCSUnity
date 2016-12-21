@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     public class JCS_3DCursorShootAction
         : MonoBehaviour
@@ -33,6 +36,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mShootKeyCode = KeyCode.None;
 
+        [Tooltip("")]
         [SerializeField]
         private JCS_Vector3Direction mDirection = JCS_Vector3Direction.UP;
 
@@ -42,6 +46,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public KeyCode ShooKeyCode { get { return this.mShootKeyCode; } }
 
         //========================================
         //      Unity's function

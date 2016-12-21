@@ -70,7 +70,7 @@ namespace JCSUnity
 
             if (mJumpSound[0] == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
+                JCS_Debug.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
                 return;
             }
             mJCSSoundPlayer.PlayOneShot(mJumpSound[0], JCS_GameSettings.GetSkillsSound_Volume());
@@ -85,7 +85,7 @@ namespace JCSUnity
 
             if (mJumpSound[1] == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
+                JCS_Debug.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
                 return;
             }
             mJCSSoundPlayer.PlayOneShot(mJumpSound[1], JCS_GameSettings.GetSkillsSound_Volume());
@@ -100,7 +100,7 @@ namespace JCSUnity
 
             if (mJumpSound[2] == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
+                JCS_Debug.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
                 return;
             }
             mJCSSoundPlayer.PlayOneShot(mJumpSound[2], JCS_GameSettings.GetSkillsSound_Volume());
@@ -121,7 +121,7 @@ namespace JCSUnity
 
             if (mAttackSounds[rand] == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_2DPlayerAudioController", 
                     "Play sound with null references...");
 
@@ -136,7 +136,7 @@ namespace JCSUnity
         {
             if (mWalkSound == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_2DPlayerAudioController", 
                     "Play sound with null references...");
 
@@ -176,13 +176,13 @@ namespace JCSUnity
                     return mWalkSound;
                 case JCS_LiveObjectState.RAND_ATTACK:
                     {
-                        int index = JCS_Utility.JCS_IntRange(0, mAttackSounds.Length);
+                        //int index = JCS_Utility.JCS_IntRange(0, mAttackSounds.Length);
                         //return mAttackSounds[index];
                         return null;
                     }
                 case JCS_LiveObjectState.JUMP:
                     {
-                        int index = JCS_Utility.JCS_IntRange(0, mJumpSound.Length);
+                        //int index = JCS_Utility.JCS_IntRange(0, mJumpSound.Length);
                         //return mJumpSound[index];
                         return null;
                     }
@@ -210,7 +210,7 @@ namespace JCSUnity
                     return mGhostSound;
             }
 
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "JCS_2DSideScrollerPlayerAudioController",
                  
                 "Return sound that aren't in the player state...");

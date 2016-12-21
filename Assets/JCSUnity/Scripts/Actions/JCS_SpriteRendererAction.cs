@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -28,20 +29,28 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        private SpriteRenderer mSpriteRenderer = null;
+        private Vector3 mLastPosition = Vector3.zero;
+
         [Header("-- X Facing --")]
+
         [Tooltip("Enable/Disabel the effect in X axis")]
-        [SerializeField] private bool mFreezeX = false;
+        [SerializeField]
+        private bool mFreezeX = false;
+
         [Tooltip("Effect Only when Direction is Horizontal")]
-        [SerializeField] private bool mIsFacingRight = true;
+        [SerializeField]
+        private bool mIsFacingRight = true;
+
 
         [Header("-- Y Facing --")]
         [Tooltip("Enable/Disabel the effect in Y axis")]
-        [SerializeField] private bool mFreezeY = false;
-        [Tooltip("Effect Only when Direction is Vertical")]
-        [SerializeField] private bool mIsFacingUp = true;
+        [SerializeField]
+        private bool mFreezeY = false;
 
-        private SpriteRenderer mSpriteRenderer = null;
-        private Vector3 mLastPosition = Vector3.zero;
+        [Tooltip("Effect Only when Direction is Vertical")]
+        [SerializeField]
+        private bool mIsFacingUp = true;
 
         //----------------------
         // Protected Variables
@@ -60,7 +69,7 @@ namespace JCSUnity
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             Vector3 currentPos = this.transform.position;
 

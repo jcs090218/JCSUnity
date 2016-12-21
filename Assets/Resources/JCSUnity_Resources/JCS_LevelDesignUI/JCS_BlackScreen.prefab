@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11425318}
   - 114: {fileID: 11461196}
   - 114: {fileID: 11417912}
+  - 114: {fileID: 114000014207568206}
   m_Layer: 5
   m_Name: JCS_BlackScreen
   m_TagString: Untagged
@@ -84,6 +85,8 @@ MonoBehaviour:
   mObjectType: 1
   mFadeTime: 1
   mOverriteFade: 0
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
 --- !u!114 &11461196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,3 +133,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 172562}
   m_IsPrefabParent: 1
+--- !u!114 &114000014207568206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb208d196628fa64785fef78c9b23d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mType: 0

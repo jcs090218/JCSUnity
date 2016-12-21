@@ -44,7 +44,7 @@ namespace JCSUnity
 
             if (mPlatform == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_2DLadder", 
                       
                     "U have a ladder without a platform/ground to lean on.");

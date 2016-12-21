@@ -9,10 +9,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
     public delegate void VoidEvent();
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_CounterEvent
         : JCS_Event
     {
@@ -22,9 +26,13 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Initialize Varialbes **")]
-        [SerializeField] private float mDelayTime = 0;
-        private float mDelayTimer = 0;
+
+        //[Header("** Initialize Varialbes **")]
+
+        //[SerializeField]
+        //private float mDelayTime = 0;
+
+        //private float mDelayTimer = 0;
 
         //----------------------
         // Protected Variables

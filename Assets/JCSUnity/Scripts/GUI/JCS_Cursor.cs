@@ -46,7 +46,7 @@ namespace JCSUnity
         [SerializeField] private int mOrderLayer = 100;
 
         [Header("** Animation Settings (JCS_Cursor) **")]
-        [SerializeField] private JCS_CursorCustomizeType mAnimState = JCS_CursorCustomizeType.NORMAL_SELECT;
+        [SerializeField] private JCS_CursorCustomizeType mCursorCustomizeType = JCS_CursorCustomizeType.NORMAL_SELECT;
         [SerializeField] private RuntimeAnimatorController mNormalSelect = null;
         [SerializeField] private RuntimeAnimatorController mHelpSelect = null;
         [SerializeField] private RuntimeAnimatorController mWorkingInBackground = null;
@@ -75,6 +75,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
 
         //========================================
         //      Unity's function
@@ -262,7 +263,7 @@ namespace JCSUnity
 
             if (notFound)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                                 "JCS_Cursor",
                                  
                                 type.ToString() +  " animation does not assign...");

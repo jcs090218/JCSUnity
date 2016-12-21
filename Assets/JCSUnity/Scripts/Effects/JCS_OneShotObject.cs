@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_OneShotObject 
         : MonoBehaviour
     {
@@ -21,12 +25,31 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private JCS_Axis mAxis = JCS_Axis.AXIS_X;
-        [SerializeField] private bool mEffectOnAwake = true;
-        [SerializeField] private bool mLoop = false;
-        [SerializeField] private bool mStayAtLastPosition = false;
-        [SerializeField] private float mMoveSpeed = 5.0f;
-        [SerializeField] private float mDistance = 100.0f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_Axis mAxis = JCS_Axis.AXIS_X;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mEffectOnAwake = true;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mLoop = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mStayAtLastPosition = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mMoveSpeed = 5.0f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mDistance = 100.0f;
+
         private bool mEffect = false;
 
         private Vector3 mRecordPosition = Vector3.zero;

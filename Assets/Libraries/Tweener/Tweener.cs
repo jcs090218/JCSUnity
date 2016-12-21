@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 namespace PeterVuorela.Tweener
 {
 
@@ -20,15 +21,7 @@ namespace PeterVuorela.Tweener
 
         private Vector3 _ProgressPct = Vector3.zero;
 
-        public Vector3 progressPct
-        {
-            get
-            {
-                return _ProgressPct;
-            }
-        }
-
-
+        public Vector3 progressPct { get { return _ProgressPct; } }
 
         private bool _AnimatingX = false;
         private bool _AnimatingY = false;
@@ -39,6 +32,15 @@ namespace PeterVuorela.Tweener
         private Vector3 _Duration = Vector3.one;
 
         private Vector3 _Progression = Vector3.zero;
+
+        /// <summary>
+        /// Callback when reach destination.
+        /// </summary>
+        /// <param name="func"> function pointer </param>
+        public void SetCallback(CallBackDelegate func)
+        {
+            this._Callback = func;
+        }
 
         public Tweener() { }
 
@@ -195,6 +197,27 @@ namespace PeterVuorela.Tweener
             }
         }
 
+        /// <summary>
+        /// Reset tweener effect setting.
+        /// </summary>
+        public void ResetTweener()
+        {
+            _Progression.x = _To.x;
+            _AnimatingX = false;
+            _TimeElapsed.x = 0f;
+            _ProgressPct.x = 1f;
+
+            _Progression.y = _To.y;
+            _AnimatingY = false;
+            _TimeElapsed.y = 0f;
+            _ProgressPct.y = 1f;
+
+            _Progression.z = _To.z;
+            _AnimatingZ = false;
+            _TimeElapsed.z = 0f;
+            _ProgressPct.z = 1f;
+        }
+
         public void updateX(ref Vector2 whatToTween)
         {
             bool wasAnimating = _AnimatingX;
@@ -207,6 +230,7 @@ namespace PeterVuorela.Tweener
             }
 
         }
+
         public void updateY(ref Vector2 whatToTween)
         {
             bool wasAnimating = _AnimatingY;
@@ -219,6 +243,7 @@ namespace PeterVuorela.Tweener
             }
 
         }
+
         public void updateZ(ref Vector2 whatToTween)
         {
             bool wasAnimating = _AnimatingZ;
@@ -229,47 +254,11 @@ namespace PeterVuorela.Tweener
             {
                 _Callback.Invoke();
             }
-
         }
 
-        public bool animating
-        {
-            get
-            {
-                return (_AnimatingX || _AnimatingY || _AnimatingZ);
-            }
-        }
-
-        public Vector3 progression
-        {
-            get
-            {
-                return _Progression;
-            }
-        }
-
-        public Vector3 from
-        {
-            get
-            {
-                return _From;
-            }
-            set
-            {
-                _From = value;
-            }
-        }
-
-        public Vector3 to
-        {
-            get
-            {
-                return _To;
-            }
-            set
-            {
-                _To = value;
-            }
-        }
+        public bool animating { get { return (_AnimatingX || _AnimatingY || _AnimatingZ); } }
+        public Vector3 progression { get { return _Progression; } }
+        public Vector3 from { get { return _From; } set { _From = value; } }
+        public Vector3 to { get { return _To; } set { _To = value; } }
     }
 }

@@ -150,7 +150,7 @@ namespace JCSUnity
                 if (SERVER_CLOSE)
                 {
                     Debug.Log("Server End!");
-                    JCS_ButtonFunctions.PopIsConnectDialogue();
+                    JCS_UtilityFunctions.PopIsConnectDialogue();
                 }
                 else if (JCS_ApplicationManager.FIRST_LOGIN)
                 {

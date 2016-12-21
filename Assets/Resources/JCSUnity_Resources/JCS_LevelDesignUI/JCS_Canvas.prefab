@@ -12,7 +12,6 @@ GameObject:
   - 114: {fileID: 11464624}
   - 114: {fileID: 11491926}
   - 114: {fileID: 11475162}
-  - 114: {fileID: 11458532}
   m_Layer: 5
   m_Name: JCS_Canvas
   m_TagString: Untagged
@@ -20,18 +19,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11458532
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mType: 0
 --- !u!114 &11464624
 MonoBehaviour:
   m_ObjectHideFlags: 1

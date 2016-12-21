@@ -12,7 +12,12 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_FadeSound : MonoBehaviour
+
+    /// <summary>
+    /// Class do the sound fade in/out effect.
+    /// </summary>
+    public class JCS_FadeSound 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -23,10 +28,18 @@ namespace JCSUnity
         private AudioSource mAudioSource = null;
 
         private JCS_FadeType mType = JCS_FadeType.NONE;
-        [SerializeField] private bool mEffect = false;
 
-        [SerializeField] private float mFadeOutTime = 1.0f;
-        [SerializeField] private float mFadeInTime = 1.0f;
+        [Tooltip("Do the effect?")]
+        [SerializeField]
+        private bool mEffect = false;
+
+        [Tooltip("Fade out time.")]
+        [SerializeField]
+        private float mFadeOutTime = 1.0f;
+
+        [Tooltip("Fade in time.")]
+        [SerializeField]
+        private float mFadeInTime = 1.0f;
 
         private float mTargetVolume = 0.0f;
         private float mRecordVolume = 0.0f;
@@ -43,7 +56,6 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        
 
         private void Update()
         {
@@ -83,11 +95,16 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
         public void SetAudioSource(AudioSource source)
         {
             if (source == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_FadeSound",   "source assign are null references...");
+                JCS_Debug.JcsErrors("JCS_FadeSound",   "source assign are null references...");
                 return;
             }
 
@@ -103,17 +120,23 @@ namespace JCSUnity
             // target sound!
             mRecordVolume = mAudioSource.volume;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target_volume"></param>
+        /// <param name="time"></param>
         public void FadeOut(float target_volume, float time)
         {
             if (mType == JCS_FadeType.FADE_OUT)
             {
-                JCS_GameErrors.JcsErrors("JCS_FadeSound",   "Already Fade out");
+                JCS_Debug.JcsErrors("JCS_FadeSound",   "Already Fade out");
                 return;
             }
 
             if (mAudioSource == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_FadeSound",   "Cannot do the fade out effect without the source...");
+                JCS_Debug.JcsErrors("JCS_FadeSound",   "Cannot do the fade out effect without the source...");
                 return;
             }
 
@@ -125,17 +148,23 @@ namespace JCSUnity
             mType = JCS_FadeType.FADE_OUT;
             mEffect = true;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target_volume"></param>
+        /// <param name="time"></param>
         public void FadeIn(float target_volume, float time)
         {
             if (mType == JCS_FadeType.FADE_IN)
             {
-                JCS_GameErrors.JcsErrors("JCS_FadeSound",   "Already Fade in");
+                JCS_Debug.JcsErrors("JCS_FadeSound",   "Already Fade in");
                 return;
             }
 
             if (mAudioSource == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_FadeSound",   "Cannot do the fade in effect without the source...");
+                JCS_Debug.JcsErrors("JCS_FadeSound",   "Cannot do the fade in effect without the source...");
                 return;
             }
 
@@ -147,6 +176,30 @@ namespace JCSUnity
 
             mType = JCS_FadeType.FADE_IN;
             mEffect = true;
+        }
+
+        /// <summary>
+        /// Is the sound fade out?
+        /// </summary>
+        /// <returns>
+        /// true: fade out
+        /// false: not fade out
+        /// </returns>
+        public bool IsFadeOut()
+        {
+            return mAudioSource.volume == 0;
+        }
+
+        /// <summary>
+        /// Is the sound fade in?
+        /// </summary>
+        /// <returns>
+        /// true: fade in
+        /// false: not fade in
+        /// </returns>
+        public bool IsFadeIn()
+        {
+            return mAudioSource.volume == 1;
         }
 
         //----------------------

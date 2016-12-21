@@ -13,7 +13,7 @@ SceneSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 6
+  serializedVersion: 7
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -37,12 +37,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 6
+  serializedVersion: 7
   m_GIWorkflowMode: 1
-  m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -53,17 +53,22 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 3
+    serializedVersion: 4
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
     m_TextureHeight: 1024
+    m_AO: 0
     m_AOMaxDistance: 1
-    m_Padding: 2
     m_CompAOExponent: 0
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
     m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
+    m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
   m_LightingDataAsset: {fileID: 0}
@@ -298,6 +303,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &11444962
 MonoBehaviour:
@@ -489,6 +497,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &60618644
 MonoBehaviour:
@@ -996,6 +1007,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &146502476
 MonoBehaviour:
@@ -1139,6 +1153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1188,6 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1286,6 +1302,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &193455533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,17 +1528,20 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -1558,11 +1580,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
---- !u!224 &267027645 stripped
+--- !u!224 &267027645
 RectTransform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178,
     type: 2}
-  m_PrefabInternal: {fileID: 2018044253}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 868245903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1078392642}
+  - {fileID: 413381865}
+  - {fileID: 119225857}
+  - {fileID: 968011696}
+  - {fileID: 196451054}
+  - {fileID: 445629392}
+  - {fileID: 671072141}
+  - {fileID: 2004400550}
+  - {fileID: 782754179}
+  - {fileID: 379940122}
+  - {fileID: 865629817}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &295768076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1701,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &295768080
 MonoBehaviour:
@@ -1889,6 +1939,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &331970209
 MonoBehaviour:
@@ -2232,6 +2285,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &372764959
 MonoBehaviour:
@@ -2576,6 +2632,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &387084816
 MonoBehaviour:
@@ -3003,6 +3062,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &413381865 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22465536, guid: fad74cf103280b046bb4a962f3b8fb78,
+    type: 2}
+  m_PrefabInternal: {fileID: 413381864}
 --- !u!1 &433695996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,6 +3333,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &493965854
 MonoBehaviour:
@@ -3552,6 +3619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8da109f60821d04e94d34aa12fbe811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3708,6 +3776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3757,6 +3826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3855,6 +3925,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &537699789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3952,6 +4025,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &568001151
 MonoBehaviour:
@@ -4084,6 +4160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4133,6 +4210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4231,6 +4309,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &573518717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4328,6 +4409,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &593563571
 MonoBehaviour:
@@ -4486,6 +4570,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &593927675
 MonoBehaviour:
@@ -4655,6 +4742,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &595270114
 MonoBehaviour:
@@ -4787,6 +4877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4836,6 +4927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4934,6 +5026,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &602746538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5083,6 +5178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a51ec2e4371824184560f987704888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -5469,6 +5565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -5518,6 +5615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -5616,6 +5714,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &688828987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5730,6 +5831,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &689504099
 MonoBehaviour:
@@ -6072,6 +6176,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &744377268
 MonoBehaviour:
@@ -6241,6 +6348,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &759277372
 MonoBehaviour:
@@ -6648,6 +6758,99 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderIndex: 15
+--- !u!1 &868245903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 107462, guid: 9703af89983ee9c44843a0501571b178, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 267027645}
+  - 223: {fileID: 868245907}
+  - 114: {fileID: 868245906}
+  - 114: {fileID: 868245905}
+  - 114: {fileID: 868245904}
+  m_Layer: 5
+  m_Name: JCS_Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &868245904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11475162, guid: 9703af89983ee9c44843a0501571b178,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 868245903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCanvas: {fileID: 0}
+  mResizeUI: {fileID: 0}
+  mResizeUI_path: JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI
+--- !u!114 &868245905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11491926, guid: 9703af89983ee9c44843a0501571b178,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 868245903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &868245906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11464624, guid: 9703af89983ee9c44843a0501571b178,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 868245903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &868245907
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22358788, guid: 9703af89983ee9c44843a0501571b178,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 868245903}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_RenderMode: 1
+  m_Camera: {fileID: 151515301}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 25
+  m_TargetDisplay: 0
 --- !u!1 &885410983
 GameObject:
   m_ObjectHideFlags: 0
@@ -6728,6 +6931,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &885410987
 MonoBehaviour:
@@ -6974,6 +7180,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &905141618
 MonoBehaviour:
@@ -7548,6 +7757,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &975456161
 MonoBehaviour:
@@ -7706,6 +7918,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1005707818
 MonoBehaviour:
@@ -7875,6 +8090,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1020357494
 MonoBehaviour:
@@ -8121,6 +8339,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1053665017
 MonoBehaviour:
@@ -8749,6 +8970,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1175699361
 MonoBehaviour:
@@ -8995,6 +9219,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1203111105
 MonoBehaviour:
@@ -9204,6 +9431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9253,6 +9481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9351,6 +9580,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &1293163322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9422,6 +9654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9471,6 +9704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9569,6 +9803,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &1294710026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10112,6 +10349,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1344361160
 MonoBehaviour:
@@ -10281,6 +10521,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1374982443
 MonoBehaviour:
@@ -10413,6 +10656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -10462,6 +10706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -10560,6 +10805,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &1393812420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10788,6 +11036,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1449818936
 MonoBehaviour:
@@ -10957,6 +11208,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1480706286
 MonoBehaviour:
@@ -11115,6 +11369,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1508316780
 MonoBehaviour:
@@ -11601,6 +11858,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1589523241
 MonoBehaviour:
@@ -11910,6 +12170,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1605971378
 MonoBehaviour:
@@ -12145,6 +12408,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1722757658
 MonoBehaviour:
@@ -12303,6 +12569,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1727903417
 MonoBehaviour:
@@ -12472,6 +12741,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1758417347
 MonoBehaviour:
@@ -12641,6 +12913,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1806888936
 MonoBehaviour:
@@ -13387,6 +13662,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1925171289
 MonoBehaviour:
@@ -13545,6 +13823,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &1934529783
 MonoBehaviour:
@@ -13838,100 +14119,6 @@ MonoBehaviour:
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
---- !u!1001 &2018044253
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22442854, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22358788, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22358788, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 151515301}
-    - target: {fileID: 22358788, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-      propertyPath: m_PixelPerfect
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9703af89983ee9c44843a0501571b178, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2027613546
 GameObject:
   m_ObjectHideFlags: 0
@@ -13955,7 +14142,7 @@ Light:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027613546}
   m_Enabled: 1
-  serializedVersion: 6
+  serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
@@ -13965,6 +14152,7 @@ Light:
   m_Shadows:
     m_Type: 0
     m_Resolution: -1
+    m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
@@ -13977,10 +14165,10 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
 --- !u!4 &2027613548
 Transform:
   m_ObjectHideFlags: 0
@@ -14162,6 +14350,9 @@ MonoBehaviour:
   mFriction: 12
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &2076000222
 MonoBehaviour:
@@ -14474,6 +14665,9 @@ MonoBehaviour:
   mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
   mActiveButton: {fileID: 0}
 --- !u!114 &2081310282
 MonoBehaviour:
@@ -14606,6 +14800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -14655,6 +14850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -14753,6 +14949,9 @@ MonoBehaviour:
   mObjectType: 1
   mFriction: 0.2
   mTargetPos: {x: 0, y: 0, z: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
 --- !u!114 &2110879016
 MonoBehaviour:
   m_ObjectHideFlags: 0

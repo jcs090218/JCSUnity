@@ -38,10 +38,20 @@ namespace JCSUnity
         protected RectTransform mRectTransform = null;
         protected bool mIsVisible = false;
 
+
         [Header("** Runtime Variables (JCS_BaseDialogueObject) **")]
-        [SerializeField] protected bool mAsOriginalSize = false;
-        [SerializeField] protected bool mAsOriginalPosition = false;
-        [SerializeField] protected bool mAsOriginalRotation = false;
+        
+        [Tooltip("")]
+        [SerializeField]
+        protected bool mAsOriginalSize = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        protected bool mAsOriginalPosition = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        protected bool mAsOriginalRotation = false;
 
         protected Vector3 mOriginalScale = Vector3.zero;
         protected Vector3 mOriginalPosition = Vector3.zero;
@@ -50,14 +60,16 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool AsOriginalSize { get { return this.mAsOriginalSize; } set { this.mAsOriginalSize = value; } }
+        public bool AsOriginalPosition { get { return this.mAsOriginalPosition; } set { this.mAsOriginalPosition = value; } }
+        public bool AsOriginalRotation { get { return this.mAsOriginalRotation; } set { this.mAsOriginalRotation = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
         protected virtual void Awake()
         {
-            if (mRectTransform == null)
-                this.mRectTransform = this.GetComponent<RectTransform>();
+            this.mRectTransform = this.GetComponent<RectTransform>();
 
             mOriginalScale = mRectTransform.localScale;
             mOriginalPosition = mRectTransform.localPosition;
@@ -70,6 +82,7 @@ namespace JCSUnity
 
             ResetDialogue();
         }
+
         protected virtual void Start()
         {
             
@@ -80,8 +93,15 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ResetDialogue()
         {
+            if (mRectTransform == null)
+                return;
+
             // IMPORTANT(JenChieh): override the resize UI part
             if (mAsOriginalSize)
                 mRectTransform.localScale = mOriginalScale;
@@ -101,6 +121,10 @@ namespace JCSUnity
                 mRectTransform.localRotation = new Quaternion(0, 0, 0, 0);
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void DestroyDialogue()
         {
             // start the app
@@ -109,6 +133,10 @@ namespace JCSUnity
             // destroy this dialogue
             Destroy(this.gameObject);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShowDialogueWithoutSound()
         {
             mIsVisible = true;
@@ -125,8 +153,15 @@ namespace JCSUnity
 
             MoveToTheLastChild();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual void HideDialogueWithoutSound()
         {
+            if (mRectTransform == null)
+                return;
+
             mIsVisible = false;
 
             // Instead of disable the object it self,
@@ -143,6 +178,10 @@ namespace JCSUnity
             }
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual void MoveToTheLastChild()
         {
             Transform parent = this.transform.parent;
@@ -166,9 +205,22 @@ namespace JCSUnity
 
         //----------------------
         // Protected Functions
+
+        /// <summary>
+        /// Set the parent object base on the 
+        /// fit screen setting.
+        /// </summary>
         protected void SetParentObjectByMode()
         {
             JCS_Canvas jcsCanvas = JCS_Canvas.instance;
+
+            if (jcsCanvas == null)
+            {
+                JCS_Debug.JcsReminders(
+                    this, "Does not use JCS_Canvas Object...");
+
+                return;
+            }
 
             Transform parentObject = null;
 

@@ -74,7 +74,7 @@ namespace JCSUnity
         {
             if (mAcitveFunc == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this, "U have not set the ACTIVE function ptr...");
 
                 return;
@@ -88,7 +88,7 @@ namespace JCSUnity
         {
             if (mDeactiveFunc == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this, "U have not set the DEACTIVE function ptr...");
 
                 return;

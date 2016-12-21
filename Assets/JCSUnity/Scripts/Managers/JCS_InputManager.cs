@@ -26,10 +26,18 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Varaibles(Check) **")]
-        [SerializeField] private JCS_SlideInput mSlideInput = null;
+
+
+        [Header("** Check Varaibles (JCS_InputManager) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_SlideInput mSlideInput = null;
+
+        [Tooltip("")]
         [SerializeField]
         private JCS_MobileMouseEvent mMobileMouseEvent = null;
+
 
         //----------------------
         // Protected Variables
@@ -41,6 +49,7 @@ namespace JCSUnity
         public JCS_SlideInput GetJCSSlideInput() { return this.mSlideInput; }
         public void SetJCSMobileMouseEvent(JCS_MobileMouseEvent me) { this.mMobileMouseEvent = me; }
         public JCS_MobileMouseEvent GetJCSMobileMouseEvent() { return this.mMobileMouseEvent; }
+
 
         //========================================
         //      Unity's function
@@ -67,6 +76,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Add the input type base on the platform type.
+        /// </summary>
         private void AddInputBaseOnPlatform()
         {
             switch (JCS_ApplicationManager.instance.PLATFORM_TYPE)

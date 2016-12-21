@@ -9,8 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public enum JCS_2DPortalType
     {
         SCENE_PORTAL,   // common

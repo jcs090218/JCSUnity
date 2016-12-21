@@ -13,8 +13,12 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Black screen gameobject for JCSUnity usage.
+    /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
-    public class JCS_BlackScreen : MonoBehaviour
+    public class JCS_BlackScreen 
+        : MonoBehaviour
     {
 
         //----------------------
@@ -51,23 +55,46 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="time"></param>
         public void FadeIn(float time)
         {
             mAO.FadeIn(time);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="time"></param>
         public void FadeOut(float time)
         {
             mAO.FadeOut(time);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool IsFadeIn()
         {
             return mAO.IsFadeIn();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool IsFadeOut()
         {
             return mAO.IsFadeOut();
         }
 
+        /// <summary>
+        /// Move the panel to front
+        /// </summary>
         public void MoveToTheLastChild()
         {
             Transform parent = this.transform.parent;

@@ -60,7 +60,7 @@ namespace JCSUnity
                     {
                         if (mGameUI != null)
                         {
-                            JCS_GameErrors.JcsErrors("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
+                            JCS_Debug.JcsErrors("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
                             return;
                         }
 
@@ -71,7 +71,7 @@ namespace JCSUnity
                     {
                         //if (mFocusGameDialogue != null)
                         //{
-                        //    JCS_GameErrors.JcsErrors("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
+                        //    JCS_Debug.JcsErrors("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
                         //    return;
                         //}
 
@@ -82,7 +82,7 @@ namespace JCSUnity
                     {
                         if (mForceDialogue != null)
                         {
-                            JCS_GameErrors.JcsErrors("JCS_UIManager",   "Failed to set \"Force Dialogue\"...");
+                            JCS_Debug.JcsErrors("JCS_UIManager",   "Failed to set \"Force Dialogue\"...");
                             return;
                         }
 
@@ -106,7 +106,7 @@ namespace JCSUnity
                     return this.mForceDialogue;
             }
 
-            JCS_GameErrors.JcsErrors("JCS_GameManager",   "Failed to get Dialogue -> " + type);
+            JCS_Debug.JcsErrors("JCS_GameManager",   "Failed to get Dialogue -> " + type);
             return null;
         }
         public LinkedList<JCS_DialogueObject> GetOpenWindow() { return this.mOpenWindow; }
@@ -139,20 +139,20 @@ namespace JCSUnity
             // Exit in game diagloue not in game UI!!
             // (Admin input)
             if (Input.GetKeyDown(KeyCode.Escape))
-                JCS_ButtonFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
+                JCS_UtilityFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
 #endif
         }
 
         private void DialogueTest()
         {
             if (JCS_Input.GetKeyDown(KeyCode.A))
-                JCS_ButtonFunctions.PopIsConnectDialogue();
+                JCS_UtilityFunctions.PopIsConnectDialogue();
             if (JCS_Input.GetKeyDown(KeyCode.S))
-                JCS_ButtonFunctions.PopSettingDialogue();
+                JCS_UtilityFunctions.PopSettingDialogue();
             if (JCS_Input.GetKeyDown(KeyCode.D))
-                JCS_ButtonFunctions.PopInGameUI();
+                JCS_UtilityFunctions.PopInGameUI();
             if (JCS_Input.GetKeyDown(KeyCode.F))
-                JCS_ButtonFunctions.PopTalkDialogue();
+                JCS_UtilityFunctions.PopTalkDialogue();
         }
 
         //========================================

@@ -13,7 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
-    [RequireComponent(typeof(JCS_DialogueObject))]
+    /// <summary>
+    /// Game Window base on the Dialogue object.
+    /// </summary>
     public class JCS_GameWindow 
         : MonoBehaviour
     {
@@ -32,10 +34,12 @@ namespace JCSUnity
 
         private JCS_DialogueObject mDialogueObject = null;
 
-        private bool mIsDragging = false;
-        private Vector3 mPosition = Vector3.zero;
 
-        [SerializeField] private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
+        [Header("** Initialize Variables (JCS_GameWindow) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
 
         //----------------------
         // Protected Variables
@@ -52,7 +56,15 @@ namespace JCSUnity
             mDialogueObject = this.GetComponent<JCS_DialogueObject>();
         }
 
+        //========================================
+        //      Self-Define
+        //------------------------------
+        //----------------------
+        // Public Functions
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void JCS_PointerDown()
         {
             mDialogueObject.MoveToTheLastChild();
@@ -60,11 +72,17 @@ namespace JCSUnity
                 JCS_UIManager.instance.SetJCSDialogue(JCS_DialogueType.PLAYER_DIALOGUE, mDialogueObject);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void JCS_Click()
         {
-            
+
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void JCS_OnDrag()
         {
 
@@ -79,22 +97,24 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void JCS_OnDrop()
         {
 
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         //----------------------
         // Protected Functions
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
         private void ProcessGUI(DragDrop type)
         {
             switch (type)

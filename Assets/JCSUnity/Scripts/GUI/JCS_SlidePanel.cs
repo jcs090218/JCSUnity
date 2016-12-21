@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-    
+
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(JCS_IgnoreDialogueObject))]
     public class JCS_SlidePanel

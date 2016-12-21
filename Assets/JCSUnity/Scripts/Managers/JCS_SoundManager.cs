@@ -28,9 +28,6 @@ namespace JCSUnity
         // Private Variables
         private AudioListener mAudioListener = null;
 
-
-        [SerializeField] private AudioSource mBGM = null;
-
         // environment, ui, etc.
         private JCS_Vector<AudioSource> mSFXSounds = null;
 
@@ -38,6 +35,12 @@ namespace JCSUnity
         private JCS_Vector<AudioSource> mSkillsSounds = null;
 
         private JCS_SoundPlayer mGlobalSoundPlayer = null;
+
+        [Header("** Check Variables (JCS_SoundManager) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private AudioSource mBGM = null;
 
         //----------------------
         // Protected Variables
@@ -75,6 +78,7 @@ namespace JCSUnity
                 AudioListener.volume = 1;
             }
         }
+
         private void Awake()
         {
             instance = this;
@@ -89,7 +93,7 @@ namespace JCSUnity
         {
             if (JCS_Camera.main == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_SoundManager", 
                       
                     "There is no \"JCS_Camera\" assign!");
@@ -122,6 +126,11 @@ namespace JCSUnity
                 aud.PlayOneShot(aud.clip, JCS_GameSettings.GetSFXSound_Volume());
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="source"></param>
         public void AssignSoundSource(JCS_SoundSettingType type, AudioSource source)
         {
             switch (type)
@@ -139,6 +148,12 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="volume"></param>
         public void SetSoundVolume(JCS_SoundSettingType type, float volume)
         {
             switch (type)
@@ -156,6 +171,12 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="act"></param>
         public void SetSoundMute(JCS_SoundSettingType type, bool act)
         {
             switch (type)
@@ -180,6 +201,11 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="vol"></param>
         private void SetSoundVolume(JCS_Vector<AudioSource> list, float vol)
         {
             for (int index = 0;
@@ -189,6 +215,12 @@ namespace JCSUnity
                 list.at(index).volume = vol;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="act"></param>
         private void SetSoundtMute(JCS_Vector<AudioSource> list, bool act)
         {
             for (int index = 0;
@@ -199,37 +231,72 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sound"></param>
         private void AssignSFX_Sound(AudioSource sound)
         {
             AssignSoundToList(mSFXSounds, sound);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sound"></param>
         private void AssignSkillsSound(AudioSource sound)
         {
             AssignSoundToList(mSkillsSounds, sound);
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="sound"></param>
         private void AssignSoundToList(JCS_Vector<AudioSource> list, AudioSource sound)
         {
             if (sound == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_SoundManager",   "Assigning Source that is null...");
+                JCS_Debug.JcsErrors("JCS_SoundManager",   "Assigning Source that is null...");
                 return;
             }
 
             list.push(sound);
             sound.volume = JCS_GameSettings.GetSFXSound_Volume();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vol"></param>
         private void SetSFXSoundVolume(float vol)
         {
             SetSoundVolume(mSFXSounds, vol);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vol"></param>
         private void SetSkillsSoundVolume(float vol)
         {
             SetSoundVolume(mSkillsSounds, vol);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="act"></param>
         private void SetSFXSoundMute(bool act)
         {
             SetSoundtMute(mSFXSounds, act);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="act"></param>
         private void SetSkillsSoundMute(bool act)
         {
             SetSoundtMute(mSkillsSounds, act);

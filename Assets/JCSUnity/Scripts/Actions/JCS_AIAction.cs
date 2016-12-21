@@ -1,0 +1,54 @@
+/**
+ * $File: JCS_AIAction.cs $
+ * $Date: 2016-09-05 21:32:40 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
+using System.Collections;
+
+
+namespace JCSUnity
+{
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public abstract class JCS_AIAction
+        : MonoBehaviour
+        , JCS_Action
+    {
+
+        //----------------------
+        // Public Variables
+
+        //----------------------
+        // Private Variables
+
+        //----------------------
+        // Protected Variables
+
+        //========================================
+        //      setter / getter
+        //------------------------------
+
+        //========================================
+        //      Unity's function
+        //------------------------------
+
+        //========================================
+        //      Self-Define
+        //------------------------------
+        //----------------------
+        // Public Functions
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
+
+    }
+}

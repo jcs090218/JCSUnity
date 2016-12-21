@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_ScaleEffect
         : JCS_UnityObject
     {
@@ -22,19 +25,28 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Initialize Variables **")]
+
+        [Header("** Initialize Variables (JCS_ScaleEffect) **")]
+
         [Tooltip("Do scale in x axis.")]
-        [SerializeField] private bool mScaleX = true;
+        [SerializeField]
+        private bool mScaleX = true;
+
         [Tooltip("Do scale in y axis.")]
-        [SerializeField] private bool mScaleY = true;
+        [SerializeField]
+        private bool mScaleY = true;
+
         [Tooltip("Do scale in z axis.")]
-        [SerializeField] private bool mScaleZ = true;
+        [SerializeField]
+        private bool mScaleZ = true;
 
         [Tooltip("How much it scale on each axis.")]
-        [SerializeField] private Vector3 mScaleValue = Vector3.one;
+        [SerializeField]
+        private Vector3 mScaleValue = Vector3.one;
 
         [Tooltip("How fast it scale on each axis.")]
-        [SerializeField] private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
+        [SerializeField]
+        private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
 
         private Vector3 mTowardScale = Vector3.zero;
         private Vector3 mRecordScale = Vector3.zero;

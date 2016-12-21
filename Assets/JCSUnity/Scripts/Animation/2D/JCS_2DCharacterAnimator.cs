@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
 
@@ -30,17 +31,29 @@ namespace JCSUnity
         //----------------------
         // Protected Variables
 
+        
         [Header("** Check Variables (JCS_2DCharacterAnimator) **")]
-        [SerializeField] protected string mCurrentStateName = "";
+
+        [Tooltip("")]
+        [SerializeField]
+        protected string mCurrentStateName = "";
+
+        [Tooltip("")]
         [SerializeField]
         protected JCS_LiveObjectState mCurrentState 
             = JCS_LiveObjectState.STAND;
 
+        [Tooltip("")]
         [SerializeField]
         private JCS_AttackState mAttackState = JCS_AttackState.NONE;
 
+        [Tooltip("")]
         [SerializeField]
         protected bool mEndAttackStage = true;
+
+        [Tooltip("")]
+        [SerializeField]
+        protected float mAnimationTimer = 0.0f;
 
 
         [Header("** Initialize Variables (JCS_2DCharacterAnimator) **")]
@@ -52,14 +65,16 @@ from the beginning.")]
 
         [Tooltip(@"Please set the int inside the 'Animator' window in Unity, 
 Control the animation state with code are much easier to programmer.")]
-        [SerializeField] protected string mAnimationState = "State";
+        [SerializeField]
+        protected string mAnimationState = "State";
 
-        [SerializeField] protected float mAnimationTimer = 0.0f;
-        protected AnimatorStateInfo mAnimatorStateInfo;
-        [SerializeField] protected float mAnimationOffset = 0.05f;
+        [Tooltip("")]
+        [SerializeField] [Range(-10.0f, 10.0f)]
+        protected float mAnimationOffset = 0.05f;
 
         [Tooltip("Plz use %jcs as the state variable name.")]
-        [SerializeField] protected string mFullClipStateName = "Player_01_%jcs";
+        [SerializeField]
+        protected string mFullClipStateName = "Player_01_%jcs";
 
         [Tooltip(@"U can implement multiple attack animation here.
 by naming the animation attack01/attack02/attack03, etc.")]
@@ -73,6 +88,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
         public string GetAnimationState() { return this.mAnimationState; }
         public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
         public bool GetEndAttackStage() { return this.mEndAttackStage; }
+        public JCS_AttackState GetAttackState() { return this.mAttackState; }
 
         //========================================
         //      Unity's function
@@ -197,7 +213,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
             }
 
 
-            JCS_GameErrors.JcsErrors("JCS_2DCharacterAnimator",   "No animation clip found...");
+            JCS_Debug.JcsErrors("JCS_2DCharacterAnimator",   "No animation clip found...");
             return null;
         }
 
@@ -311,7 +327,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
                     return JCS_AttackState.ATTACK_05;
             }
 
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 this, "This should not happens...");
 
             // this sould not happens.

@@ -12,6 +12,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(MeshCollider))]
     public class JCS_ObjectChecker
         : MonoBehaviour

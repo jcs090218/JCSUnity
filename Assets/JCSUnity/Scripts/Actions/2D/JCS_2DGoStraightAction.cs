@@ -9,8 +9,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Move forward base on their own 
+    /// transform direction.
+    /// </summary>
     public class JCS_2DGoStraightAction
         : MonoBehaviour
         , JCS_Action

@@ -9,6 +9,9 @@
 /Tutorials
 /Assets/Librares
 
+# don't include the video.
+/Video
+
 # ignore the following extension file
 *.svd
 *.userprefs

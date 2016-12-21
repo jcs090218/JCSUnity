@@ -32,11 +32,11 @@ public class Collision_Overlap
     //------------------------------
     private void OnTriggerEnter(Collider other)
     {
-        BF_LiveObject bfLivObject = other.GetComponent<BF_LiveObject>();
-        if (bfLivObject == null)
-            return;
+        //BF_LiveObject bfLivObject = other.GetComponent<BF_LiveObject>();
+        //if (bfLivObject == null)
+        //    return;
 
-        bfLivObject.VelocityInfo.VelY = 0;
+        //bfLivObject.VelocityInfo.VelY = 0;
     }
     
     //========================================

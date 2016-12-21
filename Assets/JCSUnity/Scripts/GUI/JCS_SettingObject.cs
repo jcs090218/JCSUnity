@@ -29,7 +29,7 @@ namespace JCSUnity
         [SerializeField] private JCS_SoundSettingType mSettingType = JCS_SoundSettingType.NONE;
         [SerializeField] private JCS_GUIType mGUIType = JCS_GUIType.NONE;
 
-        // usually should be onlu one!
+        // usually should be only one!
         private float mSettingValue = 0.0f;
         private string mSettingString = "";
 
@@ -46,6 +46,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public string SettingString { get { return this.mSettingString; } }
 
         //========================================
         //      Unity's function
@@ -113,7 +114,7 @@ namespace JCSUnity
             switch (mSettingType)
             {
                 case JCS_SoundSettingType.NONE:
-                    JCS_GameErrors.JcsErrors("JCS_SettingObject",   "Setting with no meaning...");
+                    JCS_Debug.JcsErrors("JCS_SettingObject",   "Setting with no meaning...");
                     return;
                 case JCS_SoundSettingType.BGM_SOUND:
                     this.mSettingValue = JCS_GameSettings.GetBGM_Volume();
@@ -131,14 +132,14 @@ namespace JCSUnity
             switch (mGUIType)
             {
                 case JCS_GUIType.NONE:
-                    JCS_GameErrors.JcsErrors("JCS_SettingObject",   "Setting with no meaning...");
+                    JCS_Debug.JcsErrors("JCS_SettingObject",   "Setting with no meaning...");
                     return;
                 case JCS_GUIType.TOGGLE:
                     {
                         this.mToggle = this.GetComponent<Toggle>();
                         if (mToggle == null)
                         {
-                            JCS_GameErrors.JcsErrors("JCS_SettingObject",   "Toggle with no corrosdoing component...");
+                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Toggle with no corrosdoing component...");
                             return;
                         }
                     }
@@ -148,7 +149,7 @@ namespace JCSUnity
                         this.mSlider = this.GetComponent<Slider>();
                         if (mSlider == null)
                         {
-                            JCS_GameErrors.JcsErrors("JCS_SettingObject",   "Slider with no corrosdoing component...");
+                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Slider with no corrosdoing component...");
                             return;
                         }
                         // assign value;
@@ -160,7 +161,7 @@ namespace JCSUnity
                         this.mScrollbar = this.GetComponent<Scrollbar>();
                         if (mScrollbar == null)
                         {
-                            JCS_GameErrors.JcsErrors("JCS_SettingObject",   "Scrollbar with no corrosdoing component...");
+                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Scrollbar with no corrosdoing component...");
                             return;
                         }
                     }
@@ -170,7 +171,7 @@ namespace JCSUnity
                         this.mDropdown = this.GetComponent<Dropdown>();
                         if (mDropdown == null)
                         {
-                            JCS_GameErrors.JcsErrors("JCS_SettingObject",   "Dropdown with no corrosdoing component...");
+                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Dropdown with no corrosdoing component...");
                             return;
                         }
                     }
@@ -180,7 +181,7 @@ namespace JCSUnity
                         this.mInputField = this.GetComponent<InputField>();
                         if (mInputField == null)
                         {
-                            JCS_GameErrors.JcsErrors("JCS_SettingObject",   "InputField with no corrosdoing component...");
+                            JCS_Debug.JcsErrors("JCS_SettingObject",   "InputField with no corrosdoing component...");
                             return;
                         }
                     }

@@ -10,15 +10,15 @@ using UnityEngine;
 using System.Collections;
 
 
-/// <summary>
-/// Easing Equation can be find here.
-/// 
-/// URL: http://gizma.com/easing/#quint1
-/// GitHub: https://github.com/PeterVuorela/Tweener (Third Party Library)
-/// </summary>
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Easing Equation can be find here.
+    /// 
+    /// URL: http://gizma.com/easing/#quint1
+    /// GitHub: https://github.com/PeterVuorela/Tweener (Third Party Library)
+    /// </summary>
     public class JCS_EaseMath
         : MonoBehaviour
     {

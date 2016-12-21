@@ -11,12 +11,14 @@ GameObject:
   - 114: {fileID: 11442926}
   - 114: {fileID: 11474660}
   - 114: {fileID: 11485796}
+  - 114: {fileID: 114000011621624256}
+  - 114: {fileID: 114000011602815956}
   - 114: {fileID: 11400858}
   - 114: {fileID: 11447550}
   m_Layer: 0
   m_Name: JCS_Settings
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -30,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000012874289788}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &11400858
@@ -68,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SMOOTH_SWITCH_SOUND_BETWEEN_SCENE: 1
-  BACKGROUND_MUSIC: {fileID: 8300000, guid: 6fd3a677fd7285b498285c10d906d2ab, type: 3}
+  BACKGROUND_MUSIC: {fileID: 8300000, guid: aadaa2bb458696e4cb1bbc6322707e03, type: 3}
   DEFAULT_OPEN_WINDOW_CLIP: {fileID: 8300000, guid: 9ddc3d435db7ab44ea990d4bbbe7a5c4,
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
@@ -84,6 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec6f66ef1e1a7644b91872695d4f0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CopyrightString: Copyright 2016 JCSUnity, Taiwan
+  VersionString: Package file v1.0
 --- !u!114 &11485796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,13 +110,12 @@ MonoBehaviour:
   PLAYER_IGNORE_EACH_OTHER: 1
   TRIBE_DAMAGE_EACH_OTHER: 0
   IGNORE_EACH_OTHER_CHARACTER_CONTROLLER: 1
-  GAP_ACCEPT_RANGE: 0.5
   DEFAULT_ORDER_LAYER: 15
   RESIZE_UI: 1
-  CopyrightString: Copyright 2016 JCSUnity, Taiwan
-  VersionString: Package file v2.0
   SAVE_ON_SWITCH_SCENE: 1
   SAVE_ON_EXIT_APP: 1
+  MIN_DAMAGE: 1
+  MAX_DAMAGE: 999999
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -123,3 +127,79 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174952}
   m_IsPrefabParent: 1
+--- !u!1 &1000011971763682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012874289788}
+  m_Layer: 0
+  m_Name: JCS_IndieSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000012874289788
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011971763682}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 403812}
+  m_RootOrder: 0
+--- !u!114 &114000011602815956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1ed50fa45bfc04ea9c6b37cb4e22bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mJoysticks:
+  - StickRightXVal: 0
+    StickRightYVal: 0
+    StickLeftXVal: 0
+    StickLeftYVal: 0
+    HomeButton: jcsunity button home
+    JoystickButtonStart: jcsunity button start
+    JoystickButtonBack: jcsunity button back
+    JoystickButtonA: jcsunity button a
+    JoystickButtonB: jcsunity button b
+    JoystickButtonX: jcsunity button x
+    JoystickButtonY: jcsunity button y
+    JoystickButtonUp: jcsunity button up
+    JoystickButtonDown: jcsunity button down
+    JoystickButtonRight: jcsunity button right
+    JoystickButtonLeft: jcsunity button left
+    StickRightX: jcsunity stick right x
+    StickRightY: jcsunity stick right y
+    StickLeftX: jcsunity stick left x
+    StickLeftY: jcsunity stick left y
+    JoystickButtonRT: jcsunity button right trigger
+    JoystickButtonLT: jcsunity button left trigger
+    JoystickButtonLB: jcsunity button left bumper
+    JoystickButtonRB: jcsunity button right bumper
+--- !u!114 &114000011621624256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d11c952c61f6eb43a5ad82a991530bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SCENE_FADEOUT_TIME: 1.5
+  SCENE_FADEIN_TIME: 1.5

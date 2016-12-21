@@ -26,28 +26,81 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables (JCS_Tweener) **")]
-        [SerializeField] private float mDurationX = 1.0f;
-        [SerializeField] private float mDurationY = 1.0f;
-        [SerializeField] private float mDurationZ = 1.0f;
 
-        [SerializeField] private bool mTweenPosition = true;
-        [SerializeField] private bool mTweenRotation = false;
-        [SerializeField] private bool mTweenScale = false;
+        [Header("** Check Variables (JCS_Tweener) **")]
 
         [SerializeField]
-        private JCS_TweenType mEasingX= JCS_TweenType.LINEAR;
+        private bool mContinueTween = false;
+
+        [Tooltip("Whats the target we tween to?")]
+        [SerializeField]
+        private Transform mTargetTransform = null;
+
+        private Transform mRecordTransform = null;
+
+
+        [Header("** Runtime Variables (JCS_Tweener) **")]
+
+        [Tooltip("Do the tween effect?")]
+        [SerializeField]
+        private bool mTween = true;
+
+        [Tooltip("How fase it move on x axis.")]
+        [SerializeField] [Range(0.01f, 1000.0f)]
+        private float mDurationX = 1.0f;
+
+        [Tooltip("How fase it move on y axis.")]
+        [SerializeField] [Range(0.01f, 1000.0f)]
+        private float mDurationY = 1.0f;
+
+        [Tooltip("How fase it move on z axis.")]
+        [SerializeField] [Range(0.01f, 1000.0f)]
+        private float mDurationZ = 1.0f;
+
+
+        [Header("- Tweener Effect Transform")]
+
+        [Tooltip("Do tween effect with position?")]
+        [SerializeField]
+        private bool mTweenPosition = true;
+
+        [Tooltip("Do tween effect with rotation?")]
+        [SerializeField]
+        private bool mTweenRotation = false;
+
+        [Tooltip("Do tween effect with scale?")]
+        [SerializeField]
+        private bool mTweenScale = false;
+
+        [Tooltip("Do the track base on location position.")]
+        [SerializeField]
+        private bool mTrackAsLocalPosition = false;
+
+
+        [Header("- Tweener Formula Type")]
+
+        [Tooltip("Tweener formula on x axis.")]
+        [SerializeField]
+        private JCS_TweenType mEasingX = JCS_TweenType.LINEAR;
+
+        [Tooltip("Tweener formula on y axis.")]
         [SerializeField]
         private JCS_TweenType mEasingY = JCS_TweenType.LINEAR;
+
+        [Tooltip("Tweener formula on z axis.")]
         [SerializeField]
         private JCS_TweenType mEasingZ = JCS_TweenType.LINEAR;
 
         private Tweener tweener = new Tweener();
 
-        [SerializeField] private Transform mTargetTransform = null;
-        private Transform mRecordTransform = null;
-        private bool mContinueTween = false;
+
+        [Header("- Continuous Tween (JCS_Tweener) ")]
+
+        [Tooltip("While Continue tween when did the tweener algorithm stop?")]
+        [SerializeField]
         private float mStopTweenDistance = 1;
+
+        private Tweener.CallBackDelegate mDestinationCallback = null;
 
 
         //----------------------
@@ -56,6 +109,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
         public float StopTweenDistance { get { return this.mStopTweenDistance; } set { this.mStopTweenDistance = value; } }
         public float DurationX { get { return this.mDurationX; } set { this.mDurationX = value; } }
         public float DurationY { get { return this.mDurationY; } set { this.mDurationY = value; } }
@@ -64,6 +118,7 @@ namespace JCSUnity
         public JCS_TweenType EasingY { get { return this.mEasingY; } set { this.mEasingY = value; } }
         public JCS_TweenType EasingZ { get { return this.mEasingZ; } set { this.mEasingZ = value; } }
         public void SetTargetTransform(Transform trans) { this.mTargetTransform = trans; }
+        public Transform RecordTransform { get { return this.mRecordTransform; } }
 
         //========================================
         //      Unity's function
@@ -74,11 +129,15 @@ namespace JCSUnity
             UpdateUnityData();
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
 #if (UNITY_EDITOR)
             Test();
 #endif
+
+            // check the effect enable?
+            if (!Tween)
+                return;
 
             // check if do continue tweening
             ContinueTween();
@@ -123,6 +182,23 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
+        /// Reset tweener effect setting.
+        /// </summary>
+        public void ResetTweener()
+        {
+            tweener.ResetTweener();
+        }
+
+        /// <summary>
+        /// Callback when reach destination.
+        /// </summary>
+        /// <param name="func"> function pointer </param>
+        public void SetCallback(Tweener.CallBackDelegate func)
+        {
+            mDestinationCallback = func;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="to"></param>
@@ -131,6 +207,7 @@ namespace JCSUnity
         {
             DoTween(to, mEasingX, mEasingY, mEasingZ, callback);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -147,6 +224,7 @@ namespace JCSUnity
         {
             DoTween(to, mDurationX, mDurationY, mDurationZ, typeX, typeY, typeZ, callback);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -168,9 +246,9 @@ namespace JCSUnity
             JCS_TweenType typeZ,
             Tweener.CallBackDelegate callback = null)
         {
-
             DoTween(LocalPosition, to, durationX, durationY, durationZ, typeX, typeY, typeZ, callback);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -184,7 +262,7 @@ namespace JCSUnity
         /// <param name="typeZ"></param>
         /// <param name="callback"></param>
         public void DoTween(
-            Vector3 from, 
+            Vector3 from,
             Vector3 to,
             float durationX,
             float durationY,
@@ -221,14 +299,6 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// Default callback function.
-        /// </summary>
-        private void JcsCallBack()
-        {
-            //Debug.Log("JcsCallBack (Default)");
-        }
-
-        /// <summary>
         /// 
         /// </summary>
         /// <param name="from"></param>
@@ -241,8 +311,8 @@ namespace JCSUnity
         /// <param name="easingZ"></param>
         /// <param name="callback"></param>
         private void StartTween(
-            Vector3 from, 
-            Vector3 to, 
+            Vector3 from,
+            Vector3 to,
             float durationX = 1f,
             float durationY = 1f,
             float durationZ = 1f,
@@ -255,7 +325,7 @@ namespace JCSUnity
             {
                 // Sets The Position From -> To
                 tweener.easeFromTo(
-                    from, 
+                    from,
                     to,
                     durationX,
                     durationY,
@@ -263,7 +333,7 @@ namespace JCSUnity
                     easingX,
                     easingY,
                     easingZ,
-                    JcsCallBack);
+                    mDestinationCallback);
             }
         }
 
@@ -378,6 +448,9 @@ namespace JCSUnity
             return easing;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ContinueTween()
         {
             if (!mContinueTween)
@@ -385,19 +458,40 @@ namespace JCSUnity
 
             if (mTargetTransform == null)
             {
-                JCS_GameErrors.JcsErrors(
-                    "JCS_Tweener", 
-                    "Start the tween but the target transform are null...");
+#if (UNITY_EDITOR)
+                // log string to console cost alost of performance.
+                // so do it only when is debug mode.
+                if (JCS_GameSettings.instance.DEBUG_MODE)
+                {
+                    JCS_Debug.JcsErrors(
+                        this, "Start the tween but the target transform are null...");
+                }
+#endif
 
                 mContinueTween = false;
                 return;
             }
 
-            DoTween(mTargetTransform.position);
+            float distance = 0;
+            if (mTrackAsLocalPosition)
+            {
+                distance = Vector3.Distance(LocalPosition, mTargetTransform.localPosition);
+                DoTween(mTargetTransform.localPosition);
+            }
+            else
+            {
+                distance = Vector3.Distance(LocalPosition, mTargetTransform.position);
+                DoTween(mTargetTransform.position);
+            }
 
-            float distance = Vector3.Distance(LocalPosition, mTargetTransform.position);
             if (distance <= mStopTweenDistance)
+            {
                 mContinueTween = false;
+
+                // call the call back.
+                tweener.ResetTweener();
+                tweener.CheckUpdate(true);
+            }
         }
 
 

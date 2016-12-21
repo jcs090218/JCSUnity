@@ -8,12 +8,15 @@
  */
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+
 
 namespace JCSUnity
 {
 
-    public class JCS_2DPortal 
+    /// <summary>
+    /// 
+    /// </summary>
+    public class JCS_2DPortal
         : MonoBehaviour
     {
 
@@ -23,23 +26,44 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_2DPortal) **")]
+
+        [Tooltip("Is this portal enable to use?")]
+        [SerializeField]
+        private bool mActive = true;
+
+        [Tooltip("Use a key to trigger.")]
         [SerializeField]
         private KeyCode mKeyToTrigger = KeyCode.UpArrow;
-        [SerializeField] private bool mAutoTrigger = false;
+
+        [Tooltip("If on trigger enter will trigger immediately.")]
+        [SerializeField]
+        private bool mAutoTrigger = false;
 
 
-        [Header("Choose portal type.")]
+        [Header("Choose portal type. (JCS_2DPortal) ")]
+
+        [Tooltip("")]
         [SerializeField]
         private JCS_2DPortalType mType = JCS_2DPortalType.SCENE_PORTAL;
 
+
         //** SCENE_PORTAL
-        [Header("** Scene Portal Settings **")]
+        [Header("** Scene Portal Settings (JCS_2DPortal) **")]
+
+        [Tooltip("")]
         [SerializeField]
-        private string mSceneName = "JCS_Demo";
+        private string mSceneName = "JCS_ApplicationCloseSimulateScene";
+
+        [Tooltip("Lable of the portal.")]
+        [SerializeField]
+        private JCS_PortalLabel mPortalLabel = JCS_PortalLabel.NONE;
+
 
         //** TRANSFER_PORTAL
-        [Header("** Transfer Portal Settings **")]
+        [Header("** Transfer Portal Settings (JCS_2DPortal) **")]
+
+        [Tooltip("")]
         [SerializeField]
         private Transform mTargetPortal = null;
 
@@ -50,6 +74,12 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool Active { get { return this.mActive; } }
+        public bool AutoTrigger { get { return this.mAutoTrigger; } set { this.mAutoTrigger = value; } }
+        public JCS_2DPortalType Type { get { return this.mType; } set { this.mType = value; } }
+        public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
+        public Transform TargetPortal { get { return this.mTargetPortal; } set { this.mTargetPortal = value; } }
+        public JCS_PortalLabel PortalLabel { get { return this.mPortalLabel; } }
 
         //========================================
         //      Unity's function
@@ -59,7 +89,7 @@ namespace JCSUnity
             if (mTargetPortal == null &&
                 mType == JCS_2DPortalType.TRANSFER_PORTAL)
             {
-                JCS_GameErrors.JcsErrors("JCS_2DPortal",   "");
+                JCS_Debug.JcsErrors(this, "Transform portal does not exists.");
                 return;
             }
         }
@@ -78,6 +108,12 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="player"></param>
         public void DoPortal(JCS_2DPortalType type, JCS_Player player)
         {
 
@@ -92,7 +128,6 @@ namespace JCSUnity
                         }
                         else
                         {
-                            // auto do the action
                             LoadScene();
                         }
                     }
@@ -117,16 +152,24 @@ namespace JCSUnity
                     break;
             }
         }
-        public void LoadScene()
-        {
-            JCS_SceneManager.instance.LoadScene(mSceneName);
-        }
 
         //----------------------
         // Protected Functions
 
         //----------------------
         // Private Functions
+
+        private void LoadScene()
+        {
+            // set the portal label, in order to let the next scene load.
+            if (JCS_PortalSettings.instance != null)
+            {
+                JCS_PortalSettings.instance.SCENE_PORTAL_LABEL = mPortalLabel;
+            }
+
+            // auto do the action
+            JCS_SceneManager.instance.LoadScene(mSceneName);
+        }
 
     }
 }

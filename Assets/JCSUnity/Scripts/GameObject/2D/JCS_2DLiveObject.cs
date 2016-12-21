@@ -238,7 +238,7 @@ to get the information from them.")]
                 defenseValue = mAbilityFormat.GetDefenseValue();
             else
             {
-                JCS_GameErrors.JcsReminders(this, 
+                JCS_Debug.JcsReminders(this, 
                     "No Ability Format attached.");
             }
 
@@ -249,7 +249,7 @@ to get the information from them.")]
                 JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
-                    JCS_GameErrors.JcsErrors("JCS_2DLiveObject", 
+                    JCS_Debug.JcsErrors("JCS_2DLiveObject", 
                         "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
 
                     return;
@@ -299,8 +299,6 @@ to get the information from them.")]
             Vector2 pos, 
             int criticalChance)
         {
-            int[] tempDamages = damages;
-
             // set the last attack in the safe way.
             SetLastAttacker(attacker);
 
@@ -311,7 +309,7 @@ to get the information from them.")]
                 JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
-                    JCS_GameErrors.JcsErrors("JCS_2DLiveObject", 
+                    JCS_Debug.JcsErrors("JCS_2DLiveObject", 
                         "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
 
                     return;

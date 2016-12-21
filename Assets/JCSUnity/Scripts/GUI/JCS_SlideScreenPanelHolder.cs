@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(JCS_IgnoreDialogueObject))]
     public class JCS_SlideScreenPanelHolder
@@ -39,6 +42,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public RectTransform rectTransform { get { return this.mRectTransform; } }
         public float SlideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
         public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
 

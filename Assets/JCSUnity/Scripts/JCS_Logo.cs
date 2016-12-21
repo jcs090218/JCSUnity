@@ -8,11 +8,14 @@
  */
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+
 
 namespace JCSUnity
 {
     
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_Logo 
         : MonoBehaviour
     {
@@ -22,7 +25,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Note: Fade Time can be set at JCS_SceneManager **")]
+        [Header("** Note: Fade Time can be set at JCS_SceneSettings. **")]
 
         [SerializeField] private string mNextLevel = "JCS_Demo";
 

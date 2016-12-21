@@ -259,7 +259,7 @@ namespace JCSUnity
                         newScale.y += applyRandom;
                     }
                     else
-                        JCS_GameErrors.JcsErrors("JCS_DamageText",   "Max size cannot be smaller than Min size...");
+                        JCS_Debug.JcsErrors("JCS_DamageText",   "Max size cannot be smaller than Min size...");
                 }
 
                 gm.transform.localScale = newScale;

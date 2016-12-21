@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_2DCircleAction
         : MonoBehaviour
         , JCS_Action
@@ -43,10 +47,10 @@ namespace JCSUnity
         [SerializeField] private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 
 
-        [Header("** After Rotate Movement **")]
-        [SerializeField] private bool mAfterRotateWalkStraight = true;
-        [SerializeField] private bool mAfterRotateWalkOpposite = false;
-        [SerializeField] private bool mAfterRotateWalkOppositeCycle = false;
+        //[Header("** After Rotate Movement **")]
+        //[SerializeField] private bool mAfterRotateWalkStraight = true;
+        //[SerializeField] private bool mAfterRotateWalkOpposite = false;
+        //[SerializeField] private bool mAfterRotateWalkOppositeCycle = false;
 
         //----------------------
         // Protected Variables

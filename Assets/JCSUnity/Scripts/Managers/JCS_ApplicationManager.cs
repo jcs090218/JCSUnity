@@ -91,13 +91,45 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+        /// <summary>
+        /// Is platform pc?
+        /// </summary>
+        /// <returns>
+        /// true: is pc,
+        /// false: not pc.
+        /// </returns>
         public bool isPC()
         {
             return (PLATFORM_TYPE == JCS_PlatformType.PC);
         }
+
+        /// <summary>
+        /// Check the platform mobile?
+        /// </summary>
+        /// <returns>
+        /// ture: is mobile,
+        /// false: not mobile
+        /// </returns>
         public bool isMobile()
         {
             return (PLATFORM_TYPE == JCS_PlatformType.MOBILE);
+        }
+
+        /// <summary>
+        /// Quit the application
+        /// </summary>
+        public void Quit(bool fade = true)
+        {
+            if (fade)
+            {
+                // load the quit scene.
+                JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateScene");
+            }
+            else
+            {
+                // quit the app directly,
+                Application.Quit();
+            }
         }
 
         //----------------------

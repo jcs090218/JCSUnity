@@ -69,7 +69,7 @@ namespace JCSUnity
                     return jcsol;
             }
 
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "JCS_2DDynamicSceneManager",
                  
                 "Does not found the order layer u want.");

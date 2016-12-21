@@ -23,7 +23,6 @@ namespace JCSUnity
         private T[] mPair1 = null;
         private U[] mPair2 = null;
 
-
         //----------------------
         // Protected Variables
 
@@ -33,16 +32,23 @@ namespace JCSUnity
         public int length { get { return mPair1.Length; } }
         public bool empty { get { return (length == 0); } }
 
+        public T[] GetPair1() { return this.mPair1; }
+        public U[] GetPair2() { return this.mPair2; }
+
         //========================================
-        //      Self-Define
+        //      Constructor
         //------------------------------
-        //----------------------
-        // Public Functions
         public JCS_Pair(int length = 0)
         {
             mPair1 = new T[length];
             mPair2 = new U[length];
         }
+
+        //========================================
+        //      Self-Define
+        //------------------------------
+        //----------------------
+        // Public Functions
 
         //----------------------
         // Protected Functions

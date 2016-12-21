@@ -16,6 +16,7 @@ namespace JCSUnity
 
     /// <summary>
     /// GUI liquid bar like health bar, mana bar etc.
+    /// Is specific for Unity Engine's Canvas system.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class JCS_GUILiquidBar
@@ -37,11 +38,9 @@ namespace JCSUnity
         [Header("** Initialize Variables (JCS_GUILiquidBar) **")]
 
         [Tooltip("please set this ")]
-        [SerializeField] private Mask mMask;
+        [SerializeField]
+        private Mask mMask;
 
-        // TODO(JenChieh): if i have time.
-        [Tooltip("Health Direction... not implement yet!")]
-        [SerializeField] private JCS_Axis mAxis = JCS_Axis.AXIS_X;
 
         // TODO(JenChieh): Somewhat this work, better if i get the logic right
         //              then this can be optimize
@@ -57,7 +56,6 @@ namespace JCSUnity
         public RectTransform GetRectTransform() { return this.mRectTransform; }
         public Mask GetMask() { return this.mMask; }
 
-
         //========================================
         //      Unity's function
         //------------------------------
@@ -70,7 +68,7 @@ namespace JCSUnity
 
             if (mMask == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this, "No mask applied...");
                 return;
             }
@@ -85,7 +83,7 @@ namespace JCSUnity
                 mMinValue = mMaxValue + 1;  // force min < max value
         }
 
-        protected override void Update()
+        protected void LateUpdate()
         {
 #if (UNITY_EDITOR)
             Test();
@@ -93,15 +91,20 @@ namespace JCSUnity
 
             base.Update();
 
+            // check all components needed are
+            // avaliable.
             if (mMask == null)
                 return;
 
+            // update value.
             UpdateInfo();
 
             GetContainerData();
 
+            // do recover
             DoRecover();
 
+            // do gui movement
             TowardToTargetValue();
         }
 
@@ -112,6 +115,11 @@ namespace JCSUnity
                 Lack();
             if (JCS_Input.GetKeyDown(KeyCode.K))
                 Full();
+
+            // half
+            if (JCS_Input.GetKeyDown(KeyCode.H))
+                SetCurrentValue(MaxValue / 2);
+
             if (JCS_Input.GetKeyDown(KeyCode.X))
                 FixPercentage();
         }
@@ -143,7 +151,7 @@ namespace JCSUnity
         {
             if (val <= mMinValue)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this,
                     "Max value u r setting cannot be lower than min value.");
 
@@ -166,7 +174,7 @@ namespace JCSUnity
         {
             if (val >= mMaxValue)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this,
                     "Min value u r setting cannot be higher than max value.");
 
@@ -316,13 +324,45 @@ namespace JCSUnity
             if (mCountToGetContainerData == 2)
                 return;
 
+            // NOTE(jenchieh): missing comment.
             this.mRectTransform.SetParent(mMaskRectTransform.parent);
 
             mMaskTargetPosition = this.mRectTransform.localPosition;
 
-            mMaxPos = mRectTransform.localPosition.x;
-            mMinPos = mMaxPos - (mMaskRectTransform.sizeDelta.x * mMaskRectTransform.localScale.x);
+            // find min max position, 
+            // base on the algin side.
+            switch (GetAlign())
+            {
+                case JCS_Align.ALIGN_LEFT:
+                    {
+                        mMaxPos = mRectTransform.localPosition.x;
+                        mMinPos = mMaxPos - (mMaskRectTransform.sizeDelta.x * mMaskRectTransform.localScale.x);
+                    }
+                    break;
 
+                case JCS_Align.ALIGN_RIGHT:
+                    {
+                        mMaxPos = mRectTransform.localPosition.x;
+                        mMinPos = mMaxPos + (mMaskRectTransform.sizeDelta.x * mMaskRectTransform.localScale.x);
+                    }
+                    break;
+
+                case JCS_Align.ALIGN_TOP:
+                    {
+                        mMaxPos = mRectTransform.localPosition.y;
+                        mMinPos = mMaxPos + (mMaskRectTransform.sizeDelta.y * mMaskRectTransform.localScale.y);
+                    }
+                    break;
+
+                case JCS_Align.ALIGN_BOTTOM:
+                    {
+                        mMaxPos = mRectTransform.localPosition.y;
+                        mMinPos = mMaxPos - (mMaskRectTransform.sizeDelta.y * mMaskRectTransform.localScale.y);
+                    }
+                    break;
+            }
+
+            // NOTE(jenchieh): missing comment.
             this.mRectTransform.SetParent(mMaskRectTransform);
 
             // do starting percent
@@ -340,7 +380,7 @@ namespace JCSUnity
                 mCurrentValue > mMaxValue)
 
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_GUILiquidBar", 
                       
                     "Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");
@@ -353,7 +393,19 @@ namespace JCSUnity
 
 
             float realDistance = (mMaxPos - mMinPos) * currentPercentage;
-            mMaskTargetPosition.x = mMinPos + realDistance;
+
+            switch (GetAlign())
+            {
+                case JCS_Align.ALIGN_LEFT:
+                case JCS_Align.ALIGN_RIGHT:
+                    mMaskTargetPosition.x = mMinPos + realDistance;
+                    break;
+                case JCS_Align.ALIGN_BOTTOM:
+                case JCS_Align.ALIGN_TOP:
+                    mMaskTargetPosition.y = mMinPos + realDistance;
+                    break;
+            }
+            
         }
 
         /// <summary>

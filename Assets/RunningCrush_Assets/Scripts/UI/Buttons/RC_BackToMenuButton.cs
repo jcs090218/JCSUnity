@@ -28,7 +28,7 @@ public class RC_BackToMenuButton
     {
         if (mSlideCamera == null)
         {
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "RC_BackToMenuButton",
                  
                 "No JCS_2DSlideScreenCamera in the scene...");

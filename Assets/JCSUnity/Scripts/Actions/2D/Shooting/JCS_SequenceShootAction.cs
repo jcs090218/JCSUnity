@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -130,7 +131,7 @@ namespace JCSUnity
         {
             if (mShootAction.Bullet == null)
             {
-                JCS_GameErrors.JcsReminders("JCS_SequenceShootAction", 
+                JCS_Debug.JcsReminders("JCS_SequenceShootAction", 
                     "There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
 
                 return;
@@ -138,7 +139,7 @@ namespace JCSUnity
 
             if (hit <= 0)
             {
-                JCS_GameErrors.JcsReminders("JCS_SequenceShootAction",
+                JCS_Debug.JcsReminders("JCS_SequenceShootAction",
                     "Cannot shoot sequence of bullet with lower than 0 hit...");
 
                 return;
@@ -408,22 +409,25 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool", "min damage cannot be higher or equal to the max damage!");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool", "min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool", "Min or Max damage cannot be lower than 0!");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool", "Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool", "Hit count should not be equal or lower than 0!");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool", "Hit count should not be equal or lower than 0!");
                 return null;
             }
 
+
+            // get the game setting first
+            JCS_GameSettings jcsGm = JCS_GameSettings.instance;
 
             int[] damages = new int[hit];
 
@@ -435,6 +439,17 @@ namespace JCSUnity
 
                 // 受到的傷害 = 傷害 - 防禦力
                 damages[index] = dm - defenseValue;
+
+                // Check min max
+                {
+                    // 如果小於最下限得值, 就設定為最下限的值
+                    if (damages[index] < jcsGm.MIN_DAMAGE)
+                        damages[index] = jcsGm.MIN_DAMAGE;
+
+                    // 如果大於最上限得值, 就設定為最上限的值
+                    if (damages[index] > jcsGm.MAX_DAMAGE)
+                        damages[index] = jcsGm.MAX_DAMAGE;
+                }
             }
 
 

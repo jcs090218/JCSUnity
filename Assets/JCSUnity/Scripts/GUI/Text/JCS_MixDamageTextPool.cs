@@ -104,15 +104,17 @@ namespace JCSUnity
             ProccessSequences();
         }
 
+#if (UNITY_EDITOR)
         private void Test()
         {
             if (JCS_Input.GetKeyDown(KeyCode.N))
             {
                 // Testing helper function so spawn sequence of damage
                 // Showing u can get the damage from ite
-                int[] damages = DamageTextSpawnerSimple(0, 1, new Vector2(0, 0), 6, 60, 0);
+                DamageTextSpawnerSimple(0, 1, new Vector2(0, 0), 6, 60, 0);
             }
         }
+#endif
 
         //========================================
         //      Self-Define
@@ -120,7 +122,7 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
-        
+
         /// <summary>
         /// Default Damaget Text Spawner with the defualt Random Algorithm!
         /// </summary>
@@ -170,31 +172,34 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool",   "min damage cannot be higher or equal to the max damage!");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool",   "Min or Max damage cannot be lower than 0!");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (percentOfCritical < 0 || percentOfCritical > 100)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool",   "Percent Of Critical should within range of 0 ~ 100...");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Percent Of Critical should within range of 0 ~ 100...");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool",   "Hit count should not be equal or lower than 0!");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Hit count should not be equal or lower than 0!");
                 return null;
             }
 
 
             int[] damages = new int[hit];
             DamageTextType[] types = new DamageTextType[hit];
+
+            // get the game setting first
+            JCS_GameSettings jcsGm = JCS_GameSettings.instance;
 
             for (int index = 0;
                 index < hit;
@@ -205,8 +210,22 @@ namespace JCSUnity
                 // 受到的傷害 = 傷害 - 防禦力
                 damages[index] = dm - defenseValue;
 
+                // Check min max
+                {
+                    // 如果小於最下限得值, 就設定為最下限的值
+                    if (damages[index] < jcsGm.MIN_DAMAGE)
+                        damages[index] = jcsGm.MIN_DAMAGE;
+                    
+                    // 如果大於最上限得值, 就設定為最上限的值
+                    if (damages[index] > jcsGm.MAX_DAMAGE)
+                        damages[index] = jcsGm.MAX_DAMAGE;
+                }
+                
+                // see if this damage text a critical damage text?
                 bool isCritical = (algorithm(0, 100) < percentOfCritical);
 
+                // Set the type of the damage text 
+                // base on the tribe!
                 if (!isEnemy)
                 {
                     if (isCritical)
@@ -320,7 +339,7 @@ namespace JCSUnity
             if (damage.Length != pos.Length || 
                 damage.Length !=types.Length)
             {
-                JCS_GameErrors.JcsErrors("JCS_MixDamageTextPool",   "Wrong triple pair size!");
+                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Wrong triple pair size!");
                 return;
             }
 

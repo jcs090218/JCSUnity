@@ -28,31 +28,45 @@ namespace JCSUnity
         // Private Variables
 
         [Header("** Check Variables (JCS_SlideEffect) **")]
-        [SerializeField] private bool mIsActive = false;
+
+        [SerializeField]
+        private bool mIsActive = false;
+
 
         [Header("** Initialize Variables (JCS_SlideEffect) **")]
 
         [Tooltip("Direction object slides.")]
-        [SerializeField] private JCS_Axis mAxis = JCS_Axis.AXIS_X;
+        [SerializeField]
+        private JCS_Axis mAxis = JCS_Axis.AXIS_X;
 
         [Tooltip("How far the object slides.")]
-        [SerializeField] [Range(-1000, 1000)]
+        [SerializeField] [Range(-30000, 30000)]
         private float mDistance = -50;
 
         [Tooltip("Check if the mouse leave the button or not to disable the slide effect.")]
-        [SerializeField] private bool mAutoCheckExit = true;
+        [SerializeField]
+        private bool mAutoCheckExit = true;
 
         [Tooltip("How fast the object slides.")]
         [SerializeField] [Range(0.01f, 10.0f)]
         private float mFriction = 0.2f;
+
         private Vector3 mTargetPosition = Vector3.zero;
 
         private Vector3 mRecordPosition = Vector3.zero;
         private Vector3 mTowardPosition = Vector3.zero;
 
+
         [Header("Usage:(Audio) Add JCS_SoundPlayer components, if u want the SFX.")]
-        [SerializeField] private AudioClip mActiveClip = null;
-        [SerializeField] private AudioClip mDeactiveClip = null;
+
+        [Tooltip("If slide out, do the sound.")]
+        [SerializeField]
+        private AudioClip mActiveClip = null;
+
+        [Tooltip("If slide back the original position, do the sound.")]
+        [SerializeField]
+        private AudioClip mDeactiveClip = null;
+
         private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Don't track on x-axis?")]
@@ -72,7 +86,8 @@ namespace JCSUnity
 
         [Tooltip(@"If u want to active this effect by button, 
 plz set the button here.")]
-        [SerializeField] private JCS_Button mActiveButton = null;
+        [SerializeField]
+        private JCS_Button mActiveButton = null;
 
         //----------------------
         // Protected Variables
@@ -81,9 +96,39 @@ plz set the button here.")]
         //      setter / getter
         //------------------------------
         public bool IsActive { get { return this.mIsActive; } }
+        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool AutoCheckExit { get { return this.mAutoCheckExit; } set { this.mAutoCheckExit = value; } }
         public void SetActiveSound(AudioClip ac) { this.mActiveClip = ac; }
         public void SetDeactiveSound(AudioClip ac) { this.mDeactiveClip = ac; }
+        public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
+        public float Distance
+        {
+            get { return this.mDistance; }
+            set
+            {
+                this.mDistance = value;
+
+                Vector3 newPos = this.transform.localPosition;
+                // record the original position
+                this.mRecordPosition = newPos;
+                this.mTargetPosition = newPos;
+
+                switch (mAxis)
+                {
+                    case JCS_Axis.AXIS_X:
+                        newPos.x += mDistance;
+                        break;
+                    case JCS_Axis.AXIS_Y:
+                        newPos.y += mDistance;
+                        break;
+                    case JCS_Axis.AXIS_Z:
+                        newPos.z += mDistance;
+                        break;
+                }
+
+                this.mTowardPosition = newPos;
+            }
+        }
 
         //========================================
         //      Unity's function
@@ -98,10 +143,8 @@ plz set the button here.")]
             // set the call back function if there is button assigned.
             if (mActiveButton != null)
                 mActiveButton.SetSystemCallback(JCS_OnMouseOver);
-        }
 
-        private void Start()
-        {
+
             Vector3 newPos = this.transform.localPosition;
             // record the original position
             this.mRecordPosition = newPos;
@@ -189,16 +232,23 @@ plz set the button here.")]
                 mSoundPlayer.PlayOneShot(mDeactiveClip);
         }
 
+
         /// <summary>
         /// Check the object in at the position.
         /// </summary>
-        /// <returns> true: at the position, 
-        /// false: not at the position </returns>
-        public bool IsIdle()
+        /// <param name="accept"> acceptable range </param>
+        /// <returns> 
+        /// true: at the position, 
+        /// false: not at the position 
+        /// </returns>
+        public bool IsIdle(float accept = 0)
         {
             int distance = (int)Vector3.Distance(mTargetPosition, this.transform.localPosition);
 
-            return (distance == 0);
+            if (accept == 0)
+                return (distance == 0);
+
+            return (distance < accept);
         }
 
         /// <summary>

@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -20,6 +21,8 @@ namespace JCSUnity
     public class JCS_LiquidBarInfo
         : MonoBehaviour
     {
+
+        [Tooltip("Tag for u to recognize each same components.")]
         [SerializeField]
         protected string mTagName = "";
 

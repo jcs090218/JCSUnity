@@ -15,6 +15,9 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_Webcam 
         : JCS_UnityObject
@@ -125,6 +128,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ActiveWebcam()
         {
             WebCamDevice[] devices = WebCamTexture.devices;
@@ -143,13 +150,17 @@ namespace JCSUnity
 
             mWebCamTexture.Play();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void TakeSnapshotWebcam()
         {
             // No device detected!!
             // cannot take snap shot without the device!!
             if (!mDetectDevice)
             {
-                JCS_GameErrors.JcsErrors("JCS_Webcam",   "No webcam detected in the current devices.");
+                JCS_Debug.JcsErrors("JCS_Webcam",   "No webcam detected in the current devices.");
                 return;
             }
 
@@ -172,7 +183,7 @@ namespace JCSUnity
                 JCS_SceneManager sm = JCS_SceneManager.instance;
 
                 if (sm.GetJCSWhiteScreen() == null)
-                    JCS_ButtonFunctions.PopJCSWhiteScreen();
+                    JCS_UtilityFunctions.PopJCSWhiteScreen();
 
                 sm.GetJCSWhiteScreen().FadeIn();
 
@@ -189,6 +200,10 @@ namespace JCSUnity
             // play sound.
             mSoundPlayer.PlayOneShot(mTakePhotoSound);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override void UpdateUnityData()
         {
             switch (GetObjectType())

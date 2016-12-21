@@ -10,9 +10,13 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_AnimPool))]
     public class JCS_2DFullScreenAtkAction
         : JCS_2DSkills
@@ -53,6 +57,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public int SkillHit { get { return this.mSkillHit; } }
 
         //========================================
         //      Unity's function
@@ -72,6 +77,10 @@ namespace JCSUnity
 
         //----------------------
         // Protected Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override void ActiveSkill()
         {
             SpawnMainAnim1();
@@ -84,6 +93,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void SpawnSupAnim()
         {
             for (int index = 0;
@@ -111,6 +124,10 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
         private void SetToRandomPos(ref GameObject obj)
         {
             float randPosX = JCS_Utility.JCS_FloatRange(-mSkillWide, mSkillWide);
@@ -122,6 +139,10 @@ namespace JCSUnity
             obj.transform.position = newPos;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
         private void AddHitSound(ref GameObject obj)
         {
             if (mHitSound == null)

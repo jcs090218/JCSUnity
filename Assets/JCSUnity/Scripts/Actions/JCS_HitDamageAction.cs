@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -42,14 +43,13 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void Awake()
         {
-            mBoxCollider = this.GetComponent<BoxCollider>();
-
             // try to get the ability format from this object.
             mAbilityFormat = this.GetComponent<JCS_AbilityFormat>();
 
@@ -77,6 +77,10 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="liveObject"></param>
         private void DamageLiveObject(JCS_2DLiveObject liveObject)
         {
             // if cannot damage this live object than do nothing.
@@ -93,7 +97,7 @@ namespace JCSUnity
 
             if (mAbilityFormat == null)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     "JCS_HitDamageAction",
                      
                     "You sure to not using any \"JCS_AbilityFormat\"?");

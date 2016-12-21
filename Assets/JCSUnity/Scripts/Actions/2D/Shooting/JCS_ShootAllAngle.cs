@@ -29,19 +29,24 @@ namespace JCSUnity
         // Private Variables
         private JCS_ShootAction mShootAction = null;
 
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_ShootAllAngle) **")]
 
         [Tooltip("Automatically shoot the bullet itself, use of AI!")]
-        [SerializeField] private bool mAutoShootInFrame = false;
+        [SerializeField]
+        private bool mAutoShootInFrame = false;
 
         [Tooltip("Automatically shoot the bullet itself, use of AI!")]
-        [SerializeField] private bool mAutoShootByOrder = false;
+        [SerializeField]
+        private bool mAutoShootByOrder = false;
 
         [Tooltip("Degree per bullet shoot.")]
-        [SerializeField] private float mDegreePerShoot = 10;
+        [SerializeField] [Range(1, 360)]
+        private float mDegreePerShoot = 10;
 
         [Tooltip("Check if the enemy can shoot or not depends on the Delay Time!")]
-        [SerializeField] private bool mCanShoot = true;
+        [SerializeField]
+        private bool mCanShoot = true;
 
 
         [Tooltip("How long it take to shoot a bullet.")]
@@ -51,6 +56,10 @@ namespace JCSUnity
         [Tooltip("Time that will randomly affect the Time Zone.")]
         [SerializeField] [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
+
+        [Tooltip("Axis of the bullet shooting.")]
+        [SerializeField]
+        private JCS_Axis mShootAxis = JCS_Axis.AXIS_Z;
 
         private float mDelayTimer = 0;
 
@@ -97,6 +106,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShootAllAngleByFrame()
         {
             Vector3 newRotation = this.transform.localEulerAngles;
@@ -106,7 +119,21 @@ namespace JCSUnity
                 count < 360 / mDegreePerShoot;
                 ++count)
             {
-                newRotation.z = mDegreePerShoot * count;
+                switch (mShootAxis)
+                {
+                    case JCS_Axis.AXIS_X:
+                        newRotation.x = mDegreePerShoot * count;
+                        break;
+
+                    case JCS_Axis.AXIS_Y:
+                        newRotation.y = mDegreePerShoot * count;
+                        break;
+
+                    case JCS_Axis.AXIS_Z:
+                        newRotation.z = mDegreePerShoot * count;
+                        break;
+                }
+
                 transform.localEulerAngles = newRotation;
 
                 mShootAction.Shoot();
@@ -115,12 +142,30 @@ namespace JCSUnity
 
             mShooted = true;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShootAllAngleByOrder()
         {
             Vector3 newRotation = this.transform.localEulerAngles;
             Vector3 recordRotation = newRotation;
 
-            newRotation.z = mDegreePerShoot * mCount;
+            switch (mShootAxis)
+            {
+                case JCS_Axis.AXIS_X:
+                    newRotation.x = mDegreePerShoot * mCount;
+                    break;
+
+                case JCS_Axis.AXIS_Y:
+                    newRotation.y = mDegreePerShoot * mCount;
+                    break;
+
+                case JCS_Axis.AXIS_Z:
+                    newRotation.z = mDegreePerShoot * mCount;
+                    break;
+            }
+
             transform.localEulerAngles = newRotation;
 
             mShootAction.Shoot();
@@ -137,6 +182,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void AutoShootActionByFrame()
         {
             if (!CanShoot)
@@ -156,6 +205,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Automatically shoot by the timer.
+        /// </summary>
         private void AutoShootActionByOrder()
         {
             if (!CanShoot)
@@ -175,6 +227,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Reset the timer.
+        /// </summary>
         private void ResetTimeZone()
         {
             float adjustTime = JCS_Utility.JCS_FloatRange(-mAdjustTimeZone, mAdjustTimeZone);

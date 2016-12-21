@@ -244,7 +244,7 @@ after spawn. Add angle around -value ~ value.")]
                 // check if null.
                 if (spawnTrans == null)
                 {
-                    JCS_GameErrors.JcsErrors(
+                    JCS_Debug.JcsErrors(
                         this, "Spawning object detect that are null references... Could not spawn the object!");
 
                     break;

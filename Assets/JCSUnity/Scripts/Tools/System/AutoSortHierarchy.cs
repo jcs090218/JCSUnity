@@ -1,4 +1,6 @@
-﻿/**
+﻿#if (UNITY_EDITOR && UNITY_5_3_5)
+
+/**
  * $File: A_to_Z.cs $
  * $Date: $
  * $Revision: $
@@ -9,7 +11,11 @@
 using UnityEngine;
 using UnityEditor;
 
-public class A_to_Z : BaseHierarchySort
+
+/* no longer support in version 5.4.0f3. */
+
+public class A_to_Z 
+    : BaseHierarchySort
 {
 
     public override int Compare(GameObject lhs, GameObject rhs)
@@ -22,7 +28,8 @@ public class A_to_Z : BaseHierarchySort
     }
 }
 
-public class Z_to_A : BaseHierarchySort
+public class Z_to_A 
+    : BaseHierarchySort
 {
 
     public override int Compare(GameObject lhs, GameObject rhs)
@@ -34,3 +41,5 @@ public class Z_to_A : BaseHierarchySort
         return EditorUtility.NaturalCompare(rhs.name, lhs.name);
     }
 }
+
+#endif

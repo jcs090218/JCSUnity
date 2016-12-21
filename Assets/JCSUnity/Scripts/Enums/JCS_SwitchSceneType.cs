@@ -9,14 +9,18 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Type to switch the scene.
+    /// </summary>
     public enum JCS_SwitchSceneType
     {
         NONE,
 
         BLACK_SCREEN,
         SLIDE_SCREEN
-
     }
 }

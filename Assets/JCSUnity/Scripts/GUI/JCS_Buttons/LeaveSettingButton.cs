@@ -15,7 +15,7 @@ namespace JCSUnity
     {
         public override void JCS_ButtonClick()
         {
-            JCS_ButtonFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
+            JCS_UtilityFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
         }
 
     }

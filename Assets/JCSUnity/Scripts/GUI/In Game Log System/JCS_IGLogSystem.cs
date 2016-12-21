@@ -136,8 +136,6 @@ namespace JCSUnity
         {
             JCS_LogText logText = null;
 
-            Vector3 thisPos = this.transform.position;
-
             for (int index = 0;
                 index < mRenderLogText.length;
                 ++index)
@@ -170,9 +168,7 @@ namespace JCSUnity
         private void ActiveOneText()
         {
             // get one log text from the pool
-            JCS_LogText logText = mLogTextPool.ExecuteOneFromPool();
-
-            
+            mLogTextPool.ExecuteOneFromPool();
         }
 
     }

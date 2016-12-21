@@ -99,7 +99,7 @@ namespace JCSUnity
         {
             if (mSlideCamera == null)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     "JCS_SlideScreenButton", 
                      
                     "Assign the button without camera is not allowed...");

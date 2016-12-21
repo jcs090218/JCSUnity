@@ -60,8 +60,10 @@ namespace JCSUnity
         //      Unity's function
         //------------------------------
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             // no effect happens
             if (!RandomizeCashValueEffect || 
                 mRandomizeCashValue == 0)

@@ -159,7 +159,7 @@ namespace JCSUnity
 
                 if (currentBtn == null)
                 {
-                    JCS_GameErrors.JcsErrors(
+                    JCS_Debug.JcsErrors(
                         "JCS_RollBtnSelector",
                          
                         "Missing jcs_button assign in the inspector...");
@@ -266,7 +266,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_GameErrors.JcsErrors(
+                    JCS_Debug.JcsErrors(
                         "JCS_RollBtnSelector",
                          
                         "JCS_ScaleEffect are null but we still want the effect. plz make sure all the button have JCS_ScaleEffet component!");
@@ -292,7 +292,7 @@ namespace JCSUnity
         {
             if (mFocusBtn == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_RollBtnSelector",
                       
                     "Cannot do the movement without focus button...");
@@ -305,7 +305,7 @@ namespace JCSUnity
 
             if (mLastScrollIndex == currentScrollIndex)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_RollBtnSelector",
                      
                     "Last Scroll Index and Current Scroll Index are the same...");
@@ -384,7 +384,7 @@ namespace JCSUnity
 
                 if (currentBtn == null || targetBtn == null)
                 {
-                    JCS_GameErrors.JcsErrors(
+                    JCS_Debug.JcsErrors(
                         "JCS_RollBtnSelector",
                          
                         "Missing jcs_button assign in the inspector...");

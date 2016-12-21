@@ -37,8 +37,6 @@ namespace JCSUnity
         //------------------------------
         protected virtual void Start()
         {
-
-            JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
             if (mPlatformCollider == null ||
                 mPlatformTrigger == null)
                 return;

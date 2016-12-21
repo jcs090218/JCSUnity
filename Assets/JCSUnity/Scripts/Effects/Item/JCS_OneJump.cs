@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -30,14 +31,15 @@ namespace JCSUnity
 
         [Header("** Runtime Variables **")]
         [Tooltip("How many force to apply on jump")]
-        [SerializeField] private float mJumpForce = 10;
-        [SerializeField] private float mMoveForce = 10;
-        [SerializeField] private float mItemGravity = 2;
+        [SerializeField]
+        private float mJumpForce = 10;
+        [SerializeField]
+        private float mMoveForce = 10;
+        [SerializeField]
+        private float mItemGravity = 2;
 
         private Vector3 mVelocity = Vector3.zero;
         private BoxCollider mBoxCollider = null;
-
-
 
         private Rigidbody mRigidbody = null;
         private RaycastHit mRaycastHit;
@@ -52,6 +54,9 @@ namespace JCSUnity
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public Vector3 GetVelocity() { return this.mVelocity; }
 
+        public Rigidbody GetRigidbody() { return this.mRigidbody; }
+        public Collider GetFixCollider() { return this.mFixCollider; }
+
         //========================================
         //      Unity's function
         //------------------------------
@@ -62,8 +67,11 @@ namespace JCSUnity
         }
         private void Start()
         {
-            JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(mBoxCollider);
-            JCS_2DGameManager.instance.IgnoreAllPlatformTrigger(mBoxCollider);
+            if (JCS_PlayerManager.instance != null)
+                JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(mBoxCollider);
+
+            if (JCS_2DGameManager.instance != null)
+                JCS_2DGameManager.instance.IgnoreAllPlatformTrigger(mBoxCollider);
         }
 
         private void FixedUpdate()
@@ -128,17 +136,44 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
-        public void DoForce()
+
+        /// <summary>
+        /// Apply force in order to do hop effect.
+        /// </summary>
+        /// <param name="depth"> include depth? </param>
+        public void DoForce(bool depth = false)
         {
-            DoForce(mMoveForce, mJumpForce);
+            DoForce(mMoveForce, mJumpForce, depth);
         }
-        public void DoForce(float moveForce, float jumpForce)
+        /// <summary>
+        /// Apply force in order to do hop effect.
+        /// </summary>
+        /// <param name="moveForce"> force to move in x axis </param>
+        /// <param name="jumpForce"> force to move in y axis </param>
+        /// /// <param name="depth"> include depth? </param>
+        public void DoForce(float moveForce, float jumpForce, bool depth = false)
         {
             mVelocity.y = jumpForce;
             mVelocity.x = moveForce;
             this.mMoveForce = moveForce;
             this.mJumpForce = jumpForce;
             mEffect = true;
+
+            // including depth!
+            if (depth)
+            {
+                float tempMoveForce = moveForce / 2;
+
+                // override x
+                mVelocity.x = JCS_Utility.JCS_FloatRange(
+                    -tempMoveForce,
+                    tempMoveForce);
+
+                // apply depth
+                mVelocity.z = JCS_Utility.JCS_FloatRange(
+                    -tempMoveForce,
+                    tempMoveForce);
+            }
         }
 
         //----------------------

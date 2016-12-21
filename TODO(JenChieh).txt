@@ -9,13 +9,15 @@ $Notice: See LICENSE.txt for modification and distribution information
 
 //-- General --//
 * Weather Data (System)
-* Dialogue System (GUI)
 * Timer (GUI)
 * Text Delta counter (GUI)
 * Game Pad to work(System)
 * JCS_EnvironmentSoundPlayer (not following the system setting, logic errors!)
 * JCS_StaticLightning (effect isn't good enough, algorithm fix!)
 * 同一排 然後只能選擇一個button突出來(slide effect).
+* JCS_VideoPlayer
+    - support more format.
+* Audio Source with multiple components might cause a lot of performance?
 
 //-- GUI --//
 * JCS_SequenceSelector <- select something base on sequence.
@@ -26,7 +28,8 @@ $Notice: See LICENSE.txt for modification and distribution information
 
 //-- 3D --//
 * Control player like Monster Hunter game did.
-* A* pathfinding.
+* JCS_3DAnimator
+* JCS_3DBlendTreeAnimator
 
 -- Wait List for Implement --
     - JCS_3DWalkAction

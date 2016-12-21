@@ -23,9 +23,6 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
-        // use for outside sources. 
-        public static JCS_UtilitiesManager instance = null;
-
         //----------------------
         // Private Variables
 

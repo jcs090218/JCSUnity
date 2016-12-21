@@ -1,20 +1,27 @@
-﻿/** 
+﻿/**
  * $File: ToSettingButton.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-    public class ToSettingButton : JCS_Button
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ToSettingButton 
+        : JCS_Button
     {
         public override void JCS_ButtonClick()
         {
-            //JCS_ButtonFunctions.PopSettingDialogue();
+            //JCS_UtilityFunctions.PopSettingDialogue();
 
             JCS_GameWindowHandler.instance.GetPlayerDialogueAt(mDialogueIndex).ShowDialogue();
         }

@@ -89,7 +89,7 @@ public class RC_GameManager
         {
             if (gs.PLAYERS[index] == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "RC_GameManager",
                      
                     "Player List in RC_GameSetting are null...");
@@ -118,7 +118,7 @@ public class RC_GameManager
                     rcp.SetLiquidBar(lb);
                 }
                 else {
-                    JCS_GameErrors.JcsErrors(
+                    JCS_Debug.JcsErrors(
                         "RC_GameManager",
                          
                         "No liquid bar attach to \"RC_GameSetting\" and u still want to access it.");

@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_OnDestroyPlaySoundEvent
         : MonoBehaviour
@@ -35,6 +39,7 @@ namespace JCSUnity
         //------------------------------
         public void SetSoundSettingType(JCS_SoundSettingType type) { mSoundSettingType = type; }
         public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
+        public JCS_SoundPlayer GetJCSSoundPlayer() { return this.mSoundPlayer; }
 
         //========================================
         //      Unity's function

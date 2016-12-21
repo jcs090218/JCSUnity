@@ -10,9 +10,13 @@ using UnityEngine;
 using System.Collections;
 using System.IO;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Camera class for JCSUnity framework.
+    /// </summary>
     [RequireComponent(typeof(Camera))]
     public abstract class JCS_Camera 
         : MonoBehaviour
@@ -22,8 +26,24 @@ namespace JCSUnity
 
         protected Camera mCamera = null;
         protected Vector3 mVelocity = Vector3.zero;
+        
+        [Header("** Initialize Variables (JCS_Camera) **")]
+
+        [Tooltip("Distance as game origin depth.")]
+        [SerializeField]
+        protected float mGameDepth = 0;
+
+        [SerializeField]
+        protected bool mDisplayGameDepthCamera = false;
+
+        [SerializeField]
+        protected Color mGameCamColor = Color.white;
+
+
         [Header("** Runtime Variables (JCS_Camera) **")]
-        [SerializeField] protected bool mFollowing = true;
+
+        [SerializeField]
+        protected bool mFollowing = true;
 
         // x = width, y = height, z = 0 (no involve in depth.)
         protected Vector3 mCamRectSize = Vector3.one;
@@ -32,15 +52,14 @@ namespace JCSUnity
         // TopLeft -> BottomLeft
         protected Rect mCamRect = new Rect();
 
-        [Header("** Initialize Variables (JCS_Camera) **")]
-        [Tooltip("Distance as game origin depth.")]
-        [SerializeField] protected float mGameDepth = 0;
-        [SerializeField] protected bool mDisplayGameDepthCamera = false;
-        [SerializeField] protected Color mGameCamColor = Color.white;
+        [Tooltip("")]
+        [SerializeField]
+        protected Vector3 mPositionOffset = Vector3.zero;
 
         //========================================
         //      setter / getter
         //------------------------------
+        public Vector3 PositionOffset { get { return this.mPositionOffset; } }
         public Vector3 CamRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
         public Rect CamRect { get { return this.mCamRect; } }
         public Camera GetCamera() { return this.mCamera; }
@@ -481,13 +500,12 @@ namespace JCSUnity
         {
             Camera cam = GetCamera();
 
-
             //first you need the RectTransform component of your canvas
             RectTransform canvasRect = JCS_Canvas.instance.GetAppRect();
 
             //then you calculate the position of the UI element
 
-            //0,0 for the canvas is at the center of the screen, 
+            // 0,0 for the canvas is at the center of the screen, 
             // whereas WorldToViewPortPoint treats 
             // the lower left corner as 0,0. Because of 
             // this, you need to subtract the height / width of 
@@ -501,6 +519,81 @@ namespace JCSUnity
 
             //now you can set the position to the ui element
             return worldObject_ScreenPosition;
+        }
+
+        /// <summary>
+        /// Transfer canvas space to world space.
+        /// 
+        /// NOTE(jenchieh): this dont often use, cuz world space element
+        /// dont often follow the ui element.
+        /// </summary>
+        /// <param name="targetCanvasPos"> canvas position to transfer. </param>
+        /// <returns> world space position </returns>
+        public Vector3 CanvasToWorldSpace(Vector2 targetCanvasPos)
+        {
+            Camera cam = GetCamera();
+
+            //first you need the RectTransform component of your canvas
+            RectTransform canvasRect = JCS_Canvas.instance.GetAppRect();
+
+            Vector2 canvasObject_WorldPosition = new Vector2(
+                ((targetCanvasPos.x + (canvasRect.sizeDelta.x * 0.5f)) / canvasRect.sizeDelta.x),
+                ((targetCanvasPos.y + (canvasRect.sizeDelta.y * 0.5f)) / canvasRect.sizeDelta.y));
+
+            Vector3 worldPos = cam.ViewportToWorldPoint(canvasObject_WorldPosition);
+
+            //now you can set the position to the world element
+            return worldPos;
+        }
+
+        /// <summary>
+        /// Set the position (float x, y)
+        /// Position offset added already.
+        /// </summary>
+        /// <param name="xPos"> x position </param>
+        /// <param name="yPos"> y position </param>
+        public void SetPosition(float xPos, float yPos)
+        {
+            Vector3 newPos = this.transform.position;
+            newPos.x = xPos + mPositionOffset.x;
+            newPos.y = yPos + mPositionOffset.y;
+            this.transform.position = newPos;
+        }
+
+        /// <summary>
+        /// Set the position (Vector2)
+        /// Position offset added already.
+        /// </summary>
+        /// <param name="vec"> position x axis </param>
+        public void SetPosition(Vector2 vec)
+        {
+            SetPosition(vec.x, vec.y);
+        }
+
+        /// <summary>
+        /// Set the position (float x, y, z)
+        /// Position offset added already.
+        /// </summary>
+        /// <param name="xPos"> x position </param>
+        /// <param name="yPos"> y position </param>
+        /// <param name="zPos"> z position </param>
+        public void SetPosition(float xPos, float yPos, float zPos)
+        {
+            Vector3 newPos = this.transform.position;
+            newPos.x = xPos + mPositionOffset.x;
+            newPos.y = yPos + mPositionOffset.y;
+            newPos.z = zPos + mPositionOffset.z;
+            this.transform.position = newPos;
+        }
+
+        /// <summary>
+        /// Set the position (Vector3)
+        /// Position offset added already.
+        /// </summary>
+        /// <param name="vec"> position 3 axis </param>
+        public void SetPosition(Vector3 vec)
+        {
+            SetPosition(vec.x, vec.y, vec.z);
         }
 
     }

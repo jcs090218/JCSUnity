@@ -41,7 +41,7 @@ namespace JCSUnity
 
             if (mRemindPerTime < mTimer)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     "JCS_DestroyReminder", 
                       
                     "Object u sound destroy but u did not...");

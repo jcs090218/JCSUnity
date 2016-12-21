@@ -9,10 +9,15 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
-    public class JCS_DragDropObject : MonoBehaviour
+    /// <summary>
+    /// Object that can be drag and drop.
+    /// </summary>
+    public class JCS_DragDropObject 
+        : MonoBehaviour
     {
         private enum DragDrop
         {
@@ -26,10 +31,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private bool mIsDragging = false;
-        private Vector3 mPosition = Vector3.zero;
 
-        [SerializeField] private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
 
         //----------------------
         // Protected Variables

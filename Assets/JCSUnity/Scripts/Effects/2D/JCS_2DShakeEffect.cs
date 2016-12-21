@@ -10,9 +10,14 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Attach this component to the 
+    /// transform you want the effect.
+    /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_2DShakeEffect 
         : JCS_2DEffect
@@ -24,24 +29,34 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Runtime Variables **")]
+        private JCS_SoundPlayer mSoundPlayer = null;
+
+
+        [Header("** Runtime Variables (JCS_2DShakeEffect) **")]
+
         [Tooltip("Override the effect even the the effect is enabled already.")]
-        [SerializeField] private bool mRepeatOverride = false;
+        [SerializeField]
+        private bool mRepeatOverride = false;
+
         [Tooltip("How long it shake.")]
-        [SerializeField] private float mShakeTime = 1;
+        [SerializeField]
+        private float mShakeTime = 1;
+
         [Tooltip("How intense it shake.")]
-        [SerializeField] private float mShakeMargin = 3;
+        [SerializeField]
+        private float mShakeMargin = 3;
 
         // Support
         private float mShakeTimer = 0;
         private Vector3 mShakeOrigin = Vector3.zero;
 
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
-        [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;
+        [SerializeField]
+        private JCS_2DCamera mJCS_2DCamera = null;
 
         [Header("** Sound Settings **")]
-        [SerializeField] private AudioClip mShakeSound = null;
-        private JCS_SoundPlayer mSoundPlayer = null;
+        [SerializeField]
+        private AudioClip mShakeSound = null;
 
 
         //----------------------

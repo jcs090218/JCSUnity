@@ -22,7 +22,7 @@ namespace JCSUnity
             if (packetLength < 0 || packetLength > JCS_NetworkConstant.OUTBUFSIZE)
             {
                 // TODO(JenChieh): split the packet system
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_PacketEncoder", 
                     "Packet u are sending is to big!");
 

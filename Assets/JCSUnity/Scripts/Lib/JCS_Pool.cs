@@ -13,12 +13,19 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class JCS_Pool<T>
     {
 
         private JCS_Vector<T> objects = null;
-        private uint mLastUseIndex = 0;
+        private int mLastUseIndex = 0;
 
+
+        public JCS_Vector<T> GetObjects() { return this.objects; }
+        public int LastUseIndex { get { return this.mLastUseIndex; } }
 
         public JCS_Pool(int num)
         {

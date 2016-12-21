@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_ButtonFunctions.cs $
+ * $File: JCS_UtilityFunctions.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -8,33 +8,65 @@
  */
 using UnityEngine;
 using System.Collections;
+
+// Starting Version 5.3.0 Unity use SceneManageement 
+// instead of Application on load function call.
+#if (UNITY_5_3_OR_NEWER)
 using UnityEngine.SceneManagement;
+#endif
+
 
 namespace JCSUnity
 {
 
-    public class JCS_ButtonFunctions 
+    /// <summary>
+    /// 
+    /// </summary>
+    public class JCS_UtilityFunctions 
         : MonoBehaviour
     {
         private static string IS_CONNECT_DIALOGUE = "JCSUnity_Resources/JCS_ForceDialogue/JCS_MessageBox_YesNo";
         private static string SETTING_PANEL = "JCSUnity_Resources/JCS_InGameDialogue/Setting_Panel";
         private static string TALK_DIALOGUE = "JCSUnity_Resources/JCS_InGameDialogue/Conversation_Dialogue";
 
+        /// <summary>
+        /// Pause the game.
+        /// </summary>
+        /// <param name="act"></param>
         public static void PauseGame(bool act = true)
         {
             JCS_GameManager.instance.GAME_PAUSE = act;
         }
 
+        /// <summary>
+        /// pause the app.
+        /// </summary>
+        /// <param name="act"></param>
         public static void PasueApplication(bool act = true)
         {
             JCS_ApplicationManager.APP_PAUSE = act;
         }
 
+        /// <summary>
+        /// Open an url in defualt 
+        /// JCS_NetworkConstant.OFFICIAL_WEBSITE constant.
+        /// </summary>
         public static void ToOfficailWebpage()
         {
-            Application.OpenURL(JCS_NetworkConstant.OFFICIAL_WEBSITE);
+            ToOfficailWebpage(JCS_NetworkConstant.OFFICIAL_WEBSITE);
         }
 
+        /// <summary>
+        /// Open an url.
+        /// </summary>
+        public static void ToOfficailWebpage(string url)
+        {
+            Application.OpenURL(url);
+        }
+
+        /// <summary>
+        /// Close the application directly.
+        /// </summary>
         public static void QuitApplication()
         {
 #if (UNITY_EDITOR)
@@ -45,6 +77,18 @@ namespace JCSUnity
             Application.Quit();
         }
 
+        /// <summary>
+        /// This will switch the scene then close the application.
+        /// </summary>
+        public static void QuitApplicationWithSwithScene()
+        {
+            JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateScene");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
         public static void DestoryCurrentDialogue(JCS_DialogueType type)
         {
             if (JCS_GameManager.instance.GAME_PAUSE)
@@ -62,11 +106,16 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         private static bool CheckIfOkayToSpawnGameUI(JCS_DialogueType type)
         {
             if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
             {
-                JCS_GameErrors.JcsErrors("JCS_ButtonFunctions",   "(" + type.ToString() + ")No able to spawn Game UI cuz there are multiple GameUI in the scene...");
+                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "(" + type.ToString() + ")No able to spawn Game UI cuz there are multiple GameUI in the scene...");
                 return false;
             }
 
@@ -83,20 +132,23 @@ namespace JCSUnity
             // so it will block the lower priority dialogue type
             if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
             {
-                JCS_GameErrors.JcsErrors("JCS_ButtonFunctions",   "(" + type.ToString() + ")No able to spawn Dialogue cuz there are multiple dialogue in the scene...");
+                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "(" + type.ToString() + ")No able to spawn Dialogue cuz there are multiple dialogue in the scene...");
                 return false;
             }
 
 
             if (JCS_Canvas.instance == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_ButtonFunctions",   "No able to spawn Dialogue cuz Canvas are null...");
+                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "No able to spawn Dialogue cuz Canvas are null...");
                 return false;
             }
 
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PopJCSBlackScreen()
         {
             string path = JCS_GameSettings.BLACK_SCREEN_PATH;
@@ -104,13 +156,33 @@ namespace JCSUnity
 
             if (bs == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_ButtonFunctions",   "GameObject without \"JCS_BlackScreen\" Component attached!!!");
+                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "GameObject without \"JCS_BlackScreen\" Component attached!!!");
                 return;
             }
 
             JCS_SceneManager.instance.SetJCSBlackScreen(bs);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void PopJCSBlackSlideScreen()
+        {
+            string path = JCS_GameSettings.BLACK_SLIDE_SCREEN_PATH;
+            JCS_BlackSlideScreen bs = JCS_Utility.SpawnGameObject(path).GetComponent<JCS_BlackSlideScreen>();
+
+            if (bs == null)
+            {
+                JCS_Debug.JcsErrors("JCS_UtilityFunctions", "GameObject without \"JCS_BlackScreen\" Component attached!!!");
+                return;
+            }
+
+            JCS_SceneManager.instance.SetJCSBlackSlideScreen(bs);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PopJCSWhiteScreen()
         {
             string path = JCS_GameSettings.WHITE_SCREEN_PATH;
@@ -118,7 +190,7 @@ namespace JCSUnity
 
             if (ws == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_ButtonFunctions",   "GameObject without \"JCS_WhiteScreen\" Component attached!!!");
+                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "GameObject without \"JCS_WhiteScreen\" Component attached!!!");
                 return;
             }
 
@@ -126,6 +198,10 @@ namespace JCSUnity
         }
 
         //** Game UI (Game Layer)
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PopInGameUI()
         {
             if (!CheckIfOkayToSpawnGameUI(JCS_DialogueType.GAME_UI))
@@ -136,6 +212,10 @@ namespace JCSUnity
         }
 
         //** (Application Layer)
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PopIsConnectDialogue()
         {
             if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.SYSTEM_DIALOGUE))
@@ -147,6 +227,10 @@ namespace JCSUnity
         }
 
         //** In Game Dialogue (Game Layer)
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PopSettingDialogue()
         {
             if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.PLAYER_DIALOGUE))
@@ -157,6 +241,9 @@ namespace JCSUnity
             //PauseGame(true);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PopTalkDialogue()
         {
             if (!CheckIfOkayToSpawnDialogue(JCS_DialogueType.PLAYER_DIALOGUE))

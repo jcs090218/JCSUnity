@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Collections;
 using System.IO;
 
+
 namespace JCSUnity
 {
 
@@ -52,12 +53,6 @@ namespace JCSUnity
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
 
-        [Header("** Platform Settings **")]
-        // according to player's character controller's height will
-        // should modefied a bit.
-        public float GAP_ACCEPT_RANGE = 0.5f;
-
-
         [Header("** Scene Settings **")]
 
         [Tooltip(@"if the object does not set under the 
@@ -67,6 +62,7 @@ namespace JCSUnity
         // no one care about how black screen look so i
         // just make it unseen in the inspector.
         public static string BLACK_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_BlackScreen";
+        public static string BLACK_SLIDE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_BlackSlideScreen";
         public static string BLACK_SCREEN_NAME = "JCS_BlackScreen";
         public static string WHITE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_WhiteScreen";
         public static string WHITE_SCREEN_NAME = "JCS_WhiteScreen";
@@ -95,7 +91,7 @@ namespace JCSUnity
         public bool RESIZE_UI = true;
 
 
-        [Header("** Save Load Settings**")]
+        [Header("** Save Load Settings **")]
 
         [Tooltip("Save when switching the scene.")]
         public bool SAVE_ON_SWITCH_SCENE = true;
@@ -111,6 +107,15 @@ namespace JCSUnity
         public LoadGameDataDelegate LOAD_GAME_DATA_FUNC = null; // NOT USED
 
         public static JCS_XMLGameData GAME_DATA = null;    // NOT USED
+
+
+        [Header("** Damage Settings **")]
+
+        [Tooltip("Mininum damage can be in the game.")]
+        public int MIN_DAMAGE = 1;
+
+        [Tooltip("Maxinum damage can be in the game.")]
+        public int MAX_DAMAGE = 999999;
 
 
         //--------------------------------
@@ -146,7 +151,7 @@ namespace JCSUnity
                 case JCS_SoundSettingType.SKILLS_SOUND: return GetSkillsSound_Volume();
             }
 
-            JCS_GameErrors.JcsErrors("JCS_GameSetting",   "Get unknown volume...");
+            JCS_Debug.JcsErrors("JCS_GameSetting",   "Get unknown volume...");
 
             return 0;
         }

@@ -72,7 +72,7 @@ namespace JCSUnity
 
             if (mAudioClips[randIndex] == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_SoundPoolAction",   "You inlcude a null references in he audio pool...");
+                JCS_Debug.JcsErrors("JCS_SoundPoolAction",   "You inlcude a null references in he audio pool...");
                 return;
             }
 

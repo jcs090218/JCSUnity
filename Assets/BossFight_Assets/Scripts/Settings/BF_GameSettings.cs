@@ -165,7 +165,7 @@ public class BF_GameSettings
     {
         if (BF_GAME_DATA == null)
         {
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 this,
                 "Save Data without data??? (Fatal Error)");
 

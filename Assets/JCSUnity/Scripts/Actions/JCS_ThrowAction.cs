@@ -28,18 +28,25 @@ namespace JCSUnity
         // Private Variables
         private bool mEffect = false;
 
+        [Header("** Runtime Variables (JCS_ThrowAction) **")]
+
         [Tooltip("Target we are throwing to.")]
-        [SerializeField] private Transform mTargetTransform = null;
+        [SerializeField]
+        private Transform mTargetTransform = null;
 
         private Vector3 mStartingPosition = Vector3.zero;
         private Vector3 mVelocity = Vector3.zero;
 
         private bool mReachInflectionPoint = false;
         private float mInflectionPoint = 0;
+
         [Tooltip("Speed of x")]
-        [SerializeField] private float mHorizontalFriction = 0.2f; // x & z axis
+        [SerializeField]
+        private float mHorizontalFriction = 0.2f; // x & z axis
+
         [Tooltip("Speed of y")]
-        [SerializeField] private float mVerticalForce = 5;        // y axis
+        [SerializeField]
+        private float mVerticalForce = 5;        // y axis
 
         //----------------------
         // Protected Variables

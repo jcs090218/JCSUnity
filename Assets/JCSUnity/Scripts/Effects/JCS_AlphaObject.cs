@@ -10,9 +10,13 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_AlphaObject
         : JCS_UnityObject
     {
@@ -26,10 +30,17 @@ namespace JCSUnity
         private Color mRecordColor;
 
         private float mAlpha = 1;
-        [Tooltip("Can only be within range: 0 ~ 1 .")]
-        [SerializeField] private float mTargetAlpha = 1;
 
-        [SerializeField] private float mFadeFriction = 1;        
+
+        [Header("** Initialize Variables (JCS_AlphaObject) **")]
+
+        [Tooltip("Can only be within range: 0 ~ 1 .")]
+        [SerializeField]
+        private float mTargetAlpha = 1;
+
+        [Tooltip("How fast it alpha change?")]
+        [SerializeField]
+        private float mFadeFriction = 1;        
 
         //----------------------
         // Protected Variables

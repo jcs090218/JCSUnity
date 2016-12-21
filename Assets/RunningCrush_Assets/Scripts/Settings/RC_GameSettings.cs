@@ -113,7 +113,7 @@ public class RC_GameSettings
         {
             if (btn == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "RC_GameSettings",
                      
                     "You have open a space for button load in the scene, but does not assigned...");
@@ -198,7 +198,7 @@ public class RC_GameSettings
     {
         if (RC_GAME_DATA == null)
         {
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "RC_GameSetting", 
                   
                 "Save Data without data??? (Fatal Error)");
@@ -224,7 +224,7 @@ public class RC_GameSettings
         }
 
         // This should not happens...
-        JCS_GameErrors.JcsErrors(
+        JCS_Debug.JcsErrors(
             "RC_GameSetting",
              
             "Game Mode Undefined...");

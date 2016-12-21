@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_Rotation
         : MonoBehaviour
     {
@@ -21,9 +25,20 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] protected bool mEffect = false;
-        [SerializeField] protected float mRotateSpeed = 10;
-        [SerializeField] protected JCS_Vector3Direction mRotateDirection = JCS_Vector3Direction.FORWARD;
+
+        [Header("** Runtime Variables (JCS_Rotation) **")]
+
+        [Tooltip("Do the effect?")]
+        [SerializeField]
+        protected bool mEffect = false;
+
+        [Tooltip("How fast u rotate?")]
+        [SerializeField] [Range(-1000, 1000)]
+        protected float mRotateSpeed = 10;
+
+        [Tooltip("Direction u rotate.")]
+        [SerializeField]
+        protected JCS_Vector3Direction mRotateDirection = JCS_Vector3Direction.FORWARD;
 
         //----------------------
         // Protected Variables
@@ -33,6 +48,7 @@ namespace JCSUnity
         //------------------------------
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float RotateSpeed { get { return this.mRotateSpeed; } set { this.mRotateSpeed = value; } }
+        public JCS_Vector3Direction RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
 
         //========================================
         //      Unity's function
@@ -51,6 +67,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Stop doing the effect
+        /// </summary>
         public void Stop()
         {
             Effect = false;
@@ -62,6 +82,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Algorithm do the rotate effect.
+        /// </summary>
         private void DoRotation()
         {
             Vector3 rotateDirection = Vector3.zero;

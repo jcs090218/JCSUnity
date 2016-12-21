@@ -39,8 +39,10 @@ public class BF_PickItem
     //========================================
     //      Unity's function
     //------------------------------
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // the picking object does not have to be player
         mMustBeActivePlayer = false;
 

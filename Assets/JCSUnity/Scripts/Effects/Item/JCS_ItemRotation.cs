@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_OneJump))]
     public class JCS_ItemRotation
         : JCS_Rotation
@@ -41,8 +45,12 @@ namespace JCSUnity
             mOneJump = this.GetComponent<JCS_OneJump>();
             Effect = true;
         }
+
         protected override void Update()
         {
+            if (!Effect)
+                return;
+
             base.Update();
 
             if (mOneJump.GetVelocity().y == 0)

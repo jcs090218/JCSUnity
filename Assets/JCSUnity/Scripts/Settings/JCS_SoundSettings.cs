@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Sound Setting for each theme.
     /// </summary>
     public class JCS_SoundSettings 
         : MonoBehaviour

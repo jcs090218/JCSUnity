@@ -49,9 +49,6 @@ namespace JCSUnity
         private void Awake()
         {
 
-            // if this is the root object set this as un destroyable
-            this.gameObject.AddComponent<JCS_UniqueObject>();
-
             if (instance != null)
             {
                 string black_screen_name = JCS_GameSettings.BLACK_SCREEN_NAME;

@@ -63,7 +63,12 @@ namespace JCSUnity
         // Protected Functions
 
         //----------------------
-        // Private Functions        
+        // Private Functions
+        
+        /// <summary>
+        /// Fit screen size base on Unity Engine 
+        /// architecture.
+        /// </summary>
         private void FitPerfectSize()
         {
             // get app rect
@@ -97,9 +102,16 @@ namespace JCSUnity
             // set the width and height from app rect
             mRectTransform.sizeDelta = appRect.sizeDelta;
         }
+
+        /// <summary>
+        /// Add the panel child to all panel child.
+        /// </summary>
         private void AddPanelChild()
         {
             Transform tempTrans = this.transform;
+
+            // loop through the child object and 
+            // add on to it.
             for (int index = 0;
                 index < transform.childCount;
                 ++index)

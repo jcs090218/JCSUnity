@@ -88,9 +88,6 @@ public class RC_Camera
             return;
         }
 
-
-        JCS_PlayerManager pm = JCS_PlayerManager.instance;
-
         JCS_Player target = FindActivePlayer();
 
         // set the player to follow.

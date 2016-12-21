@@ -3,12 +3,18 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_Startup
     {
 

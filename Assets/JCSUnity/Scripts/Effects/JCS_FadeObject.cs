@@ -19,7 +19,7 @@ namespace JCSUnity
     /// <summary>
     /// 
     /// </summary>
-    public class JCS_FadeObject 
+    public class JCS_FadeObject
         : JCS_UnityObject
     {
 
@@ -31,8 +31,17 @@ namespace JCSUnity
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
 
         private float mAlpha = 1.0f;
-        [SerializeField] private float mFadeTime = 1.0f;
-        [SerializeField] private bool mOverriteFade = false;
+
+        [Header("** Runtime Variables (JCS_FadeObject) **")]
+
+        [Tooltip("How long it fade?")]
+        [SerializeField]
+        [Range(0, 60.0f)]
+        private float mFadeTime = 1.0f;
+
+        [Tooltip("Override the action before it complete the action.")]
+        [SerializeField]
+        private bool mOverriteFade = false;
 
         private Color mRecordColor;
 
@@ -44,6 +53,16 @@ namespace JCSUnity
 
         // callback after fade in is complete.
         private IsFadeInCallback mIsFadeInCallback = DefaultFadeCallback;
+
+        [Tooltip("Maxinum of fade amount of value.")]
+        [SerializeField]
+        [Range(0, 1)]
+        private float mFadeInAmount = 1;
+
+        [Tooltip("Mininum of fade amount of value.")]
+        [SerializeField]
+        [Range(0, 1)]
+        private float mFadeOutAmount = 0;
 
         //----------------------
         // Protected Variables
@@ -83,15 +102,32 @@ namespace JCSUnity
                 case JCS_FadeType.FADE_OUT:
                     {
                         // Fade out effect complete
-                        if (mAlpha < 0.0f)
+                        if (mAlpha < mFadeOutAmount)
                         {
                             switch (GetObjectType())
                             {
                                 case JCS_UnityObjectType.GAME_OBJECT:
-                                    this.gameObject.SetActive(false);
+                                    {
+                                        //this.gameObject.SetActive(false);
+                                    }
                                     break;
                                 case JCS_UnityObjectType.UI:
-                                    mImage.enabled = false;
+                                    {
+                                        if (mImage != null)
+                                            mImage.enabled = false;
+                                    }
+                                    break;
+                                case JCS_UnityObjectType.SPRITE:
+                                    {
+                                        if (mSpriteRenderer != null)
+                                            mSpriteRenderer.enabled = false;
+                                    }
+                                    break;
+                                case JCS_UnityObjectType.TEXT:
+                                    {
+                                        if (mText != null)
+                                            mText.enabled = false;
+                                    }
                                     break;
                             }
 
@@ -109,7 +145,7 @@ namespace JCSUnity
                 case JCS_FadeType.FADE_IN:
                     {
                         // Fade in effect complete
-                        if (mAlpha > 1.0f)
+                        if (mAlpha > mFadeInAmount)
                         {
                             // do fade in callback
                             mIsFadeInCallback.Invoke();
@@ -123,21 +159,34 @@ namespace JCSUnity
                     break;
             }
 
+            // update the alpha
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
-                    this.mRenderer.material.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                    {
+                        if (mRenderer != null)
+                            this.mRenderer.material.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                    }
                     break;
                 case JCS_UnityObjectType.UI:
-                    this.mImage.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                    {
+                        if (mImage != null)
+                            this.mImage.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                    }
                     break;
                 case JCS_UnityObjectType.SPRITE:
-                    this.mSpriteRenderer.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                    {
+                        if (mSpriteRenderer != null)
+                            this.mSpriteRenderer.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
+                    }
                     break;
                 case JCS_UnityObjectType.TEXT:
-                    this.mText.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha); ;
+                    {
+                        if (mText != null)
+                            this.mText.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha); ;
+                    }
                     break;
-            }           
+            }
 
         }
 
@@ -157,38 +206,52 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
+        /// <summary>
+        /// Update the variable base on 
+        /// the unity data type.
+        /// </summary>
         public override void UpdateUnityData()
         {
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
-                    this.mRenderer = this.GetComponent<Renderer>();
-                    this.mRecordColor = this.mRenderer.material.color;
+                    {
+                        this.mRenderer = this.GetComponent<Renderer>();
+                        this.mRecordColor = this.mRenderer.material.color;
+                    }
                     break;
                 case JCS_UnityObjectType.UI:
-                    this.mImage = this.GetComponent<Image>();
-                    this.mRecordColor = this.mImage.color;
-                    this.mRectTransform = this.GetComponent<RectTransform>();
+                    {
+                        this.mImage = this.GetComponent<Image>();
+                        this.mRecordColor = this.mImage.color;
+                        this.mRectTransform = this.GetComponent<RectTransform>();
+                    }
                     break;
                 case JCS_UnityObjectType.SPRITE:
-                    this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-                    this.mRecordColor = this.mSpriteRenderer.color;
+                    {
+                        this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+
+                        if (mSpriteRenderer != null)
+                            this.mRecordColor = this.mSpriteRenderer.color;
+                    }
                     break;
                 case JCS_UnityObjectType.TEXT:
-                    this.mText = this.GetComponent<Text>();
-                    this.mRecordColor = this.mText.color;
-                    this.mRectTransform = this.GetComponent<RectTransform>();
+                    {
+                        this.mText = this.GetComponent<Text>();
+                        this.mRecordColor = this.mText.color;
+                        this.mRectTransform = this.GetComponent<RectTransform>();
+                    }
                     break;
             }
         }
 
         public bool IsFadeIn()
         {
-            return (this.mAlpha >= 1.0f);
+            return (this.mAlpha >= mFadeInAmount);
         }
         public bool IsFadeOut()
         {
-            return (this.mAlpha <= 0.0f);
+            return (this.mAlpha <= mFadeOutAmount);
         }
 
         public void FadeOut() { FadeOut(mFadeTime); }
@@ -232,17 +295,28 @@ namespace JCSUnity
             {
                 // enable the shader
                 case JCS_UnityObjectType.GAME_OBJECT:
-                    this.gameObject.SetActive(true);
+                    {
+                        //this.gameObject.SetActive(true);
+                    }
                     break;
                 // enable "Image" component
                 case JCS_UnityObjectType.UI:
-                    mImage.enabled = true;
+                    {
+                        if (mImage != null)
+                            mImage.enabled = true;
+                    }
                     break;
                 case JCS_UnityObjectType.SPRITE:
-                    mSpriteRenderer.enabled = true;
+                    {
+                        if (mSpriteRenderer != null)
+                            mSpriteRenderer.enabled = true;
+                    }
                     break;
                 case JCS_UnityObjectType.TEXT:
-                    mText.enabled = true;
+                    {
+                        if (mText != null)
+                            mText.enabled = true;
+                    }
                     break;
             }
 
@@ -250,15 +324,13 @@ namespace JCSUnity
             {
                 case JCS_FadeType.FADE_OUT:
                     {
-                        mAlpha = 1.0f;
+                        mAlpha = mFadeInAmount;
                         this.mVisible = false;
                     }
                     break;
                 case JCS_FadeType.FADE_IN:
                     {
-                        mAlpha = 0.0f;
-
-                        
+                        mAlpha = mFadeOutAmount;
                         this.mVisible = true;
                     }
                     break;

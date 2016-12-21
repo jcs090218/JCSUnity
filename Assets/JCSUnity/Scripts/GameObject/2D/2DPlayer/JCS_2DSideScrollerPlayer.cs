@@ -579,7 +579,7 @@ namespace JCSUnity
         {
             if (!mHitEffect)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this, 
                     "You call the function without checking the hit effect?");
 
@@ -783,7 +783,7 @@ namespace JCSUnity
                 Rope();
             else
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this,
                     "No Climbing action applied...");
                 ExitClimbing(0);

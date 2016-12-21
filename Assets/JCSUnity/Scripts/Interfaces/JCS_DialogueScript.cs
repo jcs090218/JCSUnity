@@ -23,11 +23,23 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
-        // use to design the pages.
+        [Tooltip("use to design the pages.")]
         public int Status = -1;
 
         //----------------------
         // Private Variables
+
+        [Tooltip("")]
+        [SerializeField]
+        private Sprite mCenterSprite = null;
+
+        [Tooltip("")]
+        [SerializeField]
+        private Sprite mLeftSprite = null;
+
+        [Tooltip("")]
+        [SerializeField]
+        private Sprite mRightSprite = null;
 
         //----------------------
         // Protected Variables
@@ -38,6 +50,10 @@ namespace JCSUnity
         //------------------------------
         protected JCS_DialogueSystem DialogueSystem { get { return this.mDialogueSystem; } }
         protected JCS_DialogueSystem jcsDs { get { return this.mDialogueSystem; } }
+
+        public Sprite CenterSprite { get { return this.mCenterSprite; } }
+        public Sprite LeftSprite { get { return this.mLeftSprite; } }
+        public Sprite RightSprite { get { return this.mRightSprite; } }
 
         //========================================
         //      Unity's function
@@ -57,9 +73,19 @@ namespace JCSUnity
         /// <summary>
         /// Starting point of the dialogue.
         /// </summary>
-        /// <param name="mode"></param>
-        /// <param name="type"></param>
-        /// <param name="selection"></param>
+        /// <param name="mode"> 
+        /// 0: quest completed
+        /// 1: quest!
+        /// </param>
+        /// <param name="type">
+        /// 
+        /// </param>
+        /// <param name="selection">
+        /// 0: selection 0 / No button / Decline button
+        /// 1: selection 1 / Yes button / Accept button
+        /// 2: selection 2
+        /// , etc...
+        /// </param>
         public abstract void Action(int mode, int type, int selection);
 
         /// <summary>

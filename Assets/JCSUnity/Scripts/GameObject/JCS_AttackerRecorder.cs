@@ -27,12 +27,14 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        
-
         [Header("** Check Variables **")]
+
         // Every time this object get damage will 
         // record down the last attacker.
-        [SerializeField] private Transform mLastAttacker= null;
+        [SerializeField]
+        private Transform mLastAttacker= null;
+
+        // Record all the attacker attack this enemy!
         private JCS_Vector<Transform> mAttackers = null;
 
         //----------------------
@@ -42,6 +44,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public Transform LastAttacker { get { return this.mLastAttacker; } set { this.mLastAttacker = value; } }
+        public JCS_Vector<Transform> GetAttackers() { return this.mAttackers; }
 
         //========================================
         //      Unity's function

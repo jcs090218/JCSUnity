@@ -35,6 +35,8 @@ MonoBehaviour:
   mObjectType: 3
   mFadeTime: 5
   mOverriteFade: 1
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
 --- !u!114 &11448916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -49,7 +51,7 @@ MonoBehaviour:
   mObjectType: 3
   mIsActive: 0
   mAxis: 0
-  mDistance: -100
+  mDistance: -200
   mAutoCheckExit: 0
   mFriction: 0.1
   mActiveClip: {fileID: 0}
@@ -87,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.71323526, b: 0.41810343, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -96,7 +98,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 15d40b6ff901246168521bfc577cd7d4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

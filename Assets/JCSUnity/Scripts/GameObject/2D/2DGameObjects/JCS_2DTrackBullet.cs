@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_2DTrackAction))]
     [RequireComponent(typeof(JCS_2DGoStraightAction))]
     [RequireComponent(typeof(JCS_DestroyObjectWithTime))]
@@ -25,17 +29,25 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private bool mAct = false;
         private JCS_2DTrackAction mTrackAction = null;
         private JCS_2DGoStraightAction mGoStraightAction = null;
 
-        [Header("** Initialize Varialbes **")]
-        [SerializeField] private float mDelayTimeToFollow = 0;
+
+        [Header("** Initialize Varialbes (JCS_2DTrackBullet) **")]
+
+        [SerializeField]
+        private float mDelayTimeToFollow = 0;
+
         private float mDelayTimeToFollowTimer = 0;
         
-        [Header("** Runtime Variables **")]
-        // TODO(JenChieh): finish this effect.
-        [SerializeField] private bool mLookAtTarget = true;
+
+        [Header("** Runtime Variables (JCS_2DTrackBullet) **")]
+
+        [Tooltip("Do the action?")]
+        [SerializeField]
+        private bool mLookAtTarget = true;
 
         //----------------------
         // Protected Variables
@@ -88,6 +100,10 @@ namespace JCSUnity
         // Private Functions
         private void DoCounter()
         {
+            // check effect trigger!
+            if (!mLookAtTarget)
+                return;
+
             if (mAct)
                 return;
 

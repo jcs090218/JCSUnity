@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Sound Player that plays BGM.
+    /// </summary>
     public class JCS_BGMPlayer 
         : JCS_SoundPlayer
     {

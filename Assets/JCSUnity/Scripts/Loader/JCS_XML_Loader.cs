@@ -20,10 +20,12 @@ namespace JCSUnity
     public class JCS_XML_Loader
     {
         private XmlNodeList mNodeList = null;
-
         private XmlDocument mXmlFile = null;
 
+
+        public XmlNodeList GetNodeList() { return this.mNodeList; }
         public XmlDocument GetXmlFile() { return this.mXmlFile; }
+
 
         public JCS_XML_Loader(TextAsset file)
         {

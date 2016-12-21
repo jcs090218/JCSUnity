@@ -9,8 +9,83 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Joystick enum design here...
+    /// </summary>
+    public enum JCS_JoystickButton
+    {
+        BUTTON_A,
+        BUTTON_B,
+        BUTTON_X,
+        BUTTON_Y,
+
+        HOME_BUTTON,
+
+        START_BUTTON,
+        BACK_BUTTON,
+
+        LEFT_TRIGGER,
+        RIGHT_TRIGGER,
+
+        LEFT_BUMPER,
+        RIGHT_BUMPER,
+
+        BUTTON_UP,
+        BUTTON_DOWN,
+        BUTTON_LEFT,
+        BUTTON_RIGHT,
+
+        // temp.
+        STICK_RIGHT_X,
+        STICK_RIGHT_Y,
+
+        STICK_LEFT_X,
+        STICK_LEFT_Y,
+    };
+
+    /// <summary>
+    /// Support joystick up to 30 people.
+    /// </summary>
+    public enum JCS_JoystickIndex
+    {
+        // Joystick 0 - 29 (1 ~ 30)
+        JOYSTICK_00 = 0x00,
+        JOYSTICK_01 = 0x01,
+        JOYSTICK_02 = 0x02,
+        JOYSTICK_03 = 0x03,
+        JOYSTICK_04 = 0x04,
+        JOYSTICK_05 = 0x05,
+        JOYSTICK_06 = 0x06,
+        JOYSTICK_07 = 0x07,
+        JOYSTICK_08 = 0x08,
+        JOYSTICK_09 = 0x09,
+
+        JOYSTICK_10 = 0x0A,
+        JOYSTICK_11 = 0x0B,
+        JOYSTICK_12 = 0x0C,
+        JOYSTICK_13 = 0x0D,
+        JOYSTICK_14 = 0x0E,
+        JOYSTICK_15 = 0x0F,
+        JOYSTICK_16 = 0x10,
+        JOYSTICK_17 = 0x11,
+        JOYSTICK_18 = 0x12,
+        JOYSTICK_19 = 0x13,
+
+        JOYSTICK_20 = 0x14,
+        JOYSTICK_21 = 0x15,
+        JOYSTICK_22 = 0x16,
+        JOYSTICK_23 = 0x17,
+        JOYSTICK_24 = 0x18,
+        JOYSTICK_25 = 0x19,
+        JOYSTICK_26 = 0x1A,
+        JOYSTICK_27 = 0x1B,
+        JOYSTICK_28 = 0x1C,
+        JOYSTICK_29 = 0x1D,
+    };
 
     /// <summary>
     /// 
@@ -171,7 +246,7 @@ namespace JCSUnity
                     return GetMouseButtonUp(button);
             }
 
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "JCS_Input",
                  
                 "This cannot happed.");
@@ -270,7 +345,7 @@ namespace JCSUnity
                     return GetKeyUp(key);
             }
 
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "JCS_Input",
                  
                 "This cannot happed.");
@@ -334,7 +409,7 @@ namespace JCSUnity
             }
 
 
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "JCS_Input",
                  
                 "This cannot happed.");
@@ -377,6 +452,220 @@ namespace JCSUnity
                 return false;
 
             return Input.GetButtonUp(buttonName);
+        }
+
+        /// <summary>
+        /// Loop through the key and key what key is pressed.
+        /// </summary>
+        /// <param name="type"> type of the key pressed option. </param>
+        /// <returns> key u pressed. </returns>
+        public static KeyCode GetAnyKeyByAction(JCS_KeyActionType type)
+        {
+            // loop through the key code list
+            foreach (KeyCode val in JCSUnity.JCS_Utility.GetValues<KeyCode>())
+            {
+
+                // if the key is pressed, return it.
+                if (JCSUnity.JCS_Input.GetKeyByAction(type, val))
+                {
+                    return val;
+                }
+            }
+
+            // default return.
+            return KeyCode.None;
+        }
+
+        /// <summary>
+        /// Check if any key is pressed.
+        /// </summary>
+        /// <param name="type"> action u want to check. </param>
+        /// <returns>
+        /// true: key buffer in
+        /// false: no key buffer in
+        /// </returns>
+        public static bool IsAnyKeyBuffer(JCS_KeyActionType type)
+        {
+            KeyCode code = GetAnyKeyByAction(type);
+
+            return (code != KeyCode.None);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="joystickIndex"></param>
+        /// <param name="btn"></param>
+        /// <returns></returns>
+        public static float GetAxis(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        {
+            return GetAxis((int)joystickIndex, btn);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="btn"></param>
+        /// <returns></returns>
+        public static float GetAxis(int joystickIndex, JCS_JoystickButton btn)
+        {
+            string num = "";
+
+            // get the joystick
+            JCS_InputSettings.JoystickMap joystickMap = JCS_InputSettings.instance.GetJoysitckMapByIndex(joystickIndex);
+
+            switch (btn)
+            {
+                case JCS_JoystickButton.HOME_BUTTON:
+                    num = joystickMap.HomeButton;
+                    break;
+
+                case JCS_JoystickButton.START_BUTTON:
+                    num = joystickMap.JoystickButtonStart;
+                    break;
+                case JCS_JoystickButton.BACK_BUTTON:
+                    num = joystickMap.JoystickButtonBack;
+                    break;
+
+                case JCS_JoystickButton.BUTTON_A:
+                    num = joystickMap.JoystickButtonA;
+                    break;
+                case JCS_JoystickButton.BUTTON_B:
+                    num = joystickMap.JoystickButtonB;
+                    break;
+                case JCS_JoystickButton.BUTTON_X:
+                    num = joystickMap.JoystickButtonX;
+                    break;
+                case JCS_JoystickButton.BUTTON_Y:
+                    num = joystickMap.JoystickButtonY;
+                    break;
+
+                case JCS_JoystickButton.BUTTON_UP:
+                    num = joystickMap.JoystickButtonUp;
+                    break;
+                case JCS_JoystickButton.BUTTON_DOWN:
+                    num = joystickMap.JoystickButtonDown;
+                    break;
+                case JCS_JoystickButton.BUTTON_LEFT:
+                    num = joystickMap.JoystickButtonLeft;
+                    break;
+                case JCS_JoystickButton.BUTTON_RIGHT:
+                    num = joystickMap.JoystickButtonRight;
+                    break;
+
+                    // Stick Right
+                case JCS_JoystickButton.STICK_RIGHT_X:
+                    num = joystickMap.StickRightX;
+                    break;
+                case JCS_JoystickButton.STICK_RIGHT_Y:
+                    num = joystickMap.StickRightY;
+                    break;
+
+                // Stick Left
+                case JCS_JoystickButton.STICK_LEFT_X:
+                    num = joystickMap.StickLeftX;
+                    break;
+                case JCS_JoystickButton.STICK_LEFT_Y:
+                    num = joystickMap.StickLeftY;
+                    break;
+
+                    // Bumper
+                case JCS_JoystickButton.RIGHT_BUMPER:
+                    num = joystickMap.JoystickButtonRB;
+                    break;
+                case JCS_JoystickButton.LEFT_BUMPER:
+                    num = joystickMap.JoystickButtonLB;
+                    break;
+
+                    // Trigger
+                case JCS_JoystickButton.RIGHT_TRIGGER:
+                    num = joystickMap.JoystickButtonRT;
+                    break;
+                case JCS_JoystickButton.LEFT_TRIGGER:
+                    num = joystickMap.JoystickButtonLT;
+                    break;
+            }
+
+            return GetAxis(num);
+        }
+        /// <summary>
+        /// Return the joystick buffer.
+        /// </summary>
+        /// <param name="name"> name of the joystick name. </param>
+        /// <returns> value the joystick tilt. </returns>
+        public static float GetAxis(string name)
+        {
+            if (JCS_GameManager.instance.GAME_PAUSE)
+                return 0;
+
+            if (name == "")
+            {
+                JCS_Debug.JcsErrors(
+                    "JCS_Input", "name cannot be empty string...");
+
+                return 0;
+            }
+
+            return Input.GetAxis(name);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="joystickIndex"></param>
+        /// <param name="btn"></param>
+        /// <returns></returns>
+        public static bool GetJoystickButton(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        {
+            return GetJoystickButton((int)joystickIndex, btn);
+        }
+        /// <summary>
+        /// Get the joystick buffer.
+        /// </summary>
+        /// <returns></returns>
+        public static bool GetJoystickButton(int joystickIndex, JCS_JoystickButton btn)
+        {
+            // check if any joystick connected.
+            if (!IsJoystickConnected())
+            {
+                JCS_Debug.JcsErrors(
+                    "JCS_Input",
+                    @"There are no joystick connected, and u 
+still trying to make the joystick specific function call.");
+
+                return false;
+            }
+
+            bool reverse = false;
+
+            // these trigger have to be reserve.
+            switch (btn)
+            {
+                case JCS_JoystickButton.BUTTON_LEFT:
+                case JCS_JoystickButton.BUTTON_DOWN:
+                    reverse = true;
+                    break;
+            }
+
+            if (reverse)
+                return (GetAxis(joystickIndex, btn) < 0);
+
+            return (GetAxis(joystickIndex, btn) > 0);
+        }
+
+        /// <summary>
+        /// Check if there is joy stick connect to 
+        /// the pc.
+        /// 
+        /// SOURCE(jenchieh): http://answers.unity3d.com/questions/218477/how-can-i-detect-if-a-gamepad-is-present.html
+        /// </summary>
+        /// <returns>
+        /// true: is connected
+        /// false: nothing is detected.
+        /// </returns>
+        public static bool IsJoystickConnected()
+        {
+            return (Input.GetJoystickNames().Length != 0);
         }
 
     }

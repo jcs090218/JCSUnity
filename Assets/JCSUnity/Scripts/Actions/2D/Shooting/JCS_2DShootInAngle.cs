@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -34,7 +35,7 @@ namespace JCSUnity
         [Tooltip("Degree per bullet shoot.")]
         [SerializeField] private float mDegreePerShoot = 10;
 
-        private float mDelayTimer = 0;
+        //private float mDelayTimer = 0;
 
         //----------------------
         // Protected Variables
@@ -42,6 +43,10 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_ShootAction GetShootAction() { return this.mShootAction; }
+        public float MinDegree { get { return this.mMinDegree; } }
+        public float MaxDegree { get { return this.mMaxDegree; } }
+        public float DegreePerShoot { get { return this.mDegreePerShoot; } }
 
         //========================================
         //      Unity's function

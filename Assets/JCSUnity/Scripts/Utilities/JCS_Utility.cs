@@ -22,7 +22,7 @@ namespace JCSUnity
     /// <summary>
     /// 
     /// </summary>
-    public class JCS_Utility 
+    public class JCS_Utility
         : MonoBehaviour
     {
 
@@ -103,7 +103,7 @@ namespace JCSUnity
             RectTransform rt = img.transform.GetComponent<RectTransform>();
             if (rt == null)
             {
-                JCS_GameErrors.JcsErrors("JCS_UsefulFunctions",   "No RectTransform on ur image!");
+                JCS_Debug.JcsErrors("JCS_UsefulFunctions", "No RectTransform on ur image!");
                 return Vector2.one;
             }
 
@@ -237,7 +237,7 @@ namespace JCSUnity
 
             return gm;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -384,6 +384,9 @@ namespace JCSUnity
         {
             switch (direction)
             {
+                case JCS_Vector3Direction.CENTER:
+                    return Vector3.zero;
+
                 case JCS_Vector3Direction.UP:
                     return Vector3.up;
                 case JCS_Vector3Direction.DOWN:
@@ -398,11 +401,61 @@ namespace JCSUnity
                     return Vector3.right;
                 case JCS_Vector3Direction.LEFT:
                     return Vector3.left;
+
+                case JCS_Vector3Direction.FORWARD_LEFT:
+                    return new Vector3(-1, 0, 1);
+                case JCS_Vector3Direction.FORWARD_RIGHT:
+                    return new Vector3(1, 0, 1);
+
+                case JCS_Vector3Direction.BACK_LEFT:
+                    return new Vector3(-1, 0, -1);
+                case JCS_Vector3Direction.BACK_RIGHT:
+                    return new Vector3(1, 0, -1);
+
+                case JCS_Vector3Direction.UP_LEFT:
+                    return new Vector3(-1, 1, 0);
+                case JCS_Vector3Direction.UP_RIGHT:
+                    return new Vector3(1, 1, 0);
+
+                case JCS_Vector3Direction.FORWARD_UP:
+                    return new Vector3(0, 1, 1);
+                case JCS_Vector3Direction.FORWARD_DOWN:
+                    return new Vector3(0, -1, 1);
+
+                case JCS_Vector3Direction.BACK_UP:
+                    return new Vector3(0, 1, -1);
+                case JCS_Vector3Direction.BACK_DOWN:
+                    return new Vector3(0, -1, -1);
+
+                case JCS_Vector3Direction.DOWN_LEFT:
+                    return new Vector3(-1, -1, 0);
+                case JCS_Vector3Direction.DOWN_RIGHT:
+                    return new Vector3(1, -1, 0);
+
+                case JCS_Vector3Direction.FORWARD_UP_LEFT:
+                    return new Vector3(-1, 1, 1);
+                case JCS_Vector3Direction.FORWARD_UP_RIGHT:
+                    return new Vector3(1, 1, 1);
+
+                case JCS_Vector3Direction.FORWARD_DOWN_LEFT:
+                    return new Vector3(-1, -1, 1);
+                case JCS_Vector3Direction.FORWARD_DOWN_RIGHT:
+                    return new Vector3(1, -1, 1);
+
+                case JCS_Vector3Direction.BACK_UP_LEFT:
+                    return new Vector3(-1, 1, -1);
+                case JCS_Vector3Direction.BACK_UP_RIGHT:
+                    return new Vector3(1, 1, -1);
+
+                case JCS_Vector3Direction.BACK_DOWN_LEFT:
+                    return new Vector3(-1, -1, -1);
+                case JCS_Vector3Direction.BACK_DOWN_RIGHT:
+                    return new Vector3(1, -1, -1);
             }
 
-            JCS_GameErrors.JcsErrors(
-                "JCS_Utility", 
-                  
+            JCS_Debug.JcsErrors(
+                "JCS_Utility",
+
                 "This cannot happed.");
 
             // this cannot happens
@@ -443,7 +496,7 @@ namespace JCSUnity
             return tempVec;
         }
 
-        
+
         /// <summary>
         /// Check if the object are the same tribe.
         /// </summary>

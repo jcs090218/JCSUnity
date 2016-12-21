@@ -27,22 +27,38 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
-        // unique index to open the dialogue
-        [SerializeField] private int mDialogueIndex = -1;
-        // Key to open this dialogue
-        [SerializeField] private KeyCode mKeyCode = KeyCode.None;
 
-        // this type for priority
-        [SerializeField] private JCS_DialogueType mDialogueType = JCS_DialogueType.PLAYER_DIALOGUE;
-        
-        // type for positioning the panel every time it opens
-        [SerializeField] private JCS_PanelType mPanelType = JCS_PanelType.RESET_PANEL;
-
-
-        [SerializeField] private AudioClip mOpenWindowClip = null;
-        [SerializeField] private AudioClip mCloseWindowClip = null;
         private JCS_SoundPlayer mJCSSoundPlayer = null;
+
+        [Header("** Runtime Variables (JCS_DialogueObject) **")]
+
+        [Tooltip("unique index to open the dialogue")]
+        [SerializeField]
+        private int mDialogueIndex = -1;
+
+        [Tooltip("Key to open this dialogue")]
+        [SerializeField]
+        private KeyCode mKeyCode = KeyCode.None;
+
+        [Tooltip("this type for priority")]
+        [SerializeField]
+        private JCS_DialogueType mDialogueType = JCS_DialogueType.PLAYER_DIALOGUE;
+
+        [Tooltip("type for positioning the panel every time it opens")]
+        [SerializeField]
+        private JCS_PanelType mPanelType = JCS_PanelType.RESET_PANEL;
+
+
+        [Header("- Sound Setting (JCS_DialogueObject) ")]
+
+        [Tooltip("Sound when open this dialouge window.")]
+        [SerializeField]
+        private AudioClip mOpenWindowClip = null;
+
+        [Tooltip("Sound when close this dialouge window.")]
+        [SerializeField]
+        private AudioClip mCloseWindowClip = null;
+        
 
         //----------------------
         // Protected Variables
@@ -60,10 +76,11 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+#if !(UNITY_5_4_OR_NEWER)
+        // Called by Unity after a new level was loaded.
         private void OnLevelWasLoaded()
         {
-            if (mRectTransform == null)
-                this.mRectTransform = this.GetComponent<RectTransform>();
+            this.mRectTransform = this.GetComponent<RectTransform>();
 
             JCS_UIManager uim = JCS_UIManager.instance;
 
@@ -76,8 +93,32 @@ namespace JCSUnity
 
             ResetDialogue();
         }
+#endif
+
         protected override void Awake()
         {
+#if (UNITY_5_4_OR_NEWER)
+            this.mRectTransform = this.GetComponent<RectTransform>();
+            if (mRectTransform == null)
+                return;
+
+            // this is the new way of doing the "OnLevelWasLoaded" 
+            // function call after version 5.4
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
+            {
+                JCS_UIManager uim = JCS_UIManager.instance;
+
+                // Once we load the scene we need to let new object 
+                // in the scene know about us!
+                uim.SetJCSDialogue(mDialogueType, this);
+
+                // add to open window list if the window is open!
+                AddToOpenWindowList();
+
+                ResetDialogue();
+            };
+#endif
+
             this.mJCSSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             base.Awake();
@@ -108,16 +149,13 @@ namespace JCSUnity
             JCS_ApplicationManager.APP_PAUSE = true;
         }
 
-        private void Update()
+        protected void Update()
         {
             mOriginalScale = mRectTransform.localScale;
             mOriginalPosition = mRectTransform.localPosition;
             mOriginalRotation = mRectTransform.localRotation;
 
-            if (JCS_Input.GetKeyDown(GetKeyCode()))
-            {
-                ToggleVisibility();
-            }
+            ProcessInput();
         }
 
         //========================================
@@ -126,6 +164,9 @@ namespace JCSUnity
         //----------------------
         // Public Functions
         
+        /// <summary>
+        /// 
+        /// </summary>
         public void DoPanelType()
         {
             switch (mPanelType)
@@ -144,7 +185,10 @@ namespace JCSUnity
                     } break;
             }
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShowDialogue()
         {
             ShowDialogueWithoutSound();
@@ -159,12 +203,20 @@ namespace JCSUnity
             if (mOpenWindowClip != null && mJCSSoundPlayer != null)
                 mJCSSoundPlayer.PlayOneShot(mOpenWindowClip, JCS_SoundType.SOUND_2D);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override void HideDialogueWithoutSound()
         {
             base.HideDialogueWithoutSound();
 
             RemoveFromOpenWindowList();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void HideDialogue()
         {
             HideDialogueWithoutSound();
@@ -174,6 +226,9 @@ namespace JCSUnity
                 mJCSSoundPlayer.PlayOneShot(mCloseWindowClip, JCS_SoundType.SOUND_2D);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void ToggleVisibility()
         {
             if (mIsVisible)
@@ -183,6 +238,10 @@ namespace JCSUnity
 
             ResetDialogue();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override void MoveToTheLastChild()
         {
             base.MoveToTheLastChild();
@@ -197,6 +256,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void AddToOpenWindowList()
         {
             switch (mDialogueType)
@@ -213,10 +276,18 @@ namespace JCSUnity
             // add to the list so the manager know what window is opened
             JCS_UIManager.instance.GetOpenWindow().AddLast(this);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void RemoveFromOpenWindowList()
         {
             JCS_UIManager.instance.GetOpenWindow().Remove(this);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void SwapToTheLastOpenWindowList()
         {
             // TODO(JenChieh): optimize
@@ -226,6 +297,17 @@ namespace JCSUnity
 
             // add back to the list (so it will be the last)
             AddToOpenWindowList();
+        }
+
+        /// <summary>
+        /// Process the input base on platform
+        /// </summary>
+        private void ProcessInput()
+        {
+            if (JCS_Input.GetKeyDown(GetKeyCode()))
+            {
+                ToggleVisibility();
+            }
         }
 
     }

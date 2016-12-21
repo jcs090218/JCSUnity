@@ -31,7 +31,7 @@ namespace JCSUnity
             if (JCS_PackageDataSettings.instance == null)
             {
 #if (UNITY_EDITOR)
-                JCS_GameErrors.JcsErrors("JCS_XMLGameData", 
+                JCS_Debug.JcsErrors("JCS_XMLGameData", 
                     "Failed to load the copyright and version information text...");
 #endif 
                 return;

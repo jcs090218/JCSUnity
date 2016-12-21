@@ -51,7 +51,7 @@ namespace JCSUnity
 
             if (mDetectCollider.Length == 0)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     this, "No Collider assing for dectetion...");
             }
 
@@ -63,7 +63,7 @@ namespace JCSUnity
 
                 if (mDetectCollider[index] == null)
                 {
-                    JCS_GameErrors.JcsReminders(
+                    JCS_Debug.JcsReminders(
                     this, "No Collider assing for dectetion...");
 
                     continue;

@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189541cfd0b434e4b9c9e940f31464c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mButton: {fileID: 11458430}
+  mToggleOrExitButton: {fileID: 0}
   mSlideButtons:
   - {fileID: 11422936}
   - {fileID: 11486420}
@@ -375,6 +375,7 @@ MonoBehaviour:
   mAreaEffects:
   - {fileID: 11437176}
   mSpaceTime: 0.1
+  mExitByNoOverGUI: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mInsideActiveClip: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -469,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -499,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9161e7a092f5141aa7884938fc61c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: 1
   mInteractable: 1
@@ -663,9 +666,13 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mAutoCheckExit: 1
-  mFriection: 0.1
+  mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
+  mActiveButton: {fileID: 0}
 --- !u!114 &11424330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -721,9 +728,13 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mAutoCheckExit: 1
-  mFriection: 0.1
+  mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
+  mActiveButton: {fileID: 0}
 --- !u!114 &11437176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -740,9 +751,13 @@ MonoBehaviour:
   mAxis: 0
   mDistance: 0
   mAutoCheckExit: 1
-  mFriection: 0.1
+  mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
+  mActiveButton: {fileID: 0}
 --- !u!114 &11446478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -870,6 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8da109f60821d04e94d34aa12fbe811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonText: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1000,9 +1016,13 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mAutoCheckExit: 1
-  mFriection: 0.1
+  mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
+  mActiveButton: {fileID: 0}
 --- !u!114 &11485700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1060,9 +1080,13 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mAutoCheckExit: 1
-  mFriection: 0.1
+  mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
+  mActiveButton: {fileID: 0}
 --- !u!114 &11491518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1106,9 +1130,13 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mAutoCheckExit: 1
-  mFriection: 0.1
+  mFriction: 0.2
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
+  mIgnoreX: 0
+  mIgnoreY: 0
+  mIgnoreZ: 0
+  mActiveButton: {fileID: 0}
 --- !u!114 &11495532
 MonoBehaviour:
   m_ObjectHideFlags: 1

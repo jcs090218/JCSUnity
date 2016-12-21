@@ -36,7 +36,8 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_HueController) **")]
 
         [Tooltip("Any Graphic with color component.")]
-        [SerializeField] private Graphic mColorGraphic = null;
+        [SerializeField]
+        private Graphic mColorGraphic = null;
 
         [Tooltip("How fast the hue change?")]
         [SerializeField] [Range(0.01f, 10.0f)]
@@ -64,7 +65,7 @@ namespace JCSUnity
         {
             if (mColorGraphic == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     this, "Do nothing without Graphic object assign...");
 
                 return;
@@ -82,6 +83,7 @@ namespace JCSUnity
             DoCycle();
 
             TowardColor();
+
         }
 
         //========================================
@@ -108,6 +110,9 @@ namespace JCSUnity
             SetNextColorByList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void SetNextColorByList()
         {
             ++mListCounter;

@@ -9,17 +9,26 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class JCS_2DEffect
         : MonoBehaviour    
     {
         protected bool mEffect = false;
 
+
         [Header("** Runtime Variables (JCS_2DEffect) **")]
-        [SerializeField] protected bool mStopInputWhileThisEffect = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        protected bool mStopInputWhileThisEffect = false;
         
+
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
 
     }

@@ -11,6 +11,10 @@ using System.Collections;
 using JCSUnity;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// 
+/// </summary>
 [RequireComponent(typeof(RectTransform))]
 public class RC_StartGameButton 
     : MonoBehaviour 

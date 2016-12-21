@@ -11,6 +11,9 @@ using System.Collections;
 using JCSUnity;
 
 
+/// <summary>
+/// 
+/// </summary>
 public class RC_ShopPageHandler 
     : MonoBehaviour 
 {

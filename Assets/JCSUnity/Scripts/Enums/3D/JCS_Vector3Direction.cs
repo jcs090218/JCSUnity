@@ -9,18 +9,56 @@
 using UnityEngine;
 using System.Collections;
 
-namespace JCSUnity
-{ 
 
+namespace JCSUnity
+{
+
+    /// <summary>
+    /// 
+    /// </summary>
     public enum JCS_Vector3Direction
     {
-        UP,
-        DOWN,
+        // (0, 0, 0)
+        CENTER,
 
-        FORWARD,
-        BACK,
+        UP,     // (0, 1, 0)
+        DOWN,   // (0, -1, 0)
 
-        RIGHT,
-        LEFT
+        FORWARD,  // (0, 0, 1)
+        BACK,     // (0, 0, -1)
+
+        RIGHT,  // (1, 0, 0)
+        LEFT,   // (-1, 0, 0)
+
+        FORWARD_LEFT,   // (-1, 0, 1)
+        FORWARD_RIGHT,  // (1, 0, 1)
+
+        BACK_LEFT,  // (-1, 0, -1)
+        BACK_RIGHT, // (1, 0, -1)
+
+        UP_LEFT,    // (-1, 1, 0)
+        UP_RIGHT,   // (1, 1, 0)
+
+        FORWARD_UP,     // (0, 1, 1)
+        FORWARD_DOWN,   // (0, -1, 1)
+
+        BACK_UP,    // (0, 1, -1)
+        BACK_DOWN,  // (0, -1, -1)
+
+        DOWN_LEFT,  // (-1, -1, 0)
+        DOWN_RIGHT, // (1, -1, 0)
+
+        FORWARD_UP_LEFT,    // (-1, 1, 1)
+        FORWARD_UP_RIGHT,   // (1, 1, 1)
+
+        FORWARD_DOWN_LEFT,  // (-1, -1, 1)
+        FORWARD_DOWN_RIGHT, // (1, -1, 1)
+
+        BACK_UP_LEFT,   // (-1, 1, -1)
+        BACK_UP_RIGHT,  // (1, 1, -1)
+
+        BACK_DOWN_LEFT,     // (-1, -1, -1)
+        BACK_DOWN_RIGHT,    // (1, -1, -1)
+
     }
 }

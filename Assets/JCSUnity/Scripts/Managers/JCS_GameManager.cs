@@ -9,8 +9,10 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
     /// <summary>
     /// Make sure u have this execute first!!!
     /// </summary>
@@ -27,8 +29,7 @@ namespace JCSUnity
         [Header("** Check Variable (JCS_GameManager) **")]
 
         [Tooltip("Is the game pasue?")]
-        [SerializeField]
-        private bool mGamePause = false;
+        public bool GAME_PAUSE = false;
 
 #if (UNITY_EDITOR)
 
@@ -37,7 +38,7 @@ namespace JCSUnity
         // some cool effect in the game.
         [Tooltip("Adjustable current time scale")]
         [SerializeField] [Range(0,1)]
-        private float mTimeScale = 1;
+        public float TIME_SCALE = 1;
 #endif
 
         private JCS_Player mJCSPlayer = null;
@@ -57,23 +58,6 @@ namespace JCSUnity
         public void SetJCSGameSettings(JCS_GameSettings gs) { this.mJCSGameSettings = gs; }
         public JCS_GameSettings GetJCSGameSettings() { return this.mJCSGameSettings; }
 
-        /// <summary>
-        /// Turn the trigger on/off, 
-        /// also adjust the time scale to 0/1.
-        /// </summary>
-        public bool GAME_PAUSE
-        {
-            get { return this.mGamePause; }
-            set {
-                this.mGamePause = value;
-
-                if (mGamePause)     // pause the game
-                    Time.timeScale = 0;
-                else
-                    Time.timeScale = 1;
-            }
-        }
-
         //--------------------------------
         // Unity's functions
         //--------------------------------
@@ -85,10 +69,10 @@ namespace JCSUnity
 
 #if (UNITY_EDITOR)
             // Check time scale
-            if (mTimeScale != 1)
+            if (TIME_SCALE != 1)
             {
-                JCS_GameErrors.JcsReminders(this, 
-                    "Current time scale [" + mTimeScale + "] isn't one.");
+                JCS_Debug.JcsReminders(this, 
+                    "Current time scale [" + TIME_SCALE + "] isn't one.");
             }
 #endif
         }
@@ -107,7 +91,7 @@ namespace JCSUnity
         /// </summary>
         private void SetTimeScale()
         {
-            Time.timeScale = mTimeScale;
+            Time.timeScale = TIME_SCALE;
         }
 #endif
 

@@ -26,8 +26,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         [Header("** Initialize Variables (JCS_Unityobject) **")]
-        [SerializeField] protected JCS_UnityObjectType mObjectType = JCS_UnityObjectType.SPRITE;
+
+        [Tooltip("")]
+        [SerializeField]
+        protected JCS_UnityObjectType mObjectType = JCS_UnityObjectType.SPRITE;
 
         //-- Game Object
         protected Renderer mRenderer = null;
@@ -85,6 +89,32 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// Get Current type's transform
+        /// </summary>
+        public Transform LocalTransform
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.transform;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        return this.mRectTransform;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.transform;
+                }
+
+                JCS_Debug.JcsErrors(
+                    this,
+                    "Return default local position...(This should not happens...)");
+
+                return this.transform;
+            }
+        }
         
         /// <summary>
         /// Get Current type's position
@@ -104,7 +134,7 @@ namespace JCSUnity
                         return this.mSpriteRenderer.transform.localPosition;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
                  
                 "Return default local position...(This should not happens...)");
@@ -128,7 +158,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
                  
                 "Set default local position...(This should not happens...)");
@@ -153,7 +183,7 @@ namespace JCSUnity
                         return this.mSpriteRenderer.transform.localEulerAngles;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
                  
                 "Return default local rotation...(This should not happens...)");
@@ -177,7 +207,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
                  
                 "Set default local rotation...(This should not happens...)");
@@ -202,7 +232,7 @@ namespace JCSUnity
                         return this.mSpriteRenderer.transform.localScale;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
                  
                 "Return default local scale...(This should not happens...)");
@@ -226,7 +256,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
                  
                 "Set default local scale...(This should not happens...)");
@@ -252,7 +282,7 @@ namespace JCSUnity
                         return this.mText.enabled;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                "JCS_UnityObject",
                 
                "Return default visible...(This should not happens...)");
@@ -301,10 +331,8 @@ namespace JCSUnity
                         return this.mText.color.a;
                 }
 
-                JCS_GameErrors.JcsErrors(
-               "JCS_UnityObject",
-                
-               "Return default Local Alpha...(This should not happens...)");
+                JCS_Debug.JcsErrors(
+                    this, "Return default Local Alpha...(This should not happens...)");
 
                 return 0;
             }
@@ -345,10 +373,8 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_GameErrors.JcsErrors(
-               "JCS_UnityObject",
-                
-               "Set default Local Alpha...(This should not happens...)");
+                JCS_Debug.JcsErrors(
+                    this, "Set default Local Alpha...(This should not happens...)");
             }
         }
 
@@ -371,7 +397,7 @@ namespace JCSUnity
                         return this.mText.color.r;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                "JCS_UnityObject",
                 
                "Return default Local Red...(This should not happens...)");
@@ -415,7 +441,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
               "JCS_UnityObject",
                
               "Set default Local Red...(This should not happens...)");
@@ -441,7 +467,7 @@ namespace JCSUnity
                         return this.mText.color.g;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
               "JCS_UnityObject",
                
               "Return default Local Green...(This should not happens...)");
@@ -485,7 +511,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
               "JCS_UnityObject",
                
               "Set default Local Blue...(This should not happens...)");
@@ -511,7 +537,7 @@ namespace JCSUnity
                         return this.mText.color.b;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
               "JCS_UnityObject",
                
               "Return default Local Blue...(This should not happens...)");
@@ -555,9 +581,68 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
               "JCS_UnityObject",
                
+              "Set default Local Blue...(This should not happens...)");
+            }
+        }
+
+        /// <summary>
+        /// Get current type's main texture
+        /// </summary>
+        public Texture LocalMainTexture
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.mRenderer.material.mainTexture;
+                    case JCS_UnityObjectType.UI:
+                        return this.mImage.material.mainTexture;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.material.mainTexture;
+                    case JCS_UnityObjectType.TEXT:
+                        return this.mText.material.mainTexture;
+                }
+
+                JCS_Debug.JcsErrors(
+                    "JCS_UnityObject", 
+                    "Return default Local Blue...(This should not happens...)");
+
+                return null;
+            }
+
+            set
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        {
+                            this.mRenderer.material.mainTexture = value;
+                        }
+                        return;
+                    case JCS_UnityObjectType.UI:
+                        {
+                            this.mImage.material.mainTexture = value;
+                        }
+                        return;
+                    case JCS_UnityObjectType.SPRITE:
+                        {
+                            this.mSpriteRenderer.material.mainTexture = value;   
+                        }
+                        return;
+                    case JCS_UnityObjectType.TEXT:
+                        {
+                            this.mText.material.mainTexture = value;
+                        }
+                        return;
+                }
+
+                JCS_Debug.JcsErrors(
+              "JCS_UnityObject",
+
               "Set default Local Blue...(This should not happens...)");
             }
         }

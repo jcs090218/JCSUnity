@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_Mathf 
         : MonoBehaviour
     {
@@ -27,6 +31,7 @@ namespace JCSUnity
                 return -val;
             return val;
         }
+
         /// <summary>
         /// Absolute the value. (Float)
         /// </summary>
@@ -38,6 +43,7 @@ namespace JCSUnity
                 return -val;
             return val;
         }
+
         /// <summary>
         /// Absolute the value. (Vector3)
         /// </summary>
@@ -53,6 +59,7 @@ namespace JCSUnity
 
             return tempVal;
         }
+        ///
         /// <summary>
         /// Set the value to positive (Integer)
         /// </summary>
@@ -62,6 +69,7 @@ namespace JCSUnity
         {
             return AbsoluteValue(val);
         }
+
         /// <summary>
         /// Set the value to positive (Float)
         /// </summary>
@@ -71,6 +79,22 @@ namespace JCSUnity
         {
             return AbsoluteValue(val);
         }
+
+        /// <summary>
+        /// Set the value to positive (Vector3)
+        /// </summary>
+        /// <param name="vec3"> vector to positive. </param>
+        /// <returns> positive vector. </returns>
+        public static Vector3 ToPositive(Vector3 vec3)
+        {
+            Vector3 newVec;
+            newVec.x = ToPositive(vec3.x);
+            newVec.y = ToPositive(vec3.y);
+            newVec.z = ToPositive(vec3.z);
+
+            return newVec;
+        }
+
         /// <summary>
         /// Set the value to negative (Integer)
         /// </summary>
@@ -80,6 +104,7 @@ namespace JCSUnity
         {
             return -(AbsoluteValue(val));
         }
+
         /// <summary>
         /// Set the value to negative (Float)
         /// </summary>
@@ -89,6 +114,22 @@ namespace JCSUnity
         {
             return -(AbsoluteValue(val));
         }
+
+        /// <summary>
+        /// Set the value to negative (Vector3)
+        /// </summary>
+        /// <param name="vec3"> vector to negative. </param>
+        /// <returns> negative vector. </returns>
+        public static Vector3 ToNegative(Vector3 vec3)
+        {
+            Vector3 newVec;
+            newVec.x = ToNegative(vec3.x);
+            newVec.y = ToNegative(vec3.y);
+            newVec.z = ToNegative(vec3.z);
+
+            return newVec;
+        }
+
         /// <summary>
         /// Check if the value is positive (Integer)
         /// </summary>
@@ -98,6 +139,7 @@ namespace JCSUnity
         {
             return (val > 0 && val != 0) ? true : false;
         }
+
         /// <summary>
         /// Check if the value is positive (Float)
         /// </summary>
@@ -107,6 +149,7 @@ namespace JCSUnity
         {
             return (val > 0 && val != 0) ? true : false;
         }
+
         /// <summary>
         /// Check if the value is negative (Integer)
         /// </summary>
@@ -116,6 +159,7 @@ namespace JCSUnity
         {
             return (val < 0 && val != 0) ? true : false;
         }
+
         /// <summary>
         /// Check if the value is negative (Float)
         /// </summary>
@@ -125,6 +169,7 @@ namespace JCSUnity
         {
             return (val < 0 && val != 0) ? true : false;
         }
+
         /// <summary>
         /// To Reverse the value.
         /// </summary>
@@ -134,6 +179,7 @@ namespace JCSUnity
         {
             return -val;
         }
+
         /// <summary>
         /// Reciprocal of the value
         /// </summary>
@@ -143,6 +189,7 @@ namespace JCSUnity
         {
             return (1 / val);
         }
+
         /// <summary>
         /// Short hand of sqr of value
         /// </summary>
@@ -152,6 +199,7 @@ namespace JCSUnity
         {
             return (val * val);
         }
+
         /// <summary>
         /// Framework define vector1's distance.
         /// The same as Unity's API 
@@ -166,6 +214,7 @@ namespace JCSUnity
             distance = AbsoluteValue(distance);
             return distance;
         }
+
         /// <summary>
         /// Return bool to check the number is even or not.
         /// </summary>
@@ -175,6 +224,7 @@ namespace JCSUnity
         {
             return ((index % 2) == 0);
         }
+
         /// <summary>
         /// Center of the array length
         /// </summary>
@@ -184,6 +234,7 @@ namespace JCSUnity
         {
             return (length / 2);
         }
+
         /// <summary>
         /// Pass in an index that is out of range, 
         /// this function will return the in range index
@@ -202,6 +253,7 @@ namespace JCSUnity
 
             return (targetIndex % length);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -219,13 +271,14 @@ namespace JCSUnity
             if (targetVal < currentVal)
                 return --currentVal;
 
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "JCS_Mathf", 
                  
                 "Errors with approaching to a value...");
 
             return 0;
         }
+
         /// <summary>
         /// 計算旋轉的點 (JCS_VECTOR2F)
         /// </summary>
@@ -269,6 +322,7 @@ namespace JCSUnity
             return (float.IsInfinity(check.x) ||
                 float.IsInfinity(check.y));
         }
+
         /// <summary>
         /// check if the vector value is infinity
         /// </summary>
@@ -329,6 +383,102 @@ namespace JCSUnity
         public static bool IsNaN(Vector2 vec)
         {
             return (float.IsNaN(vec.x) || float.IsNaN(vec.y));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static float LawOfSine()
+        {
+            // Law of Sine
+            // 
+            // Formula:
+            //      sin(A) / a = sin(B) / b
+            //
+            // a,b,c是邊
+            // A,B,B是角
+            // 都是相對應的. 
+            // 角A對邊就是邊a.
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static float LawOfCosine()
+        {
+            // Law of Cosine
+            // 
+            // Formula:
+            //      a^2 = b^2 + c^2 - 2bc[cos(angle A)]
+            //
+            // a,b,c是邊
+            // A,B,B是角
+            // 都是相對應的. 
+            // 角A對邊就是邊a.
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsPossible(float val)
+        {
+            float possibility = JCS_Utility.JCS_FloatRange(0, 100);
+
+            return (val > possibility) ? true : false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum Sides
+        {
+            hyp,
+            opp,
+            adj
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static float PythagoreanTheorem(float s1, float s2, Sides type)
+        {
+            switch (type)
+            {
+                case Sides.hyp:
+                    {
+                        // a^2 + b^2 = c^2
+                        float a = Mathf.Pow(s1, 2);
+                        float b = Mathf.Pow(s1, 2);
+
+                        return Mathf.Sqrt(a + b);
+                    }
+
+                case Sides.opp:
+                case Sides.adj:
+                    {
+                        // c^2 - b^2 = a^2
+                        float c = Mathf.Pow(s1, 2);
+                        float b = Mathf.Pow(s2, 2);
+
+                        float sub = Mathf.Abs(c - b);
+
+                        return Mathf.Sqrt(sub);
+                    }
+            }
+
+            Debug.LogError("This not suppose to happen here...");
+
+            return 0;
         }
 
     }

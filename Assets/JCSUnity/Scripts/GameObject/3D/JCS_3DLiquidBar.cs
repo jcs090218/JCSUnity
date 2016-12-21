@@ -29,14 +29,20 @@ namespace JCSUnity
         
 
         [Header("** Check Variables (JCS_3DLiquidBar) **")]
-        [SerializeField] private Vector3 mMaskTargetPosition = Vector3.zero;
+
+        [SerializeField]
+        private Vector3 mMaskTargetPosition = Vector3.zero;
+
 
         [Header("** Initilaize Variables (JCS_3DLiquidBar) **")]
 
         [Tooltip("Plz set this.")]
-        [SerializeField] private SpriteMask mSpriteMask = null;
+        [SerializeField]
+        private SpriteMask mSpriteMask = null;
+
         [Tooltip("Plz put the under texture bar here.")]
-        [SerializeField] private SpriteRenderer mBarSpriteRenderer = null;
+        [SerializeField]
+        private SpriteRenderer mBarSpriteRenderer = null;
 
 
         //----------------------
@@ -60,6 +66,8 @@ namespace JCSUnity
             Test();
 #endif
 
+            // check all components needed are
+            // avaliable.
             if (mBarSpriteRenderer == null)
                 return;
 
@@ -78,8 +86,13 @@ namespace JCSUnity
         {
             if (JCS_Input.GetKeyDown(KeyCode.J))
                 Lack();
-            if (JCS_Input.GetKeyDown(KeyCode.H))
+            if (JCS_Input.GetKeyDown(KeyCode.K))
                 Full();
+
+            // half
+            if (JCS_Input.GetKeyDown(KeyCode.H))
+                SetCurrentValue(MaxValue / 2);
+
             if (JCS_Input.GetKeyDown(KeyCode.X))
                 FixPercentage();
         }
@@ -111,7 +124,7 @@ namespace JCSUnity
         {
             if (val <= mMinValue)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_3DLiquidBar",
                     "Max value u r setting cannot be lower than min value.");
 
@@ -134,7 +147,7 @@ namespace JCSUnity
         {
             if (val >= mMaxValue)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_3DLiquidBar",
                     "Min value u r setting cannot be higher than max value.");
 
@@ -287,8 +300,36 @@ namespace JCSUnity
             // find the width and height of the image from sprite renderer
             Vector2 maskSize = mSpriteMask.size;
 
-            mMaxPos = mSpriteMask.transform.localPosition.x;
-            mMinPos = mMaxPos - (maskSize.x * mSpriteMask.transform.localScale.x);
+            switch (GetAlign())
+            {
+                case JCS_Align.ALIGN_LEFT:
+                    {
+                        mMaxPos = mSpriteMask.transform.localPosition.x;
+                        mMinPos = mMaxPos - (maskSize.x * mSpriteMask.transform.localScale.x);
+                    }
+                    break;
+
+                case JCS_Align.ALIGN_RIGHT:
+                    {
+                        mMaxPos = mSpriteMask.transform.localPosition.x;
+                        mMinPos = mMaxPos + (maskSize.x * mSpriteMask.transform.localScale.x);
+                    }
+                    break;
+
+                case JCS_Align.ALIGN_TOP:
+                    {
+                        mMaxPos = mSpriteMask.transform.localPosition.y;
+                        mMinPos = mMaxPos + (maskSize.y * mSpriteMask.transform.localScale.y);
+                    }
+                    break;
+
+                case JCS_Align.ALIGN_BOTTOM:
+                    {
+                        mMaxPos = mSpriteMask.transform.localPosition.y;
+                        mMinPos = mMaxPos - (maskSize.y * mSpriteMask.transform.localScale.y);
+                    }
+                    break;
+            }
 
             // do starting percent
             FixPercentage();
@@ -303,7 +344,7 @@ namespace JCSUnity
                 mCurrentValue > mMaxValue)
 
             {
-                //JCS_GameErrors.JcsWarnings(
+                //JCS_Debug.JcsWarnings(
                 //    "JCS_3DLiquidBar",
                 //    "Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");
 
@@ -314,7 +355,18 @@ namespace JCSUnity
             float currentPercentage = mCurrentValue / realValue;
 
             float realDistance = (mMaxPos - mMinPos) * currentPercentage;
-            mMaskTargetPosition.x = mMinPos + realDistance;
+
+            switch (GetAlign())
+            {
+                case JCS_Align.ALIGN_LEFT:
+                case JCS_Align.ALIGN_RIGHT:
+                    mMaskTargetPosition.x = mMinPos + realDistance;
+                    break;
+                case JCS_Align.ALIGN_BOTTOM:
+                case JCS_Align.ALIGN_TOP:
+                    mMaskTargetPosition.y = mMinPos + realDistance;
+                    break;
+            }
         }
 
         /// <summary>

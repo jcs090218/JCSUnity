@@ -76,7 +76,7 @@ namespace JCSUnity
         {
             if (mRollBtnSelector == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_RollSelectorButton",
                      
                     "");
@@ -136,7 +136,7 @@ namespace JCSUnity
         {
             if (mRollBtnSelector == null)
             {
-                JCS_GameErrors.JcsErrors(
+                JCS_Debug.JcsErrors(
                     "JCS_RollSelectorButton",
                      
                     "This button has been set focus but without the handler...");

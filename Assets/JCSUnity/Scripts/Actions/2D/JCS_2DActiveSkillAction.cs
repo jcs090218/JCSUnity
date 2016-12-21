@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
@@ -73,7 +74,7 @@ namespace JCSUnity
         {
             if (mSkillAnim == null)
             {
-                JCS_GameErrors.JcsReminders(
+                JCS_Debug.JcsReminders(
                     this, 
                     "Assigning active skill action without animation is not allowed.");
 

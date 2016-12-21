@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
 
@@ -39,11 +40,13 @@ namespace JCSUnity
         [Header("** Initialize Variables (JCS_2DLiveObjectAnimator) **")]
         // Please set the int inside the "Animator" window in Unity, 
         // Control the animation state with code are much easier to programmer.
-        [SerializeField] protected string mAnimationState = "State";
+        [SerializeField]
+        protected string mAnimationState = "State";
 
-        [SerializeField] protected float mAnimationTimer = 0.0f;
-        protected AnimatorStateInfo mAnimatorStateInfo;
-        [SerializeField] protected float mAnimationOffset = 0.05f;
+        [SerializeField]
+        protected float mAnimationTimer = 0.0f;
+        [SerializeField]
+        protected float mAnimationOffset = 0.05f;
 
         [Tooltip("Plz use %jcs as the state variable name.")]
         [SerializeField]
@@ -51,14 +54,13 @@ namespace JCSUnity
         protected bool mEndAttackStage = true;
 
         [Tooltip(@"Override the current animation, start 
-from the beginning.")] [SerializeField]
+from the beginning.")]
+        [SerializeField]
         protected bool mOverrideAnim = false;
 
         //========================================
         //      setter / getter
         //------------------------------
-        public AnimatorStateInfo GetAnimatorStateInfo() { return this.mAnimatorStateInfo; }
-        
         public string GetAnimationState() { return this.mAnimationState; }
         public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
         public bool GetEndAttackStage() { return this.mEndAttackStage; }

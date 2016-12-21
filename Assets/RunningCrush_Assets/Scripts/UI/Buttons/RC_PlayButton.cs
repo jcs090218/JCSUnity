@@ -29,7 +29,7 @@ public class RC_PlayButton
     {
         if (mSlideCamera == null)
         {
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "RC_PlayButton", 
                   
                 "No JCS_2DSlideScreenCamera in the scene...");

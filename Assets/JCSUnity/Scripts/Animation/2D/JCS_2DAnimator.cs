@@ -23,8 +23,10 @@ namespace JCSUnity
     {
 
         protected Animator mAnimator = null;
+        protected AnimatorStateInfo mAnimatorStateInfo;
 
         public Animator GetAnimator() { return this.mAnimator; }
+        public AnimatorStateInfo GetAnimatorStateInfo() { return this.mAnimatorStateInfo; }
 
         protected virtual void Awake()
         {

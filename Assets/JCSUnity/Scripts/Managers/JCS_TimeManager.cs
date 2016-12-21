@@ -49,7 +49,7 @@ namespace JCSUnity
         //------------------------------
         public void SetCurrentTimeRange()
         {
-            mCurrentTimeRange = GetCurrentTimeRange();
+            mCurrentTimeRange = LoadCurrentTimeRange();
         }
         public void SetCurrentSeasonType()
         {
@@ -60,6 +60,10 @@ namespace JCSUnity
             //mCurrentWeatherType = GetCurrentWeather();
             //StartCoroutine(GetCurrentWeather());
         }
+
+        public JCS_TimeRange GetCurrentTimeRange() { return this.mCurrentTimeRange; }
+        public JCS_SeasonType GetCurrentSeasonType() { return this.mCurrentSeasonType; }
+        public JCS_WeatherType GetCurrentWeatherType() { return this.mCurrentWeatherType; }
 
         //========================================
         //      Unity's function
@@ -78,11 +82,21 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static string GetCurrentTime()
         {
             return System.DateTime.Now.ToShortTimeString();
         }
-        public static JCS_TimeRange GetCurrentTimeRange()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static JCS_TimeRange LoadCurrentTimeRange()
         {
             if (isInTheMorning())
                 return JCS_TimeRange.IN_THE_MORNING_5AM_8AM;
@@ -103,6 +117,7 @@ namespace JCSUnity
 
             return JCS_TimeRange.UNKNOWN;
         }
+
         // 晨一般是指5-8点人们起床的时间
         public static bool isInTheMorning()
         {

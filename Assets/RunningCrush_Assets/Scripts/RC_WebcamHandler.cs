@@ -118,7 +118,7 @@ public class RC_WebcamHandler
         if (mWebcamPanel.Length < mPanelIndex ||
             mPanelIndex < 0)
         {
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "RC_WebcamHandler",
                  
                 "Out of range index.");
@@ -128,7 +128,7 @@ public class RC_WebcamHandler
         // check object
         if (mWebcamPanel[mPanelIndex] == null)
         {
-            JCS_GameErrors.JcsErrors(
+            JCS_Debug.JcsErrors(
                 "RC_WebcamHandler",
                  
                 "Call the function but does not assign panel at [" + mPanelIndex + "]...");

@@ -63,7 +63,7 @@ namespace JCSUnity
             catch (Exception ex)
             {
                 Debug.LogError("Server Connect failed: " + ex.Message);
-                JCS_ButtonFunctions.PopIsConnectDialogue();
+                JCS_UtilityFunctions.PopIsConnectDialogue();
             }
         }
 
