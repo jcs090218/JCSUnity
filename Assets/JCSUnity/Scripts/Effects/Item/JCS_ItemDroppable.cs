@@ -213,12 +213,12 @@ compare algorithm")]
         }
 
         /// <summary>
-        /// 
+        /// Calculate possibility and drop the item.
         /// </summary>
-        /// <param name="mustDropItem"></param>
-        /// <param name="specIndex"></param>
+        /// <param name="mustDropItem"> item must drop </param>
+        /// <param name="specIndex"> specific drop item index </param>
         /// <param name="only"> only drop this item. </param>
-        /// <param name="count"></param>
+        /// <param name="count"> how many of this item u want to drop. </param>
         public void DropItems(JCS_Item mustDropItem, int specIndex = -1, bool only = false, int count = 1)
         {
             if (mustDropItem == null)
@@ -318,9 +318,9 @@ compare algorithm")]
         /// <summary>
         /// Drop an item.
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="index"></param>
-        /// <param name="isEven"></param>
+        /// <param name="item"> item u want to spawn </param>
+        /// <param name="index"> index to know the force this is pushing to. </param>
+        /// <param name="isEven"> is the index even number? </param>
         private void DropAnItem(JCS_Item item, int index, bool isEven)
         {
             DropAnItem(

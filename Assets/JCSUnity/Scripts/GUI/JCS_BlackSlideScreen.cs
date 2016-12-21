@@ -28,18 +28,6 @@ namespace JCSUnity
         // Private Variables
         private JCS_SlideEffect mSlideEffect = null;
 
-        [SerializeField]
-        private RectTransform mFadeScreenTop = null;
-
-        [SerializeField]
-        private RectTransform mFadeScreenBottom = null;
-
-        [SerializeField]
-        private RectTransform mFadeScreenRight = null;
-
-        [SerializeField]
-        private RectTransform mFadeScreenLeft = null;
-
         //----------------------
         // Protected Variables
 
