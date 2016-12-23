@@ -313,6 +313,64 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Get current type's color
+        /// </summary>
+        public Color LocalColor
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.mRenderer.material.color;
+                    case JCS_UnityObjectType.UI:
+                        return this.mImage.color;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.color;
+                    case JCS_UnityObjectType.TEXT:
+                        return this.mText.color;
+                }
+
+                JCS_Debug.JcsErrors(
+                    this,
+                    "Return default Local Red...(This should not happens...)");
+
+                return new Color(255, 128, 64, 32);
+            }
+
+            set
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        {
+                            this.mRenderer.material.color = value;
+                        }
+                        return;
+                    case JCS_UnityObjectType.UI:
+                        {
+                            this.mImage.color = value;
+                        }
+                        return;
+                    case JCS_UnityObjectType.SPRITE:
+                        {
+                            this.mSpriteRenderer.color = value;
+                        }
+                        return;
+                    case JCS_UnityObjectType.TEXT:
+                        {
+                            this.mText.color = value;
+                        }
+                        return;
+                }
+
+                JCS_Debug.JcsErrors(
+                    this, 
+                    "Set default Local Red...(This should not happens...)");
+            }
+        }
+
+        /// <summary>
         /// Get current type's alpha
         /// </summary>
         public float LocalAlpha

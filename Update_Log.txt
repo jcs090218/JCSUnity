@@ -7,6 +7,9 @@ $Notice: See LICENSE.txt for modification and distribution information
 ========================================================================
 
 
+2016-12-22
+* JCS_InvincibleTimeAction implemented. (JCSUnity)
+
 2016-12-10
 * Add scene portal layer. (JCSUnity)
 * Setup the indie folder for managers and settings folder. (JCSUnity)

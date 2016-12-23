@@ -30,24 +30,34 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private JCS_2DAnimator m2DAnimator = null;
 
+
         [Header("** Check Variables (JCS_2DLiveObject) **")]
+
         [Tooltip("This boolean to check what type of object is this.")]
-        [SerializeField] private bool mIsPlayer = false;
-        [SerializeField] private bool mCanDamage = true;
-        [SerializeField] private bool mBeenTarget = false;
+        [SerializeField]
+        private bool mIsPlayer = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mBeenTarget = false;
+
 
         [Header("** Optional Variables (JCS_2DLiveObject) **")]
 
         [Tooltip("If the object is player from JCSUnity does not recommand using this object.")]
-        [SerializeField] private JCS_VelocityInfo mVelocityInfo = null;
+        [SerializeField]
+        private JCS_VelocityInfo mVelocityInfo = null;
 
         [Tooltip(@"Apply Ability Format could let u design the ability scale to 
 this transform as a living object")]
-        [SerializeField] private JCS_AbilityFormat mAbilityFormat = null;
+        [SerializeField]
+        private JCS_AbilityFormat mAbilityFormat = null;
 
         [Tooltip(@"Record down all the information about the attacker on the same map. In order
 to get the information from them.")]
-        [SerializeField] private JCS_AttackerRecorder mAttackRecorder = null;
+        [SerializeField]
+        private JCS_AttackerRecorder mAttackRecorder = null;
+
         private object m2DLiveObjectAnimator;
 
 
@@ -60,7 +70,6 @@ to get the information from them.")]
         //------------------------------
         public JCS_2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
         public SpriteRenderer spriteRenderer { get { return this.mSpriteRenderer; } }
-        public bool CanDamage { get { return this.mCanDamage; } set { this.mCanDamage = value; } }
         public bool BeenTarget { get { return this.mBeenTarget; } set { this.mBeenTarget = value; } }
         public bool DamageTextEffect { get { return this.mDamageTextEffect; } set { this.mDamageTextEffect = value; } }
         public bool IsPlayer { get { return this.mIsPlayer; } set { this.mIsPlayer = value; } }
@@ -339,7 +348,7 @@ to get the information from them.")]
         /// </summary>
         /// <param name="attacker"> attacker in order to determine the direction 
         ///                     this object get know back. </param>
-        public void KnockBack(Transform attacker = null)
+        public override void KnockBack(Transform attacker = null)
         {
             KnockBack(mKnockBackForce, attacker);
         }
@@ -352,7 +361,7 @@ to get the information from them.")]
         /// <param name="force"> force to knock back </param>
         /// <param name="attacker"> attacker in order to determine the direction 
         ///                     this object get know back. </param>
-        public void KnockBack(float force, Transform attacker = null)
+        public override void KnockBack(float force, Transform attacker = null)
         {
             if (mVelocityInfo == null)
                 return;
@@ -366,7 +375,6 @@ to get the information from them.")]
                 mVelocityInfo.MoveSpeed = force;
                 
         }
-        
 
         //----------------------
         // Protected Functions
@@ -420,6 +428,10 @@ to get the information from them.")]
 
                 ApplyDamage(damage);
             }
+
+            // call hit function, in order to
+            // do some optional effect.
+            Hit();
         }
 
         /// <summary>

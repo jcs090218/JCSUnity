@@ -7,7 +7,7 @@
 /obj
 /Build
 /Tutorials
-/Assets/Librares
+/Assets/Libraries
 
 # don't include the video.
 /Video

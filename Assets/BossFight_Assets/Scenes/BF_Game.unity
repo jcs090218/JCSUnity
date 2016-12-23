@@ -5550,6 +5550,7 @@ GameObject:
   - 114: {fileID: 1667753672}
   - 114: {fileID: 1667753675}
   - 114: {fileID: 1667753676}
+  - 114: {fileID: 1667753677}
   m_Layer: 0
   m_Name: CrazyCat_stand
   m_TagString: Untagged
@@ -5639,8 +5640,9 @@ MonoBehaviour:
   mKB: 1000000000
   mKnockBackForce: 1
   mDamageTextEffect: 1
-  mIsPlayer: 0
   mCanDamage: 1
+  mInvincibleTimeAction: {fileID: 0}
+  mIsPlayer: 0
   mBeenTarget: 0
   mVelocityInfo: {fileID: 0}
   mAbilityFormat: {fileID: 0}
@@ -5788,6 +5790,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mEffectToAllChild: 0
+--- !u!114 &1667753677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1667753663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37faf92e0395db49beee8decd8e3b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObjectType: 2
+  mInvicibleTime: 0.5
+  mInvincibleColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 1}
+  mFlashTime: 0.1
 --- !u!1 &1717413431
 GameObject:
   m_ObjectHideFlags: 0
@@ -5912,6 +5929,8 @@ MonoBehaviour:
     item: {fileID: 11422776, guid: c8a18f073df38de4392d415c18e9fce4, type: 2}
   mIsGravity: 1
   mJumpForce: 10
+  mRandomizeJumpForce: 0
+  mRandomizeJumpForceForce: 0
   mRotateWhileDropping: 1
   mRotateSpeed: 1000
   mSpreadEffect: 1
@@ -6064,8 +6083,9 @@ MonoBehaviour:
   mKB: 0
   mKnockBackForce: 1
   mDamageTextEffect: 1
-  mIsPlayer: 1
   mCanDamage: 1
+  mInvincibleTimeAction: {fileID: 0}
+  mIsPlayer: 1
   mBeenTarget: 0
   mVelocityInfo: {fileID: 0}
   mAbilityFormat: {fileID: 0}

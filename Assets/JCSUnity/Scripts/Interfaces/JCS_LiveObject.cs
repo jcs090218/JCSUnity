@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Base class of live object in world.
     /// </summary>
     public abstract class JCS_LiveObject
         : MonoBehaviour
@@ -29,7 +29,9 @@ namespace JCSUnity
         //----------------------
         // Protected Variables
 
+        
         [Header("** Runtime Variables (JCS_LiveObject) **")]
+
         [Tooltip(@"Health, Auto add, for better design plz 
 add JCS_LiquidBarInfo manually.")]
         [SerializeField]
@@ -62,6 +64,17 @@ add JCS_LiquidBarInfo manually.")]
         [SerializeField]
         protected bool mDamageTextEffect = true;
 
+        [Tooltip("Can the live object be damage?")]
+        [SerializeField]
+        protected bool mCanDamage = true;
+
+
+        [Header("** Optional Variables (JCS_LiveObject) **")]
+
+        [Tooltip("Do this live object provide invincible time action?")]
+        [SerializeField]
+        protected JCS_InvincibleTimeAction mInvincibleTimeAction = null;
+
         //========================================
         //      setter / getter
         //------------------------------
@@ -83,12 +96,17 @@ add JCS_LiquidBarInfo manually.")]
                 val = 0;
             this.MP = val;
         }
+        public bool CanDamage { get { return this.mCanDamage; } set { this.mCanDamage = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
         protected virtual void Awake()
         {
+            // try to get the action component by itself.
+            if (mInvincibleTimeAction == null)
+                mInvincibleTimeAction = this.GetComponent<JCS_InvincibleTimeAction>();
+
             // Auto add, for better design plz 
             // add "JCS_LiquidBarInfo" manually.
             if (mHPInfo == null)
@@ -114,6 +132,39 @@ add JCS_LiquidBarInfo manually.")]
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Call this when the live object get hits.
+        /// </summary>
+        public virtual void Hit()
+        {
+            if (mInvincibleTimeAction != null)
+            {
+                // trigger the action.
+                mInvincibleTimeAction.TriggerAction();
+            }
+        }
+
+        /// <summary>
+        /// Do the knock back effect.
+        /// 
+        /// Knock Back effect is like pushing the object
+        /// a little bit furthur from the attacker.
+        /// </summary>
+        /// <param name="attacker"> attacker in order to determine the direction 
+        ///                     this object get know back. </param>
+        public abstract void KnockBack(Transform attacker = null);
+
+        /// <summary>
+        /// Do the knock back effect.
+        /// 
+        /// Knock Back effect is like pushing the object
+        /// a little bit furthur from the attacker.
+        /// </summary>
+        /// <param name="force"> force to knock back </param>
+        /// <param name="attacker"> attacker in order to determine the direction 
+        ///                     this object get know back. </param>
+        public abstract void KnockBack(float force, Transform attacker = null);
 
         //----------------------
         // Protected Functions

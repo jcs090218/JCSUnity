@@ -356,6 +356,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAIMoveActionType: 0
+--- !u!114 &84466408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84466388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37faf92e0395db49beee8decd8e3b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObjectType: 2
+  mInvicibleTime: 1
+  mInvincibleColor: {r: 1, g: 1, b: 1, a: 1}
+  mFlashTime: 0.2
 --- !u!1 &149884199
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +562,10 @@ Prefab:
     - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
       propertyPath: m_Name
       value: JCS_AI_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
@@ -1036,6 +1055,10 @@ Prefab:
     - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
       propertyPath: m_Name
       value: JCS_AI_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
@@ -2626,6 +2649,7 @@ GameObject:
   - 114: {fileID: 799884791}
   - 114: {fileID: 799884790}
   - 114: {fileID: 799884805}
+  - 114: {fileID: 799884807}
   m_Layer: 0
   m_Name: TeinCheng
   m_TagString: Untagged
@@ -3056,8 +3080,9 @@ MonoBehaviour:
   mKB: 0
   mKnockBackForce: 1
   mDamageTextEffect: 1
-  mIsPlayer: 0
   mCanDamage: 1
+  mInvincibleTimeAction: {fileID: 0}
+  mIsPlayer: 0
   mBeenTarget: 0
   mVelocityInfo: {fileID: 0}
   mAbilityFormat: {fileID: 0}
@@ -3075,6 +3100,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mWidth: 0
   mHeight: 0
+--- !u!114 &799884807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799884788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37faf92e0395db49beee8decd8e3b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObjectType: 2
+  mInvicibleTime: 1
+  mInvincibleColor: {r: 0.36764705, g: 0.36764705, b: 0.36764705, a: 1}
+  mFlashTime: 0.1
 --- !u!1001 &817495169
 Prefab:
   m_ObjectHideFlags: 0
@@ -5000,6 +5040,10 @@ Prefab:
       propertyPath: mHPInfo
       value: 
       objectReference: {fileID: 84466389}
+    - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
   m_IsPrefabParent: 0
@@ -5553,6 +5597,10 @@ Prefab:
     - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
       propertyPath: m_Name
       value: JCS_AI_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
@@ -6535,8 +6583,9 @@ MonoBehaviour:
   mKB: 0
   mKnockBackForce: 1
   mDamageTextEffect: 1
-  mIsPlayer: 1
   mCanDamage: 1
+  mInvincibleTimeAction: {fileID: 0}
+  mIsPlayer: 1
   mBeenTarget: 0
   mVelocityInfo: {fileID: 0}
   mAbilityFormat: {fileID: 0}
@@ -7660,6 +7709,10 @@ Prefab:
     - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
       propertyPath: m_Name
       value: JCS_AI_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 181162, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17c0a02394cb1a0439bfe800f8b0a76f, type: 2}

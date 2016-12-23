@@ -43,7 +43,6 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
 
         //========================================
         //      Unity's function
@@ -56,7 +55,7 @@ namespace JCSUnity
             mLiveObject = this.GetComponent<JCS_2DLiveObject>();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             JCS_2DLiveObject liveObject = other.GetComponent<JCS_2DLiveObject>();
             if (liveObject == null)
@@ -78,7 +77,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Do the damage to live object.
         /// </summary>
         /// <param name="liveObject"></param>
         private void DamageLiveObject(JCS_2DLiveObject liveObject)
@@ -98,9 +97,7 @@ namespace JCSUnity
             if (mAbilityFormat == null)
             {
                 JCS_Debug.JcsReminders(
-                    "JCS_HitDamageAction",
-                     
-                    "You sure to not using any \"JCS_AbilityFormat\"?");
+                    this, "You sure to not using any \"JCS_AbilityFormat\"?");
 
                 return;
             }
@@ -112,9 +109,8 @@ namespace JCSUnity
                 1,      // hit
                 0);     // critical chance
 
-            // -------------- PLAYER ---------------
 
-            // see if the living object player.
+            // see if the collider is player.
             JCS_Player p = liveObject.GetComponent<JCS_Player>();
             if (p == null)
                 return;
