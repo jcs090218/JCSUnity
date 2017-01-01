@@ -10,8 +10,13 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_OrderLayerObject))]
-    public class JCS_Sprite2D : MonoBehaviour
+    public class JCS_Sprite2D 
+        : MonoBehaviour
     {
 
         //----------------------

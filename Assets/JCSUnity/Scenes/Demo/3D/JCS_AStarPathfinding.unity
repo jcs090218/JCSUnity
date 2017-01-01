@@ -4636,7 +4636,7 @@ MonoBehaviour:
     m_Bits: 256
   mGridiWorldSize: {x: 100, y: 100}
   mNodeRadius: 0.5
-  mDirection: 2
+  mDirection: 3
 --- !u!114 &1996392835
 MonoBehaviour:
   m_ObjectHideFlags: 0

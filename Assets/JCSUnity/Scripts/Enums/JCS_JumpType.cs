@@ -3,6 +3,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public enum JCS_JumpeType
     {
         BASIC_JUMP = 1,

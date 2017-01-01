@@ -9,11 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Draw the gizmos on the mesh collider.
     /// </summary>
     [RequireComponent(typeof(MeshCollider))]
     public class JCS_ObjectChecker

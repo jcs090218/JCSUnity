@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_SlideInput
         : MonoBehaviour
     {

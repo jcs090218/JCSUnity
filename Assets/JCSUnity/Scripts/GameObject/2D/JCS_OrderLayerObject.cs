@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Object in the in the scene layer.
+    /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_OrderLayerObject 
         : MonoBehaviour

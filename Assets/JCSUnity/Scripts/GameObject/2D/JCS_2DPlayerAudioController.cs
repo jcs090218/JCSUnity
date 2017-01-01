@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Audio player for specific player type.
+    /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     // force 2d game player have the ear in game!
     [RequireComponent(typeof(AudioListener))]

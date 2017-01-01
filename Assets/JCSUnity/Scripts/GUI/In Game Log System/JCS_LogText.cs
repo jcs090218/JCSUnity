@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Log text for JCS_IGLogSystem to handle.
     /// </summary>
     [RequireComponent(typeof(UnityEngine.UI.Text))]
     [RequireComponent(typeof(JCS_FadeObject))]

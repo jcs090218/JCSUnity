@@ -1,0 +1,34 @@
+
+JCSUnity version 1.3.9 Execution Order List (Status)
+
+
+Following Scirpt should have lower execute order then "JCS_GameManager"
+(Notice: "Edit->Project Settings->Script Execution Order" to set the execution order!)
+
+    * JCS_GameSettings
+    * JCS_UniqueObject
+    * JCS_UtilitiesManager
+    * JCS_GameManager
+    * JCS_UIManager
+    * JCS_Canvas
+    * JCS_ResizeUI
+    * JCS_DialogueObject
+    * JCS_PlayerManager
+    * JCS_Player
+    * JCS_2DCamera
+    * JCS_MobileMouseEvent
+    * JCS_2DPlatform
+    * JCS_Logo
+    * JCS_2DMultiTrackCamera
+    * JCS_BGMPlayer
+    * JCS_SceneManager
+    * JCS_PanelRoot
+    * JCS_SlideScreenPanelHolder
+    * JCS_SlidePanel
+    * JCS_GUILiquidBar
+    * JCS_SlideEffect
+    * JCS_DynamicSceneManager
+    * JCS_TweenPanel
+    * JCS_RollBtnSelector
+    * JCS_DialgoueSystem
+    * JCS_PortalManager

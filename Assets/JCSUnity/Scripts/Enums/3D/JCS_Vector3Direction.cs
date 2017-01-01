@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Vector 3d type in enum use in Unity Engine.
     /// </summary>
     public enum JCS_Vector3Direction
     {

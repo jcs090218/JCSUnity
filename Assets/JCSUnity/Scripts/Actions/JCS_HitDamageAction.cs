@@ -37,12 +37,20 @@ namespace JCSUnity
 
         private JCS_2DLiveObject mLiveObject = null;
 
+
+        [Header("** Runtime Variables (JCS_HitDamageAction) **")]
+
+        [Tooltip("When the action occurs play this sound.")]
+        [SerializeField]
+        private AudioClip mHitSound = null;
+
         //----------------------
         // Protected Variables
 
         //========================================
         //      setter / getter
         //------------------------------
+        public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
 
         //========================================
         //      Unity's function
@@ -107,7 +115,8 @@ namespace JCSUnity
                 mAbilityFormat.GetMaxDamage(),
                 this.transform.position,
                 1,      // hit
-                0);     // critical chance
+                0, 
+                mHitSound);     // critical chance
 
 
             // see if the collider is player.

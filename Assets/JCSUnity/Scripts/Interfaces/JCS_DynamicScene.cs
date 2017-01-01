@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class JCS_DynamicScene
         : MonoBehaviour
     {

@@ -9,8 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Type of the dialogue system.
+    /// </summary>
     public enum JCS_PageLook
     {
         FIRST_PAGE,         // page with only next button

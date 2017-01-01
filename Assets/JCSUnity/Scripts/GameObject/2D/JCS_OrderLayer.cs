@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Scene layer.
+    /// </summary>
     public class JCS_OrderLayer 
         : MonoBehaviour
     {

@@ -12,6 +12,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Interface of the action.
+    /// </summary>
     public interface JCS_Action
     {
         // interfaces.

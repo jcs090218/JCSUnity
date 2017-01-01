@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Basic camera for 2d Games.
     /// </summary>
     [RequireComponent(typeof(JCS_BGMPlayer))]     // for background music
     public class JCS_2DCamera 

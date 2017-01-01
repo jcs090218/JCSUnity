@@ -11,6 +11,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Base fade in/out enum.
+    /// </summary>
     public enum JCS_FadeType
     {
         NONE,

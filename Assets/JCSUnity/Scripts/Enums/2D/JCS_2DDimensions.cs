@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 2 axis direction with only the side.
+    /// </summary>
     public enum JCS_2DDimensions
     { 
         NONE,

@@ -8,8 +8,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// What kind of music/sound/audio.
+    /// </summary>
     public enum JCS_SoundSettingType
     {
         NONE,

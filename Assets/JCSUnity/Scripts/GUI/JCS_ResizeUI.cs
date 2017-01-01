@@ -15,7 +15,8 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// This responsoble handle all the gui into correct proportion and 
+    /// right scaling.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class JCS_ResizeUI 

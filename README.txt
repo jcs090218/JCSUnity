@@ -19,69 +19,17 @@ $Notice: See LICENSE.txt for modification and distribution information
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Libraries List
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    Plz download these library urself.
-    
-    ■ Necessary:
-        * SpriteMask : https://www.assetstore.unity3d.com/en/#!/content/27642
-        * Tweener : https://github.com/PeterVuorela/Tweener
-        
-    ■ Recommanded:
-        * Photon PUN+ : https://www.assetstore.unity3d.com/en/#!/content/12080
-        * Gaussian Blur : https://www.assetstore.unity3d.com/en/#!/content/42388
-        * Infinity Code : https://www.assetstore.unity3d.com/en/#!/content/3810
-        * Reporter : https://www.assetstore.unity3d.com/en/#!/content/12047
-        * Store - In App Purchase : https://www.assetstore.unity3d.com/en/#!/content/6103
-        * Unity Ads : https://www.assetstore.unity3d.com/en/#!/content/21027
+    Can be found in "doc/JCSUnity Libraries List.txt".
     
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Execution Order List
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    Following Scirpt should have lower execute order then "JCS_GameManager"
-    (Notice: "Edit->Project Settings->Script Execution Order" to set the execution order!)
-
-        * JCS_GameSettings
-        * JCS_UniqueObject
-        * JCS_UtilitiesManager
-        * JCS_GameManager
-        * JCS_UIManager
-        * JCS_Canvas
-        * JCS_ResizeUI
-        * JCS_DialogueObject
-        * JCS_PlayerManager
-        * JCS_Player
-        * JCS_2DCamera
-        * JCS_MobileMouseEvent
-        * JCS_2DPlatform
-        * JCS_Logo
-        * JCS_2DMultiTrackCamera
-        * JCS_BGMPlayer
-        * JCS_SceneManager
-        * JCS_PanelRoot
-        * JCS_SlideScreenPanelHolder
-        * JCS_SlidePanel
-        * JCS_GUILiquidBar
-        * JCS_SlideEffect
-        * JCS_DynamicSceneManager
-        * JCS_TweenPanel
-        * JCS_RollBtnSelector
-        * JCS_DialgoueSystem
-        * JCS_PortalManager
+    Can be found in "doc/JCSUnity Execution Order List.txt".
 
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Naming Explaination
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    * [Check Variables] - variable only for checking, do not adjust the value of 
-     the variables, but you can use to check to see the effect during runtime.
-     
-    * [Initialize Variables] - variable only work in initialize time, so set 
-     the variable before hitting play button.
-     
-    * [Runtime Variables] - variable will work on both initialize time and 
-     runtime, you can adjust the variable during runtime and see the effect.
-     
-    * [Helper Variables] - variable only happens in developer mode, so it won't 
-     exist in the final build. Usually the helper tool in for level designer.
-
+    Can be found in "doc/JCSUnity Naming Manual.txt".
 
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     =-= Level Design Rule 

@@ -32,6 +32,10 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_DisableWithCertainRangeEvent) **")]
 
+        [Tooltip("")]
+        [SerializeField]
+        private bool mUseLocal = false;
+
         [Tooltip("Target with in the range.")]
         [SerializeField]
         private Transform mTargetTransform = null;
@@ -82,22 +86,10 @@ namespace JCSUnity
             mJCSFadeObject = this.GetComponent<JCS_FadeObject>();
         }
 
-        private void Start()
-        {
-            if (mTargetTransform == null)
-            {
-                JCS_Debug.JcsErrors(
-                    this, "Cannot set the position without target transform.");
-
-                return;
-            }
-
-            // get the target position.
-            mTargetPosition = mTargetTransform.position;
-        }
-
         private void Update()
         {
+            UpdateTargetPosition();
+
             DisableWithInRange();
         }
 
@@ -123,8 +115,16 @@ namespace JCSUnity
         /// </summary>
         private void DisableWithInRange()
         {
-            // get the distance between self's and target's.
-            float distance = Vector3.Distance(this.transform.position, this.mTargetPosition);
+            float distance = 0;
+            if (mUseLocal)
+            {
+                distance = Vector3.Distance(this.transform.localPosition, this.mTargetPosition);
+            }
+            else
+            {
+                // get the distance between self's and target's.
+                distance = Vector3.Distance(this.transform.position, this.mTargetPosition);
+            }
 
             if (distance < this.mRange)
             {
@@ -140,6 +140,30 @@ namespace JCSUnity
             {
                 mJCSFadeObject.FadeOut();
                 mFaded = true;
+            }
+        }
+
+        /// <summary>
+        /// Get the tartget's transform position / local position.
+        /// </summary>
+        private void UpdateTargetPosition()
+        {
+            if (mTargetTransform == null)
+            {
+                JCS_Debug.JcsErrors(
+                    this, "Cannot set the position without target transform.");
+
+                return;
+            }
+
+            if (mUseLocal)
+            {
+                mTargetPosition = mTargetTransform.localPosition;
+            }
+            else
+            {
+                // get the target position.
+                mTargetPosition = mTargetTransform.position;
             }
         }
 

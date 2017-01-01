@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Interface of the dialogue script.
     /// </summary>
     public abstract class JCS_DialogueScript
         : MonoBehaviour

@@ -12,6 +12,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public enum JCS_CursorCustomizeType
     {
         NORMAL_SELECT,

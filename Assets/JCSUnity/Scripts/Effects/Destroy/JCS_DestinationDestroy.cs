@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// While hit the destination destroy it
+    /// While hit the destination destroy it.
     /// </summary>
     [RequireComponent(typeof(JCS_AlphaObject))]
     public class JCS_DestinationDestroy

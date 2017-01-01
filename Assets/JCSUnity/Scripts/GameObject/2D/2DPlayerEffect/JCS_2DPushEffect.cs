@@ -13,6 +13,10 @@ using System;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_2DPushEffect
     : MonoBehaviour
     , JCS_2DPlayerEffect

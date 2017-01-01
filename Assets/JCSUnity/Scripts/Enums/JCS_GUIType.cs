@@ -8,8 +8,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// GUI type list here...
+    /// </summary>
     public enum JCS_GUIType
     {
         NONE,

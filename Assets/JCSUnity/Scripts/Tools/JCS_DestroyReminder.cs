@@ -9,9 +9,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Object remind the the current transform 
+    /// should be destroy but did not destroyed.
+    /// </summary>
     public class JCS_DestroyReminder
         : MonoBehaviour
     {
@@ -42,12 +47,10 @@ namespace JCSUnity
             if (mRemindPerTime < mTimer)
             {
                 JCS_Debug.JcsReminders(
-                    "JCS_DestroyReminder", 
-                      
-                    "Object u sound destroy but u did not...");
+                    this,  "Object u should destroy but u did not...");
 
 #if (UNITY_EDITOR)
-                gameObject.name = "Object u sound destroy but u did not...";
+                gameObject.name = "Object u should destroy but u did not...";
 #endif
             }
         }

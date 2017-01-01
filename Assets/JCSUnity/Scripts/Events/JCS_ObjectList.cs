@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Object list that return random object.
     /// </summary>
     public class JCS_ObjectList
         : MonoBehaviour

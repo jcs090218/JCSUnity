@@ -58,12 +58,13 @@ namespace JCSUnity
 
         private void Update()
         {
+#if (UNITY_EDITOR)
             if (JCS_Input.GetKeyDown(KeyCode.I))
                 PlayForth();
             if (JCS_Input.GetKeyDown(KeyCode.O))
                 PlayBack();
+#endif
 
-            
 
             // play forth first
             if (mPlayForth)
@@ -105,6 +106,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Play the animation forth once.
+        /// </summary>
         public void PlayForth()
         {
             mPlayForth = true;
@@ -126,6 +131,10 @@ namespace JCSUnity
 
             mAnimator.Play(clipName,   0);
         }
+
+        /// <summary>
+        /// Play the animation back once.
+        /// </summary>
         public void PlayBack()
         {
             mPlayBack = true;

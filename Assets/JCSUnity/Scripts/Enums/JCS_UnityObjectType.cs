@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Unity Engine's type.
+    /// </summary>
     public enum JCS_UnityObjectType
     {
         GAME_OBJECT,

@@ -57,6 +57,7 @@ namespace JCSUnity
         private JCS_Vector<int[]> mSequenceDamageData = null;
         private JCS_Vector<Vector2[]> mSequencePosData = null;
         private JCS_Vector<DamageTextType[]> mSequenceTypeData = null;
+        private JCS_Vector<AudioClip> mSequenceHitSoundData = null;
 
         // Utililty
         private JCS_Vector<float> mSequenceSpanwTimer = null;
@@ -87,6 +88,7 @@ namespace JCSUnity
             mSequenceTypeData = new JCS_Vector<DamageTextType[]>();
             mSequenceSpanwTimer = new JCS_Vector<float>();
             mSequenceSpawnCount = new JCS_Vector<int>();
+            mSequenceHitSoundData = new JCS_Vector<AudioClip>();
         }
 
         private void Start()
@@ -111,7 +113,25 @@ namespace JCSUnity
             {
                 // Testing helper function so spawn sequence of damage
                 // Showing u can get the damage from ite
-                DamageTextSpawnerSimple(0, 1, new Vector2(0, 0), 6, 60, 0);
+                const int x_count = 10;
+                const float x_distance = 2f;
+                const float y_randDistance = 0.8f;
+
+                for (int count = 0;
+                    count < x_count;
+                    ++count)
+                {
+                    DamageTextSpawnerSimple(
+                        0, 
+                        9999, 
+                        new Vector2(
+                            x_distance * count, 
+                            JCS_Utility.JCS_FloatRange(-y_randDistance, y_randDistance)), 
+                        6, 
+                        30, 
+                        0);
+                }
+                
             }
         }
 #endif
@@ -133,7 +153,8 @@ namespace JCSUnity
             int hit, 
             int percentOfCritical, 
             int defenseValue,
-            bool isEnemy = false)
+            bool isEnemy = false,
+            AudioClip hitSound = null)
         {
             return DamageTextSpawnerSimple(
                 minDamage, 
@@ -143,7 +164,8 @@ namespace JCSUnity
                 percentOfCritical, 
                 JCS_Utility.JCS_IntRange, 
                 defenseValue, 
-                isEnemy);
+                isEnemy, 
+                hitSound);
         }
         /// <summary>
         /// Helper function to spawn the damaget text
@@ -168,7 +190,8 @@ namespace JCSUnity
             int percentOfCritical,
             JCS_Range algorithm,
             int defenseValue,
-            bool isEnemy = false)
+            bool isEnemy = false,
+            AudioClip hitSound = null)
         {
             if (minDamage > maxDamage)
             {
@@ -193,7 +216,6 @@ namespace JCSUnity
                 JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Hit count should not be equal or lower than 0!");
                 return null;
             }
-
 
             int[] damages = new int[hit];
             DamageTextType[] types = new DamageTextType[hit];
@@ -239,7 +261,7 @@ namespace JCSUnity
                 }
             }
 
-            SpawnDamageTextsFromPoolByType(damages, pos, types);
+            SpawnDamageTextsFromPoolByType(damages, pos, types, hitSound);
 
             // return the damages we just create!
             return damages;
@@ -251,20 +273,23 @@ namespace JCSUnity
         /// <param name="damages"></param>
         /// <param name="pos"></param>
         /// <param name="cirticalChance"></param>
+        /// <param name="damageSound"></param>
         /// <param name="isEnemy"></param>
-        /// <returns></returns>
+        /// <returns> damage array </returns>
         public int[] DamageTextSpawnerSimple(
-            int[] damages, 
-            Vector2 pos, 
-            int cirticalChance, 
-            bool isEnemy = false)
+            int[] damages,
+            Vector2 pos,
+            int cirticalChance,
+            bool isEnemy = false,
+            AudioClip hitSound = null)
         {
             return DamageTextSpawnerSimple(
                 damages, 
                 pos, 
                 cirticalChance, 
-                JCS_Utility.JCS_IntRange, 
-                isEnemy);
+                JCS_Utility.JCS_IntRange,
+                isEnemy,
+                hitSound);
         }
         /// <summary>
         /// 使用於 如果已經計算好公式了!
@@ -278,8 +303,9 @@ namespace JCSUnity
             int[] damages, 
             Vector2 pos, 
             int cirticalChance, 
-            JCS_Range algorithm, 
-            bool isEnemy = false)
+            JCS_Range algorithm,
+            bool isEnemy = false, 
+            AudioClip hitSound = null)
         {
             int hit = damages.Length;
 
@@ -304,7 +330,7 @@ namespace JCSUnity
                 }
             }
 
-            SpawnDamageTextsFromPoolByType(damages, pos, types);
+            SpawnDamageTextsFromPoolByType(damages, pos, types, hitSound);
 
             // return original damages
             return damages;
@@ -316,14 +342,22 @@ namespace JCSUnity
         /// <param name="damage"> value of the damage text </param>
         /// <param name="pos"> position damage text </param>
         /// <param name="type"> type of the damage text (Default: Normal Damage Text) </param>
-        public void SpawnDamageTextFromPoolByType(int damage, Vector2 pos, DamageTextType type = DamageTextType.NORMAL)
+        public void SpawnDamageTextFromPoolByType(
+            int damage, 
+            Vector2 pos,
+            AudioClip hitSound,
+            DamageTextType type = DamageTextType.NORMAL)
         {
             JCS_DamageTextPool dtp = GetDamageTextPoolByType(type);
 
             if (dtp != null)
-                dtp.SpawnDamageTextFromPool(damage, pos);
+                dtp.SpawnDamageTextFromPool(damage, pos, hitSound);
         }
-        public void SpawnDamageTextsFromPoolByType(int[] damage, Vector2 pos, DamageTextType[] types)
+        public void SpawnDamageTextsFromPoolByType(
+            int[] damage, 
+            Vector2 pos, 
+            DamageTextType[] types, 
+            AudioClip hitSound = null)
         {
             Vector2[] poses = new Vector2[damage.Length];
             for (int index = 0;
@@ -332,14 +366,20 @@ namespace JCSUnity
             {
                 poses[index] = pos;
             }
-            SpawnDamageTextsFromPoolByType(damage, poses, types);
+            SpawnDamageTextsFromPoolByType(damage, poses, types, hitSound);
         }
-        public void SpawnDamageTextsFromPoolByType(int[] damage, Vector2[] pos, DamageTextType[] types)
+        public void SpawnDamageTextsFromPoolByType(
+            int[] damage, 
+            Vector2[] pos, 
+            DamageTextType[] types, 
+            AudioClip hitSound = null)
         {
             if (damage.Length != pos.Length || 
                 damage.Length !=types.Length)
             {
-                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Wrong triple pair size!");
+                JCS_Debug.JcsErrors(
+                    this, "Wrong triple pair size!");
+
                 return;
             }
 
@@ -365,6 +405,7 @@ namespace JCSUnity
             mSequenceDamageData.push(damage);
             mSequencePosData.push(pos);
             mSequenceTypeData.push(types);
+            mSequenceHitSoundData.push(hitSound);
 
             // simply add a timer!
             mSequenceSpanwTimer.push(0);
@@ -378,9 +419,14 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Return the damage text pool by the enum type.
+        /// </summary>
+        /// <param name="type"> enum type </param>
+        /// <returns> damage text pool </returns>
         private JCS_DamageTextPool GetDamageTextPoolByType(DamageTextType type)
         {
-
             switch (type)
             {
                 case DamageTextType.NORMAL:
@@ -403,7 +449,13 @@ namespace JCSUnity
         /// <param name="damage"> memory data thread needed </param>
         /// <param name="pos"> memory data thread needed </param>
         /// <param name="timer"> memory data thread needed </param>
-        private void Sequence(int processIndex, int[] damage, Vector2[] pos, DamageTextType[] types, float timer)
+        private void Sequence(
+            int processIndex, 
+            int[] damage, 
+            Vector2[] pos, 
+            DamageTextType[] types, 
+            float timer, 
+            AudioClip hitSound)
         {
             float newTimer = timer;
 
@@ -420,7 +472,7 @@ namespace JCSUnity
                 }
 
                 // spawn that specific damage text!
-                SpawnDamageTextFromPoolByType(damage[count], pos[count], types[count]);
+                SpawnDamageTextFromPoolByType(damage[count], pos[count], hitSound, types[count]);
 
                 ++count;
                 // update new count, in order 
@@ -444,7 +496,8 @@ namespace JCSUnity
                     mSequenceDamageData.at(process),
                     mSequencePosData.at(process),
                     mSequenceTypeData.at(process),
-                    mSequenceSpanwTimer.at(process));
+                    mSequenceSpanwTimer.at(process),
+                    mSequenceHitSoundData.at(process));
             }
         }
         private void EndProcessSequence(int processIndex)
@@ -455,6 +508,7 @@ namespace JCSUnity
             mSequenceTypeData.slice(processIndex);
             mSequenceSpanwTimer.slice(processIndex);
             mSequenceSpawnCount.slice(processIndex);
+            mSequenceHitSoundData.slice(processIndex);
         }
 
     }

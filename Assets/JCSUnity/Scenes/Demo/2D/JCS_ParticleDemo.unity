@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mNumOfParticle: 1000
   mParticle: {fileID: 1596159593}
+  mActive: 1
   mOrderLayer: 15
   mDensity: 500
   mWindSpeed: 0
@@ -394,7 +395,8 @@ MonoBehaviour:
   m_Text: "Particle Demo\n==========================\nUnder ParticleSystem_Test gameobject
     have the master \nparticle \"JCS_TowardTarget\". Set the setting there and press
     G \nto update all the particle in the particle system, so u can test the particle
-    \nin the runtime."
+    \nin the runtime.\n\nPress 'c' to active paritcle system.\nPress 'v' to stop particle
+    system."
 --- !u!222 &746170689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -850,6 +852,16 @@ Prefab:
     - target: {fileID: 114000014285840766, guid: 8f6e1617d950167439dbe8a6fcc959fe,
         type: 2}
       propertyPath: mIncludeDepth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013234590884, guid: 8f6e1617d950167439dbe8a6fcc959fe,
+        type: 2}
+      propertyPath: mUseLocal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012246884056, guid: 8f6e1617d950167439dbe8a6fcc959fe,
+        type: 2}
+      propertyPath: mTrackAsLocalPosition
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:

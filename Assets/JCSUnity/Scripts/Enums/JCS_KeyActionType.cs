@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Key input type.
+    /// </summary>
     public enum JCS_KeyActionType
     {
         KEY,

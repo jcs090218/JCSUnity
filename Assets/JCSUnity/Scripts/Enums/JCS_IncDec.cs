@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public enum JCS_IncDec
     {
         NONE = 0,

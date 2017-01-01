@@ -11,6 +11,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Type of the game.
+    /// </summary>
     public enum JCS_GameType
     {
         GAME_2D,

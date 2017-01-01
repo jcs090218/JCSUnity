@@ -11,7 +11,12 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class LeaveSettingButton : JCS_Button
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class LeaveSettingButton 
+        : JCS_Button
     {
         public override void JCS_ButtonClick()
         {

@@ -11,6 +11,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// List allthe platform type here...
+    /// </summary>
     public enum JCS_2DPlatformType
     {
         NORMAL,

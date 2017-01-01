@@ -12,6 +12,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Animation type.
+    /// </summary>
     public enum JCS_2DAnimActionType
     {
         // after animate displayed, destroy

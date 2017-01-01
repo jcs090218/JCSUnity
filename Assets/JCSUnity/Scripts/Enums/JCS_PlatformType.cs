@@ -9,8 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
-{ 
+{
+
+    /// <summary>
+    /// Platform/Device type.
+    /// </summary>
     public enum JCS_PlatformType 
     {
         NONE,   // or "all platform"

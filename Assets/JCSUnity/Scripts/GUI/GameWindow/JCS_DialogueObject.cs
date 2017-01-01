@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Base class of Game Window.
     /// </summary>
     [RequireComponent(typeof(JCS_GameWindow))]
     [RequireComponent(typeof(JCS_SoundPlayer))]

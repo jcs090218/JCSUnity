@@ -12,6 +12,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(BoxCollider))]
     public class JCS_2DRope 
         : MonoBehaviour

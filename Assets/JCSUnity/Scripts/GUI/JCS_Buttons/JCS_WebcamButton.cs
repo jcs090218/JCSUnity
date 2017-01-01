@@ -10,9 +10,13 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Base of the webcam related feature handle.
+    /// </summary>
     public class JCS_WebcamButton
         : JCS_Button
     {
@@ -37,6 +41,9 @@ namespace JCSUnity
             base.JCS_ButtonClick();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void TakeSnapshotWebcam()
         {
             if (mWebcam == null)

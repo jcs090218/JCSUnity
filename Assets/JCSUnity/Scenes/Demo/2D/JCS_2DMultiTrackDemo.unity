@@ -613,8 +613,9 @@ MonoBehaviour:
   mKB: 0
   mKnockBackForce: 1
   mDamageTextEffect: 1
-  mIsPlayer: 0
   mCanDamage: 1
+  mInvincibleTimeAction: {fileID: 0}
+  mIsPlayer: 0
   mBeenTarget: 0
   mVelocityInfo: {fileID: 0}
   mAbilityFormat: {fileID: 0}
@@ -637,9 +638,6 @@ MonoBehaviour:
   mMoveSpeed: 20
   mTurnSpeed: 400
   mRotateDirection: 1
-  mAfterRotateWalkStraight: 1
-  mAfterRotateWalkOpposite: 0
-  mAfterRotateWalkOppositeCycle: 0
 --- !u!1 &605192366
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +679,7 @@ MonoBehaviour:
   mCanShoot: 1
   mDelayTime: 0.1
   mAdjustTimeZone: 1.5
+  mShootAxis: 2
 --- !u!114 &605192368
 MonoBehaviour:
   m_ObjectHideFlags: 0

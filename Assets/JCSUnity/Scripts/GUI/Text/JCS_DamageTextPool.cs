@@ -16,6 +16,9 @@ namespace JCSUnity
 {
     public delegate void SpawnSequenceAction(int[] damage, Vector2[] pos, float timePerSpawn, int totalSpawn);
 
+    /// <summary>
+    /// Reusable damage text pool.
+    /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_DamageTextPool
         : MonoBehaviour
@@ -27,7 +30,8 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Initialize Variables **")]
+        [Header("** Initialize Variables (JCS_DamageTextPool) **")]
+
         // number to handle and spawn at the beginning
         [SerializeField] private int mNumberOfHandle = 10;
 
@@ -39,12 +43,12 @@ namespace JCSUnity
         [SerializeField] private JCS_DamageText mDamagetText = null;
         private JCS_Vector<JCS_DamageText> mDamageTexts = null;
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_DamageTextPool) **")]
         [SerializeField] private float mSpacingPerText = 1;
         [SerializeField] private float mTimePerSpawn = 0.1f;
 
         // Audio
-        [Header("** Sound **")]
+        [Header("** Sound (JCS_DamageTextPool) **")]
         [SerializeField] private AudioClip mHitSound = null;
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -57,6 +61,7 @@ namespace JCSUnity
         // Data we need to let Sequence Thread process!
         private JCS_Vector<int[]> mSequenceDamageData = null;
         private JCS_Vector<Vector2[]> mSequencePosData = null;
+        private JCS_Vector<AudioClip> mSequenceHitSoundData = null;
         private JCS_Vector<float> mSequenceSpanwTimer = null;
         // IMPORTANT: index of number we want to call to spawn the damage text!
         private JCS_Vector<int> mSequenceSpawnCount = null;
@@ -68,6 +73,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public int GetNumberOfHandle() { return this.mNumberOfHandle; }
+        public void SetHitSound(AudioClip hitSound) { this.mHitSound = hitSound; }
 
         //========================================
         //      Unity's function
@@ -84,6 +90,7 @@ namespace JCSUnity
             mSequenceDamageData = new JCS_Vector<int[]>();
             mSequencePosData = new JCS_Vector<Vector2[]>();
             mSequenceSpanwTimer = new JCS_Vector<float>();
+            mSequenceHitSoundData = new JCS_Vector<AudioClip>();
             mSequenceSpawnCount = new JCS_Vector<int>();
         }
 
@@ -108,7 +115,12 @@ namespace JCSUnity
         /// <param name="pos"> position of damage text we spawn </param>
         /// <param name="hit"> how many damage text we spawn </param>
         /// <returns> data we produced </returns>
-        public int[] DamageTextSpawnerSimple(int minDamage, int maxDamage, Vector2 pos, int hit)
+        public int[] DamageTextSpawnerSimple(
+            int minDamage, 
+            int maxDamage, 
+            Vector2 pos, 
+            int hit, 
+            AudioClip hitSound = null)
         {
             if (minDamage > maxDamage)
             {
@@ -139,12 +151,15 @@ namespace JCSUnity
                 damages[index] = dm;
             }
 
-            SpawnDamagetTexts(damages, Vector2.zero);
+            SpawnDamagetTexts(damages, Vector2.zero, hitSound);
 
             // return the damages we just create!
             return damages;
         }
-        public void SpawnDamagetTexts(int[] damage, Vector2 pos)
+        public void SpawnDamagetTexts(
+            int[] damage, 
+            Vector2 pos, 
+            AudioClip hitSound = null)
         {
             Vector2[] poses = new Vector2[damage.Length];
             for (int index = 0;
@@ -153,9 +168,12 @@ namespace JCSUnity
             {
                 poses[index] = pos;
             }
-            SpawnDamagetTexts(damage, poses);
+            SpawnDamagetTexts(damage, poses, hitSound);
         }
-        public void SpawnDamagetTexts(int[] damage, Vector2[] pos)
+        public void SpawnDamagetTexts(
+            int[] damage,
+            Vector2[] pos,
+            AudioClip hitSound = null)
         {
             if (damage.Length != pos.Length)
             {
@@ -184,6 +202,7 @@ namespace JCSUnity
             // update data to memory
             mSequenceDamageData.push(damage);
             mSequencePosData.push(pos);
+            mSequenceHitSoundData.push(hitSound);
 
             // simply add a timer!
             mSequenceSpanwTimer.push(0);
@@ -197,7 +216,11 @@ namespace JCSUnity
         /// </summary>
         /// <param name="damage"> damage number </param>
         /// <param name="pos"> spawn position </param>
-        public void SpawnDamageTextFromPool(int damage, Vector2 pos, bool secondSearch = false)
+        public void SpawnDamageTextFromPool(
+            int damage, 
+            Vector2 pos, 
+            AudioClip hitSound,
+            bool secondSearch = false)
         {
             if (mNumberOfHandle == 0)
                 return;
@@ -215,7 +238,7 @@ namespace JCSUnity
                     dt.SpawnDamageText(damage, pos);
 
                     // Hit Sound is the part of sfx sound
-                    PlayHitSound();
+                    PlayHitSound(hitSound);
 
                     // set the last spawn count
                     mLastSpawnPos = index;
@@ -252,7 +275,7 @@ namespace JCSUnity
             // dangerious, use carefully!
             // make sure u have enough number of handle
             // or else the program might crash? (too many delay?)
-            SpawnDamageTextFromPool(damage, pos, true);
+            SpawnDamageTextFromPool(damage, pos, hitSound, true);
         }
         
 
@@ -261,6 +284,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitDamageTextToArray()
         {
             mDamageTexts = new JCS_Vector<JCS_DamageText>(mNumberOfHandle);
@@ -292,7 +319,12 @@ namespace JCSUnity
         /// <param name="damage"> memory data thread needed </param>
         /// <param name="pos"> memory data thread needed </param>
         /// <param name="timer"> memory data thread needed </param>
-        private void Sequence(int processIndex, int[] damage, Vector2[] pos, float timer)
+        private void Sequence(
+            int processIndex, 
+            int[] damage, 
+            Vector2[] pos, 
+            float timer, 
+            AudioClip hitSound)
         {
             float newTimer = timer;
 
@@ -308,7 +340,7 @@ namespace JCSUnity
                     return;
                 }
 
-                SpawnDamageTextFromPool(damage[count], pos[count]);
+                SpawnDamageTextFromPool(damage[count], pos[count], hitSound);
 
                 ++count;
                 // update new count, in order 
@@ -338,7 +370,8 @@ namespace JCSUnity
                 Sequence(process, 
                     mSequenceDamageData.at(process),
                     mSequencePosData.at(process),
-                    mSequenceSpanwTimer.at(process));
+                    mSequenceSpanwTimer.at(process),
+                    mSequenceHitSoundData.at(process));
             }
         }
         private void EndProcessSequence(int processIndex)
@@ -348,14 +381,26 @@ namespace JCSUnity
             mSequencePosData.slice(processIndex);
             mSequenceSpanwTimer.slice(processIndex);
             mSequenceSpawnCount.slice(processIndex);
+            mSequenceHitSoundData.slice(processIndex);
         }
         /// <summary>
         /// Hit Sound is the part of sfx sound
         /// </summary>
-        private void PlayHitSound()
+        private void PlayHitSound(AudioClip hitSound)
         {
-            if (mHitSound != null)
-                mSoundPlayer.PlayOneShot(mHitSound, JCS_GameSettings.GetSFXSound_Volume());
+            if (hitSound != null)
+            {
+                // play the hit sound provide by passing in.
+                mSoundPlayer.PlayOneShot(hitSound, JCS_GameSettings.GetSFXSound_Volume());
+            }
+            else
+            {
+                if (mHitSound != null)
+                {
+                    // play the regular assigned by variable's hit sound.
+                    mSoundPlayer.PlayOneShot(mHitSound, JCS_GameSettings.GetSFXSound_Volume());
+                }
+            }
         }
 
     }

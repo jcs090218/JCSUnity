@@ -15,8 +15,6 @@ namespace JCSUnity
 
     /// <summary>
     /// In game item stand for cash.
-    /// 
-    /// Not sure we need this class...
     /// </summary>
     public class JCS_CashObject
         : JCS_Item

@@ -30,6 +30,7 @@ $Notice: See LICENSE.txt for modification and distribution information
 * Control player like Monster Hunter game did.
 * JCS_3DAnimator
 * JCS_3DBlendTreeAnimator
+* JCS_BreakableItem
 
 -- Wait List for Implement --
     - JCS_3DWalkAction

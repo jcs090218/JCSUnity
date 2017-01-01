@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Destroy the object with the time and timer.
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_DestroyObjectWithTime

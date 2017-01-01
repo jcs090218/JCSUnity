@@ -62,6 +62,10 @@ namespace JCSUnity
         // current color is.
         private bool mFlashToggle = false;
 
+        [Tooltip("Play once while trigger")]
+        [SerializeField]
+        private AudioClip mTriggerSound = null;
+
         //----------------------
         // Protected Variables
 
@@ -151,6 +155,9 @@ namespace JCSUnity
 
             // start the action.
             mTriggerAction = true;
+
+            // play the sound once.
+            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mTriggerSound);
         }
 
         //----------------------

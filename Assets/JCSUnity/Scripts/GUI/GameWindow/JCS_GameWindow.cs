@@ -15,6 +15,9 @@ namespace JCSUnity
 
     /// <summary>
     /// Game Window base on the Dialogue object.
+    /// 
+    /// Specialize class for panel/dialogue object. This class provide 
+    /// more than just the normal panel/dialogue interface.
     /// </summary>
     public class JCS_GameWindow 
         : MonoBehaviour

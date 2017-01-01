@@ -9,8 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+    /// <summary>
+    /// Sound in space.
+    /// </summary>
     public enum JCS_SoundType
     {
         SOUND_2D,

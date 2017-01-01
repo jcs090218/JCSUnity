@@ -43,6 +43,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Particle mParticle = null;
 
+        [Tooltip("Is the particle engine active?")]
+        [SerializeField]
+        private bool mActive = true;
+
         [Tooltip("What layer should this be render?")]
         [SerializeField]
         private int mOrderLayer = 15;
@@ -107,6 +111,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public int OrderLayer { get { return this.mOrderLayer; } }
         public JCS_Vector<JCS_Particle> GetParticles() { return this.mParticles; }
 
@@ -130,6 +135,14 @@ namespace JCSUnity
 
         private void Update()
         {
+#if (UNITY_EDITOR)
+            Test();
+#endif
+
+            // check if this particle engine active?
+            if (!mActive)
+                return;
+
             ProccessSequences();
 
             DoParticle();
@@ -137,11 +150,42 @@ namespace JCSUnity
             Freeze();
         }
 
+#if (UNITY_EDITOR)
+        private void Test()
+        {
+            if (JCS_Input.GetKeyDown(KeyCode.C))
+            {
+                StartActive();
+            }
+
+            if (JCS_Input.GetKeyDown(KeyCode.V))
+            {
+                StopActive();
+            }
+        }
+#endif
+
         //========================================
         //      Self-Define
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Start the paritcle engine.
+        /// </summary>
+        public void StartActive()
+        {
+            mActive = true;
+        }
+
+        /// <summary>
+        /// Stop the paritcle engine.
+        /// </summary>
+        public void StopActive()
+        {
+            mActive = false;
+        }
 
         //----------------------
         // Protected Functions

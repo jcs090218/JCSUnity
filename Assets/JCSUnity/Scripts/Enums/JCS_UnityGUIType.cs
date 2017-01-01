@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Type of gui the developer are using.
+    /// </summary>
     public enum JCS_UnityGUIType
     {
         // version after 4.6 (newer one)

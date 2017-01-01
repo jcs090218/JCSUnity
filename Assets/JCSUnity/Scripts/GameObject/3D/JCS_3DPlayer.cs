@@ -10,8 +10,13 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_3DPlayer 
         : JCS_Player
     {

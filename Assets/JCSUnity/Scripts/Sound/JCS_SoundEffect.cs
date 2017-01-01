@@ -10,11 +10,12 @@ using UnityEngine;
 using System.Collections;
 
 
-/// <summary>
-/// Sound Effect use for environment!
-/// </summary>
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Sound Effect use for environment!
+    /// </summary>
     [RequireComponent(typeof(AudioSource))]
     public class JCS_SoundEffect : MonoBehaviour
     {

@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Layer of the speed.
+    /// </summary>
     public enum JCS_SpeedLayer
     {
         VERY_FAST = 2,

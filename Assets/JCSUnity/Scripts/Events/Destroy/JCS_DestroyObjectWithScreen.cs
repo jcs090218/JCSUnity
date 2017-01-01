@@ -9,9 +9,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Destroy the game object when the object is no more render 
+    /// on the screen.
+    /// </summary>
     public class JCS_DestroyObjectWithScreen
         : MonoBehaviour
     {

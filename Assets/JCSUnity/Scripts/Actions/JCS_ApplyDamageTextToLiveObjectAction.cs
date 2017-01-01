@@ -26,7 +26,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Check Variables **")]
+
+        
+        [Header("** Check Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
+
         [SerializeField] private bool mInSequence = false;
         [SerializeField] private int mHit = 1;
         
@@ -35,7 +38,7 @@ namespace JCSUnity
         [SerializeField] private int mCriticalChance = 10;
 
 
-        [Header("** Pre Calculate Effect **")]
+        [Header("** Pre Calculate Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         [Tooltip("Enable this the attack will be calculate before hit the object.")]
         [SerializeField]
@@ -46,7 +49,7 @@ namespace JCSUnity
         private int[] mDamageApplying = null;
 
 
-        [Header("** Lock Effect **")]
+        [Header("** Lock Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         [Tooltip("Enable/Disable the effect.")]
         [SerializeField]
@@ -57,7 +60,7 @@ namespace JCSUnity
         private Transform mTargetTransform = null;
 
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         // Ability Format
         [Tooltip("Ability decide the min and max damage possibility.")]
@@ -70,7 +73,7 @@ namespace JCSUnity
         private Vector3 mDamageTextPositionOffset = Vector3.zero;
 
 
-        [Header("** Random Effect **")]
+        [Header("** Random Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         [Tooltip("Enable/Disable Random Position Effect")]
         [SerializeField]
@@ -81,13 +84,13 @@ namespace JCSUnity
         private float mRandPosRange = 0;
 
 
-        [Header("** Destroy Setting **")]
+        [Header("** Destroy Setting (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         [SerializeField]
         private bool mDestroyByThisAction = true;
 
 
-        [Header("** AOE Effect **")]
+        [Header("** AOE Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         [Tooltip("Make object un-destroyable, count down by AOECount below.")]
         [SerializeField] private bool mIsAOE = false;
@@ -105,6 +108,13 @@ namespace JCSUnity
         // multiple target. To prevent this happen make
         // a boolean handler the detection.
         private bool mIsDestroyed = false;
+
+
+        [Header("** Sound Settings (JCS_ApplyDamageTextToLiveObjectAction) **")]
+
+        [Tooltip(@"Usage: play this hit sound, while is action happens.")]
+        [SerializeField]
+        private AudioClip mHitSound = null;
 
 
         //----------------------
@@ -246,7 +256,8 @@ namespace JCSUnity
                     this.mAttackerInfo.Attacker,
                     mDamageApplying,
                     currentPos,
-                    mCriticalChance);
+                    mCriticalChance,
+                    mHitSound);
 
                 mHit = this.mDamageApplying.Length;
             }
@@ -258,7 +269,8 @@ namespace JCSUnity
                     mMaxDamage,
                     currentPos,
                     mHit,
-                    mCriticalChance);
+                    mCriticalChance, 
+                    mHitSound);
             }
 
             // only if there is only one hit need to do this.
@@ -293,9 +305,9 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Randomize the position.
         /// </summary>
-        /// <param name="currentPos"></param>
+        /// <param name="currentPos"> current position to be randomize. </param>
         private void AddRandomPosition(ref Vector3 currentPos)
         {
             float addPos;
@@ -311,7 +323,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check aoe and decide to destroy 
+        /// the game object now or later.
         /// </summary>
         private void DestroyWithAction()
         {
@@ -330,7 +343,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check is the attack aoe?
         /// </summary>
         /// <returns> TRUE: is aoe, dont destroy the object
         /// FALSE: is not aoe or aoe count is less/equal to zero, 

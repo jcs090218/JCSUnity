@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// Count the hit base on the hit list.
+    /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     public class JCS_HitCountEvent
         : MonoBehaviour

@@ -5805,6 +5805,7 @@ MonoBehaviour:
   mInvicibleTime: 0.5
   mInvincibleColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 1}
   mFlashTime: 0.1
+  mTriggerSound: {fileID: 0}
 --- !u!1 &1717413431
 GameObject:
   m_ObjectHideFlags: 0

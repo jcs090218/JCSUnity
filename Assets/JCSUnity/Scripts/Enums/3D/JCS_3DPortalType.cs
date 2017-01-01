@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// 3d type of portal.
     /// </summary>
     public enum JCS_3DPortalType
     {

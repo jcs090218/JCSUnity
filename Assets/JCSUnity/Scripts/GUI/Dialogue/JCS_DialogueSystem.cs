@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Core of the dialogue system.
     /// </summary>
     public class JCS_DialogueSystem 
         : MonoBehaviour

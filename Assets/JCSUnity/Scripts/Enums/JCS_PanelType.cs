@@ -9,8 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public enum JCS_PanelType
     {
         // reset the scale, position and rotation 

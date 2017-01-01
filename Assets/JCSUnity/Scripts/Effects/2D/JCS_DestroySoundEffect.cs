@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// When the gameobject is destroy iw will play the sound.
+    /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     [RequireComponent(typeof(JCS_SoundPool))]
     public class JCS_DestroySoundEffect

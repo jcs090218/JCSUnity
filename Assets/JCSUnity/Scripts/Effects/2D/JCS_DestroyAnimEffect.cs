@@ -9,9 +9,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// When gameobject destroy, this will be activate and 
+    /// play an animation.
+    /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     [RequireComponent(typeof(JCS_AnimPool))]
     public class JCS_DestroyAnimEffect

@@ -7,6 +7,14 @@ $Notice: See LICENSE.txt for modification and distribution information
 ========================================================================
 
 
+2016-12-13
+* Now All damage text pool provide the specific audio clip function call
+ option. Meaning all the skill you are designing can be use in different 
+ sound. (JCSUnity)
+* For coding wise, after the "ApplyDamageText" function had the new variable 
+ "AudioClip", pass it in to take the effect. (JCSUnity)
+* Update JCS_2DParticleSytem with "start" and "stop" function call. (JCSUnity)
+
 2016-12-22
 * JCS_InvincibleTimeAction implemented. (JCSUnity)
 

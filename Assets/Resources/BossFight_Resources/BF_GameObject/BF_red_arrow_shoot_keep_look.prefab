@@ -119,6 +119,8 @@ MonoBehaviour:
   mObjectType: 2
   mFadeTime: 4
   mOverriteFade: 0
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
 --- !u!114 &11422362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +173,7 @@ MonoBehaviour:
   mDestroyByThisAction: 1
   mIsAOE: 0
   mAOECount: 2
+  mHitSound: {fileID: 8300000, guid: 30860b98decb03448afe661695a5ddce, type: 3}
 --- !u!114 &11462640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,6 +282,7 @@ MonoBehaviour:
   mAbsorbEffect: 0
   mTimeToAbsorb: 0.1
   mAbsorbBackFriction: 0.1
+  mRandomAbsorbTime: 0.5
   mAcceptTimeRange: 0.2
   mDegreeChangeEffect: 0
   mContinousDegreeChange: 0
@@ -328,17 +332,20 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedWireframeHidden: 1
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

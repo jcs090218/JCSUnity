@@ -11,6 +11,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Interface of the player effect object.
+    /// </summary>
     public interface JCS_2DPlayerEffect
     {
         void Effect();

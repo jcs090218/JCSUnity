@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// When object is destroy, play the sound.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_OnDestroyPlaySoundEvent

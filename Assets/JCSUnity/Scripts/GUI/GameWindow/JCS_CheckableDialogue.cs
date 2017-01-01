@@ -10,9 +10,14 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// When cursor or some trigger active, will show the object 
+    /// information on it. This is what this dialogue do.
+    /// </summary>
     public class JCS_CheckableDialogue
         : JCS_PanelRoot
     {
@@ -23,13 +28,20 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Runtime Variables **")]
-        [SerializeField] private bool mFitPushScreen = true;
+        [Header("** Runtime Variables (JCS_CheckableDialogue) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mFitPushScreen = true;
 
         // Script of displaying the sprite!
-        [SerializeField] private Image mItemImage = null;
+        [Tooltip("")]
+        [SerializeField]
+        private Image mItemImage = null;
 
-        [SerializeField] private RectTransform mPanelRectTransform = null;
+        [Tooltip("")]
+        [SerializeField]
+        private RectTransform mPanelRectTransform = null;
 
         //----------------------
         // Protected Variables

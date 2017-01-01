@@ -9,10 +9,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+
     /// <summary>
     /// Camera for GUI!! not in the game scene.
+    /// 
+    /// use for switching scene panel.
     /// </summary>
     [RequireComponent(typeof(AudioListener))]
     public class JCS_2DSlideScreenCamera 
@@ -31,17 +35,27 @@ namespace JCSUnity
         private Vector2 mRecordGUIScreenSize = Vector2.one;
 
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
+
         // Notice important that Designer should know what 
         // Unity GUI type they are going to use!
+        [Tooltip("")]
         [SerializeField]
         private JCS_UnityGUIType mUnityGUIType = JCS_UnityGUIType.nGUI_3D;
 
+
         [Header("** Please set a 2DCamera from the asset, or it will spawn one if is null! **")]
-        [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;
+        [Tooltip("")]
+
+        [SerializeField]
+        private JCS_2DCamera mJCS_2DCamera = null;
+
 
         [Header("** Please set a JCS_SlideScreenPanelHolder from the asset, or it will spawn one if is null! **")]
-        [SerializeField] private JCS_SlideScreenPanelHolder mPanelHolder = null;
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_SlideScreenPanelHolder mPanelHolder = null;
         private string mPanelHolderPath = "JCSUnity_Framework_Resources/JCS_LevelDesignUI/JCS_SlideScreenPanelHolder";
 
         //----------------------
@@ -155,7 +169,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
-        // 2D
+
+        //////////// 2D //////////////////////////
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitCamera()
         {
             if (mJCS_2DCamera == null)
@@ -179,6 +198,7 @@ namespace JCSUnity
             // set target to follow!
             mJCS_2DCamera.SetFollowTarget(this.transform);
         }
+
         /// <summary>
         /// According to Unity's low level code architecture,
         /// Unity Engine itself start handle the screen size resolution
@@ -193,6 +213,11 @@ namespace JCSUnity
             // get the gui screen size the first time
             mRecordGUIScreenSize = appScreenSize;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="towardDirection"></param>
         private void UGUISwitchScene(JCS_2D4Direction towardDirection)
         {
             // get the Screen Width and Screen Height
@@ -221,6 +246,11 @@ namespace JCSUnity
 
             mPanelHolder.AddForce(newScenePosition);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="towardDirection"></param>
         private void UGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             // get the Screen Width and Screen Height
@@ -267,7 +297,13 @@ namespace JCSUnity
 
             mPanelHolder.AddForce(newScenePosition);
         }
-        // 3D
+
+        //////////// 3D //////////////////////////
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="towardDirection"></param>
         private void NGUISwitchScene(JCS_2D4Direction towardDirection)
         {
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
@@ -303,6 +339,11 @@ namespace JCSUnity
             // so the camera will follow this object!
             this.transform.position = newScenePosition;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="towardDirection"></param>
         private void NGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();

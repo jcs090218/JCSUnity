@@ -9,9 +9,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [RequireComponent(typeof(JCS_AttackerInfo))]
     public abstract class JCS_Bullet
         : MonoBehaviour

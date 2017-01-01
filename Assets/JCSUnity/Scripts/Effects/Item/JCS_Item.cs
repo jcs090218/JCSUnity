@@ -15,7 +15,7 @@ namespace JCSUnity
     public delegate void PickCallback(Collider other);
 
     /// <summary>
-    /// 
+    /// Base class for all the item subclasses.
     /// </summary>
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Rigidbody))]

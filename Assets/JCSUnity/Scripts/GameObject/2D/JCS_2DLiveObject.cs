@@ -214,9 +214,10 @@ to get the information from them.")]
             int minDamage, int maxDamage, 
             Vector2 pos, 
             int hit = 1, 
-            int criticalChance = 0)
+            int criticalChance = 0, 
+            AudioClip hitSound = null)
         {
-            ApplyDamageText(null, minDamage, maxDamage, pos, hit, criticalChance);
+            ApplyDamageText(null, minDamage, maxDamage, pos, hit, criticalChance, hitSound);
         }
         /// <summary>
         /// Apply Damage text by the chosen effect and 
@@ -233,7 +234,8 @@ to get the information from them.")]
             int minDamage, int maxDamage, 
             Vector2 pos, 
             int hit = 1, 
-            int criticalChance = 0)
+            int criticalChance = 0,
+            AudioClip hitSound = null)
         {
             int[] damages = null;
 
@@ -272,7 +274,8 @@ to get the information from them.")]
                     hit, 
                     criticalChance,
                     defenseValue,        // defense value
-                    IsPlayer);
+                    IsPlayer, 
+                    hitSound);
             }
             // Do damage without damage text.
             else {
@@ -306,7 +309,8 @@ to get the information from them.")]
             Transform attacker, 
             int[] damages, 
             Vector2 pos, 
-            int criticalChance)
+            int criticalChance, 
+            AudioClip hitSound = null)
         {
             // set the last attack in the safe way.
             SetLastAttacker(attacker);
@@ -329,7 +333,8 @@ to get the information from them.")]
                     damages, 
                     pos, 
                     criticalChance, 
-                    IsPlayer);
+                    IsPlayer,
+                    hitSound);
             }
             // Do damage without damage text.
             else {
