@@ -215,6 +215,7 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
         /// <summary>
         /// Load the scene with default fade in time
         /// </summary>

@@ -18,7 +18,7 @@ namespace JCSUnity
     /// Player must have the animation implemented
     /// </summary>
     public class JCS_2DCharacterAnimator
-        : JCS_2DAnimator
+        : JCS_I2DAnimator
     {
 
         //----------------------

@@ -17,7 +17,7 @@ namespace JCSUnity
     /// Basic camera for 2d Games.
     /// </summary>
     [RequireComponent(typeof(JCS_BGMPlayer))]     // for background music
-    public class JCS_2DCamera 
+    public class JCS_2DCamera
         : JCS_Camera
     {
         public static string JCS_2DCAMERA_PATH = "JCSUnity_Framework_Resources/JCS_Camera/JCS_2DCamera";
@@ -43,16 +43,28 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTransform = null;
 
+        [Tooltip("Hard track the target's transform?")]
+        [SerializeField]
+        private bool mHardTrack = false;
+
         // effect: camera will do the smooth movement
         //[SerializeField] private bool mSmoothMoveX = true;
         //[SerializeField] private bool mSmoothMoveY = true;
 
         [Header("** Freeze Settings (Run Time) **")]
-        [SerializeField] private bool mFreezeInRuntime = false;
-        [SerializeField] private bool mFreezeX = false;
-        [SerializeField] private bool mFreezeY = false;
-        [SerializeField] private bool mFreezeZ = false;
+        [SerializeField]
+        private bool mFreezeInRuntime = false;
+        [SerializeField]
+        private bool mFreezeX = false;
+        [SerializeField]
+        private bool mFreezeY = false;
+        [SerializeField]
+        private bool mFreezeZ = false;
         private Vector3 mFreezeRecord = Vector3.zero;
+
+        // Record down the last position and current position, in order 
+        // to add the difference between the two frame.
+        private Vector3 mLastFrameTargetPosition = Vector3.zero;
 
         //-- Scroll
         [Header("** Scroll Setting **")]
@@ -62,11 +74,13 @@ namespace JCSUnity
         private bool mZoomEffect = true;
 
         [Tooltip("Distance once u scroll.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mScrollRange = 2.0f;
 
         [Tooltip("How fast it scroll. (Zoom In/Out)")]
-        [SerializeField] [Range(0.1f, 10.0f)]
+        [SerializeField]
+        [Range(0.1f, 10.0f)]
         private float mScrollFriction = 0.4f;
 
         private float mWheelDegree = 0;
@@ -114,6 +128,7 @@ namespace JCSUnity
         public void SetFollowing(bool val) { this.mFollowing = val; }
         public Transform GetTargetTransform() { return this.mTargetTransform; }
         public JCS_BGMPlayer GetJCSBGMPlayer() { return this.mJCSBGMPlayer; }
+        public bool HardTrack { get { return this.mHardTrack; } set { this.mHardTrack = value; } }
 
         //========================================
         //      Unity's function
@@ -127,7 +142,7 @@ namespace JCSUnity
             this.mFreezeRecord = this.transform.position;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             // Use player from "JCS_GameManager" as default
             if (this.mTargetTransform == null)
@@ -142,6 +157,9 @@ namespace JCSUnity
                 // first assign the target transform's position 
                 // to target position.
                 mTargetPosition = this.mTargetTransform.position;
+
+                // record the target position
+                mLastFrameTargetPosition = this.mTargetTransform.position;
             }
 
             if (mSetToPlayerPositionAtStart)
@@ -158,7 +176,7 @@ namespace JCSUnity
             }
         }
 
-        private void Update()
+        protected virtual void FixedUpdate()
         {
             if (this.mTargetTransform == null)
                 return;
@@ -178,13 +196,24 @@ namespace JCSUnity
             mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
             ZoomCamera(mWheelDegree);
 
-            // Try to approach to the target position.
-            mVelocity.x = ((this.mTargetTransform.position.x + mPositionOffset.x) - 
-                this.transform.position.x) / mFrictionX;
-            mVelocity.y = ((this.mTargetTransform.position.y + mPositionOffset.y) - 
-                this.transform.position.y) / mFrictionY;
-            mVelocity.z = ((this.mTargetPosition.z + mPositionOffset.z) -
-                this.transform.position.z) / mScrollFriction;
+            if (!mHardTrack)
+            {
+                // Try to approach to the target position.
+                mVelocity.x = ((this.mTargetTransform.position.x + mPositionOffset.x) -
+                    this.transform.position.x) / mFrictionX;
+                mVelocity.y = ((this.mTargetTransform.position.y + mPositionOffset.y) -
+                    this.transform.position.y) / mFrictionY;
+                mVelocity.z = ((this.mTargetPosition.z + mPositionOffset.z) -
+                    this.transform.position.z) / mScrollFriction;
+            }
+            else
+            {
+                Vector3 differencePosition = this.mTargetTransform.position - mLastFrameTargetPosition;
+                this.transform.position += differencePosition;
+
+                // assign last frame position.
+                mLastFrameTargetPosition = this.mTargetTransform.position;
+            }
 
             // Update self position
             this.transform.position += this.mVelocity * Time.deltaTime;

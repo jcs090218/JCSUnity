@@ -28,7 +28,7 @@ namespace JCSUnity
         // Private Variables
 
         private SpriteRenderer mSpriteRenderer = null;
-        private JCS_2DAnimator m2DAnimator = null;
+        private JCS_I2DAnimator m2DAnimator = null;
 
 
         [Header("** Check Variables (JCS_2DLiveObject) **")]
@@ -68,7 +68,7 @@ to get the information from them.")]
         //========================================
         //      setter / getter
         //------------------------------
-        public JCS_2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
+        public JCS_I2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
         public SpriteRenderer spriteRenderer { get { return this.mSpriteRenderer; } }
         public bool BeenTarget { get { return this.mBeenTarget; } set { this.mBeenTarget = value; } }
         public bool DamageTextEffect { get { return this.mDamageTextEffect; } set { this.mDamageTextEffect = value; } }
@@ -86,7 +86,7 @@ to get the information from them.")]
             base.Awake();
 
             mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-            m2DAnimator = this.GetComponent<JCS_2DAnimator>();
+            m2DAnimator = this.GetComponent<JCS_I2DAnimator>();
 
             // try to get this component in this transform.
             if (mVelocityInfo == null)

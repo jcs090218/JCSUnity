@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Take care of all the player in the scene.
     /// </summary>
     public class JCS_PlayerManager 
         : MonoBehaviour
@@ -27,10 +27,14 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        // current player that are active
+
+        [Header("** Check Variables (JCS_PlayerManager) **")]
+
+        [Tooltip("current player that are active")]
         [SerializeField]
         private JCS_Player mActivePlayer = null;
 
+        [Tooltip("List of all the player in the game.")]
         [SerializeField]
         private List<JCS_Player> mPlayers = null;
 
@@ -99,6 +103,11 @@ namespace JCSUnity
         //----------------------
         // Public Functions
         
+        /// <summary>
+        /// Add the player to the list, in order to get manage 
+        /// by this manager.
+        /// </summary>
+        /// <param name="player"> Player to add to the list. </param>
         public void AddPlayerToManage(JCS_Player player)
         {
             if (player == null)
@@ -107,10 +116,18 @@ namespace JCSUnity
             mPlayers.Add(player);
         }
 
+        /// <summary>
+        /// This player will be in the active player slot.
+        /// </summary>
+        /// <param name="index"> index in the player list. </param>
         public void ActiveOnePlayer(int index)
         {
             ActiveOnePlayer(mPlayers[index]);
         }
+        /// <summary>
+        /// This player will be in the active player slot.
+        /// </summary>
+        /// <param name="player"> player to be active. </param>
         public void ActiveOnePlayer(JCS_Player player)
         {
             foreach (JCS_Player p in mPlayers)
@@ -124,6 +141,10 @@ namespace JCSUnity
                     p.ControlEnable(false);
             }
         }
+
+        /// <summary>
+        /// Ignore the player's physcis to each other player?
+        /// </summary>
         public void DoIgnorePlayersToEachOthers()
         {
             if (JCS_GameSettings.instance.PLAYER_IGNORE_EACH_OTHER)
@@ -145,7 +166,16 @@ namespace JCSUnity
                 }
             }
         }
-        public void IgnorePhysicsToAllPlayer(Collider cc)
+
+        /// <summary>
+        /// Ignore a collider with all the player in the list.
+        /// </summary>
+        /// <param name="cc"> Collider to ignore. </param>
+        /// <param name="act"> 
+        /// true : ignore it.
+        /// false : don't ignore it.
+        /// </param>
+        public void IgnorePhysicsToAllPlayer(Collider cc, bool act = true)
         {
             // Make all the player ignore each other
             for (int index = 0;
@@ -154,19 +184,7 @@ namespace JCSUnity
             {
                 Physics.IgnoreCollision(
                             mPlayers[index].GetCharacterController(), 
-                            cc, true);
-            }
-        }
-        public void EnablePhysicsToAllPlayer(Collider cc)
-        {
-            // Make all the player ignore each other
-            for (int index = 0;
-                index < mPlayers.Count;
-                ++index)
-            {
-                Physics.IgnoreCollision(
-                            mPlayers[index].GetCharacterController(),
-                            cc, false);
+                            cc, act);
             }
         }
 
@@ -175,7 +193,10 @@ namespace JCSUnity
         /// transform as player did. (typeid method)
         /// </summary>
         /// <param name="trans"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// true : is one of the player's transfrom.
+        /// false : vice versa.
+        /// </returns>
         public bool IsPlayerTransform(Transform trans)
         {
             if (trans == null)
@@ -189,6 +210,15 @@ namespace JCSUnity
 
             return false;
         }
+
+        /// <summary>
+        /// Check weather the transfrom is active player's transform.
+        /// </summary>
+        /// <param name="tran"> Transform to test. </param>
+        /// <returns>
+        /// true : is active player's transform.
+        /// false : vice versa.
+        /// </returns>
         public bool IsActivePlayerTransform(Transform tran)
         {
             if (mActivePlayer != null)
@@ -199,6 +229,12 @@ namespace JCSUnity
 
             return false;
         }
+
+        /// <summary>
+        /// Ignore physics to all the active player except 
+        /// the active player.
+        /// </summary>
+        /// <param name="cc"> Collider want to ignore with. </param>
         public void IgnorePhysicsToAllExceptActivePlayer(Collider cc)
         {
             // ignore all
@@ -420,6 +456,9 @@ namespace JCSUnity
             return players[foundIndex];
         }
 
+        /// <summary>
+        /// Add all the player to multi track list.
+        /// </summary>
         public void AddAllPlayerToMultiTrack()
         {
             // find the object in the scene.
@@ -430,7 +469,11 @@ namespace JCSUnity
                 jcs2dmtc.AddTargetToTrackList(p);
             }
         }
-        public void RemoveAllPlayerToMultiTrack()
+
+        /// <summary>
+        /// Remove all the player from multi track list.
+        /// </summary>
+        public void RemoveAllPlayerFromMultiTrack()
         {
             // find the object in the scene.
             JCS_2DMultiTrackCamera jcs2dmtc = (JCS_2DMultiTrackCamera)FindObjectOfType(typeof(JCS_2DMultiTrackCamera));

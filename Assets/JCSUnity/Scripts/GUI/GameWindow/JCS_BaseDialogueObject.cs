@@ -95,7 +95,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Reset the dialgoue base on the ratio of the game.
         /// </summary>
         public void ResetDialogue()
         {
@@ -123,7 +123,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Destroy this dialgoue object.
         /// </summary>
         public void DestroyDialogue()
         {
@@ -135,7 +135,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Show the dialogue in the game.
         /// </summary>
         public void ShowDialogueWithoutSound()
         {
@@ -155,7 +155,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Hide the dialogue without the sound.
         /// </summary>
         public virtual void HideDialogueWithoutSound()
         {
@@ -180,7 +180,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Move the last child of the current child will make the 
+        /// panel in front of any other GUI in the current panel.
         /// </summary>
         public virtual void MoveToTheLastChild()
         {

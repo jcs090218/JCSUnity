@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Slide panel holder.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(JCS_IgnoreDialogueObject))]
@@ -33,8 +33,12 @@ namespace JCSUnity
         [SerializeField] private float mSlideFrictionX = 0.2f;
         [SerializeField] private float mSlideFrictionY = 0.2f;
 
-        [SerializeField] private RectTransform[] mSlidePanels = null;
-        private JCS_SlidePanel[] mSlidePanelsComponent = null;
+        // Panel rect transform holder.
+        // since the panel does not need to contain "JCS_SlidePanel" class, 
+        // we will help them add the class during init time.
+        public RectTransform[] slidePanels = null;
+
+        private JCS_SlidePanel[] mSlidePanelsComponents = null;
 
         //----------------------
         // Protected Variables
@@ -59,19 +63,19 @@ namespace JCSUnity
             if (mSlideFrictionY == 0)
                 mSlideFrictionY = 0.2f;
 
-            mSlidePanelsComponent = new JCS_SlidePanel[mSlidePanels.Length];
+            mSlidePanelsComponents = new JCS_SlidePanel[slidePanels.Length];
 
             for (int index = 0;
-                index < mSlidePanels.Length;
+                index < slidePanels.Length;
                 ++index)
             {
                 // add the component to the slide panel
-                mSlidePanelsComponent[index] =
-                    mSlidePanels[index].gameObject.AddComponent<JCS_SlidePanel>();
+                mSlidePanelsComponents[index] =
+                    slidePanels[index].gameObject.AddComponent<JCS_SlidePanel>();
 
                 // set friction
-                mSlidePanelsComponent[index].SlideFrictionX = mSlideFrictionX;
-                mSlidePanelsComponent[index].SlideFrictionY = mSlideFrictionY;
+                mSlidePanelsComponents[index].SlideFrictionX = mSlideFrictionX;
+                mSlidePanelsComponents[index].SlideFrictionY = mSlideFrictionY;
             }
         }
 
@@ -80,14 +84,25 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Add Force to  the panel.
+        /// </summary>
+        /// <param name="pos"></param>
         public void AddForce(Vector3 pos)
         {
-            foreach (JCS_SlidePanel sp in mSlidePanelsComponent)
+            foreach (JCS_SlidePanel sp in mSlidePanelsComponents)
             {
                 Vector3 tempPos = sp.GetTargetPosition() - pos;
                 sp.SetTargetPosition(tempPos);
             }
         }
+
+        /// <summary>
+        /// Add Force to  the panel.
+        /// </summary>
+        /// <param name="force"></param>
+        /// <param name="axis"></param>
         public void AddForce(float force, JCS_Axis axis)
         {
             if (force == 0.0f)

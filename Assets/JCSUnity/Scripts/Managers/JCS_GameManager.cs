@@ -29,7 +29,8 @@ namespace JCSUnity
         [Header("** Check Variable (JCS_GameManager) **")]
 
         [Tooltip("Is the game pasue?")]
-        public bool GAME_PAUSE = false;
+        [SerializeField]
+        private bool mGamePause = false;
 
 #if (UNITY_EDITOR)
 
@@ -50,6 +51,21 @@ namespace JCSUnity
         //--------------------------------
         // setter / getter
         //--------------------------------
+        public bool GAME_PAUSE {
+            get { return this.mGamePause; }
+            set
+            {
+                // check if need the game pause the same as the value
+                // previously set. In order to save some perforce by 
+                // enable/disable all the JCS_PauseAction in the game.
+                if (mGamePause != value)
+                {
+                    JCS_PauseManager.instance.PauseTheWholeGame(value);
+                }
+
+                this.mGamePause = value;
+            }
+        }
         public void SetJCSPlayer(JCS_Player player)
         {
             this.mJCSPlayer = player;
@@ -81,6 +97,8 @@ namespace JCSUnity
         private void Update()
         {
             SetTimeScale();
+
+            TestPauseGame();
         }
 
         /// <summary>
@@ -92,6 +110,14 @@ namespace JCSUnity
         private void SetTimeScale()
         {
             Time.timeScale = TIME_SCALE;
+        }
+
+        private void TestPauseGame()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                GAME_PAUSE = !GAME_PAUSE;
+            }
         }
 #endif
 

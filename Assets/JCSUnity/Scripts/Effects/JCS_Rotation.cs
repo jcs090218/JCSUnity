@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Do the rotate action depends on axis.
     /// </summary>
     public class JCS_Rotation
         : MonoBehaviour
@@ -33,12 +33,29 @@ namespace JCSUnity
         protected bool mEffect = false;
 
         [Tooltip("How fast u rotate?")]
-        [SerializeField] [Range(-1000, 1000)]
+        [SerializeField]
+        [Range(-1000, 1000)]
         protected float mRotateSpeed = 10;
 
         [Tooltip("Direction u rotate.")]
         [SerializeField]
         protected JCS_Vector3Direction mRotateDirection = JCS_Vector3Direction.FORWARD;
+
+
+        [Header("-Random Effect (JCS_Rotation)")]
+
+        [Tooltip("Randomize the rotate speed a bit at start.")]
+        [SerializeField]
+        protected bool mRotateRandomizeAtStart = false;
+
+        [Tooltip("Value to randomize.")]
+        [SerializeField]
+        [Range(0, 1000)]
+        protected float mRotateRandomizeAtStartValue = 0.0f;
+
+        [Tooltip("Random the rotate direction on start.")]
+        [SerializeField]
+        protected bool mRandomRotateDirectonAtStart = false;
 
         //----------------------
         // Protected Variables
@@ -53,6 +70,17 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+
+        protected virtual void Awake()
+        {
+            // randomize the rotate speed at start?
+            if (mRotateRandomizeAtStart)
+                RandomizeTheRotateSpeed();
+
+            // randomize the rotate direction.
+            if (mRandomRotateDirectonAtStart)
+                RandomizeTheRotateDirection();
+        }
 
         protected virtual void Update()
         {
@@ -118,5 +146,36 @@ namespace JCSUnity
             transform.Rotate(rotateDirection * mRotateSpeed * Time.deltaTime);
         }
 
+        /// <summary>
+        /// Randomize the rotate speed.
+        /// </summary>
+        private void RandomizeTheRotateSpeed()
+        {
+            RandomizeTheRotateSpeed(mRotateRandomizeAtStartValue);
+        }
+        /// <summary>
+        /// Randomize the value.
+        /// </summary>
+        /// <param name="value"> how much it randomize. </param>
+        private void RandomizeTheRotateSpeed(float value)
+        {
+            // NOTE(jenchieh): this make sure the min/max are fit.
+            float val = JCS_Mathf.ToPositive(value);
+
+            // add up he randomize value.
+            mRotateSpeed += JCS_Utility.JCS_FloatRange(-val, val);
+        }
+
+        /// <summary>
+        /// Randomize the rotate direction.
+        /// </summary>
+        private void RandomizeTheRotateDirection()
+        {
+            // NOTE(jenchieh): see JCS_Vector3Direction.cs enum.
+            // there are 0 ~ 26 options.
+            int directionSize = JCS_Utility.JCS_IntRange(0, 26);
+
+            mRotateDirection = (JCS_Vector3Direction)directionSize;
+        }
     }
 }

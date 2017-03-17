@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Handle of all the AI in the scene.
     /// </summary>
     public class JCS_LiveObjectManager
         : MonoBehaviour
@@ -60,7 +60,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Base on different type of game add different type of manager.
         /// </summary>
         private void SetSpecificGameTypeGameManager()
         {

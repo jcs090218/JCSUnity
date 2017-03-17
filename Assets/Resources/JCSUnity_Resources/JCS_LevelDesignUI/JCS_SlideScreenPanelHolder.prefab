@@ -5,11 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22465536}
-  - 114: {fileID: 11408046}
-  - 114: {fileID: 11409308}
+  - component: {fileID: 22465536}
+  - component: {fileID: 11408046}
+  - component: {fileID: 11409308}
   m_Layer: 5
   m_Name: JCS_SlideScreenPanelHolder
   m_TagString: Untagged
@@ -30,7 +30,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mSlideFrictionX: 0.2
   mSlideFrictionY: 0.2
-  mSlidePanels:
+  slidePanels:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -63,6 +63,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}

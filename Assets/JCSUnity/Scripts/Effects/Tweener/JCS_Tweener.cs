@@ -58,6 +58,13 @@ namespace JCSUnity
         private float mDurationZ = 1.0f;
 
 
+        [Header("- Randomize Duration")]
+
+        [Tooltip("Randomize the duration with all axis at start. (x, y, z)")]
+        [SerializeField] [Range(0.0f, 1000.0f)]
+        private float mRandomizeDuration = 0.0f;
+
+
         [Header("- Tweener Effect Transform")]
 
         [Tooltip("Do tween effect with position?")]
@@ -127,6 +134,8 @@ namespace JCSUnity
         {
             // this alway need to be call once.
             UpdateUnityData();
+            
+            RandomizeDuration();
         }
 
         private void LateUpdate()
@@ -280,9 +289,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Continue Tween to this target's position.
         /// </summary>
-        /// <param name="target"></param>
+        /// <param name="target"> target's transform </param>
         public void DoTweenContinue(Transform target)
         {
             SetTargetTransform(target);
@@ -449,7 +458,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Continue tween to the target's position in update.
         /// </summary>
         private void ContinueTween()
         {
@@ -494,6 +503,20 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Randomize the duration with all axis. (x, y, z)
+        /// </summary>
+        private void RandomizeDuration()
+        {
+            if (mRandomizeDuration != 0)
+            {
+                float randomizeDuration = JCS_Utility.JCS_FloatRange(-mRandomizeDuration, mRandomizeDuration);
+
+                this.mDurationX += randomizeDuration;
+                this.mDurationY += randomizeDuration;
+                this.mDurationZ += randomizeDuration;
+            }
+        }
 
     }
 }

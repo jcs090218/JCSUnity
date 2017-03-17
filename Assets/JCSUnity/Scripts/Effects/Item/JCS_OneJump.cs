@@ -128,7 +128,7 @@ namespace JCSUnity
 
 
             // enable the physic once on the ground
-            JCS_PlayerManager.instance.EnablePhysicsToAllPlayer(this.mBoxCollider);
+            JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(this.mBoxCollider, false);
         }
 
         //========================================

@@ -65,6 +65,9 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public AudioListener GetAudioListener() { return this.mAudioListener; }
+        public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
+        public void SetJCS2DCamera(JCS_2DCamera cam) { this.mJCS_2DCamera = cam; }
+        public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
 
         //========================================
         //      Unity's function
@@ -138,6 +141,11 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D4Direction towardDirection)
         {
             switch (mUnityGUIType)
@@ -151,6 +159,10 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D8Direction towardDirection)
         {
             switch (mUnityGUIType)

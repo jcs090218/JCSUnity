@@ -35,8 +35,10 @@ public class RC_EffectItem
     //========================================
     //      Unity's function
     //------------------------------
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // set to auto pick auto matically.
         mAutoPickColliderTouched = true;
 

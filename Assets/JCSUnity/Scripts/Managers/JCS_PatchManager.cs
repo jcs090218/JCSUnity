@@ -14,7 +14,10 @@ namespace JCSUnity
 {
 
     /// <summary>
+    /// Handle the patch for updating the game version, etc.
     /// 
+    /// Using the version number provided in the game data system could 
+    /// update the game patch by just checking the VERSION number.
     /// </summary>
     public class JCS_PatchManager 
         : MonoBehaviour

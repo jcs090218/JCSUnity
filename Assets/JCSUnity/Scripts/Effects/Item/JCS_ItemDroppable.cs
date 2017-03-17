@@ -196,7 +196,9 @@ compare algorithm")]
             bool isEven = ((itemDrop % 2) == 0) ? true : false;
 
 
-            for (int index = 0;
+            int index = 0;
+
+            for (index = 0;
                 index < itemDrop;
                 ++index)
             {
@@ -208,8 +210,12 @@ compare algorithm")]
                 DropAnItem(item, index, isEven);
             }
 
-            // play drop sound.
-            PlayDropSound();
+            // make sure the object actually drop something.
+            if (index > 0)
+            {
+                // play drop sound.
+                PlayDropSound();
+            }
         }
 
         /// <summary>
@@ -237,6 +243,7 @@ compare algorithm")]
                 return;
             }
 
+            int index = 0;
 
             if (only)
             {
@@ -245,7 +252,7 @@ compare algorithm")]
 
                 bool isEven = ((itemDrop % 2) == 0) ? true : false;
 
-                for (int index = 0;
+                for (index = 0;
                     index < count;
                     ++index)
                 {
@@ -284,7 +291,7 @@ compare algorithm")]
                     randDropIndex = JCS_Utility.JCS_IntRange(0, itemDrop);
 
 
-                for (int index = 0;
+                for (index = 0;
                     index < itemDrop;
                     ++index)
                 {
@@ -305,8 +312,12 @@ compare algorithm")]
                 }
             }
 
-            // play drop sound.
-            PlayDropSound();
+            // make sure the object actually drop something.
+            if (index > 0)
+            {
+                // play drop sound.
+                PlayDropSound();
+            }
         }
 
         //----------------------

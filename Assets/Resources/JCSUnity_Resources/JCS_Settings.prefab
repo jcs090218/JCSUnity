@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_MODE: 0
-  THIS_IS_GAME_SCENE: 1
+  THIS_IS_GAME_SCENE: 0
   LEVEL_DESIGN_MODE: 1
   GAME_TYPE: 0
   GRAVITY_PRODUCT: 4.5

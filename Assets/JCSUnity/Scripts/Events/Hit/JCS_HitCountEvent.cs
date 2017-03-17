@@ -30,7 +30,8 @@ namespace JCSUnity
 
         [Tooltip(@"How many hit to destroy this game object. 
 (If this is 0 than wont active hit animation event.)")]
-        [SerializeField] private uint mHitCount = 1;
+        [SerializeField] [Range(0, 300)]
+        private uint mHitCount = 1;
 
         //----------------------
         // Protected Variables

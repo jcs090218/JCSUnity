@@ -13,7 +13,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Singleton patter in Unity scripting layer.
     /// </summary>
     public class JCS_UniqueObject 
         : MonoBehaviour
@@ -67,7 +67,9 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
+        /// Check the signleton by type.
         /// 
+        /// NOTE(jenchieh): Non-use.
         /// </summary>
         private void CheckByType()
         {

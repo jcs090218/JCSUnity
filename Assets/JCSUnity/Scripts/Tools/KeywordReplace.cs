@@ -29,14 +29,19 @@ public class KeywordReplace
         path = path.Replace(".meta", "");
         int index = path.LastIndexOf(".");
         string file = path.Substring(index);
-        if (file != ".cs" && file != ".js" && file != ".boo") return;
+
+        if (file != ".cs" && file != ".js" && file != ".boo")
+            return;
+
         index = Application.dataPath.LastIndexOf("Assets");
         path = Application.dataPath.Substring(0, index) + path;
         file = System.IO.File.ReadAllText(path);
 
         string dateAndTimeVar = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        string yearTime = System.DateTime.Now.ToString("yyyy");
 
         file = file.Replace("#CREATIONDATE#", dateAndTimeVar + "");
+        file = file.Replace("#CREATEYEAR#", yearTime + "");
         file = file.Replace("#PROJECTNAME#", PlayerSettings.productName);
         file = file.Replace("#SMARTDEVELOPERS#", PlayerSettings.companyName);
 

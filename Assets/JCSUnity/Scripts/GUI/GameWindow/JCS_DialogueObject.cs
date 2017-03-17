@@ -165,7 +165,7 @@ namespace JCSUnity
         // Public Functions
         
         /// <summary>
-        /// 
+        /// Decide what panel is this panel going to be.
         /// </summary>
         public void DoPanelType()
         {
@@ -187,7 +187,9 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Show the dialogue in the game.
         /// 
+        /// NOTE(jenchieh): this will play the default sound.
         /// </summary>
         public void ShowDialogue()
         {
@@ -205,7 +207,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Hide the dialogue without the sound.
         /// </summary>
         public override void HideDialogueWithoutSound()
         {
@@ -215,7 +217,9 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Hide the dialogue in the game.
         /// 
+        /// NOTE(jenchieh): this will play the defualt sound.
         /// </summary>
         public void HideDialogue()
         {
@@ -227,7 +231,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Toggle this dialgoue show and hide.
         /// </summary>
         public void ToggleVisibility()
         {
@@ -240,7 +244,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Move the last child of the current child will make the 
+        /// panel in front of any other GUI in the current panel.
         /// </summary>
         public override void MoveToTheLastChild()
         {
@@ -258,7 +263,8 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Add the panel to window open list, so will record what window 
+        /// is actual open in the current game scene.
         /// </summary>
         private void AddToOpenWindowList()
         {
@@ -278,7 +284,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Remove the windwo current in the list, so will record down
+        /// the window that are close/hide in the current game scene.
         /// </summary>
         private void RemoveFromOpenWindowList()
         {
@@ -286,7 +293,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Swap this panel to the last panel in the list.
         /// </summary>
         private void SwapToTheLastOpenWindowList()
         {

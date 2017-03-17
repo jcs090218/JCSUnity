@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Store all the useful math function here...
     /// </summary>
     public class JCS_Mathf 
         : MonoBehaviour
@@ -445,11 +445,12 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Do Pythagorean Theorem.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="s1"> side 1 </param>
+        /// <param name="s2"> side 2 </param>
+        /// <param name="type"> target side you want to find. </param>
+        /// <returns> result side. </returns>
         public static float PythagoreanTheorem(float s1, float s2, Sides type)
         {
             switch (type)
@@ -479,6 +480,27 @@ namespace JCSUnity
             Debug.LogError("This not suppose to happen here...");
 
             return 0;
+        }
+
+        /// <summary>
+        /// Get the digit number from  mutliple digit number.
+        /// </summary>
+        /// <param name="digit"> digit targeting. </param>
+        /// <param name="number"> source number. </param>
+        /// <returns> single digit. </returns>
+        public static int GetSingleDigit(int digit, int number)
+        {
+            int totalDigit = number.ToString().Length;
+            if (digit > totalDigit)
+                return -1;
+
+            int digitCount = (int)Mathf.Pow(10, digit);
+
+            int remainder = number % digitCount;
+            int po = digit - 1;
+            int divider = (int)Mathf.Pow(10, po);
+
+            return remainder / divider;
         }
 
     }

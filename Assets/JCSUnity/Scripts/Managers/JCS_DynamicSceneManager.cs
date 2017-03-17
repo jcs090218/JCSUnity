@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Take care of all the scene layout.
     /// </summary>
     public class JCS_DynamicSceneManager
         : MonoBehaviour
@@ -54,6 +54,11 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Base on different type of game use different 
+        /// type of manager.
+        /// </summary>
         private void SetSpecificGameTypeDynamicSceneManager()
         {
             JCS_GameSettings gs = JCS_GameSettings.instance;

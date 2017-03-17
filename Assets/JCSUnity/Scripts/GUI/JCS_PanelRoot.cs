@@ -42,15 +42,23 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-
-        protected override void Start()
+        protected override void Awake()
         {
+            base.Awake();
+
+            // NOTE(jenhiche): not sure is this the 
+            // correct position for the code or not.
             if (mFitScreenSize)
             {
                 FitPerfectSize();
 
                 AddPanelChild();
             }
+        }
+
+        protected override void Start()
+        {
+            base.Start();
         }
 
         //========================================
@@ -85,16 +93,21 @@ namespace JCSUnity
 
             Vector3 newPosition = mRectTransform.localPosition;
 
-            // make toward to the camera position
-            Camera cam = JCS_Camera.main.GetCamera();
+            if (JCS_Camera.main != null)
+            {
+                // make toward to the camera position
+                Camera cam = JCS_Camera.main.GetCamera();
 
+                if (cam != null)
+                {
+                    // Find the distance between the dialogue object and the center (which is camera in this case)
+                    float distanceX = mRectTransform.localPosition.x - cam.transform.localPosition.x;
+                    float distanceY = mRectTransform.localPosition.y - cam.transform.localPosition.y;
 
-            // Find the distance between the dialogue object and the center (which is camera in this case)
-            float distanceX = mRectTransform.localPosition.x - cam.transform.localPosition.x;
-            float distanceY = mRectTransform.localPosition.y - cam.transform.localPosition.y;
-
-            newPosition.x = (distanceX / mPanelDeltaWidthRatio);
-            newPosition.y = (distanceY / mPanelDeltaHeightRatio);
+                    newPosition.x = (distanceX / mPanelDeltaWidthRatio);
+                    newPosition.y = (distanceY / mPanelDeltaHeightRatio);
+                }
+            }
 
             // set to the new position
             mRectTransform.localPosition = newPosition;

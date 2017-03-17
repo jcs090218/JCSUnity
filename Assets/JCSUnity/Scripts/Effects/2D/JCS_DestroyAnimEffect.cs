@@ -28,46 +28,69 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_DestroyAnimEffect) **")]
+
         private JCS_AnimPool mDestroyAnim = null;
-        [SerializeField] private int mOrderLayer = 1;
+
+        [SerializeField]
+        private int mOrderLayer = 1;
+
         [Tooltip("How many times to animate then destroy.")]
-        [SerializeField] private int mLoopTimes = 1;
+        [SerializeField]
+        private int mLoopTimes = 1;
 
         //-- Hit List
-        [SerializeField] private bool mDestroyWithHitList = true;
+        [Tooltip("Active this effect by what ever this object is destoryed.")]
+        [SerializeField]
+        private bool mActiveWhatever = false;
+
+        [Tooltip("Active the effect by hitting the certain object.")]
+        [SerializeField]
+        private bool mActiveWithHitList = true;
         private JCS_HitListEvent mHitList = null;
 
         //-- Time
-        [SerializeField] private bool mDestroyWithTime = false;
+        [Tooltip("Active the effect by the destroy time.")]
+        [SerializeField]
+        private bool mActiveWithDestroyTime = false;
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
         [Header("** Settings **")]
         [Tooltip("The same position as the destroyed game object?")]
-        [SerializeField] private bool mSamePosition= true;
+        [SerializeField]
+        private bool mSamePosition = true;
         [Tooltip("The same rotation as the destroyed game object?")]
-        [SerializeField] private bool mSameRotation = true;
+        [SerializeField]
+        private bool mSameRotation = true;
         [Tooltip("The same scale as the destroyed game object?")]
-        [SerializeField] private bool mSameScale = true;
+        [SerializeField]
+        private bool mSameScale = true;
 
         [Header("** Random Effect **")]
         [Tooltip("Enable/Disable Random Position Effect")]
-        [SerializeField] private bool mRandPos = false;
+        [SerializeField]
+        private bool mRandPos = false;
         [SerializeField]
         [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)] private float mRandPosRange = 0;
+        [Range(0, 10)]
+        private float mRandPosRange = 0;
 
         [Tooltip("Enable/Disable Random Rotation Effect")]
-        [SerializeField] private bool mRandRot = false;
+        [SerializeField]
+        private bool mRandRot = false;
         [SerializeField]
         [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)] private float mRandRotRange = 0;
+        [Range(0, 10)]
+        private float mRandRotRange = 0;
 
         [Tooltip("Enable/Disable Random Scale Effect")]
-        [SerializeField] private bool mRandScale = false;
+        [SerializeField]
+        private bool mRandScale = false;
         [SerializeField]
         [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)] private float mRandScaleRange = 0;
+        [Range(0, 10)]
+        private float mRandScaleRange = 0;
 
         //----------------------
         // Protected Variables
@@ -98,23 +121,45 @@ namespace JCSUnity
             // if switching the scene, don't spawn new gameObject.
             if (JCS_SceneManager.instance.IsSwitchingScene())
                 return;
-            
-            // TODO(Jen-Chieh): 意義不明...
-            if (mDestroyWithHitList)
+
+
+            // trigger this effect?
+            bool onTrigger = false;
+
+            if (mActiveWhatever)
             {
-                if (!mHitList.IsHit)
-                    return;
+                onTrigger = true;
             }
-
-            if (mDestroyWithTime)
+            // no need to check the rest.
+            else
             {
-
-                if (mDestroyObjectWithTime != null)
+                // if checking for hit list
+                if (mActiveWithHitList)
                 {
-                    if (mDestroyObjectWithTime.TimesUp)
-                        return;
+                    if (mHitList.IsHit)
+                        onTrigger = true;
+                }
+
+                // if checking for destroy time.
+                if (mActiveWithDestroyTime)
+                {
+                    if (mDestroyObjectWithTime != null)
+                    {
+                        if (mDestroyObjectWithTime.TimesUp)
+                            onTrigger = true;
+                    }
+                    else
+                    {
+                        JCS_Debug.JcsErrors(
+                            this, "You active the destroy time but without the JCS_DestroyObjectWithTime component...");
+                    }
                 }
             }
+
+            // do not trigger this effect.
+            if (!onTrigger)
+                return;
+
 
             GameObject gm = new GameObject();
 #if (UNITY_EDITOR)
@@ -156,6 +201,11 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Add random value to the effect's transform's position.
+        /// </summary>
+        /// <param name="dae"> effect transform </param>
         private void AddRandomPosition(JCS_DestroyAnimEndEvent dae)
         {
             float addPos;
@@ -173,6 +223,11 @@ namespace JCSUnity
 
             dae.transform.position = newPos;
         }
+
+        /// <summary>
+        /// Add random value to the effect's transform's rotation.
+        /// </summary>
+        /// <param name="dae"> effect transform </param>
         private void AddRandomRotation(JCS_DestroyAnimEndEvent dae)
         {
             float addRot;
@@ -190,6 +245,11 @@ namespace JCSUnity
 
             dae.transform.localEulerAngles = newRot;
         }
+
+        /// <summary>
+        /// Add random value to the effect's transform's scale.
+        /// </summary>
+        /// <param name="dae"> effect transform </param>
         private void AddRandomScale(JCS_DestroyAnimEndEvent dae)
         {
             float addScale;

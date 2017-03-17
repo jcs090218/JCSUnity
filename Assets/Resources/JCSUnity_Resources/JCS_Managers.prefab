@@ -5,23 +5,24 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 442828}
-  - 114: {fileID: 11496914}
-  - 114: {fileID: 11474736}
-  - 114: {fileID: 11441358}
-  - 114: {fileID: 11414256}
-  - 114: {fileID: 11439248}
-  - 114: {fileID: 11423776}
-  - 82: {fileID: 8275722}
-  - 114: {fileID: 11419390}
-  - 114: {fileID: 11491538}
-  - 114: {fileID: 11476444}
-  - 114: {fileID: 11436796}
-  - 114: {fileID: 11453626}
-  - 114: {fileID: 11461692}
-  - 114: {fileID: 11407940}
+  - component: {fileID: 442828}
+  - component: {fileID: 11496914}
+  - component: {fileID: 11474736}
+  - component: {fileID: 11441358}
+  - component: {fileID: 11414256}
+  - component: {fileID: 11439248}
+  - component: {fileID: 11423776}
+  - component: {fileID: 8275722}
+  - component: {fileID: 11419390}
+  - component: {fileID: 11491538}
+  - component: {fileID: 11476444}
+  - component: {fileID: 11436796}
+  - component: {fileID: 11453626}
+  - component: {fileID: 11461692}
+  - component: {fileID: 11407940}
+  - component: {fileID: 114914540437033550}
   m_Layer: 0
   m_Name: JCS_Managers
   m_TagString: Untagged
@@ -38,11 +39,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013399643638}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &8275722
 AudioSource:
   m_ObjectHideFlags: 1
@@ -59,6 +60,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -71,12 +73,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -87,7 +91,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -98,7 +103,8 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -109,7 +115,8 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -190,6 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mType: 1
   mJCSBlackScreen: {fileID: 0}
+  mAlign: 0
+  mJCSBlackSlideScreen: {fileID: 0}
   mPopWhiteScreen: 1
   mJCSWhiteScreen: {fileID: 0}
   mOverrideSetting: 0
@@ -302,10 +311,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013399643638}
-  - 114: {fileID: 114000014013781274}
+  - component: {fileID: 4000013399643638}
+  - component: {fileID: 114000014013781274}
   m_Layer: 0
   m_Name: JCS_IndieManagers
   m_TagString: Untagged
@@ -322,10 +331,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 442828}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000014013781274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,3 +349,15 @@ MonoBehaviour:
   mPortals:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &114914540437033550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa49b5ee139699040b4a44e97ef334aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPauseActions: []

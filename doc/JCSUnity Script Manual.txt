@@ -281,6 +281,22 @@ Already assign: no need to touch or move.
         </File>
     </Pathfinding>
     
+    <Spawning>
+        <File name="JCS_BasicInitSpawner.cs">
+            <Placement>N/A</Placement>
+            <Description>
+                Spawn a Transform at the initialize time.
+            </Description>
+        </File>
+		
+		<File name="JCS_BasicWaveSpawner.cs">
+            <Placement>N/A</Placement>
+            <Description>
+                Do the basic wave spawn.
+            </Description>
+        </File>
+    </Spawning>
+    
     <File name="JCS_AbilityFormat.cs">
         <Placement>Script base.</Placement>
         <Description>
@@ -438,7 +454,20 @@ Already assign: no need to touch or move.
 </Actions>
 <Animation>
     <2D>
-        <File name="JCS_2DAnimator.cs">
+		<File name="JCS_2DAnimation.cs">
+            <Placement>Work with JCS_2DAnimator.</Placement>
+            <Description>Handle frame by frame animation in the simple way.</Description>
+        </File>
+		
+		<File name="JCS_2DAnimator.cs">
+            <Placement>
+				Single Loop animation or work with multiple 
+				"JCS_2DAnimation" scripts.
+			</Placement>
+            <Description>Hold sequence of animation and play it by condition.</Description>
+        </File>
+		
+        <File name="JCS_I2DAnimator.cs">
             <Placement>Script base.</Placement>
             <Description>2D Animator interface object.</Description>
         </File>
@@ -1498,6 +1527,13 @@ Already assign: no need to touch or move.
         </File>
     </Text>
     
+    <Timer>
+        <File name="JCS_SpriteTimer.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>Timer system using sprite 0 to 9.</Description>
+        </File>
+    </Timer>
+    
     <File name="JCS_3DLiquidBarText.cs">
         <Placement>Any transfrom/node, with SpriteRenderer component.</Placement>
         <Description>Any liquid bar like health bar, mana bar, etc.</Description>
@@ -1631,6 +1667,11 @@ Already assign: no need to touch or move.
             Holder in order to make the whole slide screen/scene move 
             with the camera.
         </Description>
+    </File>
+    
+    <File name="JCS_SpriteScore.cs">
+        <Placement>Any transform/node.</Placement>
+        <Description>Score system with the sprite 0 to 9.</Description>
     </File>
     
     <File name="JCS_TweenPanel.cs">

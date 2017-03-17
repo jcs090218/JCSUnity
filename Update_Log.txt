@@ -7,6 +7,53 @@ $Notice: See LICENSE.txt for modification and distribution information
 ========================================================================
 
 
+2017-03-13
+* JCS_2DAnimation implemented. (JCSUnity)
+* Change the file name old JCS_2DAnimator to 
+ JCS_I2DAnimator. (JCSUnity)
+* JCS_2DAnimator implemnted. (JCSUnity)
+
+2017-03-10
+* JCS_SpriteScore implemented. (JCSUnity)
+* JCS_HitListEvent update with self-destroy. (JCSUnity)
+* JCS_SpriteTimer implemented. (JCSUnity)
+* JCS_Utility implement DestroyAllTypeObjectInScene 
+ function. (JCSUnity)
+
+2017-03-06
+* JCS_BasicInitSpawner implemented. (JCSUnity)
+
+2017-03-04
+* Redefined JCS_DestroyAnimEffect. (JCSUnity)
+* JCS_BasicWaveSpawner implemented. (JCSUnity)
+
+2017-03-03
+* Update JCS_VideoPlayer compatible with Andriod. (JCSUnity)
+* Set JCS_2DCamera virtual function as default. (JCSUnity)
+
+2017-02-24
+* JCS_PauseAction implemented. (JCSUnity)
+* JCS_PauseManager implemented. (JCSUnity)
+* Modefied JCS_GameManager's GAME_PAUSE compatible to previous 
+ version of JCSUnity. (JCSUnity)
+* Fit Screen Size some bugs fixed. (JCSUnity)
+* JCS_ShowDialogueButton implemented. (JCSUnity)
+* JCS_HideDialogueButton implemented. (JCSUnity)
+* JCS_PauseGameButton implemented. (JCSUnity)
+* JCS_UnPauseGameButton implemented. (JCSUnity)
+
+2017-01-30
+* Organize JCSUnity_EditorWindow class. (JCSUnity)
+
+2017-01-22
+* Add JCSUnity_EditorWindow for gui interface implementation. (JCSUnity)
+* Add menu item serialize to JCSUnity 2d. (JCSUnity)
+* Add menu item serialize to JCSUnity 3d. (JCSUnity)
+* Add menu item About. (JCSUnity)
+
+2017-01-06
+* Add randomize duration at start time for tweener.
+
 2016-12-13
 * Now All damage text pool provide the specific audio clip function call
  option. Meaning all the skill you are designing can be use in different 

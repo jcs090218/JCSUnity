@@ -25,11 +25,27 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Tooltip("List of object will lower 1 hit count.")]
-        [SerializeField] private string[] mHitObjectList = null;
-        [Tooltip("Base on Hit Object List will atuomatically add clone object.")]
-        [SerializeField] private bool mIncludeClone = true;
+
+        [Header("** Check Variables (JCS_HitListEvent) **")]
+
+        [Tooltip("trigger if this even occurs")]
+        [SerializeField]
         private bool mIsHit = false;
+
+
+        [Header("** Runtime Variables (JCS_HitListEvent) **")]
+
+        [Tooltip("List of object will lower 1 hit count.")]
+        [SerializeField]
+        private string[] mHitObjectList = null;
+
+        [Tooltip("Base on Hit Object List will atuomatically add clone object.")]
+        [SerializeField]
+        private bool mIncludeClone = true;
+
+        [Tooltip("When is hit, destroy this object.")]
+        [SerializeField]
+        private bool mDestroyWhenOccurs = false;
 
         //----------------------
         // Protected Variables
@@ -62,6 +78,11 @@ namespace JCSUnity
                         continue;
                     }
                 }
+            }
+
+            if (mDestroyWhenOccurs && mIsHit)
+            {
+                Destroy(this.gameObject);
             }
         }
 

@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Manage all the dialogue in the scene.
     /// </summary>
     public class JCS_UIManager 
         : MonoBehaviour
@@ -28,17 +28,18 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        
+        [Header("** Initialize Variables (JCS_UIManager) **")]
 
-        // Game Play UI (Game Layer - Only One)
+        [Tooltip("Game Play UI (Game Layer - Only One)")]
         [SerializeField]
         private JCS_DialogueObject mGameUI = null;          // the most common one!
-        // System dialogue (Application Layer - Only One)
+
+        [Tooltip("System dialogue (Application Layer - Only One)")]
         [SerializeField]
         private JCS_DialogueObject mForceDialogue = null;
 
         // Game Dialogue (Game Layer - could have multiple one)
-        // Dialogue player are focusing
+        [Tooltip("Dialogue player are focusing")]
         [SerializeField]
         private JCS_DialogueObject mFocusGameDialogue = null;
 
@@ -160,6 +161,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Hide the last open dialogue in the current scene.
+        /// </summary>
         public void HideTheLastOpenDialogue()
         {
             // return if nothing in the list
@@ -171,6 +176,10 @@ namespace JCSUnity
             // once it hide it will remove from the list it self!
             jdo.HideDialogue();
         }
+
+        /// <summary>
+        /// Hide all the open dialgoue in the current scene.
+        /// </summary>
         public void HideAllOpenDialogue()
         {
             // return if nothing in the list

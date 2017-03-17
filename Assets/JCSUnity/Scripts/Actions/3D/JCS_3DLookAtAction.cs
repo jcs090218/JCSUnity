@@ -77,7 +77,8 @@ namespace JCSUnity
         private bool mAsympLook = false;
 
         [Tooltip("How it look at the target?")]
-        [SerializeField] [Range(0.01f, 10.0f)]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
         private float mLookFriction = 0.4f;
 
         // record down the last euler angles.
@@ -85,6 +86,10 @@ namespace JCSUnity
 
         // the target eular angles we are targeting to approach.
         private Vector3 mTargetEulerAngles = Vector3.zero;
+
+        // record the current rotation every frame, in order to set it back
+        // to original rotation which is the freezing effect.
+        private Vector3 mCurrentRotation = Vector3.zero;
 
         //----------------------
         // Protected Variables
@@ -107,8 +112,12 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
+            // record the current rotation.
+            mCurrentRotation = this.transform.eulerAngles;
+
             DoLookAt();
             DoAsympLook();
+            DoFreeze();
         }
 
         //========================================
@@ -141,15 +150,6 @@ namespace JCSUnity
 
             // get direction according to the type.
             direction = JCS_Utility.VectorDirection(mLookDirection);
-
-            if (mFreezeX)
-                lookPoint.x = this.transform.position.x;
-
-            if (mFreezeY)
-                lookPoint.y = this.transform.position.y;
-
-            if (mFreezeZ)
-                lookPoint.z = this.transform.position.z;
 
             transform.LookAt(lookPoint, direction * (int)mState);
 
@@ -188,7 +188,7 @@ namespace JCSUnity
             // precalculate the angle in order to have negative effect.
             Vector3 deltaAngles = this.transform.localEulerAngles;
             deltaAngles = (this.mTargetEulerAngles - this.transform.localEulerAngles) / mLookFriction * Time.deltaTime;
-            
+
             // IMPORTANT(jenchieh): here is how u deal with the
             // Unity Engine 0 ~ 360 degree range euler angle.
             {
@@ -224,6 +224,26 @@ namespace JCSUnity
 
             // apply precalculate angle.
             this.transform.localEulerAngles += deltaAngles;
+        }
+
+        /// <summary>
+        /// Do the freeze rotation?
+        /// </summary>
+        private void DoFreeze()
+        {
+            Vector3 newRotation = this.transform.eulerAngles;
+
+            // if freeze, set to previous rotation.
+            if (mFreezeX)
+                newRotation.x = mCurrentRotation.x;
+
+            if (mFreezeY)
+                newRotation.y = mCurrentRotation.y;
+
+            if (mFreezeZ)
+                newRotation.z = mCurrentRotation.z;
+
+            this.transform.eulerAngles = newRotation;
         }
 
     }

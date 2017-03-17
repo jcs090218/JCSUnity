@@ -91,11 +91,11 @@ namespace JCSUnity
         [Header("** Deviation Effect **")]
         [Tooltip("bullet will not go through to target directly")]
         [SerializeField] private bool mDeviationEffectX = false;
-        [SerializeField] [Range(0, 10)] private float mDeviationRangeX = 1f;
+        [SerializeField] [Range(0, 359)] private float mDeviationRangeX = 1f;
         [SerializeField] private bool mDeviationEffectY = false;
-        [SerializeField] [Range(0, 10)] private float mDeviationRangeY = 1f;
+        [SerializeField] [Range(0, 359)] private float mDeviationRangeY = 1f;
         [SerializeField] private bool mDeviationEffectZ = false;
-        [SerializeField] [Range(0, 10)] private float mDeviationRangeZ = 1f;
+        [SerializeField] [Range(0, 359)] private float mDeviationRangeZ = 1f;
 
         [Header("** Random Spawn Effect **")]
         [Tooltip("Spawn Bullet randomly transform.")]

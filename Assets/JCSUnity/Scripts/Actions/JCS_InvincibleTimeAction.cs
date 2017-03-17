@@ -52,7 +52,8 @@ namespace JCSUnity
         private Color mRecordColor = Color.white;
 
         [Tooltip("How fast it flash back and forth?")]
-        [SerializeField] [Range(0.01f, 3.0f)]
+        [SerializeField]
+        [Range(0.01f, 3.0f)]
         private float mFlashTime = 0.1f;
 
         // timer to do flashy effect.
@@ -137,6 +138,10 @@ namespace JCSUnity
         /// <param name="time"> time to be invincible </param>
         public void TriggerAction(float time)
         {
+            // if effect is on, return.
+            if (mTriggerAction)
+                return;
+
             // get the time.
             this.mInvicibleTime = time;
 

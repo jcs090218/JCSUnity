@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Take care of the cross platform input.
     /// </summary>
     public class JCS_InputManager
         : MonoBehaviour
@@ -49,7 +49,6 @@ namespace JCSUnity
         public JCS_SlideInput GetJCSSlideInput() { return this.mSlideInput; }
         public void SetJCSMobileMouseEvent(JCS_MobileMouseEvent me) { this.mMobileMouseEvent = me; }
         public JCS_MobileMouseEvent GetJCSMobileMouseEvent() { return this.mMobileMouseEvent; }
-
 
         //========================================
         //      Unity's function

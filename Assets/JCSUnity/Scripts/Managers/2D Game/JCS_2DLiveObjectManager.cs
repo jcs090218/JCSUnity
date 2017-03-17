@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Handle all the 2d live object in the scene.
     /// </summary>
     public class JCS_2DLiveObjectManager
         : MonoBehaviour

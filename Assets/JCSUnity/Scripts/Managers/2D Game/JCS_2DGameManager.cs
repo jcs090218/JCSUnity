@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// 2D Game Specific game manager.
     /// </summary>
     public class JCS_2DGameManager
         : MonoBehaviour
@@ -48,20 +48,25 @@ namespace JCSUnity
             mPlatformList = new List<JCS_2DPositionPlatform>();
         }
 
-        private void Update()
-        {
-
-        }
-
         //========================================
         //      Self-Define
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Add a platform to the list.
+        /// </summary>
+        /// <param name="pp"></param>
         public void AddPlatformList(JCS_2DPositionPlatform pp)
         {
             mPlatformList.Add(pp);
         }
+
+        /// <summary>
+        /// Set a collider ignore all the platform trigger.
+        /// </summary>
+        /// <param name="c"> collder to set to ignore trigger. </param>
         public void IgnoreAllPlatformTrigger(Collider c)
         {
             for (int index = 0;
@@ -72,6 +77,11 @@ namespace JCSUnity
                     c, true);
             }
         }
+
+        /// <summary>
+        /// Set a collider ignore all the platform collider.
+        /// </summary>
+        /// <param name="c"> collider to set to ignore collider. </param>
         public void IgnoreAllPlatformCollider(Collider c)
         {
             for (int index = 0;

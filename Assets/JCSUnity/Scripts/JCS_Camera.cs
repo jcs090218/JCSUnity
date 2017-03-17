@@ -23,8 +23,12 @@ namespace JCSUnity
     {
         public static JCS_Camera main = null;
 
-
+        // Unity's camera object to handle.
         protected Camera mCamera = null;
+
+        [Header("** Check Variables (JCS_Camera) **")]
+
+        [SerializeField]
         protected Vector3 mVelocity = Vector3.zero;
         
         [Header("** Initialize Variables (JCS_Camera) **")]

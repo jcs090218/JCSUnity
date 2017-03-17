@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Manage all the 2d parallax layer.
     /// </summary>
     public class JCS_2DDynamicSceneManager
         : MonoBehaviour
@@ -26,7 +26,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private JCS_OrderLayer[] mJCSOrderLayer = null;
+
+        [Header("** Check Variables (JCS_2DDynamicSceneManager) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_OrderLayer[] mJCSOrderLayer = null;
 
         //----------------------
         // Protected Variables

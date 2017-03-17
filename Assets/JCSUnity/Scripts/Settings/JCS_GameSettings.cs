@@ -15,14 +15,14 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Holde the general game setting.
     /// </summary>
     public class JCS_GameSettings 
         : JCS_Settings<JCS_GameSettings>
     {
 
         //-- 
-        [Header("** Game Settings **")]
+        [Header("** Game Settings (JCS_GameSettings) **")]
         public bool DEBUG_MODE = true;
         public bool THIS_IS_GAME_SCENE = false;
         public bool LEVEL_DESIGN_MODE = true;
@@ -31,12 +31,12 @@ namespace JCSUnity
 
 
         //-- Camera
-        [Header("** Camera Settings **")]
+        [Header("** Camera Settings (JCS_GameSettings) **")]
         public JCS_CameraType CAMERA_TYPE = JCS_CameraType.NONE;
 
 
         //-- Player
-        [Header("** Player Settings **")]
+        [Header("** Player Settings (JCS_GameSettings) **")]
         [Tooltip("Game only allows control one player.")]
         public bool ACTIVE_ONE_PLAYER = true;
         
@@ -53,7 +53,7 @@ namespace JCSUnity
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
 
-        [Header("** Scene Settings **")]
+        [Header("** Scene Settings (JCS_GameSettings) **")]
 
         [Tooltip(@"if the object does not set under the 
             JCS_OrderLayer transform this will be activate!")]
@@ -87,11 +87,11 @@ namespace JCSUnity
         
 
         //-- UI
-        [Header("** User Interface Settings **")]
+        [Header("** User Interface Settings (JCS_GameSettings) **")]
         public bool RESIZE_UI = true;
 
 
-        [Header("** Save Load Settings **")]
+        [Header("** Save Load Settings (JCS_GameSettings) **")]
 
         [Tooltip("Save when switching the scene.")]
         public bool SAVE_ON_SWITCH_SCENE = true;
@@ -109,7 +109,7 @@ namespace JCSUnity
         public static JCS_XMLGameData GAME_DATA = null;    // NOT USED
 
 
-        [Header("** Damage Settings **")]
+        [Header("** Damage Settings (JCS_GameSettings) **")]
 
         [Tooltip("Mininum damage can be in the game.")]
         public int MIN_DAMAGE = 1;

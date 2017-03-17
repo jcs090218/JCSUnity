@@ -18,7 +18,7 @@ namespace JCSUnity
     /// 
     /// </summary>
     public class JCS_2DLiveObjectAnimator
-        : JCS_2DAnimator
+        : JCS_I2DAnimator
     {
 
         //----------------------

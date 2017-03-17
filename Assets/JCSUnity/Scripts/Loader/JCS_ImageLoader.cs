@@ -24,6 +24,12 @@ namespace JCSUnity
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="pixelPerUnit"></param>
+        /// <returns></returns>
         public static Sprite LoadImage(string filePath, float pixelPerUnit = 40)
         {
             Sprite img = null;

@@ -16,7 +16,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Holding all the information about the time in real life.
     /// </summary>
     public class JCS_TimeManager
         : MonoBehaviour
@@ -84,7 +84,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Get the current time in base on time zone in OS.
         /// </summary>
         /// <returns></returns>
         public static string GetCurrentTime()
@@ -93,7 +93,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Get the current time base on the OS time.
         /// </summary>
         /// <returns></returns>
         public static JCS_TimeRange LoadCurrentTimeRange()
@@ -160,7 +160,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Get the season base on the OS's time's month.
         /// </summary>
         /// <returns></returns>
         public static JCS_SeasonType GetCurrentSeason()
@@ -226,9 +226,11 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Get the current weather base on the website.
         /// 
+        /// TODO(jenchieh): not working yet.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Time out. </returns>
         public static IEnumerator GetCurrentWeather()
         {
             /**
@@ -269,11 +271,14 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Check what time range are in the OS time.
         /// </summary>
-        /// <param name="startTime"></param>
-        /// <param name="endTime"></param>
-        /// <returns></returns>
+        /// <param name="startTime"> starting time. </param>
+        /// <param name="endTime"> end time. </param>
+        /// <returns>
+        /// true : in this time range.
+        /// false : vice versa.
+        /// </returns>
         private static bool CheckTimeRange(int startTime, int endTime)
         {
             TimeSpan start = new TimeSpan(startTime, 0, 0);

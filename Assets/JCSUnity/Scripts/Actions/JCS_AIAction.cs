@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// AI action interface.
     /// </summary>
     public abstract class JCS_AIAction
         : MonoBehaviour

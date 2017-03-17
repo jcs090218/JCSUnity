@@ -164,6 +164,19 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return a random color.
+        /// </summary>
+        /// <returns> random color object. </returns>
+        public static Color JCS_RandomColor(float a = 1.0f)
+        {
+            return new Color(
+                JCS_FloatRange(0.0f, 1.0f),
+                JCS_FloatRange(0.0f, 1.0f),
+                JCS_FloatRange(0.0f, 1.0f),
+                a);
+        }
+
+        /// <summary>
         /// Solve the flash problem! (JCS_CheckableObject)
         /// 
         /// Check if the mouse still on top of the image!
@@ -525,5 +538,22 @@ namespace JCSUnity
             return System.Enum.GetValues(typeof(T)).Cast<T>();
         }
 
+        /// <summary>
+        /// Destroy all the 'TYPE' object in the scene.
+        /// </summary>
+        public void DestroyAllTypeObjectInScene<T>()
+            where T : MonoBehaviour
+        {
+            // Destroy all the live object in the scene.
+            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
+
+            foreach (T e in rrEnemy)
+            {
+                // NOTE(JenChieh): kill the object that are clone!
+                // or else it will effect the prefab object...
+                if (e.gameObject.name.Contains("(Clone)"))
+                    Destroy(e.gameObject);
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Manage of all the music, sound and sfx in the game.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SoundManager 
@@ -150,10 +150,10 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the sound volume base on type.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="volume"></param>
+        /// <param name="type"> type of the sound you want to set. </param>
+        /// <param name="volume"> volume of the sound. </param>
         public void SetSoundVolume(JCS_SoundSettingType type, float volume)
         {
             switch (type)
@@ -173,10 +173,10 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set weather the sound are mute or not by sound type.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="act"></param>
+        /// <param name="type"> type of the sound. </param>
+        /// <param name="act"> action of the mute </param>
         public void SetSoundMute(JCS_SoundSettingType type, bool act)
         {
             switch (type)
@@ -202,10 +202,10 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Set the sound volume in the list.
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="vol"></param>
+        /// <param name="list"> list of the audio source </param>
+        /// <param name="vol"> target volume. </param>
         private void SetSoundVolume(JCS_Vector<AudioSource> list, float vol)
         {
             for (int index = 0;
@@ -217,10 +217,10 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the sound mute or not with list needed.
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="act"></param>
+        /// <param name="list"> list of the audio source. </param>
+        /// <param name="act"> target mute action. </param>
         private void SetSoundtMute(JCS_Vector<AudioSource> list, bool act)
         {
             for (int index = 0;
@@ -232,28 +232,28 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Add a SFX in to the list in order to get manage.
         /// </summary>
-        /// <param name="sound"></param>
+        /// <param name="sound"> Unity's audio source class. </param>
         private void AssignSFX_Sound(AudioSource sound)
         {
             AssignSoundToList(mSFXSounds, sound);
         }
 
         /// <summary>
-        /// 
+        /// Add a skill sound in to the list in order to get manage.
         /// </summary>
-        /// <param name="sound"></param>
+        /// <param name="sound"> Unity's audio source class. </param>
         private void AssignSkillsSound(AudioSource sound)
         {
             AssignSoundToList(mSkillsSounds, sound);
         }
         
         /// <summary>
-        /// 
+        /// Assgin the audio source to audio source list.
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="sound"></param>
+        /// <param name="list"> List of audio source. </param>
+        /// <param name="sound"> audio source to add into list. </param>
         private void AssignSoundToList(JCS_Vector<AudioSource> list, AudioSource sound)
         {
             if (sound == null)
@@ -267,9 +267,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the SFX volume.
         /// </summary>
-        /// <param name="vol"></param>
+        /// <param name="vol"> volume to set. </param>
         private void SetSFXSoundVolume(float vol)
         {
             SetSoundVolume(mSFXSounds, vol);
@@ -285,18 +285,18 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the SFX mute or not mute.
         /// </summary>
-        /// <param name="act"></param>
+        /// <param name="act"> target mute action. </param>
         private void SetSFXSoundMute(bool act)
         {
             SetSoundtMute(mSFXSounds, act);
         }
 
         /// <summary>
-        /// 
+        /// Set the skill sound mute or not mute.
         /// </summary>
-        /// <param name="act"></param>
+        /// <param name="act"> target mute action. </param>
         private void SetSkillsSoundMute(bool act)
         {
             SetSoundtMute(mSkillsSounds, act);

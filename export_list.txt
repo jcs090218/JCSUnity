@@ -1,0 +1,15 @@
+
+Make sure you select 'Assets' folder before click 
+the 'Export Package...' button.
+
+
+
+-> FrameworkTest_Assets
+-> JCS_GameData
+-> JCSUnity
+-> Libraries
+    -> SpriteMask
+    -> Tweener
+-> Resources 
+    -> JCSUnity_Resources
+-> StreamingAssets

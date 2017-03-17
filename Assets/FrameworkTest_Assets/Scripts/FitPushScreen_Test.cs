@@ -97,7 +97,7 @@ public class FitPushScreen_Test : MonoBehaviour
 
         Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
 
-        RectTransform appRect = JCS_Canvas.instance.GetAppRect();
+        //RectTransform appRect = JCS_Canvas.instance.GetAppRect();
         //Vector2 screenRect = appRect.sizeDelta;
         Vector2 screenRect = new Vector2(Screen.width, Screen.height);
 

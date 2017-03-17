@@ -32,3 +32,5 @@ Following Scirpt should have lower execute order then "JCS_GameManager"
     * JCS_RollBtnSelector
     * JCS_DialgoueSystem
     * JCS_PortalManager
+    * JCS_2DAnimator
+    * JCS_2DAnimation

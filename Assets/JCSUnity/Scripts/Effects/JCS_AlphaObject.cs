@@ -35,11 +35,11 @@ namespace JCSUnity
         [Header("** Initialize Variables (JCS_AlphaObject) **")]
 
         [Tooltip("Can only be within range: 0 ~ 1 .")]
-        [SerializeField]
+        [SerializeField] [Range(0.0f, 1.0f)]
         private float mTargetAlpha = 1;
 
         [Tooltip("How fast it alpha change?")]
-        [SerializeField]
+        [SerializeField] [Range(0.1f, 5.0f)]
         private float mFadeFriction = 1;        
 
         //----------------------

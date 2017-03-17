@@ -14,7 +14,8 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Take care of all the collision that could 
+    /// happen in the game.
     /// </summary>
     public class JCS_CollisionManager
     : MonoBehaviour

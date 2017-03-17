@@ -8,11 +8,15 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
 
     /// <summary>
+    /// Handle the networking of the game.
     /// 
+    /// NOTE(jenchieh): To use this so the game could possibly become 
+    /// the MO/MMO game.
     /// </summary>
     public class JCS_NetworkManager 
         : MonoBehaviour
@@ -102,6 +106,14 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Spawn the security key for the packet.
+        /// 
+        /// NOTE(jenchieh): This is the most basic key, will recommand to 
+        /// switch something more secure.
+        /// </summary>
+        /// <returns></returns>
         public static bool CreateKey()
         {
             // Create keys
@@ -117,6 +129,14 @@ namespace JCSUnity
 
             return true;
         }
+
+        /// <summary>
+        /// Create the socket and connect to the host and 
+        /// port provided.
+        /// </summary>
+        /// <param name="hostname"> host name </param>
+        /// <param name="port"> port number </param>
+        /// <returns> Sucess or vice versa. </returns>
         public static bool CreateNetwork(string hostname, int port)
         {
             if (GAME_SOCKET != null)
@@ -127,12 +147,18 @@ namespace JCSUnity
 
             return true;
         }
+
+        /// <summary>
+        /// Return the Game socket we are using.
+        /// </summary>
+        /// <returns> socket. </returns>
         public static JCS_GameSocket GetGameSocket()
         {
             return GAME_SOCKET;
         }
+
         /// <summary>
-        /// 
+        /// Do ping pong packet action.
         /// </summary>
         /// <returns>true : connect, false: disconnect</returns>
         public void CheckConnectionWithTime()
@@ -160,6 +186,7 @@ namespace JCSUnity
                 mConnectionCounter = 0;
             }
         }
+
         //----------------------
         // Protected Functions
 
