@@ -6012,6 +6012,11 @@ Prefab:
       propertyPath: mFreezeY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012675170792, guid: 03b8a2ed0bd29f040a9f140a75ef08e4,
+        type: 2}
+      propertyPath: mRandPosX
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
   m_IsPrefabParent: 0

@@ -799,6 +799,16 @@ Already assign: no need to touch or move.
             <Description>Vector 3d type in enum use in Unity Engine.</Description>
         </File>
     </3D>
+    <GUI>
+    
+        <Panel>
+            <File name="JCS_PanelActionType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Panel action type list here...</Description>
+            </File>
+        </Panel>
+        
+    </GUI>
     <Time>
         
         <File name="JCS_SeasonType.cs">
@@ -1493,6 +1503,12 @@ Already assign: no need to touch or move.
             <Description>
                 Handle a bunch of uGUI component and active the effect of the 
                 other JCSUnity effect/event component.
+            </Description>
+        </File>
+        <File name="JCS_TimePanel.cs">
+            <Placement>Any rect-transform.</Placement>
+            <Description>
+                In certain time will do certain panel action.
             </Description>
         </File>
     </Panel>

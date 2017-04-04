@@ -27,7 +27,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DialogueObject[] mDialoguesToShow = null;
 
-        [Tooltip("")]
+        [Tooltip("Play dialogue sound?")]
         [SerializeField]
         private bool mShowWithSound = false;
 

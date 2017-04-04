@@ -1,5 +1,5 @@
 /**
- * $File: JCS_2DSimpleInvincibleTimeAction.cs $
+ * $File: JCS_SimpleInvincibleTimeAction.cs $
  * $Date: 2017-03-16 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -17,7 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Simple call invincible time action.
     /// </summary>
-    public class JCS_2DSimpleInvincibleTimeAction
+    public class JCS_SimpleInvincibleTimeAction
         : JCS_UnityObject
     {
         //----------------------
@@ -27,7 +27,7 @@ namespace JCSUnity
         // Private Variables
 
 
-        [Header("** Runtime Variables (JCS_2DSimpleInvincibleTimeAction) **")]
+        [Header("** Runtime Variables (JCS_SimpleInvincibleTimeAction) **")]
 
         [Tooltip("")]
         [SerializeField]
@@ -39,7 +39,7 @@ namespace JCSUnity
         // trigger the invincible time action?
         private bool mTriggerAction = false;
 
-        [Header("- Flash Effect (JCS_2DSimpleInvincibleTimeAction) ")]
+        [Header("- Flash Effect (JCS_SimpleInvincibleTimeAction) ")]
 
         [Tooltip("Color when is invincible.")]
         [SerializeField]
@@ -70,6 +70,9 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
+        // Use to check if this effect is active?
+        public bool IsInvincible { get { return this.mTriggerAction; } }
 
         //========================================
         //      Unity's function

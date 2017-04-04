@@ -14,6 +14,9 @@ $Notice: See LICENSE.txt for modification and distribution information
     =-=      Acknowledge
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     Demo Scene are all avialiable in "Assets/JCSUnity_Framework/Scenes"
+    
+    Demo Video is at this link:
+    * https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 
 
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

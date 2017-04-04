@@ -40,6 +40,8 @@ public class ScreenSpace_Test
     //      setter / getter
     //------------------------------
     public SpriteRenderer SpriteRenderer { get { return this.mSpriteRenderer; } }
+    public Transform TransformTemp { get { return this.mTransform; } }
+    public Transform TransformShow { get { return this.mTransformShow; } }
 
     //========================================
     //      Unity's function

@@ -36,6 +36,13 @@ namespace JCSUnity
         // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;
 
+        [Header("** Game Settings (JCS_SceneManager) **")]
+
+        [Tooltip("Pause the game while the scene start to load?")]
+        [SerializeField]
+        private bool mPauseGameWhileLoadingScene = true;
+
+
         [Header("** Black Screen Settings (JCS_SceneManager) **")]
 
         [SerializeField]
@@ -304,8 +311,8 @@ namespace JCSUnity
             // start check to switch scene or not
             mSwitchSceneEffect = true;
 
-            // Pause the game, until the scene is loaded
-            JCS_GameManager.instance.GAME_PAUSE = true;
+            // Pause the game depends on setting...
+            JCS_GameManager.instance.GAME_PAUSE = mPauseGameWhileLoadingScene;
         }
 
         /// <summary>

@@ -27,10 +27,12 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+
         [Header("** Initialize Variables (JCS_2DParticleSystem) **")]
 
         [Tooltip("Number of particle this particle system hold.")]
-        [SerializeField] [Range(50, 5000)]
+        [SerializeField]
+        [Range(50, 5000)]
         private uint mNumOfParticle = 50;
 
         private JCS_Vector<JCS_Particle> mParticles = null;
@@ -52,20 +54,75 @@ namespace JCSUnity
         private int mOrderLayer = 15;
 
         [Tooltip("How much do it range?")]
-        [SerializeField] [Range(0, 1000)]
+        [SerializeField]
+        [Range(0, 1000)]
         private int mDensity = 5;
 
         [Tooltip("How much to tilt the particle?")]
-        [SerializeField] [Range(-50, 50)]
+        [SerializeField]
+        [Range(-180, 179)]
         private float mWindSpeed = 0;
 
-        [Tooltip("")]
-        [SerializeField] [Range(0, 1000)]
-        private float mRandPos = 0;
+
+        [Header("** Position Settings (JCS_2DParticleSystem) **")]
+
+        [Tooltip("Randomize the X position. (Default : 0)")]
+        [SerializeField]
+        [Range(0, 1000)]
+        private float mRandPosX = 0;
+
+        [Tooltip("Randomize the Y position. (Default : 0)")]
+        [SerializeField]
+        [Range(0, 1000)]
+        private float mRandPosY = 0;
+
+        [Tooltip("Randomize the Z position. (Default : 0)")]
+        [SerializeField]
+        [Range(0, 1000)]
+        private float mRandPosZ = 0;
+
+
+        [Header("** Rotation Settings (JCS_2DParticleSystem) **")]
 
         [Tooltip("")]
-        [SerializeField] [Range(0, 50)]
-        private float mRandAngle = 0;
+        [SerializeField]
+        [Range(0, 359)]
+        private float mRandAngleX = 0;
+
+        [Tooltip("")]
+        [SerializeField]
+        [Range(0, 359)]
+        private float mRandAngleY = 0;
+
+        [Tooltip("Wind speed in 2 dimensional.")]
+        [SerializeField]
+        [Range(0, 359)]
+        private float mRandAngleZ = 0;
+
+
+        [Header("** Scale Settings (JCS_2DParticleSystem) **")]
+
+        [Tooltip(@"Apply the scale always the same. This will 
+only take the and mRandScaleX as a standard and ignore 
+mRandScaleY and mRandScaleZ variables.")]
+        [SerializeField]
+        private bool mAlwaysTheSameScale = true;
+
+        [Tooltip("Randomize the X scale. (Default : 0)")]
+        [SerializeField]
+        [Range(0, 1000)]
+        private float mRandScaleX = 0;
+
+        [Tooltip("Randomize the Y scale. (Default : 0)")]
+        [SerializeField]
+        [Range(0, 1000)]
+        private float mRandScaleY = 0;
+
+        [Tooltip("Randomize the Z scale. (Default : 0)")]
+        [SerializeField]
+        [Range(0, 1000)]
+        private float mRandScaleZ = 0;
+
 
         private float mSequenceTimer = 0;
         private float mTimeAParticle = 0.5f;
@@ -370,20 +427,59 @@ namespace JCSUnity
                     return;
                 }
 
+                // get this particle system info.
+                Vector3 newPos = this.transform.position;
+
                 if (mSetToSamePositionWhenActive)
                 {
                     // set position to the same position
-                    Vector3 newPos = this.transform.position;
-                    newPos.x = JCS_Utility.JCS_FloatRange(-mRandPos, mRandPos);
                     particle.transform.position = newPos;
                 }
 
+                // after we have set the position to current 
+                // particle system's position. Next step is to 
+                // apply the random value to the newer position.
+                newPos.x += JCS_Utility.JCS_FloatRange(-mRandPosX, mRandPosX);
+                newPos.y += JCS_Utility.JCS_FloatRange(-mRandPosY, mRandPosY);
+                newPos.z += JCS_Utility.JCS_FloatRange(-mRandPosZ, mRandPosZ);
+                particle.transform.position = newPos;
+
                 // set rotation depend on wind speed
-                Vector3 newRot = particle.transform.localEulerAngles;
+                /**
+                 * NOTE(jenchieh): 
+                 *                      ------- Set the scale from 
+                 *                      ↓      the original particle, 
+                 *                      ↓      so the euler angles won't 
+                 *                  ↓-------↓  get stack up.              */
+                Vector3 newRot = mParticle.transform.localEulerAngles;
                 newRot.z = mWindSpeed;
-                newRot.z += JCS_Utility.JCS_FloatRange(-mRandAngle, mRandAngle);
+
+                // apply wind speed.
+                newRot.z += JCS_Utility.JCS_FloatRange(-mRandAngleX, mRandAngleX);
+
+                // apply random rotation.
+                newRot.x += JCS_Utility.JCS_FloatRange(-mRandAngleX, mRandAngleX);
+                newRot.y += JCS_Utility.JCS_FloatRange(-mRandAngleY, mRandAngleY);
+                newRot.z += JCS_Utility.JCS_FloatRange(-mRandAngleZ, mRandAngleZ);
                 particle.transform.localEulerAngles = newRot;
 
+                /**
+                 * NOTE(jenchieh): 
+                 *                      ------- Set the scale from 
+                 *                      ↓      the original particle, 
+                 *                      ↓      so the scale won't 
+                 *                  ↓-------↓  get stack up.              */
+                Vector3 newScale = mParticle.transform.localScale;
+                newScale.x += JCS_Utility.JCS_FloatRange(-mRandScaleX, mRandScaleX);
+                newScale.y += JCS_Utility.JCS_FloatRange(-mRandScaleY, mRandScaleY);
+                newScale.z += JCS_Utility.JCS_FloatRange(-mRandScaleZ, mRandScaleZ);
+                if (mAlwaysTheSameScale)
+                {
+                    // set the scale the same.
+                    newScale.y = newScale.x;
+                    newScale.z = newScale.x;
+                }
+                particle.transform.localScale = newScale;
 
                 ++currentParticleCount;
 

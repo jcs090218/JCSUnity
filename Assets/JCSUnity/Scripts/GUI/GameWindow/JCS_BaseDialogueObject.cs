@@ -41,15 +41,18 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_BaseDialogueObject) **")]
         
-        [Tooltip("")]
+        [Tooltip(@"Set the rect transfrom size the same as before 
+playing it.")]
         [SerializeField]
         protected bool mAsOriginalSize = false;
 
-        [Tooltip("")]
+        [Tooltip(@"Set the rect transfrom position the same as before 
+playing it.")]
         [SerializeField]
         protected bool mAsOriginalPosition = false;
 
-        [Tooltip("")]
+        [Tooltip(@"Set the rect transfrom rotation the same as before 
+playing it.")]
         [SerializeField]
         protected bool mAsOriginalRotation = false;
 

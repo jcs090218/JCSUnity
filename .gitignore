@@ -1,4 +1,4 @@
-# ingnore the those directory
+# ignore the those directory
 /.git
 /.vs
 /Temp
@@ -36,4 +36,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-

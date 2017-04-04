@@ -74,6 +74,8 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
+        // Use to check if this effect is active?
+        public bool IsInvincible { get { return this.mTriggerAction; } }
 
         //========================================
         //      Unity's function

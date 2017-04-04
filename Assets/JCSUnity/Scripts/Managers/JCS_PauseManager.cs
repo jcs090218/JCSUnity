@@ -32,14 +32,9 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_PauseManager) **")]
 
-#if (UNITY_EDITOR)
         [Tooltip("List of pause action in the scene.")]
         [SerializeField]
         private List<JCS_PauseAction> mPauseActions = null;
-#else
-        // use link list is faster than a just a list.
-        private LinkedList<JCS_PauseAction> mPauseActions = null;
-#endif
 
         [Tooltip(@"Time to resize the pause action list, in seconds.
 ATTENTION: this will take certain of performance depends on the pause 
@@ -57,11 +52,7 @@ object you have in the list.")]
         //========================================
         //      setter / getter
         //------------------------------
-#if (UNITY_EDITOR)
         public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
-#else
-        public LinkedList<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
-#endif
 
         //========================================
         //      Unity's function
@@ -88,11 +79,7 @@ object you have in the list.")]
         /// </summary>
         public void AddActionToList(JCS_PauseAction pa)
         {
-#if (UNITY_EDITOR)
             mPauseActions.Add(pa);
-#else
-            mPauseActions.AddLast(pa);
-#endif
         }
 
         /// <summary>
@@ -129,7 +116,6 @@ object you have in the list.")]
         /// </summary>
         private void RemoveNullRefInPauseActionList()
         {
-#if (UNITY_EDITOR)
             for (int index = 0;
                 index < mPauseActions.Count;
                 ++index)
@@ -138,14 +124,6 @@ object you have in the list.")]
                 if (mPauseActions[index] == null)
                     mPauseActions.RemoveAt(index);
             }
-#else
-            foreach (JCS_PauseAction pauseAction in mPauseActions)
-            {
-                // remove itself.
-                if (pauseAction == null)
-                    mPauseActions.Remove(pauseAction);
-            }
-#endif
         }
 
         /// <summary>

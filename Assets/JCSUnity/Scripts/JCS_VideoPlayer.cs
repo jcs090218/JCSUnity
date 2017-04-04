@@ -244,10 +244,6 @@ namespace JCSUnity
         [SerializeField]
         private string mFullPath = "";
 
-        [Tooltip("Check if the time reach the full clip.")]
-        [SerializeField]
-        private float mTimeReach = 0;
-
         [Tooltip("")]
         [SerializeField]
         private AudioSource mAudioSource = null;
@@ -263,10 +259,6 @@ namespace JCSUnity
         [SerializeField]
         private string mMovieExtension = ".mp4";
         
-        [Tooltip("")]
-        [SerializeField]
-        private AudioClip mAudioClip = null;
-
         [Tooltip("Type of input handle during clip playing.")]
         [SerializeField]
         private FullScreenMovieControlMode mFullScreenMovieControlMode = FullScreenMovieControlMode.Full;
@@ -274,10 +266,6 @@ namespace JCSUnity
         [Tooltip("Background color.")]
         [SerializeField]
         private Color mBGColor = Color.black;
-
-        [Tooltip("After play once the moive load the next scene?")]
-        [SerializeField]
-        private bool mLoadSceneAfterPlay = true;
 
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
@@ -337,6 +325,7 @@ namespace JCSUnity
                     this, "Loop does not work in Andriod Platform...");
             }
         }
+        public AudioSource AudioSource { get { return this.mAudioSource; } }
 
         //========================================
         //      Unity's function

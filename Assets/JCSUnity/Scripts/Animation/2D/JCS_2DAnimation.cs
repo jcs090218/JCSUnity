@@ -77,6 +77,10 @@ namespace JCSUnity
         [SerializeField]
         private Sprite[] mAnimFrames = null;
 
+        [Tooltip(@"This will times the animation time by 
+this, default is 1.")]
+        [SerializeField] [Range(0, 5)]
+        private float mAnimationTimeProduction = 1;
 
         // flag to know if the animation is done.
         // ATTENTION(jenchieh): this cannot be use with loop.
@@ -104,6 +108,7 @@ namespace JCSUnity
         public bool DonePlaying { get { return this.mDonePlaying; } }
         public void SetSpriteRenderer(SpriteRenderer sp) { this.mSpriteRenderer = sp; }
         public void SetJCS2DAnimator(JCS_2DAnimator jcs2dAnimator) { this.mJCS2DAnimator = jcs2dAnimator; }
+        public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
 
         //========================================
         //      Unity's function
@@ -288,7 +293,8 @@ namespace JCSUnity
             mFrameTimer += Time.deltaTime;
 
             // get the time per seconds.
-            float timePerSec = mFramePerSec;
+            // NOTE(jenchieh): multiple you own animate production first.
+            float timePerSec = mFramePerSec * mAnimationTimeProduction;
 
             // if there is animator taking over this animation.
             // times the production time!

@@ -174,15 +174,18 @@ namespace JCSUnity
                 case JCS_PanelType.RESET_PANEL:
                     {
                         DestroyDialogue();
-                    } break;
+                    }
+                    break;
                 case JCS_PanelType.RECORD_PANEL:
                     {
                         HideDialogue();
-                    } break;
+                    }
+                    break;
                 case JCS_PanelType.RECORD_PANEL_TO_DATABASE:
                     {
                         // send packet
-                    } break;
+                    }
+                    break;
             }
         }
 

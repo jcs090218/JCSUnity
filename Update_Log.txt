@@ -7,6 +7,9 @@ $Notice: See LICENSE.txt for modification and distribution information
 ========================================================================
 
 
+2017-03-24
+* JCS_TimePanel implemented. (JCSUnity)
+
 2017-03-13
 * JCS_2DAnimation implemented. (JCSUnity)
 * Change the file name old JCS_2DAnimator to 
