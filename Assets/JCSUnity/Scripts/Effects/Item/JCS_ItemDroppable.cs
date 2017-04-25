@@ -185,13 +185,13 @@ compare algorithm")]
             }
 
             // calculate and see if we do the drop action.
-            float doDrop = JCS_Utility.JCS_FloatRange(0, 100);
+            float doDrop = JCS_Random.Range(0, 100);
             if (doDrop > mPossiblityDropAction)
                 return;
 
             // start doing the drop action.
 
-            int itemDrop = JCS_Utility.JCS_IntRange(mMinNumItemDrop, mMaxNumItemDrop + 1) * mDropRate;
+            int itemDrop = JCS_Random.Range(mMinNumItemDrop, mMaxNumItemDrop + 1) * mDropRate;
 
             bool isEven = ((itemDrop % 2) == 0) ? true : false;
 
@@ -273,13 +273,13 @@ compare algorithm")]
                 }
 
                 // calculate and see if we do the drop action.
-                float doDrop = JCS_Utility.JCS_FloatRange(0, 100);
+                float doDrop = JCS_Random.Range(0, 100);
                 if (doDrop > mPossiblityDropAction)
                     return;
 
                 // start doing the drop action.
 
-                int itemDrop = JCS_Utility.JCS_IntRange(mMinNumItemDrop, mMaxNumItemDrop + 1) * mDropRate + count;
+                int itemDrop = JCS_Random.Range(mMinNumItemDrop, mMaxNumItemDrop + 1) * mDropRate + count;
 
                 bool isEven = ((itemDrop % 2) == 0) ? true : false;
 
@@ -288,7 +288,7 @@ compare algorithm")]
 
                 // check index out of range.
                 if (specIndex < 0 || specIndex >= itemDrop)
-                    randDropIndex = JCS_Utility.JCS_IntRange(0, itemDrop);
+                    randDropIndex = JCS_Random.Range(0, itemDrop);
 
 
                 for (index = 0;
@@ -417,7 +417,7 @@ compare algorithm")]
                 float jumpForce = mJumpForce;
                 if (mRandomizeJumpForce)
                 {
-                    jumpForce += JCS_Utility.JCS_FloatRange(-mRandomizeJumpForceForce, mRandomizeJumpForceForce);
+                    jumpForce += JCS_Random.Range(-mRandomizeJumpForceForce, mRandomizeJumpForceForce);
                 }
 
                 jcsoj.DoForce(gapForce, jumpForce, mIncludeDepth);
@@ -433,7 +433,7 @@ compare algorithm")]
                     {
                         // add one more axis.
                         JCS_ItemRotation jcsir2 = jcsi.gameObject.AddComponent<JCS_ItemRotation>();
-                        jcsir2.RotateSpeed = JCS_Utility.JCS_FloatRange(-mRotateSpeed, mRotateSpeed);
+                        jcsir2.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
                         jcsir2.Effect = true;
                         jcsir2.RotateDirection = JCS_Vector3Direction.UP;
                     }
@@ -478,7 +478,7 @@ compare algorithm")]
                 totalChance += mItemSet[index].dropRate;
             }
 
-            float dropIndex = JCS_Utility.JCS_FloatRange(0, totalChance + 1);
+            float dropIndex = JCS_Random.Range(0, totalChance + 1);
 
             float accumMaxDropRate = 0;
             float accumMinDropRate = 0;

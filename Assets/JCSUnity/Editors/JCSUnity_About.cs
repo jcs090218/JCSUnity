@@ -9,7 +9,10 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
+using UnityEngine.UI;
+using System;
 
 
 namespace JCSUnity
@@ -25,8 +28,14 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
+        /* all the .ini file located here. */
+        public static Dictionary<string, string> EDITOR_INI = new Dictionary<string, string>();
+
         //----------------------
         // Private Variables
+        private static string INI_FILE_PATH = Application.dataPath + "/JCSUnity/Editors/ini/";
+        private static string EDITOR_PROPERTIES_FILENAME = "editor.properties";
+
         private static int WINDOW_WIDTH = 400;
         private static int WINDOW_HEIGHT = 200;
 
@@ -42,17 +51,19 @@ namespace JCSUnity
         //------------------------------
         private void OnGUI()
         {
+            ReadINIFile();
+
             GUILayout.Label("About JCSUnity", EditorStyles.boldLabel);
 
             // TODO(jenchieh): info should be out source.
-            GUILayout.Label("Author: Jen-Chieh Shen");
-            GUILayout.Label("Email: jayces090218@gmail.com");
-            GUILayout.Label("Current Version: 1.3.9");
+            GUILayout.Label("Author: " + EDITOR_INI["author"]);
+            GUILayout.Label("Email: " + EDITOR_INI["email"]);
+            GUILayout.Label("Current Version: " + EDITOR_INI["version"]);
 
             // GUI.Button that is drawn in the Label style.
-            if (GUILayout.Button("Source: https://github.com/jcs090218/JCSUnity_Framework", "Label"))
+            if (GUILayout.Button("Source: " + EDITOR_INI["url"], "Label"))
             {
-                string url = "https://github.com/jcs090218/JCSUnity_Framework";
+                string url = EDITOR_INI["url"];
                 Application.OpenURL(url);
             }
         }
@@ -62,6 +73,17 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Read the .ini/.properties file for this editor window.
+        /// </summary>
+        public static void ReadINIFile()
+        {
+            //string path = Application.dataPath + "/../editor.properties";
+            string path = INI_FILE_PATH + EDITOR_PROPERTIES_FILENAME;
+
+            EDITOR_INI = JCS_INIFileReader.ReadINIFile(path);
+        }
 
         //----------------------
         // Protected Functions
@@ -80,6 +102,7 @@ namespace JCSUnity
             window.maxSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
             window.Show();
         }
+        
     }
 }
 

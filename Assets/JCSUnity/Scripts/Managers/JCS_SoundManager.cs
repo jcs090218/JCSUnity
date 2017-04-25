@@ -16,7 +16,7 @@ namespace JCSUnity
     /// Manage of all the music, sound and sfx in the game.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SoundManager 
+    public class JCS_SoundManager
         : MonoBehaviour
     {
 
@@ -36,11 +36,44 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mGlobalSoundPlayer = null;
 
+        private JCS_FadeSound mJCSFadeSound = null;
+
+
         [Header("** Check Variables (JCS_SoundManager) **")]
 
         [Tooltip("")]
         [SerializeField]
         private AudioSource mBGM = null;
+
+        [Tooltip("Current background music is playing.")]
+        [SerializeField]
+        private AudioClip mCurrentBGM = null;
+
+        // boolean check if the background music switching.
+        [SerializeField]
+        private bool mSwitchingBGM = false;
+
+        [Header("** General Music Settings (JCS_SoundManager) **")]
+
+        [Tooltip("Do this scene using the specific setting?")]
+        [SerializeField]
+        private bool mOverrideSetting = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mSoundFadeInTime = 1.5f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mSoundFadeOutTime = 1.5f;
+
+
+
+        // real time that the bgm fade out.
+        private float mRealSoundFadeOutTime = 0;
+
+        private bool mDoneFadingOut = false;
+
 
         //----------------------
         // Protected Variables
@@ -60,6 +93,10 @@ namespace JCSUnity
         }
         public JCS_Vector<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
         public JCS_SoundPlayer GetGlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
+
+        public bool OverrideSetting { get { return this.mOverrideSetting; } }
+        public float SoundFadeInTime { get { return this.mSoundFadeInTime; } set { this.mSoundFadeInTime = value; } }
+        public float SoundFadeOutTime { get { return this.mSoundFadeOutTime; } set { this.mSoundFadeOutTime = value; } }
 
         //========================================
         //      Unity's function
@@ -83,6 +120,9 @@ namespace JCSUnity
         {
             instance = this;
 
+            // try to get component, this is not guarantee.
+            this.mJCSFadeSound = this.GetComponent<JCS_FadeSound>();
+
             mSFXSounds = new JCS_Vector<AudioSource>();
             mSkillsSounds = new JCS_Vector<AudioSource>();
 
@@ -94,8 +134,8 @@ namespace JCSUnity
             if (JCS_Camera.main == null)
             {
                 JCS_Debug.JcsErrors(
-                    "JCS_SoundManager", 
-                      
+                    "JCS_SoundManager",
+
                     "There is no \"JCS_Camera\" assign!");
 
                 return;
@@ -108,12 +148,82 @@ namespace JCSUnity
             SetSkillsSoundMute(JCS_GameSettings.PERFONAL_EFFECT_MUTE);
         }
 
+        private void Update()
+        {
+            DoSwitchBGM();
+        }
 
         //========================================
         //      Self-Define
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Switch the background music, fading in and out.
+        /// </summary>
+        /// <param name="soundClip"> clip to play. </param>
+        /// <param name="fadeTime"> time to fade in and out. </param>
+        public void SwitchBackgroundMusic(
+            AudioClip soundClip)
+        {
+            SwitchBackgroundMusic(
+                soundClip,
+                JCS_SoundSettings.instance.GetSoundFadeOutTimeBaseOnSetting(),
+                JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
+        }
+
+        /// <summary>
+        /// Switch the background music, fading in and out.
+        /// </summary>
+        /// <param name="soundClip"> clip to play. </param>
+        /// <param name="fadeInTime"> time to fade in. </param>
+        /// <param name="fadeOutTime"> time to fade out. </param>
+        public void SwitchBackgroundMusic(
+            AudioClip soundClip,
+            float fadeInTime,
+            float fadeOutTime)
+        {
+            if (mSwitchingBGM)
+                return;
+
+            /* Check if the audio clip good to play. */
+            if (soundClip == null)
+                return;
+
+            /**
+             *  Try to get the fade sound component.
+             *  
+             *  Since we have multiple component have 
+             */
+            if (mJCSFadeSound == null)
+            {
+                mJCSFadeSound = this.GetComponent<JCS_FadeSound>();
+
+                if (mJCSFadeSound == null)
+                    mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+            }
+
+
+            // get the background music audio source.
+            AudioSource bgmAudioSource = GetBackgroundMusic();
+
+            // set the audio source.
+            mJCSFadeSound.SetAudioSource(bgmAudioSource);
+
+            // active the fade sound in effect.
+            mJCSFadeSound.FadeOut(
+                0,
+                /* Fade in the sound base on the setting. */
+                fadeInTime);
+
+            this.mRealSoundFadeOutTime = fadeOutTime;
+
+            this.mSwitchingBGM = true;
+            this.mDoneFadingOut = false;
+
+            this.mCurrentBGM = soundClip;
+        }
 
         /// <summary>
         /// Push to the sound effect into array ready for use!
@@ -125,7 +235,7 @@ namespace JCSUnity
             if (aud.clip != null)
                 aud.PlayOneShot(aud.clip, JCS_GameSettings.GetSFXSound_Volume());
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -248,7 +358,7 @@ namespace JCSUnity
         {
             AssignSoundToList(mSkillsSounds, sound);
         }
-        
+
         /// <summary>
         /// Assgin the audio source to audio source list.
         /// </summary>
@@ -258,7 +368,7 @@ namespace JCSUnity
         {
             if (sound == null)
             {
-                JCS_Debug.JcsErrors("JCS_SoundManager",   "Assigning Source that is null...");
+                JCS_Debug.JcsErrors("JCS_SoundManager", "Assigning Source that is null...");
                 return;
             }
 
@@ -300,6 +410,50 @@ namespace JCSUnity
         private void SetSkillsSoundMute(bool act)
         {
             SetSoundtMute(mSkillsSounds, act);
+        }
+
+        /// <summary>
+        /// Do the switching bgm algorithm.
+        /// </summary>
+        private void DoSwitchBGM()
+        {
+            if (!mSwitchingBGM)
+                return;
+
+            /* Once if fade out we load next sound buffer. */
+
+            if (!mDoneFadingOut)
+            {
+                // check if the sound is fade out.
+                if (!mJCSFadeSound.IsReachTargetVolue())
+                    return;
+
+                // get the background music audio source.
+                AudioSource bgmAudioSource = GetBackgroundMusic();
+
+                // set the audio source.
+                mJCSFadeSound.SetAudioSource(bgmAudioSource);
+
+                // set the bgm and play it
+                bgmAudioSource.clip = this.mCurrentBGM;
+                bgmAudioSource.Play();
+
+                // active the fade sound in effect.
+                mJCSFadeSound.FadeIn(
+                    JCS_GameSettings.GetBGM_Volume(),
+                    this.mRealSoundFadeOutTime);
+
+                mDoneFadingOut = true;
+            }
+            else
+            {
+                // check if the sound is fade in.
+                if (!mJCSFadeSound.IsReachTargetVolue())
+                    return;
+
+                // done switching the bgm.
+                mSwitchingBGM = false;
+            }
         }
 
     }

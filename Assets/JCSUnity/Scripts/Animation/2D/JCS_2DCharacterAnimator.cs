@@ -311,7 +311,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
         private JCS_AttackState GetRandomAttackState()
         {
             // apply a random attack animation.
-            int attackAnimIndex = JCS_Utility.JCS_IntRange(1, mAttackAnimationCount + 1);
+            int attackAnimIndex = JCS_Random.Range(1, mAttackAnimationCount + 1);
 
             switch (attackAnimIndex)
             {

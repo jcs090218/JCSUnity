@@ -56,7 +56,7 @@ namespace JCSUnity
             if (mObjects.Length == 0)
                 return null;
 
-            int randIndex = JCS_Utility.JCS_IntRange(0, mObjects.Length);
+            int randIndex = JCS_Random.Range(0, mObjects.Length);
 
             Transform randObj = mObjects[randIndex];
 

@@ -9,8 +9,10 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine.UI;
+using System;
 
 
 namespace JCSUnity
@@ -28,9 +30,6 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private static string EDITOR_TITLE = "JCSUnity";
-
-
         private bool mOCSFoldeout = false;      // OCS = One click serialize
         private bool mBOFoldout = false;        // BO = Bases Object
         private bool mGUIFoldout = false;
@@ -52,6 +51,8 @@ namespace JCSUnity
         //------------------------------
         private void OnGUI()
         {
+            JCSUnity_About.ReadINIFile();
+
             GUILayout.Label("** Editor Settings **", EditorStyles.boldLabel);
 
             mOCSFoldeout = EditorGUILayout.Foldout(mOCSFoldeout, "One click serialize");
@@ -173,7 +174,7 @@ namespace JCSUnity
         private static void JCSUnityEditor()
         {
             JCSUnity_EditorWindow window = (JCSUnity_EditorWindow)GetWindow(typeof(JCSUnity_EditorWindow));
-            window.titleContent = new GUIContent(EDITOR_TITLE);
+            window.titleContent = new GUIContent(JCSUnity_About.EDITOR_INI["editor_title"]);
             window.Show();
         }
 
@@ -380,10 +381,13 @@ namespace JCSUnity
                     slidePanelNewPos.y = starting_pos_y - (starting_pos_y * row);
                     slidePanel.localPosition = slidePanelNewPos;
 
+                    // set scale to one.
+                    slidePanel.localScale = Vector3.one;
+
                     Image panelImage = slidePanel.GetComponent<Image>();
                     if (panelImage != null)
                     {
-                        panelImage.color = JCS_Utility.JCS_RandomColor();
+                        panelImage.color = JCS_Random.RandomColor();
                     }
 
                     // assign to slide panel holder.
@@ -420,6 +424,9 @@ namespace JCSUnity
             string camera_path = "JCSUnity_Resources/JCS_Camera/JCS_2DCamera";
             GameObject gameObj = JCS_Utility.SpawnGameObject(camera_path);
             gameObj.name = gameObj.name.Replace("(Clone)", "");
+
+            // set camera depth to default -10.
+            gameObj.transform.position = new Vector3(0, 0, -10);
         }
 
         /// <summary>

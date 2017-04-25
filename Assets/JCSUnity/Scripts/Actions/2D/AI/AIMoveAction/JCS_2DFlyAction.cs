@@ -235,7 +235,7 @@ initialize time.")]
         /// </summary>
         public void FlyByPossiblity()
         {
-            float possibility = JCS_Utility.JCS_FloatRange(0, 100);
+            float possibility = JCS_Random.Range(0, 100);
 
             // possibility check
             if (possibility > mPossibility)
@@ -286,9 +286,9 @@ initialize time.")]
             int resultCounterX = 0;
             int resultCounterY = 0;
 
-            float idlePossiblityX = JCS_Utility.JCS_FloatRange(0, 100);
-            float leftPossiblity = JCS_Utility.JCS_FloatRange(0, 100);
-            float rightPossiblity = JCS_Utility.JCS_FloatRange(0, 100);
+            float idlePossiblityX = JCS_Random.Range(0, 100);
+            float leftPossiblity = JCS_Random.Range(0, 100);
+            float rightPossiblity = JCS_Random.Range(0, 100);
 
             if (idlePossiblityX < mToIdleVetical)
             {
@@ -312,9 +312,9 @@ initialize time.")]
             }
 
 
-            float idlePossiblityY = JCS_Utility.JCS_FloatRange(0, 100);
-            float upPossiblity = JCS_Utility.JCS_FloatRange(0, 100);
-            float downPossiblity = JCS_Utility.JCS_FloatRange(0, 100);
+            float idlePossiblityY = JCS_Random.Range(0, 100);
+            float upPossiblity = JCS_Random.Range(0, 100);
+            float downPossiblity = JCS_Random.Range(0, 100);
 
             if (idlePossiblityY < mToIdleHorizontal)
             {
@@ -354,8 +354,8 @@ initialize time.")]
         public void FlyRandomly()
         {
             // get the result -1 ~ 1
-            int resultX = JCS_Utility.JCS_IntRange(-1, 1 + 1);
-            int resultY = JCS_Utility.JCS_IntRange(-1, 1 + 1);
+            int resultX = JCS_Random.Range(-1, 1 + 1);
+            int resultY = JCS_Random.Range(-1, 1 + 1);
 
             // Porcess by status!
             // 0 idle, -1 left/down, 1 right/up
@@ -475,7 +475,7 @@ initialize time.")]
         /// </summary>
         private void ResetTimeZone()
         {
-            float adjustTime = JCS_Utility.JCS_FloatRange(-mAdjustTimeZone, mAdjustTimeZone);
+            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
             mRealTimeZone = mTimeZone + adjustTime;
 
             mFlyed = false;

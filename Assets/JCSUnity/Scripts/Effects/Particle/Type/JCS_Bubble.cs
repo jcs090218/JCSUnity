@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// 
     /// </summary>
-    [RequireComponent(typeof(JCS_2DGoStraightAction))]
+    [RequireComponent(typeof(JCS_3DGoStraightAction))]
     public class JCS_Bubble
         : JCS_WeatherParticle
     {
@@ -61,7 +61,7 @@ namespace JCSUnity
                 return;
 
             Vector3 newPos = this.transform.position;
-            newPos.x += JCS_Utility.JCS_FloatRange(-mShakeMargin, mShakeMargin) * ShakeSpeed * Time.deltaTime;
+            newPos.x += JCS_Random.Range(-mShakeMargin, mShakeMargin) * ShakeSpeed * Time.deltaTime;
             this.transform.position = newPos;
         }
 

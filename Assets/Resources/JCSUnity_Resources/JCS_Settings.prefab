@@ -5,16 +5,16 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 403812}
-  - 114: {fileID: 11442926}
-  - 114: {fileID: 11474660}
-  - 114: {fileID: 11485796}
-  - 114: {fileID: 114000011621624256}
-  - 114: {fileID: 114000011602815956}
-  - 114: {fileID: 11400858}
-  - 114: {fileID: 11447550}
+  - component: {fileID: 403812}
+  - component: {fileID: 11442926}
+  - component: {fileID: 11474660}
+  - component: {fileID: 11485796}
+  - component: {fileID: 114000011621624256}
+  - component: {fileID: 114000011602815956}
+  - component: {fileID: 11400858}
+  - component: {fileID: 11447550}
   m_Layer: 0
   m_Name: JCS_Settings
   m_TagString: Untagged
@@ -31,11 +31,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000012874289788}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11400858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec6f66ef1e1a7644b91872695d4f0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CopyrightString: Copyright 2016 JCSUnity, Taiwan
+  CopyrightString: Copyright 2017 JCSUnity, Taiwan
   VersionString: Package file v1.0
 --- !u!114 &11485796
 MonoBehaviour:
@@ -132,9 +132,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000012874289788}
+  - component: {fileID: 4000012874289788}
   m_Layer: 0
   m_Name: JCS_IndieSettings
   m_TagString: Untagged
@@ -151,10 +151,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 403812}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000011602815956
 MonoBehaviour:
   m_ObjectHideFlags: 1

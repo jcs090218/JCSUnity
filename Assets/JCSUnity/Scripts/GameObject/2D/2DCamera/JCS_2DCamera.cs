@@ -47,6 +47,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mHardTrack = false;
 
+        [Tooltip("Set velocity to zero while the follow not active.")]
+        [SerializeField]
+        private bool mResetVelocityToZeroWhileNotActive = false;
+
         // effect: camera will do the smooth movement
         //[SerializeField] private bool mSmoothMoveX = true;
         //[SerializeField] private bool mSmoothMoveY = true;
@@ -129,6 +133,7 @@ namespace JCSUnity
         public Transform GetTargetTransform() { return this.mTargetTransform; }
         public JCS_BGMPlayer GetJCSBGMPlayer() { return this.mJCSBGMPlayer; }
         public bool HardTrack { get { return this.mHardTrack; } set { this.mHardTrack = value; } }
+        public bool ResetVelocityToZeroWhileNotActive { get { return this.mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
 
         //========================================
         //      Unity's function
@@ -179,10 +184,16 @@ namespace JCSUnity
         protected virtual void FixedUpdate()
         {
             if (this.mTargetTransform == null)
+            {
+                ResetVelocityWhileNotActive();
                 return;
+            }
 
             if (!mFollowing)
+            {
+                ResetVelocityWhileNotActive();
                 return;
+            }
 
             // if freezing effect in runtime, we have to record down this
             if (mFreezeInRuntime)
@@ -319,6 +330,17 @@ namespace JCSUnity
             }
 
             this.transform.position = newPos;
+        }
+
+        /// <summary>
+        /// Set Velocity to zero while the follow effect is not active.
+        /// </summary>
+        private void ResetVelocityWhileNotActive()
+        {
+            if (!mResetVelocityToZeroWhileNotActive)
+                return;
+
+            mVelocity = Vector3.zero;
         }
 
     }

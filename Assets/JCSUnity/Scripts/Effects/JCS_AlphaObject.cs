@@ -15,7 +15,8 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// This will approach to specific alpha value 
+    /// every frame.
     /// </summary>
     public class JCS_AlphaObject
         : JCS_UnityObject

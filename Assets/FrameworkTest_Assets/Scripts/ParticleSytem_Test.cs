@@ -27,7 +27,7 @@ public class ParticleSytem_Test
     private JCS_TowardTarget mParticle = null;
 
     [SerializeField]
-    private JCS_2DParticleSystem mParticleSystem = null;
+    private JCS_ParticleSystem mParticleSystem = null;
 
     private JCS_Vector<JCS_Particle> mParticles = null;
 
@@ -52,14 +52,14 @@ public class ParticleSytem_Test
     {
         if (JCS_Input.GetKeyDown(KeyCode.G))
         {
-            JCS_Tweener masterTweener = mParticle.GetComponent<JCS_Tweener>();
+            JCS_TransfromTweener masterTweener = mParticle.GetComponent<JCS_TransfromTweener>();
             JCS_TowardTarget masterTt = mParticle.GetComponent<JCS_TowardTarget>();
 
             for (int index = 0;
                 index < mParticles.length;
                 ++index)
             {
-                JCS_Tweener tweener = mParticles.at(index).GetComponent<JCS_Tweener>();
+                JCS_TransfromTweener tweener = mParticles.at(index).GetComponent<JCS_TransfromTweener>();
 
                 tweener.EasingX = masterTweener.EasingX;
                 tweener.EasingY = masterTweener.EasingY;

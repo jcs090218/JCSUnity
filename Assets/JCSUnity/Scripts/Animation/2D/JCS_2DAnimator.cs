@@ -19,7 +19,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_2DAnimator 
-        : MonoBehaviour
+        : JCS_UnityObject
     {
 
         //----------------------
@@ -27,8 +27,6 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-
-        private SpriteRenderer mSpriteRenderer = null;
 
 
         [Header("** Check Variables Variables (JCS_I2DAnimator) **")]
@@ -75,7 +73,7 @@ default is 1.")]
         //------------------------------
         private void Awake()
         {
-            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+            UpdateUnityData();
 
             // update the max animation count.
             UpdateMaxAnimCount();
@@ -96,7 +94,14 @@ default is 1.")]
                 // let all animation know there are sprite renderer 
                 // take over what they had previous 'SpriteRenderer' 
                 // component.
-                anim.SetSpriteRenderer(this.mSpriteRenderer);
+                if (anim.GetObjectType() == this.GetObjectType())
+                    anim.LocalType = this.LocalType;
+                else
+                {
+                    JCS_Debug.JcsErrors(
+                        this, 
+                        "Animator and Animation have different component type is not allowed...");
+                }
 
                 anim.PlayOnAwake = false;
             }

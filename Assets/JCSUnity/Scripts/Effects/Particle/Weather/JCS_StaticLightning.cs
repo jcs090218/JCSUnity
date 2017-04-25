@@ -113,7 +113,7 @@ namespace JCSUnity
 
             mLimitTimer = 0;
 
-            int randNum = JCS_Utility.JCS_IntRange(0, 100);
+            int randNum = JCS_Random.Range(0, 100);
 
             if (randNum <= mPossiblity)
                 DoLightning();
@@ -150,7 +150,7 @@ namespace JCSUnity
             mLimitTime = mRecordTime;
 
             // add new rand time.
-            mLimitTime += JCS_Utility.JCS_FloatRange(-mRandomTime, mRandomTime);
+            mLimitTime += JCS_Random.Range(-mRandomTime, mRandomTime);
         }
 
     }

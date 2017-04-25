@@ -20,7 +20,7 @@ namespace JCSUnity
     /// Panel with active and deactive in order 
     /// to do back and forth effect.
     /// </summary>
-    [RequireComponent(typeof(JCS_Tweener))]
+    [RequireComponent(typeof(JCS_TransfromTweener))]
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_TweenPanel
         : MonoBehaviour
@@ -31,7 +31,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private JCS_Tweener mTweener = null;
+        private JCS_TransfromTweener mTweener = null;
 
         [Tooltip("Do the tween effect to this position.")]
         [SerializeField]
@@ -65,7 +65,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            mTweener = this.GetComponent<JCS_Tweener>();
+            mTweener = this.GetComponent<JCS_TransfromTweener>();
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
         private void Start()

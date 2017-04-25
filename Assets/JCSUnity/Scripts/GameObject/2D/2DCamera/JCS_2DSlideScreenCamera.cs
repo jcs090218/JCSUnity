@@ -18,7 +18,6 @@ namespace JCSUnity
     /// 
     /// use for switching scene panel.
     /// </summary>
-    [RequireComponent(typeof(AudioListener))]
     public class JCS_2DSlideScreenCamera 
         : MonoBehaviour
     {
@@ -28,7 +27,6 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private AudioListener mAudioListener = null;
 
         // NOTE(JenChieh): according to Unity's low level architecture
         //                Canvas size will change 
@@ -64,7 +62,6 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public AudioListener GetAudioListener() { return this.mAudioListener; }
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
         public void SetJCS2DCamera(JCS_2DCamera cam) { this.mJCS_2DCamera = cam; }
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
@@ -74,8 +71,6 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            mAudioListener = this.GetComponent<AudioListener>();
-
             InitCamera();
 
             // 
@@ -91,8 +86,6 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_SoundManager.instance.SetAudioListener(GetAudioListener());
-
             GetInitGUIScreenSize();
         }
 
@@ -143,7 +136,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Switch the panel.
         /// </summary>
         /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D4Direction towardDirection)
@@ -185,7 +178,7 @@ namespace JCSUnity
         //////////// 2D //////////////////////////
 
         /// <summary>
-        /// 
+        /// Iniialize the camera.
         /// </summary>
         private void InitCamera()
         {
@@ -227,9 +220,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// UGUI method switch the panel.
         /// </summary>
-        /// <param name="towardDirection"></param>
+        /// <param name="towardDirection"> direction to switch scene. </param>
         private void UGUISwitchScene(JCS_2D4Direction towardDirection)
         {
             // get the Screen Width and Screen Height
@@ -260,9 +253,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// UGUI method switch the panel.
         /// </summary>
-        /// <param name="towardDirection"></param>
+        /// <param name="towardDirection"> direction to switch scene. </param>
         private void UGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             // get the Screen Width and Screen Height
@@ -313,17 +306,14 @@ namespace JCSUnity
         //////////// 3D //////////////////////////
 
         /// <summary>
-        /// 
+        /// NGUI method to switch panel/scene.
         /// </summary>
-        /// <param name="towardDirection"></param>
+        /// <param name="towardDirection"> direction to switch scene. </param>
         private void NGUISwitchScene(JCS_2D4Direction towardDirection)
         {
-            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
-
             // get the Screen Width and Screen Height
-            Vector2 appScreenSize = appRect.sizeDelta;
-            float screenWidth = appScreenSize.x * appRect.localScale.x;
-            float screenHeight = appScreenSize.y * appRect.localScale.y;
+            float screenWidth = JCS_Camera.main.CamRectSize.x;
+            float screenHeight = JCS_Camera.main.CamRectSize.y;
 
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
@@ -353,17 +343,14 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// NGUI method to switch panel/scene.
         /// </summary>
-        /// <param name="towardDirection"></param>
+        /// <param name="towardDirection"> direction to switch scene. </param>
         private void NGUISwitchScene(JCS_2D8Direction towardDirection)
         {
-            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
-
             // get the Screen Width and Screen Height
-            Vector2 appScreenSize = appRect.sizeDelta;
-            float screenWidth = appScreenSize.x * appRect.localScale.x;
-            float screenHeight = appScreenSize.y * appRect.localScale.y;
+            float screenWidth = JCS_Camera.main.CamRectSize.x;
+            float screenHeight = JCS_Camera.main.CamRectSize.y;
 
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;

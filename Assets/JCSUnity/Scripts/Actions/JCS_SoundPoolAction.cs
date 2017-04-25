@@ -68,7 +68,7 @@ namespace JCSUnity
             if (mAudioClips.Length == 0)
                 return;
 
-            int randIndex = JCS_Utility.JCS_IntRange(0, mAudioClips.Length);
+            int randIndex = JCS_Random.Range(0, mAudioClips.Length);
 
             if (mAudioClips[randIndex] == null)
             {

@@ -9,9 +9,7 @@ $Notice: See LICENSE.txt for modification and distribution information
 
 //-- General --//
 * Weather Data (System)
-* Timer (GUI)
 * Text Delta counter (GUI)
-* Game Pad to work(System)
 * JCS_EnvironmentSoundPlayer (not following the system setting, logic errors!)
 * JCS_StaticLightning (effect isn't good enough, algorithm fix!)
 * 同一排 然後只能選擇一個button突出來(slide effect).

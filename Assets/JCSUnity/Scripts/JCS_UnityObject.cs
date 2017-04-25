@@ -91,6 +91,53 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Get/Set the local type.
+        /// 
+        /// GameObject -> Renderer
+        /// Sprite -> Sprite Renderer
+        /// UI -> Image
+        /// Text -> Text
+        /// </summary>
+        public Component LocalType
+        {
+            get
+            {
+                switch (GetObjectType())
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.mRenderer;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer;
+                    case JCS_UnityObjectType.UI:
+                        return this.mImage;
+                    case JCS_UnityObjectType.TEXT:
+                        return this.mText;
+                }
+
+                return null;
+            }
+
+            set
+            {
+                switch (GetObjectType())
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        this.mRenderer = (Renderer)value;
+                        break;
+                    case JCS_UnityObjectType.SPRITE:
+                        this.mSpriteRenderer = (SpriteRenderer)value;
+                        break;
+                    case JCS_UnityObjectType.UI:
+                        this.mImage = (Image)value;
+                        break;
+                    case JCS_UnityObjectType.TEXT:
+                        this.mText = (Text)value;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
         /// Get Current type's transform
         /// </summary>
         public Transform LocalTransform
@@ -115,7 +162,7 @@ namespace JCSUnity
                 return this.transform;
             }
         }
-        
+
         /// <summary>
         /// Get Current type's position
         /// </summary>
@@ -136,7 +183,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
-                 
+
                 "Return default local position...(This should not happens...)");
 
                 return this.transform.localPosition;
@@ -160,7 +207,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
-                 
+
                 "Set default local position...(This should not happens...)");
             }
         }
@@ -185,7 +232,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
-                 
+
                 "Return default local rotation...(This should not happens...)");
 
                 return this.transform.localEulerAngles;
@@ -209,7 +256,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
-                 
+
                 "Set default local rotation...(This should not happens...)");
             }
         }
@@ -234,7 +281,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
-                 
+
                 "Return default local scale...(This should not happens...)");
 
                 return this.transform.localScale;
@@ -258,7 +305,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                 "JCS_UnityObject",
-                 
+
                 "Set default local scale...(This should not happens...)");
             }
         }
@@ -284,7 +331,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                "JCS_UnityObject",
-                
+
                "Return default visible...(This should not happens...)");
 
 
@@ -365,7 +412,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.JcsErrors(
-                    this, 
+                    this,
                     "Set default Local Red...(This should not happens...)");
             }
         }
@@ -457,7 +504,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
                "JCS_UnityObject",
-                
+
                "Return default Local Red...(This should not happens...)");
 
                 return 0;
@@ -501,7 +548,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
               "JCS_UnityObject",
-               
+
               "Set default Local Red...(This should not happens...)");
             }
         }
@@ -527,7 +574,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
               "JCS_UnityObject",
-               
+
               "Return default Local Green...(This should not happens...)");
 
                 return 0;
@@ -571,7 +618,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
               "JCS_UnityObject",
-               
+
               "Set default Local Blue...(This should not happens...)");
             }
         }
@@ -596,9 +643,8 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.JcsErrors(
-              "JCS_UnityObject",
-               
-              "Return default Local Blue...(This should not happens...)");
+                    "JCS_UnityObject",
+                    "Return default Local Blue...(This should not happens...)");
 
                 return 0;
             }
@@ -641,7 +687,7 @@ namespace JCSUnity
 
                 JCS_Debug.JcsErrors(
               "JCS_UnityObject",
-               
+
               "Set default Local Blue...(This should not happens...)");
             }
         }
@@ -666,7 +712,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.JcsErrors(
-                    "JCS_UnityObject", 
+                    "JCS_UnityObject",
                     "Return default Local Blue...(This should not happens...)");
 
                 return null;
@@ -688,7 +734,7 @@ namespace JCSUnity
                         return;
                     case JCS_UnityObjectType.SPRITE:
                         {
-                            this.mSpriteRenderer.material.mainTexture = value;   
+                            this.mSpriteRenderer.material.mainTexture = value;
                         }
                         return;
                     case JCS_UnityObjectType.TEXT:
@@ -702,6 +748,46 @@ namespace JCSUnity
               "JCS_UnityObject",
 
               "Set default Local Blue...(This should not happens...)");
+            }
+        }
+
+        /// <summary>
+        /// Get the sprite.
+        /// </summary>
+        public Sprite LocalSprite
+        {
+            get
+            {
+                switch (GetObjectType())
+                {
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.sprite;
+                    case JCS_UnityObjectType.UI:
+                        return this.mImage.sprite;
+                }
+
+                JCS_Debug.JcsErrors(
+                    "JCS_UnityObject",
+                    "Failed to get sprite composite cuz current unity object setting does not have it.");
+
+                return null;
+            }
+
+            set
+            {
+                switch (GetObjectType())
+                {
+                    case JCS_UnityObjectType.SPRITE:
+                        this.mSpriteRenderer.sprite = value;
+                        return;
+                    case JCS_UnityObjectType.UI:
+                        this.mImage.sprite = value;
+                        return;
+                }
+
+                JCS_Debug.JcsErrors(
+                    "JCS_UnityObject",
+                    "Failed to set the sprite cuz the current unity object setting does not have sprite coposite.");
             }
         }
 

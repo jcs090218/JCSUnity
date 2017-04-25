@@ -125,7 +125,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         {
             if (mStartRandomJumpForce)
             {
-                mJumpForce = JCS_Utility.JCS_FloatRange(-mRandomJumpForceRange, mRandomJumpForceRange);
+                mJumpForce += JCS_Random.Range(-mRandomJumpForceRange, mRandomJumpForceRange);
             }
         }
 
@@ -152,7 +152,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
 
         public void JumpByPossibility()
         {
-            float possibility = JCS_Utility.JCS_FloatRange(0, 100);
+            float possibility = JCS_Random.Range(0, 100);
 
             if (possibility > mPossibility)
                 return;
@@ -214,7 +214,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         /// </summary>
         private void ResetTimeZone()
         {
-            float adjustTime = JCS_Utility.JCS_FloatRange(-mAdjustTimeZone, mAdjustTimeZone);
+            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
             mRealTimeZone = mTimeZone + adjustTime;
 
             mJumped = false;

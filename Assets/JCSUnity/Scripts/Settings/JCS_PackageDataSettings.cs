@@ -24,10 +24,10 @@ namespace JCSUnity
         public static JCS_PackageDataSettings instance = null;
 
 
-        [Header("** Package Data Settings **")]
+        [Header("** Package Data Settings (JCS_PackageDataSettings) **")]
 
         [Tooltip("Package Data copyright information.")]
-        public string CopyrightString = "Copyright 2016 JCSUnity, Taiwan";
+        public string CopyrightString = "Copyright 2017 JCSUnity, Taiwan";
 
         [Tooltip("Package Data version information.")]
         public string VersionString = "Package file v1.0";

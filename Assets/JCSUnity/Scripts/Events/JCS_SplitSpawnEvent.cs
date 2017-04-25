@@ -178,19 +178,19 @@ after spawn. Add angle around -value ~ value.")]
 
             if (mRandPosX)
             {
-                float effectRange = JCS_Utility.JCS_FloatRange(-mRandPosRangeX, mRandPosRangeX);
+                float effectRange = JCS_Random.Range(-mRandPosRangeX, mRandPosRangeX);
                 newPos.x += effectRange;
             }
 
             if (mRandPosY)
             {
-                float effectRange = JCS_Utility.JCS_FloatRange(-mRandPosRangeY, mRandPosRangeY);
+                float effectRange = JCS_Random.Range(-mRandPosRangeY, mRandPosRangeY);
                 newPos.y += effectRange;
             }
 
             if (mRandPosZ)
             {
-                float effectRange = JCS_Utility.JCS_FloatRange(-mRandPosRangeZ, mRandPosRangeZ);
+                float effectRange = JCS_Random.Range(-mRandPosRangeZ, mRandPosRangeZ);
                 newPos.z += effectRange;
             }
 
@@ -208,19 +208,19 @@ after spawn. Add angle around -value ~ value.")]
 
             if (mRandDegreeX)
             {
-                float randDegree = JCS_Utility.JCS_FloatRange(-mDegreeValueX, mDegreeValueX);
+                float randDegree = JCS_Random.Range(-mDegreeValueX, mDegreeValueX);
                 newRotation.x += randDegree;
             }
 
             if (mRandDegreeY)
             {
-                float randDegree = JCS_Utility.JCS_FloatRange(-mDegreeValueY, mDegreeValueY);
+                float randDegree = JCS_Random.Range(-mDegreeValueY, mDegreeValueY);
                 newRotation.y += randDegree;
             }
 
             if (mRandDegreeZ)
             {
-                float randDegree = JCS_Utility.JCS_FloatRange(-mDegreeValueZ, mDegreeValueZ);
+                float randDegree = JCS_Random.Range(-mDegreeValueZ, mDegreeValueZ);
                 newRotation.z += randDegree;
             }
 

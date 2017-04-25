@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Button will do the slide screen.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SlideScreenButton
@@ -24,10 +24,14 @@ namespace JCSUnity
         private JCS_SoundPlayer mSoundPlayer = null;
 
 
-        [Header("** Runtime Variables (JCS_SlideScreenButton) **")]
+        [Header("** Check Variables (JCS_SlideScreenButton) **")]
 
         [Tooltip("This action are using \"JCS_2DSlideScreenCamera\".")]
-        [SerializeField] private JCS_2DSlideScreenCamera mSlideCamera = null;
+        [SerializeField]
+        private JCS_2DSlideScreenCamera[] mSlideCameras = null;
+
+
+        [Header("** Runtime Variables (JCS_SlideScreenButton) **")]
 
         [Tooltip("Direction u want to go.")]
         [SerializeField] private JCS_2D8Direction mDirection = JCS_2D8Direction.TOP;
@@ -64,8 +68,7 @@ namespace JCSUnity
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            if (mSlideCamera == null)
-                mSlideCamera = (JCS_2DSlideScreenCamera)FindObjectOfType(typeof(JCS_2DSlideScreenCamera));
+            this.mSlideCameras = (JCS_2DSlideScreenCamera[])FindObjectsOfType(typeof(JCS_2DSlideScreenCamera));
         }
 
         private void Update()
@@ -95,9 +98,13 @@ namespace JCSUnity
         //========================================
         //      Self-Define
         //------------------------------
+
+        /// <summary>
+        /// Button click function pointer override.
+        /// </summary>
         public override void JCS_ButtonClick()
         {
-            if (mSlideCamera == null)
+            if (mSlideCameras.Length == 0)
             {
                 JCS_Debug.JcsReminders(
                     "JCS_SlideScreenButton", 
@@ -113,13 +120,27 @@ namespace JCSUnity
             base.JCS_ButtonClick();
         }
 
+        /// <summary>
+        /// Switch the scene.
+        /// </summary>
         private void SwitchScene()
         {
+            JCS_2DSlideScreenCamera slideCamera = null;
+
             for (int index = 0;
                 index < mCount;
                 ++index)
             {
-                mSlideCamera.SwitchScene(mDirection);
+                for (int index2 = 0;
+                    index2 < mSlideCameras.Length;
+                    ++index2)
+                {
+                    slideCamera = this.mSlideCameras[index2];
+
+                    // do the slide screen effect.
+                    if (slideCamera != null)
+                        slideCamera.SwitchScene(mDirection);
+                }
             }
         }
     }

@@ -86,7 +86,7 @@ is object that we target.")]
 
         [Header("** Optional Variables (JCS_UnityObject) **")]
         [SerializeField]
-        private JCS_Tweener mTweener = null;
+        private JCS_TransfromTweener mTweener = null;
         [SerializeField]
         private JCS_DestinationDestroy mDestinationDestroy = null;
 
@@ -119,7 +119,7 @@ is object that we target.")]
         protected virtual void Start()
         {
             if (mTweener == null)
-                mTweener = this.GetComponent<JCS_Tweener>();
+                mTweener = this.GetComponent<JCS_TransfromTweener>();
             if (mDestinationDestroy == null)
                 mDestinationDestroy = this.GetComponent<JCS_DestinationDestroy>();
         }
@@ -260,7 +260,7 @@ is object that we target.")]
                 if (mTweener == null)
                 {
                     // default settings
-                    mTweener = this.gameObject.AddComponent<JCS_Tweener>();
+                    mTweener = this.gameObject.AddComponent<JCS_TransfromTweener>();
 
                     mTweener.EasingY = JCS_TweenType.EASE_OUT_BACK;
                     mTweener.DurationX = 2.0f;

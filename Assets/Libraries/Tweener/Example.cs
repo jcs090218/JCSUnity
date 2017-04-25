@@ -10,7 +10,7 @@ namespace PeterVuorela.Tweener
     public class Example 
         : MonoBehaviour
     {
-        private Tweener tweener = new Tweener();
+        private Vector3Tweener tweener = new Vector3Tweener();
 
         public void startTweenTo(Vector3 to)
         {

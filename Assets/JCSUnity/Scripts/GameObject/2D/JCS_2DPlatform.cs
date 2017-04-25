@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Platfrom that player could stand on.
     /// </summary>
     public class JCS_2DPlatform 
         : MonoBehaviour
@@ -52,6 +52,9 @@ namespace JCSUnity
         protected virtual void OnTriggerEnter(Collider other)
         {
             JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+            if (player == null)
+                return;
+
             if (other.gameObject.name == player.name)
             {
                 Physics.IgnoreCollision(mPlatformCollider,
@@ -64,6 +67,9 @@ namespace JCSUnity
         protected virtual void OnTriggerExit(Collider other)
         {
             JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+            if (player == null)
+                return;
+
             if (other.gameObject.name == player.name)
             {
                 Physics.IgnoreCollision(mPlatformCollider,

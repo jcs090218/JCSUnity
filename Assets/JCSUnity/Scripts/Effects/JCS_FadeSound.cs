@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Class do the sound fade in/out effect.
     /// </summary>
-    public class JCS_FadeSound 
+    public class JCS_FadeSound
         : MonoBehaviour
     {
 
@@ -52,6 +52,8 @@ namespace JCSUnity
         //------------------------------
         public void SetFadeOutTime(float t) { this.mFadeOutTime = t; }
         public void SetFadeInTime(float t) { this.mFadeInTime = t; }
+
+        public AudioSource GetAudioSource() { return this.mAudioSource; }
 
         //========================================
         //      Unity's function
@@ -104,12 +106,9 @@ namespace JCSUnity
         {
             if (source == null)
             {
-                JCS_Debug.JcsErrors("JCS_FadeSound",   "source assign are null references...");
-                return;
-            }
-
-            if (mAudioSource != null)
-            {
+                JCS_Debug.JcsErrors(
+                    this,
+                    "source assign are null references...");
                 return;
             }
 
@@ -130,13 +129,13 @@ namespace JCSUnity
         {
             if (mType == JCS_FadeType.FADE_OUT)
             {
-                JCS_Debug.JcsErrors("JCS_FadeSound",   "Already Fade out");
+                JCS_Debug.JcsErrors("JCS_FadeSound", "Already Fade out");
                 return;
             }
 
             if (mAudioSource == null)
             {
-                JCS_Debug.JcsErrors("JCS_FadeSound",   "Cannot do the fade out effect without the source...");
+                JCS_Debug.JcsErrors("JCS_FadeSound", "Cannot do the fade out effect without the source...");
                 return;
             }
 
@@ -158,13 +157,13 @@ namespace JCSUnity
         {
             if (mType == JCS_FadeType.FADE_IN)
             {
-                JCS_Debug.JcsErrors("JCS_FadeSound",   "Already Fade in");
+                JCS_Debug.JcsErrors("JCS_FadeSound", "Already Fade in");
                 return;
             }
 
             if (mAudioSource == null)
             {
-                JCS_Debug.JcsErrors("JCS_FadeSound",   "Cannot do the fade in effect without the source...");
+                JCS_Debug.JcsErrors("JCS_FadeSound", "Cannot do the fade in effect without the source...");
                 return;
             }
 
@@ -200,6 +199,18 @@ namespace JCSUnity
         public bool IsFadeIn()
         {
             return mAudioSource.volume == 1;
+        }
+
+        /// <summary>
+        /// Check if the target reach the target volume.
+        /// </summary>
+        /// <returns>
+        /// true: reached.
+        /// false, vice versa.
+        /// </returns>
+        public bool IsReachTargetVolue()
+        {
+            return mAudioSource.volume == mTargetVolume;
         }
 
         //----------------------

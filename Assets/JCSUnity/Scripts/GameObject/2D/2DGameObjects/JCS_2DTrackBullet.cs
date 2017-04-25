@@ -17,7 +17,7 @@ namespace JCSUnity
     /// 
     /// </summary>
     [RequireComponent(typeof(JCS_2DTrackAction))]
-    [RequireComponent(typeof(JCS_2DGoStraightAction))]
+    [RequireComponent(typeof(JCS_3DGoStraightAction))]
     [RequireComponent(typeof(JCS_DestroyObjectWithTime))]
     [RequireComponent(typeof(JCS_HitCountEvent))]
     public class JCS_2DTrackBullet
@@ -32,7 +32,7 @@ namespace JCSUnity
 
         private bool mAct = false;
         private JCS_2DTrackAction mTrackAction = null;
-        private JCS_2DGoStraightAction mGoStraightAction = null;
+        private JCS_3DGoStraightAction mGoStraightAction = null;
 
 
         [Header("** Initialize Varialbes (JCS_2DTrackBullet) **")]
@@ -67,7 +67,7 @@ namespace JCSUnity
             mTrackAction.Following = false;
 
 
-            mGoStraightAction = this.GetComponent<JCS_2DGoStraightAction>();
+            mGoStraightAction = this.GetComponent<JCS_3DGoStraightAction>();
             mGoStraightAction.enabled = true;
         }
 

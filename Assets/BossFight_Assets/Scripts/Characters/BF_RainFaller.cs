@@ -140,7 +140,7 @@ public class BF_RainFaller
     /// </summary>
     private void ResetTimeZone()
     {
-        float adjustTime = JCS_Utility.JCS_FloatRange(-mAdjustTimeZone, mAdjustTimeZone);
+        float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
         mRealTimeZone = mTimeZone + adjustTime;
 
         mShooted = false;

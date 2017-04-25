@@ -130,8 +130,8 @@ namespace JCSUnity
         /// <param name="obj"></param>
         private void SetToRandomPos(ref GameObject obj)
         {
-            float randPosX = JCS_Utility.JCS_FloatRange(-mSkillWide, mSkillWide);
-            float randPosY = JCS_Utility.JCS_FloatRange(-mSkillHeight, mSkillHeight);
+            float randPosX = JCS_Random.Range(-mSkillWide, mSkillWide);
+            float randPosY = JCS_Random.Range(-mSkillHeight, mSkillHeight);
 
             Vector3 newPos = obj.transform.position;
             newPos.x += randPosX;

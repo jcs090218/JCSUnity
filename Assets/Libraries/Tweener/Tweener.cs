@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using JCSUnity;
 
 
 namespace PeterVuorela.Tweener
 {
 
-    public class Tweener
+    /// <summary>
+    /// Vector 3 Tweening, handle progression.
+    /// </summary>
+    public class Vector3Tweener
     {
-        public delegate void CallBackDelegate();
         private CallBackDelegate _Callback = null;
 
-        public delegate float TweenDelegate(float t, float b, float c, float d);
         private TweenDelegate _EasingX = null;
         private TweenDelegate _EasingY = null;
         private TweenDelegate _EasingZ = null;
@@ -42,7 +44,7 @@ namespace PeterVuorela.Tweener
             this._Callback = func;
         }
 
-        public Tweener() { }
+        public Vector3Tweener() { }
 
         /// <summary>
         /// Eases from value to value.
@@ -106,83 +108,83 @@ namespace PeterVuorela.Tweener
 
         public void updateX(bool callCallBack = true)
         {
-            if (_AnimatingX)
+            if (!_AnimatingX)
+                return;
+
+            if (_TimeElapsed.x < _Duration.x)
             {
-                if (_TimeElapsed.x < _Duration.x)
+                if (_EasingX != null)
                 {
-                    if (_EasingX != null)
-                    {
-                        _Progression.x = _EasingX.Invoke(_TimeElapsed.x, _From.x, (_To.x - _From.x), _Duration.x);
+                    _Progression.x = _EasingX.Invoke(_TimeElapsed.x, _From.x, (_To.x - _From.x), _Duration.x);
 
-                        _ProgressPct.x = _TimeElapsed.x / _Duration.x;
+                    _ProgressPct.x = _TimeElapsed.x / _Duration.x;
 
-                        _TimeElapsed.x += Time.deltaTime;
-                    }
+                    _TimeElapsed.x += Time.deltaTime;
                 }
-                else
-                {
-                    _Progression.x = _To.x;
+            }
+            else
+            {
+                _Progression.x = _To.x;
 
-                    _AnimatingX = false;
-                    _TimeElapsed.x = 0f;
-                    _ProgressPct.x = 1f;
+                _AnimatingX = false;
+                _TimeElapsed.x = 0f;
+                _ProgressPct.x = 1f;
 
-                    CheckUpdate();
-                }
+                CheckUpdate();
             }
         }
         public void updateY(bool callCallBack = true)
         {
-            if (_AnimatingY)
+            if (!_AnimatingY)
+                return;
+
+            if (_TimeElapsed.y < _Duration.y)
             {
-                if (_TimeElapsed.y < _Duration.y)
+                if (_EasingY != null)
                 {
-                    if (_EasingY != null)
-                    {
-                        _Progression.y = _EasingY.Invoke(_TimeElapsed.y, _From.y, (_To.y - _From.y), _Duration.y);
+                    _Progression.y = _EasingY.Invoke(_TimeElapsed.y, _From.y, (_To.y - _From.y), _Duration.y);
 
-                        _ProgressPct.y = _TimeElapsed.y / _Duration.y;
+                    _ProgressPct.y = _TimeElapsed.y / _Duration.y;
 
-                        _TimeElapsed.y += Time.deltaTime;
-                    }
+                    _TimeElapsed.y += Time.deltaTime;
                 }
-                else
-                {
-                    _Progression.y = _To.y;
+            }
+            else
+            {
+                _Progression.y = _To.y;
 
-                    _AnimatingY = false;
-                    _TimeElapsed.y = 0f;
-                    _ProgressPct.y = 1f;
+                _AnimatingY = false;
+                _TimeElapsed.y = 0f;
+                _ProgressPct.y = 1f;
 
-                    CheckUpdate();
-                }
+                CheckUpdate();
             }
         }
         public void updateZ(bool callCallBack = true)
         {
-            if (_AnimatingZ)
+            if (!_AnimatingZ)
+                return;
+
+            if (_TimeElapsed.z < _Duration.z)
             {
-                if (_TimeElapsed.z < _Duration.z)
+                if (_EasingZ != null)
                 {
-                    if (_EasingZ != null)
-                    {
-                        _Progression.z = _EasingZ.Invoke(_TimeElapsed.z, _From.z, (_To.z - _From.z), _Duration.z);
+                    _Progression.z = _EasingZ.Invoke(_TimeElapsed.z, _From.z, (_To.z - _From.z), _Duration.z);
 
-                        _ProgressPct.z = _TimeElapsed.z / _Duration.z;
+                    _ProgressPct.z = _TimeElapsed.z / _Duration.z;
 
-                        _TimeElapsed.z += Time.deltaTime;
-                    }
+                    _TimeElapsed.z += Time.deltaTime;
                 }
-                else
-                {
-                    _Progression.z = _To.z;
+            }
+            else
+            {
+                _Progression.z = _To.z;
 
-                    _AnimatingZ = false;
-                    _TimeElapsed.z = 0f;
-                    _ProgressPct.z = 1f;
+                _AnimatingZ = false;
+                _TimeElapsed.z = 0f;
+                _ProgressPct.z = 1f;
 
-                    CheckUpdate();
-                }
+                CheckUpdate();
             }
         }
 

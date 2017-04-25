@@ -68,7 +68,7 @@ namespace JCSUnity
                 return;
 
             // randomize the cash value a bit.
-            mCashValue += JCS_Utility.JCS_IntRange(-mRandomizeCashValue, mRandomizeCashValue + 1);
+            mCashValue += JCS_Random.Range(-mRandomizeCashValue, mRandomizeCashValue + 1);
         }
 
         //========================================

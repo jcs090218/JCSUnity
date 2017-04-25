@@ -30,6 +30,7 @@ namespace JCSUnity
 
         [SerializeField]
         protected Vector3 mVelocity = Vector3.zero;
+
         
         [Header("** Initialize Variables (JCS_Camera) **")]
 

@@ -157,8 +157,8 @@ namespace JCSUnity
             {
                 // shake randomly
                 // shakeTime / shakeTimer = shakeRate
-                pos.x += (JCS_Utility.JCS_FloatRange(-1, 1 + 1)) * mShakeMargin * (mShakeTime / mShakeTimer) / 5;
-                pos.y += (JCS_Utility.JCS_FloatRange(-1, 1 + 1)) * mShakeMargin * (mShakeTime / mShakeTimer) / 5;
+                pos.x += (JCS_Random.Range(-1, 1 + 1)) * mShakeMargin * (mShakeTime / mShakeTimer) / 5;
+                pos.y += (JCS_Random.Range(-1, 1 + 1)) * mShakeMargin * (mShakeTime / mShakeTimer) / 5;
 
                 // apply pos
                 this.transform.position = pos;

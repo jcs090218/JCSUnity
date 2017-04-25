@@ -17,10 +17,10 @@ namespace JCSUnity
     /// For scripter and programmer,
     /// Override this if u want to implement this class
     /// </summary>
-    [RequireComponent(typeof(JCS_2DGoStraightAction))]
+    [RequireComponent(typeof(JCS_3DGoStraightAction))]
     [RequireComponent(typeof(JCS_DestroyObjectWithTime))]
     [RequireComponent(typeof(JCS_HitCountEvent))]
-    [RequireComponent(typeof(JCS_DestroyAnimEffect))]
+    [RequireComponent(typeof(JCS_3DDestroyAnimEffect))]
     public class JCS_2DBullet
         : JCS_Bullet
     {
@@ -30,7 +30,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private JCS_2DGoStraightAction mGoStraightAction = null;
+        private JCS_3DGoStraightAction mGoStraightAction = null;
 
         [Header("** Absorb Effect (JCS_2DBullet) **")]
 
@@ -152,16 +152,16 @@ namespace JCSUnity
         {
             base.Awake();
 
-            mGoStraightAction = this.GetComponent<JCS_2DGoStraightAction>();
+            mGoStraightAction = this.GetComponent<JCS_3DGoStraightAction>();
 
             if (mRandomAbsorbTime != 0)
-                mTimeToAbsorb += JCS_Utility.JCS_FloatRange(-mRandomAbsorbTime, mRandomAbsorbTime);
+                mTimeToAbsorb += JCS_Random.Range(-mRandomAbsorbTime, mRandomAbsorbTime);
 
             if (mInitLookAction == null)
                 mInitLookAction = this.GetComponent<JCS_2DInitLookByTypeAction>();
 
             if (mRandomTimeToLook != 0)
-                mTimeToLook += JCS_Utility.JCS_FloatRange(-mRandomTimeToLook, mRandomTimeToLook);
+                mTimeToLook += JCS_Random.Range(-mRandomTimeToLook, mRandomTimeToLook);
         }
 
         private void Start()

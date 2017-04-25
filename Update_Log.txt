@@ -7,6 +7,35 @@ $Notice: See LICENSE.txt for modification and distribution information
 ========================================================================
 
 
+2017-04-20
+* Update JCS_SceneManager with more proper name variables. (JCSUnity)
+* Update JCS_SoundManaer with 'SwitchBackgroundMusic' 
+ function. *JCSUnity)
+
+2017-04-17
+* Rename JCS_2DDestroyAnimEffect to JCS_3DDestroyAnimEffect. (JCSUnity)
+* JCS_2DDestroyAnimEffect impelemented. (JCSUnity)
+* JCS_TransformPool implemented. (JCSUnity)
+* JCS_DestroySpawnEffect implemented. (JCSUnity)
+
+2017-04-14
+* JCS_INIFileReader implemented. (JCSUnity)
+* editor.properties implemented. (JCSUnity)
+
+2017-04-10
+* JCS_2DParticleSystem rename to JCS_ParticleSystem. (JCSUnity)
+* JCS_DestroyAnimEffect rename to JCS_2DDestroyAnimEffect. (JCSUnity)
+* Update JCS_ParticleSystem so you could play one shot of particle 
+ in certain number of particle. (JCSUnity)
+* JCS_DestroyParticleEndEvent implemented. (JCSUnity)
+* JCS_DestroyParticleEffect implemented. (JCSUnity)
+* JCS_Tweener rename to JCS_TransfromTweener. (JCSUnity)
+* JCS_ColorTweener implemented. (JCSUnity)
+
+2017-04-07
+* JCS_3DDistanceTileAction implemented. (JCSUnity)
+* JCS_2DGoStraightAction rename to JCS_3DGoStraightAction. (JCSUnity)
+
 2017-03-24
 * JCS_TimePanel implemented. (JCSUnity)
 

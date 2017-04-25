@@ -147,7 +147,7 @@ the get mad will start tracking the object that make this object mad.")]
         {
             if (mStartRandomWalkSpeed)
             {
-                mWalkSpeed += JCS_Utility.JCS_FloatRange(-mRandomWalkSpeedRange, mRandomWalkSpeedRange);
+                mWalkSpeed += JCS_Random.Range(-mRandomWalkSpeedRange, mRandomWalkSpeedRange);
             }
         }
 
@@ -167,7 +167,7 @@ the get mad will start tracking the object that make this object mad.")]
         /// </summary>
         public void WalkByPossiblity()
         {
-            float possibility = JCS_Utility.JCS_FloatRange(0, 100);
+            float possibility = JCS_Random.Range(0, 100);
 
             // possibility check
             if (possibility > mPossibility)
@@ -214,9 +214,9 @@ the get mad will start tracking the object that make this object mad.")]
             // record down how what does success to go with.
             int resultCounter = 0;
 
-            float leftPossiblity = JCS_Utility.JCS_FloatRange(0, 100);
-            float idlePossiblity = JCS_Utility.JCS_FloatRange(0, 100);
-            float rightPossiblity = JCS_Utility.JCS_FloatRange(0, 100);
+            float leftPossiblity = JCS_Random.Range(0, 100);
+            float idlePossiblity = JCS_Random.Range(0, 100);
+            float rightPossiblity = JCS_Random.Range(0, 100);
 
             if (idlePossiblity < mToIdle)
             {
@@ -259,7 +259,7 @@ the get mad will start tracking the object that make this object mad.")]
         /// </summary>
         public void WalkRandomly()
         {
-            int result = JCS_Utility.JCS_IntRange(-1, 1 + 1);
+            int result = JCS_Random.Range(-1, 1 + 1);
             
             WalkByStatus(result);
         }
@@ -361,7 +361,7 @@ the get mad will start tracking the object that make this object mad.")]
         /// </summary>
         private void ResetTimeZone()
         {
-            float adjustTime = JCS_Utility.JCS_FloatRange(-mAdjustTimeZone, mAdjustTimeZone);
+            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
             mRealTimeZone = mTimeZone + adjustTime;
 
             mWalked = false;

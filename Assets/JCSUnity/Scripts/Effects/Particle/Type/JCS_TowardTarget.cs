@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Particle will lerp to the target position.
     /// </summary>
-    [RequireComponent(typeof(JCS_Tweener))]
+    [RequireComponent(typeof(JCS_TransfromTweener))]
     [RequireComponent(typeof(JCS_DisableWithCertainRangeEvent))]
     public class JCS_TowardTarget
         : JCS_Particle
@@ -29,7 +29,7 @@ namespace JCSUnity
         // Private Variables
 
         // tweener effect to the object.
-        private JCS_Tweener mJCSTweener = null;
+        private JCS_TransfromTweener mJCSTweener = null;
 
         // when reach the certain range disable it.
         private JCS_DisableWithCertainRangeEvent mDisableWidthCertainRangeEvent = null;
@@ -74,7 +74,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            this.mJCSTweener = this.GetComponent<JCS_Tweener>();
+            this.mJCSTweener = this.GetComponent<JCS_TransfromTweener>();
             this.mDisableWidthCertainRangeEvent = this.GetComponent<JCS_DisableWithCertainRangeEvent>();
 
             // set destination callback.
@@ -160,10 +160,10 @@ namespace JCSUnity
 
             // set up the unknown angle
             // ÀH¾÷"¤º¨¤"
-            float angle = JCS_Utility.JCS_FloatRange(0, 360);
+            float angle = JCS_Random.Range(0, 360);
 
             // define offset
-            float hypOffset = JCS_Utility.JCS_FloatRange(
+            float hypOffset = JCS_Random.Range(
                     -adjRange,
                     adjRange);
 
@@ -172,7 +172,7 @@ namespace JCSUnity
 
             float opp = Mathf.Sin(angle) * hyp;
 
-            float adj = JCS_Mathf.PythagoreanTheorem(hyp, opp, JCS_Mathf.Sides.adj);
+            float adj = JCS_Mathf.PythagoreanTheorem(hyp, opp, JCS_Mathf.TriSides.adj);
             
 
             bool flipX = JCS_Mathf.IsPossible(50);

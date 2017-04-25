@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -723,6 +723,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &560711782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 560711783}
+  - component: {fileID: 560711786}
+  - component: {fileID: 560711785}
+  - component: {fileID: 560711784}
+  m_Layer: 0
+  m_Name: JCS_2DDestroyAnimEndEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &560711783
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 560711782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4, y: 1.5, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &560711784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 560711782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cd9aefff20768428270c89970339dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mOrderLayer: 1
+  mLoopTimes: 1
+  mActiveWhatever: 1
+  mActiveWithHitList: 0
+  mActiveWithDestroyTime: 0
+  mSamePosition: 1
+  mSameRotation: 1
+  mSameScale: 1
+  mRandPos: 0
+  mRandPosRange: 0
+  mRandRot: 0
+  mRandRotRange: 0
+  mRandScale: 0
+  mRandScaleRange: 0
+--- !u!114 &560711785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 560711782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff50cc44cb8b5da47b60b220174e9c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mIsHit: 0
+  mHitObjectList: []
+  mIncludeClone: 1
+  mDestroyWhenOccurs: 0
+--- !u!114 &560711786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 560711782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719279a49f44b0e47ae8bb870d7de4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mAnimPool:
+  - {fileID: 1119473927}
+  - {fileID: 130550167}
+  - {fileID: 154423134}
+  - {fileID: 529122713}
+  - {fileID: 923275529}
+  - {fileID: 931973089}
 --- !u!1 &766062199
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -884,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -972,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -1136,7 +1225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -1835,14 +1924,24 @@ MonoBehaviour:
   mNumOfParticle: 1000
   mParticle: {fileID: 0}
   mActive: 1
+  mActiveThread: 1
   mOrderLayer: 15
   mDensity: 5
   mWindSpeed: -10
-  mRandPos: 50
-  mRandAngle: 0
+  mRandPosX: 0
+  mRandPosY: 0
+  mRandPosZ: 0
+  mRandAngleX: 0
+  mRandAngleY: 0
+  mRandAngleZ: 0
+  mAlwaysTheSameScale: 1
+  mRandScaleX: 0
+  mRandScaleY: 0
+  mRandScaleZ: 0
   mFreezeX: 0
   mFreezeY: 1
   mFreezeZ: 1
+  mDoShotImmediately: 0
   mSetChild: 1
   mSetToSamePositionWhenActive: 1
 --- !u!114 &1468364321
@@ -1966,7 +2065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -2054,6 +2153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec5f1592b8e7d646b1b9a7500f4a0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mObjectType: 2
   mCurrentAnimId: 0
   mCurrentAnimation: {fileID: 0}
   mMaxAnimCount: 0
@@ -2143,7 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0
@@ -2275,7 +2375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b58de9017a564e8fcb8e45da293aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpriteRenderer: {fileID: 0}
+  mObjectType: 2
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mStartingFrame: 0

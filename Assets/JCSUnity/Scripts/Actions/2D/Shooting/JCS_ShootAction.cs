@@ -255,7 +255,7 @@ namespace JCSUnity
             DeviationEffect(bullet.transform);
 
             if (bullet is JCS_2DBullet)
-                bullet.GetComponent<JCS_2DGoStraightAction>().MoveSpeed = bulletSpeed;
+                bullet.GetComponent<JCS_3DGoStraightAction>().MoveSpeed = bulletSpeed;
 
            
             if (mTrackSoot && 
@@ -339,7 +339,7 @@ namespace JCSUnity
             DeviationEffect(bullet.transform);
 
             if (bullet is JCS_2DBullet)
-                bullet.GetComponent<JCS_2DGoStraightAction>().MoveSpeed = bulletSpeed;
+                bullet.GetComponent<JCS_3DGoStraightAction>().MoveSpeed = bulletSpeed;
 
 
             if (mTrackSoot &&
@@ -462,20 +462,20 @@ namespace JCSUnity
 
             if (mDeviationEffectX)
             {
-                float effectDegree = JCS_Utility.JCS_FloatRange(-mDeviationRangeX, mDeviationRangeX);
+                float effectDegree = JCS_Random.Range(-mDeviationRangeX, mDeviationRangeX);
 
                 newAngles.x += effectDegree;
             }
 
             if (mDeviationEffectY)
             {
-                float effectDegree = JCS_Utility.JCS_FloatRange(-mDeviationRangeY, mDeviationRangeY);
+                float effectDegree = JCS_Random.Range(-mDeviationRangeY, mDeviationRangeY);
                 newAngles.y += effectDegree;
             }
 
             if (mDeviationEffectZ)
             {
-                float effectDegree = JCS_Utility.JCS_FloatRange(-mDeviationRangeZ, mDeviationRangeZ);
+                float effectDegree = JCS_Random.Range(-mDeviationRangeZ, mDeviationRangeZ);
                 newAngles.z += effectDegree;
             }
 
@@ -494,19 +494,19 @@ namespace JCSUnity
 
             if (mRandPosX)
             {
-                float effectRange = JCS_Utility.JCS_FloatRange(-mRandPosRangeX, mRandPosRangeX);
+                float effectRange = JCS_Random.Range(-mRandPosRangeX, mRandPosRangeX);
                 newPos.x += effectRange;
             }
 
             if (mRandPosY)
             {
-                float effectRange = JCS_Utility.JCS_FloatRange(-mRandPosRangeY, mRandPosRangeY);
+                float effectRange = JCS_Random.Range(-mRandPosRangeY, mRandPosRangeY);
                 newPos.y += effectRange;
             }
 
             if (mRandPosZ)
             {
-                float effectRange = JCS_Utility.JCS_FloatRange(-mRandPosRangeZ, mRandPosRangeZ);
+                float effectRange = JCS_Random.Range(-mRandPosRangeZ, mRandPosRangeZ);
                 newPos.z += effectRange;
             }
 

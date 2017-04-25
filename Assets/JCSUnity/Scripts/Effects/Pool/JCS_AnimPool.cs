@@ -25,7 +25,9 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_AnimPool) **")]
+
         [Tooltip("Pool to randomly choose.")]
         [SerializeField]
         private RuntimeAnimatorController[] mAnimPool = null;
@@ -46,12 +48,17 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Get a animation from the pool randomly.
+        /// </summary>
+        /// <returns> animation value. </returns>
         public RuntimeAnimatorController GetRandomAnim()
         {
             if (mAnimPool.Length == 0)
                 return null;
 
-            int randIndex = JCS_Utility.JCS_IntRange(0, mAnimPool.Length);
+            int randIndex = JCS_Random.Range(0, mAnimPool.Length);
 
             return mAnimPool[randIndex];
         }

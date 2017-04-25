@@ -11,6 +11,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Linq;
+using PeterVuorela.Tweener;
 
 
 namespace JCSUnity
@@ -20,7 +21,7 @@ namespace JCSUnity
     public delegate void EventTriggerEvent(PointerEventData data);
 
     /// <summary>
-    /// 
+    /// All the utility function put here.
     /// </summary>
     public class JCS_Utility
         : MonoBehaviour
@@ -136,44 +137,6 @@ namespace JCSUnity
             float height = sr.bounds.extents[1] * 2 * sr.transform.localScale.y;
 
             return new Vector2(width, height);
-        }
-
-        /// <summary>
-        /// Return normal random range (Integer)
-        /// </summary>
-        /// <param name="min"> mininum value </param>
-        /// <param name="max"> maxinum value </param>
-        /// <returns> random number </returns>
-        public static int JCS_IntRange(int min, int max)
-        {
-            return Random.Range(min, max);
-        }
-        public static uint JCS_IntRange(uint min, uint max)
-        {
-            return (uint)Random.Range(min, max);
-        }
-        /// <summary>
-        /// Return normal random range (Float)
-        /// </summary>
-        /// <param name="min"> mininum value </param>
-        /// <param name="max"> maxinum value </param>
-        /// <returns> random number </returns>
-        public static float JCS_FloatRange(float min, float max)
-        {
-            return Random.Range(min, max);
-        }
-
-        /// <summary>
-        /// Return a random color.
-        /// </summary>
-        /// <returns> random color object. </returns>
-        public static Color JCS_RandomColor(float a = 1.0f)
-        {
-            return new Color(
-                JCS_FloatRange(0.0f, 1.0f),
-                JCS_FloatRange(0.0f, 1.0f),
-                JCS_FloatRange(0.0f, 1.0f),
-                a);
         }
 
         /// <summary>
@@ -488,19 +451,19 @@ namespace JCSUnity
 
             if (checks.check1)
             {
-                float val = JCS_FloatRange(-randVec.x, randVec.x);
+                float val = JCS_Random.Range(-randVec.x, randVec.x);
                 tempVec = IncVecX(tempVec, val);
             }
 
             if (checks.check2)
             {
-                float val = JCS_FloatRange(-randVec.y, randVec.y);
+                float val = JCS_Random.Range(-randVec.y, randVec.y);
                 tempVec = IncVecY(tempVec, val);
             }
 
             if (checks.check3)
             {
-                float val = JCS_FloatRange(-randVec.z, randVec.z);
+                float val = JCS_Random.Range(-randVec.z, randVec.z);
                 tempVec = IncVecZ(tempVec, val);
             }
 
@@ -554,6 +517,117 @@ namespace JCSUnity
                 if (e.gameObject.name.Contains("(Clone)"))
                     Destroy(e.gameObject);
             }
+        }
+
+        /// <summary>
+        /// Return the easing function pointer base on tweener type.
+        /// </summary>
+        /// <param name="type"> type of the tween formula </param>
+        /// <returns> function pointer </returns>
+        public static TweenDelegate GetEasing(JCS_TweenType type)
+        {
+            TweenDelegate easing = null;
+
+            switch (type)
+            {
+                // default to linear
+                case JCS_TweenType.LINEAR:
+                    easing = Easing.Linear;
+                    break;
+
+                case JCS_TweenType.EASE_IN_SINE:
+                    easing = Easing.SineEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_CUBIC:
+                    easing = Easing.CubicEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_QUINT:
+                    easing = Easing.QuintEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_CIRC:
+                    easing = Easing.CircEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_BACK:
+                    easing = Easing.BackEaseIn;
+                    break;
+                case JCS_TweenType.EASE_OUT_SINE:
+                    easing = Easing.SineEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_CUBIC:
+                    easing = Easing.CubicEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUINT:
+                    easing = Easing.QuintEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_CIRC:
+                    easing = Easing.CircEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_BACK:
+                    easing = Easing.BackEaseOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_SINE:
+                    easing = Easing.SineEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_CUBIC:
+                    easing = Easing.CubicEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUINT:
+                    easing = Easing.QuintEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_CIRC:
+                    easing = Easing.CircEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_BACK:
+                    easing = Easing.BackEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_QUAD:
+                    easing = Easing.QuadEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_QUART:
+                    easing = Easing.QuartEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_EXPO:
+                    easing = Easing.ExpoEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_ELASTIC:
+                    easing = Easing.ElasticEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_BOUNCE:
+                    easing = Easing.BounceEaseIn;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUAD:
+                    easing = Easing.QuadEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUART:
+                    easing = Easing.QuartEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_EXPO:
+                    easing = Easing.ExpoEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_ELASTIC:
+                    easing = Easing.ElasticEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_BOUNCE:
+                    easing = Easing.BounceEaseOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUAD:
+                    easing = Easing.QuadEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUART:
+                    easing = Easing.QuartEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_EXPO:
+                    easing = Easing.ExpoEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_ELASTIC:
+                    easing = Easing.ElasticEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_BOUNCE:
+                    easing = Easing.BounceEaseInOut;
+                    break;
+            }
+
+            return easing;
         }
     }
 }

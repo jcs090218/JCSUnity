@@ -424,20 +424,21 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Use to check if something possible by percentage.
+        /// 0 ~ 100.
         /// </summary>
         /// <returns></returns>
         public static bool IsPossible(float val)
         {
-            float possibility = JCS_Utility.JCS_FloatRange(0, 100);
+            float possibility = JCS_Random.Range(0, 100);
 
             return (val > possibility) ? true : false;
         }
 
         /// <summary>
-        /// 
+        /// Traignle Sides List.
         /// </summary>
-        public enum Sides
+        public enum TriSides
         {
             hyp,
             opp,
@@ -451,11 +452,11 @@ namespace JCSUnity
         /// <param name="s2"> side 2 </param>
         /// <param name="type"> target side you want to find. </param>
         /// <returns> result side. </returns>
-        public static float PythagoreanTheorem(float s1, float s2, Sides type)
+        public static float PythagoreanTheorem(float s1, float s2, TriSides type)
         {
             switch (type)
             {
-                case Sides.hyp:
+                case TriSides.hyp:
                     {
                         // a^2 + b^2 = c^2
                         float a = Mathf.Pow(s1, 2);
@@ -464,8 +465,8 @@ namespace JCSUnity
                         return Mathf.Sqrt(a + b);
                     }
 
-                case Sides.opp:
-                case Sides.adj:
+                case TriSides.opp:
+                case TriSides.adj:
                     {
                         // c^2 - b^2 = a^2
                         float c = Mathf.Pow(s1, 2);

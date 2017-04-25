@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Scale approach to a specific scale value.
     /// </summary>
     public class JCS_ScaleEffect
         : JCS_UnityObject

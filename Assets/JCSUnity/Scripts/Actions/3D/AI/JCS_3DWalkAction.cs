@@ -197,10 +197,10 @@ namespace JCSUnity
 
             // set up the unknown angle
             // 隨機"內角"
-            float angle = JCS_Utility.JCS_FloatRange(0, 360);
+            float angle = JCS_Random.Range(0, 360);
 
             // define offset
-            float hypOffset = JCS_Utility.JCS_FloatRange(
+            float hypOffset = JCS_Random.Range(
                     -mAdjustRangeDistance,
                     mAdjustRangeDistance);
 
@@ -209,7 +209,7 @@ namespace JCSUnity
 
             float opp = Mathf.Sin(angle) * hyp;
 
-            float adj = JCS_Mathf.PythagoreanTheorem(hyp, opp, JCS_Mathf.Sides.adj);
+            float adj = JCS_Mathf.PythagoreanTheorem(hyp, opp, JCS_Mathf.TriSides.adj);
 
             bool flipX = JCS_Mathf.IsPossible(50);
             bool flipZ = JCS_Mathf.IsPossible(50);
@@ -261,7 +261,7 @@ namespace JCSUnity
         private void ResetTargetTimeZone()
         {
             // calculate the real time.
-            mRealTargetTime = mTargetTime + JCS_Utility.JCS_FloatRange(-mAdjustTargetTime, mAdjustTargetTime);
+            mRealTargetTime = mTargetTime + JCS_Random.Range(-mAdjustTargetTime, mAdjustTargetTime);
 
 
             mTargeted = false;

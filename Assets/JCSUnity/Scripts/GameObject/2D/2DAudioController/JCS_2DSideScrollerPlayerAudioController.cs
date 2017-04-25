@@ -176,13 +176,13 @@ namespace JCSUnity
                     return mWalkSound;
                 case JCS_LiveObjectState.RAND_ATTACK:
                     {
-                        //int index = JCS_Utility.JCS_IntRange(0, mAttackSounds.Length);
+                        //int index = JCS_Random.Range(0, mAttackSounds.Length);
                         //return mAttackSounds[index];
                         return null;
                     }
                 case JCS_LiveObjectState.JUMP:
                     {
-                        //int index = JCS_Utility.JCS_IntRange(0, mJumpSound.Length);
+                        //int index = JCS_Random.Range(0, mJumpSound.Length);
                         //return mJumpSound[index];
                         return null;
                     }

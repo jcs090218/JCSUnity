@@ -17,7 +17,7 @@ namespace JCSUnity
     public delegate void IsFadeInCallback();
 
     /// <summary>
-    /// 
+    /// Fade alpha the object in particular value.
     /// </summary>
     public class JCS_FadeObject
         : JCS_UnityObject

@@ -1,5 +1,5 @@
 
-JCSUnity version 1.3.9 Script Manual (Status)
+JCSUnity version 1.4.1 Script Manual (Status)
 
 When using the JCSUnity you may refer to this document,
 which will cover the various scripts and how to properly use them.
@@ -175,11 +175,6 @@ Already assign: no need to touch or move.
             <Description>Object will move in circular track.</Description>
         </File>
         
-        <File name="JCS_2DGoStraightAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Move forward in one axis.</Description>
-        </File>
-        
         <File name="JCS_2DReflecBulletAction.cs">
             <Placement>Any transform/node with collider componenet.</Placement>
             <Description></Description>
@@ -216,6 +211,19 @@ Already assign: no need to touch or move.
         <File name="JCS_3DCursorShootAction.cs">
             <Placement>Any transform/node.</Placement>
             <Description>Shoot bullet base on the cursor position.</Description>
+        </File>
+        
+        <File name="JCS_3DDistanceTileAction.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Move a game object in certain distance then set the game object
+                back to original position.
+            </Description>
+        </File>
+        
+        <File name="JCS_3DGoStraightAction.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>Move forward in one axis.</Description>
         </File>
         
         <File name="JCS_3DLookAtAction.cs">
@@ -504,8 +512,16 @@ Already assign: no need to touch or move.
                 Add this to any transform you wish to take this kind 
                 of effect.
             </Description>
-        </File>
+        </File> 
         
+		<File name="JCS_2DDestroyAnimEffect.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                When gameobject destroy, this will be activate and 
+                play an animation.
+            </Description>
+        </File>
+		
         <File name="JCS_2DPushLiveObject.cs">
             <Placement>Any transform/node.</Placement>
             <Description>
@@ -528,38 +544,21 @@ Already assign: no need to touch or move.
                 do the trick.
             </Description>
         </File>
-        
-        <File name="JCS_DestroyAnimEffect.cs">
+    </2D>
+    <3D>
+		<File name="JCS_3DDestroyAnimEffect.cs">
             <Placement>Any transform/node.</Placement>
             <Description>
                 When gameobject destroy, this will be activate and 
                 play an animation.
             </Description>
         </File>
-        
-        <File name="JCS_DestroySoundEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                When the gameobject is destroy iw will 
-                play the sound.
-            </Description>
-        </File>
-    </2D>
-    <3D>
-        
+		
         <File name="JCS_3DMouseMovement.cs">
             <Placement>Any transform/node.</Placement>
             <Description>
                 This make the mouse toward to some point it will move 
                 base on the direction.
-            </Description>
-        </File>
-        
-        <File name="JCS_DestroyParticleEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                When the gameobject get destroy, spawn the gameobject and 
-                to the particle in seconds. 
             </Description>
         </File>
     </3D>
@@ -570,6 +569,29 @@ Already assign: no need to touch or move.
                 While hit the destination destroy it. 
             </Description>
         </File>
+		
+		<File name="JCS_DestroyParticleEffect.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                When the gameobject get destroy, spawn the gameobject and 
+                to the particle in seconds. 
+            </Description>
+        </File>
+		
+		<File name="JCS_DestroySoundEffect.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                When the gameobject is destroy iw will 
+                play the sound.
+            </Description>
+        </File>
+		
+		<File name="JCS_DestroySpawnEffect.cs">
+			<Placement>Any transform/node.</Placement>
+			<Description>
+				Spawn object after destroyed.
+			</Description>
+		</File>
     </Destroy>
     <Item>
         <File name="JCS_Item.cs">
@@ -656,14 +678,6 @@ Already assign: no need to touch or move.
             </File>
         </Weather>
         
-        <File name="JCS_2DParticleSystem.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Particle system that spawnes paritcles and manage into a pool.
-                Do the weather type of action.
-            </Description>
-        </File>
-        
         <File name="JCS_Particle.cs">
             <Placement>Base type of the particle.</Placement>
             <Description>
@@ -671,8 +685,24 @@ Already assign: no need to touch or move.
                 he is using.
             </Description>
         </File>
+		
+		<File name="JCS_ParticleSystem.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Particle system that spawnes paritcles and manage into a pool.
+                Do the weather type of action.
+            </Description>
+        </File>
     </Particle>
     <Pool>
+		<File name="JCS_2DAnimPool.cs">
+            <Placement>Use for scripting.</Placement>
+            <Description>
+                List of all the animation, and call the function to play 
+                the animation base on the pool list.
+            </Description>
+        </File>
+		
         <File name="JCS_AnimPool.cs">
             <Placement>Use for scripting.</Placement>
             <Description>
@@ -688,14 +718,26 @@ Already assign: no need to touch or move.
                 the animation base on the pool list.
             </Description>
         </File>
+		
+		<File name="JCS_TransformPool.cs">
+            <Placement>Use for scripting.</Placement>
+            <Description>
+                Pool of transform.
+            </Description>
+        </File>
     </Pool>
     <Tweener>
+        <File name="JCS_ColorTweener.cs">
+            <Placement>Tweener component.</Placement>
+            <Description>Tweener with changing color.</Description>
+        </File>
+        
         <File name="JCS_EaseMath.cs">
             <Placement>N/A</Placement>
             <Description>N/A</Description>
         </File>
         
-        <File name="JCS_Tweener.cs">
+        <File name="JCS_TransfromTweener.cs">
             <Placement>Tweener component.</Placement>
             <Description>
                 If you need tweener effect just call the tween function it 
@@ -703,6 +745,81 @@ Already assign: no need to touch or move.
             </Description>
         </File>
     </Tweener>
+	
+	<File name="JCS_2DEffect.cs">
+		<Placement>Script Base.</Placement>
+        <Description>
+			2D effect base class.
+        </Description>
+    </File>
+	
+	<File name="JCS_AlphaObject.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			This will approach to specific alpha value 
+			every frame.
+        </Description>
+    </File>
+	
+	<File name="JCS_ButtonSoundEffect.cs">
+		<Placement>GUI component, button.</Placement>
+        <Description>
+			Customize your own button sound base on different 
+			circumstance.
+			
+			Please use this class with Unity's "Event Trigger (Script)"!!!
+        </Description>
+    </File>
+	
+	<File name="JCS_DragDropObject.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			Object that can be drag and drop.
+        </Description>
+    </File>
+	
+	<File name="JCS_FadeObject.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			Fade alpha the object in particular value.
+        </Description>
+    </File>
+	
+	<File name="JCS_FadeSound.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			Class do the sound fade in/out effect.
+        </Description>
+    </File>
+	
+	<File name="JCS_OneShotObject.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			Do one shot on object.
+        </Description>
+    </File>
+	
+	<File name="JCS_Rotation.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			Do the rotate action depends on axis.
+        </Description>
+    </File>
+	
+	<File name="JCS_ScaleEffect.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			Scale approach to a specific scale value.
+        </Description>
+    </File>
+	
+	<File name="JCS_SlideEffect.cs">
+		<Placement>Any transform/node.</Placement>
+        <Description>
+			Make object to make the smooth slide effect.
+			- Could be compose with JCS_TransfromTweener class.
+        </Description>
+    </File>
 </Effects>
 <Enums>
     <2D>
@@ -987,6 +1104,14 @@ Already assign: no need to touch or move.
 <Events>
     <Destroy>
         <Anim>
+			<File name="JCS_2DDestroyAnimEndEvent.cs">
+                <Placement></Placement>
+                <Description>
+                    Play Animator and destroy after it played animation 
+                    depends on loop times.
+                </Description>
+            </File>
+			
             <File name="JCS_DestroyAnimBackForthEvent.cs">
                 <Placement></Placement>
                 <Description>
@@ -1017,7 +1142,12 @@ Already assign: no need to touch or move.
             <Description>Destroy the object with the time and timer.</Description>
         </File>
         
-        <File name="JCS_DestroySoundEvent.cs">
+        <File name="JCS_DestroyParticleEndEvent.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>Destroy if the particle system ends.</Description>
+        </File>
+        
+        <File name="JCS_DestroySoundEndEvent.cs">
             <Placement>Any transform/node.</Placement>
             <Description>Play the sound and destroy the game object itself.</Description>
         </File>
@@ -1033,6 +1163,12 @@ Already assign: no need to touch or move.
             <Description>Check if the object hit something on the list.</Description>
         </File>
     </Hit>
+	<Sound>
+		<File name="JCS_TriggerSwitchBGMEvent.cs">
+			<Placement>Any transform/node.</Placement>
+            <Description>Trigger switch the background music.</Description>
+		</File>
+	</Sound>
     <System>
         
         <File name="JCS_QuitApplicationOnLoadEvent.cs">
@@ -2141,6 +2277,13 @@ Already assign: no need to touch or move.
             be destroy but did not destroyed.
         </Description>
     </File>
+	
+	<File name="JCS_INIFileReader.cs">
+        <Placement>Script base.</Placement>
+        <Description>
+            This class help read the .ini/.properties file.
+        </Description>
+    </File>
     
     <File name="KeywordReplace.cs">
         <Placement>Script base.</Placement>
@@ -2168,6 +2311,11 @@ Already assign: no need to touch or move.
     <File name="JCS_Physics.cs">
         <Placement>Script base.</Placement>
         <Description>List of all the physics function here.</Description>
+    </File>
+    
+    <File name="JCS_Random.cs">
+        <Placement>Script base.</Placement>
+        <Description>Store of random algorithm.</Description>
     </File>
     
     <File name="JCS_Utility.cs">

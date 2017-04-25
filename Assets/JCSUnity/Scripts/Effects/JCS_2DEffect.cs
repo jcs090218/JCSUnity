@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// 2D effect base class.
     /// </summary>
     public abstract class JCS_2DEffect
         : MonoBehaviour    

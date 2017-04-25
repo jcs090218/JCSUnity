@@ -35,13 +35,6 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private void SetPlatformType(JCS_PlatformType pt)
-        {
-            if (SIMULATE_PLATFORM_TYPE)
-                return;
-
-            PLATFORM_TYPE = pt;
-        }
 
         //----------------------
         // Protected Variables
@@ -49,6 +42,13 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        private void SetPlatformType(JCS_PlatformType pt)
+        {
+            if (SIMULATE_PLATFORM_TYPE)
+                return;
+
+            PLATFORM_TYPE = pt;
+        }
 
         //========================================
         //      Unity's function

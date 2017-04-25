@@ -17,7 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage scenes changes.
     /// </summary>
-    public class JCS_SceneManager 
+    public class JCS_SceneManager
         : MonoBehaviour
     {
 
@@ -77,11 +77,11 @@ namespace JCSUnity
 
         [Tooltip("Fade in time. (For this scene)")]
         [SerializeField]
-        private float mFadeInTime = 1.0f;
+        private float mSceneFadeInTime = 1.0f;
 
         [Tooltip("Fade out time. (For this scene)")]
         [SerializeField]
-        private float mFadeOutTime = 1.0f;
+        private float mSceneFadeOutTime = 1.0f;
 
         // fade the sound while switching the scene.
         private JCS_FadeSound mJCSFadeSound = null;
@@ -106,8 +106,8 @@ namespace JCSUnity
         private JCS_BlackScreen GetJCSBlackScreen() { return this.mJCSBlackScreen; }
 
         public bool OverrideSetting { get { return this.mOverrideSetting; } }
-        public float SceneFadeInTime { get { return this.mFadeInTime; } set { this.mFadeInTime = value; } }
-        public float SceneFadeOutTime { get { return this.mFadeOutTime; } set { this.mFadeOutTime = value; } }
+        public float SceneFadeInTime { get { return this.mSceneFadeInTime; } set { this.mSceneFadeInTime = value; } }
+        public float SceneFadeOutTime { get { return this.mSceneFadeOutTime; } set { this.mSceneFadeOutTime = value; } }
 
         //========================================
         //      Unity's function
@@ -161,18 +161,23 @@ namespace JCSUnity
                     }
                     break;
             }
-            
+
 
             if (JCS_SoundSettings.instance.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
             {
-                // add the component if the sound need to be fade.
-                mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+                // get the component.
+                if (mJCSFadeSound == null)
+                    mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
                 // set the background audio source.
-                mJCSFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBackgroundMusic());
+                mJCSFadeSound.SetAudioSource(
+                    JCS_SoundManager.instance.GetBackgroundMusic());
 
                 // active the fade sound in effect.
-                mJCSFadeSound.FadeIn(JCS_GameSettings.GetBGM_Volume(), mFadeOutTime);
+                mJCSFadeSound.FadeIn(
+                    JCS_GameSettings.GetBGM_Volume(),
+                    /* Fade in the sound base on the setting. */
+                    JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
             }
 
             // the game is loaded start the game agian
@@ -297,7 +302,7 @@ namespace JCSUnity
                     break;
             }
 
-            
+
 
             // start fading sound
             if (JCS_SoundSettings.instance.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)

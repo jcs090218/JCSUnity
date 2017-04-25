@@ -165,12 +165,12 @@ namespace JCSUnity
                 float tempMoveForce = moveForce / 2;
 
                 // override x
-                mVelocity.x = JCS_Utility.JCS_FloatRange(
+                mVelocity.x = JCS_Random.Range(
                     -tempMoveForce,
                     tempMoveForce);
 
                 // apply depth
-                mVelocity.z = JCS_Utility.JCS_FloatRange(
+                mVelocity.z = JCS_Random.Range(
                     -tempMoveForce,
                     tempMoveForce);
             }

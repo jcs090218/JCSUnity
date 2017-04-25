@@ -126,7 +126,7 @@ namespace JCSUnity
                         9999, 
                         new Vector2(
                             x_distance * count, 
-                            JCS_Utility.JCS_FloatRange(-y_randDistance, y_randDistance)), 
+                            JCS_Random.Range(-y_randDistance, y_randDistance)), 
                         6, 
                         30, 
                         0);
@@ -162,7 +162,7 @@ namespace JCSUnity
                 pos, 
                 hit, 
                 percentOfCritical, 
-                JCS_Utility.JCS_IntRange, 
+                JCS_Random.Range, 
                 defenseValue, 
                 isEnemy, 
                 hitSound);
@@ -287,7 +287,7 @@ namespace JCSUnity
                 damages, 
                 pos, 
                 cirticalChance, 
-                JCS_Utility.JCS_IntRange,
+                JCS_Random.Range,
                 isEnemy,
                 hitSound);
         }

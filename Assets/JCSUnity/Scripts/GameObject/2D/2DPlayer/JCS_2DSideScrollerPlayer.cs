@@ -588,7 +588,7 @@ namespace JCSUnity
 
             ExitClimbing(0);
 
-            int randDirection = JCS_Utility.JCS_IntRange(0, 2);        // 0 ~ 1
+            int randDirection = JCS_Random.Range(0, 2);        // 0 ~ 1
 
             // if 0 push right, else if 1 push left
             float pushVel = (randDirection == 0) ? mHitVelX : -mHitVelX;

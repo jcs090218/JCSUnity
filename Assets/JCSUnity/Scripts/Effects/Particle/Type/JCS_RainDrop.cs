@@ -17,7 +17,7 @@ namespace JCSUnity
     /// 
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
-    [RequireComponent(typeof(JCS_2DGoStraightAction))]
+    [RequireComponent(typeof(JCS_3DGoStraightAction))]
     public class JCS_RainDrop
         : JCS_WeatherParticle
     {

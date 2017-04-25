@@ -145,7 +145,7 @@ namespace JCSUnity
         /// </summary>
         public void SpawnATransform()
         {
-            int spawnIndex = JCS_Utility.JCS_IntRange(0, mSpawnList.Count);
+            int spawnIndex = JCS_Random.Range(0, mSpawnList.Count);
 
             // check null ref.
             if (mSpawnList[spawnIndex] == null)

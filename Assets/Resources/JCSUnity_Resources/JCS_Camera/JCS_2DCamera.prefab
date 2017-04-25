@@ -5,15 +5,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 449364}
-  - 20: {fileID: 2086022}
-  - 92: {fileID: 9230452}
-  - 124: {fileID: 12476462}
-  - 114: {fileID: 11492924}
-  - 82: {fileID: 8272530}
-  - 114: {fileID: 11423138}
+  - component: {fileID: 449364}
+  - component: {fileID: 2086022}
+  - component: {fileID: 9230452}
+  - component: {fileID: 12476462}
+  - component: {fileID: 11492924}
+  - component: {fileID: 8272530}
+  - component: {fileID: 11423138}
   m_Layer: 0
   m_Name: JCS_2DCamera
   m_TagString: MainCamera
@@ -30,11 +30,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011653593838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2086022
 Camera:
   m_ObjectHideFlags: 1
@@ -85,6 +85,7 @@ AudioSource:
   Loop: 1
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -97,12 +98,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -113,7 +116,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -124,7 +128,8 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -135,7 +140,8 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -173,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402f95fbcfa11b54498e613b813c9297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mVelocity: {x: 0, y: 0, z: 0}
   mGameDepth: 0
   mDisplayGameDepthCamera: 1
   mGameCamColor: {r: 1, g: 0, b: 0, a: 1}
@@ -181,6 +188,7 @@ MonoBehaviour:
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
   mTargetTransform: {fileID: 0}
+  mHardTrack: 0
   mFreezeInRuntime: 0
   mFreezeX: 0
   mFreezeY: 0
@@ -217,14 +225,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011653593838}
-  - 82: {fileID: 82000011908073410}
-  - 114: {fileID: 114000010799565348}
-  - 114: {fileID: 114000012675170792}
+  - component: {fileID: 4000011653593838}
+  - component: {fileID: 82000011908073410}
+  - component: {fileID: 114000010799565348}
+  - component: {fileID: 114000012675170792}
   m_Layer: 0
-  m_Name: JCS_2DParticleSystem
+  m_Name: JCS_ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,10 +247,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 12.03, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 449364}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &82000011908073410
 AudioSource:
   m_ObjectHideFlags: 1
@@ -259,6 +267,7 @@ AudioSource:
   Loop: 1
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -271,12 +280,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -287,7 +298,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -298,7 +310,8 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -309,7 +322,8 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -343,11 +357,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mNumOfParticle: 1000
   mParticle: {fileID: 0}
+  mActive: 1
+  mActiveThread: 1
   mOrderLayer: 15
   mDensity: 5
   mWindSpeed: -10
-  mRandPos: 50
-  mRandAngle: 0
+  mRandPosX: 0
+  mRandPosY: 0
+  mRandPosZ: 0
+  mRandAngleX: 0
+  mRandAngleY: 0
+  mRandAngleZ: 0
+  mAlwaysTheSameScale: 1
+  mRandScaleX: 0
+  mRandScaleY: 0
+  mRandScaleZ: 0
   mFreezeX: 0
   mFreezeY: 1
   mFreezeZ: 1

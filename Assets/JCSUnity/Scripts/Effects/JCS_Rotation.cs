@@ -163,7 +163,7 @@ namespace JCSUnity
             float val = JCS_Mathf.ToPositive(value);
 
             // add up he randomize value.
-            mRotateSpeed += JCS_Utility.JCS_FloatRange(-val, val);
+            mRotateSpeed += JCS_Random.Range(-val, val);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace JCSUnity
         {
             // NOTE(jenchieh): see JCS_Vector3Direction.cs enum.
             // there are 0 ~ 26 options.
-            int directionSize = JCS_Utility.JCS_IntRange(0, 26);
+            int directionSize = JCS_Random.Range(0, 26);
 
             mRotateDirection = (JCS_Vector3Direction)directionSize;
         }

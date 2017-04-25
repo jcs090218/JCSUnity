@@ -143,7 +143,7 @@ namespace JCSUnity
                 return;
 
             // get the offset random time.
-            float randTime = JCS_Utility.JCS_FloatRange(-mRandomTimeRange, mRandomTimeRange);
+            float randTime = JCS_Random.Range(-mRandomTimeRange, mRandomTimeRange);
 
             // formula, on timing design here.
             mDropRealTime = randTime + mTimePerDrop;

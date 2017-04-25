@@ -10,10 +10,14 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 
+
 namespace JCSUnity
 {
 
     /// <summary>
+    /// Customize your own button sound base on different 
+    /// circumstance.
+    /// 
     /// Please use this class with Unity's "Event Trigger (Script)"!!!
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]

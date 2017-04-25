@@ -17,9 +17,8 @@ namespace JCSUnity
     /// <summary>
     /// Handle frame by frame animation in the simple way.
     /// </summary>
-    [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_2DAnimation
-        : MonoBehaviour
+        : JCS_UnityObject
     {
         //----------------------
         // Public Variables
@@ -31,10 +30,6 @@ namespace JCSUnity
         private JCS_2DAnimator mJCS2DAnimator = null;
 
         [Header("** Check Variables (JCS_Animation) **")]
-
-        [Tooltip("sprite renderer component to do the animation.")]
-        [SerializeField]
-        private SpriteRenderer mSpriteRenderer = null;
 
         [Tooltip("Frame this animation current playing.")]
         [SerializeField]
@@ -106,9 +101,20 @@ this, default is 1.")]
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
         // Is the animation done playing?
         public bool DonePlaying { get { return this.mDonePlaying; } }
-        public void SetSpriteRenderer(SpriteRenderer sp) { this.mSpriteRenderer = sp; }
         public void SetJCS2DAnimator(JCS_2DAnimator jcs2dAnimator) { this.mJCS2DAnimator = jcs2dAnimator; }
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
+
+        // Bind.
+        public void SetAnimationFrame(Sprite[] frames)
+        {
+            this.mAnimFrames = frames;
+            Awake();
+        }
+        public Sprite[] GetAnimationFrame()
+        {
+            return this.mAnimFrames;
+        }
+        public float FramePerSec { get { return this.mFramePerSec; } set { this.mFramePerSec = value; } }
 
         //========================================
         //      Unity's function
@@ -123,11 +129,11 @@ this, default is 1.")]
              *   -> JCS_2DAnimation (Own animation sequence.)
              *   -> JCS_2DAnimation (Own animation sequence.)
              */
-             // Even we get the the sprite renderer component, 
-             // JCS_2DAnimator will override this component if this 
-             // component(JCS_2DAnimation) are in the array of the 
-             // JCS_2DAnimator component.
-            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+            // Even we get the the sprite renderer component, 
+            // JCS_2DAnimator will override this component if this 
+            // component(JCS_2DAnimation) are in the array of the 
+            // JCS_2DAnimator component.
+            UpdateUnityData();
 
             mCurrentPlayingFrame = mStartingFrame;
 
@@ -177,6 +183,9 @@ this, default is 1.")]
         /// </summary>
         public void UpdateMaxFrame()
         {
+            if (mAnimFrames == null)
+                return;
+
             this.mMaxFrame = this.mAnimFrames.Length;
         }
 
@@ -276,7 +285,7 @@ this, default is 1.")]
             PutAnimInFrame();
 
             // set the current sprite.
-            mSpriteRenderer.sprite = mAnimFrames[mCurrentPlayingFrame];
+            LocalSprite = mAnimFrames[mCurrentPlayingFrame];
         }
 
         /// <summary>
@@ -317,10 +326,10 @@ this, default is 1.")]
                 {
                     // current frame will just be the last frame.
                     mCurrentPlayingFrame = mMaxFrame;
-
-                    // set the flag up.
-                    mDonePlaying = true;
                 }
+
+                // set the flag up.
+                mDonePlaying = true;
             }
 
             // set the current frame.
