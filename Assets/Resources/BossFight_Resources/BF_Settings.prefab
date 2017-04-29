@@ -5,12 +5,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 427038}
-  - 114: {fileID: 11423690}
-  - 114: {fileID: 11476276}
-  - 114: {fileID: 11477830}
+  - component: {fileID: 427038}
+  - component: {fileID: 11423690}
+  - component: {fileID: 11476276}
+  - component: {fileID: 11477830}
   m_Layer: 0
   m_Name: BF_Settings
   m_TagString: Untagged
@@ -27,10 +27,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11423690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9764ce3382cb2f94a9fe5100d919e8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CHARACTERS_IN_TEAM: 4
+  CHARACTERS_IN_TEAM: 2
   CHARACTERS_IN_GAME:
   - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
   - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
@@ -65,6 +65,7 @@ MonoBehaviour:
   TOTAL_MOB_IN_SCENE: 15
   FREEZE_COLOR: {r: 0.7058823, g: 0.7058823, b: 1, a: 1}
   BURN_COLOR: {r: 1, g: 0.75735295, b: 0.75735295, a: 1}
+  LEVEL_SELECTED_NAME: 
 --- !u!114 &11477830
 MonoBehaviour:
   m_ObjectHideFlags: 1

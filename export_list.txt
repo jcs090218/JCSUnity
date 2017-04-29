@@ -5,7 +5,6 @@ the 'Export Package...' button.
 
 
 -> FrameworkTest_Assets
--> JCS_GameData
 -> JCSUnity
 -> Libraries
     -> SpriteMask

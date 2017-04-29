@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <BF_GameData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Copyright>Copyright 2016 JCSUnity, Taiwan</Copyright>
+  <Copyright>Copyright 2017 JCSUnity, Taiwan</Copyright>
   <Version>Package file v1.0</Version>
   <ItemsInclude>
     <ItemIdInclude>
@@ -21,5 +21,5 @@
     </ItemIdInclude>
   </ItemsInclude>
   <Name />
-  <Cash>30309</Cash>
+  <Cash>41376</Cash>
 </BF_GameData>

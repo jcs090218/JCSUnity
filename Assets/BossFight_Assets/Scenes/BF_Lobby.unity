@@ -1777,7 +1777,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 3
   mCount: 2
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 3
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -5821,7 +5821,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 7
   mCount: 2
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -6514,7 +6514,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 1
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -6829,7 +6829,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 5
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -9179,7 +9179,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 5
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -10000,7 +10000,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 1
   mCount: 2
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -10628,7 +10628,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 1
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -10944,7 +10944,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 1
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -11443,7 +11443,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 5
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -11991,10 +11991,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 11476276, guid: 05c9ad1b96b0c6b48ae48c698a6f7e3a, type: 2}
-      propertyPath: CHARACTERS_IN_TEAM
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05c9ad1b96b0c6b48ae48c698a6f7e3a, type: 2}
   m_IsPrefabParent: 0
@@ -12530,7 +12526,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 7
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}

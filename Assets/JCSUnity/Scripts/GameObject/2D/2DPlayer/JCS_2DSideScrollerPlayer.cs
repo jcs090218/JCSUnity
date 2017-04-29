@@ -16,9 +16,9 @@ namespace JCSUnity
     /// <summary>
     /// Character controll of player
     /// </summary>
-    [RequireComponent(typeof(JCS_2DCharacterAnimator))]
     [RequireComponent(typeof(JCS_2DSideScrollerPlayerAudioController))]
     [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(JCS_2DAnimator))]
     public class JCS_2DSideScrollerPlayer
         : JCS_Player
     {
@@ -30,6 +30,7 @@ namespace JCSUnity
         // Private Variables
 
         protected SpriteRenderer mSpriteRenderer = null;
+        protected JCS_2DAnimator mJCS2DAnimator = null;
 
         //-- Action (Ladder, Rope)
         [Header("** Check Variables (JCS_2DSideScrollerPlayer) **")]
@@ -98,7 +99,6 @@ namespace JCSUnity
         [SerializeField]
         private Vector3[] mJumpAnimOffset = null;
 
-        private JCS_2DCharacterAnimator mCharacterAnimator = null;
         private int mOrderLayer = 15;
 
         //-- Audio Control
@@ -166,9 +166,7 @@ namespace JCSUnity
         public bool CanRope { get { return this.mCanRope; } set { this.mCanRope = value; } }
         public void SetJumpType(JCS_JumpeType type) { this.mJumpType = type; }
         public JCS_JumpeType GetJumpType() { return this.mJumpType; }
-        public JCS_2DCharacterAnimator GetCharacterAnimator() { return this.mCharacterAnimator; }
-        public Animator GetAnimator() { return this.mCharacterAnimator.GetAnimator(); }
-        public string GetAnimationState() { return this.mCharacterAnimator.GetAnimationState(); }
+        public JCS_2DAnimator GetCharacterAnimator() { return this.mJCS2DAnimator; }
         public bool isGrounded() { return this.mCharacterController.isGrounded; }
         public JCS_2DSideScrollerPlayerAudioController GetAudioController() { return this.mAudioController; }
         public int JumpCount { get { return this.mJumpCount; } }
@@ -189,9 +187,9 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mCharacterAnimator = this.GetComponent<JCS_2DCharacterAnimator>();
             this.mAudioController = this.GetComponent<JCS_2DSideScrollerPlayerAudioController>();
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+            this.mJCS2DAnimator = this.GetComponent<JCS_2DAnimator>();
         }
 
         protected override void Start()
@@ -514,12 +512,16 @@ namespace JCSUnity
             if (!isGrounded())
                 return;
 
-            if (mStartClimbing)
-                return;
+            /**
+             * NOTE(jenchieh): i dont think these two return really effect
+             * anything.
+             */
+            //if (mStartClimbing)
+            //    return;
 
-            // cannot prone while climbing.
-            if (CharacterState == JCS_2DCharacterState.CLIMBING)
-                return;
+            //// cannot prone while climbing.
+            //if (CharacterState == JCS_2DCharacterState.CLIMBING)
+            //    return;
 
             if (CanRope || CanLadder)
             {
@@ -633,9 +635,9 @@ namespace JCSUnity
         /// </returns>
         protected bool isInAttackStage()
         {
-            JCS_LiveObjectState lastState = GetCharacterAnimator().GetCurrentAnimationState();
+            JCS_LiveObjectState lastState = (JCS_LiveObjectState)GetCharacterAnimator().CurrentAnimId;
             if (lastState == JCS_LiveObjectState.RAND_ATTACK && 
-                !mCharacterAnimator.GetEndAttackStage())
+                !GetCharacterAnimator().CurrentAnimation.DonePlaying)
                 return true;
 
             return false;
@@ -651,21 +653,31 @@ namespace JCSUnity
         /// </returns>
         protected bool DoAnimation(JCS_LiveObjectState state)
         {
-            if (!GetCharacterAnimator().GetEndAttackStage())
-                return false;
+            if (GetCharacterAnimator().CurrentAnimation != null)
+            {
+                if (GetCharacterAnimator().CurrentAnimId == (int)JCS_LiveObjectState.RAND_ATTACK)
+                {
+                    if (!GetCharacterAnimator().CurrentAnimation.DonePlaying)
+                        return false;
+                }
+                    
+            }
 
             if (state != JCS_LiveObjectState.RAND_ATTACK)
             {
                 if (CharacterState != JCS_2DCharacterState.CLIMBING)
                 {
-                    JCS_LiveObjectState lastState = GetCharacterAnimator().GetCurrentAnimationState();
+                    JCS_LiveObjectState lastState = (JCS_LiveObjectState)GetCharacterAnimator().CurrentAnimId;
 
                     if (lastState == JCS_LiveObjectState.JUMP && !isGrounded())
                         return false;
                 }
             }
 
-            mCharacterAnimator.DoAnimation(state);
+            if (state == JCS_LiveObjectState.RAND_ATTACK)
+                GetCharacterAnimator().PlayOneShot((int)JCS_LiveObjectState.RAND_ATTACK);
+            else
+                GetCharacterAnimator().DoAnimation((int)state);
             DoSound(state);
 
             return true;
@@ -759,9 +771,9 @@ namespace JCSUnity
             {
                 if (!mAutoClimb)
                 {
-                    if (!mCharacterAnimator.IsInState(JCS_LiveObjectState.STAND) &&
-                        !mCharacterAnimator.IsInState(JCS_LiveObjectState.JUMP) &&
-                        !mCharacterAnimator.IsInState(JCS_LiveObjectState.WALK))
+                    if (!GetCharacterAnimator().IsInState((int)JCS_LiveObjectState.STAND) &&
+                        !GetCharacterAnimator().IsInState((int)JCS_LiveObjectState.JUMP) &&
+                        !GetCharacterAnimator().IsInState((int)JCS_LiveObjectState.WALK))
                     {
                         ExitClimbing(0);
                         return;
@@ -810,7 +822,7 @@ namespace JCSUnity
                 else
                 {
                     status = JCS_ClimbMoveType.IDLE;
-                    mCharacterAnimator.StopAnimationInFrame();
+                    GetCharacterAnimator().StopAnimationInFrame();
                 }
             }
 
@@ -846,7 +858,7 @@ namespace JCSUnity
                 this.transform.position = newPos;
 
                 // start the animation agian
-                mCharacterAnimator.PlayAnimationInFrame();
+                GetCharacterAnimator().PlayAnimationInFrame();
             }
             else
             {
@@ -920,7 +932,7 @@ namespace JCSUnity
             mVelocity.y = jumpForce;
 
             // start the animation agian
-            mCharacterAnimator.PlayAnimationInFrame();
+            GetCharacterAnimator().PlayAnimationInFrame();
 
             if (jumpForce != 0)
             {
@@ -939,7 +951,7 @@ namespace JCSUnity
             if (mClimbingTransform == null)
                 return false;
 
-            // when is in air, character can blim what ever
+            // when is in air, character can climb what ever
             if (!isGrounded())
                 return true;
 

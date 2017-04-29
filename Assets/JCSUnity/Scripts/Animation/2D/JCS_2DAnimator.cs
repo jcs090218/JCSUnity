@@ -29,6 +29,14 @@ namespace JCSUnity
         // Private Variables
 
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
+
+        [SerializeField]
+        private bool mTestWithKey = true;
+#endif
+
+
         [Header("** Check Variables Variables (JCS_I2DAnimator) **")]
 
         [Tooltip("Current animation id.")]
@@ -44,8 +52,10 @@ namespace JCSUnity
         private int mMaxAnimCount = 0;
 
         // Current animation stack.
-        private JCS_2DAnimation mStackAnimation = null;
+        private JCS_2DAnimation mStackAnim = null;
         private int mStackAnimId = -1;
+
+        private JCS_2DAnimation mOneShotAnim = null;
 
 
         [Header("** Runtime Variables Variables (JCS_I2DAnimator) **")]
@@ -67,6 +77,8 @@ default is 1.")]
         //      setter / getter
         //------------------------------
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
+        public int CurrentAnimId { get { return this.mCurrentAnimId; } }
+        public JCS_2DAnimation CurrentAnimation { get { return this.mCurrentAnimation; } }
 
         //========================================
         //      Unity's function
@@ -118,14 +130,17 @@ default is 1.")]
 #if (UNITY_EDITOR)
         private void Test()
         {
+            if (!mTestWithKey)
+                return;
+
             if (Input.GetKey(KeyCode.A))
-                SwitchAnimation(0, true);
+                DoAnimation(0, true);
 
             if (Input.GetKey(KeyCode.S))
-                SwitchAnimation(1, false);
+                DoAnimation(1, false);
 
             if (Input.GetKey(KeyCode.D))
-                SwitchAnimation(2, true);
+                DoAnimation(2, true);
 
             if (Input.GetKey(KeyCode.G))
                 PlayOneShot(0);
@@ -143,7 +158,11 @@ default is 1.")]
         /// </summary>
         /// <param name="id"> animation index in array. </param>
         /// <param name="over"> override the animation? </param>
-        public void SwitchAnimation(int id, bool over = false)
+        /// <param name="oneShot"> Is this animation playing one shot? </param>
+        public void DoAnimation(
+            int id, 
+            bool over = false, 
+            bool oneShot = false)
         {
             if (!over)
             {
@@ -166,11 +185,19 @@ default is 1.")]
                 return;
             }
 
+            if (oneShot)
+            {
+                // restart the target animation.
+                mCurrentAnimation.Play(0, true);
+            }
+            else
+            {
+                // play target animation.
+                mCurrentAnimation.Play(-1, true);
+            }
+
             // active this animation.
             ActiveOneAnimation(id);
-
-            // restart the animation.
-            mCurrentAnimation.Play();
         }
 
         /// <summary>
@@ -185,16 +212,57 @@ default is 1.")]
             if (!over)
             {
                 // check if play one shot still do the stuff.
-                if (mStackAnimation != null)
+                if (mStackAnim != null)
                     return;
             }
 
             // push the animation to stack.
-            mStackAnimation = mCurrentAnimation;
+            mStackAnim = mCurrentAnimation;
             mStackAnimId = mCurrentAnimId;
 
+            /**
+             * Record down the animation, in order to check if there is 
+             * an animation changes during the one shot function.
+             */
+            mOneShotAnim = mAnimations[id];
+
             // play the newer animation.
-            SwitchAnimation(id);
+            DoAnimation(id, over, true);
+        }
+
+        /// <summary>
+        /// Check if the animation in the same id.
+        /// </summary>
+        /// <param name="inAnimId"> id to check </param>
+        /// <returns> 
+        /// true : the same animation.
+        /// false : vice versa.
+        /// </returns>
+        public bool IsInState(int inAnimId)
+        {
+            return (inAnimId == mCurrentAnimId);
+        }
+
+        /// <summary>
+        /// play the animation in current frame.
+        /// </summary>
+        public void PlayAnimationInFrame()
+        {
+            if (mCurrentAnimation == null)
+                return;
+
+            mCurrentAnimation.Play();
+        }
+
+        /// <summary>
+        /// Stop animation in current frame.
+        /// </summary>
+        public void StopAnimationInFrame()
+        {
+            if (mCurrentAnimation == null)
+                return;
+
+            mCurrentAnimation.Pause();
         }
 
         //----------------------
@@ -253,21 +321,26 @@ default is 1.")]
              * ATTENTION(jenchieh): make sure to clean up the 
              * stack after the animatin is played.
              */
-            if (mStackAnimation == null)
+            if (mStackAnim == null)
                 return;
 
 
             // clean up the stack after the animation is 
             // done playing.
 
-            if (mCurrentAnimation.DonePlaying)
+            /* During the one shot animation, if there are animation change  */
+            if (mOneShotAnim != mCurrentAnimation || 
+                /* Of the animation done playing. */
+                mCurrentAnimation.DonePlaying)
             {
                 // switch the animation back to original 
                 // animation by stack id.
-                SwitchAnimation(mStackAnimId);
+                DoAnimation(mStackAnimId);
 
                 // clean up the stack pointer.
-                mStackAnimation = null;
+                mStackAnim = null;
+                mOneShotAnim = null;
+
                 // clean up stack animation id.
                 mStackAnimId = -1;
             }

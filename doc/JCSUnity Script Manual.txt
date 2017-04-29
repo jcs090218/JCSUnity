@@ -1,5 +1,5 @@
 
-JCSUnity version 1.4.1 Script Manual (Status)
+JCSUnity version 1.4.3 Script Manual (Status)
 
 When using the JCSUnity you may refer to this document,
 which will cover the various scripts and how to properly use them.
@@ -1571,6 +1571,22 @@ Already assign: no need to touch or move.
         </File>
     </In Game Log System>
     <JCS_Buttons>
+        <Dialogue>
+            <File name="JCS_HideDialogueButton.cs">
+                <Placement>Already assign.</Placement>
+                <Description>
+                    Click the button to hide multiple dialogue.
+                </Description>
+            </File>
+            
+            <File name="JCS_ShowDialogueButton.cs">
+                <Placement>Already assign.</Placement>
+                <Description>
+                    Click the button to show multiple dialogyue.
+                </Description>
+            </File>
+        </Dialogue>
+    
         <File name="JCS_EmptyButton.cs">
             <Placement>Already assign.</Placement>
             <Description>
@@ -1582,6 +1598,13 @@ Already assign: no need to touch or move.
             <Placement>Already assign.</Placement>
             <Description>
                 Button that will load up the scene base on the name.
+            </Description>
+        </File>
+        
+        <File name="JCS_RewardAdsButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+                Reward type of Ads button.
             </Description>
         </File>
         
@@ -2021,6 +2044,20 @@ Already assign: no need to touch or move.
             <Description></Description>
         </File>
     </Indie>
+    
+    <File name="JCS_AdvertisementManager.cs">
+        <Placement>Already assign.</Placement>
+        <Description>
+        Handle Advertisment provide by Unity Technologies company.
+     
+        NOTE(jenchieh): If using this manager, you need to do these 
+        two thing.
+     
+            1) Work Online not offline on Unity.
+            2) Enable window->service->Ads service provided by Unity 
+              Technologies.
+        </Description>
+    </File>
     
     <File name="JCS_ApplicationManager.cs">
         <Placement>Already assign.</Placement>

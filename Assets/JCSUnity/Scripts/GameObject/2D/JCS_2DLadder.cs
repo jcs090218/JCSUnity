@@ -26,11 +26,15 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private BoxCollider mBoxCollider = null;
 
+
         [Header("** Initilaize Variable (JCS_2DLadder) **")]
+
         [Tooltip("Ground/Platform the ladder lean on.")]
-        [SerializeField] private BoxCollider mPlatform = null;
+        [SerializeField]
+        private BoxCollider mPlatform = null;
 
         //----------------------
         // Protected Variables
@@ -49,11 +53,11 @@ namespace JCSUnity
             if (mPlatform == null)
             {
                 JCS_Debug.JcsErrors(
-                    "JCS_2DLadder", 
-                      
+                    this, 
                     "U have a ladder without a platform/ground to lean on.");
             }
         }
+
         protected virtual void OnTriggerEnter(Collider other)
         {
             JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
@@ -67,6 +71,7 @@ namespace JCSUnity
                 p.SetClimbingTransform(this.transform);
             }
         }
+
         protected virtual void OnTriggerExit(Collider other)
         {
             JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
@@ -87,13 +92,13 @@ namespace JCSUnity
             }
 
             p.SetClimbingTransform(null);
-            p.GetAnimator().enabled = true;
+            p.GetCharacterAnimator().PlayAnimationInFrame();
             p.CanLadder = false;
         }
 
         protected virtual void OnTriggerStay(Collider other)
         {
-            
+            // base override
         }
 
         //========================================

@@ -125,7 +125,7 @@ namespace JCSUnity
         public static void SetBGM_Volume(float volume)
         {
             BGM_SOUND = volume;
-            JCS_SoundManager.instance.GetBackgroundMusic().volume = volume;
+            JCS_SoundManager.instance.GetBGMAudioSource().volume = volume;
         }
         public static float GetSFXSound_Volume() { return SFX_SOUND; }
         public static void SetSFXSound_Volume(float volume)

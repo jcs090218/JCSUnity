@@ -38,6 +38,13 @@ namespace JCSUnity
 
         private JCS_FadeSound mJCSFadeSound = null;
 
+        // this only hold one audio clip on stack. I do not want
+        // to get to messy about this.
+        private AudioClip mOnStackAudioClip = null;
+
+        private float mOnStackFadeInTime = 0;
+        private float mOnStackFadeOutTime = 0;
+
 
         [Header("** Check Variables (JCS_SoundManager) **")]
 
@@ -83,7 +90,7 @@ namespace JCSUnity
         //------------------------------
         public void SetAudioListener(AudioListener al) { this.mAudioListener = al; }
         public AudioListener GetAudioListener() { return this.mAudioListener; }
-        public AudioSource GetBackgroundMusic() { return this.mBGM; }
+        public AudioSource GetBGMAudioSource() { return this.mBGM; }
         public void SetBackgroundMusic(AudioSource music)
         {
             this.mBGM = music;
@@ -151,6 +158,8 @@ namespace JCSUnity
         private void Update()
         {
             DoSwitchBGM();
+
+            DoStackBGM();
         }
 
         //========================================
@@ -164,8 +173,10 @@ namespace JCSUnity
         /// </summary>
         /// <param name="soundClip"> clip to play. </param>
         /// <param name="fadeTime"> time to fade in and out. </param>
+        /// <param name="loop"> loop music? </param>
         public void SwitchBackgroundMusic(
-            AudioClip soundClip)
+            AudioClip soundClip, 
+            bool loop = true)
         {
             SwitchBackgroundMusic(
                 soundClip,
@@ -173,16 +184,18 @@ namespace JCSUnity
                 JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
         }
 
-        /// <summary>
+        /// /// <summary>
         /// Switch the background music, fading in and out.
         /// </summary>
         /// <param name="soundClip"> clip to play. </param>
         /// <param name="fadeInTime"> time to fade in. </param>
         /// <param name="fadeOutTime"> time to fade out. </param>
+        /// <param name="loop"> loop music? </param>
         public void SwitchBackgroundMusic(
             AudioClip soundClip,
             float fadeInTime,
-            float fadeOutTime)
+            float fadeOutTime,
+            bool loop = true)
         {
             if (mSwitchingBGM)
                 return;
@@ -206,7 +219,10 @@ namespace JCSUnity
 
 
             // get the background music audio source.
-            AudioSource bgmAudioSource = GetBackgroundMusic();
+            AudioSource bgmAudioSource = GetBGMAudioSource();
+
+            // check if loop
+            bgmAudioSource.loop = loop;
 
             // set the audio source.
             mJCSFadeSound.SetAudioSource(bgmAudioSource);
@@ -223,6 +239,58 @@ namespace JCSUnity
             this.mDoneFadingOut = false;
 
             this.mCurrentBGM = soundClip;
+        }
+
+        /// <summary>
+        /// Play one shot background music, after playing it.
+        /// Play the on stack sound.
+        /// </summary>
+        /// <param name="oneShotClip"> One shot BGM </param>
+        /// <param name="onStackClip"> Audio clip on stack </param>
+        public bool PlayOneShotBackgroundMusic(
+            AudioClip oneShotClip,
+            AudioClip onStackClip)
+        {
+            return PlayOneShotBackgroundMusic(
+                oneShotClip, 
+                onStackClip,
+                JCS_SoundSettings.instance.GetSoundFadeOutTimeBaseOnSetting(),
+                JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
+        }
+
+        /// <summary>
+        /// Play one shot background music, after playing it.
+        /// Play the on stack sound.
+        /// </summary>
+        /// <param name="oneShotClip"> One shot BGM </param>
+        /// <param name="onStackClip"> Audio clip on stack </param>
+        /// <param name="fadeInTime"> time to fade in the bgm </param>
+        /// <param name="fadeOutTime"> time to fade out the bgm </param>
+        public bool PlayOneShotBackgroundMusic(
+            AudioClip oneShotClip, 
+            AudioClip onStackClip, 
+            float fadeInTime, 
+            float fadeOutTime)
+        {
+            // stack must be empty before we play it.
+            if (mOnStackAudioClip != null)
+                return false;
+
+            // store audio clip on stack.
+            this.mOnStackAudioClip = onStackClip;
+
+            this.mOnStackFadeInTime = fadeInTime;
+            this.mOnStackFadeOutTime = fadeOutTime;
+
+            // Play one shot the BGM
+            SwitchBackgroundMusic(
+                oneShotClip,
+                fadeInTime,
+                fadeOutTime,
+                /* Dont loop. */
+                false);
+
+            return true;
         }
 
         /// <summary>
@@ -271,7 +339,7 @@ namespace JCSUnity
                 case JCS_SoundSettingType.NONE:
                     return;
                 case JCS_SoundSettingType.BGM_SOUND:
-                    GetBackgroundMusic().volume = volume;
+                    GetBGMAudioSource().volume = volume;
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
                     SetSFXSoundVolume(volume);
@@ -294,7 +362,7 @@ namespace JCSUnity
                 case JCS_SoundSettingType.NONE:
                     return;
                 case JCS_SoundSettingType.BGM_SOUND:
-                    GetBackgroundMusic().mute = act;
+                    GetBGMAudioSource().mute = act;
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
                     SetSFXSoundMute(act);
@@ -429,7 +497,7 @@ namespace JCSUnity
                     return;
 
                 // get the background music audio source.
-                AudioSource bgmAudioSource = GetBackgroundMusic();
+                AudioSource bgmAudioSource = GetBGMAudioSource();
 
                 // set the audio source.
                 mJCSFadeSound.SetAudioSource(bgmAudioSource);
@@ -454,6 +522,38 @@ namespace JCSUnity
                 // done switching the bgm.
                 mSwitchingBGM = false;
             }
+        }
+
+        /// <summary>
+        /// Check if there are audio clip on stack.
+        /// If do, wait for the next BGM done playing, and 
+        /// play the on stack bgm. Eventually clear the 
+        /// stack. 
+        /// 
+        /// Attension: This only work for not looping BGM.
+        /// </summary>
+        private void DoStackBGM()
+        {
+            // nothing to do, the stacks is clean!.
+            if (mOnStackAudioClip == null)
+                return;
+
+            // do not check if switching bgm.
+            if (mSwitchingBGM)
+                return;
+
+            // do nothing if still playing
+            if (GetBGMAudioSource().isPlaying)
+                return;
+
+            // switch bgm
+            SwitchBackgroundMusic(
+                this.mOnStackAudioClip, 
+                this.mOnStackFadeInTime,
+                this.mOnStackFadeOutTime);
+
+            // clean stack
+            mOnStackAudioClip = null;
         }
 
     }

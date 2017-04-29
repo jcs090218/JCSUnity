@@ -102,6 +102,81 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Set on top of the box above the ray.
+        /// </summary>
+        /// <param name="cap"></param>
+        /// <param name="maxDistance"></param>
+        public static bool SetOnTopOfClosestBoxWithRay(
+            CharacterController cap, 
+            float maxDistance, 
+            JCS_Vector3Direction inDirection)
+        {
+            Vector3 direction = cap.transform.TransformDirection(JCS_Utility.VectorDirection(inDirection));
+
+            RaycastHit[] hits = Physics.RaycastAll(cap.transform.position, direction, maxDistance);
+
+            /* Nothing detected. */
+            if (hits.Length == 0)
+                return false;
+
+            foreach (RaycastHit hit in hits)
+            {
+                /* Check if there are box collider on hit. */
+                BoxCollider boxCollider = hit.transform.GetComponent<BoxCollider>();
+                if (boxCollider == null)
+                    continue;
+
+                /* Check ray ignore attached. */
+                JCS_RayIgnore ri = hit.transform.GetComponent<JCS_RayIgnore>();
+                if (ri != null)
+                    continue;
+
+                // set on top of that box
+                SetOnTopOfBox(cap, boxCollider);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Set on top of the box above the ray.
+        /// </summary>
+        /// <param name="box"></param>
+        /// <param name="maxDistance"></param>
+        public static bool SetOnTopOfClosestBoxWithRay(BoxCollider box, float maxDistance)
+        {
+            Vector3 down = box.transform.TransformDirection(Vector3.down);
+
+            RaycastHit[] hits = Physics.RaycastAll(box.transform.position, down, maxDistance);
+
+            /* Nothing detected. */
+            if (hits.Length == 0)
+                return false;
+
+            foreach (RaycastHit hit in hits)
+            {
+                /* Check if there are box collider on hit. */
+                BoxCollider boxCollider = hit.transform.GetComponent<BoxCollider>();
+                if (boxCollider == null)
+                    continue;
+
+                /* Check ray ignore attached. */
+                JCS_RayIgnore ri = hit.transform.GetComponent<JCS_RayIgnore>();
+                if (ri != null)
+                    continue;
+
+                // set on top of that box
+                SetOnTopOfBox(box, boxCollider);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="cap"></param>

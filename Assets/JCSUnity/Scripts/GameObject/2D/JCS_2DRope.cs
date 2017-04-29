@@ -86,7 +86,7 @@ namespace JCSUnity
             }
 
             p.SetClimbingTransform(null);
-            p.GetAnimator().enabled = true;
+            p.GetCharacterAnimator().PlayAnimationInFrame();
             p.CanRope = false;
         }
 

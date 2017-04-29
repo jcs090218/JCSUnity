@@ -40,7 +40,7 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void LateUpdate()
+        private void FixedUpdate()       /* Should use FixedUpdate if no jitter. */
         {
             if (mLayerFriction == 0)
                 return;

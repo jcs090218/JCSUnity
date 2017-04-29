@@ -33,6 +33,9 @@
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+# ignore mac attribute file
+*.DS_Store
+
 # Builds
 *.apk
 *.unitypackage

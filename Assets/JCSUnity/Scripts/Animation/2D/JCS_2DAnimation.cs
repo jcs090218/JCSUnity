@@ -29,6 +29,15 @@ namespace JCSUnity
         // animator using this animation?
         private JCS_2DAnimator mJCS2DAnimator = null;
 
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
+
+        [SerializeField]
+        private bool mTestWithKey = true;
+#endif
+
+
         [Header("** Check Variables (JCS_Animation) **")]
 
         [Tooltip("Frame this animation current playing.")]
@@ -38,6 +47,11 @@ namespace JCSUnity
         [Tooltip("Maxinum frame in the animation.")]
         [SerializeField]
         private int mMaxFrame = 0;
+
+        // flag to know if the animation is done.
+        // ATTENTION(jenchieh): this cannot be use with loop.
+        [SerializeField]
+        private bool mDonePlaying = false;
 
 
         [Header("** Initialize Variables (JCS_Animation) **")]
@@ -77,9 +91,6 @@ this, default is 1.")]
         [SerializeField] [Range(0, 5)]
         private float mAnimationTimeProduction = 1;
 
-        // flag to know if the animation is done.
-        // ATTENTION(jenchieh): this cannot be use with loop.
-        private bool mDonePlaying = false;
 
         //----------------------
         // Protected Variables
@@ -154,12 +165,15 @@ this, default is 1.")]
             Test();
 #endif
 
-            DoAnimation();
+            RunAnimation();
         }
 
 #if (UNITY_EDITOR)
         private void Test()
         {
+            if (!mTestWithKey)
+                return;
+
             if (Input.GetKey(KeyCode.Q))
                 Play();
 
@@ -193,14 +207,27 @@ this, default is 1.")]
         /// Play the animation in current frame.
         /// </summary>
         /// <param name="statFrame"></param>
-        public void Play(int startFrame = 0)
+        public void Play(int startFrame = -1, bool ignoreActive = false)
         {
+            if (!ignoreActive)
+            {
+                // if already playing, do nothing.
+                if (mActive)
+                    return;
+            }
+
             // starting of playing the animation, 
             // animation cannot be done playing!
             mDonePlaying = false;
 
             // set the current animation.
-            mCurrentPlayingFrame = startFrame;
+            if (startFrame != -1)
+            {
+                mCurrentPlayingFrame = startFrame;
+
+                // reset timer.
+                mFrameTimer = 0;
+            }
 
             // make sure animation in the range of valid
             // animation frame count.
@@ -208,9 +235,6 @@ this, default is 1.")]
 
             // play the frame immediatly
             PlayFrame();
-
-            // reset timer.
-            mFrameTimer = 0;
 
             // start the animation.
             mActive = true;
@@ -292,7 +316,7 @@ this, default is 1.")]
         /// Main algorithm to display animation frame 
         /// by frame.
         /// </summary>
-        private void DoAnimation()
+        private void RunAnimation()
         {
             // check if the animation active.
             if (!mActive)

@@ -289,19 +289,23 @@ namespace JCSUnity
             if (camPos.x > mMax_X_PositionInScene)
             {
                 camPos.x = mMax_X_PositionInScene;
+                mVelocity.x = 0;
             }
             else if (camPos.x < mMin_X_PositionInScene)
             {
                 camPos.x = mMin_X_PositionInScene;
+                mVelocity.x = 0;
             }
 
             if (camPos.y > mMax_Y_PositionInScene)
             {
                 camPos.y = mMax_Y_PositionInScene;
+                mVelocity.y = 0;
             }
             else if (camPos.y < mMin_Y_PositionInScene)
             {
                 camPos.y = mMin_Y_PositionInScene;
+                mVelocity.y = 0;
             }
 
             this.transform.position = camPos;

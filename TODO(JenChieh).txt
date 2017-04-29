@@ -23,6 +23,7 @@ $Notice: See LICENSE.txt for modification and distribution information
 
 //-- 2D --//
 * Swim Action
+* Fix 2D Ladder and Rope
 
 //-- 3D --//
 * Control player like Monster Hunter game did.

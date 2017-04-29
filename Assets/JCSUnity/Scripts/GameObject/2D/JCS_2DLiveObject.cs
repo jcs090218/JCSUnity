@@ -142,7 +142,8 @@ to get the information from them.")]
                 return;
 
             // force play animation.
-            m2DAnimator.PlayAnimationInFrame();
+            if (m2DAnimator != null)
+                m2DAnimator.PlayAnimationInFrame();
 
             // force color back to white.
             mSpriteRenderer.color = Color.white;

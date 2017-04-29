@@ -76,9 +76,9 @@ public class BF_Player
     }
 
 #if (UNITY_EDITOR)
-    protected override void FixedUpdate()
+    protected override void Update()
     {
-        base.FixedUpdate();
+        base.Update();
 
         Stand();
 
@@ -114,7 +114,7 @@ public class BF_Player
 
     private void ShootActionFunc()
     {
-        GetCharacterAnimator().DoAnimation(JCS_LiveObjectState.RAND_ATTACK);
+        GetCharacterAnimator().DoAnimation((int)JCS_LiveObjectState.RAND_ATTACK);
         mAudioController.AttackSound();
     }
 

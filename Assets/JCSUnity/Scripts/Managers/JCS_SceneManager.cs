@@ -171,7 +171,7 @@ namespace JCSUnity
 
                 // set the background audio source.
                 mJCSFadeSound.SetAudioSource(
-                    JCS_SoundManager.instance.GetBackgroundMusic());
+                    JCS_SoundManager.instance.GetBGMAudioSource());
 
                 // active the fade sound in effect.
                 mJCSFadeSound.FadeIn(
@@ -307,7 +307,7 @@ namespace JCSUnity
             // start fading sound
             if (JCS_SoundSettings.instance.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
             {
-                mJCSFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBackgroundMusic());
+                mJCSFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBGMAudioSource());
 
                 // fade out sound to zero
                 mJCSFadeSound.FadeOut(0, fadeInTime);

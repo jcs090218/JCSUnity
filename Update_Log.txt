@@ -7,6 +7,15 @@ $Notice: See LICENSE.txt for modification and distribution information
 ========================================================================
 
 
+2017-04-28
+* JCS_AdvertismentManager implemented. (JCSUnity)
+* JCS_RewardAdsButton implemented. (JCSUnity)
+
+2017-04-24
+* Bug fixed JCS_OrderLayer parallax effect jittering issue. (JCSUnity)
+* Zero out the velocity when the camera stopped, bug fixed. (JCSUnity)
+* Update JCS_SoundManager with play one shot of bgm. (JCSUnity)
+
 2017-04-20
 * Update JCS_SceneManager with more proper name variables. (JCSUnity)
 * Update JCS_SoundManaer with 'SwitchBackgroundMusic' 

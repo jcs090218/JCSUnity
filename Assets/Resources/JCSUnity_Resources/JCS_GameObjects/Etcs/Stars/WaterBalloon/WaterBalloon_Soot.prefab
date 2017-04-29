@@ -5,28 +5,28 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 406692}
-  - 212: {fileID: 21241368}
-  - 114: {fileID: 11457274}
-  - 95: {fileID: 9513246}
-  - 114: {fileID: 11466648}
-  - 114: {fileID: 11470946}
-  - 114: {fileID: 11424494}
-  - 114: {fileID: 11452612}
-  - 114: {fileID: 11428504}
-  - 65: {fileID: 6529888}
-  - 114: {fileID: 11457680}
-  - 114: {fileID: 11413690}
-  - 114: {fileID: 11466032}
-  - 114: {fileID: 11421302}
-  - 114: {fileID: 11439952}
-  - 114: {fileID: 11467202}
-  - 114: {fileID: 11491624}
-  - 114: {fileID: 11444812}
-  - 114: {fileID: 11416700}
-  - 114: {fileID: 11400880}
+  - component: {fileID: 406692}
+  - component: {fileID: 21241368}
+  - component: {fileID: 11457274}
+  - component: {fileID: 9513246}
+  - component: {fileID: 11466648}
+  - component: {fileID: 11470946}
+  - component: {fileID: 11424494}
+  - component: {fileID: 11452612}
+  - component: {fileID: 11428504}
+  - component: {fileID: 6529888}
+  - component: {fileID: 11457680}
+  - component: {fileID: 11413690}
+  - component: {fileID: 11466032}
+  - component: {fileID: 11421302}
+  - component: {fileID: 11439952}
+  - component: {fileID: 11467202}
+  - component: {fileID: 11491624}
+  - component: {fileID: 11444812}
+  - component: {fileID: 11416700}
+  - component: {fileID: 11400880}
   m_Layer: 0
   m_Name: WaterBalloon_Soot
   m_TagString: Untagged
@@ -43,10 +43,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.0821774, y: 3.082178, z: 3.082178}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6529888
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -164,9 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff50cc44cb8b5da47b60b220174e9c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mIsHit: 0
   mHitObjectList:
-  - 456e656d7931
+  - JCS_AI_01
   mIncludeClone: 1
+  mDestroyWhenOccurs: 0
 --- !u!114 &11439952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,8 +264,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mOrderLayer: 15
   mLoopTimes: 1
-  mDestroyWithHitList: 0
-  mDestroyWithTime: 1
+  mActiveWhatever: 0
+  mActiveWithHitList: 1
+  mActiveWithDestroyTime: 0
   mSamePosition: 1
   mSameRotation: 1
   mSameScale: 1
@@ -286,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMoveSpeed: -10
   mAxis: 0
+  mRandomizeSpeedAtStart: 0
 --- !u!114 &11467202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,7 +346,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -350,7 +356,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 1
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

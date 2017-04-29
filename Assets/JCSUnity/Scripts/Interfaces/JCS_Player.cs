@@ -98,67 +98,70 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Control this player or not base on boolean pass in.
         /// </summary>
-        /// <param name="act"></param>
+        /// <param name="act"> 
+        /// true : control. 
+        /// false : not control. 
+        /// </param>
         public abstract void ControlEnable(bool act);
 
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Stand();
+        public virtual void Stand() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Attack();
+        public virtual void Attack() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Jump();
+        public virtual void Jump() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Prone();
+        public virtual void Prone() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Alert();
+        public virtual void Alert() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Fly();
+        public virtual void Fly() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Ladder();
+        public virtual void Ladder() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Rope();
+        public virtual void Rope() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Dance();
+        public virtual void Dance() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Swim();
+        public virtual void Swim() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Sit();
+        public virtual void Sit() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Hit();
+        public virtual void Hit() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Die();
+        public virtual void Die() { }
         /// <summary>
         /// 
         /// </summary>
-        public abstract void Ghost();
+        public virtual void Ghost() { }
 
         //----------------------
         // Protected Functions
