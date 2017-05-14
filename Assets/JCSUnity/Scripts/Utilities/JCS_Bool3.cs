@@ -14,13 +14,17 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Structure hold three boolean.
     /// </summary>
-    public class JCS_Bool3
+    [System.Serializable]
+    public struct JCS_Bool3
     {
-        public bool check1 = false;
-        public bool check2 = false;
-        public bool check3 = false;
+        public static JCS_Bool3 allTrue { get { return new JCS_Bool3(true, true, true); } }
+        public static JCS_Bool3 allFalse { get { return new JCS_Bool3(false, false, false); } }
+        
+        public bool check1;
+        public bool check2;
+        public bool check3;
 
         // init specific value
         public JCS_Bool3(bool ch1 = false, bool ch2 = false, bool ch3 = false)

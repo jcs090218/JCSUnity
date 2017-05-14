@@ -240,7 +240,7 @@ namespace JCSUnity
                 mCriticalChance = mAbilityFormat.GetCriticalChance();
             }
             else {
-                JCS_Debug.JcsReminders(
+                JCS_Debug.LogReminders(
                     "JCS_ApplyDamageTextToLiveObjectAction", 
                     "You sure to not using any \"JCS_AbilityFormat\"?");
             }

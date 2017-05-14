@@ -271,7 +271,7 @@ namespace JCSUnity
             if (targetVal < currentVal)
                 return --currentVal;
 
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                 "JCS_Mathf", 
                  
                 "Errors with approaching to a value...");
@@ -488,7 +488,10 @@ namespace JCSUnity
         /// </summary>
         /// <param name="digit"> digit targeting. </param>
         /// <param name="number"> source number. </param>
-        /// <returns> single digit. </returns>
+        /// <returns> 
+        /// single digit, if there are empty digit that are 
+        /// zero at the left, it will return -1. 
+        /// </returns>
         public static int GetSingleDigit(int digit, int number)
         {
             int totalDigit = number.ToString().Length;

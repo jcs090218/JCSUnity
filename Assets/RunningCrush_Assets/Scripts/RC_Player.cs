@@ -12,7 +12,7 @@ using JCSUnity;
 
 
 /// <summary>
-/// 
+/// Running Crush game's player.
 /// </summary>
 public class RC_Player 
     : JCS_2DSideScrollerPlayer
@@ -286,7 +286,7 @@ public class RC_Player
     }
     private void MobileInput()
     {
-
+        // TODO.
     }
     private void DoIsDead()
     {

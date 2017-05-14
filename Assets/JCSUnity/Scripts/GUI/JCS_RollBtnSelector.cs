@@ -100,6 +100,10 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rbs"></param>
         public void SetFocusSelector(JCS_RollSelectorButton rbs)
         {
             // if still animating disabled.
@@ -119,6 +123,9 @@ namespace JCSUnity
 
             // only enable this
             mFocusBtn.SetInteractable(true);
+
+            // show in front.
+            JCS_Utility.MoveToTheLastChild(mFocusBtn.transform);
 
             // Active anim, so can set the focused button to center.
             FindScrollIndex();
@@ -159,9 +166,8 @@ namespace JCSUnity
 
                 if (currentBtn == null)
                 {
-                    JCS_Debug.JcsErrors(
-                        "JCS_RollBtnSelector",
-                         
+                    JCS_Debug.LogError(
+                         this,
                         "Missing jcs_button assign in the inspector...");
 
                     continue;
@@ -180,7 +186,7 @@ namespace JCSUnity
                 else {
                     // the first one (center)
                     mFocusBtn = currentBtn;
-                    //SetFocusSelector(currentBtn);
+                    JCS_Utility.MoveToTheLastChild(mFocusBtn.transform);
                     currentBtn.SetInteractable(true);
                     mLastScrollIndex = currentBtn.ScrollIndex;
                 }
@@ -239,6 +245,10 @@ namespace JCSUnity
                 currentBtn.ScrollIndex = index;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitAsympScale()
         {
             // if not this effect, return it.
@@ -266,7 +276,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         "JCS_RollBtnSelector",
                          
                         "JCS_ScaleEffect are null but we still want the effect. plz make sure all the button have JCS_ScaleEffet component!");
@@ -288,15 +298,17 @@ namespace JCSUnity
             }
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void FindScrollIndex()
         {
             if (mFocusBtn == null)
             {
-                JCS_Debug.JcsErrors(
-                    "JCS_RollBtnSelector",
-                      
+                JCS_Debug.LogError(
+                    this,
                     "Cannot do the movement without focus button...");
-
                 return;
             }
 
@@ -305,11 +317,9 @@ namespace JCSUnity
 
             if (mLastScrollIndex == currentScrollIndex)
             {
-                JCS_Debug.JcsErrors(
-                    "JCS_RollBtnSelector",
-                     
+                JCS_Debug.LogError(
+                    this,
                     "Last Scroll Index and Current Scroll Index are the same...");
-
                 return;
             }
 
@@ -324,6 +334,10 @@ namespace JCSUnity
 
             mAnimating = true;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void DoAnim()
         {
             if (!mAnimating)
@@ -360,6 +374,11 @@ namespace JCSUnity
                 mScrollIndexCounter = 0;    // reset counter
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="diffIndex"></param>
         private void ApplyTargetForAnim(int diffIndex)
         {
 
@@ -384,7 +403,7 @@ namespace JCSUnity
 
                 if (currentBtn == null || targetBtn == null)
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         "JCS_RollBtnSelector",
                          
                         "Missing jcs_button assign in the inspector...");

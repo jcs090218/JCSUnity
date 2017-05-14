@@ -95,8 +95,8 @@ namespace JCSUnity
         {
             this.mBGM = music;
 
-            this.mBGM.volume = JCS_GameSettings.GetBGM_Volume();
-            this.mBGM.mute = JCS_GameSettings.BGM_MUTE;
+            this.mBGM.volume = JCS_SoundSettings.instance.GetBGM_Volume();
+            this.mBGM.mute = JCS_SoundSettings.instance.BGM_MUTE;
         }
         public JCS_Vector<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
         public JCS_SoundPlayer GetGlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
@@ -140,19 +140,18 @@ namespace JCSUnity
         {
             if (JCS_Camera.main == null)
             {
-                JCS_Debug.JcsErrors(
-                    "JCS_SoundManager",
-
+                JCS_Debug.LogError(
+                    this,
                     "There is no \"JCS_Camera\" assign!");
 
                 return;
             }
 
             // Reset the sound every scene
-            SetSFXSoundVolume(JCS_GameSettings.GetSFXSound_Volume());
-            SetSkillsSoundVolume(JCS_GameSettings.GetSkillsSound_Volume());
-            SetSFXSoundMute(JCS_GameSettings.EFFECT_MUTE);
-            SetSkillsSoundMute(JCS_GameSettings.PERFONAL_EFFECT_MUTE);
+            SetSFXSoundVolume(JCS_SoundSettings.instance.GetSFXSound_Volume());
+            SetSkillsSoundVolume(JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            SetSFXSoundMute(JCS_SoundSettings.instance.EFFECT_MUTE);
+            SetSkillsSoundMute(JCS_SoundSettings.instance.PERFONAL_EFFECT_MUTE);
         }
 
         private void Update()
@@ -301,7 +300,7 @@ namespace JCSUnity
         {
             AudioSource aud = mSFXSounds.at(index);
             if (aud.clip != null)
-                aud.PlayOneShot(aud.clip, JCS_GameSettings.GetSFXSound_Volume());
+                aud.PlayOneShot(aud.clip, JCS_SoundSettings.instance.GetSFXSound_Volume());
         }
 
         /// <summary>
@@ -436,12 +435,12 @@ namespace JCSUnity
         {
             if (sound == null)
             {
-                JCS_Debug.JcsErrors("JCS_SoundManager", "Assigning Source that is null...");
+                JCS_Debug.LogError("JCS_SoundManager", "Assigning Source that is null...");
                 return;
             }
 
             list.push(sound);
-            sound.volume = JCS_GameSettings.GetSFXSound_Volume();
+            sound.volume = JCS_SoundSettings.instance.GetSFXSound_Volume();
         }
 
         /// <summary>
@@ -508,7 +507,7 @@ namespace JCSUnity
 
                 // active the fade sound in effect.
                 mJCSFadeSound.FadeIn(
-                    JCS_GameSettings.GetBGM_Volume(),
+                    JCS_SoundSettings.instance.GetBGM_Volume(),
                     this.mRealSoundFadeOutTime);
 
                 mDoneFadingOut = true;

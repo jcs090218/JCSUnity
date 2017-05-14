@@ -31,21 +31,33 @@ namespace JCSUnity
         // Counter with the liquid bar?
         private JCS_3DLiquidBar mLiquidBar = null;
 
-        [Header("** Runtime Variables (JCS_GUICounter) **")]
+
+        [Header("** Runtime Variables (JCS_3DLiquidBarText) **")]
 
         [Tooltip("Text to do the effect.")]
-        [SerializeField] private Text mCounterText = null;
+        [SerializeField]
+        private Text mCounterText = null;
 
-        [Tooltip("")]
+        [Tooltip("This give the transformation for the Word space to Canvas space.")]
         [SerializeField]
         private Transform mCounterTextWorldTransform = null;
 
         [Tooltip("Text Render maxinum of the liquid bar value.")]
-        [SerializeField] private Text mFullText = null;
+        [SerializeField]
+        private Text mFullText = null;
 
-        [Tooltip("")]
+        [Tooltip("This give the transformation for the Word space to Canvas space.")]
         [SerializeField]
         private Transform mFullTextWorldTransform = null;
+
+
+        [Tooltip("Sprite Render the current value of the liquid bar.")]
+        [SerializeField]
+        private JCS_DeltaNumber mCounterTextSprite = null;
+
+        [Tooltip("Sprite Render the max value ofthe liquid bar.")]
+        [SerializeField]
+        private JCS_DeltaNumber mFullTextSprite = null;
 
         //----------------------
         // Protected Variables
@@ -53,6 +65,8 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_DeltaNumber CounterTextSprite { get { return this.mCounterTextSprite; } set { this.mCounterTextSprite = value; } }
+        public JCS_DeltaNumber FullTextSprite { get { return this.mFullTextSprite; } set { this.mFullTextSprite = value; } }
 
         //========================================
         //      Unity's function
@@ -91,6 +105,12 @@ namespace JCSUnity
 
             if (mFullText != null)
                 mFullText.text = mLiquidBar.MaxValue.ToString();
+
+            if (mCounterTextSprite != null)
+                mCounterTextSprite.UpdateScore((int)mLiquidBar.GetCurrentValue());
+
+            if (mFullTextSprite != null)
+                mFullTextSprite.UpdateScore((int)mLiquidBar.MaxValue);
         }
 
         /// <summary>

@@ -461,7 +461,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -737,6 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlatformTrigger: {fileID: 213185376}
   mPlatformCollider: {fileID: 698739370}
+  mCanBeDownJump: 1
 --- !u!65 &213185376
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -791,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &221993974
@@ -1137,7 +1139,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -1463,7 +1465,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -1617,6 +1619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &474802986
@@ -1738,6 +1741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &512285174
@@ -1817,6 +1821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &531221478
@@ -1896,6 +1901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &543249440
@@ -2242,6 +2248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlatformTrigger: {fileID: 641628789}
   mPlatformCollider: {fileID: 549991531}
+  mCanBeDownJump: 1
 --- !u!65 &641628789
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2500,6 +2507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &673895740
@@ -2865,6 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &773640655
@@ -2946,7 +2955,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -3231,6 +3240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!114 &799884798
@@ -3284,6 +3294,7 @@ MonoBehaviour:
   mCanRope: 0
   mClimbingTransform: {fileID: 0}
   mJumpCount: 0
+  mClimbMoveType: 0
   mCharacterState: 0
   mJumpType: 3
   mJumpYForces:
@@ -3305,6 +3316,7 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   mAirFriction: 0.5
+  mCanDownJump: 0
   mUpKey: 273
   mDownKey: 274
   mRightKey: 275
@@ -3503,6 +3515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlatformTrigger: {fileID: 807369042}
   mPlatformCollider: {fileID: 646013414}
+  mCanBeDownJump: 1
 --- !u!65 &807369042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3711,6 +3724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &889908537
@@ -4383,6 +4397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1082546875
@@ -4518,7 +4533,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -4569,6 +4584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1152286232
@@ -4650,6 +4666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlatformTrigger: {fileID: 1153186431}
   mPlatformCollider: {fileID: 1988519171}
+  mCanBeDownJump: 1
 --- !u!65 &1153186431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4827,7 +4844,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1227455631}
   - component: {fileID: 1227455632}
-  - component: {fileID: 1227455633}
   m_Layer: 0
   m_Name: 31600-rope (1)
   m_TagString: Untagged
@@ -4883,19 +4899,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!114 &1227455633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1227455630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mAbsoluteLayerEffect: 0
-  mAbsotlueLayer: 0
 --- !u!1 &1228945656
 GameObject:
   m_ObjectHideFlags: 0
@@ -5040,6 +5043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlatformTrigger: {fileID: 1240306798}
   mPlatformCollider: {fileID: 756447611}
+  mCanBeDownJump: 1
 --- !u!65 &1240306798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5096,6 +5100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlatformTrigger: {fileID: 1265197291}
   mPlatformCollider: {fileID: 153775883}
+  mCanBeDownJump: 1
 --- !u!65 &1265197291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5128,7 +5133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1279657472
 Transform:
   m_ObjectHideFlags: 0
@@ -5349,7 +5354,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1335358507}
   - component: {fileID: 1335358506}
-  - component: {fileID: 1335358508}
   m_Layer: 0
   m_Name: 31600-rope
   m_TagString: Untagged
@@ -5405,19 +5409,6 @@ Transform:
   m_Father: {fileID: 1648864244}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1335358508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1335358505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mAbsoluteLayerEffect: 0
-  mAbsotlueLayer: 0
 --- !u!1 &1344355493
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,6 +5453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlatformTrigger: {fileID: 1344355496}
   mPlatformCollider: {fileID: 1592179386}
+  mCanBeDownJump: 1
 --- !u!65 &1344355496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5604,6 +5596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1396776573
@@ -5756,6 +5749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1421140602
@@ -5835,6 +5829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1439687286
@@ -6086,7 +6081,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -6216,7 +6211,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -6270,6 +6265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1498794251
@@ -6464,6 +6460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers:
+  - {fileID: 1534545205}
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1534545205
@@ -6542,6 +6540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1551509062
@@ -6703,32 +6702,6 @@ Prefab:
       propertyPath: mParticle
       value: 
       objectReference: {fileID: 441779881}
-    - target: {fileID: 11492924, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: mScrollRange
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 11492924, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: mZoomEffect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11492924, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: mPositionOffset.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11492924, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: mFreezeY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012675170792, guid: 03b8a2ed0bd29f040a9f140a75ef08e4,
-        type: 2}
-      propertyPath: mRandPosX
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012675170792, guid: 03b8a2ed0bd29f040a9f140a75ef08e4,
-        type: 2}
-      propertyPath: mActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
   m_IsPrefabParent: 0
@@ -6879,6 +6852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1594436785
@@ -6935,7 +6909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1647446775
 Transform:
   m_ObjectHideFlags: 0
@@ -6972,6 +6946,7 @@ GameObject:
   - component: {fileID: 1648864245}
   - component: {fileID: 1648864246}
   - component: {fileID: 1648864247}
+  - component: {fileID: 1648864248}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -7017,7 +6992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78f13312eb86c141ac343f2ca51a960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mPlatform: {fileID: 153775883}
+  mSSPlayers: []
+  mPositionPlatform: {fileID: 1265197290}
 --- !u!114 &1648864247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7030,6 +7006,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mEffectToAllChild: 1
+--- !u!114 &1648864248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648864243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mSpriteRenderers:
+  - {fileID: 1335358506}
+  - {fileID: 1227455632}
+  mAbsoluteLayerEffect: 0
+  mAbsotlueLayer: 0
 --- !u!1001 &1689367981
 Prefab:
   m_ObjectHideFlags: 0
@@ -7245,6 +7237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!114 &1717413436
@@ -7534,6 +7527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers:
+  - {fileID: 1755489752}
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1755489752
@@ -7581,7 +7576,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.15, y: 9, z: 0.2}
+  m_Size: {x: 1.15, y: 14, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1755489754
 MonoBehaviour:
@@ -7594,7 +7589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832d153c8fb5f414e987b1756d0c0e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mPlatform: {fileID: 1988519171}
+  mSSPlayers: []
+  mPositionPlatform: {fileID: 1153186430}
 --- !u!114 &1755489755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7875,6 +7871,7 @@ MonoBehaviour:
   mCanRope: 0
   mClimbingTransform: {fileID: 0}
   mJumpCount: 0
+  mClimbMoveType: 0
   mCharacterState: 0
   mJumpType: 2
   mJumpYForces:
@@ -7890,6 +7887,7 @@ MonoBehaviour:
   mJumpAnim: []
   mJumpAnimOffset: []
   mAirFriction: 0.5
+  mCanDownJump: 0
   mUpKey: 273
   mDownKey: 274
   mRightKey: 275
@@ -8071,6 +8069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!95 &1900663406
@@ -8286,6 +8285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1926833617
@@ -8367,7 +8367,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -8423,7 +8423,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -8476,6 +8476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1943753420
@@ -8836,7 +8837,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -8891,6 +8892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &2039511410
@@ -9024,6 +9026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &2096130139
@@ -9262,6 +9265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!114 &2099079923
@@ -9315,6 +9319,7 @@ MonoBehaviour:
   mCanRope: 0
   mClimbingTransform: {fileID: 0}
   mJumpCount: 0
+  mClimbMoveType: 0
   mCharacterState: 0
   mJumpType: 3
   mJumpYForces:
@@ -9330,6 +9335,7 @@ MonoBehaviour:
   mJumpAnim: []
   mJumpAnimOffset: []
   mAirFriction: 0.5
+  mCanDownJump: 0
   mUpKey: 273
   mDownKey: 274
   mRightKey: 275
@@ -9593,7 +9599,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1

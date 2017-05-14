@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// This pushes the player.
     /// </summary>
     public class JCS_2DPushEffect
     : MonoBehaviour
@@ -27,8 +27,16 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private JCS_2DFaceType mDirection = JCS_2DFaceType.FACE_LEFT;
-        [SerializeField] private float mPushSpeed = 10.0f;
+
+        [Header("** Runtime Variables (JCS_2DPushEffect) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_2DFaceType mDirection = JCS_2DFaceType.FACE_LEFT;
+
+        [Tooltip("How many force to push.")]
+        [SerializeField]
+        private float mPushSpeed = 10.0f;
 
         //----------------------
         // Protected Variables
@@ -43,12 +51,10 @@ namespace JCSUnity
         private void OnTriggerStay(Collider other)
         {
             JCS_Player player = other.GetComponent<JCS_Player>();
-            if (player != null)
-            {
-                if (player.GetCharacterController().isGrounded)
-                    player.VelX += mPushSpeed * -(int)mDirection;
-            }
+            if (player == null)
+                return;
 
+            player.VelX += mPushSpeed * -(int)mDirection * Time.deltaTime;
         }
 
         //========================================

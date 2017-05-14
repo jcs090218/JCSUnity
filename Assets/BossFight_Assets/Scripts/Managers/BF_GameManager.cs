@@ -134,13 +134,13 @@ public class BF_GameManager
             mHealthTarget.LiveObject.CanDamage = false;
         else
         {
-            JCS_Debug.JcsReminders(this,
+            JCS_Debug.LogReminders(this,
                 "No health object in the assign...");
         }
 
         if (GAME_OVER_PANEL == null)
         {
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                 this, "No game over panel have been set.");
 
             return;

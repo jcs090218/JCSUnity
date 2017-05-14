@@ -355,7 +355,7 @@ mRandScaleY and mRandScaleZ variables.")]
 
             if (mParticle == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "No particle assign!");
                 return;
             }
@@ -449,7 +449,7 @@ mRandScaleY and mRandScaleZ variables.")]
         {
             if (mNumOfParticle <= 0)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Number of particle cannot lower or equal to zero...");
 
                 return null;

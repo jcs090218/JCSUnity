@@ -263,7 +263,7 @@ namespace JCSUnity
 
             if (notFound)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                                 "JCS_Cursor",
                                  
                                 type.ToString() +  " animation does not assign...");

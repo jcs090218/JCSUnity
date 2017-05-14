@@ -72,11 +72,11 @@ namespace JCSUnity
 
             if (mAudioClips[randIndex] == null)
             {
-                JCS_Debug.JcsErrors("JCS_SoundPoolAction",   "You inlcude a null references in he audio pool...");
+                JCS_Debug.LogError("JCS_SoundPoolAction",   "You inlcude a null references in he audio pool...");
                 return;
             }
 
-            float soundVolume = JCS_GameSettings.GetSoundBaseOnType(mSoundSettingType);
+            float soundVolume = JCS_SoundSettings.instance.GetSoundBaseOnType(mSoundSettingType);
             mSoundPlayer.PlayOneShot(mAudioClips[randIndex], soundVolume);
         }
         

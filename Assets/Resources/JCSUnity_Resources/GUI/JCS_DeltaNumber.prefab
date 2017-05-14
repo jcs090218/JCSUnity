@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4207702600429252}
   - component: {fileID: 114374653870074360}
   m_Layer: 0
-  m_Name: JCS_SpriteScore
+  m_Name: JCS_DeltaNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

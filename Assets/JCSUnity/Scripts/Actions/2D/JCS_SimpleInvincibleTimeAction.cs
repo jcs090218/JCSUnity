@@ -121,7 +121,6 @@ namespace JCSUnity
             if (JCS_Input.GetKeyDown(KeyCode.L))
             {
                 TriggerAction();
-                print("Coll");
             }
 
         }

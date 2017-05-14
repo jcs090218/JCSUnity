@@ -42,7 +42,9 @@ namespace JCSUnity
         [Header("** Runtime Varaibles (JCS_2DWalkAction) **")]
 
         [Tooltip("Speed of the action. (walk action)")]
-        [SerializeField] private float mWalkSpeed = 10;
+        [SerializeField]
+        private float mWalkSpeed = 10;
+
 
         [Header("** Activate Variables **")]
 
@@ -87,7 +89,8 @@ namespace JCSUnity
         [Header("** Action Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Generate a random walk speed at the initilaize time.")]
-        [SerializeField] private bool mStartRandomWalkSpeed = false;
+        [SerializeField]
+        private bool mStartRandomWalkSpeed = false;
 
         [Tooltip(@"Addition value to the walk speed. For 
 instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
@@ -99,16 +102,19 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
 
         [Tooltip(@"Check weather the this object get mad or not. If 
 the get mad will start tracking the object that make this object mad.")]
-        [SerializeField] private bool mMadEffect = true;
+        [SerializeField]
+        private bool mMadEffect = true;
 
         [Tooltip("If Mad Effect is on this object is needed.")]
-        [SerializeField] private JCS_AttackerRecorder mAttackRecorder = null;
+        [SerializeField]
+        private JCS_AttackerRecorder mAttackRecorder = null;
 
 
         [Header("** Optional Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Plz fill this is there is animation going on to this game object.")]
-        [SerializeField] private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
+        [SerializeField]
+        private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
         //----------------------
         // Protected Variables

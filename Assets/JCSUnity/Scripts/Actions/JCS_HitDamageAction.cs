@@ -104,7 +104,7 @@ namespace JCSUnity
 
             if (mAbilityFormat == null)
             {
-                JCS_Debug.JcsReminders(
+                JCS_Debug.LogReminders(
                     this, "You sure to not using any \"JCS_AbilityFormat\"?");
 
                 return;

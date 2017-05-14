@@ -68,7 +68,7 @@ namespace JCSUnity
 
             if (mMask == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "No mask applied...");
                 return;
             }
@@ -151,7 +151,7 @@ namespace JCSUnity
         {
             if (val <= mMinValue)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this,
                     "Max value u r setting cannot be lower than min value.");
 
@@ -174,7 +174,7 @@ namespace JCSUnity
         {
             if (val >= mMaxValue)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this,
                     "Min value u r setting cannot be higher than max value.");
 
@@ -380,7 +380,7 @@ namespace JCSUnity
                 mCurrentValue > mMaxValue)
 
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_GUILiquidBar", 
                       
                     "Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");

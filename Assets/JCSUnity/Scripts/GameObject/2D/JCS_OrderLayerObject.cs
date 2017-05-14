@@ -16,7 +16,6 @@ namespace JCSUnity
     /// <summary>
     /// Object in the in the scene layer.
     /// </summary>
-    [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_OrderLayerObject 
         : MonoBehaviour
     {
@@ -27,6 +26,20 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        /* Down compatible. */
+        private SpriteRenderer mSpriteRenderer = null;
+
+        // whats on-top of this 'order layer object'.
+        private JCS_OrderLayer mOrderLayer = null;
+
+        [Header("** Initialize Variables (JCS_OrderLayerObject) **")]
+
+        [Tooltip("Extra sprite renederer you can set.")]
+        [SerializeField]
+        private SpriteRenderer[] mSpriteRenderers = null;
+
+
+        [Header("- Absolute Layer")]
 
         [Tooltip("Enable the Absolute Layer Effect.")]
         [SerializeField] private bool mAbsoluteLayerEffect = false;
@@ -41,28 +54,39 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_OrderLayer OrderLayer { get { return this.mOrderLayer; } }
+        public SpriteRenderer[] SpriteRenderers() { return this.mSpriteRenderers; }
+        public bool AbsoluteLayerEffect { get { return this.mAbsoluteLayerEffect; } }
+        public int AbsotlueLayer { get { return this.mAbsotlueLayer; } }
+        public int sortingOrder { get { return this.mOrderLayer.OrderLayer; } }
 
         //========================================
         //      Unity's function
         //------------------------------
+        private void Awake()
+        {
+            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+        }
+
         private void Start()
         {
-            SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
-            JCS_OrderLayer jcsOrderLayer = this.GetComponentInParent<JCS_OrderLayer>();
-            if (jcsOrderLayer != null)
+            mOrderLayer = this.GetComponentInParent<JCS_OrderLayer>();
+
+            foreach (SpriteRenderer spriteRenderer in mSpriteRenderers)
             {
+                if (mOrderLayer == null)
+                    continue;
+
                 // override the current order layer.
-                spriteRenderer.sortingOrder = jcsOrderLayer.GetOrderLayer();
+                spriteRenderer.sortingOrder = mOrderLayer.OrderLayer;
             }
-            else
-            {
-                // set to default order layer
-                spriteRenderer.sortingOrder = JCS_GameSettings.instance.DEFAULT_ORDER_LAYER;
-            }
+
+            if (mSpriteRenderer != null && mOrderLayer != null)
+                mSpriteRenderer.sortingOrder = mOrderLayer.OrderLayer;
 
             //if set absolute effect are enable set it to that specific layer.
             if (mAbsoluteLayerEffect)
-                JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(this, mAbsotlueLayer);
+                SetObjectParentToOrderLayerByOrderLayerIndex(mAbsotlueLayer);
         }
 
         //========================================
@@ -70,12 +94,34 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Set the sorting layer in absolute layer.
+        /// </summary>
+        /// <param name="orderLayer"> rendering order layer. </param>
         public void SetOrderLayer(int orderLayer)
         {
-            SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
-
             // set the order layer by runtime. (shortcut)
-            spriteRenderer.sortingOrder = orderLayer;
+            mSpriteRenderer.sortingOrder = orderLayer;
+
+            foreach (SpriteRenderer spriteRenderer in mSpriteRenderers)
+            {
+                if (spriteRenderer == null)
+                    continue;
+
+                spriteRenderer.sortingOrder = orderLayer;
+            }
+        }
+
+        /// <summary>
+        /// Set the object into the scene layer in the scene.
+        /// </summary>
+        /// <param name="orderLayerIndex"> index of scene layer </param>
+        public void SetObjectParentToOrderLayerByOrderLayerIndex(int orderLayerIndex)
+        {
+            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(
+                this, 
+                orderLayerIndex);
         }
 
         //----------------------

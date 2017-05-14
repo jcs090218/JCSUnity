@@ -314,14 +314,14 @@ namespace JCSUnity
         {
             get
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Loop does not work in Andriod Platform...");
 
                 return false;
             }
             set
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Loop does not work in Andriod Platform...");
             }
         }
@@ -379,7 +379,7 @@ namespace JCSUnity
         /// </summary>
         public void Pause()
         {
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                     this, "Pause does not work in Andriod Platform...");
         }
 
@@ -388,7 +388,7 @@ namespace JCSUnity
         /// </summary>
         public void Stop()
         {
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                     this, "Stop does not work in Andriod Platform...");
         }
 

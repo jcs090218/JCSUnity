@@ -54,8 +54,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 90
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -184,11 +184,12 @@ MonoBehaviour:
   mDisplayGameDepthCamera: 1
   mGameCamColor: {r: 1, g: 0, b: 0, a: 1}
   mFollowing: 1
-  mPositionOffset: {x: 0, y: 1.5, z: -10}
+  mPositionOffset: {x: 0, y: 2, z: -10}
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
   mTargetTransform: {fileID: 0}
   mHardTrack: 0
+  mResetVelocityToZeroWhileNotActive: 0
   mFreezeInRuntime: 0
   mFreezeX: 0
   mFreezeY: 0
@@ -357,12 +358,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mNumOfParticle: 1000
   mParticle: {fileID: 0}
-  mActive: 1
+  mActive: 0
   mActiveThread: 1
   mOrderLayer: 15
   mDensity: 5
   mWindSpeed: -10
-  mRandPosX: 0
+  mRandPosX: 40
   mRandPosY: 0
   mRandPosZ: 0
   mRandAngleX: 0
@@ -375,5 +376,6 @@ MonoBehaviour:
   mFreezeX: 0
   mFreezeY: 1
   mFreezeZ: 1
+  mDoShotImmediately: 0
   mSetChild: 1
   mSetToSamePositionWhenActive: 1

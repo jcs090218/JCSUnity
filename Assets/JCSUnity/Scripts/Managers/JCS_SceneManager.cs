@@ -151,6 +151,9 @@ namespace JCSUnity
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
+                        // get the current screen color.
+                        mJCSBlackScreen.LocalColor = JCS_SceneSettings.instance.SCREEN_COLOR;
+
                         mJCSBlackScreen.FadeOut(fadeoutTime);
                     }
                     break;
@@ -175,7 +178,7 @@ namespace JCSUnity
 
                 // active the fade sound in effect.
                 mJCSFadeSound.FadeIn(
-                    JCS_GameSettings.GetBGM_Volume(),
+                    JCS_SoundSettings.instance.GetBGM_Volume(),
                     /* Fade in the sound base on the setting. */
                     JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
             }
@@ -236,11 +239,12 @@ namespace JCSUnity
         {
             // NOTE(jenchieh): get the fade in time base on 
             // the scene setting and scene manager specific.
-            float fadeinTime = JCS_SceneSettings.instance.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = JCS_SceneSettings.instance.GetSceneFadeInTimeBaseOnSetting();
 
             // load scene and pass the value in.
-            LoadScene(sceneName, fadeinTime);
+            LoadScene(sceneName, fadeInTime);
         }
+
         /// <summary>
         /// Load scene with self-define fade in time.
         /// </summary>
@@ -248,12 +252,37 @@ namespace JCSUnity
         /// <param name="fadeInTime"> time to fade in </param>
         public void LoadScene(string sceneName, float fadeInTime)
         {
+            LoadScene(sceneName, fadeInTime, Color.black);
+        }
+
+        /// <summary>
+        /// Load scene with self-define fade in time.
+        /// </summary>
+        /// <param name="sceneName"> scene name to load </param>
+        /// /// <param name="screenColor"> screen color </param>
+        public void LoadScene(string sceneName, Color screenColor)
+        {
+            // NOTE(jenchieh): get the fade in time base on 
+            // the scene setting and scene manager specific.
+            float fadeInTime = JCS_SceneSettings.instance.GetSceneFadeInTimeBaseOnSetting();
+
+            LoadScene(sceneName, fadeInTime, screenColor);
+        }
+
+        /// <summary>
+        /// Load scene with self-define fade in time.
+        /// </summary>
+        /// <param name="sceneName"> scene name to load </param>
+        /// <param name="fadeInTime"> time to fade in </param>
+        /// <param name="screenColor"> screen color </param>
+        public void LoadScene(string sceneName, float fadeInTime, Color screenColor)
+        {
 #if (UNITY_EDITOR)
             // only do this in Editor Mode, 
             // this help level designer to do their job.
             if (!ReadSceneNames.CheckSceneAvailable(sceneName))
             {
-                JCS_Debug.JcsReminders(this,
+                JCS_Debug.LogReminders(this,
                     "Scene [" + sceneName + "] u want to load is not in the Build Setting...");
 
                 return;
@@ -287,6 +316,12 @@ namespace JCSUnity
                         // to render the black screen in front of 
                         // any UI's GUI
                         mJCSBlackScreen.MoveToTheLastChild();
+
+                        // set the screen color.
+                        mJCSBlackScreen.LocalColor = screenColor;
+
+                        // record down the screen color.
+                        JCS_SceneSettings.instance.SCREEN_COLOR = screenColor;
 
                         // start fading in (black screen)
                         mJCSBlackScreen.FadeIn(fadeInTime);

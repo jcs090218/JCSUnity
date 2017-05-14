@@ -180,7 +180,7 @@ compare algorithm")]
         {
             if (mMinNumItemDrop > mMaxNumItemDrop)
             {
-                JCS_Debug.JcsErrors("JCS_ItemDroppable", "No item drop. min max.");
+                JCS_Debug.LogError("JCS_ItemDroppable", "No item drop. min max.");
                 return;
             }
 
@@ -229,7 +229,7 @@ compare algorithm")]
         {
             if (mustDropItem == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Must drop item cannot be null references...");
 
                 return;
@@ -237,7 +237,7 @@ compare algorithm")]
 
             if (count <= 0)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Cannot drop item with count less or equal to zero...");
 
                 return;
@@ -268,7 +268,7 @@ compare algorithm")]
             {
                 if (mMinNumItemDrop > mMaxNumItemDrop)
                 {
-                    JCS_Debug.JcsErrors("JCS_ItemDroppable", "No item drop. min max.");
+                    JCS_Debug.LogError("JCS_ItemDroppable", "No item drop. min max.");
                     return;
                 }
 

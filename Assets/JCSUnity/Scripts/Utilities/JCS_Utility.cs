@@ -104,7 +104,7 @@ namespace JCSUnity
             RectTransform rt = img.transform.GetComponent<RectTransform>();
             if (rt == null)
             {
-                JCS_Debug.JcsErrors("JCS_UsefulFunctions", "No RectTransform on ur image!");
+                JCS_Debug.LogError("JCS_UsefulFunctions", "No RectTransform on ur image!");
                 return Vector2.one;
             }
 
@@ -429,7 +429,7 @@ namespace JCSUnity
                     return new Vector3(1, -1, -1);
             }
 
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                 "JCS_Utility",
 
                 "This cannot happed.");
@@ -504,7 +504,7 @@ namespace JCSUnity
         /// <summary>
         /// Destroy all the 'TYPE' object in the scene.
         /// </summary>
-        public void DestroyAllTypeObjectInScene<T>()
+        public static void DestroyAllTypeObjectInScene<T>()
             where T : MonoBehaviour
         {
             // Destroy all the live object in the scene.
@@ -517,6 +517,81 @@ namespace JCSUnity
                 if (e.gameObject.name.Contains("(Clone)"))
                     Destroy(e.gameObject);
             }
+        }
+
+        /// <summary>
+        /// Find all the objects that are clone in the scene by type.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> Type array. </returns>
+        public static T[] FindCloneObjectsOfTypeAllI<T>()
+            where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (obj.gameObject.name.Contains("(Clone)"))
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        /// <summary>
+        /// Find all the objects that are not clone in the scene by type.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> Type array. </returns>
+        public static T[] FindNotCloneObjectsOfTypeAllI<T>()
+            where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (!obj.gameObject.name.Contains("(Clone)"))
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        /// <summary>
+        /// Find all objects that only ACTIVE in hierarchy.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> type array, object only in Hierarcrchy. </returns>
+        public static T[] FindObjectsOfTypeAllInHierarchy<T>()
+             where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (obj.gameObject.activeInHierarchy)
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
         }
 
         /// <summary>

@@ -362,7 +362,7 @@ namespace JCSUnity
                 // so do it only when is debug mode.
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         this, "Start the tween but the target transform are null...");
                 }
 #endif

@@ -17,7 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Holde the general game setting.
     /// </summary>
-    public class JCS_GameSettings 
+    public class JCS_GameSettings
         : JCS_Settings<JCS_GameSettings>
     {
 
@@ -39,7 +39,7 @@ namespace JCSUnity
         [Header("** Player Settings (JCS_GameSettings) **")]
         [Tooltip("Game only allows control one player.")]
         public bool ACTIVE_ONE_PLAYER = true;
-        
+
         //-- 
         [Header("** Collision Settings **")]
 
@@ -55,10 +55,6 @@ namespace JCSUnity
 
         [Header("** Scene Settings (JCS_GameSettings) **")]
 
-        [Tooltip(@"if the object does not set under the 
-            JCS_OrderLayer transform this will be activate!")]
-        public int DEFAULT_ORDER_LAYER = 15;
-
         // no one care about how black screen look so i
         // just make it unseen in the inspector.
         public static string BLACK_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_BlackScreen";
@@ -67,24 +63,15 @@ namespace JCSUnity
         public static string WHITE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_WhiteScreen";
         public static string WHITE_SCREEN_NAME = "JCS_WhiteScreen";
 
-        //-- Sound
-        public static bool BGM_MUTE = false;
-        public static bool EFFECT_MUTE = false;
-        public static bool PERFONAL_EFFECT_MUTE = false;
-
-        private static float BGM_SOUND = 0.4f; // Background music [Default: 0.5f]
-        private static float SFX_SOUND = 0.4f; // Sound from other player/environment [Default: 0.5f]
-        private static float SKILLS_SOUND = 0.4f; // Sound from player [Default: 0.75f]
-
         //-- Screen Shot
-        public static string SCREENSHOT_PATH = "/JCS_ScreenShot/"; // Screen shot folder path [Default: /JCS_ScreenShot/]
-        public static string SCREENSHOT_FILENAME = "Screenshot_"; // Screen shot file name [Default: Screenshot_]
-        public static string SAVED_IMG_EXTENSION = ".png"; // Extension [Default: .png]
+        public string SCREENSHOT_PATH = "/JCS_ScreenShot/"; // Screen shot folder path [Default: /JCS_ScreenShot/]
+        public string SCREENSHOT_FILENAME = "Screenshot_"; // Screen shot file name [Default: Screenshot_]
+        public string SAVED_IMG_EXTENSION = ".png"; // Extension [Default: .png]
 
         //-- Game Data Path
         public static string GAME_DATA_PATH = "/JCS_GameData/";
         public static string JCS_EXTENSION = ".jcs";
-        
+
 
         //-- UI
         [Header("** User Interface Settings (JCS_GameSettings) **")]
@@ -102,7 +89,7 @@ namespace JCSUnity
         public delegate void SavedGameDataDelegate();
         public SavedGameDataDelegate SAVE_GAME_DATA_FUNC = null;
 
-        
+
         public delegate void LoadGameDataDelegate();    // NOT USED
         public LoadGameDataDelegate LOAD_GAME_DATA_FUNC = null; // NOT USED
 
@@ -121,40 +108,6 @@ namespace JCSUnity
         //--------------------------------
         // setter / getter
         //--------------------------------
-        public static float GetBGM_Volume() { return BGM_SOUND; }
-        public static void SetBGM_Volume(float volume)
-        {
-            BGM_SOUND = volume;
-            JCS_SoundManager.instance.GetBGMAudioSource().volume = volume;
-        }
-        public static float GetSFXSound_Volume() { return SFX_SOUND; }
-        public static void SetSFXSound_Volume(float volume)
-        {
-            SFX_SOUND = volume;
-            JCS_SoundManager.instance.SetSoundVolume(JCS_SoundSettingType.SFX_SOUND, volume);
-        }
-        public static void SetSkillsSound_Volume(float volume)
-        {
-            SKILLS_SOUND = volume;
-            JCS_SoundManager.instance.SetSoundVolume(JCS_SoundSettingType.SKILLS_SOUND, volume);
-        }
-        public static float GetSkillsSound_Volume()
-        {
-            return SKILLS_SOUND;
-        }
-        public static float GetSoundBaseOnType(JCS_SoundSettingType type)
-        {
-            switch (type)
-            {
-                case JCS_SoundSettingType.BGM_SOUND: return GetBGM_Volume();
-                case JCS_SoundSettingType.SFX_SOUND: return GetSFXSound_Volume();
-                case JCS_SoundSettingType.SKILLS_SOUND: return GetSkillsSound_Volume();
-            }
-
-            JCS_Debug.JcsErrors("JCS_GameSetting",   "Get unknown volume...");
-
-            return 0;
-        }
 
         //--------------------------------
         // Unity's functions

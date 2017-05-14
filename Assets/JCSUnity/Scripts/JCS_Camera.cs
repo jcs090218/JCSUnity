@@ -109,16 +109,16 @@ namespace JCSUnity
 
             // get the last saved screen shot's index
             int last_saved_index = SearchDirectory(
-                Application.dataPath + 
-                JCS_GameSettings.SCREENSHOT_PATH,
-                JCS_GameSettings.SCREENSHOT_FILENAME) + 1;
+                Application.dataPath +
+                JCS_GameSettings.instance.SCREENSHOT_PATH,
+                JCS_GameSettings.instance.SCREENSHOT_FILENAME) + 1;
 
             Application.CaptureScreenshot(
                 Application.dataPath +
-                JCS_GameSettings.SCREENSHOT_PATH +
-                JCS_GameSettings.SCREENSHOT_FILENAME +
+                JCS_GameSettings.instance.SCREENSHOT_PATH +
+                JCS_GameSettings.instance.SCREENSHOT_FILENAME +
                 last_saved_index +
-                JCS_GameSettings.SAVED_IMG_EXTENSION);
+                JCS_GameSettings.instance.SAVED_IMG_EXTENSION);
 #endif
         }
 

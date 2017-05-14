@@ -1,5 +1,5 @@
 
-JCSUnity version 1.4.3 Script Manual (Status)
+JCSUnity version 1.4.5 Script Manual (Status)
 
 When using the JCSUnity you may refer to this document,
 which will cover the various scripts and how to properly use them.
@@ -239,6 +239,42 @@ Already assign: no need to touch or move.
             <Description>Basic move the object toward target object.</Description>
         </File>
     </3D>
+	<Freeze>
+		<File name="JCS_FreezePositionAction.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Do freezing for position from transform.
+            </Description>
+        </File>
+		
+		<File name="JCS_FreezeRotationAction.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Do freezing for rotation from transform.
+            </Description>
+        </File>
+		
+		<File name="JCS_FreezeScaleAction.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Do freezing for scale from transform.
+            </Description>
+        </File>
+		
+		<File name="JCS_FreezeTransformAction.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Do freezing to all transform data.
+            </Description>
+        </File>
+		
+		<File name="JCS_RelativeFreezePositionAction.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Freeze the object by relative distance.
+            </Description>
+        </File>
+	</Freeze>
     <Pathfinding>
         <File name="JCS_Pathfinding.cs">
             <Placement>N/A</Placement>
@@ -310,6 +346,14 @@ Already assign: no need to touch or move.
         <Description>
             Base ability fromat, use for implemented ability. Welcome to 
             change the format itself.
+        </Description>
+    </File>
+    
+    <File name="JCS_AdjustTimeTrigger.cs">
+        <Placement>Script base.</Placement>
+        <Description>
+            Trigger a event while the time is reached. 
+            Script base.
         </Description>
     </File>
     
@@ -474,10 +518,17 @@ Already assign: no need to touch or move.
 			</Placement>
             <Description>Hold sequence of animation and play it by condition.</Description>
         </File>
-		
-        <File name="JCS_I2DAnimator.cs">
-            <Placement>Script base.</Placement>
-            <Description>2D Animator interface object.</Description>
+        
+        <File name="JCS_2DAnimSequencePlayer.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Play a sequence of animation by time.
+            </Description>
+        </File>
+        
+        <File name="JCS_2DAnimMirror.cs">
+            <Placement>Any node/transform.</Placement>
+            <Description>Completely mimic a JCS_2DAnimation's frame.</Description>
         </File>
         
         <File name="JCS_2DCharacterAnimator.cs">
@@ -490,6 +541,28 @@ Already assign: no need to touch or move.
         <File name="JCS_2DLiveObjectAnimator.cs">
             <Placement>Live object animator, use with live object.</Placement>
             <Description>Call the function within the live object.</Description>
+        </File>
+        
+        <File name="JCS_2DOrderAnimPlayer.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Play animator's animations in order base on if 
+                the animation are done playing it.
+            </Description>
+        </File>
+        
+        <File name="JCS_2DRandAnimController.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+                Randomly play animation in animator object depends 
+                on time object which is the 'JCS_AdjustTimeTrigger' 
+                component.
+            </Description>
+        </File>
+        
+        <File name="JCS_I2DAnimator.cs">
+            <Placement>Script base.</Placement>
+            <Description>2D Animator interface object.</Description>
         </File>
     </2D>
     <3D>
@@ -1170,7 +1243,6 @@ Already assign: no need to touch or move.
 		</File>
 	</Sound>
     <System>
-        
         <File name="JCS_QuitApplicationOnLoadEvent.cs">
             <Placement>Already assign.</Placement>
             <Description>Quit the application by activating.</Description>
@@ -1286,6 +1358,32 @@ Already assign: no need to touch or move.
                 </Description>
             </File>
         </2DCamera>
+        <2DClimableObject>
+            <File name="JCS_2DClimableObject.cs">
+                <Placement>Script only.</Placement>
+                <Description>
+                    Base class for all the 2d climable object.
+                    
+                    e.g. 2DRope, 2DLadder, etc.
+                </Description>
+            </File>
+            
+            <File name="JCS_2DLadder.cs">
+                <Placement>Any transform/node with collider.</Placement>
+                <Description>
+                    Make your gameobject go up and down base on specific 
+                    key type.
+                </Description>
+            </File>
+        
+            <File name="JCS_2DRope.cs">
+                <Placement>Any transform/node with collider.</Placement>
+                <Description>
+                    Make your gameobject go up and down base on specific 
+                    key type.
+                </Description>
+            </File>
+        </2DClimableObject>
         <2DGameObjects>            
             <File name="JCS_2DBullet.cs">
                 <Placement>Any transform/node.</Placement>
@@ -1347,14 +1445,6 @@ Already assign: no need to touch or move.
             <Description>This should attach to all the root layer.</Description>
         </File>
         
-        <File name="JCS_2DLadder.cs">
-            <Placement>Any transform/node with collider.</Placement>
-            <Description>
-                Make your gameobject go up and down base on specific 
-                key type.
-            </Description>
-        </File>
-        
         <File name="JCS_2DLiveObject.cs">
             <Placement>Any transform/node.</Placement>
             <Description>Make your object became a live object variables.</Description>
@@ -1388,14 +1478,6 @@ Already assign: no need to touch or move.
             <Description>
                 Either transfer the game object itself or switch 
                 the scene.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DRope.cs">
-            <Placement>Any transform/node with collider.</Placement>
-            <Description>
-                Make your gameobject go up and down base on specific 
-                key type.
             </Description>
         </File>
         
@@ -1594,6 +1676,13 @@ Already assign: no need to touch or move.
             </Description>
         </File>
         
+        <File name="JCS_ExitAppButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+                Button that exit the app.
+            </Description>
+        </File>
+        
         <File name="JCS_LoadSceneButton.cs">
             <Placement>Already assign.</Placement>
             <Description>
@@ -1757,8 +1846,8 @@ Already assign: no need to touch or move.
     </File>
     
     <File name="JCS_DeltaNumber.cs">
-        <Placement>N/A</Placement>
-        <Description>N/A</Description>
+        <Placement>Any transform/node.</Placement>
+        <Description>Score system with the sprite 0 to 9.</Description>
     </File>
     
     <File name="JCS_GUILiquidBar.cs">
@@ -1820,6 +1909,15 @@ Already assign: no need to touch or move.
         </Description>
     </File>
     
+    <File name="JCS_RouteGuageSystem.cs">
+        <Placement>Any transform/node.</Placement>
+        <Description>
+            Minimap of all the racers.
+            
+            SOURCE: https://www.youtube.com/watch?v=yqMIfTWoA8A
+        </Description>
+    </File>
+    
     <File name="JCS_SettingObject.cs">
         <Placement>Any interactable object from Unity Engine. (uGUI)</Placement>
         <Description>
@@ -1842,11 +1940,6 @@ Already assign: no need to touch or move.
             Holder in order to make the whole slide screen/scene move 
             with the camera.
         </Description>
-    </File>
-    
-    <File name="JCS_SpriteScore.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Score system with the sprite 0 to 9.</Description>
     </File>
     
     <File name="JCS_TweenPanel.cs">
@@ -2190,8 +2283,15 @@ Already assign: no need to touch or move.
 </Scripts>
 <Settings>
     <Indie>
+        <File name="JCS_PlatformSettings.cs">
+            <Placement>Game dependency.</Placement>
+            <Description>
+                Setting of all the platform type.
+            </Description>
+        </File>
+        
         <File name="JCS_PortalSettings.cs">
-            <Placement>Already assign.</Placement>
+            <Placement>Game dependency.</Placement>
             <Description>
                 Setting of all the portal type.
             </Description>

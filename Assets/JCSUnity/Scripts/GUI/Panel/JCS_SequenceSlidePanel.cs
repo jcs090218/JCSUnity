@@ -161,7 +161,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         "JCS_SequenceSlidPanel",
                          
                         "Missing jcs_button assign in the inspector...");
@@ -181,7 +181,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         "JCS_SequenceSlidPanel",
                          
                         "Missing jcs_button assign in the inspector...");

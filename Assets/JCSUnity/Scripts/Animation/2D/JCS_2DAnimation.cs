@@ -13,6 +13,7 @@ using UnityEngine;
 
 namespace JCSUnity
 {
+    public delegate void DonePlayingAnimation();
 
     /// <summary>
     /// Handle frame by frame animation in the simple way.
@@ -23,12 +24,14 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
+        // call back when done playing the animation.
+        public DonePlayingAnimation donePlayingAnimCallback = null;
+
         //----------------------
         // Private Variables
 
         // animator using this animation?
         private JCS_2DAnimator mJCS2DAnimator = null;
-
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
@@ -51,7 +54,7 @@ namespace JCSUnity
         // flag to know if the animation is done.
         // ATTENTION(jenchieh): this cannot be use with loop.
         [SerializeField]
-        private bool mDonePlaying = false;
+        private bool mIsDonePlaying = false;
 
 
         [Header("** Initialize Variables (JCS_Animation) **")]
@@ -111,7 +114,7 @@ this, default is 1.")]
         }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
         // Is the animation done playing?
-        public bool DonePlaying { get { return this.mDonePlaying; } }
+        public bool IsDonePlaying { get { return this.mIsDonePlaying; } }
         public void SetJCS2DAnimator(JCS_2DAnimator jcs2dAnimator) { this.mJCS2DAnimator = jcs2dAnimator; }
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
 
@@ -218,7 +221,7 @@ this, default is 1.")]
 
             // starting of playing the animation, 
             // animation cannot be done playing!
-            mDonePlaying = false;
+            mIsDonePlaying = false;
 
             // set the current animation.
             if (startFrame != -1)
@@ -275,6 +278,27 @@ this, default is 1.")]
             mActive = false;
         }
 
+        /// <summary>
+        /// Default, use current playing frame index.
+        /// </summary>
+        public void PlayFrame()
+        {
+            PlayFrame(mCurrentPlayingFrame);
+        }
+
+        /// <summary>
+        /// set the frame by index.
+        /// </summary>
+        public void PlayFrame(int frame)
+        {
+            this.mCurrentPlayingFrame = frame;
+
+            PutAnimInFrame();
+
+            // set the current sprite.
+            LocalSprite = mAnimFrames[this.mCurrentPlayingFrame];
+        }
+
         //----------------------
         // Protected Functions
 
@@ -290,26 +314,6 @@ this, default is 1.")]
                 this.mCurrentPlayingFrame = 0;
             else if (mCurrentPlayingFrame >= mMaxFrame - 1)
                 this.mCurrentPlayingFrame = mMaxFrame - 1;
-        }
-
-
-        /// <summary>
-        /// Default, use current playing frame index.
-        /// </summary>
-        private void PlayFrame()
-        {
-            PlayFrame(mCurrentPlayingFrame);
-        }
-
-        /// <summary>
-        /// set the frame by index.
-        /// </summary>
-        private void PlayFrame(int frame)
-        {
-            PutAnimInFrame();
-
-            // set the current sprite.
-            LocalSprite = mAnimFrames[mCurrentPlayingFrame];
         }
 
         /// <summary>
@@ -353,7 +357,11 @@ this, default is 1.")]
                 }
 
                 // set the flag up.
-                mDonePlaying = true;
+                mIsDonePlaying = true;
+
+                // do done play call back.
+                if (donePlayingAnimCallback != null)
+                    donePlayingAnimCallback.Invoke();
             }
 
             // set the current frame.

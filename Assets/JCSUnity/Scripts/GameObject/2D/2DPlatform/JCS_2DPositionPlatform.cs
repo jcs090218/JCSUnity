@@ -26,11 +26,20 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_2DPositionPlatform) **")]
+
         [Tooltip("Collider will detect to see if the player close to the actual one")]
-        [SerializeField] private BoxCollider mPlatformTrigger = null;
+        [SerializeField]
+        private BoxCollider mPlatformTrigger = null;
+
         [Tooltip("Collider will actually stop the player")]
-        [SerializeField] private BoxCollider mPlatformCollider = null;
+        [SerializeField]
+        private BoxCollider mPlatformCollider = null;
+
+        [Tooltip("Can this platform be down jump?>")]
+        [SerializeField]
+        private bool mCanBeDownJump = true;
 
         //----------------------
         // Protected Variables
@@ -58,11 +67,13 @@ namespace JCSUnity
             if (cc == null)
                 return;
 
-            if (JCS_Physics.TopOfBox(cc, mPlatformCollider))
+            bool isTopOfBox = JCS_Physics.TopOfBox(cc, mPlatformCollider);
+
+            if (isTopOfBox)
             {
                 Physics.IgnoreCollision(
                     mPlatformCollider,
-                    cc, 
+                    cc,
                     false);
             }
             else
@@ -77,7 +88,16 @@ namespace JCSUnity
             if (p == null)
                 return;
 
-            if (p.CharacterState == JCS_2DCharacterState.CLIMBING)
+            bool isJumpDown = p.IsDownJump();
+
+            if (!mCanBeDownJump)
+            {
+                // if cannot be down jump, fore it to false.
+                isJumpDown = false;
+            }
+
+            if (p.CharacterState == JCS_2DCharacterState.CLIMBING ||
+                isJumpDown)
             {
                 // IMPORTANT(JenChieh): Note that IgnoreCollision will reset 
                 // the trigger state of affected colliders, 
@@ -88,29 +108,29 @@ namespace JCSUnity
                     mPlatformCollider,
                     p.GetCharacterController(),
                     true);
+            }
 
+            if (isJumpDown && isTopOfBox)
+            {
+                if (JCS_PlatformSettings.instance != null)
+                {
+
+                    /**
+                     * Make the player go down ward, so it will not stop by
+                     * the other collision detection. In order not to let the 
+                     * render frame goes off. set the value as small as possible.
+                     */
+                    p.VelY = -JCS_PlatformSettings.instance.POSITION_PLATFORM_DOWN_JUMP_FORCE;
+                }
+                else
+                {
+                    JCS_Debug.Log(
+                        this,
+                        "No platform setting, could not set the down jump force...");
+                }
             }
 
             p.ResetingCollision = true;
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            //CharacterController cc = other.transform.GetComponent<CharacterController>();
-
-            //if (cc == null)
-            //    return;
-
-            //Physics.IgnoreCollision(
-            //        mPlatformCollider,
-            //        cc,
-            //        true);
-
-            //JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
-            //if (p == null)
-            //    return;
-
-            //p.ResetingCollision = true;
         }
 
 

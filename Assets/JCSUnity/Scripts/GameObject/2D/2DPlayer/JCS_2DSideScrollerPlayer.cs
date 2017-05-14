@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
 
@@ -19,23 +20,28 @@ namespace JCSUnity
     [RequireComponent(typeof(JCS_2DSideScrollerPlayerAudioController))]
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(JCS_2DAnimator))]
+    [RequireComponent(typeof(JCS_OrderLayerObject))]
     public class JCS_2DSideScrollerPlayer
         : JCS_Player
     {
-        //----------------------
-        // Public Variables
+        /*******************************************/
+        /*            Public Variables             */
+        /*******************************************/
 
 
-        //----------------------
-        // Private Variables
+        /*******************************************/
+        /*           Private Variables             */
+        /*******************************************/
 
         protected SpriteRenderer mSpriteRenderer = null;
         protected JCS_2DAnimator mJCS2DAnimator = null;
+        protected JCS_OrderLayerObject mOrderLayerObject = null;
 
         //-- Action (Ladder, Rope)
         [Header("** Check Variables (JCS_2DSideScrollerPlayer) **")]
         //-- Facing
-        [SerializeField] private JCS_2DFaceType mFace = JCS_2DFaceType.FACE_LEFT;
+        [SerializeField]
+        private JCS_2DFaceType mFace = JCS_2DFaceType.FACE_LEFT;
 
         //-- Climbing
         [Tooltip("See if there are ladder object so we can climb.")]
@@ -57,6 +63,10 @@ namespace JCSUnity
         [SerializeField]
         private int mJumpCount = 0;
 
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_ClimbMoveType mClimbMoveType = JCS_ClimbMoveType.IDLE;
+
 
         [Header("** Runtime Variables (JCS_2DSideScrollerPlayer) **")]
 
@@ -76,16 +86,20 @@ namespace JCSUnity
         private bool mTripleJump = false;       // trigger to check
 
         [Tooltip("Force apply when it jump. (Horizontal)")]
-        [SerializeField] protected float[] mJumpYForces = null;
+        [SerializeField]
+        protected float[] mJumpYForces = null;
 
         [Tooltip("Force apply when it jump. (Vertical)")]
-        [SerializeField] protected float[] mJumpXForces = null;
+        [SerializeField]
+        protected float[] mJumpXForces = null;
 
         [Tooltip("Maxinum speed of free fall object.")]
-        [SerializeField] private float mTerminalSpeed = 20;
+        [SerializeField]
+        private float mTerminalSpeed = 20;
 
         [Tooltip("")]
-        [SerializeField] private bool[] mForceXAfterJump = null;
+        [SerializeField]
+        private bool[] mForceXAfterJump = null;
 
 
         //-- Animator Control
@@ -99,8 +113,6 @@ namespace JCSUnity
         [SerializeField]
         private Vector3[] mJumpAnimOffset = null;
 
-        private int mOrderLayer = 15;
-
         //-- Audio Control
         protected JCS_2DSideScrollerPlayerAudioController mAudioController = null;
 
@@ -112,50 +124,86 @@ namespace JCSUnity
 
         //-- GENERAL
         [Header("** Other Settings (JCS_2DSideScrollerPlayer) **")]
-        [SerializeField] private float mAirFriction = 0.5f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mAirFriction = 0.5f;
         private bool mAttackedInAir = false;
 
-        [Header("** Control Key Settings (JCS_2DSlideScrollerPlayer) **")]
-        [SerializeField] private KeyCode mUpKey = KeyCode.UpArrow;
-        [SerializeField] private KeyCode mDownKey = KeyCode.DownArrow;
-        [SerializeField] private KeyCode mRightKey = KeyCode.RightArrow;
-        [SerializeField] private KeyCode mLeftKey = KeyCode.LeftArrow;
-        [SerializeField] private KeyCode mJumpKey = KeyCode.LeftAlt;
+        [Tooltip("Can the player down jump the platform.")]
+        [SerializeField]
+        private bool mCanDownJump = false;
 
-        [SerializeField] private KeyCode mClimbUpKey = KeyCode.UpArrow;
-        [SerializeField] private KeyCode mClimbDownKey = KeyCode.DownArrow;
+
+        [Header("** Control Key Settings (JCS_2DSlideScrollerPlayer) **")]
+
+        [Tooltip("Key press up.")]
+        [SerializeField]
+        private KeyCode mUpKey = KeyCode.UpArrow;
+        [Tooltip("Key press down.")]
+        [SerializeField]
+        private KeyCode mDownKey = KeyCode.DownArrow;
+        [Tooltip("Key press right.")]
+        [SerializeField]
+        private KeyCode mRightKey = KeyCode.RightArrow;
+        [Tooltip("Key press left.")]
+        [SerializeField]
+        private KeyCode mLeftKey = KeyCode.LeftArrow;
+        [Tooltip("Key press jump.")]
+        [SerializeField]
+        private KeyCode mJumpKey = KeyCode.LeftAlt;
+
+        [Tooltip("Key press climb up.")]
+        [SerializeField]
+        private KeyCode mClimbUpKey = KeyCode.UpArrow;
+        [Tooltip("Key press climb down.")]
+        [SerializeField]
+        private KeyCode mClimbDownKey = KeyCode.DownArrow;
 
 
         [Header("** Climb Settings (JCS_2DSideScrollerPlayer) **")]
 
-        [SerializeField] private bool mAutoClimb = false;
+        [SerializeField]
+        private bool mAutoClimb = false;
 
-        [SerializeField] private JCS_ClimbMoveType mAutoClimbDirection = JCS_ClimbMoveType.MOVE_UP;
+        [SerializeField]
+        private JCS_ClimbMoveType mAutoClimbDirection = JCS_ClimbMoveType.MOVE_UP;
 
         [Tooltip("Force when u exit the climbing state.")]
-        [SerializeField] private float mExitClimbForceY = 10;
+        [SerializeField]
+        private float mExitClimbForceY = 10;
 
 
         [Header("** Hit Settings (JCS_2DSideScrollerPlayer) **")]
 
         [Tooltip("Trigger to enable hit effect.")]
-        [SerializeField] private bool mHitEffect = true;
+        [SerializeField]
+        private bool mHitEffect = true;
 
         [Tooltip("Velocity when get hit. (Horizontal) ")]
-        [SerializeField] private float mHitVelX = 5;
+        [SerializeField]
+        private float mHitVelX = 5;
 
         [Tooltip("Velocity when get hit. (Vertical) ")]
-        [SerializeField] private float mHitVelY = 5;
-
-        //----------------------
-        // Protected Variables
+        [SerializeField]
+        private float mHitVelY = 5;
 
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        private bool mJustClimbOnTopOfBox = false;
+
+
+        /*******************************************/
+        /*           Protected Variables           */
+        /*******************************************/
+
+
+        /*******************************************/
+        /*             setter / getter             */
+        /*******************************************/
+        public bool JustClimbOnTopOfBox { get { return this.mJustClimbOnTopOfBox; } set { this.mJustClimbOnTopOfBox = value; } }
         public bool AutoClimb { get { return this.mAutoClimb; } set { this.mAutoClimb = value; } }
         public JCS_ClimbMoveType AutoClimbDirection { get { return this.mAutoClimbDirection; } set { this.mAutoClimbDirection = value; } }
+        public JCS_ClimbMoveType ClimbMoveType { get { return this.mClimbMoveType; } }
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public bool ResetingCollision { get { return this.mResetingCollision; } set { this.mResetingCollision = value; } }
         public bool ExitingClimbing { get { return this.mExitingClimbing; } set { this.mExitingClimbing = value; } }
@@ -171,6 +219,7 @@ namespace JCSUnity
         public JCS_2DSideScrollerPlayerAudioController GetAudioController() { return this.mAudioController; }
         public int JumpCount { get { return this.mJumpCount; } }
         public JCS_2DFaceType Face { get { return this.mFace; } }
+        public JCS_OrderLayerObject OrderLayerObject { get { return this.mOrderLayerObject; } }
 
         public KeyCode UpKey { get { return this.mUpKey; } set { this.mUpKey = value; } }
         public KeyCode DownKey { get { return this.mDownKey; } set { this.mDownKey = value; } }
@@ -180,9 +229,9 @@ namespace JCSUnity
         public KeyCode ClimbUpKey { get { return this.mClimbUpKey; } set { this.mClimbUpKey = value; } }
         public KeyCode ClimbDownKey { get { return this.mClimbDownKey; } set { this.mClimbDownKey = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /*******************************************/
+        /*            Unity's function             */
+        /*******************************************/
         protected override void Awake()
         {
             base.Awake();
@@ -190,14 +239,12 @@ namespace JCSUnity
             this.mAudioController = this.GetComponent<JCS_2DSideScrollerPlayerAudioController>();
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
             this.mJCS2DAnimator = this.GetComponent<JCS_2DAnimator>();
+            this.mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
         }
 
         protected override void Start()
         {
             base.Start();
-
-            SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
-            mOrderLayer = sr.sortingOrder;
         }
 
         protected override void Update()
@@ -207,9 +254,9 @@ namespace JCSUnity
             ProcessState();
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
+        /*******************************************/
+        /*              Self-Define                */
+        /*******************************************/
         //----------------------
         // Public Functions
 
@@ -233,10 +280,20 @@ namespace JCSUnity
                 mIsControllable = false;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="facing"></param>
         public void TurnFace(int facing)
         {
             TurnFace((JCS_2DFaceType)facing);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
         public void TurnFace(JCS_2DFaceType type)
         {
             Vector3 originalScale = this.gameObject.transform.localScale;
@@ -245,6 +302,11 @@ namespace JCSUnity
 
             mFace = type;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
         public void Jump(JCS_JumpeType type)
         {
             switch (type)
@@ -266,6 +328,12 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="force"></param>
+        /// <returns></returns>
         public bool BasicJump(float force = 10)
         {
             if (CharacterState == JCS_2DCharacterState.CLIMBING)
@@ -297,6 +365,13 @@ namespace JCSUnity
 
             return true;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstForce"></param>
+        /// <param name="secodForce"></param>
+        /// <returns></returns>
         public bool DoubleJump(float firstForce = 10, float secodForce = 10)
         {
             if (CharacterState == JCS_2DCharacterState.CLIMBING)
@@ -339,6 +414,14 @@ namespace JCSUnity
 
             return false;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstForce"></param>
+        /// <param name="secodForce"></param>
+        /// <param name="thirdForce"></param>
+        /// <returns></returns>
         public bool TripleJump(float firstForce = 10, float secodForce = 10, float thirdForce = 10)
         {
             if (CharacterState == JCS_2DCharacterState.CLIMBING)
@@ -381,6 +464,10 @@ namespace JCSUnity
 
             return false;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ToggleFace()
         {
             if (mFace == JCS_2DFaceType.FACE_LEFT)
@@ -398,6 +485,7 @@ namespace JCSUnity
         {
             MoveRight(MoveSpeed);
         }
+
         /// <summary>
         /// move right with pass in speed.
         /// </summary>
@@ -439,6 +527,7 @@ namespace JCSUnity
         {
             MoveLeft(MoveSpeed);
         }
+
         /// <summary>
         /// Move left with pass in speed.
         /// </summary>
@@ -473,6 +562,9 @@ namespace JCSUnity
             DoAnimation(JCS_LiveObjectState.WALK);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override void Stand()
         {
             if (mStartClimbing)
@@ -488,6 +580,10 @@ namespace JCSUnity
             DoAnimation(JCS_LiveObjectState.STAND);
             this.mVelocity.x = 0;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override void Attack()
         {
             // cannot attack during climbing
@@ -505,11 +601,151 @@ namespace JCSUnity
             DoAnimation(JCS_LiveObjectState.RAND_ATTACK);
             mAudioController.AttackSound();
         }
-        public override void Jump() { Jump(GetJumpType()); }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Jump()
+        {
+            if (IsDownJump())
+                return;
+
+            Jump(GetJumpType());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Alert()
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Ladder()
+        {
+            DoAnimation(JCS_LiveObjectState.LADDER);
+
+            this.mVelocity.x = 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Rope()
+        {
+            DoAnimation(JCS_LiveObjectState.ROPE);
+
+            this.mVelocity.x = 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Die()
+        {
+            this.mVelocity = Vector3.zero;
+
+            DoAnimation(JCS_LiveObjectState.DIE);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Dance()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Swim()
+        {
+            DoAnimation(JCS_LiveObjectState.SWIM);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Fly()
+        {
+            DoAnimation(JCS_LiveObjectState.FLY);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Sit()
+        {
+
+        }
+
+        /// <summary>
+        /// When player get hit.
+        /// </summary>
+        public override void Hit()
+        {
+            if (!mHitEffect)
+            {
+                JCS_Debug.LogError(
+                    this,
+                    "You call the function without checking the hit effect?");
+
+                return;
+            }
+
+            ExitClimbing(0);
+
+            int randDirection = JCS_Random.Range(0, 2);        // 0 ~ 1
+
+            // if 0 push right, else if 1 push left
+            float pushVel = (randDirection == 0) ? mHitVelX : -mHitVelX;
+
+            // apply force as velocity
+            this.mVelocity.x += pushVel;
+
+            // hop a bit. (velcotiy y axis)
+            this.mVelocity.y += mHitVelY;
+
+
+            DoAnimation(JCS_LiveObjectState.STAND);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Ghost()
+        {
+
+        }
+
+        /// <summary>
+        /// Climb and teleport are the same key.
+        /// </summary>
+        public virtual void ClimbOrTeleport()
+        {
+            if (isInAttackStage())
+                return;
+
+            // check the direction correctly or not.
+            // 這個讓原本就在梯子上面的玩家不再往上爬!
+            if (!CheckClimbDirection())
+                return;
+
+            // set mode to climbing.
+            CharacterState = JCS_2DCharacterState.CLIMBING;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override void Prone()
         {
             // cannot prone in the air.
-            if (!isGrounded())
+            if (!isGrounded() && VelY != 0)
                 return;
 
             /**
@@ -536,91 +772,20 @@ namespace JCSUnity
 
             this.mVelocity.x = 0;
         }
-        public override void Alert()
-        {
 
-        }
-        public override void Ladder()
-        {
-            DoAnimation(JCS_LiveObjectState.LADDER);
-
-            this.mVelocity.x = 0;
-        }
-        public override void Rope()
-        {
-            DoAnimation(JCS_LiveObjectState.ROPE);
-
-            this.mVelocity.x = 0;
-        }
-        public override void Die()
-        {
-            this.mVelocity = Vector3.zero;
-
-            DoAnimation(JCS_LiveObjectState.DIE);
-        }
-        public override void Dance()
-        {
-            throw new NotImplementedException();
-        }
-        public override void Swim()
-        {
-            DoAnimation(JCS_LiveObjectState.SWIM);
-        }
-        public override void Fly()
-        {
-            DoAnimation(JCS_LiveObjectState.FLY);
-        }
-        public override void Sit()
-        {
-
-        }
         /// <summary>
-        /// When player get hit.
+        /// Check if the player down jumping.
         /// </summary>
-        public override void Hit()
+        /// <returns></returns>
+        public bool IsDownJump()
         {
-            if (!mHitEffect)
-            {
-                JCS_Debug.JcsErrors(
-                    this, 
-                    "You call the function without checking the hit effect?");
+            if (!mCanDownJump)
+                return false;
 
-                return;
-            }
+            if (JCS_Input.GetKey(JumpKey) && JCS_Input.GetKey(DownKey))
+                return true;
 
-            ExitClimbing(0);
-
-            int randDirection = JCS_Random.Range(0, 2);        // 0 ~ 1
-
-            // if 0 push right, else if 1 push left
-            float pushVel = (randDirection == 0) ? mHitVelX : -mHitVelX;
-            
-            // apply force as velocity
-            this.mVelocity.x += pushVel;
-
-            // hop a bit. (velcotiy y axis)
-            this.mVelocity.y += mHitVelY;
-
-
-            DoAnimation(JCS_LiveObjectState.STAND);
-        }
-        public override void Ghost()
-        {
-
-        }
-
-        public virtual void ClimbOrTeleport()
-        {
-            if (isInAttackStage())
-                return;
-
-            // check the direction correctly or not.
-            // 這個讓原本就在梯子上面的玩家不再往上爬!
-            if (!CheckClimbDirection())
-                return;
-
-            // set mode to climbing.
-            CharacterState = JCS_2DCharacterState.CLIMBING;
+            return false;
         }
 
         //----------------------
@@ -636,8 +801,8 @@ namespace JCSUnity
         protected bool isInAttackStage()
         {
             JCS_LiveObjectState lastState = (JCS_LiveObjectState)GetCharacterAnimator().CurrentAnimId;
-            if (lastState == JCS_LiveObjectState.RAND_ATTACK && 
-                !GetCharacterAnimator().CurrentAnimation.DonePlaying)
+            if (lastState == JCS_LiveObjectState.RAND_ATTACK &&
+                !GetCharacterAnimator().CurrentAnimation.IsDonePlaying)
                 return true;
 
             return false;
@@ -657,10 +822,10 @@ namespace JCSUnity
             {
                 if (GetCharacterAnimator().CurrentAnimId == (int)JCS_LiveObjectState.RAND_ATTACK)
                 {
-                    if (!GetCharacterAnimator().CurrentAnimation.DonePlaying)
+                    if (!GetCharacterAnimator().CurrentAnimation.IsDonePlaying)
                         return false;
                 }
-                    
+
             }
 
             if (state != JCS_LiveObjectState.RAND_ATTACK)
@@ -730,11 +895,13 @@ namespace JCSUnity
             if (!isGrounded())
             {
                 // apply gravity
-                mVelocity.y -= (JCS_GameConstant.GRAVITY * 
-                    Time.deltaTime * 
+                mVelocity.y -= (JCS_GameConstant.GRAVITY *
+                    Time.deltaTime *
                     JCS_GameSettings.instance.GRAVITY_PRODUCT);
 
-                DoAnimation(JCS_LiveObjectState.JUMP);
+                /* TODO!! */
+                if (!mJustClimbOnTopOfBox)
+                    DoAnimation(JCS_LiveObjectState.JUMP);
 
                 // apply terminal speed
                 if (mVelocity.y < -mTerminalSpeed)
@@ -745,8 +912,7 @@ namespace JCSUnity
             // if is on the ground
             else
             {
-
-                this.mVelocity.y = -1;
+                mJustClimbOnTopOfBox = false;
 
                 Stand();
                 mAttackedInAir = false;
@@ -767,6 +933,8 @@ namespace JCSUnity
         /// </summary>
         private void CharacterClimbing()
         {
+            mJumpCount = 0;
+
             if (!mStartClimbing)
             {
                 if (!mAutoClimb)
@@ -795,33 +963,29 @@ namespace JCSUnity
                 Rope();
             else
             {
-                JCS_Debug.JcsErrors(
-                    this,
-                    "No Climbing action applied...");
                 ExitClimbing(0);
-
                 return;
             }
 
             // while climbing zero jump count.
             mJumpCount = 0;
 
-            JCS_ClimbMoveType status = JCS_ClimbMoveType.IDLE;
+            mClimbMoveType = JCS_ClimbMoveType.IDLE;
 
             if (mAutoClimb)
             {
-                status = mAutoClimbDirection;
+                mClimbMoveType = mAutoClimbDirection;
             }
             else
             {
                 // process input
                 if (JCS_Input.GetKey(this.ClimbUpKey))
-                    status = JCS_ClimbMoveType.MOVE_UP;
+                    mClimbMoveType = JCS_ClimbMoveType.MOVE_UP;
                 else if (JCS_Input.GetKey(this.mClimbDownKey))
-                    status = JCS_ClimbMoveType.MOVE_DOWN;
+                    mClimbMoveType = JCS_ClimbMoveType.MOVE_DOWN;
                 else
                 {
-                    status = JCS_ClimbMoveType.IDLE;
+                    mClimbMoveType = JCS_ClimbMoveType.IDLE;
                     GetCharacterAnimator().StopAnimationInFrame();
                 }
             }
@@ -829,7 +993,7 @@ namespace JCSUnity
             bool climbing = false;
 
             // process velocity
-            switch (status)
+            switch (mClimbMoveType)
             {
                 case JCS_ClimbMoveType.IDLE:
                     this.mVelocity.y = 0;
@@ -866,7 +1030,7 @@ namespace JCSUnity
                     JCS_Input.GetKey(this.JumpKey))
                 {
 
-                    if (JCS_Input.GetKey(this.LeftKey) || 
+                    if (JCS_Input.GetKey(this.LeftKey) ||
                         JCS_Input.GetKey(this.RightKey))
                     {
                         ExitClimbing();
@@ -897,7 +1061,10 @@ namespace JCSUnity
             if (mJumpAnim[index] == null)
                 return;
 
-            GameObject gameObject = JCS_Utility.SpawnAnimateObjectDeathEvent(mJumpAnim[index], mOrderLayer - 1);
+            GameObject gameObject = 
+                JCS_Utility.SpawnAnimateObjectDeathEvent(
+                    mJumpAnim[index], 
+                    mOrderLayerObject.sortingOrder - 1);
 
             Vector3 newPos = Vector3.zero;
             Vector3 tempOffset = mJumpAnimOffset[index];
@@ -928,8 +1095,16 @@ namespace JCSUnity
         private void ExitClimbing(float jumpForce)
         {
             mCharacterState = JCS_2DCharacterState.NORMAL;
-            // when exit give a litte jump
-            mVelocity.y = jumpForce;
+
+            if (jumpForce != 0)
+            {
+                // when exit give a litte jump
+                /**
+                 * ATTENSION(jenchieh): this make Unity's CharacterController
+                 * component 'isGrounded' not accurate. Use this carefully.
+                 */
+                mVelocity.y = jumpForce;
+            }
 
             // start the animation agian
             GetCharacterAnimator().PlayAnimationInFrame();
@@ -985,6 +1160,6 @@ namespace JCSUnity
             return false;
 
         }
-       
+
     }
 }

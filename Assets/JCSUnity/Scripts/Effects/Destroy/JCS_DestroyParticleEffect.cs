@@ -157,7 +157,7 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
                     }
                     else
                     {
-                        JCS_Debug.JcsErrors(
+                        JCS_Debug.LogError(
                             this, "You active the destroy time but without the JCS_DestroyObjectWithTime component...");
                     }
                 }

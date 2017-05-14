@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Cross Unity system object.
     /// </summary>
     public class JCS_UnityObject
         : MonoBehaviour
@@ -155,11 +155,59 @@ namespace JCSUnity
                         return this.mSpriteRenderer.transform;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this,
                     "Return default local position...(This should not happens...)");
 
                 return this.transform;
+            }
+        }
+
+        /// <summary>
+        /// Get Current type's position
+        /// </summary>
+        public Vector3 Position
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.transform.position;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        return this.mRectTransform.position;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.transform.position;
+                }
+
+                JCS_Debug.LogError(
+                "JCS_UnityObject",
+
+                "Return default local position...(This should not happens...)");
+
+                return this.transform.position;
+            }
+
+            set
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        this.transform.position = value;
+                        return;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        this.mRectTransform.position = value;
+                        return;
+                    case JCS_UnityObjectType.SPRITE:
+                        this.mSpriteRenderer.transform.position = value;
+                        return;
+                }
+
+                JCS_Debug.LogError(
+                    this,
+                    "Set default local position...(This should not happens...)");
             }
         }
 
@@ -181,7 +229,7 @@ namespace JCSUnity
                         return this.mSpriteRenderer.transform.localPosition;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                 "JCS_UnityObject",
 
                 "Return default local position...(This should not happens...)");
@@ -205,7 +253,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                 "JCS_UnityObject",
 
                 "Set default local position...(This should not happens...)");
@@ -215,7 +263,55 @@ namespace JCSUnity
         /// <summary>
         /// Get Current type's rotation
         /// </summary>
-        public Vector3 LocalRotation
+        public Vector3 EulerAngles
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.transform.eulerAngles;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        return this.mRectTransform.eulerAngles;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.transform.eulerAngles;
+                }
+
+                JCS_Debug.LogError(
+                "JCS_UnityObject",
+
+                "Return default local rotation...(This should not happens...)");
+
+                return this.transform.eulerAngles;
+            }
+
+            set
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        this.transform.eulerAngles = value;
+                        return;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        this.mRectTransform.eulerAngles = value;
+                        return;
+                    case JCS_UnityObjectType.SPRITE:
+                        this.mSpriteRenderer.transform.eulerAngles = value;
+                        return;
+                }
+
+                JCS_Debug.LogError(
+                    this, 
+                    "Set default local rotation...(This should not happens...)");
+            }
+        }
+
+        /// <summary>
+        /// Get Current type's rotation
+        /// </summary>
+        public Vector3 LocalEulerAngles
         {
             get
             {
@@ -230,10 +326,9 @@ namespace JCSUnity
                         return this.mSpriteRenderer.transform.localEulerAngles;
                 }
 
-                JCS_Debug.JcsErrors(
-                "JCS_UnityObject",
-
-                "Return default local rotation...(This should not happens...)");
+                JCS_Debug.LogError(
+                    this, 
+                    "Return default local rotation...(This should not happens...)");
 
                 return this.transform.localEulerAngles;
             }
@@ -254,10 +349,9 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
-                "JCS_UnityObject",
-
-                "Set default local rotation...(This should not happens...)");
+                JCS_Debug.LogError(
+                    this, 
+                    "Set default local rotation...(This should not happens...)");
             }
         }
 
@@ -279,10 +373,9 @@ namespace JCSUnity
                         return this.mSpriteRenderer.transform.localScale;
                 }
 
-                JCS_Debug.JcsErrors(
-                "JCS_UnityObject",
-
-                "Return default local scale...(This should not happens...)");
+                JCS_Debug.LogError(
+                    this, 
+                    "Return default local scale...(This should not happens...)");
 
                 return this.transform.localScale;
             }
@@ -303,10 +396,9 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
-                "JCS_UnityObject",
-
-                "Set default local scale...(This should not happens...)");
+                JCS_Debug.LogError(
+                    this, 
+                    "Set default local scale...(This should not happens...)");
             }
         }
 
@@ -329,10 +421,9 @@ namespace JCSUnity
                         return this.mText.enabled;
                 }
 
-                JCS_Debug.JcsErrors(
-               "JCS_UnityObject",
-
-               "Return default visible...(This should not happens...)");
+                JCS_Debug.LogError(
+                    this, 
+                    "Return default visible...(This should not happens...)");
 
 
                 // return default
@@ -378,7 +469,7 @@ namespace JCSUnity
                         return this.mText.color;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this,
                     "Return default Local Red...(This should not happens...)");
 
@@ -411,7 +502,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this,
                     "Set default Local Red...(This should not happens...)");
             }
@@ -436,7 +527,7 @@ namespace JCSUnity
                         return this.mText.color.a;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Return default Local Alpha...(This should not happens...)");
 
                 return 0;
@@ -478,7 +569,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Set default Local Alpha...(This should not happens...)");
             }
         }
@@ -502,7 +593,7 @@ namespace JCSUnity
                         return this.mText.color.r;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                "JCS_UnityObject",
 
                "Return default Local Red...(This should not happens...)");
@@ -546,7 +637,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
               "JCS_UnityObject",
 
               "Set default Local Red...(This should not happens...)");
@@ -572,7 +663,7 @@ namespace JCSUnity
                         return this.mText.color.g;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
               "JCS_UnityObject",
 
               "Return default Local Green...(This should not happens...)");
@@ -616,7 +707,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
               "JCS_UnityObject",
 
               "Set default Local Blue...(This should not happens...)");
@@ -642,7 +733,7 @@ namespace JCSUnity
                         return this.mText.color.b;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_UnityObject",
                     "Return default Local Blue...(This should not happens...)");
 
@@ -685,7 +776,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
               "JCS_UnityObject",
 
               "Set default Local Blue...(This should not happens...)");
@@ -711,7 +802,7 @@ namespace JCSUnity
                         return this.mText.material.mainTexture;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_UnityObject",
                     "Return default Local Blue...(This should not happens...)");
 
@@ -744,7 +835,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
               "JCS_UnityObject",
 
               "Set default Local Blue...(This should not happens...)");
@@ -766,7 +857,7 @@ namespace JCSUnity
                         return this.mImage.sprite;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_UnityObject",
                     "Failed to get sprite composite cuz current unity object setting does not have it.");
 
@@ -785,7 +876,7 @@ namespace JCSUnity
                         return;
                 }
 
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_UnityObject",
                     "Failed to set the sprite cuz the current unity object setting does not have sprite coposite.");
             }

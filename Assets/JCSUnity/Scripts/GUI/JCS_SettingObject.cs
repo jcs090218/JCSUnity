@@ -114,16 +114,16 @@ namespace JCSUnity
             switch (mSettingType)
             {
                 case JCS_SoundSettingType.NONE:
-                    JCS_Debug.JcsErrors("JCS_SettingObject",   "Setting with no meaning...");
+                    JCS_Debug.LogError("JCS_SettingObject",   "Setting with no meaning...");
                     return;
                 case JCS_SoundSettingType.BGM_SOUND:
-                    this.mSettingValue = JCS_GameSettings.GetBGM_Volume();
+                    this.mSettingValue = JCS_SoundSettings.instance.GetBGM_Volume();
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
-                    this.mSettingValue = JCS_GameSettings.GetSFXSound_Volume();
+                    this.mSettingValue = JCS_SoundSettings.instance.GetSFXSound_Volume();
                     break;
                 case JCS_SoundSettingType.SKILLS_SOUND:
-                    this.mSettingValue = JCS_GameSettings.GetSkillsSound_Volume();
+                    this.mSettingValue = JCS_SoundSettings.instance.GetSkillsSound_Volume();
                     break;
             }
         }
@@ -132,14 +132,14 @@ namespace JCSUnity
             switch (mGUIType)
             {
                 case JCS_GUIType.NONE:
-                    JCS_Debug.JcsErrors("JCS_SettingObject",   "Setting with no meaning...");
+                    JCS_Debug.LogError("JCS_SettingObject",   "Setting with no meaning...");
                     return;
                 case JCS_GUIType.TOGGLE:
                     {
                         this.mToggle = this.GetComponent<Toggle>();
                         if (mToggle == null)
                         {
-                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Toggle with no corrosdoing component...");
+                            JCS_Debug.LogError("JCS_SettingObject",   "Toggle with no corrosdoing component...");
                             return;
                         }
                     }
@@ -149,7 +149,7 @@ namespace JCSUnity
                         this.mSlider = this.GetComponent<Slider>();
                         if (mSlider == null)
                         {
-                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Slider with no corrosdoing component...");
+                            JCS_Debug.LogError("JCS_SettingObject",   "Slider with no corrosdoing component...");
                             return;
                         }
                         // assign value;
@@ -161,7 +161,7 @@ namespace JCSUnity
                         this.mScrollbar = this.GetComponent<Scrollbar>();
                         if (mScrollbar == null)
                         {
-                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Scrollbar with no corrosdoing component...");
+                            JCS_Debug.LogError("JCS_SettingObject",   "Scrollbar with no corrosdoing component...");
                             return;
                         }
                     }
@@ -171,7 +171,7 @@ namespace JCSUnity
                         this.mDropdown = this.GetComponent<Dropdown>();
                         if (mDropdown == null)
                         {
-                            JCS_Debug.JcsErrors("JCS_SettingObject",   "Dropdown with no corrosdoing component...");
+                            JCS_Debug.LogError("JCS_SettingObject",   "Dropdown with no corrosdoing component...");
                             return;
                         }
                     }
@@ -181,7 +181,7 @@ namespace JCSUnity
                         this.mInputField = this.GetComponent<InputField>();
                         if (mInputField == null)
                         {
-                            JCS_Debug.JcsErrors("JCS_SettingObject",   "InputField with no corrosdoing component...");
+                            JCS_Debug.LogError("JCS_SettingObject",   "InputField with no corrosdoing component...");
                             return;
                         }
                     }
@@ -195,13 +195,13 @@ namespace JCSUnity
             switch (mSettingType)
             {
                 case JCS_SoundSettingType.BGM_SOUND:
-                    JCS_GameSettings.SetBGM_Volume(this.mSlider.value);
+                    JCS_SoundSettings.instance.SetBGM_Volume(this.mSlider.value);
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
-                    JCS_GameSettings.SetSFXSound_Volume(this.mSlider.value);
+                    JCS_SoundSettings.instance.SetSFXSound_Volume(this.mSlider.value);
                     break;
                 case JCS_SoundSettingType.SKILLS_SOUND:
-                    JCS_GameSettings.SetSkillsSound_Volume(this.mSlider.value);
+                    JCS_SoundSettings.instance.SetSkillsSound_Volume(this.mSlider.value);
                     break;
             }
         }

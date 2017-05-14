@@ -89,7 +89,7 @@ namespace JCSUnity
             if (mTargetPortal == null &&
                 mType == JCS_2DPortalType.TRANSFER_PORTAL)
             {
-                JCS_Debug.JcsErrors(this, "Transform portal does not exists.");
+                JCS_Debug.LogError(this, "Transform portal does not exists.");
                 return;
             }
         }

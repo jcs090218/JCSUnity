@@ -22,7 +22,7 @@ namespace JCSUnity
             if (undecrypted.Length < 0 || undecrypted.Length > JCS_NetworkConstant.INBUFSIZE)
             {
                 // TODO(JenChieh): split the packet system
-                JCS_Debug.JcsErrors("JCS_PacketDecoder", 
+                JCS_Debug.LogError("JCS_PacketDecoder", 
                     "Packet recieved is too big!!!");
 
                 return null;
@@ -35,7 +35,7 @@ namespace JCSUnity
             {
                 if ((char)undecrypted[index] != (char)JCS_NetworkConstant.DECODE_BUFFER[index])
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         "JCS_PacketDecoder",
                         "Wrong Packet Header!!!");
 

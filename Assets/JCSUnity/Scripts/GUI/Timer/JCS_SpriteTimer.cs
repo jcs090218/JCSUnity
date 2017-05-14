@@ -35,7 +35,7 @@ namespace JCSUnity
         private const float MIN_SECOND_TIME = 0.0f;
 
 
-        [Header("** Runtime Variables (JCS_SpriteScore) **")]
+        [Header("** Runtime Variables (JCS_DeltaNumber) **")]
 
         [Tooltip("Timer active or not active.")]
         [SerializeField]
@@ -78,7 +78,7 @@ namespace JCSUnity
         private Sprite mTimeText9 = null;
 
 
-        [Header("- Sprite Settings (JCS_SpriteScore) ")]
+        [Header("- Sprite Settings (JCS_DeltaNumber) ")]
 
         [Tooltip("Each digit for our.")]
         [SerializeField]
@@ -105,7 +105,7 @@ namespace JCSUnity
         private SpriteRenderer mDigitSecond2 = null;
 
 
-        [Header("- Sprite Settings (JCS_SpriteScore) ")]
+        [Header("- Sprite Settings (JCS_DeltaNumber) ")]
 
         [Tooltip("Interval between each digit.")]
         [SerializeField] [Range(0.1f, 5.0f)]
@@ -227,7 +227,7 @@ namespace JCSUnity
         {
             if (mDigitHour1 == null || mDigitHour2 == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Digit slot cannot be null references...");
                 return;
             }
@@ -253,7 +253,7 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Digit slot cannot be null references...");
                 return;
             }
@@ -279,7 +279,7 @@ namespace JCSUnity
         {
             if (mDigitSecond1 == null || mDigitSecond2 == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Digit slot cannot be null references...");
                 return;
             }
@@ -333,7 +333,7 @@ namespace JCSUnity
         {
             if (mDigitHour1 == null || mDigitHour2 == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Digit slot cannot be null references...");
                 return;
             }
@@ -361,7 +361,7 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Digit slot cannot be null references...");
                 return;
             }
@@ -389,7 +389,7 @@ namespace JCSUnity
         {
             if (mDigitSecond1 == null || mDigitSecond2 == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Digit slot cannot be null references...");
                 return;
             }

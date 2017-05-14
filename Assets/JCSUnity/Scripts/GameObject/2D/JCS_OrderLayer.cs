@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Scene layer.
     /// </summary>
-    public class JCS_OrderLayer 
+    public class JCS_OrderLayer
         : MonoBehaviour
     {
 
@@ -25,8 +25,16 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private int mOrderLayer = 0;
-        [SerializeField] private float mLayerFriction = 0;
+
+        [Header("** Runtime Variables (JCS_OrderLayer) **")]
+
+        [Tooltip("Rendering order.")]
+        [SerializeField]
+        private int mOrderLayer = 0;
+
+        [Tooltip("How fast this layer moves.")]
+        [SerializeField]
+        private float mLayerFriction = 0;
 
 
         //----------------------
@@ -35,7 +43,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public int GetOrderLayer() { return this.mOrderLayer; }
+        public int OrderLayer { get { return this.mOrderLayer; } }
 
         //========================================
         //      Unity's function

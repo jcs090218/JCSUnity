@@ -49,7 +49,7 @@ namespace JCSUnity
 
             // get all the scene layer in the scene.
             // so it could be manage
-            mJCSOrderLayer = (JCS_OrderLayer[])Resources.FindObjectsOfTypeAll(typeof(JCS_OrderLayer));
+            mJCSOrderLayer = JCS_Utility.FindObjectsOfTypeAllInHierarchy<JCS_OrderLayer>();
         }
 
 
@@ -70,13 +70,12 @@ namespace JCSUnity
             foreach (JCS_OrderLayer jcsol in mJCSOrderLayer)
             {
                 // find the order layer with the index passed in!
-                if (jcsol.GetOrderLayer() == orderLayerIndex)
+                if (jcsol.OrderLayer == orderLayerIndex)
                     return jcsol;
             }
 
-            JCS_Debug.JcsErrors(
-                "JCS_2DDynamicSceneManager",
-                 
+            JCS_Debug.LogError(
+                this, 
                 "Does not found the order layer u want.");
 
             return null;
@@ -100,6 +99,14 @@ namespace JCSUnity
         {
             // get the order layer by order layer index!
             JCS_OrderLayer jcsol = GetOrderLayerByOrderLayerIndex(orderLayerIndex);
+
+            if (jcsol == null)
+            {
+                JCS_Debug.LogWarning(
+                    this,
+                    "Did not find the layer you willing to set to..., Layer: " + mJCSOrderLayer);
+                return;
+            }
 
             // set parent
             jcsOlo.transform.SetParent(jcsol.transform);

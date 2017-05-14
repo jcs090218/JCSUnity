@@ -304,7 +304,7 @@ namespace JCSUnity
             JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
             if (jcsCanvas == null)
             {
-                JCS_Debug.JcsLog(
+                JCS_Debug.Log(
                     "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the base panel.");
 
@@ -330,7 +330,7 @@ namespace JCSUnity
             JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
             if (jcsCanvas == null)
             {
-                JCS_Debug.JcsLog(
+                JCS_Debug.Log(
                     "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the 9 x 9 slide panel.");
 
@@ -341,7 +341,7 @@ namespace JCSUnity
             JCS_2DCamera cam = (JCS_2DCamera)FindObjectOfType(typeof(JCS_Camera));
             if (cam == null)
             {
-                JCS_Debug.JcsLog(
+                JCS_Debug.Log(
                     "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Camera in the hierarchy. Plz create the canvas before create the 9 x 9 slide panel.");
 
@@ -503,7 +503,7 @@ namespace JCSUnity
         {
             if (jcsCanvas == null)
             {
-                JCS_Debug.JcsLog(
+                JCS_Debug.Log(
                     "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the base panel.");
 

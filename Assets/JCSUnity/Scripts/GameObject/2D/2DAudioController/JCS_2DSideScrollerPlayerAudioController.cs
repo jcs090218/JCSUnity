@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
     /// <summary>
@@ -70,10 +71,12 @@ namespace JCSUnity
 
             if (mJumpSound[0] == null)
             {
-                JCS_Debug.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
+                JCS_Debug.LogError(
+                    this,
+                    "Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mJumpSound[0], JCS_GameSettings.GetSkillsSound_Volume());
+            mJCSSoundPlayer.PlayOneShot(mJumpSound[0], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -85,10 +88,10 @@ namespace JCSUnity
 
             if (mJumpSound[1] == null)
             {
-                JCS_Debug.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
+                JCS_Debug.LogError(this, "Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mJumpSound[1], JCS_GameSettings.GetSkillsSound_Volume());
+            mJCSSoundPlayer.PlayOneShot(mJumpSound[1], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -100,10 +103,10 @@ namespace JCSUnity
 
             if (mJumpSound[2] == null)
             {
-                JCS_Debug.JcsErrors("JCS_2DPlayerAudioController",   "Play sound with null references...");
+                JCS_Debug.LogError(this, "Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mJumpSound[2], JCS_GameSettings.GetSkillsSound_Volume());
+            mJCSSoundPlayer.PlayOneShot(mJumpSound[2], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -121,13 +124,13 @@ namespace JCSUnity
 
             if (mAttackSounds[rand] == null)
             {
-                JCS_Debug.JcsErrors(
-                    "JCS_2DPlayerAudioController", 
+                JCS_Debug.LogError(
+                    this, 
                     "Play sound with null references...");
 
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mAttackSounds[rand], JCS_GameSettings.GetSkillsSound_Volume());
+            mJCSSoundPlayer.PlayOneShot(mAttackSounds[rand], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -136,13 +139,13 @@ namespace JCSUnity
         {
             if (mWalkSound == null)
             {
-                JCS_Debug.JcsErrors(
-                    "JCS_2DPlayerAudioController", 
+                JCS_Debug.LogError(
+                    this, 
                     "Play sound with null references...");
 
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mWalkSound, JCS_GameSettings.GetSkillsSound_Volume());
+            mJCSSoundPlayer.PlayOneShot(mWalkSound, JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -210,7 +213,7 @@ namespace JCSUnity
                     return mGhostSound;
             }
 
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                 "JCS_2DSideScrollerPlayerAudioController",
                  
                 "Return sound that aren't in the player state...");

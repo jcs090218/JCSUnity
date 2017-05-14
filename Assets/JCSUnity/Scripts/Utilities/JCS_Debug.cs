@@ -14,7 +14,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Debugging class.
     /// </summary>
     public static class JCS_Debug
     {
@@ -24,7 +24,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="script"></param>
         /// <param name="desc"></param>
-        public static void JcsErrors(string script, string desc)
+        public static void LogError(string script, string desc)
         {
             //string currentFile = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName();
             int currentLine = -1;
@@ -32,16 +32,16 @@ namespace JCSUnity
             currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
 #endif
 
-            Log("Errors", script, currentLine, desc);
+            JcsLog("Errors", script, currentLine, desc);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="script"></param>
         /// <param name="desc"></param>
-        public static void JcsErrors(Object script, string desc)
+        public static void LogError(Object script, string desc)
         {
-            JcsErrors(script.GetType().Name, desc);
+            LogError(script.GetType().Name, desc);
         }
 
         /// <summary>
@@ -49,45 +49,45 @@ namespace JCSUnity
         /// </summary>
         /// <param name="script"></param>
         /// <param name="desc"></param>
-        public static void JcsReminders(string script, string desc)
-        {
-            int currentLine = -1;
-#if (UNITY_EDITOR)
-            currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
-#endif
-
-            Log("Reminders", script, currentLine, desc);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void JcsReminders(Object script, string desc)
-        {
-            JcsReminders(script.GetType().Name, desc);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void JcsLog(string script, string desc)
+        public static void LogReminders(string script, string desc)
         {
             int currentLine = -1;
 #if (UNITY_EDITOR)
             currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
 #endif
 
-            Log("Log", script, currentLine, desc);
+            JcsLog("Reminders", script, currentLine, desc);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="script"></param>
         /// <param name="desc"></param>
-        public static void JcsLog(Object script, string desc)
+        public static void LogReminders(Object script, string desc)
+        {
+            LogReminders(script.GetType().Name, desc);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="script"></param>
+        /// <param name="desc"></param>
+        public static void Log(string script, string desc)
+        {
+            int currentLine = -1;
+#if (UNITY_EDITOR)
+            currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
+#endif
+
+            JcsLog("Log", script, currentLine, desc);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="script"></param>
+        /// <param name="desc"></param>
+        public static void Log(Object script, string desc)
         {
             JcsLog(script.GetType().Name, desc);
         }
@@ -97,23 +97,23 @@ namespace JCSUnity
         /// </summary>
         /// <param name="script"></param>
         /// <param name="desc"></param>
-        public static void JcsWarnings(string script, string desc)
+        public static void LogWarning(string script, string desc)
         {
             int currentLine = -1;
 #if (UNITY_EDITOR)
             currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
 #endif
 
-            Log("Warnings", script, currentLine, desc);
+            JcsLog("Warnings", script, currentLine, desc);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="script"></param>
         /// <param name="desc"></param>
-        public static void JcsWarnings(Object script, string desc)
+        public static void LogWarning(Object script, string desc)
         {
-            JcsWarnings(script.GetType().Name, desc);
+            LogWarning(script.GetType().Name, desc);
         }
 
 
@@ -124,7 +124,7 @@ namespace JCSUnity
         /// <param name="script"></param>
         /// <param name="line"></param>
         /// <param name="desc"></param>
-        private static void Log(string type, string script, int line = -1, string desc = "")
+        private static void JcsLog(string type, string script, int line = -1, string desc = "")
         {
 #if (UNITY_EDITOR)
             Debug.Log("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");

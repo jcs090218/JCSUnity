@@ -61,7 +61,7 @@ namespace JCSUnity
                     {
                         if (mGameUI != null)
                         {
-                            JCS_Debug.JcsErrors("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
+                            JCS_Debug.LogError("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
                             return;
                         }
 
@@ -72,7 +72,7 @@ namespace JCSUnity
                     {
                         //if (mFocusGameDialogue != null)
                         //{
-                        //    JCS_Debug.JcsErrors("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
+                        //    JCS_Debug.LogError("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
                         //    return;
                         //}
 
@@ -83,7 +83,7 @@ namespace JCSUnity
                     {
                         if (mForceDialogue != null)
                         {
-                            JCS_Debug.JcsErrors("JCS_UIManager",   "Failed to set \"Force Dialogue\"...");
+                            JCS_Debug.LogError("JCS_UIManager",   "Failed to set \"Force Dialogue\"...");
                             return;
                         }
 
@@ -107,7 +107,7 @@ namespace JCSUnity
                     return this.mForceDialogue;
             }
 
-            JCS_Debug.JcsErrors("JCS_GameManager",   "Failed to get Dialogue -> " + type);
+            JCS_Debug.LogError("JCS_GameManager",   "Failed to get Dialogue -> " + type);
             return null;
         }
         public LinkedList<JCS_DialogueObject> GetOpenWindow() { return this.mOpenWindow; }

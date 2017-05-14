@@ -72,13 +72,16 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Override
+        /// </summary>
         public override void JCS_ButtonClick()
         {
             if (mRollBtnSelector == null)
             {
-                JCS_Debug.JcsErrors(
-                    "JCS_RollSelectorButton",
-                     
+                JCS_Debug.LogError(
+                    this,
                     "");
 
                 return;
@@ -136,17 +139,18 @@ namespace JCSUnity
         {
             if (mRollBtnSelector == null)
             {
-                JCS_Debug.JcsErrors(
-                    "JCS_RollSelectorButton",
-                     
+                JCS_Debug.LogError(
+                     this, 
                     "This button has been set focus but without the handler...");
-
                 return;
             }
 
             mRollBtnSelector.SetFocusSelector(this);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void OverwriteAllButton()
         {
             // remove all the listener.
@@ -168,6 +172,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ActiveAllOtherButtons()
         {
             foreach (JCS_Button b in btns)

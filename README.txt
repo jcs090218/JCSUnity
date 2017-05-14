@@ -1,13 +1,13 @@
-========================================================================
-$File: README.txt $
-$Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
-$Date: 2016-03-29 $
-$Revision: 1.4.3 $
-$Version Control Page: https://github.com/jcs090218/JCSUnity_Framework $
-$Unity Version: 5.5.1f1 (64-bit) $
-$Notice: See LICENSE.txt for modification and distribution information 
-                  Copyright (c) 2016 by Shen, Jen-Chieh $
-========================================================================
+# ========================================================================
+# $File: README.txt $
+# $Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
+# $Date: 2016-03-29 $
+# $Revision: 1.4.5 $
+# $Version Control Page: https://github.com/jcs090218/JCSUnity_Framework $
+# $Unity Version: 5.5.1f1 (64-bit) $
+# $Notice: See LICENSE.txt for modification and distribution information 
+#                   Copyright (c) 2016 by Shen, Jen-Chieh $
+# ========================================================================
 
 
     =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

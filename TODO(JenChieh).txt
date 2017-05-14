@@ -1,15 +1,14 @@
-========================================================================
-$File: TODO(JenChieh).txt $
-$Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
-$Date: 2016-03-29 $
-$Notice: See LICENSE.txt for modification and distribution information 
-                  Copyright (c) 2016 by Shen, Jen-Chieh $
-========================================================================
+# ========================================================================
+# $File: TODO(JenChieh).txt $
+# $Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
+# $Date: 2016-03-29 $
+# $Notice: See LICENSE.txt for modification and distribution information 
+#                   Copyright (c) 2016 by Shen, Jen-Chieh $
+# ========================================================================
 
 
 //-- General --//
 * Weather Data (System)
-* Text Delta counter (GUI)
 * JCS_EnvironmentSoundPlayer (not following the system setting, logic errors!)
 * JCS_StaticLightning (effect isn't good enough, algorithm fix!)
 * 同一排 然後只能選擇一個button突出來(slide effect).
@@ -23,7 +22,6 @@ $Notice: See LICENSE.txt for modification and distribution information
 
 //-- 2D --//
 * Swim Action
-* Fix 2D Ladder and Rope
 
 //-- 3D --//
 * Control player like Monster Hunter game did.

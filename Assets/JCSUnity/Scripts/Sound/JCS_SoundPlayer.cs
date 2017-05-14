@@ -75,13 +75,13 @@ namespace JCSUnity
             switch (type)
             {
                 case JCS_SoundSettingType.BGM_SOUND:
-                    volume = JCS_GameSettings.GetBGM_Volume();
+                    volume = JCS_SoundSettings.instance.GetBGM_Volume();
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
-                    volume = JCS_GameSettings.GetSFXSound_Volume();
+                    volume = JCS_SoundSettings.instance.GetSFXSound_Volume();
                     break;
                 case JCS_SoundSettingType.SKILLS_SOUND:
-                    volume = JCS_GameSettings.GetSkillsSound_Volume();
+                    volume = JCS_SoundSettings.instance.GetSkillsSound_Volume();
                     break;
             }
 

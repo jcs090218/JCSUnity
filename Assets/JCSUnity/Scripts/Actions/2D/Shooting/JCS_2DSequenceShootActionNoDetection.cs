@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_2DCursorSequenceShootAction.cs $
+ * $File: JCS_2DSequenceShootActionNoDetection.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -18,7 +18,7 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     [RequireComponent(typeof(JCS_2DCursorShootAction))]
-    public class JCS_2DCursorSequenceShootAction
+    public class JCS_2DSequenceShootActionNoDetection
         : MonoBehaviour
         , JCS_Action
     {
@@ -145,7 +145,7 @@ namespace JCSUnity
         {
             if (mShootAction.Bullet == null)
             {
-                JCS_Debug.JcsReminders(this,
+                JCS_Debug.LogReminders(this,
                     "There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
 
                 return;
@@ -153,7 +153,7 @@ namespace JCSUnity
 
             if (hit <= 0)
             {
-                JCS_Debug.JcsReminders(this,
+                JCS_Debug.LogReminders(this,
                     "Cannot shoot sequence of bullet with lower than 0 hit...");
 
                 return;

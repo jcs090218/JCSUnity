@@ -5,15 +5,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22435206}
-  - 222: {fileID: 22232454}
-  - 114: {fileID: 11405534}
-  - 114: {fileID: 11425318}
-  - 114: {fileID: 11461196}
-  - 114: {fileID: 11417912}
-  - 114: {fileID: 114000014207568206}
+  - component: {fileID: 22435206}
+  - component: {fileID: 22232454}
+  - component: {fileID: 11405534}
+  - component: {fileID: 11425318}
+  - component: {fileID: 11461196}
+  - component: {fileID: 11417912}
+  - component: {fileID: 114000014207568206}
   m_Layer: 5
   m_Name: JCS_BlackScreen
   m_TagString: Untagged
@@ -113,10 +113,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}

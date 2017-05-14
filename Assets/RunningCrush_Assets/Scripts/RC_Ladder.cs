@@ -10,6 +10,10 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
+
+/// <summary>
+/// 
+/// </summary>
 public class RC_Ladder 
     : JCS_2DLadder
 {
@@ -33,23 +37,38 @@ public class RC_Ladder
     //========================================
     //      Unity's function
     //------------------------------
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-    }
-    protected override void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
         if (p == null)
             return;
 
+        bool isTopOfBox = JCS_Physics.TopOfBox(
+                        p.GetCharacterController(),
+                        mPositionPlatform.GetPlatformCollider());
+
+        if (isTopOfBox)
+        {
+            p.AutoClimb = false;
+            return;
+        }
+
         p.AutoClimb = true;
         p.AutoClimbDirection = mAutoClimbDirection;
-        
+
 
         // auto climb
-        p.ClimbOrTeleport();
+        switch (mAutoClimbDirection)
+        {
+            case JCS_ClimbMoveType.MOVE_DOWN:
+                p.Prone();
+                break;
+            case JCS_ClimbMoveType.MOVE_UP:
+                p.ClimbOrTeleport();
+                break;
+        }
     }
+
     protected override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);

@@ -26,7 +26,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private JCS_FadeObject mAO = null;
+        private JCS_FadeObject mFadeObject = null;
 
         //----------------------
         // Protected Variables
@@ -34,13 +34,21 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public Color LocalColor
+        {
+            get { return this.mFadeObject.LocalColor; }
+            set
+            {
+                this.mFadeObject.LocalColor = value;
+            }
+        }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void Awake()
         {
-            this.mAO = this.GetComponent<JCS_FadeObject>();
+            this.mFadeObject = this.GetComponent<JCS_FadeObject>();
         }
 
         private void Start()
@@ -62,7 +70,7 @@ namespace JCSUnity
         /// <param name="time"></param>
         public void FadeIn(float time)
         {
-            mAO.FadeIn(time);
+            mFadeObject.FadeIn(time);
         }
 
         /// <summary>
@@ -71,7 +79,7 @@ namespace JCSUnity
         /// <param name="time"></param>
         public void FadeOut(float time)
         {
-            mAO.FadeOut(time);
+            mFadeObject.FadeOut(time);
         }
 
         /// <summary>
@@ -80,7 +88,7 @@ namespace JCSUnity
         /// <returns></returns>
         public bool IsFadeIn()
         {
-            return mAO.IsFadeIn();
+            return mFadeObject.IsFadeIn();
         }
 
         /// <summary>
@@ -89,7 +97,7 @@ namespace JCSUnity
         /// <returns></returns>
         public bool IsFadeOut()
         {
-            return mAO.IsFadeOut();
+            return mFadeObject.IsFadeOut();
         }
 
         /// <summary>

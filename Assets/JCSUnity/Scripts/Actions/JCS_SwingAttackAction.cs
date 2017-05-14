@@ -285,7 +285,7 @@ namespace JCSUnity
         {
             if (mAtkAnim == null)
             {
-                JCS_Debug.JcsReminders(
+                JCS_Debug.LogReminders(
                     "JCS_SwingAttackAction", 
                     @"No animation assign but u 
                     still want to spawn a animation...");

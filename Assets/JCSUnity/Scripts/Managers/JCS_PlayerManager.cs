@@ -259,7 +259,7 @@ namespace JCSUnity
         {
             if (GetJCSPlayerList().Count == 0)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_PlayerManager", 
                       
                     "Cannot use the current function cuz the player list in the manager is lower than 0...");
@@ -364,7 +364,7 @@ namespace JCSUnity
 
             if (players.Count == 0)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_PlayerManager",
                      
                     "Cannot use the current function cuz the player list in the manager is lower than 0...");

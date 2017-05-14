@@ -53,7 +53,7 @@ namespace JCSUnity
 
             if (mAudioClip == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_SoundProxyAction", 
                       
                     "U called a proxy action but with no data in it...");

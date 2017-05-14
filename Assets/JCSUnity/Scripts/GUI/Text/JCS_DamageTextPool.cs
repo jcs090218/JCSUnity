@@ -124,19 +124,19 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "min damage cannot be higher or equal to the max damage!");
+                JCS_Debug.LogError("JCS_MixDamageTextPool",   "min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Min or Max damage cannot be lower than 0!");
+                JCS_Debug.LogError("JCS_MixDamageTextPool",   "Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.JcsErrors("JCS_MixDamageTextPool",   "Hit count should not be equal or lower than 0!");
+                JCS_Debug.LogError("JCS_MixDamageTextPool",   "Hit count should not be equal or lower than 0!");
                 return null;
             }
 
@@ -177,7 +177,7 @@ namespace JCSUnity
         {
             if (damage.Length != pos.Length)
             {
-                JCS_Debug.JcsErrors("JCS_DamageTextPool",   "Wrong pair size!");
+                JCS_Debug.LogError("JCS_DamageTextPool",   "Wrong pair size!");
                 return;
             }
 
@@ -265,7 +265,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.JcsWarnings(this,
+                    JCS_Debug.LogWarning(this,
                         "Prevent, stack overflow function call.");
                 }
 #endif
@@ -391,14 +391,14 @@ namespace JCSUnity
             if (hitSound != null)
             {
                 // play the hit sound provide by passing in.
-                mSoundPlayer.PlayOneShot(hitSound, JCS_GameSettings.GetSFXSound_Volume());
+                mSoundPlayer.PlayOneShot(hitSound, JCS_SoundSettings.instance.GetSFXSound_Volume());
             }
             else
             {
                 if (mHitSound != null)
                 {
                     // play the regular assigned by variable's hit sound.
-                    mSoundPlayer.PlayOneShot(mHitSound, JCS_GameSettings.GetSFXSound_Volume());
+                    mSoundPlayer.PlayOneShot(mHitSound, JCS_SoundSettings.instance.GetSFXSound_Volume());
                 }
             }
         }

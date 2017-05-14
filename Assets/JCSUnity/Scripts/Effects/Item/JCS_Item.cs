@@ -73,9 +73,19 @@ is object that we target.")]
 
         [Header("** Sound Settings (JCS_Item) **")]
 
+        [Tooltip(@"Play one shot while not playing any 
+other sound. (Pick Sound)")]
+        [SerializeField]
+        protected bool mPlayOneShotWhileNotPlayingForPickSound = true;
+
         [Tooltip("Audio sound when u pick up this item")]
         [SerializeField]
         protected AudioClip mPickSound = null;
+
+        [Tooltip(@"Play one shot while not playing any 
+other sound. (Effect Sound)")]
+        [SerializeField]
+        protected bool mPlayOneShotWhileNotPlayingForEffectSound = false;
 
         [Tooltip("Audio sound when u pick up this item (Global) ")]
         [SerializeField]
@@ -152,7 +162,7 @@ is object that we target.")]
 
             if (mPickCollider == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Cannot pick the item cuz there is no collider set.");
 
                 return;
@@ -230,14 +240,20 @@ is object that we target.")]
         {
             DropEffect(other);
 
-            if (mPickSound != null)
+            /* Play Pick Sound */
+            if (mPlayOneShotWhileNotPlayingForPickSound)
                 JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShotWhileNotPlaying(mPickSound);
+            else
+                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mPickSound);
 
             // call item effect.
             mPickCallback.Invoke(other);
 
-            // play the sound
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mEffectSound);
+            /* Play Effect Sound */
+            if (mPlayOneShotWhileNotPlayingForEffectSound)
+                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShotWhileNotPlaying(mEffectSound);
+            else
+                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mEffectSound);
 
             mCanPick = false;
         }

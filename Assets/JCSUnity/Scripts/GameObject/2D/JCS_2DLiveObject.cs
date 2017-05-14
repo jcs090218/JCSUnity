@@ -250,7 +250,7 @@ to get the information from them.")]
                 defenseValue = mAbilityFormat.GetDefenseValue();
             else
             {
-                JCS_Debug.JcsReminders(this, 
+                JCS_Debug.LogReminders(this, 
                     "No Ability Format attached.");
             }
 
@@ -261,7 +261,7 @@ to get the information from them.")]
                 JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
-                    JCS_Debug.JcsErrors("JCS_2DLiveObject", 
+                    JCS_Debug.LogError("JCS_2DLiveObject", 
                         "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
 
                     return;
@@ -323,7 +323,7 @@ to get the information from them.")]
                 JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
-                    JCS_Debug.JcsErrors("JCS_2DLiveObject", 
+                    JCS_Debug.LogError("JCS_2DLiveObject", 
                         "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
 
                     return;

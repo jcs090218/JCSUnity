@@ -246,7 +246,7 @@ namespace JCSUnity
                     return GetMouseButtonUp(button);
             }
 
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                 "JCS_Input",
                  
                 "This cannot happed.");
@@ -345,7 +345,7 @@ namespace JCSUnity
                     return GetKeyUp(key);
             }
 
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                 "JCS_Input",
                  
                 "This cannot happed.");
@@ -409,7 +409,7 @@ namespace JCSUnity
             }
 
 
-            JCS_Debug.JcsErrors(
+            JCS_Debug.LogError(
                 "JCS_Input",
                  
                 "This cannot happed.");
@@ -600,7 +600,7 @@ namespace JCSUnity
 
             if (name == "")
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_Input", "name cannot be empty string...");
 
                 return 0;
@@ -628,7 +628,7 @@ namespace JCSUnity
             // check if any joystick connected.
             if (!IsJoystickConnected())
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_Input",
                     @"There are no joystick connected, and u 
 still trying to make the joystick specific function call.");

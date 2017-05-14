@@ -76,7 +76,7 @@ Photo Order Layer will minus one in case the photo does not be ontop of the fram
             }
             else
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "RC_PlayerPointer",
                      
                     "No Photo sprite renderer assigned.");

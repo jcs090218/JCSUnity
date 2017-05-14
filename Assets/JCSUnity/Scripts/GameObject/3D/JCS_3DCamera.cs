@@ -203,7 +203,7 @@ namespace JCSUnity
         {
             if (mTargetTransform == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Cannot record the frame without the target transform...");
 
                 return;
@@ -315,7 +315,7 @@ namespace JCSUnity
         {
             if (mTargetTransform == null)
             {
-                JCS_Debug.JcsErrors("JCS_3DCamera",   "There is no target to reset the camera!");
+                JCS_Debug.LogError("JCS_3DCamera",   "There is no target to reset the camera!");
                 return;
             }
 
@@ -397,7 +397,7 @@ namespace JCSUnity
         {
             if (mTargetTransform == null)
             {
-                JCS_Debug.JcsErrors("JCS_3DCamera",   "There is no target to reset the camera!");
+                JCS_Debug.LogError("JCS_3DCamera",   "There is no target to reset the camera!");
                 return;
             }
 

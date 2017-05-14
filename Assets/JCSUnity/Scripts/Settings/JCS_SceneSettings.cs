@@ -35,6 +35,9 @@ namespace JCSUnity
         [Tooltip("General Scene fadein time. (For all scene.)")]
         public float SCENE_FADEIN_TIME = 1.5f;
 
+        [Tooltip("Screen color to fade in/out the scene.")]
+        public Color SCREEN_COLOR = Color.black;
+
         //----------------------
         // Protected Variables
 
@@ -116,6 +119,7 @@ namespace JCSUnity
         {
             _new.SCENE_FADEIN_TIME = _old.SCENE_FADEIN_TIME;
             _new.SCENE_FADEOUT_TIME = _old.SCENE_FADEOUT_TIME;
+            _new.SCREEN_COLOR = _old.SCREEN_COLOR;
         }
 
         //----------------------

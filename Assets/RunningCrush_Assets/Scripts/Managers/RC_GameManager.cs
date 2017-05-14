@@ -11,6 +11,9 @@ using System.Collections;
 using JCSUnity;
 
 
+/// <summary>
+/// 
+/// </summary>
 public class RC_GameManager 
     : MonoBehaviour 
 {
@@ -18,6 +21,8 @@ public class RC_GameManager
     //----------------------
     // Public Variables
     public static RC_GameManager instance = null;
+
+    public int ORDER_LAYER_FOR_ALL_PLAYER = 4;
 
     //----------------------
     // Private Variables
@@ -79,6 +84,10 @@ public class RC_GameManager
     
     //----------------------
     // Private Functions
+
+    /// <summary>
+    /// Spawn the player at the beginning of the game.
+    /// </summary>
     private void SpawnPlayer()
     {
         RC_GameSettings gs = RC_GameSettings.instance;
@@ -89,11 +98,9 @@ public class RC_GameManager
         {
             if (gs.PLAYERS[index] == null)
             {
-                JCS_Debug.JcsErrors(
-                    "RC_GameManager",
-                     
+                JCS_Debug.LogError(
+                    this,
                     "Player List in RC_GameSetting are null...");
-
                 return;
             }
 
@@ -106,7 +113,9 @@ public class RC_GameManager
             if (jcsOlo != null)
             {
                 JCS_2DDynamicSceneManager jcs2ddsm = JCS_2DDynamicSceneManager.instance;
-                jcs2ddsm.SetObjectParentToOrderLayerByOrderLayerIndex(ref jcsOlo, 4);
+                jcs2ddsm.SetObjectParentToOrderLayerByOrderLayerIndex(
+                    ref jcsOlo, 
+                    ORDER_LAYER_FOR_ALL_PLAYER);
             }
 
             if (gs.LIQUID_MODE)
@@ -118,7 +127,7 @@ public class RC_GameManager
                     rcp.SetLiquidBar(lb);
                 }
                 else {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         "RC_GameManager",
                          
                         "No liquid bar attach to \"RC_GameSetting\" and u still want to access it.");

@@ -48,7 +48,7 @@ namespace JCSUnity
         {
             if (mWebcam == null)
             {
-                JCS_Debug.JcsReminders(
+                JCS_Debug.LogReminders(
                     "JCS_WebcamButton",
                      
                     "Assign the button but no webcam attached or in the scene.");

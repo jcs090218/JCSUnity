@@ -43,8 +43,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mOverriteFade = false;
 
-        private Color mRecordColor;
-
         private bool mEffect = false;
         private bool mVisible = true;
 
@@ -159,34 +157,9 @@ namespace JCSUnity
                     break;
             }
 
-            // update the alpha
-            switch (GetObjectType())
-            {
-                case JCS_UnityObjectType.GAME_OBJECT:
-                    {
-                        if (mRenderer != null)
-                            this.mRenderer.material.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
-                    }
-                    break;
-                case JCS_UnityObjectType.UI:
-                    {
-                        if (mImage != null)
-                            this.mImage.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
-                    }
-                    break;
-                case JCS_UnityObjectType.SPRITE:
-                    {
-                        if (mSpriteRenderer != null)
-                            this.mSpriteRenderer.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha);
-                    }
-                    break;
-                case JCS_UnityObjectType.TEXT:
-                    {
-                        if (mText != null)
-                            this.mText.color = new Color(mRecordColor.r, mRecordColor.g, mRecordColor.b, mAlpha); ;
-                    }
-                    break;
-            }
+            Color screenColor = this.LocalColor;
+            screenColor.a = mAlpha;
+            this.LocalColor = screenColor;
 
         }
 
@@ -206,49 +179,25 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
-        /// <summary>
-        /// Update the variable base on 
-        /// the unity data type.
-        /// </summary>
-        public override void UpdateUnityData()
-        {
-            switch (GetObjectType())
-            {
-                case JCS_UnityObjectType.GAME_OBJECT:
-                    {
-                        this.mRenderer = this.GetComponent<Renderer>();
-                        this.mRecordColor = this.mRenderer.material.color;
-                    }
-                    break;
-                case JCS_UnityObjectType.UI:
-                    {
-                        this.mImage = this.GetComponent<Image>();
-                        this.mRecordColor = this.mImage.color;
-                        this.mRectTransform = this.GetComponent<RectTransform>();
-                    }
-                    break;
-                case JCS_UnityObjectType.SPRITE:
-                    {
-                        this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-
-                        if (mSpriteRenderer != null)
-                            this.mRecordColor = this.mSpriteRenderer.color;
-                    }
-                    break;
-                case JCS_UnityObjectType.TEXT:
-                    {
-                        this.mText = this.GetComponent<Text>();
-                        this.mRecordColor = this.mText.color;
-                        this.mRectTransform = this.GetComponent<RectTransform>();
-                    }
-                    break;
-            }
-        }
-
+            /// <summary>
+            /// Is the fade object fade in?
+            /// </summary>
+            /// <returns>
+            /// true : is fade in.
+            /// false : not fade in yet.
+            /// </returns>
         public bool IsFadeIn()
         {
             return (this.mAlpha >= mFadeInAmount);
         }
+
+        /// <summary>
+        /// Is the fade object fade out?
+        /// </summary>
+        /// <returns>
+        /// true : is fade out.
+        /// false : not fade out yet.
+        /// </returns>
         public bool IsFadeOut()
         {
             return (this.mAlpha <= mFadeOutAmount);

@@ -49,7 +49,7 @@ namespace JCSUnity
                 DontDestroyOnLoad(this.gameObject);
             else
             {
-                JCS_Debug.JcsWarnings(
+                JCS_Debug.LogWarning(
                     this, "Only the root object can be use DontDestoryOnLoad...");
             }
         }
@@ -81,7 +81,7 @@ namespace JCSUnity
 
             //            if (jc.Length != 1)
             //            {
-            //                JCS_Debug.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
+            //                JCS_Debug.LogError("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
             //                DestroyImmediate(this.gameObject);
             //                return;
             //            }
@@ -94,7 +94,7 @@ namespace JCSUnity
 
             //            if (jc.Length != 1)
             //            {
-            //                JCS_Debug.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
+            //                JCS_Debug.LogError("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
             //                DestroyImmediate(this.gameObject);
             //                return;
             //            }
@@ -108,7 +108,7 @@ namespace JCSUnity
 
             //            if (jc.Length != 1)
             //            {
-            //                JCS_Debug.JcsErrors("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
+            //                JCS_Debug.LogError("JCS_UniqueObject",   "Too many " + mType.ToString() + " in the scene...(Delete)");
             //                DestroyImmediate(this.gameObject);
             //                return;
             //            }

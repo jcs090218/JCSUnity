@@ -25,7 +25,6 @@ GameObject:
   m_Component:
   - component: {fileID: 433362}
   - component: {fileID: 21234012}
-  - component: {fileID: 8166566}
   - component: {fileID: 8284292}
   - component: {fileID: 11415818}
   - component: {fileID: 11414108}
@@ -56,7 +55,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &433362
 Transform:
   m_ObjectHideFlags: 1
@@ -121,13 +120,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14660974, y: 0.12609898, z: 0.26936224}
   m_Center: {x: 0.4266937, y: -0.017936535, z: 0.035888337}
---- !u!81 &8166566
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177370}
-  m_Enabled: 1
 --- !u!82 &8284292
 AudioSource:
   m_ObjectHideFlags: 1
@@ -251,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!114 &11422106
@@ -265,13 +258,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mVelocity: {x: 0, y: 0, z: 0}
-  mMoveSpeed: 10
+  mMoveSpeed: 7
   mIsControllable: 1
   mFace: 1
   mCanLadder: 0
   mCanRope: 0
   mClimbingTransform: {fileID: 0}
   mJumpCount: 0
+  mClimbMoveType: 0
   mCharacterState: 0
   mJumpType: 1
   mJumpYForces:
@@ -293,6 +287,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   mAirFriction: 0.1
+  mCanDownJump: 0
   mUpKey: 273
   mDownKey: 274
   mRightKey: 275
@@ -734,7 +729,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -761,7 +756,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -785,7 +780,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -813,7 +808,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -841,7 +836,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -867,7 +862,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -892,7 +887,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -917,7 +912,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -970,7 +965,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -997,7 +992,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -1022,7 +1017,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1

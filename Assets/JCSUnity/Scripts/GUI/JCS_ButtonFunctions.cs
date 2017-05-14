@@ -115,7 +115,7 @@ namespace JCSUnity
         {
             if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
             {
-                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "(" + type.ToString() + ")No able to spawn Game UI cuz there are multiple GameUI in the scene...");
+                JCS_Debug.LogError("JCS_UtilityFunctions",   "(" + type.ToString() + ")No able to spawn Game UI cuz there are multiple GameUI in the scene...");
                 return false;
             }
 
@@ -132,14 +132,14 @@ namespace JCSUnity
             // so it will block the lower priority dialogue type
             if (JCS_UIManager.instance.GetJCSDialogue(type) != null)
             {
-                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "(" + type.ToString() + ")No able to spawn Dialogue cuz there are multiple dialogue in the scene...");
+                JCS_Debug.LogError("JCS_UtilityFunctions",   "(" + type.ToString() + ")No able to spawn Dialogue cuz there are multiple dialogue in the scene...");
                 return false;
             }
 
 
             if (JCS_Canvas.instance == null)
             {
-                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "No able to spawn Dialogue cuz Canvas are null...");
+                JCS_Debug.LogError("JCS_UtilityFunctions",   "No able to spawn Dialogue cuz Canvas are null...");
                 return false;
             }
 
@@ -156,7 +156,7 @@ namespace JCSUnity
 
             if (bs == null)
             {
-                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "GameObject without \"JCS_BlackScreen\" Component attached!!!");
+                JCS_Debug.LogError("JCS_UtilityFunctions",   "GameObject without \"JCS_BlackScreen\" Component attached!!!");
                 return;
             }
 
@@ -173,7 +173,7 @@ namespace JCSUnity
 
             if (bs == null)
             {
-                JCS_Debug.JcsErrors("JCS_UtilityFunctions", "GameObject without \"JCS_BlackScreen\" Component attached!!!");
+                JCS_Debug.LogError("JCS_UtilityFunctions", "GameObject without \"JCS_BlackScreen\" Component attached!!!");
                 return;
             }
 
@@ -190,7 +190,7 @@ namespace JCSUnity
 
             if (ws == null)
             {
-                JCS_Debug.JcsErrors("JCS_UtilityFunctions",   "GameObject without \"JCS_WhiteScreen\" Component attached!!!");
+                JCS_Debug.LogError("JCS_UtilityFunctions",   "GameObject without \"JCS_WhiteScreen\" Component attached!!!");
                 return;
             }
 

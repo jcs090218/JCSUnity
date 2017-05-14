@@ -52,7 +52,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-            if (!this.m2DAnimation.DonePlaying)
+            if (!this.m2DAnimation.IsDonePlaying)
                 return;
 
             --mLoopTimes;

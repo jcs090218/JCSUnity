@@ -160,7 +160,7 @@ namespace JCSUnity
             // cannot take snap shot without the device!!
             if (!mDetectDevice)
             {
-                JCS_Debug.JcsErrors("JCS_Webcam",   "No webcam detected in the current devices.");
+                JCS_Debug.LogError("JCS_Webcam",   "No webcam detected in the current devices.");
                 return;
             }
 

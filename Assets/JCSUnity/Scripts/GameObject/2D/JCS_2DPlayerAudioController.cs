@@ -17,8 +17,6 @@ namespace JCSUnity
     /// Audio player for specific player type.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    // force 2d game player have the ear in game!
-    [RequireComponent(typeof(AudioListener))]
     public class JCS_2DPlayerAudioController 
         : MonoBehaviour
     {

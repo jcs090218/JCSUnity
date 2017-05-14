@@ -419,6 +419,9 @@ namespace JCSUnity
             {
                 JCS_Bullet bullet = Shoot();
 
+                if (bullet == null)
+                    break;
+
                 bullet.transform.position = pos;
                 bullet.transform.eulerAngles = angle;
 

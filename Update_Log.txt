@@ -1,11 +1,47 @@
-========================================================================
-$File: Update_Log.txt $
-$Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
-$Date: 2016-03-29 $
-$Notice: See LICENSE.txt for modification and distribution information 
-                  Copyright (c) 2016 by Shen, Jen-Chieh $
-========================================================================
+﻿# ========================================================================
+# $File: Update_Log.txt $
+# $Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
+# $Date: 2016-03-29 $
+# $Notice: See LICENSE.txt for modification and distribution information 
+#                   Copyright (c) 2016 by Shen, Jen-Chieh $
+# ========================================================================
 
+
+2017-05-11
+* JCS_FreezeTransformAction implemented. (JCSUnity)
+* JCS_FreezePositionAction implemented. (JCSUnity)
+* JCS_FreezeRotationAction implemented. (JCSUnity)
+* JCS_FreezeScaleAction implemented. (JCSUnity)
+* JCS_RelativeFreezePositionAction implemented. (JCSUnity)
+
+2017-05-10
+* JCS_2DOrderAnimPlayer implemented. (JCSUnity)
+* JCS_2DRandAnimController implemented. (JCSUnity)
+* JCS_AdjustTimeTrigger implemented. (JCSUnity)
+
+2017-05-09
+* JCS_2DAnimMirror implemented. (JCSUnity)
+
+2017-05-08
+* JCS_2DAnimSequencePlayer implemented. (JCSUnity)
+
+2017-05-05
+* JCS_2DLadder and JCS_2DRope update with sprite control front 
+ and behind. (JCSUnity)
+* JCS_OrderLayer reasonable variable and renamed. (JCSUnity)
+* JCS_OrderLayerObject add multiple SpriteRenderer component 
+ as option. (JCSUnity)
+
+2017-05-04
+* JCS_DeltaNumber with clear up zero on the left function 
+ implemented. (JCSUnity)
+
+2017-05-02
+* Rename JCS_SpriteScore to JCS_DeltaNumber. (JCSUnity)
+* JCS_PlatformSettings implemented. (JCSUnity)
+
+2017-05-01
+* JCS_RouteGuageSystem implemented. (JCSUnity)
 
 2017-04-28
 * JCS_AdvertismentManager implemented. (JCSUnity)

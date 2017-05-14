@@ -124,7 +124,7 @@ namespace JCSUnity
         {
             if (val <= mMinValue)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_3DLiquidBar",
                     "Max value u r setting cannot be lower than min value.");
 
@@ -147,7 +147,7 @@ namespace JCSUnity
         {
             if (val >= mMaxValue)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     "JCS_3DLiquidBar",
                     "Min value u r setting cannot be higher than max value.");
 
@@ -344,7 +344,7 @@ namespace JCSUnity
                 mCurrentValue > mMaxValue)
 
             {
-                //JCS_Debug.JcsWarnings(
+                //JCS_Debug.LogWarning(
                 //    "JCS_3DLiquidBar",
                 //    "Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");
 

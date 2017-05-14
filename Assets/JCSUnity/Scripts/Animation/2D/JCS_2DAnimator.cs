@@ -79,6 +79,7 @@ default is 1.")]
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
         public int CurrentAnimId { get { return this.mCurrentAnimId; } }
         public JCS_2DAnimation CurrentAnimation { get { return this.mCurrentAnimation; } }
+        public JCS_2DAnimation[] Animations { get { return this.mAnimations; } }
 
         //========================================
         //      Unity's function
@@ -110,7 +111,7 @@ default is 1.")]
                     anim.LocalType = this.LocalType;
                 else
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         this, 
                         "Animator and Animation have different component type is not allowed...");
                 }
@@ -180,7 +181,7 @@ default is 1.")]
 
             if (mCurrentAnimation == null)
             {
-                JCS_Debug.JcsErrors(
+                JCS_Debug.LogError(
                     this, "Swtich animation failed cuz of null reference animation assigned...");
                 return;
             }
@@ -197,7 +198,7 @@ default is 1.")]
             }
 
             // active this animation.
-            ActiveOneAnimation(id);
+            ActiveOneAnimation(mCurrentAnimId);
         }
 
         /// <summary>
@@ -288,8 +289,8 @@ default is 1.")]
         {
             if (mCurrentAnimId < 0)
                 this.mCurrentAnimId = 0;
-            else if (mCurrentAnimId >= mMaxAnimCount)
-                this.mCurrentAnimId = mMaxAnimCount;
+            else if (mCurrentAnimId >= mMaxAnimCount - 1)
+                this.mCurrentAnimId = mMaxAnimCount - 1;
         }
 
         /// <summary>
@@ -331,7 +332,7 @@ default is 1.")]
             /* During the one shot animation, if there are animation change  */
             if (mOneShotAnim != mCurrentAnimation || 
                 /* Of the animation done playing. */
-                mCurrentAnimation.DonePlaying)
+                mCurrentAnimation.IsDonePlaying)
             {
                 // switch the animation back to original 
                 // animation by stack id.

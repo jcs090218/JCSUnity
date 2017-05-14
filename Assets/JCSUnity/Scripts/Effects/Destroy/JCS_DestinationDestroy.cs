@@ -92,7 +92,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.JcsErrors(
+                    JCS_Debug.LogError(
                         this, "No target found...");
                 }
 #endif
