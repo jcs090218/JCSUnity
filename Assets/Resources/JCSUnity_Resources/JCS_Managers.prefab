@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbeb25e792087645b19e4cf30c3218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GAME_PAUSE: 0
+  mGamePause: 0
   TIME_SCALE: 1
 --- !u!114 &11419390
 MonoBehaviour:
@@ -196,14 +196,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mType: 1
+  mPauseGameWhileLoadingScene: 1
   mJCSBlackScreen: {fileID: 0}
   mAlign: 0
   mJCSBlackSlideScreen: {fileID: 0}
   mPopWhiteScreen: 1
   mJCSWhiteScreen: {fileID: 0}
   mOverrideSetting: 0
-  mFadeInTime: 1.5
-  mFadeOutTime: 1.5
+  mSceneFadeInTime: 1
+  mSceneFadeOutTime: 1
 --- !u!114 &11441358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,6 +283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mBGM: {fileID: 0}
+  mCurrentBGM: {fileID: 0}
+  mSwitchingBGM: 0
+  mOverrideSetting: 0
+  mSoundFadeInTime: 1.5
+  mSoundFadeOutTime: 1.5
 --- !u!114 &11496914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,7 +320,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013399643638}
+  - component: {fileID: 114104230306558960}
   - component: {fileID: 114000014013781274}
+  - component: {fileID: 114965995878155162}
   m_Layer: 0
   m_Name: JCS_IndieManagers
   m_TagString: Untagged
@@ -349,6 +357,17 @@ MonoBehaviour:
   mPortals:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &114104230306558960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012022687026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f33b2fcaf00534b890ac430ca32dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114914540437033550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,3 +380,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mPauseActions: []
+  mResizePauseActionListTime: 20
+--- !u!114 &114965995878155162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012022687026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5debafc2edeca44962c12b50cad63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SORTING_ORDER_INFRONT_OFFSET: 1
+  SORTING_ORDER_BEHIND_OFFSET: 1

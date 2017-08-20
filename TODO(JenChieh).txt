@@ -31,6 +31,10 @@
 
 -- Wait List for Implement --
     - JCS_3DWalkAction
+    
+//-- Shader --//
+* 殘影效果.
+* 水效果.
 
 //-- Boss Fight --//
 * Design the game. (Starting)

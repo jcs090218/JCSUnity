@@ -149,6 +149,9 @@ namespace JCSUnity
         /// <param name="_new"> new data we copy to </param>
         protected override void TransferData(JCS_GameSettings _old, JCS_GameSettings _new)
         {
+            // Debug check
+            _new.DEBUG_MODE = _old.DEBUG_MODE;
+
             // ResizeUI option should always be the same!
             _new.RESIZE_UI = _old.RESIZE_UI;
 

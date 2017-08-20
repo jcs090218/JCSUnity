@@ -61,7 +61,7 @@ namespace JCSUnity
                     {
                         if (mGameUI != null)
                         {
-                            JCS_Debug.LogError("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
+                            JCS_Debug.LogError("Failed to set \"In Game Dialogue\"...");
                             return;
                         }
 

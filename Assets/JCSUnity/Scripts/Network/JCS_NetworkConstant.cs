@@ -3,11 +3,12 @@ using System.Collections;
 
 namespace JCSUnity
 {
+    /// <summary>
+    /// Store all the network constants.
+    /// </summary>
     public class JCS_NetworkConstant : MonoBehaviour
     {
-        public static string HOST_NAME = "127.0.0.1";
-        public static int PORT = 5454;
-        public static string OFFICIAL_WEBSITE = "http://54.148.134.127/";
+        public static string OFFICIAL_WEBSITE = "www.jcs-profile.com";
 
         public static int MAX_MESSAGE = 16 * 1024;      // 暂定一个消息最大为, [default: 16k bytes]
         public static int BLOCKSECONDS = 30;            // INIT函数阻塞时间, [default: 30 seconds]

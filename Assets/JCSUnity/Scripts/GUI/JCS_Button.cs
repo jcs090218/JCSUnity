@@ -22,16 +22,23 @@ namespace JCSUnity
     public abstract class JCS_Button 
         : MonoBehaviour
     {
-        protected RectTransform mRectTransform = null;
-        protected Button mButton = null;
-        protected Image mImage = null;
 
+        /*******************************************/
+        /*            Public Variables             */
+        /*******************************************/
 
+        /*******************************************/
+        /*           Private Variables             */
+        /*******************************************/
         public delegate void CallBackFunc();
+        public delegate void CallBackFuncBtn(JCS_Button btn);
+
         // JCSUnity framework only callback, do not override this callback.
-        private CallBackFunc mBtnClickSystemCallBack = null;
+        private CallBackFunc mBtnSystemCallBack = null;
+        private CallBackFuncBtn mBtnSystemCallBackBtn = null;
         // for user's callback.
-        protected CallBackFunc mBtnClickCallBack = null;
+        protected CallBackFunc mBtnCallBack = null;
+        private CallBackFuncBtn mBtnCallBackBtn = null;
 
 
         [Header("** Optional Variables (JCS_Button) **")]
@@ -64,14 +71,23 @@ namespace JCSUnity
         protected Color mNotInteractColor = new Color(1, 1, 1, 0.5f);
 
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /*******************************************/
+        /*           Protected Variables           */
+        /*******************************************/
+        protected RectTransform mRectTransform = null;
+        protected Button mButton = null;
+        protected Image mImage = null;
+
+        /*******************************************/
+        /*             setter / getter             */
+        /*******************************************/
         public Image Image { get { return this.mImage; } }
         public RectTransform GetRectTransfom() { return this.mRectTransform; }
         public int DialogueIndex { get { return this.mDialogueIndex; } set { this.mDialogueIndex = value; } }
-        public void SetCallback(CallBackFunc func) { this.mBtnClickCallBack = func; }
-        public void SetSystemCallback(CallBackFunc func) { this.mBtnClickSystemCallBack = func; }
+        public void SetCallback(CallBackFunc func) { this.mBtnCallBack += func; }
+        public void SetCallback(CallBackFuncBtn func) { this.mBtnCallBackBtn += func; }
+        public void SetSystemCallback(CallBackFunc func) { this.mBtnSystemCallBack += func; }
+        public void SetSystemCallback(CallBackFuncBtn func) { this.mBtnSystemCallBackBtn += func; }
         public bool AutoListener { get { return this.mAutoListener; } set { this.mAutoListener = value; } }
         public bool Interactable {
             get { return this.mInteractable; }
@@ -85,9 +101,9 @@ namespace JCSUnity
         }
         public Text ButtonText { get { return this.mButtonText; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /*******************************************/
+        /*            Unity's function             */
+        /*******************************************/
         protected virtual void Awake()
         {
             mRectTransform = this.GetComponent<RectTransform>();
@@ -107,10 +123,12 @@ namespace JCSUnity
             SetInteractable();
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-
+        /*******************************************/
+        /*              Self-Define                */
+        /*******************************************/
+        //----------------------
+        // Public Functions
+        
         /// <summary>
         /// Default function to call this, so we dont have to
         /// search the function depends on name.
@@ -119,12 +137,19 @@ namespace JCSUnity
         /// </summary>
         public virtual void JCS_ButtonClick()
         {
-            if (mBtnClickSystemCallBack != null)
-                mBtnClickSystemCallBack.Invoke();
+            /* System callback */
+            if (mBtnSystemCallBack != null)
+                mBtnSystemCallBack.Invoke();
 
-            // do callback function
-            if (mBtnClickCallBack != null)
-                mBtnClickCallBack.Invoke();
+            if (mBtnSystemCallBackBtn != null)
+                mBtnSystemCallBackBtn.Invoke(this);
+
+            /* User callback */
+            if (mBtnCallBack != null)
+                mBtnCallBack.Invoke();
+
+            if (mBtnCallBackBtn != null)
+                mBtnCallBackBtn.Invoke(this);
         }
         
         /// <summary>
@@ -149,6 +174,12 @@ namespace JCSUnity
         {
             SetInteractable(mInteractable);
         }
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
 
     }
 }

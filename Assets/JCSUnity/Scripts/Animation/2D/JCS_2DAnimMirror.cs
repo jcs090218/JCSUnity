@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// Completely mimic a JCS_2DAnimation's frame.
+    /// Completely mimic a JCS_2DAnimation's frame and order layer.
     /// </summary>
     public class JCS_2DAnimMirror
         : MonoBehaviour
@@ -42,6 +42,23 @@ namespace JCSUnity
         [Tooltip("Animations going to follow the main animation.")]
         [SerializeField]
         private List<JCS_2DAnimation> mMimicAnimations = null;
+
+        [Tooltip("Set the same frame index.")]
+        [SerializeField]
+        private bool mMimicFrame = true;
+
+        [Tooltip("Set the same sorting order.")]
+        [SerializeField]
+        private bool mMimicSortingOrder = true;
+
+        [Tooltip("Set the same color.")]
+        [SerializeField]
+        private bool mMimicColor = true;
+
+        [Tooltip(@"Set the same flip x and flip y. If not SpriteRenderer 
+use negative scale instead.")]
+        [SerializeField]
+        private bool mMimcFlip = true;
 
         /*******************************************/
         /*           Protected Variables           */
@@ -112,15 +129,49 @@ namespace JCSUnity
             if (mMirrorAnimation == null)
                 return;
 
+            SpriteRenderer mirrorSR = (SpriteRenderer)mMirrorAnimation.LocalType;
+
             foreach (JCS_2DAnimation anim in mMimicAnimations)
             {
                 if (anim == null)
                     continue;
 
-                if (mMirrorAnimation.LocalSprite == null)
-                    anim.LocalSprite = null;
-                else
-                    anim.PlayFrame(mMirrorAnimation.CurrentPlayingFrame);
+                if (mMimicFrame)
+                {
+                    if (mMirrorAnimation.LocalSprite == null)
+                        anim.LocalSprite = null;
+                    else
+                        anim.PlayFrame(mMirrorAnimation.CurrentPlayingFrame);
+                }
+
+                if (mMimcFlip)
+                {
+                    anim.LocalFlipX = mMirrorAnimation.LocalFlipX;
+                    anim.LocalFlipY = mMirrorAnimation.LocalFlipY;
+                }
+
+
+#if (UNITY_EDITOR)
+                if (mMirrorAnimation.GetObjectType() != JCS_UnityObjectType.SPRITE ||
+                    anim.GetObjectType() != JCS_UnityObjectType.SPRITE)
+                {
+                    JCS_Debug.LogError(
+                        "Mimic order layer and mimic color has to be sprite renderer, not something else...");
+                    continue;
+                }
+#endif
+
+                if (mMimicColor)
+                {
+                    anim.LocalColor = mMirrorAnimation.LocalColor;
+                }
+
+                SpriteRenderer animSR = (SpriteRenderer)anim.LocalType;
+
+                if (mMimicSortingOrder)
+                {
+                    animSR.sortingOrder = mirrorSR.sortingOrder;
+                }
             }
         }
 

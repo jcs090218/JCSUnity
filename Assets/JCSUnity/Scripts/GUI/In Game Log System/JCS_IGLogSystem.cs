@@ -50,13 +50,13 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             this.mLogTextPool = this.GetComponent<JCS_GUITextPool>();
 
             mRenderLogText = new JCS_Vector<JCS_LogText>();
-
-            UpdateUnityData();
         }
 
         private void Start()

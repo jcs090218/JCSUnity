@@ -58,11 +58,11 @@ namespace JCSUnity
         private void Start()
         {
 
-            if (!JCS_ApplicationManager.ONLINE_MODE)
+            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
             {
-                if (JCS_ApplicationManager.FIRST_LOGIN)
+                if (JCS_NetworkManager.FIRST_LOGIN)
                 {
-                    JCS_ApplicationManager.FIRST_LOGIN = false;
+                    JCS_NetworkManager.FIRST_LOGIN = false;
                     LoadNextLevel();
                 }
 

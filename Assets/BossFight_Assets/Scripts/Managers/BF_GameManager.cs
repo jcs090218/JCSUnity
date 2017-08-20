@@ -53,6 +53,13 @@ public class BF_GameManager
 
 
     [Header("** Liquid Bar **")]
+
+    [Tooltip("Object need to be protected.")]
+    public JCS_2DLiveObject PROTECT_OBJECT = null;
+
+
+    [Header("** Liquid Bar **")]
+
     [Tooltip("Health Liquid bar should be in the scene.")]
     public BF_LiquidBarHandler HEALTH_LIQUIDBAR = null;
     public Collider HEALTH_OBJECT = null;
@@ -60,6 +67,7 @@ public class BF_GameManager
     [Tooltip("Mana Liquid bar should be in the scene.")]
     public BF_LiquidBarHandler MANA_LIQUIDBAR = null;
     public Collider MANA_OBJECT = null;
+
 
     [Header("** GUI Settings **")]
 
@@ -72,7 +80,9 @@ public class BF_GameManager
     [Tooltip("Current monster count in the scene.")]
     public int MOB_CURRENT_IN_SCENE = 0;
 
+
     [Header("** Health Target **")]
+
     [Tooltip("Win/Lose condition dependency.")]
     public BF_HealthTarget mHealthTarget = null;
 
@@ -134,14 +144,14 @@ public class BF_GameManager
             mHealthTarget.LiveObject.CanDamage = false;
         else
         {
-            JCS_Debug.LogReminders(this,
+            JCS_Debug.LogReminders(
                 "No health object in the assign...");
         }
 
         if (GAME_OVER_PANEL == null)
         {
             JCS_Debug.LogError(
-                this, "No game over panel have been set.");
+                "No game over panel have been set.");
 
             return;
         }

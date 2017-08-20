@@ -133,12 +133,12 @@ plz set the button here.")]
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             // JCS_SoundPlayer will be optional.
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
-
-            UpdateUnityData();
 
             // set the call back function if there is button assigned.
             if (mActiveButton != null)

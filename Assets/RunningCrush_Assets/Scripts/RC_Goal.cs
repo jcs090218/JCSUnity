@@ -37,6 +37,8 @@ public class RC_Goal
         {
             // reach the goal! game is over.
             RC_GameSettings.instance.GAME_OVER = true;
+
+            RC_GameManager.instance.DoExitGame();
         }
     }
 

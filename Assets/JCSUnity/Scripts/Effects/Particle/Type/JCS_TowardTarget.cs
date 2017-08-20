@@ -34,9 +34,12 @@ namespace JCSUnity
         // when reach the certain range disable it.
         private JCS_DisableWithCertainRangeEvent mDisableWidthCertainRangeEvent = null;
 
-        
 
         [Header("** Runtime Variables (JCS_TowardTarget) **")]
+
+        [Tooltip("Reverse the particle direction?")]
+        [SerializeField]
+        private bool mReverseDirection = false;
 
         [Tooltip("Toward this target.")]
         [SerializeField]
@@ -60,6 +63,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool ReverseDirection { get { return this.mReverseDirection; } set { this.mReverseDirection = value; } }
         public void SetTargetTransfrom(Transform trans)
         {
             // update target position.
@@ -81,20 +85,12 @@ namespace JCSUnity
             mJCSTweener.SetCallback(DestinationCallback);
         }
 
-        private void Start()
-        {
-            // set the target transform.
-            this.mJCSTweener.SetTargetTransform(this.mTargetTransform);
-            this.mDisableWidthCertainRangeEvent.SetTargetTransfrom(this.mTargetTransform);
-        }
-
         private void OnEnable()
         {
             if (mTargetTransform == null)
             {
                 JCS_Debug.LogError(
-                    this, "Cannot set the calculate circle position with null target transform...");
-
+                    "Cannot set the calculate circle position with null target transform...");
                 return;
             }
 
@@ -105,7 +101,24 @@ namespace JCSUnity
             Vector3 newPos = CalculateCirclePosition();
 
             // set to the position.
-            SetPosition(newPos);
+            if (mReverseDirection)
+            {
+                // set the target transform.
+                this.mDisableWidthCertainRangeEvent.SetTargetTransfrom(null);
+                this.mDisableWidthCertainRangeEvent.TargetPosition = newPos;
+
+                // starting position.
+                SetPosition(this.mTargetTransform.position);
+            }
+            else
+            {
+                // set the target transform.
+                this.mJCSTweener.SetTargetTransform(this.mTargetTransform);
+                this.mDisableWidthCertainRangeEvent.SetTargetTransfrom(this.mTargetTransform);
+
+                // starting position.
+                SetPosition(newPos);
+            }
 
             mJCSTweener.UpdateUnityData();
 
@@ -119,7 +132,16 @@ namespace JCSUnity
             mJCSTweener.ResetTweener();
 
             // update the unity data first.
-            mJCSTweener.DoTweenContinue(this.mTargetTransform);
+            if (mReverseDirection)
+            {
+                /* 
+                 * Reverse could only use DoTween, cannot 
+                 * use DoTweenContinue. 
+                 */
+                mJCSTweener.DoTween(newPos);
+            }
+            else
+                mJCSTweener.DoTweenContinue(this.mTargetTransform);
         }
 
         //========================================

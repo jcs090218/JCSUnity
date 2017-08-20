@@ -173,7 +173,7 @@ namespace JCSUnity
             mRecordMoveSpeed = MoveSpeed;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             DoAbsorbEffect();
             DoDegreeChangeEffect();

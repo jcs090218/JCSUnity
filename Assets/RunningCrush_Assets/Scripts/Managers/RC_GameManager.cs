@@ -68,20 +68,39 @@ public class RC_GameManager
         }
     }
 
+#if (UNITY_EDITOR)
     private void Test()
     {
         
     }
-    
+#endif
+
     //========================================
     //      Self-Define
     //------------------------------
     //----------------------
     // Public Functions
-    
+
+    /// <summary>
+    /// Do exit the game.
+    /// </summary>
+    public void DoExitGame()
+    {
+        RC_UIManager uim = RC_UIManager.instance;
+
+        if (uim.EXIT_PANEL == null)
+        {
+            JCS_Debug.Log(
+                "No exit panel assign...");
+            return;
+        }
+
+        uim.EXIT_PANEL.Active();
+    }
+
     //----------------------
     // Protected Functions
-    
+
     //----------------------
     // Private Functions
 
@@ -99,7 +118,6 @@ public class RC_GameManager
             if (gs.PLAYERS[index] == null)
             {
                 JCS_Debug.LogError(
-                    this,
                     "Player List in RC_GameSetting are null...");
                 return;
             }
@@ -128,8 +146,6 @@ public class RC_GameManager
                 }
                 else {
                     JCS_Debug.LogError(
-                        "RC_GameManager",
-                         
                         "No liquid bar attach to \"RC_GameSetting\" and u still want to access it.");
                 }
             }
@@ -162,6 +178,5 @@ public class RC_GameManager
 
         
     }
-    
 
 }

@@ -50,7 +50,7 @@ namespace JCSUnity
             else
             {
                 JCS_Debug.LogWarning(
-                    this, "Only the root object can be use DontDestoryOnLoad...");
+                    "Only the root object can be use DontDestoryOnLoad...");
             }
         }
 

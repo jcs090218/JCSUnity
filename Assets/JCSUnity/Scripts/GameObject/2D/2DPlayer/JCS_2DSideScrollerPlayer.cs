@@ -18,7 +18,6 @@ namespace JCSUnity
     /// Character controll of player
     /// </summary>
     [RequireComponent(typeof(JCS_2DSideScrollerPlayerAudioController))]
-    [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(JCS_2DAnimator))]
     [RequireComponent(typeof(JCS_OrderLayerObject))]
     public class JCS_2DSideScrollerPlayer
@@ -33,7 +32,6 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        protected SpriteRenderer mSpriteRenderer = null;
         protected JCS_2DAnimator mJCS2DAnimator = null;
         protected JCS_OrderLayerObject mOrderLayerObject = null;
 
@@ -54,7 +52,7 @@ namespace JCSUnity
 
         [Tooltip("Object that we can climb on.")]
         [SerializeField]
-        private Transform mClimbingTransform = null;
+        private JCS_2DClimbableObject m2DClimbingObject = null;
 
         private bool mExitingClimbing = false;
         private bool mStartClimbing = false;
@@ -204,11 +202,8 @@ namespace JCSUnity
         public bool AutoClimb { get { return this.mAutoClimb; } set { this.mAutoClimb = value; } }
         public JCS_ClimbMoveType AutoClimbDirection { get { return this.mAutoClimbDirection; } set { this.mAutoClimbDirection = value; } }
         public JCS_ClimbMoveType ClimbMoveType { get { return this.mClimbMoveType; } }
-        public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public bool ResetingCollision { get { return this.mResetingCollision; } set { this.mResetingCollision = value; } }
         public bool ExitingClimbing { get { return this.mExitingClimbing; } set { this.mExitingClimbing = value; } }
-        public void SetClimbingTransform(Transform trans) { this.mClimbingTransform = trans; }
-        public Transform GetClimbingTransform() { return this.mClimbingTransform; }
         public JCS_2DCharacterState CharacterState { get { return this.mCharacterState; } set { this.mCharacterState = value; } }
         public bool CanLadder { get { return this.mCanLadder; } set { this.mCanLadder = value; } }
         public bool CanRope { get { return this.mCanRope; } set { this.mCanRope = value; } }
@@ -229,6 +224,8 @@ namespace JCSUnity
         public KeyCode ClimbUpKey { get { return this.mClimbUpKey; } set { this.mClimbUpKey = value; } }
         public KeyCode ClimbDownKey { get { return this.mClimbDownKey; } set { this.mClimbDownKey = value; } }
 
+        public JCS_2DClimbableObject ClimbableObject { get { return this.m2DClimbingObject; } set { this.m2DClimbingObject = value; } }
+
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
@@ -237,7 +234,6 @@ namespace JCSUnity
             base.Awake();
 
             this.mAudioController = this.GetComponent<JCS_2DSideScrollerPlayerAudioController>();
-            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
             this.mJCS2DAnimator = this.GetComponent<JCS_2DAnimator>();
             this.mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
         }
@@ -270,7 +266,11 @@ namespace JCSUnity
             if (act)
             {
                 if (JCS_GameSettings.instance.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
-                    this.mAudioController.GetAudioListener().enabled = true;
+                {
+                    AudioListener al = this.mAudioController.GetAudioListener();
+                    if (al != null)
+                        al.enabled = true;
+                }
                 mIsControllable = true;
             }
             // diable all the component here
@@ -691,7 +691,6 @@ namespace JCSUnity
             if (!mHitEffect)
             {
                 JCS_Debug.LogError(
-                    this,
                     "You call the function without checking the hit effect?");
 
                 return;
@@ -948,7 +947,7 @@ namespace JCSUnity
                     }
                 }
 
-                if (mClimbingTransform == null)
+                if (m2DClimbingObject == null)
                 {
                     ExitClimbing(0);
                     return;
@@ -1010,7 +1009,7 @@ namespace JCSUnity
 
             if (climbing)
             {
-                if (mClimbingTransform == null)
+                if (m2DClimbingObject == null)
                 {
                     ExitClimbing(0);
                     return;
@@ -1018,7 +1017,7 @@ namespace JCSUnity
 
                 // let x axis the same as ladder x axis.
                 Vector3 newPos = this.transform.position;
-                newPos.x = mClimbingTransform.transform.position.x;
+                newPos.x = m2DClimbingObject.transform.position.x;
                 this.transform.position = newPos;
 
                 // start the animation agian
@@ -1123,7 +1122,10 @@ namespace JCSUnity
         private bool CheckClimbDirection()
         {
             // no climbing object, no climbing!
-            if (mClimbingTransform == null)
+            if (m2DClimbingObject == null)
+                return false;
+
+            if (m2DClimbingObject.IsOpTopOfLeanPlatform(this) && !JCS_Input.GetKey(mClimbDownKey))
                 return false;
 
             // when is in air, character can climb what ever
@@ -1145,13 +1147,13 @@ namespace JCSUnity
 
                 case JCS_ClimbMoveType.MOVE_UP:
                     {
-                        if (this.transform.position.y < this.mClimbingTransform.position.y)
+                        if (this.transform.position.y < this.m2DClimbingObject.transform.position.y)
                             return true;
                     }
                     break;
                 case JCS_ClimbMoveType.MOVE_DOWN:
                     {
-                        if (this.transform.position.y > this.mClimbingTransform.position.y)
+                        if (this.transform.position.y > this.m2DClimbingObject.transform.position.y)
                             return true;
                     }
                     break;

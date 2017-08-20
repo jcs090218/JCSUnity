@@ -100,7 +100,7 @@ namespace JCSUnity
             if (mGameUI == null)
             {
                 JCS_Debug.LogError(
-                    this, "Game UI is not avialiable references...");
+                    "Game UI is not avialiable references...");
                 return;
             }
 
@@ -115,7 +115,7 @@ namespace JCSUnity
             if (mGameUI == null)
             {
                 JCS_Debug.LogError(
-                    this, "Game UI is not avialiable references...");
+                    "Game UI is not avialiable references...");
                 return;
             }
 

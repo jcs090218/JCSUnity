@@ -107,7 +107,6 @@ namespace JCSUnity
             if (source == null)
             {
                 JCS_Debug.LogError(
-                    this,
                     "source assign are null references...");
                 return;
             }

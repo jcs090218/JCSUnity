@@ -10,8 +10,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Damage text on the mob.
+    /// </summary>
     public class JCS_DamageText
         : MonoBehaviour
     {
@@ -30,61 +35,106 @@ namespace JCSUnity
 
         private bool mActive = false;
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_DamageText) **")]
 
         [Tooltip("Type of how damage text goes out.")]
         [SerializeField]
-        private TextEffect mDamageTextEffectType 
-            = TextEffect.FADE;
+        private TextEffect mDamageTextEffectType = TextEffect.FADE;
 
         [Tooltip("Total scale of the damage text. (optional)")]
-        [SerializeField] private Vector3 mScale = Vector3.one;
+        [SerializeField]
+        private Vector3 mScale = Vector3.one;
 
         [Tooltip("How fast the damage text moving.")]
         // the damage text moving speed
-        [SerializeField] private float mMoveSpeed = 0.2f;
+        [SerializeField]
+        private float mMoveSpeed = 0.2f;
 
         [Tooltip("")]
-        [SerializeField] private float mSpacing = 0.25f;
+        [SerializeField]
+        private float mSpacing = 0.25f;
 
         [Tooltip("How fast the damage fade out.")]
-        [SerializeField] private float mFadeSpeed = 1;
+        [SerializeField]
+        private float mFadeSpeed = 1;
 
         [Tooltip("Scene Layer in the render queue.")]
         // the lower order layer in the queue
-        [SerializeField] private int mBaseOrderLayer = 5;
+        [SerializeField]
+        private int mBaseOrderLayer = 5;
 
-        [Header("** Caplitaize Effect **")]
+
+        [Header("** Caplitaize Effect (JCS_DamageText) **")]
 
         [Tooltip("The first letter will be bigger then other base on the scale variable below.")]
-        [SerializeField] private bool mCapitalizeLetter = true;
+        [SerializeField]
+        private bool mCapitalizeLetter = true;
 
         [Tooltip("Scale of the first digit.")]
-        [SerializeField] private Vector3 mCapitalLetterScale = new Vector3(2, 2, 2);
+        [SerializeField]
+        private Vector3 mCapitalLetterScale = new Vector3(2, 2, 2);
 
-        [Header("** Wave Zigge Effect **")]
+
+        [Header("** Wave Zigge Effect (JCS_DamageText) **")]
 
         [Tooltip("Each Digit will go up and down in order.")]
-        [SerializeField] private bool mWaveZiggeEffect = true;
+        [SerializeField]
+        private bool mWaveZiggeEffect = true;
 
-        [SerializeField] private float mWaveZigge = 0.1f;
+        [Tooltip("")]
+        [SerializeField]
+        private float mWaveZigge = 0.1f;
 
-        [Header("** Asymptotic Scale Effect **")]
 
-        [SerializeField] private bool mAsymptoticScaleEffect = true;
+        [Header("** Asymptotic Scale Effect (JCS_DamageText) **")]
 
-        [SerializeField] private float mAsymptoticScale = 0.1f;
+        [Tooltip("")]
+        [SerializeField]
+        private bool mAsymptoticScaleEffect = true;
 
+        [Tooltip("")]
+        [SerializeField]
+        private float mAsymptoticScale = 0.1f;
+
+        /*
+         * Current hold how many digit. 
+         * 
+         * so if we use 5 digit this time.next time we use 3 digit. 
+         * we dont have to spawn three brand new digit to handle. We 
+         * simple just reuse the 5 digit we created previously.
+         */
         // handle all the sprite in order to change the color
         private List<SpriteRenderer> mSpriteRenderers = null;
 
-        [Header("** Critical Strike Sprite Setting **")]
-        [SerializeField] private Vector3 mCritialSpriteScale = Vector3.one;
-        [SerializeField] private float mSpacingX = 0.5f;
-        [SerializeField] private float mSpacingY = 0.5f;
-        [SerializeField] private bool mRandomSize = true;
-        [SerializeField] private float mMinSize = -1;
-        [SerializeField] private float mMaxSize = 1;
+        private SpriteRenderer mCriticalSprite = null;
+        
+
+
+        [Header("** Critical Strike Sprite Setting (JCS_DamageText) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private Vector3 mCritialSpriteScale = Vector3.one;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mSpacingX = 0.5f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mSpacingY = 0.5f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mRandomSize = true;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mMinSize = -1;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mMaxSize = 1;
 
         // Damage Text
         [Header("** Damage Text Setting (if the game have this kind of feature fill this out!) **")]
@@ -114,7 +164,17 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            mSpriteRenderers = new List<SpriteRenderer>();
+            this.mSpriteRenderers = new List<SpriteRenderer>();
+
+            if (this.mCriticalSprite == null)
+            {
+                GameObject gm = new GameObject();
+                this.mCriticalSprite = gm.AddComponent<SpriteRenderer>();
+                gm.transform.SetParent(this.transform);
+#if (UNITY_EDITOR)
+                gm.name = "Criticl Sprite";
+#endif
+            }
         }
 
         private void Update()
@@ -131,6 +191,12 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Spawn one damage text.
+        /// </summary>
+        /// <param name="damage"> damage value. </param>
+        /// <param name="pos"> effect position. (world space) </param>
         public void SpawnDamageText(int damage, Vector2 pos)
         {
             this.transform.position = pos;
@@ -151,11 +217,19 @@ namespace JCSUnity
                 digit <= totalDigit;
                 ++digit)
             {
-                GameObject gm = new GameObject();
-                SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
+                if (mSpriteRenderers.Count <= digit - 1)
+                {
+                    GameObject gm = new GameObject();
+                    SpriteRenderer newSr = gm.AddComponent<SpriteRenderer>();
 
-                // add to manage
-                mSpriteRenderers.Add(sr);
+                    // set the parent
+                    gm.transform.SetParent(this.transform);
+
+                    // add to manage
+                    mSpriteRenderers.Add(newSr);
+                }
+
+                SpriteRenderer sr = mSpriteRenderers[digit - 1];
 
                 // get single digit
                 int digitNum;
@@ -169,9 +243,6 @@ namespace JCSUnity
 
                 // set the sorting layer
                 sr.sortingOrder = mBaseOrderLayer - digit;
-
-                // set the parent
-                gm.transform.SetParent(this.transform);
 
                 // set the position base on the spacing 
                 // and target's center!
@@ -191,7 +262,7 @@ namespace JCSUnity
 
                     newPos.y += diffZig;
                 }
-                gm.transform.position = newPos;
+                sr.gameObject.transform.position = newPos;
 
                 Vector3 newScale = mScale;
                 // Asymptotic scale
@@ -212,20 +283,14 @@ namespace JCSUnity
                     }
                 }
 
-                gm.transform.localScale = newScale;
+                sr.gameObject.transform.localScale = newScale;
             }
 
             // Check if critical texture exist and spawn it
             if (mCritialStrike != null && 
                 damage != 0)
             {
-                GameObject gm = new GameObject();
-                SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
-
-                gm.transform.SetParent(this.transform);
-
-                // add to manage
-                mSpriteRenderers.Add(sr);
+                SpriteRenderer sr = mCriticalSprite;
 
                 // 最左邊的空位
                 int theLeftDigitSpace = (totalDigit + 1);
@@ -243,7 +308,7 @@ namespace JCSUnity
                 newPos.x += mSpacingX;
                 newPos.y += mSpacingY;
 
-                gm.transform.position = newPos;
+                sr.gameObject.transform.position = newPos;
 
                 //---------------
                 // Apply Scale
@@ -259,10 +324,11 @@ namespace JCSUnity
                         newScale.y += applyRandom;
                     }
                     else
-                        JCS_Debug.LogError("JCS_DamageText",   "Max size cannot be smaller than Min size...");
+                        JCS_Debug.LogError(
+                            "Max size cannot be smaller than Min size...");
                 }
 
-                gm.transform.localScale = newScale;
+                sr.gameObject.transform.localScale = newScale;
             }
 
             // start the effect
@@ -274,21 +340,14 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
-        private void RemoveAllTheChild()
-        {
-            for (int index = 0;
-                index < this.transform.childCount;
-                ++index)
-            {
-                Destroy(this.transform.GetChild(index).gameObject);
-            }
 
-            // clear all the sprite from the child
-            mSpriteRenderers.Clear();
-        }
+        /// <summary>
+        /// Get the single digit sprite depends on the digit value.
+        /// </summary>
+        /// <param name="num"> digit value </param>
+        /// <returns> sprite of that digit valuye. </returns>
         private Sprite GetSingleDigitSprite(int num)
         {
-
             switch (num)
             {
                 case 0: return mDamageText0;
@@ -309,6 +368,12 @@ namespace JCSUnity
             return null;
         }
 
+        /// <summary>
+        /// Get single digit value from a number.
+        /// </summary>
+        /// <param name="digit"> digit count. </param>
+        /// <param name="number"> number use to find digit value. </param>
+        /// <returns> digit value. </returns>
         private int GetSingleDigit(int digit, int number)
         {
             int totalDigit = number.ToString().Length;
@@ -324,6 +389,9 @@ namespace JCSUnity
             return remainder / divider;
         }
 
+        /// <summary>
+        /// Do effect depends on what 'damage text' effect.
+        /// </summary>
         private void DoEffect()
         {
             switch (mDamageTextEffectType)
@@ -339,6 +407,10 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// Do the moving up effect to the damage text.
+        /// </summary>
         private void MoveUp()
         {
             Vector3 newPos = this.transform.position;
@@ -347,27 +419,60 @@ namespace JCSUnity
 
             Fade();
         }
+
+        /// <summary>
+        /// Do the fade to the damage text.
+        /// </summary>
         private void Fade()
         {
             Color col = new Color();
+            float fadeValue = mFadeSpeed * Time.deltaTime;
+
             foreach (SpriteRenderer sr in mSpriteRenderers)
             {
                 col = sr.color;
-                col.a -= mFadeSpeed * Time.deltaTime;
+                col.a -= fadeValue;
                 sr.color = col;
             }
+
+            // fade the cirtical sprite too.
+            col = mCriticalSprite.color;
+            col.a -= fadeValue;
+            mCriticalSprite.color = col;
 
             if (col.a <= 0.0f)
             {
                 mActive = false;
-                // end the effect!
-                RemoveAllTheChild();
+
+                /* No longer using this. */
+                SetAllDigitToNull();
             }
 
         }
+
+        /// <summary>
+        /// Do the slide out effect to the damage text.
+        /// </summary>
         private void SlideOut()
         {
             Fade();
+        }
+
+        /// <summary>
+        /// Make all the digit sprite in this damage text to null.
+        /// So make this damage damage use for next time.
+        /// </summary>
+        private void SetAllDigitToNull()
+        {
+            foreach (SpriteRenderer sr in mSpriteRenderers)
+            {
+                /* 'SpriteRenderer' cannot be null in this case. */
+                sr.sprite = null;
+                sr.color = Color.white;
+            }
+
+            mCriticalSprite.sprite = null;
+            mCriticalSprite.color = Color.white;
         }
 
     }

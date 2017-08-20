@@ -159,7 +159,7 @@ namespace JCSUnity
                     else
                     {
                         JCS_Debug.LogError(
-                            this, "You active the destroy time but without the JCS_DestroyObjectWithTime component...");
+                            "You active the destroy time but without the JCS_DestroyObjectWithTime component...");
                     }
                 }
             }

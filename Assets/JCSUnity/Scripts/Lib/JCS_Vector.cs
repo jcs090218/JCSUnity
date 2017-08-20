@@ -68,7 +68,6 @@ namespace JCSUnity
         {
             if (index >= 0 && index <= m_array.Length - 1)
             {
-
                 T[] newarray = new T[length - 1];
                 T result = m_array[index];
 
@@ -80,8 +79,6 @@ namespace JCSUnity
                 {
                     newarray[j] = m_array[j + 1];
                 }
-
-
 
                 m_array = newarray;
                 return result;

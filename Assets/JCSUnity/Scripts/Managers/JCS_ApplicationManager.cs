@@ -23,11 +23,8 @@ namespace JCSUnity
         // Public Variables
         public static JCS_ApplicationManager instance = null;
         public static bool APP_PAUSE = false;
-        public static bool ONLINE_MODE = false;
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
-
-        public static bool FIRST_LOGIN = true;
 
         [Header("** This will override Platform Type (Uncheck this when you want to release.)**")]
         public bool SIMULATE_PLATFORM_TYPE = true;

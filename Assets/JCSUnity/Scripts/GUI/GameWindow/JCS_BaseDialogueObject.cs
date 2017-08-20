@@ -221,7 +221,7 @@ playing it.")]
             if (jcsCanvas == null)
             {
                 JCS_Debug.LogReminders(
-                    this, "Does not use JCS_Canvas Object...");
+                    "Does not use JCS_Canvas Object...");
 
                 return;
             }

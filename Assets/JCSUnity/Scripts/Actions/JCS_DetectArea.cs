@@ -49,7 +49,7 @@ namespace JCSUnity
             if (mCollider == null)
             {
                 JCS_Debug.LogError(
-                    this, "No collider attached to do the dectect action...");
+                     "No collider attached to do the dectect action...");
             }
             else
                 mCollider.enabled = false;

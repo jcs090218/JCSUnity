@@ -160,8 +160,8 @@ initialize time.")]
         public float VelY { get { return mVelocityInfo.VelY; } set { mVelocityInfo.VelY = value; } }
         public float VelZ { get { return mVelocityInfo.VelZ; } set { mVelocityInfo.VelZ = value; } }
         public bool isGrounded { get { return this.mCharacterControllerInfo.isGrounded; } }
-        public float MoveSpeed { get { return mVelocityInfo.MoveSpeed; } set { mVelocityInfo.MoveSpeed = value; } }
-        public float RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
+        public Vector3 MoveSpeed { get { return mVelocityInfo.MoveSpeed; } set { mVelocityInfo.MoveSpeed = value; } }
+        public Vector3 RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
 
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
 
@@ -203,6 +203,9 @@ initialize time.")]
                 JCS_2DPositionPlatform[] platforms = Resources.FindObjectsOfTypeAll<JCS_2DPositionPlatform>();
                 foreach (JCS_2DPositionPlatform platform in platforms)
                 {
+                    if (platform.CannotBeGoThrough)
+                        return;
+
                     Physics.IgnoreCollision(platform.GetPlatformCollider(),
                         this.GetCharacterController());
                     Physics.IgnoreCollision(platform.GetPlatformTrigger(),
@@ -246,6 +249,10 @@ initialize time.")]
             // if not it will just go randomly.
             FlyDirectionByPossiblity();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void FlyDirectionByPossiblity()
         {
             // direction we are going to use next.
@@ -346,6 +353,7 @@ initialize time.")]
             else
                 FlyByStatus(directionX, directionY);
         }
+
         /// <summary>
         /// Calculate the result x and y axis by pass passing
         /// -1, 0, 1 in order to process Fly Action base on Status
@@ -423,7 +431,7 @@ initialize time.")]
         /// <param name="force"> foce to apply </param>
         public void FlyX(float force)
         {
-            mVelocityInfo.RecordSpeed = force;
+            mVelocityInfo.RecordSpeedX = force;
 
             mFlyed = true;
         }

@@ -114,7 +114,7 @@ public class BF_Player
 
     private void ShootActionFunc()
     {
-        GetCharacterAnimator().DoAnimation((int)JCS_LiveObjectState.RAND_ATTACK);
+        DoAnimation(JCS_LiveObjectState.RAND_ATTACK);
         mAudioController.AttackSound();
     }
 

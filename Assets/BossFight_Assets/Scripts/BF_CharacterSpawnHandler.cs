@@ -78,7 +78,6 @@ public class BF_CharacterSpawnHandler
             if (mSpawnPos[index] == null)
             {
                 JCS_Debug.LogReminders(
-                    this, 
                     "No Spawn position references, plz check the transform in the array...");
                 break;
             }
@@ -86,7 +85,6 @@ public class BF_CharacterSpawnHandler
             if (bfPlayers[index] == null)
             {
                 JCS_Debug.LogError(
-                    this,
                     "Character you want to spawn does not exist...");
                 break;
             }

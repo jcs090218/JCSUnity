@@ -31,20 +31,39 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private JCS_TransfromTweener mTweener = null;
+
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_TweenPanel) **")]
+
+        [SerializeField]
+        private bool mTestKey = true;
+#endif
+
+        [Header("** Check Variables (JCS_TweenPanel) **")]
 
         [Tooltip("Do the tween effect to this position.")]
         [SerializeField]
         private Vector3 mTargetPosition = Vector3.zero;
 
+        [Tooltip("")]
         [SerializeField]
         // record down the starting position, in order to go back.
         private Vector3 mStartingPosition = Vector3.zero;
 
 
-        [Header("** Sound Setttings **")]
-        [SerializeField] private AudioClip mActiveSound = null;
-        [SerializeField] private AudioClip mDeactiveSound = null;
+        [Header("** Sound Setttings (JCS_TweenPanel) **")]
+
+        [Tooltip("Sound play when active this panel.")]
+        [SerializeField]
+        private AudioClip mActiveSound = null;
+
+        [Tooltip("Sound play when this panel is deactive.")]
+        [SerializeField]
+        private AudioClip mDeactiveSound = null;
+
         private JCS_SoundPlayer mSoundPlayer = null;
 
         // call backs
@@ -76,6 +95,9 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Update()
         {
+            if (!mTestKey)
+                return;
+
             if (JCS_Input.GetKeyDown(KeyCode.I))
                 Active();
             if (JCS_Input.GetKeyDown(KeyCode.O))

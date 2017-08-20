@@ -54,7 +54,7 @@ namespace JCSUnity
             mCharacterController = this.GetComponent<CharacterController>();
 
 
-            Vector2 widthHeight = JCS_Physics.GetColliderInfo(mCharacterController);
+            Vector2 widthHeight = JCS_Physics.GetColliderWidthHeight(mCharacterController);
 
             mWidth = widthHeight.x;
             mHeight = widthHeight.y;

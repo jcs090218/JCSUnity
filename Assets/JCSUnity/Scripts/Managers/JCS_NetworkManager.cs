@@ -27,6 +27,8 @@ namespace JCSUnity
         public static JCS_NetworkManager instance = null;
         public static bool SERVER_CLOSE = false;
 
+        public static bool FIRST_LOGIN = true;
+
         //----------------------
         // Private Variables
         private static JCS_GameSocket GAME_SOCKET = null;
@@ -49,7 +51,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (!JCS_ApplicationManager.ONLINE_MODE)
+            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return;
 
 #if (UNITY_EDITOR)
@@ -97,7 +99,7 @@ namespace JCSUnity
 
         private void OnApplicationQuit()
         {
-            if (JCS_ApplicationManager.ONLINE_MODE)
+            if (JCS_NetworkSettings.instance.ONLINE_MODE)
                 JCS_NetworkManager.GAME_SOCKET.Close();
         }
 
@@ -149,6 +151,17 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Close the current socket the safe way.
+        /// </summary>
+        public static void CloseSocket()
+        {
+            if (GAME_SOCKET == null)
+                return;
+
+            GAME_SOCKET.Close();
+        }
+
+        /// <summary>
         /// Return the Game socket we are using.
         /// </summary>
         /// <returns> socket. </returns>
@@ -164,7 +177,7 @@ namespace JCSUnity
         public void CheckConnectionWithTime()
         {
             // do the following script only when is online mode
-            if (!JCS_ApplicationManager.ONLINE_MODE)
+            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return;
 
             mConnectionCounter += Time.deltaTime;
@@ -178,13 +191,47 @@ namespace JCSUnity
                     Debug.Log("Server End!");
                     JCS_UtilityFunctions.PopIsConnectDialogue();
                 }
-                else if (JCS_ApplicationManager.FIRST_LOGIN)
+                else if (FIRST_LOGIN)
                 {
-                    JCS_ApplicationManager.FIRST_LOGIN = false;
+                    FIRST_LOGIN = false;
                     JCS_PatchManager.instance.LoadNextLevel();
                 }
                 mConnectionCounter = 0;
             }
+        }
+
+        /// <summary>
+        /// Do this when transfering to different server.
+        /// 
+        /// For instance:
+        /// Login Server -> Channel Server
+        /// </summary>
+        public void SwitchServer()
+        {
+            SwitchServer(
+                JCS_NetworkSettings.instance.HOST_NAME, 
+                JCS_NetworkSettings.instance.PORT);
+        }
+
+        /// <summary>
+        /// Do this when transfering to different server.
+        /// 
+        /// For instance:
+        /// Login Server -> Channel Server
+        /// </summary>
+        /// <param name="hostname"> Host name </param>
+        /// <param name="port"> Port Number </param>
+        public void SwitchServer(string hostname, int port)
+        {
+            // update hostname and port.
+            JCS_NetworkSettings.instance.HOST_NAME = hostname;
+            JCS_NetworkSettings.instance.PORT = port;
+
+            // close the previous one.
+            CloseSocket();
+
+            // open the new one for next server.
+            CreateNetwork(hostname, port);
         }
 
         //----------------------

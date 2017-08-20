@@ -8,6 +8,8 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Runtime.CompilerServices;
+using System.IO;
 
 
 namespace JCSUnity
@@ -18,153 +20,94 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Debug
     {
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void LogError(string script, string desc)
-        {
-            //string currentFile = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName();
-            int currentLine = -1;
-#if (UNITY_EDITOR)
-            currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
-#endif
 
-            JcsLog("Errors", script, currentLine, desc);
-        }
         /// <summary>
-        /// 
+        /// Print out log by deesign by JCSUnity format. (Log)
         /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void LogError(Object script, string desc)
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void Log(
+            string msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
         {
-            LogError(script.GetType().Name, desc);
+            JcsLog("Log", msg, file, member, line);
         }
 
         /// <summary>
-        /// 
+        /// Print out log by deesign by JCSUnity format. (Errors)
         /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void LogReminders(string script, string desc)
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void LogError(
+            string msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
         {
-            int currentLine = -1;
-#if (UNITY_EDITOR)
-            currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
-#endif
-
-            JcsLog("Reminders", script, currentLine, desc);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void LogReminders(Object script, string desc)
-        {
-            LogReminders(script.GetType().Name, desc);
+            JcsLog("Errors", msg, file, member, line);
         }
 
         /// <summary>
-        /// 
+        /// Print out log by deesign by JCSUnity format. (Warnings)
         /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void Log(string script, string desc)
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void LogWarning(
+            string msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
         {
-            int currentLine = -1;
-#if (UNITY_EDITOR)
-            currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
-#endif
-
-            JcsLog("Log", script, currentLine, desc);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void Log(Object script, string desc)
-        {
-            JcsLog(script.GetType().Name, desc);
+            JcsLog("Warnings", msg, file, member, line);
         }
 
         /// <summary>
-        /// 
+        /// Print out log by deesign by JCSUnity format. (Reminders)
         /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void LogWarning(string script, string desc)
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void LogReminders(
+            string msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
         {
-            int currentLine = -1;
-#if (UNITY_EDITOR)
-            currentLine = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileLineNumber();
-#endif
-
-            JcsLog("Warnings", script, currentLine, desc);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="script"></param>
-        /// <param name="desc"></param>
-        public static void LogWarning(Object script, string desc)
-        {
-            LogWarning(script.GetType().Name, desc);
+            JcsLog("Reminders", msg, file, member, line);
         }
 
-
         /// <summary>
-        /// 
+        /// Print out log by deesign by JCSUnity format.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="script"></param>
-        /// <param name="line"></param>
-        /// <param name="desc"></param>
-        private static void JcsLog(string type, string script, int line = -1, string desc = "")
+        /// <param name="type">Log type.</param>
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        private static void JcsLog(
+            string type,
+            string msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
         {
 #if (UNITY_EDITOR)
+            string filename = Path.GetFileName(file);
             Debug.Log("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Debug.Log("=-= JCSUnity." + type + " - [" + script + "](" + line + ")" + desc + " =-=");
+            Debug.Log("=-= JCSUnity." + type + " - [" + filename + "](" + line + ")" + msg + " =-=");
             Debug.Log("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 #endif
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="script"></param>
-        /// <param name="line"></param>
-        /// <param name="desc"></param>
-        private static void LogError(string type, string script, int line = -1, string desc = "")
-        {
-#if (UNITY_EDITOR)
-            Debug.LogError("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Debug.LogError("=-= JCSUnity." + type + " - [" + script + "](" + line + ")" + desc + " =-=");
-            Debug.LogError("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-#endif
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="script"></param>
-        /// <param name="line"></param>
-        /// <param name="desc"></param>
-        private static void LogWarning(string type, string script, int line = -1, string desc = "")
-        {
-#if (UNITY_EDITOR)
-            Debug.LogWarning("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Debug.LogWarning("=-= JCSUnity." + type + " - [" + script + "](" + line + ")" + desc + " =-=");
-            Debug.LogWarning("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-#endif
-        }
-
 
         /// <summary>
         /// 

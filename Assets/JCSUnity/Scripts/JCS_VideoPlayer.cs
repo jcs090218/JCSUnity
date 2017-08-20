@@ -89,11 +89,11 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
-            this.mAudioSource = this.GetComponent<AudioSource>();
+            base.Awake();
 
-            UpdateUnityData();
+            this.mAudioSource = this.GetComponent<AudioSource>();
 
             LocalMainTexture = mMovieTexture;
 
@@ -330,11 +330,11 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
-            this.mAudioSource = this.GetComponent<AudioSource>();
+            base.Awake();
 
-            UpdateUnityData();
+            this.mAudioSource = this.GetComponent<AudioSource>();
 
             // load the next scene.
             mLoadNextSceneTime = 

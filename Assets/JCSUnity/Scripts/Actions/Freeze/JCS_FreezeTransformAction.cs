@@ -117,8 +117,6 @@ namespace JCSUnity
         /*******************************************/
         private void Start()
         {
-            UpdateUnityData();
-
             // record down all the transform info value.
             if (IsLocalPosition)
                 this.mPositionToFreeze = this.LocalPosition;

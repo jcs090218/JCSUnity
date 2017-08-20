@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace JCSUnity
@@ -37,6 +38,8 @@ namespace JCSUnity
 
         private JCS_2DLiveObject mLiveObject = null;
 
+        private List<JCS_2DLiveObject> mLiveObjectList = null;
+
 
         [Header("** Runtime Variables (JCS_HitDamageAction) **")]
 
@@ -61,15 +64,34 @@ namespace JCSUnity
             mAbilityFormat = this.GetComponent<JCS_AbilityFormat>();
 
             mLiveObject = this.GetComponent<JCS_2DLiveObject>();
+
+            mLiveObjectList = new List<JCS_2DLiveObject>();
         }
 
-        private void OnTriggerStay(Collider other)
+        private void Update()
+        {
+            foreach (JCS_2DLiveObject liveObject in mLiveObjectList)
+            {
+                DamageLiveObject(liveObject);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
         {
             JCS_2DLiveObject liveObject = other.GetComponent<JCS_2DLiveObject>();
             if (liveObject == null)
                 return;
 
-            DamageLiveObject(liveObject);
+            mLiveObjectList.Add(liveObject);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            JCS_2DLiveObject liveObject = other.GetComponent<JCS_2DLiveObject>();
+            if (liveObject == null)
+                return;
+
+            mLiveObjectList.Remove(liveObject);
         }
 
         //========================================
@@ -105,8 +127,7 @@ namespace JCSUnity
             if (mAbilityFormat == null)
             {
                 JCS_Debug.LogReminders(
-                    this, "You sure to not using any \"JCS_AbilityFormat\"?");
-
+                    "You sure to not using any \"JCS_AbilityFormat\"?");
                 return;
             }
 

@@ -201,9 +201,9 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
-            UpdateUnityData();
+            base.Awake();
 
             // get all function pointer/formula.
             this.mEasingRed = JCS_Utility.GetEasing(mEaseTypeR);

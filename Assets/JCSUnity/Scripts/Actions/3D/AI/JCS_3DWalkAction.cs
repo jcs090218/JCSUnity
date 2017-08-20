@@ -117,7 +117,7 @@ namespace JCSUnity
             if (target == null)
             {
                 JCS_Debug.LogError(
-                    this, "This transform u are targeting are null...");
+                    "This transform u are targeting are null...");
                 return;
             }
 

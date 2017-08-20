@@ -87,7 +87,7 @@ namespace JCSUnity
             // Check time scale
             if (TIME_SCALE != 1)
             {
-                JCS_Debug.LogReminders(this, 
+                JCS_Debug.LogReminders( 
                     "Current time scale [" + TIME_SCALE + "] isn't one.");
             }
 #endif

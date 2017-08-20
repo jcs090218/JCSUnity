@@ -36,7 +36,14 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTransform = null;
 
+        // use to check if the target transform move or not.
+        private Vector3 mRecordTargetTransformPosition = Vector3.zero;
+
         private Transform mRecordTransform = null;
+        
+        [Tooltip("Is done tweening/animating?")]
+        [SerializeField]
+        private bool mIsDoneTweening = false;
 
 
         [Header("** Runtime Variables (JCS_TransfromTweener) **")]
@@ -56,6 +63,21 @@ namespace JCSUnity
         [Tooltip("How fase it move on z axis.")]
         [SerializeField] [Range(0.01f, 1000.0f)]
         private float mDurationZ = 1.0f;
+
+        [Tooltip("Enable this if the target is moving all the time.")]
+        [SerializeField]
+        private bool mTweenEveryFrame = true;
+
+
+        [Header("- Destory")]
+
+        [Tooltip("Destory this object when done tweening?")]
+        [SerializeField]
+        private bool mDestroyWhenDoneTweening = false;
+
+        [Tooltip("How many times of done tweening destroy will active?")]
+        [SerializeField] [Range(1, 10)]
+        private int mDestroyDoneTweeningCount = 1;
 
 
         [Header("- Randomize Duration")]
@@ -116,6 +138,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool IsDoneTweening { get { return this.mIsDoneTweening; } }
         public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
         public float StopTweenDistance { get { return this.mStopTweenDistance; } set { this.mStopTweenDistance = value; } }
         public float DurationX { get { return this.mDurationX; } set { this.mDurationX = value; } }
@@ -126,16 +149,19 @@ namespace JCSUnity
         public JCS_TweenType EasingZ { get { return this.mEasingZ; } set { this.mEasingZ = value; } }
         public void SetTargetTransform(Transform trans) { this.mTargetTransform = trans; }
         public Transform RecordTransform { get { return this.mRecordTransform; } }
-
+        public bool DestroyWhenDoneTweening { get { return this.mDestroyWhenDoneTweening; } set { this.mDestroyWhenDoneTweening = value; } }
+        public bool TweenEveryFrame { get { return this.mTweenEveryFrame; } set { this.mTweenEveryFrame = value; } }
+        
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
-            // this alway need to be call once.
-            UpdateUnityData();
-            
+            base.Awake();
+
             RandomizeDuration();
+
+            tweener.SetCallback(DoneTweening);
         }
 
         private void LateUpdate()
@@ -165,8 +191,13 @@ namespace JCSUnity
                     transform.localEulerAngles = tweener.progression;
                 if (mTweenScale)
                     transform.localScale = tweener.progression;
-            }
 
+                mIsDoneTweening = false;
+            }
+            else
+            {
+                mIsDoneTweening = true;
+            }
         }
 
 #if (UNITY_EDITOR)
@@ -299,6 +330,9 @@ namespace JCSUnity
 
             mRecordTransform = target;
 
+            // reset record
+            mRecordTargetTransformPosition = Vector3.zero;
+
             mContinueTween = true;
         }
 
@@ -307,6 +341,20 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Default callback when done tweening.
+        /// </summary>
+        protected void DoneTweening()
+        {
+            --mDestroyDoneTweeningCount;
+
+            if (mDestroyWhenDoneTweening)
+            {
+                if (mDestroyDoneTweeningCount <= 0)
+                    Destroy(this.gameObject);
+            }
+        }
 
         /// <summary>
         /// Prepare for tweening.
@@ -344,6 +392,8 @@ namespace JCSUnity
                     easingY,
                     easingZ,
                     mDestinationCallback);
+
+                this.mIsDoneTweening = false;
             }
         }
 
@@ -363,7 +413,7 @@ namespace JCSUnity
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
                     JCS_Debug.LogError(
-                        this, "Start the tween but the target transform are null...");
+                        "Start the tween but the target transform are null...");
                 }
 #endif
 
@@ -374,13 +424,33 @@ namespace JCSUnity
             float distance = 0;
             if (mTrackAsLocalPosition)
             {
+                if (!TweenEveryFrame)
+                {
+                    // no need to tween again if the position has not change.
+                    if (mRecordTargetTransformPosition == mTargetTransform.localPosition)
+                        return;
+                }
+
                 distance = Vector3.Distance(LocalPosition, mTargetTransform.localPosition);
                 DoTween(mTargetTransform.localPosition);
+
+                // record down the position
+                mRecordTargetTransformPosition = mTargetTransform.localPosition;
             }
             else
             {
+                if (!TweenEveryFrame)
+                {
+                    // no need to tween again if the position has not change.
+                    if (mRecordTargetTransformPosition == mTargetTransform.position)
+                        return;
+                }
+
                 distance = Vector3.Distance(LocalPosition, mTargetTransform.position);
                 DoTween(mTargetTransform.position);
+
+                // record down the position
+                mRecordTargetTransformPosition = mTargetTransform.position;
             }
 
             if (distance <= mStopTweenDistance)
@@ -389,7 +459,7 @@ namespace JCSUnity
 
                 // call the call back.
                 tweener.ResetTweener();
-                tweener.CheckUpdate(true);
+                tweener.DoCallBack();
             }
         }
 

@@ -75,7 +75,7 @@ namespace JCSUnity
         {
             if (mLogText == null)
             {
-                JCS_Debug.LogReminders(this, 
+                JCS_Debug.LogReminders( 
                     "No log text assign in the text pool...");
 
                 return;
@@ -162,7 +162,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogWarning(this,
+                    JCS_Debug.LogWarning(
                         "Prevent, stack overflow function call.");
                 }
 #endif

@@ -133,21 +133,9 @@ this, default is 1.")]
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
-            /**
-             * @note: Recommanded tree setting will be like.
-             * 
-             * JCS_2DAnimator (SpriteRenderer component located here!)
-             *   -> JCS_2DAnimation (Own animation sequence.)
-             *   -> JCS_2DAnimation (Own animation sequence.)
-             *   -> JCS_2DAnimation (Own animation sequence.)
-             */
-            // Even we get the the sprite renderer component, 
-            // JCS_2DAnimator will override this component if this 
-            // component(JCS_2DAnimation) are in the array of the 
-            // JCS_2DAnimator component.
-            UpdateUnityData();
+            base.Awake();
 
             mCurrentPlayingFrame = mStartingFrame;
 
@@ -271,8 +259,7 @@ this, default is 1.")]
         /// </summary>
         public void Stop()
         {
-            // set the sprite to null.
-            mSpriteRenderer.sprite = null;
+            this.LocalSprite = null;
 
             // stop the animation.
             mActive = false;

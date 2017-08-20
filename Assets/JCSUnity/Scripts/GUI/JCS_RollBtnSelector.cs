@@ -167,7 +167,6 @@ namespace JCSUnity
                 if (currentBtn == null)
                 {
                     JCS_Debug.LogError(
-                         this,
                         "Missing jcs_button assign in the inspector...");
 
                     continue;
@@ -307,7 +306,6 @@ namespace JCSUnity
             if (mFocusBtn == null)
             {
                 JCS_Debug.LogError(
-                    this,
                     "Cannot do the movement without focus button...");
                 return;
             }
@@ -318,7 +316,6 @@ namespace JCSUnity
             if (mLastScrollIndex == currentScrollIndex)
             {
                 JCS_Debug.LogError(
-                    this,
                     "Last Scroll Index and Current Scroll Index are the same...");
                 return;
             }

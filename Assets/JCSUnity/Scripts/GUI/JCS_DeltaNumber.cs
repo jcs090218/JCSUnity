@@ -240,7 +240,7 @@ should disable this effect for best purpose.")]
                 if (mDigitsRendererSlot[digit] == null)
                 {
                     JCS_Debug.LogError(
-                        this, "Digit slot cannot be null references...");
+                        "Digit slot cannot be null references...");
                     continue;
                 }
 
@@ -280,7 +280,7 @@ should disable this effect for best purpose.")]
                 if (mDigitsRendererSlot[digit] == null)
                 {
                     JCS_Debug.LogError(
-                        this, "Digit slot cannot be null references...");
+                        "Digit slot cannot be null references...");
                     continue;
                 }
 

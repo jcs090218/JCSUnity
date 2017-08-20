@@ -67,7 +67,7 @@ namespace JCSUnity
             ++mCurrentAnimationId;
 
             // reset anim id.
-            if (mCurrentAnimationId == mAnimator.Animations.Length)
+            if (mCurrentAnimationId == mAnimator.AnimationsLength)
                 mCurrentAnimationId = 0;
 
             // play animaiton.

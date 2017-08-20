@@ -17,9 +17,8 @@ namespace JCSUnity
     /// <summary>
     /// Hold sequence of animation and play it by condition.
     /// </summary>
-    [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_2DAnimator 
-        : JCS_UnityObject
+        : MonoBehaviour
     {
 
         //----------------------
@@ -68,7 +67,15 @@ default is 1.")]
 
         [Tooltip("All the animation possible to this object.")]
         [SerializeField]
-        private JCS_2DAnimation[] mAnimations = null;
+        private List<JCS_2DAnimation> mAnimations = null;
+
+
+        [Header("** Runtime Variables Variables (JCS_I2DAnimator) **")]
+
+        [Tooltip(@"If you want the animation to be hold for few sec, 
+you could add this component to do the action/event.")]
+        [SerializeField]
+        private JCS_2DAnimDisplayHolder m2DAnimDisplayHolder = null;
 
         //----------------------
         // Protected Variables
@@ -79,42 +86,41 @@ default is 1.")]
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
         public int CurrentAnimId { get { return this.mCurrentAnimId; } }
         public JCS_2DAnimation CurrentAnimation { get { return this.mCurrentAnimation; } }
-        public JCS_2DAnimation[] Animations { get { return this.mAnimations; } }
+        public List<JCS_2DAnimation> Animations { get { return this.mAnimations; } }
+        public int AnimationsLength { get { return this.mAnimations.Count; } }
+
+        public JCS_2DAnimDisplayHolder AnimDisplayHolder { get { return this.m2DAnimDisplayHolder; } }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void Awake()
         {
-            UpdateUnityData();
+            /*
+             * NOTE(jayces): consider this as a default value because
+             * this component is really handy.
+             */
+            if (m2DAnimDisplayHolder == null)
+                m2DAnimDisplayHolder = this.GetComponent<JCS_2DAnimDisplayHolder>();
 
             // update the max animation count.
             UpdateMaxAnimCount();
-
-            // active this animation.
-            ActiveOneAnimation(0);
         }
 
         private void Start()
         {
+            // active this animation.
+            ActiveOneAnimation(0);
+
             // override the component in the animation array.
             foreach (JCS_2DAnimation anim in mAnimations)
             {
+                if (anim == null)
+                    continue;
+
                 // let the animation know there are animator controlling 
                 // the animation.
                 anim.SetJCS2DAnimator(this);
-
-                // let all animation know there are sprite renderer 
-                // take over what they had previous 'SpriteRenderer' 
-                // component.
-                if (anim.GetObjectType() == this.GetObjectType())
-                    anim.LocalType = this.LocalType;
-                else
-                {
-                    JCS_Debug.LogError(
-                        this, 
-                        "Animator and Animation have different component type is not allowed...");
-                }
 
                 anim.PlayOnAwake = false;
             }
@@ -181,8 +187,13 @@ default is 1.")]
 
             if (mCurrentAnimation == null)
             {
-                JCS_Debug.LogError(
-                    this, "Swtich animation failed cuz of null reference animation assigned...");
+#if (UNITY_EDITOR)
+                if (JCS_GameSettings.instance.DEBUG_MODE)
+                {
+                    JCS_Debug.LogError(
+                        "Swtich animation failed cuz of null reference animation assigned...");
+                }
+#endif
                 return;
             }
 
@@ -278,7 +289,7 @@ default is 1.")]
         /// </summary>
         public void UpdateMaxAnimCount()
         {
-            this.mMaxAnimCount = this.mAnimations.Length;
+            this.mMaxAnimCount = this.mAnimations.Count;
         }
 
         /// <summary>
@@ -299,10 +310,20 @@ default is 1.")]
         /// <param name="id"> animation index in array. </param>
         private void ActiveOneAnimation(int id)
         {
+            if (mAnimations[id] == null)
+                return;
+
             foreach (JCS_2DAnimation anim in mAnimations)
             {
+                if (anim == null)
+                    continue;
+
+                if (anim == mAnimations[id])
+                    continue;
+
                 // disable all
                 anim.Active = false;
+                anim.Stop();
             }
 
             // only active playing target animation.

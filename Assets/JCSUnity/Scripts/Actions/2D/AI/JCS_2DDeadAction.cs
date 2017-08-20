@@ -34,9 +34,6 @@ namespace JCSUnity
         [Tooltip("Plz fill this is there is animation going on to this game object.")]
         [SerializeField] private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
-        // timer to check if the animation ends.
-        private float mAnimationTimer = 0;
-
 
         [Header("** Sound Settings (JCS_2DWalkAction) **")]
 
@@ -94,6 +91,8 @@ namespace JCSUnity
             }
 
             // do the dead animation
+            if (mLiveObjectAnimator.Animator.AnimDisplayHolder != null)
+                mLiveObjectAnimator.Animator.AnimDisplayHolder.StopHolding();
             mLiveObjectAnimator.DoAnimation(JCS_LiveObjectState.DIE);
 
             if (mFreezeWhileDie)
@@ -123,12 +122,8 @@ namespace JCSUnity
             // dead animation is end or not.
             if (mLiveObjectAnimator.IsInState(JCS_LiveObjectState.DIE))
             {
-                mAnimationTimer += Time.deltaTime;
-
-                if (mAnimationTimer >= mLiveObjectAnimator.GetAnimatorStateInfo().length)
+                if (mLiveObjectAnimator.Animator.CurrentAnimation.IsDonePlaying)
                 {
-                    mAnimationTimer = 0;
-
                     // if is end destroy the object itself.
                     Destroy(this.gameObject);
                 }

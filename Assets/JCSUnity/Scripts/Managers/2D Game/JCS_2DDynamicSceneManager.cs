@@ -75,7 +75,6 @@ namespace JCSUnity
             }
 
             JCS_Debug.LogError(
-                this, 
                 "Does not found the order layer u want.");
 
             return null;
@@ -103,7 +102,6 @@ namespace JCSUnity
             if (jcsol == null)
             {
                 JCS_Debug.LogWarning(
-                    this,
                     "Did not find the layer you willing to set to..., Layer: " + mJCSOrderLayer);
                 return;
             }

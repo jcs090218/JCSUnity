@@ -12,6 +12,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Linq;
 using PeterVuorela.Tweener;
+using System.Collections.Generic;
 
 
 namespace JCSUnity
@@ -496,9 +497,22 @@ namespace JCSUnity
         /// Enum typed version casting.
         /// Source: http://stackoverflow.com/questions/972307/can-you-loop-through-all-enum-values
         /// </summary>
-        public static System.Collections.Generic.IEnumerable<T> GetValues<T>()
+        public static IEnumerable<T> GetValues<T>()
         {
             return System.Enum.GetValues(typeof(T)).Cast<T>();
+        }
+
+        /// <summary>
+        /// Set eabled/disabled to all component in a transform.
+        /// </summary>
+        /// <param name="trans"> transform to apply the effect. </param>
+        /// <param name="act"> enable or disable? </param>
+        public static void SetEnableAllComponents(Transform trans, bool act)
+        {
+            foreach (var component in trans.GetComponents<MonoBehaviour>())
+            {
+                component.enabled = act;
+            }
         }
 
         /// <summary>
@@ -704,5 +718,105 @@ namespace JCSUnity
 
             return easing;
         }
+
+        /// <summary>
+        /// Remove the empty slot in the list.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inList"> List object. </param>
+        /// <returns> Cleaned up List object. </returns>
+        public static List<T> RemoveEmptySlot<T>(List<T> inList)
+        {
+            List<T> newArray = new List<T>(inList.Count);
+
+            for (int index = 0;
+               index < inList.Count;
+               ++index)
+            {
+                // remove itself.
+                if (inList[index] != null)
+                    newArray.Add(inList[index]);
+            }
+
+            return newArray;
+        }
+
+
+        /// <summary>
+        /// Multiply all the parent localEulerAngles to get the correct 
+        /// description of the transform information. 
+        /// 
+        /// ATTENTION(jenchieh): This will cause some performance, use 
+        /// it wisely.
+        /// </summary>
+        /// <param name="trans"> transform we want to get from and use 
+        /// it for parent. </param>
+        /// <param name="inEulerAngles"> use to store the result. </param>
+        /// <returns> Accumilate the result. </returns>
+        public static Vector3 GetFinalLocalEulerAngles(Transform trans, ref Vector3 inEulerAngles)
+        {
+            if (trans.parent == null)
+                return inEulerAngles;
+
+            Vector3 parentVal = trans.parent.transform.localEulerAngles;
+
+            inEulerAngles = SetVec3(
+                ref inEulerAngles,
+                parentVal.x * inEulerAngles.x,
+                parentVal.y * inEulerAngles.y,
+                parentVal.z * inEulerAngles.z);
+
+            return GetFinalLocalEulerAngles(trans.parent, ref inEulerAngles);
+        }
+
+        /// <summary>
+        /// Merge multiple arrays into one array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static T[] MergeArrays<T>(params T[][] arrList)
+        {
+            if (arrList.Length <= 1)
+            {
+                JCS_Debug.Log(
+                    "JCS_Utility",
+                    "You trying to merge the array less then two array?");
+            }
+
+            int arrLen = 0;
+            foreach (var arr in arrList)
+                arrLen += arr.Length;
+
+            // first combine the first two array.
+            T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
+
+            // combine the rest.
+            for (int index = 2;
+                index < arrList.Length;
+                ++index)
+            {
+                data = MergeArrays2<T>(data, arrList[index]);
+            }
+            return data;
+        }
+
+        /// <summary>
+        /// Merging two array and return the new array.
+        /// </summary>
+        /// <typeparam name="T"> Type of the array. </typeparam>
+        /// <param name="arr1"> First array. </param>
+        /// <param name="arr2"> Second array. </param>
+        /// <returns> Merged array. </returns>
+        public static T[] MergeArrays2<T>(T[] arr1, T[] arr2)
+        {
+            T[] data = new T[arr1.Length + arr2.Length];
+
+            System.Array.Copy(arr1, data, arr1.Length);
+            System.Array.Copy(arr2, 0, data, arr1.Length, arr2.Length);
+
+            return data;
+        }
+
     }
 }

@@ -58,7 +58,7 @@ namespace JCSUnity
             // NOTE(jenchieh): prevent if other component want to change
             // this position, we have the record position at function 
             // 'Start' rather than 'Awake'
-            this.mOriginPos = this.transform.position;
+            this.mOriginPos = this.transform.localPosition;
         }
 
         private void Update()
@@ -68,14 +68,14 @@ namespace JCSUnity
 
             // Find out the distance between the current moved 
             // position and the starting position.
-            float distance = Vector3.Distance(this.transform.position, mOriginPos);
+            float distance = Vector3.Distance(this.transform.localPosition, mOriginPos);
 
             // check if the distance reach?
             if (distance < mDistance)
                 return;
 
             // set back to original position.
-            this.transform.position = this.mOriginPos;
+            this.transform.localPosition = this.mOriginPos;
         }
 
         //========================================

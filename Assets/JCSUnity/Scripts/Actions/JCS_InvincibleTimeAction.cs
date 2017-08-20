@@ -18,6 +18,7 @@ namespace JCSUnity
     /// ex: Super Mario ate the star.
     /// </summary>
     [RequireComponent(typeof(JCS_LiveObject))]
+    [RequireComponent(typeof(JCS_OrderLayerObject))]
     public class JCS_InvincibleTimeAction
         : JCS_UnityObject
     {
@@ -29,6 +30,7 @@ namespace JCSUnity
         // Private Variables
 
         private JCS_LiveObject mLiveObject = null;
+        private JCS_OrderLayerObject mOrderLayerObject = null;
 
         [Header("** Runtime Variables (JCS_InvincibleTimeAction) **")]
 
@@ -80,12 +82,12 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
-            mLiveObject = this.GetComponent<JCS_LiveObject>();
+            base.Awake();
 
-            // get unity data.
-            UpdateUnityData();
+            mLiveObject = this.GetComponent<JCS_LiveObject>();
+            mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
         }
 
         private void Update()
@@ -107,7 +109,19 @@ namespace JCSUnity
             mLiveObject.CanDamage = true;
 
             // set back the local color to record color.
-            LocalColor = mRecordColor;
+            if (mOrderLayerObject.GetSpriteRenderer() != null)
+                mOrderLayerObject.GetSpriteRenderer().color = mRecordColor;
+            for (int index = 0;
+                index < mOrderLayerObject.SpriteRenderers().Count;
+                ++index)
+            {
+                /* 
+                 * No need to check null, this will always be there. 
+                 * Because 'JCS_OrderLayerObject' will be remove the 
+                 * empty slot before we use it.
+                 */
+                mOrderLayerObject.SpriteRenderersAt(index).color = mRecordColor;
+            }
 
             // reset timer.
             mInvicibleTimer = 0;
@@ -155,7 +169,10 @@ namespace JCSUnity
             mLiveObject.CanDamage = false;
 
             // record down the current color.
-            this.mRecordColor = LocalColor;
+            if (mOrderLayerObject.GetSpriteRenderer() != null)
+                mRecordColor  = mOrderLayerObject.GetSpriteRenderer().color;
+            else 
+                mRecordColor = Color.white;
 
             // reset the flash toggle.
             this.mFlashToggle = false;
@@ -185,9 +202,39 @@ namespace JCSUnity
 
             // set the start is "false"
             if (!mFlashToggle)
-                LocalColor = this.mInvincibleColor;
+            {
+                if (mOrderLayerObject.GetSpriteRenderer() != null)
+                    mOrderLayerObject.GetSpriteRenderer().color = mInvincibleColor;
+
+                for (int index = 0; 
+                    index < mOrderLayerObject.SpriteRenderers().Count;
+                    ++index)
+                {
+                    /* 
+                     * No need to check null, this will always be there. 
+                     * Because 'JCS_OrderLayerObject' will be remove the 
+                     * empty slot before we use it.
+                     */
+                    mOrderLayerObject.SpriteRenderersAt(index).color = mInvincibleColor;
+                }
+            }
             else
-                LocalColor = this.mRecordColor;
+            {
+                if (mOrderLayerObject.GetSpriteRenderer() != null)
+                    mOrderLayerObject.GetSpriteRenderer().color = mRecordColor;
+
+                for (int index = 0;
+                    index < mOrderLayerObject.SpriteRenderers().Count;
+                    ++index)
+                {
+                    /* 
+                     * No need to check null, this will always be there. 
+                     * Because 'JCS_OrderLayerObject' will be remove the 
+                     * empty slot before we use it.
+                     */
+                    mOrderLayerObject.SpriteRenderersAt(index).color = mRecordColor;
+                }
+            }
 
             // toggle it.
             mFlashToggle = !mFlashToggle;

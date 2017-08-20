@@ -14,7 +14,7 @@ namespace JCSUnity
 {
     
     /// <summary>
-    /// 
+    /// Logo object for next scene.
     /// </summary>
     public class JCS_Logo 
         : MonoBehaviour

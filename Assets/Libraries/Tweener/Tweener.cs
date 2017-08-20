@@ -41,7 +41,10 @@ namespace PeterVuorela.Tweener
         /// <param name="func"> function pointer </param>
         public void SetCallback(CallBackDelegate func)
         {
-            this._Callback = func;
+            if (func == null)
+                return;
+
+            this._Callback += func;
         }
 
         public Vector3Tweener() { }
@@ -84,7 +87,7 @@ namespace PeterVuorela.Tweener
             _EasingX = easingX;
             _EasingY = easingY;
             _EasingZ = easingZ;
-            _Callback = callback;
+            SetCallback(callback);
 
             _From = from;
             _To = to;
@@ -256,6 +259,12 @@ namespace PeterVuorela.Tweener
             {
                 _Callback.Invoke();
             }
+        }
+
+        public void DoCallBack()
+        {
+            if (_Callback != null)
+                _Callback.Invoke();
         }
 
         public bool animating { get { return (_AnimatingX || _AnimatingY || _AnimatingZ); } }

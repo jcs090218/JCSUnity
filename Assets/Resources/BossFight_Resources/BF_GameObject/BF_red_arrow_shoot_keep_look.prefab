@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDestroyTime: 4
-  mDestroyWithAlphaEffect: 1
+  mDestroyWithAlphaEffect: 0
 --- !u!114 &11429648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!114 &11470048
@@ -357,7 +358,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 1de868127639c954ea21afcb8962328d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1

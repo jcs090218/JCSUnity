@@ -41,6 +41,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mCanBeDownJump = true;
 
+        [Tooltip(@"Can this platform be ignore by the fly action? If 
+true meaning the fly action object cannot go throught this platform.")]
+        [SerializeField]
+        private bool mCannotBeGoThrough = false;
+
         //----------------------
         // Protected Variables
 
@@ -49,6 +54,7 @@ namespace JCSUnity
         //------------------------------
         public BoxCollider GetPlatformTrigger() { return this.mPlatformTrigger; }
         public BoxCollider GetPlatformCollider() { return this.mPlatformCollider; }
+        public bool CannotBeGoThrough { get { return this.mCannotBeGoThrough; } }
 
         //========================================
         //      Unity's function
@@ -61,13 +67,12 @@ namespace JCSUnity
 
         protected void OnTriggerStay(Collider other)
         {
-
-            CharacterController cc = other.transform.GetComponent<CharacterController>();
+            CharacterController cc = other.GetComponent<CharacterController>();
 
             if (cc == null)
                 return;
 
-            bool isTopOfBox = JCS_Physics.TopOfBox(cc, mPlatformCollider);
+            bool isTopOfBox = JCS_Physics.TopOfBoxWithSlope(cc, mPlatformCollider);
 
             if (isTopOfBox)
             {
@@ -125,7 +130,6 @@ namespace JCSUnity
                 else
                 {
                     JCS_Debug.Log(
-                        this,
                         "No platform setting, could not set the down jump force...");
                 }
             }

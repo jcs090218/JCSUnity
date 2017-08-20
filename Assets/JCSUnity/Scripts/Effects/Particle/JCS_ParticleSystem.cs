@@ -355,8 +355,8 @@ mRandScaleY and mRandScaleZ variables.")]
 
             if (mParticle == null)
             {
-                JCS_Debug.LogError(
-                    this, "No particle assign!");
+                JCS_Debug.Log(
+                    "No particle assign!");
                 return;
             }
 
@@ -450,8 +450,7 @@ mRandScaleY and mRandScaleZ variables.")]
             if (mNumOfParticle <= 0)
             {
                 JCS_Debug.LogError(
-                    this, "Number of particle cannot lower or equal to zero...");
-
+                    "Number of particle cannot lower or equal to zero...");
                 return null;
             }
 
@@ -566,13 +565,14 @@ mRandScaleY and mRandScaleZ variables.")]
         /// <param name="particle"> particle to change and fit the setting. </param>
         private void SetParticleBySetting(JCS_Particle particle)
         {
-            // get this particle system info.
-            Vector3 newPos = this.transform.position;
+            // get this particle info.
+            Vector3 newPos = particle.transform.position;
 
             if (mSetToSamePositionWhenActive)
             {
-                // set position to the same position
-                particle.transform.position = newPos;
+                // set position to the same position as particle 
+                // system's position.
+                particle.transform.position = this.transform.position;
             }
 
             // after we have set the position to current 

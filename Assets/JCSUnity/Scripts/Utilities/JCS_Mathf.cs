@@ -507,5 +507,68 @@ namespace JCSUnity
             return remainder / divider;
         }
 
+        /// <summary>
+        /// Cross multiply a group of number.
+        /// 
+        /// x : y = a : b
+        /// </summary>
+        /// <returns> Return b. </returns>
+        public static float CrossMultiply(float x, float y, float a)
+        {
+            // b = (a * y) / x
+            return (a * y / x);
+        }
+
+
+        /// <summary>
+        /// Convert degree to radian.
+        /// </summary>
+        /// <param name="deg"> degree you want to convert. </param>
+        /// <returns> result in radian. </returns>
+        public static float DegreeToRadian(float deg)
+        {
+            return deg * Mathf.PI / 180;
+        }
+
+        /// <summary>
+        /// Convert radian to degree.
+        /// </summary>
+        /// <param name="rad"> radian you want to convert. </param>
+        /// <returns> result in degree. </returns>
+        public static float RadianToDegree(float rad)
+        {
+            return rad * 180 / Mathf.PI;
+        }
+
+        /// <summary>
+        /// Cosine in degree.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static float Cos(float deg)
+        {
+            return Mathf.Cos(DegreeToRadian(deg));
+        }
+
+        /// <summary>
+        /// Sine in degree.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static float Sin(float deg)
+        {
+            return Mathf.Sin(DegreeToRadian(deg));
+        }
+
+        /// <summary>
+        /// Tangent in degree.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static float Tan(float deg)
+        {
+            return Mathf.Tan(DegreeToRadian(deg));
+        }
+
     }
 }

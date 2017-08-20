@@ -282,7 +282,7 @@ namespace JCSUnity
             // this help level designer to do their job.
             if (!ReadSceneNames.CheckSceneAvailable(sceneName))
             {
-                JCS_Debug.LogReminders(this,
+                JCS_Debug.LogReminders(
                     "Scene [" + sceneName + "] u want to load is not in the Build Setting...");
 
                 return;
@@ -318,6 +318,9 @@ namespace JCSUnity
                         mJCSBlackScreen.MoveToTheLastChild();
 
                         // set the screen color.
+                        // NOTE(jenchieh): always start with opacity the same 
+                        // as previous.
+                        screenColor.a = mJCSBlackScreen.LocalColor.a;
                         mJCSBlackScreen.LocalColor = screenColor;
 
                         // record down the screen color.

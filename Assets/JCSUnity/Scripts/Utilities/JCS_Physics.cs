@@ -8,27 +8,64 @@
  */
 using UnityEngine;
 using System.Collections;
+using System;
 
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 
+    /// </summary>
+    [Serializable]
+    public struct JCS_ColliderInfo
+    {
+        public float width;
+        public float height;
+
+        // center position.
+        public Vector3 centerPosition;
+
+        // bounding point.
+        public Vector3 topBound;
+        public Vector3 bottomBound;
+        public Vector3 leftBound;
+        public Vector3 rightBound;
+
+        /// <summary>
+        /// Find out all four bounding point.
+        /// </summary>
+        public void MeasureBounding()
+        {
+            /* All apply to center position. */
+            Vector3 topBound = centerPosition;
+            Vector3 bottomBound = centerPosition;
+            Vector3 leftBound = centerPosition;
+            Vector3 rightBound = centerPosition;
+
+            /* then start adding bounding value. */
+            topBound.y += height / 2;
+            bottomBound.y -= height / 2;
+
+            leftBound.x += width / 2;
+            rightBound.x -= width / 2;
+        }
+    };
+
+    /// <summary>
+    /// All physics util design here...
     /// </summary>
     public class JCS_Physics
         : MonoBehaviour
     {
-        
         /// <summary>
-        /// Return Character Controller's info
+        /// Return Character controller's collider's width and height.
         /// </summary>
-        /// <param name="cap"> object we want to take from </param>
-        /// <returns> width and height </returns>
-        public static Vector2 GetColliderInfo(CharacterController cap)
+        /// <param name="cap"> Character Controller component want to check. </param>
+        /// <returns> x : width, y : height </returns>
+        public static Vector2 GetColliderWidthHeight(CharacterController cap)
         {
             // holder
-            Vector2 widthHeight = Vector2.zero;
+            Vector2 capWH = Vector2.zero;
 
             Vector3 capScale = cap.transform.localScale;
 
@@ -41,18 +78,18 @@ namespace JCSUnity
                 cH = 0;
 
             // apply to holder
-            widthHeight.x = cR * 2;
-            widthHeight.y = cH;
+            capWH.x = cR * 2;
+            capWH.y = cH;
 
-            return widthHeight;
+            return capWH;
         }
 
         /// <summary>
-        /// Return Box Collider's info
+        /// Return Box Collider's width and height.
         /// </summary>
         /// <param name="cap"> object we want to take from </param>
-        /// <returns> width and height </returns>
-        public static Vector2 GetColliderInfo(BoxCollider rect)
+        /// <returns> x : width, y : height </returns>
+        public static Vector2 GetColliderWidthHeight(BoxCollider rect)
         {
             // holder
             Vector2 widthHeight = Vector2.zero;
@@ -69,6 +106,92 @@ namespace JCSUnity
             widthHeight.y = rHeight;
 
             return widthHeight;
+        }
+
+        /// <summary>
+        /// Return CharacterController's collider's center as 
+        /// a global position.
+        /// </summary>
+        /// <returns> CharacterController's collider's center as a 
+        /// global position. </returns>
+        public static Vector3 GetColliderCenterPosition(CharacterController cap)
+        {
+            Vector3 capScale = cap.transform.localScale;
+
+            capScale = JCS_Mathf.AbsoluteValue(capScale);
+
+            Vector3 cCenter = new Vector3(
+                cap.center.x * capScale.x,
+                cap.center.y * capScale.y,
+                cap.center.z * capScale.z);
+
+            Vector3 capCenterPos = cap.transform.position + cCenter;
+
+            return capCenterPos;
+        }
+
+        /// <summary>
+        /// Return BoxCollider's center as a global position.
+        /// </summary>
+        /// <returns> box collider's center as a global position. </returns>
+        public static Vector3 GetColliderCenterPosition(BoxCollider rect)
+        {
+            Vector3 rectScale = rect.transform.localScale;
+
+            rectScale = JCS_Mathf.AbsoluteValue(rectScale);
+
+            // 取得Collider的中心"相對位置".
+            Vector3 rectCenter = new Vector3(
+                rect.center.x * rectScale.x,
+                rect.center.y * rectScale.y,
+                rect.center.z * rectScale.z);
+
+            // 所以要相加才能得到正確的"世界位置"!
+            // * cCenter + cap.transform.position 同理.
+            return rectCenter + rect.transform.position;
+        }
+
+        /// <summary>
+        /// Return Character Controller's info
+        /// </summary>
+        /// <param name="cap"> object we want to take from </param>
+        /// <returns> width and height </returns>
+        public static JCS_ColliderInfo GetColliderInfo(CharacterController cap)
+        {
+            // holder
+            JCS_ColliderInfo capInfo = new JCS_ColliderInfo();
+
+            Vector2 cWH = GetColliderWidthHeight(cap);
+            capInfo.width = cWH.x;
+            capInfo.height = cWH.y;
+
+            Vector3 centerPos = GetColliderCenterPosition(cap);
+            capInfo.centerPosition = centerPos;
+
+            return capInfo;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cap"></param>
+        /// <returns></returns>
+        public static JCS_ColliderInfo GetColliderInfo(BoxCollider rect)
+        {
+            JCS_ColliderInfo rectInfo = new JCS_ColliderInfo();
+
+            Vector2 rWH = GetColliderWidthHeight(rect);
+
+            // get width and height.
+            rectInfo.width = rWH.x;
+            rectInfo.height = rWH.y;
+
+            Vector3 centerPos = GetColliderCenterPosition(rect);
+            rectInfo.centerPosition = centerPos;
+
+            rectInfo.MeasureBounding();
+
+            return rectInfo;
         }
 
         /// <summary>
@@ -196,8 +319,8 @@ namespace JCSUnity
         /// <returns></returns>
         public static Vector3 SetOnTopOfBox(CharacterController cap, BoxCollider rect, float offset)
         {
-            Vector2 rWH = GetColliderInfo(rect);
-            Vector2 cWH = GetColliderInfo(cap);
+            Vector2 rWH = GetColliderWidthHeight(rect);
+            Vector2 cWH = GetColliderWidthHeight(cap);
 
             Vector3 rectScale = rect.transform.localScale;
             Vector3 capScale = cap.transform.localScale;
@@ -228,7 +351,112 @@ namespace JCSUnity
             // optional
             return newPos;
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cap"></param>
+        /// <param name="rect"></param>
+        /// <param name="offset"></param>
+        /// <returns>  
+        /// Success : new position will fit ontop of box.
+        /// Faild : Vector.zero
+        /// </returns>
+        public static Vector3 SetOnTopOfBoxWithSlope(
+            CharacterController cap, 
+            BoxCollider rect, 
+            float offset = 0)
+        {
+            float innerAngle = rect.transform.localEulerAngles.z;
+            // if no angle interact, just use the normal one.
+            if (innerAngle == 0)
+                return SetOnTopOfBox(cap, rect, offset);
+
+            /* Capsule */
+            Vector3 capScale = cap.transform.localScale;
+
+            Vector2 cWH = GetColliderWidthHeight(cap);
+
+            capScale = JCS_Mathf.AbsoluteValue(capScale);
+
+            Vector3 cCenter = new Vector3(
+                cap.center.x * capScale.x,
+                cap.center.y * capScale.y,
+                cap.center.z * capScale.z);
+
+            Vector3 capCenterPos = cap.transform.position + cCenter;
+
+            /* Box */
+            Vector3 rectScale = rect.transform.localScale;
+
+            rectScale = JCS_Mathf.AbsoluteValue(rectScale);
+
+            float rectWidth = rect.size.x * rectScale.x;
+            float rectHeight = rect.size.y * rectScale.y;
+
+            Vector3 rectCenter = new Vector3(
+                rect.center.x * rectScale.x,
+                rect.center.y * rectScale.y,
+                rect.center.z * rectScale.z);
+
+            Vector3 rectCenterPos = rect.transform.position + rectCenter;
+
+            float radianInnerAngle = JCS_Mathf.DegreeToRadian(innerAngle);
+
+            // at here 'rectHeight' are the same as 'adjacent'.
+            // hyp = adj / cos(Θ)
+            /* 斜角度的高度. */
+            float hypHeight = (rectHeight / Mathf.Cos(radianInnerAngle)) / 2;
+
+            // 求'水平寬'.
+            // adj = cos(Θ) * hyp
+            float rectLeftToRight = Mathf.Cos(radianInnerAngle) * rectWidth;
+
+            // 求'垂直高'.
+            float rectTopAndBot = Mathf.Sin(radianInnerAngle) * rectWidth;
+
+            float distRectLeftToCapCenter = JCS_Mathf.DistanceOfUnitVector(
+                capCenterPos.x,
+                rectCenterPos.x - (rectLeftToRight / 2));
+
+            /* Check if the capsule inside the the rect on x-axis. */
+            {
+                float distCapToBox = JCS_Mathf.DistanceOfUnitVector(
+                    capCenterPos.x,
+                    rectCenterPos.x);
+
+                if (distCapToBox > rectLeftToRight / 2)
+                    return Vector3.zero;
+            }
+
+            float heightToCapBot = JCS_Mathf.CrossMultiply(
+                rectLeftToRight,
+                distRectLeftToCapCenter,
+                rectTopAndBot);
+
+#if (UNITY_EDITOR)
+            Debug.DrawLine(
+                new Vector3(
+                    rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
+                    rectCenterPos.y - (rectTopAndBot / 2),
+                    rectCenterPos.z),
+                new Vector3(
+                    rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
+                    rectCenterPos.y + heightToCapBot + hypHeight - (rectTopAndBot / 2),
+                    rectCenterPos.z),
+                Color.cyan);
+#endif
+
+            // 在平台上的點.
+            float pointOnPlatform = rectCenterPos.y + heightToCapBot + hypHeight - (rectTopAndBot / 2);
+
+            Vector3 newPos = capCenterPos;
+            newPos.y = pointOnPlatform + (cWH.y / 2);
+            cap.transform.position = newPos - cCenter;
+
+            return newPos;
+        }
+
         /// <summary>
         /// Set the box collider ontop of the other box collider
         /// </summary>
@@ -237,10 +465,9 @@ namespace JCSUnity
         /// <returns></returns>
         public static Vector3 SetOnTopOfBox(BoxCollider topBox, BoxCollider botBox, float offset = 0)
         {
-
             // WH stand for Width and Height
-            Vector2 topBoxWH = GetColliderInfo(topBox);
-            Vector2 botBoxWH = GetColliderInfo(botBox);
+            Vector2 topBoxWH = GetColliderWidthHeight(topBox);
+            Vector2 botBoxWH = GetColliderWidthHeight(botBox);
 
             Vector3 topBoxScale = topBox.transform.localScale;
             Vector3 botBoxScale = botBox.transform.localScale;
@@ -269,6 +496,107 @@ namespace JCSUnity
             topBox.transform.position = newPos - topBoxCenter;
 
             // optional
+            return newPos;
+        }
+
+        /// <summary>
+        /// Set the box collider ontop of the other box collider 
+        /// with slop as a variable.
+        /// </summary>
+        /// <param name="setBox"> box we are setting on top of the other box </param>
+        /// <param name="beSetBox"> box be under the setting box </param>
+        /// <returns></returns>
+        public static Vector3 SetOnTopOfBoxWithSlope(BoxCollider topBox, BoxCollider botBox, float offset = 0)
+        {
+            float innerAngle = botBox.transform.localEulerAngles.z;
+            // if no angle interact, just use the normal one.
+            if (innerAngle == 0)
+                return SetOnTopOfBox(topBox, botBox);
+
+
+            /* Top Box */
+            Vector3 topBoxScale = topBox.transform.localScale;
+            topBoxScale = JCS_Mathf.AbsoluteValue(topBoxScale);
+
+            Vector2 topBoxWH = GetColliderWidthHeight(topBox);
+
+            Vector3 topBoxCenter = new Vector3(
+               topBox.center.x * topBoxScale.x,
+               topBox.center.y * topBoxScale.y,
+               topBox.center.z * topBoxScale.z);
+
+            Vector3 topBoxCenterPos = topBox.transform.position + topBoxCenter;
+
+            /* Bot Box */
+            Vector3 rectScale = botBox.transform.localScale;
+
+            rectScale = JCS_Mathf.AbsoluteValue(rectScale);
+
+            float rectWidth = botBox.size.x * rectScale.x;
+            float rectHeight = botBox.size.y * rectScale.y;
+
+            Vector3 rectCenter = new Vector3(
+                botBox.center.x * rectScale.x,
+                botBox.center.y * rectScale.y,
+                botBox.center.z * rectScale.z);
+
+            Vector3 rectCenterPos = botBox.transform.position + rectCenter;
+
+            float radianInnerAngle = JCS_Mathf.DegreeToRadian(innerAngle);
+
+            // at here 'rectHeight' are the same as 'adjacent'.
+            // hyp = adj / cos(Θ)
+            /* 斜角度的高度. */
+            float hypHeight = (rectHeight / Mathf.Cos(radianInnerAngle)) / 2;
+
+            // 求'水平寬'.
+            // adj = cos(Θ) * hyp
+            float rectLeftToRight = Mathf.Cos(radianInnerAngle) * rectWidth;
+
+            // 求'垂直高'.
+            float rectTopAndBot = Mathf.Sin(radianInnerAngle) * rectWidth;
+
+            float distRectLeftToCapCenter = JCS_Mathf.DistanceOfUnitVector(
+                topBoxCenterPos.x,
+                rectCenterPos.x - (rectLeftToRight / 2));
+
+            /* Check if the capsule inside the the rect on x-axis. */
+            {
+                float distCapToBox = JCS_Mathf.DistanceOfUnitVector(
+                    topBoxCenterPos.x,
+                    rectCenterPos.x);
+
+                if (distCapToBox > rectLeftToRight / 2)
+                    return Vector3.zero;
+            }
+
+            float heightToCapBot = JCS_Mathf.CrossMultiply(
+                rectLeftToRight,
+                distRectLeftToCapCenter,
+                rectTopAndBot);
+
+#if (UNITY_EDITOR)
+            Debug.DrawLine(
+                new Vector3(
+                    rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
+                    rectCenterPos.y - (rectTopAndBot / 2),
+                    rectCenterPos.z),
+                new Vector3(
+                    rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
+                    rectCenterPos.y + heightToCapBot + hypHeight - (rectTopAndBot / 2),
+                    rectCenterPos.z),
+                Color.cyan);
+#endif
+
+            // 在平台上的點.
+            float pointOnPlatform = rectCenterPos.y + heightToCapBot + hypHeight - (rectTopAndBot / 2);
+
+            /** ------------------------------------------- **/
+
+            Vector3 newPos = topBoxCenterPos;
+            newPos.y = pointOnPlatform + (topBoxWH.y / 2);
+            topBox.transform.position = newPos - topBoxCenter;
+
             return newPos;
         }
 
@@ -448,11 +776,15 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check if the character controller top of the box without 
+        /// slope calculation.
         /// </summary>
-        /// <param name="cap"></param>
-        /// <param name="rect"></param>
-        /// <returns></returns>
+        /// <param name="cap"> character controller to test. </param>
+        /// <param name="rect"> box to test. </param>
+        /// <returns>
+        /// true : is top of box.
+        /// false : vice versa.
+        /// </returns>
         public static bool TopOfBox(CharacterController cap, BoxCollider rect)
         {
             Vector3 rectScale = rect.transform.localScale;
@@ -500,6 +832,111 @@ namespace JCSUnity
 #endif
 
             if (rTopBound <= cBotBound)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if the character controller top of the box with the 
+        /// slop calculation.
+        /// </summary>
+        /// <param name="cap"> character controller to test. </param>
+        /// <param name="rect"> box to test. </param>
+        /// <returns>
+        /// true : is top of box.
+        /// false : vice versa.
+        /// </returns>
+        public static bool TopOfBoxWithSlope(CharacterController cap, BoxCollider rect)
+        {
+            float innerAngle = rect.transform.localEulerAngles.z;
+            // if no angle interact, just use the normal one.
+            if (innerAngle == 0)
+                return TopOfBox(cap, rect);
+
+            /* Capsule */
+            Vector3 capScale = cap.transform.localScale;
+
+            capScale = JCS_Mathf.AbsoluteValue(capScale);
+
+            Vector3 cCenter = new Vector3(
+                cap.center.x * capScale.x,
+                cap.center.y * capScale.y,
+                cap.center.z * capScale.z);
+
+            Vector3 capCenterPos = cap.transform.position + cCenter;
+
+            float cR = cap.radius * capScale.x;
+            float cH = (cap.height - (cap.radius * 2.0f)) * capScale.y;
+
+            // capsule botton point position.
+            float cBotBound = cap.transform.position.y + cCenter.y - (cH / 2.0f) - cR;
+
+            /* Box */
+            Vector3 rectScale = rect.transform.localScale;
+
+            rectScale = JCS_Mathf.AbsoluteValue(rectScale);
+
+            float rectWidth = rect.size.x * rectScale.x;
+            float rectHeight = rect.size.y * rectScale.y;
+
+            Vector3 rectCenter = new Vector3(
+                rect.center.x * rectScale.x,
+                rect.center.y * rectScale.y,
+                rect.center.z * rectScale.z);
+
+            Vector3 rectCenterPos = rect.transform.position + rectCenter;
+
+            float radianInnerAngle = JCS_Mathf.DegreeToRadian(innerAngle);
+
+            // at here 'rectHeight' are the same as 'adjacent'.
+            // hyp = adj / cos(Θ)
+            /* 斜角度的高度. */
+            float hypHeight = (rectHeight / Mathf.Cos(radianInnerAngle)) / 2;
+
+            // 求'水平寬'.
+            // adj = cos(Θ) * hyp
+            float rectLeftToRight = Mathf.Cos(radianInnerAngle) * rectWidth;
+
+            // 求'垂直高'.
+            float rectTopAndBot = Mathf.Sin(radianInnerAngle) * rectWidth;
+
+            float distRectLeftToCapCenter = JCS_Mathf.DistanceOfUnitVector(
+                capCenterPos.x,
+                rectCenterPos.x - (rectLeftToRight / 2));
+
+            /* Check if the capsule inside the the rect on x-axis. */
+            {
+                float distCapToBox = JCS_Mathf.DistanceOfUnitVector(
+                    capCenterPos.x,
+                    rectCenterPos.x);
+
+                if (distCapToBox > rectLeftToRight / 2)
+                    return false;
+            }
+
+            float heightToCapBot = JCS_Mathf.CrossMultiply(
+                rectLeftToRight, 
+                distRectLeftToCapCenter, 
+                rectTopAndBot);
+
+#if (UNITY_EDITOR)
+            Debug.DrawLine(
+                new Vector3(
+                    rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
+                    rectCenterPos.y - (rectTopAndBot / 2),
+                    rectCenterPos.z),
+                new Vector3(
+                    rectCenterPos.x - (rectLeftToRight / 2) + distRectLeftToCapCenter,
+                    rectCenterPos.y + heightToCapBot + hypHeight - (rectTopAndBot / 2),
+                    rectCenterPos.z),
+                Color.cyan);
+#endif
+
+            // 在平台上的點.
+            float pointOnPlatform = rectCenterPos.y + heightToCapBot + hypHeight - (rectTopAndBot / 2);
+
+            if (pointOnPlatform <= cBotBound)
                 return true;
 
             return false;

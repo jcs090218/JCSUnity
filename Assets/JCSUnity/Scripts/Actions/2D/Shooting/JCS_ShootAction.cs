@@ -206,6 +206,11 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public JCS_Bullet Shoot()
         {
             bool direction = true;      // default: left
@@ -218,10 +223,33 @@ namespace JCSUnity
 
             return Shoot(mBulletSpeed, mSpawnPoint.position, direction, mDefaultHit);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="direction"></param>
+        /// <param name="hit"></param>
+        /// <param name="index"></param>
+        /// <param name="inSequence"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public JCS_Bullet Shoot(Vector3 pos, bool direction, int hit, int index = 0, bool inSequence = false, Transform target = null)
         {
             return Shoot(mBulletSpeed, pos, direction, hit, index, inSequence, target);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bulletSpeed"></param>
+        /// <param name="pos"></param>
+        /// <param name="direction"></param>
+        /// <param name="hit"></param>
+        /// <param name="index"></param>
+        /// <param name="inSequence"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public JCS_Bullet Shoot(float bulletSpeed, Vector3 pos, bool direction, int hit, int index = 0, bool inSequence = false, Transform target = null)
         {
             if (mPlayer != null)
@@ -300,10 +328,32 @@ namespace JCSUnity
             return bullet;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="direction"></param>
+        /// <param name="damages"></param>
+        /// <param name="index"></param>
+        /// <param name="inSequence"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public JCS_Bullet Shoot(Vector3 pos, bool direction, int[] damages, int index = 0, bool inSequence = false, Transform target = null)
         {
             return Shoot(mBulletSpeed, pos, direction, damages, index, inSequence, target);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bulletSpeed"></param>
+        /// <param name="pos"></param>
+        /// <param name="direction"></param>
+        /// <param name="damages"></param>
+        /// <param name="index"></param>
+        /// <param name="inSequence"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public JCS_Bullet Shoot(float bulletSpeed, Vector3 pos, bool direction, int[] damages, int index = 0, bool inSequence = false, Transform target = null)
         {
             if (mPlayer != null)

@@ -151,7 +151,7 @@ namespace JCSUnity
             if (mSpawnList[spawnIndex] == null)
             {
                 JCS_Debug.Log(
-                    this, "Cannot spawn a null reference. Plz check the spawn list if there are transform attach or empty slot.");
+                    "Cannot spawn a null reference. Plz check the spawn list if there are transform attach or empty slot.");
                 return;
             }
 

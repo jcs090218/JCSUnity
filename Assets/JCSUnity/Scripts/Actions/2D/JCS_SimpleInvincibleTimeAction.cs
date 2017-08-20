@@ -18,7 +18,7 @@ namespace JCSUnity
     /// Simple call invincible time action.
     /// </summary>
     public class JCS_SimpleInvincibleTimeAction
-        : JCS_UnityObject
+        : MonoBehaviour
     {
         //----------------------
         // Public Variables
@@ -29,7 +29,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_SimpleInvincibleTimeAction) **")]
 
-        [Tooltip("")]
+        [Tooltip("Time to do the invincible effect.")]
         [SerializeField]
         private float mInvicibleTime = 1.0f;
 
@@ -39,14 +39,19 @@ namespace JCSUnity
         // trigger the invincible time action?
         private bool mTriggerAction = false;
 
+        [Tooltip("Color we are going to render.")]
+        [SerializeField]
+        private JCS_UnityObject[] mUnityObjects = null;
+
+
         [Header("- Flash Effect (JCS_SimpleInvincibleTimeAction) ")]
 
         [Tooltip("Color when is invincible.")]
         [SerializeField]
-        private Color mInvincibleColor = new Color(141.0f, 141.0f, 141.0f);
+        private Color mInvincibleColor = new Color(141.0f / 255f, 141.0f / 255f, 141.0f / 255f);
 
         // record down the previoud color
-        private Color mRecordColor = Color.white;
+        private Color[] mRecordColors = null;
 
         [Tooltip("How fast it flash back and forth?")]
         [SerializeField]
@@ -59,6 +64,9 @@ namespace JCSUnity
         // just a boolean record down what the 
         // current color is.
         private bool mFlashToggle = false;
+
+
+        [Header("- Sound Effect (JCS_SimpleInvincibleTimeAction) ")]
 
         [Tooltip("Play once while trigger")]
         [SerializeField]
@@ -79,8 +87,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            // get unity data.
-            UpdateUnityData();
+            mRecordColors = new Color[mUnityObjects.Length];
         }
 
         private void Update()
@@ -104,7 +111,12 @@ namespace JCSUnity
                 return;
 
             // set back the local color to record color.
-            LocalColor = mRecordColor;
+            for (int index = 0;
+                index < mUnityObjects.Length;
+                ++index)
+            {
+                mUnityObjects[index].LocalColor = mRecordColors[index];
+            }
 
             // reset timer.
             mInvicibleTimer = 0;
@@ -159,7 +171,12 @@ namespace JCSUnity
             this.mInvicibleTimer = 0;
 
             // record down the current color.
-            this.mRecordColor = LocalColor;
+            for (int index = 0;
+                index < mUnityObjects.Length;
+                ++index)
+            {
+                mRecordColors[index] = mUnityObjects[index].LocalColor;
+            }
 
             // reset the flash toggle.
             this.mFlashToggle = false;
@@ -189,9 +206,24 @@ namespace JCSUnity
 
             // set the start is "false"
             if (!mFlashToggle)
-                LocalColor = this.mInvincibleColor;
+            {
+                for (int index = 0;
+                    index < mUnityObjects.Length;
+                    ++index)
+                {
+                    mUnityObjects[index].LocalColor = this.mInvincibleColor;
+                }
+
+            }
             else
-                LocalColor = this.mRecordColor;
+            {
+                for (int index = 0;
+                    index < mUnityObjects.Length;
+                    ++index)
+                {
+                    mUnityObjects[index].LocalColor = this.mRecordColors[index];
+                }
+            }
 
             // toggle it.
             mFlashToggle = !mFlashToggle;

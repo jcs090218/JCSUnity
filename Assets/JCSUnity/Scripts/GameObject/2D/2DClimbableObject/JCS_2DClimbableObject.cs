@@ -37,13 +37,23 @@ namespace JCSUnity
          */
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
+        private JCS_ClimbableManager mClimbableManager = null;
+
         //----------------------
         // Protected Variables
+
+        [Header("** Initilaize Variable (JCS_OrderLayerObject) **")]
+
+        [Tooltip("Ground/Platform the ladder lean on.")]
+        [SerializeField]
+        protected JCS_2DPositionPlatform mPositionPlatform = null;
 
         //========================================
         //      setter / getter
         //------------------------------
         public JCS_OrderLayerObject OrderLayerObject { get { return this.mOrderLayerObject; } }
+        public JCS_ClimbableManager ClimbableManager { get { return this.mClimbableManager; } }
+        public JCS_2DPositionPlatform PositionPlatform { get { return this.mPositionPlatform; } }
 
         //========================================
         //      Unity's function
@@ -51,6 +61,21 @@ namespace JCSUnity
         protected virtual void Awake()
         {
             this.mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
+        }
+
+        protected virtual void Start()
+        {
+            if (ClimbableManager == null)
+            {
+                /**
+                 *  if climbable object found in the scene, we must have 
+                 *  the manager to manage.
+                 */
+                if (JCS_ClimbableManager.instance == null)
+                    JCS_ClimbableManager.instance = JCS_IndieManager.instance.gameObject.AddComponent<JCS_ClimbableManager>();
+
+                this.mClimbableManager = JCS_ClimbableManager.instance;
+            }
         }
 
         //========================================
@@ -64,6 +89,26 @@ namespace JCSUnity
         /// This function should get call by when the player is done climbing.
         /// </summary>
         public abstract void ClimbableUpdate();
+
+        /// <summary>
+        /// Check if is on top of the lean platform.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns>
+        /// true: is on top of the box.
+        /// false: vice versa.
+        /// </returns>
+        public virtual bool IsOpTopOfLeanPlatform(JCS_Player player)
+        {
+            if (mPositionPlatform == null || player == null)
+                return false;
+
+            bool isTopOfBox = JCS_Physics.TopOfBox(
+                       player.GetCharacterController(),
+                       mPositionPlatform.GetPlatformCollider());
+
+            return isTopOfBox;
+        }
 
         //----------------------
         // Protected Functions

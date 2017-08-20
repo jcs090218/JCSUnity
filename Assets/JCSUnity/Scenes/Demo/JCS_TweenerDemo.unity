@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -25,6 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -41,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -53,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 4
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -66,13 +67,27 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFiltering: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_RuntimeCPUUsage: 25
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -89,6 +104,8 @@ NavMeshSettings:
     minRegionArea: 2
     manualCellSize: 0
     cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &140792475
@@ -174,11 +191,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5bdf69f99b264204aaa24bdd13654135, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!4 &140792478
 Transform:
   m_ObjectHideFlags: 0
@@ -329,6 +351,7 @@ MonoBehaviour:
   mFreezeX: 0
   mFreezeY: 1
   mFreezeZ: 1
+  mDoShotImmediately: 0
   mSetChild: 1
   mSetToSamePositionWhenActive: 1
 --- !u!114 &527593675
@@ -485,12 +508,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a8d1efa6195b54c9ca7188652b2db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM_MUTE: 0
+  EFFECT_MUTE: 0
+  PERFONAL_EFFECT_MUTE: 0
+  BGM_SOUND: 0.4
+  SFX_SOUND: 0.4
+  SKILLS_SOUND: 0.4
   SMOOTH_SWITCH_SOUND_BETWEEN_SCENE: 1
   BACKGROUND_MUSIC: {fileID: 8300000, guid: aadaa2bb458696e4cb1bbc6322707e03, type: 3}
   DEFAULT_OPEN_WINDOW_CLIP: {fileID: 8300000, guid: 9ddc3d435db7ab44ea990d4bbbe7a5c4,
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
     type: 3}
+  SOUND_FADEOUT_TIME: 1.5
+  SOUND_FADEIN_TIME: 1.5
 --- !u!114 &1262798626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SCENE_FADEOUT_TIME: 1.5
   SCENE_FADEIN_TIME: 1.5
+  SCREEN_COLOR: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &1262798629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +603,9 @@ MonoBehaviour:
   PLAYER_IGNORE_EACH_OTHER: 1
   TRIBE_DAMAGE_EACH_OTHER: 0
   IGNORE_EACH_OTHER_CHARACTER_CONTROLLER: 1
-  DEFAULT_ORDER_LAYER: 15
+  SCREENSHOT_PATH: /JCS_ScreenShot/
+  SCREENSHOT_FILENAME: Screenshot_
+  SAVED_IMG_EXTENSION: .png
   RESIZE_UI: 1
   SAVE_ON_SWITCH_SCENE: 1
   SAVE_ON_EXIT_APP: 1
@@ -639,7 +673,7 @@ Light:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1612084051}
   m_Enabled: 1
-  serializedVersion: 7
+  serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
@@ -664,6 +698,8 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1612084053
@@ -799,6 +835,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mBGM: {fileID: 0}
+  mCurrentBGM: {fileID: 0}
+  mSwitchingBGM: 0
+  mOverrideSetting: 0
+  mSoundFadeInTime: 1.5
+  mSoundFadeOutTime: 1.5
 --- !u!114 &1704694763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,8 +962,8 @@ MonoBehaviour:
   mPopWhiteScreen: 1
   mJCSWhiteScreen: {fileID: 0}
   mOverrideSetting: 0
-  mFadeInTime: 1.5
-  mFadeOutTime: 1.5
+  mSceneFadeInTime: 1
+  mSceneFadeOutTime: 1
 --- !u!114 &1704694767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,6 +1077,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1880607077
 BoxCollider:
@@ -1118,6 +1160,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!135 &1981689530
 SphereCollider:
@@ -1165,17 +1208,18 @@ MonoBehaviour:
   mObjectType: 0
   mContinueTween: 0
   mTargetTransform: {fileID: 1880607079}
+  mIsDoneTweening: 0
   mTween: 1
-  mDurationX: 0.5
-  mDurationY: 0.8
-  mDurationZ: 0
+  mDurationX: 1
+  mDurationY: 1
+  mDurationZ: 1
   mRandomizeDuration: 0
   mTweenPosition: 1
   mTweenRotation: 0
   mTweenScale: 0
   mTrackAsLocalPosition: 0
   mEasingX: 0
-  mEasingY: 10
+  mEasingY: 0
   mEasingZ: 0
   mStopTweenDistance: 1
 --- !u!1 &1999507483
@@ -1355,6 +1399,7 @@ MonoBehaviour:
   mSetToPlayerPositionAtStart: 1
   mTargetTransform: {fileID: 0}
   mHardTrack: 0
+  mResetVelocityToZeroWhileNotActive: 0
   mFreezeInRuntime: 0
   mFreezeX: 0
   mFreezeY: 0
@@ -1412,6 +1457,8 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -1581,7 +1628,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2114035007}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 2028505047}
   m_PlaneDistance: 100
@@ -1590,6 +1637,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0

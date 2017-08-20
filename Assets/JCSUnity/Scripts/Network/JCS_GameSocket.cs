@@ -9,6 +9,9 @@ using System.IO;
 
 namespace JCSUnity
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class JCS_GameSocket
     {
         private Socket mSocket = null;                      // Server connection
@@ -215,37 +218,38 @@ namespace JCSUnity
             return true;
         }
 
+        /// <summary>
+        /// Print out the message we are going to send.
+        /// </summary>
+        /// <param name="message"> meesage sending to print. </param>
         private void PrintSendPacket(System.Object message)
         {
+#if (UNITY_EDITOR)
             if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 
             byte[] encryptedBuffer = (byte[])message;
 
             // Print out the buffer for test
-            {
-                Debug.Log("---------- Start printing SEND Message ----------");
-
-                PrintBuffer(encryptedBuffer);
-
-                Debug.Log("---------- End printing SEND Message ----------");
-            }
+            JCS_Logger.Info("HeapBuffer[" + BitConverter.ToString(encryptedBuffer) + "]");
+#endif
         }
+
+        /// <summary>
+        /// Print out the message we received.
+        /// </summary>
+        /// <param name="message"> message received to print. </param>
         private void PrintRecievedPacket(System.Object message)
         {
+#if (UNITY_EDITOR)
             if (!JCS_GameSettings.instance.DEBUG_MODE)
                 return;
 
             byte[] decryptedBuffer = (byte[])message;
 
             // Print out the buffer for test
-            {
-                Debug.Log("---------- Start printing RECIEVE Message ----------");
-
-                PrintBuffer(decryptedBuffer);
-
-                Debug.Log("---------- End printing RECIEVE Message ----------");
-            }
+            JCS_Logger.Info("HeapBuffer[" + BitConverter.ToString(decryptedBuffer) + "]");
+#endif
         }
 
         public void PrintInputBuffer()

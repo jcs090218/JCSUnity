@@ -208,7 +208,6 @@ namespace JCSUnity
             if (mActive)
             {
                 JCS_Debug.LogError(
-                    this, 
                     "Dialogue System is already active... Failed to active another one.");
 
                 return;
@@ -243,14 +242,14 @@ namespace JCSUnity
             if (mSelectBtn.Length <= index)
             {
                 JCS_Debug.LogWarning(
-                    this, "Select button call is out of range...");
+                    "Select button call is out of range...");
                 return;
             }
 
             if (mSelectBtn[index] == null)
             {
                 JCS_Debug.LogWarning(
-                    this, "There are space in the array but does no assign the value...");
+                    "There are space in the array but does no assign the value...");
                 return;
             }
             
@@ -468,7 +467,7 @@ namespace JCSUnity
             if (mNameTag == null)
             {
                 JCS_Debug.LogError(
-                    this, "Name tag is not assign but u still trying to access?");
+                    "Name tag is not assign but u still trying to access?");
 
                 return;
             }
@@ -489,7 +488,7 @@ namespace JCSUnity
             if (mCenterImage == null)
             {
                 JCS_Debug.LogError(
-                    this, "Center image call with image component attached...");
+                    "Center image call with image component attached...");
                 return;
             }
 #endif
@@ -508,7 +507,7 @@ namespace JCSUnity
             if (mLeftImage == null)
             {
                 JCS_Debug.LogError(
-                    this, "Left image call with image component attached...");
+                    "Left image call with image component attached...");
                 return;
             }
 #endif
@@ -527,7 +526,7 @@ namespace JCSUnity
             if (mRightImage == null)
             {
                 JCS_Debug.LogError(
-                    this, "Right image call with image component attached...");
+                    "Right image call with image component attached...");
                 return;
             }
 #endif
@@ -969,7 +968,7 @@ namespace JCSUnity
             // check if text box null references...
             if (mTextBox == null)
             {
-                JCS_Debug.LogWarning(this,
+                JCS_Debug.LogWarning(
                     "You have the dialogue system in the scene, but u did not assign a text box... Try to delete it?");
                 return;
             }

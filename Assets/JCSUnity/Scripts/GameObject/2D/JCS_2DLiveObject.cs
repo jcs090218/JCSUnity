@@ -28,7 +28,7 @@ namespace JCSUnity
         // Private Variables
 
         private SpriteRenderer mSpriteRenderer = null;
-        private JCS_I2DAnimator m2DAnimator = null;
+        private JCS_2DAnimator m2DAnimator = null;
 
 
         [Header("** Check Variables (JCS_2DLiveObject) **")]
@@ -68,7 +68,7 @@ to get the information from them.")]
         //========================================
         //      setter / getter
         //------------------------------
-        public JCS_I2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
+        public JCS_2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
         public SpriteRenderer spriteRenderer { get { return this.mSpriteRenderer; } }
         public bool BeenTarget { get { return this.mBeenTarget; } set { this.mBeenTarget = value; } }
         public bool DamageTextEffect { get { return this.mDamageTextEffect; } set { this.mDamageTextEffect = value; } }
@@ -85,8 +85,8 @@ to get the information from them.")]
         {
             base.Awake();
 
-            mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-            m2DAnimator = this.GetComponent<JCS_I2DAnimator>();
+            this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
 
             // try to get this component in this transform.
             if (mVelocityInfo == null)
@@ -146,7 +146,8 @@ to get the information from them.")]
                 m2DAnimator.PlayAnimationInFrame();
 
             // force color back to white.
-            mSpriteRenderer.color = Color.white;
+            if (mSpriteRenderer != null)
+                mSpriteRenderer.color = Color.white;
 
             HP = 0;
             MP = 0;
@@ -250,7 +251,7 @@ to get the information from them.")]
                 defenseValue = mAbilityFormat.GetDefenseValue();
             else
             {
-                JCS_Debug.LogReminders(this, 
+                JCS_Debug.LogReminders(
                     "No Ability Format attached.");
             }
 
@@ -261,9 +262,13 @@ to get the information from them.")]
                 JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
-                    JCS_Debug.LogError("JCS_2DLiveObject", 
-                        "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
-
+#if (UNITY_EDITOR)
+                    if (JCS_GameSettings.instance.DEBUG_MODE)
+                    {
+                        JCS_Debug.LogError(
+                            "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
+                    }
+#endif
                     return;
                 }
 
@@ -323,9 +328,8 @@ to get the information from them.")]
                 JCS_MixDamageTextPool mixTP = JCS_UtilitiesManager.instance.GetMixDamageTextPool();
                 if (mixTP == null)
                 {
-                    JCS_Debug.LogError("JCS_2DLiveObject", 
+                    JCS_Debug.LogError(
                         "There is no Mix Damage Text Pool in the scene. Consider to grab one?");
-
                     return;
                 }
 
@@ -376,9 +380,9 @@ to get the information from them.")]
                 return;
 
             if (attacker.position.x > this.transform.position.x)
-                mVelocityInfo.MoveSpeed = -force;
+                mVelocityInfo.MoveSpeedX = -force;
             else
-                mVelocityInfo.MoveSpeed = force;
+                mVelocityInfo.MoveSpeedX = force;
                 
         }
 
@@ -425,12 +429,21 @@ to get the information from them.")]
             foreach (int damage in damages)
             {
                 if (HP <= 0)
+                {
+                    if (m2DAnimator.AnimDisplayHolder != null)
+                        m2DAnimator.AnimDisplayHolder.StopHolding();
                     break;
+                }
 
                 // if damage higher than knock back value, 
                 // stop the monster
                 if (damage >= mKB)
+                {
                     KnockBack(attacker);
+
+                    if (m2DAnimator.AnimDisplayHolder != null)
+                        m2DAnimator.AnimDisplayHolder.HoldAnimation((int)JCS_LiveObjectState.HIT);
+                }
 
                 ApplyDamage(damage);
             }

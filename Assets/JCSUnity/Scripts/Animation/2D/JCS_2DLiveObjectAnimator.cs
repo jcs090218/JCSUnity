@@ -17,6 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// 
     /// </summary>
+    [RequireComponent(typeof(JCS_2DAnimator))]
     public class JCS_2DLiveObjectAnimator
         : JCS_I2DAnimator
     {
@@ -30,28 +31,19 @@ namespace JCSUnity
         //----------------------
         // Protected Variables
 
+        private JCS_2DAnimator m2DAnimator = null;
+
+
         [Header("** Check Variables (JCS_2DLiveObjectAnimator) **")]
+
         [SerializeField]
         protected string mCurrentStateName = "";
         [SerializeField]
         protected JCS_LiveObjectState mCurrentState
             = JCS_LiveObjectState.STAND;
 
+
         [Header("** Initialize Variables (JCS_2DLiveObjectAnimator) **")]
-        // Please set the int inside the "Animator" window in Unity, 
-        // Control the animation state with code are much easier to programmer.
-        [SerializeField]
-        protected string mAnimationState = "State";
-
-        [SerializeField]
-        protected float mAnimationTimer = 0.0f;
-        [SerializeField]
-        protected float mAnimationOffset = 0.05f;
-
-        [Tooltip("Plz use %jcs as the state variable name.")]
-        [SerializeField]
-        protected string mFullClipStateName = "Player_01_%jcs";
-        protected bool mEndAttackStage = true;
 
         [Tooltip(@"Override the current animation, start 
 from the beginning.")]
@@ -61,29 +53,17 @@ from the beginning.")]
         //========================================
         //      setter / getter
         //------------------------------
-        public string GetAnimationState() { return this.mAnimationState; }
+        public JCS_2DAnimator Animator { get { return this.m2DAnimator; } }
         public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
-        public bool GetEndAttackStage() { return this.mEndAttackStage; }
 
         //========================================
         //      Unity's function
         //------------------------------
-
-        private void Update()
+        protected override void Awake()
         {
-            if (mEndAttackStage)
-                return;
+            base.Awake();
 
-            if (IsInState(JCS_LiveObjectState.RAND_ATTACK))
-            {
-                mAnimationTimer += Time.deltaTime;
-
-                if (mAnimationTimer >= mAnimatorStateInfo.length + mAnimationOffset)
-                {
-                    mAnimationTimer = 0;
-                    mEndAttackStage = true;
-                }
-            }
+            this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
         }
 
         //========================================
@@ -98,49 +78,34 @@ from the beginning.")]
         /// <param name="state"></param>
         public override void DoAnimation(JCS_LiveObjectState state = JCS_LiveObjectState.STAND)
         {
-            // return if the animation are already playing
-            if (mCurrentState == state)
-            {
-                if (mOverrideAnim)
-                    PlayAtBeginning();
-
-                return;
-            }
-
-            mCurrentStateName = GetStateName(state);
-
-            GetAnimator().SetInteger(GetAnimationState(), (int)state);
-
-            this.mCurrentState = state;
-
-            if (mCurrentState == JCS_LiveObjectState.RAND_ATTACK)
-                mEndAttackStage = false;
+            m2DAnimator.DoAnimation((int)state);
+            mCurrentState = state;
         }
 
         /// <summary>
-        /// Check this player in that state!
+        /// Check if the animation in the same state.
         /// </summary>
-        /// <param name="state"> state to check </param>
-        /// <returns> true: in the state, false: not in the state </returns>
+        /// <param name="state"></param>
+        /// <returns></returns>
         public bool IsInState(JCS_LiveObjectState state)
         {
-            // first check the self-define one.
-            if (mCurrentState != state)
-                return false;
-
-            // then check Unity's Animator state.
-            mAnimatorStateInfo = GetAnimator().GetCurrentAnimatorStateInfo(0);
-
-            return mAnimatorStateInfo.IsName(mCurrentStateName);
+            return m2DAnimator.IsInState((int)state);
         }
 
         /// <summary>
-        /// Play the animation start of the 
-        /// current aniamtion.
+        /// play the animation in current frame.
         /// </summary>
-        public void PlayAtBeginning()
+        public override void PlayAnimationInFrame()
         {
-            mAnimator.Play(mCurrentStateName, -1, 0);
+
+        }
+
+        /// <summary>
+        /// Stop animation in current frame.
+        /// </summary>
+        public override void StopAnimationInFrame()
+        {
+
         }
 
         //----------------------
@@ -148,74 +113,6 @@ from the beginning.")]
 
         //----------------------
         // Private Functions
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        private string GetStateName(JCS_LiveObjectState state)
-        {
-            string stateName = mFullClipStateName;
-            string swapName = "";
-
-            switch (state)
-            {
-                case JCS_LiveObjectState.STAND:
-                    swapName = "stand";
-                    break;
-                case JCS_LiveObjectState.WALK:
-                    swapName = "walk";
-                    break;
-                case JCS_LiveObjectState.RAND_ATTACK:
-                    swapName = "attack";
-                    break;
-                case JCS_LiveObjectState.JUMP:
-                    swapName = "jump";
-                    break;
-                case JCS_LiveObjectState.PRONE:
-                    swapName = "prone";
-                    break;
-                case JCS_LiveObjectState.ALERT:
-                    swapName = "alert";
-                    break;
-                case JCS_LiveObjectState.FLY:
-                    swapName = "fly";
-                    break;
-                case JCS_LiveObjectState.LADDER:
-                    swapName = "ladder";
-                    break;
-                case JCS_LiveObjectState.ROPE:
-                    swapName = "rope";
-                    break;
-                case JCS_LiveObjectState.SIT:
-                    swapName = "sit";
-                    break;
-                case JCS_LiveObjectState.HIT:
-                    swapName = "hit";
-                    break;
-                case JCS_LiveObjectState.DANCE:
-                    swapName = "dance";
-                    break;
-                case JCS_LiveObjectState.SWIM:
-                    swapName = "swim";
-                    break;
-                case JCS_LiveObjectState.DIE:
-                    swapName = "die";
-                    break;
-                case JCS_LiveObjectState.GHOST:
-                    swapName = "ghost";
-                    break;
-            }
-
-            string[] words;
-
-            words = stateName.Split(new[] { "%jcs" }, StringSplitOptions.None);
-
-            stateName = words[0] + swapName + words[1];
-
-            return stateName;
-        }
 
     }
 }

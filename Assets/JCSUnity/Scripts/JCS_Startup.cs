@@ -24,13 +24,15 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool InitializeApplication()
         {
-            if (!JCS_ApplicationManager.ONLINE_MODE)
+            if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return false;
 
             Debug.Log("Is Online Game!");
 
             // Create Connection
-            if (!JCS_NetworkManager.CreateNetwork(JCS_NetworkConstant.HOST_NAME, JCS_NetworkConstant.PORT))
+            if (!JCS_NetworkManager.CreateNetwork(
+                JCS_NetworkSettings.instance.HOST_NAME,
+                JCS_NetworkSettings.instance.PORT))
             {
                 // Faild handle
                 return false;

@@ -75,7 +75,7 @@ namespace JCSUnity
             if (mAcitveFunc == null)
             {
                 JCS_Debug.LogError(
-                    this, "U have not set the ACTIVE function ptr...");
+                    "U have not set the ACTIVE function ptr...");
 
                 return;
             }
@@ -89,7 +89,7 @@ namespace JCSUnity
             if (mDeactiveFunc == null)
             {
                 JCS_Debug.LogError(
-                    this, "U have not set the DEACTIVE function ptr...");
+                    "U have not set the DEACTIVE function ptr...");
 
                 return;
             }

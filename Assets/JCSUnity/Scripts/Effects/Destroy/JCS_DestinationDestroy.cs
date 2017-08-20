@@ -75,13 +75,13 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
 
             this.mAlphaObject.SetObjectType(this.GetObjectType());
-
-            UpdateUnityData();
         }
 
         private void Update()
@@ -93,10 +93,9 @@ namespace JCSUnity
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
                     JCS_Debug.LogError(
-                        this, "No target found...");
+                        "No target found...");
                 }
 #endif
-
                 return;
             }
 
@@ -115,7 +114,7 @@ namespace JCSUnity
             }
 
 
-            if (currentDistance < mDestroyDistance)
+            if (currentDistance <= mDestroyDistance)
             {
                 Destroy(this.gameObject);
             }

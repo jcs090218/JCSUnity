@@ -229,7 +229,7 @@ which to target which not to.")]
         private JCS_2DLiveObject FindClosest()
         {
             // find all living object in the scene
-            JCS_2DLiveObject[] objs = Object.FindObjectsOfType<JCS_2DLiveObject>();
+            JCS_2DLiveObject[] objs = JCS_2DLiveObjectManager.instance.LIVE_OBJECT_LIST;
 
             float distance = 0;
             bool firstAssign = false;
@@ -238,6 +238,9 @@ which to target which not to.")]
 
             foreach (JCS_2DLiveObject obj in objs)
             {
+                if (obj == null)
+                    continue;
+
                 if (mUseAttacker)
                 {
                     if (!AbleTarget(obj))
@@ -283,7 +286,7 @@ which to target which not to.")]
         private JCS_2DLiveObject FindClosestRight()
         {
             // find all living object in the scene
-            JCS_2DLiveObject[] objs = Object.FindObjectsOfType<JCS_2DLiveObject>();
+            JCS_2DLiveObject[] objs = JCS_2DLiveObjectManager.instance.LIVE_OBJECT_LIST;
 
             float distance = 0;
             bool firstAssign = false;
@@ -292,6 +295,9 @@ which to target which not to.")]
 
             foreach (JCS_2DLiveObject obj in objs)
             {
+                if (obj == null)
+                    continue;
+
                 if (mUseAttacker)
                 {
                     if (!AbleTarget(obj))
@@ -379,7 +385,7 @@ which to target which not to.")]
         private JCS_2DLiveObject FindClosestLeft()
         {
             // find all living object in the scene
-            JCS_2DLiveObject[] objs = Object.FindObjectsOfType<JCS_2DLiveObject>();
+            JCS_2DLiveObject[] objs = JCS_2DLiveObjectManager.instance.LIVE_OBJECT_LIST;
 
             float distance = 0;
             bool firstAssign = false;
@@ -388,6 +394,9 @@ which to target which not to.")]
 
             foreach (JCS_2DLiveObject obj in objs)
             {
+                if (obj == null)
+                    continue;
+
                 if (mUseAttacker)
                 {
                     if (!AbleTarget(obj))
@@ -441,7 +450,7 @@ which to target which not to.")]
         private JCS_2DLiveObject FindClosestTop()
         {
             // find all living object in the scene
-            JCS_2DLiveObject[] objs = Object.FindObjectsOfType<JCS_2DLiveObject>();
+            JCS_2DLiveObject[] objs = JCS_2DLiveObjectManager.instance.LIVE_OBJECT_LIST;
 
             float distance = 0;
             bool firstAssign = false;
@@ -450,6 +459,9 @@ which to target which not to.")]
 
             foreach (JCS_2DLiveObject obj in objs)
             {
+                if (obj == null)
+                    continue;
+
                 if (mUseAttacker)
                 {
                     if (!AbleTarget(obj))
@@ -503,7 +515,7 @@ which to target which not to.")]
         private JCS_2DLiveObject FindClosestBottom()
         {
             // find all living object in the scene
-            JCS_2DLiveObject[] objs = Object.FindObjectsOfType<JCS_2DLiveObject>();
+            JCS_2DLiveObject[] objs = JCS_2DLiveObjectManager.instance.LIVE_OBJECT_LIST;
 
             float distance = 0;
             bool firstAssign = false;
@@ -512,6 +524,9 @@ which to target which not to.")]
 
             foreach (JCS_2DLiveObject obj in objs)
             {
+                if (obj == null)
+                    continue;
+
                 if (mUseAttacker)
                 {
                     if (!AbleTarget(obj))

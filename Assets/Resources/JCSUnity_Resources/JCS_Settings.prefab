@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403812}
   - component: {fileID: 11442926}
+  - component: {fileID: 114217086803379482}
   - component: {fileID: 11474660}
   - component: {fileID: 11485796}
   - component: {fileID: 114000011621624256}
@@ -70,12 +71,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a8d1efa6195b54c9ca7188652b2db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM_MUTE: 0
+  EFFECT_MUTE: 0
+  PERFONAL_EFFECT_MUTE: 0
+  BGM_SOUND: 0.4
+  SFX_SOUND: 0.4
+  SKILLS_SOUND: 0.4
   SMOOTH_SWITCH_SOUND_BETWEEN_SCENE: 1
   BACKGROUND_MUSIC: {fileID: 8300000, guid: aadaa2bb458696e4cb1bbc6322707e03, type: 3}
   DEFAULT_OPEN_WINDOW_CLIP: {fileID: 8300000, guid: 9ddc3d435db7ab44ea990d4bbbe7a5c4,
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
     type: 3}
+  SOUND_FADEOUT_TIME: 1.5
+  SOUND_FADEIN_TIME: 1.5
 --- !u!114 &11474660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,12 +119,14 @@ MonoBehaviour:
   PLAYER_IGNORE_EACH_OTHER: 1
   TRIBE_DAMAGE_EACH_OTHER: 0
   IGNORE_EACH_OTHER_CHARACTER_CONTROLLER: 1
-  DEFAULT_ORDER_LAYER: 15
+  SCREENSHOT_PATH: /JCS_ScreenShot/
+  SCREENSHOT_FILENAME: Screenshot_
+  SAVED_IMG_EXTENSION: .png
   RESIZE_UI: 1
   SAVE_ON_SWITCH_SCENE: 1
   SAVE_ON_EXIT_APP: 1
   MIN_DAMAGE: 1
-  MAX_DAMAGE: 999999
+  MAX_DAMAGE: 9999999
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -203,3 +214,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SCENE_FADEOUT_TIME: 1.5
   SCENE_FADEIN_TIME: 1.5
+  SCREEN_COLOR: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &114217086803379482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef73fbe6bd7292345995405ca4c13dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ONLINE_MODE: 0
+  HOST_NAME: 127.0.0.1
+  PORT: 5454

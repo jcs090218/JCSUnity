@@ -117,13 +117,13 @@ other sound. (Effect Sound)")]
         //========================================
         //      Unity's function
         //------------------------------
-        protected virtual void Awake()
+        protected override void Awake()
         {
-            mBoxCollider = this.GetComponent<BoxCollider>();
-
             // update the data once 
             // depends on what game object is.
-            UpdateUnityData();
+            base.Awake();
+
+            mBoxCollider = this.GetComponent<BoxCollider>();
         }
 
         protected virtual void Start()
@@ -163,7 +163,7 @@ other sound. (Effect Sound)")]
             if (mPickCollider == null)
             {
                 JCS_Debug.LogError(
-                    this, "Cannot pick the item cuz there is no collider set.");
+                    "Cannot pick the item cuz there is no collider set.");
 
                 return;
             }
@@ -282,8 +282,8 @@ other sound. (Effect Sound)")]
                     mTweener.DurationX = 2.0f;
                     mTweener.DurationY = 5.0f;
                     mTweener.DurationZ = 0;
+                    mTweener.StopTweenDistance = 0.2f;
                 }
-                mTweener.StopTweenDistance = 0.2f;
                 mTweener.DoTweenContinue(other.transform);
             }
 

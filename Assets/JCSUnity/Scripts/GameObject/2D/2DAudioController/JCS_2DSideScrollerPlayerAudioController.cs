@@ -72,7 +72,6 @@ namespace JCSUnity
             if (mJumpSound[0] == null)
             {
                 JCS_Debug.LogError(
-                    this,
                     "Play sound with null references...");
                 return;
             }
@@ -88,7 +87,7 @@ namespace JCSUnity
 
             if (mJumpSound[1] == null)
             {
-                JCS_Debug.LogError(this, "Play sound with null references...");
+                JCS_Debug.LogError( "Play sound with null references...");
                 return;
             }
             mJCSSoundPlayer.PlayOneShot(mJumpSound[1], JCS_SoundSettings.instance.GetSkillsSound_Volume());
@@ -103,7 +102,7 @@ namespace JCSUnity
 
             if (mJumpSound[2] == null)
             {
-                JCS_Debug.LogError(this, "Play sound with null references...");
+                JCS_Debug.LogError( "Play sound with null references...");
                 return;
             }
             mJCSSoundPlayer.PlayOneShot(mJumpSound[2], JCS_SoundSettings.instance.GetSkillsSound_Volume());
@@ -125,7 +124,6 @@ namespace JCSUnity
             if (mAttackSounds[rand] == null)
             {
                 JCS_Debug.LogError(
-                    this, 
                     "Play sound with null references...");
 
                 return;
@@ -140,7 +138,6 @@ namespace JCSUnity
             if (mWalkSound == null)
             {
                 JCS_Debug.LogError(
-                    this, 
                     "Play sound with null references...");
 
                 return;

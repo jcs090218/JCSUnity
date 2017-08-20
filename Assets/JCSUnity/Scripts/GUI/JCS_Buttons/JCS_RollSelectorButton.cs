@@ -81,7 +81,6 @@ namespace JCSUnity
             if (mRollBtnSelector == null)
             {
                 JCS_Debug.LogError(
-                    this,
                     "");
 
                 return;
@@ -140,7 +139,6 @@ namespace JCSUnity
             if (mRollBtnSelector == null)
             {
                 JCS_Debug.LogError(
-                     this, 
                     "This button has been set focus but without the handler...");
                 return;
             }

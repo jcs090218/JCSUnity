@@ -54,6 +54,13 @@ public class BF_LiveObject
     //========================================
     //      Unity's function
     //------------------------------
+    protected void Start()
+    {
+        /* This will make the object follow the mad target. */
+        JCS_AttackerRecorder ar = this.GetComponent<JCS_AttackerRecorder>();
+        if (ar != null)
+            ar.LastAttacker = BF_GameManager.instance.PROTECT_OBJECT.transform;
+    }
 
     private void Update()
     {
@@ -65,6 +72,7 @@ public class BF_LiveObject
         DoFreeze();
     }
 
+#if (UNITY_EDITOR)
     private void Test()
     {
         if (JCS_Input.GetKeyDown(KeyCode.V))
@@ -72,6 +80,7 @@ public class BF_LiveObject
         if (JCS_Input.GetKeyDown(KeyCode.C))
             Burn(2);
     }
+#endif
 
     //========================================
     //      Self-Define

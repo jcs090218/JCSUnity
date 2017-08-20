@@ -7,6 +7,48 @@
 # ========================================================================
 
 
+2017-08-20
+* Update JCS_VelocityInfo with 3 dimentional. (JCSUnity)
+* Re-structure the networking module. (JCSUnity)
+* JCS_Debug no longer need the input of the file. (JCSUnity)
+* JCS_Logger implmeneted for Network module. (JCSUnity)
+
+2017-07-23
+* Start the side project JCS_UCG. (JCS_UCG)
+* JCS_CameraRenderer implemented. (JCSUnity)
+* GrayScale shader implemented. (JCSUnity)
+* Displacement shader implemented. (JCSUnity)
+
+2017-06-17
+* Fixed Item will go through the wall. (JCSUnity)
+* JCS_2DAnimDisplayHolder implemented. (JCSUnity)
+* JCS_ItemWall implemented. (JCSUnity)
+* Fixed JCS_TransformTweener continue tween issue. (JCSUnity)
+
+2017-06-04
+* Add Hotkeys category for JCSUnity GUI. (JCSUnity)
+
+2017-05-29
+* JCS_ButtonPointer implemented. (JCSUnity)
+* Update Unity version to 5.6.1f1. (Project)
+
+2017-05-25
+* Rename JCS_Cursor to JCS_3DCursor. (JCSUnity)
+* JCS_2DCursor implemented. (JCUnity)
+* Add slope to the JCS_PositionPlatform. (JCSUnity)
+
+2017-05-19
+* JCS_DamageText performance improvement. (JCSUnity)
+
+2017-05-16
+* JCS_ClimbableManager implemented. (JCSUnity)
+* JCS_IndieManager implemented. (JCSUnity)
+
+2017-05-14
+* Rename JCS_2DRandAnimController to JCS_2DRand-
+ AnimByTimeController. (JCSUnity)
+* JCS_2DRandAnimByAnimDone implemented. (JCSUnity)
+
 2017-05-11
 * JCS_FreezeTransformAction implemented. (JCSUnity)
 * JCS_FreezePositionAction implemented. (JCSUnity)

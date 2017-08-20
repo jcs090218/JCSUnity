@@ -38,16 +38,23 @@ namespace JCSUnity
 
         [Header("Auto add to Unity's \"Event Trigger(Script)\" or not?")]
         [Tooltip("is true u dont have to add manully!")]
-        [SerializeField] private bool mAutoAddEvent = true;
+        [SerializeField]
+        private bool mAutoAddEvent = true;
 
 
         [Header("*USAGE: Please use this class with Unity's \"Event Trigger(Script)\"!!!")]
-        [SerializeField] private AudioClip mOnMouseOver = null;
-        [SerializeField] private AudioClip mOnMouseExit = null;
-        [SerializeField] private AudioClip mOnMouseDown = null;
-        [SerializeField] private AudioClip mOnMouseUp = null;
-        [SerializeField] private AudioClip mOnMouseClick = null;
-        [SerializeField] private AudioClip mOnMouseDoubleClick = null;
+        [SerializeField]
+        private AudioClip mOnMouseOver = null;
+        [SerializeField]
+        private AudioClip mOnMouseExit = null;
+        [SerializeField]
+        private AudioClip mOnMouseDown = null;
+        [SerializeField]
+        private AudioClip mOnMouseUp = null;
+        [SerializeField]
+        private AudioClip mOnMouseClick = null;
+        [SerializeField]
+        private AudioClip mOnMouseDoubleClick = null;
         private bool mIsOver = false;
 
 
@@ -59,12 +66,18 @@ namespace JCSUnity
 
         [Tooltip(@"When button is not interactable will active these when 
 on mouse down.")]
-        [SerializeField] private AudioClip mOnMouseOverRefuse = null;
-        [SerializeField] private AudioClip mOnMouseExitRefuse = null;
-        [SerializeField] private AudioClip mOnMouseDownRefuse = null;
-        [SerializeField] private AudioClip mOnMouseUpRefuse = null;
-        [SerializeField] private AudioClip mOnMouseClickRefuse = null;
-        [SerializeField] private AudioClip mOnMouseDoubleClickRefuse = null;
+        [SerializeField]
+        private AudioClip mOnMouseOverRefuse = null;
+        [SerializeField]
+        private AudioClip mOnMouseExitRefuse = null;
+        [SerializeField]
+        private AudioClip mOnMouseDownRefuse = null;
+        [SerializeField]
+        private AudioClip mOnMouseUpRefuse = null;
+        [SerializeField]
+        private AudioClip mOnMouseClickRefuse = null;
+        [SerializeField]
+        private AudioClip mOnMouseDoubleClickRefuse = null;
 
 
         //----------------------
@@ -119,10 +132,12 @@ on mouse down.")]
                             mSoundPlayer.PlayOneShot(mOnMouseDoubleClickRefuse);
                             return;
                         }
+                        else
+                        {
+                            // play normal double click sound
+                            mSoundPlayer.PlayOneShot(mOnMouseDoubleClick);
+                        }
                     }
-
-                    // play normal double click sound
-                    mSoundPlayer.PlayOneShot(mOnMouseDoubleClick);
                 }
 
                 // check if the mouse still over or not
@@ -161,17 +176,18 @@ on mouse down.")]
         }
         public void JCS_OnMouseExit()
         {
-            if (mJCSButton != null)
-            {
-                if (!mJCSButton.Interactable)
-                {
-                    // play not ineractable sound
-                    mSoundPlayer.PlayOneShot(mOnMouseExitRefuse);
-                    return;
-                }
-            }
+            if (mJCSButton == null)
+                return;
 
-            mSoundPlayer.PlayOneShot(mOnMouseExit);
+            if (!mJCSButton.Interactable)
+            {
+                // play not ineractable sound
+                mSoundPlayer.PlayOneShot(mOnMouseExitRefuse);
+            }
+            else
+            {
+                mSoundPlayer.PlayOneShot(mOnMouseExit);
+            }
         }
 
         public void JCS_OnMouseDown(PointerEventData data)
@@ -180,18 +196,19 @@ on mouse down.")]
         }
         public void JCS_OnMouseDown()
         {
-            if (mJCSButton != null)
-            {
-                if (!mJCSButton.Interactable)
-                {
-                    // play not ineractable sound
-                    mSoundPlayer.PlayOneShot(mOnMouseDownRefuse);
-                    return;
-                }
-            }
+            if (mJCSButton == null)
+                return;
 
-            // play normal sound
-            mSoundPlayer.PlayOneShot(mOnMouseDown);
+            if (!mJCSButton.Interactable)
+            {
+                // play not ineractable sound
+                mSoundPlayer.PlayOneShot(mOnMouseDownRefuse);
+            }
+            else
+            {
+                // play normal sound
+                mSoundPlayer.PlayOneShot(mOnMouseDown);
+            }
         }
 
         public void JCS_OnMouseUp(PointerEventData data)
@@ -200,17 +217,18 @@ on mouse down.")]
         }
         public void JCS_OnMouseUp()
         {
-            if (mJCSButton != null)
-            {
-                if (!mJCSButton.Interactable)
-                {
-                    // play not ineractable sound
-                    mSoundPlayer.PlayOneShot(mOnMouseUpRefuse);
-                    return;
-                }
-            }
+            if(mJCSButton == null)
+                return;
 
-            mSoundPlayer.PlayOneShot(mOnMouseUp);
+            if (!mJCSButton.Interactable)
+            {
+                // play not ineractable sound
+                mSoundPlayer.PlayOneShot(mOnMouseUpRefuse);
+            }
+            else
+            {
+                mSoundPlayer.PlayOneShot(mOnMouseUp);
+            }
         }
 
         public void JCS_OnMouseClick(PointerEventData data)
@@ -219,17 +237,18 @@ on mouse down.")]
         }
         public void JCS_OnMouseClick()
         {
-            if (mJCSButton != null)
-            {
-                if (!mJCSButton.Interactable)
-                {
-                    // play not ineractable sound
-                    mSoundPlayer.PlayOneShot(mOnMouseClickRefuse);
-                    return;
-                }
-            }
+            if (mJCSButton == null)
+                return;
 
-            mSoundPlayer.PlayOneShot(mOnMouseClick);
+            if (!mJCSButton.Interactable)
+            {
+                // play not ineractable sound
+                mSoundPlayer.PlayOneShot(mOnMouseClickRefuse);
+            }
+            else
+            {
+                mSoundPlayer.PlayOneShot(mOnMouseClick);
+            }
         }
 
         // plz put this in Pointer Enter event

@@ -1,5 +1,5 @@
-
-JCSUnity version 1.4.5 Script Manual (Status)
+<doc>
+JCSUnity version 1.5.0 Script Manual (Status)
 
 When using the JCSUnity you may refer to this document,
 which will cover the various scripts and how to properly use them.
@@ -18,1864 +18,1895 @@ code easily.
 Script base: You will have to look into public function call/snippets.
 N/A: not yet implemented/deprecated/obsolete.
 Already assign: no need to touch or move.
+</doc>
 
 
 <JCSUnity>
-<Scripts>
+    <Scripts>
 
-<Actions>
-    <2D>
-        <AI>
-            <AIMoveActon>
-                <File name="JCS_2DFlyAction.cs">
-                    <Placement> Object any 2d game object. </Placement>
+        <Actions>
+            <2D>
+                <AI>
+                    <AIMoveActon>
+                        <File name="JCS_2DFlyAction.cs">
+                            <Placement> Object any 2d game object. </Placement>
+                            <Description>
+              This will simulate the fly action in 2 dimension. 
+              For more info will be inside the script variables 
+              tooltip attribute.
+                            </Description>
+                        </File>
+
+                        <File name="JCS_2DJumpAction.cs">
+                            <Placement> Object any 2d game object. </Placement>
+                            <Description>
+              This will simulate the jump action. For more info 
+              will be inside the script variables tooltip attribute.
+                            </Description>
+                        </File>
+
+                        <File name="JCS_2DSwimAction.cs">
+                            <Placement> Object any 2d game object. </Placement>
+                            <Description>
+              This will simulate the swim action in 2 dimension.
+              For more info will be inside the script variables 
+              tooltip attribute.
+                            </Description>
+                        </File>
+
+                        <File name="JCS_2DWalkAction.cs">
+                            <Placement> Object any 2d game object. </Placement>
+                            <Description>
+              This will simulate the walk action in 2 dimension.
+              For more info will be inside the script variables 
+              tooltip attribute.
+                            </Description>
+                        </File>
+                    </AIMoveAction>
+
+                    <File name="JCS_2DAIStateSystem.cs">
+                        <Placement> Any component. </Placement>
+                        <Description> 
+            This is the scripting wise component. This handle the action 
+            by just drag and drop the components in. Get component and call 
+            "SwitchAIMoveState" in the script by passing the action enum type.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DDeadAction.cs">
+                        <Placement> Usually on the live object. </Placement>
+                        <Description> 
+            This make the when the enemy dies, stop all the enemy action, 
+            and delay the destroy object method in unity, until the dead 
+            animation is done playing. (Since Unity does not handle this 
+            feature very well. Unfortunatly, we have to code it ourselves.)
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DDropItemAction.cs">
+                        <Placement> 
+            Object you want them have the ability to drop stuff, 
+            Usually on the live object. 
+                        </Placement>
+                        <Description> 
+            By adding the componenet, live object will drop either by
+            time or by dead event.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DFlyActionIgnore.cs">
+                        <Placement> 
+            Object like platform, portal or any object with collider 
+            on it but does not want to take effect by blocking the 
+            fly object movement. 
+                        </Placement>
+                        <Description> 
+            This is the tag component to "JCS_2DFlyAction" action, 
+            ignore the object that thouches the fly object, so fly 
+            live object will not be effect by Unity's collision engine.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DInitLookByTypeAction.cs">
+                        <Placement> BF example game bullet. </Placement>
+                        <Description> 
+            This action target the object at the "Start" function call 
+            once. Use for recursive function/component effects.
+                        </Description>
+                    </File>
+
+                </AI>
+                <Shooting>
+                    <File name="JCS_2DCursorSequenceShootAction.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+            Shoot a bullet toward cursor position and in a sequence.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DCursorShootAction.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>Shoot a bullet toward cursor position.</Description>
+                    </File>
+
+                    <File name="JCS_2DShootInAngle.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>Shoot a bullet in specific angle.</Description>
+                    </File>
+
+                    <File name="JCS_SequenceShootAction.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>Shoot bullets in sequence.</Description>
+                    </File>
+
+                    <File name="JCS_ShootAction.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>Basic shoot action.</Description>
+                    </File>
+
+                    <File name="JCS_ShootAllAngle.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+            Shoot a bullet in any angle, either in frame or 
+            in timer.
+                        </Description>
+                    </File>
+                </Shooting>
+                <Skills>
+                    <File name="JCS_2DFullScreenAtkAction.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+            This is the basic implementation of full screen attack 
+            algorithm. Spawn multiple object in random position, after 
+            animation has been played, destroy sides object.
+                        </Description>
+                    </File>
+                </Skills>
+
+                <File name="JCS_2DActiveSkillAction.cs">
+                    <Placement>Script base.</Placement>
                     <Description>
-                        This will simulate the fly action in 2 dimension. 
-                        For more info will be inside the script variables 
-                        tooltip attribute.
+          Spawn a skill and destroy ifself after done displaying the 
+          skill effect.
                     </Description>
                 </File>
-                
-                <File name="JCS_2DJumpAction.cs">
-                    <Placement> Object any 2d game object. </Placement>
+
+                <File name="JCS_2DCircleAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Object will move in circular track.</Description>
+                </File>
+
+                <File name="JCS_2DReflecBulletAction.cs">
+                    <Placement>Any transform/node with collider componenet.</Placement>
+                    <Description/>
+                </File>
+
+                <File name="JCS_2DRotateAction.cs">
+                    <Placement>Any transform/node.</Placement>
                     <Description>
-                        This will simulate the jump action. For more info 
-                        will be inside the script variables tooltip attribute.
+          Will do the rotation action on either x, y, z axis.
                     </Description>
                 </File>
-                
-                <File name="JCS_2DSwimAction.cs">
-                    <Placement> Object any 2d game object. </Placement>
+
+                <File name="JCS_2DSkills.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>Base class for any 2d skill. (Scripter only)</Description>
+                </File>
+
+                <File name="JCS_2DTrackAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Follow on target object.</Description>
+                </File>
+            </2D>
+            <3D>
+                <AI>
+                    <File name="JCS_3DWalkAction.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+            Make object move randomly base on the variable level 
+            design set.
+                        </Description>
+                    </File>
+                </AI>
+
+                <File name="JCS_3DCursorShootAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Shoot bullet base on the cursor position.</Description>
+                </File>
+
+                <File name="JCS_3DDistanceTileAction.cs">
+                    <Placement>Any transform/node.</Placement>
                     <Description>
-                        This will simulate the swim action in 2 dimension.
-                        For more info will be inside the script variables 
-                        tooltip attribute.
+          Move a game object in certain distance then set the game object
+          back to original position.
                     </Description>
                 </File>
-                
-                <File name="JCS_2DWalkAction.cs">
-                    <Placement> Object any 2d game object. </Placement>
+
+                <File name="JCS_3DGoStraightAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Move forward in one axis.</Description>
+                </File>
+
+                <File name="JCS_3DLookAtAction.cs">
+                    <Placement>Any transform/node.</Placement>
                     <Description>
-                        This will simulate the walk action in 2 dimension.
-                        For more info will be inside the script variables 
-                        tooltip attribute.
+          Advance look action from unity engine. More control than 
+          just calling from Unity Engine's scripting layer.
                     </Description>
                 </File>
-            </AIMoveAction>
-            
-            <File name="JCS_2DAIStateSystem.cs">
-                <Placement> Any component. </Placement>
-                <Description> 
-                    This is the scripting wise component. This handle the action 
-                    by just drag and drop the components in. Get component and call 
-                    "SwitchAIMoveState" in the script by passing the action enum type.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DDeadAction.cs">
-                <Placement> Usually on the live object. </Placement>
-                <Description> 
-                    This make the when the enemy dies, stop all the enemy action, 
-                    and delay the destroy object method in unity, until the dead 
-                    animation is done playing. (Since Unity does not handle this 
-                    feature very well. Unfortunatly, we have to code it ourselves.)
-                </Description>
-            </File>
-            
-            <File name="JCS_2DDropItemAction.cs">
-                <Placement> 
-                    Object you want them have the ability to drop stuff, 
-                    Usually on the live object. 
-                </Placement>
-                <Description> 
-                    By adding the componenet, live object will drop either by
-                    time or by dead event.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DFlyActionIgnore.cs">
-                <Placement> 
-                    Object like platform, portal or any object with collider 
-                    on it but does not want to take effect by blocking the 
-                    fly object movement. 
-                </Placement>
-                <Description> 
-                    This is the tag component to "JCS_2DFlyAction" action, 
-                    ignore the object that thouches the fly object, so fly 
-                    live object will not be effect by Unity's collision engine.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DInitLookByTypeAction.cs">
-                <Placement> BF example game bullet. </Placement>
-                <Description> 
-                    This action target the object at the "Start" function call 
-                    once. Use for recursive function/component effects.
-                </Description>
-            </File>
-            
-        </AI>
-        <Shooting>
-            <File name="JCS_2DCursorSequenceShootAction.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    Shoot a bullet toward cursor position and in a sequence.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DCursorShootAction.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>Shoot a bullet toward cursor position.</Description>
-            </File>
-            
-            <File name="JCS_2DShootInAngle.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>Shoot a bullet in specific angle.</Description>
-            </File>
-            
-            <File name="JCS_SequenceShootAction.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>Shoot bullets in sequence.</Description>
-            </File>
-            
-            <File name="JCS_ShootAction.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>Basic shoot action.</Description>
-            </File>
-            
-            <File name="JCS_ShootAllAngle.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    Shoot a bullet in any angle, either in frame or 
-                    in timer.
-                </Description>
-            </File>
-        </Shooting>
-        <Skills>
-            <File name="JCS_2DFullScreenAtkAction.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    This is the basic implementation of full screen attack 
-                    algorithm. Spawn multiple object in random position, after 
-                    animation has been played, destroy sides object.
-                </Description>
-            </File>
-        </Skills>
-        
-        <File name="JCS_2DActiveSkillAction.cs">
-            <Placement>Script base.</Placement>
-            <Description>
-                Spawn a skill and destroy ifself after done displaying the 
-                skill effect.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DCircleAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Object will move in circular track.</Description>
-        </File>
-        
-        <File name="JCS_2DReflecBulletAction.cs">
-            <Placement>Any transform/node with collider componenet.</Placement>
-            <Description></Description>
-        </File>
-        
-        <File name="JCS_2DRotateAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Will do the rotation action on either x, y, z axis.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DSkills.cs">
-            <Placement>Script base.</Placement>
-            <Description>Base class for any 2d skill. (Scripter only)</Description>
-        </File>
-        
-        <File name="JCS_2DTrackAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Follow on target object.</Description>
-        </File>
-    </2D>
-    <3D>
-        <AI>
-            <File name="JCS_3DWalkAction.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    Make object move randomly base on the variable level 
-                    design set.
-                </Description>
-            </File>
-        </AI>
-        
-        <File name="JCS_3DCursorShootAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Shoot bullet base on the cursor position.</Description>
-        </File>
-        
-        <File name="JCS_3DDistanceTileAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Move a game object in certain distance then set the game object
-                back to original position.
-            </Description>
-        </File>
-        
-        <File name="JCS_3DGoStraightAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Move forward in one axis.</Description>
-        </File>
-        
-        <File name="JCS_3DLookAtAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Advance look action from unity engine. More control than 
-                just calling from Unity Engine's scripting layer.
-            </Description>
-        </File>
-        
-        <File name="JCS_3DTrackAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Basic move the object toward target object.</Description>
-        </File>
-    </3D>
-	<Freeze>
-		<File name="JCS_FreezePositionAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Do freezing for position from transform.
-            </Description>
-        </File>
-		
-		<File name="JCS_FreezeRotationAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Do freezing for rotation from transform.
-            </Description>
-        </File>
-		
-		<File name="JCS_FreezeScaleAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Do freezing for scale from transform.
-            </Description>
-        </File>
-		
-		<File name="JCS_FreezeTransformAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Do freezing to all transform data.
-            </Description>
-        </File>
-		
-		<File name="JCS_RelativeFreezePositionAction.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Freeze the object by relative distance.
-            </Description>
-        </File>
-	</Freeze>
-    <Pathfinding>
-        <File name="JCS_Pathfinding.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Use Unity Engine's Navigation and Pathfinding is 
-                more recommanded.
-            </Description>
-        </File>
-        
-        <File name="JCS_PathRequestManager.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Use Unity Engine's Navigation and Pathfinding is 
-                more recommanded.
-            </Description>
-        </File>
-        
-        <File name="JCS_PfGrid.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Use Unity Engine's Navigation and Pathfinding is 
-                more recommanded.
-            </Description>
-        </File>
-        
-        <File name="JCS_PfHeap.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Use Unity Engine's Navigation and Pathfinding is 
-                more recommanded.
-            </Description>
-        </File>
-        
-        <File name="JCS_PfNode.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Use Unity Engine's Navigation and Pathfinding is 
-                more recommanded.
-            </Description>
-        </File>
-        
-        <File name="JCS_PfUnit.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Use Unity Engine's Navigation and Pathfinding is 
-                more recommanded.
-            </Description>
-        </File>
-    </Pathfinding>
-    
-    <Spawning>
-        <File name="JCS_BasicInitSpawner.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Spawn a Transform at the initialize time.
-            </Description>
-        </File>
-		
-		<File name="JCS_BasicWaveSpawner.cs">
-            <Placement>N/A</Placement>
-            <Description>
-                Do the basic wave spawn.
-            </Description>
-        </File>
-    </Spawning>
-    
-    <File name="JCS_AbilityFormat.cs">
-        <Placement>Script base.</Placement>
-        <Description>
-            Base ability fromat, use for implemented ability. Welcome to 
-            change the format itself.
-        </Description>
-    </File>
-    
-    <File name="JCS_AdjustTimeTrigger.cs">
-        <Placement>Script base.</Placement>
-        <Description>
-            Trigger a event while the time is reached. 
-            Script base.
-        </Description>
-    </File>
-    
-    <File name="JCS_AIAction.cs">
-        <Placement>N/A</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_AnimPoolAction.cs">
-        <Placement>N/A</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_ApplicationCloseSimulateSceneTextAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            If the scene have been load and wasn't in the editor mode, 
-            will just show a simple text. In the real build will just 
-            exit the application.
-        </Description>
-    </File>
-    
-    <File name="JCS_ApplicationQuitOnLoadAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            Once it load will quit the application, use 
-            with 'JCS_ApplicationCloseSimulateSceneTextAction'.
-        </Description>
-    </File>
-    
-    <File name="JCS_ApplyDamageTextToLiveObjectAction.cs">
-        <Placement>Any transform/node with jcs live object component.</Placement>
-        <Description>
-            Any object will do the damage to live object, this will do 
-            the trick.
-        </Description>
-    </File>
-    
-    <File name="JCS_DetectAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            Script will return two bool, 
-                1) DetectOneTransform() - detect one transform in the list
-                2) DetectAllTransform() - detect all transfom in the list.
-        </Description>
-    </File>
-    
-    <File name="JCS_DetectArea.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            This detect area action uses 'collider' to detect the 
-            live object.
-        </Description>
-    </File>
-    
-    <File name="JCS_DetectAreaAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            This actual algorithm are made by here.
-            NOTE: Anytjing with can detect area must be living object.
-        </Description>
-    </File>
-    
-    <File name="JCS_DetectAreaObject.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Tag of the could be detected object.</Description>
-    </File>
-    
-    <File name="JCS_HitDamageAction.cs">
-        <Placement></Placement>
-        <Description>
-            Simulate the action when object damage the player by hitting 
-            with his body.
-        </Description>
-    </File>
-    
-    <File name="JCS_InvincibleTimeAction.cs">
-        <Placement>With the live object.</Placement>
-        <Description>
-            Use this component with the live object will, make you live 
-            object invincible with timer action.
-        </Description>
-    </File>
-    
-    <File name="JCS_PositionCastAction.cs">
-        <Placement>Any tranform/node.</Placement>
-        <Description>
-            Cast the current transform to certain space.
-        </Description>
-    </File>
-    
-    <File name="JCS_PushThrowAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            Do the porject tile movement.
-        </Description>
-    </File>
-    
-    <File name="JCS_SimpleTrackAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            Very Simple track action by only pasing through the position.
-        </Description>
-    </File>
-    
-    <File name="JCS_SoundPoolAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            Game object itself is the sound player otherwise use 
-            the sound pool.
-        </Description>
-    </File>
-    
-    <File name="JCS_SoundProxyAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>This will help to spawn a sound and play it.</Description>
-    </File>
-    
-    <File name="JCS_SpriteRendererAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            This will auto find the facing with correct direction. In 
-            addition, you can use it inversly. (using SpriteRenderer)
-        </Description>
-    </File>
-    
-    <File name="JCS_SpriteScaleAction.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            This will auto find the facing with correct direction. In 
-            addition, you can use it inversly. (using Transform scaling.)
-        </Description>
-    </File>
-    
-    <File name="JCS_SwingAttackAction.cs">
-        <Placement>Live object.</Placement>
-        <Description>
-            Any time you need to do swing attack action. Get the component and 
-            make the function call.
-        </Description>
-    </File>
-    
-    <File name="JCS_ThrowAction.cs">
-        <Placement>Projectile.</Placement>
-        <Description>
-            This will measure the distance between this and target, then 
-            send the projectile to the target.
-        </Description>
-    </File>
-</Actions>
-<Animation>
-    <2D>
-		<File name="JCS_2DAnimation.cs">
-            <Placement>Work with JCS_2DAnimator.</Placement>
-            <Description>Handle frame by frame animation in the simple way.</Description>
-        </File>
-		
-		<File name="JCS_2DAnimator.cs">
-            <Placement>
-				Single Loop animation or work with multiple 
-				"JCS_2DAnimation" scripts.
-			</Placement>
-            <Description>Hold sequence of animation and play it by condition.</Description>
-        </File>
-        
-        <File name="JCS_2DAnimSequencePlayer.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Play a sequence of animation by time.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DAnimMirror.cs">
-            <Placement>Any node/transform.</Placement>
-            <Description>Completely mimic a JCS_2DAnimation's frame.</Description>
-        </File>
-        
-        <File name="JCS_2DCharacterAnimator.cs">
-            <Placement>Use with player.</Placement>
-            <Description>
-                2D Character Animator, a simple base to base component.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DLiveObjectAnimator.cs">
-            <Placement>Live object animator, use with live object.</Placement>
-            <Description>Call the function within the live object.</Description>
-        </File>
-        
-        <File name="JCS_2DOrderAnimPlayer.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Play animator's animations in order base on if 
-                the animation are done playing it.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DRandAnimController.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Randomly play animation in animator object depends 
-                on time object which is the 'JCS_AdjustTimeTrigger' 
-                component.
-            </Description>
-        </File>
-        
-        <File name="JCS_I2DAnimator.cs">
-            <Placement>Script base.</Placement>
-            <Description>2D Animator interface object.</Description>
-        </File>
-    </2D>
-    <3D>
-        <File name="JCS_3DAnimator.cs">
-            <Placement>N/A</Placement>
-            <Description>N/A</Description>
-        </File>
-        
-        <File name="JCS_3DBlendTreeAnimator.cs">
-            <Placement>N/A</Placement>
-            <Description>N/A</Description>
-        </File>
-    </3D>
-</Animation>
-<Effects>
-    <2D>
-        <File name="JCS_2DConstWaveEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Add this to any transform you wish to take this kind 
-                of effect.
-            </Description>
-        </File> 
-        
-		<File name="JCS_2DDestroyAnimEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                When gameobject destroy, this will be activate and 
-                play an animation.
-            </Description>
-        </File>
-		
-        <File name="JCS_2DPushLiveObject.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                When collider touches will push the live object 
-                by force.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DShakeEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Call the function and it will make the shake effect.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DWaveEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Attach the componenet and call the function and it should 
-                do the trick.
-            </Description>
-        </File>
-    </2D>
-    <3D>
-		<File name="JCS_3DDestroyAnimEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                When gameobject destroy, this will be activate and 
-                play an animation.
-            </Description>
-        </File>
-		
-        <File name="JCS_3DMouseMovement.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                This make the mouse toward to some point it will move 
-                base on the direction.
-            </Description>
-        </File>
-    </3D>
-    <Destroy>
-        <File name="JCS_DestinationDestroy.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                While hit the destination destroy it. 
-            </Description>
-        </File>
-		
-		<File name="JCS_DestroyParticleEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                When the gameobject get destroy, spawn the gameobject and 
-                to the particle in seconds. 
-            </Description>
-        </File>
-		
-		<File name="JCS_DestroySoundEffect.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                When the gameobject is destroy iw will 
-                play the sound.
-            </Description>
-        </File>
-		
-		<File name="JCS_DestroySpawnEffect.cs">
-			<Placement>Any transform/node.</Placement>
-			<Description>
-				Spawn object after destroyed.
-			</Description>
-		</File>
-    </Destroy>
-    <Item>
-        <File name="JCS_Item.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Inheritance in order to make the other JCSUnity item related 
-                object to work with.
-                    1) Setup the pick delegate function pointer.
-                    2) Call the pick function when you need this object 
-                       to get pick up.
-            </Description>
-        </File>
-        
-        <File name="JCS_ItemDroppable.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                This make your object can drop the item with some effect.
-            </Description>
-        </File>
-        
-        <File name="JCS_ItemIgnore.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Attach this to any object and the object will stop block the 
-                item object drop track.
-            </Description>
-        </File>
-        
-        <File name="JCS_ItemRotation.cs">
-            <Placement>Use with item component.</Placement>
-            <Description>
-                This make the item rotate while dropping.
-            </Description>
-        </File>
-        
-        <File name="JCS_OneJump.cs">
-            <Placement>Use with item component.</Placement>
-            <Description>
-                This make the item jump and other small effect features.
-            </Description>
-        </File>
-    </Item>
-    <Particle>
-        <Type>
-            <File name="JCS_Bubble.cs">
-                <Placement>On the particle object.</Placement>
-                <Description>This make the bubble movement.</Description>
-            </File>
-            
-            <File name="JCS_Lightning.cs">
-                <Placement>On the particle object.</Placement>
-                <Description>This make the lightning movement.</Description>
-            </File>
-            
-            <File name="JCS_RainDrop.cs">
-                <Placement>On the particle object.</Placement>
-                <Description>This make the rain movement.</Description>
-            </File>
-            
-            <File name="JCS_TowardTarget.cs">
-                <Placement>On the particle object.</Placement>
-                <Description>This make the tweener movement.</Description>
-            </File>
-        </Type>
-        <Weather>
-            <File name="JCS_EnvironmentSoundPlayer.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    This playes the environment sound.
-                </Description>
-            </File>
-            
-            <File name="JCS_StaticLightning.cs">
-                <Placement>Static lightning</Placement>
-                <Description></Description>
-            </File>
-            
-            <File name="JCS_WeatherParticles.cs">
-                <Placement>Base type of the particle.</Placement>
-                <Description>
-                    Interface for weather engine to get the paritcle 
-                    he is using.
-                </Description>
-            </File>
-        </Weather>
-        
-        <File name="JCS_Particle.cs">
-            <Placement>Base type of the particle.</Placement>
-            <Description>
-                Interface for paritcle system to get the paritcle 
-                he is using.
-            </Description>
-        </File>
-		
-		<File name="JCS_ParticleSystem.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Particle system that spawnes paritcles and manage into a pool.
-                Do the weather type of action.
-            </Description>
-        </File>
-    </Particle>
-    <Pool>
-		<File name="JCS_2DAnimPool.cs">
-            <Placement>Use for scripting.</Placement>
-            <Description>
-                List of all the animation, and call the function to play 
-                the animation base on the pool list.
-            </Description>
-        </File>
-		
-        <File name="JCS_AnimPool.cs">
-            <Placement>Use for scripting.</Placement>
-            <Description>
-                List of all the animation, and call the function to play 
-                the animation base on the pool list.
-            </Description>
-        </File>
-        
-        <File name="JCS_SoundPool.cs">
-            <Placement>Use for scripting.</Placement>
-            <Description>
-                List of all the animation, and call the function to play 
-                the animation base on the pool list.
-            </Description>
-        </File>
-		
-		<File name="JCS_TransformPool.cs">
-            <Placement>Use for scripting.</Placement>
-            <Description>
-                Pool of transform.
-            </Description>
-        </File>
-    </Pool>
-    <Tweener>
-        <File name="JCS_ColorTweener.cs">
-            <Placement>Tweener component.</Placement>
-            <Description>Tweener with changing color.</Description>
-        </File>
-        
-        <File name="JCS_EaseMath.cs">
-            <Placement>N/A</Placement>
-            <Description>N/A</Description>
-        </File>
-        
-        <File name="JCS_TransfromTweener.cs">
-            <Placement>Tweener component.</Placement>
-            <Description>
-                If you need tweener effect just call the tween function it 
-                will tween the target position.
-            </Description>
-        </File>
-    </Tweener>
-	
-	<File name="JCS_2DEffect.cs">
-		<Placement>Script Base.</Placement>
-        <Description>
-			2D effect base class.
-        </Description>
-    </File>
-	
-	<File name="JCS_AlphaObject.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			This will approach to specific alpha value 
-			every frame.
-        </Description>
-    </File>
-	
-	<File name="JCS_ButtonSoundEffect.cs">
-		<Placement>GUI component, button.</Placement>
-        <Description>
-			Customize your own button sound base on different 
-			circumstance.
-			
-			Please use this class with Unity's "Event Trigger (Script)"!!!
-        </Description>
-    </File>
-	
-	<File name="JCS_DragDropObject.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			Object that can be drag and drop.
-        </Description>
-    </File>
-	
-	<File name="JCS_FadeObject.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			Fade alpha the object in particular value.
-        </Description>
-    </File>
-	
-	<File name="JCS_FadeSound.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			Class do the sound fade in/out effect.
-        </Description>
-    </File>
-	
-	<File name="JCS_OneShotObject.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			Do one shot on object.
-        </Description>
-    </File>
-	
-	<File name="JCS_Rotation.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			Do the rotate action depends on axis.
-        </Description>
-    </File>
-	
-	<File name="JCS_ScaleEffect.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			Scale approach to a specific scale value.
-        </Description>
-    </File>
-	
-	<File name="JCS_SlideEffect.cs">
-		<Placement>Any transform/node.</Placement>
-        <Description>
-			Make object to make the smooth slide effect.
-			- Could be compose with JCS_TransfromTweener class.
-        </Description>
-    </File>
-</Effects>
-<Enums>
-    <2D>
-        <File name="JCS_2D4Direction.cs">
-            <Placement>Script base.</Placement>
-            <Description>
-                2 axis direction.
-                    1) top
-                    2) bottom
-                    3) right
-                    4) left
-            </Description>
-        </File>
-        
-        <File name="JCS_2D8Direction.cs">
-            <Placement>Script base.</Placement>
-            <Description>
-                0 | 1 | 2
-                -----------
-                7 | 8 | 3
-                -----------
-                6 | 5 | 4
-                
-                1) top
-                2) bottom
-                3) right
-                4) left
-                5) top left
-                6) top right
-                7) bottom right
-                8) bottom left
-                9) center
-            </Description>
-        </File>
-        
-        <File name="JCS_2DAnimActionType.cs">
-            <Placement>Script base.</Placement>
-            <Description>
-                Animation type for any animation general you want 
-                to play.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DCharacterMode.cs">
-            <Placement>Script base.</Placement>
-            <Description>This store the stores the caharacter state.</Description>
-        </File>
-        
-        <File name="JCS_2DDimensions.cs">
-            <Placement>Script base.</Placement>
-            <Description>
-                2 axis direction with only the side.
-                    1) vertical
-                    2) horizontal
-            </Description>
-        </File>
-        
-        <File name="JCS_2DFaceType.cs">
-            <Placement>Script base.</Placement>
-            <Description>
-            Standard Sprite should always face left
-                1) so left is +1
-                2) and right is -1
-            </Description>
-        </File>
-        
-        <File name="JCS_2DPlatformType.cs">
-            <Placement>Script base.</Placement>
-            <Description></Description>
-        </File>
-        
-        <File name="JCS_2DPortalType.cs">
-            <Placement>Script base.</Placement>
-            <Description>
-                Portal type, 
-                    1) Scene portal - switch the scene.
-                    2) Transfer portal - transfer to the position.
-            </Description>
-        </File>
-    </2D>
-    <3D>
-        <File name="JCS_3DPortalType.cs">
-            <Placement>Script base.</Placement>
-            <Description>3d portal listed here.</Description>
-        </File>
-        
-        <File name="JCS_3DRotateDirectionType.cs">
-            <Placement>Script base.</Placement>
-            <Description>direction that rotate.</Description>
-        </File>
-        
-        <File name="JCS_Vector3Direction.cs">
-            <Placement>Script base.</Placement>
-            <Description>Vector 3d type in enum use in Unity Engine.</Description>
-        </File>
-    </3D>
-    <GUI>
-    
-        <Panel>
-            <File name="JCS_PanelActionType.cs">
+
+                <File name="JCS_3DTrackAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Basic move the object toward target object.</Description>
+                </File>
+            </3D>
+            <Freeze>
+                <File name="JCS_FreezePositionAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Do freezing for position from transform.
+                    </Description>
+                </File>
+
+                <File name="JCS_FreezeRotationAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Do freezing for rotation from transform.
+                    </Description>
+                </File>
+
+                <File name="JCS_FreezeScaleAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Do freezing for scale from transform.
+                    </Description>
+                </File>
+
+                <File name="JCS_FreezeTransformAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Do freezing to all transform data.
+                    </Description>
+                </File>
+
+                <File name="JCS_RelativeFreezePositionAction.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Freeze the object by relative distance.
+                    </Description>
+                </File>
+            </Freeze>
+            <Pathfinding>
+                <File name="JCS_Pathfinding.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Use Unity Engine's Navigation and Pathfinding is 
+            more recommanded.
+                    </Description>
+                </File>
+
+                <File name="JCS_PathRequestManager.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Use Unity Engine's Navigation and Pathfinding is 
+            more recommanded.
+                    </Description>
+                </File>
+
+                <File name="JCS_PfGrid.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Use Unity Engine's Navigation and Pathfinding is 
+            more recommanded.
+                    </Description>
+                </File>
+
+                <File name="JCS_PfHeap.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Use Unity Engine's Navigation and Pathfinding is 
+            more recommanded.
+                    </Description>
+                </File>
+
+                <File name="JCS_PfNode.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Use Unity Engine's Navigation and Pathfinding is 
+            more recommanded.
+                    </Description>
+                </File>
+
+                <File name="JCS_PfUnit.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Use Unity Engine's Navigation and Pathfinding is 
+            more recommanded.
+                    </Description>
+                </File>
+            </Pathfinding>
+
+            <Spawning>
+                <File name="JCS_BasicInitSpawner.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Spawn a Transform at the initialize time.
+                    </Description>
+                </File>
+
+                <File name="JCS_BasicWaveSpawner.cs">
+                    <Placement>N/A</Placement>
+                    <Description>
+            Do the basic wave spawn.
+                    </Description>
+                </File>
+            </Spawning>
+
+            <File name="JCS_AbilityFormat.cs">
                 <Placement>Script base.</Placement>
-                <Description>Panel action type list here...</Description>
-            </File>
-        </Panel>
-        
-    </GUI>
-    <Time>
-        
-        <File name="JCS_SeasonType.cs">
-            <Placement>Script base.</Placement>
-            <Description>List of all the season.</Description>
-        </File>
-        
-        <File name="JCS_TimeRange.cs">
-            <Placement>Script base.</Placement>
-            <Description>List of all the time range.</Description>
-        </File>
-        
-        <File name="JCS_WeatherType.cs">
-            <Placement>Script base.</Placement>
-            <Description>List of all the weather type.</Description>
-        </File>
-    </Time>
-    
-    <File name="JCS_Align.cs">
-        <Placement>Script base.</Placement>
-        <Description>Align type. Top/Bottom/Right/Left.</Description>
-    </File>
-    
-    <File name="JCS_Axis.cs">
-        <Placement>Script base.</Placement>
-        <Description>x, y, z</Description>
-    </File>
-    
-    <File name="JCS_CameraType.cs">
-        <Placement>Script base.</Placement>
-        <Description>
-            Camera type are single or multiple tracking.
-        </Description>
-    </File>
-    
-    <File name="JCS_ClimbMoveType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Action type of all the climbing movement.</Description>
-    </File>
-    
-    <File name="JCS_CursorCustomizeType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Cursor action type.</Description>
-    </File>
-    
-    <File name="JCS_DialogueType.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of all the dialogue type.</Description>
-    </File>
-    
-    <File name="JCS_DragDropType.cs">
-        <Placement>Script base.</Placement>
-        <Description>
-            Type of all the drag drop object type. In order 
-            to check if the object 2d/2.5d/3d.
-        </Description>
-    </File>
-    
-    <File name="JCS_FadeType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Include fade in/out.</Description>
-    </File>
-    
-    <File name="JCS_GameType.cs">
-        <Placement>Script base.</Placement>
-        <Description>
-            Game dimension type.
-                1) 2d game
-                2) game 2.5d
-                3) game 3d
-                4) game ar
-                5) game vr
-        </Description>
-    </File>
-    
-    <File name="JCS_GUIType.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of all the gui movement type.</Description>
-    </File>
-    
-    <File name="JCS_IncDec.cs">
-        <Placement>Script base.</Placement>
-        <Description>Increament and Decreament.</Description>
-    </File>
-    
-    <File name="JCS_InputType.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of the mouse input button.</Description>
-    </File>
-    
-    <File name="JCS_JumpType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Jump count, jump, double jump, etc.</Description>
-    </File>
-    
-    <File name="JCS_KeyActionType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Type of the key action.</Description>
-    </File>
-    
-    <File name="JCS_PageLook.cs">
-        <Placement>Script base.</Placement>
-        <Description>Type of the current dialogue page.</Description>
-    </File>
-    
-    <File name="JCS_PanelType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Type of the panel, that could be reset or type.</Description>
-    </File>
-    
-    <File name="JCS_PlatformType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Platform/Device type.</Description>
-    </File>
-    
-    <File name="JCS_PlayerState.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of the status.</Description>
-    </File>
-    
-    <File name="JCS_PortalLabel.cs">
-        <Placement>Script base.</Placement>
-        <Description>Label for each portal.</Description>
-    </File>
-    
-    <File name="JCS_SingletonObject.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of all the singleton object type.</Description>
-    </File>
-    
-    <File name="JCS_SoundSettingType.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of all the sound type.</Description>
-    </File>
-    
-    <File name="JCS_SoundType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Sound space type either 3d or 2d.</Description>
-    </File>
-    
-    <File name="JCS_SpeedLayer.cs">
-        <Placement>Script base.</Placement>
-        <Description>How fast the speed are, just in general.</Description>
-    </File>
-    
-    <File name="JCS_SwitchScreenType.cs">
-        <Placement>Script base.</Placement>
-        <Description>How the scene swith between scene and scene.</Description>
-    </File>
-    
-    <File name="JCS_TweenType.cs">
-        <Placement>Script base.</Placement>
-        <Description>Enumrator for tweener.</Description>
-    </File>
-    
-    <File name="JCS_UnityGUIType.cs">
-        <Placement>Script base.</Placement>
-        <Description>
-            Type of the gui, developer are using.
-                1) uGUI
-                2) nGUI
-        </Description>
-    </File>
-    
-    <File name="JCS_UnityObjectType.cs">
-        <Placement>Script base.</Placement>
-        <Description>
-            Type of the unity engine base object type.
-                1) GameObject - Normal 3D model.
-                2) Sprite Render - sprite renderer.
-                3) GUI - either nGUI and uGUI.
-                4) Text - uGUI type of the component.
-        </Description>
-    </File>
-</Enums>
-<Events>
-    <Destroy>
-        <Anim>
-			<File name="JCS_2DDestroyAnimEndEvent.cs">
-                <Placement></Placement>
                 <Description>
-                    Play Animator and destroy after it played animation 
-                    depends on loop times.
-                </Description>
-            </File>
-			
-            <File name="JCS_DestroyAnimBackForthEvent.cs">
-                <Placement></Placement>
-                <Description>
-                    After playing animation back and forth once, 
-                    then destroy...
-                </Description>
-            </File>
-            
-            <File name="JCS_DestroyAnimEndEvent.cs">
-                <Placement></Placement>
-                <Description>
-                    Play Animator and destroy after it played animation 
-                    depends on loop times.
-                </Description>
-            </File>
-        </Anim>
-        
-        <File name="JCS_DestroyObjectWithScreen.cs">
-            <Placement></Placement>
-            <Description>
-                Destroy the game object when the object is 
-                no more render on the screen.
-            </Description>
-        </File>
-        
-        <File name="JCS_DestroyObjectWithTime.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Destroy the object with the time and timer.</Description>
-        </File>
-        
-        <File name="JCS_DestroyParticleEndEvent.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Destroy if the particle system ends.</Description>
-        </File>
-        
-        <File name="JCS_DestroySoundEndEvent.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Play the sound and destroy the game object itself.</Description>
-        </File>
-    </Destroy>
-    <Hit>
-        <File name="JCS_HitCountEvent.cs">
-            <Placement>Use with hist list event</Placement>
-            <Description>Count the hit base on the hit list.</Description>
-        </File>
-        
-        <File name="JCS_HitListEvents.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Check if the object hit something on the list.</Description>
-        </File>
-    </Hit>
-	<Sound>
-		<File name="JCS_TriggerSwitchBGMEvent.cs">
-			<Placement>Any transform/node.</Placement>
-            <Description>Trigger switch the background music.</Description>
-		</File>
-	</Sound>
-    <System>
-        <File name="JCS_QuitApplicationOnLoadEvent.cs">
-            <Placement>Already assign.</Placement>
-            <Description>Quit the application by activating.</Description>
-        </File>
-    </System>
-    
-    <File name="JCS_CounterEvent.cs">
-        <Placement>N/A</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_DisableWithAnimEndEvent.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            Play Animator and disable after it played animation 
-            depends on loop times.
-        </Description>
-    </File>
-    
-    <File name="JCS_DisableWithCertainRangeEvent.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
-            Disable the the current game object with in the 
-            certain range.
-        </Description>
-    </File>
-    
-    <File name="JCS_DiableWithTimeEvent.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Diable the object after the time.</Description>
-    </File>
-    
-    <File name="JCS_ObjectList.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Object list that return random object.</Description>
-    </File>
-    
-    <File name="JCS_OnDestroyPlaySoundEffect.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>When object is destroy, play the sound.</Description>
-    </File>
-    
-    <File name="JCS_SplitSpawnEvent.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Spawn multiple object in a row.</Description>
-    </File>
-    
-    <File name="JCS_WaitDestroySoundEffectEvent.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Wait for the sound play then destroyed.</Description>
-    </File>
-</Events>
-<Examples>
-    <File name="ScriptTester.cs">
-        <Placement>Already assign.</Placement>
-        <Description>This is for you to test the dialogue script.</Description>
-    </File>
-</Examples>
-<GameObject>
-    <2D>
-        <2DAI>
-            <File name="JCS_CircleEnemy.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>Enemy that walk in the circle track.</Description>
-            </File>
-        </2DAI>
-        <2DAudioController>
-            <File name="JCS_2DSideScrollerPlayerAudioController.cs">
-                <Placement>Script work with jcs_2dsidescrollerplayer.cs</Placement>
-                <Description>
-                    Audio control for specific type of player, which is 
-                    jcs_2dsidescrollerplayer. Also provide from JCSUnity.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DTopDownPlayerAudioController.cs">
-                <Placement>Script work with JCS_2DTopDownPlayer.cs</Placement>
-                <Description>
-                    Audio control for specific type of player, which is 
-                    JCS_2DTopDownPlayer. Also provide from JCSUnity.
-                </Description>
-            </File>
-        </2DAudioController>
-        <2DCamera>
-            <File name="JCS_2DCamera.cs">
-                <Placement>
-                    Transform/Node with main camera component with it.
-                </Placement>
-                <Description>
-                    Basic camera for 2d games, especially 
-                    for sidescroller.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DMultiTrackCamera.cs">
-                <Placement>
-                    Transform/Node with main camera component with it.
-                </Placement>
-                <Description>
-                    More advance camera, purpose of follow multiple 
-                    player in the scene. Like, Smash Bros.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DSlideScreenCamera.cs">
-                <Placement>
-                    Transform/Node with main camera component with it.
-                </Placement>
-                <Description>
-                    Camera for GUI!! not in the game scene.
-                    
-                    NOTE: use for switching scene panel.
-                </Description>
-            </File>
-        </2DCamera>
-        <2DClimableObject>
-            <File name="JCS_2DClimableObject.cs">
-                <Placement>Script only.</Placement>
-                <Description>
-                    Base class for all the 2d climable object.
-                    
-                    e.g. 2DRope, 2DLadder, etc.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DLadder.cs">
-                <Placement>Any transform/node with collider.</Placement>
-                <Description>
-                    Make your gameobject go up and down base on specific 
-                    key type.
-                </Description>
-            </File>
-        
-            <File name="JCS_2DRope.cs">
-                <Placement>Any transform/node with collider.</Placement>
-                <Description>
-                    Make your gameobject go up and down base on specific 
-                    key type.
-                </Description>
-            </File>
-        </2DClimableObject>
-        <2DGameObjects>            
-            <File name="JCS_2DBullet.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    Base class of the bullet. (Normal not lazer type.)
+          Base ability fromat, use for implemented ability. Welcome to 
+          change the format itself.
                 </Description>
             </File>
 
-            <File name="JCS_2DTrackBullet.cs">
-                <Placement>Any transform/node.</Placement>
+            <File name="JCS_AdjustTimeTrigger.cs">
+                <Placement>Script base.</Placement>
                 <Description>
-                    Bullet that will follow the target. Inheritance from 
-                    JCS_2DBullet class.
+          Trigger a event while the time is reached. 
+          Script base.
                 </Description>
             </File>
-        </2DGameObjects>
-        <2DPlatform>
-            <File name="JCS_2DMovePlatform.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    A moving platform in the game. Like usual mega man 
-                    game will have.
-                </Description>
-            </File>
-            
-            <File name="JCS_2DPositionPlatform.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description></Description>
-            </File>
-            
-            <File name="JCS_2DScrollPlatform.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>
-                    Platform that will scroll so either the object effecting 
-                    will accelerate or deaccelerate the speed down.
-                </Description>
-            </File>
-        </2DPlatform>
-        <2DPlayer>
-            <File name="JCS_2DSideScrollerPlayer.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>One of the player type provide by JCSUnity.</Description>
-            </File>
-            
-            <File name="JCS_2DTopDownPlayer.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>One of the player type provide by JCSUnity.</Description>
-            </File>
-        </2DPlayer>
-        <2DPlayerEffect>
-            <File name="JCS_2DPushEffect.cs">
-                <Placement>Any transform/node.</Placement>
-                <Description>Push the player a bit of force.</Description>
-            </File>
-        </2DPlayerEffect>
-        
-        <File name="JCS_2DDynamicScene.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>This should attach to all the root layer.</Description>
-        </File>
-        
-        <File name="JCS_2DLiveObject.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Make your object became a live object variables.</Description>
-        </File>
-        
-        <File name="JCS_2DMoveTile.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Tile will move base on the axis and turn back out in 
-                the original place. Usually for unless background.
-            </Description>
-        </File>
-        
-        <File name="JCS_2DPlatform.cs">
-            <Placement>Any transform/node the </Placement>
-            <Description></Description>
-        </File>
-        
-        <File name="JCS_2DPlayerAudioController.cs">
-            <Placement>Object with the player.</Placement>
-            <Description>Audio player for specific player type.</Description>
-        </File>
-        
-        <File name="JCS_2DPlayerEffect.cs">
-            <Placement>Script base.</Placement>
-            <Description>Interface of the player effect.</Description>
-        </File>
-        
-        <File name="JCS_2DPortal.cs">
-            <Placement>Any transform/node with collider.</Placement>
-            <Description>
-                Either transfer the game object itself or switch 
-                the scene.
-            </Description>
-        </File>
-        
-        <File name="JCS_OrderLayer.cs">
-            <Placement>
-                Any transform/node you want this to be as the root node 
-                of all the scene object.
-            </Placement>
-            <Description>Scene layer.</Description>
-        </File>
-        
-        <File name="JCS_OrderLayerObject.cs">
-            <Placement></Placement>
-            <Description>Object in the in the scene layer.</Description>
-        </File>
-        
-        <File name="JCS_Sprite2D.cs">
-            <Placement>N/A</Placement>
-            <Description>N/A</Description>
-        </File>
-    </2D>
-    <2DEngine>
-        <File name="JCS_CharacterController2D.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                2D character controller using collider2d and rigidbody2d. 
-                Have the basic function of the charater controller.
-            </Description>
-        </File>
-    </2DEngine>
-    <3D>
-        <3DAction>
-            <empty></empty>
-        </3DAction>
-        <3DAI>
-            <empty></empty>
-        </3DAI>
-        
-        <File name="JCS_3DCamera.cs">
-            <Placement>
-                Transform/node with main camera component 
-                build-in from Unity Engine.
-            </Placement>
-            <Description>Basic camera in 3d game.</Description>
-        </File>
-        
-        <File name="JCS_3DDragDropObject.cs">
-            <Placement></Placement>
-            <Description>
-                Use mouse control the 3d object to drag and drop 
-                the object.
-            </Description>
-        </File>
-        
-        <File name="JCS_3DLiquidBar.cs">
-            <Placement>Liquid bar in the game.</Placement>
-            <Description>
-                if finding for 2D Liquid bar to do the health bar effect,
-                plz use the "JCS_GUILiquidBar" instead.
-            </Description>
-        </File>
-        
-        <File name="JCS_3DPlayer.cs">
-            <Placement>Base of the player object.</Placement>
-            <Description></Description>
-        </File>
-        
-        <File name="JCS_3DPortal.cs">
-            <Placement>Any transform/node with collider.</Placement>
-            <Description></Description>
-        </File>
-    </3D>
-    
-    <File name="JCS_AttackerRecorder.cs">
-        <Placement>Work with live object.</Placement>
-        <Description>Record the attacker.</Description>
-    </File>
-    
-    <File name="JCS_CashObject.cs">
-        <Placement>Object will be cash in game.</Placement>
-        <Description>In game cash.</Description>
-    </File>
-</GameObject>
-<GUI>
-    <Dialogue>
-        <File name="JCS_DialogueSystem.cs">
-            <Placement></Placement>
-            <Description>
-                Core of the dialogue system. Use with the JCS_Script 
-                component related.
-            </Description>
-        </File>
-        
-        <File name="JCS_TalkObject.cs">
-            <Placement></Placement>
-            <Description>
-                Simulate the object you can talk to. Like NPC.
-            </Description>
-        </File>
-    </Dialogue>
-    <GameWindow>
-        <File name="JCS_BaseDialogueObject.cs">
-            <Placement></Placement>
-            <Description></Description>
-        </File>
-        
-        <File name="JCS_CheckableDialogue.cs">
-            <Placement></Placement>
-            <Description>
-                Common Dialogue Object!
 
-                Include function, 
-                Show Dialogue, 
-                Hide Dialoguem, 
-                Move To the front of the screen, 
-                Set the Parent by mode, 
-            </Description>
-        </File>
-        
-        <File name="JCS_CheckableObject.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>
-                When cursor or some trigger active, will show the 
-                object information on it. This is what this dialogue 
-                do. Usually check on the item and pop out the 
-                description content.
-            </Description>
-        </File>
-        
-        <File name="JCS_DialogueObject.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>
-                Base class of base GameWindow class. Use for all the 
-                dialogue object/component.
-            </Description>
-        </File>
-        
-        <File name="JCS_GameWindow.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>
-                Game Window base on the Dialogue object.
-     
-                Specialize class for panel/dialogue object. This 
-                class provide more than just the normal panel/
-                dialogue interface.
-            </Description>
-        </File>
-        
-        <File name="JCS_GameWindowHandler.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>
-                Object to create the instance of Game Window.
-            </Description>
-        </File>
-        
-        <File name="JCS_IgnoreDialogueObject.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>
-                Scene will ignore this panel and not brough into 
-                next scene.
-            </Description>
-        </File>
-    </GameWindow>
-    <In Game Log System>
-        <File name="JCS_IGLogSystem.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>In Game Log System (IGL).</Description>
-        </File>
-        
-        <File name="JCS_LogText.cs">
-            <Placement>With uGUI text component.</Placement>
-            <Description>Log text for JCS_IGLogSystem to handle.</Description>
-        </File>
-    </In Game Log System>
-    <JCS_Buttons>
-        <Dialogue>
-            <File name="JCS_HideDialogueButton.cs">
-                <Placement>Already assign.</Placement>
+            <File name="JCS_AIAction.cs">
+                <Placement>N/A</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_AnimPoolAction.cs">
+                <Placement>N/A</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_ApplicationCloseSimulateSceneTextAction.cs">
+                <Placement>Any transform/node.</Placement>
                 <Description>
-                    Click the button to hide multiple dialogue.
+          If the scene have been load and wasn't in the editor mode, 
+          will just show a simple text. In the real build will just 
+          exit the application.
                 </Description>
             </File>
-            
-            <File name="JCS_ShowDialogueButton.cs">
-                <Placement>Already assign.</Placement>
+
+            <File name="JCS_ApplicationQuitOnLoadAction.cs">
+                <Placement>Any transform/node.</Placement>
                 <Description>
-                    Click the button to show multiple dialogyue.
+          Once it load will quit the application, use 
+          with 'JCS_ApplicationCloseSimulateSceneTextAction'.
                 </Description>
             </File>
-        </Dialogue>
-    
-        <File name="JCS_EmptyButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-                Default/place holder button for all purpose usage.
-            </Description>
-        </File>
-        
-        <File name="JCS_ExitAppButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-                Button that exit the app.
-            </Description>
-        </File>
-        
-        <File name="JCS_LoadSceneButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-                Button that will load up the scene base on the name.
-            </Description>
-        </File>
-        
-        <File name="JCS_RewardAdsButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-                Reward type of Ads button.
-            </Description>
-        </File>
-        
-        <File name="JCS_RollSelectorButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-                Button that will be manage by the JCS_RollBtnSelector and 
-                will do the roll button effect.
-            </Description>
-        </File>
-        
-        <File name="JCS_SlideScreenButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>Button will roll the scene.</Description>
-        </File>
-        
-        <File name="JCS_ToggleButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-                Button that have two callback can toggle each other.
-            </Description>
-        </File>
-        
-        <File name="JCS_WebcamButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>Base of the webcam related feature handle.</Description>
-        </File>
-        
-        <File name="LeaveSettingButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>deprecated</Description>
-        </File>
-        
-        <File name="QuitApplicationButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>deprecated</Description>
-        </File>
-        
-        <File name="ToOfficalButtons.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-                Button lead to official webpages. You could use this 
-                to load other web pages too.
-            </Description>
-        </File>
-        
-        <File name="ToSettingButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>deprecated</Description>
-        </File>
-    </JCS_Buttons>
-    <Panel>
-        <File name="JCS_SequenceSlidePanel.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>
-                Handle a bunch of uGUI component and active the effect of the 
-                other JCSUnity effect/event component.
-            </Description>
-        </File>
-        <File name="JCS_TimePanel.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>
-                In certain time will do certain panel action.
-            </Description>
-        </File>
-    </Panel>
-    <Sortable>
-        <File name="JCS_GUIComponentLayer.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>Sorting layer for all the gui component, include panel.</Description>
-        </File>
-        
-        <File name="JCS_PanelLayer.cs">
-            <Placement>Any rect-transform.</Placement>
-            <Description>Sorting layer for all the panel.</Description>
-        </File>
-    </Sortable>
-    <Text>
-        <File name="JCS_DamageText.cs">
-            <Placement>Any transform/node, with SpriteRenderer component.</Placement>
-            <Description>Damage text</Description>
-        </File>
-        
-        <File name="JCS_DamageTextPool.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-                Handle of mutliple of damage text. Re-use for saving 
-                some performance.
-            </Description>
-        </File>
-        
-        <File name="JCS_MixDamageTextPool.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Combination of multiple damage text pool.</Description>
-        </File>
-    </Text>
-    
-    <Timer>
-        <File name="JCS_SpriteTimer.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Timer system using sprite 0 to 9.</Description>
-        </File>
-    </Timer>
-    
-    <File name="JCS_3DLiquidBarText.cs">
-        <Placement>Any transfrom/node, with SpriteRenderer component.</Placement>
-        <Description>Any liquid bar like health bar, mana bar, etc.</Description>
-    </File>
-    
-    <File name="JCS_BlackScreen.cs">
-        <Placement>Already assign.</Placement>
-        <Description>
+
+            <File name="JCS_ApplyDamageTextToLiveObjectAction.cs">
+                <Placement>Any transform/node with jcs live object component.</Placement>
+                <Description>
+          Any object will do the damage to live object, this will do 
+          the trick.
+                </Description>
+            </File>
+
+            <File name="JCS_DetectAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          Script will return two bool, 
+          1) DetectOneTransform() - detect one transform in the list
+          2) DetectAllTransform() - detect all transfom in the list.
+                </Description>
+            </File>
+
+            <File name="JCS_DetectArea.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          This detect area action uses 'collider' to detect the 
+          live object.
+                </Description>
+            </File>
+
+            <File name="JCS_DetectAreaAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          This actual algorithm are made by here.
+          NOTE: Anytjing with can detect area must be living object.
+                </Description>
+            </File>
+
+            <File name="JCS_DetectAreaObject.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Tag of the could be detected object.</Description>
+            </File>
+
+            <File name="JCS_HitDamageAction.cs">
+                <Placement/>
+                <Description>
+          Simulate the action when object damage the player by hitting 
+          with his body.
+                </Description>
+            </File>
+
+            <File name="JCS_InvincibleTimeAction.cs">
+                <Placement>With the live object.</Placement>
+                <Description>
+          Use this component with the live object will, make you live 
+          object invincible with timer action.
+                </Description>
+            </File>
+
+            <File name="JCS_PositionCastAction.cs">
+                <Placement>Any tranform/node.</Placement>
+                <Description>
+          Cast the current transform to certain space.
+                </Description>
+            </File>
+
+            <File name="JCS_PushThrowAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          Do the porject tile movement.
+                </Description>
+            </File>
+
+            <File name="JCS_SimpleTrackAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          Very Simple track action by only pasing through the position.
+                </Description>
+            </File>
+
+            <File name="JCS_SoundPoolAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          Game object itself is the sound player otherwise use 
+          the sound pool.
+                </Description>
+            </File>
+
+            <File name="JCS_SoundProxyAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>This will help to spawn a sound and play it.</Description>
+            </File>
+
+            <File name="JCS_SpriteRendererAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          This will auto find the facing with correct direction. In 
+          addition, you can use it inversly. (using SpriteRenderer)
+                </Description>
+            </File>
+
+            <File name="JCS_SpriteScaleAction.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          This will auto find the facing with correct direction. In 
+          addition, you can use it inversly. (using Transform scaling.)
+                </Description>
+            </File>
+
+            <File name="JCS_SwingAttackAction.cs">
+                <Placement>Live object.</Placement>
+                <Description>
+          Any time you need to do swing attack action. Get the component and 
+          make the function call.
+                </Description>
+            </File>
+
+            <File name="JCS_ThrowAction.cs">
+                <Placement>Projectile.</Placement>
+                <Description>
+          This will measure the distance between this and target, then 
+          send the projectile to the target.
+                </Description>
+            </File>
+        </Actions>
+        <Animation>
+            <2D>
+                <File name="JCS_2DAnimation.cs">
+                    <Placement>Work with JCS_2DAnimator.</Placement>
+                    <Description>Handle frame by frame animation in the simple way.</Description>
+                </File>
+
+                <File name="JCS_2DAnimator.cs">
+                    <Placement>
+		  Single Loop animation or work with multiple 
+		  "JCS_2DAnimation" scripts.
+                    </Placement>
+                    <Description>Hold sequence of animation and play it by condition.</Description>
+                </File>
+                
+                <File name="JCS_2DAnimDisplayHolder.cs">
+                    <Placement>
+                    Work with 'JCS_2DAnimator' the most.
+                    </Placement>
+                    <Description>Hold an animation state for few seconds.</Description>
+                </File>
+
+                <File name="JCS_2DAnimSequencePlayer.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Play a sequence of animation by time.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DAnimMirror.cs">
+                    <Placement>Any node/transform.</Placement>
+                    <Description>Completely mimic a JCS_2DAnimation's frame.</Description>
+                </File>
+
+                <File name="JCS_2DCharacterAnimator.cs">
+                    <Placement>Use with player.</Placement>
+                    <Description>
+          2D Character Animator, a simple base to base component.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DLiveObjectAnimator.cs">
+                    <Placement>Live object animator, use with live object.</Placement>
+                    <Description>Call the function within the live object.</Description>
+                </File>
+
+                <File name="JCS_2DOrderAnimPlayer.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Play animator's animations in order base on if 
+          the animation are done playing it.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DRandAnimByAnimDone.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Play a random animation if the current animation 
+          is done playing it.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DRandAnimByTimeController.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Randomly play animation in animator object depends 
+          on time object which is the 'JCS_AdjustTimeTrigger' 
+          component.
+                    </Description>
+                </File>
+
+                <File name="JCS_I2DAnimator.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>2D Animator interface object.</Description>
+                </File>
+            </2D>
+            <3D>
+                <File name="JCS_3DAnimator.cs">
+                    <Placement>N/A</Placement>
+                    <Description>N/A</Description>
+                </File>
+
+                <File name="JCS_3DBlendTreeAnimator.cs">
+                    <Placement>N/A</Placement>
+                    <Description>N/A</Description>
+                </File>
+            </3D>
+        </Animation>
+        <Effects>
+            <2D>
+                <File name="JCS_2DConstWaveEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Add this to any transform you wish to take this kind 
+          of effect.
+                    </Description>
+                </File> 
+
+                <File name="JCS_2DDestroyAnimEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          When gameobject destroy, this will be activate and 
+          play an animation.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DPushLiveObject.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          When collider touches will push the live object 
+          by force.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DShakeEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Call the function and it will make the shake effect.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DWaveEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Attach the componenet and call the function and it should 
+          do the trick.
+                    </Description>
+                </File>
+            </2D>
+            <3D>
+                <File name="JCS_3DDestroyAnimEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          When gameobject destroy, this will be activate and 
+          play an animation.
+                    </Description>
+                </File>
+
+                <File name="JCS_3DMouseMovement.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          This make the mouse toward to some point it will move 
+          base on the direction.
+                    </Description>
+                </File>
+            </3D>
+            <Destroy>
+                <File name="JCS_DestinationDestroy.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            While hit the destination destroy it. 
+                    </Description>
+                </File>
+
+                <File name="JCS_DestroyParticleEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            When the gameobject get destroy, spawn the gameobject and 
+            to the particle in seconds. 
+                    </Description>
+                </File>
+
+                <File name="JCS_DestroySoundEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            When the gameobject is destroy iw will 
+            play the sound.
+                    </Description>
+                </File>
+
+                <File name="JCS_DestroySpawnEffect.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+			Spawn object after destroyed.
+                    </Description>
+                </File>
+            </Destroy>
+            <Item>
+                <File name="JCS_Item.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Inheritance in order to make the other JCSUnity item related 
+            object to work with.
+            1) Setup the pick delegate function pointer.
+            2) Call the pick function when you need this object 
+            to get pick up.
+                    </Description>
+                </File>
+
+                <File name="JCS_ItemDroppable.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            This make your object can drop the item with some effect.
+                    </Description>
+                </File>
+
+                <File name="JCS_ItemIgnore.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Attach this to any object and the object will stop block the 
+            item object drop track.
+                    </Description>
+                </File>
+
+                <File name="JCS_ItemRotation.cs">
+                    <Placement>Use with item component.</Placement>
+                    <Description>
+            This make the item rotate while dropping.
+                    </Description>
+                </File>
+
+                <File name="JCS_ItemWall.cs">
+                    <Placement>Use with item component.</Placement>
+                    <Description>
+            Use to block the item going through by x-axis direction.
+                    </Description>
+                </File>
+
+                <File name="JCS_OneJump.cs">
+                    <Placement>Use with item component.</Placement>
+                    <Description>
+            This make the item jump and other small effect features.
+                    </Description>
+                </File>
+            </Item>
+            <Particle>
+                <Type>
+                    <File name="JCS_Bubble.cs">
+                        <Placement>On the particle object.</Placement>
+                        <Description>This make the bubble movement.</Description>
+                    </File>
+
+                    <File name="JCS_Lightning.cs">
+                        <Placement>On the particle object.</Placement>
+                        <Description>This make the lightning movement.</Description>
+                    </File>
+
+                    <File name="JCS_RainDrop.cs">
+                        <Placement>On the particle object.</Placement>
+                        <Description>This make the rain movement.</Description>
+                    </File>
+
+                    <File name="JCS_TowardTarget.cs">
+                        <Placement>On the particle object.</Placement>
+                        <Description>This make the tweener movement.</Description>
+                    </File>
+                </Type>
+                <Weather>
+                    <File name="JCS_EnvironmentSoundPlayer.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+              This playes the environment sound.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_StaticLightning.cs">
+                        <Placement>Static lightning</Placement>
+                        <Description/>
+                    </File>
+
+                    <File name="JCS_WeatherParticles.cs">
+                        <Placement>Base type of the particle.</Placement>
+                        <Description>
+              Interface for weather engine to get the paritcle 
+              he is using.
+                        </Description>
+                    </File>
+                </Weather>
+
+                <File name="JCS_Particle.cs">
+                    <Placement>Base type of the particle.</Placement>
+                    <Description>
+            Interface for paritcle system to get the paritcle 
+            he is using.
+                    </Description>
+                </File>
+
+                <File name="JCS_ParticleSystem.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            Particle system that spawnes paritcles and manage into a pool.
+            Do the weather type of action.
+                    </Description>
+                </File>
+            </Particle>
+            <Pool>
+                <File name="JCS_2DAnimPool.cs">
+                    <Placement>Use for scripting.</Placement>
+                    <Description>
+            List of all the animation, and call the function to play 
+            the animation base on the pool list.
+                    </Description>
+                </File>
+
+                <File name="JCS_AnimPool.cs">
+                    <Placement>Use for scripting.</Placement>
+                    <Description>
+            List of all the animation, and call the function to play 
+            the animation base on the pool list.
+                    </Description>
+                </File>
+
+                <File name="JCS_SoundPool.cs">
+                    <Placement>Use for scripting.</Placement>
+                    <Description>
+            List of all the animation, and call the function to play 
+            the animation base on the pool list.
+                    </Description>
+                </File>
+
+                <File name="JCS_TransformPool.cs">
+                    <Placement>Use for scripting.</Placement>
+                    <Description>
+            Pool of transform.
+                    </Description>
+                </File>
+            </Pool>
+            <Tweener>
+                <File name="JCS_ColorTweener.cs">
+                    <Placement>Tweener component.</Placement>
+                    <Description>Tweener with changing color.</Description>
+                </File>
+
+                <File name="JCS_EaseMath.cs">
+                    <Placement>N/A</Placement>
+                    <Description>N/A</Description>
+                </File>
+
+                <File name="JCS_TransfromTweener.cs">
+                    <Placement>Tweener component.</Placement>
+                    <Description>
+            If you need tweener effect just call the tween function it 
+            will tween the target position.
+                    </Description>
+                </File>
+            </Tweener>
+
+            <File name="JCS_2DEffect.cs">
+                <Placement>Script Base.</Placement>
+                <Description>
+		  2D effect base class.
+                </Description>
+            </File>
+
+            <File name="JCS_AlphaObject.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  This will approach to specific alpha value 
+		  every frame.
+                </Description>
+            </File>
+
+            <File name="JCS_ButtonSoundEffect.cs">
+                <Placement>GUI component, button.</Placement>
+                <Description>
+		  Customize your own button sound base on different 
+		  circumstance.
+
+		  Please use this class with Unity's "Event Trigger (Script)"!!!
+                </Description>
+            </File>
+
+            <File name="JCS_DragDropObject.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  Object that can be drag and drop.
+                </Description>
+            </File>
+
+            <File name="JCS_FadeObject.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  Fade alpha the object in particular value.
+                </Description>
+            </File>
+
+            <File name="JCS_FadeSound.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  Class do the sound fade in/out effect.
+                </Description>
+            </File>
+
+            <File name="JCS_OneShotObject.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  Do one shot on object.
+                </Description>
+            </File>
+
+            <File name="JCS_Rotation.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  Do the rotate action depends on axis.
+                </Description>
+            </File>
+
+            <File name="JCS_ScaleEffect.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  Scale approach to a specific scale value.
+                </Description>
+            </File>
+
+            <File name="JCS_SlideEffect.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+		  Make object to make the smooth slide effect.
+		  - Could be compose with JCS_TransfromTweener class.
+                </Description>
+            </File>
+        </Effects>
+        <Enums>
+            <2D>
+                <File name="JCS_2D4Direction.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>
+          2 axis direction.
+          1) top
+          2) bottom
+          3) right
+          4) left
+                    </Description>
+                </File>
+
+                <File name="JCS_2D8Direction.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>
+          0 | 1 | 2
+          -----------
+          7 | 8 | 3
+          -----------
+          6 | 5 | 4
+
+          1) top
+          2) bottom
+          3) right
+          4) left
+          5) top left
+          6) top right
+          7) bottom right
+          8) bottom left
+          9) center
+                    </Description>
+                </File>
+
+                <File name="JCS_2DAnimActionType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>
+          Animation type for any animation general you want 
+          to play.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DCharacterMode.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>This store the stores the caharacter state.</Description>
+                </File>
+
+                <File name="JCS_2DDimensions.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>
+          2 axis direction with only the side.
+          1) vertical
+          2) horizontal
+                    </Description>
+                </File>
+
+                <File name="JCS_2DFaceType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>
+          Standard Sprite should always face left
+          1) so left is +1
+          2) and right is -1
+                    </Description>
+                </File>
+
+                <File name="JCS_2DPlatformType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description/>
+                </File>
+
+                <File name="JCS_2DPortalType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>
+          Portal type, 
+          1) Scene portal - switch the scene.
+          2) Transfer portal - transfer to the position.
+                    </Description>
+                </File>
+            </2D>
+            <3D>
+                <File name="JCS_3DPortalType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>3d portal listed here.</Description>
+                </File>
+
+                <File name="JCS_3DRotateDirectionType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>direction that rotate.</Description>
+                </File>
+
+                <File name="JCS_Vector3Direction.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>Vector 3d type in enum use in Unity Engine.</Description>
+                </File>
+            </3D>
+            <GUI>
+
+                <Panel>
+                    <File name="JCS_PanelActionType.cs">
+                        <Placement>Script base.</Placement>
+                        <Description>Panel action type list here...</Description>
+                    </File>
+                </Panel>
+
+            </GUI>
+            <Time>
+
+                <File name="JCS_SeasonType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>List of all the season.</Description>
+                </File>
+
+                <File name="JCS_TimeRange.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>List of all the time range.</Description>
+                </File>
+
+                <File name="JCS_WeatherType.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>List of all the weather type.</Description>
+                </File>
+            </Time>
+
+            <File name="JCS_Align.cs">
+                <Placement>Script base.</Placement>
+                <Description>Align type. Top/Bottom/Right/Left.</Description>
+            </File>
+
+            <File name="JCS_Axis.cs">
+                <Placement>Script base.</Placement>
+                <Description>x, y, z</Description>
+            </File>
+
+            <File name="JCS_CameraType.cs">
+                <Placement>Script base.</Placement>
+                <Description>
+          Camera type are single or multiple tracking.
+                </Description>
+            </File>
+
+            <File name="JCS_ClimbMoveType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Action type of all the climbing movement.</Description>
+            </File>
+
+            <File name="JCS_CursorCustomizeType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Cursor action type.</Description>
+            </File>
+
+            <File name="JCS_DialogueType.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of all the dialogue type.</Description>
+            </File>
+
+            <File name="JCS_DragDropType.cs">
+                <Placement>Script base.</Placement>
+                <Description>
+          Type of all the drag drop object type. In order 
+          to check if the object 2d/2.5d/3d.
+                </Description>
+            </File>
+
+            <File name="JCS_FadeType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Include fade in/out.</Description>
+            </File>
+
+            <File name="JCS_GameType.cs">
+                <Placement>Script base.</Placement>
+                <Description>
+          Game dimension type.
+          1) 2d game
+          2) game 2.5d
+          3) game 3d
+          4) game ar
+          5) game vr
+                </Description>
+            </File>
+
+            <File name="JCS_GUIType.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of all the gui movement type.</Description>
+            </File>
+
+            <File name="JCS_IncDec.cs">
+                <Placement>Script base.</Placement>
+                <Description>Increament and Decreament.</Description>
+            </File>
+
+            <File name="JCS_InputType.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of the mouse input button.</Description>
+            </File>
+
+            <File name="JCS_JumpType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Jump count, jump, double jump, etc.</Description>
+            </File>
+
+            <File name="JCS_KeyActionType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Type of the key action.</Description>
+            </File>
+
+            <File name="JCS_PageLook.cs">
+                <Placement>Script base.</Placement>
+                <Description>Type of the current dialogue page.</Description>
+            </File>
+
+            <File name="JCS_PanelType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Type of the panel, that could be reset or type.</Description>
+            </File>
+
+            <File name="JCS_PlatformType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Platform/Device type.</Description>
+            </File>
+
+            <File name="JCS_PlayerState.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of the status.</Description>
+            </File>
+
+            <File name="JCS_PortalLabel.cs">
+                <Placement>Script base.</Placement>
+                <Description>Label for each portal.</Description>
+            </File>
+
+            <File name="JCS_SingletonObject.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of all the singleton object type.</Description>
+            </File>
+
+            <File name="JCS_SoundSettingType.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of all the sound type.</Description>
+            </File>
+
+            <File name="JCS_SoundType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Sound space type either 3d or 2d.</Description>
+            </File>
+
+            <File name="JCS_SpeedLayer.cs">
+                <Placement>Script base.</Placement>
+                <Description>How fast the speed are, just in general.</Description>
+            </File>
+
+            <File name="JCS_SwitchScreenType.cs">
+                <Placement>Script base.</Placement>
+                <Description>How the scene swith between scene and scene.</Description>
+            </File>
+
+            <File name="JCS_TweenType.cs">
+                <Placement>Script base.</Placement>
+                <Description>Enumrator for tweener.</Description>
+            </File>
+
+            <File name="JCS_UnityGUIType.cs">
+                <Placement>Script base.</Placement>
+                <Description>
+          Type of the gui, developer are using.
+          1) uGUI
+          2) nGUI
+                </Description>
+            </File>
+
+            <File name="JCS_UnityObjectType.cs">
+                <Placement>Script base.</Placement>
+                <Description>
+          Type of the unity engine base object type.
+          1) GameObject - Normal 3D model.
+          2) Sprite Render - sprite renderer.
+          3) GUI - either nGUI and uGUI.
+          4) Text - uGUI type of the component.
+                </Description>
+            </File>
+        </Enums>
+        <Events>
+            <Destroy>
+                <Anim>
+                    <File name="JCS_2DDestroyAnimEndEvent.cs">
+                        <Placement/>
+                        <Description>
+              Play Animator and destroy after it played animation 
+              depends on loop times.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_DestroyAnimBackForthEvent.cs">
+                        <Placement/>
+                        <Description>
+              After playing animation back and forth once, 
+              then destroy...
+                        </Description>
+                    </File>
+
+                    <File name="JCS_DestroyAnimEndEvent.cs">
+                        <Placement/>
+                        <Description>
+              Play Animator and destroy after it played animation 
+              depends on loop times.
+                        </Description>
+                    </File>
+                </Anim>
+
+                <File name="JCS_DestroyObjectWithScreen.cs">
+                    <Placement/>
+                    <Description>
+            Destroy the game object when the object is 
+            no more render on the screen.
+                    </Description>
+                </File>
+
+                <File name="JCS_DestroyObjectWithTime.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Destroy the object with the time and timer.</Description>
+                </File>
+
+                <File name="JCS_DestroyParticleEndEvent.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Destroy if the particle system ends.</Description>
+                </File>
+
+                <File name="JCS_DestroySoundEndEvent.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Play the sound and destroy the game object itself.</Description>
+                </File>
+            </Destroy>
+            <Hit>
+                <File name="JCS_HitCountEvent.cs">
+                    <Placement>Use with hist list event</Placement>
+                    <Description>Count the hit base on the hit list.</Description>
+                </File>
+
+                <File name="JCS_HitListEvents.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Check if the object hit something on the list.</Description>
+                </File>
+            </Hit>
+            <Sound>
+                <File name="JCS_TriggerSwitchBGMEvent.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Trigger switch the background music.</Description>
+                </File>
+            </Sound>
+            <System>
+                <File name="JCS_QuitApplicationOnLoadEvent.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>Quit the application by activating.</Description>
+                </File>
+            </System>
+
+            <File name="JCS_CounterEvent.cs">
+                <Placement>N/A</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_DisableWithAnimEndEvent.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          Play Animator and disable after it played animation 
+          depends on loop times.
+                </Description>
+            </File>
+
+            <File name="JCS_DisableWithCertainRangeEvent.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
+          Disable the the current game object with in the 
+          certain range.
+                </Description>
+            </File>
+
+            <File name="JCS_DiableWithTimeEvent.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Diable the object after the time.</Description>
+            </File>
+
+            <File name="JCS_ObjectList.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Object list that return random object.</Description>
+            </File>
+
+            <File name="JCS_OnDestroyPlaySoundEffect.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>When object is destroy, play the sound.</Description>
+            </File>
+
+            <File name="JCS_SplitSpawnEvent.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Spawn multiple object in a row.</Description>
+            </File>
+
+            <File name="JCS_WaitDestroySoundEffectEvent.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Wait for the sound play then destroyed.</Description>
+            </File>
+        </Events>
+        <Examples>
+            <File name="ScriptTester.cs">
+                <Placement>Already assign.</Placement>
+                <Description>This is for you to test the dialogue script.</Description>
+            </File>
+        </Examples>
+        <GameObject>
+            <2D>
+                <2DAI>
+                    <File name="JCS_CircleEnemy.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>Enemy that walk in the circle track.</Description>
+                    </File>
+                </2DAI>
+                <2DAudioController>
+                    <File name="JCS_2DSideScrollerPlayerAudioController.cs">
+                        <Placement>Script work with jcs_2dsidescrollerplayer.cs</Placement>
+                        <Description>
+          Audio control for specific type of player, which is 
+          jcs_2dsidescrollerplayer. Also provide from JCSUnity.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DTopDownPlayerAudioController.cs">
+                        <Placement>Script work with JCS_2DTopDownPlayer.cs</Placement>
+                        <Description>
+          Audio control for specific type of player, which is 
+          JCS_2DTopDownPlayer. Also provide from JCSUnity.
+                        </Description>
+                    </File>
+                </2DAudioController>
+                <2DCamera>
+                    <File name="JCS_2DCamera.cs">
+                        <Placement>
+          Transform/Node with main camera component with it.
+                        </Placement>
+                        <Description>
+          Basic camera for 2d games, especially 
+          for sidescroller.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DMultiTrackCamera.cs">
+                        <Placement>
+          Transform/Node with main camera component with it.
+                        </Placement>
+                        <Description>
+          More advance camera, purpose of follow multiple 
+          player in the scene. Like, Smash Bros.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DSlideScreenCamera.cs">
+                        <Placement>
+          Transform/Node with main camera component with it.
+                        </Placement>
+                        <Description>
+          Camera for GUI!! not in the game scene.
+
+          NOTE: use for switching scene panel.
+                        </Description>
+                    </File>
+                </2DCamera>
+                <2DClimableObject>
+                    <File name="JCS_2DClimableObject.cs">
+                        <Placement>Script only.</Placement>
+                        <Description>
+          Base class for all the 2d climable object.
+
+          e.g. 2DRope, 2DLadder, etc.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DLadder.cs">
+                        <Placement>Any transform/node with collider.</Placement>
+                        <Description>
+          Make your gameobject go up and down base on specific 
+          key type.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DRope.cs">
+                        <Placement>Any transform/node with collider.</Placement>
+                        <Description>
+          Make your gameobject go up and down base on specific 
+          key type.
+                        </Description>
+                    </File>
+                </2DClimableObject>
+                <2DGameObjects>            
+                    <File name="JCS_2DBullet.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+          Base class of the bullet. (Normal not lazer type.)
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DTrackBullet.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+          Bullet that will follow the target. Inheritance from 
+          JCS_2DBullet class.
+                        </Description>
+                    </File>
+                </2DGameObjects>
+                <2DPlatform>
+                    <File name="JCS_2DMovePlatform.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+          A moving platform in the game. Like usual mega man 
+          game will have.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_2DPositionPlatform.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description/>
+                    </File>
+
+                    <File name="JCS_2DScrollPlatform.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>
+          Platform that will scroll so either the object effecting 
+          will accelerate or deaccelerate the speed down.
+                        </Description>
+                    </File>
+                </2DPlatform>
+                <2DPlayer>
+                    <File name="JCS_2DSideScrollerPlayer.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>One of the player type provide by JCSUnity.</Description>
+                    </File>
+
+                    <File name="JCS_2DTopDownPlayer.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>One of the player type provide by JCSUnity.</Description>
+                    </File>
+                </2DPlayer>
+                <2DPlayerEffect>
+                    <File name="JCS_2DPushEffect.cs">
+                        <Placement>Any transform/node.</Placement>
+                        <Description>Push the player a bit of force.</Description>
+                    </File>
+                </2DPlayerEffect>
+
+                <File name="JCS_2DDynamicScene.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>This should attach to all the root layer.</Description>
+                </File>
+
+                <File name="JCS_2DLiveObject.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Make your object became a live object variables.</Description>
+                </File>
+
+                <File name="JCS_2DMoveTile.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          Tile will move base on the axis and turn back out in 
+          the original place. Usually for unless background.
+                    </Description>
+                </File>
+
+                <File name="JCS_2DPlatform.cs">
+                    <Placement>Any transform/node the </Placement>
+                    <Description/>
+                </File>
+
+                <File name="JCS_2DPlayerAudioController.cs">
+                    <Placement>Object with the player.</Placement>
+                    <Description>Audio player for specific player type.</Description>
+                </File>
+
+                <File name="JCS_2DPlayerEffect.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>Interface of the player effect.</Description>
+                </File>
+
+                <File name="JCS_2DPortal.cs">
+                    <Placement>Any transform/node with collider.</Placement>
+                    <Description>
+          Either transfer the game object itself or switch 
+          the scene.
+                    </Description>
+                </File>
+
+                <File name="JCS_OrderLayer.cs">
+                    <Placement>
+          Any transform/node you want this to be as the root node 
+          of all the scene object.
+                    </Placement>
+                    <Description>Scene layer.</Description>
+                </File>
+
+                <File name="JCS_OrderLayerObject.cs">
+                    <Placement/>
+                    <Description>Object in the in the scene layer.</Description>
+                </File>
+
+                <File name="JCS_Sprite2D.cs">
+                    <Placement>N/A</Placement>
+                    <Description>N/A</Description>
+                </File>
+            </2D>
+            <2DEngine>
+                <File name="JCS_CharacterController2D.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+          2D character controller using collider2d and rigidbody2d. 
+          Have the basic function of the charater controller.
+                    </Description>
+                </File>
+            </2DEngine>
+            <3D>
+                <3DAction>
+                    <empty/>
+                </3DAction>
+                <3DAI>
+                    <empty/>
+                </3DAI>
+
+                <File name="JCS_3DCamera.cs">
+                    <Placement>
+          Transform/node with main camera component 
+          build-in from Unity Engine.
+                    </Placement>
+                    <Description>Basic camera in 3d game.</Description>
+                </File>
+
+                <File name="JCS_3DDragDropObject.cs">
+                    <Placement/>
+                    <Description>
+          Use mouse control the 3d object to drag and drop 
+          the object.
+                    </Description>
+                </File>
+
+                <File name="JCS_3DLiquidBar.cs">
+                    <Placement>Liquid bar in the game.</Placement>
+                    <Description>
+          if finding for 2D Liquid bar to do the health bar effect,
+          plz use the "JCS_GUILiquidBar" instead.
+                    </Description>
+                </File>
+
+                <File name="JCS_3DPlayer.cs">
+                    <Placement>Base of the player object.</Placement>
+                    <Description/>
+                </File>
+
+                <File name="JCS_3DPortal.cs">
+                    <Placement>Any transform/node with collider.</Placement>
+                    <Description/>
+                </File>
+            </3D>
+
+            <File name="JCS_AttackerRecorder.cs">
+                <Placement>Work with live object.</Placement>
+                <Description>Record the attacker.</Description>
+            </File>
+
+            <File name="JCS_CashObject.cs">
+                <Placement>Object will be cash in game.</Placement>
+                <Description>In game cash.</Description>
+            </File>
+        </GameObject>
+        <GUI>
+            <Cursor>
+                <File name="JCS_2DCursor.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>2D animate cursor.</Description>
+                </File>
+
+                <File name="JCS_3DCursor.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+            This changes the cursor's animation in 3d space.
+                    </Description>
+                </File>
+            </Cursor>
+            <Dialogue>
+                <File name="JCS_DialogueSystem.cs">
+                    <Placement/>
+                    <Description>
+            Core of the dialogue system. Use with the JCS_Script 
+            component related.
+                    </Description>
+                </File>
+
+                <File name="JCS_TalkObject.cs">
+                    <Placement/>
+                    <Description>
+            Simulate the object you can talk to. Like NPC.
+                    </Description>
+                </File>
+            </Dialogue>
+            <GameWindow>
+                <File name="JCS_BaseDialogueObject.cs">
+                    <Placement/>
+                    <Description/>
+                </File>
+
+                <File name="JCS_CheckableDialogue.cs">
+                    <Placement/>
+                    <Description>
+            Common Dialogue Object!
+
+            Include function, 
+            Show Dialogue, 
+            Hide Dialoguem, 
+            Move To the front of the screen, 
+            Set the Parent by mode, 
+                    </Description>
+                </File>
+
+                <File name="JCS_CheckableObject.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>
+            When cursor or some trigger active, will show the 
+            object information on it. This is what this dialogue 
+            do. Usually check on the item and pop out the 
+            description content.
+                    </Description>
+                </File>
+
+                <File name="JCS_DialogueObject.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>
+            Base class of base GameWindow class. Use for all the 
+            dialogue object/component.
+                    </Description>
+                </File>
+
+                <File name="JCS_GameWindow.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>
+            Game Window base on the Dialogue object.
+
+            Specialize class for panel/dialogue object. This 
+            class provide more than just the normal panel/
+            dialogue interface.
+                    </Description>
+                </File>
+
+                <File name="JCS_GameWindowHandler.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>
+            Object to create the instance of Game Window.
+                    </Description>
+                </File>
+
+                <File name="JCS_IgnoreDialogueObject.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>
+            Scene will ignore this panel and not brough into 
+            next scene.
+                    </Description>
+                </File>
+            </GameWindow>
+            <In Game Log System>
+                <File name="JCS_IGLogSystem.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>In Game Log System (IGL).</Description>
+                </File>
+
+                <File name="JCS_LogText.cs">
+                    <Placement>With uGUI text component.</Placement>
+                    <Description>Log text for JCS_IGLogSystem to handle.</Description>
+                </File>
+            </In Game Log System>
+            <JCS_Buttons>
+                <Dialogue>
+                    <File name="JCS_HideDialogueButton.cs">
+                        <Placement>Already assign.</Placement>
+                        <Description>
+                Click the button to hide multiple dialogue.
+                        </Description>
+                    </File>
+
+                    <File name="JCS_ShowDialogueButton.cs">
+                        <Placement>Already assign.</Placement>
+                        <Description>
+                Click the button to show multiple dialogyue.
+                        </Description>
+                    </File>
+                </Dialogue>
+
+                <File name="JCS_EmptyButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Default/place holder button for all purpose usage.
+                    </Description>
+                </File>
+
+                <File name="JCS_ExitAppButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Button that exit the app.
+                    </Description>
+                </File>
+
+                <File name="JCS_LoadSceneButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Button that will load up the scene base on the name.
+                    </Description>
+                </File>
+
+                <File name="JCS_RewardAdsButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Reward type of Ads button.
+                    </Description>
+                </File>
+
+                <File name="JCS_RollSelectorButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Button that will be manage by the JCS_RollBtnSelector and 
+              will do the roll button effect.
+                    </Description>
+                </File>
+
+                <File name="JCS_SlideScreenButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>Button will roll the scene.</Description>
+                </File>
+
+                <File name="JCS_ToggleButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Button that have two callback can toggle each other.
+                    </Description>
+                </File>
+
+                <File name="JCS_WebcamButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>Base of the webcam related feature handle.</Description>
+                </File>
+
+                <File name="LeaveSettingButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>deprecated</Description>
+                </File>
+
+                <File name="QuitApplicationButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>deprecated</Description>
+                </File>
+
+                <File name="ToOfficalButtons.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Button lead to official webpages. You could use this 
+              to load other web pages too.
+                    </Description>
+                </File>
+
+                <File name="ToSettingButton.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>deprecated</Description>
+                </File>
+            </JCS_Buttons>
+            <Panel>
+                <File name="JCS_SequenceSlidePanel.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>
+              Handle a bunch of uGUI component and active the effect of the 
+              other JCSUnity effect/event component.
+                    </Description>
+                </File>
+                <File name="JCS_TimePanel.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>
+              In certain time will do certain panel action.
+                    </Description>
+                </File>
+            </Panel>
+            <Sortable>
+                <File name="JCS_GUIComponentLayer.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>Sorting layer for all the gui component, include panel.</Description>
+                </File>
+
+                <File name="JCS_PanelLayer.cs">
+                    <Placement>Any rect-transform.</Placement>
+                    <Description>Sorting layer for all the panel.</Description>
+                </File>
+            </Sortable>
+            <Text>
+                <File name="JCS_DamageText.cs">
+                    <Placement>Any transform/node, with SpriteRenderer component.</Placement>
+                    <Description>Damage text</Description>
+                </File>
+
+                <File name="JCS_DamageTextPool.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>
+              Handle of mutliple of damage text. Re-use for saving 
+              some performance.
+                    </Description>
+                </File>
+
+                <File name="JCS_MixDamageTextPool.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Combination of multiple damage text pool.</Description>
+                </File>
+            </Text>
+
+            <Timer>
+                <File name="JCS_SpriteTimer.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Timer system using sprite 0 to 9.</Description>
+                </File>
+            </Timer>
+
+            <File name="JCS_3DLiquidBarText.cs">
+                <Placement>Any transfrom/node, with SpriteRenderer component.</Placement>
+                <Description>Any liquid bar like health bar, mana bar, etc.</Description>
+            </File>
+
+            <File name="JCS_BlackScreen.cs">
+                <Placement>Already assign.</Placement>
+                <Description>
             Black color of he screen, use for fading in/out the scene, 
             etc. If you do not like the color. Welcome to modefied 
             youself either from scripting or level designer.
-        </Description>
-    </File>
-    
-    <File name="JCS_BlackSlideScreen.cs">
-        <Placement>Already assign.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_BlackSlideScreen.cs">
+                <Placement>Already assign.</Placement>
+                <Description>
             Black color screen with basic sliding fade image i made. Also 
             for fading in/out the scene.
             If you do not like the color. Welcome to modefied 
             youself either from scripting or level designer.
-        </Description>
-    </File>
-    
-    <File name="JCS_Button.cs">
-        <Placement>Script base.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_Button.cs">
+                <Placement>Script base.</Placement>
+                <Description>
             Base class of all the button that interface with JCSUnity 
             core system.
-        </Description>
-    </File>
-    
-    <File name="JCS_ButtonFunctions.cs">
-        <Placement>Script base.</Placement>
-        <Description>Useful function listed here, for scripter.</Description>
-    </File>
-    
-    <File name="JCS_Canvas.cs">
-        <Placement>On the canvas.</Placement>
-        <Description>Core system for the gaming system work.</Description>
-    </File>
-    
-    <File name="JCS_Cursor.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>This changes the cursor's animation in 3d space.</Description>
-    </File>
-    
-    <File name="JCS_DeltaNumber.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Score system with the sprite 0 to 9.</Description>
-    </File>
-    
-    <File name="JCS_GUILiquidBar.cs">
-        <Placement>Any rect-transform.</Placement>
-        <Description>Any liquid bar like health bar, mana bar, etc.</Description>
-    </File>
-    
-    <File name="JCS_GUITextPool.cs">
-        <Placement>Script base.</Placement>
-        <Description>Text pool using Unity Engine's uGUI system.</Description>
-    </File>
-    
-    <File name="JCS_HueController.cs">
-        <Placement>With uGUI text component.</Placement>
-        <Description>Change the color by following neon hue pattern.</Description>
-    </File>
-    
-    <File name="JCS_LiquidBarText.cs">
-        <Placement>With uGUI text component.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_ButtonFunctions.cs">
+                <Placement>Script base.</Placement>
+                <Description>Useful function listed here, for scripter.</Description>
+            </File>
+
+            <File name="JCS_Canvas.cs">
+                <Placement>On the canvas.</Placement>
+                <Description>Core system for the gaming system work.</Description>
+            </File>
+
+            <File name="JCS_DeltaNumber.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Score system with the sprite 0 to 9.</Description>
+            </File>
+
+            <File name="JCS_GUILiquidBar.cs">
+                <Placement>Any rect-transform.</Placement>
+                <Description>Any liquid bar like health bar, mana bar, etc.</Description>
+            </File>
+
+            <File name="JCS_GUITextPool.cs">
+                <Placement>Script base.</Placement>
+                <Description>Text pool using Unity Engine's uGUI system.</Description>
+            </File>
+
+            <File name="JCS_HueController.cs">
+                <Placement>With uGUI text component.</Placement>
+                <Description>Change the color by following neon hue pattern.</Description>
+            </File>
+
+            <File name="JCS_LiquidBarText.cs">
+                <Placement>With uGUI text component.</Placement>
+                <Description>
             Make the text follow the value of the liquid bar. Either 3d 
             liquid bar or gui liquid bar will all do the same work.
-        </Description>
-    </File>
-    
-    <File name="JCS_PanelChild.cs">
-        <Placement>Already assign.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_PanelChild.cs">
+                <Placement>Already assign.</Placement>
+                <Description>
             This do the same thing as JCS_PanelRoot, but instead of all 
             the child have to check JCS_PanelRoot is vague. The solution 
             from this, we decide to have another component by name it 
@@ -1883,661 +1914,681 @@ Already assign: no need to touch or move.
             panel has the correct proportion and scaling. Notice this 
             class already been set by other same component, this will not 
             be active.
-        </Description>
-    </File>
-    
-    <File name="JCS_PanelRoot.cs">
-        <Placement>Any rect-transform.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_PanelRoot.cs">
+                <Placement>Any rect-transform.</Placement>
+                <Description>
             This will help resize the panel in to correct proportion 
             and scaling.
-        </Description>
-    </File>
-    
-    <File name="JCS_ResizeUI.cs">
-        <Placement>Root of the uGUI.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_ResizeUI.cs">
+                <Placement>Root of the uGUI.</Placement>
+                <Description>
             This responsoble handle all the gui into correct proportion 
             and right scaling.
-        </Description>
-    </File>
-    
-    <File name="JCS_RollBtnSelector.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_RollBtnSelector.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
             A bunch of buttons do roll effect.
-        </Description>
-    </File>
-    
-    <File name="JCS_RouteGuageSystem.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_RouteGuageSystem.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
             Minimap of all the racers.
-            
+
             SOURCE: https://www.youtube.com/watch?v=yqMIfTWoA8A
-        </Description>
-    </File>
-    
-    <File name="JCS_SettingObject.cs">
-        <Placement>Any interactable object from Unity Engine. (uGUI)</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_SettingObject.cs">
+                <Placement>Any interactable object from Unity Engine. (uGUI)</Placement>
+                <Description>
             This will setup all the GUI component from Unity Engine.
-        </Description>
-    </File>
-    
-    <File name="JCS_SlidePanel.cs">
-        <Placement>Any rect-transform.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_SlidePanel.cs">
+                <Placement>Any rect-transform.</Placement>
+                <Description>
             Panel will want to slide in the game. Important that the 
             rect-transform been assign by this will treat as part of 
             the scene.
-        </Description>
-    </File>
-    
-    <File name="JCS_SlideScreenPanelHolder.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_SlideScreenPanelHolder.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
             Holder in order to make the whole slide screen/scene move 
             with the camera.
-        </Description>
-    </File>
-    
-    <File name="JCS_TweenPanel.cs">
-        <Placement>Any rect-transfor.</Placement>
-        <Description>Panel that will do the tweening.</Description>
-    </File>
-    
-    <File name="JCS_WhiteScreen.cs">
-        <Placement>Already assign.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_TweenPanel.cs">
+                <Placement>Any rect-transfor.</Placement>
+                <Description>Panel that will do the tweening.</Description>
+            </File>
+
+            <File name="JCS_WhiteScreen.cs">
+                <Placement>Already assign.</Placement>
+                <Description>
             White color of he screen, use for lightning effect, etc.
-        </Description>
-    </File>
-</GUI>
-<Handler>
-    <File name="JCS_LiquidBarHandler.cs">
-        <Placement>Script base.</Placement>
-        <Description>Re-wrapper of liquid bar into friendly scripting interface.</Description>
-    </File>
-</Handler>
-<Info>
-    <File name="JCS_AttackerInfo.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>
+                </Description>
+            </File>
+        </GUI>
+        <Handler>
+            <File name="JCS_LiquidBarHandler.cs">
+                <Placement>Script base.</Placement>
+                <Description>Re-wrapper of liquid bar into friendly scripting interface.</Description>
+            </File>
+        </Handler>
+        <Info>
+            <File name="JCS_AttackerInfo.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>
             Object that need to know who is the ppl cast, use
             attack, spell the thing.
-        
+
             Ex: Star need to contain the attacker info.
-        </Description>
-    </File>
-    
-    <File name="JCS_CharacterControllerInfo.cs">
-        <Placement>With character controller.</Placement>
-        <Description>This will figure out the character information.</Description>
-    </File>
-    
-    <File name="JCS_LiquidBarInfo.cs">
-        <Placement>With liquid bar interface's subclass.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_CharacterControllerInfo.cs">
+                <Placement>With character controller.</Placement>
+                <Description>This will figure out the character information.</Description>
+            </File>
+
+            <File name="JCS_LiquidBarInfo.cs">
+                <Placement>With liquid bar interface's subclass.</Placement>
+                <Description>
             Info to plugin to liquid bar, to sync to information 
             between the value and the gui part.
-        </Description>
-    </File>
-    
-    <File name="JCS_VelocityInfo.cs">
-        <Placement>With the character controller.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_VelocityInfo.cs">
+                <Placement>With the character controller.</Placement>
+                <Description>
             Velocity Object must have "CharacterController"
             componenet involved.
-        </Description>
-    </File>
-</Info>
-<Input>
-    <File name="JCS_Input.cs">
-        <Placement>Script base.</Placement>
-        <Description>Re-wrapper of the Unity ENgine's input scripting layer.</Description>
-    </File>
-    
-    <File name="JCS_MobileMouseEvent.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Use this to receiving the single from mobile touch input/bufffer.</Description>
-    </File>
-    
-    <File name="JCS_SlideInput.cs">
-        <Placement>Any transform/node.</Placement>
-        <Description>Use this to receive the slide input from the device buffer.</Description>
-    </File>
-</Input>
-<Interfaces>
-    <File name="JCS_AIMovement.cs">
-        <Placement>Script base.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_Bullet.cs">
-        <Placement>Script base.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_DialogueScript.cs">
-        <Placement>Script base.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_DynamicScene.cs">
-        <Placement>Script base.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_Event.cs">
-        <Placement>Script base.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_LiquidBar.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base class of liquid bar.</Description>
-    </File>
-    
-    <File name="JCS_LiveObject.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base class of all the live object.</Description>
-    </File>
-    
-    <File name="JCS_Manager.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base class of all the manager class.</Description>
-    </File>
-    
-    <File name="JCS_Player.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base class of all the player.</Description>
-    </File>
-    
-    <File name="JCS_Settings.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base class of all the settings.</Description>
-    </File>
-    
-    <File name="JCS_Skill.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base of all the script base.</Description>
-    </File>
-    
-    <File name="JCS_SortingObject.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base class of all the sorting object.</Description>
-    </File>
-    
-    <File name="JJCS_XMLGameData.cs">
-        <Placement>Script base.</Placement>
-        <Description>Base of the xml game data.</Description>
-    </File>
-</Interfaces>
-<Lib>
-    <File name="JCS_Pair.cs">
-        <Placement>Script base.</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_Pool.cs">
-        <Placement>Script base.</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_Rect.cs">
-        <Placement>Script base.</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_Sort.cs">
-        <Placement>Script base.</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_Vector.cs">
-        <Placement>Script base.</Placement>
-        <Description>vector data structure</Description>
-    </File>
-</Lib>
-<Loader>
-    <File name="JCS_ImageLoader.cs">
-        <Placement>Script base.</Placement>
-        <Description>Image loader from resource.</Description>
-    </File>
-    
-    <File name="JCS_XML_Loader.cs">
-        <Placement>Script base.</Placement>
-        <Description>Load xml for save data.</Description>
-    </File>
-</Loader>
-<Managers>
-    <2D Game>
-        <File name="JCS_2DDynamicSceneManager.cs">
-            <Placement>Already assign.</Placement>
-            <Description></Description>
-        </File>
-        
-        <File name="JCS_2DGameManager.cs">
-            <Placement>Already assign.</Placement>
-            <Description></Description>
-        </File>
-        
-        <File name="JCS_2DLiveObjectManager.cs">
-            <Placement>Already assign.</Placement>
-            <Description></Description>
-        </File>
-    </2D Game>
-    <3D Game>
-        <empty></empty>
-    </3D Game>
-    <Indie>
-        <File name="JCS_PortalManager.cs">
-            <Placement>Already assign.</Placement>
-            <Description></Description>
-        </File>
-    </Indie>
-    
-    <File name="JCS_AdvertisementManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description>
-        Handle Advertisment provide by Unity Technologies company.
-     
-        NOTE(jenchieh): If using this manager, you need to do these 
-        two thing.
-     
+                </Description>
+            </File>
+        </Info>
+        <Input>
+            <File name="JCS_Input.cs">
+                <Placement>Script base.</Placement>
+                <Description>Re-wrapper of the Unity ENgine's input scripting layer.</Description>
+            </File>
+
+            <File name="JCS_MobileMouseEvent.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Use this to receiving the single from mobile touch input/bufffer.</Description>
+            </File>
+
+            <File name="JCS_SlideInput.cs">
+                <Placement>Any transform/node.</Placement>
+                <Description>Use this to receive the slide input from the device buffer.</Description>
+            </File>
+        </Input>
+        <Interfaces>
+            <File name="JCS_AIMovement.cs">
+                <Placement>Script base.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_Bullet.cs">
+                <Placement>Script base.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_DialogueScript.cs">
+                <Placement>Script base.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_DynamicScene.cs">
+                <Placement>Script base.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_Event.cs">
+                <Placement>Script base.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_LiquidBar.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base class of liquid bar.</Description>
+            </File>
+
+            <File name="JCS_LiveObject.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base class of all the live object.</Description>
+            </File>
+
+            <File name="JCS_Manager.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base class of all the manager class.</Description>
+            </File>
+
+            <File name="JCS_Player.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base class of all the player.</Description>
+            </File>
+
+            <File name="JCS_Settings.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base class of all the settings.</Description>
+            </File>
+
+            <File name="JCS_Skill.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base of all the script base.</Description>
+            </File>
+
+            <File name="JCS_SortingObject.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base class of all the sorting object.</Description>
+            </File>
+
+            <File name="JJCS_XMLGameData.cs">
+                <Placement>Script base.</Placement>
+                <Description>Base of the xml game data.</Description>
+            </File>
+        </Interfaces>
+        <Lib>
+            <File name="JCS_Pair.cs">
+                <Placement>Script base.</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_Pool.cs">
+                <Placement>Script base.</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_Rect.cs">
+                <Placement>Script base.</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_Sort.cs">
+                <Placement>Script base.</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_Vector.cs">
+                <Placement>Script base.</Placement>
+                <Description>vector data structure</Description>
+            </File>
+        </Lib>
+        <Loader>
+            <File name="JCS_ImageLoader.cs">
+                <Placement>Script base.</Placement>
+                <Description>Image loader from resource.</Description>
+            </File>
+
+            <File name="JCS_XML_Loader.cs">
+                <Placement>Script base.</Placement>
+                <Description>Load xml for save data.</Description>
+            </File>
+        </Loader>
+        <Managers>
+            <2D Game>
+                <File name="JCS_2DDynamicSceneManager.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description/>
+                </File>
+
+                <File name="JCS_2DGameManager.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description/>
+                </File>
+
+                <File name="JCS_2DLiveObjectManager.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description/>
+                </File>
+            </2D Game>
+            <3D Game>
+                <empty/>
+            </3D Game>
+            <Indie>
+                <File name="JCS_ClimbableManager.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>
+              Manage all Climbable object in the scene. 
+              (Under Idie manager)
+                    </Description>
+                </File>
+
+                <File name="JCS_IndieManager.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description>Game independent manager tag.</Description>
+                </File>
+
+                <File name="JCS_PortalManager.cs">
+                    <Placement>Already assign.</Placement>
+                    <Description/>
+                </File>
+            </Indie>
+
+            <File name="JCS_AdvertisementManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description>
+            Handle Advertisment provide by Unity Technologies company.
+
+            NOTE(jenchieh): If using this manager, you need to do these 
+            two thing.
+
             1) Work Online not offline on Unity.
             2) Enable window->service->Ads service provided by Unity 
-              Technologies.
-        </Description>
-    </File>
-    
-    <File name="JCS_ApplicationManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_CollisionManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_DynamicSceneManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_GameManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_InputManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_LiveObjectManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_NetworkManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_PatchManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_PlayerManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_SceneManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_SoundManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_TimeManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_UIManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-    <File name="JCS_UtilitiesManager.cs">
-        <Placement>Already assign.</Placement>
-        <Description></Description>
-    </File>
-    
-</Managers>
-<Network>
-    <net>
-        <File name="JCS_CodecFactory.cs">
-            <Placement>Scipt base</Placement>
-            <Description>Factory pattern for packet codec type.</Description>
-        </File>
-        
-        <File name="JCS_PacketDecoder.cs">
-            <Placement>Scipt base</Placement>
-            <Description>For packet dencryption.</Description>
-        </File>
-        
-        <File name="JCS_PacketEncoder.cs">
-            <Placement>Scipt base</Placement>
-            <Description>For packet encryption.</Description>
-        </File>
-    </net>
-    
-    <File name="JCS_GameSocket.cs">
-        <Placement>Scipt base</Placement>
-        <Description>Main socket class handle.</Description>
-    </File>
-    
-    <File name="JCS_NetworkConstant.cs">
-        <Placement>Scipt base</Placement>
-        <Description>Network contasnt store here.</Description>
-    </File>
-    
-    <File name="PacketDecoder.cs">
-        <Placement></Placement>
-        <Description>Packet dencoder interface.</Description>
-    </File>
-    
-    <File name="PacketEncoder.cs">
-        <Placement>Scipt base</Placement>
-        <Description>Packet encoder interface.</Description>
-    </File>
-</Network>
-<Scripts>
-    <event>
-        <File name="npc2100.cs">
-            <Placement>Script base</Placement>
-            <Description> Example of using the script for npc.</Description>
-        </File>
-    </event>
-    <npc>
-        <empty></empty>
-    </npc>
-    <portal>
-        <empty></empty>
-    </portal>
-    <quest>
-        <empty></empty>
-    </quest>
-    <reactor>
-        <empty></empty>
-    </reactor>
-</Scripts>
-<Settings>
-    <Indie>
-        <File name="JCS_PlatformSettings.cs">
-            <Placement>Game dependency.</Placement>
-            <Description>
-                Setting of all the platform type.
-            </Description>
-        </File>
-        
-        <File name="JCS_PortalSettings.cs">
-            <Placement>Game dependency.</Placement>
-            <Description>
-                Setting of all the portal type.
-            </Description>
-        </File>
-    </Indie>
-    
-    <File name="JCS_GameSettings.cs">
-        <Placement>Already assign.</Placement>
-        <Description>Setting of all the game setting.</Description>
-    </File>
-    
-    <File name="JCS_InputSettings.cs">
-        <Placement>Already assign.</Placement>
-        <Description>Setting of all the input setting.</Description>
-    </File>
-    
-    <File name="JCS_PackageDataSettings.cs">
-        <Placement>Already assign.</Placement>
-        <Description>Setting of all the package data setting.</Description>
-    </File>
-    
-    <File name="JCS_SceneSettings.cs">
-        <Placement>Already assign.</Placement>
-        <Description>Setting of all the scene setting.</Description>
-    </File>
-    
-    <File name="JCS_SoundSettings.cs">
-        <Placement>Already assign.</Placement>
-        <Description>Setting of all the sound setting.</Description>
-    </File>
-    
-    <File name="JCS_UISettings.cs">
-        <Placement>Already assign.</Placement>
-        <Description>Setting of all the ui setting.</Description>
-    </File>
-</Settings>
-<Shader>
-    <empty></empty>
-</Shader>
-<Sound>
-    <File name="JCS_BGMPlayer.cs">
-        <Placement>Any transform/node that plays the sound.</Placement>
-        <Description>
+            Technologies.
+                </Description>
+            </File>
+
+            <File name="JCS_ApplicationManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_CollisionManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_DynamicSceneManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_GameManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_InputManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_LiveObjectManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_NetworkManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_PatchManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_PlayerManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_SceneManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_SoundManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_TimeManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_UIManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+            <File name="JCS_UtilitiesManager.cs">
+                <Placement>Already assign.</Placement>
+                <Description/>
+            </File>
+
+        </Managers>
+        <Network>
+            <net>
+                <File name="JCS_CodecFactory.cs">
+                    <Placement>Scipt base</Placement>
+                    <Description>Factory pattern for packet codec type.</Description>
+                </File>
+
+                <File name="JCS_PacketDecoder.cs">
+                    <Placement>Scipt base</Placement>
+                    <Description>For packet dencryption.</Description>
+                </File>
+
+                <File name="JCS_PacketEncoder.cs">
+                    <Placement>Scipt base</Placement>
+                    <Description>For packet encryption.</Description>
+                </File>
+            </net>
+
+            <File name="JCS_GameSocket.cs">
+                <Placement>Scipt base</Placement>
+                <Description>Main socket class handle.</Description>
+            </File>
+
+            <File name="JCS_NetworkConstant.cs">
+                <Placement>Scipt base</Placement>
+                <Description>Network contasnt store here.</Description>
+            </File>
+
+            <File name="PacketDecoder.cs">
+                <Placement/>
+                <Description>Packet dencoder interface.</Description>
+            </File>
+
+            <File name="PacketEncoder.cs">
+                <Placement>Scipt base</Placement>
+                <Description>Packet encoder interface.</Description>
+            </File>
+        </Network>
+        <Scripts>
+            <event>
+                <File name="npc2100.cs">
+                    <Placement>Script base</Placement>
+                    <Description> Example of using the script for npc.</Description>
+                </File>
+            </event>
+            <npc>
+                <empty/>
+            </npc>
+            <portal>
+                <empty/>
+            </portal>
+            <quest>
+                <empty/>
+            </quest>
+            <reactor>
+                <empty/>
+            </reactor>
+        </Scripts>
+        <Settings>
+            <Indie>
+                <File name="JCS_PlatformSettings.cs">
+                    <Placement>Game dependency.</Placement>
+                    <Description>
+              Setting of all the platform type.
+                    </Description>
+                </File>
+
+                <File name="JCS_PortalSettings.cs">
+                    <Placement>Game dependency.</Placement>
+                    <Description>
+              Setting of all the portal type.
+                    </Description>
+                </File>
+            </Indie>
+
+            <File name="JCS_GameSettings.cs">
+                <Placement>Already assign.</Placement>
+                <Description>Setting of all the game setting.</Description>
+            </File>
+
+            <File name="JCS_InputSettings.cs">
+                <Placement>Already assign.</Placement>
+                <Description>Setting of all the input setting.</Description>
+            </File>
+
+            <File name="JCS_PackageDataSettings.cs">
+                <Placement>Already assign.</Placement>
+                <Description>Setting of all the package data setting.</Description>
+            </File>
+
+            <File name="JCS_SceneSettings.cs">
+                <Placement>Already assign.</Placement>
+                <Description>Setting of all the scene setting.</Description>
+            </File>
+
+            <File name="JCS_SoundSettings.cs">
+                <Placement>Already assign.</Placement>
+                <Description>Setting of all the sound setting.</Description>
+            </File>
+
+            <File name="JCS_UISettings.cs">
+                <Placement>Already assign.</Placement>
+                <Description>Setting of all the ui setting.</Description>
+            </File>
+        </Settings>
+        <Shader>
+            <empty/>
+        </Shader>
+        <Sound>
+            <File name="JCS_BGMPlayer.cs">
+                <Placement>Any transform/node that plays the sound.</Placement>
+                <Description>
             This will handle the background music. 
-        </Description>
-    </File>
-    
-    <File name="JCS_SoundEffect.cs">
-        <Placement>Any transform/node that plays the sound.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_SoundEffect.cs">
+                <Placement>Any transform/node that plays the sound.</Placement>
+                <Description>
             This will handle the sound effect. Careful the sound 
             source location.
-        </Description>
-    </File>
-    
-    <File name="JCS_SoundPlayer.cs">
-        <Placement>Any transform/node that plays the sound.</Placement>
-        <Description>
-            Wrap up of all the audio source class from Unity Engine.
-        </Description>
-    </File>
+                </Description>
+            </File>
 
-</Sound>
-<Tags>
-    <File name="JCS_RayIgnore.cs">
-        <Placement>Any object if you want to ignore by the raycast.</Placement>
-        <Description>
+            <File name="JCS_SoundPlayer.cs">
+                <Placement>Any transform/node that plays the sound.</Placement>
+                <Description>
+            Wrap up of all the audio source class from Unity Engine.
+                </Description>
+            </File>
+
+        </Sound>
+        <Tags>
+            <File name="JCS_RayIgnore.cs">
+                <Placement>Any object if you want to ignore by the raycast.</Placement>
+                <Description>
             Attach the component on the transform will make 
             the object ignore by the raycast form JCSUnity.
-        </Description>
-    </File>
-</Tags>
-<Tools>
-    <Attributes>
-        <File name="CommentAttribute.cs">
-            <Placement>Script base.</Placement>
-            <Description>Comment attribute for tooltip and header handle.</Description>
-        </File>
-    </Attributes>
-    <Edit>
-        <File name="JCS_ObjectChecker.cs">
-            <Placement>
-                Any transfrom/node with the mesh component or any 
-                sub-classes with mesh as the composition/inheritance.
-            </Placement>
-            <Description></Description>
-        </File>
-    </Edit>
-    <System>
-        <File name="AutoSortHierarchy.cs">
-            <Placement>Precompiled in editor mode.</Placement>
-            <Description>For sorting the hierarchy into alphabet.</Description>
-        </File>
-        
-        <File name="CpuInfo.cs">
-            <Placement>Script base.</Placement>
-            <Description>Algorithm for testing cpu performance issue.</Description>
-        </File>
-        
-        <File name="CpuTest.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Print out the cpu info on screen.</Description>
-        </File>
-        
-        <File name="FPSDisplay.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Print out the fps info on screen.</Description>
-        </File>
-        
-        <File name="ReadSceneNames.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>Read the scene name in the build system.</Description>
-        </File>
-    </System>
-    
-    <File name="JCS_DestroyReminder.cs">
-        <Placement>Transform/Node you want to be destroy reminder.</Placement>
-        <Description>
+                </Description>
+            </File>
+        </Tags>
+        <Tools>
+            <Attributes>
+                <File name="CommentAttribute.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>Comment attribute for tooltip and header handle.</Description>
+                </File>
+            </Attributes>
+            <Edit>
+                <File name="InspectorLockToggle.cs">
+                    <Placement>
+              Hotkeys for inspector and console.
+                    </Placement>
+                    <Description/>
+                </File>
+
+                <File name="JCS_ObjectChecker.cs">
+                    <Placement>
+              Any transfrom/node with the mesh component or any 
+              sub-classes with mesh as the composition/inheritance.
+                    </Placement>
+                    <Description/>
+                </File>
+            </Edit>
+            <System>
+                <File name="AutoSortHierarchy.cs">
+                    <Placement>Precompiled in editor mode.</Placement>
+                    <Description>For sorting the hierarchy into alphabet.</Description>
+                </File>
+
+                <File name="CpuInfo.cs">
+                    <Placement>Script base.</Placement>
+                    <Description>Algorithm for testing cpu performance issue.</Description>
+                </File>
+
+                <File name="CpuTest.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Print out the cpu info on screen.</Description>
+                </File>
+
+                <File name="FPSDisplay.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Print out the fps info on screen.</Description>
+                </File>
+
+                <File name="ReadSceneNames.cs">
+                    <Placement>Any transform/node.</Placement>
+                    <Description>Read the scene name in the build system.</Description>
+                </File>
+            </System>
+
+            <File name="JCS_DestroyReminder.cs">
+                <Placement>Transform/Node you want to be destroy reminder.</Placement>
+                <Description>
             Object remind the the current transform should 
             be destroy but did not destroyed.
-        </Description>
-    </File>
-	
-	<File name="JCS_INIFileReader.cs">
-        <Placement>Script base.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="JCS_INIFileReader.cs">
+                <Placement>Script base.</Placement>
+                <Description>
             This class help read the .ini/.properties file.
-        </Description>
-    </File>
-    
-    <File name="KeywordReplace.cs">
-        <Placement>Script base.</Placement>
-        <Description>Add the date to the script while created.</Description>
-    </File>
-</Tools>
-<Utilities>
-    <File name="JCS_Bool3.cs">
-        <Placement>N/A</Placement>
-        <Description>N/A</Description>
-    </File>
-    
-    <File name="JCS_Debug.cs">
-        <Placement>Script base.</Placement>
-        <Description>
+                </Description>
+            </File>
+
+            <File name="KeywordReplace.cs">
+                <Placement>Script base.</Placement>
+                <Description>Add the date to the script while created.</Description>
+            </File>
+        </Tools>
+        <Utilities>
+            <File name="JCS_Bool3.cs">
+                <Placement>N/A</Placement>
+                <Description>N/A</Description>
+            </File>
+
+            <File name="JCS_Debug.cs">
+                <Placement>Script base.</Placement>
+                <Description>
             Wrapper of Debug from Unity Engine's scripting layer.
-        </Description>
-    </File>
-    
-    <File name="JCS_Mathf.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of all the math function here.</Description>
-    </File>
-    
-    <File name="JCS_Physics.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of all the physics function here.</Description>
-    </File>
-    
-    <File name="JCS_Random.cs">
-        <Placement>Script base.</Placement>
-        <Description>Store of random algorithm.</Description>
-    </File>
-    
-    <File name="JCS_Utility.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of all the utility function here.</Description>
-    </File>
-</Utilities>
-<Webcam>
-    <File name="JCS_Webcam.cs">
-        <Placement>On any object that could use as webcam texture/screen.</Placement>
-        <Description>Use this if you need to open webcam in your game.</Description>
-    </File>
-</Webcam>
+                </Description>
+            </File>
 
-<File name="JCS_Camera.cs">
-    <Placement>Script base</Placement>
-    <Description>
-        Base of camera class. Split into 2D and 3D camera. 
-        Inheritance this script is recommanded if create 
-        another new camera.
-    </Description>
-</File>
+            <File name="JCS_Mathf.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of all the math function here.</Description>
+            </File>
 
-<File name="JCS_GameConstant.cs">
-    <Placement>
-        For scripting calling, place all the game 
-        constant here...
-    </Placement>
-    <Description>
-        In order to keep all the game organize, put all game 
-        constanet here...
-    </Description>
-</File>
+            <File name="JCS_Physics.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of all the physics function here.</Description>
+            </File>
 
-<File name="JCS_Logo.cs">
-    <Placement>
-        Place the script on the logo object. Example in the 
-        logo scene.
-    </Placement>
-    <Description>
-        This will handle the switch scene after showing the logo.
-    </Description>
-</File>
+            <File name="JCS_Random.cs">
+                <Placement>Script base.</Placement>
+                <Description>Store of random algorithm.</Description>
+            </File>
 
-<File name="JCS_Startup.cs">
-    <Placement>
-        This will be call and use by the network manager. No need to 
-        do any changes.
-    </Placement>
-    <Description>
-        Network use to check if connect to the server. Ignore this 
-        if you are not making the mo/mmo game.
-    </Description>
-</File>
+            <File name="JCS_Utility.cs">
+                <Placement>Script base.</Placement>
+                <Description>List of all the utility function here.</Description>
+            </File>
+        </Utilities>
+        <Webcam>
+            <File name="JCS_Webcam.cs">
+                <Placement>On any object that could use as webcam texture/screen.</Placement>
+                <Description>Use this if you need to open webcam in your game.</Description>
+            </File>
+        </Webcam>
 
-<File name="JCS_UniqueObject.cs">
-    <Placement>Usually on any setting transform/node.</Placement>
-    <Description>
-        Singleton Pattern in Unity scripting. Attach to the any transform
-        or node you want to take this effect. Notice this will destroy any
-        other transform or node in the same scene hierarchy.
-    </Description>
-</File>
+        <File name="JCS_Camera.cs">
+            <Placement>Script base</Placement>
+            <Description>
+          Base of camera class. Split into 2D and 3D camera. 
+          Inheritance this script is recommanded if create 
+          another new camera.
+            </Description>
+        </File>
 
-<File name="JCS_UnityObject.cs">
-    <Placement>For object that base on specific type.</Placement>
-    <Description>
-        Unity base object type, include the following enum.
-            1) GameObject - normal game object transform.
-            2) Sprite - transform using 'SpriteRenderer' component.
-            3) UI - Object that uses UGUI as a base.
-            4) Text - Object has text base component on it.
-        Sometimes is hard to handle the Unity Engine's component type 
-        while scripting, using this script will decouple between scripting 
-        layer, level design and yourself script. 
-    </Description>
-</File>
+        <File name="JCS_GameConstant.cs">
+            <Placement>
+          For scripting calling, place all the game 
+          constant here...
+            </Placement>
+            <Description>
+          In order to keep all the game organize, put all game 
+          constanet here...
+            </Description>
+        </File>
 
-<File name="JCS_VideoPlayer.cs">
-    <Placement>Place on any transform/node.</Placement>
-    <Description>
-        Play the video until the end switch to next scene. For more info 
-        will be inside the script variables tooltip attribute.
-    </Description>
-</File>
+        <File name="JCS_Logo.cs">
+            <Placement>
+          Place the script on the logo object. Example in the 
+          logo scene.
+            </Placement>
+            <Description>
+          This will handle the switch scene after showing the logo.
+            </Description>
+        </File>
 
-</Scripts>
+        <File name="JCS_Startup.cs">
+            <Placement>
+          This will be call and use by the network manager. No need to 
+          do any changes.
+            </Placement>
+            <Description>
+          Network use to check if connect to the server. Ignore this 
+          if you are not making the mo/mmo game.
+            </Description>
+        </File>
+
+        <File name="JCS_UniqueObject.cs">
+            <Placement>Usually on any setting transform/node.</Placement>
+            <Description>
+          Singleton Pattern in Unity scripting. Attach to the any transform
+          or node you want to take this effect. Notice this will destroy any
+          other transform or node in the same scene hierarchy.
+            </Description>
+        </File>
+
+        <File name="JCS_UnityObject.cs">
+            <Placement>For object that base on specific type.</Placement>
+            <Description>
+          Unity base object type, include the following enum.
+          1) GameObject - normal game object transform.
+          2) Sprite - transform using 'SpriteRenderer' component.
+          3) UI - Object that uses UGUI as a base.
+          4) Text - Object has text base component on it.
+          Sometimes is hard to handle the Unity Engine's component type 
+          while scripting, using this script will decouple between scripting 
+          layer, level design and yourself script. 
+            </Description>
+        </File>
+
+        <File name="JCS_VideoPlayer.cs">
+            <Placement>Place on any transform/node.</Placement>
+            <Description>
+          Play the video until the end switch to next scene. For more info 
+          will be inside the script variables tooltip attribute.
+            </Description>
+        </File>
+
+    </Scripts>
 </JCSUnity>

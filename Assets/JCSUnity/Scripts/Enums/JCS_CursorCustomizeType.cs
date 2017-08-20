@@ -13,24 +13,24 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Cursor state type.
     /// </summary>
     public enum JCS_CursorCustomizeType
     {
-        NORMAL_SELECT,
-        HELP_SELECT,
-        WORKING_IN_BACKGROUND,
-        BUSY,
-        PRECISION_SELECT,
-        TEXT_SELECT,
-        HANDWRITING,
-        UNAVAILABLE,
-        VERTICAL_RESIZE,
-        HORIZONTAL_RESIZE,
-        DIAGONAL_RESIZE_1,
-        DIAGONAL_RESIZE_2,
-        MOVE,
-        ALTERNATE_SELECT,
-        LINK_SELECT
+        NORMAL_SELECT = 0,
+        HELP_SELECT = 1,
+        WORKING_IN_BACKGROUND = 2,
+        BUSY = 3,
+        PRECISION_SELECT = 4,
+        TEXT_SELECT = 5,
+        HANDWRITING = 6,
+        UNAVAILABLE = 7,
+        VERTICAL_RESIZE = 8,
+        HORIZONTAL_RESIZE = 9,
+        DIAGONAL_RESIZE_1 = 10,
+        DIAGONAL_RESIZE_2 = 11,
+        MOVE = 12,
+        ALTERNATE_SELECT = 13,
+        LINK_SELECT = 14, 
     }
 }

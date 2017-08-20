@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2226103}
   - component: {fileID: 2226104}
+  - component: {fileID: 2226105}
   m_Layer: 0
   m_Name: 5_Alert
   m_TagString: Untagged
@@ -135,7 +136,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -148,6 +149,41 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b7c1ad346ae7cda48b59ac482d964bed, type: 3}
   - {fileID: 21300000, guid: f9c8d494617070e429e7f1c4228ca980, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &2226105
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2226102}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &51176903
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67670900}
   - component: {fileID: 67670901}
+  - component: {fileID: 67670902}
   m_Layer: 0
   m_Name: 2_RandAtk
   m_TagString: Untagged
@@ -247,7 +284,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -258,6 +295,41 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c4e74c9e758d7474b99dc7f10c8069c2, type: 3}
   - {fileID: 21300000, guid: 6b020478735905a45b2c60f0ec5a608e, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &67670902
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67670899}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &98444221
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 98444222}
   - component: {fileID: 98444223}
+  - component: {fileID: 98444224}
   m_Layer: 0
   m_Name: 1_Walk
   m_TagString: Untagged
@@ -302,7 +375,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -314,6 +387,41 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 54b2ae3cd8303fd4988844d9b02b61eb, type: 3}
   - {fileID: 21300000, guid: 5563670d9d1f17e4f8020c11d96cb7ef, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &98444224
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98444221}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &148069788
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 210606103}
   - component: {fileID: 210606104}
+  - component: {fileID: 210606105}
   m_Layer: 0
   m_Name: 8_Rope
   m_TagString: Untagged
@@ -400,7 +509,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -410,6 +519,41 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa950c18c50be684b8c0297eee081237, type: 3}
   - {fileID: 21300000, guid: 0efb0861c50be9144873d64bc2f3eb3d, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &210606105
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 210606102}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &309586791
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &317376674
@@ -741,6 +886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &357825638
@@ -791,6 +937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 414902108}
   - component: {fileID: 414902109}
+  - component: {fileID: 414902110}
   m_Layer: 0
   m_Name: 9_Sit
   m_TagString: Untagged
@@ -826,7 +973,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -835,6 +982,41 @@ MonoBehaviour:
   mAnimFrames:
   - {fileID: 21300000, guid: 18c650c22abb65b43abb640b3072ed92, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &414902110
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414902107}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &453931736
 Prefab:
   m_ObjectHideFlags: 0
@@ -1267,6 +1449,7 @@ MonoBehaviour:
   mCanRope: 0
   mClimbingTransform: {fileID: 0}
   mJumpCount: 0
+  mClimbMoveType: 0
   mCharacterState: 0
   mJumpType: 3
   mJumpYForces:
@@ -1282,6 +1465,7 @@ MonoBehaviour:
   mJumpAnim: []
   mJumpAnimOffset: []
   mAirFriction: 0.5
+  mCanDownJump: 0
   mUpKey: 273
   mDownKey: 274
   mRightKey: 275
@@ -1344,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!81 &828673353
@@ -1519,6 +1704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &984647640
@@ -1838,6 +2024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1086116940}
   - component: {fileID: 1086116941}
+  - component: {fileID: 1086116942}
   m_Layer: 0
   m_Name: 4_Prone
   m_TagString: Untagged
@@ -1873,7 +2060,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -1882,6 +2069,41 @@ MonoBehaviour:
   mAnimFrames:
   - {fileID: 21300000, guid: 6aad02c39437d4c4e8d1d9d8e0f57b85, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &1086116942
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1086116939}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &1115091874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,6 +2113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1115091875}
   - component: {fileID: 1115091876}
+  - component: {fileID: 1115091877}
   m_Layer: 0
   m_Name: 3_Jump
   m_TagString: Untagged
@@ -1926,7 +2149,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -1935,6 +2158,41 @@ MonoBehaviour:
   mAnimFrames:
   - {fileID: 21300000, guid: 45ab971197485e649a8e12ac5c4b099d, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &1115091877
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115091874}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &1227261604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,6 +2244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1228262646}
   - component: {fileID: 1228262647}
+  - component: {fileID: 1228262648}
   m_Layer: 0
   m_Name: 7_Ladder
   m_TagString: Untagged
@@ -2021,7 +2280,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -2031,6 +2290,41 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 185b0df9c7d81384b8ce2187c2fbd673, type: 3}
   - {fileID: 21300000, guid: 41d92add017e6314c8b0b7122bf9e565, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &1228262648
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1228262645}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &1287731863
 Prefab:
   m_ObjectHideFlags: 0
@@ -2222,7 +2516,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1316322961}
-  - component: {fileID: 1316322970}
   - component: {fileID: 1316322969}
   - component: {fileID: 1316322968}
   - component: {fileID: 1316322967}
@@ -2281,6 +2574,7 @@ MonoBehaviour:
   mCanRope: 0
   mClimbingTransform: {fileID: 0}
   mJumpCount: 0
+  mClimbMoveType: 0
   mCharacterState: 0
   mJumpType: 3
   mJumpYForces:
@@ -2302,6 +2596,7 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   mAirFriction: 0.5
+  mCanDownJump: 0
   mUpKey: 273
   mDownKey: 274
   mRightKey: 275
@@ -2487,7 +2782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec5f1592b8e7d646b1b9a7500f4a0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mObjectType: 2
   mTestWithKey: 0
   mCurrentAnimId: 0
   mCurrentAnimation: {fileID: 2137982395}
@@ -2505,41 +2799,6 @@ MonoBehaviour:
   - {fileID: 210606104}
   - {fileID: 414902109}
   - {fileID: 1904508334}
---- !u!212 &1316322970
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1316322960}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: e7d2a2dcf475d4d488c13d714a017184, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
 --- !u!1 &1422033182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,6 +3025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!1001 &1491883887
@@ -2908,6 +3168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!212 &1570651379
@@ -3131,6 +3392,7 @@ MonoBehaviour:
   mCanRope: 0
   mClimbingTransform: {fileID: 0}
   mJumpCount: 0
+  mClimbMoveType: 0
   mCharacterState: 0
   mJumpType: 3
   mJumpYForces:
@@ -3146,6 +3408,7 @@ MonoBehaviour:
   mJumpAnim: []
   mJumpAnimOffset: []
   mAirFriction: 0.5
+  mCanDownJump: 0
   mUpKey: 273
   mDownKey: 274
   mRightKey: 275
@@ -3327,6 +3590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!114 &1677919842
@@ -3615,6 +3879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1904508333}
   - component: {fileID: 1904508334}
+  - component: {fileID: 1904508335}
   m_Layer: 0
   m_Name: 10_Hit
   m_TagString: Untagged
@@ -3650,7 +3915,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -3663,6 +3928,41 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b7c1ad346ae7cda48b59ac482d964bed, type: 3}
   - {fileID: 21300000, guid: f9c8d494617070e429e7f1c4228ca980, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &1904508335
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1904508332}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1 &1945349538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3672,6 +3972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1945349539}
   - component: {fileID: 1945349540}
+  - component: {fileID: 1945349541}
   m_Layer: 0
   m_Name: 6_Fly
   m_TagString: Untagged
@@ -3707,7 +4008,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -3717,6 +4018,41 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7a16345f3b3d75549a460edc9cb2dd09, type: 3}
   - {fileID: 21300000, guid: 7e6eeb0231c8d1542bce8050fa5d1d1f, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &1945349541
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945349538}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!4 &1953565110 stripped
 Transform:
   m_PrefabParentObject: {fileID: 486774, guid: 59ae739835813ac4cb82caf61221b682, type: 2}
@@ -3838,6 +4174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137982394}
   - component: {fileID: 2137982395}
+  - component: {fileID: 2137982396}
   m_Layer: 0
   m_Name: 0_Stand
   m_TagString: Untagged
@@ -3873,7 +4210,7 @@ MonoBehaviour:
   mTestWithKey: 0
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
-  mDonePlaying: 0
+  mIsDonePlaying: 0
   mStartingFrame: 0
   mActive: 1
   mPlayOnAwake: 1
@@ -3885,3 +4222,38 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 50d60beb7d0624c469b3aa65604c685a, type: 3}
   - {fileID: 21300000, guid: 0e919dcd2a741474a90cecb96f051198, type: 3}
   mAnimationTimeProduction: 1
+--- !u!212 &2137982396
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137982393}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e7d2a2dcf475d4d488c13d714a017184, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0

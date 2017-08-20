@@ -204,7 +204,7 @@ namespace JCSUnity
             if (mTargetTransform == null)
             {
                 JCS_Debug.LogError(
-                    this, "Cannot record the frame without the target transform...");
+                    "Cannot record the frame without the target transform...");
 
                 return;
             }

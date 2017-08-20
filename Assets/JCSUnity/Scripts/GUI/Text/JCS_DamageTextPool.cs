@@ -32,8 +32,9 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_DamageTextPool) **")]
 
-        // number to handle and spawn at the beginning
-        [SerializeField] private int mNumberOfHandle = 10;
+        [Tooltip("number to handle and spawn at the beginning")]
+        [SerializeField] [Range(1, 500)]
+        private int mNumberOfHandle = 10;
 
         // optimize
         private int mLastSpawnPos = 0;
@@ -57,14 +58,14 @@ namespace JCSUnity
         [SerializeField] private float mRightAlign = 0.2f;
         [SerializeField] private float mLeftAlign = 0.2f;
 
-        private JCS_Vector<int> mSequenceThread = null;
+        private List<int> mSequenceThread = null;
         // Data we need to let Sequence Thread process!
-        private JCS_Vector<int[]> mSequenceDamageData = null;
-        private JCS_Vector<Vector2[]> mSequencePosData = null;
-        private JCS_Vector<AudioClip> mSequenceHitSoundData = null;
-        private JCS_Vector<float> mSequenceSpanwTimer = null;
+        private List<int[]> mSequenceDamageData = null;
+        private List<Vector2[]> mSequencePosData = null;
+        private List<AudioClip> mSequenceHitSoundData = null;
+        private List<float> mSequenceSpanwTimer = null;
         // IMPORTANT: index of number we want to call to spawn the damage text!
-        private JCS_Vector<int> mSequenceSpawnCount = null;
+        private List<int> mSequenceSpawnCount = null;
 
         //----------------------
         // Protected Variables
@@ -86,12 +87,12 @@ namespace JCSUnity
             InitDamageTextToArray();
 
             // spawn all the sequence
-            mSequenceThread = new JCS_Vector<int>();
-            mSequenceDamageData = new JCS_Vector<int[]>();
-            mSequencePosData = new JCS_Vector<Vector2[]>();
-            mSequenceSpanwTimer = new JCS_Vector<float>();
-            mSequenceHitSoundData = new JCS_Vector<AudioClip>();
-            mSequenceSpawnCount = new JCS_Vector<int>();
+            mSequenceThread = new List<int>();
+            mSequenceDamageData = new List<int[]>();
+            mSequencePosData = new List<Vector2[]>();
+            mSequenceSpanwTimer = new List<float>();
+            mSequenceHitSoundData = new List<AudioClip>();
+            mSequenceSpawnCount = new List<int>();
         }
 
         private void Update()
@@ -197,18 +198,18 @@ namespace JCSUnity
             }
 
             // add thread!
-            mSequenceThread.push(mSequenceThread.length);
+            mSequenceThread.Add(mSequenceThread.Count);
 
             // update data to memory
-            mSequenceDamageData.push(damage);
-            mSequencePosData.push(pos);
-            mSequenceHitSoundData.push(hitSound);
+            mSequenceDamageData.Add(damage);
+            mSequencePosData.Add(pos);
+            mSequenceHitSoundData.Add(hitSound);
 
             // simply add a timer!
-            mSequenceSpanwTimer.push(0);
+            mSequenceSpanwTimer.Add(0);
 
             // always start with the first index
-            mSequenceSpawnCount.push(0);
+            mSequenceSpawnCount.Add(0);
 
         }
         /// <summary>
@@ -265,7 +266,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogWarning(this,
+                    JCS_Debug.LogWarning(
                         "Prevent, stack overflow function call.");
                 }
 #endif
@@ -332,7 +333,7 @@ namespace JCSUnity
 
             if (mTimePerSpawn < newTimer)
             {
-                int count = mSequenceSpawnCount.at(processIndex);
+                int count = mSequenceSpawnCount[processIndex];
                 if (count == damage.Length)
                 {
                     // done the sequence, do delete the process(thread)
@@ -345,13 +346,13 @@ namespace JCSUnity
                 ++count;
                 // update new count, in order 
                 // to spawn next damage text
-                mSequenceSpawnCount.set(processIndex, count);
+                mSequenceSpawnCount[processIndex] = count;
                 newTimer = 0;
             }
 
 
             // update timer
-            mSequenceSpanwTimer.set(processIndex, newTimer);
+            mSequenceSpanwTimer[processIndex] = newTimer;
         }
         /// <summary>
         /// Loop through the thread and process each thread per frame, 
@@ -363,25 +364,25 @@ namespace JCSUnity
         private void ProccessSequences()
         {
             for (int process = 0;
-                process < mSequenceThread.length;
+                process < mSequenceThread.Count;
                 ++process)
             {
                 // pass in all the data wee need in order to process the data
                 Sequence(process, 
-                    mSequenceDamageData.at(process),
-                    mSequencePosData.at(process),
-                    mSequenceSpanwTimer.at(process),
-                    mSequenceHitSoundData.at(process));
+                    mSequenceDamageData[process],
+                    mSequencePosData[process],
+                    mSequenceSpanwTimer[process],
+                    mSequenceHitSoundData[process]);
             }
         }
         private void EndProcessSequence(int processIndex)
         {
-            mSequenceThread.slice(processIndex);
-            mSequenceDamageData.slice(processIndex);
-            mSequencePosData.slice(processIndex);
-            mSequenceSpanwTimer.slice(processIndex);
-            mSequenceSpawnCount.slice(processIndex);
-            mSequenceHitSoundData.slice(processIndex);
+            mSequenceThread.RemoveAt(processIndex);
+            mSequenceDamageData.RemoveAt(processIndex);
+            mSequencePosData.RemoveAt(processIndex);
+            mSequenceSpanwTimer.RemoveAt(processIndex);
+            mSequenceSpawnCount.RemoveAt(processIndex);
+            mSequenceHitSoundData.RemoveAt(processIndex);
         }
         /// <summary>
         /// Hit Sound is the part of sfx sound

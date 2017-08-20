@@ -12,22 +12,55 @@ using System.Collections;
 
 namespace JCSUnity
 {
+
+    /// <summary>
+    /// Const wave effect.
+    /// </summary>
     public class JCS_2DConstWaveEffect
         : MonoBehaviour
     {
-        [Header("** Initialize Varialbes **")]
-        [Tooltip("as play on awake!")]
-        [SerializeField] private bool mEffect = false;
-        [SerializeField] private float mWaveRestPosition = 0.0f;
-        [SerializeField] private float mAmplitude = 0.1f;      // amplitude
-        [SerializeField] private float mFrequency = 0.5f;      // 
-        [SerializeField] private float mSampleRate = 20.0f;
+        /*******************************************/
+        /*            Public Variables             */
+        /*******************************************/
 
+        /*******************************************/
+        /*           Private Variables             */
+        /*******************************************/
+
+        [Header("** Initialize Varialbes (JCS_2DConstWaveEffect) **")]
+
+        [Tooltip("as play on awake!")]
+        [SerializeField]
+        private bool mEffect = false;
+
+        [Tooltip("How much force goes up and down.")]
+        [SerializeField]
+        private float mAmplitude = 0.1f;
+
+        [Tooltip("How fast the wave move up and down.")]
+        [SerializeField]
+        private float mFrequency = 2f;
+
+        // time to run the sine/cosine wave.
         private float mTime = 0;
 
+        [Tooltip("Which axis it move.")]
+        [SerializeField]
+        private JCS_Axis mAxis = JCS_Axis.AXIS_Y;
+
+        /*******************************************/
+        /*           Protected Variables           */
+        /*******************************************/
+
+        /*******************************************/
+        /*             setter / getter             */
+        /*******************************************/
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
 
-
+        /*******************************************/
+        /*            Unity's function             */
+        /*******************************************/
         private void Update()
         {
             if (!mEffect)
@@ -36,15 +69,43 @@ namespace JCSUnity
                 return;
             }
 
-            Vector3 currentPos = this.transform.position;
-            currentPos.y = 
-                (mWaveRestPosition + this.transform.position.y) + 
-                (mAmplitude * Mathf.Cos(mTime * Mathf.PI * mFrequency * 2) / mSampleRate);
+            Vector3 newPos = this.transform.position;
 
-            this.transform.position = currentPos;
+            switch (mAxis)
+            {
+                case JCS_Axis.AXIS_X:
+                    {
+                        newPos.x += (mAmplitude * Mathf.Cos(mTime * mFrequency)) * Time.deltaTime;
+                    }
+                    break;
+                case JCS_Axis.AXIS_Z:
+                    {
+                        newPos.z += (mAmplitude * Mathf.Cos(mTime * mFrequency)) * Time.deltaTime;
+                    }
+                    break;
+                case JCS_Axis.AXIS_Y:
+                    {
+                        newPos.y += (mAmplitude * (Mathf.Cos(mTime * mFrequency))) * Time.deltaTime;
+                    }
+                    break;
+            }
+
+            this.transform.position = newPos;
 
             mTime += Time.deltaTime;
         }
+
+        /*******************************************/
+        /*              Self-Define                */
+        /*******************************************/
+        //----------------------
+        // Public Functions
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
 
     }
 }

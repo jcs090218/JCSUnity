@@ -59,6 +59,10 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+        protected virtual void Awake()
+        {
+            UpdateUnityData();
+        }
 
         //========================================
         //      Self-Define
@@ -156,7 +160,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this,
                     "Return default local position...(This should not happens...)");
 
                 return this.transform;
@@ -182,9 +185,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                "JCS_UnityObject",
-
-                "Return default local position...(This should not happens...)");
+                    "Return default local position...(This should not happens...)");
 
                 return this.transform.position;
             }
@@ -206,7 +207,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this,
                     "Set default local position...(This should not happens...)");
             }
         }
@@ -230,9 +230,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                "JCS_UnityObject",
-
-                "Return default local position...(This should not happens...)");
+                    "Return default local position...(This should not happens...)");
 
                 return this.transform.localPosition;
             }
@@ -254,9 +252,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                "JCS_UnityObject",
-
-                "Set default local position...(This should not happens...)");
+                    "Set default local position...(This should not happens...)");
             }
         }
 
@@ -279,9 +275,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                "JCS_UnityObject",
-
-                "Return default local rotation...(This should not happens...)");
+                    "Return default local rotation...(This should not happens...)");
 
                 return this.transform.eulerAngles;
             }
@@ -303,7 +297,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, 
                     "Set default local rotation...(This should not happens...)");
             }
         }
@@ -327,7 +320,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, 
                     "Return default local rotation...(This should not happens...)");
 
                 return this.transform.localEulerAngles;
@@ -350,7 +342,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, 
                     "Set default local rotation...(This should not happens...)");
             }
         }
@@ -374,7 +365,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, 
                     "Return default local scale...(This should not happens...)");
 
                 return this.transform.localScale;
@@ -397,7 +387,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, 
                     "Set default local scale...(This should not happens...)");
             }
         }
@@ -422,7 +411,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, 
                     "Return default visible...(This should not happens...)");
 
 
@@ -470,7 +458,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this,
                     "Return default Local Red...(This should not happens...)");
 
                 return new Color(255, 128, 64, 32);
@@ -503,7 +490,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this,
                     "Set default Local Red...(This should not happens...)");
             }
         }
@@ -528,7 +514,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, "Return default Local Alpha...(This should not happens...)");
+                    "Return default Local Alpha...(This should not happens...)");
 
                 return 0;
             }
@@ -570,7 +556,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    this, "Set default Local Alpha...(This should not happens...)");
+                    "Set default Local Alpha...(This should not happens...)");
             }
         }
 
@@ -594,9 +580,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-               "JCS_UnityObject",
-
-               "Return default Local Red...(This should not happens...)");
+                    "Return default Local Red...(This should not happens...)");
 
                 return 0;
             }
@@ -638,9 +622,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-              "JCS_UnityObject",
-
-              "Set default Local Red...(This should not happens...)");
+                    "Set default Local Red...(This should not happens...)");
             }
         }
 
@@ -664,9 +646,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-              "JCS_UnityObject",
-
-              "Return default Local Green...(This should not happens...)");
+                    "Return default Local Green...(This should not happens...)");
 
                 return 0;
             }
@@ -708,9 +688,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-              "JCS_UnityObject",
-
-              "Set default Local Blue...(This should not happens...)");
+                    "Set default Local Blue...(This should not happens...)");
             }
         }
 
@@ -734,7 +712,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    "JCS_UnityObject",
                     "Return default Local Blue...(This should not happens...)");
 
                 return 0;
@@ -777,9 +754,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-              "JCS_UnityObject",
-
-              "Set default Local Blue...(This should not happens...)");
+                    "Set default Local Blue...(This should not happens...)");
             }
         }
 
@@ -803,7 +778,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    "JCS_UnityObject",
                     "Return default Local Blue...(This should not happens...)");
 
                 return null;
@@ -836,9 +810,7 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-              "JCS_UnityObject",
-
-              "Set default Local Blue...(This should not happens...)");
+                    "Set default Local Blue...(This should not happens...)");
             }
         }
 
@@ -858,7 +830,6 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    "JCS_UnityObject",
                     "Failed to get sprite composite cuz current unity object setting does not have it.");
 
                 return null;
@@ -877,8 +848,169 @@ namespace JCSUnity
                 }
 
                 JCS_Debug.LogError(
-                    "JCS_UnityObject",
                     "Failed to set the sprite cuz the current unity object setting does not have sprite coposite.");
+            }
+        }
+
+        /// <summary>
+        /// Check if the object is rendering on the 
+        /// screen / render field.
+        /// 
+        /// NOTE(jenchieh): This will effect by the scene camera.
+        /// ...
+        /// Unity, seriously?
+        /// </summary>
+        public bool LocalIsVisible
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return this.mRenderer.isVisible;
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.isVisible;
+                }
+
+                JCS_Debug.LogError(
+                    "Return default Local isVisible...(This should not happens...)");
+
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// Set the same flip x. If not SpriteRenderer 
+        /// use negative scale instead.
+        /// </summary>
+        public bool LocalFlipX
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return JCS_Mathf.isPositive(this.transform.localScale.x);
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.flipX;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        return JCS_Mathf.isPositive(this.mRectTransform.localScale.x);
+                }
+
+                JCS_Debug.LogError(
+                    "Return default Local FlipX...(This should not happens...)");
+
+                return false;
+            }
+
+            set
+            {
+                Vector3 newScale;
+
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        {
+                            newScale = this.transform.localScale;
+
+                            if (value)
+                                newScale.x = JCS_Mathf.ToPositive(newScale.x);
+                            else
+                                newScale.x = JCS_Mathf.ToNegative(newScale.x);
+
+                            this.transform.localScale = newScale;
+                        }
+                        return;
+                    case JCS_UnityObjectType.SPRITE:
+                        this.mSpriteRenderer.flipX = value;
+                        return;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        {
+                            newScale = this.mRectTransform.localScale;
+
+                            if (value)
+                                newScale.x = JCS_Mathf.ToPositive(newScale.x);
+                            else
+                                newScale.x = JCS_Mathf.ToNegative(newScale.x);
+
+                            this.mRectTransform.localScale = newScale;
+                        }
+                        return;
+                }
+
+                JCS_Debug.LogError(
+                    "Set default Local FlipX...(This should not happens...)");
+
+            }
+        }
+
+        /// <summary>
+        /// Set the same flip y. If not SpriteRenderer 
+        /// use negative scale instead.
+        /// </summary>
+        public bool LocalFlipY
+        {
+            get
+            {
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        return JCS_Mathf.isPositive(this.transform.localScale.y);
+                    case JCS_UnityObjectType.SPRITE:
+                        return this.mSpriteRenderer.flipY;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        return JCS_Mathf.isPositive(this.mRectTransform.localScale.y);
+                }
+
+                JCS_Debug.LogError(
+                    "Return default Local FlipY...(This should not happens...)");
+
+                return false;
+            }
+
+            set
+            {
+                Vector3 newScale;
+
+                switch (mObjectType)
+                {
+                    case JCS_UnityObjectType.GAME_OBJECT:
+                        {
+                            newScale = this.transform.localScale;
+
+                            if (value)
+                                newScale.y = JCS_Mathf.ToPositive(newScale.y);
+                            else
+                                newScale.y = JCS_Mathf.ToNegative(newScale.y);
+
+                            this.transform.localScale = newScale;
+                        }
+                        return;
+                    case JCS_UnityObjectType.SPRITE:
+                        this.mSpriteRenderer.flipY = value;
+                        return;
+                    case JCS_UnityObjectType.TEXT:
+                    case JCS_UnityObjectType.UI:
+                        {
+                            newScale = this.mRectTransform.localScale;
+
+                            if (value)
+                                newScale.y = JCS_Mathf.ToPositive(newScale.y);
+                            else
+                                newScale.y = JCS_Mathf.ToNegative(newScale.y);
+
+                            this.mRectTransform.localScale = newScale;
+                        }
+                        return;
+                }
+
+                JCS_Debug.LogError(
+                    "Set default Local FlipY...(This should not happens...)");
+
             }
         }
 

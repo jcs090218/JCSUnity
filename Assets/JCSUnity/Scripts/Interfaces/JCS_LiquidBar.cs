@@ -254,7 +254,7 @@ recover can be damage too.")]
             if (mInfoImage == null)
             {
                 JCS_Debug.LogError(
-                    this, "Cannot set the sprite without the image component.");
+                    "Cannot set the sprite without the image component.");
 
                 return;
             }

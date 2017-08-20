@@ -68,12 +68,6 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
-        {
-            // update unity object data once.
-            UpdateUnityData();
-        }
-
 #if (UNITY_EDITOR)
         private void Update()
         {

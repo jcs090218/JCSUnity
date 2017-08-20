@@ -5,26 +5,26 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 485186}
-  - 212: {fileID: 21297452}
-  - 95: {fileID: 9542254}
-  - 114: {fileID: 11498736}
-  - 114: {fileID: 11470048}
-  - 114: {fileID: 11464042}
-  - 114: {fileID: 11468132}
-  - 114: {fileID: 11429648}
-  - 114: {fileID: 11412998}
-  - 114: {fileID: 11422362}
-  - 114: {fileID: 11467642}
-  - 114: {fileID: 11476594}
-  - 65: {fileID: 6575428}
-  - 114: {fileID: 11444786}
-  - 114: {fileID: 11468942}
-  - 54: {fileID: 5479462}
-  - 114: {fileID: 11462640}
-  - 114: {fileID: 11491714}
+  - component: {fileID: 485186}
+  - component: {fileID: 21297452}
+  - component: {fileID: 9542254}
+  - component: {fileID: 11498736}
+  - component: {fileID: 11470048}
+  - component: {fileID: 11464042}
+  - component: {fileID: 11468132}
+  - component: {fileID: 11429648}
+  - component: {fileID: 11412998}
+  - component: {fileID: 11422362}
+  - component: {fileID: 11467642}
+  - component: {fileID: 11476594}
+  - component: {fileID: 6575428}
+  - component: {fileID: 11444786}
+  - component: {fileID: 11468942}
+  - component: {fileID: 5479462}
+  - component: {fileID: 11462640}
+  - component: {fileID: 11491714}
   m_Layer: 0
   m_Name: BF_red_arrow_shoot
   m_TagString: Untagged
@@ -41,10 +41,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.13, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5479462
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -103,6 +103,8 @@ MonoBehaviour:
   mObjectType: 2
   mFadeTime: 4
   mOverriteFade: 0
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
 --- !u!114 &11422362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +157,7 @@ MonoBehaviour:
   mDestroyByThisAction: 1
   mIsAOE: 0
   mAOECount: 2
+  mHitSound: {fileID: 0}
 --- !u!114 &11462640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3021e318f69d7fa4a8aa2334b16545a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mFreezeX: 0
   mIsFacingRight: 1
   mFreezeY: 1
@@ -208,8 +212,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mOrderLayer: 15
   mLoopTimes: 1
-  mDestroyWithHitList: 0
-  mDestroyWithTime: 1
+  mActiveWhatever: 0
+  mActiveWithHitList: 1
+  mActiveWithDestroyTime: 0
   mSamePosition: 1
   mSameRotation: 1
   mSameScale: 1
@@ -230,6 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c187e6aa91b0be42bd4ad9ca719c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSpriteRenderers: []
   mAbsoluteLayerEffect: 0
   mAbsotlueLayer: 0
 --- !u!114 &11470048
@@ -243,10 +249,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff50cc44cb8b5da47b60b220174e9c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mIsHit: 0
   mHitObjectList:
   - gorund_000
-  - BF_AF_Soot
+  - BF_Mushello_lv1
+  - BF_Mushello_lv2
+  - BF_Mushello_lv3
+  - ground
   mIncludeClone: 1
+  mDestroyWhenOccurs: 1
 --- !u!114 &11476594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +274,7 @@ MonoBehaviour:
   mAbsorbEffect: 0
   mTimeToAbsorb: 0.1
   mAbsorbBackFriction: 0.1
+  mRandomAbsorbTime: 0.5
   mAcceptTimeRange: 0.2
   mDegreeChangeEffect: 0
   mContinousDegreeChange: 0
@@ -274,8 +286,10 @@ MonoBehaviour:
   mRandDegreeZ: 1
   mRandDegreeRangeZ: 5
   mInitLookByTypeAction: 1
-  mContinousLook: 1
+  mContinousLookCount: 1
   mTimeToLook: 0.5
+  mRandomTimeToLook: 0.5
+  mInitLookAction: {fileID: 0}
 --- !u!114 &11491714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMoveSpeed: 10
   mAxis: 0
+  mRandomizeSpeedAtStart: 0
 --- !u!212 &21297452
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -310,27 +325,37 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 1de868127639c954ea21afcb8962328d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

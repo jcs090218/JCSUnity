@@ -91,11 +91,11 @@ compare algorithm")]
 
         [Header("- Rotate Effect ")]
 
-        [Tooltip("")]
+        [Tooltip("Does the item rotate while dropping?")]
         [SerializeField]
         private bool mRotateWhileDropping = true;
 
-        [Tooltip("")]
+        [Tooltip("How fast the item rotate?")]
         [SerializeField]
         private float mRotateSpeed = 1000;
 
@@ -106,26 +106,26 @@ compare algorithm")]
         [SerializeField]
         private bool mSpreadEffect = true;
 
-        [Tooltip("")]
-        [SerializeField]
+        [Tooltip("How far between a item to the item next to this item.")]
+        [SerializeField] [Range(0, 1)]
         private float mSpreadGap = 0.4f;
 
-        [Tooltip("")]
+        [Tooltip("Did the effect include 3 dimensional?")]
         [SerializeField]
         private bool mIncludeDepth = false;
 
 
         [Header("Destroy Effect (JCS_ItemDroppable)")]
 
-        [Tooltip("")]
+        [Tooltip("Does the item fade out when is destroyed?")]
         [SerializeField]
         private bool mDestroyFadeOutEffect = true;
 
-        [Tooltip("")]
+        [Tooltip("When does the item destory?")]
         [SerializeField]
         private float mDestroyTime = 30;
 
-        [Tooltip("")]
+        [Tooltip("How fast it fade out when get destroy?")]
         [SerializeField]
         private float mFadeTime = 1;
 
@@ -135,6 +135,11 @@ compare algorithm")]
         [Tooltip("")]
         [SerializeField]
         private bool mConstWaveEffect = true;
+
+        [Tooltip(@"Do the item bounce back from the wall after hit 
+the wall or just stop there.")]
+        [SerializeField]
+        private bool mBounceBackfromWall = true;
 
 
         [Header("** Audio (JCS_ItemDroppable) **")]
@@ -149,6 +154,8 @@ compare algorithm")]
         //========================================
         //      setter / getter
         //------------------------------
+        public bool ConstWaveEffect { get { return this.mConstWaveEffect; } set { this.mConstWaveEffect = value; } }
+        public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
 
         //========================================
         //      Unity's function
@@ -180,7 +187,8 @@ compare algorithm")]
         {
             if (mMinNumItemDrop > mMaxNumItemDrop)
             {
-                JCS_Debug.LogError("JCS_ItemDroppable", "No item drop. min max.");
+                JCS_Debug.LogError(
+                    "No item drop. min max.");
                 return;
             }
 
@@ -230,7 +238,7 @@ compare algorithm")]
             if (mustDropItem == null)
             {
                 JCS_Debug.LogError(
-                    this, "Must drop item cannot be null references...");
+                    "Must drop item cannot be null references...");
 
                 return;
             }
@@ -238,7 +246,7 @@ compare algorithm")]
             if (count <= 0)
             {
                 JCS_Debug.LogError(
-                    this, "Cannot drop item with count less or equal to zero...");
+                    "Cannot drop item with count less or equal to zero...");
 
                 return;
             }
@@ -268,7 +276,8 @@ compare algorithm")]
             {
                 if (mMinNumItemDrop > mMaxNumItemDrop)
                 {
-                    JCS_Debug.LogError("JCS_ItemDroppable", "No item drop. min max.");
+                    JCS_Debug.LogError(
+                        "No item drop. min max.");
                     return;
                 }
 
@@ -381,6 +390,8 @@ compare algorithm")]
                 float gapDirection = mSpreadGap;
                 if (isEvenIndex)
                     gapDirection = -mSpreadGap;
+
+                jcsoj.BounceBackfromWall = BounceBackfromWall;
 
                 float gapForce = 0;
 

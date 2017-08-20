@@ -18,7 +18,6 @@ namespace JCSUnity
     /// 
     /// In addition, u can use it inversely!
     /// </summary>
-    [RequireComponent(typeof(SpriteRenderer))]
     public class JCS_SpriteRendererAction
         : MonoBehaviour
     {
@@ -29,8 +28,15 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        /* Down compatible. */
         private SpriteRenderer mSpriteRenderer = null;
         private Vector3 mLastPosition = Vector3.zero;
+
+
+        [Header("** Runtime Variables (JCS_SpriteRendererAction) **")]
+
+        [SerializeField]
+        private SpriteRenderer[] mSpriteRenderers = null;
 
         [Header("-- X Facing --")]
 
@@ -66,6 +72,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
+            // try to get the sprite renderer
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
         }
 
@@ -78,53 +85,12 @@ namespace JCSUnity
             if (currentPos == mLastPosition)
                 return;
 
-            if (!mFreezeX)
+            DoSpriteAction(mSpriteRenderer, currentPos);
+
+            foreach (SpriteRenderer sr in mSpriteRenderers)
             {
-                // object going left
-                if (currentPos.x < mLastPosition.x)
-                {
-                    if (mIsFacingRight)
-                        mSpriteRenderer.flipX = false;
-                    else
-                        mSpriteRenderer.flipX = true;
-                }
-                // object going right
-                else if (currentPos.x > mLastPosition.x)
-                {
-                    if (mIsFacingRight)
-                        mSpriteRenderer.flipX = true;
-                    else
-                        mSpriteRenderer.flipX = false;
-                }
-
-                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
-                    mSpriteRenderer.flipX = !mSpriteRenderer.flipX;
+                DoSpriteAction(sr, currentPos);
             }
-
-            if (!mFreezeY)
-            {
-                // object going down
-                if (currentPos.y < mLastPosition.y)
-                {
-                    if (mIsFacingUp)
-                        mSpriteRenderer.flipY = false;
-                    else
-                        mSpriteRenderer.flipY = true;
-                }
-                // object going up
-                else if (currentPos.y > mLastPosition.y)
-                {
-                    if (mIsFacingUp)
-                        mSpriteRenderer.flipY = true;
-                    else
-                        mSpriteRenderer.flipY = false;
-                }
-
-                // TODO(JenChieh): this have not test yet!!!
-                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
-                    mSpriteRenderer.flipY = !mSpriteRenderer.flipY;
-            }
-            
 
             // update last position
             mLastPosition = currentPos;
@@ -141,6 +107,64 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sr"></param>
+        /// <param name="currentPos"></param>
+        private void DoSpriteAction(SpriteRenderer sr, Vector3 currentPos)
+        {
+            if (sr == null)
+                return;
+
+            if (!mFreezeX)
+            {
+                // object going left
+                if (currentPos.x < mLastPosition.x)
+                {
+                    if (mIsFacingRight)
+                        sr.flipX = false;
+                    else
+                        sr.flipX = true;
+                }
+                // object going right
+                else if (currentPos.x > mLastPosition.x)
+                {
+                    if (mIsFacingRight)
+                        sr.flipX = true;
+                    else
+                        sr.flipX = false;
+                }
+
+                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                    sr.flipX = !sr.flipX;
+            }
+
+            if (!mFreezeY)
+            {
+                // object going down
+                if (currentPos.y < mLastPosition.y)
+                {
+                    if (mIsFacingUp)
+                        sr.flipY = false;
+                    else
+                        sr.flipY = true;
+                }
+                // object going up
+                else if (currentPos.y > mLastPosition.y)
+                {
+                    if (mIsFacingUp)
+                        sr.flipY = true;
+                    else
+                        sr.flipY = false;
+                }
+
+                // TODO(JenChieh): this have not test yet!!!
+                if (JCS_Utility.WithInRange(90, 270, this.transform.localEulerAngles.z))
+                    sr.flipY = !sr.flipY;
+            }
+        }
 
     }
 }

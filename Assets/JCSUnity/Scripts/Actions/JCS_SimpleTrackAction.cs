@@ -58,11 +58,6 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
-        {
-            UpdateUnityData();
-        }
-
         private void Update()
         {
             Vector3 tempTargetPost = mTargetPos;

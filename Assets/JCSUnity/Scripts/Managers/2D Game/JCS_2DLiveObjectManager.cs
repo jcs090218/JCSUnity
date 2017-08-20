@@ -24,6 +24,15 @@ namespace JCSUnity
         // Public Variables
         public static JCS_2DLiveObjectManager instance = null;
 
+
+        [Header("** Runtime Variables (JCS_2DLiveObjectManager) **")]
+
+        [Tooltip("All the live object in the scene.")]
+        public JCS_2DLiveObject[] LIVE_OBJECT_LIST = null;
+
+        [Tooltip("Time to find all the live object in the scene periodically.")]
+        public float TIME_TO_FIND_ALL_LIVE_OBJECT_IN_SCENE = 3;
+
         //----------------------
         // Private Variables
 
@@ -40,6 +49,8 @@ namespace JCSUnity
         private void Awake()
         {
             instance = this;
+
+            StartCoroutine(FindAllLiveObjectInScene(TIME_TO_FIND_ALL_LIVE_OBJECT_IN_SCENE));
         }
 
         //========================================
@@ -72,5 +83,18 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// Time to find all live object in scene.
+        /// </summary>
+        /// <param name="time"> time to find. </param>
+        /// <returns> wait. </returns>
+        private IEnumerator FindAllLiveObjectInScene(float time)
+        {
+            while (true)
+            {
+                LIVE_OBJECT_LIST = Object.FindObjectsOfType<JCS_2DLiveObject>();
+                yield return new WaitForSeconds(time);
+            }
+        }
     }
 }

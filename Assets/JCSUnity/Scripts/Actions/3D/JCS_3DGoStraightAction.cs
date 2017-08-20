@@ -63,6 +63,14 @@ move speed to negative move speed.")]
                 this.MoveSpeed = JCS_Random.Range(-mMoveSpeed, mMoveSpeed);
         }
 
+        /**
+         * FixedUpdate take so much of the performance. Consider use 
+         * regular Update instead of FixedUpdate.
+         * 
+         * NOTE(jenchieh): if you want this to be accurate use FixedUpdate.
+         */
+         /* Comment either one of them. */
+        //private void Update()
         private void FixedUpdate()
         {
             Vector3 newPos = Vector3.zero;
@@ -88,7 +96,7 @@ move speed to negative move speed.")]
             }
 
             // if is valid, do action.
-            if (!JCS_Mathf.IsNaN(newPos))
+            //if (!JCS_Mathf.IsNaN(newPos))
                 this.transform.Translate(newPos);
         }
 

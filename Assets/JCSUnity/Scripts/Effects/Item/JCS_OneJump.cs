@@ -29,7 +29,9 @@ namespace JCSUnity
         // Private Variables
         private bool mEffect = false;
 
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_OneJump) **")]
+
         [Tooltip("How many force to apply on jump")]
         [SerializeField]
         private float mJumpForce = 10;
@@ -45,6 +47,14 @@ namespace JCSUnity
         private RaycastHit mRaycastHit;
         private Collider mFixCollider = null;
 
+        // trigger once then disable to save performance.
+        private bool mHitTheWall = false;
+
+        [Tooltip(@"Do the item bounce back from the wall after hit 
+the wall or just stop there.")]
+        [SerializeField]
+        private bool mBounceBackfromWall = true;
+
         //----------------------
         // Protected Variables
 
@@ -56,6 +66,8 @@ namespace JCSUnity
 
         public Rigidbody GetRigidbody() { return this.mRigidbody; }
         public Collider GetFixCollider() { return this.mFixCollider; }
+
+        public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
 
         //========================================
         //      Unity's function
@@ -85,50 +97,25 @@ namespace JCSUnity
 
         private void OnTriggerEnter(Collider other)
         {
-            if (mVelocity.y > 0)
-                return;
-
-            // meet ignore object
-            JCS_ItemIgnore jcsii = other.GetComponent<JCS_ItemIgnore>();
-            if (jcsii != null)
-                return;
-
-            JCS_Item tempItem = this.GetComponent<JCS_Item>();
-            // if itself it a item, we check other is a item or not.
-            if (tempItem != null)
+            if (!mHitTheWall)
             {
-                tempItem = other.GetComponent<JCS_Item>();
-                // if both are item then we dont borther 
-                // each other action.
-                if (tempItem != null)
-                    return;
+                JCS_ItemWall jcsiw = other.GetComponent<JCS_ItemWall>();
+                if (jcsiw != null)
+                {
+                    // no longer moving along x-axis.
+                    {
+                        // bounce it back!
+                        if (mBounceBackfromWall)
+                            mVelocity.x = -mVelocity.x;
+                        else
+                            mVelocity.x = 0;
+                    }
+                    mHitTheWall = true;
+                }
             }
 
-#if (UNITY_EDITOR)
-            // if is debug mode print this out.
-            // in order to know what does item touched and 
-            // stop this movement.
-            if (JCS_GameSettings.instance.DEBUG_MODE)
-                JCS_Debug.PrintName(other.transform);
-#endif
-
-            mVelocity.y = 0;
-            mEffect = false;
-
-
-            mFixCollider = other;
-
-            // TODO(JenChieh): not all the object we get set are 
-            //                 box collider only.
-            BoxCollider beSetBox = other.GetComponent<BoxCollider>();
-
-            // set this ontop of the other box(ground)
-            if (beSetBox != null)
-                JCS_Physics.SetOnTopOfBox(mBoxCollider, beSetBox);
-
-
-            // enable the physic once on the ground
-            JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(this.mBoxCollider, false);
+            /* Only check when the item start dropping. */
+            TriggerDropping(other);
         }
 
         //========================================
@@ -182,5 +169,56 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// Only check when the item start dropping.
+        /// </summary>
+        /// <param name="other"> collider detected. </param>
+        private void TriggerDropping(Collider other)
+        {
+            if (mVelocity.y > 0)
+                return;
+
+            // meet ignore object
+            JCS_ItemIgnore jcsii = other.GetComponent<JCS_ItemIgnore>();
+            if (jcsii != null)
+                return;
+
+            JCS_Item otherItem = this.GetComponent<JCS_Item>();
+            // if itself it a item, we check other is a item or not.
+            if (otherItem != null)
+            {
+                otherItem = other.GetComponent<JCS_Item>();
+                // if both are item then we dont bother 
+                // each other action.
+                if (otherItem != null)
+                    return;
+            }
+
+#if (UNITY_EDITOR)
+            // if is debug mode print this out.
+            // in order to know what does item touched and 
+            // stop this movement.
+            if (JCS_GameSettings.instance.DEBUG_MODE)
+                JCS_Debug.PrintName(other.transform);
+#endif
+
+            mVelocity.y = 0;
+            mEffect = false;
+
+
+            mFixCollider = other;
+
+            // TODO(JenChieh): not all the object we get set are 
+            //                 box collider only.
+            BoxCollider beSetBox = other.GetComponent<BoxCollider>();
+
+            // set this ontop of the other box(ground)
+            if (beSetBox != null)
+                JCS_Physics.SetOnTopOfBoxWithSlope(mBoxCollider, beSetBox);
+
+
+            // enable the physic once on the ground
+            JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(this.mBoxCollider, false);
+        }
     }
 }

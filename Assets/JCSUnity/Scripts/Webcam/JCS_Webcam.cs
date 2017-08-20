@@ -16,7 +16,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Webcam object. Must have the texture on it in order to render.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_Webcam 
@@ -68,7 +68,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public void Stop() { this.mWebCamTexture.Stop(); }
+        public void Stop() { if (mWebCamTexture != null) this.mWebCamTexture.Stop(); }
         public void Play() { this.mWebCamTexture.Play(); }
         public void Pause() { this.mWebCamTexture.Pause(); }
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
@@ -76,8 +76,10 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             ActiveWebcam();
@@ -119,8 +121,12 @@ namespace JCSUnity
         private void OnApplicationQuit()
         {
             // force stop
-            if (mWebCamTexture != null)
-                Stop();
+            Stop();
+        }
+
+        private void OnDestroy()
+        {
+            Stop();
         }
 
         //========================================

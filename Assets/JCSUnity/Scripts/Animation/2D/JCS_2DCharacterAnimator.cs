@@ -330,7 +330,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
             }
 
             JCS_Debug.LogError(
-                this, "This should not happens...");
+                "This should not happens...");
 
             // this sould not happens.
             return JCS_AttackState.ATTACK_01;

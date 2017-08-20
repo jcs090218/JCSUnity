@@ -142,7 +142,6 @@ namespace JCSUnity
             if (mMainAnim1 == null)
             {
                 JCS_Debug.LogReminders(
-                    this, 
                     "Assigning active skill action without animation is not allowed.");
 
                 return;
@@ -174,7 +173,6 @@ namespace JCSUnity
             if (mMainAnim2 == null)
             {
                 JCS_Debug.LogReminders(
-                    this, 
                     "Assigning active skill action without animation is not allowed.");
 
                 return;

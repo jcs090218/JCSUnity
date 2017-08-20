@@ -156,9 +156,9 @@ namespace JCSUnity
         // Protected Functions
 
         /// <summary>
-        /// 
+        /// Set either the sound player in 2d space or 3d space.
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type"> 2d or 3d space. </param>
         protected void SetSoundType(JCS_SoundType type)
         {
             switch (type)

@@ -60,8 +60,6 @@ namespace JCSUnity
         /*******************************************/
         private void Start()
         {
-            UpdateUnityData();
-
             // record down all the transform info value.
             this.mScaleToFreeze = this.LocalScale;
         }

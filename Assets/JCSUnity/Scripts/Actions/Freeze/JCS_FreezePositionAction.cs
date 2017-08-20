@@ -79,8 +79,6 @@ namespace JCSUnity
         /*******************************************/
         private void Start()
         {
-            UpdateUnityData();
-
             // get the new freeze position.
             if (IsLocalPosition)
                 this.mPositionToFreeze = this.LocalPosition;

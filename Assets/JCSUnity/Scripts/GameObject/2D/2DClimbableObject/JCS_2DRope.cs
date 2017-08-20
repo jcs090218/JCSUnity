@@ -35,13 +35,6 @@ namespace JCSUnity
         [SerializeField]
         protected List<JCS_2DSideScrollerPlayer> mSSPlayers = null;
 
-
-        [Header("** Initilaize Variable (JCS_2DRope) **")]
-
-        [Tooltip("Ground/Platform the ladder lean on.")]
-        [SerializeField]
-        protected JCS_2DPositionPlatform mPositionPlatform = null;
-
         //========================================
         //      setter / getter
         //------------------------------
@@ -56,7 +49,6 @@ namespace JCSUnity
             if (mPositionPlatform == null)
             {
                 JCS_Debug.LogError(
-                    this,
                     "U have a ladder without a platform/ground to lean on.");
             }
         }
@@ -82,19 +74,19 @@ namespace JCSUnity
             if (isTopOfBox)
             {
                 // show character behind the ladder
-                int backOrderLayer = OrderLayerObject.sortingOrder - 1;
+                int backOrderLayer = OrderLayerObject.sortingOrder - ClimbableManager.SORTING_ORDER_BEHIND_OFFSET;
                 SetPlayerSortingOrder(player, backOrderLayer);
             }
             else
             {
                 // show character infront
-                int frontOrderLayer = OrderLayerObject.sortingOrder + 1;
+                int frontOrderLayer = OrderLayerObject.sortingOrder + ClimbableManager.SORTING_ORDER_INFRONT_OFFSET;
                 SetPlayerSortingOrder(player, frontOrderLayer);
             }
 
             player.CanRope = true;
             player.CanLadder = false;
-            player.SetClimbingTransform(this.transform);
+            player.ClimbableObject = this;
         }
 
         protected virtual void OnTriggerExit(Collider other)
@@ -103,7 +95,7 @@ namespace JCSUnity
             if (player == null)
                 return;
 
-            player.SetClimbingTransform(null);
+            player.ClimbableObject = null;
             player.GetCharacterAnimator().PlayAnimationInFrame();
             player.CanRope = false;
 
@@ -129,7 +121,7 @@ namespace JCSUnity
                 {
                     player.CanRope = true;
                     player.CanLadder = false;
-                    player.SetClimbingTransform(this.transform);
+                    player.ClimbableObject = this;
 
                     continue;
                 }
@@ -138,7 +130,7 @@ namespace JCSUnity
                     player.ClimbMoveType == JCS_ClimbMoveType.MOVE_UP)
                 {
                     // show character infront
-                    int frontOrderLayer = OrderLayerObject.sortingOrder + 1;
+                    int frontOrderLayer = OrderLayerObject.sortingOrder + ClimbableManager.SORTING_ORDER_INFRONT_OFFSET;
                     SetPlayerSortingOrder(player, frontOrderLayer);
 
 
@@ -149,20 +141,14 @@ namespace JCSUnity
                     /* Check top of the platform */
                     if (isTopOfBox)
                     {
-                        // set on the platform
-                        JCS_Physics.SetOnTopOfBox(
-                            player.GetCharacterController(),
-                            mPositionPlatform.GetPlatformCollider(),
-                            0.03f);
-
-                        player.SetClimbingTransform(null);
+                        player.ClimbableObject = null;
                         player.GetCharacterAnimator().PlayAnimationInFrame();
                         player.CanRope = false;
                         player.VelY = 0;
                         player.JustClimbOnTopOfBox = true;
 
                         // show character behind the ladder
-                        int backOrderLayer = OrderLayerObject.sortingOrder - 1;
+                        int backOrderLayer = OrderLayerObject.sortingOrder - ClimbableManager.SORTING_ORDER_BEHIND_OFFSET;
                         SetPlayerSortingOrder(player, backOrderLayer);
                     }
                 }
@@ -220,12 +206,8 @@ namespace JCSUnity
         /// <param name="layer"> layer number/id. </param>
         private void SetPlayerSortingOrder(JCS_2DSideScrollerPlayer player, int layer)
         {
-#if (UNITY_EDITOR)
             player.OrderLayerObject.SetObjectParentToOrderLayerByOrderLayerIndex(
                 layer);
-#else
-            player.GetSpriteRenderer().sortingOrder = layer;
-#endif
         }
 
     }

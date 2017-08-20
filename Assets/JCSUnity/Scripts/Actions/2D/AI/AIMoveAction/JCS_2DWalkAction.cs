@@ -128,8 +128,11 @@ the get mad will start tracking the object that make this object mad.")]
         public float VelY { get { return mVelocityInfo.VelY; } set { mVelocityInfo.VelY = value; } }
         public float VelZ { get { return mVelocityInfo.VelZ; } set { mVelocityInfo.VelZ = value; } }
         public bool isGrounded { get { return this.mCharacterControllerInfo.isGrounded; } }
-        public float MoveSpeed { get { return mVelocityInfo.MoveSpeed; } set { mVelocityInfo.MoveSpeed = value; } }
-        public float RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
+        public Vector3 MoveSpeed { get { return mVelocityInfo.MoveSpeed; } set { mVelocityInfo.MoveSpeed = value; } }
+        public Vector3 RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
+        public float RecordSpeedX { get { return this.mVelocityInfo.RecordSpeed.x; } set { this.mVelocityInfo.RecordSpeedX = value; } }
+        public float RecordSpeedY { get { return this.mVelocityInfo.RecordSpeed.y; } set { this.mVelocityInfo.RecordSpeedY = value; } }
+        public float RecordSpeedZ { get { return this.mVelocityInfo.RecordSpeed.z; } set { this.mVelocityInfo.RecordSpeedZ = value; } }
 
         // Track Effects 
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
@@ -334,7 +337,7 @@ the get mad will start tracking the object that make this object mad.")]
             if (!isGrounded)
                 return;
 
-            RecordSpeed = speed;
+            RecordSpeedX = speed;
 
             mWalked = true;
         }

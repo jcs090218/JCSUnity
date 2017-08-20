@@ -127,6 +127,12 @@ namespace JCSUnity
         /// </summary>
         private void PartGUI()
         {
+            if (GUILayout.Button("Create 2D Cursor"))
+                Create2DCurosr();
+
+            if (GUILayout.Button("Create 3D Cursor"))
+                Create3DCurosr();
+
             if (GUILayout.Button("Create clean GUI panel"))
                 CreateBaseGUIPanel();
 
@@ -285,11 +291,65 @@ namespace JCSUnity
         private static void UpdateJCSUnity()
         {
             // TODO(jenchieh): check framework need to update or not?
+            bool upToDate = true;
+            string title = "Check for Update - JCSUnity";
+
+
+            if (upToDate)
+            {
+                EditorUtility.DisplayDialog(
+                    title,
+                    "Already up to date.",
+                    "Close");
+            }
+            // TODO(jenchieh): not up to date...
+            else
+            {
+                bool option = EditorUtility.DisplayDialog(
+                    title,
+                    "",
+                    "Close");
+
+                if (option)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
         }
 
         /**
          * GUI
          */
+
+        /// <summary>
+        /// Create the cursor game object.
+        /// </summary>
+        private static GameObject Create2DCurosr()
+        {
+            string setting_path = "JCSUnity_Resources/GUI/JCS_2DCursor";
+            GameObject gameObj = JCS_Utility.SpawnGameObject(setting_path);
+            // take away clone sign.
+            gameObj.name = gameObj.name.Replace("(Clone)", "");
+
+            return gameObj;
+        }
+
+        /// <summary>
+        /// Create the cursor game object.
+        /// </summary>
+        private static GameObject Create3DCurosr()
+        {
+            string setting_path = "JCSUnity_Resources/GUI/JCS_3DCursor";
+            GameObject gameObj = JCS_Utility.SpawnGameObject(setting_path);
+            // take away clone sign.
+            gameObj.name = gameObj.name.Replace("(Clone)", "");
+
+            return gameObj;
+        }
 
         /// <summary>
         /// Create the clean base gui panel for JCSUnity 

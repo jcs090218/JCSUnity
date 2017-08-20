@@ -29,25 +29,38 @@ namespace JCSUnity
         // Private Variables
 
         [Header("** Check Variables (JCS_VelocityInfo) **")]
-        [SerializeField] private Vector3 mVelocity = Vector3.zero;
+        [SerializeField]
+        private Vector3 mVelocity = Vector3.zero;
+
 
         [Header("** Runtime Variables (JCS_VelocityInfo) **")]
-        [SerializeField] private bool mApplyGravity = true;
+
+        [Tooltip("Do this character controll applies gravity.")]
+        [SerializeField]
+        private bool mApplyGravity = true;
+
         private CharacterController mCharacterController = null;
 
         [Tooltip("How fast it get back to original speed?")]
         [SerializeField] private float mSpeedFriction = 0.2f;
+
         // 原本速度的變化量
-        private float mMoveSpeed = 0;
+        private Vector3 mMoveSpeed = Vector3.zero;
+
         // 如果你要換他原本的速度, 就用這個變量
-        private float mRecordSpeed = 0;
+        private Vector3 mRecordSpeed = Vector3.zero;
 
         [Tooltip("Freeze Velocity Horizontal Direction. (X Axis)")]
-        [SerializeField] private bool mFreezeX = false;
+        [SerializeField]
+        private bool mFreezeX = false;
+
         [Tooltip("Freeze Velocity Verticl Direction. (Y Axis)")]
-        [SerializeField] private bool mFreezeY = false;
+        [SerializeField]
+        private bool mFreezeY = false;
+
         [Tooltip("Freeze Velocity Depth Direction. (Z Axis)")]
-        [SerializeField] private bool mFreezeZ = false;
+        [SerializeField]
+        private bool mFreezeZ = false;
 
         //----------------------
         // Protected Variables
@@ -60,8 +73,14 @@ namespace JCSUnity
         public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
         public float VelY { get { return this.mVelocity.y; } set { this.mVelocity.y = value; } }
         public float VelZ { get { return this.mVelocity.z; } set { this.mVelocity.z = value; } }
-        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
-        public float RecordSpeed { get { return this.mRecordSpeed; } set { this.mRecordSpeed = value; } }
+        public Vector3 MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
+        public float MoveSpeedX { get { return this.mMoveSpeed.x; } set { this.mMoveSpeed.x = value; } }
+        public float MoveSpeedY { get { return this.mMoveSpeed.y; } set { this.mMoveSpeed.y = value; } }
+        public float MoveSpeedZ { get { return this.mMoveSpeed.z; } set { this.mMoveSpeed.z = value; } }
+        public Vector3 RecordSpeed { get { return this.mRecordSpeed; } set { this.mRecordSpeed = value; } }
+        public float RecordSpeedX { get { return this.mRecordSpeed.x; } set { this.mRecordSpeed.x = value; } }
+        public float RecordSpeedY { get { return this.mRecordSpeed.y; } set { this.mRecordSpeed.y = value; } }
+        public float RecordSpeedZ { get { return this.mRecordSpeed.z; } set { this.mRecordSpeed.z = value; } }
         public bool ApplyGravity { get { return this.mApplyGravity; } set { this.mApplyGravity = value; } }
         public bool isGrounded { get { return this.mCharacterController.isGrounded; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
@@ -84,12 +103,17 @@ namespace JCSUnity
             if (mCharacterController.enabled)
             {
                 // apply force (moving the character)
+                /**
+                 * NOTE(jenchieh): Move function cost so much 
+                 * performance.
+                 */
                 mCharacterController.Move(Velocity * Time.deltaTime);
             }
 
             // getting back speed
             this.mMoveSpeed += (this.mRecordSpeed - this.mMoveSpeed) / mSpeedFriction * Time.deltaTime;
-            this.VelX = MoveSpeed;
+            this.VelX = mMoveSpeed.x;
+            this.VelZ = mMoveSpeed.z;
 
             // apply gravit
             if (ApplyGravity)

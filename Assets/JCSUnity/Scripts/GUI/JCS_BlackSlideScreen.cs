@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Black Slide Screen
     /// </summary>
-    [RequireComponent(typeof(JCS_SlideEffect))]
+    [RequireComponent(typeof(JCS_TransfromTweener))]
     public class JCS_BlackSlideScreen
         : MonoBehaviour
     {
@@ -26,7 +26,9 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private JCS_SlideEffect mSlideEffect = null;
+        private JCS_TransfromTweener mTweener = null;
+
+        private Vector3 mStartingPosition = Vector3.zero;
 
         //----------------------
         // Protected Variables
@@ -40,7 +42,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            mSlideEffect = this.GetComponent<JCS_SlideEffect>();
+            this.mTweener = this.GetComponent<JCS_TransfromTweener>();
         }
 
         private void Start()
@@ -48,6 +50,8 @@ namespace JCSUnity
             // everytime it reload the scene.
             // move to the last child make sure everything get cover by this.
             JCS_Utility.MoveToTheLastChild(this.transform);
+
+            this.mStartingPosition = this.transform.localPosition;
         }
 
         //========================================
@@ -62,10 +66,12 @@ namespace JCSUnity
         /// <param name="align"> align type </param>
         public void StartSlideIn(JCS_Align align, float time)
         {
-            // NOTE(jenchieh): this is just some tweeking.
-            mSlideEffect.Friction = time / 2;
+            mTweener.DurationX = time;
+            mTweener.DurationY = time;
+            mTweener.DurationZ = time;
 
-            mSlideEffect.Deactive();
+            // tween back to where we are.
+            mTweener.DoTween(mStartingPosition);
         }
 
         /// <summary>
@@ -77,10 +83,13 @@ namespace JCSUnity
             float imageSize = 1200;
             float distanceX = JCS_Canvas.instance.GetAppRect().sizeDelta.x + imageSize;
             float distanceY = JCS_Canvas.instance.GetAppRect().sizeDelta.y + imageSize;
-            
 
             // NOTE(jenchieh): this is just some tweeking.
-            mSlideEffect.Friction = time;
+            mTweener.DurationX = time;
+            mTweener.DurationY = time;
+            mTweener.DurationZ = time;
+
+            Vector3 tweenTo = this.transform.localPosition;
 
             switch (align)
             {
@@ -88,8 +97,7 @@ namespace JCSUnity
                 // ============--------------
                 case JCS_Align.ALIGN_RIGHT:
                     {
-                        mSlideEffect.Axis = JCS_Axis.AXIS_X;
-                        mSlideEffect.Distance = JCS_Mathf.ToNegative(distanceX);
+                        tweenTo.x = JCS_Mathf.ToNegative(distanceX);
                     }
                     break;
 
@@ -97,27 +105,24 @@ namespace JCSUnity
                 // -----------=============
                 case JCS_Align.ALIGN_LEFT:
                     {
-                        mSlideEffect.Axis = JCS_Axis.AXIS_X;
-                        mSlideEffect.Distance = JCS_Mathf.ToPositive(distanceX);
+                        tweenTo.x = JCS_Mathf.ToPositive(distanceX);
                     }
                     break;
 
                 case JCS_Align.ALIGN_BOTTOM:
                     {
-                        mSlideEffect.Axis = JCS_Axis.AXIS_Y;
-                        mSlideEffect.Distance = JCS_Mathf.ToPositive(distanceY);
+                        tweenTo.y = JCS_Mathf.ToPositive(distanceY);
                     }
                     break;
                 case JCS_Align.ALIGN_TOP:
                     {
-                        mSlideEffect.Axis = JCS_Axis.AXIS_Y;
-                        mSlideEffect.Distance = JCS_Mathf.ToNegative(distanceY);
+                        tweenTo.y = JCS_Mathf.ToNegative(distanceY);
                     }
                     break;
             }
 
             // start sliding
-            mSlideEffect.Active();
+            mTweener.DoTween(tweenTo);
         }
 
         /// <summary>
@@ -129,7 +134,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsDoneSliding()
         {
-            return mSlideEffect.IsIdle(70);
+            return mTweener.IsDoneTweening;
         }
 
         /// <summary>

@@ -56,10 +56,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CHARACTERS_IN_TEAM: 2
   CHARACTERS_IN_GAME:
-  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
-  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
-  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
-  - {fileID: 11474578, guid: 284ec4c32557dfa47982d62cb14f566d, type: 2}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
   FILE_PATH: SavedData/
   FILE_NAME: BF_GameData
   TOTAL_MOB_IN_SCENE: 15

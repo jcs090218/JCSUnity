@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace JCSUnity
@@ -36,13 +37,14 @@ namespace JCSUnity
 
         [Tooltip("Extra sprite renederer you can set.")]
         [SerializeField]
-        private SpriteRenderer[] mSpriteRenderers = null;
+        private List<SpriteRenderer> mSpriteRenderers = null;
 
 
         [Header("- Absolute Layer")]
 
         [Tooltip("Enable the Absolute Layer Effect.")]
-        [SerializeField] private bool mAbsoluteLayerEffect = false;
+        [SerializeField]
+        private bool mAbsoluteLayerEffect = false;
 
         [Tooltip("This will set this object directly in the scene.")]
         [SerializeField] [Range(-30, 30)]
@@ -54,8 +56,10 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public JCS_OrderLayer OrderLayer { get { return this.mOrderLayer; } }
-        public SpriteRenderer[] SpriteRenderers() { return this.mSpriteRenderers; }
+        public List<SpriteRenderer> SpriteRenderers() { return this.mSpriteRenderers; }
+        public SpriteRenderer SpriteRenderersAt(int index) { return this.mSpriteRenderers[index]; }
         public bool AbsoluteLayerEffect { get { return this.mAbsoluteLayerEffect; } }
         public int AbsotlueLayer { get { return this.mAbsotlueLayer; } }
         public int sortingOrder { get { return this.mOrderLayer.OrderLayer; } }
@@ -65,7 +69,11 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
+            /* Down compatible. */
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
+
+            // clean up empty slot.
+            mSpriteRenderers = JCS_Utility.RemoveEmptySlot<SpriteRenderer>(mSpriteRenderers);
         }
 
         private void Start()
@@ -101,8 +109,12 @@ namespace JCSUnity
         /// <param name="orderLayer"> rendering order layer. </param>
         public void SetOrderLayer(int orderLayer)
         {
-            // set the order layer by runtime. (shortcut)
-            mSpriteRenderer.sortingOrder = orderLayer;
+            /* Down compatible. */
+            {
+                // set the order layer by runtime. (shortcut)
+                if (mSpriteRenderer != null)
+                    mSpriteRenderer.sortingOrder = orderLayer;
+            }
 
             foreach (SpriteRenderer spriteRenderer in mSpriteRenderers)
             {

@@ -53,11 +53,6 @@ namespace JCSUnity
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
-        private void Awake()
-        {
-            UpdateUnityData();
-        }
-
         private void LateUpdate()
         {
             if (mTargetTrans == null)

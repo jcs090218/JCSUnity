@@ -28,6 +28,14 @@ public class ReadSceneNames
         Reset();
     }
 
+    private void Awake()
+    {
+        instance = this;
+
+        // read the scene
+        Reset();
+    }
+
     /// <summary>
     /// Check the scene in the build setting are good to load.
     /// </summary>
