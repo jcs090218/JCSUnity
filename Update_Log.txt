@@ -7,6 +7,15 @@
 # ========================================================================
 
 
+2017-08-22
+* Default buffer input and output mem does not set correctlly, 
+ settings fixed. (JCSUnity)
+* Client handler logic error in Game Socekt. (JCSUnity)
+
+2017-08-21
+* Client handler implemented, so we could have our own packet/
+ buffer handler. (JCSUnity)
+
 2017-08-20
 * Update JCS_VelocityInfo with 3 dimentional. (JCSUnity)
 * Re-structure the networking module. (JCSUnity)

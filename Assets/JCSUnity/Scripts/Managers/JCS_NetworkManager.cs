@@ -18,20 +18,18 @@ namespace JCSUnity
     /// NOTE(jenchieh): To use this so the game could possibly become 
     /// the MO/MMO game.
     /// </summary>
-    public class JCS_NetworkManager 
-        : MonoBehaviour
+    public class JCS_NetworkManager
+        : JCS_Managers<JCS_NetworkManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_NetworkManager instance = null;
         public static bool SERVER_CLOSE = false;
 
         public static bool FIRST_LOGIN = true;
 
         //----------------------
         // Private Variables
-        private static JCS_GameSocket GAME_SOCKET = null;
         private float mConnectionCounter = 0.0f;
 
         //----------------------
@@ -75,7 +73,7 @@ namespace JCSUnity
                 bytesSend[2] = (byte)'l';
                 bytesSend[3] = (byte)'L';
                 bytesSend[4] = (byte)'o';
-                GAME_SOCKET.SendPacket(bytesSend);
+                JCS_NetworkSettings.GetGameSocket().SendPacket(bytesSend);
             }
 
             if (JCS_Input.GetKeyDown(KeyCode.O))
@@ -91,17 +89,11 @@ namespace JCSUnity
                 bytesSend[7] = (byte)',';
                 bytesSend[8] = (byte)'.';
                 bytesSend[9] = (byte)'/';
-                GAME_SOCKET.SendPacket(bytesSend);
+                JCS_NetworkSettings.GetGameSocket().SendPacket(bytesSend);
             }
 
         }
 #endif
-
-        private void OnApplicationQuit()
-        {
-            if (JCS_NetworkSettings.instance.ONLINE_MODE)
-                JCS_NetworkManager.GAME_SOCKET.Close();
-        }
 
         //========================================
         //      Self-Define
@@ -130,44 +122,6 @@ namespace JCSUnity
             JCS_NetworkConstant.ENCODE_BUFFER[3] = (byte)'E';
 
             return true;
-        }
-
-        /// <summary>
-        /// Create the socket and connect to the host and 
-        /// port provided.
-        /// </summary>
-        /// <param name="hostname"> host name </param>
-        /// <param name="port"> port number </param>
-        /// <returns> Sucess or vice versa. </returns>
-        public static bool CreateNetwork(string hostname, int port)
-        {
-            if (GAME_SOCKET != null)
-                return false;
-
-            GAME_SOCKET = new JCS_GameSocket();
-            GAME_SOCKET.Connect(hostname, port);
-
-            return true;
-        }
-
-        /// <summary>
-        /// Close the current socket the safe way.
-        /// </summary>
-        public static void CloseSocket()
-        {
-            if (GAME_SOCKET == null)
-                return;
-
-            GAME_SOCKET.Close();
-        }
-
-        /// <summary>
-        /// Return the Game socket we are using.
-        /// </summary>
-        /// <returns> socket. </returns>
-        public static JCS_GameSocket GetGameSocket()
-        {
-            return GAME_SOCKET;
         }
 
         /// <summary>
@@ -209,7 +163,7 @@ namespace JCSUnity
         public void SwitchServer()
         {
             SwitchServer(
-                JCS_NetworkSettings.instance.HOST_NAME, 
+                JCS_NetworkSettings.instance.HOST_NAME,
                 JCS_NetworkSettings.instance.PORT);
         }
 
@@ -221,17 +175,17 @@ namespace JCSUnity
         /// </summary>
         /// <param name="hostname"> Host name </param>
         /// <param name="port"> Port Number </param>
-        public void SwitchServer(string hostname, int port)
+        public void SwitchServer(string hostname, int port, JCS_ClientHandler handler = null)
         {
             // update hostname and port.
             JCS_NetworkSettings.instance.HOST_NAME = hostname;
             JCS_NetworkSettings.instance.PORT = port;
 
             // close the previous one.
-            CloseSocket();
+            JCS_NetworkSettings.CloseSocket();
 
             // open the new one for next server.
-            CreateNetwork(hostname, port);
+            JCS_NetworkSettings.CreateNetwork(hostname, port, handler);
         }
 
         //----------------------

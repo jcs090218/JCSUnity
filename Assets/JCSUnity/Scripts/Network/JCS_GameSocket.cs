@@ -10,7 +10,7 @@ using System.IO;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// Socket Descriptor holder.
     /// </summary>
     public class JCS_GameSocket
     {
@@ -19,22 +19,25 @@ namespace JCSUnity
         private byte[] mInputBuff = new byte[JCS_NetworkConstant.INBUFSIZE];    // Recieved data buffer
         private byte[] mOutputBuff = new byte[JCS_NetworkConstant.OUTBUFSIZE];
 
-
-        //-----------------------------------------
-        // setter / getter
-        //-----------------------------------------
-        public byte[] GetInputBuffer() { return this.mInputBuff; }
-        public byte[] GetOutputBuffer() { return this.mOutputBuff; }
+        private JCS_ClientHandler mClientHandler = null;
+        
 
         //-----------------------------------------
         // functions
         //-----------------------------------------
-        public JCS_GameSocket()
+        public JCS_GameSocket(JCS_ClientHandler handler = null)
         {
-            AssignBuffer(GetInputBuffer(), (byte)'A');
-            AssignBuffer(GetOutputBuffer(), (byte)'A');
+            if (handler != null)
+                SetHandler(handler);
+            else
+                SetHandler(new JCS_DefaultClientHandler());
         }
 
+        /// <summary>
+        /// Try to connect once to the setting server.
+        /// </summary>
+        /// <param name="hostname"> Internet Protocal </param>
+        /// <param name="port"> Port Number </param>
         public void Connect(string hostname, int port)
         {
             try
@@ -70,6 +73,10 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Call back when on connect.
+        /// </summary>
+        /// <param name="ar"> async state. </param>
         public void OnConnect(IAsyncResult ar)
         {
             // Socket was the passed in object
@@ -111,20 +118,15 @@ namespace JCSUnity
                     // Wrote the data to the List
                     string sRecieved = Encoding.UTF8.GetString(mInputBuff, 0, nBytesRec);
 
-
                     // Set decode Charset!
-                    byte[] buffer = System.Text.Encoding.Default.GetBytes(sRecieved);
-
-                    // print it out for test
-                    //PrintRecievedPacket(buffer);
-
+                    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sRecieved);
 
                     // send buffer to decoder and get the decrypted packet
                     byte[] decryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetDecoder().Decode(buffer);
 
-                    // print it out for test
-                    PrintRecievedPacket(decryptedBuffer);
-
+                    // invoke data to handler.
+                    if (mClientHandler != null)
+                        mClientHandler.MessageReceived(decryptedBuffer);
 
                     // WARNING : The following line is NOT thread safe. Invoke is
                     //m_lbRecievedData.Items.Add( sRecieved );
@@ -153,6 +155,11 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Check if the socket already connected?
+        /// </summary>
+        /// <param name="s"> socket descriptor </param>
+        /// <returns> boolean to check is connected? </returns>
         public bool SocketConnected(Socket s)
         {
             bool part1 = s.Poll(1000, SelectMode.SelectRead);
@@ -179,6 +186,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Close the socekt the safe way.
+        /// </summary>
         public void Close()
         {
             if (mSocket != null && mSocket.Connected)
@@ -188,11 +198,20 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Check is connected to the server or not.
+        /// </summary>
+        /// <returns></returns>
         public bool isConnected()
         {
             return mSocket.Connected;
         }
 
+        /// <summary>
+        /// Send a sequence of byte to server.
+        /// </summary>
+        /// <param name="buffer"> byte array to send. </param>
+        /// <returns> boolean to check if success. </returns>
         public bool SendPacket(byte[] buffer)
         {
             if (mSocket == null || !mSocket.Connected)
@@ -201,9 +220,13 @@ namespace JCSUnity
                 return false;
             }
 
+            if (buffer == null)
+                return false;
+
             byte[] encryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetEncoder().Encode(buffer);
 
-            PrintSendPacket(encryptedBuffer);
+            if (mClientHandler != null)
+                mClientHandler.MessageSent(encryptedBuffer);
 
             try
             {
@@ -218,64 +241,21 @@ namespace JCSUnity
             return true;
         }
 
-        /// <summary>
-        /// Print out the message we are going to send.
-        /// </summary>
-        /// <param name="message"> meesage sending to print. </param>
-        private void PrintSendPacket(System.Object message)
-        {
-#if (UNITY_EDITOR)
-            if (!JCS_GameSettings.instance.DEBUG_MODE)
-                return;
+        //-----------------------------------------
+        // setter / getter
+        //-----------------------------------------
 
-            byte[] encryptedBuffer = (byte[])message;
-
-            // Print out the buffer for test
-            JCS_Logger.Info("HeapBuffer[" + BitConverter.ToString(encryptedBuffer) + "]");
-#endif
-        }
+        public byte[] GetInputBuffer() { return this.mInputBuff; }
+        public byte[] GetOutPutBuffer() { return this.mOutputBuff; }
 
         /// <summary>
-        /// Print out the message we received.
+        /// Set the client handler.
         /// </summary>
-        /// <param name="message"> message received to print. </param>
-        private void PrintRecievedPacket(System.Object message)
+        /// <param name="handler"> handler. </param>
+        public void SetHandler(JCS_ClientHandler handler)
         {
-#if (UNITY_EDITOR)
-            if (!JCS_GameSettings.instance.DEBUG_MODE)
-                return;
-
-            byte[] decryptedBuffer = (byte[])message;
-
-            // Print out the buffer for test
-            JCS_Logger.Info("HeapBuffer[" + BitConverter.ToString(decryptedBuffer) + "]");
-#endif
+            this.mClientHandler = handler;
         }
-
-        public void PrintInputBuffer()
-        {
-            PrintBuffer(GetInputBuffer());
-        }
-        public void PrintOutputBuffer()
-        {
-            PrintBuffer(GetOutputBuffer());
-        }
-
-        private void PrintBuffer(byte[] buffer)
-        {
-            if (!JCS_GameSettings.instance.DEBUG_MODE)
-                return;
-
-            for (int index = 0; index < buffer.Length; ++index)
-                Debug.Log((char)buffer[index]);
-        }
-
-        private void AssignBuffer(byte[] buffer, byte val)
-        {
-            for (int index = 0; index < buffer.Length; ++index)
-                buffer[index] = val;
-        }
-
 
     }
 }

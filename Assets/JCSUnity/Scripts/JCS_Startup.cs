@@ -13,7 +13,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Hold function when is startup.
     /// </summary>
     public class JCS_Startup
     {
@@ -27,12 +27,13 @@ namespace JCSUnity
             if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return false;
 
-            Debug.Log("Is Online Game!");
+            JCS_Debug.Log("Online Mode is enabled...");
 
             // Create Connection
-            if (!JCS_NetworkManager.CreateNetwork(
+            if (!JCS_NetworkSettings.CreateNetwork(
                 JCS_NetworkSettings.instance.HOST_NAME,
-                JCS_NetworkSettings.instance.PORT))
+                JCS_NetworkSettings.instance.PORT,
+                JCS_NetworkSettings.GetPresetClientHandler()))
             {
                 // Faild handle
                 return false;

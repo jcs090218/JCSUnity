@@ -1,7 +1,7 @@
 License information
 
  *******************************************************************
- *                JCSUnity_Framework Version 1.5.0
+ *                JCSUnity_Framework Version 1.5.1
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *              Copyright (c) 2016 by Jen-Chieh Shen
  *******************************************************************
