@@ -247,8 +247,6 @@ namespace JCSUnity
             }
 
             JCS_Debug.LogError(
-                "JCS_Input",
-                 
                 "This cannot happed.");
 
             // this cannot happens
@@ -346,8 +344,6 @@ namespace JCSUnity
             }
 
             JCS_Debug.LogError(
-                "JCS_Input",
-                 
                 "This cannot happed.");
 
             // this cannot happens
@@ -410,8 +406,6 @@ namespace JCSUnity
 
 
             JCS_Debug.LogError(
-                "JCS_Input",
-                 
                 "This cannot happed.");
 
             // this cannot happens
@@ -601,7 +595,7 @@ namespace JCSUnity
             if (name == "")
             {
                 JCS_Debug.LogError(
-                    "JCS_Input", "name cannot be empty string...");
+                    "name cannot be empty string...");
 
                 return 0;
             }
@@ -610,11 +604,11 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check if the button have pressed.
         /// </summary>
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
-        /// <returns></returns>
+        /// <returns> buffer pressure from hardware. </returns>
         public static bool GetJoystickButton(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
         {
             return GetJoystickButton((int)joystickIndex, btn);
@@ -629,7 +623,6 @@ namespace JCSUnity
             if (!IsJoystickConnected())
             {
                 JCS_Debug.LogError(
-                    "JCS_Input",
                     @"There are no joystick connected, and u 
 still trying to make the joystick specific function call.");
 
