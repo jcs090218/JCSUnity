@@ -19,6 +19,7 @@ namespace JCSUnity
     /// <summary>
     /// Store all the network settings.
     /// </summary>
+    [RequireComponent(typeof(JCS_ServerRequestProcessor))]
     public class JCS_NetworkSettings
         : JCS_Settings<JCS_NetworkSettings>
     {
@@ -61,7 +62,7 @@ namespace JCSUnity
         private void OnApplicationQuit()
         {
             if (JCS_NetworkSettings.instance.ONLINE_MODE)
-                GAME_SOCKET.Close();
+                CloseSocket();
         }
 
         /*******************************************/

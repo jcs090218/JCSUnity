@@ -7,6 +7,17 @@
 # ========================================================================
 
 
+2017-08-24
+* JCS_Client implemented. (JCSUnity)
+* JCS_ServerRequestProcessor implemented. (JCSUnity)
+* Add require component to 'JCS_NetworkSettings' for 'JCS_Ser-
+ verRequestProcessor'. (JCSUnity)
+
+2017-08-23
+* JCS_PacketHandler implemented. (JCSUnity)
+* JCS_DefaultClientHandler for demo use. (JCSUnity)
+* JCS_Packet for standard byte array storage class. (JCSUnity)
+
 2017-08-22
 * Default buffer input and output mem does not set correctlly, 
  settings fixed. (JCSUnity)

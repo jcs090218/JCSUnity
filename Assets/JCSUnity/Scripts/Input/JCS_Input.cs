@@ -350,10 +350,12 @@ namespace JCSUnity
             return false;
         }
         /// <summary>
-        /// 
+        /// Is the key down?
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="key"> key to check if the key is down. </param>
+        /// <returns>
+        /// true: key is down, false: vice versa.
+        /// </returns>
         public static bool GetKeyDown(KeyCode key)
         {
             if (JCS_GameManager.instance.GAME_PAUSE)
@@ -362,10 +364,12 @@ namespace JCSUnity
             return Input.GetKeyDown(key);
         }
         /// <summary>
-        /// 
+        /// Is the key held down?
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="key"> key to check if the key is held down. </param>
+        /// <returns>
+        /// true: key is held down, false: vice versa.
+        /// </returns>
         public static bool GetKey(KeyCode key)
         {
             if (JCS_GameManager.instance.GAME_PAUSE)
@@ -374,10 +378,10 @@ namespace JCSUnity
             return Input.GetKey(key);
         }
         /// <summary>
-        /// 
+        /// Is the key up?
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="key"> key to check if is key up. </param>
+        /// <returns> true: is key up, false: vice versa. </returns>
         public static bool GetKeyUp(KeyCode key)
         {
             if (JCS_GameManager.instance.GAME_PAUSE)
@@ -387,11 +391,18 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Get the boolean check depends on the button status.
         /// 
+        /// Button status are list here:
+        /// 1) Button Down
+        /// 2) Button Hold
+        /// 3) Button Up
         /// </summary>
-        /// <param name="act"></param>
-        /// <param name="buttonName"></param>
-        /// <returns></returns>
+        /// <param name="act"> button down, button up, or button pressed. </param>
+        /// <param name="buttonName"> name of the button. </param>
+        /// <returns> 
+        /// Is either pressed, down, up. or not pressed, down, up. 
+        /// </returns>
         public static bool GetButtonByAction(JCS_KeyActionType act, string buttonName)
         {
             switch (act)

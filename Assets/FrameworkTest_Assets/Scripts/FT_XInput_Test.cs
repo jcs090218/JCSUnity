@@ -42,7 +42,7 @@ public class FT_XInput_Test
     private void Update()
     {
         float val = JCS_Input.GetAxis(0, JCS_JoystickButton.STICK_RIGHT_X);
-        //print(val);
+        print(val);
 
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_RIGHT))
         {

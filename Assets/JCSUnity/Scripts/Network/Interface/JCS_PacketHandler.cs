@@ -25,7 +25,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="client"></param>
-        void handlePacket(BinaryReader buffer, CLIENT client);
+        void handlePacket(BinaryReader br, CLIENT client);
 
         /// <summary>
         /// This method validates some general state constrains.
