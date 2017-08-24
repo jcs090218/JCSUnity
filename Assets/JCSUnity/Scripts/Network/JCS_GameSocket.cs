@@ -20,7 +20,7 @@ namespace JCSUnity
         private byte[] mOutputBuff = new byte[JCS_NetworkConstant.OUTBUFSIZE];
 
         private JCS_ClientHandler mClientHandler = null;
-        
+
 
         //-----------------------------------------
         // functions
@@ -56,15 +56,14 @@ namespace JCSUnity
                 // Define the Server address and port
                 IPEndPoint epServer = new IPEndPoint(IPAddress.Parse(hostname), port);
 
-                // Connect to the server blocking method and setup callback for recieved data
-                //mSocket.Connect(epServer);
-                //SetupRecieveCallback(mSocket);
-
                 // Connect to server non-Blocking method
                 mSocket.Blocking = false;
                 AsyncCallback onconnect = new AsyncCallback(OnConnect);
 
                 mSocket.BeginConnect(epServer, onconnect, mSocket);
+
+                // set receive callback
+                SetupRecieveCallback(mSocket);
             }
             catch (Exception ex)
             {
