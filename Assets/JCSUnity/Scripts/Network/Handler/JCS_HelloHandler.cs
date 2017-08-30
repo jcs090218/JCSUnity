@@ -1,6 +1,6 @@
 /**
- * $File: JCS_PacketHandler.cs $
- * $Date: 2017-08-21 17:47:52 $
+ * $File: JCS_HelloHandler.cs $
+ * $Date: 2017-08-25 11:25:55 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -8,30 +8,29 @@
  */
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
+using UnityEngine;
+using System;
 
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// Base packet handler.
+    /// 
     /// </summary>
-    public abstract class JCS_PacketHandler
+    public class JCS_HelloHandler
+        : JCS_PacketHandler
     {
-        private JCS_BinaryReader mPacketData = null;
-        private JCS_Client mClient = null;
-
-        public JCS_Client Client { get { return this.mClient; } set { this.mClient = value; } }
-        public JCS_BinaryReader PacketData { get { return this.mPacketData; } set { this.mPacketData = value; } }
 
         /// <summary>
         /// Handle packet.
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="client"></param>
-        public abstract void handlePacket(JCS_BinaryReader br, JCS_Client client);
+        public override void handlePacket(JCS_BinaryReader br, JCS_Client client)
+        {
+            // handle packet logic..
+        }
 
         /// <summary>
         /// This method validates some general state constrains.
@@ -43,6 +42,10 @@ namespace JCSUnity
         /// </summary>
         /// <param name="client"> the client </param>
         /// <returns> validate state? </returns>
-        public abstract bool validateState(JCS_Client client);
+        public override bool validateState(JCS_Client client)
+        {
+            // Check if the valid client.
+            return true;
+        }
     }
 }

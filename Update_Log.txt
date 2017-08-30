@@ -7,6 +7,22 @@
 # ========================================================================
 
 
+2017-08-30
+* JCS_Canvas have ability to let other component add to the 
+ resizable panel. (JCSUnity)
+* Add asynchronous callback to socket. (JCSUnity)
+
+2017-08-25
+* JCS_ClientMode implemented. (JCSUnity)
+* JCS_RecvPacketType implemented. (JCSUnity)
+* JCS_SendPacketType implemented. (JCSUnity)
+* Add more meaningful to JCS_DefaultClientHandler. (JCSUnity)
+* JCS_PacketProcessor implemented for sample the network 
+ handle. (JCSUnity)
+* Error handling for server packet/request. (JCSUnity)
+* JCS_BinaryReader implemented for another framework 
+ 'JCSNetS'. (JCSUnity)
+
 2017-08-24
 * JCS_Client implemented. (JCSUnity)
 * JCS_ServerRequestProcessor implemented. (JCSUnity)

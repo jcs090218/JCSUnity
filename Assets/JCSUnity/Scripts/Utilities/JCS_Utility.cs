@@ -818,5 +818,26 @@ namespace JCSUnity
             return data;
         }
 
+        /// <summary>
+        /// Copy byte array to another byte array memory space.
+        /// </summary>
+        /// <param name="inBuf"> byte array to copy. </param>
+        /// <param name="start"> Starting index to copy. </param>
+        /// <param name="len"> Length to copy. </param>
+        /// <returns> byte array that are created in new memroy space. </returns>
+        public static byte[] CopyByteArray(byte[] inBuf, int start, int len)
+        {
+            byte[] bytes = new byte[len];
+
+            for (int count = 0;
+                count < len;
+                ++count)
+            {
+                bytes[count] = inBuf[count];
+            }
+
+            return bytes;
+        }
+
     }
 }

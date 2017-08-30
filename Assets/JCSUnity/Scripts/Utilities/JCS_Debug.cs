@@ -20,6 +20,21 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Debug
     {
+        /// <summary>
+        /// Print out log by deesign by JCSUnity format. (Log)
+        /// </summary>
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void Log(
+            object msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
+        {
+            JcsLog("Log", msg.ToString(), file, member, line);
+        }
 
         /// <summary>
         /// Print out log by deesign by JCSUnity format. (Log)
@@ -35,6 +50,22 @@ namespace JCSUnity
             [CallerLineNumberAttribute] int line = 0)
         {
             JcsLog("Log", msg, file, member, line);
+        }
+
+        /// <summary>
+        /// Print out log by deesign by JCSUnity format. (Errors)
+        /// </summary>
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void LogError(
+            object msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
+        {
+            JcsLog("Errors", msg.ToString(), file, member, line);
         }
 
         /// <summary>
@@ -61,12 +92,44 @@ namespace JCSUnity
         /// <param name="member"> caller function. </param>
         /// <param name="line"> caller line number. </param>
         public static void LogWarning(
+            object msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
+        {
+            JcsLog("Warnings", msg.ToString(), file, member, line);
+        }
+
+        /// <summary>
+        /// Print out log by deesign by JCSUnity format. (Warnings)
+        /// </summary>
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void LogWarning(
             string msg,
             [CallerFilePathAttribute] string file = "",
             [CallerMemberName] string member = "",
             [CallerLineNumberAttribute] int line = 0)
         {
             JcsLog("Warnings", msg, file, member, line);
+        }
+
+        /// <summary>
+        /// Print out log by deesign by JCSUnity format. (Reminders)
+        /// </summary>
+        /// <param name="msg"> msg to print out. </param>
+        /// <param name="file"> caller file path. </param>
+        /// <param name="member"> caller function. </param>
+        /// <param name="line"> caller line number. </param>
+        public static void LogReminders(
+            object msg,
+            [CallerFilePathAttribute] string file = "",
+            [CallerMemberName] string member = "",
+            [CallerLineNumberAttribute] int line = 0)
+        {
+            JcsLog("Reminders", msg.ToString(), file, member, line);
         }
 
         /// <summary>
@@ -190,7 +253,7 @@ namespace JCSUnity
         {
             Debug.Log("Name: " + trans.name);
         }
-        
+
 
         /// <summary>
         /// Draw the collider

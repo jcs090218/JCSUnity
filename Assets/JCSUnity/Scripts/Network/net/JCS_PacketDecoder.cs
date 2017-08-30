@@ -9,9 +9,18 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    public class JCS_PacketDecoder : PacketDecoder
+    /// <summary>
+    /// Decoder, decode the packet before being use by local end.
+    /// </summary>
+    public class JCS_PacketDecoder 
+        : PacketDecoder
     {
 
+        /// <summary>
+        /// Decode the buffer by the public key.
+        /// </summary>
+        /// <param name="message"> buffer to decode. </param>
+        /// <returns> decoded message. </returns>
         public System.Object Decode(System.Object message)
         {
             byte[] undecrypted = (byte[])message;
@@ -24,7 +33,6 @@ namespace JCSUnity
                 // TODO(JenChieh): split the packet system
                 JCS_Debug.LogError("JCS_PacketDecoder", 
                     "Packet recieved is too big!!!");
-
                 return null;
             }
 
@@ -36,9 +44,7 @@ namespace JCSUnity
                 if ((char)undecrypted[index] != (char)JCS_NetworkConstant.DECODE_BUFFER[index])
                 {
                     JCS_Debug.LogError(
-                        "JCS_PacketDecoder",
                         "Wrong Packet Header!!!");
-
                     return null;
                 }
             }

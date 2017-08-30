@@ -15,7 +15,7 @@ using System.IO;
 
 namespace JCSUnity
 {
-    public delegate void ServerRequest(BinaryReader br, JCS_Client client);
+    public delegate void ServerRequest(JCS_BinaryReader br, JCS_Client client);
 
     /// <summary>
     /// Process the all server request as callback.
@@ -33,7 +33,7 @@ namespace JCSUnity
         /*******************************************/
         private List<ServerRequest> mServerRequest = new List<ServerRequest>();
         private List<JCS_Client> mClient = new List<JCS_Client>();
-        private List<BinaryReader> mBinaryReader = new List<BinaryReader>();
+        private List<JCS_BinaryReader> mBinaryReader = new List<JCS_BinaryReader>();
 
         /*******************************************/
         /*           Protected Variables           */
@@ -65,7 +65,7 @@ namespace JCSUnity
         /// <summary>
         /// Register request from server.
         /// </summary>
-        public void RegisterRequest(ServerRequest request, BinaryReader br, JCS_Client client)
+        public void RegisterRequest(ServerRequest request, JCS_BinaryReader br, JCS_Client client)
         {
             mServerRequest.Add(request);
             mBinaryReader.Add(br);
@@ -75,7 +75,7 @@ namespace JCSUnity
         /// <summary>
         /// Deregister the request from server.
         /// </summary>
-        public void DeresgisterRequest(ServerRequest request, BinaryReader br, JCS_Client client)
+        public void DeresgisterRequest(ServerRequest request, JCS_BinaryReader br, JCS_Client client)
         {
             mServerRequest.Remove(request);
             mBinaryReader.Remove(br);
@@ -115,10 +115,18 @@ namespace JCSUnity
                 index < mServerRequest.Count;
                 ++index)
             {
-                BinaryReader br = mBinaryReader[index];
+                JCS_BinaryReader br = mBinaryReader[index];
                 JCS_Client client = mClient[index];
 
-                mServerRequest[index].Invoke(br, client);
+                try
+                {
+                    // handle packet.
+                    mServerRequest[index].Invoke(br, client);
+                }
+                catch (System.Exception e)
+                {
+                    JCS_Debug.LogError("Packet Handle Error : " + e.ToString());
+                }
             }
 
             // done all request, wait for next frame's request.

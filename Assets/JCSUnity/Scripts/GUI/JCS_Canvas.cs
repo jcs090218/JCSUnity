@@ -132,6 +132,22 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
+        /// <summary>
+        /// Add component to resize canvas.
+        /// </summary>
+        /// <param name="com"> Component add to canvas. </param>
+        public void AddComponentToResizeCanvas(Component com)
+        {
+            if (mResizeUI == null)
+            {
+                com.transform.SetParent(this.mCanvas.transform);
+            }
+            else
+            {
+                com.transform.SetParent(this.mResizeUI.transform);
+            }
+        }
+
         //----------------------
         // Protected Functions
 

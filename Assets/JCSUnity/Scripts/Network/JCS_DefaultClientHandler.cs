@@ -11,6 +11,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 
 namespace JCSUnity
@@ -37,8 +38,35 @@ namespace JCSUnity
         /// <param name="buffer"> buffer we received. </param>
         public void MessageReceived(byte[] buffer)
         {
-            // print it out for test
-            PrintRecievedPacket(buffer);
+            // convert byte array to stream
+            Stream stream = new MemoryStream(buffer);
+
+            // using byte reader for the stream.
+            BinaryReader br = new BinaryReader(stream);
+            JCS_BinaryReader jcsbr = new JCS_BinaryReader(br);
+
+            short packetId = jcsbr.ReadShort();
+
+            JCS_PacketHandler packetHandler = JCS_PacketProcessor.GetProcessor().GetHandler(packetId);
+
+            // Deserialize the client from the other end.
+            //BBS_Client client = new BBS_Client();
+            //client.Deserialize(br);
+            JCS_Client client = null;
+
+            if (packetHandler != null && packetHandler.validateState(client))
+            {
+                // set the client and packet data buffer sequence.
+                packetHandler.Client = client;
+                packetHandler.PacketData = jcsbr;
+
+                // register request.
+                JCS_ServerRequestProcessor.instance.RegisterRequest(packetHandler.handlePacket, jcsbr, client);
+            }
+            else
+            {
+                JCS_Debug.Log("Exception during processing packet: " + packetHandler);
+            }
         }
 
 

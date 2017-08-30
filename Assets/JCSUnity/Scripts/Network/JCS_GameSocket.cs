@@ -112,13 +112,11 @@ namespace JCSUnity
             try
             {
                 int nBytesRec = sock.EndReceive(ar);
+
                 if (nBytesRec > 0)
                 {
-                    // Wrote the data to the List
-                    string sRecieved = Encoding.UTF8.GetString(mInputBuff, 0, nBytesRec);
-
                     // Set decode Charset!
-                    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(sRecieved);
+                    byte[] buffer = GetBytesFromInputBuffer(0, nBytesRec);
 
                     // send buffer to decoder and get the decrypted packet
                     byte[] decryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetDecoder().Decode(buffer);
@@ -152,6 +150,74 @@ namespace JCSUnity
                     JCS_NetworkManager.SERVER_CLOSE = true;
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ar"></param>
+        public void OnSendData(IAsyncResult ar)
+        {
+            // Socket was the passed in object
+            Socket sock = (Socket)ar.AsyncState;
+
+            try
+            {
+                // Complete sending the data to the remote device.
+                int bytesSent = sock.EndSend(ar);
+
+                if (bytesSent > 0)
+                {
+                    // Set decode Charset!
+                    byte[] buffer = GetBytesFromOutputBuffer(0, bytesSent);
+
+                    // send buffer to decoder and get the decrypted packet
+                    byte[] encryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetEncoder().Encode(buffer);
+
+                    // invoke data to handler.
+                    if (mClientHandler != null)
+                        mClientHandler.MessageSent(encryptedBuffer);
+                }
+                else
+                {
+                    // If no data was recieved then the connection is probably dead
+                    Console.WriteLine("Client {0}, disconnected", sock.RemoteEndPoint);
+                    sock.Shutdown(SocketShutdown.Both);
+                    sock.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Unusual error druing Send!: " + ex.Message);
+
+                if (!SocketConnected(mSocket))
+                {
+                    mSocket.Close();
+                    JCS_NetworkManager.SERVER_CLOSE = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get byte array from the current input buffer memory space.
+        /// </summary>
+        /// <param name="start"> start index. </param>
+        /// <param name="len"> len of the byte to read. </param>
+        /// <returns></returns>
+        public byte[] GetBytesFromInputBuffer(int start, int len)
+        {
+            return JCS_Utility.CopyByteArray(mInputBuff, start, len);
+        }
+
+        /// <summary>
+        /// Get byte array from the current input buffer memory space.
+        /// </summary>
+        /// <param name="start"> start index. </param>
+        /// <param name="len"> len of the byte to read. </param>
+        /// <returns></returns>
+        public byte[] GetBytesFromOutputBuffer(int start, int len)
+        {
+            return JCS_Utility.CopyByteArray(mOutputBuff, start, len);
         }
 
         /// <summary>
@@ -224,12 +290,9 @@ namespace JCSUnity
 
             byte[] encryptedBuffer = (byte[])JCS_CodecFactory.GetInstance().GetEncoder().Encode(buffer);
 
-            if (mClientHandler != null)
-                mClientHandler.MessageSent(encryptedBuffer);
-
             try
             {
-                mSocket.Send(encryptedBuffer, encryptedBuffer.Length, 0);
+                mSocket.BeginSend(encryptedBuffer, 0, encryptedBuffer.Length, 0, new AsyncCallback(OnSendData), mSocket);
             }
             catch (Exception ex)
             {

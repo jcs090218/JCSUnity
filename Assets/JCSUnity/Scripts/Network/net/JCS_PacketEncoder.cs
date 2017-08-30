@@ -9,9 +9,19 @@ using System;
 
 namespace JCSUnity
 {
-    public class JCS_PacketEncoder : PacketEncoder
+    /// <summary>
+    /// Encoder, just hold the alorigthm to encode the packet before 
+    /// being sent to client/server.
+    /// </summary>
+    public class JCS_PacketEncoder 
+        : PacketEncoder
     {
 
+        /// <summary>
+        /// Encode the message before being sent to the other end.
+        /// </summary>
+        /// <param name="message"> buffer to encode. </param>
+        /// <returns> encoded message. </returns>
         public System.Object Encode(System.Object message)
         {
             byte[] unencrypted = (byte[])message;
@@ -21,11 +31,8 @@ namespace JCSUnity
             // Check packet length
             if (packetLength < 0 || packetLength > JCS_NetworkConstant.OUTBUFSIZE)
             {
-                // TODO(JenChieh): split the packet system
                 JCS_Debug.LogError(
-                    "JCS_PacketEncoder", 
                     "Packet u are sending is to big!");
-
                 return null;
             }
 
