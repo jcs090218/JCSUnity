@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_PacketEncoder.cs$
+ * $File: JCS_DefaultPacketEncoder.cs$
  * $Date: $
  * $Reveision: $
  * $Creator: Jen-Chieh Shen $
@@ -7,14 +7,15 @@
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
     /// <summary>
     /// Encoder, just hold the alorigthm to encode the packet before 
     /// being sent to client/server.
     /// </summary>
-    public class JCS_PacketEncoder 
-        : PacketEncoder
+    public class JCS_DefaultPacketEncoder
+        : JCS_PacketEncoder
     {
 
         /// <summary>

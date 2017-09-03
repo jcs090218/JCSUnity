@@ -10,6 +10,7 @@ GameObject:
   - component: {fileID: 403812}
   - component: {fileID: 11442926}
   - component: {fileID: 114775442760596456}
+  - component: {fileID: 114484363367245234}
   - component: {fileID: 114217086803379482}
   - component: {fileID: 11474660}
   - component: {fileID: 11485796}
@@ -228,8 +229,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ONLINE_MODE: 0
+  PROTOCAL_TYPE: 0
   HOST_NAME: 127.0.0.1
   PORT: 5454
+--- !u!114 &114484363367245234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f169c174443784c8090835922ba428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114775442760596456
 MonoBehaviour:
   m_ObjectHideFlags: 1

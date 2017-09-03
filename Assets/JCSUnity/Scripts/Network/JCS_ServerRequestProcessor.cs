@@ -115,6 +115,11 @@ namespace JCSUnity
                 index < mServerRequest.Count;
                 ++index)
             {
+                if (index >= mServerRequest.Count ||
+                    index >= mClient.Count ||
+                    index >= mBinaryReader.Count)
+                    continue;
+
                 JCS_BinaryReader br = mBinaryReader[index];
                 JCS_Client client = mClient[index];
 

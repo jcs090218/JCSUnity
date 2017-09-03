@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_PacketDecoder.cs$
+ * $File: JCS_DefaultPacketDecoder.cs$
  * $Date: $
  * $Reveision: $
  * $Creator: Jen-Chieh Shen $
@@ -7,13 +7,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
     /// <summary>
     /// Decoder, decode the packet before being use by local end.
     /// </summary>
-    public class JCS_PacketDecoder 
-        : PacketDecoder
+    public class JCS_DefaultPacketDecoder
+        : JCS_PacketDecoder
     {
 
         /// <summary>

@@ -1,5 +1,5 @@
 ﻿/**
- * $File: PacketEncoder.cs $
+ * $File: JCS_PacketEncoder.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,12 +9,13 @@
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
     /// <summary>
     /// Interface of all encoder
     /// </summary>
-    public interface PacketEncoder
+    public interface JCS_PacketEncoder
     {
         System.Object Encode(Object message);
     }

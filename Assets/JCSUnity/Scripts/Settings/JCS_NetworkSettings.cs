@@ -20,6 +20,7 @@ namespace JCSUnity
     /// Store all the network settings.
     /// </summary>
     [RequireComponent(typeof(JCS_ServerRequestProcessor))]
+    [RequireComponent(typeof(JCS_PacketLostPreventer))]
     public class JCS_NetworkSettings
         : JCS_Settings<JCS_NetworkSettings>
     {
@@ -31,6 +32,7 @@ namespace JCSUnity
         [Header("** Online Game Configuration **")]
         public bool ONLINE_MODE = false;
 
+        public JCS_ProtocalType PROTOCAL_TYPE = JCS_ProtocalType.TCP;
         public string HOST_NAME = "127.0.0.1";
         public int PORT = 5454;
 
@@ -40,6 +42,8 @@ namespace JCSUnity
         /*******************************************/
         /*           Private Variables             */
         /*******************************************/
+        private JCS_ServerRequestProcessor mServerRequestProcessor = null;
+        private JCS_PacketLostPreventer mPacketLostPreventer = null;
 
         /*******************************************/
         /*           Protected Variables           */
@@ -50,6 +54,8 @@ namespace JCSUnity
         /*******************************************/
         public static void PresetClientHandler(JCS_ClientHandler handler) { PRESET_CLIENT_HANDLER = handler; }
         public static JCS_ClientHandler GetPresetClientHandler() { return PRESET_CLIENT_HANDLER; }
+        public JCS_ServerRequestProcessor GetServerRequestProcessor() { return this.mServerRequestProcessor; }
+        public JCS_PacketLostPreventer GetPacketLostPreventer() { return this.mPacketLostPreventer; }
 
         /*******************************************/
         /*            Unity's function             */
@@ -57,6 +63,9 @@ namespace JCSUnity
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
+
+            this.mServerRequestProcessor = this.GetComponent<JCS_ServerRequestProcessor>();
+            this.mPacketLostPreventer = this.GetComponent<JCS_PacketLostPreventer>();
         }
 
         private void OnApplicationQuit()
@@ -90,6 +99,7 @@ namespace JCSUnity
             _new.ONLINE_MODE = _old.ONLINE_MODE;
             _new.HOST_NAME = _old.HOST_NAME;
             _new.PORT = _old.PORT;
+            _new.PROTOCAL_TYPE = _old.PROTOCAL_TYPE;
         }
 
         /// <summary>
@@ -104,8 +114,16 @@ namespace JCSUnity
             if (GAME_SOCKET != null)
                 return false;
 
-            GAME_SOCKET = new JCS_GameSocket(handler);
-            GAME_SOCKET.Connect(hostname, port);
+            if (instance.PROTOCAL_TYPE == JCS_ProtocalType.TCP)
+            {
+                GAME_SOCKET = new JCS_TCPGameSocket(handler);
+                GAME_SOCKET.Connect(hostname, port);
+            }
+            else if (instance.PROTOCAL_TYPE == JCS_ProtocalType.UDP)
+            {
+                GAME_SOCKET = new JCS_UDPGameSocket(handler);
+                GAME_SOCKET.Connect(hostname, port);
+            }
 
             return true;
         }

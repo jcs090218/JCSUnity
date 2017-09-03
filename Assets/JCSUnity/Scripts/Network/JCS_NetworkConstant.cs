@@ -1,5 +1,14 @@
-﻿using UnityEngine;
+﻿/**
+* $File: JCS_NetworkConstant.cs $
+* $Date: 2017-08-21 16:38:46 $
+* $Revision: $
+* $Creator: Jen-Chieh Shen $
+* $Notice: See LICENSE.txt for modification and distribution information 
+*	                 Copyright (c) 2017 by Shen, Jen-Chieh $
+*/
+using UnityEngine;
 using System.Collections;
+
 
 namespace JCSUnity
 {
@@ -23,6 +32,9 @@ namespace JCSUnity
         public static byte[] ENCODE_BUFFER = new byte[ENCODE_BUFFER_LEN];
 
         public static int CONNECT_TIME = 5;     // default: 5 seconds
+
+        // this must be the same as the server.
+        public static long MAX_PACKET_NUMBER = 100000000L;
 
     }
 }

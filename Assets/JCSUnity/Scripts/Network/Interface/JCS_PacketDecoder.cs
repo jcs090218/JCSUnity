@@ -1,5 +1,5 @@
 ﻿/**
- * $File: PacketDecoder.cs $
+ * $File: JCS_PacketDecoder.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -10,12 +10,13 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
     /// <summary>
-    /// Interface of all decoder
+    /// Interface of packet decoder.
     /// </summary>
-    public interface PacketDecoder
+    public interface JCS_PacketDecoder
     {
         System.Object Decode(System.Object message);
     }

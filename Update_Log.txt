@@ -7,6 +7,24 @@
 # ========================================================================
 
 
+2017-09-03
+* Rename PacketDecoder to JCS_DefaultPacketDecoder private same 
+ file name. (JCSUnity)
+* Rename PacketEncoder to JCS_DefaultPacketEncoder prevent same
+ file name.. (JCSUnity)
+* Out of range Bugs fixed with 'JCS_ServerRequestProcessor'. (JCS-
+ Unity)
+
+2017-09-02
+* JCS_PacketLostPreventer implemented for tracking down and solve
+ the packet lost issue by using the UDP for network communicat-
+ tion. (JCSUnity)
+
+2017-09-01
+* Add Asynchronous Datagram Socket for option in 'JCS_NetworkSe-
+ ttings'. (JCSUnity)
+* JCS_UDPGameSocket implemented. (JCSUnity)
+
 2017-08-30
 * JCS_Canvas have ability to let other component add to the 
  resizable panel. (JCSUnity)

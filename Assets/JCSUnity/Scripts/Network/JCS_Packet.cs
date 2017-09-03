@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 namespace JCSUnity
@@ -18,6 +19,7 @@ namespace JCSUnity
     /// JCSUnity base packet. Instead of making 'byte[]' everywhere use
     /// this class instead make more readable and meaningful.
     /// </summary>
+    [Serializable]
     public class JCS_Packet
     {
         private byte[] mData = null;

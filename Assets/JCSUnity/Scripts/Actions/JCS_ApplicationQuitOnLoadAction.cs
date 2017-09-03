@@ -12,46 +12,15 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Close the application when the level is load.
     /// </summary>
     public class JCS_ApplicationQuitOnLoadAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             Application.Quit();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

@@ -1,6 +1,6 @@
 /**
- * $File: JCS_ExitAppButton.cs $
- * $Date: 2017-05-04 02:14:59 $
+ * $File: JCS_ExitAppOnlineButton.cs $
+ * $Date: 2017-09-03 14:40:41 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -14,9 +14,10 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button exit the app.
+    /// Exit button with change scene effect.
+    /// Multiplayer Version.
     /// </summary>
-    public class JCS_ExitAppButton
+    public class JCS_ExitAppOnlineButton 
         : JCS_Button
     {
 
@@ -25,7 +26,7 @@ namespace JCSUnity
             base.JCS_ButtonClick();
 
             // load exit button scene.
-            JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateScene");
+            JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateSceneOnline");
         }
     }
 }
