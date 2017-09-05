@@ -9,19 +9,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Please inherent the client object to this interface.
     /// </summary>
+    [Serializable]
     public abstract class JCS_Client
     {
+        [Header("** Runtime Variables (JCS_Client) **")]
+
+        [Tooltip("Current Channel this player in.")]
+        [SerializeField]
+        protected int mChannel = -1;
+
         protected long[] mPacketNumbers = null;
         protected bool mLoggedIn = false;
-
+        
 
         /* Check if the UDP client. */
         public bool IsOrderCheckServer()
@@ -91,5 +98,7 @@ namespace JCSUnity
             if (this.mPacketNumbers[packetId] > JCS_NetworkConstant.MAX_PACKET_NUMBER)
                 this.mPacketNumbers[packetId] = -1;
         }
+
+        public int Channel { get { return this.mChannel; } set { this.mChannel = value; } }
     }
 }

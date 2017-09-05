@@ -19,7 +19,8 @@ namespace JCSUnity
     /// </summary>
     public abstract class JCS_PacketProcessor
     {
-        protected static JCS_PacketProcessor instance = null;
+        protected static JCS_PacketProcessor LOGIN_INSTANCE = null;
+        protected static JCS_PacketProcessor CHANNEL_INSTANCE = null;
 
         protected JCS_PacketHandler[] mHandlers = null;
         protected JCS_ClientMode mMode = JCS_ClientMode.LOGIN_SERVER;

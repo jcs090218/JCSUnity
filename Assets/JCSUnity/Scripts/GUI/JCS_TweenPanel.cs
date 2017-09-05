@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     public delegate void ActiveCallback();
     public delegate void DeactiveCallback();
 
@@ -42,7 +41,7 @@ namespace JCSUnity
         private bool mTestKey = true;
 #endif
 
-        [Header("** Check Variables (JCS_TweenPanel) **")]
+        [Header("** Runtime Variables (JCS_TweenPanel) **")]
 
         [Tooltip("Do the tween effect to this position.")]
         [SerializeField]
@@ -116,6 +115,12 @@ namespace JCSUnity
         /// </summary>
         public void Active()
         {
+            if (!mTweener.IsDoneTweening)
+                return;
+
+            if (this.transform.localPosition == mTargetPosition)
+                return;
+
             mTweener.DoTween(mTargetPosition);
             mSoundPlayer.PlayOneShotWhileNotPlaying(mActiveSound);
 
@@ -127,6 +132,12 @@ namespace JCSUnity
         /// </summary>
         public void Deactive()
         {
+            if (!mTweener.IsDoneTweening)
+                return;
+
+            if (this.transform.localPosition == mStartingPosition)
+                return;
+
             mTweener.DoTween(mStartingPosition);
             mSoundPlayer.PlayOneShotWhileNotPlaying(mDeactiveSound);
 

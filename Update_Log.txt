@@ -7,6 +7,17 @@
 # ========================================================================
 
 
+2017-09-05
+* JCS_ActivePanelButton implemented. (JCSUnity)
+* JCS_DeactivePanelButton implemented. (JCSUnity)
+* JCS_SwitchServerButton implemented. (JCSUnity)
+* JCS_SwitchServerButton implemented. (JCSUnity)
+* JCS_ApplicationCloseSimulateSceneOnline scene added, for online
+ exit client. (JCSUnity)
+
+2017-09-04
+* JCS_OpenURLButton implemented. (JCSUnity)
+
 2017-09-03
 * Rename PacketDecoder to JCS_DefaultPacketDecoder private same 
  file name. (JCSUnity)

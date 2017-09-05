@@ -36,9 +36,9 @@ namespace JCSUnity
 
         [Tooltip("Packet's ID that are still being process.")]
         [SerializeField]
-        private List<short> mPacketIds = new List<short>();
+        private List<short> mWaitingPacketIds = new List<short>();
 
-        private List<JCS_Packet> mPackets = new List<JCS_Packet>();
+        private List<JCS_Packet> mWaitingPackets = new List<JCS_Packet>();
 
         private HashSet<short> mRespondPacketIds = new HashSet<short>();
 
@@ -49,8 +49,8 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public List<JCS_Packet> Packets { get { return this.mPackets; } set { this.mPackets = value; } }
-        public List<short> PacketIds { get { return this.mPacketIds; } set { this.mPacketIds = value; } }
+        public List<JCS_Packet> Packets { get { return this.mWaitingPackets; } set { this.mWaitingPackets = value; } }
+        public List<short> PacketIds { get { return this.mWaitingPacketIds; } set { this.mWaitingPacketIds = value; } }
         public HashSet<short> RespondPacketIds { get { return this.mRespondPacketIds; } set { this.mRespondPacketIds = value; } }
 
         /*******************************************/
@@ -59,8 +59,6 @@ namespace JCSUnity
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
-
-
         }
 
         private void LateUpdate()
@@ -87,8 +85,8 @@ namespace JCSUnity
         /// <param name="respondPacketId"> Packet id to check to stop the responsed. </param>
         public void AddTrack(JCS_Packet packet, short respondPacketId)
         {
-            mPackets.Add(packet);
-            mPacketIds.Add(respondPacketId);
+            mWaitingPackets.Add(packet);
+            mWaitingPacketIds.Add(respondPacketId);
         }
 
         /// <summary>
@@ -134,50 +132,27 @@ namespace JCSUnity
             mRespondPacketIds.Add(respondPacketId);
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
+        /// <summary>
+        /// Check if this preventer still preventing any data
+        /// packet lost issue.
+        /// </summary>
+        public bool IsPreventing()
+        {
+            return (mWaitingPackets.Count != 0);
+        }
 
         /// <summary>
-        /// Track each packet, if need to resend packet. Send it.
+        /// Clear all tracking packets.
         /// </summary>
-        private void TrackPacket()
+        public void ClearTracking()
         {
-            /* First check if the packet responded? Remove it if 
-             already responded. */
-            {
-                for (int index = 0;
-                    index < mPacketIds.Count;
-                    ++index)
-                {
-                    JCS_Packet packet = mPackets[index];
-                    short packetId = mPacketIds[index];
-
-                    if (mRespondPacketIds.Contains(packetId))
-                    {
-                        // responded, so remove it.
-                        mPacketIds.Remove(packetId);
-                        mPackets.Remove(packet);
-                    }
-                }
-            }
-
-            // cleanup the respond packet id.
+            mWaitingPacketIds.Clear();
+            mWaitingPackets.Clear();
             mRespondPacketIds.Clear();
-
-            /* Resend the packet if necessary. */
-            for (int index = 0;
-                index < mPackets.Count;
-                ++index)
-            {
-                JCS_Packet packet = mPackets[index];
-
-                // re-send the packet
-                JCS_NetworkSettings.GetGameSocket().SendPacket(packet.GetBytes());
-            }
         }
+
+        //----------------------
+        // Protected Functions
 
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
@@ -197,5 +172,52 @@ namespace JCSUnity
             _new.RespondPacketIds = _old.RespondPacketIds;
 
         }
+
+        //----------------------
+        // Private Functions
+
+        /// <summary>
+        /// Track each packet, if need to resend packet. Send it.
+        /// </summary>
+        private void TrackPacket()
+        {
+            if (JCS_NetworkSettings.GetGameSocket() != null &&
+                !JCS_NetworkSettings.GetGameSocket().IsConnected())
+                return;
+
+            /* First check if the packet responded? Remove it if 
+             already responded. */
+            {
+                for (int index = 0;
+                    index < mWaitingPacketIds.Count;
+                    ++index)
+                {
+                    JCS_Packet packet = mWaitingPackets[index];
+                    short packetId = mWaitingPacketIds[index];
+
+                    if (mRespondPacketIds.Contains(packetId))
+                    {
+                        // responded, so remove it.
+                        mWaitingPacketIds.Remove(packetId);
+                        mWaitingPackets.Remove(packet);
+                    }
+                }
+            }
+
+            // cleanup the respond packet id.
+            mRespondPacketIds.Clear();
+
+            /* Resend the packet if necessary. */
+            for (int index = 0;
+                index < mWaitingPackets.Count;
+                ++index)
+            {
+                JCS_Packet packet = mWaitingPackets[index];
+
+                // re-send the packet
+                JCS_NetworkSettings.GetGameSocket().SendPacket(packet.GetBytes());
+            }
+        }
+        
     }
 }

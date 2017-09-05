@@ -1,6 +1,6 @@
 /**
- * $File: JCS_HelloHandler.cs $
- * $Date: 2017-08-25 11:25:55 $
+ * $File: JCS_EmptyHandler.cs $
+ * $Date: 2017-09-04 15:34:13 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -8,20 +8,16 @@
  */
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using System;
-
 
 namespace JCSUnity
 {
     /// <summary>
-    /// Basic hello packet from the server.
+    /// Empty Handler, could be any place holder or for signal handler.
     /// </summary>
-    public class JCS_HelloHandler
+    public class JCS_EmptyHandler
         : JCS_PacketHandler
     {
-
         /// <summary>
         /// Handle packet.
         /// </summary>
@@ -29,7 +25,7 @@ namespace JCSUnity
         /// <param name="client"></param>
         public override void handlePacket(JCS_BinaryReader br, JCS_Client client)
         {
-            // handle packet logic..
+            // empty..
         }
 
         /// <summary>

@@ -22,15 +22,25 @@ namespace JCSUnity
         private JCS_DefaultPacketProcessor(JCS_ClientMode mode)
             : base(mode)
         {
-            
+
         }
 
         // singleton
         public static JCS_PacketProcessor GetProcessor(JCS_ClientMode mode)
         {
-            if (instance == null)
-                instance = new JCS_DefaultPacketProcessor(mode);
-            return instance;
+            if (JCS_ClientMode.LOGIN_SERVER == mode)
+            {
+                if (LOGIN_INSTANCE == null)
+                    LOGIN_INSTANCE = new JCS_DefaultPacketProcessor(mode);
+                return LOGIN_INSTANCE;
+            }
+            else if (JCS_ClientMode.CHANNEL_SERVER == mode)
+            {
+                if (CHANNEL_INSTANCE == null)
+                    CHANNEL_INSTANCE = new JCS_DefaultPacketProcessor(mode);
+                return CHANNEL_INSTANCE;
+            }
+            return null;
         }
 
         /// <summary>

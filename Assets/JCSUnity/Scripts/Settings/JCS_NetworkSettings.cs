@@ -29,6 +29,18 @@ namespace JCSUnity
         /*            Public Variables             */
         /*******************************************/
 
+        [Header("** Check Variables (JCS_NetworkSettings) **")]
+
+        [Tooltip(@"Current mode this client in, should be update by
+the server!")]
+        public JCS_ClientMode CLIENT_MODE = JCS_ClientMode.LOGIN_SERVER;
+
+        [Tooltip("On switching the server?")]
+        public bool ON_SWITCH_SERVER = false;
+
+        public bool FORCE_SWITCH_SERVER = false;
+
+
         [Header("** Online Game Configuration **")]
         public bool ONLINE_MODE = false;
 
@@ -36,8 +48,12 @@ namespace JCSUnity
         public string HOST_NAME = "127.0.0.1";
         public int PORT = 5454;
 
+        [Tooltip("Channel count in this game.")]
+        public int CHANNEL_COUNT = 1;
+
         private static JCS_GameSocket GAME_SOCKET = null;
         private static JCS_ClientHandler PRESET_CLIENT_HANDLER = null;
+
 
         /*******************************************/
         /*           Private Variables             */
@@ -74,6 +90,11 @@ namespace JCSUnity
                 CloseSocket();
         }
 
+        private void Update()
+        {
+            OnSwitchServer();
+        }
+
         /*******************************************/
         /*              Self-Define                */
         /*******************************************/
@@ -100,6 +121,12 @@ namespace JCSUnity
             _new.HOST_NAME = _old.HOST_NAME;
             _new.PORT = _old.PORT;
             _new.PROTOCAL_TYPE = _old.PROTOCAL_TYPE;
+            _new.CHANNEL_COUNT = _old.CHANNEL_COUNT;
+
+            _new.ON_SWITCH_SERVER = _old.ON_SWITCH_SERVER;
+            _new.FORCE_SWITCH_SERVER = _old.FORCE_SWITCH_SERVER;
+
+            _new.CLIENT_MODE = _old.CLIENT_MODE;
         }
 
         /// <summary>
@@ -109,7 +136,21 @@ namespace JCSUnity
         /// <param name="hostname"> host name </param>
         /// <param name="port"> port number </param>
         /// <returns> Sucess or vice versa. </returns>
-        public static bool CreateNetwork(string hostname, int port, JCS_ClientHandler handler = null)
+        public static bool CreateNetwork(string hostname, int port)
+        {
+            return CreateNetwork(hostname, port, GetPresetClientHandler());
+        }
+
+        /// <returns></returns>
+        /// /// <summary>
+        /// Create the socket and connect to the host and 
+        /// port provided.
+        /// </summary>
+        /// <param name="hostname"> host name </param>
+        /// <param name="port"> port number </param>
+        /// <param name="handler"></param>
+        /// <returns> Sucess or vice versa. </returns>
+        public static bool CreateNetwork(string hostname, int port, JCS_ClientHandler handler)
         {
             if (GAME_SOCKET != null)
                 return false;
@@ -137,6 +178,7 @@ namespace JCSUnity
                 return;
 
             GAME_SOCKET.Close();
+            GAME_SOCKET = null;
         }
 
         /// <summary>
@@ -148,8 +190,133 @@ namespace JCSUnity
             return GAME_SOCKET;
         }
 
+        /// <summary>
+        /// Do this when transfering to different server.
+        /// 
+        /// For instance:
+        /// Login Server -> Channel Server
+        /// </summary>
+        public void SwitchServer()
+        {
+            SwitchServer(
+                instance.HOST_NAME,
+                instance.PORT);
+        }
+
+        /// <summary>
+        /// Do this when transfering to different server.
+        /// 
+        /// For instance:
+        /// Login Server -> Channel Server
+        /// </summary>
+        /// <param name="hostname"> Host name </param>
+        /// <param name="port"> Port Number </param>
+        public void SwitchServer(
+            string hostname,
+            int port)
+        {
+            SwitchServer(
+                hostname,
+                port,
+                false,
+                GetPresetClientHandler());
+        }
+
+        /// <summary>
+        /// Do this when transfering to different server.
+        /// 
+        /// For instance:
+        /// Login Server -> Channel Server
+        /// </summary>
+        /// <param name="hostname"> Host name </param>
+        /// <param name="port"> Port Number </param>
+        /// <param name="force"> force to switch server? (Default : false) </param>
+        public void SwitchServer(
+            string hostname,
+            int port,
+            bool force)
+        {
+            SwitchServer(
+                hostname,
+                port,
+                force,
+                GetPresetClientHandler());
+        }
+
+        /// <summary>
+        /// Do this when transfering to different server.
+        /// 
+        /// For instance:
+        /// Login Server -> Channel Server
+        /// </summary>
+        /// <param name="hostname"> Host name </param>
+        /// <param name="port"> Port Number </param>
+        /// <param name="force"> force to switch server? (Default : false) </param>
+        /// <param name="handler"> handler handle packet income. </param>
+        public void SwitchServer(
+            string hostname,
+            int port,
+            bool force,
+            JCS_ClientHandler handler)
+        {
+            if (instance.HOST_NAME == hostname &&
+                instance.PORT == port &&
+                handler == null)
+            {
+                JCS_Debug.LogError(
+                    "Not need to switch server, we already in....");
+                return;
+            }
+
+            // update hostname, port, and handler.
+            instance.HOST_NAME = hostname;
+            instance.PORT = port;
+            if (handler != null)
+                PresetClientHandler(handler);
+
+            // start switching server.
+            ON_SWITCH_SERVER = true;
+
+            FORCE_SWITCH_SERVER = force;
+        }
+
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// On switching the server.
+        /// </summary>
+        private void OnSwitchServer()
+        {
+            if (!ON_SWITCH_SERVER)
+                return;
+
+            // If not force, then we do need to check if we meet the 
+            // requirement to swtich server.
+            if (!FORCE_SWITCH_SERVER)
+            {
+                // Cannot switch server if we are still waiting for packet 
+                // to process.
+                if (JCS_PacketLostPreventer.instance.IsPreventing())
+                    return;
+            }
+            else
+            {
+                // If force to switch the server/service. Meaning we 
+                // will like to terminate the server request!
+                // 
+                // ATTENTION(jenchieh): Use this carefully.
+                JCS_PacketLostPreventer.instance.ClearTracking();
+            }
+
+            // close the previous one.
+            CloseSocket();
+
+            // open the new one for next server.
+            CreateNetwork(instance.HOST_NAME, instance.PORT);
+
+            ON_SWITCH_SERVER = false;
+            FORCE_SWITCH_SERVER = false;
+        }
     }
 }

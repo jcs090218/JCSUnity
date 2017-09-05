@@ -11,7 +11,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Handle the networking of the game.
     /// 
@@ -31,6 +30,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
         private float mConnectionCounter = 0.0f;
+
 
         //----------------------
         // Protected Variables
@@ -152,40 +152,6 @@ namespace JCSUnity
                 }
                 mConnectionCounter = 0;
             }
-        }
-
-        /// <summary>
-        /// Do this when transfering to different server.
-        /// 
-        /// For instance:
-        /// Login Server -> Channel Server
-        /// </summary>
-        public void SwitchServer()
-        {
-            SwitchServer(
-                JCS_NetworkSettings.instance.HOST_NAME,
-                JCS_NetworkSettings.instance.PORT);
-        }
-
-        /// <summary>
-        /// Do this when transfering to different server.
-        /// 
-        /// For instance:
-        /// Login Server -> Channel Server
-        /// </summary>
-        /// <param name="hostname"> Host name </param>
-        /// <param name="port"> Port Number </param>
-        public void SwitchServer(string hostname, int port, JCS_ClientHandler handler = null)
-        {
-            // update hostname and port.
-            JCS_NetworkSettings.instance.HOST_NAME = hostname;
-            JCS_NetworkSettings.instance.PORT = port;
-
-            // close the previous one.
-            JCS_NetworkSettings.CloseSocket();
-
-            // open the new one for next server.
-            JCS_NetworkSettings.CreateNetwork(hostname, port, handler);
         }
 
         //----------------------

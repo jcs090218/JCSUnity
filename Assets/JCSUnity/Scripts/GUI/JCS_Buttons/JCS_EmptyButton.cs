@@ -12,42 +12,12 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Empty button specific for system call back usage.
     /// </summary>
     public class JCS_EmptyButton
         : JCS_Button
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
     }
 }

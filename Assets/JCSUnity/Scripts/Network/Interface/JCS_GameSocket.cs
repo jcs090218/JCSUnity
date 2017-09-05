@@ -35,5 +35,10 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buffer"> buffer stream to send. </param>
         bool SendPacket(byte[] buffer);
+
+        /// <summary>
+        /// Check if the socket connected?
+        /// </summary>
+        bool IsConnected();
     }
 }

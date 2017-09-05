@@ -254,6 +254,15 @@ namespace JCSUnity
             return output;
         }
 
+        /// <summary>
+        /// Available data left in this stream.
+        /// </summary>
+        /// <returns></returns>
+        public long Available()
+        {
+            return mBuffer.BaseStream.Length - mBuffer.BaseStream.Position;
+        }
+
 
         //---------------------------------------------
         // setter / getter

@@ -277,7 +277,7 @@ namespace JCSUnity
         /// Check is connected to the server or not.
         /// </summary>
         /// <returns></returns>
-        public bool isConnected()
+        public bool IsConnected()
         {
             return mSocket.Connected;
         }

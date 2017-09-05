@@ -45,16 +45,27 @@ namespace JCSUnity
             JCS_BinaryReader jcsbr = new JCS_BinaryReader(br);
 
             short packetId = jcsbr.ReadShort();
+            /**
+             * NOTE(jenchieh): packet responded does not need a handler 
+             * to handle to response. I think is good if we have it inside 
+             * check if the packet get handler, but I think is easier if 
+             * just want to check if the packet responded or not. So I 
+             * decide to have this function here instead inside the 
+             * packet handler check under.
+             */
+            // packet responded!
+            JCS_PacketLostPreventer.instance.AddRespondPacketId(packetId);
 
             JCS_Client client = JCS_ClientManager.LOCAL_CLIENT;
 
             if (IsPacketOutdated(jcsbr, client, packetId))
                 return;
 
+            // handler depends on the client/server mode.
             JCS_PacketHandler packetHandler = 
-                JCS_DefaultPacketProcessor.GetProcessor(JCS_ClientMode.CHANNEL_SERVER)
-                    .GetHandler(packetId);
-
+                JCS_DefaultPacketProcessor.GetProcessor(
+                    JCS_NetworkSettings.instance.CLIENT_MODE
+                    ).GetHandler(packetId);
 
             if (packetHandler != null && packetHandler.validateState(client))
             {
@@ -62,15 +73,15 @@ namespace JCSUnity
                 packetHandler.Client = client;
                 packetHandler.PacketData = jcsbr;
 
-                // packet responded!
-                JCS_PacketLostPreventer.instance.AddRespondPacketId(packetId);
-
                 // register request.
                 JCS_ServerRequestProcessor.instance.RegisterRequest(packetHandler.handlePacket, jcsbr, client);
             }
             else
             {
-                JCS_Debug.Log("Exception during processing packet: " + packetHandler);
+                if (packetHandler == null)
+                    JCS_Debug.Log("Exception during processing packet: null");
+                else
+                    JCS_Debug.Log("Exception during processing packet: " + packetHandler);
             }
         }
 
@@ -83,6 +94,9 @@ namespace JCSUnity
         /// <returns>true, is out-dated. false, is newest packet.</returns>
         private bool IsPacketOutdated(JCS_BinaryReader jcsbr, JCS_Client client, short packetId)
         {
+            // Check if the server need to check the packet No type of server.
+            // UDP is one of the protocol type that does need to check
+            // the packet by packet number. (order issue)
             if (client.IsOrderCheckServer())
             {
                 long packetNumber = jcsbr.ReadLong();

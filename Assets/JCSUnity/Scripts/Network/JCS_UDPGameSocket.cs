@@ -305,6 +305,15 @@ namespace JCSUnity
                 return true;
         }
 
+        /// <summary>
+        /// Check is connected to the server or not.
+        /// </summary>
+        /// <returns></returns>
+        public bool IsConnected()
+        {
+            return mSocket.Connected;
+        }
+
         //-----------------------------------------
         // setter / getter
         //-----------------------------------------
