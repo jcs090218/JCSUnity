@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-09-07
+* JCS_LookAtMouseAction implemented. (JCSUnity)
+
 2017-09-05
 * JCS_ActivePanelButton implemented. (JCSUnity)
 * JCS_DeactivePanelButton implemented. (JCSUnity)
