@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateScene.unity
     guid: 04f6db7d2bf5e974bbf699294c1f33f6
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/JCS_AppCloseByServer.unity
+    path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateSceneOnline.unity
     guid: 8f14fd39503fc6b46b80dbb178229d61
   - enabled: 1
     path: Assets/RunningCrush_Assets/Scenes/RC_LogoScene.unity

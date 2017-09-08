@@ -77,6 +77,8 @@ public class RC_Player
     }
     public int CurrentGold { get { return this.mCurrentGold; } set { this.mCurrentGold = value; } }
     public void SetLiquidBar(JCS_3DLiquidBar rb) { this.mLiquidBar = rb; }
+    public RC_PlayerPointer GetRCPlayerPointer() { return this.mRCPlayerPointer; }
+    public RC_RevivePointer GetRCRevivePointer() { return this.mRCRevivePointer; }
 
     //========================================
     //      Unity's function

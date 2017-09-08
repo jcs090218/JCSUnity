@@ -38,6 +38,15 @@ public class BF_AbilityFormat
     //========================================
     //      setter / getter
     //------------------------------
+    public int Str { get { return this.mStr; } set { this.mStr = value; } }
+    public int Dex { get { return this.mDex; } set { this.mDex = value; } }
+    public int Int { get { return this.mInt; } set { this.mInt = value; } }
+    public int Luc { get { return this.mLuc; } set { this.mLuc = value; } }
+    public int MinDamage { get { return this.mMinDamage; } set { this.mMinDamage = value; } }
+    public int MaxDamage { get { return this.mMaxDamage; } set { this.mMaxDamage = value; } }
+    public int CriticalChance { get { return this.mCriticalChance; } set { this.mCriticalChance = value; } }
+    public int AttackValue { get { return this.mAttackValue; } set { this.mAttackValue = value; } }
+    public int DefenseValue { get { return this.mDefenseValue; } set { this.mDefenseValue = value; } }
 
     //========================================
     //      Unity's function

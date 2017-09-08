@@ -228,10 +228,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef73fbe6bd7292345995405ca4c13dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CLIENT_MODE: 0
+  ON_SWITCH_SERVER: 0
+  FORCE_SWITCH_SERVER: 0
   ONLINE_MODE: 0
   PROTOCAL_TYPE: 0
   HOST_NAME: 127.0.0.1
   PORT: 5454
+  CHANNEL_COUNT: 1
 --- !u!114 &114484363367245234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f169c174443784c8090835922ba428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mWaitingPacketIds: 
 --- !u!114 &114775442760596456
 MonoBehaviour:
   m_ObjectHideFlags: 1

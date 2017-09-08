@@ -64,6 +64,7 @@ set to thie scene layer.")]
     //------------------------------
     public Transform SpawnTransform { get { return this.mSpawnTransform; } set { this.mSpawnTransform = value; } }
     public int EnemyPerWave { get { return this.mEnemyPerWave; } set { this.mEnemyPerWave = value; } }
+    public int CurrentSpawnIndex { get { return this.mCurrentSpawnIndex; } }
 
     //========================================
     //      Unity's function

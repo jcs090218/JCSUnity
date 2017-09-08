@@ -47,6 +47,8 @@ public class RC_ShopPageHandler
     //========================================
     //      setter / getter
     //------------------------------
+    private int MaxVeticalPage { get { return this.mMaxVerticalPage; } }
+    private int MinVerticalPage { get { return this.mMinVerticalPage; } }
 
     //========================================
     //      Unity's function

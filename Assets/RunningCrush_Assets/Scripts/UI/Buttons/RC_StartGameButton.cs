@@ -34,6 +34,7 @@ public class RC_StartGameButton
     //========================================
     //      setter / getter
     //------------------------------
+    public RectTransform rectTransform { get { return this.mRectTransform; } }
 
     //========================================
     //      Unity's function
