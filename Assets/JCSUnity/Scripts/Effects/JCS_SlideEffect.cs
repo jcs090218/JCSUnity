@@ -15,7 +15,7 @@ namespace JCSUnity
 
     /// <summary>
     /// Make object to make the smooth slide effect.
-    ///     - Could be compose with JCS_TransfromTweener class.
+    ///     - Could be compose with JCS_TransformTweener class.
     /// </summary>
     public class JCS_SlideEffect
         : JCS_UnityObject

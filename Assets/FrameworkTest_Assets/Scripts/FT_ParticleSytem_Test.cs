@@ -52,14 +52,14 @@ public class FT_ParticleSytem_Test
     {
         if (JCS_Input.GetKeyDown(KeyCode.G))
         {
-            JCS_TransfromTweener masterTweener = mParticle.GetComponent<JCS_TransfromTweener>();
+            JCS_TransformTweener masterTweener = mParticle.GetComponent<JCS_TransformTweener>();
             JCS_TowardTarget masterTt = mParticle.GetComponent<JCS_TowardTarget>();
 
             for (int index = 0;
                 index < mParticles.length;
                 ++index)
             {
-                JCS_TransfromTweener tweener = mParticles.at(index).GetComponent<JCS_TransfromTweener>();
+                JCS_TransformTweener tweener = mParticles.at(index).GetComponent<JCS_TransformTweener>();
 
                 tweener.EasingX = masterTweener.EasingX;
                 tweener.EasingY = masterTweener.EasingY;

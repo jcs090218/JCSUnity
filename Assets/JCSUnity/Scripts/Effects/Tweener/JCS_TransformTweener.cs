@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_TransfromTweener.cs $
+ * $File: JCS_TransformTweener.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,11 +13,10 @@ using PeterVuorela.Tweener;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Tweener Effect
     /// </summary>
-    public class JCS_TransfromTweener
+    public class JCS_TransformTweener
         : JCS_UnityObject
     {
 
@@ -27,7 +26,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Check Variables (JCS_TransfromTweener) **")]
+        [Header("** Check Variables (JCS_TransformTweener) **")]
 
         [SerializeField]
         private bool mContinueTween = false;
@@ -40,28 +39,31 @@ namespace JCSUnity
         private Vector3 mRecordTargetTransformPosition = Vector3.zero;
 
         private Transform mRecordTransform = null;
-        
+
         [Tooltip("Is done tweening/animating?")]
         [SerializeField]
         private bool mIsDoneTweening = false;
 
 
-        [Header("** Runtime Variables (JCS_TransfromTweener) **")]
+        [Header("** Runtime Variables (JCS_TransformTweener) **")]
 
         [Tooltip("Do the tween effect?")]
         [SerializeField]
         private bool mTween = true;
 
         [Tooltip("How fase it move on x axis.")]
-        [SerializeField] [Range(0.01f, 1000.0f)]
+        [SerializeField]
+        [Range(0.01f, 1000.0f)]
         private float mDurationX = 1.0f;
 
         [Tooltip("How fase it move on y axis.")]
-        [SerializeField] [Range(0.01f, 1000.0f)]
+        [SerializeField]
+        [Range(0.01f, 1000.0f)]
         private float mDurationY = 1.0f;
 
         [Tooltip("How fase it move on z axis.")]
-        [SerializeField] [Range(0.01f, 1000.0f)]
+        [SerializeField]
+        [Range(0.01f, 1000.0f)]
         private float mDurationZ = 1.0f;
 
         [Tooltip("Enable this if the target is moving all the time.")]
@@ -76,30 +78,24 @@ namespace JCSUnity
         private bool mDestroyWhenDoneTweening = false;
 
         [Tooltip("How many times of done tweening destroy will active?")]
-        [SerializeField] [Range(1, 10)]
+        [SerializeField]
+        [Range(1, 10)]
         private int mDestroyDoneTweeningCount = 1;
 
 
         [Header("- Randomize Duration")]
 
         [Tooltip("Randomize the duration with all axis at start. (x, y, z)")]
-        [SerializeField] [Range(0.0f, 1000.0f)]
+        [SerializeField]
+        [Range(0.0f, 1000.0f)]
         private float mRandomizeDuration = 0.0f;
 
 
         [Header("- Tweener Effect Transform")]
 
-        [Tooltip("Do tween effect with position?")]
+        [Tooltip("Which transform's properties to tween.")]
         [SerializeField]
-        private bool mTweenPosition = true;
-
-        [Tooltip("Do tween effect with rotation?")]
-        [SerializeField]
-        private bool mTweenRotation = false;
-
-        [Tooltip("Do tween effect with scale?")]
-        [SerializeField]
-        private bool mTweenScale = false;
+        private JCS_TransformType mTweenType = JCS_TransformType.POSITION;
 
         [Tooltip("Do the track base on location position.")]
         [SerializeField]
@@ -123,7 +119,7 @@ namespace JCSUnity
         private Vector3Tweener tweener = new Vector3Tweener();
 
 
-        [Header("- Continuous Tween (JCS_TransfromTweener) ")]
+        [Header("- Continuous Tween (JCS_TransformTweener) ")]
 
         [Tooltip("While Continue tween when did the tweener algorithm stop?")]
         [SerializeField]
@@ -151,7 +147,8 @@ namespace JCSUnity
         public Transform RecordTransform { get { return this.mRecordTransform; } }
         public bool DestroyWhenDoneTweening { get { return this.mDestroyWhenDoneTweening; } set { this.mDestroyWhenDoneTweening = value; } }
         public bool TweenEveryFrame { get { return this.mTweenEveryFrame; } set { this.mTweenEveryFrame = value; } }
-        
+        public JCS_TransformType TweenType { get { return this.mTweenType; } set { this.mTweenType = value; } }
+
         //========================================
         //      Unity's function
         //------------------------------
@@ -185,12 +182,18 @@ namespace JCSUnity
                 tweener.updateZ();
 
                 // Set the Position
-                if (mTweenPosition)
-                    transform.localPosition = tweener.progression;
-                if (mTweenRotation)
-                    transform.localEulerAngles = tweener.progression;
-                if (mTweenScale)
-                    transform.localScale = tweener.progression;
+                switch (mTweenType)
+                {
+                    case JCS_TransformType.POSITION:
+                        transform.localPosition = tweener.progression;
+                        break;
+                    case JCS_TransformType.ROTATION:
+                        transform.localEulerAngles = tweener.progression;
+                        break;
+                    case JCS_TransformType.SCALE:
+                        transform.localScale = tweener.progression;
+                        break;
+                }
 
                 mIsDoneTweening = false;
             }
@@ -287,7 +290,22 @@ namespace JCSUnity
             JCS_TweenType typeZ,
             CallBackDelegate callback = null)
         {
-            DoTween(LocalPosition, to, durationX, durationY, durationZ, typeX, typeY, typeZ, callback);
+            Vector3 from = Vector3.zero;
+
+            switch (mTweenType)
+            {
+                case JCS_TransformType.POSITION:
+                    from = LocalPosition;
+                    break;
+                case JCS_TransformType.ROTATION:
+                    from = LocalEulerAngles;
+                    break;
+                case JCS_TransformType.SCALE:
+                    from = LocalScale;
+                    break;
+            }
+
+            DoTween(from, to, durationX, durationY, durationZ, typeX, typeY, typeZ, callback);
         }
 
         /// <summary>

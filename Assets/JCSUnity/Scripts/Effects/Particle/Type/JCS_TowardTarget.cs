@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Particle will lerp to the target position.
     /// </summary>
-    [RequireComponent(typeof(JCS_TransfromTweener))]
+    [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_DisableWithCertainRangeEvent))]
     public class JCS_TowardTarget
         : JCS_Particle
@@ -29,7 +29,7 @@ namespace JCSUnity
         // Private Variables
 
         // tweener effect to the object.
-        private JCS_TransfromTweener mJCSTweener = null;
+        private JCS_TransformTweener mJCSTweener = null;
 
         // when reach the certain range disable it.
         private JCS_DisableWithCertainRangeEvent mDisableWidthCertainRangeEvent = null;
@@ -78,7 +78,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            this.mJCSTweener = this.GetComponent<JCS_TransfromTweener>();
+            this.mJCSTweener = this.GetComponent<JCS_TransformTweener>();
             this.mDisableWidthCertainRangeEvent = this.GetComponent<JCS_DisableWithCertainRangeEvent>();
 
             // set destination callback.

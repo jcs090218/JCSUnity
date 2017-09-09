@@ -19,7 +19,7 @@ namespace JCSUnity
     /// Panel with active and deactive in order 
     /// to do back and forth effect.
     /// </summary>
-    [RequireComponent(typeof(JCS_TransfromTweener))]
+    [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_TweenPanel
         : MonoBehaviour
@@ -31,7 +31,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        private JCS_TransfromTweener mTweener = null;
+        private JCS_TransformTweener mTweener = null;
 
 
 #if (UNITY_EDITOR)
@@ -83,7 +83,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            mTweener = this.GetComponent<JCS_TransfromTweener>();
+            mTweener = this.GetComponent<JCS_TransformTweener>();
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
         private void Start()

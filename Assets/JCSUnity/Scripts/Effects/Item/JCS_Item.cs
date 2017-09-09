@@ -96,7 +96,7 @@ other sound. (Effect Sound)")]
 
         [Header("** Optional Variables (JCS_UnityObject) **")]
         [SerializeField]
-        private JCS_TransfromTweener mTweener = null;
+        private JCS_TransformTweener mTweener = null;
         [SerializeField]
         private JCS_DestinationDestroy mDestinationDestroy = null;
 
@@ -129,7 +129,7 @@ other sound. (Effect Sound)")]
         protected virtual void Start()
         {
             if (mTweener == null)
-                mTweener = this.GetComponent<JCS_TransfromTweener>();
+                mTweener = this.GetComponent<JCS_TransformTweener>();
             if (mDestinationDestroy == null)
                 mDestinationDestroy = this.GetComponent<JCS_DestinationDestroy>();
         }
@@ -276,7 +276,7 @@ other sound. (Effect Sound)")]
                 if (mTweener == null)
                 {
                     // default settings
-                    mTweener = this.gameObject.AddComponent<JCS_TransfromTweener>();
+                    mTweener = this.gameObject.AddComponent<JCS_TransformTweener>();
 
                     mTweener.EasingY = JCS_TweenType.EASE_OUT_BACK;
                     mTweener.DurationX = 2.0f;

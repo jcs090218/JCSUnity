@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Black Slide Screen
     /// </summary>
-    [RequireComponent(typeof(JCS_TransfromTweener))]
+    [RequireComponent(typeof(JCS_TransformTweener))]
     public class JCS_BlackSlideScreen
         : MonoBehaviour
     {
@@ -26,7 +26,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private JCS_TransfromTweener mTweener = null;
+        private JCS_TransformTweener mTweener = null;
 
         private Vector3 mStartingPosition = Vector3.zero;
 
@@ -42,7 +42,7 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            this.mTweener = this.GetComponent<JCS_TransfromTweener>();
+            this.mTweener = this.GetComponent<JCS_TransformTweener>();
         }
 
         private void Start()

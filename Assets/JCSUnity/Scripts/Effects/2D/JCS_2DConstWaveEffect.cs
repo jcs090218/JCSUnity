@@ -27,7 +27,7 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Initialize Varialbes (JCS_2DConstWaveEffect) **")]
+        [Header("** Runtime Varialbes (JCS_2DConstWaveEffect) **")]
 
         [Tooltip("as play on awake!")]
         [SerializeField]
