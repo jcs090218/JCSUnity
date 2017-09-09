@@ -4,7 +4,7 @@
 # $Date: 2016-03-29 $
 # $Revision: 1.5.1 $
 # $Version Control Page: https://github.com/jcs090218/JCSUnity_Framework $
-# $Unity Version: 5.6.1f1 (64-bit) $
+# $Unity Version: 2017.1.0f3 (64-bit) $
 # $Notice: See LICENSE.txt for modification and distribution information 
 #                   Copyright (c) 2016 by Shen, Jen-Chieh $
 # ========================================================================

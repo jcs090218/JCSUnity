@@ -34,6 +34,12 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_PacketLostPreventer) **")]
 
+        [Tooltip("How fast the packet resend?")]
+        [SerializeField] [Range(0.0f, 1.0f)]
+        private float mResendTime = 0.001f;
+
+        private float mResendTimer = 0.0f;
+
         [Tooltip("Packet's ID that are still being process.")]
         [SerializeField]
         private List<short> mWaitingPacketIds = new List<short>();
@@ -184,6 +190,15 @@ namespace JCSUnity
             if (JCS_NetworkSettings.GetGameSocket() != null &&
                 !JCS_NetworkSettings.GetGameSocket().IsConnected())
                 return;
+
+            mResendTimer += Time.deltaTime;
+
+            if (mResendTimer < mResendTime)
+                return;
+
+            // reset timer.
+            mResendTimer = 0;
+
 
             /* First check if the packet responded? Remove it if 
              already responded. */

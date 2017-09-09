@@ -113,7 +113,7 @@ namespace JCSUnity
                 JCS_GameSettings.instance.SCREENSHOT_PATH,
                 JCS_GameSettings.instance.SCREENSHOT_FILENAME) + 1;
 
-            Application.CaptureScreenshot(
+            ScreenCapture.CaptureScreenshot(
                 Application.dataPath +
                 JCS_GameSettings.instance.SCREENSHOT_PATH +
                 JCS_GameSettings.instance.SCREENSHOT_FILENAME +
