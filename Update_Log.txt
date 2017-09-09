@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2017-09-09
+* PacketLostPreventer add the timer in order not to send the 
+ packet to often and save a bit of performance comparing 60 packets
+ (frame rate) per second. (JCSUnity)
+
 2017-09-07
 * JCS_LookAtMouseAction implemented. (JCSUnity)
 
