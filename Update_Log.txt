@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-09-10
+* Fix wrong naming/typo. (JCSUnity)
+
 2017-09-09
 * PacketLostPreventer add the timer in order not to send the 
  packet to often and save a bit of performance comparing 60 packets
