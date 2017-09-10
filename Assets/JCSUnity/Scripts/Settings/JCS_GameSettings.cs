@@ -63,6 +63,9 @@ namespace JCSUnity
         public static string WHITE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_WhiteScreen";
         public static string WHITE_SCREEN_NAME = "JCS_WhiteScreen";
 
+        public static string FADE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_FadeScreen";
+        public static string FADE_SCREEN_NAME = "JCS_FadeScreen";
+
         //-- Screen Shot
         public string SCREENSHOT_PATH = "/JCS_ScreenShot/"; // Screen shot folder path [Default: /JCS_ScreenShot/]
         public string SCREENSHOT_FILENAME = "Screenshot_"; // Screen shot file name [Default: Screenshot_]

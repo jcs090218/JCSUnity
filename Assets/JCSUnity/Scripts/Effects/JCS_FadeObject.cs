@@ -72,6 +72,8 @@ namespace JCSUnity
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
         public void SetIsFadeOutCallback(IsFadeOutCallback func) { this.mIsFadeOutCallback = func; }
         public void SetIsFadeInCallback(IsFadeInCallback func) { this.mIsFadeInCallback = func; }
+        public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
+        public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
 
         //========================================
         //      Unity's function

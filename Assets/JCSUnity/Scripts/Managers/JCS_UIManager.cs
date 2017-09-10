@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Manage all the dialogue in the scene.
     /// </summary>
@@ -45,6 +44,12 @@ namespace JCSUnity
 
         // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
+
+        [Header("** General Screen Settings (JCS_UIManager) **")]
+
+        [Tooltip("Panel that could do the fade loose focus effect.")]
+        [SerializeField]
+        private JCS_FadeScreen mFadeScreen = null;
 
 
         //----------------------
@@ -112,6 +117,8 @@ namespace JCSUnity
         }
         public LinkedList<JCS_DialogueObject> GetOpenWindow() { return this.mOpenWindow; }
 
+        public JCS_FadeScreen FadeScreen { get { return this.mFadeScreen; } set { this.mFadeScreen = value; } }
+
         //========================================
         //      Unity's function
         //------------------------------
@@ -119,19 +126,19 @@ namespace JCSUnity
         {
             instance = this;
 
-            mOpenWindow = new LinkedList<JCS_DialogueObject>();
+            this.mOpenWindow = new LinkedList<JCS_DialogueObject>();
         }
         private void Start()
         {
-            if (JCS_GameSettings.instance == null)
-                return;
+            // pop the fade screen.
+            string path = JCS_GameSettings.FADE_SCREEN_PATH;
+            this.mFadeScreen = JCS_Utility.SpawnGameObject(path).GetComponent<JCS_FadeScreen>();
         }
 
         private void Update()
         {
 #if (UNITY_EDITOR)
-            // Test.
-            //DialogueTest();
+            //Test();
 #endif
 
 
@@ -144,17 +151,32 @@ namespace JCSUnity
 #endif
         }
 
-        private void DialogueTest()
+#if (UNITY_EDITOR)
+        private void Test()
         {
+            //if (JCS_Input.GetKeyDown(KeyCode.A))
+            //    JCS_UtilityFunctions.PopIsConnectDialogue();
+            //if (JCS_Input.GetKeyDown(KeyCode.S))
+            //    JCS_UtilityFunctions.PopSettingDialogue();
+            //if (JCS_Input.GetKeyDown(KeyCode.D))
+            //    JCS_UtilityFunctions.PopInGameUI();
+            //if (JCS_Input.GetKeyDown(KeyCode.F))
+            //    JCS_UtilityFunctions.PopTalkDialogue();
+
             if (JCS_Input.GetKeyDown(KeyCode.A))
-                JCS_UtilityFunctions.PopIsConnectDialogue();
+            {
+                Color col = Color.red;
+                col.a = 0.6f;
+
+                Focus(col);
+            }
+
             if (JCS_Input.GetKeyDown(KeyCode.S))
-                JCS_UtilityFunctions.PopSettingDialogue();
-            if (JCS_Input.GetKeyDown(KeyCode.D))
-                JCS_UtilityFunctions.PopInGameUI();
-            if (JCS_Input.GetKeyDown(KeyCode.F))
-                JCS_UtilityFunctions.PopTalkDialogue();
+            {
+                UnFocus();
+            }
         }
+#endif
 
         //========================================
         //      Self-Define
@@ -191,6 +213,81 @@ namespace JCSUnity
                 GetOpenWindow().First.Value.HideDialogueWithoutSound();
             }
 
+        }
+
+        /// <summary>
+        /// This will run the default value by the inspector's setting.
+        /// </summary>
+        /// <param name="time"> time to fade. </param>
+        public void Focus()
+        {
+            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            fadeObj.FadeIn();
+        }
+
+        /// <summary>
+        /// This will run the default value by the inspector's setting.
+        /// </summary>
+        /// <param name="time"> time to fade. </param>
+        public void Focus(float time)
+        {
+            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            fadeObj.FadeIn(time);
+        }
+
+        /// <summary>
+        /// This will run the default value by the inspector's setting.
+        /// </summary>
+        /// <param name="time"> time to fade. </param>
+        public void Focus(Color color)
+        {
+            float alpha = color.a;
+
+            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+
+            Color fakeColor = color;
+            fakeColor.a = 0;
+
+            fadeObj.LocalColor = fakeColor;
+            fadeObj.FadeInAmount = alpha;
+            fadeObj.FadeIn();
+        }
+
+        /// <summary>
+        /// Fade a screen to cetain amount of value.
+        /// </summary>
+        /// <param name="time"></param>
+        /// <param name="color"></param>
+        public void Focus(float time, Color color)
+        {
+            float alpha = color.a;
+
+            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+
+            Color fakeColor = color;
+            fakeColor.a = 0;
+
+            fadeObj.LocalColor = fakeColor;
+            fadeObj.FadeInAmount = alpha;
+            fadeObj.FadeIn(time);
+        }
+
+        /// <summary>
+        /// Fade out the screen, back to original amount of value.
+        /// </summary>
+        public void UnFocus()
+        {
+            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            fadeObj.FadeOut();
+        }
+
+        /// <summary>
+        /// Fade out the screen, back to original amount of value.
+        /// </summary>
+        public void UnFocus(float time)
+        {
+            JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
+            fadeObj.FadeOut(time);
         }
 
         //----------------------
