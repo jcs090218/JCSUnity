@@ -10,6 +10,7 @@
 2017-09-11
 * Add fade screen to UI manager, now the game are enable the
  simple focus and un-focus effect. (JCSUnity)
+* Add randomize const wave effect. (JCSUnity)
 
 2017-09-10
 * Fix wrong naming/typo. (JCSUnity)
