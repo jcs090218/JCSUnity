@@ -2386,7 +2386,7 @@ MonoBehaviour:
   mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
   mTweenType: 0
-  mTrackAsLocal: 0
+  mTrackAsLocal: 1
   mEasingX: 0
   mEasingY: 29
   mEasingZ: 0

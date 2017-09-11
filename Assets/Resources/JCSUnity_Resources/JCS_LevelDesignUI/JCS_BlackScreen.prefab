@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 11405534}
   - component: {fileID: 11425318}
   - component: {fileID: 11461196}
-  - component: {fileID: 11417912}
-  - component: {fileID: 114000014207568206}
+  - component: {fileID: 114786668715536010}
   m_Layer: 5
   m_Name: JCS_BlackScreen
   m_TagString: Untagged
@@ -48,29 +47,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11417912
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fb28bcdbdd8c448b4d7b82a860f238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mAsOriginalSize: 1
-  mAsOriginalPosition: 0
-  mAsOriginalRotation: 0
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
-  mFitScreenSize: 0
-  mDialogueIndex: -1
-  mKeyCode: 0
-  mDialogueType: 1
-  mPanelType: 0
-  mOpenWindowClip: {fileID: 0}
-  mCloseWindowClip: {fileID: 0}
 --- !u!114 &11425318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +109,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 172562}
   m_IsPrefabParent: 1
---- !u!114 &114000014207568206
+--- !u!114 &114786668715536010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -141,7 +117,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 172562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb208d196628fa64785fef78c9b23d26, type: 3}
+  m_Script: {fileID: 11500000, guid: df56e4554e88a74488d9e7830ba08f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
+  mAsOriginalSize: 1
+  mAsOriginalPosition: 0
+  mAsOriginalRotation: 0
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
+  mFitScreenSize: 0

@@ -23,10 +23,7 @@ GameObject:
   - component: {fileID: 114373362543763076}
   - component: {fileID: 114245229254271282}
   - component: {fileID: 114642195401808674}
-  - component: {fileID: 82972163851203978}
-  - component: {fileID: 114551791827296048}
-  - component: {fileID: 114646028987662492}
-  - component: {fileID: 114293908147628618}
+  - component: {fileID: 114858787362352306}
   m_Layer: 5
   m_Name: JCS_FadeScreen
   m_TagString: Untagged
@@ -34,86 +31,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &82972163851203978
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1607581052758506}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!114 &114245229254271282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,18 +47,6 @@ MonoBehaviour:
   mOverriteFade: 1
   mFadeInAmount: 0.6
   mFadeOutAmount: 0
---- !u!114 &114293908147628618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1607581052758506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!114 &114373362543763076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,29 +74,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114551791827296048
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1607581052758506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fb28bcdbdd8c448b4d7b82a860f238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mAsOriginalSize: 1
-  mAsOriginalPosition: 0
-  mAsOriginalRotation: 0
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
-  mFitScreenSize: 0
-  mDialogueIndex: -1
-  mKeyCode: 0
-  mDialogueType: 1
-  mPanelType: 0
-  mOpenWindowClip: {fileID: 0}
-  mCloseWindowClip: {fileID: 0}
 --- !u!114 &114642195401808674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edd1ff63a44a054087fda48ca545e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114646028987662492
+--- !u!114 &114858787362352306
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -211,10 +93,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1607581052758506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb208d196628fa64785fef78c9b23d26, type: 3}
+  m_Script: {fileID: 11500000, guid: df56e4554e88a74488d9e7830ba08f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
+  mAsOriginalSize: 1
+  mAsOriginalPosition: 0
+  mAsOriginalRotation: 0
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
+  mFitScreenSize: 0
 --- !u!222 &222783580014218012
 CanvasRenderer:
   m_ObjectHideFlags: 1

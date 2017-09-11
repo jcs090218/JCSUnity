@@ -277,11 +277,11 @@ MonoBehaviour:
   mDurationX: 1
   mDurationY: 1
   mDurationZ: 1
+  mDestroyWhenDoneTweening: 0
+  mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
-  mTweenPosition: 1
-  mTweenRotation: 0
-  mTweenScale: 0
-  mTrackAsLocalPosition: 0
+  mTweenType: 0
+  mTrackAsLocal: 1
   mEasingX: 0
   mEasingY: 0
   mEasingZ: 0
