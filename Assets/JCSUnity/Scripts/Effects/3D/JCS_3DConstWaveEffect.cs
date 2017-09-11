@@ -1,5 +1,5 @@
-﻿/**
- * $File: JCS_2DConstWaveEffect.cs $
+/**
+ * $File: JCS_3DConstWaveEffect.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -16,8 +16,8 @@ namespace JCSUnity
     /// <summary>
     /// Const wave effect.
     /// </summary>
-    public class JCS_2DConstWaveEffect
-        : MonoBehaviour
+    public class JCS_3DConstWaveEffect
+        : JCS_UnityObject
     {
         /*******************************************/
         /*            Public Variables             */
@@ -27,7 +27,15 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Runtime Varialbes (JCS_2DConstWaveEffect) **")]
+        [Header("** Runtime Varialbes (JCS_3DConstWaveEffect) **")]
+
+        [Tooltip("Transform type to apply effect with.")]
+        [SerializeField]
+        private JCS_TransformType mTransformType = JCS_TransformType.POSITION;
+
+        [Tooltip("Effect local position/eulerAngles instead of global one?")]
+        [SerializeField]
+        private bool mEffectLocal = false;
 
         [Tooltip("as play on awake!")]
         [SerializeField]
@@ -48,7 +56,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_Y;
 
-        [Header("- Randomize Setting (JCS_2DConstWaveEffect)")]
+        [Header("- Randomize Setting (JCS_3DConstWaveEffect)")]
 
         [Tooltip("Randomize a bit the amplitude value at start.")]
         [SerializeField]
@@ -68,13 +76,17 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+        public bool EffectLocal { get { return this.mEffectLocal; } set { this.mEffectLocal = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
+        public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
 
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             RandomizeAmplitude();
             RandomizeFrequency();
         }
@@ -87,28 +99,28 @@ namespace JCSUnity
                 return;
             }
 
-            Vector3 newPos = this.transform.position;
+            Vector3 newVal = GetVector3ByTransformType();
 
             switch (mAxis)
             {
                 case JCS_Axis.AXIS_X:
                     {
-                        newPos.x += (mAmplitude * Mathf.Cos(mTime * mFrequency)) * Time.deltaTime;
+                        newVal.x += (mAmplitude * Mathf.Cos(mTime * mFrequency)) * Time.deltaTime;
                     }
                     break;
                 case JCS_Axis.AXIS_Z:
                     {
-                        newPos.z += (mAmplitude * Mathf.Cos(mTime * mFrequency)) * Time.deltaTime;
+                        newVal.z += (mAmplitude * Mathf.Cos(mTime * mFrequency)) * Time.deltaTime;
                     }
                     break;
                 case JCS_Axis.AXIS_Y:
                     {
-                        newPos.y += (mAmplitude * (Mathf.Cos(mTime * mFrequency))) * Time.deltaTime;
+                        newVal.y += (mAmplitude * (Mathf.Cos(mTime * mFrequency))) * Time.deltaTime;
                     }
                     break;
             }
 
-            this.transform.position = newPos;
+            SetVector3ByTransformType(newVal);
 
             mTime += Time.deltaTime;
         }
@@ -118,6 +130,72 @@ namespace JCSUnity
         /*******************************************/
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Get the one of the transform type by passing the 
+        /// JCS_TransformType enum.
+        /// </summary>
+        /// <returns> local pos/eulerAngle? </returns>
+        public Vector3 GetVector3ByTransformType(bool local = false)
+        {
+            Vector3 val = Vector3.zero;
+
+            switch (mTransformType)
+            {
+                case JCS_TransformType.POSITION:
+                    {
+                        if (!local)
+                            val = Position;
+                        else
+                            val = LocalPosition;
+                    }
+                    break;
+                case JCS_TransformType.ROTATION:
+                    {
+                        if (!local)
+                            val = EulerAngles;
+                        else
+                            val = LocalEulerAngles;
+                    }
+                    break;
+                case JCS_TransformType.SCALE:
+                    val = LocalScale;
+                    break;
+            }
+
+            return val;
+        }
+
+        /// <summary>
+        /// Set the new vector3 value to one of the transform type.
+        /// </summary>
+        /// <param name="newVal"> New vector3 value . </param>
+        /// <param name="local"> local pos/eulerAngle? </param>
+        public void SetVector3ByTransformType(Vector3 newVal, bool local = false)
+        {
+            switch (mTransformType)
+            {
+                case JCS_TransformType.POSITION:
+                    {
+                        if (!local)
+                            this.Position = newVal;
+                        else
+                            this.LocalPosition = newVal;
+                    }
+                    break;
+                case JCS_TransformType.ROTATION:
+                    {
+                        if (!local)
+                            this.EulerAngles = newVal;
+                        else
+                            this.LocalEulerAngles = newVal;
+                    }
+                    break;
+                case JCS_TransformType.SCALE:
+                    this.LocalScale = newVal;
+                    break;
+            }
+        }
 
         //----------------------
         // Protected Functions

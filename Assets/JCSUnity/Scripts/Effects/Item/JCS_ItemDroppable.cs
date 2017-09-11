@@ -453,7 +453,7 @@ the wall or just stop there.")]
 
             if (waveEffect)
             {
-                JCS_2DConstWaveEffect jcscw = jcsi.gameObject.AddComponent<JCS_2DConstWaveEffect>();
+                JCS_3DConstWaveEffect jcscw = jcsi.gameObject.AddComponent<JCS_3DConstWaveEffect>();
                 jcscw.Effect = true;
             }
 

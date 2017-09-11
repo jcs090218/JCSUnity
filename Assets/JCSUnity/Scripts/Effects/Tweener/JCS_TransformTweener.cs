@@ -36,7 +36,7 @@ namespace JCSUnity
         private Transform mTargetTransform = null;
 
         // use to check if the target transform move or not.
-        private Vector3 mRecordTargetTransformPosition = Vector3.zero;
+        private Vector3 mRecordTargetTransformValue = Vector3.zero;
 
         private Transform mRecordTransform = null;
 
@@ -66,10 +66,6 @@ namespace JCSUnity
         [Range(0.01f, 1000.0f)]
         private float mDurationZ = 1.0f;
 
-        [Tooltip("Enable this if the target is moving all the time.")]
-        [SerializeField]
-        private bool mTweenEveryFrame = true;
-
 
         [Header("- Destory")]
 
@@ -97,9 +93,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TransformType mTweenType = JCS_TransformType.POSITION;
 
-        [Tooltip("Do the track base on location position.")]
+        [Tooltip("Do the track base on location value.")]
         [SerializeField]
-        private bool mTrackAsLocalPosition = false;
+        private bool mTrackAsLocal = false;
 
 
         [Header("- Tweener Formula Type")]
@@ -146,7 +142,6 @@ namespace JCSUnity
         public void SetTargetTransform(Transform trans) { this.mTargetTransform = trans; }
         public Transform RecordTransform { get { return this.mRecordTransform; } }
         public bool DestroyWhenDoneTweening { get { return this.mDestroyWhenDoneTweening; } set { this.mDestroyWhenDoneTweening = value; } }
-        public bool TweenEveryFrame { get { return this.mTweenEveryFrame; } set { this.mTweenEveryFrame = value; } }
         public JCS_TransformType TweenType { get { return this.mTweenType; } set { this.mTweenType = value; } }
 
         //========================================
@@ -241,6 +236,7 @@ namespace JCSUnity
             mDestinationCallback = func;
         }
 
+
         /// <summary>
         /// Tween to this vector either position, scale, rotation.
         /// </summary>
@@ -248,31 +244,45 @@ namespace JCSUnity
         /// <param name="callback"> callback function pointer. </param>
         public void DoTween(Vector3 to, CallBackDelegate callback = null)
         {
-            DoTween(to, mEasingX, mEasingY, mEasingZ, callback);
+            DoTween(to, true, mEasingX, mEasingY, mEasingZ, callback);
         }
 
         /// <summary>
         /// Tween to this vector either position, scale, rotation.
         /// </summary>
         /// <param name="to"> target vector 3 </param>
+        /// <param name="resetElapsedTime"> reset elapsed time? (default : true) </param>
+        /// <param name="callback"> callback function pointer. </param>
+        public void DoTween(Vector3 to, bool resetElapsedTime, CallBackDelegate callback = null)
+        {
+            DoTween(to, resetElapsedTime, mEasingX, mEasingY, mEasingZ, callback);
+        }
+
+        /// <summary>
+        /// Tween to this vector either position, scale, rotation.
+        /// </summary>
+        /// <param name="to"> target vector 3 </param>
+        /// <param name="resetElapsedTime"> reset elapsed time? (default : true) </param>
         /// <param name="typeX"> easing type for x axis. </param>
         /// <param name="typeY"> easing type for y axis. </param>
         /// <param name="typeZ"> easing type for z axis. </param>
         /// <param name="callback"> callback function pointer. </param>
         public void DoTween(
             Vector3 to,
+            bool resetElapsedTime,
             JCS_TweenType typeX,
             JCS_TweenType typeY,
             JCS_TweenType typeZ,
             CallBackDelegate callback = null)
         {
-            DoTween(to, mDurationX, mDurationY, mDurationZ, typeX, typeY, typeZ, callback);
+            DoTween(to, resetElapsedTime, mDurationX, mDurationY, mDurationZ, typeX, typeY, typeZ, callback);
         }
 
         /// <summary>
         /// Tween to this vector either position, scale, rotation.
         /// </summary>
         /// <param name="to"> target vector 3 </param>
+        /// <param name="resetElapsedTime"> reset elapsed time? (default : true) </param>
         /// <param name="durationX"> how fast it tween on x axis. </param>
         /// <param name="durationY"> how fast it tween on y axis. </param>
         /// <param name="durationZ"> how fast it tween on z axis. </param>
@@ -282,6 +292,7 @@ namespace JCSUnity
         /// <param name="callback"> callback function pointer. </param>
         public void DoTween(
             Vector3 to,
+            bool resetElapsedTime,
             float durationX,
             float durationY,
             float durationZ,
@@ -290,22 +301,9 @@ namespace JCSUnity
             JCS_TweenType typeZ,
             CallBackDelegate callback = null)
         {
-            Vector3 from = Vector3.zero;
+            Vector3 from = GetTransformTypeVector3();
 
-            switch (mTweenType)
-            {
-                case JCS_TransformType.POSITION:
-                    from = LocalPosition;
-                    break;
-                case JCS_TransformType.ROTATION:
-                    from = LocalEulerAngles;
-                    break;
-                case JCS_TransformType.SCALE:
-                    from = LocalScale;
-                    break;
-            }
-
-            DoTween(from, to, durationX, durationY, durationZ, typeX, typeY, typeZ, callback);
+            DoTween(from, to, resetElapsedTime, durationX, durationY, durationZ, typeX, typeY, typeZ, callback);
         }
 
         /// <summary>
@@ -313,6 +311,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="from"> starting vector 3 </param>
         /// <param name="to"> target vector 3 </param>
+        /// <param name="resetElapsedTime"> reset elapsed time? (default : true) </param>
         /// <param name="durationX"> how fast it tween on x axis. </param>
         /// <param name="durationY"> how fast it tween on y axis. </param>
         /// <param name="durationZ"> how fast it tween on z axis. </param>
@@ -323,6 +322,7 @@ namespace JCSUnity
         public void DoTween(
             Vector3 from,
             Vector3 to,
+            bool resetElapsedTime,
             float durationX,
             float durationY,
             float durationZ,
@@ -335,7 +335,7 @@ namespace JCSUnity
             TweenDelegate easingY = JCS_Utility.GetEasing(typeY);
             TweenDelegate easingZ = JCS_Utility.GetEasing(typeZ);
 
-            StartTween(from, to, durationX, durationY, durationZ, easingX, easingY, easingZ, callback);
+            StartTween(from, to, resetElapsedTime, durationX, durationY, durationZ, easingX, easingY, easingZ, callback);
         }
 
         /// <summary>
@@ -349,9 +349,75 @@ namespace JCSUnity
             mRecordTransform = target;
 
             // reset record
-            mRecordTargetTransformPosition = Vector3.zero;
+            mRecordTargetTransformValue = Vector3.zero;
 
             mContinueTween = true;
+        }
+
+        /// <summary>
+        /// Get target transform type's vector3 value.
+        /// </summary>
+        /// <returns> Vector3 value base on transform type selected. </returns>
+        public Vector3 GetTransformTypeVector3()
+        {
+            Vector3 val = Vector3.zero;
+
+            switch (mTweenType)
+            {
+                case JCS_TransformType.POSITION:
+                    {
+                        if (mTrackAsLocal)
+                            val = LocalPosition;
+                        else
+                            val = Position;
+                    }
+                    break;
+                case JCS_TransformType.ROTATION:
+                    {
+                        if (mTrackAsLocal)
+                            val = LocalEulerAngles;
+                        else
+                            val = EulerAngles;
+                    }
+                    break;
+                case JCS_TransformType.SCALE:
+                    val = LocalScale;
+                    break;
+            }
+            return val;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Vector3 GetTargetTransformTypeVector3()
+        {
+            Vector3 val = Vector3.zero;
+
+            switch (mTweenType)
+            {
+                case JCS_TransformType.POSITION:
+                    {
+                        if (mTrackAsLocal)
+                            val = mTargetTransform.localPosition;
+                        else
+                            val = mTargetTransform.position;
+                    }
+                    break;
+                case JCS_TransformType.ROTATION:
+                    {
+                        if (mTrackAsLocal)
+                            val = mTargetTransform.localEulerAngles;
+                        else
+                            val = mTargetTransform.eulerAngles;
+                    }
+                    break;
+                case JCS_TransformType.SCALE:
+                    val = mTargetTransform.localScale;
+                    break;
+            }
+            return val;
         }
 
         //----------------------
@@ -389,6 +455,7 @@ namespace JCSUnity
         private void StartTween(
             Vector3 from,
             Vector3 to,
+            bool resetElapsedTime = true,
             float durationX = 1f,
             float durationY = 1f,
             float durationZ = 1f,
@@ -403,6 +470,7 @@ namespace JCSUnity
                 tweener.easeFromTo(
                     from,
                     to,
+                    resetElapsedTime,
                     durationX,
                     durationY,
                     durationZ,
@@ -440,37 +508,21 @@ namespace JCSUnity
             }
 
             float distance = 0;
-            if (mTrackAsLocalPosition)
-            {
-                if (!TweenEveryFrame)
-                {
-                    // no need to tween again if the position has not change.
-                    if (mRecordTargetTransformPosition == mTargetTransform.localPosition)
-                        return;
-                }
+            Vector3 selfVal = GetTransformTypeVector3();
+            Vector3 targetVal = GetTargetTransformTypeVector3();
 
-                distance = Vector3.Distance(LocalPosition, mTargetTransform.localPosition);
-                DoTween(mTargetTransform.localPosition);
+            // no need to tween again if the position has not change.
+            if (mRecordTargetTransformValue == targetVal)
+                return;
 
-                // record down the position
-                mRecordTargetTransformPosition = mTargetTransform.localPosition;
-            }
-            else
-            {
-                if (!TweenEveryFrame)
-                {
-                    // no need to tween again if the position has not change.
-                    if (mRecordTargetTransformPosition == mTargetTransform.position)
-                        return;
-                }
+            distance = Vector3.Distance(selfVal, targetVal);
+            DoTween(targetVal, false);
 
-                distance = Vector3.Distance(LocalPosition, mTargetTransform.position);
-                DoTween(mTargetTransform.position);
+            // record down the position
+            mRecordTargetTransformValue = targetVal;
 
-                // record down the position
-                mRecordTargetTransformPosition = mTargetTransform.position;
-            }
 
+            // Check if close enough to the distance we target.
             if (distance <= mStopTweenDistance)
             {
                 mContinueTween = false;

@@ -58,6 +58,7 @@ namespace PeterVuorela.Tweener
         /// <param name="easing">Easing.</param>
         public void easeFromTo(
             Vector3 from, Vector3 to, 
+            bool resetElapsedTime = true,
             float durationX = 1f,
             float durationY = 1f,
             float durationZ = 1f,
@@ -93,20 +94,24 @@ namespace PeterVuorela.Tweener
             _To = to;
 
             _Duration.x = durationX;
-            //_TimeElapsed.x = 0f;
             _ProgressPct.x = 0f;
 
             _Duration.y = durationY;
-            //_TimeElapsed.y = 0f;
             _ProgressPct.y = 0f;
 
             _Duration.z = durationZ;
-            //_TimeElapsed.z = 0f;
             _ProgressPct.z = 0f;
 
             _AnimatingX = true;
             _AnimatingY = true;
             _AnimatingZ = true;
+
+            if (resetElapsedTime)
+            {
+                _TimeElapsed.x = 0f;
+                _TimeElapsed.y = 0f;
+                _TimeElapsed.z = 0f;
+            }
         }
 
         public void updateX(bool callCallBack = true)

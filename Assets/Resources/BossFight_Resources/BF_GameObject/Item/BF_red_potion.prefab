@@ -139,6 +139,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -173,9 +175,7 @@ MonoBehaviour:
   mDestroyWhenDoneTweening: 1
   mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
-  mTweenPosition: 1
-  mTweenRotation: 0
-  mTweenScale: 0
+  mTweenType: 0
   mTrackAsLocalPosition: 0
   mEasingX: 0
   mEasingY: 6

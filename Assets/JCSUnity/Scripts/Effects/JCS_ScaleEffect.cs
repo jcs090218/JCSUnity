@@ -111,6 +111,22 @@ namespace JCSUnity
             mTargetScale = mRecordScale;
         }
 
+        /// <summary>
+        /// Active the effect.
+        /// </summary>
+        public void Active()
+        {
+            JCS_OnMouseOver();
+        }
+
+        /// <summary>
+        /// Deactive the effect.
+        /// </summary>
+        public void Deactive()
+        {
+            JCS_OnMouseExit();
+        }
+
         //----------------------
         // Protected Functions
 
