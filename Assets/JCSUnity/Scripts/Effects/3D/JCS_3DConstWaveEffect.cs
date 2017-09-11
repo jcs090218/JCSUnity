@@ -60,12 +60,12 @@ namespace JCSUnity
 
         [Tooltip("Randomize a bit the amplitude value at start.")]
         [SerializeField]
-        [Range(0.0f, 10.0f)]
+        [Range(0.0f, 1000.0f)]
         private float mRandomizeAmplitudeAtStart = 0.0f;
 
         [Tooltip("Randomize a bit the frequency value at start.")]
         [SerializeField]
-        [Range(0.0f, 10.0f)]
+        [Range(0.0f, 100.0f)]
         private float mRandomizeFrequencyAtStart = 0.0f;
 
         /*******************************************/

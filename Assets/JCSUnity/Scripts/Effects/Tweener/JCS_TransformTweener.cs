@@ -355,7 +355,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get target transform type's vector3 value.
+        /// Get itself (JCS_UnityObject) transform type's vector3 value.
         /// </summary>
         /// <returns> Vector3 value base on transform type selected. </returns>
         public Vector3 GetTransformTypeVector3()
@@ -388,9 +388,10 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Get target transform type's vector3 value.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Target transform's vector3 value base on transform 
+        /// type selected. </returns>
         public Vector3 GetTargetTransformTypeVector3()
         {
             Vector3 val = Vector3.zero;
