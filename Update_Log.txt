@@ -18,6 +18,8 @@
  as the base class which mean the effect can be use by any Unity
  object layer. (JCSUnity)
 * JCS_RandomTweenerAction implemented. (JCSUnity)
+* Downgrade resources's screen panel object, in order to save a bit
+ of runtime memory usage and performance. (JCSUnity)
 
 2017-09-10
 * Fix wrong naming/typo. (JCSUnity)
