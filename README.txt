@@ -2,7 +2,7 @@
 # $File: README.txt $
 # $Creator: Jen-Chieh Shen <jcs090218@gmail.com> $
 # $Date: 2016-03-29 $
-# $Revision: 1.5.1 $
+# $Revision: 1.5.3 $
 # $Version Control Page: https://github.com/jcs090218/JCSUnity_Framework $
 # $Unity Version: 2017.1.0f3 (64-bit) $
 # $Notice: See LICENSE.txt for modification and distribution information 
