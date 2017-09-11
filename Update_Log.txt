@@ -11,6 +11,13 @@
 * Add fade screen to UI manager, now the game are enable the
  simple focus and un-focus effect. (JCSUnity)
 * Add randomize const wave effect. (JCSUnity)
+* JCS_TransformTweener continue tween provide all three transform
+ type now, so developers can tween between position/rotation/scale
+ for now on. (JCSUnity)
+* Const wave effect support 3 dimentional, and using Untiy Object
+ as the base class which mean the effect can be use by any Unity
+ object layer. (JCSUnity)
+* JCS_RandomTweenerAction implemented. (JCSUnity)
 
 2017-09-10
 * Fix wrong naming/typo. (JCSUnity)
