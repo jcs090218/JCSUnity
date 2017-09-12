@@ -26,6 +26,9 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        private CallBackDelegate mDestinationCallback = null;
+
+
         [Header("** Check Variables (JCS_TransformTweener) **")]
 
         [SerializeField]
@@ -50,6 +53,10 @@ namespace JCSUnity
         [Tooltip("Do the tween effect?")]
         [SerializeField]
         private bool mTween = true;
+
+        [Tooltip("Value offset.")]
+        [SerializeField]
+        private Vector3 mValueOffset = Vector3.zero;
 
         [Tooltip("How fase it move on x axis.")]
         [SerializeField]
@@ -119,10 +126,8 @@ namespace JCSUnity
 
         [Tooltip("While Continue tween when did the tweener algorithm stop?")]
         [SerializeField]
+        [Range(0.0f, 1000.0f)]
         private float mStopTweenDistance = 1;
-
-        private CallBackDelegate mDestinationCallback = null;
-
 
         //----------------------
         // Protected Variables
@@ -143,6 +148,10 @@ namespace JCSUnity
         public Transform RecordTransform { get { return this.mRecordTransform; } }
         public bool DestroyWhenDoneTweening { get { return this.mDestroyWhenDoneTweening; } set { this.mDestroyWhenDoneTweening = value; } }
         public JCS_TransformType TweenType { get { return this.mTweenType; } set { this.mTweenType = value; } }
+        public Vector3 ValueOffset { get { return this.mValueOffset; } set { this.mValueOffset = value; } }
+        public float ValueOffsetX { get { return this.mValueOffset.x; } set { this.mValueOffset.x = value; } }
+        public float ValueOffsetY { get { return this.mValueOffset.y; } set { this.mValueOffset.y = value; } }
+        public float ValueOffsetZ { get { return this.mValueOffset.z; } set { this.mValueOffset.z = value; } }
 
         //========================================
         //      Unity's function
@@ -470,7 +479,7 @@ namespace JCSUnity
                 // Sets The Position From -> To
                 tweener.easeFromTo(
                     from,
-                    to,
+                    to + mValueOffset,  // add offset to final value.
                     resetElapsedTime,
                     durationX,
                     durationY,
@@ -481,6 +490,8 @@ namespace JCSUnity
                     mDestinationCallback);
 
                 this.mIsDoneTweening = false;
+
+                this.mContinueTween = false;
             }
         }
 
@@ -518,6 +529,10 @@ namespace JCSUnity
 
             distance = Vector3.Distance(selfVal, targetVal);
             DoTween(targetVal, false);
+
+            // Everytime we do tween will make 'mContinueTween' to false,
+            // so make sure we enable this back here after do tween.
+            mContinueTween = true;
 
             // record down the position
             mRecordTargetTransformValue = targetVal;

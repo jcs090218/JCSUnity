@@ -35,3 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RunningCrush_Assets/Scenes/RC_EndGame.unity
     guid: 26dc9a66adce7894faed66899ee9dddd
+  - enabled: 1
+    path: Assets/JCSUnity/Scenes/Demo/2D/JCS_2DAIDemo.unity
+    guid: a7192e9fe705d574c8b921528811f52f

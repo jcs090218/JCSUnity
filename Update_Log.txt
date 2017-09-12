@@ -20,6 +20,7 @@
 * JCS_RandomTweenerAction implemented. (JCSUnity)
 * Downgrade resources's screen panel object, in order to save a bit
  of runtime memory usage and performance. (JCSUnity)
+* Add value offset to JCS_TransformTweener. (JCSUnity)
 
 2017-09-10
 * Fix wrong naming/typo. (JCSUnity)

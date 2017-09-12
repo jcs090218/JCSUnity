@@ -12,14 +12,12 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Store all the useful math function here...
     /// </summary>
     public class JCS_Mathf 
         : MonoBehaviour
     {
-
         /// <summary>
         /// Absolute the value. (Integer)
         /// </summary>
@@ -310,6 +308,35 @@ namespace JCSUnity
             origin.x + ((point.x - origin.x) * cos) - ((point.z - origin.z) * sin),
             point.y,
             origin.z + ((point.x - origin.x) * sin) + ((point.z - origin.z) * cos));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="origin"></param>
+        /// <param name="angle"></param>
+        /// <returns></returns>
+        public static Vector3 RotatePointY(Vector3 point, Vector3 origin, float angle)
+        {
+            return new Vector3(
+                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.z - origin.z)),
+                point.y,
+                origin.z + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.z - origin.z)));
+        }
+        public static Vector3 RotatePointX(Vector3 point, Vector3 origin, float angle)
+        {
+            return new Vector3(
+                point.x,
+                origin.y + ((Mathf.Cos(angle) * (point.y - origin.y))) - (Mathf.Sin(angle) * (point.z - origin.z)),
+                origin.z + ((Mathf.Sin(angle) * (point.y - origin.y))) + (Mathf.Cos(angle) * (point.z - origin.z)));
+        }
+        public static Vector3 RotatePointZ(Vector3 point, Vector3 origin, float angle)
+        {
+            return new Vector3(
+                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.y - origin.y)),
+                origin.y + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.y - origin.y)),
+                point.z);
         }
 
         /// <summary>

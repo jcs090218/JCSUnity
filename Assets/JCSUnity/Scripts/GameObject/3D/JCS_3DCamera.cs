@@ -315,7 +315,7 @@ namespace JCSUnity
         {
             if (mTargetTransform == null)
             {
-                JCS_Debug.LogError("JCS_3DCamera",   "There is no target to reset the camera!");
+                JCS_Debug.LogError("There is no target to reset the camera!");
                 return;
             }
 
@@ -397,7 +397,7 @@ namespace JCSUnity
         {
             if (mTargetTransform == null)
             {
-                JCS_Debug.LogError("JCS_3DCamera",   "There is no target to reset the camera!");
+                JCS_Debug.LogError("There is no target to reset the camera!");
                 return;
             }
 
