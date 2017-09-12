@@ -138,6 +138,9 @@ namespace JCSUnity
 
             if (GUILayout.Button("Create Slide Panel 9x9 - 16:9"))
                 CreateSlidePanel();
+
+            if (GUILayout.Button("Create Tween Panel"))
+                CreateTweenPanel();
         }
 
         /// <summary>
@@ -365,7 +368,6 @@ namespace JCSUnity
             if (jcsCanvas == null)
             {
                 JCS_Debug.Log(
-                    "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the base panel.");
 
                 return null;
@@ -468,6 +470,25 @@ namespace JCSUnity
 
             // set to default 2d.
             slideScreenCamera.UnityGUIType = JCS_UnityGUIType.uGUI_2D;
+        }
+
+        /// <summary>
+        /// Create a tween panel.
+        /// </summary>
+        private static GameObject CreateTweenPanel()
+        {
+            JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            if (jcsCanvas == null)
+            {
+                JCS_Debug.Log(
+                    "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the base panel.");
+                return null;
+            }
+
+            string setting_path = "JCSUnity_Resources/GUI/JCS_TweenPanel";
+            GameObject tweenPanel = CreateHierarchyObjectUnderCanvas(setting_path);
+
+            return tweenPanel;
         }
 
 
