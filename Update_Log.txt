@@ -9,6 +9,7 @@
 
 2017-09-12
 * Resolution fix with logo scene. (JCSUnity)
+* Create tween panel added into the JCSUnity editor window. (JCSUnity)
 
 2017-09-11
 * Add fade screen to UI manager, now the game are enable the
