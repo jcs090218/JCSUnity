@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-09-16
+* Add circle position function for x, y, z axis. (JCSUnity)
+
 2017-09-12
 * Resolution fix with logo scene. (JCSUnity)
 * Create tween panel added into the JCSUnity editor window. (JCSUnity)
