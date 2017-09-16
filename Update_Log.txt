@@ -9,6 +9,7 @@
 
 2017-09-16
 * Add circle position function for x, y, z axis. (JCSUnity)
+* Add radian and degree conversion. (JCSUnity)
 
 2017-09-12
 * Resolution fix with logo scene. (JCSUnity)
