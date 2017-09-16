@@ -18,6 +18,12 @@ namespace JCSUnity
     public class JCS_Mathf 
         : MonoBehaviour
     {
+        // Radian to Degree.
+        public const float Rad2Deg = 180.0f / Mathf.PI;
+        // Degree to Radian.
+        public const float Deg2Rad = Mathf.PI / 180.0f;
+
+
         /// <summary>
         /// Absolute the value. (Integer)
         /// </summary>
@@ -475,7 +481,7 @@ namespace JCSUnity
         /// <summary>
         /// Do Pythagorean Theorem.
         /// </summary>
-        /// <param name="s1"> side 1 </param>
+        /// <param name="s1"> side 1 / hyp </param>
         /// <param name="s2"> side 2 </param>
         /// <param name="type"> target side you want to find. </param>
         /// <returns> result side. </returns>
@@ -499,7 +505,7 @@ namespace JCSUnity
                         float c = Mathf.Pow(s1, 2);
                         float b = Mathf.Pow(s2, 2);
 
-                        float sub = Mathf.Abs(c - b);
+                        float sub = c - b;
 
                         return Mathf.Sqrt(sub);
                     }
@@ -554,7 +560,7 @@ namespace JCSUnity
         /// <returns> result in radian. </returns>
         public static float DegreeToRadian(float deg)
         {
-            return deg * Mathf.PI / 180;
+            return deg * Mathf.PI / 180.0f;
         }
 
         /// <summary>
@@ -564,7 +570,7 @@ namespace JCSUnity
         /// <returns> result in degree. </returns>
         public static float RadianToDegree(float rad)
         {
-            return rad * 180 / Mathf.PI;
+            return rad * 180.0f / Mathf.PI;
         }
 
         /// <summary>
@@ -595,6 +601,90 @@ namespace JCSUnity
         public static float Tan(float deg)
         {
             return Mathf.Tan(DegreeToRadian(deg));
+        }
+
+        /// <returns></returns>
+        /// <summary>
+        /// Find the point on the circle line base on the degree. (x-axis)
+        /// </summary>
+        /// <param name="objPos"> Current effect object's position. </param>
+        /// <param name="origin"> origin point. </param>
+        /// <param name="deg"> degree </param>
+        /// <param name="radius"> radius from the origin. </param>
+        /// <returns> Vector3 : point on the circle. </returns>
+        public static Vector3 CirclePositionX(Vector3 origin, float deg, float radius, Vector3 objPos)
+        {
+            return CirclePosition(origin, deg, radius, objPos, JCS_Axis.AXIS_X);
+        }
+
+        /// <summary>
+        /// Find the point on the circle line base on the degree. (y-axis)
+        /// </summary>
+        /// <param name="objPos"> Current effect object's position. </param>
+        /// <param name="origin"> origin point. </param>
+        /// <param name="deg"> degree </param>
+        /// <param name="radius"> radius from the origin. </param>
+        /// <returns> Vector3 : point on the circle. </returns>
+        public static Vector3 CirclePositionY(Vector3 origin, float deg, float radius, Vector3 objPos)
+        {
+            return CirclePosition(origin, deg, radius, objPos, JCS_Axis.AXIS_Y);
+        }
+
+        /// <summary>
+        /// Find the point on the circle line base on the degree. (z-axis)
+        /// </summary>
+        /// <param name="objPos"> Current effect object's position. </param>
+        /// <param name="origin"> origin point. </param>
+        /// <param name="deg"> degree </param>
+        /// <param name="radius"> radius from the origin. </param>
+        /// <returns> Vector3 : point on the circle. </returns>
+        public static Vector3 CirclePositionZ(Vector3 origin, float deg, float radius, Vector3 objPos)
+        {
+            return CirclePosition(origin, deg, radius, objPos, JCS_Axis.AXIS_Z);
+        }
+
+        /// <summary>
+        /// Find the point on the circle line base on the degree.
+        /// </summary>
+        /// <param name="objPos"> Current effect object's position. </param>
+        /// <param name="origin"> origin point. </param>
+        /// <param name="deg"> degree </param>
+        /// <param name="radius"> radius from the origin. </param>
+        /// <param name="axis"> Around which axis? </param>
+        /// <returns> Vector3 : point on the circle. </returns>
+        public static Vector3 CirclePosition(Vector3 origin, float deg, float radius, Vector3 objPos, JCS_Axis axis)
+        {
+            deg = deg % 360.0f;
+
+            float rad = DegreeToRadian(deg);
+
+            Vector3 circlePos = origin;
+
+            // add offset to current distance (hyp)
+            float hyp = radius;
+            float opp = Mathf.Sin(rad) * hyp;
+            float adj = Mathf.Cos(rad) * hyp;
+
+            switch (axis)
+            {
+                case JCS_Axis.AXIS_X:
+                    circlePos.x = objPos.x;
+                    circlePos.y += adj;
+                    circlePos.z += opp;
+                    break;
+                case JCS_Axis.AXIS_Y:
+                    circlePos.x += adj;
+                    circlePos.y = objPos.y;
+                    circlePos.z += opp;
+                    break;
+                case JCS_Axis.AXIS_Z:
+                    circlePos.x += adj;
+                    circlePos.y += opp;
+                    circlePos.z = objPos.z;
+                    break;
+            }
+
+            return circlePos;
         }
 
     }
