@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 8
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -132,12 +132,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 124846435}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 903062044}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &124846437
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   mActive: 1
   mActiveThread: 1
   mOrderLayer: 15
-  mDensity: 500
+  mDensity: 100
   mWindSpeed: 0
   mRandPosX: 0
   mRandPosY: 0
@@ -384,6 +384,11 @@ Prefab:
       propertyPath: m_Name
       value: JCS_TowardTarget_Reverse
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012246884056, guid: 8f6e1617d950167439dbe8a6fcc959fe,
+        type: 2}
+      propertyPath: mTrackAsLocal
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f6e1617d950167439dbe8a6fcc959fe, type: 2}
   m_IsPrefabParent: 0
@@ -463,7 +468,7 @@ Transform:
   - {fileID: 790943451}
   - {fileID: 147068997}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &435749558
 MonoBehaviour:
@@ -782,7 +787,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 124846436}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1139,6 +1145,26 @@ Prefab:
         type: 2}
       propertyPath: mEasingY
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012246884056, guid: 8f6e1617d950167439dbe8a6fcc959fe,
+        type: 2}
+      propertyPath: mTrackAsLocal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012246884056, guid: 8f6e1617d950167439dbe8a6fcc959fe,
+        type: 2}
+      propertyPath: mStopTweenDistance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013234590884, guid: 8f6e1617d950167439dbe8a6fcc959fe,
+        type: 2}
+      propertyPath: mRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013234590884, guid: 8f6e1617d950167439dbe8a6fcc959fe,
+        type: 2}
+      propertyPath: mFadeDistance
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f6e1617d950167439dbe8a6fcc959fe, type: 2}
