@@ -10,7 +10,7 @@ generate enormous variety of different behaviour. <br/><br/>
 ### Create Scene with JCSUnity ###
 Create the simple scene with smooth switching the scene and smooth
 switching the background music is always painful. Not because is
-hard but is work that you will have to do for every mostly project. 
+hard but is work that you will have to do for mostly every project. 
 I made the 'JCSUnity' editor for just one click so you could have
 nice switching scene UI and background music. Background music can
 be switch at 'JCS_Settings' object to 'JCS_SoundSetting' component 
@@ -25,6 +25,12 @@ cost a bit of performance at initialize time, but I think is worst
 it to have it because I will never have to drag the anchor point
 around everytime I start a new project. <br/>
 <img src="./screen_shot/auto_resize.gif"/>
+
+### GUI System ###
+Since Unity version 4.6, they have release nice uGUI system, but 
+with lack of cool effect and sound on there. Here are some simple
+effect I made so you can simple make game with details. <br/>
+<img src="./screen_shot/GUI_system.gif"/>
 
 ### Network Module ###
 I have never use Unity's network module, but I heard a lot of people
