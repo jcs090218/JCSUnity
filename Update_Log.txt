@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-09-17
+* Include 'UI-Polygon' library made by Credit CiaccoDavide. (JCSUnity)
+
 2017-09-16
 * Add circle position function for x, y, z axis. (JCSUnity)
 * Add radian and degree conversion. (JCSUnity)
