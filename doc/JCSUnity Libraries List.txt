@@ -1,0 +1,20 @@
+
+JCSUnity version 1.5.3 Libraries List (Status)
+
+
+    Plz download these library yourself.
+    
+    ¦ Necessary:
+        * SpriteMask : https://www.assetstore.unity3d.com/en/#!/content/27642
+        * Tweener : https://github.com/PeterVuorela/Tweener
+        * UI-Polygon: https://github.com/CiaccoDavide/Unity-UI-Polygon
+        
+    ¦ Recommanded:
+        * Photon PUN+ : https://www.assetstore.unity3d.com/en/#!/content/12080
+        * Gaussian Blur : https://www.assetstore.unity3d.com/en/#!/content/42388
+        * Infinity Code : https://www.assetstore.unity3d.com/en/#!/content/3810
+        * Reporter : https://www.assetstore.unity3d.com/en/#!/content/12047
+        
+    ¦ Old List:
+        * Store - In App Purchase : https://www.assetstore.unity3d.com/en/#!/content/6103
+        
