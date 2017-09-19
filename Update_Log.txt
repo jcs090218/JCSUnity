@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-09-18
+* JCS_RevolutioAction implemented. (JCSUnity)
+
 2017-09-17
 * Include 'UI-Polygon' library made by Credit CiaccoDavide. (JCSUnity)
 
