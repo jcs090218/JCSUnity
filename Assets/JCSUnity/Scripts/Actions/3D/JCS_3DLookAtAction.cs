@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Look at a target/transform in 3 dimensional.
     /// </summary>
     public class JCS_3DLookAtAction
         : MonoBehaviour
@@ -69,6 +68,10 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mAngleOffset = Vector3.zero;
 
+        [Tooltip("Track as local euler angles.")]
+        [SerializeField]
+        private bool mLocalEulerAngles = false;
+
 
         [Header("- Asymptotic Look (JCS_3DLookAtAction)")]
 
@@ -89,7 +92,9 @@ namespace JCSUnity
 
         // record the current rotation every frame, in order to set it back
         // to original rotation which is the freezing effect.
-        private Vector3 mCurrentRotation = Vector3.zero;
+        private Vector3 mCurrentEulerAngles = Vector3.zero;
+
+        private bool mWasPositive = false;
 
         //----------------------
         // Protected Variables
@@ -102,6 +107,7 @@ namespace JCSUnity
         public bool RotateBack90 { get { return this.mRotateBack90; } set { this.mRotateBack90 = value; } }
 
         public bool LookAction { get { return this.mLookAction; } set { this.mLookAction = value; } }
+        public bool LocalEulerAngles { get { return this.mLocalEulerAngles; } set { this.mLocalEulerAngles = value; } }
 
         public bool AsympLook { get { return this.mAsympLook; } set { this.mAsympLook = value; } }
         public float LookFriction { get { return this.mLookFriction; } set { this.mLookFriction = value; } }
@@ -109,11 +115,13 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-
         private void LateUpdate()
         {
             // record the current rotation.
-            mCurrentRotation = this.transform.eulerAngles;
+            if (mLocalEulerAngles)
+                mCurrentEulerAngles = this.transform.localEulerAngles;
+            else
+                mCurrentEulerAngles = this.transform.eulerAngles;
 
             DoLookAt();
             DoAsympLook();
@@ -142,8 +150,10 @@ namespace JCSUnity
                 return;
 
             // record down the euler angle before we changes.
-            mLastEulerAngles = this.transform.localEulerAngles;
-
+            if (mLocalEulerAngles)
+                mLastEulerAngles = this.transform.localEulerAngles;
+            else
+                mLastEulerAngles = this.transform.eulerAngles;
 
             Vector3 lookPoint = mTargetTransform.position;
             Vector3 direction = Vector3.up;
@@ -154,7 +164,10 @@ namespace JCSUnity
             transform.LookAt(lookPoint, direction * (int)mState);
 
             // apply offset angle
-            this.transform.eulerAngles += mAngleOffset;
+            if (mLocalEulerAngles)
+                this.transform.localEulerAngles += mAngleOffset;
+            else
+                this.transform.eulerAngles += mAngleOffset;
 
             // TODO(JenChieh): study the rotation going on in 
             //                Unity lower level archietecture.
@@ -231,19 +244,26 @@ namespace JCSUnity
         /// </summary>
         private void DoFreeze()
         {
-            Vector3 newRotation = this.transform.eulerAngles;
+            Vector3 newEulerAngles = this.transform.eulerAngles;
+            if (mLocalEulerAngles)
+                newEulerAngles = this.transform.localEulerAngles;
 
+            //------------------------------------------------
             // if freeze, set to previous rotation.
             if (mFreezeX)
-                newRotation.x = mCurrentRotation.x;
+                newEulerAngles.x = mCurrentEulerAngles.x;
 
             if (mFreezeY)
-                newRotation.y = mCurrentRotation.y;
+                newEulerAngles.y = mCurrentEulerAngles.y;
 
             if (mFreezeZ)
-                newRotation.z = mCurrentRotation.z;
+                newEulerAngles.z = mCurrentEulerAngles.z;
+            //------------------------------------------------
 
-            this.transform.eulerAngles = newRotation;
+            if (mLocalEulerAngles)
+                this.transform.localEulerAngles = newEulerAngles;
+            else
+                this.transform.eulerAngles = newEulerAngles;
         }
 
     }
