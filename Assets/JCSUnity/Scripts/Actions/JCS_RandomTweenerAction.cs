@@ -96,7 +96,7 @@ namespace JCSUnity
             //if (!mTransformTweener.IsDoneTweening)
             //    return;
 
-            Vector3 newVal = mTransformTweener.GetTransformTypeVector3();
+            Vector3 newVal = mTransformTweener.GetSelfTransformTypeVector3();
 
             // x
             if (!mFreeze.check1)

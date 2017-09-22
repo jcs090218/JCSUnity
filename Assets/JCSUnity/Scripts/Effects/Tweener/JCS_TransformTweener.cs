@@ -191,19 +191,8 @@ namespace JCSUnity
                 tweener.updateY();
                 tweener.updateZ();
 
-                // Set the Position
-                switch (mTweenType)
-                {
-                    case JCS_TransformType.POSITION:
-                        transform.localPosition = tweener.progression;
-                        break;
-                    case JCS_TransformType.ROTATION:
-                        transform.localEulerAngles = tweener.progression;
-                        break;
-                    case JCS_TransformType.SCALE:
-                        transform.localScale = tweener.progression;
-                        break;
-                }
+                // Set value to one of the transform properties.
+                SetSelfTransformTypeVector3(tweener.progression);
 
                 mIsDoneTweening = false;
             }
@@ -316,7 +305,7 @@ namespace JCSUnity
             JCS_TweenType typeZ,
             CallBackDelegate callback = null)
         {
-            Vector3 from = GetTransformTypeVector3();
+            Vector3 from = GetSelfTransformTypeVector3();
 
             DoTween(from, to, resetElapsedTime, durationX, durationY, durationZ, typeX, typeY, typeZ, callback);
         }
@@ -373,7 +362,7 @@ namespace JCSUnity
         /// Get itself (JCS_UnityObject) transform type's vector3 value.
         /// </summary>
         /// <returns> Vector3 value base on transform type selected. </returns>
-        public Vector3 GetTransformTypeVector3()
+        public Vector3 GetSelfTransformTypeVector3()
         {
             Vector3 val = Vector3.zero;
 
@@ -400,6 +389,36 @@ namespace JCSUnity
                     break;
             }
             return val;
+        }
+
+        /// <summary>
+        /// Set self transform value.
+        /// </summary>
+        /// <param name="newVal"></param>
+        public void SetSelfTransformTypeVector3(Vector3 newVal)
+        {
+            switch (mTweenType)
+            {
+                case JCS_TransformType.POSITION:
+                    {
+                        if (mTrackAsLocalSelf)
+                            LocalPosition = newVal;
+                        else
+                            Position = newVal;
+                    }
+                    break;
+                case JCS_TransformType.ROTATION:
+                    {
+                        if (mTrackAsLocalSelf)
+                            LocalEulerAngles = newVal;
+                        else
+                            EulerAngles = newVal;
+                    }
+                    break;
+                case JCS_TransformType.SCALE:
+                    LocalScale = newVal;
+                    break;
+            }
         }
 
         /// <summary>
@@ -526,7 +545,7 @@ namespace JCSUnity
             }
 
             float distance = 0;
-            Vector3 selfVal = GetTransformTypeVector3();
+            Vector3 selfVal = GetSelfTransformTypeVector3();
             Vector3 targetVal = GetTargetTransformTypeVector3();
             distance = Vector3.Distance(selfVal, targetVal);
 
