@@ -100,9 +100,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TransformType mTweenType = JCS_TransformType.POSITION;
 
-        [Tooltip("Do the track base on location value.")]
+        [Tooltip("Change the self position as local position.")]
         [SerializeField]
-        private bool mTrackAsLocal = false;
+        private bool mTrackAsLocalSelf = false;
+
+        [Tooltip("Track the target as local position.")]
+        [SerializeField]
+        private bool mTrackAsLocalTarget = false;
 
 
         [Header("- Tweener Formula Type")]
@@ -137,6 +141,8 @@ namespace JCSUnity
         //------------------------------
         public bool IsDoneTweening { get { return this.mIsDoneTweening; } }
         public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
+        public bool TrackAsLocalSelf { get { return this.mTrackAsLocalSelf; } set { this.mTrackAsLocalSelf = value; } }
+        public bool TrackAsLocalTarget { get { return this.mTrackAsLocalTarget; } set { this.mTrackAsLocalTarget = value; } }
         public float StopTweenDistance { get { return this.mStopTweenDistance; } set { this.mStopTweenDistance = value; } }
         public float DurationX { get { return this.mDurationX; } set { this.mDurationX = value; } }
         public float DurationY { get { return this.mDurationY; } set { this.mDurationY = value; } }
@@ -375,7 +381,7 @@ namespace JCSUnity
             {
                 case JCS_TransformType.POSITION:
                     {
-                        if (mTrackAsLocal)
+                        if (mTrackAsLocalSelf)
                             val = LocalPosition;
                         else
                             val = Position;
@@ -383,7 +389,7 @@ namespace JCSUnity
                     break;
                 case JCS_TransformType.ROTATION:
                     {
-                        if (mTrackAsLocal)
+                        if (mTrackAsLocalSelf)
                             val = LocalEulerAngles;
                         else
                             val = EulerAngles;
@@ -409,7 +415,7 @@ namespace JCSUnity
             {
                 case JCS_TransformType.POSITION:
                     {
-                        if (mTrackAsLocal)
+                        if (mTrackAsLocalTarget)
                             val = mTargetTransform.localPosition;
                         else
                             val = mTargetTransform.position;
@@ -417,7 +423,7 @@ namespace JCSUnity
                     break;
                 case JCS_TransformType.ROTATION:
                     {
-                        if (mTrackAsLocal)
+                        if (mTrackAsLocalTarget)
                             val = mTargetTransform.localEulerAngles;
                         else
                             val = mTargetTransform.eulerAngles;
@@ -522,19 +528,22 @@ namespace JCSUnity
             float distance = 0;
             Vector3 selfVal = GetTransformTypeVector3();
             Vector3 targetVal = GetTargetTransformTypeVector3();
+            distance = Vector3.Distance(selfVal, targetVal);
+
+            print("self val: " + selfVal);
+            print("target val: " + targetVal);
 
             // no need to tween again if the position has not change.
             if (mRecordTargetTransformValue == targetVal)
                 return;
 
-            distance = Vector3.Distance(selfVal, targetVal);
             DoTween(targetVal, false);
 
             // Everytime we do tween will make 'mContinueTween' to false,
             // so make sure we enable this back here after do tween.
             mContinueTween = true;
 
-            // record down the position
+            // record down the target position
             mRecordTargetTransformValue = targetVal;
 
 
