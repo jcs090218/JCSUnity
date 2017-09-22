@@ -547,10 +547,6 @@ namespace JCSUnity
             float distance = 0;
             Vector3 selfVal = GetSelfTransformTypeVector3();
             Vector3 targetVal = GetTargetTransformTypeVector3();
-            distance = Vector3.Distance(selfVal, targetVal);
-
-            print("self val: " + selfVal);
-            print("target val: " + targetVal);
 
             // no need to tween again if the position has not change.
             if (mRecordTargetTransformValue == targetVal)
@@ -567,6 +563,7 @@ namespace JCSUnity
 
 
             // Check if close enough to the distance we target.
+            distance = Vector3.Distance(selfVal, targetVal);
             if (distance <= mStopTweenDistance)
             {
                 mContinueTween = false;
