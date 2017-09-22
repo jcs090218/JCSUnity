@@ -10,6 +10,7 @@
 2017-09-22
 * JCS_TransformTweener update with target and self track. (JCSUnity)
 * Add local and global switch for JCS_TransformTweener. (JCSUnity)
+* Rotate action add with local track. (JCSUnity)
 
 2017-09-18
 * JCS_RevolutioAction implemented. (JCSUnity)
