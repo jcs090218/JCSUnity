@@ -20,17 +20,30 @@ namespace JCSUnity
     {
         [Header("** Runtime Variables (JCS_DeactivePanelButton) **")]
 
-        [Tooltip("Panel to be active.")]
+        [Tooltip("Panels to be deactive.")]
         [SerializeField]
-        private JCS_TweenPanel mTweenPanel = null;
+        private JCS_DialogueObject[] mDialogueObjects = null;
+
+        [Tooltip("Tween Panels to be deactive.")]
+        [SerializeField]
+        private JCS_TweenPanel[] mTweenPanels = null;
 
 
         public override void JCS_ButtonClick()
         {
             base.JCS_ButtonClick();
 
-            if (mTweenPanel != null)
-                mTweenPanel.Deactive();
+            foreach (JCS_DialogueObject panel in mDialogueObjects)
+            {
+                if (panel != null)
+                    panel.HideDialogue();
+            }
+
+            foreach (JCS_TweenPanel panel in mTweenPanels)
+            {
+                if (panel != null)
+                    panel.Deactive();
+            }
         }
     }
 }

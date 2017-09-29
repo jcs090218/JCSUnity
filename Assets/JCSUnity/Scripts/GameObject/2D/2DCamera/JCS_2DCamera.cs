@@ -77,6 +77,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mZoomEffect = true;
 
+        [Tooltip("Zoom with the mouse?")]
+        [SerializeField]
+        private bool mZoomWithMouse = true;
+
         [Tooltip("Distance once u scroll.")]
         [SerializeField]
         [Range(0.0f, 100.0f)]
@@ -134,6 +138,8 @@ namespace JCSUnity
         public JCS_BGMPlayer GetJCSBGMPlayer() { return this.mJCSBGMPlayer; }
         public bool HardTrack { get { return this.mHardTrack; } set { this.mHardTrack = value; } }
         public bool ResetVelocityToZeroWhileNotActive { get { return this.mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
+        public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
+        public bool ZoomWithMouse { get { return this.mZoomWithMouse; } set { this.mZoomWithMouse = value; } }
 
         //========================================
         //      Unity's function
@@ -199,13 +205,16 @@ namespace JCSUnity
             if (mFreezeInRuntime)
                 this.mFreezeRecord = this.transform.position;
 
-            // get the wheel value from the Unity API
-            // (physical layer[mouse wheel] -> 
-            // os layer[windows7] -> 
-            // application layer[Unity itself]) -> 
-            // to here...
-            mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
-            ZoomCamera(mWheelDegree);
+            if (mZoomWithMouse)
+            {
+                // get the wheel value from the Unity API
+                // (physical layer[mouse wheel] -> 
+                // os layer[windows7] -> 
+                // application layer[Unity itself]) -> 
+                // to here...
+                mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
+                ZoomCamera(mWheelDegree);
+            }
 
             if (!mHardTrack)
             {
@@ -262,7 +271,7 @@ namespace JCSUnity
         /// Do the zooming in Z axis!!
         /// </summary>
         /// <param name="depthDistance"></param>
-        private void ZoomCamera(float depthDistance)
+        public void ZoomCamera(float depthDistance)
         {
             // check the trigger of the 
             // scrolling effect.
@@ -272,7 +281,7 @@ namespace JCSUnity
             if (depthDistance == 0)
                 return;
 
-            float cameraDepth = mWheelDegree * mScrollRange;
+            float cameraDepth = depthDistance * mScrollRange;
 
             this.mTargetPosition.z += cameraDepth;
         }

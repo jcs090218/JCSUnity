@@ -94,8 +94,6 @@ namespace JCSUnity
         // to original rotation which is the freezing effect.
         private Vector3 mCurrentEulerAngles = Vector3.zero;
 
-        private bool mWasPositive = false;
-
         //----------------------
         // Protected Variables
 
