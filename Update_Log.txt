@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-09-29
+* Add dialogue object for active and deactive panel button. (JCSUnity)
+* Add zoom function for 2D camera. (JCSUnity)
+
 2017-09-22
 * JCS_TransformTweener update with target and self track. (JCSUnity)
 * Add local and global switch for JCS_TransformTweener. (JCSUnity)
