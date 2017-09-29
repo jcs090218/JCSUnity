@@ -10,6 +10,7 @@
 2017-09-29
 * Add dialogue object for active and deactive panel button. (JCSUnity)
 * Add zoom function for 2D camera. (JCSUnity)
+* Add Sprite Timer with callback when time is up. (JCSUnity)
 
 2017-09-22
 * JCS_TransformTweener update with target and self track. (JCSUnity)
