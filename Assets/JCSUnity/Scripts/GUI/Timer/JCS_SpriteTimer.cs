@@ -13,6 +13,8 @@ using UnityEngine;
 
 namespace JCSUnity
 {
+    // callback when time is up.
+    public delegate void TimeIsUpFunc();
 
     /// <summary>
     /// Timer system using sprite 0 to 9.
@@ -22,6 +24,7 @@ namespace JCSUnity
     {
         //----------------------
         // Public Variables
+        public TimeIsUpFunc timeIsUpCallback = null;
 
         //----------------------
         // Private Variables
@@ -34,51 +37,69 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
+        [Header("** Check Variables (JCS_SpriteTimer) **")]
 
-        [Header("** Runtime Variables (JCS_DeltaNumber) **")]
+        [SerializeField]
+        private bool mDoTimeIsUpCallback = false;
+
+
+        [Header("** Runtime Variables (JCS_SpriteTimer) **")]
 
         [Tooltip("Timer active or not active.")]
         [SerializeField]
         private bool mActive = true;
 
         [Tooltip("Current hours in teh game.")]
-        [SerializeField] [Range(0, 23)]
+        [SerializeField]
+        [Range(0, 23)]
         private float mCurrentHours = 0;
 
         [Tooltip("Current minutes in teh game.")]
-        [SerializeField] [Range(0, 59)]
+        [SerializeField]
+        [Range(0, 59)]
         private float mCurrentMinutes = 0;
 
         [Tooltip("Current seconds in teh game.")]
-        [SerializeField] [Range(0, 59)]
+        [SerializeField]
+        [Range(0, 59)]
         private float mCurrentSeconds = 0;
 
 
         [Header("- Sprite Slots")]
 
-        [Tooltip("Time text 0")] [SerializeField]
+        [Tooltip("Time text 0")]
+        [SerializeField]
         private Sprite mTimeText0 = null;
-        [Tooltip("Time text 1")] [SerializeField]
+        [Tooltip("Time text 1")]
+        [SerializeField]
         private Sprite mTimeText1 = null;
-        [Tooltip("Time text 2")] [SerializeField]
+        [Tooltip("Time text 2")]
+        [SerializeField]
         private Sprite mTimeText2 = null;
-        [Tooltip("Time text 3")] [SerializeField]
+        [Tooltip("Time text 3")]
+        [SerializeField]
         private Sprite mTimeText3 = null;
-        [Tooltip("Time text 4")] [SerializeField]
+        [Tooltip("Time text 4")]
+        [SerializeField]
         private Sprite mTimeText4 = null;
-        [Tooltip("Time text 5")] [SerializeField]
+        [Tooltip("Time text 5")]
+        [SerializeField]
         private Sprite mTimeText5 = null;
-        [Tooltip("Time text 6")] [SerializeField]
+        [Tooltip("Time text 6")]
+        [SerializeField]
         private Sprite mTimeText6 = null;
-        [Tooltip("Time text 7")] [SerializeField]
+        [Tooltip("Time text 7")]
+        [SerializeField]
         private Sprite mTimeText7 = null;
-        [Tooltip("Time text 8")] [SerializeField]
+        [Tooltip("Time text 8")]
+        [SerializeField]
         private Sprite mTimeText8 = null;
-        [Tooltip("Time text 9")] [SerializeField]
+        [Tooltip("Time text 9")]
+        [SerializeField]
         private Sprite mTimeText9 = null;
 
 
-        [Header("- Sprite Settings (JCS_DeltaNumber) ")]
+        [Header("- Sprite Settings (JCS_SpriteTimer) ")]
 
         [Tooltip("Each digit for our.")]
         [SerializeField]
@@ -105,14 +126,16 @@ namespace JCSUnity
         private SpriteRenderer mDigitSecond2 = null;
 
 
-        [Header("- Sprite Settings (JCS_DeltaNumber) ")]
+        [Header("- Sprite Settings (JCS_SpriteTimer) ")]
 
         [Tooltip("Interval between each digit.")]
-        [SerializeField] [Range(0.1f, 5.0f)]
+        [SerializeField]
+        [Range(0.1f, 5.0f)]
         private float mDigitInterval = 0.5f;
 
         [Tooltip("Interval between each digit.")]
-        [SerializeField] [Range(0.1f, 5.0f)]
+        [SerializeField]
+        [Range(0.1f, 5.0f)]
         private float mDigitUnitInterval = 0.5f;
 
         // last interval we updated.
@@ -147,6 +170,8 @@ namespace JCSUnity
 #endif
 
             DoTimer();
+
+            DoTimeIsUpCallback();
         }
 
 #if (UNITY_EDITOR)
@@ -194,6 +219,9 @@ namespace JCSUnity
 
             // update GUI
             UpdateTimeUI();
+
+            // reset callback everytime we set to a new time.
+            this.mDoTimeIsUpCallback = false;
         }
 
         /// <summary>
@@ -205,8 +233,8 @@ namespace JCSUnity
         /// </returns>
         public bool IsTimeUp()
         {
-            return (mCurrentHours == MIN_HOUR_TIME && 
-                mCurrentMinutes == MIN_MINUTE_TIME && 
+            return (mCurrentHours == MIN_HOUR_TIME &&
+                mCurrentMinutes == MIN_MINUTE_TIME &&
                 mCurrentSeconds == MIN_SECOND_TIME);
         }
 
@@ -448,7 +476,7 @@ namespace JCSUnity
             if (mCurrentSeconds < MIN_SECOND_TIME)
             {
                 // 檢查上面是否還有剩.
-                if (mCurrentMinutes == MIN_MINUTE_TIME && 
+                if (mCurrentMinutes == MIN_MINUTE_TIME &&
                     mCurrentHours == MIN_HOUR_TIME)
                 {
                     // time is up!
@@ -508,5 +536,19 @@ namespace JCSUnity
 
         }
 
+        /// <summary>
+        /// Do is time up callback.
+        /// </summary>
+        private void DoTimeIsUpCallback()
+        {
+            if (!IsTimeUp() || mDoTimeIsUpCallback)
+                return;
+
+            // make sure we only do one time the callback.
+            mDoTimeIsUpCallback = true;
+
+            if (timeIsUpCallback != null)
+                timeIsUpCallback.Invoke();
+        }
     }
 }
