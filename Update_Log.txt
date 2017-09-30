@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-10-01
+* Add basic two-sided surface shader. (JCSUnity)
+
 2017-09-30
 * Audio listener null check bug fixed. (JCSUnity)
 * Add IsVisible variable for base dialogue object. (JCSUnity)
