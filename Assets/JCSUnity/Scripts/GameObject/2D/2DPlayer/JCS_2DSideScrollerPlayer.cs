@@ -276,7 +276,12 @@ namespace JCSUnity
             // diable all the component here
             else
             {
-                this.mAudioController.GetAudioListener().enabled = false;
+                if (JCS_GameSettings.instance.CAMERA_TYPE != JCS_CameraType.MULTI_TARGET)
+                {
+                    AudioListener al = this.mAudioController.GetAudioListener();
+                    if (al != null)
+                        al.enabled = false;
+                }
                 mIsControllable = false;
             }
         }
