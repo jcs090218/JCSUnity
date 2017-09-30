@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-09-30
+* Audio listener null check bug fixed. (JCSUnity)
+
 2017-09-29
 * Add dialogue object for active and deactive panel button. (JCSUnity)
 * Add zoom function for 2D camera. (JCSUnity)
