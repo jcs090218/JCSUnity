@@ -32,6 +32,19 @@ namespace JCSUnity
 
         private float mAlpha = 1.0f;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_FadeObject) **")]
+
+        [Tooltip("Test Fade in/out with key.")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [SerializeField]
+        private KeyCode mFadeInKey = KeyCode.M;
+        [SerializeField]
+        private KeyCode mFadeOutKey = KeyCode.N;
+#endif
+
         [Header("** Runtime Variables (JCS_FadeObject) **")]
 
         [Tooltip("How long it fade?")]
@@ -81,7 +94,7 @@ namespace JCSUnity
         private void Update()
         {
 #if (UNITY_EDITOR)
-            //Test();
+            Test();
 #endif
 
             if (GetObjectType() == JCS_UnityObjectType.GAME_OBJECT &&
@@ -163,9 +176,12 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (Input.GetKeyDown(KeyCode.N))
+            if (!mTestWithKey)
+                return;
+
+            if (Input.GetKeyDown(mFadeOutKey))
                 FadeOut();
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(mFadeInKey))
                 FadeIn();
         }
 #endif
