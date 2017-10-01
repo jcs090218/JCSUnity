@@ -44,6 +44,16 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
+        [Header("** Check Variables (JCS_FadeObject) **")]
+
+        [Tooltip("Is current fade object doing the effect? (fade in/out)")]
+        [SerializeField]
+        private bool mEffect = false;
+
+        [Tooltip("Is current fade object visible?")]
+        [SerializeField]
+        private bool mVisible = true;
+
 
         [Header("** Runtime Variables (JCS_FadeObject) **")]
 
@@ -55,9 +65,6 @@ namespace JCSUnity
         [Tooltip("Override the action before it complete the action.")]
         [SerializeField]
         private bool mOverriteFade = false;
-
-        private bool mEffect = false;
-        private bool mVisible = true;
 
         // callback after fadeout if complete
         private IsFadeOutCallback mIsFadeOutCallback = DefaultFadeCallback;
@@ -91,6 +98,14 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+        private void Start()
+        {
+            if (LocalColor.a <= 0)
+                mVisible = false;
+            else
+                mVisible = true;
+        }
+
         private void Update()
         {
 #if (UNITY_EDITOR)
