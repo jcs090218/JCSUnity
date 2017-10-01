@@ -10,6 +10,7 @@
 2017-10-01
 * Add basic two-sided surface shader with transparency. (JCSUnity)
 * Add test key to JCS_FadeObject. (JCSUnity)
+* JCS_FadeObject initial visible boolean bug fixed. (JCSUnity)
 
 2017-09-30
 * Audio listener null check bug fixed. (JCSUnity)
