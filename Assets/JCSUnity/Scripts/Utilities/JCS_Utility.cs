@@ -839,5 +839,14 @@ namespace JCSUnity
             return bytes;
         }
 
+        /// <summary>
+        /// Return the length of an enumerator.
+        /// </summary>
+        /// <typeparam name="T"> Enum type. </typeparam>
+        /// <returns> Size of the enum listed. </returns>
+        public static int EnumSize<T>()
+        {
+            return System.Enum.GetNames(typeof(T)).Length;
+        }
     }
 }
