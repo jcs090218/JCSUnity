@@ -9,6 +9,7 @@
 
 2017-10-03
 * Add 'NONE' as a default gamepad keycode in JCS_Input script. (JCSUnity)
+* Add handy function enum size in utility layer. (JCSUnity)
 
 2017-10-01
 * Add basic two-sided surface shader with transparency. (JCSUnity)
