@@ -18,6 +18,8 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_JoystickButton
     {
+        NONE,
+
         BUTTON_A,
         BUTTON_B,
         BUTTON_X,
