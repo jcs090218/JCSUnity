@@ -103,27 +103,27 @@ namespace JCSUnity
 
         [Tooltip("Each digit for our.")]
         [SerializeField]
-        private SpriteRenderer mDigitHour1 = null;
+        private JCS_UnityObject mDigitHour1 = null;
 
         [Tooltip("Each digit for our.")]
         [SerializeField]
-        private SpriteRenderer mDigitHour2 = null;
+        private JCS_UnityObject mDigitHour2 = null;
 
         [Tooltip("Each digit for minute.")]
         [SerializeField]
-        private SpriteRenderer mDigitMinute1 = null;
+        private JCS_UnityObject mDigitMinute1 = null;
 
         [Tooltip("Each digit for minute.")]
         [SerializeField]
-        private SpriteRenderer mDigitMinute2 = null;
+        private JCS_UnityObject mDigitMinute2 = null;
 
         [Tooltip("Each digit for second.")]
         [SerializeField]
-        private SpriteRenderer mDigitSecond1 = null;
+        private JCS_UnityObject mDigitSecond1 = null;
 
         [Tooltip("Each digit for second.")]
         [SerializeField]
-        private SpriteRenderer mDigitSecond2 = null;
+        private JCS_UnityObject mDigitSecond2 = null;
 
 
         [Header("- Sprite Settings (JCS_SpriteTimer) ")]
@@ -367,10 +367,10 @@ namespace JCSUnity
             }
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)hour);
-            mDigitHour1.sprite = GetSingleDigitSprite(valDigit);
+            mDigitHour1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)hour);
-            mDigitHour2.sprite = GetSingleDigitSprite(valDigit);
+            mDigitHour2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
         /// <summary>
@@ -395,10 +395,10 @@ namespace JCSUnity
             }
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)minute);
-            mDigitMinute1.sprite = GetSingleDigitSprite(valDigit);
+            mDigitMinute1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)minute);
-            mDigitMinute2.sprite = GetSingleDigitSprite(valDigit);
+            mDigitMinute2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
         /// <summary>
@@ -423,10 +423,10 @@ namespace JCSUnity
             }
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)second);
-            mDigitSecond1.sprite = GetSingleDigitSprite(valDigit);
+            mDigitSecond1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)second);
-            mDigitSecond2.sprite = GetSingleDigitSprite(valDigit);
+            mDigitSecond2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
         /// <summary>
