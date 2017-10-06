@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-10-05
+* Sprite Timer compatible with unity object. (JCSUnity)
+
 2017-10-03
 * Add 'NONE' as a default gamepad keycode in JCS_Input script. (JCSUnity)
 * Add handy function enum size in utility layer. (JCSUnity)
