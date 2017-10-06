@@ -345,8 +345,7 @@ namespace JCSUnity
                     return GetKeyUp(key);
             }
 
-            JCS_Debug.LogError(
-                "This cannot happed.");
+            JCS_Debug.LogError("This cannot happed, because all states applied.");
 
             // this cannot happens
             return false;
@@ -469,11 +468,10 @@ namespace JCSUnity
         public static KeyCode GetAnyKeyByAction(JCS_KeyActionType type)
         {
             // loop through the key code list
-            foreach (KeyCode val in JCSUnity.JCS_Utility.GetValues<KeyCode>())
+            foreach (KeyCode val in JCS_Utility.GetValues<KeyCode>())
             {
-
                 // if the key is pressed, return it.
-                if (JCSUnity.JCS_Input.GetKeyByAction(type, val))
+                if (GetKeyByAction(type, val))
                 {
                     return val;
                 }
@@ -496,6 +494,51 @@ namespace JCSUnity
             KeyCode code = GetAnyKeyByAction(type);
 
             return (code != KeyCode.None);
+        }
+
+        /// <summary>
+        /// Check if any key is down?
+        /// </summary>
+        /// <returns>
+        /// true: somewhere in the key is down.
+        /// false: no key is down.
+        /// </returns>
+        public static bool GetAnyKeyDown()
+        {
+            if (JCS_GameManager.instance.GAME_PAUSE)
+                return false;
+
+            return IsAnyKeyBuffer(JCS_KeyActionType.KEY_DOWN);
+        }
+
+        /// <summary>
+        /// Check if any key is pressed.
+        /// </summary>
+        /// <returns>
+        /// true: somewhere the key is pressed.
+        /// false: no key is pressed.
+        /// </returns>
+        public static bool GetAnyKey()
+        {
+            if (JCS_GameManager.instance.GAME_PAUSE)
+                return false;
+
+            return IsAnyKeyBuffer(JCS_KeyActionType.KEY);
+        }
+
+        /// <summary>
+        /// Check if any key is up?
+        /// </summary>
+        /// <returns>
+        /// true: somewhere in the key is up.
+        /// false: no key is up.
+        /// </returns>
+        public static bool GetAnyKeyUp()
+        {
+            if (JCS_GameManager.instance.GAME_PAUSE)
+                return false;
+
+            return IsAnyKeyBuffer(JCS_KeyActionType.KEY_UP);
         }
 
 
