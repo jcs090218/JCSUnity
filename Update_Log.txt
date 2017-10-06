@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-10-07
+* Add JCS_GamePadButton base button class for Gamepad interaction. (JCSUnity)
+* JCS_Input with more functional key input naming and readability. (JCSUnity)
+
 2017-10-05
 * Sprite Timer compatible with unity object. (JCSUnity)
 
