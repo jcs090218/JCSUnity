@@ -9,6 +9,7 @@ the 'Export Package...' button.
 -> Libraries
     -> SpriteMask
     -> Tweener
+    -> UI-Polygon
 -> Resources 
     -> JCSUnity_Resources
 -> StreamingAssets
