@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace JCSUnity
@@ -54,8 +55,8 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_JoystickIndex
     {
-        // Joystick 0 - 29 (1 ~ 30)
-        JOYSTICK_00 = 0x00,
+        // Joystick 0 - 10 (1 ~ 11)
+        FROM_ALL_JOYSTICK = 0x00,
         JOYSTICK_01 = 0x01,
         JOYSTICK_02 = 0x02,
         JOYSTICK_03 = 0x03,
@@ -65,28 +66,8 @@ namespace JCSUnity
         JOYSTICK_07 = 0x07,
         JOYSTICK_08 = 0x08,
         JOYSTICK_09 = 0x09,
-
         JOYSTICK_10 = 0x0A,
         JOYSTICK_11 = 0x0B,
-        JOYSTICK_12 = 0x0C,
-        JOYSTICK_13 = 0x0D,
-        JOYSTICK_14 = 0x0E,
-        JOYSTICK_15 = 0x0F,
-        JOYSTICK_16 = 0x10,
-        JOYSTICK_17 = 0x11,
-        JOYSTICK_18 = 0x12,
-        JOYSTICK_19 = 0x13,
-
-        JOYSTICK_20 = 0x14,
-        JOYSTICK_21 = 0x15,
-        JOYSTICK_22 = 0x16,
-        JOYSTICK_23 = 0x17,
-        JOYSTICK_24 = 0x18,
-        JOYSTICK_25 = 0x19,
-        JOYSTICK_26 = 0x1A,
-        JOYSTICK_27 = 0x1B,
-        JOYSTICK_28 = 0x1C,
-        JOYSTICK_29 = 0x1D,
     };
 
     /// <summary>
@@ -101,13 +82,19 @@ namespace JCSUnity
     };
 
     /// <summary>
-    /// 
+    /// Unity's Input class re-wrapper.
     /// </summary>
     public class JCS_Input 
     {
         private static bool mClick = false;
         private static float mClickTime = 0.25f;
         private static float mClickTimer = 0;
+
+        private static Dictionary<string, bool>
+            mJoystickKeyPressed = new Dictionary<string, bool>();
+        private static Dictionary<string, bool>
+            mJoystickKeyReleased = new Dictionary<string, bool>();
+
 
         /// <summary>
         /// This sould be in the Update() function.
@@ -128,7 +115,7 @@ namespace JCSUnity
             // Check first click
             if (!mClick)
             {
-                if (JCS_Input.GetMouseButtonDown(button))
+                if (GetMouseButtonDown(button))
                     mClick = true;
             }
             // Check double click
@@ -136,7 +123,7 @@ namespace JCSUnity
             {
                 mClickTimer += Time.deltaTime;
 
-                if (JCS_Input.GetMouseButtonDown(button))
+                if (GetMouseButtonDown(button))
                 {
                     mClickTimer = 0;
                     mClick = false;
@@ -248,10 +235,7 @@ namespace JCSUnity
                     return GetMouseButtonUp(button);
             }
 
-            JCS_Debug.LogError(
-                "This cannot happed.");
-
-            // this cannot happens
+            JCS_Debug.LogError("This cannot happed.");
             return false;
         }
         /// <summary>
@@ -346,8 +330,6 @@ namespace JCSUnity
             }
 
             JCS_Debug.LogError("This cannot happed, because all states applied.");
-
-            // this cannot happens
             return false;
         }
         /// <summary>
@@ -417,8 +399,7 @@ namespace JCSUnity
             }
 
 
-            JCS_Debug.LogError(
-                "This cannot happed.");
+            JCS_Debug.LogError("This cannot happed.");
 
             // this cannot happens
             return false;
@@ -559,84 +540,12 @@ namespace JCSUnity
         /// <returns></returns>
         public static float GetAxis(int joystickIndex, JCS_JoystickButton btn)
         {
-            string num = "";
+            if (btn == JCS_JoystickButton.NONE)
+                return 0;
 
-            // get the joystick
-            JCS_InputSettings.JoystickMap joystickMap = JCS_InputSettings.instance.GetJoysitckMapByIndex(joystickIndex);
+            string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
 
-            switch (btn)
-            {
-                case JCS_JoystickButton.HOME_BUTTON:
-                    num = joystickMap.HomeButton;
-                    break;
-
-                case JCS_JoystickButton.START_BUTTON:
-                    num = joystickMap.JoystickButtonStart;
-                    break;
-                case JCS_JoystickButton.BACK_BUTTON:
-                    num = joystickMap.JoystickButtonBack;
-                    break;
-
-                case JCS_JoystickButton.BUTTON_A:
-                    num = joystickMap.JoystickButtonA;
-                    break;
-                case JCS_JoystickButton.BUTTON_B:
-                    num = joystickMap.JoystickButtonB;
-                    break;
-                case JCS_JoystickButton.BUTTON_X:
-                    num = joystickMap.JoystickButtonX;
-                    break;
-                case JCS_JoystickButton.BUTTON_Y:
-                    num = joystickMap.JoystickButtonY;
-                    break;
-
-                case JCS_JoystickButton.BUTTON_UP:
-                    num = joystickMap.JoystickButtonUp;
-                    break;
-                case JCS_JoystickButton.BUTTON_DOWN:
-                    num = joystickMap.JoystickButtonDown;
-                    break;
-                case JCS_JoystickButton.BUTTON_LEFT:
-                    num = joystickMap.JoystickButtonLeft;
-                    break;
-                case JCS_JoystickButton.BUTTON_RIGHT:
-                    num = joystickMap.JoystickButtonRight;
-                    break;
-
-                    // Stick Right
-                case JCS_JoystickButton.STICK_RIGHT_X:
-                    num = joystickMap.StickRightX;
-                    break;
-                case JCS_JoystickButton.STICK_RIGHT_Y:
-                    num = joystickMap.StickRightY;
-                    break;
-
-                // Stick Left
-                case JCS_JoystickButton.STICK_LEFT_X:
-                    num = joystickMap.StickLeftX;
-                    break;
-                case JCS_JoystickButton.STICK_LEFT_Y:
-                    num = joystickMap.StickLeftY;
-                    break;
-
-                    // Bumper
-                case JCS_JoystickButton.RIGHT_BUMPER:
-                    num = joystickMap.JoystickButtonRB;
-                    break;
-                case JCS_JoystickButton.LEFT_BUMPER:
-                    num = joystickMap.JoystickButtonLB;
-                    break;
-
-                    // Trigger
-                case JCS_JoystickButton.RIGHT_TRIGGER:
-                    num = joystickMap.JoystickButtonRT;
-                    break;
-                case JCS_JoystickButton.LEFT_TRIGGER:
-                    num = joystickMap.JoystickButtonLT;
-                    break;
-            }
-
-            return GetAxis(num);
+            return GetAxis(idString);
         }
         /// <summary>
         /// Return the joystick buffer.
@@ -650,9 +559,7 @@ namespace JCSUnity
 
             if (name == "")
             {
-                JCS_Debug.LogError(
-                    "name cannot be empty string...");
-
+                JCS_Debug.LogError("InputManager' name cannot be empty string...");
                 return 0;
             }
 
@@ -681,25 +588,186 @@ namespace JCSUnity
                 JCS_Debug.LogError(
                     @"There are no joystick connected, and u 
 still trying to make the joystick specific function call.");
-
                 return false;
             }
 
-            bool reverse = false;
+            return GetAxis(joystickIndex, btn) > 0;
+        }
 
-            // these trigger have to be reserve.
-            switch (btn)
+        /// <summary>
+        /// Check if the button have pressed.
+        /// </summary>
+        /// <param name="idString"> string id </param>
+        /// <returns></returns>
+        public static bool GetJoystickButton(string idString)
+        {
+            return GetAxis(idString) > 0;
+        }
+
+        /// <summary>
+        /// Check if joystick id, pressed the key?
+        /// </summary>
+        /// <param name="joystickIndex"> id. </param>
+        /// <param name="btn"> target button. </param>
+        /// <returns>
+        /// true: did pressed.
+        /// false: not pressed.
+        /// </returns>
+        public static bool GetJoystickKey(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        {
+            return GetJoystickKey((int)joystickIndex, btn);
+        }
+
+        /// <summary>
+        /// Check if joystick id, pressed the key?
+        /// </summary>
+        /// <param name="joystickIndex"> id. </param>
+        /// <param name="btn"> target button. </param>
+        /// <returns>
+        /// true: did pressed.
+        /// false: not pressed.
+        /// </returns>
+        public static bool GetJoystickKey(int joystickIndex, JCS_JoystickButton btn)
+        {
+            if (JCS_GameManager.instance.GAME_PAUSE)
+                return false;
+
+            return GetJoystickButton(joystickIndex, btn);
+        }
+
+
+        /// <summary>
+        /// Check if joystick id, up the key?
+        /// </summary>
+        /// <param name="joystickIndex"> id. </param>
+        /// <param name="btn"> target button. </param>
+        /// <returns>
+        /// true: did uo.
+        /// false: not up.
+        /// </returns>
+        public static bool GetJoystickKeyUp(int joystickIndex, JCS_JoystickButton btn)
+        {
+            return GetJoystickKeyUp((JCS_JoystickIndex)joystickIndex, btn);
+        }
+
+        /// <summary>
+        /// Check if joystick id, up the key?
+        /// </summary>
+        /// <param name="joystickIndex"> id. </param>
+        /// <param name="btn"> target button. </param>
+        /// <returns>
+        /// true: did uo.
+        /// false: not up.
+        /// </returns>
+        public static bool GetJoystickKeyUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        {
+            if (JCS_GameManager.instance.GAME_PAUSE)
+                return false;
+
+            string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
+
+            if (GetJoystickKey(joystickIndex, btn))
             {
-                case JCS_JoystickButton.BUTTON_LEFT:
-                case JCS_JoystickButton.BUTTON_DOWN:
-                    reverse = true;
-                    break;
+                if (mJoystickKeyReleased.ContainsKey(idString))
+                    mJoystickKeyReleased[idString] = false;
+            }
+            else
+            {
+                if (!mJoystickKeyReleased.ContainsKey(idString))
+                {
+                    mJoystickKeyReleased.Add(idString, true);
+                }
+                else
+                {
+                    if (mJoystickKeyReleased[idString])
+                        return false;
+                    else
+                    {
+                        mJoystickKeyReleased[idString] = true;
+                        return true;
+                    }
+                }
             }
 
-            if (reverse)
-                return (GetAxis(joystickIndex, btn) < 0);
+            return false;
+        }
 
-            return (GetAxis(joystickIndex, btn) > 0);
+        /// <summary>
+        /// Check if joystick id, down the key?
+        /// </summary>
+        /// <param name="joystickIndex"> id. </param>
+        /// <param name="btn"> target button. </param>
+        /// <returns>
+        /// true: did uo.
+        /// false: not up.
+        /// </returns>
+        public static bool GetJoystickKeyDown(int joystickIndex, JCS_JoystickButton btn)
+        {
+            return GetJoystickKeyDown((JCS_JoystickIndex)joystickIndex, btn);
+        }
+
+        /// <summary>
+        /// Check if joystick id, down the key?
+        /// </summary>
+        /// <param name="joystickIndex"> id. </param>
+        /// <param name="btn"> target button. </param>
+        /// <returns>
+        /// true: did uo.
+        /// false: not up.
+        /// </returns>
+        public static bool GetJoystickKeyDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        {
+            if (JCS_GameManager.instance.GAME_PAUSE)
+                return false;
+
+            string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
+
+            if (GetJoystickKey(joystickIndex, btn))
+            {
+                if (!mJoystickKeyPressed.ContainsKey(idString))
+                {
+                    mJoystickKeyPressed.Add(idString, true);
+                    return true;
+                }
+                // Key contains!
+                else
+                {
+                    if (mJoystickKeyPressed[idString])
+                        return false;
+                    else
+                    {
+                        mJoystickKeyPressed[idString] = true;
+                        return true;
+                    }
+                }
+
+            }
+            else
+            {
+                if (mJoystickKeyPressed.ContainsKey(idString))
+                    mJoystickKeyPressed[idString] = false;
+            }
+
+            return false;
+        }
+
+        public static bool GetJoystickKeyByAction(
+            JCS_KeyActionType act, 
+            JCS_JoystickIndex id,
+            JCS_JoystickButton key)
+        {
+            switch (act)
+            {
+                case JCS_KeyActionType.KEY:
+                    return GetJoystickKey(id, key);
+                case JCS_KeyActionType.KEY_DOWN:
+                    return GetJoystickKeyDown(id, key);
+                case JCS_KeyActionType.KEY_UP:
+                    return GetJoystickKeyUp(id, key);
+            }
+
+            JCS_Debug.LogError("This cannot happed.");
+            return false;
         }
 
         /// <summary>

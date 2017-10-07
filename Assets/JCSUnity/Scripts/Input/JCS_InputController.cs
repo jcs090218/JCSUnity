@@ -131,7 +131,7 @@ namespace JCSUnity
         /// ATTENTION(jenchieh): this will clear everything out from
         /// Unity's 'InputManager'. Use it carefully.
         /// </summary>
-        private static void ClearInputManagerSettings()
+        public static void ClearInputManagerSettings()
         {
             SerializedObject serializedObject = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/InputManager.asset")[0]);
             SerializedProperty axesProperty = serializedObject.FindProperty("m_Axes");
@@ -150,12 +150,11 @@ namespace JCSUnity
 
         public static void SetupXBox360Joystick()
         {
-            JCS_InputSettings jcsis = JCS_InputSettings.instance;
-
-            int gamePadCount = jcsis.Joysticks.Length;
+            int gamePadCount = JCSUnity_EditorWindow.instance.GAME_PAD_COUNT;
 
             float defalutSenstivity = JCS_InputSettings.DEFAULT_SENSITIVITY;
             float defaultDead = JCS_InputSettings.DEFAULT_DEAD;
+            float defaultGravity = JCS_InputSettings.DEFAULT_GRAVITY;
 
             for (int joystickNum = 0; joystickNum < gamePadCount; ++joystickNum)
             {
@@ -165,11 +164,12 @@ namespace JCSUnity
                         continue;
 
                     // add axis definition.
-                    AddAxis(new InputAxis
+                    AddAxis(new InputAxis ()
                     {
-                        name = JCS_InputSettings.GetJoystickButtonName(val),
+                        name = JCS_InputSettings.GetJoystickButtonIdName(joystickNum, val),
                         positiveButton = JCS_InputSettings.GetPositiveNameByLabel(val),
                         dead = defaultDead,
+                        gravity = defaultGravity,
                         sensitivity = defalutSenstivity,
                         type = JCS_InputSettings.GetAxisType(val),
                         invert = JCS_InputSettings.IsInvert(val),
