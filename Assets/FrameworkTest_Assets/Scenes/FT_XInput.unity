@@ -167,6 +167,7 @@ MonoBehaviour:
   mJoystickLitener: 0
   mListenToAnyKey: 0
   mKeyActionType: 1
+  closeDialogue: {fileID: 1360666587}
 --- !u!114 &312074292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,11 +337,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
-  m_SubmitButton: 
+  m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &972362982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,30 +958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ed50fa45bfc04ea9c6b37cb4e22bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mJoysticks:
-  - StickRightXVal: 0
-    StickRightYVal: 0
-    StickLeftXVal: 0
-    StickLeftYVal: 0
-    HomeButton: jcsunity button home
-    JoystickButtonStart: jcsunity button start
-    JoystickButtonBack: jcsunity button back
-    JoystickButtonA: jcsunity button a
-    JoystickButtonB: jcsunity button b
-    JoystickButtonX: jcsunity button x
-    JoystickButtonY: jcsunity button y
-    JoystickButtonUp: jcsunity button up
-    JoystickButtonDown: jcsunity button down
-    JoystickButtonRight: jcsunity button right
-    JoystickButtonLeft: jcsunity button left
-    StickRightX: jcsunity stick right x
-    StickRightY: jcsunity stick right y
-    StickLeftX: jcsunity stick left x
-    StickLeftY: jcsunity stick left y
-    JoystickButtonRT: jcsunity button right trigger
-    JoystickButtonLT: jcsunity button left trigger
-    JoystickButtonLB: jcsunity button left bumper
-    JoystickButtonRB: jcsunity button right bumper
+  mTargetGamePad: 2
+  mTotalGamePadInGame: 0
 --- !u!114 &1333146516
 MonoBehaviour:
   m_ObjectHideFlags: 0

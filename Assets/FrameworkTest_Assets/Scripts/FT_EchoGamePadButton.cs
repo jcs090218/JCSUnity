@@ -18,6 +18,8 @@ using JCSUnity;
 public class FT_EchoGamePadButton 
     :  JCS_GamePadButton
 {
+    public JCS_DialogueObject closeDialogue = null;
+
 
     /// <summary>
     /// Default function to call this, so we dont have to
@@ -30,5 +32,7 @@ public class FT_EchoGamePadButton
         base.JCS_ButtonClick();
 
         Debug.Log("echo.. Hello World!!");
+
+        closeDialogue.HideDialogue();
     }
 }

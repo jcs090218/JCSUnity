@@ -61,18 +61,18 @@ public class FT_XInput_Test
 
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_A))
             print("Joystick button A");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_B))
+        if (JCS_Input.GetJoystickKeyDown(0, JCS_JoystickButton.BUTTON_B))
             print("Joystick button B");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_X))
+        if (JCS_Input.GetJoystickKeyUp(0, JCS_JoystickButton.BUTTON_X))
             print("Joystick button X");
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_Y))
             print("Joystick button Y");
 
 
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_RIGHT))
-            print("Joystick right button down");
+            print("Joystick button RIGHT");
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_LEFT))
-            print("Joystick left button down");
+            print("Joystick button LEFT");
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_UP))
             print("Joystick button UP");
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_DOWN))
