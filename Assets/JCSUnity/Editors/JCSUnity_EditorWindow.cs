@@ -27,6 +27,9 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+        public static JCSUnity_EditorWindow instance = null;
+
+        public int GAME_PAD_COUNT = 0;  // How many gampad in this game?
 
         //----------------------
         // Private Variables
@@ -39,6 +42,8 @@ namespace JCSUnity
 
         private bool mDamageTextFoldout = false;
 
+        private bool mInputFoldout = false;      // Input
+
         //----------------------
         // Protected Variables
 
@@ -49,6 +54,11 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+        private void OnEnable()
+        {
+            instance = this;
+        }
+
         private void OnGUI()
         {
             JCSUnity_About.ReadINIFile();
@@ -78,6 +88,10 @@ namespace JCSUnity
             mARVRFoldout = EditorGUILayout.Foldout(mARVRFoldout, "AR / VR");
             if (mARVRFoldout)
                 PartARVR();
+
+            mInputFoldout = EditorGUILayout.Foldout(mInputFoldout, "Input");
+            if (mInputFoldout)
+                PartInput();
         }
 
         //========================================
@@ -177,6 +191,21 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Compile the Input part to Input inspector.
+        /// </summary>
+        private void PartInput()
+        {
+            GUILayout.Label("Game Pad count");
+            instance.GAME_PAD_COUNT = (int)EditorGUILayout.Slider(instance.GAME_PAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
+
+            if (GUILayout.Button("Refresh Input Manager with target controller."))
+                RefreshInputManager();
+
+            if (GUILayout.Button("Clear Input Manager"))
+                ClearInputManager();
+        }
+
+        /// <summary>
         /// Main JCSUnity Editor initialize function.
         /// </summary>
         [MenuItem("JCSUnity/JCSUnity Editor", false, 1)]
@@ -257,6 +286,22 @@ namespace JCSUnity
             gameObj.name = gameObj.name.Replace("(Clone)", "");
 
             return gameObj;
+        }
+
+        /// <summary>
+        /// Create settings for 3d game combine 
+        /// with JCSUnity.
+        /// </summary>
+        [MenuItem("JCSUnity/Input/Refresh Input Manager with target controller.", false, 10)]
+        private static void RefreshInputManager()
+        {
+            JCS_InputController.SetupInputManager();
+        }
+
+        [MenuItem("JCSUnity/Input/Clear Input Manager", false, 10)]
+        private static void ClearInputManager()
+        {
+            JCS_InputController.ClearInputManagerSettings();
         }
 
         /// <summary>
