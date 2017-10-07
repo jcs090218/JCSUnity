@@ -93,9 +93,13 @@ namespace JCSUnity
         /// 
         /// </summary>
         /// <param name="axis"></param>
-        private static void AddAxis(InputAxis axis)
+        private static void AddAxis(InputAxis axis, bool redefined = false)
         {
-            if (AxisDefined(axis.name)) return;
+            if (!redefined)
+            {
+                if (AxisDefined(axis.name))
+                    return;
+            }
 
             SerializedObject serializedObject = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/InputManager.asset")[0]);
             SerializedProperty axesProperty = serializedObject.FindProperty("m_Axes");
@@ -148,6 +152,357 @@ namespace JCSUnity
             SetupXBox360Joystick();
         }
 
+        public static void DefaultInputManagerSettings()
+        {
+            int axisOffset = 1;
+
+            #region setting
+
+            AddAxis(new InputAxis()
+            {
+                name = "Horizontal",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "left",
+                positiveButton = "right",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 3,
+                dead = 0.001f,
+                sensitivity = 3,
+                snap = true,
+                invert = false,
+                type = 0,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Vertical",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "down",
+                positiveButton = "up",
+                altNegativeButton = "s",
+                altPositiveButton = "w",
+                gravity = 3,
+                dead = 0.001f,
+                sensitivity = 3,
+                snap = true,
+                invert = false,
+                type = 0,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Fire1",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "left ctrl",
+                altNegativeButton = "",
+                altPositiveButton = "mouse 0",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = 0,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Fire2",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "left alt",
+                altNegativeButton = "",
+                altPositiveButton = "mouse 1",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = 0,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Fire3",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "left shift",
+                altNegativeButton = "",
+                altPositiveButton = "mouse 2",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = 0,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Jump",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "space",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = 0,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Mouse X",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 0,
+                dead = 0,
+                sensitivity = 0.1f,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.MouseMovement,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Mouse Y",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 0,
+                dead = 0,
+                sensitivity = 0.1f,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.MouseMovement,
+                axis = 1 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Mouse ScrollWheel",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 0,
+                dead = 0,
+                sensitivity = 0.1f,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.MouseMovement,
+                axis = 2 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Horizontal",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 0,
+                dead = 0.19f,
+                sensitivity = 1,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.JoystickAxis,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Vertical",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 0,
+                dead = 0.19f,
+                sensitivity = 1,
+                snap = false,
+                invert = true,
+                type = JCS_AxisType.JoystickAxis,
+                axis = 1 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Fire1",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "joystick button 0",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.KeyOrMouseButton,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Fire2",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "joystick button 1",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.KeyOrMouseButton,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Fire3",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "joystick button 2",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.KeyOrMouseButton,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Jump",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "joystick button 3",
+                altNegativeButton = "",
+                altPositiveButton = "",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.KeyOrMouseButton,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Submit",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "return",
+                altNegativeButton = "",
+                altPositiveButton = "joystick button 0",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.KeyOrMouseButton,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Submit",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "enter",
+                altNegativeButton = "",
+                altPositiveButton = "space",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.KeyOrMouseButton,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            AddAxis(new InputAxis()
+            {
+                name = "Cancel",
+                descriptiveName = "",
+                descriptiveNegativeName = "",
+                negativeButton = "",
+                positiveButton = "escape",
+                altNegativeButton = "",
+                altPositiveButton = "joystick button 1",
+                gravity = 1000,
+                dead = 0.001f,
+                sensitivity = 1000,
+                snap = false,
+                invert = false,
+                type = JCS_AxisType.KeyOrMouseButton,
+                axis = 0 + axisOffset,
+                joyNum = 0,
+            }, true);
+
+            #endregion
+        }
+
         public static void SetupXBox360Joystick()
         {
             int gamePadCount = JCSUnity_EditorWindow.instance.GAME_PAD_COUNT;
@@ -164,7 +519,7 @@ namespace JCSUnity
                         continue;
 
                     // add axis definition.
-                    AddAxis(new InputAxis ()
+                    AddAxis(new InputAxis()
                     {
                         name = JCS_InputSettings.GetJoystickButtonIdName(joystickNum, val),
                         positiveButton = JCS_InputSettings.GetPositiveNameByLabel(val),

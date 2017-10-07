@@ -198,11 +198,14 @@ namespace JCSUnity
             GUILayout.Label("Game Pad count");
             instance.GAME_PAD_COUNT = (int)EditorGUILayout.Slider(instance.GAME_PAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
 
-            if (GUILayout.Button("Refresh Input Manager with target controller."))
+            if (GUILayout.Button("Add Input Manager depends on target gamepad type"))
                 RefreshInputManager();
 
-            if (GUILayout.Button("Clear Input Manager"))
+            if (GUILayout.Button("Clear Input Manager Settings"))
                 ClearInputManager();
+
+            if (GUILayout.Button("Add Default Input Manager Settings"))
+                AddDefaultInputManager();
         }
 
         /// <summary>
@@ -292,16 +295,22 @@ namespace JCSUnity
         /// Create settings for 3d game combine 
         /// with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Input/Refresh Input Manager with target controller.", false, 10)]
+        [MenuItem("JCSUnity/Input/Add Input Manager depends on target gamepad type", false, 10)]
         private static void RefreshInputManager()
         {
             JCS_InputController.SetupInputManager();
         }
 
-        [MenuItem("JCSUnity/Input/Clear Input Manager", false, 10)]
+        [MenuItem("JCSUnity/Input/Clear Input Manager Settings", false, 10)]
         private static void ClearInputManager()
         {
             JCS_InputController.ClearInputManagerSettings();
+        }
+
+        [MenuItem("JCSUnity/Input/Add Default Input Manager Settings", false, 10)]
+        private static void AddDefaultInputManager()
+        {
+            JCS_InputController.DefaultInputManagerSettings();
         }
 
         /// <summary>
