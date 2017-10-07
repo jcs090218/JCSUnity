@@ -36,13 +36,13 @@ namespace JCSUnity
 
         [Tooltip("Which joystick should listen?")]
         [SerializeField]
-        private JCS_JoystickIndex mJoystickLitener = JCS_JoystickIndex.JOYSTICK_00;
+        private JCS_JoystickIndex mJoystickLitener = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
 
         [Tooltip("Ignore the top two variables, listen to any key on the keyboard/gamepad.")]
         [SerializeField]
         private bool mListenToAnyKey = false;
 
-        [Tooltip("")]
+        [Tooltip("Key action type.")]
         [SerializeField]
         private JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
 
@@ -71,7 +71,7 @@ namespace JCSUnity
             }
             else
             {
-                if (JCS_Input.GetJoystickButton(mJoystickLitener, mKeyToListen))
+                if (JCS_Input.GetJoystickKeyByAction(mKeyActionType, mJoystickLitener, mKeyToListen))
                     JCS_ButtonClick();
             }
         }
