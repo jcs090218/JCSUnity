@@ -17,12 +17,11 @@ namespace JCSUnity
     /// Make sure u have this execute first!!!
     /// </summary>
     public class JCS_GameManager 
-        : MonoBehaviour
+        : JCS_Managers<JCS_GameManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_GameManager instance = null;
 
         //----------------------
         // Private Variables
@@ -51,7 +50,8 @@ namespace JCSUnity
         //--------------------------------
         // setter / getter
         //--------------------------------
-        public bool GAME_PAUSE {
+        public bool GAME_PAUSE
+        {
             get { return this.mGamePause; }
             set
             {
