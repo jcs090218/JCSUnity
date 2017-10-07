@@ -51,6 +51,10 @@ namespace JCSUnity
 
         public const float DEFAULT_SENSITIVITY = 1.0f;
         public const float DEFAULT_DEAD = 0.2f;
+        public const float DEFAULT_GRAVITY = 2000.0f;
+
+        // constant from Unity.
+        public const int MAX_JOYSTICK_COUNT = 12;
 
         //----------------------
         // Private Variables
@@ -64,16 +68,16 @@ namespace JCSUnity
             [Header("** Check Varaibles (JoystickMap) **")]
 
             [Tooltip("")]
-            public float StickRightXVal;
+            public float stickRightXVal;
 
             [Tooltip("")]
-            public float StickRightYVal;
+            public float stickRightYVal;
 
             [Tooltip("")]
-            public float StickLeftXVal;
+            public float stickLeftXVal;
 
             [Tooltip("")]
-            public float StickLeftYVal;
+            public float stickLeftYVal;
 
 
             [Header("** Initialize Varaibles (JoystickMap) **")]
@@ -81,78 +85,81 @@ namespace JCSUnity
             #region Button
 
             [Tooltip("Home button.")]
-            public string HomeButton;
+            public string homeButton;
 
             [Tooltip("")]
-            public string JoystickButtonStart;
+            public string joystickButtonStart;
 
             [Tooltip("")]
-            public string JoystickButtonBack;
+            public string joystickButtonBack;
 
             [Tooltip("Joystick button A")]
-            public string JoystickButtonA;
+            public string joystickButtonA;
 
             [Tooltip("Joystick button B")]
-            public string JoystickButtonB;
+            public string joystickButtonB;
 
             [Tooltip("Joystick button X")]
-            public string JoystickButtonX;
+            public string joystickButtonX;
 
             [Tooltip("Joystick button Y")]
-            public string JoystickButtonY;
+            public string joystickButtonY;
 
             [Tooltip("")]
-            public string JoystickButtonUp;
+            public string joystickButtonUp;
 
             [Tooltip("")]
-            public string JoystickButtonDown;
+            public string joystickButtonDown;
 
             [Tooltip("")]
-            public string JoystickButtonRight;
+            public string joystickButtonRight;
 
             [Tooltip("")]
-            public string JoystickButtonLeft;
+            public string joystickButtonLeft;
 
             #endregion
+
 
             #region Stick
             [Header("- Stick")]
 
             [Tooltip("Stick on the right")]
-            public string StickRightX;
+            public string stickRightX;
 
             [Tooltip("Stick on the right")]
-            public string StickRightY;
+            public string stickRightY;
 
             [Tooltip("Stick on the left")]
-            public string StickLeftX;
+            public string stickLeftX;
 
             [Tooltip("Stick on the left")]
-            public string StickLeftY;
+            public string stickLeftY;
 
             #endregion
+
 
             #region Trigger
 
             [Header("- Trigger")]
 
             [Tooltip("")]
-            public string JoystickButtonRT;
+            public string joystickButtonRT;
 
             [Tooltip("")]
-            public string JoystickButtonLT;
+            public string joystickButtonLT;
 
             #endregion
+
 
             #region Bumper
 
             [Header("- Bumper")]
 
             [Tooltip("")]
-            public string JoystickButtonLB;
+            public string joystickButtonLB;
 
             [Tooltip("")]
-            public string JoystickButtonRB;
+            public string joystickButtonRB;
 
             #endregion
 
@@ -165,9 +172,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_GamePadType mTargetGamePad = JCS_GamePadType.XBOX_360;
 
-        [Tooltip("How many joystick in the game? Do the mapping for these joysticks.")]
+        // How many joystick in the game? Do the mapping for these joysticks.
+        private JoystickMap[] mJoysticks = new JoystickMap[MAX_JOYSTICK_COUNT];
+
+        [Header("** Runtime Varaibles (JCS_InputSettings) **")]
+
+        [Tooltip("Total maxinum game pad will live in game.")]
         [SerializeField]
-        private JoystickMap[] mJoysticks = null;
+        [Range(0, MAX_JOYSTICK_COUNT)]
+        private int mTotalGamePadInGame = 0;
 
         //----------------------
         // Protected Variables
@@ -181,6 +194,7 @@ namespace JCSUnity
         {
             return this.mJoysticks[index];
         }
+        public int TotalGamePadInGame { get { return this.mTotalGamePadInGame; } set { this.mTotalGamePadInGame = value; } }
 
         //========================================
         //      Unity's function
@@ -190,7 +204,7 @@ namespace JCSUnity
             instance = CheckSingleton(instance, this);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             GetJoystickInfo();
         }
@@ -241,6 +255,28 @@ namespace JCSUnity
             JCS_Debug.LogWarning(@"Try to get the name with unknown joystick 
 button is not allow...");
             return "";
+        }
+
+        /// <summary>
+        /// Get the joystick button name by joystick button label.
+        /// </summary>
+        /// <param name="index"> joystick id. </param>
+        /// <param name="label"> joystick button label </param>
+        /// <returns> name of the joystick button id. </returns>
+        public static string GetJoystickButtonIdName(int index, JCS_JoystickButton label)
+        {
+            return GetJoystickButtonIdName((JCS_JoystickIndex)index, label);
+        }
+
+        /// <summary>
+        /// Get the joystick button name by joystick button label.
+        /// </summary>
+        /// <param name="index"> joystick id. </param>
+        /// <param name="label"> joystick button label </param>
+        /// <returns> name of the joystick button id. </returns>
+        public static string GetJoystickButtonIdName(JCS_JoystickIndex index, JCS_JoystickButton label)
+        {
+            return GetJoystickButtonName(label) + " " + (int)index;
         }
 
         /// <summary>
@@ -342,6 +378,8 @@ button is not allow...");
         {
             switch (label)
             {
+                case JCS_JoystickButton.BUTTON_LEFT:
+                case JCS_JoystickButton.BUTTON_DOWN:
                 case JCS_JoystickButton.LEFT_TRIGGER:
                     return true;
             }
@@ -360,11 +398,11 @@ button is not allow...");
             {
                 case JCS_JoystickButton.BUTTON_UP:
                 case JCS_JoystickButton.BUTTON_DOWN:
-                    return JCS_AxisChannel.CHANNEL_06;
+                    return JCS_AxisChannel.CHANNEL_07;
 
                 case JCS_JoystickButton.BUTTON_RIGHT:
                 case JCS_JoystickButton.BUTTON_LEFT:
-                    return JCS_AxisChannel.CHANNEL_07;
+                    return JCS_AxisChannel.CHANNEL_06;
 
                 case JCS_JoystickButton.STICK_LEFT_X:
                     return JCS_AxisChannel.X_Axis;
@@ -469,11 +507,11 @@ button is not allow...");
                 JoystickMap joystickMap = GetJoysitckMapByIndex(index);
 
                 // get stick value.
-                joystickMap.StickLeftXVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_LEFT_X);
-                joystickMap.StickLeftYVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_LEFT_Y);
+                joystickMap.stickLeftXVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_LEFT_X);
+                joystickMap.stickLeftYVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_LEFT_Y);
 
-                joystickMap.StickRightXVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_RIGHT_X);
-                joystickMap.StickRightYVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_RIGHT_Y);
+                joystickMap.stickRightXVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_RIGHT_X);
+                joystickMap.stickRightYVal = JCS_Input.GetAxis(index, JCS_JoystickButton.STICK_RIGHT_Y);
             }
         }
 
