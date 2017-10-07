@@ -21,6 +21,8 @@ public class FT_XInput_Test
     //----------------------
     // Public Variables
 
+    public bool valueKeyTest = true;
+
     //----------------------
     // Private Variables
 
@@ -41,38 +43,57 @@ public class FT_XInput_Test
 
     private void Update()
     {
-        //float val = JCS_Input.GetAxis(0, JCS_JoystickButton.STICK_RIGHT_X);
-        //print(val);
+        /* Stick test. */
+        if (valueKeyTest)
+        {
+            float val = JCS_Input.GetAxis(0, JCS_JoystickButton.STICK_RIGHT_X);
+            print("Stick right X: " + val);
+
+            val = JCS_Input.GetAxis(0, JCS_JoystickButton.STICK_RIGHT_Y);
+            print("Stick right Y: " + val);
+
+            val = JCS_Input.GetAxis(0, JCS_JoystickButton.STICK_LEFT_X);
+            print("Stick left X: " + val);
+
+            val = JCS_Input.GetAxis(0, JCS_JoystickButton.STICK_LEFT_Y);
+            print("Stick left Y: " + val);
+        }
 
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_A))
             print("Joystick button A");
-
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_B))
             print("Joystick button B");
-
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_X))
             print("Joystick button X");
-
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_Y))
             print("Joystick button Y");
 
 
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_RIGHT))
             print("Joystick right button down");
-
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_LEFT))
             print("Joystick left button down");
-
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_UP))
             print("Joystick button UP");
-
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_DOWN))
             print("Joystick button DOWN");
+
+        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.HOME_BUTTON))
+            print("Joystick button HOME");
+        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.START_BUTTON))
+            print("Joystick button START");
+        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BACK_BUTTON))
+            print("Joystick button BACK");
+
+
+        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.LEFT_BUMPER))
+            print("Left BUMPER down");
+        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.RIGHT_BUMPER))
+            print("Right BUMPER down");
 
 
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.LEFT_TRIGGER))
             print("Right trigger down");
-
         if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.RIGHT_TRIGGER))
             print("Left trigger down");
 

@@ -20,33 +20,33 @@ namespace JCSUnity
     {
         NONE,
 
-        BUTTON_A,
-        BUTTON_B,
-        BUTTON_X,
-        BUTTON_Y,
+        BUTTON_A,       // KeyOrMouseButton
+        BUTTON_B,       // KeyOrMouseButton
+        BUTTON_X,       // KeyOrMouseButton
+        BUTTON_Y,       // KeyOrMouseButton
 
-        HOME_BUTTON,
+        HOME_BUTTON,    // KeyOrMouseButton
 
-        START_BUTTON,
-        BACK_BUTTON,
+        START_BUTTON,   // KeyOrMouseButton
+        BACK_BUTTON,    // KeyOrMouseButton
 
-        LEFT_TRIGGER,
-        RIGHT_TRIGGER,
+        LEFT_TRIGGER,   // JoystickAxis
+        RIGHT_TRIGGER,  // JoystickAxis
 
-        LEFT_BUMPER,
-        RIGHT_BUMPER,
+        LEFT_BUMPER,    // KeyOrMouseButton
+        RIGHT_BUMPER,   // KeyOrMouseButton
 
-        BUTTON_UP,
-        BUTTON_DOWN,
-        BUTTON_LEFT,
-        BUTTON_RIGHT,
+        BUTTON_UP,      // JoystickAxis
+        BUTTON_DOWN,    // JoystickAxis
+        BUTTON_LEFT,    // JoystickAxis
+        BUTTON_RIGHT,   // JoystickAxis
 
         // temp.
-        STICK_RIGHT_X,
-        STICK_RIGHT_Y,
+        STICK_RIGHT_X,  // JoystickAxis
+        STICK_RIGHT_Y,  // JoystickAxis
 
-        STICK_LEFT_X,
-        STICK_LEFT_Y,
+        STICK_LEFT_X,   // JoystickAxis
+        STICK_LEFT_Y,   // JoystickAxis
     };
 
     /// <summary>

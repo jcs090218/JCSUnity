@@ -13,7 +13,7 @@ using JCSUnity;
 
 
 /// <summary>
-/// 
+/// Test game pad button.
 /// </summary>
 public class FT_EchoGamePadButton 
     :  JCS_GamePadButton
