@@ -20,8 +20,8 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private T[] mPair1 = null;
-        private U[] mPair2 = null;
+        public T pair1 = default(T);
+        public U pair2 = default(U);
 
         //----------------------
         // Protected Variables
@@ -29,19 +29,18 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public int length { get { return mPair1.Length; } }
-        public bool empty { get { return (length == 0); } }
-
-        public T[] GetPair1() { return this.mPair1; }
-        public U[] GetPair2() { return this.mPair2; }
 
         //========================================
         //      Constructor
         //------------------------------
-        public JCS_Pair(int length = 0)
+        public JCS_Pair()
         {
-            mPair1 = new T[length];
-            mPair2 = new U[length];
+
+        }
+
+        public JCS_Pair(T pair1, U pair2)
+        {
+            Set(pair1, pair2);
         }
 
         //========================================
@@ -49,6 +48,17 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Set the pair value.
+        /// </summary>
+        /// <param name="pair1"></param>
+        /// <param name="pair2"></param>
+        public void Set(T pair1, U pair2)
+        {
+            this.pair1 = pair1;
+            this.pair2 = pair2;
+        }
 
         //----------------------
         // Protected Functions
