@@ -16,6 +16,8 @@
 * JCS_ButtonSelectionGroup implemented. (JCSUnity)
 * JCS_ButtonSelection implemented. (JCSUnity)
 * JCS_ButtonSelectionGroupController implemented. (JCSUnity)
+* JCS_InputController implemented with default input manager 
+ settings. (JCSUnity)
 
 2017-10-05
 * Sprite Timer compatible with unity object. (JCSUnity)
