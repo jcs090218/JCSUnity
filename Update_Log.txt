@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2017-10-08
+* Update JCS_ButtonSelection with callback. (JCSUnity)
+* Instead of one effect replace with multiple effects for 
+ JCS_ButtonSelection. (JCSUnity)
+
 2017-10-07
 * Add JCS_GamePadButton base button class for Gamepad interaction. (JCSUnity)
 * JCS_Input with more functional key input naming and readability. (JCSUnity)
