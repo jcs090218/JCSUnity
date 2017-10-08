@@ -156,7 +156,7 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
+        private void Start()
         {
             UpdateTimeInterval();
 
