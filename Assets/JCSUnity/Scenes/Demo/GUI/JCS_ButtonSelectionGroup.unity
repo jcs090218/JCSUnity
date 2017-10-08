@@ -515,7 +515,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mButton: {fileID: 318557157}
-  mEffect: {fileID: 196707934}
+  mEffects:
+  - {fileID: 196707934}
 --- !u!114 &318557154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,7 +1913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mButton: {fileID: 1201376773}
-  mEffect: {fileID: 1684827591}
+  mEffects:
+  - {fileID: 1684827591}
 --- !u!114 &1201376770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,9 +2134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mKeyActionType: 1
-  mMNext: 0
-  mMPrev: 0
-  mMOkay: 0
+  mMNext: 275
+  mMPrev: 276
+  mMOkay: 32
   mGamePadId: 0
   mJNext: 15
   mJPrev: 14
@@ -2357,7 +2359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mButton: {fileID: 2006004933}
-  mEffect: {fileID: 912788094}
+  mEffects:
+  - {fileID: 912788094}
 --- !u!114 &2006004930
 MonoBehaviour:
   m_ObjectHideFlags: 0
