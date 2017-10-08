@@ -584,12 +584,7 @@ namespace JCSUnity
         {
             // check if any joystick connected.
             if (!IsJoystickConnected())
-            {
-                JCS_Debug.LogError(
-                    @"There are no joystick connected, and u 
-still trying to make the joystick specific function call.");
                 return false;
-            }
 
             return GetAxis(joystickIndex, btn) > 0;
         }
