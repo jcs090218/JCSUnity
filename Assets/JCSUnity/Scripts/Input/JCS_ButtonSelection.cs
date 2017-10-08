@@ -41,9 +41,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Button mButton = null;
 
-        [Tooltip("Effect for this button.")]
+        [Tooltip("List of effect when on this selection.")]
         [SerializeField]
-        private JCS_UnityObject mEffect = null;
+        private JCS_UnityObject[] mEffects = null;
 
         /*******************************************/
         /*           Protected Variables           */
@@ -93,9 +93,15 @@ namespace JCSUnity
                 // Do stuff when deactive..
             }
 
-            // enable effect.
-            if (mEffect != null)
-                mEffect.LocalEnabled = mActive;
+            for (int index = 0;
+                   index < mEffects.Length;
+                   ++index)
+            {
+                JCS_UnityObject effect = mEffects[index];
+
+                if (effect != null)
+                    effect.LocalEnabled = mActive;
+            }
         }
 
     }
