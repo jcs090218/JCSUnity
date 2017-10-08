@@ -11,6 +11,7 @@
 * Update JCS_ButtonSelection with callback. (JCSUnity)
 * Instead of one effect replace with multiple effects for 
  JCS_ButtonSelection. (JCSUnity)
+* Sprite timer conflict with unity object time issue bug fixed. (JCSUnity)
 
 2017-10-07
 * Add JCS_GamePadButton base button class for Gamepad interaction. (JCSUnity)
