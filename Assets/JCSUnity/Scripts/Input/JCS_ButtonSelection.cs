@@ -13,6 +13,10 @@ using UnityEngine;
 
 namespace JCSUnity
 {
+    public delegate void SelectionEnable();
+    public delegate void SelectionDisable();
+    public delegate void SelectionActive(bool act);
+
     /// <summary>
     /// One of the button selection for button selection group.
     /// 
@@ -26,6 +30,9 @@ namespace JCSUnity
         /*******************************************/
         /*            Public Variables             */
         /*******************************************/
+        public SelectionEnable selectionEnable = null;
+        public SelectionDisable selectionDisable = null;
+        public SelectionActive selectionActive = null;
 
         /*******************************************/
         /*           Private Variables             */
@@ -52,7 +59,7 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public JCS_Button GetButton() { return this.mButton; }
+        public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
         public bool Active
         {
             get { return this.mActive; }
@@ -66,6 +73,12 @@ namespace JCSUnity
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
+        private void Awake()
+        {
+            this.selectionActive = SelectionActive;
+            this.selectionEnable = SelectionEnable;
+            this.selectionDisable = SelectionDisable;
+        }
 
         /*******************************************/
         /*              Self-Define                */
@@ -79,20 +92,41 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
+        /* Default Function Pointers. */
+        private void SelectionEnable() { }
+        private void SelectionDisable() { }
+        private void SelectionActive(bool act) { }
+
         /// <summary>
         /// Do active and deactive.
         /// </summary>
         private void DoActive()
         {
-            if (mActive)
+            this.selectionActive.Invoke(this.mActive);
+
+            if (this.mActive)
             {
                 // Do stuff when active..
+                selectionEnable.Invoke();
             }
             else
             {
                 // Do stuff when deactive..
+                selectionDisable.Invoke();
             }
 
+            ActiveEffects(this.mActive);
+        }
+
+        /// <summary>
+        /// Active the effects?
+        /// </summary>
+        /// <param name="act">
+        /// true: active effects.
+        /// false: deactive effects.
+        /// </param>
+        private void ActiveEffects(bool act)
+        {
             for (int index = 0;
                    index < mEffects.Length;
                    ++index)
@@ -100,9 +134,9 @@ namespace JCSUnity
                 JCS_UnityObject effect = mEffects[index];
 
                 if (effect != null)
-                    effect.LocalEnabled = mActive;
+                    effect.LocalEnabled = act;
             }
         }
-
+        
     }
 }

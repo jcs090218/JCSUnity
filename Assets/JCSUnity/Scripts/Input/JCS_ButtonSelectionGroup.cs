@@ -86,7 +86,8 @@ namespace JCSUnity
             CloseSelection();
 
             // only enable the first one.
-            mSelections[0].Active = true;
+            if (mSelections.Count != 0)
+                mSelections[0].Active = true;
         }
 
         /// <summary>
@@ -95,9 +96,7 @@ namespace JCSUnity
         private void CloseSelection()
         {
             foreach (JCS_ButtonSelection item in mSelections)
-            {
                 item.Active = false;
-            }
 
             mCurrentSelectIndex = 0;
         }
@@ -107,7 +106,9 @@ namespace JCSUnity
         /// </summary>
         public void OkaySelection()
         {
-            mSelections[mCurrentSelectIndex].GetButton().JCS_ButtonClick();
+            JCS_Button button = mSelections[mCurrentSelectIndex].Button;
+            if (button != null)
+                button.JCS_ButtonClick();
         }
 
         /// <summary>
