@@ -34,6 +34,22 @@ namespace JCSUnity
         {
             return (uint)Random.Range(min, max);
         }
+
+        /// <summary>
+        /// Return normal random range and cover the max value. (Integer)
+        /// </summary>
+        /// <param name="min"> mininum value </param>
+        /// <param name="max"> maxinum value </param>
+        /// <returns> random number </returns>
+        public static int RangeInclude(int min, int max)
+        {
+            return Range(min, max + 1);
+        }
+        public static uint RangeInclude(uint min, uint max)
+        {
+            return Range(min, max + 1);
+        }
+
         /// <summary>
         /// Return normal random range (Float)
         /// </summary>
