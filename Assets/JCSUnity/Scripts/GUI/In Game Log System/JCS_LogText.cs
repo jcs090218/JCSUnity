@@ -78,7 +78,7 @@ namespace JCSUnity
             // and check to see if the object is fade out complete.
             // if is complete set the active to false (return 
             // to pool).
-            mFadeObject.SetIsFadeOutCallback(FadeOutCompleteCallback);
+            mFadeObject.fadeOutCallback = FadeOutCompleteCallback;
         }
 
 

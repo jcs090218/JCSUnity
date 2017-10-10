@@ -26,6 +26,12 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
+        // callback after fadeout if complete
+        public IsFadeOutCallback fadeOutCallback = DefaultFadeCallback;
+
+        // callback after fade in is complete.
+        public IsFadeInCallback fadeInCallback = DefaultFadeCallback;
+
         //----------------------
         // Private Variables
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
@@ -66,12 +72,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mOverriteFade = false;
 
-        // callback after fadeout if complete
-        private IsFadeOutCallback mIsFadeOutCallback = DefaultFadeCallback;
-
-        // callback after fade in is complete.
-        private IsFadeInCallback mIsFadeInCallback = DefaultFadeCallback;
-
         [Tooltip("Maxinum of fade amount of value.")]
         [SerializeField]
         [Range(0, 1)]
@@ -90,8 +90,6 @@ namespace JCSUnity
         //------------------------------
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
-        public void SetIsFadeOutCallback(IsFadeOutCallback func) { this.mIsFadeOutCallback = func; }
-        public void SetIsFadeInCallback(IsFadeInCallback func) { this.mIsFadeInCallback = func; }
         public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
         public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
 
@@ -154,10 +152,12 @@ namespace JCSUnity
                                     break;
                             }
 
-                            // do fade out callback
-                            mIsFadeOutCallback.Invoke();
-
                             mEffect = false;
+
+                            // do fade out callback
+                            if (fadeOutCallback != null)
+                                fadeOutCallback.Invoke();
+
                             return;
                         }
 
@@ -170,10 +170,12 @@ namespace JCSUnity
                         // Fade in effect complete
                         if (mAlpha > mFadeInAmount)
                         {
-                            // do fade in callback
-                            mIsFadeInCallback.Invoke();
-
                             mEffect = false;
+
+                            // do fade in callback
+                            if (fadeInCallback != null)
+                                fadeInCallback.Invoke();
+
                             return;
                         }
 
@@ -207,13 +209,13 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
-            /// <summary>
-            /// Is the fade object fade in?
-            /// </summary>
-            /// <returns>
-            /// true : is fade in.
-            /// false : not fade in yet.
-            /// </returns>
+        /// <summary>
+        /// Is the fade object fade in?
+        /// </summary>
+        /// <returns>
+        /// true : is fade in.
+        /// false : not fade in yet.
+        /// </returns>
         public bool IsFadeIn()
         {
             return (this.mAlpha >= mFadeInAmount);
