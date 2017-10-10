@@ -10,6 +10,7 @@
 2017-10-10
 * Utility tool wrong naming fixed. (JCSUnity)
 * Sprite Timer out of range for level design, extends it. (JCSUnity)
+* Remove UI error prompting, need to restrucutre the UI layer. (JCSUnity)
 
 2017-10-09
 * JCS_FadeObject bug fixed with fade effect behind. (JCSUnity)
