@@ -224,6 +224,8 @@ namespace JCSUnity
         {
             switch (label)
             {
+                case JCS_JoystickButton.NONE: return "";
+
                 case JCS_JoystickButton.BUTTON_A: return JOYSTICK_BUTTON_A;
                 case JCS_JoystickButton.BUTTON_B: return JOYSTICK_BUTTON_B;
                 case JCS_JoystickButton.BUTTON_X: return JOYSTICK_BUTTON_X;
@@ -252,6 +254,7 @@ namespace JCSUnity
                 case JCS_JoystickButton.STICK_LEFT_Y: return STICK_LEFT_Y;
             }
 
+            // this should not happens.
             JCS_Debug.LogWarning(@"Try to get the name with unknown joystick 
 button is not allow...");
             return "";
