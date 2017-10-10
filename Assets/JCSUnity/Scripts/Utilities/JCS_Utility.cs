@@ -538,7 +538,7 @@ namespace JCSUnity
         /// </summary>
         /// <typeparam name="T"> Type to find. </typeparam>
         /// <returns> Type array. </returns>
-        public static T[] FindCloneObjectsOfTypeAllI<T>()
+        public static T[] FindCloneObjectsOfTypeAll<T>()
             where T : MonoBehaviour
         {
             T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
@@ -563,7 +563,7 @@ namespace JCSUnity
         /// </summary>
         /// <typeparam name="T"> Type to find. </typeparam>
         /// <returns> Type array. </returns>
-        public static T[] FindNotCloneObjectsOfTypeAllI<T>()
+        public static T[] FindNotCloneObjectsOfTypeAll<T>()
             where T : MonoBehaviour
         {
             T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
