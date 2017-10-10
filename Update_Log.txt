@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-10-09
+* JCS_FadeObject bug fixed with fade effect behind. (JCSUnity)
+* JCS_FadeObject with better callback function format/naming. (JCSUnity)
+
 2017-10-08
 * Update JCS_ButtonSelection with callback. (JCSUnity)
 * Instead of one effect replace with multiple effects for 
