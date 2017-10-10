@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 namespace JCSUnity
@@ -30,9 +31,9 @@ namespace JCSUnity
         /*******************************************/
         /*            Public Variables             */
         /*******************************************/
-        public SelectionEnable selectionEnable = null;
-        public SelectionDisable selectionDisable = null;
-        public SelectionActive selectionActive = null;
+        public SelectionEnable selectionEnable = SelectionEnable;
+        public SelectionDisable selectionDisable = SelectionDisable;
+        public SelectionActive selectionActive = SelectionActive;
 
         /*******************************************/
         /*           Private Variables             */
@@ -48,6 +49,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Button mButton = null;
 
+        [Tooltip("Events when you enter this selection.")]
+        [SerializeField]
+        private UnityEvent mSelectedEvent = null;
+
         [Tooltip("List of effect when on this selection.")]
         [SerializeField]
         private JCS_UnityObject[] mEffects = null;
@@ -60,6 +65,7 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
+        public UnityEvent SelectedEvent { get { return this.mSelectedEvent; } }
         public bool Active
         {
             get { return this.mActive; }
@@ -73,18 +79,24 @@ namespace JCSUnity
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
-        private void Awake()
-        {
-            this.selectionActive = SelectionActive;
-            this.selectionEnable = SelectionEnable;
-            this.selectionDisable = SelectionDisable;
-        }
 
         /*******************************************/
         /*              Self-Define                */
         /*******************************************/
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Do stuff if this selection been checked.
+        /// </summary>
+        public void DoSelection()
+        {
+            if (mButton != null)
+                mButton.JCS_ButtonClick();
+
+            if (mSelectedEvent != null)
+                mSelectedEvent.Invoke();
+        }
 
         //----------------------
         // Protected Functions
@@ -93,9 +105,9 @@ namespace JCSUnity
         // Private Functions
 
         /* Default Function Pointers. */
-        private void SelectionEnable() { }
-        private void SelectionDisable() { }
-        private void SelectionActive(bool act) { }
+        private static void SelectionEnable() { }
+        private static void SelectionDisable() { }
+        private static void SelectionActive(bool act) { }
 
         /// <summary>
         /// Do active and deactive.
@@ -134,7 +146,10 @@ namespace JCSUnity
                 JCS_UnityObject effect = mEffects[index];
 
                 if (effect != null)
+                {
+                    effect.UpdateUnityData();
                     effect.LocalEnabled = act;
+                }
             }
         }
         

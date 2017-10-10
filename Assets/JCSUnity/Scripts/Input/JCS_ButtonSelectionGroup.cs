@@ -79,9 +79,27 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
+        /// Add a selection into list.
+        /// </summary>
+        /// <param name="selection"></param>
+        public void AddSelection(JCS_ButtonSelection selection)
+        {
+            mSelections.Add(selection);
+        }
+
+        /// <summary>
+        /// Remove a selection from the list.
+        /// </summary>
+        /// <param name="selection"></param>
+        public void RemoveSelection(JCS_ButtonSelection selection)
+        {
+            mSelections.Remove(selection);
+        }
+
+        /// <summary>
         /// Reset everytime a player enter a area.
         /// </summary>
-        private void ResetSelection()
+        public void ResetSelection()
         {
             CloseSelection();
 
@@ -93,7 +111,7 @@ namespace JCSUnity
         /// <summary>
         /// Close the selection area. Nothing will be high-lighted.
         /// </summary>
-        private void CloseSelection()
+        public void CloseSelection()
         {
             foreach (JCS_ButtonSelection item in mSelections)
                 item.Active = false;
@@ -106,9 +124,7 @@ namespace JCSUnity
         /// </summary>
         public void OkaySelection()
         {
-            JCS_Button button = mSelections[mCurrentSelectIndex].Button;
-            if (button != null)
-                button.JCS_ButtonClick();
+            mSelections[mCurrentSelectIndex].DoSelection();
         }
 
         /// <summary>

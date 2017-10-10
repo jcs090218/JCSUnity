@@ -34,6 +34,10 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ButtonSelectionGroupController) **")]
 
+        [Tooltip("Active key listener?")]
+        [SerializeField]
+        private bool mActive = false;
+
         [Tooltip("")]
         [SerializeField]
         private JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
@@ -80,6 +84,7 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -91,6 +96,9 @@ namespace JCSUnity
 
         private void Update()
         {
+            if (!mActive)
+                return;
+
             if (ActiveNext())
                 mButtonSelectionGroup.NextSelection();
 
