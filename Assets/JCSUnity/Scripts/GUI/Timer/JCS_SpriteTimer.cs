@@ -130,12 +130,12 @@ namespace JCSUnity
 
         [Tooltip("Interval between each digit.")]
         [SerializeField]
-        [Range(0.1f, 5.0f)]
+        [Range(0.1f, 5000.0f)]
         private float mDigitInterval = 0.5f;
 
         [Tooltip("Interval between each digit.")]
         [SerializeField]
-        [Range(0.1f, 5.0f)]
+        [Range(0.1f, 5000.0f)]
         private float mDigitUnitInterval = 0.5f;
 
         // last interval we updated.
