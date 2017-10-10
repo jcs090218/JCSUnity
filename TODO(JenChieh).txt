@@ -16,12 +16,10 @@
     - support more format.
 * Audio Source with multiple components might cause a lot of performance?
 
-//-- Input --//
-* Joystick's trigger is not working.
-
 //-- GUI --//
 * JCS_SequenceSelector <- select something base on sequence.
 * JCS_3DLiquidBar changing depth with changing size of the gui text.
+* Restructure UI system priority layer.
 
 //-- 2D --//
 * Swim Action
