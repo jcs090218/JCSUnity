@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-10-11
+* Change movie file for smaller file size. (JCSUnity)
+* Remove webcam screen shots. (JCSUnity)
+
 2017-10-10
 * Utility tool wrong naming fixed. (JCSUnity)
 * Sprite Timer out of range for level design, extends it. (JCSUnity)
