@@ -43,7 +43,12 @@ namespace JCSUnity
 
         private bool mActive = false;
 
+
         [Header("** Runtime Variables (JCS_ButtonSelection) **")]
+
+        [Tooltip("Deactive this button on Awake time?")]
+        [SerializeField]
+        private bool mDeactiveAtAwake = true;
 
         [Tooltip("Button for selection group to handle.")]
         [SerializeField]
@@ -64,6 +69,7 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
         public UnityEvent SelectedEvent { get { return this.mSelectedEvent; } }
         public bool Active
@@ -79,6 +85,14 @@ namespace JCSUnity
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
+        private void Awake()
+        {
+            if (mDeactiveAtAwake)
+            {
+                // Deactive every at start
+                Active = false;
+            }
+        }
 
         /*******************************************/
         /*              Self-Define                */
