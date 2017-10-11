@@ -8,6 +8,7 @@
 /Tutorials
 /Assets/Libraries
 /Publish
+/ Assets/JCS_GameData/WebcamShot
 
 # don't include the video.
 /Video
