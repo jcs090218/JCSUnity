@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-10-13
+* Change black screen and slide black screen default setting from
+ resource object. (JCSUnity)
+
 2017-10-11
 * Change movie file for smaller file size. (JCSUnity)
 * Remove webcam screen shots. (JCSUnity)
