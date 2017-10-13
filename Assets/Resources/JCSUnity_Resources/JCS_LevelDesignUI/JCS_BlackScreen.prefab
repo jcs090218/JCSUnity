@@ -59,8 +59,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mFadeInKey: 109
+  mFadeOutKey: 110
+  mEffect: 0
+  mVisible: 1
   mFadeTime: 1
-  mOverriteFade: 0
+  mOverriteFade: 1
   mFadeInAmount: 1
   mFadeOutAmount: 0
 --- !u!114 &11461196
