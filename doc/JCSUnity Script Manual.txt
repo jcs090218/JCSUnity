@@ -233,6 +233,14 @@
           just calling from Unity Engine's scripting layer.
         </Description>
       </File>
+      
+      <File name="JCS_3DThrowAction.cs">
+        <Placement>Projectile.</Placement>
+        <Description>
+          This will measure the distance between this and target, then
+          send the projectile to the target.
+        </Description>
+      </File>
 
       <File name="JCS_3DTrackAction.cs">
         <Placement>Any transform/node.</Placement>
@@ -493,14 +501,6 @@
         <Description>
           Any time you need to do swing attack action. Get the component and
           make the function call.
-        </Description>
-      </File>
-
-      <File name="JCS_ThrowAction.cs">
-        <Placement>Projectile.</Placement>
-        <Description>
-          This will measure the distance between this and target, then
-          send the projectile to the target.
         </Description>
       </File>
     </Actions>
