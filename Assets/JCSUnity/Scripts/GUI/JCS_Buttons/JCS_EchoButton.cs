@@ -18,23 +18,22 @@ namespace JCSUnity
     /// button triggered.
     /// </summary>
     public class JCS_EchoButton
-    : JCS_Button
+        : JCS_Button
     {
         [Header("** Runtime Variables (JCS_EchoButton) **")]
 
         [Tooltip("String to echo out on the console window.")]
         public string echoString = "echo Hello World!~";
 
-        /// <summary>
-        /// Default function to call this, so we dont have to
-        /// search the function depends on name.
-        /// 
-        /// * Good for organize code and game data file in Unity.
-        /// </summary>
-        public override void JCS_ButtonClick()
+        protected override void Awake()
         {
-            base.JCS_ButtonClick();
+            base.Awake();
 
+            SetCallback(OnClick);
+        }
+
+        private void OnClick()
+        {
             JCS_Debug.Log(echoString);
         }
     }
