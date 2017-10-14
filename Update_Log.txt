@@ -10,6 +10,7 @@
 2017-10-14
 * Make JCS_Button compatible with keyboard and gamepad input 
  buffer. (JCSUnity)
+* Make JCS_GamePadButton compatible with keyboard input. (JCSUnity)
 
 2017-10-13
 * Change black screen and slide black screen default setting from
