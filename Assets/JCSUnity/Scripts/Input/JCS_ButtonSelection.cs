@@ -39,6 +39,8 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
+        public JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
+
         [Header("** Check Variables (JCS_ButtonSelection) **")]
 
         private bool mActive = false;
@@ -81,6 +83,7 @@ namespace JCSUnity
                 DoActive();
             }
         }
+        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -90,8 +93,12 @@ namespace JCSUnity
             if (mDeactiveAtAwake)
             {
                 // Deactive every at start
-                Active = false;
+                this.mActive = false;
             }
+
+            // let the button know this is going to be control in the group.
+            if (mButton != null)
+                mButton.ButtonSelection = this;
         }
 
         /*******************************************/
@@ -110,6 +117,26 @@ namespace JCSUnity
 
             if (mSelectedEvent != null)
                 mSelectedEvent.Invoke();
+        }
+
+        /// <summary>
+        /// Check if this selection get selected.
+        /// </summary>
+        /// <returns>
+        /// true: selected.
+        /// false: vice versa.
+        /// </returns>
+        public bool IsSelected()
+        {
+            return this.mActive;
+        }
+
+        /// <summary>
+        /// Make this selection selected.
+        /// </summary>
+        public void MakeSelect()
+        {
+            mButtonSelectionGroup.SelectSelection(this);
         }
 
         //----------------------

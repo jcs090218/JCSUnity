@@ -29,7 +29,7 @@ namespace JCSUnity
         /*******************************************/
 
         // Callback triggered when selection has changed.
-        public SelectionChanged selectionChanged = null;
+        public SelectionChanged selectionChanged = null;        
 
         /*******************************************/
         /*           Private Variables             */
@@ -62,6 +62,10 @@ namespace JCSUnity
         private void Awake()
         {
             this.mSelections = JCS_Utility.RemoveEmptySlot(mSelections);
+
+            // let them know the grouper.
+            foreach (JCS_ButtonSelection bs in mSelections)
+                bs.ButtonSelectionGroup = this;
 
             selectionChanged = EmptyCallbackSelectionChanged;
         }
@@ -132,13 +136,43 @@ namespace JCSUnity
         /// </summary>
         public void NextSelection()
         {
+            int tempSelectIndex = mCurrentSelectIndex;
+            ++tempSelectIndex;
+
+            SelectSelection(tempSelectIndex);
+        }
+
+        /// <summary>
+        /// Change to the previous button selection.
+        /// </summary>
+        public void PrevSelection()
+        {
+            int tempSelectIndex = mCurrentSelectIndex;
+            --tempSelectIndex;
+
+            SelectSelection(tempSelectIndex);
+        }
+
+        /// <summary>
+        /// Selection this selection.
+        /// </summary>
+        /// <param name="selectionIndex"> index to select. </param>
+        public void SelectSelection(int selectionIndex)
+        {
+            // no need to do anything.
+            if (mCurrentSelectIndex == selectionIndex)
+                return;
+
             // disable current active selection.
             mSelections[mCurrentSelectIndex].Active = false;
 
-            ++mCurrentSelectIndex;
+            this.mCurrentSelectIndex = selectionIndex;
 
+            // loop through the array, if at the tail of the array set it to head.
+            if (mCurrentSelectIndex < 0)
+                mCurrentSelectIndex = mSelections.Count - 1;
             // loop through the array, if at head of the array we set it to the tail.
-            if (mCurrentSelectIndex >= mSelections.Count)
+            else if (mCurrentSelectIndex >= mSelections.Count)
                 mCurrentSelectIndex = 0;
 
             // active the new active selection.
@@ -148,23 +182,32 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Change to the previous button selection.
+        /// Selection this selection.
         /// </summary>
-        public void PrevSelection()
+        /// <param name="selection"> selection to select. </param>
+        public void SelectSelection(JCS_ButtonSelection selection)
         {
-            // disable current active selection.
-            mSelections[mCurrentSelectIndex].Active = false;
+            /* 
+             * Time complexity: O(n)
+             * 
+             * NOTE(jenchieh): might need to change this if we there are 
+             * more than 30 selections.
+             */
+            for (int index = 0;
+                index < mSelections.Count;
+                ++index)
+            {
+                JCS_ButtonSelection bs = mSelections[index];
 
-            --mCurrentSelectIndex;
+                if (bs == selection)
+                {
+                    SelectSelection(index);
+                    return;
+                }
+            }
 
-            // loop through the array, if at the tail of the array set it to head.
-            if (mCurrentSelectIndex < 0)
-                mCurrentSelectIndex = mSelections.Count - 1;
-
-            // active the new active selection.
-            mSelections[mCurrentSelectIndex].Active = true;
-
-            selectionChanged.Invoke();
+            JCS_Debug.LogError(@"Try to select a selection, but seems like the 
+selection is not in the group...");
         }
 
         //----------------------

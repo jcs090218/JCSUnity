@@ -26,6 +26,12 @@ namespace JCSUnity
         /*******************************************/
         /*            Public Variables             */
         /*******************************************/
+        // JCSUnity framework only callback, do not override this callback.
+        public CallBackFunc btnSystemCallBack = null;
+        public CallBackFuncBtn btnSystemCallBackBtn = null;
+        // for user's callback.
+        public CallBackFunc btnCallBack = null;
+        public CallBackFuncBtn btnCallBackBtn = null;
 
         /*******************************************/
         /*           Private Variables             */
@@ -33,19 +39,19 @@ namespace JCSUnity
         public delegate void CallBackFunc();
         public delegate void CallBackFuncBtn(JCS_Button btn);
 
-        // JCSUnity framework only callback, do not override this callback.
-        private CallBackFunc mBtnSystemCallBack = null;
-        private CallBackFuncBtn mBtnSystemCallBackBtn = null;
-        // for user's callback.
-        protected CallBackFunc mBtnCallBack = null;
-        private CallBackFuncBtn mBtnCallBackBtn = null;
-
-
         [Header("** Optional Variables (JCS_Button) **")]
 
         [Tooltip("text under the button, no necessary.")]
         [SerializeField]
         protected Text mButtonText = null;
+
+        [Tooltip("Button Selection for if the button that are in the group.")]
+        [SerializeField]
+        protected JCS_ButtonSelection mButtonSelection = null;
+
+        // record down if selected in the group. work with 
+        // 'JCS_ButtonSelectionGroup' and 'JCS_ButtonSelection'.
+        protected bool mIsSelectedInGroup = false;
 
 
         [Header("** Initialize Variables (JCS_Button) **")]
@@ -84,10 +90,6 @@ namespace JCSUnity
         public Image Image { get { return this.mImage; } }
         public RectTransform GetRectTransfom() { return this.mRectTransform; }
         public int DialogueIndex { get { return this.mDialogueIndex; } set { this.mDialogueIndex = value; } }
-        public void SetCallback(CallBackFunc func) { this.mBtnCallBack += func; }
-        public void SetCallback(CallBackFuncBtn func) { this.mBtnCallBackBtn += func; }
-        public void SetSystemCallback(CallBackFunc func) { this.mBtnSystemCallBack += func; }
-        public void SetSystemCallback(CallBackFuncBtn func) { this.mBtnSystemCallBackBtn += func; }
         public bool AutoListener { get { return this.mAutoListener; } set { this.mAutoListener = value; } }
         public bool Interactable {
             get { return this.mInteractable; }
@@ -100,6 +102,14 @@ namespace JCSUnity
             }
         }
         public Text ButtonText { get { return this.mButtonText; } }
+        public JCS_ButtonSelection ButtonSelection { get { return this.mButtonSelection; } set { this.mButtonSelection = value; } }
+        public bool IsSelectedInGroup { get { return this.mIsSelectedInGroup; } }
+
+        /* Compatible with 1.5.3 version of JCSUnity */
+        public void SetCallback(CallBackFunc func) { this.btnCallBack += func; }
+        public void SetCallback(CallBackFuncBtn func) { this.btnCallBackBtn += func; }
+        public void SetSystemCallback(CallBackFunc func) { this.btnSystemCallBack += func; }
+        public void SetSystemCallback(CallBackFuncBtn func) { this.btnSystemCallBackBtn += func; }
 
         /*******************************************/
         /*            Unity's function             */
@@ -111,7 +121,8 @@ namespace JCSUnity
             mImage = this.GetComponent<Image>();
 
             // try to get the text from the child.
-            mButtonText = this.GetComponentInChildren<Text>();
+            if (mButtonText == null)
+                mButtonText = this.GetComponentInChildren<Text>();
 
             if (mAutoListener)
             {
@@ -137,19 +148,24 @@ namespace JCSUnity
         /// </summary>
         public virtual void JCS_ButtonClick()
         {
-            /* System callback */
-            if (mBtnSystemCallBack != null)
-                mBtnSystemCallBack.Invoke();
+            this.mIsSelectedInGroup = IsSelected();
 
-            if (mBtnSystemCallBackBtn != null)
-                mBtnSystemCallBackBtn.Invoke(this);
+            if (!mIsSelectedInGroup)
+                return;
+
+            /* System callback */
+            if (btnSystemCallBack != null)
+                btnSystemCallBack.Invoke();
+
+            if (btnSystemCallBackBtn != null)
+                btnSystemCallBackBtn.Invoke(this);
 
             /* User callback */
-            if (mBtnCallBack != null)
-                mBtnCallBack.Invoke();
+            if (btnCallBack != null)
+                btnCallBack.Invoke();
 
-            if (mBtnCallBackBtn != null)
-                mBtnCallBackBtn.Invoke(this);
+            if (btnCallBackBtn != null)
+                btnCallBackBtn.Invoke(this);
         }
         
         /// <summary>
@@ -181,5 +197,28 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// Check if this button selected. If you are using with
+        /// the 'JCS_ButtonSelectionGroup' and 'JCS_ButtonSelection'
+        /// then you might need this check to call out the on click event.
+        /// </summary>
+        /// <returns>
+        /// true: is selected in the group.
+        /// false: vice versa.
+        /// </returns>
+        private bool IsSelected()
+        {
+            if (mButtonSelection == null)
+                return true;
+
+            if (!mButtonSelection.IsSelected())
+            {
+                // Make it selected.
+                mButtonSelection.MakeSelect();
+                return false;
+            }
+
+            return true;
+        }
     }
 }
