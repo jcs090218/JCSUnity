@@ -207,6 +207,8 @@ namespace JCSUnity
         private void LateUpdate()
         {
             GetJoystickInfo();
+
+            JCS_Input.LateUpdate();
         }
 
         //========================================
