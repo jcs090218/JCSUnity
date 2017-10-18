@@ -36,7 +36,7 @@ namespace JCSUnity
 
         [Tooltip("Active key listener?")]
         [SerializeField]
-        private bool mActive = false;
+        private bool mActive = true;
 
         [Tooltip("")]
         [SerializeField]
