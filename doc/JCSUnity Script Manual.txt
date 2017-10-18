@@ -233,7 +233,7 @@
           just calling from Unity Engine's scripting layer.
         </Description>
       </File>
-      
+
       <File name="JCS_3DThrowAction.cs">
         <Placement>Projectile.</Placement>
         <Description>
@@ -1993,6 +1993,16 @@
         </File>
       </GUI>
       <Handler>
+        <File name="JCS_GamePadButtonUIHandler.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>Switch the UI depends on if the gamepad connected?</Description>
+        </File>
+
+        <File name="JCS_GamePadSpriteHandler.cs">
+          <Placement>Any transform/node.</Placement>
+          <Desciption>Handle any sprite object when controller callback active.</Desciption>
+        </File>
+
         <File name="JCS_LiquidBarHandler.cs">
           <Placement>Script base.</Placement>
           <Description>Re-wrapper of liquid bar into friendly scripting interface.</Description>
