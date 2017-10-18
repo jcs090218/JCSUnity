@@ -11,6 +11,8 @@
 * Make JCS_Button callback compatible with Game pad system. (JCSUnity)
 * Change default button selection group controller's active variables
  to true. (JCSUnity)
+* JCS_GamePadButtonUIHandler implemented. (JCSUnity)
+* Add Dialogue system on readme file. (JCSUnity)
 
 2017-10-14
 * Make JCS_Button compatible with keyboard and gamepad input 
