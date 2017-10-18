@@ -153,6 +153,9 @@ namespace JCSUnity
             if (!mIsSelectedInGroup)
                 return;
 
+            if (!mInteractable)
+                return;
+
             /* System callback */
             if (btnSystemCallBack != null)
                 btnSystemCallBack.Invoke();
