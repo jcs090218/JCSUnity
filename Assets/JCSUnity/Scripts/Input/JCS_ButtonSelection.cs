@@ -48,9 +48,9 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ButtonSelection) **")]
 
-        [Tooltip("Deactive this button on Start time?")]
+        [Tooltip("Deactive this button on Awake time?")]
         [SerializeField]
-        private bool mDeactiveAtStart = true;
+        private bool mDeactiveAtAwake = true;
 
         [Tooltip("Button for selection group to handle.")]
         [SerializeField]
@@ -71,7 +71,7 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public bool DeactiveAtStart { get { return this.mDeactiveAtStart; } set { this.mDeactiveAtStart = value; } }
+        public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
         public UnityEvent SelectedEvent { get { return this.mSelectedEvent; } }
         public bool Active
@@ -90,19 +90,17 @@ namespace JCSUnity
         /*******************************************/
         private void Awake()
         {
+            if (mDeactiveAtAwake)
+            {
+                // Deactive every at start
+                this.Active = false;
+            }
+
             // let the button know this is going to be control in the group.
             if (mButton != null)
                 mButton.ButtonSelection = this;
         }
 
-        private void Start()
-        {
-            if (mDeactiveAtStart)
-            {
-                // Deactive every at start
-                this.Active = false;
-            }
-        }
 
         /*******************************************/
         /*              Self-Define                */
