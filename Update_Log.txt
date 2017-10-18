@@ -16,6 +16,7 @@
 * Add JCS_GamePadSpriteHandler for all kind of sprite object handle, 
  now the sprite can be change by the joystick connection. (JCSUnity)
 * Bug fixed, JCS_ButtonSelection 'mActive' to public variable 'Active'. (JCSUnity)
+* JCS_Button with separate initialize function call. (JCSUnity)
 
 2017-10-14
 * Make JCS_Button compatible with keyboard and gamepad input 
