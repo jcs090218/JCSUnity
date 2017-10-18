@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a77e45332b60c47aa1d7f36872a539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonSelectionGroup: {fileID: 0}
   mDeactiveAtAwake: 1
   mButton: {fileID: 318557157}
   mSelectedEvent:
@@ -620,6 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1759,6 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a77e45332b60c47aa1d7f36872a539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonSelectionGroup: {fileID: 0}
   mDeactiveAtAwake: 1
   mButton: {fileID: 1201376773}
   mSelectedEvent:
@@ -1865,6 +1868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -2212,6 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a77e45332b60c47aa1d7f36872a539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mButtonSelectionGroup: {fileID: 0}
   mDeactiveAtAwake: 1
   mButton: {fileID: 2006004933}
   mSelectedEvent:
@@ -2247,7 +2252,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: c6938010935bd7a44b850bdaac7c5bc6,
+      type: 3}
     m_PressedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2318,6 +2324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
