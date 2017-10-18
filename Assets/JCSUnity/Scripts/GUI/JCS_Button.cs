@@ -116,9 +116,23 @@ namespace JCSUnity
         /*******************************************/
         protected virtual void Awake()
         {
-            mRectTransform = this.GetComponent<RectTransform>();
-            mButton = this.GetComponent<Button>();
-            mImage = this.GetComponent<Image>();
+            InitJCSButton();
+        }
+
+        /*******************************************/
+        /*              Self-Define                */
+        /*******************************************/
+        //----------------------
+        // Public Functions
+
+        /// <summary>
+        /// Intialize jcs button once.
+        /// </summary>
+        public void InitJCSButton()
+        {
+            this.mRectTransform = this.GetComponent<RectTransform>();
+            this.mButton = this.GetComponent<Button>();
+            this.mImage = this.GetComponent<Image>();
 
             // try to get the text from the child.
             if (mButtonText == null)
@@ -134,12 +148,6 @@ namespace JCSUnity
             SetInteractable();
         }
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-        
         /// <summary>
         /// Default function to call this, so we dont have to
         /// search the function depends on name.
@@ -178,6 +186,12 @@ namespace JCSUnity
         public virtual void SetInteractable(bool act)
         {
             mInteractable = act;
+
+            /* Make sure no error! */
+            {
+                if (mButton == null)
+                    InitJCSButton();
+            }
             mButton.enabled = mInteractable;
 
             if (mInteractable)
