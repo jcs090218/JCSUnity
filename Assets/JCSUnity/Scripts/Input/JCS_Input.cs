@@ -81,6 +81,9 @@ namespace JCSUnity
         MIDDLE = 2
     };
 
+    public delegate void JoystickPlugged();  // Callback when joystick is plugged.
+    public delegate void JoystickUnPlugged();  // Callback when joystick is unplugged.
+
     /// <summary>
     /// Unity's Input class re-wrapper.
     /// </summary>
@@ -95,6 +98,51 @@ namespace JCSUnity
         private static Dictionary<string, bool>
             mJoystickKeyReleased = new Dictionary<string, bool>();
 
+        public static JoystickPlugged joystickPluggedCallback = JoystickPluggedDefaultCallback;
+        public static JoystickUnPlugged joystickUnPluggedCallback = JoystickUnPluggedDefaultCallback;
+
+        // record down the if the joystick was connected.
+        private static bool mIsJoystickConnected = IsJoystickConnected();
+
+
+        /* Default callback function pointer. */
+        private static void JoystickPluggedDefaultCallback() { JCS_Debug.Log("At least one joystick connected!!!"); }
+        private static void JoystickUnPluggedDefaultCallback() { JCS_Debug.Log("No joystick connected..."); }
+
+
+        /// <summary>
+        /// Main loop for input.
+        /// </summary>
+        public static void LateUpdate()
+        {
+            DoJoystcikCallback();
+        }
+
+        /// <summary>
+        /// Do one callback, usually for resetting.
+        /// </summary>
+        public static void InputCallbackOnce()
+        {
+            if (mIsJoystickConnected)
+                joystickPluggedCallback.Invoke();
+            else
+                joystickUnPluggedCallback.Invoke();
+        }
+
+        /// <summary>
+        /// Do the joystick callback.
+        /// </summary>
+        private static void DoJoystcikCallback()
+        {
+            if (mIsJoystickConnected == IsJoystickConnected())
+                return;
+
+            mIsJoystickConnected = IsJoystickConnected();
+
+            InputCallbackOnce();
+        }
+
+        //----------------------------------------------------------------------
 
         /// <summary>
         /// This sould be in the Update() function.
@@ -777,7 +825,7 @@ namespace JCSUnity
         /// </returns>
         public static bool IsJoystickConnected()
         {
-            return (Input.GetJoystickNames().Length != 0);
+            return (Input.GetJoystickNames().Length != 0 && Input.GetJoystickNames()[0] != "");
         }
 
     }
