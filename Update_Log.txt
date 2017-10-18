@@ -9,6 +9,8 @@
 
 2017-10-18
 * Make JCS_Button callback compatible with Game pad system. (JCSUnity)
+* Change default button selection group controller's active variables
+ to true. (JCSUnity)
 
 2017-10-14
 * Make JCS_Button compatible with keyboard and gamepad input 
