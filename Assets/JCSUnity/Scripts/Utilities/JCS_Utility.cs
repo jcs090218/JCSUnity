@@ -96,6 +96,62 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// With in array range. (Array)
+        /// </summary>
+        /// <returns></returns>
+        public static bool WithInArrayRange<T>(int index, T[] arr)
+        {
+            return index >= 0 && index < arr.Length;
+        }
+
+        /// <summary>
+        /// With in array range. (List)
+        /// </summary>
+        /// <returns></returns>
+        public static bool WithInArrayRange<T>(int index, List<T> arr)
+        {
+            return index >= 0 && index < arr.Count;
+        }
+
+        /// <summary>
+        /// Loop in an array. (Array)
+        /// </summary>
+        /// <typeparam name="T"> Type. </typeparam>
+        /// <param name="index"> Index </param>
+        /// <param name="arr"> Array. </param>
+        /// <returns> index that looped. </returns>
+        public static int LoopInArray<T>(int index, T[] arr)
+        {
+            // loop through the array, if at the tail of the array set it to head.
+            if (index < 0)
+                index = arr.Length - 1;
+            // loop through the array, if at head of the array we set it to the tail.
+            else if (index >= arr.Length)
+                index = 0;
+
+            return index;
+        }
+
+        /// <summary>
+        /// Loop in an array. (List)
+        /// </summary>
+        /// <typeparam name="T"> Type. </typeparam>
+        /// <param name="index"> Index </param>
+        /// <param name="arr"> List. </param>
+        /// <returns> index that looped. </returns>
+        public static int LoopInArray<T>(int index, List<T> arr)
+        {
+            // loop through the array, if at the tail of the array set it to head.
+            if (index < 0)
+                index = arr.Count - 1;
+            // loop through the array, if at head of the array we set it to the tail.
+            else if (index >= arr.Count)
+                index = 0;
+
+            return index;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="img"></param>
