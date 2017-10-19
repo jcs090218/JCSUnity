@@ -7,6 +7,12 @@
 # ========================================================================
 
 
+2017-10-19
+* loop through the array and index in array range check functions added
+ for utility layer. (JCSUnity)
+* JCS_ButtonSelection and JCS_ButtonSelectionGroup, make compatible with
+ 'skip' functionality. (JCSUnity)
+
 2017-10-18
 * Make JCS_Button callback compatible with Game pad system. (JCSUnity)
 * Change default button selection group controller's active variables
