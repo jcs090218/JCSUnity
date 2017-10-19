@@ -4068,7 +4068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mActive: 0
   mDeactiveAtAwake: 1
-  mSkip: 0
+  mSkip: 1
   mSelfAsButton: 1
   mButton: {fileID: 1418999802}
   mSelectedEvent:
@@ -4570,7 +4570,7 @@ MonoBehaviour:
   mUpSelection: {fileID: 822500581}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 2133118}
-  mLeftSelection: {fileID: 0}
+  mLeftSelection: {fileID: 659854523}
 --- !u!114 &1591159490
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,7 +29,19 @@ namespace JCSUnity
         /*******************************************/
 
         // Callback triggered when selection has changed.
-        public SelectionChanged selectionChanged = null;        
+        public SelectionChanged selectionChanged = null;
+
+        /// <summary>
+        /// Direction of this control.
+        /// </summary>
+        public enum Direction
+        {
+            UP,
+            DOWN,
+            RIGHT,
+            LEFT,  
+        };
+
 
         /*******************************************/
         /*           Private Variables             */
@@ -253,7 +265,10 @@ selection is not in the group...");
             if (IsAllSelectionsSkip())
                 return;
 
-            SelectSelection(mSelections[mCurrentSelectIndex].UpSelection);
+            if (IsAllSelectionsIsSkipUp())
+                return;
+
+            SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.UP));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
@@ -268,7 +283,10 @@ selection is not in the group...");
             if (IsAllSelectionsSkip())
                 return;
 
-            SelectSelection(mSelections[mCurrentSelectIndex].DownSelection);
+            if (IsAllSelectionsIsSkipDown())
+                return;
+
+            SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.DOWN));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
@@ -283,7 +301,10 @@ selection is not in the group...");
             if (IsAllSelectionsSkip())
                 return;
 
-            SelectSelection(mSelections[mCurrentSelectIndex].RightSelection);
+            if (IsAllSelectionsIsSkipRight())
+                return;
+
+            SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.RIGHT));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
@@ -298,11 +319,113 @@ selection is not in the group...");
             if (IsAllSelectionsSkip())
                 return;
 
-            SelectSelection(mSelections[mCurrentSelectIndex].LeftSelection);
+            if (IsAllSelectionsIsSkipLeft())
+                return;
+
+            SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.LEFT));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
                 LeftSelection();
+        }
+
+        /// <summary>
+        /// Is all the button selections in Up starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        public bool IsAllSelectionsIsSkipUp()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.UP);
+        }
+
+        /// <summary>
+        /// Is all the button selections in Down starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        public bool IsAllSelectionsIsSkipDown()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.DOWN);
+        }
+
+        /// <summary>
+        /// Is all the button selections in Right starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        public bool IsAllSelectionsIsSkipRight()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.RIGHT);
+        }
+
+        /// <summary>
+        /// Is all the button selections in Left starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        public bool IsAllSelectionsIsSkipLeft()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.LEFT);
+        }
+
+        /// <summary>
+        /// Is all the button selection in this direction skip?
+        /// </summary>
+        /// <param name="bs"> starting button selection. </param>
+        /// <param name="direction"> direction to loop to. </param>
+        /// <returns>
+        /// true: yes, all selections in this direction about this button selection is skip!
+        /// false: no, at least on selection is not skip in this direction behind this diection.
+        /// </returns>
+        public bool IsAllSelectionsIsSkipDirection(JCS_ButtonSelection bs, Direction direction)
+        {
+            JCS_ButtonSelection newBs = GetButtonSelectionByDirection(bs, direction);
+
+            // if the chain break, meaning all the selections is skip in 
+            // this direction.
+            if (newBs == null)
+                return true;
+
+            // if not skip, break the loop.
+            if (!newBs.Skip)
+                return false;
+
+            return IsAllSelectionsIsSkipDirection(newBs, direction);
+        }
+
+        /// <summary>
+        /// Get the selection depends on the direction.
+        /// </summary>
+        /// <param name="bs"> Button Selection object to use to find out the actual button selection. </param>
+        /// <param name="direction"> Target direction. </param>
+        /// <returns>
+        /// Button selection in target button selection's up/down/right/left button selection.
+        /// </returns>
+        public JCS_ButtonSelection GetButtonSelectionByDirection(JCS_ButtonSelection bs, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.UP: return bs.UpSelection;
+                case Direction.DOWN: return bs.DownSelection;
+                case Direction.RIGHT: return bs.RightSelection;
+                case Direction.LEFT: return bs.LeftSelection;
+            }
+
+            JCS_Debug.Log("Failed to get button selection by direction, this should not happens...");
+            return null;
         }
 
         //----------------------
