@@ -136,7 +136,10 @@ namespace JCSUnity
             }
 
             if (mSelfAsButton)
-                this.mButton = this.GetComponent<JCS_Button>();
+            {
+                if (this.mButton == null)
+                    this.mButton = this.GetComponent<JCS_Button>();
+            }
 
             // let the button know this is going to be control in the group.
             if (mButton != null)
