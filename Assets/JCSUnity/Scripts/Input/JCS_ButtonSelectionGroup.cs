@@ -107,9 +107,10 @@ namespace JCSUnity
         {
             CloseSelection();
 
-            // only enable the first one.
-            if (mSelections.Count != 0)
-                mSelections[0].Active = true;
+            mCurrentSelectIndex = mSelections.Count;
+
+            if (!IsAllSelectionSkip())
+                NextSelection();
         }
 
         /// <summary>
@@ -136,10 +137,17 @@ namespace JCSUnity
         /// </summary>
         public void NextSelection()
         {
+            if (IsAllSelectionSkip())
+                return;
+
             int tempSelectIndex = mCurrentSelectIndex;
             ++tempSelectIndex;
 
             SelectSelection(tempSelectIndex);
+
+            // if skip keep looking for the next selection.
+            if (mSelections[mCurrentSelectIndex].Skip)
+                NextSelection();
         }
 
         /// <summary>
@@ -147,10 +155,17 @@ namespace JCSUnity
         /// </summary>
         public void PrevSelection()
         {
+            if (IsAllSelectionSkip())
+                return;
+
             int tempSelectIndex = mCurrentSelectIndex;
             --tempSelectIndex;
 
             SelectSelection(tempSelectIndex);
+
+            // if skip keep looking for the previous selection.
+            if (mSelections[mCurrentSelectIndex].Skip)
+                PrevSelection();
         }
 
         /// <summary>
@@ -163,17 +178,15 @@ namespace JCSUnity
             if (mCurrentSelectIndex == selectionIndex)
                 return;
 
-            // disable current active selection.
-            mSelections[mCurrentSelectIndex].Active = false;
+            if (JCS_Utility.WithInArrayRange(mCurrentSelectIndex, mSelections))
+            {
+                // disable current active selection.
+                mSelections[mCurrentSelectIndex].Active = false;
+            }
 
             this.mCurrentSelectIndex = selectionIndex;
 
-            // loop through the array, if at the tail of the array set it to head.
-            if (mCurrentSelectIndex < 0)
-                mCurrentSelectIndex = mSelections.Count - 1;
-            // loop through the array, if at head of the array we set it to the tail.
-            else if (mCurrentSelectIndex >= mSelections.Count)
-                mCurrentSelectIndex = 0;
+            this.mCurrentSelectIndex = JCS_Utility.LoopInArray(this.mCurrentSelectIndex, mSelections);
 
             // active the new active selection.
             mSelections[mCurrentSelectIndex].Active = true;
@@ -208,6 +221,25 @@ namespace JCSUnity
 
             JCS_Debug.LogError(@"Try to select a selection, but seems like the 
 selection is not in the group...");
+        }
+
+        /// <summary>
+        /// Check if all selections are skipped?
+        /// </summary>
+        /// <returns>
+        /// true: all selections are skipped.
+        /// false: at least one selection is not skipped.
+        /// </returns>
+        public bool IsAllSelectionSkip()
+        {
+            foreach (JCS_ButtonSelection item in mSelections)
+            {
+                if (!item.Skip)
+                    return false;
+            }
+
+            CloseSelection();
+            return true;
         }
 
         //----------------------

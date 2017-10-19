@@ -43,14 +43,23 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_ButtonSelection) **")]
 
+        [Tooltip("Is this selection got active?")]
+        [SerializeField]
         private bool mActive = false;
 
 
-        [Header("** Runtime Variables (JCS_ButtonSelection) **")]
+        [Header("** Initialize Variables (JCS_ButtonSelection) **")]
 
         [Tooltip("Deactive this button on Awake time?")]
         [SerializeField]
         private bool mDeactiveAtAwake = true;
+
+
+        [Header("** Runtime Variables (JCS_ButtonSelection) **")]
+
+        [Tooltip("Skip this selection?")]
+        [SerializeField]
+        private bool mSkip = false;
 
         [Tooltip("Button for selection group to handle.")]
         [SerializeField]
@@ -84,6 +93,7 @@ namespace JCSUnity
             }
         }
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
+        public bool Skip { get { return this.mSkip; } set { this.mSkip = value; } }
 
         /*******************************************/
         /*            Unity's function             */
