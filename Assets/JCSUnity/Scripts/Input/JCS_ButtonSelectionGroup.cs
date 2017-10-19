@@ -73,7 +73,7 @@ namespace JCSUnity
         private void Start()
         {
             // reset once.
-            ResetSelection();
+            ResetAllSelections();
         }
 
         /*******************************************/
@@ -103,20 +103,20 @@ namespace JCSUnity
         /// <summary>
         /// Reset everytime a player enter a area.
         /// </summary>
-        public void ResetSelection()
+        public void ResetAllSelections()
         {
-            CloseSelection();
+            CloseAllSelections();
 
             mCurrentSelectIndex = mSelections.Count;
 
-            if (!IsAllSelectionSkip())
+            if (!IsAllSelectionsSkip())
                 NextSelection();
         }
 
         /// <summary>
         /// Close the selection area. Nothing will be high-lighted.
         /// </summary>
-        public void CloseSelection()
+        public void CloseAllSelections()
         {
             foreach (JCS_ButtonSelection item in mSelections)
                 item.Active = false;
@@ -137,7 +137,7 @@ namespace JCSUnity
         /// </summary>
         public void NextSelection()
         {
-            if (IsAllSelectionSkip())
+            if (IsAllSelectionsSkip())
                 return;
 
             int tempSelectIndex = mCurrentSelectIndex;
@@ -155,7 +155,7 @@ namespace JCSUnity
         /// </summary>
         public void PrevSelection()
         {
-            if (IsAllSelectionSkip())
+            if (IsAllSelectionsSkip())
                 return;
 
             int tempSelectIndex = mCurrentSelectIndex;
@@ -230,7 +230,7 @@ selection is not in the group...");
         /// true: all selections are skipped.
         /// false: at least one selection is not skipped.
         /// </returns>
-        public bool IsAllSelectionSkip()
+        public bool IsAllSelectionsSkip()
         {
             foreach (JCS_ButtonSelection item in mSelections)
             {
@@ -238,7 +238,7 @@ selection is not in the group...");
                     return false;
             }
 
-            CloseSelection();
+            CloseAllSelections();
             return true;
         }
 
