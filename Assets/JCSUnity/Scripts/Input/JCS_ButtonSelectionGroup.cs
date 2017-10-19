@@ -56,6 +56,13 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ButtonSelectionGroup) **")]
 
+        [Tooltip("While reseting the selections this will get choose to be the first selected selection.")]
+        [SerializeField]
+        private JCS_ButtonSelection mStartingSelection = null;
+
+
+        [Header("** Runtime Variables (JCS_ButtonSelectionGroup) **")]
+
         [Tooltip("")]
         [SerializeField]
         private List<JCS_ButtonSelection> mSelections = null;
@@ -67,6 +74,7 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public JCS_ButtonSelection StartingSelection { get { return this.mStartingSelection; } set { this.mStartingSelection = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -119,10 +127,21 @@ namespace JCSUnity
         {
             CloseAllSelections();
 
-            mCurrentSelectIndex = mSelections.Count;
+            // start with the starting selection.
+            if (mStartingSelection != null && !mStartingSelection.Skip)
+            {
+                mCurrentSelectIndex = -1;
 
-            if (!IsAllSelectionsSkip())
-                NextSelection();
+                SelectSelection(mStartingSelection);
+            }
+            /* If not start with starting selection, find the next one automatically. */
+            else
+            {
+                mCurrentSelectIndex = mSelections.Count;
+
+                if (!IsAllSelectionsSkip())
+                    NextSelection();
+            }
         }
 
         /// <summary>

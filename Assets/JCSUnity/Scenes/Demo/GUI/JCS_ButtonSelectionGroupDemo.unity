@@ -4401,6 +4401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCurrentSelectIndex: 0
+  mStartingSelection: {fileID: 2137836487}
   mSelections:
   - {fileID: 2137836487}
   - {fileID: 1418999803}
@@ -4879,6 +4880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCurrentSelectIndex: 0
+  mStartingSelection: {fileID: 2006004929}
   mSelections:
   - {fileID: 2006004929}
   - {fileID: 1201376769}
