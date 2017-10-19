@@ -14,6 +14,9 @@
  'skip' functionality. (JCSUnity)
 * JCS_ButtonSelectionGroup with proper function naming design, mainly
  pural issue. (JCSUnity)
+* Update JCS_ButtonSelection, JCS_ButtonSelectionGroup and 
+ JCS_ButtonSelectionGroupController with full control which
+ is the 4 directions/2 dimensional control. (JCSUnity)
 
 2017-10-18
 * Make JCS_Button callback compatible with Game pad system. (JCSUnity)
