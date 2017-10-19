@@ -181,6 +181,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 2133117}
   mSelectedEvent:
     m_PersistentCalls:
@@ -861,6 +862,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 239369780}
   mSelectedEvent:
     m_PersistentCalls:
@@ -1086,6 +1088,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 318557157}
   mSelectedEvent:
     m_PersistentCalls:
@@ -1585,6 +1588,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 584258739}
   mSelectedEvent:
     m_PersistentCalls:
@@ -1783,6 +1787,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 659854522}
   mSelectedEvent:
     m_PersistentCalls:
@@ -2464,6 +2469,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 822500580}
   mSelectedEvent:
     m_PersistentCalls:
@@ -3392,6 +3398,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 1
+  mSelfAsButton: 1
   mButton: {fileID: 1201376773}
   mSelectedEvent:
     m_PersistentCalls:
@@ -3736,6 +3743,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 1286163028}
   mSelectedEvent:
     m_PersistentCalls:
@@ -4061,6 +4069,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 1418999802}
   mSelectedEvent:
     m_PersistentCalls:
@@ -4549,6 +4558,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 1591159488}
   mSelectedEvent:
     m_PersistentCalls:
@@ -5029,6 +5039,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 1716458938}
   mSelectedEvent:
     m_PersistentCalls:
@@ -5566,6 +5577,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 1
+  mSelfAsButton: 1
   mButton: {fileID: 2006004933}
   mSelectedEvent:
     m_PersistentCalls:
@@ -5830,6 +5842,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 2066270075}
   mSelectedEvent:
     m_PersistentCalls:
@@ -6000,6 +6013,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mSelfAsButton: 1
   mButton: {fileID: 2137836486}
   mSelectedEvent:
     m_PersistentCalls:

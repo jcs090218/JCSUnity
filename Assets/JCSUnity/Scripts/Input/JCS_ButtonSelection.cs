@@ -61,6 +61,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mSkip = false;
 
+        [Tooltip("This gameobject itself is a button and use this button component.")]
+        [SerializeField]
+        private bool mSelfAsButton = true;
+
         [Tooltip("Button for selection group to handle.")]
         [SerializeField]
         private JCS_Button mButton = null;
@@ -100,6 +104,7 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
+        public bool SelfAsButton { get { return this.mSelfAsButton; } set { this.mSelfAsButton = value; } }
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
         public UnityEvent SelectedEvent { get { return this.mSelectedEvent; } }
         public bool Active
@@ -129,6 +134,9 @@ namespace JCSUnity
                 // Deactive every at start
                 this.Active = false;
             }
+
+            if (mSelfAsButton)
+                this.mButton = this.GetComponent<JCS_Button>();
 
             // let the button know this is going to be control in the group.
             if (mButton != null)
