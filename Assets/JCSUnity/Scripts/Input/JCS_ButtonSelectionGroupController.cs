@@ -57,6 +57,24 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mMOkay = KeyCode.None;
 
+        [Header("- Full Control Settings / Keyboard (JCS_ButtonSelectionGroupController)")]
+
+        [Tooltip("Up select key.")]
+        [SerializeField]
+        private KeyCode mMUp = KeyCode.None;
+
+        [Tooltip("Down select key.")]
+        [SerializeField]
+        private KeyCode mMDown = KeyCode.None;
+
+        [Tooltip("Right select key.")]
+        [SerializeField]
+        private KeyCode mMRight = KeyCode.None;
+
+        [Tooltip("Left select key.")]
+        [SerializeField]
+        private KeyCode mMLeft = KeyCode.None;
+
 
         [Header("- Game Pad Settings (JCS_ButtonSelectionGroupController)")]
 
@@ -76,6 +94,26 @@ namespace JCSUnity
         [Tooltip("Okay for this selection. (Game Pad)")]
         [SerializeField]
         private JCS_JoystickButton mJOkay = JCS_JoystickButton.NONE;
+
+
+        [Header("- Full Control Settings / Game Pad (JCS_ButtonSelectionGroupController)")]
+
+        [Tooltip("Up select key.")]
+        [SerializeField]
+        private JCS_JoystickButton mJUp = JCS_JoystickButton.NONE;
+
+        [Tooltip("Down select key.")]
+        [SerializeField]
+        private JCS_JoystickButton mJDown = JCS_JoystickButton.NONE;
+
+        [Tooltip("Right select key.")]
+        [SerializeField]
+        private JCS_JoystickButton mJRight = JCS_JoystickButton.NONE;
+
+        [Tooltip("Left select key.")]
+        [SerializeField]
+        private JCS_JoystickButton mJLeft = JCS_JoystickButton.NONE;
+
 
         /*******************************************/
         /*           Protected Variables           */
@@ -99,14 +137,28 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            if (ActiveNext())
-                mButtonSelectionGroup.NextSelection();
-
-            if (ActivePrev())
-                mButtonSelectionGroup.PrevSelection();
+            /* Basic Control (One Dimensional) */
+            {
+                if (ActiveNext())
+                    mButtonSelectionGroup.NextSelection();
+                if (ActivePrev())
+                    mButtonSelectionGroup.PrevSelection();
+            }
 
             if (ActiveOkay())
                 mButtonSelectionGroup.OkaySelection();
+
+            /* Full Contol (Two Dimensional) */
+            {
+                if (ActiveUp())
+                    mButtonSelectionGroup.UpSelection();
+                if (ActiveDown())
+                    mButtonSelectionGroup.DownSelection();
+                if (ActiveRight())
+                    mButtonSelectionGroup.RightSelection();
+                if (ActiveLeft())
+                    mButtonSelectionGroup.LeftSelection();
+            }
         }
 
         /*******************************************/
@@ -149,6 +201,46 @@ namespace JCSUnity
         {
             return JCS_Input.GetKeyByAction(mKeyActionType, mMOkay) ||
                 JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJOkay);
+        }
+
+        /// <summary>
+        /// Acitve up selection.
+        /// </summary>
+        /// <returns></returns>
+        private bool ActiveUp()
+        {
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMUp) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJUp);
+        }
+
+        /// <summary>
+        /// Acitve up selection.
+        /// </summary>
+        /// <returns></returns>
+        private bool ActiveDown()
+        {
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMDown) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJDown);
+        }
+
+        /// <summary>
+        /// Acitve up selection.
+        /// </summary>
+        /// <returns></returns>
+        private bool ActiveRight()
+        {
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMRight) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJRight);
+        }
+
+        /// <summary>
+        /// Acitve up selection.
+        /// </summary>
+        /// <returns></returns>
+        private bool ActiveLeft()
+        {
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMLeft) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJLeft);
         }
 
     }

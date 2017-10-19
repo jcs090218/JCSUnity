@@ -73,6 +73,25 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject[] mEffects = null;
 
+
+        [Header("- Full Control (JCS_ButtonSelection)")]
+
+        [Tooltip("What is the selection ontop of this selection? (Press Up)")]
+        [SerializeField]
+        private JCS_ButtonSelection mUpSelection = null;
+
+        [Tooltip("What is the selection ontop of this selection? (Press Down)")]
+        [SerializeField]
+        private JCS_ButtonSelection mDownSelection = null;
+
+        [Tooltip("What is the selection ontop of this selection? (Press Right)")]
+        [SerializeField]
+        private JCS_ButtonSelection mRightSelection = null;
+
+        [Tooltip("What is the selection ontop of this selection? (Press Left)")]
+        [SerializeField]
+        private JCS_ButtonSelection mLeftSelection = null;
+
         /*******************************************/
         /*           Protected Variables           */
         /*******************************************/
@@ -94,6 +113,11 @@ namespace JCSUnity
         }
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
         public bool Skip { get { return this.mSkip; } set { this.mSkip = value; } }
+
+        public JCS_ButtonSelection UpSelection { get { return this.mUpSelection; } set { this.mUpSelection = value; } }
+        public JCS_ButtonSelection DownSelection { get { return this.mDownSelection; } set { this.mDownSelection = value; } }
+        public JCS_ButtonSelection RightSelection { get { return this.mRightSelection; } set { this.mRightSelection = value; } }
+        public JCS_ButtonSelection LeftSelection { get { return this.mLeftSelection; } set { this.mLeftSelection = value; } }
 
         /*******************************************/
         /*            Unity's function             */

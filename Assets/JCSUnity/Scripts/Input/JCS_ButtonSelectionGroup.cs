@@ -133,7 +133,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Change to the next button selection.
+        /// Change to the next button selection. (One dimensional)
         /// </summary>
         public void NextSelection()
         {
@@ -151,7 +151,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Change to the previous button selection.
+        /// Change to the previous button selection. (One dimensional)
         /// </summary>
         public void PrevSelection()
         {
@@ -200,6 +200,9 @@ namespace JCSUnity
         /// <param name="selection"> selection to select. </param>
         public void SelectSelection(JCS_ButtonSelection selection)
         {
+            if (selection == null)
+                return;
+
             /* 
              * Time complexity: O(n)
              * 
@@ -240,6 +243,66 @@ selection is not in the group...");
 
             CloseAllSelections();
             return true;
+        }
+
+        /// <summary>
+        /// Select the selection on the top. (Two Dimensional)
+        /// </summary>
+        public void UpSelection()
+        {
+            if (IsAllSelectionsSkip())
+                return;
+
+            SelectSelection(mSelections[mCurrentSelectIndex].UpSelection);
+
+            // if skip keep looking for the previous selection.
+            if (mSelections[mCurrentSelectIndex].Skip)
+                UpSelection();
+        }
+
+        /// <summary>
+        /// Select the selection on the down. (Two Dimensional)
+        /// </summary>
+        public void DownSelection()
+        {
+            if (IsAllSelectionsSkip())
+                return;
+
+            SelectSelection(mSelections[mCurrentSelectIndex].DownSelection);
+
+            // if skip keep looking for the previous selection.
+            if (mSelections[mCurrentSelectIndex].Skip)
+                DownSelection();
+        }
+
+        /// <summary>
+        /// Select the selection on the right. (Two Dimensional)
+        /// </summary>
+        public void RightSelection()
+        {
+            if (IsAllSelectionsSkip())
+                return;
+
+            SelectSelection(mSelections[mCurrentSelectIndex].RightSelection);
+
+            // if skip keep looking for the previous selection.
+            if (mSelections[mCurrentSelectIndex].Skip)
+                RightSelection();
+        }
+
+        /// <summary>
+        /// /// Select the selection on the left. (Two Dimensional)
+        /// </summary>
+        public void LeftSelection()
+        {
+            if (IsAllSelectionsSkip())
+                return;
+
+            SelectSelection(mSelections[mCurrentSelectIndex].LeftSelection);
+
+            // if skip keep looking for the previous selection.
+            if (mSelections[mCurrentSelectIndex].Skip)
+                LeftSelection();
         }
 
         //----------------------
