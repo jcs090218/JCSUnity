@@ -39,7 +39,7 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        public JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
+        private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
         [Header("** Check Variables (JCS_ButtonSelection) **")]
 
