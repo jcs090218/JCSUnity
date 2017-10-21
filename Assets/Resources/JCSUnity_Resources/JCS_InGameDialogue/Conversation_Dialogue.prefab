@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 11409156}
   - component: {fileID: 11470692}
   m_Layer: 5
-  m_Name: JCS_DialogueSystem
+  m_Name: Conversation_Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
