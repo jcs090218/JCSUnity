@@ -63,11 +63,11 @@ namespace JCSUnity
             {
                 /* For Mouse. */
                 {
-                    //jcsDs.SendNextPrev("Make a selection...");
+                    jcsDs.SendNextPrev("Make a selection...");
                 }
                 /* For Game Pad/Controller/Joystick. */
                 {
-                    jcsDs.SendEmpty("Make a selection...");
+                    //jcsDs.SendEmpty("Make a selection...");
                 }
 
                 //jcsDs.SendChoice(0, "Selection 01");
