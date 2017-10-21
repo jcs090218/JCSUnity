@@ -100,7 +100,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Rset status.
         /// </summary>
         public void ResetAction()
         {

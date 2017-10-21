@@ -148,6 +148,12 @@ namespace JCSUnity
         private string mSelectStringFront = "#L" + 0 + "##b";
         private string mSelectStringBack = "#k#l";
 
+        [Header("- Game Pad Settings (JCS_DialogueSystem)")]
+
+        [Tooltip("Button selection group for this dialogue system.")]
+        [SerializeField]
+        private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
+
 
         //----------------------
         // Protected Variables
@@ -158,6 +164,7 @@ namespace JCSUnity
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
         public string SelectStringBack { get { return this.mSelectStringBack; } }
+        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
 
         //========================================
         //      Unity's function
@@ -253,17 +260,20 @@ namespace JCSUnity
                     "There are space in the array but does no assign the value...");
                 return;
             }
-            
 
             // set the text to the button.
             mSelectMessage[index] = msg;
 
             // active the button.
             SelectBtnActive(index, true);
+
+            // Reset button selection group to make the selection
+            // pointer/effect to the first selection!
+            ResetButtonSelectionGroup();
         }
 
         /// <summary>
-        /// 
+        /// Next button is the only option for current status.
         /// </summary>
         /// <param name="msg"></param>
         public void SendNext(string msg)
@@ -273,6 +283,9 @@ namespace JCSUnity
 
             YesBtnActive(false);
             NoBtnActive(false);
+
+            AcceptBtnActive(false);
+            DeclineBtnActive(false);
 
             OkBtnActive(false);
 
@@ -284,7 +297,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Current status will  be next and prev control/options.
+        /// Current status will be next and prev control/options.
         /// </summary>
         /// <param name="msg"></param>
         public void SendNextPrev(string msg)
@@ -294,6 +307,9 @@ namespace JCSUnity
 
             YesBtnActive(false);
             NoBtnActive(false);
+
+            AcceptBtnActive(false);
+            DeclineBtnActive(false);
 
             OkBtnActive(false);
 
@@ -316,6 +332,9 @@ namespace JCSUnity
             YesBtnActive(false);
             NoBtnActive(false);
 
+            AcceptBtnActive(false);
+            DeclineBtnActive(false);
+
             OkBtnActive(true);
 
             // should always enabled, except dispose
@@ -336,6 +355,9 @@ namespace JCSUnity
 
             YesBtnActive(true);
             NoBtnActive(true);
+
+            AcceptBtnActive(false);
+            DeclineBtnActive(false);
 
             OkBtnActive(false);
 
@@ -358,6 +380,9 @@ namespace JCSUnity
             YesBtnActive(false);
             NoBtnActive(false);
 
+            AcceptBtnActive(false);
+            DeclineBtnActive(false);
+
             OkBtnActive(false);
 
             // should always enabled, except dispose
@@ -379,13 +404,39 @@ namespace JCSUnity
             YesBtnActive(false);
             NoBtnActive(false);
 
+            AcceptBtnActive(true);
+            DeclineBtnActive(true);
+
             OkBtnActive(false);
 
             // should always enabled, except dispose
             ExitBtnActive(true);
 
-            AcceptBtnActive(true);
-            DeclineBtnActive(true);
+            mMessage = msg;
+            mScrolling = true;
+        }
+
+        /// <summary>
+        /// Send Empty option, expect selections take over it.
+        /// 
+        /// NOTE(jenchieh): Will better if use Game Pad/Controller/Joystick.
+        /// </summary>
+        /// <param name="msg"></param>
+        public void SendEmpty(string msg)
+        {
+            NextBtnActive(false);
+            PrevBtnActive(false);
+
+            YesBtnActive(false);
+            NoBtnActive(false);
+
+            AcceptBtnActive(false);
+            DeclineBtnActive(false);
+
+            OkBtnActive(false);
+
+            // should always enabled, except dispose
+            ExitBtnActive(true);
 
             mMessage = msg;
             mScrolling = true;
@@ -401,6 +452,9 @@ namespace JCSUnity
 
             YesBtnActive(false);
             NoBtnActive(false);
+
+            AcceptBtnActive(false);
+            DeclineBtnActive(false);
 
             OkBtnActive(false);
 
@@ -447,6 +501,21 @@ namespace JCSUnity
             SendCenterImage(mTransparentSprite);
             SendLeftImage(mTransparentSprite);
             SendRightImage(mTransparentSprite);
+
+            ResetButtonSelectionGroup();
+        }
+
+        /// <summary>
+        /// Reset the button selection group for dialogue system's 
+        /// selections.
+        /// </summary>
+        private void ResetButtonSelectionGroup()
+        {
+            if (mButtonSelectionGroup == null)
+                return;
+
+            // reset selections for gamepad selection choice.
+            mButtonSelectionGroup.ResetAllSelections();
         }
 
         /// <summary>
@@ -617,7 +686,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Do the scrolling animation for selection buttons text.
         /// </summary>
         private void ScrollSelectBtnText()
         {
@@ -783,10 +852,8 @@ namespace JCSUnity
         /// <param name="act"></param>
         private void DeclineBtnActive(bool act)
         {
-#if (UNITY_EDITOR)
             if (mDeclineBtn == null)
                 return;
-#endif
 
             mDeclineBtn.gameObject.SetActive(act);
         }
@@ -797,10 +864,15 @@ namespace JCSUnity
         /// <param name="act"></param>
         private void SelectBtnActive(int index, bool act)
         {
-            if (mSelectBtn[index] == null)
+            JCS_Button selectBtn = mSelectBtn[index];
+
+            if (selectBtn == null)
                 return;
 
-            mSelectBtn[index].gameObject.SetActive(act);
+            selectBtn.gameObject.SetActive(act);
+
+            if (selectBtn.ButtonSelection != null)
+                selectBtn.ButtonSelection.Skip = !act;
         }
         /// <summary>
         /// 
@@ -919,31 +991,7 @@ namespace JCSUnity
                 if (btn == null)
                     continue;
 
-                switch (index)
-                {
-                    case 0:
-                        btn.SetSystemCallback(SelectionZero);
-                        break;
-                    case 1:
-                        btn.SetSystemCallback(SelectionOne);
-                        break;
-                    case 2:
-                        btn.SetSystemCallback(SelectionTwo);
-                        break;
-                    case 3:
-                        btn.SetSystemCallback(SelectionThree);
-                        break;
-                    case 4:
-                        btn.SetSystemCallback(SelectionFour);
-                        break;
-                    case 5:
-                        btn.SetSystemCallback(SelectionFive);
-                        break;
-                    case 6:
-                        btn.SetSystemCallback(SelectionSix);
-                        break;
-                }
-                
+                btn.SetSystemCallback(SelectionInt, index);
             }
         }
 
@@ -1086,13 +1134,11 @@ namespace JCSUnity
             RunAction();
         }
 
-        private void SelectionZero() { Selection = 0; SelectBtnCallback(); }
-        private void SelectionOne() { Selection = 1; SelectBtnCallback(); }
-        private void SelectionTwo() { Selection = 2; SelectBtnCallback(); }
-        private void SelectionThree() { Selection = 3; SelectBtnCallback(); }
-        private void SelectionFour() { Selection = 4; SelectBtnCallback(); }
-        private void SelectionFive() { Selection = 5; SelectBtnCallback(); }
-        private void SelectionSix() { Selection = 6; SelectBtnCallback(); }
-
+        /* Callback for selection button. */
+        private void SelectionInt(int selection)
+        {
+            Selection = selection;
+            SelectBtnCallback();
+        }
     }
 }

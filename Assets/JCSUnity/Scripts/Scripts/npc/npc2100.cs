@@ -13,9 +13,10 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
+    /// Example dialogue script.
     /// 
+    /// Here show the basic usage of the dialogue script system.
     /// </summary>
     public class npc2100
         : JCS_DialogueScript
@@ -53,53 +54,65 @@ namespace JCSUnity
 
             if (Status == -1)
             {
-                jcsDs.SendNext("好了. 看看一下你的能力值");
-                jcsDs.SendNameTag("???");
+                jcsDs.SendNext("Hello World");
+                jcsDs.SendNameTag("Name 01");
 
                 jcsDs.SendLeftImage(LeftSprite);
             }
             else if (Status == 0)
             {
-                jcsDs.SendNextPrev("你可以選擇這些職業!");
-                jcsDs.SendChoice(0, "劍士");
-                jcsDs.SendChoice(1, "法師");
-                jcsDs.SendChoice(2, "盜賊");
-                jcsDs.SendChoice(3, "弓箭手");
-                jcsDs.SendChoice(4, "海盜");
-                jcsDs.SendChoice(5, "我再考慮看看...");
+                /* For Mouse. */
+                {
+                    //jcsDs.SendNextPrev("Make a selection...");
+                }
+                /* For Game Pad/Controller/Joystick. */
+                {
+                    jcsDs.SendEmpty("Make a selection...");
+                }
 
-                jcsDs.SendNameTag("明日乂過後");
+                //jcsDs.SendChoice(0, "Selection 01");
+                jcsDs.SendChoice(1, "Selection 02");
+                jcsDs.SendChoice(2, "Selection 03");
+                jcsDs.SendChoice(3, "Selection 04");
+                jcsDs.SendChoice(4, "Selection 05");
+                jcsDs.SendChoice(5, "Selection 06");
+
+                jcsDs.SendNameTag("Name 02");
 
                 jcsDs.SendRightImage(RightSprite);
             }
             else if (Status == 1)
             {
-                string msg = "Okay~~ something here...";
+                string msg = "Error text...";
                 switch (selection)
                 {
-                    case 0:
-                        msg = "你選擇了劍士";
-                        break;
                     case 1:
-                        msg = "你選擇了法師";
+                        msg = "You made selection 02.";
                         break;
                     case 2:
-                        msg = "你選擇了盜賊";
+                        msg = "You made selection 03.";
                         break;
                     case 3:
-                        msg = "你選擇了弓箭手";
+                        msg = "You made selection 04.";
                         break;
                     case 4:
-                        msg = "你選擇了海盜";
+                        msg = "You made selection 05.";
                         break;
                     case 5:
-                        msg = "你選擇了我再考慮看看...";
+                        msg = "You made selection 06.";
+                        break;
+
+                    default:
+                        // make selection 0 default
+                        msg = "You made selection 01.";
                         break;
                 }
                 jcsDs.SendNextPrev(msg);
             }
             else if (Status == 2)
+            {
                 jcsDs.SendYesNo("...");
+            }
             else if (Status == 3)
             {
                 string msg = "Default text";

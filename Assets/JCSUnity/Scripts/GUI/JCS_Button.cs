@@ -26,9 +26,14 @@ namespace JCSUnity
         /*******************************************/
         /*            Public Variables             */
         /*******************************************/
+        public delegate void CallBackFunc();
+        public delegate void CallBackFuncBtn(JCS_Button btn);
+        public delegate void CallBackFuncBtnInt(int selection);
+
         // JCSUnity framework only callback, do not override this callback.
         public CallBackFunc btnSystemCallBack = null;
         public CallBackFuncBtn btnSystemCallBackBtn = null;
+        public CallBackFuncBtnInt btnSystemCallBackBtnInt = null;
         // for user's callback.
         public CallBackFunc btnCallBack = null;
         public CallBackFuncBtn btnCallBackBtn = null;
@@ -36,8 +41,16 @@ namespace JCSUnity
         /*******************************************/
         /*           Private Variables             */
         /*******************************************/
-        public delegate void CallBackFunc();
-        public delegate void CallBackFuncBtn(JCS_Button btn);
+
+        [Header("** Check Variables (JCS_Button) **")]
+
+        [Tooltip("Record down the selection choice for dialogue system.")]
+        [SerializeField]
+        private int mDialogueSelection = -1;
+
+        /*******************************************/
+        /*           Protected Variables           */
+        /*******************************************/
 
         [Header("** Optional Variables (JCS_Button) **")]
 
@@ -77,9 +90,6 @@ namespace JCSUnity
         protected Color mNotInteractColor = new Color(1, 1, 1, 0.5f);
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
         protected RectTransform mRectTransform = null;
         protected Button mButton = null;
         protected Image mImage = null;
@@ -110,6 +120,13 @@ namespace JCSUnity
         public void SetCallback(CallBackFuncBtn func) { this.btnCallBackBtn += func; }
         public void SetSystemCallback(CallBackFunc func) { this.btnSystemCallBack += func; }
         public void SetSystemCallback(CallBackFuncBtn func) { this.btnSystemCallBackBtn += func; }
+        public void SetSystemCallback(CallBackFuncBtnInt func, int selection)
+        {
+            this.btnSystemCallBackBtnInt += func;
+            this.mDialogueSelection = selection;
+        }
+
+        public int DialogueSelection { get { return this.mDialogueSelection; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -170,6 +187,9 @@ namespace JCSUnity
 
             if (btnSystemCallBackBtn != null)
                 btnSystemCallBackBtn.Invoke(this);
+
+            if (btnSystemCallBackBtnInt != null)
+                btnSystemCallBackBtnInt.Invoke(this.mDialogueSelection);
 
             /* User callback */
             if (btnCallBack != null)
