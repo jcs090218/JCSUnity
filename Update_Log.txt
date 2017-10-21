@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-10-21
+* Rename Conversation_Dialogue to JCS_DialogueSystem for proper 
+ naming issue. (JCSUnity)
+
 2017-10-19
 * loop through the array and index in array range check functions added
  for utility layer. (JCSUnity)
