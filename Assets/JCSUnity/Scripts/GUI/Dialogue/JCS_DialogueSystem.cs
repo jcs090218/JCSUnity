@@ -198,9 +198,11 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Start the dialogue, in other word same as start a conversation.
         /// </summary>
-        /// <param name="script"></param>
+        /// <param name="script">
+        /// Script to use to run the dialogue.
+        /// </param>
         public void ActiveDialogue(JCS_DialogueScript script)
         {
             mDialogueScript = script;
@@ -209,7 +211,6 @@ namespace JCSUnity
             {
                 JCS_Debug.LogError(
                     "Dialogue System is already active... Failed to active another one.");
-
                 return;
             }
 
@@ -233,7 +234,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Send a choice to current status.
         /// </summary>
         /// <param name="index"> index of the selection call. </param>
         /// <param name="msg"> message display in textbox </param>
@@ -283,7 +284,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Current status will  be next and prev control/options.
         /// </summary>
         /// <param name="msg"></param>
         public void SendNextPrev(string msg)
@@ -304,7 +305,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Okay button for only option.
         /// </summary>
         /// <param name="msg"></param>
         public void SendOk(string msg)
@@ -325,7 +326,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Yes/No options for current status.
         /// </summary>
         /// <param name="msg"></param>
         public void SendYesNo(string msg)
@@ -346,7 +347,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Only exit button will be the only option.
         /// </summary>
         /// <param name="msg"></param>
         public void SendSimple(string msg)
@@ -367,7 +368,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Accept/Decline options.
         /// </summary>
         /// <param name="msg"></param>
         public void SendAcceptDecline(string msg)
@@ -449,7 +450,9 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Send a world message...
         /// 
+        /// TODO(jenchieh): online mode...
         /// </summary>
         /// <param name="msg"></param>
         public void WorldMessage(string msg)
@@ -458,9 +461,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the current status name tag.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name"> name tag's name. </param>
         public void SendNameTag(string name)
         {
 #if (UNITY_EDITOR)
@@ -468,7 +471,6 @@ namespace JCSUnity
             {
                 JCS_Debug.LogError(
                     "Name tag is not assign but u still trying to access?");
-
                 return;
             }
 #endif
