@@ -1034,6 +1034,18 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
+            /*
+             * NOTE(jenchieh): If there is selections occurs
+             * in last status, then we make sure the hover working
+             * for selecting the selection.
+             * 
+             * If I hover the selection 5, then selection should 
+             * be 5 even I did notclick on selection five. Next
+             * button should just know the selection should be 
+             * five for next 'RunAction'.
+             */
+            MakeHoverSelections();
+
             // initialize every run (before running the script)
             ResetStats();
 
@@ -1044,6 +1056,50 @@ namespace JCSUnity
             Mode = 0;
             Type = -1;
             Selection = -1;
+        }
+
+        /// <summary>
+        /// If a selection is hover make sure the selection is been 
+        /// chosen for next status.
+        /// </summary>
+        private void MakeHoverSelections()
+        {
+            if (mButtonSelectionGroup == null)
+                return;
+
+            int hoverChoiceIndex = FindSelectedButton();
+
+            /* Return because no selection is active. */
+            if (hoverChoiceIndex == -1)
+                return;
+
+            Selection = hoverChoiceIndex;
+        }
+
+        /// <summary>
+        /// Find the active button selection's index!
+        /// </summary>
+        /// <returns></returns>
+        private int FindSelectedButton()
+        {
+            for (int index = 0;
+                index < mSelectBtn.Length;
+                ++index)
+            {
+                JCS_Button jcsbtn = mSelectBtn[index];
+
+                if (jcsbtn == null || jcsbtn.ButtonSelection == null)
+                    continue;
+
+                if (jcsbtn.ButtonSelection.Active)
+                    return index;
+            }
+
+            // Selection was not active. Meaning the send choice
+            // did not been called by last status. 
+            // 
+            // NOTE(jenchieh): We are appoarching to new status right now.
+            return -1;
         }
 
 
