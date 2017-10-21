@@ -46,11 +46,11 @@ Do you ever had an issue implementing dialogue in Unity? Here is basic
 dialogue system which is easy to customize. You can control the text
 scroll speed and all the images' position. Just inherent 'JCS_DialogueScript'
 class to design you own dialogue! You can test your script in 'JCS_ScriptTeseter'
-scene.
+scene. <br/>
 <img src="./screen_shot/dialogue_system.gif"/>
 
 ### In Game Log System ###
-Log system inside the game. 
+Log system inside the game. <br/>
 <img src="./screen_shot/IGLog_system.gif"/>
 
 ### Demo ###
