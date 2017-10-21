@@ -49,5 +49,9 @@ class to design you own dialogue! You can test your script in 'JCS_ScriptTeseter
 scene.
 <img src="./screen_shot/dialogue_system.gif"/>
 
+### In Game Log System ###
+Log system inside the game. 
+<img src="./screen_shot/IGLog_system.gif"/>
+
 ### Demo ###
 * https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
