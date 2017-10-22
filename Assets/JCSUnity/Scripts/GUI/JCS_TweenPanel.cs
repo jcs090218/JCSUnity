@@ -39,6 +39,12 @@ namespace JCSUnity
 
         [SerializeField]
         private bool mTestKey = true;
+
+        [SerializeField]
+        private KeyCode mActiveKey = KeyCode.K;
+
+        [SerializeField]
+        private KeyCode mDeactiveKey = KeyCode.L;
 #endif
 
         [Header("** Runtime Variables (JCS_TweenPanel) **")]
@@ -97,9 +103,9 @@ namespace JCSUnity
             if (!mTestKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(KeyCode.I))
+            if (JCS_Input.GetKeyDown(mActiveKey))
                 Active();
-            if (JCS_Input.GetKeyDown(KeyCode.O))
+            if (JCS_Input.GetKeyDown(mDeactiveKey))
                 Deactive();
         }
 #endif
