@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-10-22
+* Update JCSUnity Editor window for bettern order and with some
+ proper GUI label help understand the framework itself. (JCSUnity)
+
 2017-10-21
 * Rename Conversation_Dialogue to JCS_DialogueSystem for proper 
  naming issue. (JCSUnity)
