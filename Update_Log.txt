@@ -10,6 +10,7 @@
 2017-10-22
 * Update JCSUnity Editor window for better order and with some
  proper GUI label help understand the framework itself. (JCSUnity)
+* Add accessibility to JCS_TweenPanel classs. (JCSUnity)
 
 2017-10-21
 * Rename Conversation_Dialogue to JCS_DialogueSystem for proper 
