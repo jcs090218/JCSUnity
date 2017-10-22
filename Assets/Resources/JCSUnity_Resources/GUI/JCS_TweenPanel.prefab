@@ -228,7 +228,8 @@ MonoBehaviour:
   mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
   mTweenType: 0
-  mTrackAsLocal: 1
+  mTrackAsLocalSelf: 0
+  mTrackAsLocalTarget: 0
   mEasingX: 5
   mEasingY: 29
   mEasingZ: 5
@@ -384,7 +385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 810}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 640, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224578551225685524
