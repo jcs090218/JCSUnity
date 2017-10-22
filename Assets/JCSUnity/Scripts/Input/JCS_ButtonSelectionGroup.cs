@@ -56,6 +56,10 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ButtonSelectionGroup) **")]
 
+        [Tooltip("Every time 'OnEnable' function occurs, reset selections.")]
+        [SerializeField]
+        private bool mOnEnableResetSelections = false;
+
         [Tooltip("While reseting the selections this will get choose to be the first selected selection.")]
         [SerializeField]
         private JCS_ButtonSelection mStartingSelection = null;
@@ -74,6 +78,7 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public bool OnEnableResetSelections { get { return this.mOnEnableResetSelections; } set { this.mOnEnableResetSelections = value; } }
         public JCS_ButtonSelection StartingSelection { get { return this.mStartingSelection; } set { this.mStartingSelection = value; } }
 
         /*******************************************/
@@ -92,6 +97,15 @@ namespace JCSUnity
 
         private void Start()
         {
+            // reset once.
+            ResetAllSelections();
+        }
+
+        private void OnEnable()
+        {
+            if (!mOnEnableResetSelections)
+                return;
+
             // reset once.
             ResetAllSelections();
         }
