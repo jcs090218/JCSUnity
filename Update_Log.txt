@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-10-23
+* JCS_WhiteScreen with test key. (JCSUnity)
+
 2017-10-22
 * Update JCSUnity Editor window for better order and with some
  proper GUI label help understand the framework itself. (JCSUnity)
