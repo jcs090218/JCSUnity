@@ -40,8 +40,6 @@ namespace JCSUnity
         private bool m3DFoldout = false;
         private bool mARVRFoldout = false;      // ARVR = AR / VR
 
-        private bool mDamageTextFoldout = false;
-
         private bool mInputFoldout = false;      // Input
 
         //----------------------
@@ -141,17 +139,22 @@ namespace JCSUnity
         /// </summary>
         private void PartGUI()
         {
+            GUILayout.Label("** Cursor **");
+
             if (GUILayout.Button("Create 2D Cursor"))
                 Create2DCurosr();
 
             if (GUILayout.Button("Create 3D Cursor"))
                 Create3DCurosr();
 
-            if (GUILayout.Button("Create clean GUI panel"))
-                CreateBaseGUIPanel();
+
+            GUILayout.Label("** Panel **");
 
             if (GUILayout.Button("Create Slide Panel 9x9 - 16:9"))
                 CreateSlidePanel();
+
+            if (GUILayout.Button("Create clean GUI panel"))
+                CreateBaseGUIPanel();
 
             if (GUILayout.Button("Create Tween Panel"))
                 CreateTweenPanel();
@@ -162,15 +165,15 @@ namespace JCSUnity
         /// </summary>
         private void Part2D()
         {
+            GUILayout.Label("** Camera **");
+
             if (GUILayout.Button("Create 2D camera"))
                 Create2DCamera();
 
-            mDamageTextFoldout = EditorGUILayout.Foldout(mDamageTextFoldout, "Damage Text Settings");
-            if (mDamageTextFoldout)
-            {
-                if (GUILayout.Button("Create mix damage pool"))
-                    CreateMixDamageTextPool();
-            }
+            GUILayout.Label("** Effects **");
+
+            if (GUILayout.Button("Create mix damage pool"))
+                CreateMixDamageTextPool();
         }
 
         /// <summary>
@@ -178,6 +181,8 @@ namespace JCSUnity
         /// </summary>
         private void Part3D()
         {
+            GUILayout.Label("** Camera **");
+
             if (GUILayout.Button("Create 3D camera"))
                 Create3DCamera();
         }
