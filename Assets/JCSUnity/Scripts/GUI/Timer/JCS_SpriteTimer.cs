@@ -37,6 +37,16 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_SpriteTimer) **")]
+
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [SerializeField]
+        private KeyCode mTestKey = KeyCode.N;
+#endif
+
         [Header("** Check Variables (JCS_SpriteTimer) **")]
 
         [SerializeField]
@@ -177,7 +187,10 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.A))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mTestKey))
                 SetCurrentTime(59, 59, 59);
         }
 #endif
