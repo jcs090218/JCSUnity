@@ -31,7 +31,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        private JCS_TransformTweener mTweener = null;
+        private JCS_TransformTweener mTransformTweener = null;
 
 
 #if (UNITY_EDITOR)
@@ -48,6 +48,10 @@ namespace JCSUnity
 #endif
 
         [Header("** Runtime Variables (JCS_TweenPanel) **")]
+
+        [Tooltip("Is panel active/tweened?")]
+        [SerializeField]
+        private bool mIsActive = false;
 
         [Tooltip("Do the tween effect to this position.")]
         [SerializeField]
@@ -81,6 +85,8 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool IsActive { get { return this.mIsActive; } }
+        public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
         public ActiveCallback ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
         public DeactiveCallback DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
 
@@ -89,12 +95,12 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            mTweener = this.GetComponent<JCS_TransformTweener>();
+            mTransformTweener = this.GetComponent<JCS_TransformTweener>();
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
         private void Start()
         {
-            mStartingPosition = this.mTweener.LocalPosition;
+            mStartingPosition = this.mTransformTweener.LocalPosition;
         }
 
 #if (UNITY_EDITOR)
@@ -121,34 +127,38 @@ namespace JCSUnity
         /// </summary>
         public void Active()
         {
-            if (!mTweener.IsDoneTweening)
+            if (!mTransformTweener.IsDoneTweening)
                 return;
 
             if (this.transform.localPosition == mTargetPosition)
                 return;
 
-            mTweener.DoTween(mTargetPosition);
+            mTransformTweener.DoTween(mTargetPosition);
             mSoundPlayer.PlayOneShotWhileNotPlaying(mActiveSound);
 
             if (mActiveCallbackFunc != null)
                 mActiveCallbackFunc.Invoke();
+
+            this.mIsActive = true;
         }
         /// <summary>
         /// Tween back to the starting position and play sound effect.
         /// </summary>
         public void Deactive()
         {
-            if (!mTweener.IsDoneTweening)
+            if (!mTransformTweener.IsDoneTweening)
                 return;
 
             if (this.transform.localPosition == mStartingPosition)
                 return;
 
-            mTweener.DoTween(mStartingPosition);
+            mTransformTweener.DoTween(mStartingPosition);
             mSoundPlayer.PlayOneShotWhileNotPlaying(mDeactiveSound);
 
             if (mDeactiveCallbackFunc != null)
                 mDeactiveCallbackFunc.Invoke();
+
+            this.mIsActive = false;
         }
 
         //----------------------
