@@ -12,7 +12,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
+    /// <summary>
+    /// White screen for lightning/flash effect.
+    /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_WhiteScreen 
         : MonoBehaviour
@@ -24,8 +26,29 @@ namespace JCSUnity
         //----------------------
         // Private Variables
         private JCS_FadeObject mAO = null;
-        [SerializeField] private float mFadeOutTime = 1.0f;
-        [SerializeField] private float mFadeInTime = 0.2f;
+
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_WhiteScreen) **")]
+
+        [Tooltip("Test with the key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to test flash effect.")]
+        [SerializeField]
+        private KeyCode mTestKey = KeyCode.U;
+#endif
+
+        [Header("** Runtime Variables (JCS_WhiteScreen) **")]
+
+        [Tooltip("How long it fade out?")]
+        [SerializeField]
+        private float mFadeOutTime = 1.0f;
+
+        [Tooltip("How long it fade in?")]
+        [SerializeField]
+        private float mFadeInTime = 0.2f;
 
         //----------------------
         // Protected Variables
@@ -33,6 +56,8 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public float FadeOutTime { get { return this.mFadeOutTime; } set { this.mFadeOutTime = value; } }
+        public float FadeInTime { get { return this.mFadeInTime; } set { this.mFadeInTime = value; } }
 
         //========================================
         //      Unity's function
@@ -52,7 +77,10 @@ namespace JCSUnity
 
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.U))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mTestKey))
                 FadeOut();
         }
 #endif
