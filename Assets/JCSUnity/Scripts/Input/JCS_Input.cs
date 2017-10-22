@@ -149,21 +149,21 @@ namespace JCSUnity
         /// </summary>
         /// <param name="type"> type by JCS_InputType (self-define) </param>
         /// <returns> true: if double click, false nothing happens </returns>
-        public static bool OnMouseDoubleClick(JCS_InputType type)
+        public static bool OnMouseDoubleClick(JCS_InputType type, bool ignorePause = false)
         {
-            return OnMouseDoubleClick((int)type);
+            return OnMouseDoubleClick((int)type, ignorePause);
         }
         /// <summary>
         /// This sould be in the Update() function.
         /// </summary>
         /// <param name="button"> type by keycode (Unity built-in) </param>
         /// <returns> true: if double click, false nothing happens </returns>
-        public static bool OnMouseDoubleClick(int button)
+        public static bool OnMouseDoubleClick(int button, bool ignorePause = false)
         {
             // Check first click
             if (!mClick)
             {
-                if (GetMouseButtonDown(button))
+                if (GetMouseButtonDown(button, ignorePause))
                     mClick = true;
             }
             // Check double click
@@ -171,7 +171,7 @@ namespace JCSUnity
             {
                 mClickTimer += Time.deltaTime;
 
-                if (GetMouseButtonDown(button))
+                if (GetMouseButtonDown(button, ignorePause))
                 {
                     mClickTimer = 0;
                     mClick = false;
@@ -261,9 +261,9 @@ namespace JCSUnity
         /// <param name="act"></param>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseByAction(JCS_KeyActionType act, JCS_MouseButton button)
+        public static bool GetMouseByAction(JCS_KeyActionType act, JCS_MouseButton button, bool ignorePause = false)
         {
-            return GetMouseByAction(act, (int)button);
+            return GetMouseByAction(act, (int)button, ignorePause);
         }
         /// <summary>
         /// 
@@ -271,16 +271,16 @@ namespace JCSUnity
         /// <param name="act"></param>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseByAction(JCS_KeyActionType act, int button)
+        public static bool GetMouseByAction(JCS_KeyActionType act, int button, bool ignorePause = false)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetMouseButton(button);
+                    return GetMouseButton(button, ignorePause);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetMouseButtonDown(button);
+                    return GetMouseButtonDown(button, ignorePause);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetMouseButtonUp(button);
+                    return GetMouseButtonUp(button, ignorePause);
             }
 
             JCS_Debug.LogError("This cannot happed.");
@@ -291,19 +291,22 @@ namespace JCSUnity
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseButtonDown(JCS_MouseButton button)
+        public static bool GetMouseButtonDown(JCS_MouseButton button, bool ignorePause = false)
         {
-            return Input.GetMouseButtonDown((int)button);
+            return GetMouseButtonDown((int)button, ignorePause);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseButtonDown(int button)
+        public static bool GetMouseButtonDown(int button, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             if (button == (int)JCS_MouseButton.NONE)
                 return false;
@@ -315,19 +318,22 @@ namespace JCSUnity
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseButton(JCS_MouseButton button)
+        public static bool GetMouseButton(JCS_MouseButton button, bool ignorePause = false)
         {
-            return Input.GetMouseButton((int)button);
+            return GetMouseButton((int)button, ignorePause);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseButton(int button)
+        public static bool GetMouseButton(int button, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             if (button == (int)JCS_MouseButton.NONE)
                 return false;
@@ -339,19 +345,22 @@ namespace JCSUnity
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseButtonUp(JCS_MouseButton button)
+        public static bool GetMouseButtonUp(JCS_MouseButton button, bool ignorePause = false)
         {
-            return Input.GetMouseButtonUp((int)button);
+            return GetMouseButtonUp((int)button, ignorePause);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static bool GetMouseButtonUp(int button)
+        public static bool GetMouseButtonUp(int button, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             if (button == (int)JCS_MouseButton.NONE)
                 return false;
@@ -365,16 +374,16 @@ namespace JCSUnity
         /// <param name="act"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static bool GetKeyByAction(JCS_KeyActionType act, KeyCode key)
+        public static bool GetKeyByAction(JCS_KeyActionType act, KeyCode key, bool ignorePause = false)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetKey(key);
+                    return GetKey(key, ignorePause);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetKeyDown(key);
+                    return GetKeyDown(key, ignorePause);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetKeyUp(key);
+                    return GetKeyUp(key, ignorePause);
             }
 
             JCS_Debug.LogError("This cannot happed, because all states applied.");
@@ -387,10 +396,13 @@ namespace JCSUnity
         /// <returns>
         /// true: key is down, false: vice versa.
         /// </returns>
-        public static bool GetKeyDown(KeyCode key)
+        public static bool GetKeyDown(KeyCode key, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return Input.GetKeyDown(key);
         }
@@ -401,10 +413,13 @@ namespace JCSUnity
         /// <returns>
         /// true: key is held down, false: vice versa.
         /// </returns>
-        public static bool GetKey(KeyCode key)
+        public static bool GetKey(KeyCode key, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return Input.GetKey(key);
         }
@@ -413,10 +428,13 @@ namespace JCSUnity
         /// </summary>
         /// <param name="key"> key to check if is key up. </param>
         /// <returns> true: is key up, false: vice versa. </returns>
-        public static bool GetKeyUp(KeyCode key)
+        public static bool GetKeyUp(KeyCode key, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return Input.GetKeyUp(key);
         }
@@ -434,16 +452,16 @@ namespace JCSUnity
         /// <returns> 
         /// Is either pressed, down, up. or not pressed, down, up. 
         /// </returns>
-        public static bool GetButtonByAction(JCS_KeyActionType act, string buttonName)
+        public static bool GetButtonByAction(JCS_KeyActionType act, string buttonName, bool ignorePause = false)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetButton(buttonName);
+                    return GetButton(buttonName, ignorePause);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetButtonDown(buttonName);
+                    return GetButtonDown(buttonName, ignorePause);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetButtonUp(buttonName);
+                    return GetButtonUp(buttonName, ignorePause);
             }
 
 
@@ -457,10 +475,13 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButton(string buttonName)
+        public static bool GetButton(string buttonName, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return Input.GetButton(buttonName);
         }
@@ -469,10 +490,13 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButtonDown(string buttonName)
+        public static bool GetButtonDown(string buttonName, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return Input.GetButtonDown(buttonName);
         }
@@ -481,10 +505,13 @@ namespace JCSUnity
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
-        public static bool GetButtonUp(string buttonName)
+        public static bool GetButtonUp(string buttonName, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return Input.GetButtonUp(buttonName);
         }
@@ -532,10 +559,13 @@ namespace JCSUnity
         /// true: somewhere in the key is down.
         /// false: no key is down.
         /// </returns>
-        public static bool GetAnyKeyDown()
+        public static bool GetAnyKeyDown(bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return IsAnyKeyBuffer(JCS_KeyActionType.KEY_DOWN);
         }
@@ -547,10 +577,13 @@ namespace JCSUnity
         /// true: somewhere the key is pressed.
         /// false: no key is pressed.
         /// </returns>
-        public static bool GetAnyKey()
+        public static bool GetAnyKey(bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return IsAnyKeyBuffer(JCS_KeyActionType.KEY);
         }
@@ -562,10 +595,13 @@ namespace JCSUnity
         /// true: somewhere in the key is up.
         /// false: no key is up.
         /// </returns>
-        public static bool GetAnyKeyUp()
+        public static bool GetAnyKeyUp(bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             return IsAnyKeyBuffer(JCS_KeyActionType.KEY_UP);
         }
@@ -577,33 +613,36 @@ namespace JCSUnity
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
         /// <returns></returns>
-        public static float GetAxis(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static float GetAxis(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            return GetAxis((int)joystickIndex, btn);
+            return GetAxis((int)joystickIndex, btn, ignorePause);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="btn"></param>
         /// <returns></returns>
-        public static float GetAxis(int joystickIndex, JCS_JoystickButton btn)
+        public static float GetAxis(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
             if (btn == JCS_JoystickButton.NONE)
                 return 0;
 
             string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
 
-            return GetAxis(idString);
+            return GetAxis(idString, ignorePause);
         }
         /// <summary>
         /// Return the joystick buffer.
         /// </summary>
         /// <param name="name"> name of the joystick name. </param>
         /// <returns> value the joystick tilt. </returns>
-        public static float GetAxis(string name)
+        public static float GetAxis(string name, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return 0;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return 0;
+            }
 
             if (name == "")
             {
@@ -620,21 +659,21 @@ namespace JCSUnity
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
         /// <returns> buffer pressure from hardware. </returns>
-        public static bool GetJoystickButton(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickButton(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            return GetJoystickButton((int)joystickIndex, btn);
+            return GetJoystickButton((int)joystickIndex, btn, ignorePause);
         }
         /// <summary>
         /// Get the joystick buffer.
         /// </summary>
         /// <returns></returns>
-        public static bool GetJoystickButton(int joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickButton(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
             // check if any joystick connected.
             if (!IsJoystickConnected())
                 return false;
 
-            return GetAxis(joystickIndex, btn) > 0;
+            return GetAxis(joystickIndex, btn, ignorePause) > 0;
         }
 
         /// <summary>
@@ -642,9 +681,9 @@ namespace JCSUnity
         /// </summary>
         /// <param name="idString"> string id </param>
         /// <returns></returns>
-        public static bool GetJoystickButton(string idString)
+        public static bool GetJoystickButton(string idString, bool ignorePause = false)
         {
-            return GetAxis(idString) > 0;
+            return GetAxis(idString, ignorePause) > 0;
         }
 
         /// <summary>
@@ -656,9 +695,9 @@ namespace JCSUnity
         /// true: did pressed.
         /// false: not pressed.
         /// </returns>
-        public static bool GetJoystickKey(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKey(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            return GetJoystickKey((int)joystickIndex, btn);
+            return GetJoystickKey((int)joystickIndex, btn, ignorePause);
         }
 
         /// <summary>
@@ -670,12 +709,15 @@ namespace JCSUnity
         /// true: did pressed.
         /// false: not pressed.
         /// </returns>
-        public static bool GetJoystickKey(int joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKey(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
-            return GetJoystickButton(joystickIndex, btn);
+            return GetJoystickButton(joystickIndex, btn, ignorePause);
         }
 
 
@@ -688,9 +730,9 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyUp(int joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyUp(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            return GetJoystickKeyUp((JCS_JoystickIndex)joystickIndex, btn);
+            return GetJoystickKeyUp((JCS_JoystickIndex)joystickIndex, btn, ignorePause);
         }
 
         /// <summary>
@@ -702,14 +744,17 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyUp(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
 
-            if (GetJoystickKey(joystickIndex, btn))
+            if (GetJoystickKey(joystickIndex, btn, ignorePause))
             {
                 if (mJoystickKeyReleased.ContainsKey(idString))
                     mJoystickKeyReleased[idString] = false;
@@ -744,9 +789,9 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyDown(int joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyDown(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            return GetJoystickKeyDown((JCS_JoystickIndex)joystickIndex, btn);
+            return GetJoystickKeyDown((JCS_JoystickIndex)joystickIndex, btn, ignorePause);
         }
 
         /// <summary>
@@ -758,14 +803,17 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyDown(JCS_JoystickIndex joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
         {
-            if (JCS_GameManager.instance.GAME_PAUSE)
-                return false;
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return false;
+            }
 
             string idString = JCS_InputSettings.GetJoystickButtonIdName(joystickIndex, btn);
 
-            if (GetJoystickKey(joystickIndex, btn))
+            if (GetJoystickKey(joystickIndex, btn, ignorePause))
             {
                 if (!mJoystickKeyPressed.ContainsKey(idString))
                 {
@@ -797,16 +845,17 @@ namespace JCSUnity
         public static bool GetJoystickKeyByAction(
             JCS_KeyActionType act, 
             JCS_JoystickIndex id,
-            JCS_JoystickButton key)
+            JCS_JoystickButton key, 
+            bool ignorePause = false)
         {
             switch (act)
             {
                 case JCS_KeyActionType.KEY:
-                    return GetJoystickKey(id, key);
+                    return GetJoystickKey(id, key, ignorePause);
                 case JCS_KeyActionType.KEY_DOWN:
-                    return GetJoystickKeyDown(id, key);
+                    return GetJoystickKeyDown(id, key, ignorePause);
                 case JCS_KeyActionType.KEY_UP:
-                    return GetJoystickKeyUp(id, key);
+                    return GetJoystickKeyUp(id, key, ignorePause);
             }
 
             JCS_Debug.LogError("This cannot happed.");
