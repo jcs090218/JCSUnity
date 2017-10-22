@@ -11,6 +11,12 @@
 * Update JCSUnity Editor window for better order and with some
  proper GUI label help understand the framework itself. (JCSUnity)
 * Add accessibility to JCS_TweenPanel classs. (JCSUnity)
+* Add functionality with reset all selections on 'OnEnable' function
+ occurs. (JCSUnity)
+* JCS_ButtonSelectionGroupController with option of ignore the 
+ game pause trigger for all input type. (JCSUnity)
+* Add param 'ignorePause' to ignore game pause check for all input
+ functions. (JCSUnity)
 
 2017-10-21
 * Rename Conversation_Dialogue to JCS_DialogueSystem for proper 
