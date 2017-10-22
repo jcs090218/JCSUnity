@@ -38,6 +38,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = true;
 
+        [Tooltip("JCSUnity key would not work with game pause, ignore it?")]
+        [SerializeField]
+        private bool mIgnoreGamePause = false;
+
         [Tooltip("")]
         [SerializeField]
         private JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
@@ -123,6 +127,7 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool IgnoreGamePause { get { return this.mIgnoreGamePause; } set { this.mIgnoreGamePause = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -179,8 +184,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveNext()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMNext) || 
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJNext);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMNext, mIgnoreGamePause) || 
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJNext, mIgnoreGamePause);
         }
 
         /// <summary>
@@ -189,8 +194,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActivePrev()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMPrev) || 
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJPrev);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMPrev, mIgnoreGamePause) || 
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJPrev, mIgnoreGamePause);
         }
 
         /// <summary>
@@ -199,8 +204,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveOkay()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMOkay) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJOkay);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMOkay, mIgnoreGamePause) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJOkay, mIgnoreGamePause);
         }
 
         /// <summary>
@@ -209,8 +214,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveUp()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMUp) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJUp);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMUp, mIgnoreGamePause) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJUp, mIgnoreGamePause);
         }
 
         /// <summary>
@@ -219,8 +224,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveDown()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMDown) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJDown);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMDown, mIgnoreGamePause) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJDown, mIgnoreGamePause);
         }
 
         /// <summary>
@@ -229,8 +234,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveRight()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMRight) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJRight);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMRight, mIgnoreGamePause) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJRight, mIgnoreGamePause);
         }
 
         /// <summary>
@@ -239,8 +244,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveLeft()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMLeft) ||
-                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJLeft);
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMLeft, mIgnoreGamePause) ||
+                JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJLeft, mIgnoreGamePause);
         }
 
     }
