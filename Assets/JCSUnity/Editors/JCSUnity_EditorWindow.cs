@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine.UI;
 using System;
+using System.IO;
 
 
 namespace JCSUnity
@@ -31,6 +32,23 @@ namespace JCSUnity
 
         public int GAME_PAD_COUNT = 0;  // How many gampad in this game?
 
+        public string PROJECT_NAME = "";
+
+        public const string PROJECT_NAME_LASTING = "_Assets";
+
+        public string[] ProjectSubFolders = {
+            "Animations",
+            "Editors",
+            "Materials",
+            "Models",
+            "Movies",
+            "Scenes",
+            "Scripts",
+            "Shaders",
+            "Sounds",
+            "Sprites",
+        };
+
         //----------------------
         // Private Variables
         private bool mOCSFoldeout = false;      // OCS = One click serialize
@@ -41,6 +59,8 @@ namespace JCSUnity
         private bool mARVRFoldout = false;      // ARVR = AR / VR
 
         private bool mInputFoldout = false;      // Input
+
+        private bool mToolFoldout = false;  // Utitlies
 
         //----------------------
         // Protected Variables
@@ -90,6 +110,10 @@ namespace JCSUnity
             mInputFoldout = EditorGUILayout.Foldout(mInputFoldout, "Input");
             if (mInputFoldout)
                 PartInput();
+
+            mToolFoldout = EditorGUILayout.Foldout(mToolFoldout, "Tool");
+            if (mToolFoldout)
+                PartTool();
         }
 
         //========================================
@@ -200,7 +224,7 @@ namespace JCSUnity
         /// </summary>
         private void PartInput()
         {
-            GUILayout.Label("Game Pad count");
+            GUILayout.Label("** Game Pad count **");
             instance.GAME_PAD_COUNT = (int)EditorGUILayout.Slider(instance.GAME_PAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
 
             if (GUILayout.Button("Add Input Manager depends on target gamepad type"))
@@ -212,6 +236,38 @@ namespace JCSUnity
             if (GUILayout.Button("Add Default Input Manager Settings"))
                 AddDefaultInputManager();
         }
+
+        /// <summary>
+        /// Compile the Tool part to Tool inspector.
+        /// </summary>
+        private void PartTool()
+        {
+            GUILayout.Label("** Framework /  Project **");
+
+            /* Project Name */
+            {
+                // Provide default project name.
+                if (instance.PROJECT_NAME == "")
+                    instance.PROJECT_NAME = GetProjectName();
+
+                instance.PROJECT_NAME = EditorGUILayout.TextField("Project Name: ", instance.PROJECT_NAME);
+            }
+
+            /* List of project sub folders. */
+            {
+                ScriptableObject target = this;
+                SerializedObject so = new SerializedObject(target);
+                SerializedProperty stringsProperty = so.FindProperty("ProjectSubFolders");
+
+                EditorGUILayout.PropertyField(stringsProperty, true);
+                so.ApplyModifiedProperties();
+            }
+
+
+            if (GUILayout.Button("Create project assets folder"))
+                CreateProjectAssetsFolder();
+        }
+
 
         /// <summary>
         /// Main JCSUnity Editor initialize function.
@@ -344,6 +400,31 @@ namespace JCSUnity
             string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
             GameObject gameObj = JCS_Utility.SpawnGameObject(tools_path);
             gameObj.name = gameObj.name.Replace("(Clone)", "");
+        }
+
+        /// <summary>
+        /// Create a new project.
+        /// </summary>
+        [MenuItem("JCSUnity/Tool/Create project assets folder", false, 12)]
+        private static void CreateProjectAssetsFolder()
+        {
+            string parentFolder = "Assets";
+            string newFolderName = instance.PROJECT_NAME + PROJECT_NAME_LASTING;
+
+            string assetsPath = Application.dataPath + "/";
+            string newProjectPath = assetsPath + newFolderName + "/";
+
+            if (!Directory.Exists(newProjectPath))
+                AssetDatabase.CreateFolder(parentFolder, newFolderName);
+
+            foreach (string subFolderName in instance.ProjectSubFolders)
+            {
+                string newProjectName = parentFolder + "/" + newFolderName;
+                string newSubFolderPath = newProjectPath + subFolderName + "/";
+
+                if (!Directory.Exists(newSubFolderPath))
+                    AssetDatabase.CreateFolder(newProjectName, subFolderName);
+            }
         }
 
         /// <summary>
@@ -662,6 +743,13 @@ namespace JCSUnity
             hierarchyObj.transform.localPosition = Vector3.zero;
 
             return hierarchyObj;
+        }
+
+        public string GetProjectName()
+        {
+            string[] s = Application.dataPath.Split('/');
+            string projectName = s[s.Length - 2];
+            return projectName;
         }
 
     }
