@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 namespace JCSUnity
@@ -67,6 +68,13 @@ namespace JCSUnity
         private int mSelectTextIndex = 0;
         [SerializeField]
         private int mRenderSelectTextIndex = 0;
+
+
+        [Header("** Initialize Variables (JCS_DialogueSystem) **")]
+
+        [Tooltip("If the mouse hover then select the selection.")]
+        [SerializeField]
+        private bool mMakeHoverSelect = true;
 
 
         [Header("** Runtime Variables (JCS_DialogueSystem) **")]
@@ -148,7 +156,7 @@ namespace JCSUnity
         private string mSelectStringFront = "#L" + 0 + "##b";
         private string mSelectStringBack = "#k#l";
 
-        [Header("- Game Pad Settings (JCS_DialogueSystem)")]
+        [Header("** Optional Variables (JCS_DialogueSystem) **")]
 
         [Tooltip("Button selection group for this dialogue system.")]
         [SerializeField]
@@ -161,6 +169,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
         public string SelectStringBack { get { return this.mSelectStringBack; } }
@@ -178,7 +187,10 @@ namespace JCSUnity
 
             // set to manager to get manage.
             JCS_UtilitiesManager.instance.SetDiaglogueSystem(this);
+        }
 
+        private void Start()
+        {
             InitTextBox();
             InitBtnsSet();
             InitImageSet();
@@ -189,7 +201,7 @@ namespace JCSUnity
             // dispose at the beginning of the game.
             Dispose();
         }
-        
+
         private void LateUpdate()
         {
             // scrolling text effect.
@@ -942,46 +954,29 @@ namespace JCSUnity
         private void InitBtnsSet()
         {
             if (mOkBtn != null)
-            {
                 mOkBtn.SetSystemCallback(OkBtnCallback);
-            }
 
             if (mNoBtn != null)
-            {
                 mNoBtn.SetSystemCallback(NoBtnCallback);
-            }
 
             if (mYesBtn != null)
-            {
                 mYesBtn.SetSystemCallback(YesBtnCallback);
-            }
 
             if (mNextBtn != null)
-            {
                 mNextBtn.SetSystemCallback(NextBtnCallback);
-            }
 
             if (mPreviousBtn != null)
-            {
                 mPreviousBtn.SetSystemCallback(PreviousBtnCallback);
-            }
 
             if (mExitBtn != null)
-            {
                 mExitBtn.SetSystemCallback(ExitBtnCallback);
-            }
 
             if (mAcceptBtn != null)
-            {
                 mAcceptBtn.SetSystemCallback(AcceptBtnCallback);
-            }
 
             if (mDeclineBtn != null)
-            {
                 mDeclineBtn.SetSystemCallback(DeclineBtnCallback);
-            }
 
-            // TODO(Jen-Chieh): bad design code here...
             for (int index = 0;
                 index < mSelectBtn.Length;
                 ++index)
@@ -992,6 +987,27 @@ namespace JCSUnity
                     continue;
 
                 btn.SetSystemCallback(SelectionInt, index);
+
+                if (mMakeHoverSelect)
+                {
+                    if (btn.ButtonSelection == null)
+                    {
+                        JCS_Debug.LogWarning(@"Cannot make hover select 
+because button selection is not attach to all selections in the list...");
+                    }
+                    else
+                    {
+                        EventTrigger eventTrigger = btn.GetComponent<EventTrigger>();
+                        if (eventTrigger == null)
+                            eventTrigger = btn.gameObject.AddComponent<EventTrigger>();
+
+                        JCS_Utility.AddEventTriggerEvent(
+                            eventTrigger,
+                            EventTriggerType.PointerEnter,
+                            mButtonSelectionGroup.SelectSelection,
+                            btn.ButtonSelection);
+                    }
+                }
             }
         }
 
