@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 namespace JCSUnity
@@ -269,6 +270,15 @@ namespace JCSUnity
 
             JCS_Debug.LogError(@"Try to select a selection, but seems like the 
 selection is not in the group...");
+        }
+
+        /// <summary>
+        /// Selection this selection.
+        /// </summary>
+        /// <param name="selection"> selection to select. </param>
+        public void SelectSelection(PointerEventData data, JCS_ButtonSelection selection)
+        {
+            SelectSelection(selection);
         }
 
         /// <summary>

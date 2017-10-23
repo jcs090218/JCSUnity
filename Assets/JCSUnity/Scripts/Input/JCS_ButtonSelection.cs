@@ -61,6 +61,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mSkip = false;
 
+        [Tooltip("Make skip variable with interactable with the button.")]
+        [SerializeField]
+        private bool mConnectSkipWithInteractableButton = true;
+
         [Tooltip("This gameobject itself is a button and use this button component.")]
         [SerializeField]
         private bool mSelfAsButton = true;
@@ -103,6 +107,7 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public bool ConnectSkipWithInteractableButton { get { return this.mConnectSkipWithInteractableButton; } set { this.mConnectSkipWithInteractableButton = value; } }
         public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
         public bool SelfAsButton { get { return this.mSelfAsButton; } set { this.mSelfAsButton = value; } }
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
@@ -117,7 +122,16 @@ namespace JCSUnity
             }
         }
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
-        public bool Skip { get { return this.mSkip; } set { this.mSkip = value; } }
+        public bool Skip
+        {
+            get { return this.mSkip; }
+            set
+            {
+                this.mSkip = value;
+
+                SetInteractableButton();
+            }
+        }
 
         public JCS_ButtonSelection UpSelection { get { return this.mUpSelection; } set { this.mUpSelection = value; } }
         public JCS_ButtonSelection DownSelection { get { return this.mDownSelection; } set { this.mDownSelection = value; } }
@@ -144,6 +158,11 @@ namespace JCSUnity
             // let the button know this is going to be control in the group.
             if (mButton != null)
                 mButton.ButtonSelection = this;
+        }
+
+        private void Start()
+        {
+            SetInteractableButton();
         }
 
 
@@ -238,6 +257,17 @@ namespace JCSUnity
                     effect.LocalEnabled = act;
                 }
             }
+        }
+
+        /// <summary>
+        /// Make skip variable connect to interactable with button.
+        /// </summary>
+        private void SetInteractableButton()
+        {
+            if (!mConnectSkipWithInteractableButton || mButton == null)
+                return;
+
+            mButton.SetInteractable(!mSkip);
         }
 
     }
