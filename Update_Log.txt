@@ -18,6 +18,7 @@
 * JCS_SoundPlayer with play sound depends on action. (JCSUnity)
 * JCS_RollBtnSelector bug fixed and compatible with base class
  JCS_Button class. (JCSUnity)
+* Create Tool section for JCSUnity easy create project settings. (JCSUnity)
 
 2017-10-22
 * Update JCSUnity Editor window for better order and with some
