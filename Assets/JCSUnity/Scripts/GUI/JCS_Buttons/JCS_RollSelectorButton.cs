@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Use with JCS_RollBtnSelector
     /// </summary>
@@ -81,8 +80,7 @@ namespace JCSUnity
             if (mRollBtnSelector == null)
             {
                 JCS_Debug.LogError(
-                    "");
-
+                    "Not Roll Button Selector attached...");
                 return;
             }
 
@@ -98,7 +96,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Override the orignal one so the it wont stop the button 
+        /// Override the orignal one so the it won't stop the button 
         /// event listener detection.
         /// 
         /// Because we have other complete system to handle this
@@ -107,10 +105,9 @@ namespace JCSUnity
         /// <param name="act"></param>
         public override void SetInteractable(bool act)
         {
-            mInteractable = act;
-            //mButton.enabled = mInteractable;
+            //base.SetInteractable(act);
 
-            if (mInteractable)
+            if (act)
             {
                 mImage.color = mInteractColor;
             }
