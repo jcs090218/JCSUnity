@@ -57,6 +57,21 @@ namespace JCSUnity
         [SerializeField]
         private JCS_JoystickIndex mJoystickLitener = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
 
+
+        [Header("- Audio Settings (JCS_GamePadButton)")]
+
+        [Tooltip("Sound when button is pressed.")]
+        [SerializeField]
+        private AudioClip mButtonClickSound = null;
+
+        [Tooltip("Sound volume.")]
+        [SerializeField]
+        private float mVolume = 1.0f;
+
+        [Tooltip("Sound method.")]
+        [SerializeField]
+        private JCS_SoundMethod mSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+
         /*******************************************/
         /*           Protected Variables           */
         /*******************************************/
@@ -70,6 +85,10 @@ namespace JCSUnity
         public bool ListenToAnyKey { get { return this.mListenToAnyKey; } set { this.mListenToAnyKey = value; } }
         public JCS_KeyActionType KeyActionType { get { return this.mKeyActionType; } set { this.mKeyActionType = value; } }
 
+        public AudioClip ButtonClickSound { get { return this.mButtonClickSound; } set { this.mButtonClickSound = value; } }
+        public float Volume { get { return this.mVolume; } set { this.mVolume = value; } }
+        public JCS_SoundMethod SoundMethod { get { return this.mSoundMethod; } set { this.mSoundMethod = value; } }
+
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
@@ -79,7 +98,10 @@ namespace JCSUnity
             if (mListenToAnyKey)
             {
                 if (JCS_Input.IsAnyKeyBuffer(mKeyActionType))
+                {
                     JCS_ButtonClick();
+                    PlayButtonClickSound();
+                }
             }
             else
             {
@@ -91,6 +113,7 @@ namespace JCSUnity
                     )
                 {
                     JCS_ButtonClick();
+                    PlayButtonClickSound();
                 }
             }
         }
@@ -106,6 +129,18 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Play the button click sound.
+        /// </summary>
+        private void PlayButtonClickSound()
+        {
+            if (mButtonClickSound == null)
+                return;
+
+            JCS_SoundManager.instance.GetGlobalSoundPlayer().
+                PlayOneShotByMethod(mButtonClickSound, mSoundMethod, mVolume);
+        }
 
     }
 }
