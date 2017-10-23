@@ -17,6 +17,7 @@ namespace JCSUnity
     /// Button will listen to the gamepad. Note it compatible with
     /// PC/desktop too.
     /// </summary>
+    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_GamePadButton
         : JCS_Button
     {
@@ -28,6 +29,8 @@ namespace JCSUnity
         /*******************************************/
         /*           Private Variables             */
         /*******************************************/
+
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Header("** Runtime Variables (JCS_GamePadButton) **")]
 
@@ -64,10 +67,6 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mButtonClickSound = null;
 
-        [Tooltip("Sound volume.")]
-        [SerializeField]
-        private float mVolume = 1.0f;
-
         [Tooltip("Sound method.")]
         [SerializeField]
         private JCS_SoundMethod mSoundMethod = JCS_SoundMethod.PLAY_SOUND;
@@ -86,12 +85,17 @@ namespace JCSUnity
         public JCS_KeyActionType KeyActionType { get { return this.mKeyActionType; } set { this.mKeyActionType = value; } }
 
         public AudioClip ButtonClickSound { get { return this.mButtonClickSound; } set { this.mButtonClickSound = value; } }
-        public float Volume { get { return this.mVolume; } set { this.mVolume = value; } }
         public JCS_SoundMethod SoundMethod { get { return this.mSoundMethod; } set { this.mSoundMethod = value; } }
 
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
+        protected override void Awake()
+        {
+            base.Awake();
+
+            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+        }
 
         protected virtual void Update()
         {
@@ -138,8 +142,7 @@ namespace JCSUnity
             if (mButtonClickSound == null)
                 return;
 
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mButtonClickSound, mSoundMethod, mVolume);
+            mSoundPlayer.PlayOneShotByMethod(mButtonClickSound, mSoundMethod);
         }
 
     }
