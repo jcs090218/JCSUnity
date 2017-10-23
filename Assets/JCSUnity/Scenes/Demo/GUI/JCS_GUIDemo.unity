@@ -1116,13 +1116,13 @@ CanvasRenderer:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11492924, guid: 03b8a2ed0bd29f040a9f140a75ef08e4,
     type: 2}
-  m_PrefabInternal: {fileID: 1109720392}
+  m_PrefabInternal: {fileID: 1065940689}
   m_Script: {fileID: 11500000, guid: 402f95fbcfa11b54498e613b813c9297, type: 3}
 --- !u!20 &151515301 stripped
 Camera:
   m_PrefabParentObject: {fileID: 2086022, guid: 03b8a2ed0bd29f040a9f140a75ef08e4,
     type: 2}
-  m_PrefabInternal: {fileID: 1109720392}
+  m_PrefabInternal: {fileID: 1065940689}
 --- !u!1 &193455524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1228,7 +1230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3416,7 +3420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8da109f60821d04e94d34aa12fbe811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3573,7 +3579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3624,7 +3632,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3958,7 +3968,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4009,7 +4021,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4676,7 +4690,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4727,7 +4743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4978,7 +4996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a51ec2e4371824184560f987704888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -5365,7 +5385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -5416,7 +5438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -8300,6 +8324,48 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1053665013}
+--- !u!1001 &1065940689
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1078392641
 GameObject:
   m_ObjectHideFlags: 0
@@ -8410,48 +8476,6 @@ MonoBehaviour:
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
---- !u!1001 &1109720392
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 449364, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1126457941
 GameObject:
   m_ObjectHideFlags: 0
@@ -9312,7 +9336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9363,7 +9389,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9536,7 +9564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9587,7 +9617,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -10539,7 +10571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -10590,7 +10624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -14499,7 +14535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -14550,7 +14588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1

@@ -168,7 +168,6 @@ namespace JCSUnity
                 {
                     JCS_Debug.LogError(
                         "Missing jcs_button assign in the inspector...");
-
                     continue;
                 }
 
@@ -276,8 +275,6 @@ namespace JCSUnity
                 if (se == null)
                 {
                     JCS_Debug.LogError(
-                        "JCS_RollBtnSelector",
-                         
                         "JCS_ScaleEffect are null but we still want the effect. plz make sure all the button have JCS_ScaleEffet component!");
 
                     // close the effect.
@@ -401,8 +398,6 @@ namespace JCSUnity
                 if (currentBtn == null || targetBtn == null)
                 {
                     JCS_Debug.LogError(
-                        "JCS_RollBtnSelector",
-                         
                         "Missing jcs_button assign in the inspector...");
 
                     continue;
