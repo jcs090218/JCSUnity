@@ -22,6 +22,11 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+        public const float MAX_SOUND_VOLUME = 1.0f;
+        public const float MIN_SOUND_VOLUME = 0.0f;
+
+        public const float MAX_SOUND_FADEOUT_TIME = 5.0f;
+        public const float MIN_SOUND_FADEOUT_TIME = 0.0f;
 
         //----------------------
         // Private Variables
@@ -36,15 +41,15 @@ namespace JCSUnity
         public bool PERFONAL_EFFECT_MUTE = false;
 
         [Tooltip("Background music [Default: 0.5f]")]
-        [Range(0, 1)]
+        [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float BGM_SOUND = 0.4f;
 
         [Tooltip("Sound from other player/environment [Default: 0.5f]")]
-        [Range(0, 1)]
+        [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float SFX_SOUND = 0.4f;
 
         [Tooltip("Sound from player [Default: 0.75f]")]
-        [Range(0, 1)]
+        [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float SKILLS_SOUND = 0.4f;
 
 
@@ -70,9 +75,11 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_SoundSettings) **")]
 
         [Tooltip("General Sound fadout time.")]
+        [Range(MIN_SOUND_FADEOUT_TIME, MAX_SOUND_FADEOUT_TIME)]
         public float SOUND_FADEOUT_TIME = 1.5f;
 
         [Tooltip("General Sound fadein time.")]
+        [Range(MIN_SOUND_FADEOUT_TIME, MAX_SOUND_FADEOUT_TIME)]
         public float SOUND_FADEIN_TIME = 1.5f;
 
         //----------------------
@@ -106,13 +113,15 @@ namespace JCSUnity
         {
             switch (type)
             {
-                case JCS_SoundSettingType.BGM_SOUND: return GetBGM_Volume();
-                case JCS_SoundSettingType.SFX_SOUND: return GetSFXSound_Volume();
-                case JCS_SoundSettingType.SKILLS_SOUND: return GetSkillsSound_Volume();
+                case JCS_SoundSettingType.BGM_SOUND:
+                    return GetBGM_Volume();
+                case JCS_SoundSettingType.SFX_SOUND:
+                    return GetSFXSound_Volume();
+                case JCS_SoundSettingType.SKILLS_SOUND:
+                    return GetSkillsSound_Volume();
             }
 
-            JCS_Debug.LogError("JCS_GameSetting", "Get unknown volume...");
-
+            JCS_Debug.LogError("Get unknown volume...");
             return 0;
         }
 
@@ -122,6 +131,10 @@ namespace JCSUnity
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
+        }
+
+        private void LateUpdate()
+        {
         }
 
         //========================================

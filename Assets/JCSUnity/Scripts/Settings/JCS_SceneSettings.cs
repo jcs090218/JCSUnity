@@ -15,7 +15,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Scene setting.
     /// </summary>
     public class JCS_SceneSettings
         : JCS_Settings<JCS_SceneSettings>
@@ -24,19 +24,24 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
-        //----------------------
-        // Private Variables
+        public const float MAX_SCENE_FADEIN_TIME = 5.0f;
+        public const float MIN_SCENE_FADEIN_TIME = 0.0f;
 
         [Header("** Runtime Variables (JCS_SceneSettings) **")]
 
         [Tooltip("General Scene fadout time. (For all scene.)")]
+        [Range(MIN_SCENE_FADEIN_TIME, MAX_SCENE_FADEIN_TIME)]
         public float SCENE_FADEOUT_TIME = 1.5f;
 
         [Tooltip("General Scene fadein time. (For all scene.)")]
+        [Range(MIN_SCENE_FADEIN_TIME, MAX_SCENE_FADEIN_TIME)]
         public float SCENE_FADEIN_TIME = 1.5f;
 
         [Tooltip("Screen color to fade in/out the scene.")]
         public Color SCREEN_COLOR = Color.black;
+
+        //----------------------
+        // Private Variables
 
         //----------------------
         // Protected Variables
