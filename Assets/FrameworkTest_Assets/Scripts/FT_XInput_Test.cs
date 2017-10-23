@@ -43,6 +43,8 @@ public class FT_XInput_Test
 
     private void Update()
     {
+        print("Joysitck connected: " + JCS_Input.IsJoystickConnected());
+
         /* Stick test. */
         if (valueKeyTest)
         {
