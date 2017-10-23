@@ -1151,6 +1151,11 @@
         <Description>List of all the singleton object type.</Description>
       </File>
 
+      <File name="JCS_SoundMethod.cs">
+        <Placement>Script base.</Placement>
+        <Description>All kind of methods to play sound.</Description>
+      </File>
+
       <File name="JCS_SoundSettingType.cs">
         <Placement>Script base.</Placement>
         <Description>List of all the sound type.</Description>
