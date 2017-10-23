@@ -1710,15 +1710,23 @@
           </Dialogue>
 
           <File name="JCS_EchoButton.cs">
-            <Placement>Already assign.</Placement>
+            <Placement>Any transform/node.</Placement>
             <Description>
               Echo out a string on the console window when this
               button triggered.
             </Description>
           </File>
 
+          <File name="JCS_EchoGamePadButton.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+              Echo out a string on the console window when this
+              button triggered. (Using game pad)
+            </Description>
+          </File>
+
           <File name="JCS_EmptyButton.cs">
-            <Placement>Already assign.</Placement>
+            <Placement>Any transform/node.</Placement>
             <Description>
               Default/place holder button for all purpose usage.
             </Description>
