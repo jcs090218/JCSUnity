@@ -10,6 +10,14 @@
 2017-10-23
 * JCS_WhiteScreen with test key. (JCSUnity)
 * add auto hover to dialogue system module. (JCSUnity)
+* JCS_EchoGamePadButton implemented. (JCSUnity)
+* JCS_ButtonSelectionGroup with audio settings now. (JCSUnity)
+* JCS_GamePadButton with audio settings now. (JCSUnity)
+* JCS_ButtonSoundEffect implement JCS_SoundMethod. (JCSUnity)
+* JCS_SoundMethod enum added. (JCSUnity)
+* JCS_SoundPlayer with play sound depends on action. (JCSUnity)
+* JCS_RollBtnSelector bug fixed and compatible with base class
+ JCS_Button class. (JCSUnity)
 
 2017-10-22
 * Update JCSUnity Editor window for better order and with some
