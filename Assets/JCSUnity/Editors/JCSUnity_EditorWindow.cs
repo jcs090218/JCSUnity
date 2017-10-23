@@ -435,6 +435,8 @@ namespace JCSUnity
             string setting_path = "JCSUnity_Resources/GUI/JCS_BasePanel";
             GameObject basePanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
+            basePanel.transform.localScale = Vector3.one;
+
             return basePanel;
         }
 
