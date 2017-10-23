@@ -149,42 +149,6 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mLeftSound = null;
 
-
-        [Tooltip("Sound volumne.")]
-        [SerializeField]
-        [Range(0.0f, 1.0f)]
-        private float mNextSoundVolume = 1.0f;
-
-        [Tooltip("Sound volumne.")]
-        [SerializeField]
-        [Range(0.0f, 1.0f)]
-        private float mPrevSoundVolume = 1.0f;
-
-        [Tooltip("Sound volumne.")]
-        [SerializeField]
-        [Range(0.0f, 1.0f)]
-        private float mOkaySoundVolume = 1.0f;
-
-        [Tooltip("Sound volumne.")]
-        [SerializeField]
-        [Range(0.0f, 1.0f)]
-        private float mUpSoundVolume = 1.0f;
-
-        [Tooltip("Sound volumne.")]
-        [SerializeField]
-        [Range(0.0f, 1.0f)]
-        private float mDownSoundVolume = 1.0f;
-
-        [Tooltip("Sound volumne.")]
-        [SerializeField]
-        [Range(0.0f, 1.0f)]
-        private float mRightSoundVolume = 1.0f;
-
-        [Tooltip("Sound volumne.")]
-        [SerializeField]
-        [Range(0.0f, 1.0f)]
-        private float mLeftSoundVolume = 1.0f;
-
         [Tooltip("Method to play the sound.")]
         [SerializeField]
         private JCS_SoundMethod mNextSoundMethod = JCS_SoundMethod.PLAY_SOUND;
@@ -231,14 +195,6 @@ namespace JCSUnity
         public AudioClip DownSound { get { return this.mDownSound; } set { this.mDownSound = value; } }
         public AudioClip RightSound { get { return this.mRightSound; } set { this.mRightSound = value; } }
         public AudioClip LeftSound { get { return this.mLeftSound; } set { this.mLeftSound = value; } }
-
-        public float NextSoundVolume { get { return this.mNextSoundVolume; } set { this.mNextSoundVolume = value; } }
-        public float PrevSoundVolume { get { return this.mPrevSoundVolume; } set { this.mPrevSoundVolume = value; } }
-        public float OkaySoundVolume { get { return this.mOkaySoundVolume; } set { this.mOkaySoundVolume = value; } }
-        public float UpSoundVolume { get { return this.mUpSoundVolume; } set { this.mUpSoundVolume = value; } }
-        public float DownSoundVolume { get { return this.mDownSoundVolume; } set { this.mDownSoundVolume = value; } }
-        public float RightSoundVolume { get { return this.mRightSoundVolume; } set { this.mRightSoundVolume = value; } }
-        public float LeftSoundVolume { get { return this.mLeftSoundVolume; } set { this.mLeftSoundVolume = value; } }
 
         public JCS_SoundMethod NextSoundMethod { get { return this.mNextSoundMethod; } set { this.mNextSoundMethod = value; } }
         public JCS_SoundMethod PrevSoundMethod { get { return this.mPrevSoundMethod; } set { this.mPrevSoundMethod = value; } }
@@ -395,7 +351,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mNextSound, mNextSoundMethod, mNextSoundVolume);
+                PlayOneShotByMethod(mNextSound, mNextSoundMethod);
         }
 
         /* Play the prev sound. */
@@ -405,7 +361,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mPrevSound, mPrevSoundMethod, mPrevSoundVolume);
+                PlayOneShotByMethod(mPrevSound, mPrevSoundMethod);
         }
 
         /* Play the okay sound. */
@@ -415,7 +371,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mOkaySound, mOkaySoundMethod, mOkaySoundVolume);
+                PlayOneShotByMethod(mOkaySound, mOkaySoundMethod);
         }
 
         /* Play the up sound. */
@@ -425,7 +381,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mUpSound, mUpSoundMethod, mUpSoundVolume);
+                PlayOneShotByMethod(mUpSound, mUpSoundMethod);
         }
 
         /* Play the down sound. */
@@ -435,7 +391,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mDownSound, mDownSoundMethod, mDownSoundVolume);
+                PlayOneShotByMethod(mDownSound, mDownSoundMethod);
         }
 
         /* Play the right sound. */
@@ -445,7 +401,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mRightSound, mRightSoundMethod, mRightSoundVolume);
+                PlayOneShotByMethod(mRightSound, mRightSoundMethod);
         }
 
         /* Play the left sound. */
@@ -455,7 +411,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mLeftSound, mLeftSoundMethod, mLeftSoundVolume);
+                PlayOneShotByMethod(mLeftSound, mLeftSoundMethod);
         }
     }
 }
