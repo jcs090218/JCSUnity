@@ -182,6 +182,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 2133117}
   mSelectedEvent:
@@ -398,7 +399,7 @@ MonoBehaviour:
   SFX_SOUND: 0.4
   SKILLS_SOUND: 0.4
   SMOOTH_SWITCH_SOUND_BETWEEN_SCENE: 1
-  BACKGROUND_MUSIC: {fileID: 8300000, guid: aadaa2bb458696e4cb1bbc6322707e03, type: 3}
+  BACKGROUND_MUSIC: {fileID: 8300000, guid: 6fd3a677fd7285b498285c10d906d2ab, type: 3}
   DEFAULT_OPEN_WINDOW_CLIP: {fileID: 8300000, guid: 9ddc3d435db7ab44ea990d4bbbe7a5c4,
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
@@ -868,6 +869,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 239369780}
   mSelectedEvent:
@@ -1228,6 +1230,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 318557157}
   mSelectedEvent:
@@ -1860,6 +1863,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 584258739}
   mSelectedEvent:
@@ -2060,6 +2064,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 659854522}
   mSelectedEvent:
@@ -2743,6 +2748,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 822500580}
   mSelectedEvent:
@@ -3676,6 +3682,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 1
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 1201376773}
   mSelectedEvent:
@@ -4153,6 +4160,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 1286163028}
   mSelectedEvent:
@@ -4480,6 +4488,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 1
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 1418999802}
   mSelectedEvent:
@@ -4749,7 +4758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1538485368
 Transform:
   m_ObjectHideFlags: 0
@@ -4801,6 +4810,27 @@ MonoBehaviour:
   mJDown: 0
   mJRight: 0
   mJLeft: 0
+  mNextSound: {fileID: 0}
+  mPrevSound: {fileID: 0}
+  mOkaySound: {fileID: 8300000, guid: e27a5c6c809cdd845a4db1e28b6c0835, type: 3}
+  mUpSound: {fileID: 8300000, guid: 30860b98decb03448afe661695a5ddce, type: 3}
+  mDownSound: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6, type: 3}
+  mRightSound: {fileID: 8300000, guid: 3ddf9e96cfa728c43b9cd0c00d1582af, type: 3}
+  mLeftSound: {fileID: 8300000, guid: 2e4785f1fae71d5429ee724c59bc7898, type: 3}
+  mNextSoundVolume: 1
+  mPrevSoundVolume: 1
+  mOkaySoundVolume: 1
+  mUpSoundVolume: 1
+  mDownSoundVolume: 1
+  mRightSoundVolume: 1
+  mLeftSoundVolume: 1
+  mNextSoundMethod: 0
+  mPrevSoundMethod: 0
+  mOkaySoundMethod: 0
+  mUpSoundMethod: 0
+  mDownSoundMethod: 0
+  mRightSoundMethod: 0
+  mLeftSoundMethod: 0
 --- !u!114 &1538485370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4973,6 +5003,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 1591159488}
   mSelectedEvent:
@@ -5235,7 +5266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1679761377
 Transform:
   m_ObjectHideFlags: 0
@@ -5283,6 +5314,27 @@ MonoBehaviour:
   mJDown: 0
   mJRight: 0
   mJLeft: 0
+  mNextSound: {fileID: 8300000, guid: 3ddf9e96cfa728c43b9cd0c00d1582af, type: 3}
+  mPrevSound: {fileID: 8300000, guid: 3ddf9e96cfa728c43b9cd0c00d1582af, type: 3}
+  mOkaySound: {fileID: 8300000, guid: cf163e3b94067a44faf8b65f19db8b7f, type: 3}
+  mUpSound: {fileID: 0}
+  mDownSound: {fileID: 0}
+  mRightSound: {fileID: 0}
+  mLeftSound: {fileID: 0}
+  mNextSoundVolume: 1
+  mPrevSoundVolume: 1
+  mOkaySoundVolume: 1
+  mUpSoundVolume: 1
+  mDownSoundVolume: 1
+  mRightSoundVolume: 1
+  mLeftSoundVolume: 1
+  mNextSoundMethod: 2
+  mPrevSoundMethod: 2
+  mOkaySoundMethod: 0
+  mUpSoundMethod: 0
+  mDownSoundMethod: 0
+  mRightSoundMethod: 0
+  mLeftSoundMethod: 0
 --- !u!114 &1679761379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5462,6 +5514,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 1716458938}
   mSelectedEvent:
@@ -6134,6 +6187,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 1
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 2006004933}
   mSelectedEvent:
@@ -6531,6 +6585,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 2066270075}
   mSelectedEvent:
@@ -6703,6 +6758,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 2137836486}
   mSelectedEvent:
