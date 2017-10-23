@@ -65,7 +65,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Play one shot of sound.
         /// </summary>
         /// <param name="clip"></param>
         /// <param name="type"></param>
@@ -89,23 +89,11 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="clip"></param>
-        public void PlayOneShot(AudioClip clip)
-        {
-            if (clip == null)
-                return;
-
-            GetAudioSource().PlayOneShot(clip);
-        }
-
-        /// <summary>
-        /// 
+        /// Play one shot of sound.
         /// </summary>
         /// <param name="clip"></param>
         /// <param name="volume"></param>
-        public void PlayOneShot(AudioClip clip, float volume)
+        public void PlayOneShot(AudioClip clip, float volume = 1.0f)
         {
             if (clip == null)
                 return;
@@ -114,7 +102,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Play one shot of sound.
         /// </summary>
         /// <param name="clip"></param>
         /// <param name="volume"></param>
@@ -127,21 +115,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// play sound when is not playing
-        /// </summary>
-        public void PlayOneShotWhileNotPlaying(AudioClip clip)
-        {
-            if (GetAudioSource() == null)
-                return;
-
-            if (GetAudioSource().isPlaying)
-                return;
-
-            PlayOneShot(clip);
-        }
-
-        /// <summary>
-        /// 
+        /// Play one shot of sound.
         /// </summary>
         /// <param name="clip"></param>
         /// <param name="type"></param>
@@ -150,6 +124,55 @@ namespace JCSUnity
             SetSoundType(type);
 
             GetAudioSource().PlayOneShot(clip);
+        }
+
+        /// <summary>
+        /// play sound when is not playing any sound.
+        /// </summary>
+        public void PlayOneShotWhileNotPlaying(AudioClip clip, float volume = 1.0f)
+        {
+            if (GetAudioSource() == null)
+                return;
+
+            if (GetAudioSource().isPlaying)
+                return;
+
+            PlayOneShot(clip, volume);
+        }
+
+        /// <summary>
+        /// Stop all the sound then play the this sound.
+        /// </summary>
+        public void PlayOneShotInterrupt(AudioClip clip, float volume = 1.0f)
+        {
+            if (GetAudioSource() == null)
+                return;
+
+            GetAudioSource().Stop();
+
+            PlayOneShot(clip, volume);
+        }
+
+        /// <summary>
+        /// Play sound by method.
+        /// </summary>
+        /// <param name="clip"> clip to play. </param>
+        /// <param name="method"> method of play. </param>
+        /// <param name="volume"> volume to play. </param>
+        public void PlayOneShotByMethod(AudioClip clip, JCS_SoundMethod method, float volume = 1.0f)
+        {
+            switch (method)
+            {
+                case JCS_SoundMethod.PLAY_SOUND:
+                    PlayOneShot(clip, volume);
+                    break;
+                case JCS_SoundMethod.PLAY_SOUND_WHILE_NOT_PLAYING:
+                    PlayOneShotWhileNotPlaying(clip, volume);
+                    break;
+                case JCS_SoundMethod.PLAY_SOUND_INTERRUPT:
+                    PlayOneShotInterrupt(clip, volume);
+                    break;
+            }
         }
 
         //----------------------
