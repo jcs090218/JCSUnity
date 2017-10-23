@@ -9,6 +9,7 @@
 
 2017-10-23
 * JCS_WhiteScreen with test key. (JCSUnity)
+* add auto hover to dialogue system module. (JCSUnity)
 
 2017-10-22
 * Update JCSUnity Editor window for better order and with some
