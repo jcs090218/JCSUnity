@@ -42,20 +42,34 @@ namespace JCSUnity
         private bool mAutoAddEvent = true;
 
 
-        [Header("*USAGE: Please use this class with Unity's \"Event Trigger(Script)\"!!!")]
+        [Header("*USAGE: Please use this component with Unity's \"Event Trigger(Script)\"!!!")]
         [SerializeField]
-        private AudioClip mOnMouseOver = null;
+        private AudioClip mOnMouseOverSound = null;
         [SerializeField]
-        private AudioClip mOnMouseExit = null;
+        private AudioClip mOnMouseExitSound = null;
         [SerializeField]
-        private AudioClip mOnMouseDown = null;
+        private AudioClip mOnMouseDownSound = null;
         [SerializeField]
-        private AudioClip mOnMouseUp = null;
+        private AudioClip mOnMouseUpSound = null;
         [SerializeField]
-        private AudioClip mOnMouseClick = null;
+        private AudioClip mOnMouseClickSound = null;
         [SerializeField]
-        private AudioClip mOnMouseDoubleClick = null;
+        private AudioClip mOnMouseDoubleClickSound = null;
+
         private bool mIsOver = false;
+
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseOverSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseExitSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseDownSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseUpSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseClickSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseDoubleClickSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
 
         [Header("** Optional Settings **")]
@@ -67,18 +81,30 @@ namespace JCSUnity
         [Tooltip(@"When button is not interactable will active these when 
 on mouse down.")]
         [SerializeField]
-        private AudioClip mOnMouseOverRefuse = null;
+        private AudioClip mOnMouseOverRefuseSound = null;
         [SerializeField]
-        private AudioClip mOnMouseExitRefuse = null;
+        private AudioClip mOnMouseExitRefuseSound = null;
         [SerializeField]
-        private AudioClip mOnMouseDownRefuse = null;
+        private AudioClip mOnMouseDownRefuseSound = null;
         [SerializeField]
-        private AudioClip mOnMouseUpRefuse = null;
+        private AudioClip mOnMouseUpRefuseSound = null;
         [SerializeField]
-        private AudioClip mOnMouseClickRefuse = null;
+        private AudioClip mOnMouseClickRefuseSound = null;
         [SerializeField]
-        private AudioClip mOnMouseDoubleClickRefuse = null;
+        private AudioClip mOnMouseDoubleClickRefuseSound = null;
 
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseOverRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseExitRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseDownRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseUpRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseClickRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
+        [SerializeField]
+        private JCS_SoundMethod mOnMouseDoubleClickRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
         //----------------------
         // Protected Variables
@@ -86,6 +112,36 @@ on mouse down.")]
         //========================================
         //      setter / getter
         //------------------------------
+        public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
+
+        public AudioClip OnMouseOverSound { get { return this.mOnMouseOverSound; } set { this.mOnMouseOverSound = value; } }
+        public AudioClip OnMouseExitSound { get { return this.mOnMouseExitSound; } set { this.mOnMouseExitSound = value; } }
+        public AudioClip OnMouseDownSound { get { return this.mOnMouseDownSound; } set { this.mOnMouseDownSound = value; } }
+        public AudioClip OnMouseUpSound { get { return this.mOnMouseUpSound; } set { this.mOnMouseUpSound = value; } }
+        public AudioClip OnMouseClickSound { get { return this.mOnMouseClickSound; } set { this.mOnMouseClickSound = value; } }
+        public AudioClip OnMouseDoubleClickSound { get { return this.mOnMouseDoubleClickSound; } set { this.mOnMouseDoubleClickSound = value; } }
+
+        public JCS_SoundMethod OnMouseOverSoundMethod { get { return this.mOnMouseOverSoundMethod; } set { this.mOnMouseOverSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseExitSoundMethod { get { return this.mOnMouseExitSoundMethod; } set { this.mOnMouseExitSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseDownSoundMethod { get { return this.mOnMouseDownSoundMethod; } set { this.mOnMouseDownSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseUpSoundMethod { get { return this.mOnMouseUpSoundMethod; } set { this.mOnMouseUpSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseClickSoundMethod { get { return this.mOnMouseClickSoundMethod; } set { this.mOnMouseClickSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseDoubleClickSoundMethod { get { return this.mOnMouseDoubleClickSoundMethod; } set { this.mOnMouseDoubleClickSoundMethod = value; } }
+
+        public AudioClip OnMouseOverRefuseSound { get { return this.mOnMouseOverRefuseSound; } set { this.mOnMouseOverRefuseSound = value; } }
+        public AudioClip OnMouseExitRefuseSound { get { return this.mOnMouseExitRefuseSound; } set { this.mOnMouseExitRefuseSound = value; } }
+        public AudioClip OnMouseDownRefuseSound { get { return this.mOnMouseDownRefuseSound; } set { this.mOnMouseDownRefuseSound = value; } }
+        public AudioClip OnMouseUpRefuseSound { get { return this.mOnMouseUpRefuseSound; } set { this.mOnMouseUpRefuseSound = value; } }
+        public AudioClip OnMouseClickRefuseSound { get { return this.mOnMouseClickRefuseSound; } set { this.mOnMouseClickRefuseSound = value; } }
+        public AudioClip OnMouseDoubleClickRefuseSound { get { return this.mOnMouseDoubleClickRefuseSound; } set { this.mOnMouseDoubleClickRefuseSound = value; } }
+
+        public JCS_SoundMethod OnMouseOverRefuseSoundMethod { get { return this.mOnMouseOverRefuseSoundMethod; } set { this.mOnMouseOverRefuseSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseExitRefuseSoundMethod { get { return this.mOnMouseExitRefuseSoundMethod; } set { this.mOnMouseExitRefuseSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseDownRefuseSoundMethod { get { return this.mOnMouseDownRefuseSoundMethod; } set { this.mOnMouseDownRefuseSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseUpRefuseSoundMethod { get { return this.mOnMouseUpRefuseSoundMethod; } set { this.mOnMouseUpRefuseSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseClickRefuseSoundMethod { get { return this.mOnMouseClickRefuseSoundMethod; } set { this.mOnMouseClickRefuseSoundMethod = value; } }
+        public JCS_SoundMethod OnMouseDoubleClickRefuseSoundMethod { get { return this.mOnMouseDoubleClickRefuseSoundMethod; } set { this.mOnMouseDoubleClickRefuseSoundMethod = value; } }
+
 
         //========================================
         //      Unity's function
@@ -129,13 +185,17 @@ on mouse down.")]
                         if (!mJCSButton.Interactable)
                         {
                             // play not ineractable sound
-                            mSoundPlayer.PlayOneShot(mOnMouseDoubleClickRefuse);
+                            mSoundPlayer.PlayOneShotByMethod(
+                                mOnMouseDoubleClickRefuseSound,
+                                mOnMouseDoubleClickRefuseSoundMethod);
                             return;
                         }
                         else
                         {
                             // play normal double click sound
-                            mSoundPlayer.PlayOneShot(mOnMouseDoubleClick);
+                            mSoundPlayer.PlayOneShotByMethod(
+                                mOnMouseDoubleClickSound,
+                                mOnMouseDoubleClickSoundMethod);
                         }
                     }
                 }
@@ -162,12 +222,16 @@ on mouse down.")]
                 if (!mJCSButton.Interactable)
                 {
                     // play not ineractable sound
-                    mSoundPlayer.PlayOneShot(mOnMouseOverRefuse);
+                    mSoundPlayer.PlayOneShotByMethod(
+                        mOnMouseOverRefuseSound,
+                        mOnMouseOverRefuseSoundMethod);
                     return;
                 }
             }
 
-            mSoundPlayer.PlayOneShot(mOnMouseOver);
+            mSoundPlayer.PlayOneShotByMethod(
+                mOnMouseOverSound,
+                mOnMouseOverSoundMethod);
         }
 
         public void JCS_OnMouseExit(PointerEventData data)
@@ -182,11 +246,15 @@ on mouse down.")]
             if (!mJCSButton.Interactable)
             {
                 // play not ineractable sound
-                mSoundPlayer.PlayOneShot(mOnMouseExitRefuse);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseExitRefuseSound,
+                    mOnMouseExitRefuseSoundMethod);
             }
             else
             {
-                mSoundPlayer.PlayOneShot(mOnMouseExit);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseExitSound,
+                    mOnMouseExitSoundMethod);
             }
         }
 
@@ -202,12 +270,16 @@ on mouse down.")]
             if (!mJCSButton.Interactable)
             {
                 // play not ineractable sound
-                mSoundPlayer.PlayOneShot(mOnMouseDownRefuse);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseDownRefuseSound,
+                    mOnMouseDownRefuseSoundMethod);
             }
             else
             {
                 // play normal sound
-                mSoundPlayer.PlayOneShot(mOnMouseDown);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseDownSound,
+                    mOnMouseDownSoundMethod);
             }
         }
 
@@ -217,17 +289,21 @@ on mouse down.")]
         }
         public void JCS_OnMouseUp()
         {
-            if(mJCSButton == null)
+            if (mJCSButton == null)
                 return;
 
             if (!mJCSButton.Interactable)
             {
                 // play not ineractable sound
-                mSoundPlayer.PlayOneShot(mOnMouseUpRefuse);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseUpRefuseSound,
+                    mOnMouseUpRefuseSoundMethod);
             }
             else
             {
-                mSoundPlayer.PlayOneShot(mOnMouseUp);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseUpSound,
+                    mOnMouseUpSoundMethod);
             }
         }
 
@@ -243,11 +319,15 @@ on mouse down.")]
             if (!mJCSButton.Interactable)
             {
                 // play not ineractable sound
-                mSoundPlayer.PlayOneShot(mOnMouseClickRefuse);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseClickRefuseSound,
+                    mOnMouseClickRefuseSoundMethod);
             }
             else
             {
-                mSoundPlayer.PlayOneShot(mOnMouseClick);
+                mSoundPlayer.PlayOneShotByMethod(
+                    mOnMouseClickSound,
+                    mOnMouseClickSoundMethod);
             }
         }
 
