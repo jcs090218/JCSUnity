@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 114293236506267978}
   - component: {fileID: 114088361288058118}
   - component: {fileID: 114864686214326800}
-  - component: {fileID: 114018242990214238}
   - component: {fileID: 114990559297640738}
   m_Layer: 5
   m_Name: Selection_01
@@ -152,7 +151,6 @@ GameObject:
   - component: {fileID: 114867494245534404}
   - component: {fileID: 114529716834126382}
   - component: {fileID: 114908105720879514}
-  - component: {fileID: 114640460109957124}
   - component: {fileID: 114282144959475618}
   m_Layer: 5
   m_Name: Selection_03
@@ -192,7 +190,6 @@ GameObject:
   - component: {fileID: 114693812887459882}
   - component: {fileID: 114394473871433216}
   - component: {fileID: 114187848226080388}
-  - component: {fileID: 114033166619790336}
   - component: {fileID: 114620294525148466}
   m_Layer: 5
   m_Name: Selection_05
@@ -490,7 +487,6 @@ GameObject:
   - component: {fileID: 114108882179297798}
   - component: {fileID: 114512486947200474}
   - component: {fileID: 114670849245310578}
-  - component: {fileID: 114205849663195312}
   - component: {fileID: 114373962292183572}
   m_Layer: 5
   m_Name: Selection_04
@@ -599,7 +595,6 @@ GameObject:
   - component: {fileID: 114517013643034264}
   - component: {fileID: 114595909682498344}
   - component: {fileID: 114442460098421908}
-  - component: {fileID: 114160299824778856}
   - component: {fileID: 114683489607720432}
   m_Layer: 5
   m_Name: Selection_00
@@ -725,7 +720,6 @@ GameObject:
   - component: {fileID: 114240540710638246}
   - component: {fileID: 114699380494441652}
   - component: {fileID: 114519598058034064}
-  - component: {fileID: 114031119488744872}
   - component: {fileID: 114530559936145646}
   m_Layer: 5
   m_Name: Selection_02
@@ -801,96 +795,6 @@ Transform:
   m_Father: {fileID: 224857478259250852}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114018242990214238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1169925808667094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114637877307997692}
-          m_MethodName: SelectSelection
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 114990559297640738}
-            m_ObjectArgumentAssemblyTypeName: JCSUnity.JCS_ButtonSelection, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!114 &114031119488744872
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941896606191708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114637877307997692}
-          m_MethodName: SelectSelection
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 114530559936145646}
-            m_ObjectArgumentAssemblyTypeName: JCSUnity.JCS_ButtonSelection, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!114 &114033166619790336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1226033829370614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114637877307997692}
-          m_MethodName: SelectSelection
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 114620294525148466}
-            m_ObjectArgumentAssemblyTypeName: JCSUnity.JCS_ButtonSelection, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!114 &114040797797539266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1103,36 +1007,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
---- !u!114 &114160299824778856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1614746004193470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114637877307997692}
-          m_MethodName: SelectSelection
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 114683489607720432}
-            m_ObjectArgumentAssemblyTypeName: JCSUnity.JCS_ButtonSelection, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!114 &114187848226080388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1185,36 +1059,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Selection_02
---- !u!114 &114205849663195312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1512532399029006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114637877307997692}
-          m_MethodName: SelectSelection
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 114373962292183572}
-            m_ObjectArgumentAssemblyTypeName: JCSUnity.JCS_ButtonSelection, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!114 &114222567241238106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1325,6 +1169,7 @@ MonoBehaviour:
   Selection: -1
   mSelectTextIndex: 0
   mRenderSelectTextIndex: 0
+  mMakeHoverSelect: 1
   mTransparentSprite: {fileID: 21300000, guid: e1c46e9108b163a43a4756374739521a, type: 3}
   mCenterImage: {fileID: 114780426292001726}
   mLeftImage: {fileID: 114626308652417936}
@@ -1402,6 +1247,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 114908105720879514}
   mSelectedEvent:
@@ -1541,6 +1387,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 114670849245310578}
   mSelectedEvent:
@@ -2073,6 +1920,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 114519598058034064}
   mSelectedEvent:
@@ -2388,6 +2236,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 114187848226080388}
   mSelectedEvent:
@@ -2440,6 +2289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCurrentSelectIndex: 0
+  mOnEnableResetSelections: 0
   mStartingSelection: {fileID: 0}
   mSelections:
   - {fileID: 114683489607720432}
@@ -2448,36 +2298,6 @@ MonoBehaviour:
   - {fileID: 114282144959475618}
   - {fileID: 114373962292183572}
   - {fileID: 114620294525148466}
---- !u!114 &114640460109957124
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1208772126609782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114637877307997692}
-          m_MethodName: SelectSelection
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 114282144959475618}
-            m_ObjectArgumentAssemblyTypeName: JCSUnity.JCS_ButtonSelection, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!114 &114670849245310578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2511,6 +2331,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 114442460098421908}
   mSelectedEvent:
@@ -3332,6 +3153,7 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
+  mConnectSkipWithInteractableButton: 1
   mSelfAsButton: 1
   mButton: {fileID: 114864686214326800}
   mSelectedEvent:
