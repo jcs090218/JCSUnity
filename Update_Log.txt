@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-10-24
+* Add JCSUnity_PE for managing packages for my framework. (JCSUnity)
+
 2017-10-23
 * JCS_WhiteScreen with test key. (JCSUnity)
 * add auto hover to dialogue system module. (JCSUnity)
