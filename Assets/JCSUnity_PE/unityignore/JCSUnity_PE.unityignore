@@ -1,0 +1,19 @@
+# 
+# Thank you for using 'JCSUnity Packages Exporter'. This is the generated 
+# unityignore file.
+# 
+# Package Name: JCSUnity_PE
+# Version: 1.0.0
+# Creation Date: 2017-10-24 15:02:35 
+# 
+# Package Link: https://github.com/jcs090218/JCSUnity_PE
+# Author: Shen, Jen-Chieh
+# Email: jcs090218@gmail.com
+# 
+
+# Ignore this plugin itself.
+#JCSUnity_PE  # we are actually exporting package itself.
+
+# Ignore the test proejct files.
+Test_Assets
+Test2_Assets
