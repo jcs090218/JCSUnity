@@ -57,8 +57,8 @@ Log system inside the game. <br/>
 * https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 
 ### Games ###
-<a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank" width="100" height = "100">
-  <img src="./games/hemlock_logo.png"/>
+<a href="https://play.google.com/store/apps/details?id=com.aau.jcs">
+  <img src="./games/hemlock_logo.png" target="_blank" width="100" height="100"/>
 </a>
 <a href="https://www.youtube.com/watch?v=si_G0zIo0P0&feature=youtu.be" target="_blank">
   <img src="./games/might_&_blade_logo.png"/>
