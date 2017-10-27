@@ -185,6 +185,8 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } }
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool IgnoreGamePause { get { return this.mIgnoreGamePause; } set { this.mIgnoreGamePause = value; } }
 
