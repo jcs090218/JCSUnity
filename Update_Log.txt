@@ -7,6 +7,20 @@
 # ========================================================================
 
 
+2017-10-27
+* JCS_HideDialogueGamePadButton implemented. (JCSUnity)
+* JCS_ShowDialogueGamePadButton implemented. (JCSUnity)
+* JCS_ActivePanelGamePadButton implemented. (JCSUnity)
+* JCS_DeactivePanelGamePadButton implemented. (JCSUnity)
+* JCS_ExitAppGamePadButton implemented. (JCSUnity)
+* JCS_LoadSceneGamePadButton implemented. (JCSUnity)
+* JCS_OpenURLGamePadButton implemented. (JCSUnity)
+* JCS_PauseGameGamePadButton implemented. (JCSUnity)
+* JCS_ToggleGamePadButton implemented. (JCSUnity)
+* JCS_UnPauseGamePadButton implemented. (JCSUnity)
+* JCS_ExitAppOnlineGamePadButton implemented. (JCSUnity)
+* JCS_SwitchServerGamePadButton implemented. (JCSUnity)
+
 2017-10-24
 * Add JCSUnity_PE for managing packages for my framework. (JCSUnity)
 
