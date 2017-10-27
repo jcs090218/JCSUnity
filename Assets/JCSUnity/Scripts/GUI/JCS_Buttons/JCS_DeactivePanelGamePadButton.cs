@@ -1,6 +1,6 @@
 /**
- * $File: JCS_ActivePanelButton.cs $
- * $Date: 2017-09-04 16:32:23 $
+ * $File: JCS_DeactivePanelGamePadButton.cs $
+ * $Date: 2017-10-27 12:33:45 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -14,24 +14,27 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Active panel button.
+    /// Deactive panel button. (Game Pad)
     /// </summary>
-    public class JCS_ActivePanelButton
-        : JCS_Button
+    public class JCS_DeactivePanelGamePadButton
+        : JCS_GamePadButton
     {
-        [Header("** Runtime Variables (JCS_ActivePanelButton) **")]
+        [Header("** Runtime Variables (JCS_DeactivePanelGamePadButton) **")]
 
         [Tooltip("Play dialogue sound?")]
         [SerializeField]
-        private bool mShowWithSound = true;
+        private bool mHideWithSound = true;
 
-        [Tooltip("Panels to be active.")]
+        [Tooltip("Panels to be deactive.")]
         [SerializeField]
         private JCS_DialogueObject[] mDialogueObjects = null;
 
-        [Tooltip("Tween Panels to be active.")]
+        [Tooltip("Tween Panels to be deactive.")]
         [SerializeField]
         private JCS_TweenPanel[] mTweenPanels = null;
+
+
+        public bool HideithSound { get { return this.mHideWithSound; } set { this.mHideWithSound = value; } }
 
 
         public override void JCS_ButtonClick()
@@ -42,19 +45,17 @@ namespace JCSUnity
             {
                 if (panel != null)
                 {
-                    if (mShowWithSound)
-                        panel.ShowDialogue();
+                    if (mHideWithSound)
+                        panel.HideDialogue();
                     else
-                        panel.ShowDialogueWithoutSound();
+                        panel.HideDialogueWithoutSound();
                 }
             }
 
             foreach (JCS_TweenPanel panel in mTweenPanels)
             {
                 if (panel != null)
-                {
-                    panel.Active();
-                }
+                    panel.Deactive();
             }
         }
     }

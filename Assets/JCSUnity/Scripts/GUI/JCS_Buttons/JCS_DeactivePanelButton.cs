@@ -20,6 +20,10 @@ namespace JCSUnity
     {
         [Header("** Runtime Variables (JCS_DeactivePanelButton) **")]
 
+        [Tooltip("Play dialogue sound?")]
+        [SerializeField]
+        private bool mShowWithSound = true;
+
         [Tooltip("Panels to be deactive.")]
         [SerializeField]
         private JCS_DialogueObject[] mDialogueObjects = null;
@@ -36,7 +40,12 @@ namespace JCSUnity
             foreach (JCS_DialogueObject panel in mDialogueObjects)
             {
                 if (panel != null)
-                    panel.HideDialogue();
+                {
+                    if (mShowWithSound)
+                        panel.HideDialogue();
+                    else
+                        panel.HideDialogueWithoutSound();
+                }
             }
 
             foreach (JCS_TweenPanel panel in mTweenPanels)

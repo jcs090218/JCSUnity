@@ -1,10 +1,10 @@
 /**
- * $File: JCS_ShowDialogueButton.cs $
- * $Date: 2017-02-24 $
+ * $File: JCS_ShowDialogueGamePadButton.cs $
+ * $Date: 2017-10-27 12:27:23 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *                   Copyright (c) 2017 by Shen, Jen-Chieh $
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -13,15 +13,14 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// Click the button to show multiple dialogyue.
+    /// Click the button to show multiple dialogyue. (Game Pad)
     /// </summary>
-    public class JCS_ShowDialogueButton
-        : JCS_Button
+    public class JCS_ShowDialogueGamePadButton
+        : JCS_GamePadButton
     {
 
-        [Header("** Runtime Variables (JCS_ShowDialogueButton) **")]
+        [Header("** Runtime Variables (JCS_ShowDialogueGamePadButton) **")]
 
         [Tooltip("")]
         [SerializeField]

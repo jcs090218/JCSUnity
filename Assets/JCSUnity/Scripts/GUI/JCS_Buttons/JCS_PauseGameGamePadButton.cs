@@ -1,10 +1,10 @@
 /**
- * $File: JCS_PauseGameButton.cs $
- * $Date: 2017-02-24 $
+ * $File: JCS_PauseGameGamePadButton.cs $
+ * $Date: 2017-10-27 11:58:09 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *                   Copyright (c) 2017 by Shen, Jen-Chieh $
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -14,29 +14,29 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Pause the game with button.
+    /// Pause the game with button. (Game Pad)
     /// 
-    /// ATTENTION: this should have at least one "JCS_Button" with this.
+    /// ATTENTION: this should have at least one "JCS_GamePadButton" with this.
     /// </summary>
-    public class JCS_PauseGameButton 
-        : MonoBehaviour
+    public class JCS_PauseGameGamePadButton
+    : MonoBehaviour
     {
-        [Header("** Require Variables (JCS_PauseGameButton) **")]
+        [Header("** Require Variables (JCS_PauseGameGamePadButton) **")]
 
         [Tooltip(@"You need this variable in order get the button 
 work properly.")]
         [SerializeField]
-        private JCS_Button mJCSButton = null;
+        private JCS_GamePadButton mJCSGamePadButton = null;
 
 
         private void Awake()
         {
             // try to get the component.
-            if (mJCSButton == null)
-                this.mJCSButton = this.GetComponent<JCS_Button>();
+            if (mJCSGamePadButton == null)
+                this.mJCSGamePadButton = this.GetComponent<JCS_GamePadButton>();
 
-            if (mJCSButton != null)
-                mJCSButton.SetCallback(PauseGame);
+            if (mJCSGamePadButton != null)
+                mJCSGamePadButton.SetCallback(PauseGame);
         }
 
         /// <summary>
@@ -47,6 +47,5 @@ work properly.")]
             // turn on the game pause button.
             JCS_GameManager.instance.GAME_PAUSE = true;
         }
-
     }
 }

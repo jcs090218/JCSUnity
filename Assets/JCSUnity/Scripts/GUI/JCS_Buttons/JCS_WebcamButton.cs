@@ -20,7 +20,9 @@ namespace JCSUnity
     public class JCS_WebcamButton
         : JCS_Button
     {
-        [SerializeField] private JCS_Webcam mWebcam = null;
+        [SerializeField]
+        private JCS_Webcam mWebcam = null;
+
 
         protected override void Awake()
         {

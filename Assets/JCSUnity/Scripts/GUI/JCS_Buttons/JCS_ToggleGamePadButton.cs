@@ -1,23 +1,23 @@
-﻿/**
- * $File: JCS_ToggleButton.cs $
- * $Date: $
+/**
+ * $File: JCS_ToggleGamePadButton.cs $
+ * $Date: 2017-10-27 12:05:00 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 
 namespace JCSUnity
 {
-    public delegate void ToggleFunc();
-
     /// <summary>
-    /// Button that have two callback can toggle each other.
+    /// Button that have two callback can toggle each other. (Game Pad)
     /// </summary>
-    public class JCS_ToggleButton
-        : JCS_Button
+    public class JCS_ToggleGamePadButton
+        : JCS_GamePadButton
     {
 
         //----------------------

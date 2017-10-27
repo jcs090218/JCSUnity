@@ -1,10 +1,10 @@
 /**
- * $File: JCS_HideDialogueButton.cs $
- * $Date: 2017-02-24 $
+ * $File: JCS_HideDialogueGamePadButton.cs $
+ * $Date: 2017-10-27 12:25:34 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *                   Copyright (c) 2017 by Shen, Jen-Chieh $
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -13,14 +13,13 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// Click the button to hide multiple dialogue.
+    /// Click the button to hide multiple dialogue. (Game Pad)
     /// </summary>
-    public class JCS_HideDialogueButton
-        : JCS_Button
+    public class JCS_HideDialogueGamePadButton
+        : JCS_GamePadButton
     {
-        [Header("** Runtime Variables (JCS_HideDialogueButton) **")]
+        [Header("** Runtime Variables (JCS_HideDialogueGamePadButton) **")]
 
         [Tooltip("")]
         [SerializeField]
@@ -28,7 +27,7 @@ namespace JCSUnity
 
         [Tooltip("")]
         [SerializeField]
-        private bool mHideWithSound = false;
+        private bool mHideWithSound = true;
 
 
         public JCS_DialogueObject[] DialoguesToHide { get { return this.mDialoguesToHide; } }
