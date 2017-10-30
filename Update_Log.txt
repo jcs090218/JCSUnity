@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2017-10-30
+* Add 'JCS_OnClickCallback' abstract function for JCS_Button class.
+ Restrict all button sub-class follows this method/standard, in
+ order to reduce system duplicate code. (JCSUnity)
+
 2017-10-27
 * JCS_HideDialogueGamePadButton implemented. (JCSUnity)
 * JCS_ShowDialogueGamePadButton implemented. (JCSUnity)
