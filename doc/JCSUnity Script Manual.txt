@@ -1,6 +1,6 @@
 <JCSUnity>
   <doc>
-    JCSUnity version 1.5.9 Script Manual (Status)
+    JCSUnity version 1.6.1 Script Manual (Status)
 
     When using the JCSUnity you may refer to this document,
     which will cover the various scripts and how to properly use them.

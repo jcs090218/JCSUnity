@@ -26,7 +26,7 @@
 * JCS_ExitAppOnlineGamePadButton implemented. (JCSUnity)
 * JCS_SwitchServerGamePadButton implemented. (JCSUnity)
 * JCS_ButtonSelectionGroupController add JCS_ButtonSelectionGroup
- accessibility. (JCSUnity))
+ accessibility. (JCSUnity)
 
 2017-10-24
 * Add JCSUnity_PE for managing packages for my framework. (JCSUnity)
