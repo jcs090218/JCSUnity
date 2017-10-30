@@ -43,13 +43,7 @@ namespace JCSUnity
         //      Self-Define
         //------------------------------
 
-        /// <summary>
-        /// Default function to call this, so we dont have to
-        /// search the function depends on name.
-        /// 
-        /// * Good for organize code and game data file in Unity.
-        /// </summary>
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             // none meaning all platform so just load the scene.
             if (mPlatformType != JCS_PlatformType.NONE)
@@ -59,9 +53,6 @@ namespace JCSUnity
                 if (mPlatformType != JCS_ApplicationManager.instance.PLATFORM_TYPE)
                     return;
             }
-
-            // do call back
-            base.JCS_ButtonClick();
 
             JCS_SceneManager.instance.LoadScene(mSceneName, mScreenColor);
         }

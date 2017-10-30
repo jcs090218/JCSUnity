@@ -35,11 +35,8 @@ namespace JCSUnity
         public bool ShowWithSound { get { return this.mShowWithSound; } set { this.mShowWithSound = value; } }
 
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
-            base.JCS_ButtonClick();
-
-
             foreach (JCS_DialogueObject dialogue in mDialoguesToShow)
             {
                 if (mShowWithSound)

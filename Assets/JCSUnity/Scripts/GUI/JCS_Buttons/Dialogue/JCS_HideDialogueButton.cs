@@ -35,11 +35,8 @@ namespace JCSUnity
         public bool HideithSound { get { return this.mHideWithSound; } set { this.mHideWithSound = value; } }
 
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
-            base.JCS_ButtonClick();
-
-
             foreach (JCS_DialogueObject dialogue in mDialoguesToHide)
             {
                 if (mHideWithSound)

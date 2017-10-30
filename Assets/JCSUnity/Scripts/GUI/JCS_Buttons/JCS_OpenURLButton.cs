@@ -29,7 +29,7 @@ namespace JCSUnity
         public string URL { get { return this.mURL; } set { this.mURL = value; } }
 
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             Application.OpenURL(mURL);
         }

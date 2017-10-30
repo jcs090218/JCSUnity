@@ -8,7 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
-
+using System;
 
 namespace JCSUnity
 {
@@ -93,6 +93,11 @@ namespace JCSUnity
             {
                 base.JCS_ButtonClick();
             }
+        }
+
+        public override void JCS_OnClickCallback()
+        {
+            // empty.
         }
 
         /// <summary>

@@ -20,6 +20,7 @@ namespace JCSUnity
     public class JCS_WebcamButton
         : JCS_Button
     {
+        [Tooltip("")]
         [SerializeField]
         private JCS_Webcam mWebcam = null;
 
@@ -33,26 +34,21 @@ namespace JCSUnity
                 mWebcam = (JCS_Webcam)FindObjectOfType(typeof(JCS_Webcam));
         }
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             // current only one function applied,
             // so just do take snap shot as defualt action!
             TakeSnapshotWebcam();
-
-            // do call back
-            base.JCS_ButtonClick();
         }
 
         /// <summary>
-        /// 
+        /// Do take snap shot api call.
         /// </summary>
         private void TakeSnapshotWebcam()
         {
             if (mWebcam == null)
             {
                 JCS_Debug.LogReminders(
-                    "JCS_WebcamButton",
-                     
                     "Assign the button but no webcam attached or in the scene.");
 
                 return;

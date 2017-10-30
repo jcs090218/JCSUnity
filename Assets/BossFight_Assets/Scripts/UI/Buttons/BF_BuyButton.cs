@@ -68,10 +68,8 @@ public class BF_BuyButton
     //----------------------
     // Public Functions
 
-    public override void JCS_ButtonClick()
+    public override void JCS_OnClickCallback()
     {
-        base.JCS_ButtonClick();
-
         BF_GameSettings.BF_GAME_DATA.Cash -= mBuyValue;
     }
 

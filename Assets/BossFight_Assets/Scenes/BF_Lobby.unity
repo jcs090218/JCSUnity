@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 8
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -162,7 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b7b06887b801d45a8e5b5823efb5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -933,7 +935,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -984,7 +988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1589,19 +1595,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 8300000, guid: 30860b98decb03448afe661695a5ddce, type: 3}
-  mOnMouseDoubleClick: {fileID: 0}
+  mOnMouseOverSound: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 329572153}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 8300000, guid: 2e4785f1fae71d5429ee724c59bc7898, type: 3}
-  mOnMouseDoubleClickRefuse: {fileID: 0}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 8300000, guid: 2e4785f1fae71d5429ee724c59bc7898,
+    type: 3}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &329572150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,7 +1737,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b65fb3364c828d40b15ed4755901384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1943,7 +1964,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -2190,19 +2213,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
-  mOnMouseDoubleClick: {fileID: 0}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 0}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!1 &358824978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,7 +2328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3166,19 +3203,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
-  mOnMouseDoubleClick: {fileID: 0}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 0}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &528546820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,7 +3239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df153854df67e7842b5379be5a2b59e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3628,7 +3679,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -3679,7 +3732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4013,7 +4068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4064,7 +4121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4238,7 +4297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 0
@@ -4927,7 +4988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -4978,7 +5041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -5290,7 +5355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 0
@@ -5773,7 +5840,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -6046,7 +6115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -6097,7 +6168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -7057,7 +7130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -7750,7 +7825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -7997,20 +8074,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 0}
-  mOnMouseDoubleClick: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6,
-    type: 3}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!1 &1002609778
 GameObject:
   m_ObjectHideFlags: 0
@@ -8065,7 +8153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -8509,7 +8599,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 0
@@ -9496,7 +9588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9547,7 +9641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9720,7 +9816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9771,7 +9869,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -9945,7 +10045,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 0
@@ -10513,7 +10615,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 0
@@ -10975,7 +11079,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -11026,7 +11132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -11493,20 +11601,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 0}
-  mOnMouseDoubleClick: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6,
-    type: 3}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &1503701737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11518,7 +11637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -11967,7 +12088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 0
@@ -12327,20 +12450,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 0}
-  mOnMouseDoubleClick: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6,
-    type: 3}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &1589034699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12352,7 +12486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -12955,20 +13091,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 0}
-  mOnMouseDoubleClick: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6,
-    type: 3}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &1638458329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12980,7 +13127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -13271,20 +13420,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 0}
-  mOnMouseDoubleClick: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6,
-    type: 3}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &1641297820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13296,7 +13456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -13586,7 +13748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513e969bcead0f4a9991ad075764c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 0
@@ -14240,7 +14404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -14355,19 +14521,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
-  mOnMouseDoubleClick: {fileID: 0}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 0}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!1001 &1819292401
 Prefab:
   m_ObjectHideFlags: 0
@@ -14719,7 +14897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324.5, y: 2.7}
+  m_AnchoredPosition: {x: -324.5, y: 2.6999998}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1875451741
@@ -14974,6 +15152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTestKey: 1
+  mActiveKey: 107
+  mDeactiveKey: 108
+  mIsActive: 0
   mTargetPosition: {x: 0, y: 0, z: 0}
   mStartingPosition: {x: 0, y: 0, z: 0}
   mActiveSound: {fileID: 0}
@@ -14992,15 +15173,18 @@ MonoBehaviour:
   mObjectType: 1
   mContinueTween: 0
   mTargetTransform: {fileID: 0}
+  mIsDoneTweening: 0
   mTween: 1
+  mValueOffset: {x: 0, y: 0, z: 0}
   mDurationX: 1
   mDurationY: 1
   mDurationZ: 1
+  mDestroyWhenDoneTweening: 0
+  mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
-  mTweenPosition: 1
-  mTweenRotation: 0
-  mTweenScale: 0
-  mTrackAsLocalPosition: 0
+  mTweenType: 0
+  mTrackAsLocalSelf: 0
+  mTrackAsLocalTarget: 0
   mEasingX: 5
   mEasingY: 29
   mEasingZ: 5
@@ -15299,20 +15483,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 0}
-  mOnMouseDoubleClick: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5, type: 3}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6,
-    type: 3}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &1932695639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15324,7 +15519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -16219,7 +16416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 216, y: -251.00002}
+  m_AnchoredPosition: {x: 216, y: -251}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110879009
@@ -16233,7 +16430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -16284,7 +16483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ea9f75d423d43959cf52cb48623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1

@@ -19,6 +19,9 @@ namespace JCSUnity
     public class JCS_EmptyGamePadButton
         : JCS_GamePadButton
     {
-
+        public override void JCS_OnClickCallback()
+        {
+            // empty.
+        }
     }
 }

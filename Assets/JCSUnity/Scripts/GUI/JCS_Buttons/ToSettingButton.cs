@@ -19,7 +19,7 @@ namespace JCSUnity
     public class ToSettingButton 
         : JCS_Button
     {
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             //JCS_UtilityFunctions.PopSettingDialogue();
 

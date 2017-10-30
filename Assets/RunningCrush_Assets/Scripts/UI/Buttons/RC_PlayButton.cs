@@ -25,13 +25,11 @@ public class RC_PlayButton
         mSlideCamera = GameObject.Find("JCS_2DSlideScreenCamera").GetComponent<JCS_2DSlideScreenCamera>();
     }
 
-    public override void JCS_ButtonClick()
+    public override void JCS_OnClickCallback()
     {
         if (mSlideCamera == null)
         {
             JCS_Debug.LogError(
-                "RC_PlayButton", 
-                  
                 "No JCS_2DSlideScreenCamera in the scene...");
             return;
         }

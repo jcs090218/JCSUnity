@@ -39,10 +39,8 @@ namespace JCSUnity
         public string Host { get { return this.mHost; } set { this.mHost = value; } }
 
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
-            base.JCS_ButtonClick();
-
             // Switch the server.
             JCS_NetworkSettings.instance.SwitchServer(mHost, mPort, mForce);
         }

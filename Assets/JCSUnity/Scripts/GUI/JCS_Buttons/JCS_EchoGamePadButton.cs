@@ -24,14 +24,8 @@ namespace JCSUnity
         [Tooltip("String to echo out on the console window.")]
         public string echoString = "echo Hello World!~";
 
-        protected override void Awake()
-        {
-            base.Awake();
 
-            SetCallback(OnClick);
-        }
-
-        private void OnClick()
+        public override void JCS_OnClickCallback()
         {
             JCS_Debug.Log(echoString);
         }

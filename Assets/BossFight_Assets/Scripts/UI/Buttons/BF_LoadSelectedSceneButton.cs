@@ -41,10 +41,8 @@ public class BF_LoadSelectedSceneButton
     //----------------------
     // Public Functions
 
-    public override void JCS_ButtonClick()
+    public override void JCS_OnClickCallback()
     {
-        base.JCS_ButtonClick();
-
         string sceneName = BF_GameSettings.instance.LEVEL_SELECTED_NAME;
 
         JCS_SceneManager.instance.LoadScene(sceneName);

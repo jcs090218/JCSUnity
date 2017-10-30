@@ -18,7 +18,7 @@ namespace JCSUnity
     public class LeaveSettingButton 
         : JCS_Button
     {
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             JCS_UtilityFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
         }

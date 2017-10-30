@@ -54,7 +54,7 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             // do the toggle function.
             if (mActive)
@@ -66,17 +66,13 @@ namespace JCSUnity
 
             // toggle the boolean
             mActive = !mActive;
-
-            // system func
-            base.JCS_ButtonClick();
         }
 
         public void DoActiveFunc()
         {
             if (mAcitveFunc == null)
             {
-                JCS_Debug.LogError(
-                    "U have not set the ACTIVE function ptr...");
+                JCS_Debug.LogError("U have not set the ACTIVE function ptr...");
                 return;
             }
 
@@ -88,8 +84,7 @@ namespace JCSUnity
         {
             if (mDeactiveFunc == null)
             {
-                JCS_Debug.LogError(
-                    "U have not set the DEACTIVE function ptr...");
+                JCS_Debug.LogError("U have not set the DEACTIVE function ptr...");
                 return;
             }
 

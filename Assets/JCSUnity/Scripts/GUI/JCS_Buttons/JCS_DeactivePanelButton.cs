@@ -33,10 +33,8 @@ namespace JCSUnity
         private JCS_TweenPanel[] mTweenPanels = null;
 
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
-            base.JCS_ButtonClick();
-
             foreach (JCS_DialogueObject panel in mDialogueObjects)
             {
                 if (panel != null)

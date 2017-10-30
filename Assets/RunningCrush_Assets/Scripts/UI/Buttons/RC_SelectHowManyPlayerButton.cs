@@ -17,7 +17,7 @@ public class RC_SelectHowManyPlayerButton
     [Tooltip("After hitting this button decide how many player in this game.")]
     [SerializeField] private int mPlayersInGame = 1; 
 
-    public override void JCS_ButtonClick()
+    public override void JCS_OnClickCallback()
     {
         RC_GameSettings.instance.PLAYER_IN_GAME = mPlayersInGame;
     }

@@ -102,7 +102,7 @@ namespace JCSUnity
         /// <summary>
         /// Button click function pointer override.
         /// </summary>
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             if (mSlideCameras.Length == 0)
             {
@@ -115,9 +115,6 @@ namespace JCSUnity
 
             // start counting delay
             mStartDelay = true;
-
-            // do call back
-            base.JCS_ButtonClick();
         }
 
         /// <summary>

@@ -18,7 +18,7 @@ namespace JCSUnity
     /// PC/desktop too.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_GamePadButton
+    public abstract class JCS_GamePadButton
         : JCS_Button
     {
 

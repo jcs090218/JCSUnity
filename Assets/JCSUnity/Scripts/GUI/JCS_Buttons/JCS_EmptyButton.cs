@@ -8,7 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
-
+using System;
 
 namespace JCSUnity
 {
@@ -18,6 +18,9 @@ namespace JCSUnity
     public class JCS_EmptyButton
         : JCS_Button
     {
-
+        public override void JCS_OnClickCallback()
+        {
+            // empty.
+        }
     }
 }

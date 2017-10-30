@@ -13,7 +13,7 @@ namespace JCSUnity
 {
     public class QuitApplicationButton : JCS_Button
     {
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             JCS_UtilityFunctions.DestoryCurrentDialogue(JCS_DialogueType.SYSTEM_DIALOGUE);
             JCS_UtilityFunctions.QuitApplication();

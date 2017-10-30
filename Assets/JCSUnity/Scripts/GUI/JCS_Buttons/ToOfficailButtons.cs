@@ -13,7 +13,7 @@ namespace JCSUnity
 {
     public class ToOfficailButtons : JCS_Button
     {
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             JCS_UtilityFunctions.ToOfficailWebpage();
 

@@ -19,12 +19,11 @@ namespace JCSUnity
     public class JCS_ExitAppGamePadButton
         : JCS_GamePadButton
     {
-        public override void JCS_ButtonClick()
-        {
-            base.JCS_ButtonClick();
 
+        public override void JCS_OnClickCallback()
+        {
             // load exit button scene.
-            JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateScene");
+            JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateSceneOnline");
         }
     }
 }

@@ -54,7 +54,7 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
             // do the toggle function.
             if (mActive)
@@ -66,9 +66,6 @@ namespace JCSUnity
 
             // toggle the boolean
             mActive = !mActive;
-
-            // system func
-            base.JCS_ButtonClick();
         }
 
         public void DoActiveFunc()

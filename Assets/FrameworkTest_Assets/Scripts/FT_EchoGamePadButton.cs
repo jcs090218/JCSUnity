@@ -21,16 +21,8 @@ public class FT_EchoGamePadButton
     public JCS_DialogueObject closeDialogue = null;
 
 
-    /// <summary>
-    /// Default function to call this, so we dont have to
-    /// search the function depends on name.
-    /// 
-    /// * Good for organize code and game data file in Unity.
-    /// </summary>
-    public override void JCS_ButtonClick()
+    public override void JCS_OnClickCallback()
     {
-        base.JCS_ButtonClick();
-
         Debug.Log("echo.. Hello World!!");
 
         closeDialogue.HideDialogue();

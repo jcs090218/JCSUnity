@@ -20,11 +20,8 @@ namespace JCSUnity
     public class JCS_ExitAppOnlineButton 
         : JCS_Button
     {
-
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
-            base.JCS_ButtonClick();
-
             // load exit button scene.
             JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateSceneOnline");
         }

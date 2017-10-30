@@ -19,12 +19,10 @@ public class RC_LevelSelectButton
 
     [SerializeField] private string mLevelName = "RC_Game";
 
-    public override void JCS_ButtonClick()
+    public override void JCS_OnClickCallback()
     {
         RC_GameSettings.instance.LEVEL_SELECTED_NAME = mLevelName;
         RC_GameSettings.instance.SetCorrectSceneNameToAllButtonInScene();
-
-        base.JCS_ButtonClick();
     }
 
 }

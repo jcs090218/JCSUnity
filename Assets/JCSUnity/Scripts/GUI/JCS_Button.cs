@@ -19,7 +19,7 @@ namespace JCSUnity
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(Image))]
-    public abstract class JCS_Button 
+    public abstract class JCS_Button
         : MonoBehaviour
     {
 
@@ -47,6 +47,8 @@ namespace JCSUnity
         [Tooltip("Record down the selection choice for dialogue system.")]
         [SerializeField]
         private int mDialogueSelection = -1;
+
+        private bool mInitialized = false;
 
         /*******************************************/
         /*           Protected Variables           */
@@ -145,8 +147,14 @@ namespace JCSUnity
         /// <summary>
         /// Intialize jcs button once.
         /// </summary>
-        public void InitJCSButton()
+        public void InitJCSButton(bool forceInit = false)
         {
+            if (!forceInit)
+            {
+                if (this.mInitialized)
+                    return;
+            }
+
             this.mRectTransform = this.GetComponent<RectTransform>();
             this.mButton = this.GetComponent<Button>();
             this.mImage = this.GetComponent<Image>();
@@ -163,6 +171,11 @@ namespace JCSUnity
 
             // set the stating interactable.
             SetInteractable();
+
+            // part of the on click callback.
+            SetSystemCallback(JCS_OnClickCallback);
+
+            this.mInitialized = true;
         }
 
         /// <summary>
@@ -198,7 +211,12 @@ namespace JCSUnity
             if (btnCallBackBtn != null)
                 btnCallBackBtn.Invoke(this);
         }
-        
+
+        /// <summary>
+        /// This is the callback when the button get click.
+        /// </summary>
+        public abstract void JCS_OnClickCallback();
+
         /// <summary>
         /// Use this to enable and disable the button.
         /// </summary>
