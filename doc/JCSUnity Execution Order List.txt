@@ -34,3 +34,4 @@ Following Scirpt should have lower execute order then "JCS_GameManager"
     * JCS_PortalManager
     * JCS_2DAnimator
     * JCS_2DAnimation
+    * JCS_GamePadAnimationHandler
