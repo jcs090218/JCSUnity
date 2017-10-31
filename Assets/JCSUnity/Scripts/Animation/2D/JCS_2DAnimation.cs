@@ -78,6 +78,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mLoop = true;
 
+        [Tooltip("Null sprite.")]
+        [SerializeField]
+        private Sprite mNullSprite = null;
+
+
         [Tooltip("")]
         [SerializeField]
         private float mFramePerSec = 0.1f;
@@ -117,6 +122,8 @@ this, default is 1.")]
         public bool IsDonePlaying { get { return this.mIsDonePlaying; } }
         public void SetJCS2DAnimator(JCS_2DAnimator jcs2dAnimator) { this.mJCS2DAnimator = jcs2dAnimator; }
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
+
+        public Sprite NullSprite { get { return this.mNullSprite; } set { this.mNullSprite = value; } }
 
         // Bind.
         public void SetAnimationFrame(Sprite[] frames)
@@ -259,7 +266,7 @@ this, default is 1.")]
         /// </summary>
         public void Stop()
         {
-            this.LocalSprite = null;
+            this.LocalSprite = this.mNullSprite;
 
             // stop the animation.
             mActive = false;
