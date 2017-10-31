@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-10-31
+* JCS_GamePadAnimationHandler implemented. (JCSUnity)
+* JCS_2DAnimator header naming error fixed. (JCSUnity)
+
 2017-10-30
 * Add 'JCS_OnClickCallback' abstract function for JCS_Button class.
  Restrict all button sub-class follows this method/standard, in
