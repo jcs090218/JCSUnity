@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Hold sequence of animation and play it by condition.
     /// </summary>
@@ -29,14 +28,14 @@ namespace JCSUnity
 
 
 #if (UNITY_EDITOR)
-        [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
+        [Header("** Helper Variables Variables (JCS_2DAnimator) **")]
 
         [SerializeField]
         private bool mTestWithKey = true;
 #endif
 
 
-        [Header("** Check Variables Variables (JCS_I2DAnimator) **")]
+        [Header("** Check Variables Variables (JCS_2DAnimator) **")]
 
         [Tooltip("Current animation id.")]
         [SerializeField]
@@ -57,7 +56,7 @@ namespace JCSUnity
         private JCS_2DAnimation mOneShotAnim = null;
 
 
-        [Header("** Runtime Variables Variables (JCS_I2DAnimator) **")]
+        [Header("** Runtime Variables (JCS_2DAnimator) **")]
 
         [Tooltip(@"This will times the animation time by this, 
 default is 1.")]
@@ -70,7 +69,7 @@ default is 1.")]
         private List<JCS_2DAnimation> mAnimations = null;
 
 
-        [Header("** Runtime Variables Variables (JCS_I2DAnimator) **")]
+        [Header("** Optional Variables (JCS_2DAnimator) **")]
 
         [Tooltip(@"If you want the animation to be hold for few sec, 
 you could add this component to do the action/event.")]
