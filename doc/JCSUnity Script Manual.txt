@@ -2157,6 +2157,14 @@
         </File>
       </GUI>
       <Handler>
+        <File name="JCS_GamePadAnimationHandler.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Handle animation using 'JCS_2DAnimator' depends on weather
+            the game pad is plug or unplugn.
+          </Description>
+        </File>
+
         <File name="JCS_GamePadButtonUIHandler.cs">
           <Placement>Any transform/node.</Placement>
           <Description>Switch the UI depends on if the gamepad connected?</Description>
