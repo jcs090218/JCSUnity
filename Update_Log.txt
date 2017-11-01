@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-11-01
+* JCS_ButtonSelectionGroup callback invoke with defense programming. (JCSUnity)
+* JCS_ButtonSelection provide link direction from/to JCS_Button. (JCSUnity)
+
 2017-10-31
 * JCS_GamePadAnimationHandler implemented. (JCSUnity)
 * JCS_2DAnimator header naming error fixed. (JCSUnity)
