@@ -237,7 +237,8 @@ namespace JCSUnity
             // active the new active selection.
             mSelections[mCurrentSelectIndex].Active = true;
 
-            selectionChanged.Invoke();
+            if (selectionChanged != null)
+                selectionChanged.Invoke();
         }
 
         /// <summary>
