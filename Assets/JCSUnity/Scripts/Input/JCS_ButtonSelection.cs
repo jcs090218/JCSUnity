@@ -35,6 +35,16 @@ namespace JCSUnity
         public SelectionDisable selectionDisable = SelectionDisable;
         public SelectionActive selectionActive = SelectionActive;
 
+        /// <summary>
+        /// Direction the object link to button.
+        /// </summary>
+        public enum LinkDirection
+        {
+            ButtonToSelection,
+            SelectionToButton,
+        };
+
+
         /*******************************************/
         /*           Private Variables             */
         /*******************************************/
@@ -61,18 +71,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mSkip = false;
 
-        [Tooltip("Make skip variable with interactable with the button.")]
-        [SerializeField]
-        private bool mConnectSkipWithInteractableButton = true;
-
-        [Tooltip("This gameobject itself is a button and use this button component.")]
-        [SerializeField]
-        private bool mSelfAsButton = true;
-
-        [Tooltip("Button for selection group to handle.")]
-        [SerializeField]
-        private JCS_Button mButton = null;
-
         [Tooltip("Events when you enter this selection.")]
         [SerializeField]
         private UnityEvent mSelectedEvent = null;
@@ -80,6 +78,25 @@ namespace JCSUnity
         [Tooltip("List of effect when on this selection.")]
         [SerializeField]
         private JCS_UnityObject[] mEffects = null;
+
+
+        [Header("- Button (JCS_ButtonSelection)")]
+
+        [Tooltip("Button for selection group to handle.")]
+        [SerializeField]
+        private JCS_Button mButton = null;
+
+        [Tooltip("This gameobject itself is a button and use this button component.")]
+        [SerializeField]
+        private bool mSelfAsButton = true;
+
+        [Tooltip("Make skip variable with interactable with the button.")]
+        [SerializeField]
+        private bool mLinkSkipWithInteractableButton = true;
+
+        [Tooltip("Direction the 'skip' variable connect to button's interactable variable.")]
+        [SerializeField]
+        private LinkDirection mLinkDirection = LinkDirection.ButtonToSelection;
 
 
         [Header("- Full Control (JCS_ButtonSelection)")]
@@ -107,7 +124,8 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public bool ConnectSkipWithInteractableButton { get { return this.mConnectSkipWithInteractableButton; } set { this.mConnectSkipWithInteractableButton = value; } }
+        public LinkDirection linkDirection { get { return this.mLinkDirection; } set { this.mLinkDirection = value; } }
+        public bool LinkSkipWithInteractableButton { get { return this.mLinkSkipWithInteractableButton; } set { this.mLinkSkipWithInteractableButton = value; } }
         public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
         public bool SelfAsButton { get { return this.mSelfAsButton; } set { this.mSelfAsButton = value; } }
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
@@ -264,10 +282,29 @@ namespace JCSUnity
         /// </summary>
         private void SetInteractableButton()
         {
-            if (!mConnectSkipWithInteractableButton || mButton == null)
+            if (!mLinkSkipWithInteractableButton || mButton == null)
                 return;
 
-            mButton.SetInteractable(!mSkip);
+            switch (mLinkDirection)
+            {
+                case LinkDirection.ButtonToSelection:
+                    {
+                        // change itself, button have more control/power
+                        // over selection.
+                        mSkip = !mButton.Interactable;
+                    }
+                    return;
+                case LinkDirection.SelectionToButton:
+                    {
+                        // vice versa, this have more control/power
+                        // over button.
+                        mButton.SetInteractable(!mSkip);
+                    }
+                    return;
+            }
+
+            // this should not happens...
+            JCS_Debug.LogWarning("Button selection link failed...");
         }
 
     }
