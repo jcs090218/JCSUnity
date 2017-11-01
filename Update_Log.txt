@@ -10,6 +10,9 @@
 2017-11-01
 * JCS_ButtonSelectionGroup callback invoke with defense programming. (JCSUnity)
 * JCS_ButtonSelection provide link direction from/to JCS_Button. (JCSUnity)
+* JCS_DialogueScript force get dialogue system well getting it. (JCSUnity)
+* Change dialogue system prefab because button selection link direction 
+ default is the opposite direction. (JCSUnity)
 
 2017-10-31
 * JCS_GamePadAnimationHandler implemented. (JCSUnity)
