@@ -1247,9 +1247,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114908105720879514}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1257,6 +1254,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114990885869694414}
+  mButton: {fileID: 114908105720879514}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1387,9 +1388,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114670849245310578}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1397,6 +1395,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114259609029665402}
+  mButton: {fileID: 114670849245310578}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1920,9 +1922,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114519598058034064}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1930,6 +1929,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114381993365564794}
+  mButton: {fileID: 114519598058034064}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -2236,9 +2239,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114187848226080388}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2246,6 +2246,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114142054023434002}
+  mButton: {fileID: 114187848226080388}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -2331,9 +2335,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114442460098421908}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2341,6 +2342,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114429249570936496}
+  mButton: {fileID: 114442460098421908}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -3153,9 +3158,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114864686214326800}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3163,6 +3165,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114983607313896098}
+  mButton: {fileID: 114864686214326800}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}

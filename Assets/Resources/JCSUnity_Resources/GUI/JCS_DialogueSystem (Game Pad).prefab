@@ -1042,9 +1042,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114531526352205142}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1052,6 +1049,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114530991432374438}
+  mButton: {fileID: 114531526352205142}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1080,6 +1081,8 @@ MonoBehaviour:
   mKKeyToListen: 97
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114122186677155028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1094,9 +1097,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114276982509652678}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1104,6 +1104,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114048648243663208}
+  mButton: {fileID: 114276982509652678}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1419,9 +1423,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114807048228003344}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1429,6 +1430,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114310130895731532}
+  mButton: {fileID: 114807048228003344}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1490,6 +1495,8 @@ MonoBehaviour:
   mKKeyToListen: 97
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114253267183399028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1777,9 +1784,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114878962761918398}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1787,6 +1791,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114477870437701660}
+  mButton: {fileID: 114878962761918398}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1827,6 +1835,8 @@ MonoBehaviour:
   mKKeyToListen: 97
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114524426417033824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1923,6 +1933,8 @@ MonoBehaviour:
   mKKeyToListen: 98
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114555292912398826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2055,6 +2067,8 @@ MonoBehaviour:
   mKKeyToListen: 97
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114568134139427690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2415,6 +2429,8 @@ MonoBehaviour:
   mKKeyToListen: 27
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114688816695541188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2439,6 +2455,8 @@ MonoBehaviour:
   mKKeyToListen: 98
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114695754463409212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2636,6 +2654,20 @@ MonoBehaviour:
   mJDown: 0
   mJRight: 0
   mJLeft: 0
+  mNextSound: {fileID: 0}
+  mPrevSound: {fileID: 0}
+  mOkaySound: {fileID: 0}
+  mUpSound: {fileID: 0}
+  mDownSound: {fileID: 0}
+  mRightSound: {fileID: 0}
+  mLeftSound: {fileID: 0}
+  mNextSoundMethod: 0
+  mPrevSoundMethod: 0
+  mOkaySoundMethod: 0
+  mUpSoundMethod: 0
+  mDownSoundMethod: 0
+  mRightSoundMethod: 0
+  mLeftSoundMethod: 0
 --- !u!114 &114753795462045522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2687,6 +2719,8 @@ MonoBehaviour:
   mKKeyToListen: 97
   mJKeyToListen: 0
   mJoystickLitener: 0
+  mButtonClickSound: {fileID: 0}
+  mSoundMethod: 0
 --- !u!114 &114791042234151008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3073,9 +3107,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114720040217206860}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3083,6 +3114,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114035288608265006}
+  mButton: {fileID: 114720040217206860}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -3101,9 +3136,6 @@ MonoBehaviour:
   mActive: 0
   mDeactiveAtAwake: 1
   mSkip: 0
-  mConnectSkipWithInteractableButton: 1
-  mSelfAsButton: 1
-  mButton: {fileID: 114958307808323962}
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3111,6 +3143,10 @@ MonoBehaviour:
       PublicKeyToken=null
   mEffects:
   - {fileID: 114499384555026556}
+  mButton: {fileID: 114958307808323962}
+  mSelfAsButton: 1
+  mLinkSkipWithInteractableButton: 1
+  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
