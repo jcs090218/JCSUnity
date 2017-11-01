@@ -48,8 +48,17 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        protected JCS_DialogueSystem DialogueSystem { get { return this.mDialogueSystem; } }
-        protected JCS_DialogueSystem jcsDs { get { return this.mDialogueSystem; } }
+        public JCS_DialogueSystem DialogueSystem
+        {
+            get
+            {
+                if (mDialogueSystem == null)
+                    mDialogueSystem = JCS_UtilitiesManager.instance.GetDialogueSystem();
+
+                return this.mDialogueSystem;
+            }
+        }
+        protected JCS_DialogueSystem jcsDs { get { return this.DialogueSystem; } }
 
         public Sprite CenterSprite { get { return this.mCenterSprite; } }
         public Sprite LeftSprite { get { return this.mLeftSprite; } }
