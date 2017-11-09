@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-11-09
+* Bug fixed to 3D throw action, comparing from distance
+ to displacement in free fall/accelerate formula. (JCSUnity)
+
 2017-11-01
 * JCS_ButtonSelectionGroup callback invoke with defense programming. (JCSUnity)
 * JCS_ButtonSelection provide link direction from/to JCS_Button. (JCSUnity)
