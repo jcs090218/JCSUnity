@@ -142,6 +142,12 @@ namespace JCSUnity
                     mVelocity.z = -mVelocity.z;
             }
 
+            /* Displacement include direction, is a vector quantity. */
+            {
+                if (targetPos.y < this.transform.position.y)
+                    distanceY = -distanceY;
+            }
+
             mVelocity.y = (distanceY - (-JCS_GameConstant.GRAVITY * mGravityProduct * time * time / 2)) / time;
 
             // start dropping.
