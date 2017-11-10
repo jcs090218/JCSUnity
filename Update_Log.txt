@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-11-10
+* Detail comment for 3D throw action with physics logic. (JCSUnity)
+
 2017-11-09
 * Bug fixed to 3D throw action, comparing from distance
  to displacement in free fall/accelerate formula. (JCSUnity)
