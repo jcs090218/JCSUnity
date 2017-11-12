@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Basic camera for 2d Games.
     /// </summary>
@@ -96,28 +95,29 @@ namespace JCSUnity
 
         [Header("** Speed / Friction **")]
 
-        [Tooltip("")]
+        [Tooltip("How fast this camera move toward the target. (x-axis)")]
         [SerializeField]
+        [Range(0.01f, 10.0f)]
         private float mFrictionX = 0.6f;
 
-        [Tooltip("")]
+        [Tooltip("How fast this camera move toward the target. (y-axis)")]
         [SerializeField]
+        [Range(0.01f, 10.0f)]
         private float mFrictionY = 0.6f;
 
 
-        //-- Move
         [Header("** Scene Setting **")]
 
-        [Tooltip("")]
+        [Tooltip("Maxinum this camera can go in x-axis.")]
         [SerializeField]
         private float mMax_X_PositionInScene = float.PositiveInfinity;
-        [Tooltip("")]
+        [Tooltip("Mininum this camera can go in x-axis.")]
         [SerializeField]
         private float mMin_X_PositionInScene = float.NegativeInfinity;
-        [Tooltip("")]
+        [Tooltip("Maxinum this camera can go in y-axis.")]
         [SerializeField]
         private float mMax_Y_PositionInScene = float.PositiveInfinity;
-        [Tooltip("")]
+        [Tooltip("Mininum this camera can go in y-axis.")]
         [SerializeField]
         private float mMin_Y_PositionInScene = float.NegativeInfinity;
 
@@ -131,7 +131,11 @@ namespace JCSUnity
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
-        public void SetFollowTarget(Transform trans) { this.mTargetTransform = trans; }
+
+        public Transform FollowTarget { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
+        public override void SetFollowTarget(Transform trans) { this.mTargetTransform = trans; }
+        public override Transform GetFollowTarget() { return this.mTargetTransform; }
+
         public bool GetFollowing() { return this.mFollowing; }
         public void SetFollowing(bool val) { this.mFollowing = val; }
         public Transform GetTargetTransform() { return this.mTargetTransform; }
