@@ -1587,6 +1587,16 @@
         <Placement>Object will be cash in game.</Placement>
         <Description>In game cash.</Description>
       </File>
+
+      <File name="JCS_PredictCamera.cs">
+        <Placement>
+          Any JCS_Camera object (JCS_2DCamer/JCS_3DCamera).
+        </Placement>
+        <Description>
+          Camera will predict the movement and move toward the
+          certain direction.
+        </Description>
+      </File>
     </GameObject>
     <GUI>
       <Cursor>
