@@ -13,7 +13,6 @@ using System.IO;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Camera class for JCSUnity framework.
     /// </summary>
@@ -71,6 +70,10 @@ namespace JCSUnity
         public float fieldOfView { get { return this.mCamera.fieldOfView; } set { this.mCamera.fieldOfView = value; } }
         public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
         public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
+
+        /* Get/Set the target this camera follows. */
+        public abstract void SetFollowTarget(Transform trans);
+        public abstract Transform GetFollowTarget();
 
         //========================================
         //      Unity's function
