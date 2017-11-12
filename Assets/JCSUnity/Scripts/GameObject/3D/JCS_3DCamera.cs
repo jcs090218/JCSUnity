@@ -14,7 +14,6 @@ using System.IO;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Basic camera in 3d game.
     /// </summary>
@@ -22,8 +21,6 @@ namespace JCSUnity
     public class JCS_3DCamera 
         : JCS_Camera
     {
-
-
         //----------------------
         // Public Variables
 
@@ -182,7 +179,10 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public void SetTargetTransform(Transform targ) { this.mTargetTransform = targ; }
+        public Transform FollowTarget { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
+        public override void SetFollowTarget(Transform targ) { this.mTargetTransform = targ; }
+        public override Transform GetFollowTarget() { return this.mTargetTransform; }
+
         public void SetRotateSpeed(float val) { this.mRotateSpeed = val; }
         public bool SmoothTrack
         {
