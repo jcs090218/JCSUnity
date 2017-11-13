@@ -27,8 +27,10 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+#if (UNITY_EDITOR)
         [SerializeField]
         private bool mDisplayPathGizmos = false;
+#endif
 
         [Tooltip("Mask to detect the unwalkable object.")]
         [SerializeField]

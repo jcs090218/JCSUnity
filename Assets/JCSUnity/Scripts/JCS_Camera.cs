@@ -406,11 +406,6 @@ namespace JCSUnity
             float objTop = objPos.y + (objectRect.y / 2);
             float objBot = objPos.y - (objectRect.y / 2);
 
-            Vector3 topLeft = new Vector3(objLeft, objTop, 0);
-            Vector3 topRight = new Vector3(objRight, objTop, 0);
-            Vector3 botRight = new Vector3(objRight, objBot, 0);
-            Vector3 botLeft = new Vector3(objLeft, objBot, 0);
-
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
             float camWidth = appRect.sizeDelta.x;
@@ -422,6 +417,11 @@ namespace JCSUnity
             float camBot = camPos.y - (camHeight / 2);
 
 #if (UNITY_EDITOR)
+            Vector3 topLeft = new Vector3(objLeft, objTop, 0);
+            Vector3 topRight = new Vector3(objRight, objTop, 0);
+            Vector3 botRight = new Vector3(objRight, objBot, 0);
+            Vector3 botLeft = new Vector3(objLeft, objBot, 0);
+
             Debug.DrawLine(topLeft, topRight);
             Debug.DrawLine(topLeft, botLeft);
             Debug.DrawLine(botRight, botLeft);

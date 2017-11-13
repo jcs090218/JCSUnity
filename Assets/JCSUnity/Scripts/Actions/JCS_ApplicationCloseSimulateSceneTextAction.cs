@@ -30,8 +30,10 @@ namespace JCSUnity
 
         private Text mText = null;
 
+#if (UNITY_EDITOR)
         [SerializeField]
         private string mTextShowInEditMode = "";
+#endif
 
         //----------------------
         // Protected Variables
