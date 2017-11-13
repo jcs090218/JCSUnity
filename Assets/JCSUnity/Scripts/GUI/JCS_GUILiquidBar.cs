@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// GUI liquid bar like health bar, mana bar etc.
     /// Is specific for Unity Engine's Canvas system.

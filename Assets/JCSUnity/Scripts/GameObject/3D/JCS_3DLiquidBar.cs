@@ -6,13 +6,21 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+
+/* 
+ * If you had purchase a copy of 'SpriteMask' and willing to use this
+ * component, uncomment a line below. 
+ * 
+ * SpriteMask: https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642
+ */
+//#define SPRITE_MASK
+
 using UnityEngine;
 using System.Collections;
 
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// if finding for 2D Liquid bar to do the health bar effect,
     /// plz use the "JCS_GUILiquidBar" instead.
@@ -34,11 +42,13 @@ namespace JCSUnity
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
 
+#if (SPRITE_MASK)
         [Header("** Initilaize Variables (JCS_3DLiquidBar) **")]
 
         [Tooltip("Plz set this.")]
         [SerializeField]
         private SpriteMask mSpriteMask = null;
+#endif
 
         [Tooltip("Plz put the under texture bar here.")]
         [SerializeField]
@@ -297,6 +307,7 @@ namespace JCSUnity
             if (mBarSpriteRenderer == null)
                 return;
 
+#if (SPRITE_MASK)
             // find the width and height of the image from sprite renderer
             Vector2 maskSize = mSpriteMask.size;
 
@@ -330,6 +341,7 @@ namespace JCSUnity
                     }
                     break;
             }
+#endif
 
             // do starting percent
             FixPercentage();
@@ -374,8 +386,10 @@ namespace JCSUnity
         /// </summary>
         private void TowardToTargetValue()
         {
+#if (SPRITE_MASK)
             Vector3 speed = (mMaskTargetPosition - mSpriteMask.transform.localPosition) / mDeltaFriction * Time.deltaTime;
             mSpriteMask.transform.localPosition += speed;
+#endif
         }
 
         /// <summary>
