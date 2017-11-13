@@ -7,6 +7,9 @@ in variety of different project. This framework provide many scripted
 game mechanics. With those combination of scripts/components could
 generate enormous variety of different behaviour. <br/><br/>
 
+## How to use it? ##
+
+
 ## Create Scene with JCSUnity ##
 Create the simple scene with smooth switching the scene and smooth
 switching the background music is always painful. Not because is
