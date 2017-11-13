@@ -1,13 +1,13 @@
 
-JCSUnity version 1.6.1 Libraries List (Status)
+JCSUnity version 1.6.3 Libraries List (Status)
 
 
     Plz download these library yourself.
     
     ¦ Necessary:
         * SpriteMask : https://www.assetstore.unity3d.com/en/#!/content/27642
-        * Tweener : https://github.com/PeterVuorela/Tweener
-        * UI-Polygon: https://github.com/CiaccoDavide/Unity-UI-Polygon
+        * Tweener : https://github.com/PeterVuorela/Tweener (include)
+        * UI-Polygon: https://github.com/CiaccoDavide/Unity-UI-Polygon (include)
         
     ¦ Recommanded:
         * Photon PUN+ : https://www.assetstore.unity3d.com/en/#!/content/12080
