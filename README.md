@@ -13,8 +13,8 @@ the latest from the release tab above this GitHub page or the link
 <a href="https://github.com/jcs090218/JCSUnity_Framework/releases/download/1.6.1/JCSUnity_Release_v1.6.1.unitypackage" target="_blank">
 here
 </a>. Create a new project from Unity and import all the assets into 
-the project what you created. Then you can start using the power from 
-this framework. <br/>
+the project what you just created. Then you can start using the power 
+from this framework. <br/>
 
 ## Notice ##
 Importance notice that all the media assets do not fall under this 
