@@ -16,11 +16,13 @@ the assets into that project. Then you can start all of the tools
 in the JCSUnity framework. <br/>
 
 ## Notice ##
-Importance notice that all the media assets do not fall under this 
-project's license. These assets existence are for people who need 
-placeholder or any testing purpose. Please do not use these assets 
-for any commercial use. If you had used this framework, we would 
-assume you had agreed with this notice here.
+All media assets inside JCSUnity do not fall under its license. 
+These assets are placeholders only, and should only be used for 
+testing purposes. They are NOT, under any circumstances, to be 
+used commercially. By using this framework you agree to these 
+terms, and understand that you are solely responsible for any 
+legal action taken against you for using, or attempting to use 
+any placeholder assets commercially.
 <br/>
 
 ### Create Scene with JCSUnity ###
