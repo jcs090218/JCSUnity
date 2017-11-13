@@ -11,7 +11,7 @@ generate enormous variety of different behaviour. <br/><br/>
 JCSUnity is like other Unity plugins. You can download the latest 
 release from the above tab, or from the link 
 <a href="https://github.com/jcs090218/JCSUnity_Framework/releases/download/1.6.1/JCSUnity_Release_v1.6.1.unitypackage" target="_blank">
-here.</a> Simply create a new project in Unity then import all of 
+here</a>. Simply create a new project in Unity then import all of 
 the assets into that project. Then you can start all of the tools 
 in the JCSUnity framework. <br/>
 
