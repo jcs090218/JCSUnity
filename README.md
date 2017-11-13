@@ -8,7 +8,21 @@ game mechanics. With those combination of scripts/components could
 generate enormous variety of different behaviour. <br/><br/>
 
 ## How to use it? ##
+JCSUnity is just like other Unity plugins; you could either download 
+the latest from the release tab above this GitHub page or the link 
+<a href="https://github.com/jcs090218/JCSUnity_Framework/releases/download/1.6.1/JCSUnity_Release_v1.6.1.unitypackage" target="_blank">
+here
+</a>. Create a new project from Unity and import all the assets into 
+the project what you created. Then you can start using the power from 
+this framework. <br/>
 
+## Notice ##
+Importance notice that all the media assets do not fall under this 
+project's license. These assets existence are for people who need 
+placeholder or any testing purpose. Please do not use these assets 
+for any commercial use. If you had used this framework, we would 
+assume you had agreed with this notice here.
+<br/>
 
 ## Create Scene with JCSUnity ##
 Create the simple scene with smooth switching the scene and smooth
