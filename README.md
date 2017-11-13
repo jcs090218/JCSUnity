@@ -8,12 +8,12 @@ game mechanics. With those combination of scripts/components could
 generate enormous variety of different behaviour. <br/><br/>
 
 ## How to use it? ##
-JCSUnity is just like other Unity plugins; you could either download 
-the latest from the release tab above this GitHub page or the link 
+JCSUnity is like other Unity plugins. You can download the latest 
+release from the above tab, or from the link 
 <a href="https://github.com/jcs090218/JCSUnity_Framework/releases/download/1.6.1/JCSUnity_Release_v1.6.1.unitypackage" target="_blank">
-here</a>. Create a new project from Unity and import all the assets into 
-the project what you just created. Then you can start using the power 
-from this framework. <br/>
+here.</a> Simply create a new project in Unity then import all of 
+the assets into that project. Then you can start all of the tools 
+in the JCSUnity framework. <br/>
 
 ## Notice ##
 Importance notice that all the media assets do not fall under this 
