@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2017-11-13
+* Macro define for free version of JCSUnity. (JCSUnity)
+
 2017-11-12
 * JCS_PredictCamera implemented, now camera can have total of
  3 dimensionals and 27 directions' prediction. (JCSUnity)
