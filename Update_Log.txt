@@ -9,6 +9,9 @@
 
 2017-11-13
 * Macro define for free version of JCSUnity. (JCSUnity)
+* Remove build warnings. (JCSUnity)
+* Start draft version 1.6.3. (JCSUnity)
+* Update readme file with 'how to use it?' and 'notice' sections. (JCSUnity)
 
 2017-11-12
 * JCS_PredictCamera implemented, now camera can have total of
