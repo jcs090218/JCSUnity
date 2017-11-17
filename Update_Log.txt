@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-11-17
+* Add defense programming to 'JCS_2DDynamicSceneManager' class, missing
+ prompt of the set object. transform. (JCSUnity)
+
 2017-11-13
 * Macro define for free version of JCSUnity. (JCSUnity)
 * Remove build warnings. (JCSUnity)
