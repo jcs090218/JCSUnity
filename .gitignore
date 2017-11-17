@@ -13,6 +13,10 @@
 # don't include the video.
 /Video
 
+# ignore scripts file
+*.bat
+*.sh
+
 # ignore the following extension file
 *.svd
 *.userprefs
