@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Manage all the 2d parallax layer.
     /// </summary>
@@ -103,6 +102,13 @@ namespace JCSUnity
             {
                 JCS_Debug.LogWarning(
                     "Did not find the layer you willing to set to..., Layer: " + mJCSOrderLayer);
+                return;
+            }
+
+            if (jcsOlo == null)
+            {
+                JCS_Debug.LogWarning(
+                    "The 'JCS_OrderLayerObject' object you trying to set is null references...");
                 return;
             }
 
