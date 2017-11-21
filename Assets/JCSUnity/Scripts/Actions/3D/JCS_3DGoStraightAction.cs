@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Move forward base on their own 
     /// transform direction.
@@ -31,17 +30,24 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_3DGoStraightAction) **")]
 
         [Tooltip("How fast it move.")]
-        [SerializeField]
+        [SerializeField] [Range(-500.0f, 500.0f)]
         private float mMoveSpeed = 10.0f;
 
         [Tooltip("Which axis it move.")]
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_X;
 
+
+        [Header("- Randomize Settings (JCS_3DGoStraightAction)")]
+
         [Tooltip(@"Randomize the speed in depends on positive 
 move speed to negative move speed.")]
         [SerializeField]
         private bool mRandomizeSpeedAtStart = false;
+
+        [Tooltip("Value randomize the move speed.")]
+        [SerializeField] [Range(0.0f, 10.0f)]
+        private float mRandomSpeedValue = 5.0f;
 
         //----------------------
         // Protected Variables
@@ -52,6 +58,7 @@ move speed to negative move speed.")]
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool RandomizeSpeedAtStart { get { return this.mRandomizeSpeedAtStart; } set { this.mRandomizeSpeedAtStart = value; } }
+        public float RandomSpeedValue { get { return this.mRandomSpeedValue; } set { this.mRandomSpeedValue = value; } }
 
         //========================================
         //      Unity's function
@@ -60,7 +67,7 @@ move speed to negative move speed.")]
         {
             // randomize speed?
             if (mRandomizeSpeedAtStart)
-                this.MoveSpeed = JCS_Random.Range(-mMoveSpeed, mMoveSpeed);
+                this.MoveSpeed += JCS_Random.Range(-mRandomSpeedValue, mRandomSpeedValue);
         }
 
         /**
@@ -77,7 +84,6 @@ move speed to negative move speed.")]
 
             switch (mAxis)
             {
-
                 case JCS_Axis.AXIS_X:
                     {
                         newPos = Vector3.right * MoveSpeed * Time.deltaTime;
