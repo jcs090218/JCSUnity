@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-11-21
+* Implement sound for dialogue system using global sound player. (JCSUnity)
+* Implement randomize value at start for JCS_3DGoStraightAction. (JCSUnity)
+
 2017-11-17
 * Add defense programming to 'JCS_2DDynamicSceneManager' class, missing
  prompt of the set object. transform. (JCSUnity)
