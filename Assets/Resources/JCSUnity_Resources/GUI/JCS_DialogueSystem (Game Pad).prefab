@@ -2532,6 +2532,8 @@ MonoBehaviour:
   - {fileID: 114276982509652678}
   - {fileID: 114531526352205142}
   mButtonSelectionGroup: {fileID: 114422846820406358}
+  mActiveSound: {fileID: 8300000, guid: 4913222f00b7466419656d01e8bae9d6, type: 3}
+  mDisposeSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
 --- !u!114 &114711112550668478
 MonoBehaviour:
   m_ObjectHideFlags: 1

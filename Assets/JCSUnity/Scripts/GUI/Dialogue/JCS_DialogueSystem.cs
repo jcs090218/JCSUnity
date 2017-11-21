@@ -14,7 +14,6 @@ using UnityEngine.EventSystems;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Core of the dialogue system.
     /// </summary>
@@ -28,7 +27,6 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        
         [Header("** Check Variables (JCS_DialogueSystem) **")]
 
         [Tooltip("Script to run the current text box.")]
@@ -156,11 +154,23 @@ namespace JCSUnity
         private string mSelectStringFront = "#L" + 0 + "##b";
         private string mSelectStringBack = "#k#l";
 
+
         [Header("** Optional Variables (JCS_DialogueSystem) **")]
 
         [Tooltip("Button selection group for this dialogue system.")]
         [SerializeField]
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
+
+
+        [Header("** Sound Variables (JCS_DialogueSystem) **")]
+
+        [Tooltip("Sound plays when active dialogue.")]
+        [SerializeField]
+        private AudioClip mActiveSound = null;
+
+        [Tooltip("Sound plays when dispose dialogue.")]
+        [SerializeField]
+        private AudioClip mDisposeSound = null;
 
 
         //----------------------
@@ -174,6 +184,9 @@ namespace JCSUnity
         public string SelectStringFront { get { return this.mSelectStringFront; } }
         public string SelectStringBack { get { return this.mSelectStringBack; } }
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
+
+        public AudioClip AcitveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
+        public AudioClip DisposeSound { get { return this.mDisposeSound; } set { this.mDisposeSound = value; } }
 
         //========================================
         //      Unity's function
@@ -250,6 +263,9 @@ namespace JCSUnity
 
             // run the first action.
             RunAction();
+
+            // Play the active dialogue sound.
+            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mActiveSound);
         }
 
         /// <summary>
@@ -484,6 +500,9 @@ namespace JCSUnity
 
             // de-active dialogue system.
             mActive = false;
+
+            // Play the dispose dialogue sound.
+            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDisposeSound);
         }
 
         /// <summary>
