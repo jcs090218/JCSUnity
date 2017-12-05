@@ -63,6 +63,10 @@ namespace JCSUnity
 
         [Header("- Audio Settings (JCS_GamePadButton)")]
 
+        [Tooltip("Play with the global sound player.")]
+        [SerializeField]
+        private bool mPlayWithGlobalSoundPlayer = false;
+
         [Tooltip("Sound when button is pressed.")]
         [SerializeField]
         private AudioClip mButtonClickSound = null;
@@ -142,7 +146,12 @@ namespace JCSUnity
             if (mButtonClickSound == null)
                 return;
 
-            mSoundPlayer.PlayOneShotByMethod(mButtonClickSound, mSoundMethod);
+            JCS_SoundPlayer soundPlayer = mSoundPlayer;
+            /* Get sound plaeyr according to the chosen choice. */
+            if (mPlayWithGlobalSoundPlayer)
+                soundPlayer = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+
+            soundPlayer.PlayOneShotByMethod(mButtonClickSound, mSoundMethod);
         }
 
     }
