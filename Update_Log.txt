@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-12-05
+* Add game pad button option with playing the sound with global 
+ sound player. (JCSUnity)
+
 2017-11-21
 * Implement sound for dialogue system using global sound player. (JCSUnity)
 * Implement randomize value at start for JCS_3DGoStraightAction. (JCSUnity)
