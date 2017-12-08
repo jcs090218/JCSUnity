@@ -68,13 +68,13 @@ namespace JCSUnity
         {
             foreach (JCS_OrderLayer jcsol in mJCSOrderLayer)
             {
+                if (jcsol == null)
+                    continue;
+
                 // find the order layer with the index passed in!
                 if (jcsol.OrderLayer == orderLayerIndex)
                     return jcsol;
             }
-
-            JCS_Debug.LogError(
-                "Does not found the order layer u want.");
 
             return null;
         }
@@ -95,20 +95,20 @@ namespace JCSUnity
         /// <param name="orderLayerIndex"> index of scene layer </param>
         public void SetObjectParentToOrderLayerByOrderLayerIndex(ref JCS_OrderLayerObject jcsOlo, int orderLayerIndex)
         {
+            if (jcsOlo == null)
+            {
+                JCS_Debug.LogWarning(
+                    "The 'JCS_OrderLayerObject' object you trying to set is null references...");
+                return;
+            }
+
             // get the order layer by order layer index!
             JCS_OrderLayer jcsol = GetOrderLayerByOrderLayerIndex(orderLayerIndex);
 
             if (jcsol == null)
             {
                 JCS_Debug.LogWarning(
-                    "Did not find the layer you willing to set to..., Layer: " + mJCSOrderLayer);
-                return;
-            }
-
-            if (jcsOlo == null)
-            {
-                JCS_Debug.LogWarning(
-                    "The 'JCS_OrderLayerObject' object you trying to set is null references...");
+                    "Did not find the layer you willing to set to..., Layer Index: " + orderLayerIndex);
                 return;
             }
 
