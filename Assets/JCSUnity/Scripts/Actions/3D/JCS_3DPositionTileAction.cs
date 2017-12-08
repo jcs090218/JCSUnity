@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// If object goes a certain range set back to certain 
     /// position.
@@ -38,6 +37,10 @@ namespace JCSUnity
 be set to this position in each axis.")]
         [SerializeField]
         private Vector3 mAbsolutePositionInAxis = Vector3.zero;
+
+        [Tooltip("Use the local position instead of global position.")]
+        [SerializeField]
+        private bool mUseLocalPosition = false;
 
 
         [Header("** - Max Settings (JCS_3DDistanceTileAction) **")]
@@ -72,6 +75,7 @@ be set to this position in each axis.")]
         //      setter / getter
         //------------------------------
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
 
         //========================================
         //      Unity's function
@@ -81,18 +85,25 @@ be set to this position in each axis.")]
             if (!mActive)
                 return;
 
-            Vector3 newPos = this.transform.localPosition;
+            Vector3 newPos = this.transform.position;
+            if (mUseLocalPosition)
+                newPos = this.transform.localPosition;
 
-            if (newPos.x < mMinX || newPos.x > mMaxX)
-                newPos.x = mAbsolutePositionInAxis.x;
+            {
+                if (newPos.x < mMinX || newPos.x > mMaxX)
+                    newPos.x = mAbsolutePositionInAxis.x;
 
-            if (newPos.y < mMinY || newPos.y > mMaxY)
-                newPos.y = mAbsolutePositionInAxis.y;
+                if (newPos.y < mMinY || newPos.y > mMaxY)
+                    newPos.y = mAbsolutePositionInAxis.y;
 
-            if (newPos.z < mMinZ || newPos.z > mMaxZ)
-                newPos.z = mAbsolutePositionInAxis.z;
+                if (newPos.z < mMinZ || newPos.z > mMaxZ)
+                    newPos.z = mAbsolutePositionInAxis.z;
+            }
 
-            this.transform.localPosition = newPos;
+            if (mUseLocalPosition)
+                this.transform.localPosition = newPos;
+            else
+                this.transform.position = newPos;
         }
 
         //========================================
