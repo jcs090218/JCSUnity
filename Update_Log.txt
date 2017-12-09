@@ -7,10 +7,14 @@
 # ========================================================================
 
 
-2017-12-07
+2017-12-09
 * Add defense programming to 2d dynamic scene manager checking
  adding object to provided order layer index. (JCSUnity)
 * Add local position option to certain 3D action module. (JCSUnity)
+* Cancel direction linking to duplex linking for button and button
+ selection. (JCSUnity)
+* Button selection group make compatible with mouse/PC by adding
+ hover functionalities with Unity's built-in component 'EventTrigger'. (JCSUnity)
 
 2017-12-05
 * Add game pad button option with playing the sound with global 
