@@ -191,8 +191,6 @@ MonoBehaviour:
   - {fileID: 1077004344}
   mButton: {fileID: 2133117}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 1286163029}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -879,8 +877,6 @@ MonoBehaviour:
   - {fileID: 1527149525}
   mButton: {fileID: 239369780}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1253,8 +1249,6 @@ MonoBehaviour:
   - {fileID: 196707934}
   mButton: {fileID: 318557157}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1899,8 +1893,6 @@ MonoBehaviour:
   - {fileID: 1939911521}
   mButton: {fileID: 584258739}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 2137836487}
   mDownSelection: {fileID: 659854523}
   mRightSelection: {fileID: 822500581}
@@ -2101,8 +2093,6 @@ MonoBehaviour:
   - {fileID: 1250338787}
   mButton: {fileID: 659854522}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 584258740}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 1591159489}
@@ -2786,8 +2776,6 @@ MonoBehaviour:
   - {fileID: 481426295}
   mButton: {fileID: 822500580}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 1418999803}
   mDownSelection: {fileID: 1591159489}
   mRightSelection: {fileID: 1286163029}
@@ -3721,8 +3709,6 @@ MonoBehaviour:
   - {fileID: 1684827591}
   mButton: {fileID: 1201376773}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -4212,8 +4198,6 @@ MonoBehaviour:
   - {fileID: 55720341}
   mButton: {fileID: 1286163028}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 2066270076}
   mDownSelection: {fileID: 2133118}
   mRightSelection: {fileID: 0}
@@ -4531,7 +4515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mActive: 0
   mDeactiveAtAwake: 1
-  mSkip: 0
+  mSkip: 1
   mSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -4541,8 +4525,6 @@ MonoBehaviour:
   - {fileID: 1097081395}
   mButton: {fileID: 1418999802}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 822500581}
   mRightSelection: {fileID: 2066270076}
@@ -5050,8 +5032,6 @@ MonoBehaviour:
   - {fileID: 1359369269}
   mButton: {fileID: 1591159488}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 822500581}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 2133118}
@@ -5555,8 +5535,6 @@ MonoBehaviour:
   - {fileID: 1730128378}
   mButton: {fileID: 1716458938}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -6241,8 +6219,6 @@ MonoBehaviour:
   - {fileID: 912788094}
   mButton: {fileID: 2006004933}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -6652,8 +6628,6 @@ MonoBehaviour:
   - {fileID: 565292359}
   mButton: {fileID: 2066270075}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 1286163029}
   mRightSelection: {fileID: 0}
@@ -6826,8 +6800,6 @@ MonoBehaviour:
   - {fileID: 1773809950}
   mButton: {fileID: 2137836486}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 0
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 584258740}
   mRightSelection: {fileID: 1418999803}
