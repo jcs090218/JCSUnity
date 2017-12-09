@@ -221,7 +221,7 @@ namespace JCSUnity
         /// Use this to enable and disable the button.
         /// </summary>
         /// <param name="act"></param>
-        public virtual void SetInteractable(bool act)
+        public virtual void SetInteractable(bool act, bool fromSelection)
         {
             mInteractable = act;
 
@@ -240,10 +240,17 @@ namespace JCSUnity
             {
                 mImage.color = mNotInteractColor;
             }
+
+            if (!fromSelection && mButtonSelection != null)
+                mButtonSelection.SetSkip(!mInteractable, true);
+        }
+        public virtual void SetInteractable(bool act)
+        {
+            SetInteractable(act, false);
         }
         public virtual void SetInteractable()
         {
-            SetInteractable(mInteractable);
+            SetInteractable(mInteractable, false);
         }
 
         //----------------------

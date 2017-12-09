@@ -903,7 +903,7 @@ namespace JCSUnity
             selectBtn.gameObject.SetActive(act);
 
             if (selectBtn.ButtonSelection != null)
-                selectBtn.ButtonSelection.Skip = !act;
+                selectBtn.ButtonSelection.SetSkip(!act);
         }
         /// <summary>
         /// 
