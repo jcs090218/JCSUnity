@@ -40,7 +40,7 @@ namespace JCSUnity
             UP,
             DOWN,
             RIGHT,
-            LEFT,  
+            LEFT,
         };
 
 
@@ -218,8 +218,17 @@ namespace JCSUnity
         /// Selection this selection.
         /// </summary>
         /// <param name="selectionIndex"> index to select. </param>
-        public void SelectSelection(int selectionIndex)
+        public void SelectSelection(int selectionIndex, bool hoverCheck = false)
         {
+            if (hoverCheck)
+            {
+                if (JCS_Utility.WithInArrayRange(selectionIndex, mSelections))
+                {
+                    if (mSelections[selectionIndex].Skip)
+                        return;
+                }
+            }
+
             // no need to do anything.
             if (mCurrentSelectIndex == selectionIndex)
                 return;
@@ -240,12 +249,19 @@ namespace JCSUnity
             if (selectionChanged != null)
                 selectionChanged.Invoke();
         }
+        public void SelectSelectionHover(int selectionIndex)
+        {
+            SelectSelection(selectionIndex, true);
+        }
 
         /// <summary>
         /// Selection this selection.
+        /// 
+        /// ATTENTION(jenchieh): this can only use by the 'Event 
+        /// Trigger' component.
         /// </summary>
         /// <param name="selection"> selection to select. </param>
-        public void SelectSelection(JCS_ButtonSelection selection)
+        public void SelectSelection(JCS_ButtonSelection selection, bool hoverCheck = false)
         {
             if (selection == null)
                 return;
@@ -264,13 +280,17 @@ namespace JCSUnity
 
                 if (bs == selection)
                 {
-                    SelectSelection(index);
+                    SelectSelection(index, hoverCheck);
                     return;
                 }
             }
 
             JCS_Debug.LogError(@"Try to select a selection, but seems like the 
 selection is not in the group...");
+        }
+        public void SelectSelectionHover(JCS_ButtonSelection selection)
+        {
+            SelectSelection(selection, true);
         }
 
         /// <summary>

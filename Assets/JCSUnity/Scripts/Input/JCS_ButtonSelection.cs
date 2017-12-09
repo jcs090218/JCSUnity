@@ -35,15 +35,6 @@ namespace JCSUnity
         public SelectionDisable selectionDisable = SelectionDisable;
         public SelectionActive selectionActive = SelectionActive;
 
-        /// <summary>
-        /// Direction the object link to button.
-        /// </summary>
-        public enum LinkDirection
-        {
-            ButtonToSelection,
-            SelectionToButton,
-        };
-
 
         /*******************************************/
         /*           Private Variables             */
@@ -90,14 +81,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mSelfAsButton = true;
 
-        [Tooltip("Make skip variable with interactable with the button.")]
-        [SerializeField]
-        private bool mLinkSkipWithInteractableButton = true;
-
-        [Tooltip("Direction the 'skip' variable connect to button's interactable variable.")]
-        [SerializeField]
-        private LinkDirection mLinkDirection = LinkDirection.ButtonToSelection;
-
 
         [Header("- Full Control (JCS_ButtonSelection)")]
 
@@ -124,8 +107,6 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public LinkDirection linkDirection { get { return this.mLinkDirection; } set { this.mLinkDirection = value; } }
-        public bool LinkSkipWithInteractableButton { get { return this.mLinkSkipWithInteractableButton; } set { this.mLinkSkipWithInteractableButton = value; } }
         public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
         public bool SelfAsButton { get { return this.mSelfAsButton; } set { this.mSelfAsButton = value; } }
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
@@ -140,16 +121,7 @@ namespace JCSUnity
             }
         }
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } set { this.mButtonSelectionGroup = value; } }
-        public bool Skip
-        {
-            get { return this.mSkip; }
-            set
-            {
-                this.mSkip = value;
-
-                SetInteractableButton();
-            }
-        }
+        public bool Skip { get { return this.mSkip; } }
 
         public JCS_ButtonSelection UpSelection { get { return this.mUpSelection; } set { this.mUpSelection = value; } }
         public JCS_ButtonSelection DownSelection { get { return this.mDownSelection; } set { this.mDownSelection = value; } }
@@ -180,9 +152,8 @@ namespace JCSUnity
 
         private void Start()
         {
-            SetInteractableButton();
+            SetSkip(mSkip);
         }
-
 
         /*******************************************/
         /*              Self-Define                */
@@ -280,31 +251,15 @@ namespace JCSUnity
         /// <summary>
         /// Make skip variable connect to interactable with button.
         /// </summary>
-        private void SetInteractableButton()
+        public void SetSkip(bool act, bool fromButton = false)
         {
-            if (!mLinkSkipWithInteractableButton || mButton == null)
+            if (mButton == null)
                 return;
 
-            switch (mLinkDirection)
-            {
-                case LinkDirection.ButtonToSelection:
-                    {
-                        // change itself, button have more control/power
-                        // over selection.
-                        mSkip = !mButton.Interactable;
-                    }
-                    return;
-                case LinkDirection.SelectionToButton:
-                    {
-                        // vice versa, this have more control/power
-                        // over button.
-                        mButton.SetInteractable(!mSkip);
-                    }
-                    return;
-            }
+            this.mSkip = act;
 
-            // this should not happens...
-            JCS_Debug.LogWarning("Button selection link failed...");
+            if (!fromButton)
+                mButton.SetInteractable(!mSkip, true);
         }
 
     }
