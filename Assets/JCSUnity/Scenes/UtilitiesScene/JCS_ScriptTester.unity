@@ -324,7 +324,7 @@ RectTransform:
   m_GameObject: {fileID: 61666227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 54, y: 54, z: 54}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2080970883}
   - {fileID: 193691164}
@@ -463,6 +463,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &149228239 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114709864268108714, guid: c7ea891da8aadd741a2b75f708a50d65,
+    type: 2}
+  m_PrefabInternal: {fileID: 2080970882}
+  m_Script: {fileID: 11500000, guid: 0f62c8e82d17fa8459106160c8c3d461, type: 3}
 --- !u!224 &193691164 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224857478259250852, guid: 11e5c739135b1e34d8a1164d3c66f6f8,
@@ -855,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df11ac46abe9784db2cddd1252b2371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDialogueSystem: {fileID: 1348754524}
+  mDialogueSystem: {fileID: 149228239}
   mTestDialogueScript: {fileID: 1098634727}
   DisposeKey: 113
   RunScriptKey: 119
@@ -929,12 +935,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea310f8fa5995da43a045c6d0284ebcd, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1348754524 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114709864268108714, guid: c7ea891da8aadd741a2b75f708a50d65,
-    type: 2}
-  m_PrefabInternal: {fileID: 2080970882}
-  m_Script: {fileID: 11500000, guid: 0f62c8e82d17fa8459106160c8c3d461, type: 3}
 --- !u!1 &1731246307
 GameObject:
   m_ObjectHideFlags: 0
