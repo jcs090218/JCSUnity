@@ -11,6 +11,7 @@
 * Update compatible hover check. (JCSUnity)
 * Add global sound effect to button sound effect script. (JCSUnity)
 * Update dialogue system with default using global sound effect. (JCSUnity)
+* Update project version to 1.6.5. (JCSUnity)
 
 2017-12-09
 * Add defense programming to 2d dynamic scene manager checking
