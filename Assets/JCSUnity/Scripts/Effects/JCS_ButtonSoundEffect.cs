@@ -20,7 +20,6 @@ namespace JCSUnity
     /// 
     /// Please use this class with Unity's "Event Trigger (Script)"!!!
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(EventTrigger))]
     public class JCS_ButtonSoundEffect
@@ -32,9 +31,17 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private JCS_SoundPlayer mSoundPlayer = null;
         private RectTransform mRectTransform = null;
         private EventTrigger mEventTrigger = null;
+
+
+        [Header("** Optional Variables (JCS_ButtonSoundEffect) **")]
+
+        [Tooltip(@"Sound Player for this button, if this transform dose not 
+have the 'JCS_Soundplayer' then it will grab the global sound player.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
+
 
         [Header("Auto add to Unity's \"Event Trigger(Script)\" or not?")]
         [Tooltip("is true u dont have to add manully!")]
@@ -148,7 +155,8 @@ on mouse down.")]
         //------------------------------
         private void Awake()
         {
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            if (mSoundPlayer == null)
+                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
             mRectTransform = this.GetComponent<RectTransform>();
             mEventTrigger = this.GetComponent<EventTrigger>();
 
@@ -158,6 +166,14 @@ on mouse down.")]
 
         private void Start()
         {
+            /* 
+             * NOTE(jenchieh): First get the sound player from its own 
+             * transform, if it still missing then grab the global sound 
+             * player. 
+             */
+            if (mSoundPlayer == null)
+                mSoundPlayer = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+
             if (mAutoAddEvent)
             {
                 JCS_Utility.AddEventTriggerEvent(mEventTrigger, EventTriggerType.PointerEnter, JCS_OnMouseOver);
