@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 114791697339306510}
   - component: {fileID: 114794095879251104}
   - component: {fileID: 114807186670394120}
+  - component: {fileID: 114041981269580058}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -828,6 +829,19 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Some Text... '
+--- !u!114 &114041981269580058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1324936622949286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!114 &114043341878049232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1258,8 +1272,6 @@ MonoBehaviour:
   - {fileID: 114990885869694414}
   mButton: {fileID: 114908105720879514}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1399,8 +1411,6 @@ MonoBehaviour:
   - {fileID: 114259609029665402}
   mButton: {fileID: 114670849245310578}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -1933,8 +1943,6 @@ MonoBehaviour:
   - {fileID: 114381993365564794}
   mButton: {fileID: 114519598058034064}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -2250,8 +2258,6 @@ MonoBehaviour:
   - {fileID: 114142054023434002}
   mButton: {fileID: 114187848226080388}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -2346,8 +2352,6 @@ MonoBehaviour:
   - {fileID: 114429249570936496}
   mButton: {fileID: 114442460098421908}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -3169,8 +3173,6 @@ MonoBehaviour:
   - {fileID: 114983607313896098}
   mButton: {fileID: 114864686214326800}
   mSelfAsButton: 1
-  mLinkSkipWithInteractableButton: 1
-  mLinkDirection: 1
   mUpSelection: {fileID: 0}
   mDownSelection: {fileID: 0}
   mRightSelection: {fileID: 0}
@@ -3766,7 +3768,7 @@ RectTransform:
   m_GameObject: {fileID: 1073560513624396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000801, y: 1.0000801, z: 1.0000801}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224353809372239328}
   m_Father: {fileID: 224857478259250852}
@@ -3950,7 +3952,7 @@ RectTransform:
   m_GameObject: {fileID: 1813918365030650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000801, y: 1.0000801, z: 1.0000801}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224421245265987160}
   m_Father: {fileID: 224857478259250852}
