@@ -299,7 +299,7 @@ selection is not in the group...");
         /// <param name="selection"> selection to select. </param>
         public void SelectSelection(PointerEventData data, JCS_ButtonSelection selection)
         {
-            SelectSelection(selection);
+            SelectSelection(selection, true);
         }
 
         /// <summary>
