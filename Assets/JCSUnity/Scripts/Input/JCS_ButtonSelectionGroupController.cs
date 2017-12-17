@@ -223,18 +223,22 @@ namespace JCSUnity
             {
                 if (ActiveNext())
                 {
-                    mButtonSelectionGroup.NextSelection();
-                    PlayNextSound();
+                    bool didAction = mButtonSelectionGroup.NextSelection();
+                    if (didAction)
+                        PlayNextSound();
                 }
                 if (ActivePrev())
                 {
-                    mButtonSelectionGroup.PrevSelection();
-                    PlayPrevSound();
+                    bool didAction = mButtonSelectionGroup.PrevSelection();
+                    if (didAction)
+                        PlayPrevSound();
                 }
             }
 
             if (ActiveOkay())
             {
+                // NOTE(jenchieh): no need to check this, because this 
+                // will always be true.
                 mButtonSelectionGroup.OkaySelection();
                 PlayOkaySound();
             }
@@ -243,23 +247,27 @@ namespace JCSUnity
             {
                 if (ActiveUp())
                 {
-                    mButtonSelectionGroup.UpSelection();
-                    PlayUpSound();
+                    bool didAction = mButtonSelectionGroup.UpSelection();
+                    if (didAction)
+                        PlayUpSound();
                 }
                 if (ActiveDown())
                 {
-                    mButtonSelectionGroup.DownSelection();
-                    PlayDownSound();
+                    bool didAction = mButtonSelectionGroup.DownSelection();
+                    if (didAction)
+                        PlayDownSound();
                 }
                 if (ActiveRight())
                 {
-                    mButtonSelectionGroup.RightSelection();
-                    PlayRightSound();
+                    bool didAction = mButtonSelectionGroup.RightSelection();
+                    if (didAction)
+                        PlayRightSound();
                 }
                 if (ActiveLeft())
                 {
-                    mButtonSelectionGroup.LeftSelection();
-                    PlayLeftSound();
+                    bool didAction = mButtonSelectionGroup.LeftSelection();
+                    if (didAction)
+                        PlayLeftSound();
                 }
             }
         }
@@ -282,7 +290,7 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActiveNext()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMNext, mIgnoreGamePause) || 
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMNext, mIgnoreGamePause) ||
                 JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJNext, mIgnoreGamePause);
         }
 
@@ -292,7 +300,7 @@ namespace JCSUnity
         /// <returns></returns>
         private bool ActivePrev()
         {
-            return JCS_Input.GetKeyByAction(mKeyActionType, mMPrev, mIgnoreGamePause) || 
+            return JCS_Input.GetKeyByAction(mKeyActionType, mMPrev, mIgnoreGamePause) ||
                 JCS_Input.GetJoystickKeyByAction(mKeyActionType, mGamePadId, mJPrev, mIgnoreGamePause);
         }
 

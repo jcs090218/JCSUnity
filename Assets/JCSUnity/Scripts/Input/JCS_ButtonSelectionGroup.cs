@@ -181,10 +181,11 @@ namespace JCSUnity
         /// <summary>
         /// Change to the next button selection. (One dimensional)
         /// </summary>
-        public void NextSelection()
+        /// <returns> true, action made. false, no action made. </returns>
+        public bool NextSelection()
         {
             if (IsAllSelectionsSkip())
-                return;
+                return false;
 
             int tempSelectIndex = mCurrentSelectIndex;
             ++tempSelectIndex;
@@ -194,15 +195,18 @@ namespace JCSUnity
             // if skip keep looking for the next selection.
             if (mSelections[mCurrentSelectIndex].Skip)
                 NextSelection();
+
+            return true;
         }
 
         /// <summary>
         /// Change to the previous button selection. (One dimensional)
         /// </summary>
-        public void PrevSelection()
+        /// <returns> true, action made. false, no action made. </returns>
+        public bool PrevSelection()
         {
             if (IsAllSelectionsSkip())
-                return;
+                return false;
 
             int tempSelectIndex = mCurrentSelectIndex;
             --tempSelectIndex;
@@ -212,6 +216,8 @@ namespace JCSUnity
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
                 PrevSelection();
+
+            return true;
         }
 
         /// <summary>
@@ -299,7 +305,7 @@ selection is not in the group...");
         /// <param name="selection"> selection to select. </param>
         public void SelectSelection(PointerEventData data, JCS_ButtonSelection selection)
         {
-            SelectSelection(selection, true);
+            SelectSelection(selection);
         }
 
         /// <summary>
@@ -324,73 +330,85 @@ selection is not in the group...");
         /// <summary>
         /// Select the selection on the top. (Two Dimensional)
         /// </summary>
-        public void UpSelection()
+        /// <returns> true, action made. false, no action made. </returns>
+        public bool UpSelection()
         {
             if (IsAllSelectionsSkip())
-                return;
+                return false;
 
             if (IsAllSelectionsIsSkipUp())
-                return;
+                return false;
 
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.UP));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
                 UpSelection();
+
+            return true;
         }
 
         /// <summary>
         /// Select the selection on the down. (Two Dimensional)
         /// </summary>
-        public void DownSelection()
+        /// <returns> true, action made. false, no action made. </returns>
+        public bool DownSelection()
         {
             if (IsAllSelectionsSkip())
-                return;
+                return false;
 
             if (IsAllSelectionsIsSkipDown())
-                return;
+                return false;
 
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.DOWN));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
                 DownSelection();
+
+            return true;
         }
 
         /// <summary>
         /// Select the selection on the right. (Two Dimensional)
         /// </summary>
-        public void RightSelection()
+        /// <returns> true, action made. false, no action made. </returns>
+        public bool RightSelection()
         {
             if (IsAllSelectionsSkip())
-                return;
+                return false;
 
             if (IsAllSelectionsIsSkipRight())
-                return;
+                return false;
 
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.RIGHT));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
                 RightSelection();
+
+            return true;
         }
 
         /// <summary>
         /// /// Select the selection on the left. (Two Dimensional)
         /// </summary>
-        public void LeftSelection()
+        /// <returns> true, action made. false, no action made. </returns>
+        public bool LeftSelection()
         {
             if (IsAllSelectionsSkip())
-                return;
+                return false;
 
             if (IsAllSelectionsIsSkipLeft())
-                return;
+                return false;
 
             SelectSelection(GetButtonSelectionByDirection(mSelections[mCurrentSelectIndex], Direction.LEFT));
 
             // if skip keep looking for the previous selection.
             if (mSelections[mCurrentSelectIndex].Skip)
                 LeftSelection();
+
+            return true;
         }
 
         /// <summary>
