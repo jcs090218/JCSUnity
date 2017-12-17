@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-12-17
+* Fixed dialogue system will still play sound while dialouge does
+ not show up corresponding UI. (JCSUnity)
+
 2017-12-14
 * Update compatible hover check. (JCSUnity)
 * Add global sound effect to button sound effect script. (JCSUnity)
