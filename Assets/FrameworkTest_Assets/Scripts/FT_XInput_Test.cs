@@ -61,43 +61,54 @@ public class FT_XInput_Test
             print("Stick left Y: " + val);
         }
 
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_A))
+        if (JCS_Input.GetJoystickKeyUp(0, JCS_JoystickButton.BUTTON_A))
             print("Joystick button A");
-        if (JCS_Input.GetJoystickKeyDown(0, JCS_JoystickButton.BUTTON_B))
-            print("Joystick button B");
-        if (JCS_Input.GetJoystickKeyUp(0, JCS_JoystickButton.BUTTON_X))
-            print("Joystick button X");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_Y))
-            print("Joystick button Y");
+        if (JCS_Input.GetJoystickKeyUp(0, JCS_JoystickButton.BUTTON_A))
+            print("Joystick button A 1");
+        if (JCS_Input.GetJoystickKeyUp(0, JCS_JoystickButton.BUTTON_A))
+            print("Joystick button A 2");
+
+        if (JCS_Input.GetJoystickKeyDown(0, JCS_JoystickButton.BUTTON_A))
+            print("Joystick button A down");
+        if (JCS_Input.GetJoystickKeyDown(0, JCS_JoystickButton.BUTTON_A))
+            print("Joystick button A 1 down");
+        if (JCS_Input.GetJoystickKeyDown(0, JCS_JoystickButton.BUTTON_A))
+            print("Joystick button A 2 down");
+        //if (JCS_Input.GetJoystickKeyDown(0, JCS_JoystickButton.BUTTON_B))
+        //    print("Joystick button B");
+        //if (JCS_Input.GetJoystickKeyUp(0, JCS_JoystickButton.BUTTON_X))
+        //    print("Joystick button X");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_Y))
+        //    print("Joystick button Y");
 
 
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_RIGHT))
-            print("Joystick button RIGHT");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_LEFT))
-            print("Joystick button LEFT");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_UP))
-            print("Joystick button UP");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_DOWN))
-            print("Joystick button DOWN");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_RIGHT))
+        //    print("Joystick button RIGHT");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_LEFT))
+        //    print("Joystick button LEFT");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_UP))
+        //    print("Joystick button UP");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BUTTON_DOWN))
+        //    print("Joystick button DOWN");
 
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.HOME_BUTTON))
-            print("Joystick button HOME");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.START_BUTTON))
-            print("Joystick button START");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BACK_BUTTON))
-            print("Joystick button BACK");
-
-
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.LEFT_BUMPER))
-            print("Left BUMPER down");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.RIGHT_BUMPER))
-            print("Right BUMPER down");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.HOME_BUTTON))
+        //    print("Joystick button HOME");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.START_BUTTON))
+        //    print("Joystick button START");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.BACK_BUTTON))
+        //    print("Joystick button BACK");
 
 
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.LEFT_TRIGGER))
-            print("Right trigger down");
-        if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.RIGHT_TRIGGER))
-            print("Left trigger down");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.LEFT_BUMPER))
+        //    print("Left BUMPER down");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.RIGHT_BUMPER))
+        //    print("Right BUMPER down");
+
+
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.LEFT_TRIGGER))
+        //    print("Right trigger down");
+        //if (JCS_Input.GetJoystickButton(0, JCS_JoystickButton.RIGHT_TRIGGER))
+        //    print("Left trigger down");
 
         //if (JCS_Input.GetKeyDown(KeyCode.Joystick1Button0))
         //{
