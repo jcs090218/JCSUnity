@@ -98,6 +98,9 @@ namespace JCSUnity
         private static Dictionary<string, bool>
             mJoystickKeyReleased = new Dictionary<string, bool>();
 
+        private static List<string> mJoystickKeyWasPreseed = new List<string>();
+        private static List<string> mJoystickKeyWasReleased = new List<string>();
+
         public static JoystickPlugged joystickPluggedCallback = JoystickPluggedDefaultCallback;
         public static JoystickUnPlugged joystickUnPluggedCallback = JoystickUnPluggedDefaultCallback;
 
@@ -116,6 +119,26 @@ namespace JCSUnity
         public static void LateUpdate()
         {
             DoJoystcikCallback();
+
+            for (int index = 0;
+                index < mJoystickKeyWasPreseed.Count;
+                ++index)
+            {
+                string idString = mJoystickKeyWasPreseed[index];
+                mJoystickKeyPressed[idString] = true;
+            }
+
+            for (int index = 0;
+                index < mJoystickKeyWasReleased.Count;
+                ++index)
+            {
+                string idString = mJoystickKeyWasReleased[index];
+                mJoystickKeyReleased[idString] = true;
+            }
+
+            // Clear all key action history.
+            mJoystickKeyWasPreseed.Clear();
+            mJoystickKeyWasReleased.Clear();
         }
 
         /// <summary>
@@ -771,7 +794,8 @@ namespace JCSUnity
                         return false;
                     else
                     {
-                        mJoystickKeyReleased[idString] = true;
+                        if (!mJoystickKeyWasReleased.Contains(idString))
+                            mJoystickKeyWasReleased.Add(idString);
                         return true;
                     }
                 }
@@ -817,7 +841,7 @@ namespace JCSUnity
             {
                 if (!mJoystickKeyPressed.ContainsKey(idString))
                 {
-                    mJoystickKeyPressed.Add(idString, true);
+                    mJoystickKeyPressed.Add(idString, false);
                     return true;
                 }
                 // Key contains!
@@ -827,7 +851,8 @@ namespace JCSUnity
                         return false;
                     else
                     {
-                        mJoystickKeyPressed[idString] = true;
+                        if (!mJoystickKeyWasPreseed.Contains(idString))
+                            mJoystickKeyWasPreseed.Add(idString);
                         return true;
                     }
                 }
