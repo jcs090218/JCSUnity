@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2017-12-20
+* Refactor clear keymap buffer for joystick into properly named 
+ function. (JCSUnity)
+
 2017-12-19
 * Fixed input module's release key up and key down by adding another
  keymap. (JCSUnity)
