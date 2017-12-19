@@ -78,11 +78,11 @@ Log system inside the game. <br/>
 
 ## Games ##
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
-  <img src="./games/hemlock_logo.png" width="100" height="100"/>
+  <img src="./games/hemlock_logo.png" width="100" height="100" align="middle"/>
 </a>
 <a href="https://www.youtube.com/watch?v=si_G0zIo0P0&feature=youtu.be" target="_blank">
-  <img src="./games/might_&_blade_logo.png" width="300" height="120"/>
+  <img src="./games/might_&_blade_logo.png" width="300" height="120" align="middle"/>
 </a>
 <a href="#" target="_blank">
-  <img src="./games/SugarSleuths_logo.png" width="302" height="184"/>
+  <img src="./games/SugarSleuths_logo.png" width="302" height="184" align="middle"/>
 </a>
