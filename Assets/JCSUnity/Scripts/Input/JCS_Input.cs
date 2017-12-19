@@ -118,8 +118,41 @@ namespace JCSUnity
         /// </summary>
         public static void LateUpdate()
         {
-            DoJoystcikCallback();
+            DoJoystickCallback();
 
+            ClearJoystickKeymapBuffer();
+        }
+
+        /// <summary>
+        /// Do one callback, usually for resetting.
+        /// </summary>
+        public static void InputCallbackOnce()
+        {
+            if (mIsJoystickConnected)
+                joystickPluggedCallback.Invoke();
+            else
+                joystickUnPluggedCallback.Invoke();
+        }
+
+        /// <summary>
+        /// Do the joystick callback.
+        /// </summary>
+        private static void DoJoystickCallback()
+        {
+            if (mIsJoystickConnected == IsJoystickConnected())
+                return;
+
+            mIsJoystickConnected = IsJoystickConnected();
+
+            InputCallbackOnce();
+        }
+
+        /// <summary>
+        /// Clear the joystick keymap buffer in order to implement
+        /// joystick button down and joystick button up.
+        /// </summary>
+        private static void ClearJoystickKeymapBuffer()
+        {
             for (int index = 0;
                 index < mJoystickKeyWasPreseed.Count;
                 ++index)
@@ -139,30 +172,6 @@ namespace JCSUnity
             // Clear all key action history.
             mJoystickKeyWasPreseed.Clear();
             mJoystickKeyWasReleased.Clear();
-        }
-
-        /// <summary>
-        /// Do one callback, usually for resetting.
-        /// </summary>
-        public static void InputCallbackOnce()
-        {
-            if (mIsJoystickConnected)
-                joystickPluggedCallback.Invoke();
-            else
-                joystickUnPluggedCallback.Invoke();
-        }
-
-        /// <summary>
-        /// Do the joystick callback.
-        /// </summary>
-        private static void DoJoystcikCallback()
-        {
-            if (mIsJoystickConnected == IsJoystickConnected())
-                return;
-
-            mIsJoystickConnected = IsJoystickConnected();
-
-            InputCallbackOnce();
         }
 
         //----------------------------------------------------------------------
@@ -233,7 +242,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Get the mouse position on canvas space.
         /// </summary>
         /// <returns> mouse position on canvas </returns>
         public static Vector3 CanvasMousePosition()
