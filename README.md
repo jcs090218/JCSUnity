@@ -84,5 +84,5 @@ Log system inside the game. <br/>
   <img src="./games/might_&_blade_logo.png" width="300" height="120"/>
 </a>
 <a href="#" target="_blank">
-  <img src="./games/SugarSleuths_logo.png" width="300" height="120"/>
+  <img src="./games/SugarSleuths_logo.png" width="302" height="184"/>
 </a>
