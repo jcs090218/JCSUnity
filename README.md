@@ -76,6 +76,9 @@ Log system inside the game. <br/>
 ## Demo ##
 * https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 
+## Tutorials ##
+* https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
+
 ## Games ##
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
   <img src="./games/hemlock_logo.png" width="100" height="100" align="middle"/>
