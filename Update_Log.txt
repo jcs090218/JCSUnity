@@ -9,6 +9,7 @@
 
 2018-01-02
 * Gamepad version of slide screen button implemented. (JCSUnity)
+* Add test key option to JCS_2DSlideScreenCamera. (JCSUnity)
 
 2017-12-20
 * Refactor clear keymap buffer for joystick into properly named 
