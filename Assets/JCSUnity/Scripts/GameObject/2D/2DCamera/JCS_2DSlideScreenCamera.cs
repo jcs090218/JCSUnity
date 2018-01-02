@@ -24,6 +24,21 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_2DSlideScreenCamera) **")]
+
+        public bool testWithKey = false;
+
+        public KeyCode upKey = KeyCode.W;
+        public KeyCode downKey = KeyCode.X;
+        public KeyCode leftKey = KeyCode.A;
+        public KeyCode rightKey = KeyCode.D;
+
+        public KeyCode upLeftKey = KeyCode.Q;
+        public KeyCode downLeftKey = KeyCode.Z;
+        public KeyCode upRightKey = KeyCode.E;
+        public KeyCode downRightKey = KeyCode.C;
+#endif
 
         //----------------------
         // Private Variables
@@ -109,22 +124,25 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.W))
+            if (!testWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(upKey))
                 SwitchScene(JCS_2D4Direction.TOP);
-            if (JCS_Input.GetKeyDown(KeyCode.D))
+            if (JCS_Input.GetKeyDown(rightKey))
                 SwitchScene(JCS_2D4Direction.RIGHT);
-            if (JCS_Input.GetKeyDown(KeyCode.X))
+            if (JCS_Input.GetKeyDown(downKey))
                 SwitchScene(JCS_2D4Direction.BOTTOM);
-            if (JCS_Input.GetKeyDown(KeyCode.A))
+            if (JCS_Input.GetKeyDown(leftKey))
                 SwitchScene(JCS_2D4Direction.LEFT);
 
-            if (JCS_Input.GetKeyDown(KeyCode.Q))
+            if (JCS_Input.GetKeyDown(upLeftKey))
                 SwitchScene(JCS_2D8Direction.TOP_LEFT);
-            if (JCS_Input.GetKeyDown(KeyCode.E))
+            if (JCS_Input.GetKeyDown(upRightKey))
                 SwitchScene(JCS_2D8Direction.TOP_RIGHT);
-            if (JCS_Input.GetKeyDown(KeyCode.C))
+            if (JCS_Input.GetKeyDown(downRightKey))
                 SwitchScene(JCS_2D8Direction.BOTTOM_RIGHT);
-            if (JCS_Input.GetKeyDown(KeyCode.Z))
+            if (JCS_Input.GetKeyDown(downLeftKey))
                 SwitchScene(JCS_2D8Direction.BOTTOM_LEFT);
         }
 #endif
