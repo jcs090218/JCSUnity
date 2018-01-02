@@ -20,6 +20,11 @@ namespace JCSUnity
     public class JCS_SlideScreenButton
         : JCS_Button
     {
+        //----------------------
+        // Public Variables
+
+        //----------------------
+        // Private Variables
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -53,6 +58,9 @@ namespace JCSUnity
         private float mDelayTimer = 0;
         private bool mStartDelay = false;
 
+        //----------------------
+        // Protected Variables
+
         //========================================
         //      setter / getter
         //------------------------------
@@ -73,7 +81,6 @@ namespace JCSUnity
 
         private void Update()
         {
-
             if (!mStartDelay)
                 return;
 
@@ -98,6 +105,8 @@ namespace JCSUnity
         //========================================
         //      Self-Define
         //------------------------------
+        //----------------------
+        // Public Functions
 
         /// <summary>
         /// Button click function pointer override.
@@ -107,8 +116,6 @@ namespace JCSUnity
             if (mSlideCameras.Length == 0)
             {
                 JCS_Debug.LogReminders(
-                    "JCS_SlideScreenButton", 
-                     
                     "Assign the button without camera is not allowed...");
                 return;
             }
@@ -116,6 +123,12 @@ namespace JCSUnity
             // start counting delay
             mStartDelay = true;
         }
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
 
         /// <summary>
         /// Switch the scene.
@@ -140,5 +153,6 @@ namespace JCSUnity
                 }
             }
         }
+
     }
 }
