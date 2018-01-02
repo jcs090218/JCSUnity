@@ -12204,6 +12204,14 @@ Prefab:
       propertyPath: mPanelHolder
       value: 
       objectReference: {fileID: 1529597983}
+    - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 2}
+      propertyPath: testWithKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 2}
+      propertyPath: upRightKey
+      value: 101
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 2}
   m_IsPrefabParent: 0
