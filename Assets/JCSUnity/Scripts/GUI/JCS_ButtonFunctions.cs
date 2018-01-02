@@ -20,7 +20,7 @@ namespace JCSUnity
 {
 
     /// <summary>
-    /// 
+    /// Util Function put here, usually systematic.
     /// </summary>
     public class JCS_UtilityFunctions 
         : MonoBehaviour
