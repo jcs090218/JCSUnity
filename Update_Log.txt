@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-01-04
+* Add ignore pause check boolean and open to the inspector level. (JCSUnity)
+* Add ignore pause option param to any key state input. (JCSUnity)
+
 2018-01-02
 * Gamepad version of slide screen button implemented. (JCSUnity)
 * Add test key option to JCS_2DSlideScreenCamera. (JCSUnity)
