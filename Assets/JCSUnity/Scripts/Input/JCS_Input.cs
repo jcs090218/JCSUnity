@@ -553,8 +553,14 @@ namespace JCSUnity
         /// </summary>
         /// <param name="type"> type of the key pressed option. </param>
         /// <returns> key u pressed. </returns>
-        public static KeyCode GetAnyKeyByAction(JCS_KeyActionType type)
+        public static KeyCode GetAnyKeyByAction(JCS_KeyActionType type, bool ignorePause = false)
         {
+            if (!ignorePause)
+            {
+                if (JCS_GameManager.instance.GAME_PAUSE)
+                    return KeyCode.None;
+            }
+
             // loop through the key code list
             foreach (KeyCode val in JCS_Utility.GetValues<KeyCode>())
             {
@@ -577,9 +583,9 @@ namespace JCSUnity
         /// true: key buffer in
         /// false: no key buffer in
         /// </returns>
-        public static bool IsAnyKeyBuffer(JCS_KeyActionType type)
+        public static bool IsAnyKeyBuffer(JCS_KeyActionType type, bool ignorePause = false)
         {
-            KeyCode code = GetAnyKeyByAction(type);
+            KeyCode code = GetAnyKeyByAction(type, ignorePause);
 
             return (code != KeyCode.None);
         }
