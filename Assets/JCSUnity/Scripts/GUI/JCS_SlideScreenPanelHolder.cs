@@ -12,12 +12,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Slide panel holder.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    [RequireComponent(typeof(JCS_IgnoreDialogueObject))]
     public class JCS_SlideScreenPanelHolder
         : MonoBehaviour
     {
@@ -29,9 +27,15 @@ namespace JCSUnity
         // Private Variables
         private RectTransform mRectTransform = null;
 
-        [Header("** Initialize Variables **")]
-        [SerializeField] private float mSlideFrictionX = 0.2f;
-        [SerializeField] private float mSlideFrictionY = 0.2f;
+        [Header("** Initialize Variables (JCS_SlideScreenPanelHolder) **")]
+
+        [Tooltip("How fast the this slide panel slide in x axis.")]
+        [SerializeField] [Range(0.01f, 5.0f)]
+        private float mSlideFrictionX = 0.2f;
+
+        [Tooltip("How fast the this slide panel slide in y axis.")]
+        [SerializeField] [Range(0.01f, 5.0f)]
+        private float mSlideFrictionY = 0.2f;
 
         // Panel rect transform holder.
         // since the panel does not need to contain "JCS_SlidePanel" class, 
@@ -56,12 +60,6 @@ namespace JCSUnity
         private void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
-
-            // apply default value
-            if (mSlideFrictionX == 0)
-                mSlideFrictionX = 0.2f;
-            if (mSlideFrictionY == 0)
-                mSlideFrictionY = 0.2f;
 
             mSlidePanelsComponents = new JCS_SlidePanel[slidePanels.Length];
 

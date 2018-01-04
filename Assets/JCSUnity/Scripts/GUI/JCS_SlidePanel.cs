@@ -12,12 +12,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Slide Panel works with 'JCS_SlideScreenPanelHolder'.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    [RequireComponent(typeof(JCS_IgnoreDialogueObject))]
     public class JCS_SlidePanel
         : MonoBehaviour
     {
@@ -27,13 +25,27 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private RectTransform mRectTransform = null;
 
-        [Header("** Runtime Variables **")]
-        [SerializeField] private float mSlideFrictionX = 0.2f;
-        [SerializeField] private float mSlideFrictionY = 0.2f;
 
-        [SerializeField] private Vector3 mTargetPosition = Vector3.zero;
+        [Header("** Check Variables (JCS_SlidePanel) **")]
+
+        [SerializeField]
+        private Vector3 mTargetPosition = Vector3.zero;
+
+
+        [Header("** Runtime Variables (JCS_SlidePanel) **")]
+
+        [Tooltip("How fast the this slide panel slide in x axis.")]
+        [SerializeField]
+        [Range(0.01f, 5.0f)]
+        private float mSlideFrictionX = 0.2f;
+
+        [Tooltip("How fast the this slide panel slide in y axis.")]
+        [SerializeField]
+        [Range(0.01f, 5.0f)]
+        private float mSlideFrictionY = 0.2f;
 
         //----------------------
         // Protected Variables
@@ -52,12 +64,6 @@ namespace JCSUnity
         private void Start()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
-
-            // apply default value
-            if (mSlideFrictionX == 0)
-                mSlideFrictionX = 0.2f;
-            if (mSlideFrictionY == 0)
-                mSlideFrictionY = 0.2f;
 
             this.mTargetPosition = this.mRectTransform.localPosition;
         }
