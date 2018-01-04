@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Scene will ignore this panel and not brough into next scene.
     /// </summary>

@@ -54,7 +54,6 @@ namespace JCSUnity
 
             if (instance != null)
             {
-
                 string black_screen_name = JCS_GameSettings.BLACK_SCREEN_NAME;
                 string white_screen_name = JCS_GameSettings.WHITE_SCREEN_NAME;
 
