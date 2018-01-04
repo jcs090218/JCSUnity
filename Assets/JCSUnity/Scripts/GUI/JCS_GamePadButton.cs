@@ -34,6 +34,10 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_GamePadButton) **")]
 
+        [Tooltip("Still check input when the game is pause?")]
+        [SerializeField]
+        private bool mIgnorePauseCheck = false;
+
         [Tooltip("Ignore the top two variables, listen to any key on the keyboard/gamepad.")]
         [SerializeField]
         private bool mListenToAnyKey = false;
@@ -91,6 +95,8 @@ namespace JCSUnity
         public AudioClip ButtonClickSound { get { return this.mButtonClickSound; } set { this.mButtonClickSound = value; } }
         public JCS_SoundMethod SoundMethod { get { return this.mSoundMethod; } set { this.mSoundMethod = value; } }
 
+        public bool IgnorePauseCheck { get { return this.mIgnorePauseCheck; } set { this.mIgnorePauseCheck = value; } }
+
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
@@ -105,7 +111,7 @@ namespace JCSUnity
         {
             if (mListenToAnyKey)
             {
-                if (JCS_Input.IsAnyKeyBuffer(mKeyActionType))
+                if (JCS_Input.IsAnyKeyBuffer(mKeyActionType, mIgnorePauseCheck))
                 {
                     JCS_ButtonClick();
                     PlayButtonClickSound();
@@ -113,11 +119,11 @@ namespace JCSUnity
             }
             else
             {
-                
+
                 if (// listen to keyboard.
-                    JCS_Input.GetKeyByAction(mKeyActionType, mKKeyToListen) ||
+                    JCS_Input.GetKeyByAction(mKeyActionType, mKKeyToListen, mIgnorePauseCheck) ||
                     // listen to game pad.
-                    JCS_Input.GetJoystickKeyByAction(mKeyActionType, mJoystickLitener, mJKeyToListen)
+                    JCS_Input.GetJoystickKeyByAction(mKeyActionType, mJoystickLitener, mJKeyToListen, mIgnorePauseCheck)
                     )
                 {
                     JCS_ButtonClick();
