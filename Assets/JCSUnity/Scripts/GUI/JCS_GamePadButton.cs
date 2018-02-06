@@ -30,58 +30,62 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        private JCS_SoundPlayer mSoundPlayer = null;
+        /*******************************************/
+        /*           Protected Variables           */
+        /*******************************************/
+
+        /*
+         * TODO(jenchieh): Consider this to put at `JCS_Button' class
+         * instead of this subclass.
+         */
+        protected JCS_SoundPlayer mSoundPlayer = null;
 
         [Header("** Runtime Variables (JCS_GamePadButton) **")]
 
         [Tooltip("Still check input when the game is pause?")]
         [SerializeField]
-        private bool mIgnorePauseCheck = false;
+        protected bool mIgnorePauseCheck = false;
 
         [Tooltip("Ignore the top two variables, listen to any key on the keyboard/gamepad.")]
         [SerializeField]
-        private bool mListenToAnyKey = false;
+        protected bool mListenToAnyKey = false;
 
         [Tooltip("Key action type.")]
         [SerializeField]
-        private JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
+        protected JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
 
 
         [Header("- Keyboard (JCS_GamePadButton)")]
 
         [Tooltip("Key to trigger this button")]
         [SerializeField]
-        private KeyCode mKKeyToListen = KeyCode.None;
+        protected KeyCode mKKeyToListen = KeyCode.None;
 
 
         [Header("- Game Pad (JCS_GamePadButton)")]
 
         [Tooltip("Key to trigger this button")]
         [SerializeField]
-        private JCS_JoystickButton mJKeyToListen = JCS_JoystickButton.NONE;
+        protected JCS_JoystickButton mJKeyToListen = JCS_JoystickButton.NONE;
 
         [Tooltip("Which joystick should listen?")]
         [SerializeField]
-        private JCS_JoystickIndex mJoystickLitener = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
+        protected JCS_JoystickIndex mJoystickLitener = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
 
 
         [Header("- Audio Settings (JCS_GamePadButton)")]
 
         [Tooltip("Play with the global sound player.")]
         [SerializeField]
-        private bool mPlayWithGlobalSoundPlayer = false;
+        protected bool mPlayWithGlobalSoundPlayer = false;
 
         [Tooltip("Sound when button is pressed.")]
         [SerializeField]
-        private AudioClip mButtonClickSound = null;
+        protected AudioClip mButtonClickSound = null;
 
         [Tooltip("Sound method.")]
         [SerializeField]
-        private JCS_SoundMethod mSoundMethod = JCS_SoundMethod.PLAY_SOUND;
-
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        protected JCS_SoundMethod mSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
         /*******************************************/
         /*             setter / getter             */
