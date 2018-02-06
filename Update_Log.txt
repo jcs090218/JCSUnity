@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2018-02-06
+* Update Unity version to 2017.3.0f3. (JCSUnity)
+* `Log Viewer' plugin seems no longer maintain, consider remove
+ the plugin. (JCSUnity)
+
 2018-01-04
 * Add ignore pause check boolean and open to the inspector level. (JCSUnity)
 * Add ignore pause option param to any key state input. (JCSUnity)
