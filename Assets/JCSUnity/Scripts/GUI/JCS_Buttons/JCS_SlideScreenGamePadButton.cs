@@ -17,7 +17,6 @@ namespace JCSUnity
     /// <summary>
     /// Button will do the slide screen. (Game Pad)
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SlideScreenGamePadButton
         : JCS_GamePadButton
     {
@@ -29,9 +28,6 @@ namespace JCSUnity
         /*******************************************/
         /*           Private Variables             */
         /*******************************************/
-
-        private JCS_SoundPlayer mSoundPlayer = null;
-
 
         [Header("** Check Variables (JCS_SlideScreenGamePadButton) **")]
 
