@@ -94,7 +94,7 @@ namespace JCSUnity
             ResetDialogue();
         }
 #endif
-
+        
         protected override void Awake()
         {
 #if (UNITY_5_4_OR_NEWER)
