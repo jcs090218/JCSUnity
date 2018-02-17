@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-02-17
+* Rename movie/clip file to ASCII only for some versiont control, not 
+ allow UTF-8 compatbile issue. (JCSUnity)
+
 2018-02-06
 * Update Unity version to 2017.3.0f3. (JCSUnity)
 * `Log Viewer' plugin seems no longer maintain, consider remove
