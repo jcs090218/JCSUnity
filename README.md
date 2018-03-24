@@ -86,6 +86,6 @@ Log system inside the game. <br/>
 <a href="https://www.youtube.com/watch?v=si_G0zIo0P0&feature=youtu.be" target="_blank">
   <img src="./games/might_&_blade_logo.png" width="300" height="120" align="middle"/>
 </a>
-<a href="#" target="_blank">
+<a href="https://www.youtube.com/watch?v=zU5ZAWTcCFM" target="_blank">
   <img src="./games/SugarSleuths_logo.png" width="227" height="138" align="middle"/>
 </a>
