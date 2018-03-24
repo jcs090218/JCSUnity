@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-03-24
+* Add link to game - sugar sleuths. (JCSUnity)
+
 2018-02-17
 * Rename movie/clip file to ASCII only for some versiont control, not 
  allow UTF-8 compatbile issue. (JCSUnity)
