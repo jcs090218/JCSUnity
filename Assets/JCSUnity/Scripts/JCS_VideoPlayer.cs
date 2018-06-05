@@ -12,7 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-#if (UNITY_STANDALONE)      // for PC only
+    /* for PC only */
+#if (UNITY_STANDALONE)      
     /// <summary>
     /// Play a video and jump into a scene.
     /// 
@@ -222,7 +223,9 @@ namespace JCSUnity
         }
 
     }
-#else                       // for phone and other device.
+#endif
+    /* for phone and other device. */
+#if (UNITY_IOS) || (UNITY_ANDROID)
     /// <summary>
     /// Play a video and jump into a scene.
     /// 
@@ -437,6 +440,20 @@ namespace JCSUnity
             mClipPlayed = true;
         }
 
+    }
+#endif
+    /* for browser WebGL */
+#if (UNITY_WEBGL)
+    /// <summary>
+    /// Play a video and jump into a scene.
+    /// 
+    /// Browser/WebGL version.
+    /// </summary>
+    [RequireComponent(typeof(AudioSource))]
+    public class JCS_VideoPlayer
+        : JCS_UnityObject
+    {
+        // TODO(jenchieh): complete this..
     }
 #endif
 }
