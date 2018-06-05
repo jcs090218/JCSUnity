@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-06-05
+* Fixed JCS_VideoPlayer compatible with browser and WebGL build. It still 
+ have to be implement though. (JCSUnity)
+
 2018-03-24
 * Add link to game - sugar sleuths. (JCSUnity)
 
