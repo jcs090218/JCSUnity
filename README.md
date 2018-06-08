@@ -2,7 +2,7 @@
 
 JCSUnity is a component driven framework. There are a tone 
 of reusable components that are already pre-built. 
-Most component work individuslly, except few of them do not. 
+Most component work individuslly, except some of them do not. 
 You can combine/attach two components on the same game object 
 and it will make completely different behaviour since the first 
 component works on it own and so do the second component. Two of the 
@@ -10,7 +10,8 @@ components works individually will create the brand new behaviour.
 The best part of the framework is by knowing these components always 
 suprise me how much I can do with my creativity and not just 
 engineering. There are one thing that this framework do the best is 
-fast and being productive building a game.<br/>
+fast and being productive building a game.
+<br/>
 
 ## Important Notice ##
 All media assets inside JCSUnity do not fall under its license. 
