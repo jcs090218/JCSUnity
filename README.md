@@ -8,9 +8,9 @@ game mechanics. With those combination of scripts/components could
 generate enormous variety of different behaviour. <br/><br/>
 
 ## Development Status ##
-<b>JCSUnity Version<b/> : 1.6.5
+<b>JCSUnity Version</b> : 1.6.5
 <br/>
-<b>Unity Version<b/> : 2017.4.2f2 (64-bit)
+<b>Unity Version</b> : 2017.4.2f2 (64-bit)
 <br/>
 
 ## How to use it? ##
