@@ -7,10 +7,14 @@ in variety of different project. This framework provide many scripted
 game mechanics. With those combination of scripts/components could
 generate enormous variety of different behaviour. <br/>
 
-### Development Status ###
-<b>JCSUnity Version</b> : 1.6.5
-<br/>
-<b>Unity Version</b> : 2017.4.2f2 (64-bit)
+## Notice ##
+All media assets inside JCSUnity do not fall under its license. 
+These assets are placeholders only, and should only be used for 
+testing purposes. They are NOT, under any circumstances, to be 
+used commercially. By using this framework you agree to these 
+terms, and understand that you are solely responsible for any 
+legal action taken against you for using, or attempting to use 
+any placeholder assets commercially.
 <br/>
 
 ## How to use it? ##
@@ -21,15 +25,12 @@ here</a>. Simply create a new project in Unity then import all of
 the assets into that project. Then you can start all of the tools 
 in the JCSUnity framework. <br/>
 
-## Notice ##
-All media assets inside JCSUnity do not fall under its license. 
-These assets are placeholders only, and should only be used for 
-testing purposes. They are NOT, under any circumstances, to be 
-used commercially. By using this framework you agree to these 
-terms, and understand that you are solely responsible for any 
-legal action taken against you for using, or attempting to use 
-any placeholder assets commercially.
+### Development Status ###
+<b>JCSUnity Version</b> : 1.6.5
 <br/>
+<b>Unity Version</b> : 2017.4.2f2 (64-bit)
+<br/>
+
 
 ## Overview ##
 
