@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Panel will make sure all the following
     /// child object fit the screen size!
@@ -23,14 +22,19 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
-        [HideInInspector] public float mPanelDeltaWidthRatio = 0;
-        [HideInInspector] public float mPanelDeltaHeightRatio = 0;
 
         //----------------------
         // Private Variables
 
+        private float mPanelDeltaWidthRatio = 0;
+        private float mPanelDeltaHeightRatio = 0;
+
+
         [Header("** Initialize Variables (JCS_PanelRoot) **")]
-        [SerializeField] private bool mFitScreenSize = true;
+
+        [Tooltip("Fit the whole screen size?")]
+        [SerializeField]
+        private bool mFitScreenSize = true;
 
         //----------------------
         // Protected Variables
@@ -38,6 +42,9 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool FitScreenSize { get { return this.mFitScreenSize; } set { this.mFitScreenSize = value; } }
+        public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
+        public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
 
         //========================================
         //      Unity's function
@@ -100,7 +107,8 @@ namespace JCSUnity
 
                 if (cam != null)
                 {
-                    // Find the distance between the dialogue object and the center (which is camera in this case)
+                    // Find the distance between the dialogue object and 
+                    // the center (which is camera in this case)
                     float distanceX = mRectTransform.localPosition.x - cam.transform.localPosition.x;
                     float distanceY = mRectTransform.localPosition.y - cam.transform.localPosition.y;
 
@@ -109,11 +117,20 @@ namespace JCSUnity
                 }
             }
 
-            // set to the new position
-            mRectTransform.localPosition = newPosition;
+            /**
+             * NOTE(jenchieh): 
+             * Cool, `sizeDelta' will actually change the `localPosition'
+             * now since version 2017.4.
+             * 
+             * So we set the `sizeDelta' (width and height) first, then
+             * set the `localPosition'.
+             */
 
             // set the width and height from app rect
             mRectTransform.sizeDelta = appRect.sizeDelta;
+
+            // set to the new position
+            mRectTransform.localPosition = newPosition;
         }
 
         /// <summary>
