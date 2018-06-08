@@ -1,16 +1,11 @@
 # JCSUnity #
 
-JCSUnity is a component driven framework. There are a tone 
-of reusable components that are already pre-built. 
-Most component work individuslly, except some of them do not. 
-You can combine/attach two components on the same game object 
-and it will make completely different behaviour since the first 
-component works on it own and so do the second component. Two of the 
-components works individually will create the brand new behaviour. 
-The best part of the framework is by knowing these components always 
-suprise me how much I can do with my creativity and not just 
-engineering. There are one thing that this framework do the best is 
-fast and being productive building a game.
+JCSUnity is a component driven Framework built to allow the user 
+to quickly generate commonly used game mechanics and features 
+such as UI functionality and player movement. This will allow 
+for a faster initial development. Most components work individually 
+while other components must be used in tandem with others. 
+Individually components can be combined to create new behaviors.
 <br/>
 
 ## Important Notice ##
