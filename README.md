@@ -1,5 +1,4 @@
 # JCSUnity #
-<br/>
 
 JCSUnity is a component design wise framework. There are a tone 
 of reusable components that are already pre-build in this framework. 
