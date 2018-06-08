@@ -84,8 +84,8 @@ Log system inside the game. <br/>
   <img src="./games/hemlock_logo.png" width="100" height="100" align="middle"/>
 </a>
 <a href="https://www.youtube.com/watch?v=si_G0zIo0P0&feature=youtu.be" target="_blank">
-  <img src="./games/might_&_blade_logo.png" width="300" height="120" align="middle"/>
+  <img src="./games/might_&_blade_logo.png" width="232" height="83" align="middle"/>
 </a>
 <a href="https://mwgamedesign.itch.io/sugar-sleuths" target="_blank">
-  <img src="./games/SugarSleuths_logo.png" width="227" height="138" align="middle"/>
+  <img src="./games/SugarSleuths_logo.png" width="250" height="133" align="middle"/>
 </a>
