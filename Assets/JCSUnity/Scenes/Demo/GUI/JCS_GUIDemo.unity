@@ -77,15 +77,18 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 0
 --- !u!196 &4
@@ -107,6 +110,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &11444955
 GameObject:
@@ -738,7 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.63235295, b: 0.08286013, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -783,8 +788,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &125373289
 GameObject:
@@ -1405,7 +1408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.8116275, g: 0.8455882, b: 0.23004974, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1450,8 +1453,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &209697730
 GameObject:
@@ -2335,7 +2336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2380,8 +2381,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &387084812
 GameObject:
@@ -2835,11 +2834,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22465536, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22465536, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22465536, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
       propertyPath: m_AnchorMin.x
@@ -2937,6 +2936,10 @@ Prefab:
       propertyPath: slidePanels.Array.data[6]
       value: 
       objectReference: {fileID: 2004400550}
+    - target: {fileID: 143342, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
   m_IsPrefabParent: 0
@@ -3072,7 +3075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.86764705, g: 0.070177354, b: 0.070177354, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3117,8 +3120,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &493965850
 GameObject:
@@ -3461,6 +3462,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
+  mIgnorePauseCheck: 0
   mListenToAnyKey: 0
   mKeyActionType: 1
   mKKeyToListen: 0
@@ -4196,6 +4198,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
+  mIgnorePauseCheck: 0
   mListenToAnyKey: 0
   mKeyActionType: 1
   mKKeyToListen: 0
@@ -5876,6 +5879,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
+  mIgnorePauseCheck: 0
   mListenToAnyKey: 0
   mKeyActionType: 1
   mKKeyToListen: 0
@@ -6259,7 +6263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.0701774, g: 0.70265317, b: 0.86764705, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6304,8 +6308,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &688828978
 GameObject:
@@ -6995,6 +6997,7 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
+  mIgnorePauseCheck: 0
   mListenToAnyKey: 0
   mKeyActionType: 1
   mKKeyToListen: 0
@@ -7674,7 +7677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.77826697, g: 0.46447882, b: 0.8897059, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7719,8 +7722,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &830015868
 GameObject:
@@ -7818,7 +7819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &865629817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7853,11 +7854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df56e4554e88a74488d9e7830ba08f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAsOriginalSize: 1
-  mAsOriginalPosition: 1
-  mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
+  mAsOriginalSize: 0
+  mAsOriginalPosition: 0
+  mAsOriginalRotation: 0
   mFitScreenSize: 1
 --- !u!114 &865629819
 MonoBehaviour:
@@ -8787,7 +8786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.23004974, g: 0.8455882, b: 0.8455882, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8832,8 +8831,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &975456157
 GameObject:
@@ -9617,7 +9614,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9230452, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1078392641
@@ -9682,7 +9680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.17636906, b: 0.6911765, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9727,8 +9725,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &1102750946
 GameObject:
@@ -12835,6 +12831,10 @@ Prefab:
       propertyPath: BACKGROUND_MUSIC
       value: 
       objectReference: {fileID: 8300000, guid: 378f01c6bbabb8e4887db244e0939bae, type: 3}
+    - target: {fileID: 11485796, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
+      propertyPath: RESIZE_UI
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
   m_IsPrefabParent: 0
@@ -14282,7 +14282,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428078, guid: ea310f8fa5995da43a045c6d0284ebcd, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea310f8fa5995da43a045c6d0284ebcd, type: 2}
@@ -15143,7 +15143,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1990639919
 MonoBehaviour:
@@ -15206,7 +15206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.46447882, g: 0.8897059, b: 0.48500705, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15251,88 +15251,7 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
---- !u!1 &2027613546
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2027613548}
-  - component: {fileID: 2027613547}
-  m_Layer: 0
-  m_Name: Directional light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &2027613547
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2027613546}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &2027613548
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2027613546}
-  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &2068116420
 GameObject:
   m_ObjectHideFlags: 0
