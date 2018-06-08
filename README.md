@@ -7,6 +7,10 @@ in variety of different project. This framework provide many scripted
 game mechanics. With those combination of scripts/components could
 generate enormous variety of different behaviour. <br/><br/>
 
+## Development Status ##
+JCSUnity Version: 1.6.5
+Unity Version: 2017.4.2f2 (64-bit)
+
 ## How to use it? ##
 JCSUnity is like other Unity plugins. You can download the latest 
 release from the above tab, or from the link 
