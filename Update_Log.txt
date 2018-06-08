@@ -12,6 +12,7 @@
 * Update resize UI prefab default settings/configs. (JCSUnity)
 * Remove deprecated 'README.txt' file. (JCSUnity)
 * Add 'version_info.txt' for future use to record all version support. (JCSUnity)
+* Update Unity version to the project to 2018.1.3f1. (JCSUnity)
 
 2018-06-05
 * Fixed JCS_VideoPlayer compatible with browser and WebGL build. It still 
