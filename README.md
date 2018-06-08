@@ -7,7 +7,7 @@ in variety of different project. This framework provide many scripted
 game mechanics. With those combination of scripts/components could
 generate enormous variety of different behaviour. <br/>
 
-## Notice ##
+## Important Notice ##
 All media assets inside JCSUnity do not fall under its license. 
 These assets are placeholders only, and should only be used for 
 testing purposes. They are NOT, under any circumstances, to be 
