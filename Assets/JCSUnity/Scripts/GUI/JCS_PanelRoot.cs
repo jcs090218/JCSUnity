@@ -117,7 +117,7 @@ namespace JCSUnity
                 }
             }
 
-            /**
+            /*
              * NOTE(jenchieh): 
              * Cool, `sizeDelta' will actually change the `localPosition'
              * now since version 2017.4.
@@ -125,12 +125,13 @@ namespace JCSUnity
              * So we set the `sizeDelta' (width and height) first, then
              * set the `localPosition'.
              */
+            {
+                // set the width and height from app rect
+                mRectTransform.sizeDelta = appRect.sizeDelta;
 
-            // set the width and height from app rect
-            mRectTransform.sizeDelta = appRect.sizeDelta;
-
-            // set to the new position
-            mRectTransform.localPosition = newPosition;
+                // set to the new position
+                mRectTransform.localPosition = newPosition;
+            }
         }
 
         /// <summary>

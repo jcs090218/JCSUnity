@@ -55,8 +55,8 @@ namespace JCSUnity
                     tempPanelChild[0] == this)
                 {
                     FitPerfectSize(
-                    jpr.mPanelDeltaWidthRatio,
-                    jpr.mPanelDeltaHeightRatio);
+                    jpr.PanelDeltaWidthRatio,
+                    jpr.PanelDeltaHeightRatio);
                 }
 
                 // since we add this script assuming we are 
@@ -91,10 +91,20 @@ namespace JCSUnity
             guiWidth = guiWidth / xRatio;
             guiHeight = guiHeight / yRatio;
 
-            mRectTransform.sizeDelta = new Vector2(guiWidth, guiHeight);
+            /*
+             * NOTE(jenchieh): 
+             * Cool, `sizeDelta' will actually change the `localPosition'
+             * now since version 2017.4.
+             * 
+             * So we set the `sizeDelta' (width and height) first, then
+             * set the `localPosition'.
+             */
+            {
+                mRectTransform.sizeDelta = new Vector2(guiWidth, guiHeight);
 
-            // set to the new position
-            mRectTransform.localPosition = newPosition;
+                // set to the new position
+                mRectTransform.localPosition = newPosition;
+            }
         }
 
         //----------------------
