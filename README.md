@@ -25,7 +25,7 @@ here</a>. Simply create a new project in Unity then import all of
 the assets into that project. Then you can start all of the tools 
 in the JCSUnity framework. <br/>
 
-### Development Status ###
+## Version Status ##
 <b>JCSUnity Version</b> : 1.6.5
 <br/>
 <b>Unity Version</b> : 2017.4.2f2 (64-bit)
