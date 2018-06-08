@@ -5,9 +5,9 @@ JCSUnity is a general speed components framework. JCSUnity help out
 people who have trouble making script/component over and over agian
 in variety of different project. This framework provide many scripted
 game mechanics. With those combination of scripts/components could
-generate enormous variety of different behaviour. <br/><br/>
+generate enormous variety of different behaviour. <br/>
 
-## Development Status ##
+### Development Status ###
 <b>JCSUnity Version</b> : 1.6.5
 <br/>
 <b>Unity Version</b> : 2017.4.2f2 (64-bit)
