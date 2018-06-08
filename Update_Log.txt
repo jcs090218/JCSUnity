@@ -7,6 +7,12 @@
 # ========================================================================
 
 
+2018-06-08
+* GUI resize module make compatible to Unity version to 2017.4.2f2. (JCSUnity)
+* Update resize UI prefab default settings/configs. (JCSUnity)
+* Remove deprecated 'README.txt' file. (JCSUnity)
+* Add 'version_info.txt' for future use to record all version support. (JCSUnity)
+
 2018-06-05
 * Fixed JCS_VideoPlayer compatible with browser and WebGL build. It still 
  have to be implement though. (JCSUnity)
