@@ -1,11 +1,17 @@
 # JCSUnity #
 <br/>
 
-JCSUnity is a general speed components framework. JCSUnity help out
-people who have trouble making script/component over and over agian
-in variety of different project. This framework provide many scripted
-game mechanics. With those combination of scripts/components could
-generate enormous variety of different behaviour. <br/>
+JCSUnity is a component design wise framework. There are a tone 
+of reusable components that are already pre-build in this framework. 
+Each component works individuslly and minor of them are bind to each 
+others. You can combine/attach two components on the same game object 
+and it will make completely different behaviour since the first 
+component works on it own and so do the second component. Two of the 
+components works individually will create the brand new behaviour. 
+The best part of the framework is by knowing these components always 
+suprise me how much I can do with my creativity and not just 
+engineering. There are one thing that this framework do the best is 
+fast and being productive building a game.<br/>
 
 ## Important Notice ##
 All media assets inside JCSUnity do not fall under its license. 
