@@ -41,18 +41,15 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_BaseDialogueObject) **")]
         
-        [Tooltip(@"Set the rect transfrom size the same as before 
-playing it.")]
+        [Tooltip(@"Set the rect transfrom size the same as before playing it.")]
         [SerializeField]
         protected bool mAsOriginalSize = false;
 
-        [Tooltip(@"Set the rect transfrom position the same as before 
-playing it.")]
+        [Tooltip(@"Set the rect transfrom position the same as before playing it.")]
         [SerializeField]
         protected bool mAsOriginalPosition = false;
 
-        [Tooltip(@"Set the rect transfrom rotation the same as before 
-playing it.")]
+        [Tooltip(@"Set the rect transfrom rotation the same as before playing it.")]
         [SerializeField]
         protected bool mAsOriginalRotation = false;
 
@@ -123,7 +120,6 @@ playing it.")]
                 mRectTransform.localRotation = mOriginalRotation;
             else
                 mRectTransform.localRotation = new Quaternion(0, 0, 0, 0);
-
         }
 
         /// <summary>
@@ -221,9 +217,7 @@ playing it.")]
 
             if (jcsCanvas == null)
             {
-                JCS_Debug.LogReminders(
-                    "Does not use JCS_Canvas Object...");
-
+                JCS_Debug.LogReminders("Does not use JCS_Canvas Object...");
                 return;
             }
 
