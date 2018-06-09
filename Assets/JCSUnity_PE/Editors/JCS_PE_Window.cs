@@ -47,6 +47,9 @@ namespace JCSUnity
         private const string REPLACE_VERSION_NO = "[VERSION_NO]";
 
 
+        /// <summary>
+        /// Structure of the export packages.
+        /// </summary>
         [Serializable]
         public struct ExportPackageStruct
         {
@@ -55,8 +58,7 @@ namespace JCSUnity
         };
 
 
-        public ExportPackageStruct[] exportPackagesList = null;
-
+        public ExportPackageStruct[] exportPackagesList = { };
 
 
         private void OnEnable()
@@ -100,6 +102,7 @@ namespace JCSUnity
             GUILayout.Space(TITLE_SPACE_BOTTOM);
 
             int buttonShown = 0;
+
 
             for (int index = 0;
                index < instance.exportPackagesList.Length;
@@ -418,7 +421,6 @@ namespace JCSUnity
                 // check if first character the comment character.
                 if (ch == '#')
                     return true;
-
             }
 
             return false;
