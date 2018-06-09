@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2018-06-09
+* Release version 1.6.5 for huge upgrade the package to Unity version 
+ 2018.1.3f1. (JCSUnity)
+* Upgrade package JCSUnity_PE for JCSUnity project management. (JCSUnity)
+
 2018-06-08
 * GUI resize module make compatible to Unity version to 2017.4.2f2. (JCSUnity)
 * Update resize UI prefab default settings/configs. (JCSUnity)
