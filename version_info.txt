@@ -2,5 +2,5 @@
 
 //-- Support Version --//
 
-JCSUnity Version: 1.6.5
+JCSUnity Version: 1.6.7
 Unity Version: 2018.1.3f1 (64-bit)
