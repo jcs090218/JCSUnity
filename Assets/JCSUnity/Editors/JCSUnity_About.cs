@@ -33,7 +33,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        private static string INI_FILE_PATH = Application.dataPath + "/JCSUnity/Editors/ini/";
+        private static string INI_FILE_PATH = "";
         private static string EDITOR_PROPERTIES_FILENAME = "editor.properties";
 
         private static int WINDOW_WIDTH = 400;
@@ -49,6 +49,7 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+
         private void OnGUI()
         {
             ReadINIFile();
@@ -79,6 +80,8 @@ namespace JCSUnity
         /// </summary>
         public static void ReadINIFile()
         {
+            INI_FILE_PATH = Application.dataPath + "/JCSUnity/Editors/ini/";
+
             //string path = Application.dataPath + "/../editor.properties";
             string path = INI_FILE_PATH + EDITOR_PROPERTIES_FILENAME;
 
