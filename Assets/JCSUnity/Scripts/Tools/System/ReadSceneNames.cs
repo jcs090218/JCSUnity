@@ -60,7 +60,7 @@ public class ReadSceneNames
     // Source: http://answers.unity3d.com/questions/33263/how-to-get-names-of-all-available-levels.html
     //
 
-    public string[] SCENES_IN_BUILD_SETTING = null;
+    public string[] SCENES_IN_BUILD_SETTING = { };
 
     private static string[] ReadNames()
     {
