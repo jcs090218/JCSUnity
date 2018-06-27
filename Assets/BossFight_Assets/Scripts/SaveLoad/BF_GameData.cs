@@ -15,7 +15,7 @@ using JCSUnity;
 /// <summary>
 /// Game Data design here.
 /// </summary>
-[Serializable]
+[Serializable]  // NOTE(jenchieh): we need this for `JCS_BinGameData'.
 public class BF_GameData 
     : JCS_BinGameData
 {
@@ -29,6 +29,16 @@ public class BF_GameData
 
     //---------------------------------------------------
     // Data Struct
+
+    // 
+    // NOTE(jenchieh): We cannot use auto property to store
+    // game data as binary. It will cause serialize issue.
+    //
+    // Use: 
+    //     public string Name = "";
+    // Do not use: (I assume this is auto property)
+    //     public string Name { get; set; };
+    // 
     public string Name = "";        // name of the player
     public int Cash = 0;            // cash in the game
 
