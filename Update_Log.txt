@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2018-06-27
+* Update doc version number to current version number. (JCSUnity)
+* JCS_BinGameData interface/module implemented. (JCSUnity)
+* Update scripting manual with save load module implementation. (JCSUnity)
+
 2018-06-20
 * Make default empty array instead of null pointer in ReadSceneName 
  component/module. (JCSUnity)
