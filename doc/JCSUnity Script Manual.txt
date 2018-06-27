@@ -2331,11 +2331,6 @@
           <Placement>Script base.</Placement>
           <Description>Base class of all the sorting object.</Description>
         </File>
-
-        <File name="JJCS_XMLGameData.cs">
-          <Placement>Script base.</Placement>
-          <Description>Base of the xml game data.</Description>
-        </File>
       </Interfaces>
       <Lib>
         <File name="JCS_Pair.cs">
@@ -2528,7 +2523,7 @@
         </File>
 
         <File name="PacketDecoder.cs">
-          <Placement/>
+          <Placement><Placement/>
           <Description>Packet dencoder interface.</Description>
         </File>
 
@@ -2537,6 +2532,17 @@
           <Description>Packet encoder interface.</Description>
         </File>
       </Network>
+      <SaveLoad>
+        <File name="JCS_BinGameData.cs">
+          <Placement>Script base.</Placement>
+          <Description>Interface of storing game data as binary format.</Description>
+        </File>
+        
+        <File name="JCS_XMLGameData.cs">
+          <Placement>Script base.</Placement>
+          <Description>Interface of storing game data as XML format.</Description>
+        </File>
+      </SaveLoad>
       <Scripts>
         <event>
           <File name="npc2100.cs">
