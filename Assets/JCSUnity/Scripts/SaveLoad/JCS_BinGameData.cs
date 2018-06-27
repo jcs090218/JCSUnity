@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Binary game data format.
+    /// Interface of storing game data as binary format.
     /// </summary>
     [System.Serializable]
     public class JCS_BinGameData
