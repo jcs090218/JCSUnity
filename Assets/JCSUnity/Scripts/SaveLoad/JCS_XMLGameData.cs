@@ -16,7 +16,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Base if the game data format.
+    /// Interface of storing game data as XML format.
     /// </summary>
     public abstract class JCS_XMLGameData
     {
