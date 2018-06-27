@@ -167,7 +167,6 @@ public class BF_GameSettings
         {
             JCS_Debug.LogError(
                 "Save Data without data??? (Fatal Error)");
-
             return;
         }
 

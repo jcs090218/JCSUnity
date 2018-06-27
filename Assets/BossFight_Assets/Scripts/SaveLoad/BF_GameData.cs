@@ -6,31 +6,31 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using JCSUnity;
-using System.Xml.Serialization;
-using System.IO;
 using System;
+using System.Collections;
+using UnityEngine;
+using JCSUnity;
+
 
 /// <summary>
 /// Game Data design here.
 /// </summary>
+[Serializable]
 public class BF_GameData 
-    : JCS_XMLGameData
+    : JCS_BinGameData
 {
     [Serializable]
     public struct ItemIdInclude
     {
-        public bool ItemInclude { get; set; }
-        public BF_ItemId ItemId { get; set; }
+        public bool ItemInclude;
+        public BF_ItemId ItemId;
     };
 
 
     //---------------------------------------------------
     // Data Struct
-    public string Name { get; set; }        // name of the player
-    public int Cash { get; set; }           // cash in the game
+    public string Name = "";        // name of the player
+    public int Cash = 0;            // cash in the game
 
     public ItemIdInclude[] ItemsInclude = null;
 
@@ -50,7 +50,7 @@ public class BF_GameData
     }
 
     /// <summary>
-    /// Careful, if u call this incorrectly it will 
+    /// Careful, if you call this incorrectly it will 
     /// clear all the game data.
     /// </summary>
     private void InitItemInclude()
