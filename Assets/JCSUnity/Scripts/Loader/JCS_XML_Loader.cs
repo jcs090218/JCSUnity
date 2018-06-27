@@ -13,9 +13,8 @@ using System.Xml;
 
 namespace JCSUnity
 {
-    
     /// <summary>
-    /// 
+    /// XML loader.
     /// </summary>
     public class JCS_XML_Loader
     {
