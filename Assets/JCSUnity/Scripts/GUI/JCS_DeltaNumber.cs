@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Score system with the sprite 0 to 9.
     /// </summary>
@@ -51,6 +50,10 @@ namespace JCSUnity
         [Tooltip("Current object is enable?")]
         [SerializeField]
         private bool mIsEnable = true;
+
+        [Tooltip("How many visible digit?")]
+        [SerializeField]
+        private int mCurrentDigitCount = 1;
 
 
         [Header("** Initialize Variables (JCS_DeltaNumber) **")]
@@ -114,7 +117,9 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private bool mVisibleOnZero = true;
 
-        private JCS_TextAlign mAlignSide = JCS_TextAlign.ALIGN_RIGHT;
+        [Tooltip("Align side.")]
+        [SerializeField]
+        private JCS_TextAlign mTextAlign = JCS_TextAlign.RIGHT;
 
 
         [Header("- Min/Max Settings (JCS_DeltaNumber)")]
@@ -173,6 +178,7 @@ should disable this effect for best purpose.")]
             }
         }
         public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
+        public JCS_TextAlign TextAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
 
         //========================================
         //      Unity's function
@@ -285,6 +291,26 @@ should disable this effect for best purpose.")]
                     EnableDigitsRendererSlot(true);
                 }
             }
+
+            switch (mTextAlign)
+            {
+                case JCS_TextAlign.CENTER:
+                    {
+
+                    }
+                    break;
+                case JCS_TextAlign.RIGHT:
+                    {
+                        UpdateIntervalForEachDigit(mDigitInterval);
+                    }
+                    break;
+                case JCS_TextAlign.LEFT:
+                    {
+                        UpdateIntervalForEachDigit(-mDigitInterval);
+                    }
+                    break;
+            }
+
         }
 
         /// <summary>
