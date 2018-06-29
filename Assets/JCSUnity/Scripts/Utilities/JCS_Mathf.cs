@@ -540,6 +540,47 @@ namespace JCSUnity
             return remainder / divider;
         }
 
+
+        /// <summary>
+        /// Count the digit by pass in number you want to count.
+        /// 
+        /// If the number if 0, the count will return 0.
+        /// </summary>
+        /// <param name="number"> number you want to count. </param>
+        /// <returns> digit count. </returns>
+        public static int DigitCount (int number)
+        {
+            int count = 0;
+
+            while (number != 0)
+            {
+                number /= 10;
+                ++count;
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Count the digit by pass in number you want to count.
+        /// 
+        /// If the number if 0, the count will return 0.
+        /// </summary>
+        /// <param name="number"> number you want to count. </param>
+        /// <returns> digit count. </returns>
+        public static int DigitCountIncludeZero(int number)
+        {
+            if (number == 0)
+                return 1;
+
+            int count = 0;
+            while (number != 0)
+            {
+                number /= 10;
+                ++count;
+            }
+            return count;
+        }
+
         /// <summary>
         /// Cross multiply a group of number.
         /// 
