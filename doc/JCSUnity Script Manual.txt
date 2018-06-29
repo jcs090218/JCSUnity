@@ -1175,6 +1175,16 @@
         <Placement>Script base.</Placement>
         <Description>How the scene swith between scene and scene.</Description>
       </File>
+      
+      <File name="JCS_TextAlign.cs">
+        <Placement>Script base.</Placement>
+        <Description>Text alignment.</Description>
+      </File>
+      
+      <File name="JCS_TransformType.cs">
+        <Placement>Script base.</Placement>
+        <Description>List of transform properties.</Description>
+      </File>
 
       <File name="JCS_TweenType.cs">
         <Placement>Script base.</Placement>
