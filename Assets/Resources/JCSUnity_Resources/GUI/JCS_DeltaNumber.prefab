@@ -472,6 +472,7 @@ MonoBehaviour:
   mDeltaToB: 109
   mDeltaValueB: 64
   mIsEnable: 1
+  mCurrentDigitCount: 1
   mCurrentScore: 0
   mScoreNull: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
   mScoreText0: {fileID: 21300000, guid: 35c1884a6af385440bc9fbb692cb64d4, type: 3}
@@ -498,6 +499,7 @@ MonoBehaviour:
   mDigitInterval: 0.5
   mClearEmptyLeftZero: 1
   mVisibleOnZero: 1
+  mTextAlign: 2
   mMaxScore: 9999999
   mMinScore: 0
   mDeltaToCurrentScore: 1
