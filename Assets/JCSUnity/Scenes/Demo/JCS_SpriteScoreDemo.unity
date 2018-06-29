@@ -167,6 +167,7 @@ MonoBehaviour:
   mDeltaToB: 98
   mDeltaValueB: 64
   mIsEnable: 1
+  mCurrentDigitCount: 1
   mCurrentScore: 0
   mScoreNull: {fileID: 21300000, guid: c7eced5e94022104d917659ef2734bf4, type: 3}
   mScoreText0: {fileID: 21300000, guid: 35c1884a6af385440bc9fbb692cb64d4, type: 3}
@@ -187,6 +188,7 @@ MonoBehaviour:
   mDigitInterval: 150
   mClearEmptyLeftZero: 1
   mVisibleOnZero: 1
+  mTextAlign: 2
   mMaxScore: 9999999
   mMinScore: 0
   mDeltaToCurrentScore: 1
@@ -1025,11 +1027,11 @@ GameObject:
   m_Component:
   - component: {fileID: 906034308}
   - component: {fileID: 906034307}
-  - component: {fileID: 906034306}
   - component: {fileID: 906034305}
   - component: {fileID: 906034304}
   - component: {fileID: 906034303}
   - component: {fileID: 906034302}
+  - component: {fileID: 906034306}
   m_Layer: 0
   m_Name: JCS_2DCamera
   m_TagString: MainCamera
@@ -1187,8 +1189,8 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 906034301}
   m_Enabled: 1
---- !u!92 &906034306
-Behaviour:
+--- !u!81 &906034306
+AudioListener:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1511,7 +1513,7 @@ MonoBehaviour:
   SFX_SOUND: 0.4
   SKILLS_SOUND: 0.4
   SMOOTH_SWITCH_SOUND_BETWEEN_SCENE: 1
-  BACKGROUND_MUSIC: {fileID: 8300000, guid: aadaa2bb458696e4cb1bbc6322707e03, type: 3}
+  BACKGROUND_MUSIC: {fileID: 0}
   DEFAULT_OPEN_WINDOW_CLIP: {fileID: 8300000, guid: 9ddc3d435db7ab44ea990d4bbbe7a5c4,
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
@@ -2076,8 +2078,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114374653870074360, guid: 6875d83f30a24304293507fac3628cca,
         type: 2}
-      propertyPath: mDeltaValueB
-      value: 99999
+      propertyPath: mTextAlign
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6875d83f30a24304293507fac3628cca, type: 2}
