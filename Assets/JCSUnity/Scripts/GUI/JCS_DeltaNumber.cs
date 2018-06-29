@@ -26,6 +26,33 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_DeltaNumber) **")]
+
+        [Tooltip("Key delta to value A.")]
+        [SerializeField]
+        private KeyCode mDeltaToA = KeyCode.A;
+
+        [Tooltip("Value delta A.")]
+        [SerializeField]
+        private int mDeltaValueA = 0;
+
+        [Tooltip("Key delta to value B.")]
+        [SerializeField]
+        private KeyCode mDeltaToB = KeyCode.B;
+
+        [Tooltip("Value delta B.")]
+        [SerializeField]
+        private int mDeltaValueB = 64;
+#endif
+
+        [Header("** Check Variables (JCS_DeltaNumber) **")]
+
+        [Tooltip("Current object is enable?")]
+        [SerializeField]
+        private bool mIsEnable = true;
+
+
         [Header("** Initialize Variables (JCS_DeltaNumber) **")]
 
         [Tooltip(@"Current score rendering..., do not use this to 
@@ -83,6 +110,12 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private bool mClearEmptyLeftZero = false;
 
+        [Tooltip("Is visible when is zero?")]
+        [SerializeField]
+        private bool mVisibleOnZero = true;
+
+        private JCS_TextAlign mAlignSide = JCS_TextAlign.ALIGN_RIGHT;
+
 
         [Header("- Min/Max Settings (JCS_DeltaNumber)")]
 
@@ -139,6 +172,7 @@ should disable this effect for best purpose.")]
                 this.mDeltaToCurrentScore = true;
             }
         }
+        public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
 
         //========================================
         //      Unity's function
@@ -173,13 +207,10 @@ should disable this effect for best purpose.")]
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKey(KeyCode.N))
-                UpdateScore(20);
-            if (JCS_Input.GetKey(KeyCode.M))
-                UpdateScore(40);
-
-            if (JCS_Input.GetKey(KeyCode.B))
-                UpdateScore(0);
+            if (JCS_Input.GetKey(mDeltaToA))
+                UpdateScore(mDeltaValueA);
+            if (JCS_Input.GetKey(mDeltaToB))
+                UpdateScore(mDeltaValueB);
         }
 #endif
 
@@ -188,6 +219,25 @@ should disable this effect for best purpose.")]
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Set enable/disable all digit render slot.
+        /// </summary>
+        public void EnableDigitsRendererSlot(bool act)
+        {
+            // Do nothing if already the same.
+            if (mIsEnable == act)
+                return;
+
+            for (int index = 0;
+                index < mDigitsRendererSlot.Length;
+                ++index)
+            {
+                mDigitsRendererSlot[index].LocalEnabled = act;
+            }
+
+            this.mIsEnable = act;
+        }
 
         /// <summary>
         /// Update the score GUI
@@ -222,6 +272,19 @@ should disable this effect for best purpose.")]
                 targetScore = mMaxScore;
 
             DoScoreGUI(targetScore);
+
+            // Do if visible on zero effect.
+            if (!mVisibleOnZero)
+            {
+                if (targetScore == 0)
+                {
+                    EnableDigitsRendererSlot(false);
+                }
+                else
+                {
+                    EnableDigitsRendererSlot(true);
+                }
+            }
         }
 
         /// <summary>
@@ -290,7 +353,6 @@ should disable this effect for best purpose.")]
 
                 if (mClearEmptyLeftZero)
                 {
-
                     /**
                      * Last digit is zero, we set to zero. so skip it.
                      */
