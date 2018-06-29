@@ -163,6 +163,7 @@ should disable this effect for best purpose.")]
         //========================================
         //      setter / getter
         //------------------------------
+        public bool IsEnable { get { return this.mIsEnable; } }
         public bool ClearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
         public bool DeltaToCurrentScore { get { return this.mDeltaToCurrentScore; } set { this.mDeltaToCurrentScore = value; } }
         public int TargetScore
@@ -259,17 +260,6 @@ should disable this effect for best purpose.")]
         /// <param name="score"> score apply to show </param>
         public void UpdateScore(int score, bool anime = false)
         {
-            if (mDeltaToCurrentScore)
-            {
-                if (!anime)
-                    mTargetScore = score;
-            }
-            else
-            {
-                // apply to current score
-                mCurrentScore = score;
-            }
-
             int targetScore = score;
 
             if (targetScore < mMinScore)
@@ -277,39 +267,23 @@ should disable this effect for best purpose.")]
             else if (targetScore > mMaxScore)
                 targetScore = mMaxScore;
 
+            if (mDeltaToCurrentScore)
+            {
+                if (!anime)
+                    mTargetScore = targetScore;
+            }
+            else
+            {
+                // apply to current score
+                mCurrentScore = targetScore;
+            }
+
             DoScoreGUI(targetScore);
 
             // Do if visible on zero effect.
-            if (!mVisibleOnZero)
-            {
-                if (targetScore == 0)
-                {
-                    EnableDigitsRendererSlot(false);
-                }
-                else
-                {
-                    EnableDigitsRendererSlot(true);
-                }
-            }
+            DoVisibleOnZero(targetScore);
 
-            switch (mTextAlign)
-            {
-                case JCS_TextAlign.CENTER:
-                    {
-
-                    }
-                    break;
-                case JCS_TextAlign.RIGHT:
-                    {
-                        UpdateIntervalForEachDigit(mDigitInterval);
-                    }
-                    break;
-                case JCS_TextAlign.LEFT:
-                    {
-                        UpdateIntervalForEachDigit(-mDigitInterval);
-                    }
-                    break;
-            }
+            DoScoreAlign(targetScore);
 
         }
 
@@ -333,9 +307,9 @@ should disable this effect for best purpose.")]
                     continue;
                 }
 
-                Vector3 newPos = mDigitsRendererSlot[digit].transform.localPosition;
+                Vector3 newPos = mDigitsRendererSlot[digit].LocalPosition;
                 newPos.x += -(interval * digit);
-                mDigitsRendererSlot[digit].transform.localPosition = newPos;
+                mDigitsRendererSlot[digit].LocalPosition = newPos;
             }
         }
 
@@ -412,9 +386,19 @@ should disable this effect for best purpose.")]
 
             // find out to increase/decrease the score.
             if (mCurrentScore < mTargetScore)
+            {
                 mCurrentScore += mDeltaProduct;
+
+                if (mCurrentScore > mTargetScore)
+                    mCurrentScore = mTargetScore;
+            }
             else
+            {
                 mCurrentScore -= mDeltaProduct;
+
+                if (mCurrentScore < mTargetScore)
+                    mCurrentScore = mTargetScore;
+            }
 
             UpdateScore(mCurrentScore, true);
 
@@ -445,6 +429,89 @@ should disable this effect for best purpose.")]
 
             // default return 'zero' sprite.
             return mScoreText0;
+        }
+
+        /// <summary>
+        /// Do visible on zero effect after updating score.
+        /// </summary>
+        private void DoVisibleOnZero(int targetScore)
+        {
+            if (mVisibleOnZero)
+                return;
+
+            if (targetScore == 0)
+            {
+                EnableDigitsRendererSlot(false);
+            }
+            else
+            {
+                EnableDigitsRendererSlot(true);
+            }
+        }
+        
+        /// <summary>
+        /// Do score align after updating score.
+        /// </summary>
+        private void DoScoreAlign(int targetScore)
+        {
+            // digit cannot be zero, must at least be one.
+            int newDigitCount = JCS_Mathf.DigitCountIncludeZero(targetScore);
+
+            int diffDigitCount = newDigitCount - mCurrentDigitCount;
+
+            // No difference, no need to do anything.
+            if (diffDigitCount == 0)
+                return;
+
+            mCurrentDigitCount = newDigitCount;
+
+            // We don't need to do align if the visible
+            // digit count would not change.
+            if (!mClearEmptyLeftZero)
+                return;
+
+            switch (mTextAlign)
+            {
+                case JCS_TextAlign.CENTER:
+                    {
+                        MoveDigits(mDigitInterval * diffDigitCount / 2);
+                    }
+                    break;
+                case JCS_TextAlign.RIGHT:
+                    {
+                        // Default is right, no need to do anything.
+                    }
+                    break;
+                case JCS_TextAlign.LEFT:
+                    {
+                        MoveDigits(mDigitInterval * diffDigitCount);
+                    }
+                    break;
+            }
+        }
+
+
+        /// <summary>
+        /// Move digits.
+        /// </summary>
+        /// <param name="deltaX"></param>
+        private void MoveDigits(float deltaX)
+        {
+            for (int digit = 0;
+                digit < mDigitsRendererSlot.Length;
+                ++digit)
+            {
+                if (mDigitsRendererSlot[digit] == null)
+                {
+                    JCS_Debug.LogError(
+                        "Digit slot cannot be null references...");
+                    continue;
+                }
+
+                Vector3 newPos = mDigitsRendererSlot[digit].LocalPosition;
+                newPos.x += deltaX;
+                mDigitsRendererSlot[digit].LocalPosition = newPos;
+            }
         }
     }
 }
