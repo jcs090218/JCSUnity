@@ -10,6 +10,7 @@
 2018-06-29
 * Implement Visible On zero functionality on JCS_DeltaNumber 
  component. (JCSUnity)
+* Implement alignment for JCS_DeltaNumber component. (JCSUnity)
 
 2018-06-27
 * Update doc version number to current version number. (JCSUnity)
