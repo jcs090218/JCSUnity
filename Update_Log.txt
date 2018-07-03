@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-07-04
+* Implement BGM player for all scenes. (JCSUnity)
+* Implement BGM not change between scene functionality. (JCSUnity)
+
 2018-06-29
 * Implement Visible On zero functionality on JCS_DeltaNumber 
  component. (JCSUnity)
