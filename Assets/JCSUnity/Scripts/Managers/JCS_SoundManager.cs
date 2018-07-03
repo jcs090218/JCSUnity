@@ -433,7 +433,7 @@ namespace JCSUnity
         {
             if (sound == null)
             {
-                JCS_Debug.LogError("JCS_SoundManager", "Assigning Source that is null...");
+                JCS_Debug.LogError("Assigning Source that is null...");
                 return;
             }
 
