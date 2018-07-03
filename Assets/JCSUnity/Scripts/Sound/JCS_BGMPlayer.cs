@@ -51,21 +51,15 @@ namespace JCSUnity
                 // ==> OnLevelWasLoaded <==
                 UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
                 {
+                    // set to Sound Manager in order to get manage
+                    JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
+
                     if (!JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE)
                     {
-                        // set to Sound Manager in order to get manage
-                        JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
-
                         // Assign BGM from Sound Manager!
                         GetAudioSource().clip = JCS_SoundSettings.instance.BACKGROUND_MUSIC;
 
                         GetAudioSource().Play();
-                    }
-                    else
-                    {
-                        // If the keep bgm is true, we disable it once 
-                        // everytime a scene is loaded.
-                        JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE = false;
                     }
                 };
             }

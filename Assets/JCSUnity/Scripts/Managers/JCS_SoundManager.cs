@@ -89,7 +89,12 @@ namespace JCSUnity
         //------------------------------
         public void SetAudioListener(AudioListener al) { this.mAudioListener = al; }
         public AudioListener GetAudioListener() { return this.mAudioListener; }
-        public AudioSource GetBGMAudioSource() { return this.mBGM; }
+        public AudioSource GetBGMAudioSource()
+        {
+            if (this.mBGM == null)
+                this.mBGM = JCS_BGMPlayer.instance.GetAudioSource();
+            return this.mBGM;
+        }
         public void SetBackgroundMusic(AudioSource music)
         {
             this.mBGM = music;
@@ -527,7 +532,7 @@ namespace JCSUnity
         /// play the on stack bgm. Eventually clear the 
         /// stack. 
         /// 
-        /// ATTENSION(jenchieh): This only work for not looping BGM.
+        /// ATTENTION(jenchieh): This only work for not looping BGM.
         /// </summary>
         private void DoStackBGM()
         {

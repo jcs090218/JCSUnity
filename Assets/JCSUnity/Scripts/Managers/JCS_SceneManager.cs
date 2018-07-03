@@ -165,22 +165,36 @@ namespace JCSUnity
                     break;
             }
 
-
-            if (JCS_SoundSettings.instance.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
+            // Only need to fade BGM when BGM is not switch 
+            // between scene.
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            if (!ss.KEEP_BGM_SWITCH_SCENE)
             {
-                // get the component.
-                if (mJCSFadeSound == null)
-                    mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+                if (ss.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
+                {
+                    // get the component.
+                    if (mJCSFadeSound == null)
+                        mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
-                // set the background audio source.
-                mJCSFadeSound.SetAudioSource(
-                    JCS_SoundManager.instance.GetBGMAudioSource());
+                    // set the background audio source.
+                    mJCSFadeSound.SetAudioSource(
+                        JCS_SoundManager.instance.GetBGMAudioSource());
 
-                // active the fade sound in effect.
-                mJCSFadeSound.FadeIn(
-                    JCS_SoundSettings.instance.GetBGM_Volume(),
-                    /* Fade in the sound base on the setting. */
-                    JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
+                    // active the fade sound in effect.
+                    mJCSFadeSound.FadeIn(
+                        JCS_SoundSettings.instance.GetBGM_Volume(),
+                        /* Fade in the sound base on the setting. */
+                        JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
+                }
+            }
+            else
+            {
+                // If the keep bgm is true, we disable it once 
+                // everytime a scene is loaded.
+                // 
+                // ATTENTION(jenchieh): This should be place for the last 
+                // use of the variable 'KEEP_BGM_SWITCH_SCENE'.
+                JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE = false;
             }
 
             // the game is loaded start the game agian
@@ -387,13 +401,19 @@ namespace JCSUnity
 
 
 
-            JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE = keepBGM;
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+
+            ss.KEEP_BGM_SWITCH_SCENE = keepBGM;
 
             if (!keepBGM)
             {
                 // start fading sound
-                if (JCS_SoundSettings.instance.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
+                if (ss.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
                 {
+                    // get the component.
+                    if (mJCSFadeSound == null)
+                        mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+
                     mJCSFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBGMAudioSource());
 
                     // fade out sound to zero
