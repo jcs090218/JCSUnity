@@ -85,6 +85,7 @@ MonoBehaviour:
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
     type: 3}
+  KEEP_BGM_SWITCH_SCENE: 0
   SOUND_FADEOUT_TIME: 1.5
   SOUND_FADEIN_TIME: 1.5
 --- !u!114 &11474660
