@@ -89,8 +89,6 @@ public class ReadSceneNames
         SCENES_IN_BUILD_SETTING = ReadNames();
     }
 
-    
-
 }
 
 #endif
