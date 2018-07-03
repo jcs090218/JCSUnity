@@ -11,13 +11,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine.UI;
-using System;
 
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// About info window.
     /// </summary>

@@ -7,13 +7,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine.UI;
-using System;
 using System.IO;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace JCSUnity
@@ -153,6 +153,9 @@ namespace JCSUnity
 
             if (GUILayout.Button("Create JCSUnity canvas"))
                 CreateJCSCanvas();
+
+            if (GUILayout.Button("Create BGM Player"))
+                CreateJCSBGMPlayer();
 
             if (GUILayout.Button("Create Debug Tools"))
                 CreateDebugTools();
@@ -294,6 +297,9 @@ namespace JCSUnity
 
             Create2DCamera();
 
+            // BGM player
+            CreateJCSBGMPlayer();
+
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
@@ -318,6 +324,9 @@ namespace JCSUnity
 
             // create 3d camera
             Create3DCamera();
+
+            // BGM player
+            CreateJCSBGMPlayer();
 
             // create canvas
             CreateJCSCanvas();
@@ -392,9 +401,20 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// BGM player for game.
+        /// </summary>
+        [MenuItem("JCSUnity/Bases Object/JCS_BGMPlayer", false, 11)]
+        private static void CreateJCSBGMPlayer()
+        {
+            string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
+            GameObject gameObj = JCS_Utility.SpawnGameObject(player_path);
+            gameObj.name = gameObj.name.Replace("(Clone)", "");
+        }
+
+        /// <summary>
         /// Debug tool using in JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Bases Object/Debug Tools", false, 11)]
+        [MenuItem("JCSUnity/Bases Object/Debug Tools", false, 12)]
         private static void CreateDebugTools()
         {
             string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
@@ -405,7 +425,7 @@ namespace JCSUnity
         /// <summary>
         /// Create a new project.
         /// </summary>
-        [MenuItem("JCSUnity/Tool/Create project assets folder", false, 12)]
+        [MenuItem("JCSUnity/Tool/Create project assets folder", false, 13)]
         private static void CreateProjectAssetsFolder()
         {
             string parentFolder = "Assets";
