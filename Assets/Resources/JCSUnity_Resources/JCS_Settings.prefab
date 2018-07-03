@@ -179,30 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ed50fa45bfc04ea9c6b37cb4e22bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mJoysticks:
-  - StickRightXVal: 0
-    StickRightYVal: 0
-    StickLeftXVal: 0
-    StickLeftYVal: 0
-    HomeButton: jcsunity button home
-    JoystickButtonStart: jcsunity button start
-    JoystickButtonBack: jcsunity button back
-    JoystickButtonA: jcsunity button a
-    JoystickButtonB: jcsunity button b
-    JoystickButtonX: jcsunity button x
-    JoystickButtonY: jcsunity button y
-    JoystickButtonUp: jcsunity button up
-    JoystickButtonDown: jcsunity button down
-    JoystickButtonRight: jcsunity button right
-    JoystickButtonLeft: jcsunity button left
-    StickRightX: jcsunity stick right x
-    StickRightY: jcsunity stick right y
-    StickLeftX: jcsunity stick left x
-    StickLeftY: jcsunity stick left y
-    JoystickButtonRT: jcsunity button right trigger
-    JoystickButtonLT: jcsunity button left trigger
-    JoystickButtonLB: jcsunity button left bumper
-    JoystickButtonRB: jcsunity button right bumper
+  mTargetGamePad: 2
+  mTotalGamePadInGame: 0
 --- !u!114 &114000011621624256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f169c174443784c8090835922ba428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mResendTime: 0.001
   mWaitingPacketIds: 
 --- !u!114 &114775442760596456
 MonoBehaviour:
