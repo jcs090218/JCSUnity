@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Sound Setting for each theme.
     /// </summary>
@@ -70,6 +69,12 @@ namespace JCSUnity
 
         [Tooltip("")]
         public AudioClip DEFAULT_CLOSE_WINDOW_CLIP = null;
+
+
+        [Header("** Check Variables (JCS_SoundSettings) **")]
+
+        [Tooltip("Keep BGM current scene?")]
+        public bool KEEP_BGM_SWITCH_SCENE = false;
 
 
         [Header("** Runtime Variables (JCS_SoundSettings) **")]
@@ -131,10 +136,6 @@ namespace JCSUnity
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
-        }
-
-        private void LateUpdate()
-        {
         }
 
         //========================================
@@ -201,6 +202,8 @@ namespace JCSUnity
             _new.BGM_SOUND = _old.BGM_SOUND;
             _new.SFX_SOUND = _old.SFX_SOUND;
             _new.SKILLS_SOUND = _old.SKILLS_SOUND;
+
+            _new.KEEP_BGM_SWITCH_SCENE = _old.KEEP_BGM_SWITCH_SCENE;
         }
 
         //----------------------
