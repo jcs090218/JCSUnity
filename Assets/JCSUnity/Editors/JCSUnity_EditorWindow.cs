@@ -409,6 +409,8 @@ namespace JCSUnity
             string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
             GameObject gameObj = JCS_Utility.SpawnGameObject(player_path);
             gameObj.name = gameObj.name.Replace("(Clone)", "");
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create BGM Player");
         }
 
         /// <summary>
