@@ -1,19 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
-SceneSettings:
+OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
-  m_PVSObjectsArray: []
-  m_PVSPortalsArray: []
+  serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -25,6 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -38,10 +39,11 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -53,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 4
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 0
@@ -66,47 +67,69 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVRFilteringMode: 0
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_RuntimeCPUUsage: 25
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
+    agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    accuratePlacement: 0
     minRegionArea: 2
-    cellSize: 0.16666667
     manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &53242127
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 144552, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 53242128}
-  - 222: {fileID: 53242136}
-  - 114: {fileID: 53242135}
-  - 114: {fileID: 53242134}
-  - 114: {fileID: 53242133}
-  - 114: {fileID: 53242132}
-  - 82: {fileID: 53242131}
-  - 114: {fileID: 53242130}
-  - 114: {fileID: 53242129}
-  - 114: {fileID: 53242137}
+  - component: {fileID: 53242128}
+  - component: {fileID: 53242136}
+  - component: {fileID: 53242135}
+  - component: {fileID: 53242134}
+  - component: {fileID: 53242133}
+  - component: {fileID: 53242132}
+  - component: {fileID: 53242131}
+  - component: {fileID: 53242130}
+  - component: {fileID: 53242129}
+  - component: {fileID: 53242137}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -124,11 +147,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5257845, y: 2.5257857, z: 2.5257857}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 124517380}
   m_Father: {fileID: 1546734425}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -844, y: -11.000002}
@@ -145,13 +168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 7
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -184,6 +209,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -196,49 +222,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -407,32 +453,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e7cae3326e6654bb0207be62ddbffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSoundPlayer: {fileID: 0}
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
-  mOnMouseDoubleClick: {fileID: 0}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 0}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!1 &119225856
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 119225857}
-  - 222: {fileID: 119225859}
-  - 114: {fileID: 119225858}
-  - 114: {fileID: 119225860}
-  - 114: {fileID: 119225861}
+  - component: {fileID: 119225857}
+  - component: {fileID: 119225859}
+  - component: {fileID: 119225858}
+  - component: {fileID: 119225860}
+  - component: {fileID: 119225861}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
   m_TagString: Untagged
@@ -449,10 +508,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1080}
@@ -516,19 +575,17 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &124517379
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 177410, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 124517380}
-  - 222: {fileID: 124517382}
-  - 114: {fileID: 124517381}
+  - component: {fileID: 124517380}
+  - component: {fileID: 124517382}
+  - component: {fileID: 124517381}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -546,10 +603,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 53242128}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -612,13 +669,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 196451054}
-  - 222: {fileID: 196451056}
-  - 114: {fileID: 196451055}
-  - 114: {fileID: 196451057}
-  - 114: {fileID: 196451058}
+  - component: {fileID: 196451054}
+  - component: {fileID: 196451056}
+  - component: {fileID: 196451055}
+  - component: {fileID: 196451057}
+  - component: {fileID: 196451058}
   m_Layer: 5
   m_Name: Page_02
   m_TagString: Untagged
@@ -635,10 +692,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1920, y: 0}
@@ -702,8 +759,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!224 &267027645
 RectTransform:
@@ -715,7 +770,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 413381865}
   - {fileID: 1078392642}
@@ -730,6 +784,7 @@ RectTransform:
   - {fileID: 1546734425}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -740,13 +795,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 379940122}
-  - 222: {fileID: 379940124}
-  - 114: {fileID: 379940123}
-  - 114: {fileID: 379940125}
-  - 114: {fileID: 379940126}
+  - component: {fileID: 379940122}
+  - component: {fileID: 379940124}
+  - component: {fileID: 379940123}
+  - component: {fileID: 379940125}
+  - component: {fileID: 379940126}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
   m_TagString: Untagged
@@ -763,10 +818,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1920, y: -1080}
@@ -830,8 +885,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1001 &413381864
 Prefab:
@@ -840,6 +893,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 267027645}
     m_Modifications:
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 22465536, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -948,6 +1005,46 @@ Prefab:
       propertyPath: mSlidePanels.Array.data[8]
       value: 
       objectReference: {fileID: 379940122}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[0]
+      value: 
+      objectReference: {fileID: 119225857}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[1]
+      value: 
+      objectReference: {fileID: 2004400550}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[2]
+      value: 
+      objectReference: {fileID: 782754179}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[3]
+      value: 
+      objectReference: {fileID: 379940122}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[4]
+      value: 
+      objectReference: {fileID: 1078392642}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[5]
+      value: 
+      objectReference: {fileID: 196451054}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[6]
+      value: 
+      objectReference: {fileID: 968011696}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[7]
+      value: 
+      objectReference: {fileID: 671072141}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[8]
+      value: 
+      objectReference: {fileID: 445629392}
+    - target: {fileID: 11408046, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
+      propertyPath: slidePanels.Array.data[9]
+      value: 
+      objectReference: {fileID: 1546734425}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fad74cf103280b046bb4a962f3b8fb78, type: 2}
   m_IsPrefabParent: 0
@@ -961,13 +1058,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 445629392}
-  - 222: {fileID: 445629394}
-  - 114: {fileID: 445629393}
-  - 114: {fileID: 445629395}
-  - 114: {fileID: 445629396}
+  - component: {fileID: 445629392}
+  - component: {fileID: 445629394}
+  - component: {fileID: 445629393}
+  - component: {fileID: 445629395}
+  - component: {fileID: 445629396}
   m_Layer: 5
   m_Name: Page_05
   m_TagString: Untagged
@@ -984,10 +1081,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 7680, y: 0}
@@ -1051,21 +1148,19 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &671072140
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 671072141}
-  - 222: {fileID: 671072143}
-  - 114: {fileID: 671072142}
-  - 114: {fileID: 671072144}
-  - 114: {fileID: 671072145}
+  - component: {fileID: 671072141}
+  - component: {fileID: 671072143}
+  - component: {fileID: 671072142}
+  - component: {fileID: 671072144}
+  - component: {fileID: 671072145}
   m_Layer: 5
   m_Name: Page_04
   m_TagString: Untagged
@@ -1082,10 +1177,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 5760, y: 0}
@@ -1149,8 +1244,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1001 &761660593
 Prefab:
@@ -1199,13 +1292,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 782754179}
-  - 222: {fileID: 782754181}
-  - 114: {fileID: 782754180}
-  - 114: {fileID: 782754182}
-  - 114: {fileID: 782754183}
+  - component: {fileID: 782754179}
+  - component: {fileID: 782754181}
+  - component: {fileID: 782754180}
+  - component: {fileID: 782754182}
+  - component: {fileID: 782754183}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
   m_TagString: Untagged
@@ -1222,10 +1315,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1920, y: -1080}
@@ -1289,21 +1382,19 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &968011695
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 968011696}
-  - 222: {fileID: 968011698}
-  - 114: {fileID: 968011697}
-  - 114: {fileID: 968011699}
-  - 114: {fileID: 968011700}
+  - component: {fileID: 968011696}
+  - component: {fileID: 968011698}
+  - component: {fileID: 968011697}
+  - component: {fileID: 968011699}
+  - component: {fileID: 968011700}
   m_Layer: 5
   m_Name: Page_03
   m_TagString: Untagged
@@ -1320,10 +1411,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 3840, y: 0}
@@ -1387,21 +1478,19 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &1078392641
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1078392642}
-  - 222: {fileID: 1078392644}
-  - 114: {fileID: 1078392643}
-  - 114: {fileID: 1078392645}
-  - 114: {fileID: 1078392646}
+  - component: {fileID: 1078392642}
+  - component: {fileID: 1078392644}
+  - component: {fileID: 1078392643}
+  - component: {fileID: 1078392645}
+  - component: {fileID: 1078392646}
   m_Layer: 5
   m_Name: Page_01
   m_TagString: Untagged
@@ -1418,12 +1507,12 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1806888933}
   - {fileID: 1729111041}
   m_Father: {fileID: 267027645}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1487,8 +1576,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1001 &1109720392
 Prefab:
@@ -1561,11 +1648,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 177410, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1126457942}
-  - 222: {fileID: 1126457944}
-  - 114: {fileID: 1126457943}
+  - component: {fileID: 1126457942}
+  - component: {fileID: 1126457944}
+  - component: {fileID: 1126457943}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1583,10 +1670,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1374982440}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1638,11 +1725,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 177410, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1149616696}
-  - 222: {fileID: 1149616698}
-  - 114: {fileID: 1149616697}
+  - component: {fileID: 1149616696}
+  - component: {fileID: 1149616698}
+  - component: {fileID: 1149616697}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1660,10 +1747,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1806888933}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1765,15 +1852,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 144552, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1374982440}
-  - 222: {fileID: 1374982445}
-  - 114: {fileID: 1374982444}
-  - 114: {fileID: 1374982443}
-  - 114: {fileID: 1374982442}
-  - 114: {fileID: 1374982441}
-  - 114: {fileID: 1374982446}
+  - component: {fileID: 1374982440}
+  - component: {fileID: 1374982445}
+  - component: {fileID: 1374982444}
+  - component: {fileID: 1374982443}
+  - component: {fileID: 1374982442}
+  - component: {fileID: 1374982441}
+  - component: {fileID: 1374982446}
   m_Layer: 5
   m_Name: Lobby
   m_TagString: Untagged
@@ -1791,11 +1878,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5257845, y: 2.5257854, z: 2.5257854}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1126457942}
   m_Father: {fileID: 1546734425}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 823, y: 582}
@@ -1944,7 +2031,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25aa48ea07b56a4b947ab3f5dc60e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
@@ -1952,6 +2041,7 @@ MonoBehaviour:
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
   mSceneName: RC_Lobby
+  mScreenColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &1414270698
 Prefab:
   m_ObjectHideFlags: 0
@@ -2017,14 +2107,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1546734425}
-  - 222: {fileID: 1546734429}
-  - 114: {fileID: 1546734428}
-  - 114: {fileID: 1546734427}
-  - 114: {fileID: 1546734426}
-  - 114: {fileID: 1546734430}
+  - component: {fileID: 1546734425}
+  - component: {fileID: 1546734429}
+  - component: {fileID: 1546734428}
+  - component: {fileID: 1546734427}
+  - component: {fileID: 1546734426}
+  - component: {fileID: 1546734430}
   m_Layer: 5
   m_Name: Layer01 15
   m_TagString: Untagged
@@ -2041,13 +2131,13 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1374982440}
   - {fileID: 1961675942}
   - {fileID: 53242128}
   m_Father: {fileID: 267027645}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2067,8 +2157,6 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!114 &1546734427
 MonoBehaviour:
@@ -2177,13 +2265,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 107462, guid: 9703af89983ee9c44843a0501571b178, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 267027645}
-  - 223: {fileID: 1646610970}
-  - 114: {fileID: 1646610969}
-  - 114: {fileID: 1646610968}
-  - 114: {fileID: 1646610967}
+  - component: {fileID: 267027645}
+  - component: {fileID: 1646610970}
+  - component: {fileID: 1646610969}
+  - component: {fileID: 1646610968}
+  - component: {fileID: 1646610967}
   m_Layer: 5
   m_Name: JCS_Canvas
   m_TagString: Untagged
@@ -2253,7 +2341,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646610966}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 151515301}
   m_PlaneDistance: 100
@@ -2262,6 +2350,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0
@@ -2270,11 +2359,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1729111041}
-  - 222: {fileID: 1729111043}
-  - 114: {fileID: 1729111042}
+  - component: {fileID: 1729111041}
+  - component: {fileID: 1729111043}
+  - component: {fileID: 1729111042}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2291,10 +2380,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1078392642}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -600.2, y: 126}
@@ -2344,17 +2433,17 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 144552, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1806888933}
-  - 222: {fileID: 1806888938}
-  - 114: {fileID: 1806888937}
-  - 114: {fileID: 1806888936}
-  - 114: {fileID: 1806888934}
-  - 114: {fileID: 1806888935}
-  - 82: {fileID: 1806888941}
-  - 114: {fileID: 1806888940}
-  - 114: {fileID: 1806888939}
+  - component: {fileID: 1806888933}
+  - component: {fileID: 1806888938}
+  - component: {fileID: 1806888937}
+  - component: {fileID: 1806888936}
+  - component: {fileID: 1806888934}
+  - component: {fileID: 1806888935}
+  - component: {fileID: 1806888941}
+  - component: {fileID: 1806888940}
+  - component: {fileID: 1806888939}
   m_Layer: 5
   m_Name: Unlock
   m_TagString: Untagged
@@ -2372,11 +2461,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5257845, y: 2.525785, z: 2.525785}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1149616696}
   m_Father: {fileID: 1078392642}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -590, y: 53}
@@ -2563,20 +2652,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e7cae3326e6654bb0207be62ddbffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSoundPlayer: {fileID: 0}
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
-  mOnMouseDoubleClick: {fileID: 0}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 0}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!114 &1806888940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,6 +2707,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -2617,49 +2720,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -2806,18 +2929,18 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 144552, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1961675942}
-  - 222: {fileID: 1961675947}
-  - 114: {fileID: 1961675946}
-  - 114: {fileID: 1961675945}
-  - 114: {fileID: 1961675944}
-  - 114: {fileID: 1961675943}
-  - 82: {fileID: 1961675950}
-  - 114: {fileID: 1961675949}
-  - 114: {fileID: 1961675948}
-  - 114: {fileID: 1961675951}
+  - component: {fileID: 1961675942}
+  - component: {fileID: 1961675947}
+  - component: {fileID: 1961675946}
+  - component: {fileID: 1961675945}
+  - component: {fileID: 1961675944}
+  - component: {fileID: 1961675943}
+  - component: {fileID: 1961675950}
+  - component: {fileID: 1961675949}
+  - component: {fileID: 1961675948}
+  - component: {fileID: 1961675951}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -2835,11 +2958,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5257845, y: 2.5257857, z: 2.5257857}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2088002743}
   m_Father: {fileID: 1546734425}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 848, y: -11}
@@ -3009,13 +3132,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c4a9919bc8d84e8979ee8ad48ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mDialogueSelection: -1
   mButtonText: {fileID: 0}
+  mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mSlideCamera: {fileID: 0}
+  mSlideCameras: []
   mDirection: 3
   mCount: 1
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
@@ -3048,6 +3173,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -3060,49 +3186,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 3
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -3117,30 +3263,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e7cae3326e6654bb0207be62ddbffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSoundPlayer: {fileID: 0}
   mAutoAddEvent: 1
-  mOnMouseOver: {fileID: 8300000, guid: 19d624861925cc74795bbf7c982722cd, type: 3}
-  mOnMouseExit: {fileID: 0}
-  mOnMouseDown: {fileID: 0}
-  mOnMouseUp: {fileID: 0}
-  mOnMouseClick: {fileID: 8300000, guid: 902d524d230a0184089984ae74396039, type: 3}
-  mOnMouseDoubleClick: {fileID: 0}
+  mOnMouseOverSound: {fileID: 0}
+  mOnMouseExitSound: {fileID: 0}
+  mOnMouseDownSound: {fileID: 0}
+  mOnMouseUpSound: {fileID: 0}
+  mOnMouseClickSound: {fileID: 0}
+  mOnMouseDoubleClickSound: {fileID: 0}
+  mOnMouseOverSoundMethod: 0
+  mOnMouseExitSoundMethod: 0
+  mOnMouseDownSoundMethod: 0
+  mOnMouseUpSoundMethod: 0
+  mOnMouseClickSoundMethod: 0
+  mOnMouseDoubleClickSoundMethod: 0
   mJCSButton: {fileID: 0}
-  mOnMouseOverRefuse: {fileID: 0}
-  mOnMouseExitRefuse: {fileID: 0}
-  mOnMouseDownRefuse: {fileID: 0}
-  mOnMouseUpRefuse: {fileID: 0}
-  mOnMouseClickRefuse: {fileID: 0}
-  mOnMouseDoubleClickRefuse: {fileID: 0}
+  mOnMouseOverRefuseSound: {fileID: 0}
+  mOnMouseExitRefuseSound: {fileID: 0}
+  mOnMouseDownRefuseSound: {fileID: 0}
+  mOnMouseUpRefuseSound: {fileID: 0}
+  mOnMouseClickRefuseSound: {fileID: 0}
+  mOnMouseDoubleClickRefuseSound: {fileID: 0}
+  mOnMouseOverRefuseSoundMethod: 0
+  mOnMouseExitRefuseSoundMethod: 0
+  mOnMouseDownRefuseSoundMethod: 0
+  mOnMouseUpRefuseSoundMethod: 0
+  mOnMouseClickRefuseSoundMethod: 0
+  mOnMouseDoubleClickRefuseSoundMethod: 0
 --- !u!1 &1990639917
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1990639918}
-  - 114: {fileID: 1990639919}
-  - 114: {fileID: 1990639920}
+  - component: {fileID: 1990639918}
+  - component: {fileID: 1990639919}
+  - component: {fileID: 1990639920}
   m_Layer: 0
   m_Name: Test_Input
   m_TagString: Untagged
@@ -3157,10 +3316,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -82.587326, y: 7.6250725, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1990639919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3198,13 +3357,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2004400550}
-  - 222: {fileID: 2004400552}
-  - 114: {fileID: 2004400551}
-  - 114: {fileID: 2004400553}
-  - 114: {fileID: 2004400554}
+  - component: {fileID: 2004400550}
+  - component: {fileID: 2004400552}
+  - component: {fileID: 2004400551}
+  - component: {fileID: 2004400553}
+  - component: {fileID: 2004400554}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
   m_TagString: Untagged
@@ -3221,10 +3380,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 267027645}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1920, y: 1080}
@@ -3288,19 +3447,17 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
-  mPanelDeltaWidthRatio: 0
-  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &2088002742
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 177410, guid: f2c5162d2818a9f428608e210b666b6a, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2088002743}
-  - 222: {fileID: 2088002745}
-  - 114: {fileID: 2088002744}
+  - component: {fileID: 2088002743}
+  - component: {fileID: 2088002745}
+  - component: {fileID: 2088002744}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3318,10 +3475,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1961675942}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
