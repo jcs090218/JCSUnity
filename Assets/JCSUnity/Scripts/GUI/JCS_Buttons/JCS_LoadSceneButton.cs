@@ -33,11 +33,16 @@ namespace JCSUnity
         [SerializeField]
         private Color mScreenColor = Color.black;
 
+        [Tooltip("Keep BGM playing when load scene?")]
+        [SerializeField]
+        private bool mKeppBGM = false;
+
         //========================================
         //      setter / getter
         //------------------------------
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public Color ScreenColor { get { return this.mScreenColor; } set { this.mScreenColor = value; } }
+        public bool KeppBGM { get { return this.mKeppBGM; } set { this.mKeppBGM = value; } }
 
         //========================================
         //      Self-Define
@@ -54,7 +59,7 @@ namespace JCSUnity
                     return;
             }
 
-            JCS_SceneManager.instance.LoadScene(mSceneName, mScreenColor);
+            JCS_SceneManager.instance.LoadScene(mSceneName, mScreenColor, mKeppBGM);
         }
     }
 }
