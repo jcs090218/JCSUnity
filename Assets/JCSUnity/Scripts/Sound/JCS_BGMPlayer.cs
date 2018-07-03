@@ -22,6 +22,8 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
+        public static JCS_BGMPlayer instance = null;
+
         //----------------------
         // Private Variables
 
@@ -35,22 +37,44 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
 
-            // if there is no bgm sound use bgm from setting!
-            // assume designer can still override this!
-            if (GetAudioSource().clip == null)
+            // NOTE(jenchieh): Only the first time will call this.
+            // This game object is a unique game object. Meaning the
+            // object itself uses 'DontDestroyOnLoad' function.
+            if (instance == null)
             {
-                // Assign BGM from Sound Manager!
-                GetAudioSource().clip = JCS_SoundSettings.instance.BACKGROUND_MUSIC;
+                instance = this;
 
+                // ==> OnLevelWasLoaded <==
+                UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
+                {
+                    if (!JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE)
+                    {
+                        // set to Sound Manager in order to get manage
+                        JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
 
-                // set to Sound Manager in order to get manage
-                JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
+                        // Assign BGM from Sound Manager!
+                        GetAudioSource().clip = JCS_SoundSettings.instance.BACKGROUND_MUSIC;
 
-                GetAudioSource().Play();
+                        GetAudioSource().Play();
+                    }
+                    else
+                    {
+                        // If the keep bgm is true, we disable it once 
+                        // everytime a scene is loaded.
+                        JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE = false;
+                    }
+                };
+            }
+            else
+            {
+                if (instance != this)
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
 
