@@ -15,7 +15,6 @@ namespace JCSUnity
     /// <summary>
     /// Basic camera for 2d Games.
     /// </summary>
-    [RequireComponent(typeof(JCS_BGMPlayer))]     // for background music
     public class JCS_2DCamera
         : JCS_Camera
     {
@@ -121,9 +120,6 @@ namespace JCSUnity
         [SerializeField]
         private float mMin_Y_PositionInScene = float.NegativeInfinity;
 
-        //-- Audio References
-        private JCS_BGMPlayer mJCSBGMPlayer = null;
-
 
         //========================================
         //      setter / getter
@@ -139,7 +135,6 @@ namespace JCSUnity
         public bool GetFollowing() { return this.mFollowing; }
         public void SetFollowing(bool val) { this.mFollowing = val; }
         public Transform GetTargetTransform() { return this.mTargetTransform; }
-        public JCS_BGMPlayer GetJCSBGMPlayer() { return this.mJCSBGMPlayer; }
         public bool HardTrack { get { return this.mHardTrack; } set { this.mHardTrack = value; } }
         public bool ResetVelocityToZeroWhileNotActive { get { return this.mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
@@ -151,8 +146,6 @@ namespace JCSUnity
         protected override void Awake()
         {
             base.Awake();
-
-            mJCSBGMPlayer = this.GetComponent<JCS_BGMPlayer>();
 
             this.mFreezeRecord = this.transform.position;
         }

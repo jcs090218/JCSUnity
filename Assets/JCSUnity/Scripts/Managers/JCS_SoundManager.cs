@@ -11,7 +11,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Manage of all the music, sound and sfx in the game.
     /// </summary>
@@ -48,7 +47,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_SoundManager) **")]
 
-        [Tooltip("")]
+        [Tooltip("Current background music audio source.")]
         [SerializeField]
         private AudioSource mBGM = null;
 
@@ -528,7 +527,7 @@ namespace JCSUnity
         /// play the on stack bgm. Eventually clear the 
         /// stack. 
         /// 
-        /// Attension: This only work for not looping BGM.
+        /// ATTENSION(jenchieh): This only work for not looping BGM.
         /// </summary>
         private void DoStackBGM()
         {
