@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ed50fa45bfc04ea9c6b37cb4e22bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTargetGamePad: 2
+  mTargetGamePad: 6
   mTotalGamePadInGame: 0
 --- !u!114 &114000011621624256
 MonoBehaviour:
