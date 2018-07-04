@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862981a0f3fe82644b327bad21278a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueKeyTest: 0
+  valueKeyTest: 1
 --- !u!1 &972362979
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ed50fa45bfc04ea9c6b37cb4e22bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTargetGamePad: 2
+  mTargetGamePad: 4
   mTotalGamePadInGame: 0
 --- !u!114 &1333146516
 MonoBehaviour:
