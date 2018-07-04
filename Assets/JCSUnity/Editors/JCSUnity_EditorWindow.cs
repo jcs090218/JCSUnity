@@ -18,7 +18,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Main Unity Engine's Editor Window for JCSUnity.
     /// </summary>
@@ -49,8 +48,25 @@ namespace JCSUnity
             "Sprites",
         };
 
+        public int SelectGamepadType = 0;
+        public string[] GamepadPlatform = {
+            "Select Platform",
+
+            /* Sony Play Station */
+            "PS",
+            "PS2",
+            "PS3",
+            "PS4",
+
+            /* Microsoft XBox */
+            "XBox",
+            "XBox 360",
+            "XBox One",
+        };
+
         //----------------------
         // Private Variables
+
         private bool mOCSFoldeout = false;      // OCS = One click serialize
         private bool mBOFoldout = false;        // BO = Bases Object
         private bool mGUIFoldout = false;
@@ -228,6 +244,9 @@ namespace JCSUnity
         private void PartInput()
         {
             GUILayout.Label("** Game Pad count **");
+
+            instance.SelectGamepadType = EditorGUILayout.Popup("Gamepad Type", instance.SelectGamepadType, GamepadPlatform);
+
             instance.GAME_PAD_COUNT = (int)EditorGUILayout.Slider(instance.GAME_PAD_COUNT, 0, JCS_InputSettings.MAX_JOYSTICK_COUNT);
 
             if (GUILayout.Button("Add Input Manager depends on target gamepad type"))
@@ -340,8 +359,9 @@ namespace JCSUnity
         private static GameObject CreateJCSManagers()
         {
             string manager_path = "JCSUnity_Resources/JCS_Managers";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(manager_path);
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(manager_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS Managers");
 
             return gameObj;
         }
@@ -354,9 +374,9 @@ namespace JCSUnity
         private static GameObject CreateJCSSettings()
         {
             string setting_path = "JCSUnity_Resources/JCS_Settings";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(setting_path);
-            // take away clone sign.
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(setting_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS Settings");
 
             return gameObj;
         }
@@ -389,13 +409,15 @@ namespace JCSUnity
         private static GameObject CreateJCSCanvas()
         {
             string canvas_path = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_Canvas";
-            GameObject canvasObj = JCS_Utility.SpawnGameObject(canvas_path);
-            canvasObj.name = canvasObj.name.Replace("(Clone)", "");
+            GameObject canvasObj = CreateHierarchyObject(canvas_path);
+
+            Undo.RegisterCreatedObjectUndo(canvasObj, "Create JCS Canvas");
 
 
             string eventSystem_path = "JCSUnity_Resources/JCS_LevelDesignUI/EventSystem";
-            GameObject evtSystemObj = JCS_Utility.SpawnGameObject(eventSystem_path);
-            evtSystemObj.name = evtSystemObj.name.Replace("(Clone)", "");
+            GameObject evtSystemObj = CreateHierarchyObject(eventSystem_path);
+
+            Undo.RegisterCreatedObjectUndo(evtSystemObj, "Create Event System");
 
             return canvasObj;
         }
@@ -407,8 +429,7 @@ namespace JCSUnity
         private static void CreateJCSBGMPlayer()
         {
             string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(player_path);
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(player_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create BGM Player");
         }
@@ -420,8 +441,9 @@ namespace JCSUnity
         private static void CreateDebugTools()
         {
             string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(tools_path);
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(tools_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create Debug Tools");
         }
 
         /// <summary>
@@ -496,9 +518,9 @@ namespace JCSUnity
         private static GameObject Create2DCurosr()
         {
             string setting_path = "JCSUnity_Resources/GUI/JCS_2DCursor";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(setting_path);
-            // take away clone sign.
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(setting_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
 
             return gameObj;
         }
@@ -509,9 +531,9 @@ namespace JCSUnity
         private static GameObject Create3DCurosr()
         {
             string setting_path = "JCSUnity_Resources/GUI/JCS_3DCursor";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(setting_path);
-            // take away clone sign.
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(setting_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
 
             return gameObj;
         }
@@ -538,6 +560,8 @@ namespace JCSUnity
             string setting_path = "JCSUnity_Resources/GUI/JCS_BasePanel";
             GameObject basePanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
+            Undo.RegisterCreatedObjectUndo(basePanel, "Create Base GUI Panel");
+
             basePanel.transform.localScale = Vector3.one;
 
             return basePanel;
@@ -557,9 +581,7 @@ namespace JCSUnity
             if (jcsCanvas == null)
             {
                 JCS_Debug.Log(
-                    "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the 9 x 9 slide panel.");
-
                 return;
             }
 
@@ -568,9 +590,7 @@ namespace JCSUnity
             if (cam == null)
             {
                 JCS_Debug.Log(
-                    "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Camera in the hierarchy. Plz create the canvas before create the 9 x 9 slide panel.");
-
                 return;
             }
 
@@ -626,10 +646,12 @@ namespace JCSUnity
             string slideScreenCameraPath = "JCSUnity_Resources/JCS_Camera/JCS_2DSlideScreenCamera";
             JCS_2DSlideScreenCamera slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
 
+            Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
+
             // set the panel holder.
             slideScreenCamera.PanelHolder = panelHolder9x9;
 
-            
+
             slideScreenCamera.SetJCS2DCamera(cam);
 
             // set to default 2d.
@@ -652,6 +674,8 @@ namespace JCSUnity
             string setting_path = "JCSUnity_Resources/GUI/JCS_TweenPanel";
             GameObject tweenPanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
+            Undo.RegisterCreatedObjectUndo(tweenPanel, "Create Tween Panel");
+
             return tweenPanel;
         }
 
@@ -667,11 +691,12 @@ namespace JCSUnity
         private static void Create2DCamera()
         {
             string camera_path = "JCSUnity_Resources/JCS_Camera/JCS_2DCamera";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(camera_path);
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(camera_path);
 
             // set camera depth to default -10.
             gameObj.transform.position = new Vector3(0, 0, -10);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS 2D Camera");
         }
 
         /// <summary>
@@ -680,9 +705,9 @@ namespace JCSUnity
         private static void CreateMixDamageTextPool()
         {
             string setting_path = "JCSUnity_Resources/GUI/DamageText/JCS_MixDamageTextPool";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(setting_path);
-            // take away clone sign.
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(setting_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create Min Damage Text Pool");
         }
 
 
@@ -697,8 +722,9 @@ namespace JCSUnity
         private static void Create3DCamera()
         {
             string camera_path = "JCSUnity_Resources/JCS_Camera/JCS_3DCamera";
-            GameObject gameObj = JCS_Utility.SpawnGameObject(camera_path);
-            gameObj.name = gameObj.name.Replace("(Clone)", "");
+            GameObject gameObj = CreateHierarchyObject(camera_path);
+
+            Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS 3D Camera");
         }
 
         /**
@@ -749,9 +775,7 @@ namespace JCSUnity
             if (jcsCanvas == null)
             {
                 JCS_Debug.Log(
-                    "JCSUnity_EditorWindow",
                     "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the base panel.");
-
                 return null;
             }
 
