@@ -18,17 +18,17 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_GamePadType
     {
-        ALL, 
-
-        /* Microsoft XBox */
-        XBOX,
-        XBOX_360,
-        XBOX_ONE,
+        ALL,
 
         /* Sony Play Station */
         PS,
         PS2,
         PS3,
         PS4,
+
+        /* Microsoft XBox */
+        XBOX,
+        XBOX_360,
+        XBOX_ONE,
     }
 }
