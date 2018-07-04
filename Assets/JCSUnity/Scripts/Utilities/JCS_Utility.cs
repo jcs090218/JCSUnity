@@ -919,5 +919,23 @@ namespace JCSUnity
         {
             return System.Enum.GetNames(typeof(T)).Length;
         }
+
+        /// <summary>
+        /// Check if the list empty.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static bool IsArrayEmpty(string[] list)
+        {
+            for (int index = 0;
+                index < list.Length;
+                ++index)
+            {
+                if (list[index] != "")
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
