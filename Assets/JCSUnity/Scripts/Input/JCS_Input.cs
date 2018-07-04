@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Joystick enum design here...
     /// </summary>
@@ -21,28 +20,28 @@ namespace JCSUnity
     {
         NONE,
 
-        BUTTON_A,       // KeyOrMouseButton
-        BUTTON_B,       // KeyOrMouseButton
+        /* General Gamepad */
+        HOME_BUTTON,    // KeyOrMouseButton  (PS)
+
+        START_BUTTON,   // KeyOrMouseButton  (Options)
+        BACK_BUTTON,    // KeyOrMouseButton  (Share)
+
+        BUTTON_A,       // KeyOrMouseButton  (Circle)
+        BUTTON_B,       // KeyOrMouseButton  (Square)
         BUTTON_X,       // KeyOrMouseButton
-        BUTTON_Y,       // KeyOrMouseButton
+        BUTTON_Y,       // KeyOrMouseButton (Triangle)
 
-        HOME_BUTTON,    // KeyOrMouseButton
+        LEFT_BUMPER,    // KeyOrMouseButton  (L1)
+        RIGHT_BUMPER,   // KeyOrMouseButton  (R1)
 
-        START_BUTTON,   // KeyOrMouseButton
-        BACK_BUTTON,    // KeyOrMouseButton
-
-        LEFT_TRIGGER,   // JoystickAxis
-        RIGHT_TRIGGER,  // JoystickAxis
-
-        LEFT_BUMPER,    // KeyOrMouseButton
-        RIGHT_BUMPER,   // KeyOrMouseButton
+        LEFT_TRIGGER,   // JoystickAxis  (L2)
+        RIGHT_TRIGGER,  // JoystickAxis  (R2)
 
         BUTTON_UP,      // JoystickAxis
         BUTTON_DOWN,    // JoystickAxis
         BUTTON_LEFT,    // JoystickAxis
         BUTTON_RIGHT,   // JoystickAxis
 
-        // temp.
         STICK_RIGHT_X,  // JoystickAxis
         STICK_RIGHT_Y,  // JoystickAxis
 
@@ -914,7 +913,7 @@ namespace JCSUnity
         /// </returns>
         public static bool IsJoystickConnected()
         {
-            return (Input.GetJoystickNames().Length != 0 && Input.GetJoystickNames()[0] != "");
+            return (!JCS_Utility.IsArrayEmpty(Input.GetJoystickNames()));
         }
 
     }
