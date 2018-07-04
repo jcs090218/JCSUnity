@@ -90,7 +90,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Add an axis to Input Manager.
         /// </summary>
         /// <param name="axis"></param>
         private static void AddAxis(InputAxis axis, bool redefined = false)
@@ -149,9 +149,44 @@ namespace JCSUnity
         public static void SetupInputManager()
         {
             // Add gamepad definitions
-            SetupXBox360Joystick();
+            JCSUnity_EditorWindow jcsunity_ew = JCSUnity_EditorWindow.instance;
+
+            switch (jcsunity_ew.SelectGamepadType)
+            {
+                case 0:  /* ==> Select Platform <== */
+
+                    break;
+
+                /* Sony Play Station */
+                case 1:  /* ==> PS <== */
+
+                    break;
+                case 2:  /* ==> PS2 <== */
+
+                    break;
+                case 3:  /* ==> PS3 <== */
+
+                    break;
+                case 4:  /* ==> PS4 <== */
+                    SetupPS4Joystick();
+                    break;
+
+                /* Microsoft XBox */
+                case 5:  /* ==> XBox <== */
+                    
+                    break;
+                case 6:  /* ==> XBox 360 <== */
+                    SetupXBox360Joystick();
+                    break;
+                case 7:  /* ==> XBox One <== */
+
+                    break;
+            }
         }
 
+        /// <summary>
+        /// Do the default input manager settings. (For revert)
+        /// </summary>
         public static void DefaultInputManagerSettings()
         {
             int axisOffset = 1;
@@ -503,6 +538,44 @@ namespace JCSUnity
             #endregion
         }
 
+        /// <summary>
+        /// Input setting for PS4's gamepad.
+        /// </summary>
+        public static void SetupPS4Joystick()
+        {
+            int gamePadCount = JCSUnity_EditorWindow.instance.GAME_PAD_COUNT;
+
+            float defalutSenstivity = JCS_InputSettings.DEFAULT_SENSITIVITY;
+            float defaultDead = JCS_InputSettings.DEFAULT_DEAD;
+            float defaultGravity = JCS_InputSettings.DEFAULT_GRAVITY;
+
+            for (int joystickNum = 0; joystickNum < gamePadCount; ++joystickNum)
+            {
+                foreach (JCS_JoystickButton val in JCS_Utility.GetValues<JCS_JoystickButton>())
+                {
+                    if (val == JCS_JoystickButton.NONE)
+                        continue;
+
+                    // add axis definition.
+                    AddAxis(new InputAxis()
+                    {
+                        name = JCS_InputSettings.GetJoystickButtonIdName(joystickNum, val),
+                        positiveButton = JCS_InputSettings.GetPositiveNameByLabel(val),
+                        dead = defaultDead,
+                        gravity = defaultGravity,
+                        sensitivity = defalutSenstivity,
+                        type = JCS_InputSettings.GetAxisType(val),
+                        invert = JCS_InputSettings.IsInvert(val),
+                        axis = (int)JCS_InputSettings.GetAxisChannel(val),
+                        joyNum = joystickNum,
+                    });
+                }
+            }
+        }
+
+        /// <summary>
+        /// Input setting for XBox 360's gamepad.
+        /// </summary>
         public static void SetupXBox360Joystick()
         {
             int gamePadCount = JCSUnity_EditorWindow.instance.GAME_PAD_COUNT;
