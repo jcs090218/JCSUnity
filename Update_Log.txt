@@ -10,6 +10,8 @@
 2018-07-10
 * Update class description and null ref check for spawned GUI 
  objects for JCS_PanelChild. (JCSUnity)
+* Add get selected value for Dropdown object, add UI utility 
+ module? (JCSUnity)
 
 2018-07-04
 * Implement BGM player for all scenes. (JCSUnity)
