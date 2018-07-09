@@ -12,9 +12,14 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// This do the same thing as JCS_PanelRoot, but instead of all
+    /// the child have to check JCS_PanelRoot is vague.The solution
+    /// from this, we decide to have another component by name it
+    /// differently and loop through the component and check if the
+    /// panel has the correct proportion and scaling. Notice this
+    /// class already been set by other same component, this will not
+    /// be active.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class JCS_PanelChild
