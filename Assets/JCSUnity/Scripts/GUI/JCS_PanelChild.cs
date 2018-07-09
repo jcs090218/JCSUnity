@@ -56,13 +56,15 @@ namespace JCSUnity
                 tempPanelChild = this.GetComponents<JCS_PanelChild>();
 
                 // only do it once.
-                if (jpr != null && 
+                if (/* Check 'jpr' null for spawn GUI objects. */
+                    jpr != null && 
+                    /* Regular checks. */
                     tempPanelChild.Length == 1 &&
                     tempPanelChild[0] == this)
                 {
                     FitPerfectSize(
-                    jpr.PanelDeltaWidthRatio,
-                    jpr.PanelDeltaHeightRatio);
+                        jpr.PanelDeltaWidthRatio, 
+                        jpr.PanelDeltaHeightRatio);
                 }
 
                 // since we add this script assuming we are 
