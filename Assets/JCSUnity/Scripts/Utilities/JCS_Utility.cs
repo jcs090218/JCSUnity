@@ -937,5 +937,15 @@ namespace JCSUnity
 
             return true;
         }
+
+        /// <summary>
+        /// Get the current selected value of the Dropdown object.
+        /// </summary>
+        /// <param name="dd"> drop down object. </param>
+        /// <returns> current selected text value. </returns>
+        public static string GetSelectedValue(Dropdown dd)
+        {
+            return dd.options[dd.value].text;
+        }
     }
 }
