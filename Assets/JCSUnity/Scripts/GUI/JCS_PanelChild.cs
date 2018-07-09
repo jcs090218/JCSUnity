@@ -56,7 +56,8 @@ namespace JCSUnity
                 tempPanelChild = this.GetComponents<JCS_PanelChild>();
 
                 // only do it once.
-                if (tempPanelChild.Length == 1 &&
+                if (jpr != null && 
+                    tempPanelChild.Length == 1 &&
                     tempPanelChild[0] == this)
                 {
                     FitPerfectSize(
