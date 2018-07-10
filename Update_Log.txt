@@ -12,6 +12,8 @@
  objects for JCS_PanelChild. (JCSUnity)
 * Add get selected value for Dropdown object, add UI utility 
  module? (JCSUnity)
+* Update default resource prefabs object with order layer of 5 
+ instead of 100. (JCSUnity)
 
 2018-07-04
 * Implement BGM player for all scenes. (JCSUnity)
