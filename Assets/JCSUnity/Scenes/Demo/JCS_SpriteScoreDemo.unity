@@ -2118,11 +2118,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114374653870074360, guid: 6875d83f30a24304293507fac3628cca,
-        type: 2}
-      propertyPath: mTextAlign
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6875d83f30a24304293507fac3628cca, type: 2}
   m_IsPrefabParent: 0
