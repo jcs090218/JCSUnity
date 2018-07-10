@@ -14,6 +14,7 @@
  module? (JCSUnity)
 * Update default resource prefabs object with order layer of 5 
  instead of 100. (JCSUnity)
+* Update project version to 1.6.9. (JCSUnity)
 
 2018-07-04
 * Implement BGM player for all scenes. (JCSUnity)
