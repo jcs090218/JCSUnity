@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -728,5 +729,25 @@ namespace JCSUnity
             return circlePos;
         }
 
+        /// <summary>
+        /// Truncate float number.
+        /// 
+        /// If 'digits'=2 and 'value'=1.345698F:
+        ///   1.345698F => 1.34
+        /// 
+        /// If 'digits'=2 and 'value'=1.300000F:
+        ///   1.300000F => 1.30
+        /// 
+        /// SOURCE(jenchieh): https://social.msdn.microsoft.com/Forums/vstudio/en-US/a8092fd2-1080-416c-8ae1-2bad8c013a21/how-to-round-off-a-float-to-2-decimal-places?forum=csharpgeneral
+        /// </summary>
+        /// <param name="val"> Value to do truncate. </param>
+        /// <param name="digits"> Target shown digit. </param>
+        /// <returns> Result value. </returns>
+        public static float Truncate(float val, int digits)
+        {
+            double mult = Math.Pow(10.0, digits);
+            double result = Math.Truncate(mult * val) / mult;
+            return (float)result;
+        }
     }
 }
