@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-07-11
+* Add truncate float function to Math module. (JCSUnity)
+
 2018-07-10
 * Update class description and null ref check for spawned GUI 
  objects for JCS_PanelChild. (JCSUnity)
