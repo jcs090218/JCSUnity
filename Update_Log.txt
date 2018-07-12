@@ -9,6 +9,7 @@
 
 2018-07-12
 * Fixed missing BGM player object in the GUI demo scene. (JCSUnity)
+* Add missing mobile input related classes descriptions. (JCSUnity)
 
 2018-07-11
 * Add truncate float function to Math module. (JCSUnity)
