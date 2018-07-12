@@ -11,9 +11,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Use this to receiving the single from mobile touch input/bufffer.
     /// </summary>
     public class JCS_MobileMouseEvent 
         : MonoBehaviour

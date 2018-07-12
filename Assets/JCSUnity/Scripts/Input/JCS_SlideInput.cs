@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Use this to receive the slide input from the device buffer.
     /// </summary>
     public class JCS_SlideInput
         : MonoBehaviour
@@ -25,11 +24,21 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables(Check) **")]
-        [SerializeField] private bool mTouched = false;
-        [SerializeField] private Vector2 mDeltaPos = Vector2.zero;
 
-        private Vector3 prePos = Vector3.zero;
+        [Header("** Runtime Variables (JCS_SlideInput) **")]
+
+        [Tooltip("Is the screen thouched?")]
+        [SerializeField]
+        private bool mTouched = false;
+
+        [Tooltip("Delta value changes on the screen.")]
+        [SerializeField]
+        private Vector2 mDeltaPos = Vector2.zero;
+
+#if (UNITY_EDITOR || UNITY_STANDALONE)
+        private Vector3 mPrePos = Vector3.zero;
+#endif
+
 
         //----------------------
         // Protected Variables
@@ -58,14 +67,14 @@ namespace JCSUnity
 
             Vector3 currPos = Input.mousePosition;
             if (mTouched)
-                mDeltaPos = currPos - prePos;
+                mDeltaPos = currPos - mPrePos;
             else
                 mDeltaPos = Vector2.zero;
-            prePos = currPos;
+            mPrePos = currPos;
 
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
 
-            //Detect Touch
+            // Detect Touch
             mTouched = (Input.touchCount == 1);
             if (mTouched) {
                 mDeltaPos = Input.GetTouch(0).deltaPosition;
