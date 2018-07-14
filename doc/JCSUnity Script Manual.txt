@@ -2371,7 +2371,7 @@
       <Loader>
         <File name="JCS_ImageLoader.cs">
           <Placement>Script base.</Placement>
-          <Description>Image loader from resource.</Description>
+          <Description>Image loader, load image to sprite from resource.</Description>
         </File>
 
         <File name="JCS_XML_Loader.cs">
