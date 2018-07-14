@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Image loader, load image to sprite from resource.
     /// </summary>
     public class JCS_ImageLoader
     {
@@ -25,11 +24,11 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Load Image by file path.
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="pixelPerUnit"></param>
-        /// <returns></returns>
+        /// <param name="filePath"> Image file path. </param>
+        /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
+        /// <returns> Sprite object. </returns>
         public static Sprite LoadImage(string filePath, float pixelPerUnit = 40)
         {
             Sprite img = null;
@@ -48,7 +47,5 @@ namespace JCSUnity
 
             return img;
         }
-        
-
     }
 }
