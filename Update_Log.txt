@@ -10,6 +10,7 @@
 2018-07-15
 * Rename 'JCS_Buttons' folder to 'Button' for styling improvement. (JCSUnity)
 * Add 'Button' component getter => ButtonComp at file 'JCS_Button'. (JCSUnity)
+* Update scripting manual folder naming, JCS_Buttons => Button. (JCSUnity)
 
 2018-07-12
 * Fixed missing BGM player object in the GUI demo scene. (JCSUnity)
