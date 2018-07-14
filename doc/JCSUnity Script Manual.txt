@@ -1712,7 +1712,7 @@
           <Description>Log text for JCS_IGLogSystem to handle.</Description>
         </File>
         </In Game Log System>
-        <JCS_Buttons>
+        <Button>
           <Dialogue>
             <File name="JCS_HideDialogueButton.cs">
               <Placement>Already assign.</Placement>
@@ -1971,7 +1971,7 @@
             <Placement>Already assign.</Placement>
             <Description>deprecated</Description>
           </File>
-        </JCS_Buttons>
+        </Button>
         <Panel>
           <File name="JCS_SequenceSlidePanel.cs">
             <Placement>Any rect-transform.</Placement>
