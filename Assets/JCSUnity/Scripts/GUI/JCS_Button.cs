@@ -99,8 +99,9 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public Image Image { get { return this.mImage; } }
         public RectTransform GetRectTransfom() { return this.mRectTransform; }
+        public Button ButtonComp { get { return this.mButton; } }
+        public Image Image { get { return this.mImage; } }
         public int DialogueIndex { get { return this.mDialogueIndex; } set { this.mDialogueIndex = value; } }
         public bool AutoListener { get { return this.mAutoListener; } set { this.mAutoListener = value; } }
         public bool Interactable {
