@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-07-16
+* Make 100 pixel per unit as default for Image Loader. (JCSUnity)
+
 2018-07-15
 * Rename 'JCS_Buttons' folder to 'Button' for styling improvement. (JCSUnity)
 * Add 'Button' component getter => ButtonComp at file 'JCS_Button'. (JCSUnity)
