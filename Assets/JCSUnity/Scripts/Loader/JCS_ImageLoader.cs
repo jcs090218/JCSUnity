@@ -29,7 +29,7 @@ namespace JCSUnity
         /// <param name="filePath"> Image file path. </param>
         /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
         /// <returns> Sprite object. </returns>
-        public static Sprite LoadImage(string filePath, float pixelPerUnit = 40)
+        public static Sprite LoadImage(string filePath, float pixelPerUnit = 100)
         {
             Sprite img = null;
 
