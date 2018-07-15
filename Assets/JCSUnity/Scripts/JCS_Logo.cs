@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    
     /// <summary>
     /// Logo object for next scene.
     /// </summary>
