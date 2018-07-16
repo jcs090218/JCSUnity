@@ -2739,6 +2739,20 @@
           </Description>
         </File>
 
+        <File name="JCS_GUIUtil.cs">
+          <Placement>Script base.</Placement>
+          <Description>
+            Store all the GUI related utilities function here.
+          </Description>
+        </File>
+
+        <File name="JCS_Logger.cs">
+          <Placement>Script base.</Placement>
+          <Description>
+            Common Logger for JCSUnity.
+          </Description>
+        </File>
+
         <File name="JCS_Mathf.cs">
           <Placement>Script base.</Placement>
           <Description>List of all the math function here.</Description>
