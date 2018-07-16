@@ -9,6 +9,10 @@
 
 2018-07-16
 * Make 100 pixel per unit as default for Image Loader. (JCSUnity)
+* JCS_GUIUtil for GUI utilities functions implemented. (JCSUnity)
+* Add missing class description manual. (JCSUnity)
+  -> JCS_GUIUtil
+  -> JCS_Logger
 
 2018-07-15
 * Rename 'JCS_Buttons' folder to 'Button' for styling improvement. (JCSUnity)
