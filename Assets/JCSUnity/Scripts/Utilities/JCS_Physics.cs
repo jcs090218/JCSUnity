@@ -14,7 +14,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// Collider Information data structure.
     /// </summary>
     [Serializable]
     public struct JCS_ColliderInfo
