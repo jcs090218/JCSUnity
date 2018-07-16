@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Structure hold three boolean.
     /// </summary>
@@ -41,6 +40,5 @@ namespace JCSUnity
             this.check2 = val;
             this.check3 = val;
         }
-
     }
 }
