@@ -683,7 +683,7 @@ namespace JCSUnity
 
             if (name == "")
             {
-                JCS_Debug.LogError("InputManager' name cannot be empty string...");
+                JCS_Debug.LogError("InputManager's name variable cannot be empty string...");
                 return 0;
             }
 
@@ -856,7 +856,6 @@ namespace JCSUnity
                 if (!mJoystickKeyPressed.ContainsKey(idString))
                 {
                     mJoystickKeyPressed.Add(idString, false);
-                    return true;
                 }
                 // Key contains!
                 else
