@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2018-07-20
+* Enable loop to all BGM player object in each scenes. (JCSUnity)
+* Fixed gamepad hit twice at the first key issue. (JCSUnity)
+* BGM play prefab, enable loop option as default. (JCSUnity)
+
 2018-07-19
 * Change the project location, make sure the project does not break 
  with build info confirm. (JCSUnity)
