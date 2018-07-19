@@ -9,9 +9,9 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Singleton patter in Unity scripting layer.
     /// </summary>

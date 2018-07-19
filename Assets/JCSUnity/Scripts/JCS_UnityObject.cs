@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Cross Unity system object.
     /// </summary>

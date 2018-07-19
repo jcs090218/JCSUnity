@@ -11,7 +11,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Hold function when is startup.
     /// </summary>
