@@ -12,7 +12,7 @@ using JCSUnity;
 
 
 /// <summary>
-/// 
+/// Test the joystick input.
 /// </summary>
 public class FT_XInput_Test
     : MonoBehaviour
