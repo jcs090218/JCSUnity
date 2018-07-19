@@ -10,6 +10,7 @@
 2018-07-19
 * Change the project location, make sure the project does not break 
  with build info confirm. (JCSUnity)
+* Remove root scripts trailing white spaces. (JCSUnity)
 
 2018-07-16
 * Make 100 pixel per unit as default for Image Loader. (JCSUnity)
