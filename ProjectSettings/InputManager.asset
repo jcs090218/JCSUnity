@@ -867,7 +867,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 1
   - serializedVersion: 3
     m_Name: jcsunity stick left x 1
@@ -1171,7 +1171,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 2
   - serializedVersion: 3
     m_Name: jcsunity stick left x 2
@@ -1475,7 +1475,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 3
   - serializedVersion: 3
     m_Name: jcsunity stick left x 3
@@ -1779,7 +1779,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 4
   - serializedVersion: 3
     m_Name: jcsunity stick left x 4
@@ -2083,7 +2083,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 5
   - serializedVersion: 3
     m_Name: jcsunity stick left x 5
@@ -2387,7 +2387,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 6
   - serializedVersion: 3
     m_Name: jcsunity stick left x 6
@@ -2691,7 +2691,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 7
   - serializedVersion: 3
     m_Name: jcsunity stick left x 7
@@ -2995,7 +2995,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 8
   - serializedVersion: 3
     m_Name: jcsunity stick left x 8
@@ -3299,7 +3299,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 9
   - serializedVersion: 3
     m_Name: jcsunity stick left x 9
@@ -3603,7 +3603,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 10
   - serializedVersion: 3
     m_Name: jcsunity stick left x 10
@@ -3907,7 +3907,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 5
     joyNum: 11
   - serializedVersion: 3
     m_Name: jcsunity stick left x 11
