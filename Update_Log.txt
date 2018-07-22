@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-07-22
+* Add test key in JCS_DeltaNumber script/component. (JCSUnity)
+
 2018-07-20
 * Enable loop to all BGM player object in each scenes. (JCSUnity)
 * Fixed gamepad hit twice at the first key issue. (JCSUnity)
