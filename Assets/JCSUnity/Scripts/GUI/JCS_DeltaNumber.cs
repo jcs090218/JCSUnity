@@ -28,6 +28,10 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_DeltaNumber) **")]
 
+        [Tooltip("Test with key?")]
+        [SerializeField]
+        private bool mTestKey = true;
+
         [Tooltip("Key delta to value A.")]
         [SerializeField]
         private KeyCode mDeltaToA = KeyCode.A;
@@ -214,6 +218,9 @@ should disable this effect for best purpose.")]
 #if (UNITY_EDITOR)
         private void Test()
         {
+            if (!mTestKey)
+                return;
+
             if (JCS_Input.GetKey(mDeltaToA))
                 UpdateScore(mDeltaValueA);
             if (JCS_Input.GetKey(mDeltaToB))
