@@ -9,6 +9,7 @@
 
 2018-07-22
 * Add test key in JCS_DeltaNumber script/component. (JCSUnity)
+* Make current project version to 1.7.1. (JCSUnity)
 
 2018-07-20
 * Enable loop to all BGM player object in each scenes. (JCSUnity)
