@@ -62,5 +62,14 @@ namespace JCSUnity
 
             return -1;
         }
+
+        /// <summary>
+        /// Set the value to the target item.
+        /// </summary>
+        /// <param name="itemName"> name of the item. </param>
+        public static void Dropdown_SetToValue(Dropdown dd, string itemName)
+        {
+            dd.value = Dropdown_GetItemIndex(dd, itemName);
+        }
     }
 }
