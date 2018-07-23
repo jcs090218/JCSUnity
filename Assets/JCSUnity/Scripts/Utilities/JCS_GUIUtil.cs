@@ -66,10 +66,23 @@ namespace JCSUnity
         /// <summary>
         /// Set the value to the target item.
         /// </summary>
+        /// <param name="dd"> dropdown object. </param>
         /// <param name="itemName"> name of the item. </param>
-        public static void Dropdown_SetToValue(Dropdown dd, string itemName)
+        /// <returns>
+        /// true : found the item and set it succesfully.
+        /// false : did not find the item, failed to set.
+        /// </returns>
+        public static bool Dropdown_SetToValue(Dropdown dd, string itemName)
         {
-            dd.value = Dropdown_GetItemIndex(dd, itemName);
+            int index = Dropdown_GetItemIndex(dd, itemName);
+
+            // If not found, will return -1.
+            if (index == -1)
+                return false;
+
+            dd.value = index;
+
+            return true;
         }
     }
 }
