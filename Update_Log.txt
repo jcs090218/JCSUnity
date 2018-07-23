@@ -9,6 +9,7 @@
 
 2018-07-23
 * Add GUI util, for dropdown set to value function. (JCSUnity)
+* Improve the usage of the dropdown set value function. (JCSUnity)
 
 2018-07-22
 * Add test key in JCS_DeltaNumber script/component. (JCSUnity)
