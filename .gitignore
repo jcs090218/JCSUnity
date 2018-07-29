@@ -9,7 +9,6 @@
 /Publish
 /Assets/Libraries
 /Assets/JCS_GameData/WebcamShot
-/layouts
 
 # don't include the video.
 /Video
