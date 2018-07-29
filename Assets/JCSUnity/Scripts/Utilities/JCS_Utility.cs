@@ -812,6 +812,28 @@ namespace JCSUnity
             return newArray;
         }
 
+        /// <summary>
+        /// Remove the empty slot in the array.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inArray"> Array list. </param>
+        /// <returns> Cleaned up List object. </returns>
+        public static T[] RemoveEmptySlot<T>(T[] inArray)
+        {
+            List<T> newArray = new List<T>();
+
+            for (int index = 0;
+               index < inArray.Length;
+               ++index)
+            {
+                // remove itself.
+                if (inArray[index] != null)
+                    newArray.Add(inArray[index]);
+            }
+
+            return newArray.ToArray();
+        }
+
 
         /// <summary>
         /// Multiply all the parent localEulerAngles to get the correct 
