@@ -6,9 +6,10 @@
 /Library
 /obj
 /Tutorials
-/Assets/Libraries
 /Publish
+/Assets/Libraries
 /Assets/JCS_GameData/WebcamShot
+/layouts
 
 # don't include the video.
 /Video
