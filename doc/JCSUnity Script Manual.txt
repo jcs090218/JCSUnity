@@ -2369,11 +2369,21 @@
         </File>
       </Lib>
       <Loader>
+        <File name="JCS_AudioLoader.cs">
+          <Placement>Script base.</Placement>
+          <Description>Audiol loader, load an external audio file.</Description>
+        </File>
+        
         <File name="JCS_ImageLoader.cs">
           <Placement>Script base.</Placement>
           <Description>Image loader, load image to sprite from resource.</Description>
         </File>
 
+        <File name="JCS_VideoLoader.cs">
+          <Placement>Script base.</Placement>
+          <Description>Video loader, load an external video file.</Description>
+        </File>
+        
         <File name="JCS_XML_Loader.cs">
           <Placement>Script base.</Placement>
           <Description>Load xml for save data.</Description>
