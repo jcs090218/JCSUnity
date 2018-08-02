@@ -12,7 +12,6 @@ using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Handle the patch for updating the game version, etc.
     /// 
