@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-08-02
+* Make legacy script for deprecated module => JCS_VideoPlayer component. (JCSUnity)
+* Update Unity Engine version to => 2018.2.1f1. (JCSUnity)
+
 2018-07-30
 * Implement remove empty slot to normal array in Util module. (JCSUnity)
 * Audio loader module implemented. (JCSUnity)
