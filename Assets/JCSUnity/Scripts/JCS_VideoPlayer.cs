@@ -1,4 +1,5 @@
-﻿/**
+﻿#if !(UNITY_2018_2_OR_NEWER)
+/**
  * $File: JCS_VideoPlayer.cs $
  * $Date: $
  * $Revision: $
@@ -9,6 +10,14 @@
 using UnityEngine;
 using System.Collections;
 
+
+/*
+ * JCSUnity.JCS_VideoPlayer's MovieTexture is deprecated and no 
+ * longer supported in Unity 2018.2 or newer versions.
+ *  
+ * TODO(jenchieh): make this compatible to the newest version of 
+ * Unity Engine, or just leave it as legacy video player solution.
+ */
 
 namespace JCSUnity
 {
@@ -457,3 +466,5 @@ namespace JCSUnity
     }
 #endif
 }
+
+#endif
