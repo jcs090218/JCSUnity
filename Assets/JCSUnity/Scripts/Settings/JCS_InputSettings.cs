@@ -175,6 +175,13 @@ namespace JCSUnity
         };
 
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Varaibles (JCS_InputSettings) **")]
+
+        [Tooltip("All joystick's name.")]
+        public string[] joystickNames = null;
+#endif
+
         [Header("** Initialize Varaibles (JCS_InputSettings) **")]
 
         [Tooltip("Targeting game pad going to use in the game.")]
@@ -216,6 +223,12 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
+#if (UNITY_EDITOR)
+            // Just assign to it, in order to update the joystick 
+            // names array.
+            this.joystickNames = Input.GetJoystickNames();
+#endif
+
             GetJoystickInfo();
 
             JCS_Input.LateUpdate();
