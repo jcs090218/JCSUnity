@@ -33,7 +33,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SlideInput mSlideInput = null;
 
-        [Tooltip("")]
+        [Tooltip("Handle mobile even component.")]
         [SerializeField]
         private JCS_MobileMouseEvent mMobileMouseEvent = null;
 
