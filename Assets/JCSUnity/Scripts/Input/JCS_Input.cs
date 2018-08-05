@@ -970,19 +970,6 @@ namespace JCSUnity
         {
             return OneKeys(keys.ToArray(), ignorePause);
         }
-
-        /// <summary>
-        /// Check either of these key are preseed.
-        /// 
-        /// If one of the key is pressed, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
-        /// <returns> 
-        /// true, one of the key in the array list is pressed.
-        /// false, none of these keys are pressed.
-        /// </returns>
         public static bool OneKeys(
             KeyCode[] keys, 
             bool ignorePause = false)
@@ -1016,19 +1003,6 @@ namespace JCSUnity
         {
             return OneKeysDown(keys.ToArray(), ignorePause);
         }
-
-        /// <summary>
-        /// Check either of these key are down.
-        /// 
-        /// If one of the key is down, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
-        /// <returns> 
-        /// true, one of the key in the array list is down.
-        /// false, none of these keys are down.
-        /// </returns>
         public static bool OneKeysDown(
             KeyCode[] keys, 
             bool ignorePause = false)
@@ -1063,19 +1037,6 @@ namespace JCSUnity
         {
             return OneKeysUp(keys.ToArray(), ignorePause);
         }
-
-        /// <summary>
-        /// Check either of these key are up.
-        /// 
-        /// If one of the key is up, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
-        /// <returns> 
-        /// true, one of the key in the array list is up.
-        /// false, none of these keys are up.
-        /// </returns>
         public static bool OneKeysUp(
             KeyCode[] keys, 
             bool ignorePause = false)
@@ -1110,19 +1071,6 @@ namespace JCSUnity
         {
             return AllKeys(keys.ToArray(), ignorePause);
         }
-
-        /// <summary>
-        /// Check all of these key are preseed.
-        /// 
-        /// If all of the keys are pressed, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
-        /// <returns> 
-        /// true, all of the keys in the array list are pressed.
-        /// false, none of these keys are pressed.
-        /// </returns>
         public static bool AllKeys(
             KeyCode[] keys, 
             bool ignorePause = false)
@@ -1156,19 +1104,6 @@ namespace JCSUnity
         {
             return AllKeysDown(keys.ToArray(), ignorePause);
         }
-
-        /// <summary>
-        /// Check all of these key are down.
-        /// 
-        /// If all of the keys are down, returns true.
-        /// else returns false.
-        /// </summary>
-        /// <param name="keys"> key code array. </param>
-        /// <param name="ignorePause"> ignore the pause check? </param>
-        /// <returns> 
-        /// true, all of the keys in the array list are down.
-        /// false, none of these keys are down.
-        /// </returns>
         public static bool AllKeysDown(
             KeyCode[] keys,
             bool ignorePause = false)
@@ -1183,7 +1118,6 @@ namespace JCSUnity
 
             return true;
         }
-
 
         /// <summary>
         /// Check all of these key are up.
@@ -1203,6 +1137,269 @@ namespace JCSUnity
         {
             return AllKeysUp(keys.ToArray(), ignorePause);
         }
+        public static bool AllKeysUp(
+            KeyCode[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (!GetKeyUp(keys[index], ignorePause))
+                    return false;
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Check either of these key are preseed.
+        /// 
+        /// If one of the key is pressed, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is pressed.
+        /// false, none of these keys are pressed.
+        /// </returns>
+        public static bool OneJoystickButtons(
+            int joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool OneJoystickButtons(
+            JCS_JoystickIndex joystickIndex, 
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickButtons(joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool OneJoystickButtons(
+            int joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+        }
+        public static bool OneJoystickButtons(
+            JCS_JoystickIndex joystickIndex, 
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (GetJoystickButton(joystickIndex, keys[index], ignorePause))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check either of these key are down.
+        /// 
+        /// If one of the key is down, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is down.
+        /// false, none of these keys are down.
+        /// </returns>
+        public static bool OneJoystickKeysDown(
+            int joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool OneJoystickKeysDown(
+            JCS_JoystickIndex joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickKeysDown(joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool OneJoystickKeysDown(
+            int joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+        }
+        public static bool OneJoystickKeysDown(
+            JCS_JoystickIndex joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (GetJoystickKeyDown(joystickIndex, keys[index], ignorePause))
+                    return true;
+            }
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// Check either of these key are up.
+        /// 
+        /// If one of the key is up, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is up.
+        /// false, none of these keys are up.
+        /// </returns>
+        public static bool OneJoystickKeysUp(
+            int joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool OneJoystickKeysUp(
+            JCS_JoystickIndex joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickKeysUp(joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool OneJoystickKeysUp(
+            int joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            return OneJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+        }
+        public static bool OneJoystickKeysUp(
+            JCS_JoystickIndex joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (GetJoystickKeyUp(joystickIndex, keys[index], ignorePause))
+                    return true;
+            }
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// Check all of these key are preseed.
+        /// 
+        /// If all of the keys are pressed, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are pressed.
+        /// false, none of these keys are pressed.
+        /// </returns>
+        public static bool AllJoystickButtons(
+            int joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool AllJoystickButtons(
+            JCS_JoystickIndex joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickButtons(joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool AllJoystickButtons(
+            int joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickButtons((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+        }
+        public static bool AllJoystickButtons(
+            JCS_JoystickIndex joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (!GetJoystickButton(joystickIndex, keys[index], ignorePause))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check all of these key are down.
+        /// 
+        /// If all of the keys are down, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are down.
+        /// false, none of these keys are down.
+        /// </returns>
+        public static bool AllJoystickKeysDown(
+            int joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool AllJoystickKeysDown(
+            JCS_JoystickIndex joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickKeysDown(joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool AllJoystickKeysDown(
+            int joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickKeysDown((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+        }
+        public static bool AllJoystickKeysDown(
+            JCS_JoystickIndex joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (!GetJoystickKeyDown(joystickIndex, keys[index], ignorePause))
+                    return false;
+            }
+
+            return true;
+        }
+
 
         /// <summary>
         /// Check all of these key are up.
@@ -1216,15 +1413,37 @@ namespace JCSUnity
         /// true, all of the keys in the array list are up.
         /// false, none of these keys are up.
         /// </returns>
-        public static bool AllKeysUp(
-            KeyCode[] keys,
+        public static bool AllJoystickKeysUp(
+            int joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool AllJoystickKeysUp(
+            JCS_JoystickIndex joystickIndex,
+            List<JCS_JoystickButton> keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickKeysUp(joystickIndex, keys.ToArray(), ignorePause);
+        }
+        public static bool AllJoystickKeysUp(
+            int joystickIndex,
+            JCS_JoystickButton[] keys,
+            bool ignorePause = false)
+        {
+            return AllJoystickKeysUp((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
+        }
+        public static bool AllJoystickKeysUp(
+            JCS_JoystickIndex joystickIndex,
+            JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
             for (int index = 0;
                 index < keys.Length;
                 ++index)
             {
-                if (!GetKeyUp(keys[index], ignorePause))
+                if (!GetJoystickKeyUp(joystickIndex, keys[index], ignorePause))
                     return false;
             }
 
