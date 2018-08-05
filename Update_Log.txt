@@ -10,6 +10,8 @@
 2018-08-05
 * Show joystick names in the JCS_InputSettings' inspector. (JCSUnity)
 * Add check all keys pressed/up/down and either key pressed/up/down. (JCSUnity)
+* Add check all keys pressed/up/down and either key pressed/up/down with 
+ joystick too. (JCSUnity)
 
 2018-08-02
 * Make legacy script for deprecated module => JCS_VideoPlayer component. (JCSUnity)
