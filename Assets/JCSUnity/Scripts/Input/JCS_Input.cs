@@ -880,6 +880,18 @@ namespace JCSUnity
             return false;
         }
 
+        /// <summary>
+        /// Check if the joystick key is doing something by these
+        /// certain events.
+        ///   -> pressed
+        ///   -> key down.
+        ///   -> key up.
+        /// </summary>
+        /// <param name="act"></param>
+        /// <param name="id"></param>
+        /// <param name="key"></param>
+        /// <param name="ignorePause"></param>
+        /// <returns></returns>
         public static bool GetJoystickKeyByAction(
             JCS_KeyActionType act, 
             JCS_JoystickIndex id,
@@ -896,7 +908,7 @@ namespace JCSUnity
                     return GetJoystickKeyUp(id, key, ignorePause);
             }
 
-            JCS_Debug.LogError("This cannot happed.");
+            JCS_Debug.LogError("This cannot happens...");
             return false;
         }
 
@@ -915,5 +927,308 @@ namespace JCSUnity
             return (!JCS_Utility.IsArrayEmpty(Input.GetJoystickNames()));
         }
 
+        /// <summary>
+        /// Check if one specific joystick is connected.
+        /// </summary>
+        /// <param name="name"> name of the joystick. </param>
+        /// <returns>
+        /// true, 'name' joystick name is connected.
+        /// false, 'name' joystick name is not connected.
+        /// </returns>
+        public static bool IsJoystickConnected(string name)
+        {
+            string[] joystickNames = Input.GetJoystickNames();
+
+            for (int index = 0;
+                index < joystickNames.Length;
+                ++index)
+            {
+                string joystickName = joystickNames[index];
+                if (name == joystickName)
+                    return true;
+            }
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// Check either of these key are preseed.
+        /// 
+        /// If one of the key is pressed, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is pressed.
+        /// false, none of these keys are pressed.
+        /// </returns>
+        public static bool OneKeys(
+            List<KeyCode> keys, 
+            bool ignorePause = false)
+        {
+            return OneKeys(keys.ToArray(), ignorePause);
+        }
+
+        /// <summary>
+        /// Check either of these key are preseed.
+        /// 
+        /// If one of the key is pressed, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is pressed.
+        /// false, none of these keys are pressed.
+        /// </returns>
+        public static bool OneKeys(
+            KeyCode[] keys, 
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (GetKey(keys[index], ignorePause))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check either of these key are down.
+        /// 
+        /// If one of the key is down, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is down.
+        /// false, none of these keys are down.
+        /// </returns>
+        public static bool OneKeysDown(
+            List<KeyCode> keys, 
+            bool ignorePause = false)
+        {
+            return OneKeysDown(keys.ToArray(), ignorePause);
+        }
+
+        /// <summary>
+        /// Check either of these key are down.
+        /// 
+        /// If one of the key is down, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is down.
+        /// false, none of these keys are down.
+        /// </returns>
+        public static bool OneKeysDown(
+            KeyCode[] keys, 
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (GetKeyDown(keys[index], ignorePause))
+                    return true;
+            }
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// Check either of these key are up.
+        /// 
+        /// If one of the key is up, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is up.
+        /// false, none of these keys are up.
+        /// </returns>
+        public static bool OneKeysUp(
+            List<KeyCode> keys, 
+            bool ignorePause = false)
+        {
+            return OneKeysUp(keys.ToArray(), ignorePause);
+        }
+
+        /// <summary>
+        /// Check either of these key are up.
+        /// 
+        /// If one of the key is up, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, one of the key in the array list is up.
+        /// false, none of these keys are up.
+        /// </returns>
+        public static bool OneKeysUp(
+            KeyCode[] keys, 
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (GetKeyUp(keys[index], ignorePause))
+                    return true;
+            }
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// Check all of these key are preseed.
+        /// 
+        /// If all of the keys are pressed, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are pressed.
+        /// false, none of these keys are pressed.
+        /// </returns>
+        public static bool AllKeys(
+            List<KeyCode> keys,
+            bool ignorePause = false)
+        {
+            return AllKeys(keys.ToArray(), ignorePause);
+        }
+
+        /// <summary>
+        /// Check all of these key are preseed.
+        /// 
+        /// If all of the keys are pressed, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are pressed.
+        /// false, none of these keys are pressed.
+        /// </returns>
+        public static bool AllKeys(
+            KeyCode[] keys, 
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (!GetKey(keys[index], ignorePause))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check all of these key are down.
+        /// 
+        /// If all of the keys are down, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are down.
+        /// false, none of these keys are down.
+        /// </returns>
+        public static bool AllKeysDown(
+            List<KeyCode> keys,
+            bool ignorePause = false)
+        {
+            return AllKeysDown(keys.ToArray(), ignorePause);
+        }
+
+        /// <summary>
+        /// Check all of these key are down.
+        /// 
+        /// If all of the keys are down, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are down.
+        /// false, none of these keys are down.
+        /// </returns>
+        public static bool AllKeysDown(
+            KeyCode[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (!GetKeyDown(keys[index], ignorePause))
+                    return false;
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Check all of these key are up.
+        /// 
+        /// If all of the keys are up, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are up.
+        /// false, none of these keys are up.
+        /// </returns>
+        public static bool AllKeysUp(
+            List<KeyCode> keys,
+            bool ignorePause = false)
+        {
+            return AllKeysUp(keys.ToArray(), ignorePause);
+        }
+
+        /// <summary>
+        /// Check all of these key are up.
+        /// 
+        /// If all of the keys are up, returns true.
+        /// else returns false.
+        /// </summary>
+        /// <param name="keys"> key code array. </param>
+        /// <param name="ignorePause"> ignore the pause check? </param>
+        /// <returns> 
+        /// true, all of the keys in the array list are up.
+        /// false, none of these keys are up.
+        /// </returns>
+        public static bool AllKeysUp(
+            KeyCode[] keys,
+            bool ignorePause = false)
+        {
+            for (int index = 0;
+                index < keys.Length;
+                ++index)
+            {
+                if (!GetKeyUp(keys[index], ignorePause))
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
