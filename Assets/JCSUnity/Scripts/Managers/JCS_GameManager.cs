@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Make sure u have this execute first!!!
     /// </summary>
@@ -25,15 +24,26 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_GameManager) **")]
+
+        [Tooltip("Test this module?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+#endif
+
+
         [Header("** Check Variable (JCS_GameManager) **")]
 
         [Tooltip("Is the game pasue?")]
         [SerializeField]
         private bool mGamePause = false;
 
-#if (UNITY_EDITOR)
 
+#if (UNITY_EDITOR)
         [Header("** Helper Variable (JCS_GameManager) **")]
+
         // helper tool for level designer to do 
         // some cool effect in the game.
         [Tooltip("Adjustable current time scale")]
@@ -114,6 +124,9 @@ namespace JCSUnity
 
         private void TestPauseGame()
         {
+            if (!mTestWithKey)
+                return;
+
             if (Input.GetKeyDown(KeyCode.P))
             {
                 GAME_PAUSE = !GAME_PAUSE;
