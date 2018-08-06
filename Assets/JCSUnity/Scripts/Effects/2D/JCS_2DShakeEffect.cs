@@ -13,7 +13,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Attach this component to the 
     /// transform you want the effect.
@@ -86,6 +85,7 @@ namespace JCSUnity
             DoEffect();
         }
 
+#if (UNITY_EDITOR)
         private void Test()
         {
             if (JCS_Input.GetKey(KeyCode.Y))
@@ -93,16 +93,27 @@ namespace JCSUnity
                 DoShake();
             }
         }
+#endif
 
         //========================================
         //      Self-Define
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Do the shake with default shake time and shake margin.
+        /// </summary>
         public void DoShake()
         {
             DoShake(mShakeTime, mShakeMargin);
         }
+
+        /// <summary>
+        /// Do the shake effect with time and margin.
+        /// </summary>
+        /// <param name="time"> time to do the shake. </param>
+        /// <param name="margin"> margin to do the shake. </param>
         public void DoShake(float time, float margin)
         {
             if (!mRepeatOverride)
@@ -138,6 +149,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Do the actual shake job.
+        /// </summary>
         private void DoEffect()
         {
             if (!mEffect)
