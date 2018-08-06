@@ -31,6 +31,10 @@ namespace JCSUnity
         [Tooltip("Test this module?")]
         [SerializeField]
         private bool mTestWithKey = false;
+
+        [Tooltip("Key to toggle game pause/unpause.")]
+        [SerializeField]
+        private KeyCode mToggleGamePause = KeyCode.P;
 #endif
 
 
@@ -127,7 +131,7 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(mToggleGamePause))
             {
                 GAME_PAUSE = !GAME_PAUSE;
             }
