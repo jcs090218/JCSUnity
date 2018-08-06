@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// The component make the bubble movement.
     /// </summary>
     [RequireComponent(typeof(JCS_3DGoStraightAction))]
     public class JCS_Bubble
