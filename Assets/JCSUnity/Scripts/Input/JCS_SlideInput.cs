@@ -25,6 +25,18 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+#if (UNITY_EDITOR || UNITY_STANDALONE)
+        [Header("** Check Variables (JCS_SlideInput) **")]
+
+        [Tooltip("Previous position.")]
+        [SerializeField]
+        private Vector3 mPrePos = Vector3.zero;
+
+        [Tooltip("Is the application currently focused?")]
+        [SerializeField]
+        private bool mFocus = false;
+#endif
+
         [Header("** Runtime Variables (JCS_SlideInput) **")]
 
         [Tooltip("Is the screen thouched?")]
@@ -35,11 +47,6 @@ namespace JCSUnity
         [SerializeField]
         private Vector2 mDeltaPos = Vector2.zero;
 
-#if (UNITY_EDITOR || UNITY_STANDALONE)
-        private Vector3 mPrePos = Vector3.zero;
-#endif
-
-
         //----------------------
         // Protected Variables
 
@@ -47,11 +54,23 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public bool Touched { get { return this.mTouched; } }
-        public Vector2 DeltaPos { get { return this.mDeltaPos; } } 
+        public Vector2 DeltaPos { get { return this.mDeltaPos; } }
 
         //========================================
         //      Unity's function
         //------------------------------
+
+        private void OnApplicationFocus(bool focus)
+        {
+            if (focus)
+            {
+                mFocus = true;
+            }
+            else
+            {
+                // Do something when not focus?
+            }
+        }
 
         private void Start()
         {
@@ -61,15 +80,26 @@ namespace JCSUnity
 
         private void Update()
         {
+
 #if (UNITY_EDITOR || UNITY_STANDALONE)
 
             mTouched = Input.GetMouseButton(0);
 
             Vector3 currPos = Input.mousePosition;
-            if (mTouched)
+
+            // Don't update delta pos when window just focus.
+            if (mTouched && !mFocus)
+            {
                 mDeltaPos = currPos - mPrePos;
+            }
             else
+            {
                 mDeltaPos = Vector2.zero;
+
+                // If focus, ignore one frame.
+                mFocus = false;
+            }
+
             mPrePos = currPos;
 
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
