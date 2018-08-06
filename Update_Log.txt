@@ -11,6 +11,7 @@
 * Add boolean check for if the specific joystick plugged-in util input 
  function. (JCSUnity)
 * Fixed slide input on focus changed the delta value issue. (JCSUnity)
+* Add the test key option in JCS_GameManager. (JCSUnity)
 
 2018-08-05
 * Show joystick names in the JCS_InputSettings' inspector. (JCSUnity)
