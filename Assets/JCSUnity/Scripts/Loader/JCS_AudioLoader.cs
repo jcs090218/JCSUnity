@@ -23,7 +23,7 @@ namespace JCSUnity
         /// <summary>
         /// Load the music from path in runetime.
         /// </summary>
-        /// <param name="ac"></param>
+        /// <param name="ac"> A container for audio data. </param>
         /// <param name="path"> file path, not include filename. </param>
         /// <param name="filename"> file name of the ogg file. </param>
         /// <param name="callback"> Callback after the audio is loaded. </param>
@@ -40,9 +40,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Load the music from path in runetime.
+        /// Load the music from path in runtime.
         /// </summary>
-        /// <param name="ac"></param>
+        /// <param name="ac"> A container for audio data. </param>
         /// <param name="fullFilePath"> Filpath to the target audio file. </param>
         /// <param name="callback"> Callback after the audio is loaded. </param>
         /// <returns> Coroutine status. </returns>
