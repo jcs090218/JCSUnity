@@ -9,9 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
+    /// <summary>
+    /// Make the attached transform do the wave effect.
+    /// </summary>
     public class JCS_2DWaveEffect
         : JCS_2DEffect
     {
@@ -21,22 +24,50 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
-        private float mTime = 0;
-        [Tooltip("height offset.")]
-        [SerializeField] private float mWaveRestPosition = 0.0f;
-        [Tooltip("How intense the wave is.")]
-        [SerializeField] private float mAmplitude = 1.0f;
-        [Tooltip("How fast per period in wave.")]
-        [SerializeField] private float mFrequency = 2;
-        private Vector3 mOrigin = Vector3.zero;
-        [Tooltip("Effect Axis(Effect will do only on axis!, for random plz use the 3D version!)")]
-        [SerializeField] private JCS_Axis mEffectAxis = JCS_Axis.AXIS_X;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_2DWaveEffect) **")]
+
+        [Tooltip("Test with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Do wave effect key.")]
+        [SerializeField]
+        private KeyCode mDoWaveEffectKey = KeyCode.T;
+#endif
+
+
+        [Header("** Runtime Variables (JCS_2DWaveEffect) **")]
+
+        private float mTime = 0;
+
+        [Tooltip("height offset.")]
+        [SerializeField]
+        private float mWaveRestPosition = 0.0f;
+
+        [Tooltip("How intense the wave is.")]
+        [SerializeField]
+        private float mAmplitude = 1.0f;
+
+        [Tooltip("How fast per period in wave.")]
+        [SerializeField]
+        private float mFrequency = 2;
+        private Vector3 mOrigin = Vector3.zero;
+
+        [Tooltip("Effect Axis(Effect will do only on axis!, for random plz use the 3D version!)")]
+        [SerializeField]
+        private JCS_Axis mEffectAxis = JCS_Axis.AXIS_X;
+
+        [Tooltip("")]
+        [SerializeField]
         private float mEffectTime = 0;
 
+
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
-        [SerializeField] private JCS_2DCamera mJCS_2DCamera = null;
+
+        [SerializeField]
+        private JCS_2DCamera mJCS_2DCamera = null;
 
         //----------------------
         // Protected Variables
@@ -63,19 +94,30 @@ namespace JCSUnity
             DoEffect();
         }
 
+#if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.T))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mDoWaveEffectKey))
             {
                 DoWaveEffect(1, mFrequency);
             }
         }
+#endif
 
         //========================================
         //      Self-Define
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Active the wave effect.
+        /// </summary>
+        /// <param name="time"></param>
+        /// <param name="frequency"></param>
         public void DoWaveEffect(float time, float frequency)
         {
             // if is doing the effect
