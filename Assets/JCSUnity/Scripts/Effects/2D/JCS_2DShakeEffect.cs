@@ -14,8 +14,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Attach this component to the 
-    /// transform you want the effect.
+    /// Make the attached transform shake.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_2DShakeEffect 
@@ -29,6 +28,18 @@ namespace JCSUnity
         // Private Variables
 
         private JCS_SoundPlayer mSoundPlayer = null;
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_2DWaveEffect) **")]
+
+        [Tooltip("Test with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Do wave effect key.")]
+        [SerializeField]
+        private KeyCode mDoShakeEffectKey = KeyCode.Y;
+#endif
 
 
         [Header("** Runtime Variables (JCS_2DShakeEffect) **")]
@@ -88,7 +99,10 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKey(KeyCode.Y))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKey(mDoShakeEffectKey))
             {
                 DoShake();
             }
