@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-08-07
+* Add test key option on few effect modules/components. (JCSUnity)
+
 2018-08-06
 * Add boolean check for if the specific joystick plugged-in util input 
  function. (JCSUnity)
