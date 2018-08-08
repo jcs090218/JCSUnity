@@ -66,6 +66,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_Animation) **")]
 
+        [Tooltip("Display containers, display the current sprite onto " +
+            "those displays too.")]
+        [SerializeField]
+        private JCS_UnityObject[] mDisplays = null;
+
         [Tooltip("Do play the animation?")]
         [SerializeField]
         private bool mActive = true;
@@ -83,7 +88,7 @@ namespace JCSUnity
         private Sprite mNullSprite = null;
 
 
-        [Tooltip("")]
+        [Tooltip("FPS for the animation to play.")]
         [SerializeField]
         private float mFramePerSec = 0.1f;
 
@@ -289,8 +294,19 @@ this, default is 1.")]
 
             PutAnimInFrame();
 
+            Sprite currentPlayingSprite = mAnimFrames[this.mCurrentPlayingFrame];
+
             // set the current sprite.
-            LocalSprite = mAnimFrames[this.mCurrentPlayingFrame];
+            LocalSprite = currentPlayingSprite;
+
+            // Update all displays.
+            for (int index = 0;
+                index < mDisplays.Length;
+                ++index)
+            {
+                JCS_UnityObject display = mDisplays[index];
+                display.LocalSprite = currentPlayingSprite;
+            }
         }
 
         //----------------------
