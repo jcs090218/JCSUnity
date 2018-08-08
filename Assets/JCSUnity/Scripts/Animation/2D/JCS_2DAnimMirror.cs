@@ -13,9 +13,12 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// Completely mimic a JCS_2DAnimation's frame and order layer.
+    /// Completely mimic a JCS_2DAnimation's variables.
+    ///   - Frame
+    ///   - Sorting Layer
+    ///   - Color
+    ///   - Flip X/Y
     /// </summary>
     public class JCS_2DAnimMirror
         : MonoBehaviour
@@ -104,9 +107,6 @@ use negative scale instead.")]
         /// </summary>
         private void InitMimicAnimations()
         {
-            if (mMimicAnimations.Count >= 0)
-                return;
-
             foreach (JCS_2DAnimation anim in mMimicAnimations)
             {
                 if (anim == null)
