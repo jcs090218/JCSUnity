@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Play animator's animations in order base on if the animation are 
     /// done playing it.
@@ -30,13 +29,31 @@ namespace JCSUnity
         /*******************************************/
         /*           Private Variables             */
         /*******************************************/
+
         private JCS_2DAnimator mAnimator = null;
+
 
         [Header("** Check Variables (JCS_2DOrderAnimPlayer) **")]
 
         [Tooltip("Current playing animation id.")]
         [SerializeField]
         private int mCurrentAnimationId = 0;
+
+
+        [Header("** Runtime Variables (JCS_2DOrderAnimPlayer) **")]
+
+        [Tooltip("Is the animation working?")]
+        [SerializeField]
+        private bool mActive = false;
+
+        [Tooltip("Play the animation when the component is awake?")]
+        [SerializeField]
+        private bool mPlayOnAwake = false;
+
+        [Tooltip("Loop the animation?")]
+        [SerializeField]
+        private bool mLoop = false;
+
 
         /*******************************************/
         /*           Protected Variables           */
@@ -45,6 +62,9 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool PlayOnAwake { get { return this.mPlayOnAwake; } set { this.mPlayOnAwake = value; } }
+        public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -53,12 +73,20 @@ namespace JCSUnity
         {
             this.mAnimator = this.GetComponent<JCS_2DAnimator>();
 
-            // start the animation from the first id.
-            mAnimator.DoAnimation(0, true);
+            if (mPlayOnAwake)
+            {
+                // start the animation from the first id.
+                mAnimator.DoAnimation(0, true);
+
+                mActive = true;
+            }
         }
 
         private void Update()
         {
+            if (!mActive)
+                return;
+
             // check if animation done playing.
             if (!mAnimator.CurrentAnimation.IsDonePlaying)
                 return;
@@ -66,9 +94,20 @@ namespace JCSUnity
             // add up for next animation.
             ++mCurrentAnimationId;
 
-            // reset anim id.
-            if (mCurrentAnimationId == mAnimator.AnimationsLength)
-                mCurrentAnimationId = 0;
+            // reset anim id if loop.
+            if (mCurrentAnimationId >= mAnimator.AnimationsLength)
+            {
+                if (mLoop)
+                    mCurrentAnimationId = 0;
+                else
+                {
+                    // set to the last animation in the array.
+                    mCurrentAnimationId = mAnimator.AnimationsLength - 1;
+
+                    // If not loop, just disable the cycle trigger.
+                    mActive = false;
+                }
+            }
 
             // play animaiton.
             mAnimator.DoAnimation(mCurrentAnimationId, false, true);
