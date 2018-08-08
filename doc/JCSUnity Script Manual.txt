@@ -535,7 +535,13 @@
 
       <File name="JCS_2DAnimMirror.cs">
         <Placement>Any node/transform.</Placement>
-        <Description>Completely mimic a JCS_2DAnimation's frame.</Description>
+        <Description>
+          Completely mimic a JCS_2DAnimation's variables.
+            - Frame
+            - Sorting Layer
+            - Color
+            - Flip X/Y
+        </Description>
       </File>
 
       <File name="JCS_2DCharacterAnimator.cs">
