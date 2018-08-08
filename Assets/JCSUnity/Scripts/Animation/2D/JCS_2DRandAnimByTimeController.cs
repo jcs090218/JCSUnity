@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Randomly play animation in animator object depends on time
     /// object which is the 'JCS_AdjustTimeTrigger' component.
