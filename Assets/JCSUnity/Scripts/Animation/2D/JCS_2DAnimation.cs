@@ -69,7 +69,7 @@ namespace JCSUnity
         [Tooltip("Display containers, display the current sprite onto " +
             "those displays too.")]
         [SerializeField]
-        private JCS_UnityObject[] mDisplays = null;
+        private List<JCS_UnityObject> mDisplays = null;
 
         [Tooltip("Do play the animation?")]
         [SerializeField]
@@ -127,8 +127,8 @@ this, default is 1.")]
         public bool IsDonePlaying { get { return this.mIsDonePlaying; } }
         public void SetJCS2DAnimator(JCS_2DAnimator jcs2dAnimator) { this.mJCS2DAnimator = jcs2dAnimator; }
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
-
         public Sprite NullSprite { get { return this.mNullSprite; } set { this.mNullSprite = value; } }
+        public List<JCS_UnityObject> Displays { get { return this.mDisplays; } }
 
         // Bind.
         public void SetAnimationFrame(Sprite[] frames)
@@ -136,11 +136,9 @@ this, default is 1.")]
             this.mAnimFrames = frames;
             Awake();
         }
-        public Sprite[] GetAnimationFrame()
-        {
-            return this.mAnimFrames;
-        }
+        public Sprite[] GetAnimationFrame() { return this.mAnimFrames; }
         public float FramePerSec { get { return this.mFramePerSec; } set { this.mFramePerSec = value; } }
+        
 
         //========================================
         //      Unity's function
@@ -301,12 +299,31 @@ this, default is 1.")]
 
             // Update all displays.
             for (int index = 0;
-                index < mDisplays.Length;
+                index < mDisplays.Count;
                 ++index)
             {
                 JCS_UnityObject display = mDisplays[index];
+
+                if (display == null)
+                    continue;
+
                 display.LocalSprite = currentPlayingSprite;
             }
+        }
+
+        /// <summary>
+        /// Add a display object to displays list.
+        /// </summary>
+        /// <param name="newDisplay"> new display object. </param>
+        public void AddDisplays(JCS_UnityObject newDisplay)
+        {
+            if (newDisplay == null)
+                return;
+
+            mDisplays.Add(newDisplay);
+
+            // Clean null refs.
+            mDisplays = JCS_Utility.RemoveEmptySlot<JCS_UnityObject>(mDisplays);
         }
 
         //----------------------
