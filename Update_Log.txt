@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-08-09
+* Change JCS_2DAnimation's displays variable from normal array to list 
+ data structure. (JCSUnity)
+
 2018-08-08
 * Add active/play on awake/loop variable to JCS_2DOrderAnimPlayer. (JCSUnity)
 * Add 'displays' variable in JCS_2DAnimation module for multiple 
