@@ -1018,7 +1018,6 @@
       </File>
       </3D>
       <GUI>
-
         <Panel>
           <File name="JCS_PanelActionType.cs">
             <Placement>Script base.</Placement>
@@ -1026,6 +1025,12 @@
           </File>
         </Panel>
 
+        <Text>
+          <File name="JCS_GradientType.cs">
+            <Placement>Script base.</Placement>
+            <Description>Gradient type.</Description>
+          </File>
+        </Text>
       </GUI>
       <Time>
 
@@ -2015,6 +2020,13 @@
             <Description>
               Handle of mutliple of damage text. Re-use for saving
               some performance.
+            </Description>
+          </File>
+
+          <File name="JCS_GradientText.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>
+              Gradient text effect.
             </Description>
           </File>
 
