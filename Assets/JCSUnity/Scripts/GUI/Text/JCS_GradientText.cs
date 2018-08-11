@@ -16,6 +16,11 @@ namespace JCSUnity
 {
     /// <summary>
     /// Gradient text effect.
+    /// 
+    /// Original Author: Noxury
+    /// Source: https://answers.unity.com/questions/756311/how-to-create-gradient-font.html
+    /// Extension: Lin Yi Chung
+    /// Source: https://www.codepile.net/pile/jbed2WV4
     /// </summary>
     public class JCS_GradientText
         : BaseMeshEffect
