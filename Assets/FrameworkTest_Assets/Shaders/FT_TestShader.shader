@@ -15,6 +15,8 @@ Shader "FrameworkTest/FT_TestShader"
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
         _Color ("Tint", Color) = (1,1,1,1)
         [MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
+        _Length ("Length", Range(0, 1000)) = 0
+		_RenderRange ("RenderRange", Float) = 100
     }
 
     SubShader
