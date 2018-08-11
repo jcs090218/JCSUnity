@@ -9,6 +9,7 @@
 
 2018-08-11
 * JCS_GradientText implemented for making the text gradient effect. (JCSUnity)
+* Support load image as texture in image loader module. (JCSUnity)
 
 2018-08-09
 * Change JCS_2DAnimation's displays variable from normal array to list 
