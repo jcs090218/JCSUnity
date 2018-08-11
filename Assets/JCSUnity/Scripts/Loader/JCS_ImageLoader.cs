@@ -24,26 +24,100 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Load image file as texture.
+        /// </summary>
+        /// <param name="filePath"> Image file path. </param>
+        /// <returns> Image data. </returns>
+        public static Texture2D LoadTexture(string filePath)
+        {
+            var tex = new Texture2D(2, 2);
+            var pngBytes = System.IO.File.ReadAllBytes(filePath);
+            tex.LoadImage(pngBytes);
+
+            return tex;
+        }
+
+        /// <summary>
+        /// Create sprite object.
+        /// </summary>
+        /// <param name="tex"> image data </param>
+        /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
+        /// <returns> sprite object. </returns>
+        public static Sprite Create(
+            Texture2D tex,
+            float pixelPerUnit = 100.0f)
+        {
+            return Create(
+                tex,
+                0.0f, 0.0f,
+                tex.width, tex.height,
+                pixelPerUnit);
+        }
+
+        /// <summary>
+        /// Create sprite object.
+        /// </summary>
+        /// <param name="tex"> image data </param>
+        /// <param name="x"> position x </param>
+        /// <param name="y"> position y </param>
+        /// <param name="width"> width of the image </param>
+        /// <param name="height"> height of the image </param>
+        /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
+        /// <returns> sprite object. </returns>
+        public static Sprite Create(
+            Texture2D tex,
+            float x, float y,
+            float width, float height,
+            float pixelPerUnit = 100.0f)
+        {
+            return Sprite.Create(
+                tex,
+                new Rect(x, y, width, height),
+                new Vector2(0.5f, 0.5f),
+                pixelPerUnit);
+        }
+
+        /// <summary>
         /// Load Image by file path.
         /// </summary>
         /// <param name="filePath"> Image file path. </param>
         /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
         /// <returns> Sprite object. </returns>
-        public static Sprite LoadImage(string filePath, float pixelPerUnit = 100)
+        public static Sprite LoadImage(string filePath, float pixelPerUnit = 100.0f)
         {
             Sprite img = null;
 
-            var tex = new Texture2D(2, 2);
-            var pngBytes = System.IO.File.ReadAllBytes(filePath);
-            tex.LoadImage(pngBytes);
+            Texture2D tex = LoadTexture(filePath);
 
-            Rect rect = new Rect();
-            rect.x = 0;
-            rect.y = 0;
-            rect.height = tex.height;
-            rect.width = tex.width;
+            img = Create(tex, 0.0f, 0.0f, tex.width, tex.height, pixelPerUnit);
 
-            img = Sprite.Create(tex, rect, new Vector2(0.5f, 0.5f), pixelPerUnit);
+            return img;
+        }
+
+        /// <summary>
+        /// Load Image by file path.
+        /// </summary>
+        /// <param name="filePath"> Image file path. </param>
+        /// <param name="x"> position x </param>
+        /// <param name="y"> position y </param>
+        /// <param name="width"> width of the image </param>
+        /// <param name="height"> height of the image </param>
+        /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
+        /// <returns> Sprite object. </returns>
+        public static Sprite LoadImage(
+            string filePath, 
+            float x, 
+            float y, 
+            float width, 
+            float height, 
+            float pixelPerUnit = 100.0f)
+        {
+            Sprite img = null;
+
+            Texture2D tex = LoadTexture(filePath);
+
+            // Use custom x/y/width/height values.
+            img = Create(tex, x, y, width, height, pixelPerUnit);
 
             return img;
         }
