@@ -60,7 +60,7 @@ namespace JCSUnity
 
         [Tooltip(@"How fast the liquid bar move approach to 
 target position/value.")]
-        [SerializeField]
+        [SerializeField] [Range(0.01f, 10.0f)]
         protected float mDeltaFriction = 0.2f;
 
         [Tooltip("Mininum value of the liquid bar.")]
