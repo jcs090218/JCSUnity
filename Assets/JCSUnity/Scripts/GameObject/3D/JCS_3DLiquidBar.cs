@@ -34,7 +34,31 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_3DLiquidBar) **")]
+
+        [Tooltip("Test functionalities works?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Make the bar to min value.")]
+        [SerializeField]
+        private KeyCode mLackKey = KeyCode.J;
+
+        [Tooltip("Make the bar to max value.")]
+        [SerializeField]
+        private KeyCode mFullKey = KeyCode.K;
+
+        [Tooltip("Make the bar to half value.")]
+        [SerializeField]
+        private KeyCode mHalfKey = KeyCode.H;
+
+        [Tooltip("Fixed the value if the min and max value has changed.")]
+        [SerializeField]
+        private KeyCode mFixedKey = KeyCode.X;
+#endif
+
 
         [Header("** Check Variables (JCS_3DLiquidBar) **")]
 
@@ -94,16 +118,19 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.J))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mLackKey))
                 Lack();
-            if (JCS_Input.GetKeyDown(KeyCode.K))
+            if (JCS_Input.GetKeyDown(mFullKey))
                 Full();
 
             // half
-            if (JCS_Input.GetKeyDown(KeyCode.H))
+            if (JCS_Input.GetKeyDown(mHalfKey))
                 SetCurrentValue(MaxValue / 2);
 
-            if (JCS_Input.GetKeyDown(KeyCode.X))
+            if (JCS_Input.GetKeyDown(mFixedKey))
                 FixPercentage();
         }
 #endif
@@ -135,7 +162,6 @@ namespace JCSUnity
             if (val <= mMinValue)
             {
                 JCS_Debug.LogError(
-                    "JCS_3DLiquidBar",
                     "Max value u r setting cannot be lower than min value.");
 
                 return;
@@ -158,7 +184,6 @@ namespace JCSUnity
             if (val >= mMaxValue)
             {
                 JCS_Debug.LogError(
-                    "JCS_3DLiquidBar",
                     "Min value u r setting cannot be higher than max value.");
 
                 return;
@@ -357,7 +382,6 @@ namespace JCSUnity
 
             {
                 //JCS_Debug.LogWarning(
-                //    "JCS_3DLiquidBar",
                 //    "Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");
 
                 return;
