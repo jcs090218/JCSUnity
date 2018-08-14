@@ -177,7 +177,7 @@ namespace JCSUnity
 
                 Vector3 newPos = this.transform.localPosition;
 
-                bool isEven = JCS_Mathf.isEven(index);
+                bool isEven = JCS_Mathf.IsEven(index);
 
                 if (index != 0)
                     currentBtn.SetInteractable(false);
