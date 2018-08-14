@@ -12,10 +12,12 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
+    /// <summary>
+    /// Default canvas class for JCSUnity.
+    /// </summary>
     [RequireComponent(typeof(Canvas))]
     [RequireComponent(typeof(RectTransform))]
-    public class JCS_Canvas 
+    public class JCS_Canvas
         : MonoBehaviour
     {
 
@@ -25,9 +27,20 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private Canvas mCanvas = null;
-        [SerializeField] private JCS_ResizeUI mResizeUI = null;
-        [SerializeField] private string mResizeUI_path = "JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI";
+
+        [Header("** Check Variables (JCS_Canvas) **")]
+
+        [Tooltip("Canvas object.")]
+        [SerializeField]
+        private Canvas mCanvas = null;
+
+        [Tooltip("Resize UI object.")]
+        [SerializeField]
+        private JCS_ResizeUI mResizeUI = null;
+
+        [Tooltip("Path link to resize UI object.")]
+        [SerializeField]
+        private string mResizeUI_path = "JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI";
 
         // Application Rect (Window)
         private RectTransform mAppRect = null;
@@ -48,7 +61,6 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-
             if (instance != null)
             {
                 string black_screen_name = JCS_GameSettings.BLACK_SCREEN_NAME;
@@ -94,7 +106,7 @@ namespace JCSUnity
                 // Delete the old one
                 DestroyImmediate(instance.gameObject);
             }
-            
+
 
             // attach the new one
             instance = this;
