@@ -221,13 +221,29 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return bool to check the number is odd or not.
+        /// </summary>
+        /// <param name="num"> number to check. </param>
+        /// <returns>
+        /// true, is odd.
+        /// false, is even.
+        /// </returns>
+        public static bool IsOdd(int index)
+        {
+            return !IsEven(index);
+        }
+
+        /// <summary>
         /// Return bool to check the number is even or not.
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public static bool isEven(int index)
+        /// <param name="num"> number to check. </param>
+        /// <returns> 
+        /// true, is even.
+        /// false, is odd.
+        /// </returns>
+        public static bool IsEven(int num)
         {
-            return ((index % 2) == 0);
+            return ((num % 2) == 0);
         }
 
         /// <summary>
