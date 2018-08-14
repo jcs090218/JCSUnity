@@ -2082,7 +2082,7 @@
 
         <File name="JCS_Canvas.cs">
           <Placement>On the canvas.</Placement>
-          <Description>Core system for the gaming system work.</Description>
+          <Description>Default canvas class for JCSUnity.</Description>
         </File>
 
         <File name="JCS_DeltaNumber.cs">
