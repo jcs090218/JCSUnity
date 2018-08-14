@@ -2090,6 +2090,13 @@
           <Description>Score system with the sprite 0 to 9.</Description>
         </File>
 
+        <File name="JCS_Dropdown.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            A better version of dropdown object handle for UGUI.
+          </Description>
+        </File>
+
         <File name="JCS_GUILiquidBar.cs">
           <Placement>Any rect-transform.</Placement>
           <Description>Any liquid bar like health bar, mana bar, etc.</Description>
