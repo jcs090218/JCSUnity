@@ -72,7 +72,7 @@ namespace JCSUnity
         /// true : found the item and set it succesfully.
         /// false : did not find the item, failed to set.
         /// </returns>
-        public static bool Dropdown_SetToValue(Dropdown dd, string itemName)
+        public static bool Dropdown_SetSelection(Dropdown dd, string itemName)
         {
             int index = Dropdown_GetItemIndex(dd, itemName);
 
@@ -83,6 +83,51 @@ namespace JCSUnity
             dd.value = index;
 
             return true;
+        }
+
+        /// <summary>
+        /// Set the selection to target index.
+        /// </summary>
+        /// <param name="dd"> dropdown object. </param>
+        /// <param name="selection"> selection id. </param>
+        public static void Dropdown_SetSelection(Dropdown dd, int selection)
+        {
+            dd.value = selection;
+        }
+
+        /// <summary>
+        /// Refresh the current selection.
+        /// </summary>
+        /// <param name="dd"> dropdown object. </param>
+        public static void Dropdown_RefreshSelection(Dropdown dd)
+        {
+            int currentSelectionId = dd.value;
+
+            if (currentSelectionId != 0)
+                Dropdown_SetSelection(dd, 0);
+            else
+            {
+                // We use something else.
+                // 
+                // NOTE(jenchieh): Glady, negative one does not 
+                // occurs error.
+                Dropdown_SetSelection(dd, -1);
+            }
+            Dropdown_SetSelection(dd, currentSelectionId);
+        }
+
+        /// <summary>
+        /// Add an option to dropdown.
+        /// </summary>
+        /// <param name="dd"> dropdown object. </param>
+        /// <param name="inText"> input text. </param>
+        /// <returns> Dropdown pointer. </returns>
+        public static Dropdown Dropdown_AddOption(Dropdown dd, string inText)
+        {
+            dd.options.Add(
+                new Dropdown.OptionData() { text = inText });
+
+            return dd;
         }
     }
 }
