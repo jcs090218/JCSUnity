@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-08-14
+* JCS_Dropdown implmeneted for better dropdown UI handle. (JCSUnity)
+* Add more dropdown util function in JCS_GUIUtil module. (JCSUnity)
+
 2018-08-13
 * Add test option to JCS_3DLiquidBar. (JCSUnity)
 
