@@ -79,7 +79,8 @@ namespace JCSUnity
         public Dropdown dropdown { get { return this.mDropdown; } }
         public int MaxLetters { get { return this.mMaxLetters; } set { this.mMaxLetters = value; } }
         public int DotCount { get { return this.mDotCount; } set { this.mDotCount = value; } }
-        public string GetDropdownRealTextAt(int index) { return this.mDropdownRealTexts[index]; }
+        public List<string> DropdownRealTexts { get { return this.mDropdownRealTexts; } }
+        public List<string> DropdownBackupTexts { get { return this.mDropdownBackupTexts; } }
 
         /*******************************************/
         /*            Unity's function             */
