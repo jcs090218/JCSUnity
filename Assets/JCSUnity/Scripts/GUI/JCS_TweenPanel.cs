@@ -46,6 +46,12 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mDeactiveKey = KeyCode.L;
 #endif
+        [Header("** Check Variables (JCS_TweenPanel) **")]
+
+        [Tooltip("Record down the starting position, in order to go back.")]
+        [SerializeField]
+        private Vector3 mStartingPosition = Vector3.zero;
+
 
         [Header("** Runtime Variables (JCS_TweenPanel) **")]
 
@@ -56,11 +62,6 @@ namespace JCSUnity
         [Tooltip("Do the tween effect to this position.")]
         [SerializeField]
         private Vector3 mTargetPosition = Vector3.zero;
-
-        [Tooltip("")]
-        [SerializeField]
-        // record down the starting position, in order to go back.
-        private Vector3 mStartingPosition = Vector3.zero;
 
 
         [Header("** Sound Setttings (JCS_TweenPanel) **")]
