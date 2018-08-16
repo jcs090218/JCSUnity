@@ -2367,6 +2367,17 @@
           <Description>Base class of all the sorting object.</Description>
         </File>
       </Interfaces>
+      <IO>
+        <File name="JCS_BinaryReader.cs">
+          <Placement>Script base.</Placement>
+          <Description>Binary Writer for JCSNetS framework use.</Description>
+        </File>
+
+        <File name="JCS_IO.cs">
+          <Placement>Script base.</Placement>
+          <Description>IO utilities.</Description>
+        </File>
+      </IO>
       <Lib>
         <File name="JCS_Pair.cs">
           <Placement>Script base.</Placement>
