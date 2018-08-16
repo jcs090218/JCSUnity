@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-08-16
+* Update IO module's scripting manual. (JCSUnity)
+
 2018-08-15
 * JCS_IO implemented for Input/Output utilities. (JCSUnity)
 * Add JCS_Dropdown utility functions in JCS_GUIUtil module. (JCSUnity)
