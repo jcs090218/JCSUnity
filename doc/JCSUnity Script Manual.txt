@@ -1117,11 +1117,6 @@
         <Description>Increament and Decreament.</Description>
       </File>
 
-      <File name="JCS_InputType.cs">
-        <Placement>Script base.</Placement>
-        <Description>List of the mouse input button.</Description>
-      </File>
-
       <File name="JCS_JumpType.cs">
         <Placement>Script base.</Placement>
         <Description>Jump count, jump, double jump, etc.</Description>
