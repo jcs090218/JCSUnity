@@ -192,7 +192,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="type"> type by JCS_InputType (self-define) </param>
         /// <returns> true: if double click, false nothing happens </returns>
-        public static bool OnMouseDoubleClick(JCS_InputType type, bool ignorePause = false)
+        public static bool OnMouseDoubleClick(JCS_MouseButton type, bool ignorePause = false)
         {
             return OnMouseDoubleClick((int)type, ignorePause);
         }

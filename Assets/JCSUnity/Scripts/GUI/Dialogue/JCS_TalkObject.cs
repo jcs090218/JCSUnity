@@ -47,7 +47,7 @@ namespace JCSUnity
 
         private void OnMouseOver()
         {
-            if (JCS_Input.OnMouseDoubleClick(JCS_InputType.MOUSE_LEFT))
+            if (JCS_Input.OnMouseDoubleClick(JCS_MouseButton.LEFT))
             {
                 JCS_DialogueSystem jcsDs = JCS_UtilitiesManager.instance.GetDialogueSystem();
 
