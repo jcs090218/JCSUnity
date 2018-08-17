@@ -12,6 +12,7 @@
  in the dragging action. (JCSUnity)
 * Remove 'JCS_InputType' enum, is a mistake script by moving from other 
  test module project. (JCSUnity)
+* Update project/development version to 1.7.4. (JCSUnity)
 
 2018-08-16
 * Update IO module's scripting manual. (JCSUnity)
