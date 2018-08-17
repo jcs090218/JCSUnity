@@ -88,10 +88,22 @@ namespace JCSUnity
     /// </summary>
     public class JCS_Input 
     {
-        private static bool mClick = false;
-        private static float mClickTime = 0.25f;
-        private static float mClickTimer = 0;
+        #region DOUBLE_CLICK
+        // Boolean to indentify the first click.
+        private static bool CLICK = false;
+        // Interval time between the first click and the second click.
+        private static float CLICK_TIME = 0.25f;
+        // Timer to check with 'CLICK_TIME'.
+        private static float CLICK_TIMER = 0.0f;
+        #endregion
 
+        #region DRAG
+        private static bool START_DRAGGING = false;
+        private static bool DRAGGING = false;
+        private static Vector3 START_DRAG_POINT = Vector3.zero;
+        #endregion
+
+        #region JOYSTICK
         private static Dictionary<string, bool>
             mJoystickKeyPressed = new Dictionary<string, bool>();
         private static Dictionary<string, bool>
@@ -105,7 +117,7 @@ namespace JCSUnity
 
         // record down the if the joystick was connected.
         private static bool mIsJoystickConnected = IsJoystickConnected();
-
+        #endregion
 
         /* Default callback function pointer. */
         private static void JoystickPluggedDefaultCallback() { JCS_Debug.Log("At least one joystick connected!!!"); }
@@ -192,31 +204,86 @@ namespace JCSUnity
         public static bool OnMouseDoubleClick(int button, bool ignorePause = false)
         {
             // Check first click
-            if (!mClick)
+            if (!CLICK)
             {
                 if (GetMouseButtonDown(button, ignorePause))
-                    mClick = true;
+                    CLICK = true;
             }
             // Check double click
             else
             {
-                mClickTimer += Time.deltaTime;
+                CLICK_TIMER += Time.deltaTime;
 
                 if (GetMouseButtonDown(button, ignorePause))
                 {
-                    mClickTimer = 0;
-                    mClick = false;
+                    CLICK_TIMER = 0;
+                    CLICK = false;
                     return true;
                 }
 
-                if (mClickTime < mClickTimer)
+                if (CLICK_TIME < CLICK_TIMER)
                 {
-                    mClick = false;
-                    mClickTimer = 0;
+                    CLICK = false;
+                    CLICK_TIMER = 0;
                 }
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Is the mouse dragging right now?
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="ignorePause"></param>
+        /// <returns></returns>
+        public static bool OnMouseDrag(int button, bool ignorePause = false)
+        {
+            return OnMouseDrag((JCS_MouseButton)button, ignorePause);
+        }
+        /// <summary>
+        /// Is the mouse dragging right now?
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="ignorePause"></param>
+        /// <returns></returns>
+        public static bool OnMouseDrag(JCS_MouseButton button, bool ignorePause = false)
+        {
+            if (START_DRAGGING)
+            {
+                if (GetMouseButton(button, ignorePause))
+                {
+                    if (Input.mousePosition != START_DRAG_POINT)
+                    {
+                        // NOTE(jenchieh): this will prevent if the 
+                        // player goes back to the starting point.
+                        // 
+                        // Once it start dragging, it will always be 
+                        // dragging state even when the player make 
+                        // the mouse position the same as 'START_DRAG_POINT' 
+                        // will still count as dragging!
+                        DRAGGING = true;
+                        return true;
+                    }
+                }
+                else
+                {
+                    START_DRAG_POINT = Vector3.zero;
+                    START_DRAGGING = false;
+                    DRAGGING = false;
+                }
+            }
+            else
+            {
+                if (GetMouseButtonDown(button, ignorePause))
+                {
+                    // Record down the mouse position.
+                    START_DRAG_POINT = Input.mousePosition;
+                    START_DRAGGING = true;
+                }
+            }
+
+            return DRAGGING;
         }
 
 
@@ -285,23 +352,29 @@ namespace JCSUnity
 
             return new Vector2(mouseRatioX, mouseRatioY);
         }
-        
+
         /// <summary>
-        /// 
+        /// Get the mouse state by passing it the action.
         /// </summary>
-        /// <param name="act"></param>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="act"> key action type. </param>
+        /// <param name="button"> button type. </param>
+        /// <returns>
+        /// true, the mouse state is correct.
+        /// false, the mouse state is incorrect.
+        /// </returns>
         public static bool GetMouseByAction(JCS_KeyActionType act, JCS_MouseButton button, bool ignorePause = false)
         {
             return GetMouseByAction(act, (int)button, ignorePause);
         }
         /// <summary>
-        /// 
+        /// Get the mouse state by passing it the action.
         /// </summary>
-        /// <param name="act"></param>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="act"> key action type. </param>
+        /// <param name="button"> button number. </param>
+        /// <returns>
+        /// true, the mouse state is correct.
+        /// false, the mouse state is incorrect.
+        /// </returns>
         public static bool GetMouseByAction(JCS_KeyActionType act, int button, bool ignorePause = false)
         {
             switch (act)
@@ -318,19 +391,25 @@ namespace JCSUnity
             return false;
         }
         /// <summary>
-        /// 
+        /// Check if the mouse button is down.
         /// </summary>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="button"> button select. </param>
+        /// <returns> 
+        /// true, button is down.
+        /// false, button is not down.
+        /// </returns>
         public static bool GetMouseButtonDown(JCS_MouseButton button, bool ignorePause = false)
         {
             return GetMouseButtonDown((int)button, ignorePause);
         }
         /// <summary>
-        /// 
+        /// Check if the mouse button is down.
         /// </summary>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="button"> button select. </param>
+        /// <returns> 
+        /// true, button is down.
+        /// false, button is not down.
+        /// </returns>
         public static bool GetMouseButtonDown(int button, bool ignorePause = false)
         {
             if (!ignorePause)
@@ -345,19 +424,25 @@ namespace JCSUnity
             return Input.GetMouseButtonDown(button);
         }
         /// <summary>
-        /// 
+        /// Check if the mouse button is pressed.
         /// </summary>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="button"> button select. </param>
+        /// <returns> 
+        /// true, button is pressed.
+        /// false, button is not pressed.
+        /// </returns>
         public static bool GetMouseButton(JCS_MouseButton button, bool ignorePause = false)
         {
             return GetMouseButton((int)button, ignorePause);
         }
         /// <summary>
-        /// 
+        /// Check if the mouse button is pressed.
         /// </summary>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="button"> button select. </param>
+        /// <returns> 
+        /// true, button is pressed.
+        /// false, button is not pressed.
+        /// </returns>
         public static bool GetMouseButton(int button, bool ignorePause = false)
         {
             if (!ignorePause)
@@ -372,19 +457,25 @@ namespace JCSUnity
             return Input.GetMouseButton(button);
         }
         /// <summary>
-        /// 
+        /// Check if the mouse button is up.
         /// </summary>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="button"> button select. </param>
+        /// <returns> 
+        /// true, button is up.
+        /// false, button is not up.
+        /// </returns>
         public static bool GetMouseButtonUp(JCS_MouseButton button, bool ignorePause = false)
         {
             return GetMouseButtonUp((int)button, ignorePause);
         }
         /// <summary>
-        /// 
+        /// Check if the mouse button is up.
         /// </summary>
-        /// <param name="button"></param>
-        /// <returns></returns>
+        /// <param name="button"> button select. </param>
+        /// <returns> 
+        /// true, button is up.
+        /// false, button is not up.
+        /// </returns>
         public static bool GetMouseButtonUp(int button, bool ignorePause = false)
         {
             if (!ignorePause)
@@ -400,11 +491,14 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check if the key is down by key action type.
         /// </summary>
-        /// <param name="act"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="act"> action type. </param>
+        /// <param name="key"> key code. </param>
+        /// <returns>
+        /// true, button with current key action is active.
+        /// false, button with current key action is not active.
+        /// </returns>
         public static bool GetKeyByAction(JCS_KeyActionType act, KeyCode key, bool ignorePause = false)
         {
             switch (act)
