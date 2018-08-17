@@ -36,11 +36,6 @@ public class FT_XInput_Test
     //========================================
     //      Unity's function
     //------------------------------
-    private void Awake()
-    {
-
-    }
-
     private void Update()
     {
         PrintGamepadInfo(false);
