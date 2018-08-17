@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Key input type.
     /// </summary>
@@ -20,6 +19,6 @@ namespace JCSUnity
     {
         KEY,
         KEY_DOWN,
-        KEY_UP
+        KEY_UP,
     }
 }
