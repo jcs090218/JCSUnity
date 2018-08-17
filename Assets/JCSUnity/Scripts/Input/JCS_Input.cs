@@ -263,7 +263,6 @@ namespace JCSUnity
                         // the mouse position the same as 'START_DRAG_POINT' 
                         // will still count as dragging!
                         DRAGGING = true;
-                        return true;
                     }
                 }
                 else
