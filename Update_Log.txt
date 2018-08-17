@@ -10,6 +10,8 @@
 2018-08-17
 * Add JCS_OnMouseDrag function to check if the current mouse button is 
  in the dragging action. (JCSUnity)
+* Remove 'JCS_InputType' enum, is a mistake script by moving from other 
+ test module project. (JCSUnity)
 
 2018-08-16
 * Update IO module's scripting manual. (JCSUnity)
