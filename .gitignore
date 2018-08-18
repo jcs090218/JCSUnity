@@ -10,6 +10,10 @@
 /Assets/Libraries
 /Assets/JCS_GameData/WebcamShot
 
+# ignore build info
+/Assets/StreamingAssets/build_info.txt
+/Assets/StreamingAssets/build_info.txt.meta
+
 # don't include the video.
 /Video
 
