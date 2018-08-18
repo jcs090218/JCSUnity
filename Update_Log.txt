@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-08-18
+* Ignore and Remove build info file from 'Assets/StreamingAssets/' 
+ directory. (JCSUnity)
+
 2018-08-17
 * Add JCS_OnMouseDrag function to check if the current mouse button is 
  in the dragging action. (JCSUnity)
