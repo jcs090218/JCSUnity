@@ -10,6 +10,8 @@
 2018-08-18
 * Ignore and Remove build info file from 'Assets/StreamingAssets/' 
  directory. (JCSUnity)
+* Add build_info.txt text file to the JCSUnity_PEs' ignore list. (JCSUnity)
+* Support one full path for XML and binary save load module. (JCSUnity)
 
 2018-08-17
 * Add JCS_OnMouseDrag function to check if the current mouse button is 
