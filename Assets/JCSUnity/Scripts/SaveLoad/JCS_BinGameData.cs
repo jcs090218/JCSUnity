@@ -45,34 +45,66 @@ namespace JCSUnity
         /// <param name="fileName"> name of the file u want to save. </param>
         public void Save<T>(string filePath, string fileName)
         {
+            string fullFilePath = filePath + fileName;
+
+            Save<T>(fullFilePath);
+        }
+
+        /// <summary>
+        /// Save the game data into binary file format.
+        /// </summary>
+        /// <typeparam name="T"> type of the data save. </typeparam>
+        /// <param name="fullFilePath"> file path direct where to save. </param>
+        public void Save<T>(string fullFilePath)
+        {
+            string filePath = Path.GetDirectoryName(fullFilePath);
+
             // if Directory does not exits, create it prevent error!
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
 
             InitJCSFile();
 
-            using (var stream = new FileStream(filePath + fileName, FileMode.Create))
+            using (var stream = new FileStream(fullFilePath, FileMode.Create))
             {
                 var binFmt = new BinaryFormatter();
-                JCS_Debug.Log(Copyright);
                 binFmt.Serialize(stream, this);
             }
         }
 
         /// <summary>
-        /// Load the game data from a directory path.
+        /// Load the game data from a directory file path.
         /// </summary>
         /// <typeparam name="T"> type of the game data u want to load. </typeparam>
         /// <param name="filePath"> file directory, location, path. </param>
         /// <param name="fileName"> name of the file u want to load. </param>
-        /// <returns></returns>
+        /// <returns>
+        /// Full game data. If the file does not exists returns 
+        /// null references.
+        /// </returns>
         public static T LoadFromFile<T>(string filePath, string fileName)
         {
-            // if Directory does not exits, create it prevent error!
-            if (!Directory.Exists(filePath))
-                Directory.CreateDirectory(filePath);
+            string fullFilePath = filePath + fileName;
 
-            using (var stream = new FileStream(filePath + fileName, FileMode.Open))
+            return LoadFromFile<T>(fullFilePath);
+        }
+
+        /// <summary>
+        /// Load the game data from a directory file path.
+        /// </summary>
+        /// <typeparam name="T"> type of the game data u want to load. </typeparam>
+        /// <param name="filePath"> file directory, location, path. </param>
+        /// <param name="fileName"> name of the file u want to load. </param>
+        /// <returns>
+        /// Full game data. If the file does not exists returns 
+        /// null references.
+        /// </returns>
+        public static T LoadFromFile<T>(string fullFilePath)
+        {
+            if (!File.Exists(fullFilePath))
+                return default(T);
+
+            using (var stream = new FileStream(fullFilePath, FileMode.Open))
             {
                 var binFmt = new BinaryFormatter();
                 return (T)binFmt.Deserialize(stream);
