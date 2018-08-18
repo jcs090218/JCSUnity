@@ -21,7 +21,7 @@ any placeholder assets commercially.
 ## How to use it? ##
 JCSUnity is like other Unity plugins. You can download the latest 
 release from the above tab, or from the link 
-<a href="https://github.com/jcs090218/JCSUnity_Framework/releases/latest" target="_blank">
+<a href="https://github.com/jcs090218/JCSUnity/releases/latest" target="_blank">
 here</a>. Simply create a new project in Unity then import all of 
 the assets into that project. Then you can start all of the tools 
 in the JCSUnity framework. <br/>
