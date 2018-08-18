@@ -10,9 +10,11 @@ using System.Collections;
 
 namespace JCSUnity
 {
+    /// <summary>
+    /// Vector data structure implementation.
+    /// </summary>
     public class JCS_Vector<T>
     {
-
         private T[] m_array = null;
 
         public T[] array { get { return m_array; } }
@@ -85,7 +87,7 @@ namespace JCSUnity
             }
             else
             {
-                Debug.Log("MyVector slice: index out of range, failed to slice.");
+                Debug.Log("JCS_Vector slice: index out of range, failed to slice.");
                 return default(T);
             }
         }
@@ -111,7 +113,7 @@ namespace JCSUnity
             }
             else
             {
-                Debug.Log("MyVector slice: target object not found in vector.");
+                Debug.Log("JCS_Vector slice: target object not found in vector.");
                 return default(T);
             }
         }
@@ -124,7 +126,7 @@ namespace JCSUnity
             if (index >= 0 && index <= m_array.Length - 1)
                 return m_array[index];
             else
-                Debug.Log("MyVector::(132)::Out of Range!");
+                Debug.Log("JCS_Vector::(129)::Out of Range!");
 
             return default(T);
         }
@@ -134,7 +136,7 @@ namespace JCSUnity
             if (index >= 0 && index <= m_array.Length - 1)
                 this.m_array[index] = val;
             else
-                Debug.Log("MyVector::(132)::Out of Range!");
+                Debug.Log("JCS_Vector::(139)::Out of Range!");
         }
 
         public void clear()
