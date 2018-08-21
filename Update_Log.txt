@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-08-21
+* Add add dropdown option to JCS_Dropdown utility function to JCS_GUIUtil 
+ module. (JCSUnity)
+
 2018-08-18
 * Ignore and Remove build info file from 'Assets/StreamingAssets/' 
  directory. (JCSUnity)
