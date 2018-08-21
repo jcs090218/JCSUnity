@@ -31,6 +31,17 @@ namespace JCSUnity
 
         private JCS_ColorTweener mColorTweener = null;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_Toggle) **")]
+
+        [Tooltip("Test module with the key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to toggle this toggle component.")]
+        [SerializeField]
+        private KeyCode mToggleKey = KeyCode.A;
+#endif
 
         [Header("** Initialize Variables (JCS_Toggle) **")]
 
@@ -58,12 +69,12 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mOnPos = new Vector3(20.0f, 0.0f, 0.0f);
 
-
-        [Header("- Color (JCS_Toggle) ")]
-
         [Tooltip("Position when is off.")]
         [SerializeField]
         private Vector3 mOffPos = new Vector3(-20.0f, 0.0f, 0.0f);
+
+
+        [Header("- Color (JCS_Toggle) ")]
 
         [Tooltip("Button color when is on.")]
         [SerializeField]
@@ -89,11 +100,8 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public bool IsOn
-        {
-            get { return this.mIsOn; }
-            set
-            {
+        public bool IsOn { get { return this.mIsOn; }
+            set {
                 this.mIsOn = value;
 
                 // Update toggle once.
@@ -130,7 +138,10 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (!mTestWithKey)
+                return;
+
+            if (Input.GetKeyDown(mToggleKey))
                 Toggle();
         }
 #endif
@@ -184,10 +195,12 @@ namespace JCSUnity
             if (mIsOn)
             {
                 this.mOnPos = mToggleSign.transform.localPosition;
+                this.mOffPos = JCS_Mathf.ToNegative(mToggleSign.transform.localPosition);
             }
             else
             {
                 this.mOffPos = mToggleSign.transform.localPosition;
+                this.mOnPos = JCS_Mathf.ToNegative(mToggleSign.transform.localPosition);
             }
         }
 
