@@ -204,5 +204,19 @@ namespace JCSUnity
 
             return true;
         }
+
+        /// <summary>
+        /// Add an option to dropdown.
+        /// </summary>
+        /// <param name="dd"> dropdown object. </param>
+        /// <param name="inText"> input text. </param>
+        /// <returns> JCSUnity's dropdown object. </returns>
+        public static JCS_Dropdown Dropdown_AddOption(JCS_Dropdown dd, string inText)
+        {
+            dd.dropdown.options.Add(
+                new Dropdown.OptionData() { text = inText });
+
+            return dd;
+        }
     }
 }
