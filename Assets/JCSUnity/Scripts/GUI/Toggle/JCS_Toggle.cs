@@ -209,18 +209,31 @@ namespace JCSUnity
         /// </summary>
         private void SetCurrentColorStatus()
         {
-            if (!mColorSameAsEditingStatus)
-                return;
-
-            if (mIsOn)
+            if (mColorSameAsEditingStatus)
             {
-                mOnButtonColor = mToggleSign.ColorTweener.LocalColor;
-                mOnBackgroundColor = mColorTweener.LocalColor;
+                if (mIsOn)
+                {
+                    mOnButtonColor = mToggleSign.ColorTweener.LocalColor;
+                    mOnBackgroundColor = mColorTweener.LocalColor;
+                }
+                else
+                {
+                    mOffButtonColor = mToggleSign.ColorTweener.LocalColor;
+                    mOffBackgroundColor = mColorTweener.LocalColor;
+                }
             }
             else
             {
-                mOffButtonColor = mToggleSign.ColorTweener.LocalColor;
-                mOffBackgroundColor = mColorTweener.LocalColor;
+                if (mIsOn)
+                {
+                    mToggleSign.ColorTweener.LocalColor = mOnButtonColor;
+                    mColorTweener.LocalColor = mOnBackgroundColor;
+                }
+                else
+                {
+                    mToggleSign.ColorTweener.LocalColor = mOffButtonColor;
+                    mColorTweener.LocalColor = mOffBackgroundColor;
+                }
             }
         }
 
