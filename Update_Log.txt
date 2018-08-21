@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-08-22
+* JCS_Toggle implemented to better toggle UI/UX. (JCSUnity)
+* JCS_ToggleSign implemented for JCS_Toggle's sign/button. (JCSUnity)
+
 2018-08-21
 * Add add dropdown option to JCS_Dropdown utility function to JCS_GUIUtil 
  module. (JCSUnity)
