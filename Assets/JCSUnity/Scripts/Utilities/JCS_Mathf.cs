@@ -293,8 +293,6 @@ namespace JCSUnity
                 return --currentVal;
 
             JCS_Debug.LogError(
-                "JCS_Mathf", 
-                 
                 "Errors with approaching to a value...");
 
             return 0;
@@ -528,7 +526,7 @@ namespace JCSUnity
                     }
             }
 
-            Debug.LogError("This not suppose to happen here...");
+            JCS_Debug.LogError("This not suppose to happen here...");
 
             return 0;
         }

@@ -502,8 +502,6 @@ namespace JCSUnity
             }
 
             JCS_Debug.LogError(
-                "JCS_Utility",
-
                 "This cannot happed.");
 
             // this cannot happens
@@ -873,7 +871,6 @@ namespace JCSUnity
             if (arrList.Length <= 1)
             {
                 JCS_Debug.Log(
-                    "JCS_Utility",
                     "You trying to merge the array less then two array?");
             }
 
