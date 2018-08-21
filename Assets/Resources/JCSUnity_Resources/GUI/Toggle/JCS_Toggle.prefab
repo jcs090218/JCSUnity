@@ -199,13 +199,15 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
+  mTestWithKey: 1
+  mToggleKey: 97
   mOnOffStartingPosition: 1
   mColorSameAsEditingStatus: 1
-  mToggleSign: {fileID: 0}
+  mToggleSign: {fileID: 114654470044940970}
   mIsOn: 1
   mOnPos: {x: 20, y: 0, z: 0}
   mOffPos: {x: -20, y: 0, z: 0}
-  mOnButtonColor: {r: 1, g: 1, b: 1, a: 1}
+  mOnButtonColor: {r: 0, g: 0, b: 0, a: 1}
   mOffButtonColor: {r: 0, g: 0, b: 0, a: 1}
   mOnBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   mOffBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -264,7 +266,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -308,7 +310,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1375918736749118}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -318,7 +320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -650, y: 350}
   m_SizeDelta: {x: 100, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224880988111691182
