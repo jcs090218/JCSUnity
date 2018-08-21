@@ -537,10 +537,10 @@
         <Placement>Any node/transform.</Placement>
         <Description>
           Completely mimic a JCS_2DAnimation's variables.
-            - Frame
-            - Sorting Layer
-            - Color
-            - Flip X/Y
+          - Frame
+          - Sorting Layer
+          - Color
+          - Flip X/Y
         </Description>
       </File>
 
@@ -1181,12 +1181,12 @@
         <Placement>Script base.</Placement>
         <Description>How the scene swith between scene and scene.</Description>
       </File>
-      
+
       <File name="JCS_TextAlign.cs">
         <Placement>Script base.</Placement>
         <Description>Text alignment.</Description>
       </File>
-      
+
       <File name="JCS_TransformType.cs">
         <Placement>Script base.</Placement>
         <Description>List of transform properties.</Description>
@@ -1615,6 +1615,266 @@
       </File>
     </GameObject>
     <GUI>
+      <Button>
+        <Dialogue>
+          <File name="JCS_HideDialogueButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Click the button to hide multiple dialogue.
+            </Description>
+          </File>
+
+          <File name="JCS_HideDialogueGamePadButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Click the button to hide multiple dialogue. (Game Pad)
+            </Description>
+          </File>
+
+          <File name="JCS_ShowDialogueButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Click the button to show multiple dialogyue.
+            </Description>
+          </File>
+
+          <File name="JCS_ShowDialogueGamePadButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Click the button to show multiple dialogyue. (Game Pad)
+            </Description>
+          </File>
+        </Dialogue>
+
+        <Network>
+          <File name="JCS_ExitAppOnlineButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Exit button with change scene effect.
+              Multiplayer Version.
+            </Description>
+          </File>
+
+          <File name="JCS_ExitAppOnlineGamePadButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Exit button with change scene effect. (Game Pad)
+              Multiplayer Version.
+            </Description>
+          </File>
+
+          <File name="JCS_SwitchServerButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Button when switching the server. For example, switch
+              channel server.
+            </Description>
+          </File>
+
+          <File name="JCS_SwitchServerGamePadButton.cs">
+            <Placement>Already assign.</Placement>
+            <Description>
+              Button when switching the server. For example, switch
+              channel server. (Game Pad)
+            </Description>
+          </File>
+        </Network>
+
+        <File name="JCS_ActivePanelButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Active panel button.
+          </Description>
+        </File>
+
+        <File name="JCS_ActivePanelGamePadButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Active panel button. (Game Pad)
+          </Description>
+        </File>
+
+        <File name="JCS_DeactivePanelButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Deactive panel button.
+          </Description>
+        </File>
+
+        <File name="JCS_DeactivePanelGamePadButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Deactive panel button. (Game Pad)
+          </Description>
+        </File>
+
+        <File name="JCS_EchoButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Echo out a string on the console window when this
+            button triggered.
+          </Description>
+        </File>
+
+        <File name="JCS_EchoGamePadButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Echo out a string on the console window when this
+            button triggered. (Using game pad)
+          </Description>
+        </File>
+
+        <File name="JCS_EmptyButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Default/place holder button for all purpose usage.
+          </Description>
+        </File>
+
+        <File name="JCS_EmptyGamePadButton.cs">
+          <Placement>Any transform/node.</Placement>
+          <Description>
+            Default/place holder button for all purpose usage. (Game Pad)
+          </Description>
+        </File>
+
+        <File name="JCS_ExitAppButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button that exit the app.
+          </Description>
+        </File>
+
+        <File name="JCS_ExitAppGamePadButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button that exit the app. (Game Pad)
+          </Description>
+        </File>
+
+        <File name="JCS_LoadSceneButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button that will load up the scene base on the name.
+          </Description>
+        </File>
+
+        <File name="JCS_LoadSceneGamePadButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button that will load up the scene base on the
+            name. (Game Pad)
+          </Description>
+        </File>
+
+        <File name="JCS_OpenURLButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Open a URL in the default browser.
+          </Description>
+        </File>
+
+        <File name="JCS_OpenURLGamePadButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Open a URL in the default browser. (Game Pad)
+          </Description>
+        </File>
+
+        <File name="JCS_PauseGameButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Pause the game with button.
+            ATTENTION: this should have at least one "JCS_Button" with this.
+          </Description>
+        </File>
+
+        <File name="JCS_PauseGameGamePadButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Pause the game with button. (Game Pad)
+            ATTENTION: this should have at least one "JCS_Button" with this.
+          </Description>
+        </File>
+
+        <File name="JCS_RewardAdsButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Reward type of Ads button.
+          </Description>
+        </File>
+
+        <File name="JCS_RollSelectorButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button that will be manage by the JCS_RollBtnSelector and
+            will do the roll button effect.
+          </Description>
+        </File>
+
+        <File name="JCS_SlideScreenButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>Button will roll the scene.</Description>
+        </File>
+
+        <File name="JCS_ToggleButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button that have two callback can toggle each other.
+          </Description>
+        </File>
+
+        <File name="JCS_ToggleGamePadButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button that have two callback can toggle each other. (Game Pad)
+          </Description>
+        </File>
+
+        <File name="JCS_UnPauseGameButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            UnPause the game with button.
+            ATTENTION: this should have at least one "JCS_Button" with this.
+          </Description>
+        </File>
+
+        <File name="JCS_UnPauseGameGamePadButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            UnPause the game with button. (Game Pad)
+            ATTENTION: this should have at least one "JCS_Button" with this.
+          </Description>
+        </File>
+
+        <File name="JCS_WebcamButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>Base of the webcam related feature handle.</Description>
+        </File>
+
+        <File name="LeaveSettingButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>deprecated</Description>
+        </File>
+
+        <File name="QuitApplicationButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>deprecated</Description>
+        </File>
+
+        <File name="ToOfficalButtons.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Button lead to official webpages. You could use this
+            to load other web pages too.
+          </Description>
+        </File>
+
+        <File name="ToSettingButton.cs">
+          <Placement>Already assign.</Placement>
+          <Description>deprecated</Description>
+        </File>
+      </Button>
       <Cursor>
         <File name="JCS_2DCursor.cs">
           <Placement>Any transform/node.</Placement>
@@ -1717,267 +1977,8 @@
           <Placement>With uGUI text component.</Placement>
           <Description>Log text for JCS_IGLogSystem to handle.</Description>
         </File>
+
         </In Game Log System>
-        <Button>
-          <Dialogue>
-            <File name="JCS_HideDialogueButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Click the button to hide multiple dialogue.
-              </Description>
-            </File>
-
-            <File name="JCS_HideDialogueGamePadButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Click the button to hide multiple dialogue. (Game Pad)
-              </Description>
-            </File>
-
-            <File name="JCS_ShowDialogueButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Click the button to show multiple dialogyue.
-              </Description>
-            </File>
-
-            <File name="JCS_ShowDialogueGamePadButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Click the button to show multiple dialogyue. (Game Pad)
-              </Description>
-            </File>
-          </Dialogue>
-
-          <Network>
-            <File name="JCS_ExitAppOnlineButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Exit button with change scene effect.
-                Multiplayer Version.
-              </Description>
-            </File>
-
-            <File name="JCS_ExitAppOnlineGamePadButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Exit button with change scene effect. (Game Pad)
-                Multiplayer Version.
-              </Description>
-            </File>
-
-            <File name="JCS_SwitchServerButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Button when switching the server. For example, switch
-                channel server.
-              </Description>
-            </File>
-
-            <File name="JCS_SwitchServerGamePadButton.cs">
-              <Placement>Already assign.</Placement>
-              <Description>
-                Button when switching the server. For example, switch
-                channel server. (Game Pad)
-              </Description>
-            </File>
-          </Network>
-
-          <File name="JCS_ActivePanelButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Active panel button.
-            </Description>
-          </File>
-
-          <File name="JCS_ActivePanelGamePadButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Active panel button. (Game Pad)
-            </Description>
-          </File>
-
-          <File name="JCS_DeactivePanelButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Deactive panel button.
-            </Description>
-          </File>
-
-          <File name="JCS_DeactivePanelGamePadButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Deactive panel button. (Game Pad)
-            </Description>
-          </File>
-
-          <File name="JCS_EchoButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Echo out a string on the console window when this
-              button triggered.
-            </Description>
-          </File>
-
-          <File name="JCS_EchoGamePadButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Echo out a string on the console window when this
-              button triggered. (Using game pad)
-            </Description>
-          </File>
-
-          <File name="JCS_EmptyButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Default/place holder button for all purpose usage.
-            </Description>
-          </File>
-
-          <File name="JCS_EmptyGamePadButton.cs">
-            <Placement>Any transform/node.</Placement>
-            <Description>
-              Default/place holder button for all purpose usage. (Game Pad)
-            </Description>
-          </File>
-
-          <File name="JCS_ExitAppButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button that exit the app.
-            </Description>
-          </File>
-
-          <File name="JCS_ExitAppGamePadButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button that exit the app. (Game Pad)
-            </Description>
-          </File>
-
-          <File name="JCS_LoadSceneButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button that will load up the scene base on the name.
-            </Description>
-          </File>
-
-          <File name="JCS_LoadSceneGamePadButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button that will load up the scene base on the
-              name. (Game Pad)
-            </Description>
-          </File>
-
-          <File name="JCS_OpenURLButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Open a URL in the default browser.
-            </Description>
-          </File>
-
-          <File name="JCS_OpenURLGamePadButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Open a URL in the default browser. (Game Pad)
-            </Description>
-          </File>
-
-          <File name="JCS_PauseGameButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Pause the game with button.
-              ATTENTION: this should have at least one "JCS_Button" with this.
-            </Description>
-          </File>
-
-          <File name="JCS_PauseGameGamePadButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Pause the game with button. (Game Pad)
-              ATTENTION: this should have at least one "JCS_Button" with this.
-            </Description>
-          </File>
-
-          <File name="JCS_RewardAdsButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Reward type of Ads button.
-            </Description>
-          </File>
-
-          <File name="JCS_RollSelectorButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button that will be manage by the JCS_RollBtnSelector and
-              will do the roll button effect.
-            </Description>
-          </File>
-
-          <File name="JCS_SlideScreenButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>Button will roll the scene.</Description>
-          </File>
-
-          <File name="JCS_ToggleButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button that have two callback can toggle each other.
-            </Description>
-          </File>
-
-          <File name="JCS_ToggleGamePadButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button that have two callback can toggle each other. (Game Pad)
-            </Description>
-          </File>
-
-          <File name="JCS_UnPauseGameButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              UnPause the game with button.
-              ATTENTION: this should have at least one "JCS_Button" with this.
-            </Description>
-          </File>
-
-          <File name="JCS_UnPauseGameGamePadButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              UnPause the game with button. (Game Pad)
-              ATTENTION: this should have at least one "JCS_Button" with this.
-            </Description>
-          </File>
-
-          <File name="JCS_WebcamButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>Base of the webcam related feature handle.</Description>
-          </File>
-
-          <File name="LeaveSettingButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>deprecated</Description>
-          </File>
-
-          <File name="QuitApplicationButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>deprecated</Description>
-          </File>
-
-          <File name="ToOfficalButtons.cs">
-            <Placement>Already assign.</Placement>
-            <Description>
-              Button lead to official webpages. You could use this
-              to load other web pages too.
-            </Description>
-          </File>
-
-          <File name="ToSettingButton.cs">
-            <Placement>Already assign.</Placement>
-            <Description>deprecated</Description>
-          </File>
-        </Button>
         <Panel>
           <File name="JCS_SequenceSlidePanel.cs">
             <Placement>Any rect-transform.</Placement>
@@ -2037,6 +2038,18 @@
             <Description>Timer system using sprite 0 to 9.</Description>
           </File>
         </Timer>
+
+        <Toggle>
+          <File name="JCS_Toggle.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>Better version of checkbox/toggle GUI.</Description>
+          </File>
+
+          <File name="JCS_ToggleSign.cs">
+            <Placement>Any transform/node.</Placement>
+            <Description>Sign of the toggle button.</Description>
+          </File>
+        </Toggle>
 
         <File name="JCS_3DLiquidBarText.cs">
           <Placement>Any transfrom/node, with SpriteRenderer component.</Placement>
@@ -2404,7 +2417,7 @@
           <Placement>Script base.</Placement>
           <Description>Audiol loader, load an external audio file.</Description>
         </File>
-        
+
         <File name="JCS_ImageLoader.cs">
           <Placement>Script base.</Placement>
           <Description>Image loader, load image to sprite from resource.</Description>
@@ -2414,7 +2427,7 @@
           <Placement>Script base.</Placement>
           <Description>Video loader, load an external video file.</Description>
         </File>
-        
+
         <File name="JCS_XML_Loader.cs">
           <Placement>Script base.</Placement>
           <Description>Load xml for save data.</Description>
@@ -2588,7 +2601,7 @@
           <Placement>Script base.</Placement>
           <Description>Interface of storing game data as binary format.</Description>
         </File>
-        
+
         <File name="JCS_XMLGameData.cs">
           <Placement>Script base.</Placement>
           <Description>Interface of storing game data as XML format.</Description>
