@@ -10,9 +10,9 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Buttton Interface (NGUI)
     /// </summary>
@@ -37,6 +37,8 @@ namespace JCSUnity
         // for user's callback.
         public CallBackFunc btnCallBack = null;
         public CallBackFuncBtn btnCallBackBtn = null;
+
+        public CallBackFunc interactableCallback = null;
 
         /*******************************************/
         /*           Private Variables             */
@@ -244,6 +246,10 @@ namespace JCSUnity
 
             if (!fromSelection && mButtonSelection != null)
                 mButtonSelection.SetSkip(!mInteractable, true);
+
+            // interactable callback.
+            if (interactableCallback != null)
+                interactableCallback.Invoke();
         }
         public virtual void SetInteractable(bool act)
         {
