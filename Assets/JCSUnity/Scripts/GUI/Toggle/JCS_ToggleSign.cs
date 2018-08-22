@@ -1,10 +1,10 @@
 /**
  * $File: JCS_ToggleSign.cs $
- * $Date: #CREATIONDATE# $
+ * $Date: 2018-08-21 23:11:05 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
- *	                 Copyright © #CREATEYEAR# by Shen, Jen-Chieh $
+ *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using System.Collections;
 using System.Collections.Generic;
