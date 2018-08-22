@@ -40,7 +40,11 @@ namespace JCSUnity
 
         [Tooltip("Key to toggle this toggle component.")]
         [SerializeField]
-        private KeyCode mToggleKey = KeyCode.A;
+        private KeyCode mToggleOnOffKey = KeyCode.A;
+
+        [Tooltip("Key to toggle interactable.")]
+        [SerializeField]
+        private KeyCode mToggleInteractable = KeyCode.S;
 #endif
 
         [Header("** Initialize Variables (JCS_Toggle) **")]
@@ -124,6 +128,9 @@ namespace JCSUnity
                 this.mToggleSign = this.GetComponentInChildren<JCS_ToggleSign>();
 
             this.mColorTweener = this.GetComponent<JCS_ColorTweener>();
+
+            // Add interactable callback.
+            this.interactableCallback += InteractableCallback;
         }
 
         private void Start()
@@ -141,8 +148,11 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (Input.GetKeyDown(mToggleKey))
+            if (Input.GetKeyDown(mToggleOnOffKey))
                 Toggle();
+
+            if (Input.GetKeyDown(mToggleInteractable))
+                Interactable = !Interactable;
         }
 #endif
 
@@ -166,9 +176,15 @@ namespace JCSUnity
         /// <returns>
         /// true, after toggle once is on.
         /// false, after toggle once is off.
+        /// 
+        /// ATTENTION: If toggle is not interactable will 
+        /// return false.
         /// </returns>
         public bool Toggle()
         {
+            if (!Interactable)
+                return false;
+
             // Toggle it.
             mIsOn = !mIsOn;
 
@@ -226,13 +242,13 @@ namespace JCSUnity
             {
                 if (mIsOn)
                 {
-                    mToggleSign.ColorTweener.LocalColor = mOnButtonColor;
-                    mColorTweener.LocalColor = mOnBackgroundColor;
+                    SetButtonColor(mOnButtonColor);
+                    SetBackgroundColor(mOnBackgroundColor);
                 }
                 else
                 {
-                    mToggleSign.ColorTweener.LocalColor = mOffButtonColor;
-                    mColorTweener.LocalColor = mOffBackgroundColor;
+                    SetButtonColor(mOffButtonColor);
+                    SetBackgroundColor(mOffBackgroundColor);
                 }
             }
         }
@@ -265,5 +281,55 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// After set interactable callback.
+        /// </summary>
+        private void InteractableCallback()
+        {
+            Color targetBackgroundColor = mOnBackgroundColor;
+            Color targetButtonColor = mOnButtonColor;
+
+            if (!mIsOn)
+            {
+                targetBackgroundColor = mOffBackgroundColor;
+                targetButtonColor = mOffButtonColor;
+            }
+
+            if (Interactable)
+            {
+                targetBackgroundColor.a = mInteractColor.a;
+                targetButtonColor.a = mInteractColor.a;
+            }
+            else
+            {
+                // Stop color tweener if between the process of tweener.
+                mToggleSign.ColorTweener.ResetTweener();
+                mColorTweener.ResetTweener();
+
+                targetBackgroundColor.a = mNotInteractColor.a;
+                targetButtonColor.a = mNotInteractColor.a;
+            }
+
+            SetBackgroundColor(targetBackgroundColor);
+            SetButtonColor(targetButtonColor);
+        }
+
+        /// <summary>
+        /// Set the color of the toggle button.
+        /// </summary>
+        /// <param name="col"></param>
+        private void SetButtonColor(Color col)
+        {
+            mToggleSign.ColorTweener.LocalColor = col;
+        }
+
+        /// <summary>
+        /// Set the color of the toggle background.
+        /// </summary>
+        /// <param name="col"></param>
+        private void SetBackgroundColor(Color col)
+        {
+            mColorTweener.LocalColor = col;
+        }
     }
 }
