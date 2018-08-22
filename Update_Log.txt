@@ -12,7 +12,8 @@
 * Add set interactable callback in JCS_Button, GUI module. (JCSUnity)
 * Make compatible with button interactable by setting the alpha channel 
  the same but keep the rest of the colors to the toggle color. (JCSUnity)
-
+* Update Unity Engine version to 2018.2.5f1. (JCSUnity)
+ 
 2018-08-22
 * JCS_Toggle implemented to better toggle UI/UX. (JCSUnity)
 * JCS_ToggleSign implemented for JCS_Toggle's sign/button. (JCSUnity)
