@@ -29,7 +29,7 @@ in the JCSUnity framework. <br/>
 ## Current Version Status ##
 JCSUnity Version => `1.7.4`
 <br/>
-Unity Version => `2018.2.4f1 (64-bit)`
+Unity Version => `2018.2.5f1 (64-bit)`
 <br/>
 
 <br/>
