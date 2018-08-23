@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-08-24
+* Add toggle is on and off callback in JCS_Toggle component. (JCSUnity)
+
 2018-08-23
 * Update Unity Engine version to 2018.2.4f1. (JCSUnity)
 * Add set interactable callback in JCS_Button, GUI module. (JCSUnity)
