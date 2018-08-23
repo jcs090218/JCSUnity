@@ -13,6 +13,9 @@ using UnityEngine;
 
 namespace JCSUnity
 {
+    public delegate void ToggleOnCallback();
+    public delegate void ToggleOffCallback();
+
     /// <summary>
     /// Better version of checkbox/toggle GUI.
     /// </summary>
@@ -24,6 +27,9 @@ namespace JCSUnity
         /*******************************************/
         /*            Public Variables             */
         /*******************************************/
+
+        public ToggleOnCallback toggleOnCallback = null;
+        public ToggleOffCallback toggleOffCallback = null;
 
         /*******************************************/
         /*           Private Variables             */
@@ -272,12 +278,18 @@ namespace JCSUnity
                 mToggleSign.TransformTweener.DoTween(mOnPos);
                 mToggleSign.ColorTweener.DoTween(mOnButtonColor);
                 mColorTweener.DoTween(mOnBackgroundColor);
+
+                if (toggleOnCallback != null)
+                    toggleOnCallback.Invoke();
             }
             else
             {
                 mToggleSign.TransformTweener.DoTween(mOffPos);
                 mToggleSign.ColorTweener.DoTween(mOffButtonColor);
                 mColorTweener.DoTween(mOffBackgroundColor);
+
+                if (toggleOffCallback != null)
+                    toggleOffCallback.Invoke();
             }
         }
 
