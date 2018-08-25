@@ -1542,5 +1542,383 @@ namespace JCSUnity
 
             return true;
         }
+
+
+        #region CTRL
+
+        /// <summary>
+        /// Is one the ctrl key pressed?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is pressed.
+        /// </returns>
+        public static bool OneCtrlKey()
+        {
+            return (GetKey(KeyCode.LeftControl) || GetKey(KeyCode.RightControl));
+        }
+
+        /// <summary>
+        /// Is one the ctrl key down?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is down.
+        /// </returns>
+        public static bool OneCtrlKeyDown()
+        {
+            return (GetKeyDown(KeyCode.LeftControl) || GetKeyDown(KeyCode.RightControl));
+        }
+
+        /// <summary>
+        /// Is one the ctrl key up?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is up.
+        /// </returns>
+        public static bool OneCtrlKeyUp()
+        {
+            return (GetKeyUp(KeyCode.LeftControl) || GetKeyUp(KeyCode.RightControl));
+        }
+
+        /// <summary>
+        /// Is key pressed with the control key?
+        /// </summary>
+        /// <param name="key"> key code. </param>
+        /// <returns>
+        /// 
+        /// </returns>
+        public static bool GetKeyWithCtrl(KeyCode key)
+        {
+            if (!OneCtrlKey())
+                return false;
+
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Is key down with the control key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyDownWithCtrl(KeyCode key)
+        {
+            if (!OneCtrlKey())
+                return false;
+
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Is key up with the control key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyUpWithCtrl(KeyCode key)
+        {
+            if (!OneCtrlKey())
+                return false;
+
+            return GetKeyUp(key);
+        }
+        #endregion
+
+        #region ALT
+
+        /// <summary>
+        /// Is one the alt key pressed?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is pressed.
+        /// </returns>
+        public static bool OneAltKey()
+        {
+            return (GetKey(KeyCode.LeftAlt) || GetKey(KeyCode.RightAlt));
+        }
+
+        /// <summary>
+        /// Is one the alt key down?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is down.
+        /// </returns>
+        public static bool OneAltKeyDown()
+        {
+            return (GetKeyDown(KeyCode.LeftAlt) || GetKeyDown(KeyCode.RightAlt));
+        }
+
+        /// <summary>
+        /// Is one the alt key up?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is up.
+        /// </returns>
+        public static bool OneAltKeyUp()
+        {
+            return (GetKeyUp(KeyCode.LeftAlt) || GetKeyUp(KeyCode.RightAlt));
+        }
+
+        /// <summary>
+        /// Is key pressed with the alt key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyWithAlt(KeyCode key)
+        {
+            if (!OneAltKey())
+                return false;
+
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Is key down with the alt key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyDownWithAlt(KeyCode key)
+        {
+            if (!OneAltKey())
+                return false;
+
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Is key up with the alt key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyUpWithAlt(KeyCode key)
+        {
+            if (!OneAltKey())
+                return false;
+
+            return GetKeyUp(key);
+        }
+        #endregion
+
+        #region SHIFT
+
+        /// <summary>
+        /// Is one the alt key pressed?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is pressed.
+        /// </returns>
+        public static bool OneShiftKey()
+        {
+            return (GetKey(KeyCode.LeftShift) || GetKey(KeyCode.RightShift));
+        }
+
+        /// <summary>
+        /// Is one the alt key down?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is down.
+        /// </returns>
+        public static bool OneShiftKeyDown()
+        {
+            return (GetKeyDown(KeyCode.LeftShift) || GetKeyDown(KeyCode.RightShift));
+        }
+
+        /// <summary>
+        /// Is one the alt key up?
+        /// </summary>
+        /// <returns>
+        /// One the ctrl key is up.
+        /// </returns>
+        public static bool OneShiftKeyUp()
+        {
+            return (GetKeyUp(KeyCode.LeftShift) || GetKeyUp(KeyCode.RightShift));
+        }
+
+        /// <summary>
+        /// Is key pressed with the shift key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyWithShift(KeyCode key)
+        {
+            if (!OneShiftKey())
+                return false;
+
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Is key down with the shift key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyDownWithShift(KeyCode key)
+        {
+            if (!OneShiftKey())
+                return false;
+
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Is key up with the shift key?
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool GetKeyUpWithShift(KeyCode key)
+        {
+            if (!OneShiftKey())
+                return false;
+
+            return GetKeyUp(key);
+        }
+        #endregion
+
+        #region CTRL_SHIFT
+        /// <summary>
+        /// Check if the 'key' and the ctrl and shift key is pressed.
+        /// </summary>
+        /// <param name="key"> key to check if pressed together. </param>
+        /// <returns>
+        /// true, key, control and shift key is all pressed.
+        /// false, either control, shift, or key is not pressed.
+        /// </returns>
+        public static bool GetKeyWithCtrlShift(KeyCode key)
+        {
+            if (!OneCtrlKey() || !OneShiftKey())
+                return false;
+
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key' and the ctrl and shift key is down.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, control and shift key is all down.
+        /// false, either control, shift, or key is not down.
+        /// </returns>
+        public static bool GetKeyDownWithCtrlShift(KeyCode key)
+        {
+            if (!OneCtrlKey() || !OneShiftKey())
+                return false;
+
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key' and the ctrl and shift key is up.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, control and shift key is all up.
+        /// false, either control, shift, or key is not up.
+        /// </returns>
+        public static bool GetKeyUpWithCtrlShift(KeyCode key)
+        {
+            if (!OneCtrlKey() || !OneShiftKey())
+                return false;
+
+            return GetKeyUp(key);
+        }
+        #endregion
+
+        #region ALT_CTRL
+        /// <summary>
+        /// Check if the 'key' and the ctrl and alt key is pressed.
+        /// </summary>
+        /// <param name="key"> key to check if pressed together. </param>
+        /// <returns>
+        /// true, key, control and alt key is all pressed.
+        /// false, either control, alt, or key is not pressed.
+        /// </returns>
+        public static bool GetKeyWithAltCtrl(KeyCode key)
+        {
+            if (!OneAltKey() || !OneCtrlKey())
+                return false;
+
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key' and the ctrl and alt key is down.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, control and alt key is all down.
+        /// false, either control, alt, or key is not down.
+        /// </returns>
+        public static bool GetKeyDownWithAltCtrl(KeyCode key)
+        {
+            if (!OneAltKey() || !OneCtrlKey())
+                return false;
+
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key' and the ctrl and alt key is up.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, control and alt key is all up.
+        /// false, either control, alt, or key is not up.
+        /// </returns>
+        public static bool GetKeyUpWithAltCtrl(KeyCode key)
+        {
+            if (!OneAltKey() || !OneCtrlKey())
+                return false;
+
+            return GetKeyUp(key);
+        }
+        #endregion
+
+        #region ALT_SHIFT
+        /// <summary>
+        /// Check if the 'key' and the alt and shift key is pressed.
+        /// </summary>
+        /// <param name="key"> key to check if pressed together. </param>
+        /// <returns>
+        /// true, key, alt and shift key is all pressed.
+        /// false, either alt, shift, or key is not pressed.
+        /// </returns>
+        public static bool GetKeyWithAltShift(KeyCode key)
+        {
+            if (!OneAltKey() || !OneShiftKey())
+                return false;
+
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key' and the alt and shift key is down.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, alt and shift key is all down.
+        /// false, either alt, shift, or key is not down.
+        /// </returns>
+        public static bool GetKeyDownWithAltShift(KeyCode key)
+        {
+            if (!OneAltKey() || !OneShiftKey())
+                return false;
+
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key' and the alt and shift key is up.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, alt and shift key is all up.
+        /// false, either alt, shift, or key is not up.
+        /// </returns>
+        public static bool GetKeyUpWithAltShift(KeyCode key)
+        {
+            if (!OneAltKey() || !OneShiftKey())
+                return false;
+
+            return GetKeyUp(key);
+        }
+        #endregion
     }
 }
