@@ -956,5 +956,19 @@ namespace JCSUnity
 
             return true;
         }
+
+        /// <summary>
+        /// Pop the last value from the list.
+        /// </summary>
+        public static T PopList<T>(List<T> list)
+        {
+            int lastIndex = list.Count - 1;
+
+            T data = list[lastIndex];
+
+            list.RemoveAt(lastIndex);
+
+            return data;
+        }
     }
 }
