@@ -7,6 +7,14 @@
 # ========================================================================
 
 
+2018-08-26
+* Add GUI struct data script. (JCSUnity)
+  -> JCS_DropdownData
+  -> JCS_InputFieldData
+  -> JCS_ScrollbarData
+  -> JCS_SliderData
+  -> JCS_ToggleData
+
 2018-08-24
 * Add toggle is on and off callback in JCS_Toggle component. (JCSUnity)
 
