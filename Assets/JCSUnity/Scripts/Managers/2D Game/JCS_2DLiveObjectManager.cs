@@ -12,18 +12,15 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Handle all the 2d live object in the scene.
     /// </summary>
     public class JCS_2DLiveObjectManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_2DLiveObjectManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_2DLiveObjectManager instance = null;
-
 
         [Header("** Runtime Variables (JCS_2DLiveObjectManager) **")]
 

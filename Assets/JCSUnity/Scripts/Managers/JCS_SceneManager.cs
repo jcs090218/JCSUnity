@@ -17,18 +17,19 @@ namespace JCSUnity
     /// Manage scenes changes.
     /// </summary>
     public class JCS_SceneManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_SceneManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_SceneManager instance = null;
-
-        [SerializeField]
-        private JCS_SwitchSceneType mType = JCS_SwitchSceneType.BLACK_SCREEN;
 
         //----------------------
         // Private Variables
+
+        [Tooltip("Type/Method to switch the scene.")]
+        [SerializeField]
+        private JCS_SwitchSceneType mSwitchSceneType = JCS_SwitchSceneType.BLACK_SCREEN;
+
         private bool mSwitchSceneEffect = false;
         private string mNextSceneName = "";
 
@@ -97,6 +98,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_SwitchSceneType SwitchSceneType { get { return this.mSwitchSceneType; } set { this.mSwitchSceneType = value; } }
         public JCS_DynamicScene GetDynamicScene() { return this.mDynamicScene; }
         public void SetDynamicScene(JCS_DynamicScene ds) { this.mDynamicScene = ds; }
         public void SetJCSBlackScreen(JCS_BlackScreen bs) { this.mJCSBlackScreen = bs; }
@@ -116,7 +118,7 @@ namespace JCSUnity
         {
             instance = this;
 
-            switch (mType)
+            switch (mSwitchSceneType)
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
@@ -147,7 +149,7 @@ namespace JCSUnity
             // the scene setting and scene manager specific.
             float fadeoutTime = JCS_SceneSettings.instance.GetSceneFadeInTimeBaseOnSetting();
 
-            switch (mType)
+            switch (mSwitchSceneType)
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
@@ -208,7 +210,7 @@ namespace JCSUnity
                 return;
 
 
-            switch (mType)
+            switch (mSwitchSceneType)
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
@@ -367,7 +369,7 @@ namespace JCSUnity
             mAsyncOperation = SceneManager.LoadSceneAsync(mNextSceneName);
             mAsyncOperation.allowSceneActivation = false;
 
-            switch (mType)
+            switch (mSwitchSceneType)
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {

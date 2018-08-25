@@ -16,12 +16,11 @@ namespace JCSUnity
     /// Take care of the cross platform input.
     /// </summary>
     public class JCS_InputManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_InputManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_InputManager instance = null;
 
         //----------------------
         // Private Variables

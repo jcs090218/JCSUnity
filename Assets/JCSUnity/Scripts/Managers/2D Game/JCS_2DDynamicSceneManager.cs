@@ -16,12 +16,11 @@ namespace JCSUnity
     /// Manage all the 2d parallax layer.
     /// </summary>
     public class JCS_2DDynamicSceneManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_2DDynamicSceneManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_2DDynamicSceneManager instance = null;
 
         //----------------------
         // Private Variables

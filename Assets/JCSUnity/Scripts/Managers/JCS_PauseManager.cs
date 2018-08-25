@@ -20,12 +20,11 @@ namespace JCSUnity
     /// "JCS_Managers" transform in the Hierarchy.
     /// </summary>
     public class JCS_PauseManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_PauseManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_PauseManager instance = null;
 
         //----------------------
         // Private Variables

@@ -14,17 +14,15 @@ using System.Xml;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Holding all the information about the time in real life.
     /// </summary>
     public class JCS_TimeManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_TimeManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_TimeManager instance = null;
 
         //----------------------
         // Private Variables

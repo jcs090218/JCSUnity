@@ -11,17 +11,16 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
     public class JCS_ApplicationManager 
-        : MonoBehaviour
+        : JCS_Managers<JCS_ApplicationManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_ApplicationManager instance = null;
+
         public static bool APP_PAUSE = false;
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;

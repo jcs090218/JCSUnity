@@ -12,18 +12,16 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Take care of all the collision that could 
     /// happen in the game.
     /// </summary>
     public class JCS_CollisionManager
-    : MonoBehaviour
+        : JCS_Managers<JCS_CollisionManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_CollisionManager instance = null;
 
         //----------------------
         // Private Variables

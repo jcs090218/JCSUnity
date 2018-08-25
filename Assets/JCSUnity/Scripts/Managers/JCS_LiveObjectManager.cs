@@ -17,12 +17,11 @@ namespace JCSUnity
     /// Handle of all the AI in the scene.
     /// </summary>
     public class JCS_LiveObjectManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_LiveObjectManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_LiveObjectManager instance = null;
 
         //----------------------
         // Private Variables

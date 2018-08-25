@@ -13,17 +13,15 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Take care of all the player in the scene.
     /// </summary>
     public class JCS_PlayerManager 
-        : MonoBehaviour
+        : JCS_Managers<JCS_PlayerManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_PlayerManager instance = null;
 
         //----------------------
         // Private Variables
@@ -260,8 +258,6 @@ namespace JCSUnity
             if (GetJCSPlayerList().Count == 0)
             {
                 JCS_Debug.LogError(
-                    "JCS_PlayerManager", 
-                      
                     "Cannot use the current function cuz the player list in the manager is lower than 0...");
 
                 return null;

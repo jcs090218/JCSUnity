@@ -19,12 +19,11 @@ namespace JCSUnity
     /// update the game patch by just checking the VERSION number.
     /// </summary>
     public class JCS_PatchManager 
-        : MonoBehaviour
+        : JCS_Managers<JCS_PatchManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_PatchManager instance = null;
 
         //----------------------
         // Private Variables
@@ -56,7 +55,6 @@ namespace JCSUnity
 
         private void Start()
         {
-
             if (!JCS_NetworkSettings.instance.ONLINE_MODE)
             {
                 if (JCS_NetworkManager.FIRST_LOGIN)

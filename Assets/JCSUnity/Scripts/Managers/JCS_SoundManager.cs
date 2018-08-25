@@ -16,12 +16,11 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SoundManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_SoundManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_SoundManager instance = null;
 
         //----------------------
         // Private Variables

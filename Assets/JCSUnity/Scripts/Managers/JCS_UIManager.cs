@@ -17,15 +17,21 @@ namespace JCSUnity
     /// Manage all the dialogue in the scene.
     /// </summary>
     public class JCS_UIManager 
-        : MonoBehaviour
+        : JCS_Managers<JCS_UIManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_UIManager instance = null;
 
         //----------------------
         // Private Variables
+
+        [Header("** Check Variables (JCS_UIManager) **")]
+
+        [Tooltip("Global undo redo system.")]
+        [SerializeField]
+        private JCS_UndoRedoSystem mGlobalUndoRedoSystem = null;
+
 
         [Header("** Initialize Variables (JCS_UIManager) **")]
 
@@ -116,8 +122,8 @@ namespace JCSUnity
             return null;
         }
         public LinkedList<JCS_DialogueObject> GetOpenWindow() { return this.mOpenWindow; }
-
         public JCS_FadeScreen FadeScreen { get { return this.mFadeScreen; } set { this.mFadeScreen = value; } }
+        public JCS_UndoRedoSystem GetGlobalUndoRedoSystem() { return this.mGlobalUndoRedoSystem; }
 
         //========================================
         //      Unity's function
@@ -127,6 +133,8 @@ namespace JCSUnity
             instance = this;
 
             this.mOpenWindow = new LinkedList<JCS_DialogueObject>();
+
+            this.mGlobalUndoRedoSystem = this.gameObject.AddComponent<JCS_UndoRedoSystem>();
         }
         private void Start()
         {

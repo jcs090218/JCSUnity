@@ -16,7 +16,6 @@ using UnityEngine.Advertisements;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Handle Advertisment provide by Unity Technologies company.
     /// 
@@ -29,12 +28,11 @@ namespace JCSUnity
     /// 
     /// </summary>
     public class JCS_AdvertisementManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_AdvertisementManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_AdvertisementManager instance = null;
 
 #if (UNITY_ANDROID)
         [Tooltip("Andriod game id provided by Unity Server window.")]

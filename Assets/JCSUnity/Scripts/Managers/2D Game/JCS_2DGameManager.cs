@@ -13,17 +13,15 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 2D Game Specific game manager.
     /// </summary>
     public class JCS_2DGameManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_2DGameManager>
     {
 
         //----------------------
         // Public Variables
-        public static JCS_2DGameManager instance = null;
 
         //----------------------
         // Private Variables
