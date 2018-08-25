@@ -11,7 +11,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// GUI type list here...
     /// </summary>
