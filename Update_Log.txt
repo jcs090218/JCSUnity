@@ -14,6 +14,7 @@
   -> JCS_ScrollbarData
   -> JCS_SliderData
   -> JCS_ToggleData
+* Add Ctrl, Alt, Shift related key functions. (JCSUnity)
 
 2018-08-24
 * Add toggle is on and off callback in JCS_Toggle component. (JCSUnity)
