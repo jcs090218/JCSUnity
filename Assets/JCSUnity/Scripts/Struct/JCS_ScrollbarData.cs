@@ -17,8 +17,8 @@ namespace JCSUnity
     /// Scrollbar data.
     /// </summary>
     [System.Serializable]
-    public struct JCS_ScrollbarData
+    public class JCS_ScrollbarData
     {
-        public float value;
+        public float value = 0.0f;
     }
 }

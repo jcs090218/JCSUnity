@@ -17,8 +17,8 @@ namespace JCSUnity
     /// Toggle data.
     /// </summary>
     [System.Serializable]
-    public struct JCS_ToggleData
+    public class JCS_ToggleData
     {
-        public bool isOn;
+        public bool isOn = false;
     }
 }

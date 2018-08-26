@@ -17,8 +17,8 @@ namespace JCSUnity
     /// Dropdown data to record it down.
     /// </summary>
     [System.Serializable]
-    public struct JCS_DropdownData
+    public class JCS_DropdownData
     {
-        public int value;
+        public int value = 0;
     }
 }

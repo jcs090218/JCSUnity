@@ -17,8 +17,8 @@ namespace JCSUnity
     /// Input field data, data we need to record it down.
     /// </summary>
     [System.Serializable]
-    public struct JCS_InputFieldData
+    public class JCS_InputFieldData
     {
-        public string text;
+        public string text = "";
     }
 }

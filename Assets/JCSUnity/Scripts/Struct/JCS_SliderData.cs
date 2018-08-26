@@ -17,8 +17,8 @@ namespace JCSUnity
     /// Slider data.
     /// </summary>
     [System.Serializable]
-    public struct JCS_SliderData
+    public class JCS_SliderData
     {
-        public float value;
+        public float value = 0.0f;
     }
 }
