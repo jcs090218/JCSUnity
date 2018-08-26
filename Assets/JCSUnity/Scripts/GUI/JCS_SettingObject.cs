@@ -13,9 +13,9 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// Object need to get the information in order to get the correct setting
+    /// Object need to get the information in order to get the 
+    /// correct setting
     /// </summary>
     public class JCS_SettingObject 
         : MonoBehaviour
@@ -26,10 +26,16 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private JCS_SoundSettingType mSettingType = JCS_SoundSettingType.NONE;
-        [SerializeField] private JCS_GUIType mGUIType = JCS_GUIType.NONE;
 
-        // usually should be only one!
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_SoundSettingType mSettingType = JCS_SoundSettingType.NONE;
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_GUIType mGUIType = JCS_GUIType.NONE;
+
+        // Usually should be only one!
         private float mSettingValue = 0.0f;
         private string mSettingString = "";
 
@@ -114,7 +120,7 @@ namespace JCSUnity
             switch (mSettingType)
             {
                 case JCS_SoundSettingType.NONE:
-                    JCS_Debug.LogError("JCS_SettingObject",   "Setting with no meaning...");
+                    JCS_Debug.LogError("Setting with no meaning...");
                     return;
                 case JCS_SoundSettingType.BGM_SOUND:
                     this.mSettingValue = JCS_SoundSettings.instance.GetBGM_Volume();
@@ -127,19 +133,23 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// Initialize GUI component.
+        /// </summary>
         private void InitGUIComponent()
         {
             switch (mGUIType)
             {
                 case JCS_GUIType.NONE:
-                    JCS_Debug.LogError("JCS_SettingObject",   "Setting with no meaning...");
+                    JCS_Debug.LogError("Setting with no meaning...");
                     return;
                 case JCS_GUIType.TOGGLE:
                     {
                         this.mToggle = this.GetComponent<Toggle>();
                         if (mToggle == null)
                         {
-                            JCS_Debug.LogError("JCS_SettingObject",   "Toggle with no corrosdoing component...");
+                            JCS_Debug.LogError("Toggle with no corrosdoing component...");
                             return;
                         }
                     }
@@ -149,7 +159,7 @@ namespace JCSUnity
                         this.mSlider = this.GetComponent<Slider>();
                         if (mSlider == null)
                         {
-                            JCS_Debug.LogError("JCS_SettingObject",   "Slider with no corrosdoing component...");
+                            JCS_Debug.LogError("Slider with no corrosdoing component...");
                             return;
                         }
                         // assign value;
@@ -161,7 +171,7 @@ namespace JCSUnity
                         this.mScrollbar = this.GetComponent<Scrollbar>();
                         if (mScrollbar == null)
                         {
-                            JCS_Debug.LogError("JCS_SettingObject",   "Scrollbar with no corrosdoing component...");
+                            JCS_Debug.LogError("Scrollbar with no corrosdoing component...");
                             return;
                         }
                     }
@@ -171,7 +181,7 @@ namespace JCSUnity
                         this.mDropdown = this.GetComponent<Dropdown>();
                         if (mDropdown == null)
                         {
-                            JCS_Debug.LogError("JCS_SettingObject",   "Dropdown with no corrosdoing component...");
+                            JCS_Debug.LogError("Dropdown with no corrosdoing component...");
                             return;
                         }
                     }
@@ -181,7 +191,7 @@ namespace JCSUnity
                         this.mInputField = this.GetComponent<InputField>();
                         if (mInputField == null)
                         {
-                            JCS_Debug.LogError("JCS_SettingObject",   "InputField with no corrosdoing component...");
+                            JCS_Debug.LogError("InputField with no corrosdoing component...");
                             return;
                         }
                     }
@@ -189,7 +199,9 @@ namespace JCSUnity
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void SliderSettingUpdate()
         {
             switch (mSettingType)
