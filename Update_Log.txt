@@ -7,6 +7,12 @@
 # ========================================================================
 
 
+2018-08-27
+* Undo Redo system implemented. (JCSUnity)
+  -> JCS_UndoRedoSystem
+  -> JCS_UndoRedoComponent
+* Undo Redo system demo scene added. (JCSUnity)
+
 2018-08-26
 * Add GUI struct data script. (JCSUnity)
   -> JCS_DropdownData
