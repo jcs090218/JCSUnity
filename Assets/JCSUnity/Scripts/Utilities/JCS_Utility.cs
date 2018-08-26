@@ -962,7 +962,7 @@ namespace JCSUnity
         /// <summary>
         /// Pop the last value from the list.
         /// </summary>
-        public static T PopFrontList<T>(List<T> list)
+        public static T ListPopFront<T>(List<T> list)
         {
             if (list.Count == 0)
                 return default(T);
@@ -977,7 +977,7 @@ namespace JCSUnity
         /// <summary>
         /// Pop the last value from the list.
         /// </summary>
-        public static T PopBackList<T>(List<T> list)
+        public static T ListPopBack<T>(List<T> list)
         {
             if (list.Count == 0)
                 return default(T);
