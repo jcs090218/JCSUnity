@@ -199,8 +199,9 @@ MonoBehaviour:
   mInteractable: 1
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
-  mTestWithKey: 1
-  mToggleKey: 97
+  mTestWithKey: 0
+  mToggleOnOffKey: 97
+  mToggleInteractable: 115
   mOnOffStartingPosition: 1
   mColorSameAsEditingStatus: 1
   mToggleSign: {fileID: 114654470044940970}
