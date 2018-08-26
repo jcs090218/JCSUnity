@@ -6,11 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
+using System;
 using System.Collections;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Linq;
+
 using PeterVuorela.Tweener;
 using System.Collections.Generic;
 
@@ -48,7 +50,7 @@ namespace JCSUnity
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static Object SpawnGameObject(Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        public static UnityEngine.Object SpawnGameObject(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             if (trans == null)
                 return null;
@@ -960,8 +962,26 @@ namespace JCSUnity
         /// <summary>
         /// Pop the last value from the list.
         /// </summary>
-        public static T PopList<T>(List<T> list)
+        public static T PopFrontList<T>(List<T> list)
         {
+            if (list.Count == 0)
+                return default(T);
+
+            T data = list[0];
+
+            list.RemoveAt(0);
+
+            return data;
+        }
+
+        /// <summary>
+        /// Pop the last value from the list.
+        /// </summary>
+        public static T PopBackList<T>(List<T> list)
+        {
+            if (list.Count == 0)
+                return default(T);
+
             int lastIndex = list.Count - 1;
 
             T data = list[lastIndex];
