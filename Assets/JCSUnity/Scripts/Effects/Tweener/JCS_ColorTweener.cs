@@ -57,6 +57,30 @@ namespace JCSUnity
         private float mRealDurationBlue = 0f;
         private float mRealDurationAlpha = 0f;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_ColorTweener) **")]
+
+        [Tooltip("Test component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Tween key to color A.")]
+        [SerializeField]
+        private KeyCode mTweenKeyA = KeyCode.Q;
+
+        [Tooltip("Color to tween to.")]
+        [SerializeField]
+        private Color mTweenColorA = new Color(0.5f, 0, 0.5f, 0.5f);
+
+        [Tooltip("Tween key to color B.")]
+        [SerializeField]
+        private KeyCode mTweenKeyB = KeyCode.W;
+
+        [Tooltip("Color to tween to.")]
+        [SerializeField]
+        private Color mTweenColorB = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+#endif
+
 
         [Header("** Check Variables (JCS_ColorTweener) **")]
 
@@ -224,12 +248,13 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (Input.GetKey(KeyCode.Q))
-                DoTween(new Color(0.5f, 0, 0.5f, 0.5f));
-            if (Input.GetKey(KeyCode.W))
-                DoTween(new Color(1, 1, 1, 1));
-            if (Input.GetKey(KeyCode.E))
-                DoTween(new Color(0, 0, 0, 0));
+            if (!mTestWithKey)
+                return;
+
+            if (Input.GetKey(mTweenKeyA))
+                DoTween(mTweenColorA);
+            if (Input.GetKey(mTweenKeyB))
+                DoTween(mTweenColorB);
         }
 #endif
 

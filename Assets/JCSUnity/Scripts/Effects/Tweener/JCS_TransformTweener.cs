@@ -28,6 +28,33 @@ namespace JCSUnity
 
         private CallBackDelegate mDestinationCallback = null;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_TransformTweener) **")]
+
+        [Tooltip("Test component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to active tween to point A.")]
+        [SerializeField]
+        private KeyCode mTweenToAKey = KeyCode.A;
+
+        [Tooltip("Point A to tween to.")]
+        [SerializeField]
+        private Vector3 mTweenToA = new Vector3(0.0f, 0.0f, 0.0f);
+
+        [Tooltip("Key to active tween to point B.")]
+        [SerializeField]
+        private KeyCode mTweenToBKey = KeyCode.B;
+
+        [Tooltip("Point B to tween to.")]
+        [SerializeField]
+        private Vector3 mTweenToB = new Vector3(5.0f, 5.0f, 5.0f);
+
+        [Tooltip("Key to tween continue.")]
+        [SerializeField]
+        private KeyCode mContinueKeyTween = KeyCode.C;
+#endif
 
         [Header("** Check Variables (JCS_TransformTweener) **")]
 
@@ -205,14 +232,15 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (Input.GetKey(KeyCode.M))
-                DoTween(new Vector3(0, 0, 0));
-            if (Input.GetKey(KeyCode.N))
-                DoTween(new Vector3(10, 10, 10));
-            if (Input.GetKey(KeyCode.P))
-                DoTween(new Vector3(-10, -10, -10));
+            if (!mTestWithKey)
+                return;
 
-            if (Input.GetKey(KeyCode.Z))
+            if (Input.GetKey(mTweenToAKey))
+                DoTween(mTweenToA);
+            if (Input.GetKey(mTweenToBKey))
+                DoTween(mTweenToB);
+
+            if (Input.GetKey(mContinueKeyTween))
                 DoTweenContinue(mTargetTransform);
         }
 #endif
