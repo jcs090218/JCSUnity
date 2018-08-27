@@ -53,6 +53,14 @@ namespace JCSUnity
         private bool mIgnoreRecord = false;
 
 
+        [Header("** Initialize Variables (JCS_UndoRedoComponent) **")]
+
+        [Tooltip("Start record the undo/redo even when the game is not " +
+            "done initialize yet?")]
+        [SerializeField]
+        private bool mStartRecordGameNotDoneInitialzie = false;
+
+
         [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
 
         [Tooltip("Undo redo system, if not filled will be use the " +
@@ -145,6 +153,7 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public JCS_UndoRedoSystem UndoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
+        public bool StartRecordGameNotDoneInitialzie { get { return this.mStartRecordGameNotDoneInitialzie; } set { this.mStartRecordGameNotDoneInitialzie = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -475,6 +484,15 @@ namespace JCSUnity
         /// </summary>
         private void RecordOnce()
         {
+            if (!mStartRecordGameNotDoneInitialzie)
+            {
+                // If the application is not start yet, we don't 
+                // want to record the data. This prevent scripted 
+                // GUI's value change record.
+                if (!JCS_GameManager.instance.DONE_INITIALIZE_GAME)
+                    return;
+            }
+
             if (mIgnoreRecord)
                 return;
 
