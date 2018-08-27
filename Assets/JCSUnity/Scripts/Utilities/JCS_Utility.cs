@@ -990,5 +990,16 @@ namespace JCSUnity
 
             return data;
         }
+
+        /// <summary>
+        /// Is the string the valid number to parse.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsNumberString(string str)
+        {
+            double test;
+            return (double.TryParse(str, out test));
+        }
     }
 }
