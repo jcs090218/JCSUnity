@@ -97,6 +97,42 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
+        /// Stop recording undo/redo.
+        /// </summary>
+        public void StopRecording()
+        {
+            for (int index = 0;
+                index < mAllUndoRedoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.StopRecording();
+            }
+        }
+
+        /// <summary>
+        /// Start recording undo/redo
+        /// </summary>
+        public void StartRecording()
+        {
+            for (int index = 0;
+                index < mAllUndoRedoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.StartRecording();
+            }
+        }
+
+        /// <summary>
         ///  Undo next component.
         /// </summary>
         public void UndoComponent()

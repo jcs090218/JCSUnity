@@ -197,6 +197,22 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
+        /// Stop recording undo/redo.
+        /// </summary>
+        public void StopRecording()
+        {
+            this.mIgnoreRecord = true;
+        }
+
+        /// <summary>
+        /// Start recording undo/redo.
+        /// </summary>
+        public void StartRecording()
+        {
+            this.mIgnoreRecord = false;
+        }
+
+        /// <summary>
         /// Undo this component.
         /// </summary>
         public void Undo()
