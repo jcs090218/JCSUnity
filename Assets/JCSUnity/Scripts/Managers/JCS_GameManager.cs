@@ -35,6 +35,13 @@ namespace JCSUnity
         [Tooltip("Key to toggle game pause/unpause.")]
         [SerializeField]
         private KeyCode mToggleGamePause = KeyCode.P;
+
+        // helper tool for level designer to do 
+        // some cool effect in the game.
+        [Tooltip("Adjustable current time scale")]
+        [SerializeField]
+        [Range(0, 1)]
+        public float TIME_SCALE = 1;
 #endif
 
 
@@ -44,16 +51,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mGamePause = false;
 
+        [Tooltip("Is game done initialize?")]
+        [SerializeField]
+        private bool mDoneInitializeGame = false;
 
-#if (UNITY_EDITOR)
-        [Header("** Helper Variable (JCS_GameManager) **")]
-
-        // helper tool for level designer to do 
-        // some cool effect in the game.
-        [Tooltip("Adjustable current time scale")]
-        [SerializeField] [Range(0,1)]
-        public float TIME_SCALE = 1;
-#endif
 
         private JCS_Player mJCSPlayer = null;
         private JCS_GameSettings mJCSGameSettings = null;
@@ -64,6 +65,7 @@ namespace JCSUnity
         //--------------------------------
         // setter / getter
         //--------------------------------
+        public bool DONE_INITIALIZE_GAME { get { return this.mDoneInitializeGame; } }
         public bool GAME_PAUSE
         {
             get { return this.mGamePause; }
@@ -107,14 +109,20 @@ namespace JCSUnity
 #endif
         }
 
-#if (UNITY_EDITOR)
         private void Update()
         {
+#if (UNITY_EDITOR)
             SetTimeScale();
 
             TestPauseGame();
+#endif
+            if (mDoneInitializeGame)
+                return;
+
+            mDoneInitializeGame = true;
         }
 
+#if (UNITY_EDITOR)
         /// <summary>
         /// Keep set the time to the time scale, 
         /// so make it make the inspector slide bar can 
