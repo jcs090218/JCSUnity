@@ -51,10 +51,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mGamePause = false;
 
-        [Tooltip("Is game done initialize?")]
-        [SerializeField]
-        private bool mGameDoneInitialize = false;
-
 
         private JCS_Player mJCSPlayer = null;
         private JCS_GameSettings mJCSGameSettings = null;
@@ -65,7 +61,6 @@ namespace JCSUnity
         //--------------------------------
         // setter / getter
         //--------------------------------
-        public bool GAME_DONE_INITIALIZE { get { return this.mGameDoneInitialize; } }
         public bool GAME_PAUSE
         {
             get { return this.mGamePause; }
@@ -109,20 +104,14 @@ namespace JCSUnity
 #endif
         }
 
+#if (UNITY_EDITOR)
         private void Update()
         {
-#if (UNITY_EDITOR)
             SetTimeScale();
 
             TestPauseGame();
-#endif
-            if (mGameDoneInitialize)
-                return;
-
-            mGameDoneInitialize = true;
         }
 
-#if (UNITY_EDITOR)
         /// <summary>
         /// Keep set the time to the time scale, 
         /// so make it make the inspector slide bar can 
