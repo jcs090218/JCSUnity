@@ -53,14 +53,6 @@ namespace JCSUnity
         private bool mIgnoreRecord = false;
 
 
-        [Header("** Initialize Variables (JCS_UndoRedoComponent) **")]
-
-        [Tooltip("Start record the undo/redo even when the game is not " +
-            "done initialize yet?")]
-        [SerializeField]
-        private bool mStartRecordGameNotDoneInitialzie = false;
-
-
         [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
 
         [Tooltip("Undo redo system, if not filled will be use the " +
@@ -153,11 +145,19 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public JCS_UndoRedoSystem UndoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
-        public bool StartRecordGameNotDoneInitialzie { get { return this.mStartRecordGameNotDoneInitialzie; } set { this.mStartRecordGameNotDoneInitialzie = value; } }
 
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
+        protected override void Awake()
+        {
+            base.Awake();
+
+            // Register it, note we need to register as soon as possible 
+            // so we don't miss any default setting record by the script.
+            RegisterUndoEvent();
+        }
+
         private void Start()
         {
             // Use the universal one if not filled.
@@ -166,9 +166,6 @@ namespace JCSUnity
 
             // Add to get manage by the system.
             this.mUndoRedoSystem.AddUndoRedoComponentToSystem(this);
-
-            // Register it.
-            RegisterUndoEvent();
 
             // Record down the previous data.
             RecordPrevData();
@@ -484,15 +481,6 @@ namespace JCSUnity
         /// </summary>
         private void RecordOnce()
         {
-            if (!mStartRecordGameNotDoneInitialzie)
-            {
-                // If the application is not start yet, we don't 
-                // want to record the data. This prevent scripted 
-                // GUI's value change record.
-                if (!JCS_GameManager.instance.GAME_DONE_INITIALIZE)
-                    return;
-            }
-
             if (mIgnoreRecord)
                 return;
 
