@@ -1980,8 +1980,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTestWithKey: 0
   mToggleGamePause: 112
-  mGamePause: 0
   TIME_SCALE: 1
+  mGamePause: 0
+  mGameDoneInitialize: 0
 --- !u!114 &988866449
 MonoBehaviour:
   m_ObjectHideFlags: 0
