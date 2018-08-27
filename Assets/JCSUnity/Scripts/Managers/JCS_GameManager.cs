@@ -53,7 +53,7 @@ namespace JCSUnity
 
         [Tooltip("Is game done initialize?")]
         [SerializeField]
-        private bool mDoneInitializeGame = false;
+        private bool mGameDoneInitialize = false;
 
 
         private JCS_Player mJCSPlayer = null;
@@ -65,7 +65,7 @@ namespace JCSUnity
         //--------------------------------
         // setter / getter
         //--------------------------------
-        public bool DONE_INITIALIZE_GAME { get { return this.mDoneInitializeGame; } }
+        public bool GAME_DONE_INITIALIZE { get { return this.mGameDoneInitialize; } }
         public bool GAME_PAUSE
         {
             get { return this.mGamePause; }
@@ -116,10 +116,10 @@ namespace JCSUnity
 
             TestPauseGame();
 #endif
-            if (mDoneInitializeGame)
+            if (mGameDoneInitialize)
                 return;
 
-            mDoneInitializeGame = true;
+            mGameDoneInitialize = true;
         }
 
 #if (UNITY_EDITOR)

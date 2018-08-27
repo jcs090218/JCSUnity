@@ -489,7 +489,7 @@ namespace JCSUnity
                 // If the application is not start yet, we don't 
                 // want to record the data. This prevent scripted 
                 // GUI's value change record.
-                if (!JCS_GameManager.instance.DONE_INITIALIZE_GAME)
+                if (!JCS_GameManager.instance.GAME_DONE_INITIALIZE)
                     return;
             }
 
