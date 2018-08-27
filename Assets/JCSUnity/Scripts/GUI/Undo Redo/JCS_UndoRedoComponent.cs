@@ -420,6 +420,67 @@ namespace JCSUnity
             mTog_Redo.Clear();
         }
 
+        /// <summary>
+        /// Record down the previous data.
+        /// </summary>
+        public void RecordPrevData()
+        {
+            switch (mGUIType)
+            {
+                case JCS_GUIType.INPUT_FIELD:
+                    {
+                        mPrevInputFieldData = new JCS_InputFieldData
+                        {
+                            text = mInputField.text
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.DROP_DOWN:
+                    {
+                        mPrevDropdownData = new JCS_DropdownData
+                        {
+                            value = mDropdown.value
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.SLIDER:
+                    {
+                        mPrevSliderData = new JCS_SliderData
+                        {
+                            value = mSlider.value
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.SCROLL_BAR:
+                    {
+                        mPrevScrollbarData = new JCS_ScrollbarData
+                        {
+                            value = mScrollBar.value
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.TOGGLE:
+                    {
+                        bool tmpIsOn = false;
+
+                        if (mToggle != null)
+                            tmpIsOn = mToggle.isOn;
+                        else if (mJCSToggle != null)
+                            tmpIsOn = mJCSToggle.IsOn;
+
+                        mPrevToggleData = new JCS_ToggleData
+                        {
+                            isOn = tmpIsOn
+                        };
+                    }
+                    break;
+            }
+        }
+
         //----------------------
         // Protected Functions
 
@@ -704,67 +765,6 @@ namespace JCSUnity
                 return (mJCSToggle.IsOn == td.isOn);
 
             return false;
-        }
-
-        /// <summary>
-        /// Record down the previous data.
-        /// </summary>
-        private void RecordPrevData()
-        {
-            switch (mGUIType)
-            {
-                case JCS_GUIType.INPUT_FIELD:
-                    {
-                        mPrevInputFieldData = new JCS_InputFieldData
-                        {
-                            text = mInputField.text
-                        };
-                    }
-                    break;
-
-                case JCS_GUIType.DROP_DOWN:
-                    {
-                        mPrevDropdownData = new JCS_DropdownData
-                        {
-                            value = mDropdown.value
-                        }; 
-                    }
-                    break;
-
-                case JCS_GUIType.SLIDER:
-                    {
-                        mPrevSliderData = new JCS_SliderData
-                        {
-                            value = mSlider.value
-                        };
-                    }
-                    break;
-
-                case JCS_GUIType.SCROLL_BAR:
-                    {
-                        mPrevScrollbarData = new JCS_ScrollbarData
-                        {
-                            value = mScrollBar.value
-                        };
-                    }
-                    break;
-
-                case JCS_GUIType.TOGGLE:
-                    {
-                        bool tmpIsOn = false;
-
-                        if (mToggle != null)
-                            tmpIsOn = mToggle.isOn;
-                        else if (mJCSToggle != null)
-                            tmpIsOn = mJCSToggle.IsOn;
-
-                        mPrevToggleData = new JCS_ToggleData
-                        {
-                            isOn = tmpIsOn
-                        };
-                    }
-                    break;
-            }
         }
     }
 }
