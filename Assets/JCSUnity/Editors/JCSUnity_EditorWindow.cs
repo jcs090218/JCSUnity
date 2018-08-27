@@ -201,6 +201,12 @@ namespace JCSUnity
 
             if (GUILayout.Button("Create Tween Panel"))
                 CreateTweenPanel();
+
+
+            GUILayout.Label("** Undo/Redo **");
+
+            if (GUILayout.Button("Create Undo Redo System"))
+                CreateUndoRedoSystem();
         }
 
         /// <summary>
@@ -677,6 +683,20 @@ namespace JCSUnity
             Undo.RegisterCreatedObjectUndo(tweenPanel, "Create Tween Panel");
 
             return tweenPanel;
+        }
+
+        /// <summary>
+        /// Create the undo redo system object.
+        /// </summary>
+        /// <returns></returns>
+        private static GameObject CreateUndoRedoSystem()
+        {
+            string setting_path = "JCSUnity_Resources/GUI/JCS_UndoRedoSystem";
+            GameObject undoRedoSystem = CreateHierarchyObject(setting_path);
+
+            Undo.RegisterCreatedObjectUndo(undoRedoSystem, "Create Undo Redo System");
+
+            return undoRedoSystem;
         }
 
 
