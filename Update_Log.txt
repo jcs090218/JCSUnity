@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2018-08-28
+* Add create undo redo system editor function in JCSUnity Editor window's 
+ GUI section. (JCSUnity)
+* Update JCSUntiy source url in editor properties .ini file. (JCSUnity)
+
 2018-08-27
 * Undo Redo system implemented. (JCSUnity)
   -> JCS_UndoRedoSystem
