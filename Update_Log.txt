@@ -12,9 +12,6 @@
  GUI section. (JCSUnity)
 * Update JCSUntiy source url in editor properties .ini file. (JCSUnity)
 * Add test valid number string utility function. (JCSUnity)
-* Add game done initialize flag in JCS_GameManager. (JCSUnity)
-* Add option to undo/redo system to either record the undo/redo action 
- even when the game is still not initialize yet? (JCSUnity)
 
 2018-08-27
 * Undo Redo system implemented. (JCSUnity)
