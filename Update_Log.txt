@@ -21,6 +21,10 @@
  module. (JCSUnity)
 * Make record previous data in JCS_UndoRedoComponent to after game is 
  initialize callback. (JCSUnity)
+* JCS_KeyWith implemented for key combination data struct, just to hold
+ alt, ctrl, shift combination key info. (JCSUnity)
+* JCS_UIComponentData interface for root of all UI component data. (JCSUnity)
+* Implemented focus after undo/redo functionalities. (JCSUnity)
 
 2018-08-27
 * Undo Redo system implemented. (JCSUnity)
