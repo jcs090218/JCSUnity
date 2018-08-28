@@ -1493,7 +1493,6 @@ namespace JCSUnity
             return true;
         }
 
-
         /// <summary>
         /// Check all of these key are up.
         /// 
@@ -1921,6 +1920,58 @@ namespace JCSUnity
         }
         #endregion
 
+        #region ALT_CTRL_SHIFT
+
+        /// <summary>
+        /// Check if the 'key', alt, shift and ctrl key is pressed.
+        /// </summary>
+        /// <param name="key"> key to check if pressed together. </param>
+        /// <returns>
+        /// true, key, alt, shift and ctrl key is all pressed.
+        /// false, either alt, shift, ctrl, or key is not pressed.
+        /// </returns>
+        public static bool GetKeyWithAltCtrlShift(KeyCode key)
+        {
+            if (!OneAltKey() || !OneShiftKey() || !OneCtrlKey())
+                return false;
+
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key', alt, shift and ctrl key is down.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, alt, shift and ctrl key is all down.
+        /// false, either alt, shift, ctrl, or key is not down.
+        /// </returns>
+        public static bool GetKeyDownWithAltCtrlShift(KeyCode key)
+        {
+            if (!OneAltKey() || !OneShiftKey() || !OneCtrlKey())
+                return false;
+
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Check if the 'key', alt, shift and ctrl key is up.
+        /// </summary>
+        /// <param name="key"> key to check if down together. </param>
+        /// <returns>
+        /// true, key, alt, shift and ctrl key is all up.
+        /// false, either alt, shift, ctrl, or key is not up.
+        /// </returns>
+        public static bool GetKeyUpWithAltCtrlShift(KeyCode key)
+        {
+            if (!OneAltKey() || !OneShiftKey() || !OneCtrlKey())
+                return false;
+
+            return GetKeyUp(key);
+        }
+
+        #endregion
+
         /// <summary>
         /// Get key with certain combination.
         /// </summary>
@@ -1946,6 +1997,8 @@ namespace JCSUnity
                     return GetKeyWithAltShift(key);
                 case JCS_KeyCombination.CTRL_SHIFT:
                     return GetKeyWithCtrlShift(key);
+                case JCS_KeyCombination.ALT_CTRL_SHIFT:
+                    return GetKeyWithAltCtrlShift(key);
             }
 
             // Just return normal get key.
@@ -1977,6 +2030,8 @@ namespace JCSUnity
                     return GetKeyDownWithAltShift(key);
                 case JCS_KeyCombination.CTRL_SHIFT:
                     return GetKeyDownWithCtrlShift(key);
+                case JCS_KeyCombination.ALT_CTRL_SHIFT:
+                    return GetKeyDownWithAltCtrlShift(key);
             }
 
             // Just return normal get key.
@@ -2008,6 +2063,8 @@ namespace JCSUnity
                     return GetKeyUpWithAltShift(key);
                 case JCS_KeyCombination.CTRL_SHIFT:
                     return GetKeyUpWithCtrlShift(key);
+                case JCS_KeyCombination.ALT_CTRL_SHIFT:
+                    return GetKeyUpWithAltCtrlShift(key);
             }
 
             // Just return normal get key.
