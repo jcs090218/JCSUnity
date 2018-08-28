@@ -36,13 +36,21 @@ namespace JCSUnity
         [SerializeField]
         private bool mTestWithKey = false;
 
-        [Tooltip("Undo key.")]
+        [Tooltip("Redo key.")]
         [SerializeField]
-        private KeyCode mUndoKey = KeyCode.A;
+        private JCS_KeyWith mUndoKey = new JCS_KeyWith
+        {
+            comb = JCS_KeyCombination.ALT,
+            key = KeyCode.A,
+        };
 
         [Tooltip("Redo key.")]
         [SerializeField]
-        private KeyCode mRedoKey = KeyCode.S;
+        private JCS_KeyWith mRedoKey = new JCS_KeyWith
+        {
+            comb = JCS_KeyCombination.ALT, 
+            key = KeyCode.S,
+        };
 #endif
 
 
@@ -52,6 +60,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreRecord = false;
 
+        [Tooltip("Is the current component focused.")]
+        [SerializeField]
+        private bool mIsFocused = false;
+
 
         [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
 
@@ -59,6 +71,14 @@ namespace JCSUnity
             "universal undo redo system instead.")]
         [SerializeField]
         private JCS_UndoRedoSystem mUndoRedoSystem = null;
+
+        [Tooltip("Focus component after undo.")]
+        [SerializeField]
+        private bool mFocusAfterUndo = true;
+
+        [Tooltip("Focus component after redo.")]
+        [SerializeField]
+        private bool mFocusAfterRedo = true;
 
 
         [Header("- Input Field (JCS_UndoRedoComponent)")]
@@ -145,6 +165,8 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public JCS_UndoRedoSystem UndoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
+        public bool FocusAfterUndo { get { return this.mFocusAfterUndo; } set { this.mFocusAfterUndo = value; } }
+        public bool FocusAfterRedo { get { return this.mFocusAfterRedo; } set { this.mFocusAfterRedo = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -188,10 +210,10 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(mUndoKey))
+            if (JCS_Input.GetKeyDownWith(mUndoKey))
                 Undo();
 
-            if (JCS_Input.GetKeyDown(mRedoKey))
+            if (JCS_Input.GetKeyDownWith(mRedoKey))
                 Redo();
         }
 #endif
@@ -209,7 +231,7 @@ namespace JCSUnity
         {
             // What ever we do in undo/redo, we don't
             // record anything down.
-            mIgnoreRecord = true;
+            StopRecording();
 
             bool sameData = false;
 
@@ -296,8 +318,11 @@ namespace JCSUnity
 
             RecordPrevData();
 
+            if (mFocusAfterUndo)
+                DoFocusAfterUndoRedoAction();
+
             // Unlock ignore record.
-            mIgnoreRecord = false;
+            StartRecording();
         }
 
         /// <summary>
@@ -307,7 +332,7 @@ namespace JCSUnity
         {
             // What ever we do in undo/redo, we don't
             // record anything down.
-            mIgnoreRecord = true;
+            StopRecording();
 
             bool sameData = false;
 
@@ -394,8 +419,11 @@ namespace JCSUnity
 
             RecordPrevData();
 
+            if (mFocusAfterRedo)
+                DoFocusAfterUndoRedoAction();
+
             // Unlock ignore record.
-            mIgnoreRecord = false;
+            StartRecording();
         }
 
         /// <summary>
@@ -577,7 +605,15 @@ namespace JCSUnity
         /// </summary>
         private void RecordOnce()
         {
-            if (mIgnoreRecord)
+            if (mIsFocused)
+            {
+                mIsFocused = false;
+
+                if (CheckSameData(GetCurrentUIPrevData()))
+                    return;
+            }
+
+            if (!IsRecording())
                 return;
 
             mUndoRedoSystem.ClearRedoComp();
@@ -784,6 +820,107 @@ namespace JCSUnity
                 return (mJCSToggle.IsOn == td.isOn);
 
             return false;
+        }
+
+        /// <summary>
+        /// Check if the data are the same?
+        /// </summary>
+        /// <param name="uiComp"></param>
+        /// <returns></returns>
+        private bool CheckSameData(JCS_UIComponentData uiComp)
+        {
+            switch (mGUIType)
+            {
+                case JCS_GUIType.INPUT_FIELD:
+                    return CheckSameData((JCS_InputFieldData)uiComp);
+
+                case JCS_GUIType.DROP_DOWN:
+                    return CheckSameData((JCS_DropdownData)uiComp);
+
+                case JCS_GUIType.SLIDER:
+                    return CheckSameData((JCS_SliderData)uiComp);
+
+                case JCS_GUIType.SCROLL_BAR:
+                    return CheckSameData((JCS_ScrollbarData)uiComp);
+
+                case JCS_GUIType.TOGGLE:
+                    return CheckSameData((JCS_ToggleData)uiComp);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Get the current GUI type's previous data struct container.
+        /// </summary>
+        /// <returns></returns>
+        private JCS_UIComponentData GetCurrentUIPrevData()
+        {
+            switch (mGUIType)
+            {
+                case JCS_GUIType.INPUT_FIELD:
+                    return mPrevInputFieldData;
+
+                case JCS_GUIType.DROP_DOWN:
+                    return mPrevDropdownData;
+
+                case JCS_GUIType.SLIDER:
+                    return mPrevSliderData;
+
+                case JCS_GUIType.SCROLL_BAR:
+                    return mPrevScrollbarData;
+
+                case JCS_GUIType.TOGGLE:
+                    return mPrevToggleData;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Do the focus action after undo/redo action worked.
+        /// </summary>
+        private void DoFocusAfterUndoRedoAction()
+        {
+            switch (mGUIType)
+            {
+                case JCS_GUIType.INPUT_FIELD:
+                    {
+                        mInputField.Select();
+                    }
+                    break;
+
+                case JCS_GUIType.DROP_DOWN:
+                    {
+                        mDropdown.Select();
+                    }
+                    break;
+
+                case JCS_GUIType.SLIDER:
+                    {
+                        mSlider.Select();
+                    }
+                    break;
+
+                case JCS_GUIType.SCROLL_BAR:
+                    {
+                        mScrollBar.Select();
+                    }
+                    break;
+
+                case JCS_GUIType.TOGGLE:
+                    {
+                        if (mToggle != null)
+                            mToggle.Select();
+                        else if (mJCSToggle != null)
+                        {
+                            // empty..
+                        }
+                    }
+                    break;
+            }
+
+            this.mIsFocused = true;
         }
     }
 }
