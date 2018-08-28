@@ -17,6 +17,10 @@
  and JCS_UndoRedoComponent. (JCSUnity)
 * Make record prev data public function in JCS_UndoRedoComponent script, 
  for any data that developer want to record undo/redo's data manually. (JCSUnity)
+* Add after game is done initialize callback in JCS_GameManager, manager's 
+ module. (JCSUnity)
+* Make record previous data in JCS_UndoRedoComponent to after game is 
+ initialize callback. (JCSUnity)
 
 2018-08-27
 * Undo Redo system implemented. (JCSUnity)
