@@ -20,12 +20,17 @@ namespace JCSUnity
     {
         NONE, 
 
+        /* 1 key, total of 2 keys combination. */
         ALT, 
         CTRL,
         SHIFT,
 
+        /* 2 keys, total of 3 keys combination. */
         ALT_CTRL, 
         ALT_SHIFT,
-        CTRL_SHIFT, 
+        CTRL_SHIFT,
+
+        /* All 3 keys, total of 4 keys combination. */
+        ALT_CTRL_SHIFT,
     }
 }
