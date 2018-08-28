@@ -170,7 +170,11 @@ namespace JCSUnity
             // Record down the previous data. This we try 
             // to be as late as possible. Cuz any script change 
             // the UI value after this will not be record...
-            RecordPrevData();
+            {
+                JCS_GameManager gm = JCS_GameManager.instance;
+
+                gm.afterGameInitializeCallback += RecordPrevData;
+            }
         }
 
 #if (UNITY_EDITOR)
