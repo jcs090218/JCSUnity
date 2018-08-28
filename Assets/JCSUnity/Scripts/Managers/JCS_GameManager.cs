@@ -12,6 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
+    public delegate void AfterGameInitializeCallback();
+
     /// <summary>
     /// Make sure u have this execute first!!!
     /// </summary>
@@ -21,6 +23,9 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+
+        // Callback after the game is done initialize.
+        public AfterGameInitializeCallback afterGameInitializeCallback = null;
 
         //----------------------
         // Private Variables
@@ -177,10 +182,13 @@ namespace JCSUnity
         /// </summary>
         private void SetGameDoneInitializeFlag()
         {
-            if (mGameDoneInitialize)
+            if (this.mGameDoneInitialize)
                 return;
 
-            mGameDoneInitialize = true;
+            this.mGameDoneInitialize = true;
+
+            if (afterGameInitializeCallback != null)
+                afterGameInitializeCallback.Invoke();
         }
 
     }
