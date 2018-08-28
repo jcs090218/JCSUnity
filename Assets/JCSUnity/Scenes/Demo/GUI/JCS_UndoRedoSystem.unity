@@ -886,6 +886,8 @@ MonoBehaviour:
   mRedoKey: 115
   mIgnoreRecord: 0
   mUndoRedoSystem: {fileID: 791433986}
+  mFocusAfterUndo: 1
+  mFocusAfterRedo: 1
   mPrevInputFieldData:
     text: 
   mIF_Undo: []
@@ -1494,6 +1496,8 @@ MonoBehaviour:
   mRedoKey: 115
   mIgnoreRecord: 0
   mUndoRedoSystem: {fileID: 791433986}
+  mFocusAfterUndo: 1
+  mFocusAfterRedo: 1
   mPrevInputFieldData:
     text: 
   mIF_Undo: []
@@ -2347,6 +2351,8 @@ MonoBehaviour:
   mRedoKey: 115
   mIgnoreRecord: 0
   mUndoRedoSystem: {fileID: 791433986}
+  mFocusAfterUndo: 1
+  mFocusAfterRedo: 1
   mPrevInputFieldData:
     text: 
   mIF_Undo: []
@@ -2878,6 +2884,8 @@ MonoBehaviour:
   mRedoKey: 115
   mIgnoreRecord: 0
   mUndoRedoSystem: {fileID: 791433986}
+  mFocusAfterUndo: 1
+  mFocusAfterRedo: 1
   mPrevInputFieldData:
     text: 
   mIF_Undo: []
@@ -3283,6 +3291,8 @@ MonoBehaviour:
   mRedoKey: 115
   mIgnoreRecord: 0
   mUndoRedoSystem: {fileID: 791433986}
+  mFocusAfterUndo: 1
+  mFocusAfterRedo: 1
   mPrevInputFieldData:
     text: 
   mIF_Undo: []
@@ -3669,6 +3679,8 @@ MonoBehaviour:
   mRedoKey: 115
   mIgnoreRecord: 0
   mUndoRedoSystem: {fileID: 791433986}
+  mFocusAfterUndo: 1
+  mFocusAfterRedo: 1
   mPrevInputFieldData:
     text: 
   mIF_Undo: []
