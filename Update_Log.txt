@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-08-29
+* Add alt, ctrl and shift key combination enum to JCS_KeyCombination. (JCSUnity)
+* Add alt, ctrl, and shit key combination input. (JCSUnity)
+
 2018-08-28
 * Add create undo redo system editor function in JCSUnity Editor window's 
  GUI section. (JCSUnity)
