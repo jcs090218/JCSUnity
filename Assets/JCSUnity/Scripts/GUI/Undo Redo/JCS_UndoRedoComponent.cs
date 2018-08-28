@@ -153,13 +153,6 @@ namespace JCSUnity
         {
             base.Awake();
 
-            // Register it, note we need to register as soon as possible 
-            // so we don't miss any default setting record by the script.
-            RegisterUndoEvent();
-        }
-
-        private void Start()
-        {
             // Use the universal one if not filled.
             if (mUndoRedoSystem == null)
                 this.mUndoRedoSystem = JCS_UIManager.instance.GetGlobalUndoRedoSystem();
@@ -167,7 +160,16 @@ namespace JCSUnity
             // Add to get manage by the system.
             this.mUndoRedoSystem.AddUndoRedoComponentToSystem(this);
 
-            // Record down the previous data.
+            // Register it, note we need to register as soon as possible 
+            // so we don't miss any default setting record by the script.
+            RegisterUndoEvent();
+        }
+
+        private void Start()
+        {
+            // Record down the previous data. This we try 
+            // to be as late as possible. Cuz any script change 
+            // the UI value after this will not be record...
             RecordPrevData();
         }
 
@@ -195,22 +197,6 @@ namespace JCSUnity
         /*******************************************/
         //----------------------
         // Public Functions
-
-        /// <summary>
-        /// Stop recording undo/redo.
-        /// </summary>
-        public void StopRecording()
-        {
-            this.mIgnoreRecord = true;
-        }
-
-        /// <summary>
-        /// Start recording undo/redo.
-        /// </summary>
-        public void StartRecording()
-        {
-            this.mIgnoreRecord = false;
-        }
 
         /// <summary>
         /// Undo this component.
@@ -421,7 +407,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Record down the previous data.
+        /// Record down the previous data before we do 
+        /// undo/redo action.
         /// </summary>
         public void RecordPrevData()
         {
@@ -479,6 +466,34 @@ namespace JCSUnity
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// Stop recording undo/redo.
+        /// </summary>
+        public void StopRecording()
+        {
+            this.mIgnoreRecord = true;
+        }
+
+        /// <summary>
+        /// Start recording undo/redo.
+        /// </summary>
+        public void StartRecording()
+        {
+            this.mIgnoreRecord = false;
+        }
+
+        /// <summary>
+        /// Is current component recording undo/redo action?
+        /// </summary>
+        /// <returns>
+        /// true, is recording.
+        /// false, not recording.
+        /// </returns>
+        public bool IsRecording()
+        {
+            return (!this.mIgnoreRecord);
         }
 
         //----------------------
