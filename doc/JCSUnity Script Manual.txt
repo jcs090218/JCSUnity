@@ -2395,6 +2395,11 @@
           <Placement>Script base.</Placement>
           <Description>Base class of all the sorting object.</Description>
         </File>
+        
+        <File name="JCS_UIComponentData.cs">
+          <Placement>Script base.</Placement>
+          <Description>UI component data root struct.</Description>
+        </File>
       </Interfaces>
       <IO>
         <File name="JCS_BinaryReader.cs">
@@ -2722,40 +2727,50 @@
         </File>
       </Sound>
       <Struct>
-        <File name="JCS_DropdownData.cs">
-          <Placement>Script base.</Placement>
-          <Description>
-            Dropdown data to record it down.
-          </Description>
-        </File>
+        <GUI>
+          <File name="JCS_DropdownData.cs">
+            <Placement>Script base.</Placement>
+            <Description>
+              Dropdown data to record it down.
+            </Description>
+          </File>
 
-        <File name="JCS_InputFieldData.cs">
-          <Placement>Script base.</Placement>
-          <Description>
-            Input field data, data we need to record it down.
-          </Description>
-        </File>
+          <File name="JCS_InputFieldData.cs">
+            <Placement>Script base.</Placement>
+            <Description>
+              Input field data, data we need to record it down.
+            </Description>
+          </File>
         
-        <File name="JCS_ScrollbarData.cs">
-          <Placement>Script base.</Placement>
-          <Description>
-            Scrollbar data.
-          </Description>
-        </File>
+          <File name="JCS_ScrollbarData.cs">
+            <Placement>Script base.</Placement>
+            <Description>
+              Scrollbar data.
+            </Description>
+          </File>
         
-        <File name="JCS_SliderData.cs">
-          <Placement>Script base.</Placement>
-          <Description>
-            Slider data.
-          </Description>
-        </File>
+          <File name="JCS_SliderData.cs">
+            <Placement>Script base.</Placement>
+            <Description>
+              Slider data.
+            </Description>
+          </File>
         
-        <File name="JCS_ToggleData.cs">
-          <Placement>Script base.</Placement>
-          <Description>
-            Toggle data.
-          </Description>
-        </File>
+          <File name="JCS_ToggleData.cs">
+            <Placement>Script base.</Placement>
+            <Description>
+              Toggle data.
+            </Description>
+          </File>
+        </GUI>
+        <Input>
+          <File name="JCS_KeyWith.cs">
+            <Placement>Script base.</Placement>
+            <Description>
+              Data struct hold combination key info.
+            </Description>
+          </File>
+        </Input>
       </Struct>
       <Tags>
         <File name="JCS_RayIgnore.cs">
