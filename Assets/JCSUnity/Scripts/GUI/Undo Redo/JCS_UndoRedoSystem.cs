@@ -37,11 +37,19 @@ namespace JCSUnity
 
         [Tooltip("Undo key.")]
         [SerializeField]
-        private KeyCode mUndoKey = KeyCode.Z;
+        private JCS_KeyWith mUndoKey = new JCS_KeyWith
+        {
+            comb = JCS_KeyCombination.ALT,
+            key = KeyCode.Z,
+        };
 
         [Tooltip("Redo key.")]
         [SerializeField]
-        private KeyCode mRedoKey = KeyCode.Y;
+        private JCS_KeyWith mRedoKey = new JCS_KeyWith
+        {
+            comb = JCS_KeyCombination.ALT,
+            key = KeyCode.Y,
+        };
 #endif
 
 
@@ -82,10 +90,10 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(mUndoKey))
+            if (JCS_Input.GetKeyDownWith(mUndoKey))
                 UndoComponent();
 
-            if (JCS_Input.GetKeyDown(mRedoKey))
+            if (JCS_Input.GetKeyDownWith(mRedoKey))
                 RedoComponent();
         }
 #endif
