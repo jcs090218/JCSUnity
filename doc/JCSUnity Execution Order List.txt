@@ -1,5 +1,5 @@
 
-JCSUnity version 1.7.4 Execution Order List (Status)
+JCSUnity version 1.7.7 Execution Order List (Status)
 
 
 Following Scirpt should have lower execute order then "JCS_GameManager"
