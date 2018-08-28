@@ -1,6 +1,6 @@
 /**
- * $File: JCS_ScrollbarData.cs $
- * $Date: 2018-08-26 00:23:36 $
+ * $File: JCS_InputFieldData.cs $
+ * $Date: 2018-08-26 00:03:33 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -14,11 +14,12 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Scrollbar data.
+    /// Input field data, data we need to record it down.
     /// </summary>
     [System.Serializable]
-    public class JCS_ScrollbarData
+    public class JCS_InputFieldData
+        : JCS_UIComponentData
     {
-        public float value = 0.0f;
+        public string text = "";
     }
 }

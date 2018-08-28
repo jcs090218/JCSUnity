@@ -1,6 +1,6 @@
 /**
- * $File: JCS_ToggleData.cs $
- * $Date: 2018-08-26 00:23:04 $
+ * $File: JCS_ScrollbarData.cs $
+ * $Date: 2018-08-26 00:23:36 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -14,11 +14,12 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Toggle data.
+    /// Scrollbar data.
     /// </summary>
     [System.Serializable]
-    public class JCS_ToggleData
+    public class JCS_ScrollbarData
+        : JCS_UIComponentData
     {
-        public bool isOn = false;
+        public float value = 0.0f;
     }
 }

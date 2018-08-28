@@ -1,6 +1,6 @@
 /**
- * $File: JCS_InputFieldData.cs $
- * $Date: 2018-08-26 00:03:33 $
+ * $File: JCS_DropdownData.cs $
+ * $Date: 2018-08-26 00:06:32 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -14,11 +14,12 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Input field data, data we need to record it down.
+    /// Dropdown data to record it down.
     /// </summary>
     [System.Serializable]
-    public class JCS_InputFieldData
+    public class JCS_DropdownData
+        : JCS_UIComponentData
     {
-        public string text = "";
+        public int value = 0;
     }
 }

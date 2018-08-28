@@ -1,6 +1,6 @@
 /**
- * $File: JCS_DropdownData.cs $
- * $Date: 2018-08-26 00:06:32 $
+ * $File: JCS_ToggleData.cs $
+ * $Date: 2018-08-26 00:23:04 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -14,11 +14,12 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Dropdown data to record it down.
+    /// Toggle data.
     /// </summary>
     [System.Serializable]
-    public class JCS_DropdownData
+    public class JCS_ToggleData
+        : JCS_UIComponentData
     {
-        public int value = 0;
+        public bool isOn = false;
     }
 }
