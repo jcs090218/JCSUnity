@@ -1920,5 +1920,137 @@ namespace JCSUnity
             return GetKeyUp(key);
         }
         #endregion
+
+        /// <summary>
+        /// Get key with certain combination.
+        /// </summary>
+        /// <param name="comb"> combination type. </param>
+        /// <param name="key"> key code. </param>
+        /// <returns>
+        /// true, key with this combination is pressed.
+        /// false, key with this combination is not pressed.
+        /// </returns>
+        public static bool GetKeyWith(JCS_KeyCombination comb, KeyCode key)
+        {
+            switch (comb)
+            {
+                case JCS_KeyCombination.ALT:
+                    return GetKeyWithAlt(key);
+                case JCS_KeyCombination.CTRL:
+                    return GetKeyWithCtrl(key);
+                case JCS_KeyCombination.SHIFT:
+                    return GetKeyWithShift(key);
+                case JCS_KeyCombination.ALT_CTRL:
+                    return GetKeyWithAltCtrl(key);
+                case JCS_KeyCombination.ALT_SHIFT:
+                    return GetKeyWithAltShift(key);
+                case JCS_KeyCombination.CTRL_SHIFT:
+                    return GetKeyWithCtrlShift(key);
+            }
+
+            // Just return normal get key.
+            return GetKey(key);
+        }
+
+        /// <summary>
+        /// Get key down with certain combination.
+        /// </summary>
+        /// <param name="comb"> combination type. </param>
+        /// <param name="key"> key code. </param>
+        /// <returns>
+        /// true, key with this combination is down.
+        /// false, key with this combination is not down.
+        /// </returns>
+        public static bool GetKeyDownWith(JCS_KeyCombination comb, KeyCode key)
+        {
+            switch (comb)
+            {
+                case JCS_KeyCombination.ALT:
+                    return GetKeyDownWithAlt(key);
+                case JCS_KeyCombination.CTRL:
+                    return GetKeyDownWithCtrl(key);
+                case JCS_KeyCombination.SHIFT:
+                    return GetKeyDownWithShift(key);
+                case JCS_KeyCombination.ALT_CTRL:
+                    return GetKeyDownWithAltCtrl(key);
+                case JCS_KeyCombination.ALT_SHIFT:
+                    return GetKeyDownWithAltShift(key);
+                case JCS_KeyCombination.CTRL_SHIFT:
+                    return GetKeyDownWithCtrlShift(key);
+            }
+
+            // Just return normal get key.
+            return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Get key up with certain combination.
+        /// </summary>
+        /// <param name="comb"> combination type. </param>
+        /// <param name="key"> key code. </param>
+        /// <returns>
+        /// true, key with this combination is up.
+        /// false, key with this combination is not up.
+        /// </returns>
+        public static bool GetKeyUpWith(JCS_KeyCombination comb, KeyCode key)
+        {
+            switch (comb)
+            {
+                case JCS_KeyCombination.ALT:
+                    return GetKeyUpWithAlt(key);
+                case JCS_KeyCombination.CTRL:
+                    return GetKeyUpWithCtrl(key);
+                case JCS_KeyCombination.SHIFT:
+                    return GetKeyUpWithShift(key);
+                case JCS_KeyCombination.ALT_CTRL:
+                    return GetKeyUpWithAltCtrl(key);
+                case JCS_KeyCombination.ALT_SHIFT:
+                    return GetKeyUpWithAltShift(key);
+                case JCS_KeyCombination.CTRL_SHIFT:
+                    return GetKeyUpWithCtrlShift(key);
+            }
+
+            // Just return normal get key.
+            return GetKeyUp(key);
+        }
+
+        /// <summary>
+        /// Get key pressed with certain combination.
+        /// </summary>
+        /// <param name="with"> combination of key info. </param>
+        /// <returns>
+        /// true, key with this combination is pressed.
+        /// false, key with this combination is not pressed.
+        /// </returns>
+        public static bool GetKeyWith(JCS_KeyWith with)
+        {
+            return GetKeyWith(with.comb, with.key);
+        }
+
+        /// <summary>
+        /// Get key down with certain combination.
+        /// </summary>
+        /// <param name="with">combination of key info.</param>
+        /// <returns>
+        /// true, key with this combination is down.
+        /// false, key with this combination is not down.
+        /// </returns>
+        public static bool GetKeyDownWith(JCS_KeyWith with)
+        {
+            return GetKeyDownWith(with.comb, with.key);
+        }
+
+        /// <summary>
+        /// Get key up with certain combination.
+        /// </summary>
+        /// <param name="with">combination of key info.</param>
+        /// <returns>
+        /// true, key with this combination is up.
+        /// false, key with this combination is not up.
+        /// </returns>
+        public static bool GetKeyUpWith(JCS_KeyWith with)
+        {
+            return GetKeyUpWith(with.comb, with.key);
+        }
     }
 }
