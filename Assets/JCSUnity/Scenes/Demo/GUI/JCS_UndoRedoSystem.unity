@@ -882,9 +882,14 @@ MonoBehaviour:
   mScrollBar: {fileID: 0}
   mGUIType: 3
   mTestWithKey: 0
-  mUndoKey: 97
-  mRedoKey: 115
+  mUndoKey:
+    comb: 1
+    key: 97
+  mRedoKey:
+    comb: 1
+    key: 115
   mIgnoreRecord: 0
+  mIsFocused: 0
   mUndoRedoSystem: {fileID: 791433986}
   mFocusAfterUndo: 1
   mFocusAfterRedo: 1
@@ -1492,9 +1497,14 @@ MonoBehaviour:
   mScrollBar: {fileID: 0}
   mGUIType: 2
   mTestWithKey: 0
-  mUndoKey: 97
-  mRedoKey: 115
+  mUndoKey:
+    comb: 1
+    key: 97
+  mRedoKey:
+    comb: 1
+    key: 115
   mIgnoreRecord: 0
+  mIsFocused: 0
   mUndoRedoSystem: {fileID: 791433986}
   mFocusAfterUndo: 1
   mFocusAfterRedo: 1
@@ -2347,9 +2357,14 @@ MonoBehaviour:
   mScrollBar: {fileID: 0}
   mGUIType: 1
   mTestWithKey: 0
-  mUndoKey: 97
-  mRedoKey: 115
+  mUndoKey:
+    comb: 1
+    key: 97
+  mRedoKey:
+    comb: 1
+    key: 115
   mIgnoreRecord: 0
+  mIsFocused: 0
   mUndoRedoSystem: {fileID: 791433986}
   mFocusAfterUndo: 1
   mFocusAfterRedo: 1
@@ -2880,9 +2895,14 @@ MonoBehaviour:
   mScrollBar: {fileID: 0}
   mGUIType: 5
   mTestWithKey: 0
-  mUndoKey: 97
-  mRedoKey: 115
+  mUndoKey:
+    comb: 1
+    key: 97
+  mRedoKey:
+    comb: 1
+    key: 115
   mIgnoreRecord: 0
+  mIsFocused: 0
   mUndoRedoSystem: {fileID: 791433986}
   mFocusAfterUndo: 1
   mFocusAfterRedo: 1
@@ -3287,9 +3307,14 @@ MonoBehaviour:
   mScrollBar: {fileID: 0}
   mGUIType: 4
   mTestWithKey: 0
-  mUndoKey: 97
-  mRedoKey: 115
+  mUndoKey:
+    comb: 1
+    key: 97
+  mRedoKey:
+    comb: 1
+    key: 115
   mIgnoreRecord: 0
+  mIsFocused: 0
   mUndoRedoSystem: {fileID: 791433986}
   mFocusAfterUndo: 1
   mFocusAfterRedo: 1
@@ -3675,9 +3700,14 @@ MonoBehaviour:
   mScrollBar: {fileID: 0}
   mGUIType: 1
   mTestWithKey: 0
-  mUndoKey: 97
-  mRedoKey: 115
+  mUndoKey:
+    comb: 1
+    key: 97
+  mRedoKey:
+    comb: 1
+    key: 115
   mIgnoreRecord: 0
+  mIsFocused: 0
   mUndoRedoSystem: {fileID: 791433986}
   mFocusAfterUndo: 1
   mFocusAfterRedo: 1
