@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-09-02
+* Upgrade Unity Engine to 2018.2.6f1. (JCSUnity)
+
 2018-08-29
 * Add alt, ctrl and shift key combination enum to JCS_KeyCombination. (JCSUnity)
 * Add alt, ctrl, and shit key combination input. (JCSUnity)
