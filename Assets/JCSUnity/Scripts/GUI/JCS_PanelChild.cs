@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 
@@ -33,12 +34,24 @@ namespace JCSUnity
         // Private Variables
         private RectTransform mRectTransform = null;
 
+        [Header("** Check Variables (JCS_PanelChild) **")]
+
+        [SerializeField]
+        private JCS_PanelRoot mPanelRoot = null;
+
+        // IMPORTANT(jenchieh): the Text component is so special in 
+        // Unity Enigne that we need to treat this specifically in order 
+        // to get the correct apsect screen looking.
+        [SerializeField]
+        private Text mText = null;
+
         //----------------------
         // Protected Variables
 
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_PanelRoot PanelRoot { get { return this.mPanelRoot; } set { this.mPanelRoot = value; } }
 
         //========================================
         //      Unity's function
@@ -47,24 +60,30 @@ namespace JCSUnity
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
+            if (mPanelRoot == null)
+                mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+
             // Rely on "Script Execution Order"
             {
-                JCS_PanelRoot jpr = this.GetComponentInParent<JCS_PanelRoot>();
-
                 // get all the same class object on this game object.
                 JCS_PanelChild[] tempPanelChild = null;
                 tempPanelChild = this.GetComponents<JCS_PanelChild>();
 
                 // only do it once.
                 if (/* Check 'jpr' null for spawn GUI objects. */
-                    jpr != null && 
+                    mPanelRoot != null && 
                     /* Regular checks. */
                     tempPanelChild.Length == 1 &&
                     tempPanelChild[0] == this)
                 {
                     FitPerfectSize(
-                        jpr.PanelDeltaWidthRatio, 
-                        jpr.PanelDeltaHeightRatio);
+                        mPanelRoot.PanelDeltaWidthRatio,
+                        mPanelRoot.PanelDeltaHeightRatio);
+
+                    // Try to fix the text's font size issue.
+                    FixTextFontSize(
+                        mPanelRoot.PanelDeltaWidthRatio,
+                        mPanelRoot.PanelDeltaHeightRatio);
                 }
 
                 // since we add this script assuming we are 
@@ -82,7 +101,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Fit screen size base on Unity Engine architecture.
         /// </summary>
         /// <param name="xRatio"></param>
         /// <param name="yRatio"></param>
@@ -92,12 +111,8 @@ namespace JCSUnity
             newPosition.x = newPosition.x / xRatio;
             newPosition.y = newPosition.y / yRatio;
 
-
-            float guiWidth = mRectTransform.sizeDelta.x;
-            float guiHeight = mRectTransform.sizeDelta.y;
-
-            guiWidth = guiWidth / xRatio;
-            guiHeight = guiHeight / yRatio;
+            float guiWidth = mRectTransform.sizeDelta.x / xRatio;
+            float guiHeight = mRectTransform.sizeDelta.y / yRatio;
 
             /*
              * NOTE(jenchieh): 
@@ -134,9 +149,40 @@ namespace JCSUnity
             {
                 Transform child = tempTrans.GetChild(index);
 
-                child.gameObject.AddComponent<JCS_PanelChild>();
+                JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
+                panelChild.PanelRoot = mPanelRoot;
             }
         }
 
+        /// <summary>
+        /// Try to fix the text's font size.
+        /// </summary>
+        private void FixTextFontSize(float xRatio, float yRatio)
+        {
+            this.mText = this.GetComponent<Text>();
+
+            if (mText == null)
+                return;
+
+            /* Fix the font size. */
+            // NOTE(jenchieh): Originally we scale it by font size.
+            // We do get the correct scale szie but the text get 
+            // very blury.
+            {
+                //float smallerRatio = Mathf.Min(xRatio, yRatio);
+
+                //mText.fontSize = (int)(mText.fontSize / smallerRatio);
+            }
+
+            /* Fix the scale. */
+            // NOTE(jenchieh): So instead we use resize the font size.
+            // We scale the text itself is the better choice.
+            {
+                Vector3 newScale = mText.transform.localScale;
+                newScale.x = newScale.x / xRatio;
+                newScale.y = newScale.y / yRatio;
+                mText.transform.localScale = newScale;
+            }
+        }
     }
 }
