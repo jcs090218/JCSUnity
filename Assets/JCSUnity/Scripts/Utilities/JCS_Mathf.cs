@@ -763,5 +763,27 @@ namespace JCSUnity
             double result = Math.Truncate(mult * val) / mult;
             return (float)result;
         }
+
+        /// <summary>
+        /// Find the greatest common factor.
+        /// 最大公因數.
+        /// </summary>
+        /// <param name="a"> number a. </param>
+        /// <param name="b"> number b. </param>
+        /// <returns>
+        /// greatest common factor for 'a' nd 'b'.
+        /// </returns>
+        public static int GCD(int a, int b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+
+            return (a == 0) ? b : a;
+        }
     }
 }
