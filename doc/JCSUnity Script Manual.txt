@@ -2905,6 +2905,13 @@
         </File>
       </Webcam>
 
+      <File name="JCS_AspectScreen.cs">
+        <Placement>Attach on main camera that render the whole game.</Placement>
+        <Description>
+          Make the proportional screen/window. 
+        </Description>
+      </File>
+
       <File name="JCS_Camera.cs">
         <Placement>Script base</Placement>
         <Description>
