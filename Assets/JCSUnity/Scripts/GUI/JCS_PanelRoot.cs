@@ -81,8 +81,7 @@ namespace JCSUnity
         // Private Functions
         
         /// <summary>
-        /// Fit screen size base on Unity Engine 
-        /// architecture.
+        /// Fit screen size base on Unity Engine architecture.
         /// </summary>
         private void FitPerfectSize()
         {
@@ -149,7 +148,8 @@ namespace JCSUnity
             {
                 Transform child = tempTrans.GetChild(index);
 
-                child.gameObject.AddComponent<JCS_PanelChild>();
+                JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
+                panelChild.PanelRoot = this;
             }
         }
 
