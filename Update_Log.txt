@@ -7,6 +7,13 @@
 # ========================================================================
 
 
+2018-09-03
+* JCS_AspectScreen implemented for aspect ratio window/screen 
+ functionalities. (JCSUnity)
+* Fix text component by scaling the size when doing the aspect ratio UI
+ in JCS_PanelChild module. (JCSUnity)
+* Add GCD -greatest common factor math/util function. (JCSUnity)
+
 2018-09-02
 * Upgrade Unity Engine to 2018.2.6f1. (JCSUnity)
 
