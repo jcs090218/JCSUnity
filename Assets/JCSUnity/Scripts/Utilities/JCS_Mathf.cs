@@ -767,6 +767,9 @@ namespace JCSUnity
         /// <summary>
         /// Find the greatest common factor.
         /// 最大公因數.
+        /// 
+        /// SOURCE: https://stackoverflow.com/questions/18541832/c-sharp-find-the-greatest-common-divisor
+        /// AUTHOR: Drew Noakes
         /// </summary>
         /// <param name="a"> number a. </param>
         /// <param name="b"> number b. </param>
