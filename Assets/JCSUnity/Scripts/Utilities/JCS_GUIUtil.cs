@@ -19,6 +19,7 @@ namespace JCSUnity
     /// </summary>
     public class JCS_GUIUtil
     {
+        #region DROPDOWN
         /// <summary>
         /// Returns item vlaue by index.
         /// </summary>
@@ -218,5 +219,220 @@ namespace JCSUnity
 
             return dd;
         }
+        #endregion
+
+        #region ANCHOR
+        /// <summary>
+        /// Check the ahcor presets type.
+        /// </summary>
+        /// <param name="rt"> recttransform </param>
+        /// <param name="type"> type of the anchor presets. </param>
+        /// <returns>
+        /// true, is anchor presets type.
+        /// false, not this anchor presets type.
+        /// </returns>
+        public static bool IsAchorPresets(RectTransform rt , JCS_AnchorPresetsType type)
+        {
+            Vector2 min = rt.anchorMin;
+            Vector2 max = rt.anchorMax;
+
+            bool left = IsAnchorLeft(min, max);
+            bool center = IsAnchorCenter(min, max);
+            bool right = IsAnchorRight(min, max);
+            bool stretchX = IsAnchorStretchX(min, max);
+
+            bool top = IsAnchorTop(min, max);
+            bool middle = IsAnchorMiddle(min, max);
+            bool bottom = IsAnchorBottom(min, max);
+            bool stretchY = IsAnchorStretchY(min, max);
+
+            switch (type)
+            {
+                case JCS_AnchorPresetsType.LEFT_TOP: return (left && top);
+                case JCS_AnchorPresetsType.LEFT_MIDDLE: return (left && middle);
+                case JCS_AnchorPresetsType.LEFT_BOTTOM: return (left && bottom);
+                case JCS_AnchorPresetsType.LEFT_STRETCH: return (left && stretchY);
+
+                case JCS_AnchorPresetsType.CENTER_TOP: return (center && top);
+                case JCS_AnchorPresetsType.CENTER_MIDDLE: return (center && middle);
+                case JCS_AnchorPresetsType.CENTER_BOTTOM: return (center && bottom);
+                case JCS_AnchorPresetsType.CENTER_STRETCH: return (center && stretchY);
+
+                case JCS_AnchorPresetsType.RIGHT_TOP: return (right && top);
+                case JCS_AnchorPresetsType.RIGHT_MIDDLE: return (right && middle);
+                case JCS_AnchorPresetsType.RIGHT_BOTTOM: return (right && bottom);
+                case JCS_AnchorPresetsType.RIGHT_STRETCH: return (right && stretchY);
+
+                case JCS_AnchorPresetsType.STRETCH_TOP: return (stretchX && top);
+                case JCS_AnchorPresetsType.STRETCH_MIDDLE: return (stretchX && middle);
+                case JCS_AnchorPresetsType.STRETCH_BOTTOM: return (stretchX && bottom);
+                case JCS_AnchorPresetsType.STRETCH_STRETCH: return (stretchX && stretchY);
+            }
+
+            // default.
+            return false;
+        }
+
+        /// <summary>
+        /// Check the ahcor presets type.
+        /// </summary>
+        /// <param name="rt"> recttransform </param>
+        /// <returns>
+        /// Type of the current recttransform is.
+        /// </returns>
+        public static JCS_AnchorPresetsType IsAchorPresets(RectTransform rt)
+        {
+            if (IsAchorPresets(rt, JCS_AnchorPresetsType.LEFT_TOP))
+                return JCS_AnchorPresetsType.LEFT_TOP;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.LEFT_MIDDLE))
+                return JCS_AnchorPresetsType.LEFT_MIDDLE;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.LEFT_BOTTOM))
+                return JCS_AnchorPresetsType.LEFT_BOTTOM;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.CENTER_STRETCH))
+                return JCS_AnchorPresetsType.CENTER_STRETCH;
+
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.CENTER_TOP))
+                return JCS_AnchorPresetsType.CENTER_TOP;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.CENTER_MIDDLE))
+                return JCS_AnchorPresetsType.CENTER_MIDDLE;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.CENTER_BOTTOM))
+                return JCS_AnchorPresetsType.CENTER_BOTTOM;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.CENTER_STRETCH))
+                return JCS_AnchorPresetsType.CENTER_STRETCH;
+
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.RIGHT_TOP))
+                return JCS_AnchorPresetsType.RIGHT_TOP;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.RIGHT_MIDDLE))
+                return JCS_AnchorPresetsType.RIGHT_MIDDLE;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.RIGHT_BOTTOM))
+                return JCS_AnchorPresetsType.RIGHT_BOTTOM;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.RIGHT_STRETCH))
+                return JCS_AnchorPresetsType.RIGHT_STRETCH;
+
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.STRETCH_TOP))
+                return JCS_AnchorPresetsType.STRETCH_TOP;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.STRETCH_MIDDLE))
+                return JCS_AnchorPresetsType.STRETCH_MIDDLE;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.STRETCH_BOTTOM))
+                return JCS_AnchorPresetsType.STRETCH_BOTTOM;
+            else if (IsAchorPresets(rt, JCS_AnchorPresetsType.STRETCH_STRETCH))
+                return JCS_AnchorPresetsType.STRETCH_STRETCH;
+
+            // default
+            return JCS_AnchorPresetsType.NONE;
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the left.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the left.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorLeft(Vector2 min, Vector2 max)
+        {
+            return (min.x == 0.0f && max.x == 0.0f);
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the center.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the center.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorCenter(Vector2 min, Vector2 max)
+        {
+            return (min.x == 0.5f && max.x == 0.5f);
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the right.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the right.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorRight(Vector2 min, Vector2 max)
+        {
+            return (min.x == 1.0f && max.x == 1.0f);
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the stretch x.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the stretch x.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorStretchX(Vector2 min, Vector2 max)
+        {
+            return (min.x == 0.0f && max.x == 1.0f);
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the top.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the top.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorTop(Vector2 min, Vector2 max)
+        {
+            return (min.y == 1.0f && max.y == 1.0f);
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the middle.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the middle.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorMiddle(Vector2 min, Vector2 max)
+        {
+            return (min.y == 0.5f && max.y == 0.5f);
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the bottom.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the bottom.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorBottom(Vector2 min, Vector2 max)
+        {
+            return (min.y == 0.0f && max.y == 0.0f);
+        }
+
+        /// <summary>
+        /// Check if the anchor point currently at the stretch.
+        /// </summary>
+        /// <param name="min"> achorMin </param>
+        /// <param name="max"> achorMax </param>
+        /// <returns>
+        /// True, anchor is on the stretch Y.
+        /// false, vice versa.
+        /// </returns>
+        public static bool IsAnchorStretchY(Vector2 min, Vector2 max)
+        {
+            return (min.y == 0.0f && max.y == 1.0f);
+        }
+        #endregion
     }
 }
