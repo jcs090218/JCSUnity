@@ -39,7 +39,7 @@ namespace JCSUnity
         [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
 
         [SerializeField]
-        private bool mTestWithKey = true;
+        private bool mTestWithKey = false;
 #endif
 
 

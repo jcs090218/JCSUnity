@@ -30,8 +30,25 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables Variables (JCS_2DAnimator) **")]
 
+        [Tooltip("Test this component with key?")]
         [SerializeField]
-        private bool mTestWithKey = true;
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to play first animation.")]
+        [SerializeField]
+        private KeyCode mFirstAnimKey = KeyCode.A;
+
+        [Tooltip("Key to play second animation.")]
+        [SerializeField]
+        private KeyCode mSecondAnimKey = KeyCode.S;
+
+        [Tooltip("Key to play third animation.")]
+        [SerializeField]
+        private KeyCode mThirdAnimKey = KeyCode.D;
+
+        [Tooltip("Key to play one shot on the current animation.")]
+        [SerializeField]
+        private KeyCode mPlayOneShotAnimKey = KeyCode.F;
 #endif
 
 
@@ -139,16 +156,16 @@ you could add this component to do the action/event.")]
             if (!mTestWithKey)
                 return;
 
-            if (Input.GetKey(KeyCode.A))
+            if (JCS_Input.GetKey(mFirstAnimKey))
                 DoAnimation(0, true);
 
-            if (Input.GetKey(KeyCode.S))
+            if (JCS_Input.GetKey(mSecondAnimKey))
                 DoAnimation(1, false);
 
-            if (Input.GetKey(KeyCode.D))
+            if (JCS_Input.GetKey(mThirdAnimKey))
                 DoAnimation(2, true);
 
-            if (Input.GetKey(KeyCode.G))
+            if (JCS_Input.GetKey(mPlayOneShotAnimKey))
                 PlayOneShot(0);
         }
 #endif
