@@ -9,9 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
+    /// <summary>
+    /// List of all possible season.
+    /// </summary>
     public enum JCS_SeasonType
     {
         UNKNOWN,
