@@ -12,6 +12,8 @@
  in there. (JCSUnity)
 * Instead set resolution and make aspect screen in Update we do it in 
  LateUpdate function call. (JCSUnity)
+* Add fix text by font size and fix text by scale options in JCS_PanelRoot 
+ component work with JCS_PanelChild component. (JCSUnity)
 
 2018-09-03
 * JCS_AspectScreen implemented for aspect ratio window/screen 
