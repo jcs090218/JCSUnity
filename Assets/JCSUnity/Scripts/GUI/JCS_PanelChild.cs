@@ -9,6 +9,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace JCSUnity
@@ -59,6 +60,7 @@ namespace JCSUnity
         private void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
+            this.mText = this.GetComponent<Text>();
 
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
@@ -86,10 +88,13 @@ namespace JCSUnity
                         mPanelRoot.PanelDeltaHeightRatio);
                 }
 
-                // since we add this script assuming we are 
-                // int the fit perfect size mode
-                // see "JCS_PanelRoot" -> mFitScreenSize variables
-                AddPanelChild();
+                if (!IsSpecialUI())
+                {
+                    // since we add this script assuming we are 
+                    // int the fit perfect size mode
+                    // see "JCS_PanelRoot" -> mFitScreenSize variables
+                    AddPanelChild();
+                }
             }
         }
 
@@ -111,8 +116,11 @@ namespace JCSUnity
             newPosition.x = newPosition.x / xRatio;
             newPosition.y = newPosition.y / yRatio;
 
-            float guiWidth = mRectTransform.sizeDelta.x / xRatio;
-            float guiHeight = mRectTransform.sizeDelta.y / yRatio;
+            float guiWidth = mRectTransform.sizeDelta.x;
+            float guiHeight = mRectTransform.sizeDelta.y;
+
+            guiWidth = guiWidth / xRatio;
+            guiHeight = guiHeight / yRatio;
 
             /*
              * NOTE(jenchieh): 
@@ -163,10 +171,10 @@ namespace JCSUnity
         /// </summary>
         private void FixTextFontSize(float xRatio, float yRatio)
         {
-            this.mText = this.GetComponent<Text>();
-
             if (mText == null)
                 return;
+
+            List<Transform> childs = JCS_Utility.DettachAllChild(this.mRectTransform);
 
             /* Fix the font size. */
             if (mPanelRoot.FixTextByFontSize)
@@ -174,6 +182,15 @@ namespace JCSUnity
                 float smallerRatio = Mathf.Min(xRatio, yRatio);
 
                 mText.fontSize = (int)(mText.fontSize / smallerRatio);
+            }
+
+            /* Fix the delta delta size. */
+            if (mPanelRoot.FixTextByDeltaSize)
+            {
+                Vector2 newDeltaSize = mText.rectTransform.sizeDelta;
+                newDeltaSize.x = newDeltaSize.x / xRatio;
+                newDeltaSize.y = newDeltaSize.y / yRatio;
+                mText.rectTransform.sizeDelta = newDeltaSize;
             }
 
             /* Fix the scale. */
@@ -184,6 +201,19 @@ namespace JCSUnity
                 newScale.y = newScale.y / yRatio;
                 mText.transform.localScale = newScale;
             }
+
+            JCS_Utility.AttachAllChild(this.mRectTransform, childs);
+        }
+
+        /// <summary>
+        /// UI component that we do not want to mess up with.
+        /// </summary>
+        /// <returns></returns>
+        private bool IsSpecialUI()
+        {
+            return (this.GetComponent<Dropdown>() ||
+                    this.GetComponent<Slider>() ||
+                    this.GetComponent<Scrollbar>());
         }
     }
 }

@@ -48,7 +48,11 @@ namespace JCSUnity
 
         [Tooltip("Fix the text UI component by changing the font size.")]
         [SerializeField]
-        private bool mFixTextByFontSize = false;
+        private bool mFixTextByFontSizes = false;
+
+        [Tooltip("Fix the text UI component by changing the delta size.")]
+        [SerializeField]
+        private bool mFixTextByDeltaSizes = false;
 
         [Tooltip("Fix the text UI component by changing the scale.")]
         [SerializeField]
@@ -64,7 +68,8 @@ namespace JCSUnity
         public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
         public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
 
-        public bool FixTextByFontSize { get { return this.mFixTextByFontSize; } }
+        public bool FixTextByFontSize { get { return this.mFixTextByFontSizes; } }
+        public bool FixTextByDeltaSize { get { return this.mFixTextByDeltaSizes; } }
         public bool FixTextByScale { get { return this.mFixTextByScale; } }
 
         //========================================
