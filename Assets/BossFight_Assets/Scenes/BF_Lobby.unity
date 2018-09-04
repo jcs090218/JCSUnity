@@ -895,9 +895,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &125373289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,9 +1394,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &242865945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,9 +2913,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &383005408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,9 +3330,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &493770893
 GameObject:
   m_ObjectHideFlags: 0
@@ -6095,9 +6107,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &680001377
 GameObject:
   m_ObjectHideFlags: 0
@@ -7311,9 +7326,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &858927526
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,9 +7693,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!114 &865629819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8162,9 +8183,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &977721484
 GameObject:
   m_ObjectHideFlags: 0
@@ -9389,8 +9413,11 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
+  mFixTextByDeltaSize: 0
   mFixTextByScale: 1
 --- !u!1 &1096481557
 GameObject:
@@ -16763,9 +16790,12 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mFixTextByFontSize: 0
-  mFixTextByScale: 1
+  mFixTextByDeltaSize: 1
+  mFixTextByScale: 0
 --- !u!1 &2051649830
 GameObject:
   m_ObjectHideFlags: 0
