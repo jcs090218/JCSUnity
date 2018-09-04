@@ -26,6 +26,15 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_UIManager) **")]
+        
+        [Tooltip("Test this component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+#endif
+
+
         [Header("** Check Variables (JCS_UIManager) **")]
 
         [Tooltip("Global undo redo system.")]
@@ -162,6 +171,9 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
+            if (!mTestWithKey)
+                return;
+
             //if (JCS_Input.GetKeyDown(KeyCode.A))
             //    JCS_UtilityFunctions.PopIsConnectDialogue();
             //if (JCS_Input.GetKeyDown(KeyCode.S))
