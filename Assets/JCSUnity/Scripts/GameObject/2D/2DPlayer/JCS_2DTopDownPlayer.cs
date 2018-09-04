@@ -13,9 +13,8 @@ using System;
 
 namespace JCSUnity
 {
-    
     /// <summary>
-    /// 
+    /// Example Player with topdown control.
     /// </summary>
     [RequireComponent(typeof(JCS_2DTopDownPlayerAudioController))]
     public class JCS_2DTopDownPlayer 
@@ -91,6 +90,11 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="act"></param>
         public override void ControlEnable(bool act)
         {
             if (mTopDownAudioController.GetAudioListener() == null)
