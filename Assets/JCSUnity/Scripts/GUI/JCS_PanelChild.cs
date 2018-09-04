@@ -33,18 +33,19 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private RectTransform mRectTransform = null;
+
 
         [Header("** Check Variables (JCS_PanelChild) **")]
 
+        [Tooltip("Panel root object cache.")]
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
 
-        // IMPORTANT(jenchieh): the Text component is so special in 
-        // Unity Enigne that we need to treat this specifically in order 
-        // to get the correct apsect screen looking.
+        [Tooltip("Is this component the Unity defined UI component?")]
         [SerializeField]
-        private Text mText = null;
+        private bool mIsUnityDefinedUI = false;
 
         //----------------------
         // Protected Variables
@@ -60,10 +61,11 @@ namespace JCSUnity
         private void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
-            this.mText = this.GetComponent<Text>();
 
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+
+            mIsUnityDefinedUI = IsUnityDefinedUI();
 
             // Rely on "Script Execution Order"
             {
@@ -81,14 +83,9 @@ namespace JCSUnity
                     FitPerfectSize(
                         mPanelRoot.PanelDeltaWidthRatio,
                         mPanelRoot.PanelDeltaHeightRatio);
-
-                    // Try to fix the text's font size issue.
-                    FixTextFontSize(
-                        mPanelRoot.PanelDeltaWidthRatio,
-                        mPanelRoot.PanelDeltaHeightRatio);
                 }
 
-                if (!IsSpecialUI())
+                if (!mIsUnityDefinedUI)
                 {
                     // since we add this script assuming we are 
                     // int the fit perfect size mode
@@ -112,16 +109,6 @@ namespace JCSUnity
         /// <param name="yRatio"></param>
         public void FitPerfectSize(float xRatio, float yRatio)
         {
-            Vector3 newPosition = mRectTransform.localPosition;
-            newPosition.x = newPosition.x / xRatio;
-            newPosition.y = newPosition.y / yRatio;
-
-            float guiWidth = mRectTransform.sizeDelta.x;
-            float guiHeight = mRectTransform.sizeDelta.y;
-
-            guiWidth = guiWidth / xRatio;
-            guiHeight = guiHeight / yRatio;
-
             /*
              * NOTE(jenchieh): 
              * Cool, `sizeDelta' will actually change the `localPosition'
@@ -130,8 +117,37 @@ namespace JCSUnity
              * So we set the `sizeDelta' (width and height) first, then
              * set the `localPosition'.
              */
+
+            /* Do the scale. */
             {
-                mRectTransform.sizeDelta = new Vector2(guiWidth, guiHeight);
+                List<Transform> childs = null;
+                if (!mIsUnityDefinedUI)
+                {
+                    // NOTE(jenchieh): If not the Unity define UI, we 
+                    // need to dettach all the child transform before 
+                    // we can resize it. If we resize it without dettach 
+                    // all child transforms, the children transform 
+                    // will also be scaled/changed.
+                    childs = JCS_Utility.DettachAllChild(this.mRectTransform);
+                }
+
+                Vector3 newScale = mRectTransform.localScale;
+                newScale.x = newScale.x / xRatio;
+                newScale.y = newScale.y / yRatio;
+                mRectTransform.localScale = newScale;
+
+                if (!mIsUnityDefinedUI)
+                {
+                    // NOTE(jenchieh): Reattach all the previous child.
+                    JCS_Utility.AttachAllChild(this.mRectTransform, childs);
+                }
+            }
+
+            /* Do the position. */
+            {
+                Vector3 newPosition = mRectTransform.localPosition;
+                newPosition.x = newPosition.x / xRatio;
+                newPosition.y = newPosition.y / yRatio;
 
                 // set to the new position
                 mRectTransform.localPosition = newPosition;
@@ -167,53 +183,17 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Try to fix the text's font size.
-        /// </summary>
-        private void FixTextFontSize(float xRatio, float yRatio)
-        {
-            if (mText == null)
-                return;
-
-            List<Transform> childs = JCS_Utility.DettachAllChild(this.mRectTransform);
-
-            /* Fix the font size. */
-            if (mPanelRoot.FixTextByFontSize)
-            {
-                float smallerRatio = Mathf.Min(xRatio, yRatio);
-
-                mText.fontSize = (int)(mText.fontSize / smallerRatio);
-            }
-
-            /* Fix the delta delta size. */
-            if (mPanelRoot.FixTextByDeltaSize)
-            {
-                Vector2 newDeltaSize = mText.rectTransform.sizeDelta;
-                newDeltaSize.x = newDeltaSize.x / xRatio;
-                newDeltaSize.y = newDeltaSize.y / yRatio;
-                mText.rectTransform.sizeDelta = newDeltaSize;
-            }
-
-            /* Fix the scale. */
-            if (mPanelRoot.FixTextByScale)
-            {
-                Vector3 newScale = mText.transform.localScale;
-                newScale.x = newScale.x / xRatio;
-                newScale.y = newScale.y / yRatio;
-                mText.transform.localScale = newScale;
-            }
-
-            JCS_Utility.AttachAllChild(this.mRectTransform, childs);
-        }
-
-        /// <summary>
         /// UI component that we do not want to mess up with.
         /// </summary>
         /// <returns></returns>
-        private bool IsSpecialUI()
+        private bool IsUnityDefinedUI()
         {
-            return (this.GetComponent<Dropdown>() ||
-                    this.GetComponent<Slider>() ||
-                    this.GetComponent<Scrollbar>());
+            return (this.GetComponent<Button>() || 
+                this.GetComponent<Dropdown>() || 
+                this.GetComponent<Slider>() || 
+                this.GetComponent<Scrollbar>() ||
+                this.GetComponent<Toggle>() ||
+                this.GetComponent<InputField>());
         }
     }
 }
