@@ -1031,9 +1031,50 @@
             <Description>Gradient type.</Description>
           </File>
         </Text>
+        
+        <File name="JCS_AnchorPresetsType.cs">
+          <Placement>Script base.</Placement>
+          <Description>Anchore Presets type.</Description>
+        </File>
       </GUI>
+      <Input>
+        <File name="JCS_AxisChannel.cs">
+          <Placement>Script base.</Placement>
+          <Description>Channel for Unity's InputManager settings.</Description>
+        </File>
+        
+        <File name="JCS_AxisType.cs">
+          <Placement>Script base.</Placement>
+          <Description>Axis type for input manager axis.</Description>
+        </File>
+        
+        <File name="JCS_GamePadType.cs">
+          <Placement>Script base.</Placement>
+          <Description>List of all known game pad type...</Description>
+        </File>
+      </Input>
+      <Network>
+        <File name="JCS_ClientMode.cs">
+          <Placement>Script base.</Placement>
+          <Description>List of the client mode.</Description>
+        </File>
+        
+        <File name="JCS_ProtocalType.cs">
+          <Placement>Script base.</Placement>
+          <Description>Network protocal type.</Description>
+        </File>
+        
+        <File name="JCS_RecvPacketType.cs">
+          <Placement>Script base.</Placement>
+          <Description>Packet handler for receive.</Description>
+        </File>
+        
+        <File name="JCS_SendPacketType.cs">
+          <Placement>Script base.</Placement>
+          <Description>Packet handle for sending.</Description>
+        </File>
+      </Network>
       <Time>
-
         <File name="JCS_SeasonType.cs">
           <Placement>Script base.</Placement>
           <Description>List of all the season.</Description>
@@ -1046,7 +1087,7 @@
 
         <File name="JCS_WeatherType.cs">
           <Placement>Script base.</Placement>
-          <Description>List of all the weather type.</Description>
+          <Description>List of type of the possible weather.</Description>
         </File>
       </Time>
 
