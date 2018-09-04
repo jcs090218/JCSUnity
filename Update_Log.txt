@@ -7,6 +7,12 @@
 # ========================================================================
 
 
+2018-09-04
+* Remove all the weird testing key with test component with key options 
+ in there. (JCSUnity)
+* Instead set resolution and make aspect screen in Update we do it in 
+ LateUpdate function call. (JCSUnity)
+
 2018-09-03
 * JCS_AspectScreen implemented for aspect ratio window/screen 
  functionalities. (JCSUnity)
