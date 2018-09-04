@@ -43,21 +43,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mFitScreenSize = true;
 
-
-        [Header("- Text (JCS_PanelRoot)")]
-
-        [Tooltip("Fix the text UI component by changing the font size.")]
-        [SerializeField]
-        private bool mFixTextByFontSizes = false;
-
-        [Tooltip("Fix the text UI component by changing the delta size.")]
-        [SerializeField]
-        private bool mFixTextByDeltaSizes = false;
-
-        [Tooltip("Fix the text UI component by changing the scale.")]
-        [SerializeField]
-        private bool mFixTextByScale = true;
-
         //----------------------
         // Protected Variables
 
@@ -67,10 +52,6 @@ namespace JCSUnity
         public bool FitScreenSize { get { return this.mFitScreenSize; } set { this.mFitScreenSize = value; } }
         public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
         public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
-
-        public bool FixTextByFontSize { get { return this.mFixTextByFontSizes; } }
-        public bool FixTextByDeltaSize { get { return this.mFixTextByDeltaSizes; } }
-        public bool FixTextByScale { get { return this.mFixTextByScale; } }
 
         //========================================
         //      Unity's function
