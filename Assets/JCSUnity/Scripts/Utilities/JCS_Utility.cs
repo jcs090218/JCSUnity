@@ -503,8 +503,7 @@ namespace JCSUnity
                     return new Vector3(1, -1, -1);
             }
 
-            JCS_Debug.LogError(
-                "This cannot happed.");
+            JCS_Debug.LogError("This cannot happed.");
 
             // this cannot happens
             return Vector3.zero;
@@ -1000,6 +999,48 @@ namespace JCSUnity
         {
             double test;
             return (double.TryParse(str, out test));
+        }
+
+        /// <summary>
+        /// Detttach all the child from one transform.
+        /// </summary>
+        /// <param name="trans"></param>
+        /// <returns></returns>
+        public static List<Transform> DettachAllChild(Transform trans)
+        {
+            List<Transform> childs = new List<Transform>();
+
+            for (int index = 0;
+                index < trans.childCount;
+                ++index)
+            {
+                Transform child = trans.GetChild(index);
+
+                childs.Add(child);
+
+                // Remove from parent.
+                child.SetParent(null);
+            }
+
+            return childs;
+        }
+
+        /// <summary>
+        /// Attach all childs to this transform.
+        /// </summary>
+        /// <param name="trans"> transform we want to add the childs to. </param>
+        /// <param name="childs"> childs we want to add to transform. </param>
+        public static void AttachAllChild(Transform trans, List<Transform> childs)
+        {
+            for (int index = 0;
+                index < childs.Count;
+                ++index)
+            {
+                Transform child = childs[index];
+
+                // Remove from parent.
+                child.SetParent(trans);
+            }
         }
     }
 }
