@@ -38,7 +38,7 @@ namespace JCSUnity
         [Header("** Helper Variables (JCS_2DCursor) **")]
 
         [SerializeField]
-        private bool mTestWithKey = true;
+        private bool mTestWithKey = false;
 #endif
 
         [Header("** Runtime Variables (JCS_2DCursor) **")]
