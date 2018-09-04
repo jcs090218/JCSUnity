@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Path finding unit.
     /// </summary>
     public class JCS_PfUnit
         : MonoBehaviour
@@ -25,6 +24,15 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_PfUnit) **")]
+
+        [Tooltip("Test this component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+#endif
+
 
         [Header("** Check Variables (JCS_PfUnit) **")]
 
@@ -61,6 +69,9 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Update()
         {
+            if (!mTestWithKey)
+                return;
+
             if (JCS_Input.GetKeyDown(KeyCode.A))
                 ActivePathfinding();
             if (JCS_Input.GetKeyDown(KeyCode.S))

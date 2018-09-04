@@ -34,6 +34,10 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_PositionCastAction) **")]
 
+        [Tooltip("Test the component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
         [Tooltip("Check to see the current casting position.")]
         [SerializeField]
         private Vector3 mCastPosition = Vector3.zero;
@@ -71,6 +75,9 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Update()
         {
+            if (!mTestWithKey)
+                return;
+
             if (JCS_Input.GetKeyDown(mCastToScreenKey))
                 mCastPosition = CastToScreen(mCastPosition);
             if (JCS_Input.GetKeyDown(mCastToWorldKey))
