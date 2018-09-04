@@ -149,6 +149,10 @@ namespace JCSUnity
             {
                 Transform child = tempTrans.GetChild(index);
 
+                // Only added once.
+                if (child.GetComponent<JCS_PanelChild>() != null)
+                    continue;
+
                 JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
                 panelChild.PanelRoot = mPanelRoot;
             }
@@ -165,18 +169,15 @@ namespace JCSUnity
                 return;
 
             /* Fix the font size. */
-            // NOTE(jenchieh): Originally we scale it by font size.
-            // We do get the correct scale szie but the text get 
-            // very blury.
+            if (mPanelRoot.FixTextByFontSize)
             {
-                //float smallerRatio = Mathf.Min(xRatio, yRatio);
+                float smallerRatio = Mathf.Min(xRatio, yRatio);
 
-                //mText.fontSize = (int)(mText.fontSize / smallerRatio);
+                mText.fontSize = (int)(mText.fontSize / smallerRatio);
             }
 
             /* Fix the scale. */
-            // NOTE(jenchieh): So instead we use resize the font size.
-            // We scale the text itself is the better choice.
+            if (mPanelRoot.FixTextByScale)
             {
                 Vector3 newScale = mText.transform.localScale;
                 newScale.x = newScale.x / xRatio;
