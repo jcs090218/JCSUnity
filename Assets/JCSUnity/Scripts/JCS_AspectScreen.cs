@@ -64,8 +64,7 @@ namespace JCSUnity
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
-
-        private void Update()
+        private void LateUpdate()
         {
             if (Screen.fullScreen)
                 return;
