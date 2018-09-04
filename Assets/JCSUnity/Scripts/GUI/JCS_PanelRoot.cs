@@ -26,7 +26,14 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        [Header("** Check Variables (JCS_PanelRoot) **")]
+
+        [Tooltip("Delta ratio change of the screen width.")]
+        [SerializeField]
         private float mPanelDeltaWidthRatio = 0;
+
+        [Tooltip("Delta ratio change of the screen height.")]
+        [SerializeField]
         private float mPanelDeltaHeightRatio = 0;
 
 
@@ -35,6 +42,17 @@ namespace JCSUnity
         [Tooltip("Fit the whole screen size?")]
         [SerializeField]
         private bool mFitScreenSize = true;
+
+
+        [Header("- Text (JCS_PanelRoot)")]
+
+        [Tooltip("Fix the text UI component by changing the font size.")]
+        [SerializeField]
+        private bool mFixTextByFontSize = false;
+
+        [Tooltip("Fix the text UI component by changing the scale.")]
+        [SerializeField]
+        private bool mFixTextByScale = true;
 
         //----------------------
         // Protected Variables
@@ -45,6 +63,9 @@ namespace JCSUnity
         public bool FitScreenSize { get { return this.mFitScreenSize; } set { this.mFitScreenSize = value; } }
         public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
         public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
+
+        public bool FixTextByFontSize { get { return this.mFixTextByFontSize; } }
+        public bool FixTextByScale { get { return this.mFixTextByScale; } }
 
         //========================================
         //      Unity's function
@@ -147,6 +168,10 @@ namespace JCSUnity
                 ++index)
             {
                 Transform child = tempTrans.GetChild(index);
+
+                // Only added once.
+                if (child.GetComponent<JCS_PanelChild>() != null)
+                    continue;
 
                 JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
                 panelChild.PanelRoot = this;
