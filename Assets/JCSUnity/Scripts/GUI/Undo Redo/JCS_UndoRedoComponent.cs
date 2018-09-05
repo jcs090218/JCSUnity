@@ -156,7 +156,6 @@ namespace JCSUnity
         private List<JCS_SliderData> mSli_Redo = null;
 
 
-
         /*******************************************/
         /*           Protected Variables           */
         /*******************************************/
