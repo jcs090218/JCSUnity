@@ -910,6 +910,46 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Merging two list and return the new list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lists"></param>
+        /// <returns></returns>
+        public static List<T> MergeList<T>(params List<T>[] lists)
+        {
+            if (lists.Length <= 1)
+            {
+                JCS_Debug.Log(
+                    "You trying to merge the List less then two array?");
+            }
+
+            List<T> newList = new List<T>();
+
+            for (int index = 0;
+                index < lists.Length;
+                ++index)
+            {
+                // Loop through all list.
+                List<T> list = lists[index];
+
+                if (list == null)
+                    continue;
+
+                for (int listIndex = 0;
+                    listIndex < list.Count;
+                    ++listIndex)
+                {
+                    // Loop through item.
+                    T item = list[listIndex];
+
+                    newList.Add(item);
+                }
+            }
+
+            return newList;
+        }
+
+        /// <summary>
         /// Copy byte array to another byte array memory space.
         /// </summary>
         /// <param name="inBuf"> byte array to copy. </param>
@@ -1004,9 +1044,12 @@ namespace JCSUnity
         /// <summary>
         /// Detttach all the child from one transform.
         /// </summary>
-        /// <param name="trans"></param>
-        /// <returns></returns>
-        public static List<Transform> DettachAllChild(Transform trans)
+        /// <param name="trans"> transform you want to remove all 
+        /// the children under. </param>
+        /// <returns>
+        /// All the children under as a list.
+        /// </returns>
+        public static List<Transform> DetachChildren(Transform trans)
         {
             List<Transform> childs = new List<Transform>();
 
@@ -1026,19 +1069,45 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Force to clean all the children, this will make sure the 
+        /// transform have 0 children transform.
+        /// </summary>
+        /// <param name="trans"> transform you want to remove all 
+        /// the children under. </param>
+        /// <returns>
+        /// All the children under as a list.
+        /// </returns>
+        public static List<Transform> ForceDetachChildren(Transform trans)
+        {
+            List<Transform> childs = null;
+
+            while (trans.childCount != 0)
+            {
+                List<Transform> tmpChilds = JCS_Utility.DetachChildren(trans);
+
+                childs = MergeList(tmpChilds, childs);
+            }
+
+            return childs;
+        }
+
+        /// <summary>
         /// Attach all childs to this transform.
         /// </summary>
         /// <param name="trans"> transform we want to add the childs to. </param>
         /// <param name="childs"> childs we want to add to transform. </param>
-        public static void AttachAllChild(Transform trans, List<Transform> childs)
+        public static void AttachChildren(Transform trans, List<Transform> childs)
         {
+            if (trans == null || childs == null)
+                return;
+
             for (int index = 0;
                 index < childs.Count;
                 ++index)
             {
                 Transform child = childs[index];
 
-                // Remove from parent.
+                // Add to parent.
                 child.SetParent(trans);
             }
         }
