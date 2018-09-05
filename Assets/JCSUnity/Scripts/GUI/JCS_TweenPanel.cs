@@ -37,8 +37,9 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_TweenPanel) **")]
 
+        [Tooltip("Test this component with key?")]
         [SerializeField]
-        private bool mTestKey = true;
+        private bool mTestWithKey = false;
 
         [SerializeField]
         private KeyCode mActiveKey = KeyCode.K;
@@ -109,21 +110,21 @@ namespace JCSUnity
         {
             this.mStartingPosition = this.mTransformTweener.LocalPosition;
 
-            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
-            if (mPanelRoot != null)
+            // NOTE(jenchieh): Make compatible to resizable screen.
             {
-                mStartingPosition.x /= mPanelRoot.PanelDeltaWidthRatio;
-                mStartingPosition.y /= mPanelRoot.PanelDeltaHeightRatio;
-
-                mTargetPosition.x /= mPanelRoot.PanelDeltaWidthRatio;
-                mTargetPosition.y /= mPanelRoot.PanelDeltaHeightRatio;
+                this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+                if (mPanelRoot != null)
+                {
+                    mTargetPosition.x /= mPanelRoot.PanelDeltaWidthRatio;
+                    mTargetPosition.y /= mPanelRoot.PanelDeltaHeightRatio;
+                }
             }
         }
 
 #if (UNITY_EDITOR)
         private void Update()
         {
-            if (!mTestKey)
+            if (!mTestWithKey)
                 return;
 
             if (JCS_Input.GetKeyDown(mActiveKey))
