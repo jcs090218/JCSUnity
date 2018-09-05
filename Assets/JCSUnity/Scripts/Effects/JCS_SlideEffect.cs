@@ -13,7 +13,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Make object to make the smooth slide effect.
     ///     - Could be compose with JCS_TransformTweener class.
