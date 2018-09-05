@@ -65,20 +65,12 @@ namespace JCSUnity
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
 
-            mIsUnityDefinedUI = IsUnityDefinedUI();
+            this.mIsUnityDefinedUI = IsUnityDefinedUI();
 
             // Rely on "Script Execution Order"
             {
-                // get all the same class object on this game object.
-                JCS_PanelChild[] tempPanelChild = null;
-                tempPanelChild = this.GetComponents<JCS_PanelChild>();
-
-                // only do it once.
-                if (/* Check 'jpr' null for spawn GUI objects. */
-                    mPanelRoot != null && 
-                    /* Regular checks. */
-                    tempPanelChild.Length == 1 &&
-                    tempPanelChild[0] == this)
+                /* Check 'jpr' null for spawn GUI objects. */
+                if (mPanelRoot != null)
                 {
                     FitPerfectSize(
                         mPanelRoot.PanelDeltaWidthRatio,
@@ -128,7 +120,10 @@ namespace JCSUnity
                     // we can resize it. If we resize it without dettach 
                     // all child transforms, the children transform 
                     // will also be scaled/changed.
-                    childs = JCS_Utility.DettachAllChild(this.mRectTransform);
+                    // 
+                    // 這個有點暴力解法... 不知道為什麼Unity沒有辦法
+                    // 在初始化階段一次清乾淨.
+                    childs = JCS_Utility.ForceDetachChildren(this.mRectTransform);
                 }
 
                 Vector3 newScale = mRectTransform.localScale;
@@ -139,7 +134,7 @@ namespace JCSUnity
                 if (!mIsUnityDefinedUI)
                 {
                     // NOTE(jenchieh): Reattach all the previous child.
-                    JCS_Utility.AttachAllChild(this.mRectTransform, childs);
+                    JCS_Utility.AttachChildren(this.mRectTransform, childs);
                 }
             }
 
