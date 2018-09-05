@@ -90,7 +90,7 @@ namespace JCSUnity
 
             // do not auto check this exit, 
             // so it wont exit itself.
-            mSlideEffect.AutoCheckExit = false;
+            mSlideEffect.AutoAddEvent = false;
 
             // if button not equals to null, 
             // then we can do the button to close the panel instead of 
@@ -162,8 +162,6 @@ namespace JCSUnity
                 if (se == null)
                 {
                     JCS_Debug.LogError(
-                        "JCS_SequenceSlidPanel",
-                         
                         "Missing jcs_button assign in the inspector...");
 
                     continue;
@@ -171,6 +169,8 @@ namespace JCSUnity
 
                 // 
                 se.transform.SetParent(this.transform);
+
+                se.AutoAddEvent = false;
             }
 
             for (int index = 0;
@@ -182,8 +182,6 @@ namespace JCSUnity
                 if (se == null)
                 {
                     JCS_Debug.LogError(
-                        "JCS_SequenceSlidPanel",
-                         
                         "Missing jcs_button assign in the inspector...");
 
                     continue;
@@ -221,7 +219,7 @@ namespace JCSUnity
             se = mSlideButtons[mBtnCounter];
 
             // stop checking if exits
-            se.AutoCheckExit = false;
+            se.AutoAddEvent = false;
 
             se.Active();
 
