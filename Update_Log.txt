@@ -14,6 +14,7 @@
  work well enough with resizable screen/window. (JCSUnity)
 * Make compatiable with resizable screen/window and add audo add event 
  trigger event to event trigger system. (JCSUnity)
+* Make tween panel compatible with resizable screen/window. (JCSUnity)
 
 2018-09-05
 * Add attach/detach all child util functions. (JCSUnity)
