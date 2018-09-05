@@ -2182,6 +2182,13 @@
           <Description>Change the color by following neon hue pattern.</Description>
         </File>
 
+        <File name="JCS_InputField.cs">
+          <Placement>With uGUI text component.</Placement>
+          <Description>
+            A better version of input field handle for uGUI.
+          </Description>
+        </File>
+
         <File name="JCS_LiquidBarText.cs">
           <Placement>With uGUI text component.</Placement>
           <Description>
