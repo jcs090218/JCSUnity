@@ -28,7 +28,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_Unityobject) **")]
 
-        [Tooltip("")]
+        [Tooltip("Type of the Unity game object.")]
         [SerializeField]
         protected JCS_UnityObjectType mObjectType = JCS_UnityObjectType.SPRITE;
 
