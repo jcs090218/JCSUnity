@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// This responsoble handle all the gui into correct proportion and 
     /// right scaling.
@@ -29,9 +28,21 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private RectTransform mRect = null;
+
+        [Header("** Check Variables (JCS_ResizeUI) **")]
+
+        [Tooltip("")]
+        [SerializeField]
         private float mWScale = 0;
+
+        [Tooltip("")]
+        [SerializeField]
         private float mHScale = 0;
+
+        [Tooltip("")]
+        [SerializeField]
         private float mTargetScale = 0;
 
         //----------------------
