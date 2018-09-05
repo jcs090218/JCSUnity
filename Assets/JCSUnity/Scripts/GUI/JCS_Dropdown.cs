@@ -15,7 +15,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// A better version of dropdown handle for UGUI.
+    /// A better version of dropdown handle for uGUI.
     /// </summary>
     [RequireComponent(typeof(Dropdown))]
     public class JCS_Dropdown
@@ -32,8 +32,9 @@ namespace JCSUnity
 
         private Dropdown mDropdown = null;
 
+
 #if (UNITY_EDITOR)
-        [Header("** Check Variables (JCS_Dropdown) **")]
+        [Header("** Helper Variables (JCS_Dropdown) **")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
