@@ -203,6 +203,9 @@ namespace JCSUnity
         /// Solve the flash problem! (JCS_CheckableObject)
         /// 
         /// Check if the mouse still on top of the image!
+        /// 
+        /// ATTENTIOIN(jenchieh): this will not work on the 
+        /// resizable window.
         /// </summary>
         /// <returns></returns>
         public static bool MouseOverGUI(RectTransform imageRect, RectTransform rootPanel = null)
