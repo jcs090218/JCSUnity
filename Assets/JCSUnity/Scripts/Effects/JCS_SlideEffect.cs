@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 
@@ -27,10 +28,41 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        private Vector3 mTargetPosition = Vector3.zero;
+
+        private Vector3 mRecordPosition = Vector3.zero;
+        private Vector3 mTowardPosition = Vector3.zero;
+
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_SlideEffect) **")]
+
+        [Tooltip("Test this component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to do the active slide effect.")]
+        [SerializeField]
+        private KeyCode mActiveKey = KeyCode.A;
+
+        [Tooltip("Key to do the deactive slide effect.")]
+        [SerializeField]
+        private KeyCode mDeactiveKey = KeyCode.S;
+#endif
+
         [Header("** Check Variables (JCS_SlideEffect) **")]
 
+        [Tooltip("Is this effect active?")]
         [SerializeField]
         private bool mIsActive = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_PanelRoot mPanelRoot = null;
+
+        [Tooltip("")]
+        [SerializeField]
+        private EventTrigger mEventTrigger = null;
 
 
         [Header("** Initialize Variables (JCS_SlideEffect) **")]
@@ -43,18 +75,26 @@ namespace JCSUnity
         [SerializeField] [Range(-30000, 30000)]
         private float mDistance = -50;
 
-        [Tooltip("Check if the mouse leave the button or not to disable the slide effect.")]
-        [SerializeField]
-        private bool mAutoCheckExit = true;
-
         [Tooltip("How fast the object slides.")]
-        [SerializeField] [Range(0.01f, 10.0f)]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
         private float mFriction = 0.2f;
 
-        private Vector3 mTargetPosition = Vector3.zero;
 
-        private Vector3 mRecordPosition = Vector3.zero;
-        private Vector3 mTowardPosition = Vector3.zero;
+        [Header("- UI (JCS_SlideEffect)")]
+
+        [Tooltip("Add event to event trigger system!")]
+        [SerializeField]
+        private bool mAutoAddEvent = true;
+
+        [Tooltip("Event trigger type to active the the slide effect.")]
+        [SerializeField]
+        private EventTriggerType mActiveEventTriggerType = EventTriggerType.PointerEnter;
+
+        [Tooltip("Event trigger type to deactive the the slide effect.")]
+        [SerializeField]
+        private EventTriggerType mDeactiveEventTriggerType = EventTriggerType.PointerExit;
+
 
 
         [Header("Usage:(Audio) Add JCS_SoundPlayer components, if u want the SFX.")]
@@ -97,7 +137,6 @@ plz set the button here.")]
         //------------------------------
         public bool IsActive { get { return this.mIsActive; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public bool AutoCheckExit { get { return this.mAutoCheckExit; } set { this.mAutoCheckExit = value; } }
         public void SetActiveSound(AudioClip ac) { this.mActiveClip = ac; }
         public void SetDeactiveSound(AudioClip ac) { this.mDeactiveClip = ac; }
         public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
@@ -129,6 +168,7 @@ plz set the button here.")]
                 this.mTowardPosition = newPos;
             }
         }
+        public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
 
         //========================================
         //      Unity's function
@@ -143,7 +183,31 @@ plz set the button here.")]
             // set the call back function if there is button assigned.
             if (mActiveButton != null)
                 mActiveButton.SetSystemCallback(JCS_OnMouseOver);
+        }
 
+        private void Start()
+        {
+            // Only need it for the UI.
+            if (GetObjectType() == JCS_UnityObjectType.UI)
+            {
+                // Get panel root, in order to calculate the 
+                // correct distance base on the resolution.
+                mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+
+                if (mAutoAddEvent)
+                {
+                    // Event trigger is the must if we need to add the 
+                    // event to event trigger system.
+                    {
+                        this.mEventTrigger = this.GetComponent<EventTrigger>();
+                        if (this.mEventTrigger == null)
+                            this.mEventTrigger = this.gameObject.AddComponent<EventTrigger>();
+                    }
+
+                    JCS_Utility.AddEventTriggerEvent(mEventTrigger, mActiveEventTriggerType, JCS_OnMouseOver);
+                    JCS_Utility.AddEventTriggerEvent(mEventTrigger, mDeactiveEventTriggerType, JCS_OnMouseExit);
+                }
+            }
 
             Vector3 newPos = this.transform.localPosition;
             // record the original position
@@ -153,13 +217,29 @@ plz set the button here.")]
             switch (mAxis)
             {
                 case JCS_Axis.AXIS_X:
-                    newPos.x += mDistance;
+                    {
+                        // mPanelRoot will be null is the object isn't
+                        // UI game object.
+                        if (mPanelRoot != null)
+                            mDistance = mDistance / mPanelRoot.PanelDeltaWidthRatio;
+
+                        newPos.x += mDistance;
+                    }
                     break;
                 case JCS_Axis.AXIS_Y:
-                    newPos.y += mDistance;
+                    {
+                        // mPanelRoot will be null is the object isn't
+                        // UI game object.
+                        if (mPanelRoot != null)
+                            mDistance = mDistance / mPanelRoot.PanelDeltaHeightRatio;
+
+                        newPos.y += mDistance;
+                    }
                     break;
                 case JCS_Axis.AXIS_Z:
-                    newPos.z += mDistance;
+                    {
+                        newPos.z += mDistance;
+                    }
                     break;
             }
 
@@ -168,11 +248,26 @@ plz set the button here.")]
 
         private void Update()
         {
-            SlideEffect();
+#if (UNITY_EDITOR)
+            Test();
+#endif
 
-            if (mAutoCheckExit)
-                JCS_OnMouseExit();
+            SlideEffect();
         }
+
+#if (UNITY_EDITOR)
+        private void Test()
+        {
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mActiveKey))
+                Active();
+
+            if (JCS_Input.GetKeyDown(mDeactiveKey))
+                Deactive();
+        }
+#endif
 
         //========================================
         //      Self-Define
@@ -183,29 +278,27 @@ plz set the button here.")]
         /// <summary>
         /// Use for inspector. (Active)
         /// </summary>
+        public void JCS_OnMouseOver(PointerEventData data)
+        {
+            JCS_OnMouseOver();
+        }
         public void JCS_OnMouseOver()
         {
             Active();
         }
 
+
         /// <summary>
         /// Use for inspector. (Deactive)
         /// </summary>
         /// <returns></returns>
-        public bool JCS_OnMouseExit()
+        public void JCS_OnMouseExit(PointerEventData data)
         {
-            if (!mIsActive)
-                return false;
-
-            if (GetObjectType() == JCS_UnityObjectType.UI)
-            {
-                if (JCS_Utility.MouseOverGUI(this.mRectTransform))
-                    return false;
-            }
-
+            JCS_OnMouseExit();
+        }
+        public void JCS_OnMouseExit()
+        {
             Deactive();
-
-            return true;
         }
 
         /// <summary>
