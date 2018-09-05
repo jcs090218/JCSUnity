@@ -340,11 +340,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: 740
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -538,11 +545,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: 50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -811,6 +825,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &125373289
 GameObject:
@@ -1055,11 +1071,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -1486,6 +1509,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &209697730
 GameObject:
@@ -1863,11 +1888,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -2105,11 +2137,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -2343,11 +2382,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: 50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -2607,6 +2653,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &387084812
 GameObject:
@@ -2693,11 +2741,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -3358,6 +3413,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &493965850
 GameObject:
@@ -3444,11 +3501,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -4772,11 +4836,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -5166,11 +5237,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -5329,11 +5407,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -5503,11 +5588,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -6840,6 +6932,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &688828978
 GameObject:
@@ -7162,11 +7256,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -8013,11 +8114,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -8187,11 +8295,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -8415,6 +8530,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &830015868
 GameObject:
@@ -8771,6 +8888,8 @@ MonoBehaviour:
   mAsOriginalSize: 0
   mAsOriginalPosition: 0
   mAsOriginalRotation: 0
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!114 &865629819
 MonoBehaviour:
@@ -8998,11 +9117,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -9251,11 +9377,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -9762,6 +9895,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &975456157
 GameObject:
@@ -9837,11 +9972,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -10000,11 +10142,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: 50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -10174,11 +10323,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -10427,11 +10583,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -10736,6 +10899,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &1102750946
 GameObject:
@@ -11217,11 +11382,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -11470,11 +11642,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -12705,11 +12884,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -12879,11 +13065,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -13414,11 +13607,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -13588,11 +13788,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -13751,11 +13958,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -14139,11 +14353,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -14381,11 +14602,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -14726,11 +14954,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -14889,11 +15124,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -15242,11 +15484,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -15416,11 +15665,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -15984,11 +16240,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -16147,11 +16410,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: 50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -16679,6 +16949,8 @@ MonoBehaviour:
   mAsOriginalSize: 1
   mAsOriginalPosition: 1
   mAsOriginalRotation: 1
+  mPanelDeltaWidthRatio: 0
+  mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
 --- !u!1 &2068116420
 GameObject:
@@ -16844,11 +17116,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 1
   mDistance: -50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
@@ -17165,11 +17444,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mTestWithKey: 0
+  mActiveKey: 97
+  mDeactiveKey: 115
   mIsActive: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mAxis: 0
   mDistance: 50
-  mAutoCheckExit: 1
   mFriction: 0.2
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
   mActiveClip: {fileID: 0}
   mDeactiveClip: {fileID: 0}
   mIgnoreX: 0
