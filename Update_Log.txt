@@ -8,11 +8,14 @@
 
 
 2018-09-05
-* Add attach/dettach all child util functions. (JCSUnity)
+* Add attach/detach all child util functions. (JCSUnity)
 * JCS_AnchorPresetsType enum implemented. (JCSUnity)
 * Update scripting manual with JCS_AnchorPresetsType file description. (JCSUnity)
 * Fixed all Unity object goes weird issue when having Unity defined UI 
  as parent or child transform as another Unity defined UI. (JCSUnity)
+* Add merge list utilty function in JCS_Utility module. (JCSUnity)
+* Use force detach children instead of normal detach children in 
+ JCS_PanelChild module. (JCSUnity)
 
 2018-09-04
 * Remove all the weird testing key with test component with key options 
