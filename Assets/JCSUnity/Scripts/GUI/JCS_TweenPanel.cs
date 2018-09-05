@@ -46,7 +46,13 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mDeactiveKey = KeyCode.L;
 #endif
+
+
         [Header("** Check Variables (JCS_TweenPanel) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_PanelRoot mPanelRoot = null;
 
         [Tooltip("Record down the starting position, in order to go back.")]
         [SerializeField]
@@ -96,12 +102,22 @@ namespace JCSUnity
         //------------------------------
         private void Awake()
         {
-            mTransformTweener = this.GetComponent<JCS_TransformTweener>();
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
+            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
         private void Start()
         {
-            mStartingPosition = this.mTransformTweener.LocalPosition;
+            this.mStartingPosition = this.mTransformTweener.LocalPosition;
+
+            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+            if (mPanelRoot != null)
+            {
+                mStartingPosition.x /= mPanelRoot.PanelDeltaWidthRatio;
+                mStartingPosition.y /= mPanelRoot.PanelDeltaHeightRatio;
+
+                mTargetPosition.x /= mPanelRoot.PanelDeltaWidthRatio;
+                mTargetPosition.y /= mPanelRoot.PanelDeltaHeightRatio;
+            }
         }
 
 #if (UNITY_EDITOR)
