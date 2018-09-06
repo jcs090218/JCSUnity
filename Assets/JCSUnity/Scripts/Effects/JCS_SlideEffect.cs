@@ -220,7 +220,7 @@ plz set the button here.")]
                         // mPanelRoot will be null is the object isn't
                         // UI game object.
                         if (mPanelRoot != null)
-                            mDistance = mDistance / mPanelRoot.PanelDeltaWidthRatio;
+                            mDistance /= mPanelRoot.PanelDeltaWidthRatio;
 
                         newPos.x += mDistance;
                     }
@@ -230,7 +230,7 @@ plz set the button here.")]
                         // mPanelRoot will be null is the object isn't
                         // UI game object.
                         if (mPanelRoot != null)
-                            mDistance = mDistance / mPanelRoot.PanelDeltaHeightRatio;
+                            mDistance /= mPanelRoot.PanelDeltaHeightRatio;
 
                         newPos.y += mDistance;
                     }
@@ -275,7 +275,9 @@ plz set the button here.")]
         // Public Functions
 
         /// <summary>
-        /// Use for inspector. (Active)
+        /// Call it when is on mouse over.
+        /// 
+        /// Use in inspector for Event Trigger System. (Active)
         /// </summary>
         public void JCS_OnMouseOver(PointerEventData data)
         {
@@ -288,7 +290,9 @@ plz set the button here.")]
 
 
         /// <summary>
-        /// Use for inspector. (Deactive)
+        /// Call it when is on mouse exit.
+        /// 
+        /// Use in inspector for Event Trigger System. (Deactive)
         /// </summary>
         /// <returns></returns>
         public void JCS_OnMouseExit(PointerEventData data)
