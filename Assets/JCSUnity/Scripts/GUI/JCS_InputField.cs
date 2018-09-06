@@ -95,21 +95,15 @@ namespace JCSUnity
 
         private void Start()
         {
-            // First record down the text.
-            mRealText = mInputField.text;
-
             // Update once, if value is already applied.
             UpdateInputFieldData();
         }
-
 
         private void Update()
         {
 #if (UNITY_EDITOR)
             Test();
 #endif
-
-
 
             InputFieldFocusedEvent();
         }
@@ -164,6 +158,9 @@ namespace JCSUnity
             if (IsShortcutText(textData, dot))
                 return;
 
+            // Store the real text.
+            mRealText = mInputField.text;
+
             int textDataLen = textData.Length;
 
             // Check if we need the fold the text.
@@ -192,10 +189,6 @@ namespace JCSUnity
                 + dot
                 // Add the second half of the text data.
                 + textData.Substring(secondReplacePos, textDataLen - secondReplacePos);
-
-
-            // Store the real text.
-            mRealText = mInputField.text;
 
             // Apply new text data.
             mInputField.text = newTextData;
