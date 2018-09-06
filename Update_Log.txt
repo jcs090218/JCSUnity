@@ -16,6 +16,9 @@
  trigger event to event trigger system. (JCSUnity)
 * Make tween panel compatible with resizable screen/window. (JCSUnity)
 * JCS_InputField implemented for better input field handle. (JCSUnity)
+* Make compatible with resizable screen/window with JCS_ScaleEffect, 
+ basically the same issue as JCS_SlideEffect. The solution are the same 
+ to both of the component. (JCSUnity)
 
 2018-09-05
 * Add attach/detach all child util functions. (JCSUnity)
