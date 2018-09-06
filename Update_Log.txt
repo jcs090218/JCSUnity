@@ -19,6 +19,7 @@
 * Make compatible with resizable screen/window with JCS_ScaleEffect, 
  basically the same issue as JCS_SlideEffect. The solution are the same 
  to both of the component. (JCSUnity)
+* Update project versiont to 1.7.9. (JCSUnity)
 
 2018-09-05
 * Add attach/detach all child util functions. (JCSUnity)
