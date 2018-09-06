@@ -2340,6 +2340,7 @@ GameObject:
   - component: {fileID: 884161788}
   - component: {fileID: 884161787}
   - component: {fileID: 884161786}
+  - component: {fileID: 884161790}
   m_Layer: 5
   m_Name: Active Tween Panel Button
   m_TagString: Untagged
@@ -2475,6 +2476,29 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 884161784}
   m_CullTransparentMesh: 0
+--- !u!114 &884161790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884161784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97ebf9b4739b9346af96bec780ccbae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
+  mScaleX: 1
+  mScaleY: 1
+  mScaleZ: 1
+  mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
+  mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &890107297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,10 +3770,10 @@ MonoBehaviour:
   mTestWithKey: 0
   mUpdateInputField: 117
   mRealText: 
+  mIsFocus: 0
   mMaxLetters: 14
   mDotCount: 3
   mApproachSec: 0
-  mIsFocus: 0
 --- !u!1 &1354558134
 GameObject:
   m_ObjectHideFlags: 0
