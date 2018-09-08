@@ -63,8 +63,8 @@ namespace JCSUnity
         {
             if (instance != null)
             {
-                string black_screen_name = JCS_GameSettings.BLACK_SCREEN_NAME;
-                string white_screen_name = JCS_GameSettings.WHITE_SCREEN_NAME;
+                string black_screen_name = JCS_UISettings.BLACK_SCREEN_NAME;
+                string white_screen_name = JCS_UISettings.WHITE_SCREEN_NAME;
 
                 // cuz the transform list will change while we set the transform to 
                 // the transform, 
@@ -114,17 +114,17 @@ namespace JCSUnity
             this.mAppRect = this.GetComponent<RectTransform>();
             this.mCanvas = this.GetComponent<Canvas>();
 
-            if (JCS_GameSettings.instance.RESIZE_UI)
+            if (JCS_UISettings.instance.RESIZE_UI)
             {
                 // resizable UI in order to resize the UI correctly
-                GameObject gm = JCS_Utility.SpawnGameObject(mResizeUI_path);
-                gm.transform.SetParent(this.transform);
+                JCS_ResizeUI rui = JCS_Utility.SpawnGameObject(mResizeUI_path).GetComponent<JCS_ResizeUI>();
+                rui.transform.SetParent(this.transform);
             }
         }
 
         private void Start()
         {
-            if (JCS_GameSettings.instance.RESIZE_UI)
+            if (JCS_UISettings.instance.RESIZE_UI)
             {
                 if (mResizeUI == null)
                     return;
