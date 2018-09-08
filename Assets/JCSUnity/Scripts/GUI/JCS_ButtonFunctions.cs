@@ -151,7 +151,7 @@ namespace JCSUnity
         /// </summary>
         public static void PopJCSBlackScreen()
         {
-            string path = JCS_GameSettings.BLACK_SCREEN_PATH;
+            string path = JCS_UISettings.BLACK_SCREEN_PATH;
             JCS_BlackScreen bs = JCS_Utility.SpawnGameObject(path).GetComponent<JCS_BlackScreen>();
 
             if (bs == null)
@@ -168,7 +168,7 @@ namespace JCSUnity
         /// </summary>
         public static void PopJCSBlackSlideScreen()
         {
-            string path = JCS_GameSettings.BLACK_SLIDE_SCREEN_PATH;
+            string path = JCS_UISettings.BLACK_SLIDE_SCREEN_PATH;
             JCS_BlackSlideScreen bs = JCS_Utility.SpawnGameObject(path).GetComponent<JCS_BlackSlideScreen>();
 
             if (bs == null)
@@ -185,7 +185,7 @@ namespace JCSUnity
         /// </summary>
         public static void PopJCSWhiteScreen()
         {
-            string path = JCS_GameSettings.WHITE_SCREEN_PATH;
+            string path = JCS_UISettings.WHITE_SCREEN_PATH;
             JCS_WhiteScreen ws = JCS_Utility.SpawnGameObject(path).GetComponent<JCS_WhiteScreen>();
 
             if (ws == null)
