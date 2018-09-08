@@ -30,19 +30,16 @@ namespace JCSUnity
         public OnScreenResize onScreenResize = null;
 
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_ScreenManager) **")]
+
+        public float REAL_SCREEN_WIDTH = 0.0f;
+
+        public float REAL_SCREEN_HEIGHT = 0.0f;
+#endif
+
+
         [Header("** Check Variables (JCS_ScreenManager) **")]
-
-        [Tooltip("When the application start, what's the screen width?")]
-        public int STARTING_SCREEN_WIDTH = 0;
-
-        [Tooltip("When the application start, what's the screen height?")]
-        public int STARTING_SCREEN_HEIGHT = 0;
-
-        [Tooltip("Initialize aspect ratio width.")]
-        public int INI_ASPECT_RATIO_WIDTH = 0;
-
-        [Tooltip("Initialize aspect ratio height.")]
-        public int INI_ASPECT_RATIO_HEIGHT = 0;
 
         [Tooltip("Current screen width.")]
         public float CURRENT_SCREEN_WIDTH = 0.0f;
@@ -90,6 +87,11 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
+#if (UNITY_EDITOR)
+            REAL_SCREEN_WIDTH = Screen.width;
+            REAL_SCREEN_HEIGHT = Screen.height;
+#endif
+
             DoScreenType();
         }
 
@@ -168,19 +170,11 @@ namespace JCSUnity
                 CURRENT_SCREEN_HEIGHT == screenHeight)
                 return;
 
-
             if (PREV_SCREEN_WIDTH == 0.0f || PREV_SCREEN_HEIGHT == 0.0f)
             {
                 // If zero, set to the same value.
                 PREV_SCREEN_WIDTH = screenWidth;
                 PREV_SCREEN_HEIGHT = screenHeight;
-
-                STARTING_SCREEN_WIDTH = screenWidth;
-                STARTING_SCREEN_HEIGHT = screenHeight;
-
-                float gcd = JCS_Mathf.GCD(STARTING_SCREEN_WIDTH, STARTING_SCREEN_HEIGHT);
-                INI_ASPECT_RATIO_WIDTH = (int)(STARTING_SCREEN_WIDTH / gcd);
-                INI_ASPECT_RATIO_HEIGHT = (int)(STARTING_SCREEN_HEIGHT / gcd);
             }
             else
             {
