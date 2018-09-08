@@ -86,6 +86,12 @@ namespace JCSUnity
             this.mCamera = this.GetComponent<Camera>();
         }
 
+        protected virtual void Start()
+        {
+            // add to on screen resize callback.
+            JCS_ScreenManager.instance.onScreenResize += OnResizeGame;
+        }
+
         protected virtual void LateUpdate()
         {
 #if (UNITY_EDITOR)
@@ -604,5 +610,9 @@ namespace JCSUnity
             SetPosition(vec.x, vec.y, vec.z);
         }
 
+        /// <summary>
+        /// Resize the game if screen size changes.
+        /// </summary>
+        protected abstract void OnResizeGame();
     }
 }
