@@ -115,6 +115,11 @@ namespace JCSUnity
         /// </summary>
         private void SetToScreenEdge()
         {
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+
+            float half_blackspace_width = ss.BlackspaceWidth() / 2.0f;
+            float half_blackspace_height = ss.BlackspaceHeight() / 2.0f;
+
             Vector3 newPos = mRectTransform.localPosition;
 
             Vector2 halfAppRect = (JCS_Canvas.instance.GetAppRect().sizeDelta / 2.0f);
@@ -125,16 +130,68 @@ namespace JCSUnity
             switch (mASPDirection)
             {
                 case JCS_2D4Direction.TOP:
-                    newPos.y += halfScreenHeight;
+                    {
+                        newPos.y += halfScreenHeight;
+
+                        if (ss.STARTING_SCREEN_HEIGHT != 0)
+                        {
+                            // There is blackspaces on the vertical axis. (top and bottom)
+                            if (JCS_Mathf.isPositive(half_blackspace_height) ||
+                                half_blackspace_height == 0.0f)
+                                newPos.y -= half_blackspace_height;
+                            // Otherwise should be on the horizontal axis. (left and right)
+                            else
+                                newPos.y += half_blackspace_width;
+                        }
+                    }
                     break;
                 case JCS_2D4Direction.BOTTOM:
-                    newPos.y -= halfScreenHeight;
+                    {
+                        newPos.y -= halfScreenHeight;
+
+                        if (ss.STARTING_SCREEN_HEIGHT != 0)
+                        {
+                            // There is blackspaces on the vertical axis. (top and bottom)
+                            if (JCS_Mathf.isPositive(half_blackspace_height) ||
+                                half_blackspace_height == 0.0f)
+                                newPos.y += half_blackspace_height;
+                            // Otherwise should be on the horizontal axis. (left and right)
+                            else
+                                newPos.y -= half_blackspace_width;
+                        }
+                    }
                     break;
                 case JCS_2D4Direction.LEFT:
-                    newPos.x -= halfScreenWidth;
+                    {
+                        newPos.x -= halfScreenWidth;
+
+                        if (ss.STARTING_SCREEN_WIDTH != 0)
+                        {
+                            // There is blackspaces on the horizontal axis. (left and right)
+                            if (JCS_Mathf.isPositive(half_blackspace_width) ||
+                                half_blackspace_width == 0.0f)
+                                newPos.x += half_blackspace_width;
+                            // Otherwise should be on the vertical axis. (top and bottom)
+                            else
+                                newPos.x -= half_blackspace_height;
+                        }
+                    }
                     break;
                 case JCS_2D4Direction.RIGHT:
-                    newPos.x += halfScreenWidth;
+                    {
+                        newPos.x += halfScreenWidth;
+
+                        if (ss.STARTING_SCREEN_WIDTH != 0)
+                        {
+                            // There is blackspaces on the horizontal axis. (left and right)
+                            if (JCS_Mathf.isPositive(half_blackspace_width) ||
+                                half_blackspace_width == 0.0f)
+                                newPos.x -= half_blackspace_width;
+                            // Otherwise should be on the vertical axis. (top and bottom)
+                            else
+                                newPos.x += half_blackspace_height;
+                        }
+                    }
                     break;
             }
 
