@@ -11,7 +11,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Common Dialogue Object!
     /// 
@@ -225,7 +224,7 @@ namespace JCSUnity
 
             // if is Resize UI is enable than add Dialogue under
             // resize ui transform
-            if (JCS_GameSettings.instance.RESIZE_UI)
+            if (JCS_UISettings.instance.RESIZE_UI)
                 parentObject = jcsCanvas.GetResizeUI().transform;
             // Else we add it directly under the Canvas
             else

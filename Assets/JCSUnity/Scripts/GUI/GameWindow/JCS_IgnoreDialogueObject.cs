@@ -33,7 +33,7 @@ namespace JCSUnity
 
             // if is Resize UI is enable than add Dialogue under
             // resize ui transform
-            if (JCS_GameSettings.instance.RESIZE_UI)
+            if (JCS_UISettings.instance.RESIZE_UI)
                 parentObject = JCS_Canvas.instance.GetResizeUI().transform;
             // Else we add it directly under the Canvas
             else
