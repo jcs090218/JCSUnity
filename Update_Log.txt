@@ -7,6 +7,14 @@
 # ========================================================================
 
 
+2018-09-08
+* Implemented resizable screen module with JCS_ApsectScreen and 
+ JCS_AspectScreenPanel implemented. (JCSUnity)
+* Implemented OnResizeScreen callback for resizable module in all camera 
+ module. (JCSUnity)
+* JCS_ScreenManager implemented for resizable screen task handle. (JCSUnity)
+* JCS_ScreenSettings implemented for screen related settings storage. (JCSUnity)
+
 2018-09-06
 * Fixed and make compatible with new Slide effect component in 
  JCS_SequencePanel. (JCSUnity)
