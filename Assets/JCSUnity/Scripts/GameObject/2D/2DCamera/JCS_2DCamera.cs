@@ -150,8 +150,10 @@ namespace JCSUnity
             this.mFreezeRecord = this.transform.position;
         }
 
-        protected virtual void Start()
+        protected override void Start()
         {
+            base.Start();
+
             // Use player from "JCS_GameManager" as default
             if (this.mTargetTransform == null)
             {
@@ -351,6 +353,30 @@ namespace JCSUnity
                 return;
 
             mVelocity = Vector3.zero;
+        }
+
+        /// <summary>
+        /// Resize the game if screen size changes.
+        /// </summary>
+        protected override void OnResizeGame()
+        {
+            JCS_ScreenManager sm = JCS_ScreenManager.instance;
+
+            float currentScreenRatio = sm.CURRENT_SCREEN_WIDTH / sm.CURRENT_SCREEN_HEIGHT;
+            float startingScreenRatio = (float)sm.STARTING_SCREEN_WIDTH / (float)sm.STARTING_SCREEN_HEIGHT;
+
+            if (currentScreenRatio > startingScreenRatio)
+            {
+                sm.CURRENT_SCREEN_WIDTH = (float)sm.STARTING_SCREEN_WIDTH;
+                sm.CURRENT_SCREEN_HEIGHT = (float)sm.STARTING_SCREEN_HEIGHT;
+            }
+
+            float prevRatio = sm.PREV_SCREEN_WIDTH / sm.PREV_SCREEN_HEIGHT;
+            float newRatio = sm.CURRENT_SCREEN_WIDTH / sm.CURRENT_SCREEN_HEIGHT;
+
+            float diffRatio = prevRatio / newRatio;
+
+            mCamera.orthographicSize *= diffRatio;
         }
 
     }

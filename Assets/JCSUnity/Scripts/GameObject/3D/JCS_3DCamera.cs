@@ -199,8 +199,10 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             if (mTargetTransform == null)
             {
                 JCS_Debug.LogError(
@@ -565,6 +567,14 @@ namespace JCSUnity
                     mTargetScrollSpeed = 0;
                 }
             }
+        }
+
+        /// <summary>
+        /// Resize the game if screen size changes.
+        /// </summary>
+        protected override void OnResizeGame()
+        {
+
         }
 
     }
