@@ -5,6 +5,8 @@ JCSUnity version 1.7.9 Execution Order List (Status)
 Following Scirpt should have lower execute order then "JCS_GameManager"
 (Notice: "Edit->Project Settings->Script Execution Order" to set the execution order!)
 
+    * JCS_ApplicationSettings
+    * JCS_ScreenSettings
     * JCS_GameSettings
     * JCS_UniqueObject
     * JCS_UtilitiesManager
