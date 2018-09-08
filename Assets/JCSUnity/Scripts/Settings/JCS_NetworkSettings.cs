@@ -15,7 +15,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Store all the network settings.
     /// </summary>

@@ -11,9 +11,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Package data settings.
     /// </summary>
     public class JCS_PackageDataSettings
         : MonoBehaviour
