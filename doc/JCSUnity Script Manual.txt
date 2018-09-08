@@ -1665,7 +1665,10 @@
         <File name="JCS_AspectScreen.cs">
           <Placement>On JCS_Canvas game object.</Placement>
           <Description>
-            Make the proportional screen/window. 
+            Add all the aspect screen panel into scene.
+     
+            In order to black out the area that should not let the 
+            player sees!
           </Description>
         </File>
 
