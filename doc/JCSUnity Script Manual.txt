@@ -1193,6 +1193,11 @@
         <Description>Label for each portal.</Description>
       </File>
 
+      <File name="JCS_ScreenType.cs">
+        <Placement>Script base.</Placement>
+        <Description>Type of the screen handle.</Description>
+      </File>
+
       <File name="JCS_SingletonObject.cs">
         <Placement>Script base.</Placement>
         <Description>List of all the singleton object type.</Description>
@@ -1656,6 +1661,21 @@
       </File>
     </GameObject>
     <GUI>
+      <Aspect>
+        <File name="JCS_AspectScreen.cs">
+          <Placement>On JCS_Canvas game object.</Placement>
+          <Description>
+            Make the proportional screen/window. 
+          </Description>
+        </File>
+
+        <File name="JCS_AspectScreenPanel.cs">
+          <Placement>Script base.</Placement>
+          <Description>
+            Aspect screen panel, the invisible area of the screen.
+          </Description>
+        </File>
+      </Aspect>
       <Button>
         <Dialogue>
           <File name="JCS_HideDialogueButton.cs">
@@ -2611,6 +2631,11 @@
           <Description/>
         </File>
 
+        <File name="JCS_ScreenManager.cs">
+          <Placement>Already assign.</Placement>
+          <Description/>
+        </File>
+
         <File name="JCS_SoundManager.cs">
           <Placement>Already assign.</Placement>
           <Description/>
@@ -2736,6 +2761,11 @@
         <File name="JCS_SceneSettings.cs">
           <Placement>Already assign.</Placement>
           <Description>Setting of all the scene setting.</Description>
+        </File>
+
+        <File name="JCS_ScreenSettings.cs">
+          <Placement>Already assign.</Placement>
+          <Description>Screen related settings.</Description>
         </File>
 
         <File name="JCS_SoundSettings.cs">
@@ -2952,14 +2982,6 @@
           <Description>Use this if you need to open webcam in your game.</Description>
         </File>
       </Webcam>
-
-      <File name="JCS_AspectScreen.cs">
-        <Placement>Attach on main camera that render the whole game.</Placement>
-        <Description>
-          Make the proportional screen/window. 
-        </Description>
-      </File>
-
       <File name="JCS_Camera.cs">
         <Placement>Script base</Placement>
         <Description>
