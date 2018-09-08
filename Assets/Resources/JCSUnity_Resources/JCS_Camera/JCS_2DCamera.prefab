@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2086022}
   - component: {fileID: 12476462}
   - component: {fileID: 11492924}
-  - component: {fileID: 114398034839857646}
   m_Layer: 0
   m_Name: JCS_2DCamera
   m_TagString: MainCamera
@@ -126,20 +125,3 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139764}
   m_IsPrefabAsset: 1
---- !u!114 &114398034839857646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de375e01a1e53fd49a7cb7e0f29b8053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mLastWidth: 0
-  mLastHeight: 0
-  mAspectScreenWidth: 0
-  mAspectScreenHeight: 0
-  mTargetScreenWidth: 1920
-  mTargetScreenHeight: 1080
