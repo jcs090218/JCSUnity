@@ -65,7 +65,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Fade in black screen.
         /// </summary>
         /// <param name="time"></param>
         public void FadeIn(float time)
@@ -74,7 +74,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Fade out black screen.
         /// </summary>
         /// <param name="time"></param>
         public void FadeOut(float time)
@@ -83,7 +83,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Is the black screen fade in?
         /// </summary>
         /// <returns></returns>
         public bool IsFadeIn()
@@ -92,7 +92,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Is the black screen fade out?
         /// </summary>
         /// <returns></returns>
         public bool IsFadeOut()
