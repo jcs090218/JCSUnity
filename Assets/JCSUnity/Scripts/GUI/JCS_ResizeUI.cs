@@ -26,6 +26,14 @@ namespace JCSUnity
         // Public Variables
         public static JCS_ResizeUI instance = null;
 
+        public static float W_PREV_SCALE = 0.0f;
+
+        public static float H_PREV_SCALE = 0.0f;
+
+        public Vector2 PREV_SIZE_DELTA = Vector2.zero;
+
+        public Vector3 PREV_SCALE = Vector3.zero;
+
         //----------------------
         // Private Variables
 
@@ -61,13 +69,15 @@ namespace JCSUnity
         {
             this.mRect = this.GetComponent<RectTransform>();
 
+            RevertResizeUI();
+
             // if this is the root object set this as un destroyable
             this.gameObject.AddComponent<JCS_UniqueObject>();
 
             if (instance != null)
             {
-                string black_screen_name = JCS_GameSettings.BLACK_SCREEN_NAME;
-                string white_screen_name = JCS_GameSettings.WHITE_SCREEN_NAME;
+                string black_screen_name = JCS_UISettings.BLACK_SCREEN_NAME;
+                string white_screen_name = JCS_UISettings.WHITE_SCREEN_NAME;
 
                 // cuz the transform list will change while we set the transform to 
                 // the transform, 
@@ -136,25 +146,20 @@ namespace JCSUnity
             ResizeUI();
         }
 
+        private void OnDestroy()
+        {
+            W_PREV_SCALE = mWScale - 1.0f;
+            H_PREV_SCALE = mHScale - 1.0f;
+
+            PREV_SIZE_DELTA = mRect.sizeDelta;
+            PREV_SCALE = mRect.localScale;
+        }
+
         //========================================
         //      Self-Define
         //------------------------------
         //----------------------
         // Public Functions
-
-        /// <summary>
-        /// Resize the UI if screen size changes.
-        /// </summary>
-        public void ResizeUI()
-        {
-            if (mRect == null)
-                return;
-
-            mWScale = Screen.width / mRect.sizeDelta.x;
-            mHScale = Screen.height / mRect.sizeDelta.y;
-            mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
-            transform.localScale = Vector3.one * mTargetScale;
-        }
 
         //----------------------
         // Protected Functions
@@ -162,5 +167,36 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// Resize the UI if screen size changes.
+        /// </summary>
+        private void ResizeUI()
+        {
+            if (mRect == null)
+                return;
+
+            mWScale = (float)Screen.width / mRect.sizeDelta.x + W_PREV_SCALE;
+            mHScale = (float)Screen.height / mRect.sizeDelta.y + H_PREV_SCALE;
+
+            mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
+
+            mRect.localScale = Vector3.one * mTargetScale;
+        }
+
+        /// <summary>
+        /// Revert the resize ui info.
+        /// </summary>
+        private void RevertResizeUI()
+        {
+            mWScale = (float)Screen.width / mRect.sizeDelta.x + W_PREV_SCALE;
+            mHScale = (float)Screen.height / mRect.sizeDelta.y + H_PREV_SCALE;
+
+            // Get back the resize UI.
+            if (PREV_SIZE_DELTA != Vector2.zero)
+                mRect.sizeDelta = PREV_SIZE_DELTA;
+
+            if (PREV_SCALE != Vector3.zero)
+                mRect.localScale = PREV_SCALE;
+        }
     }
 }
