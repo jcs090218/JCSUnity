@@ -86,17 +86,49 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
-        
+
         /// <summary>
         /// Fit screen size base on Unity Engine architecture.
         /// </summary>
         private void FitPerfectSize()
         {
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+
             // get app rect
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
             float newWidth = appRect.sizeDelta.x;
             float newHeight = appRect.sizeDelta.y;
+
+            /* Adjust the panel width and height base on the
+             * blackspaces width and height.
+             */
+            {
+                float blackspace_width = ss.BlackspaceWidth();
+                float blackspace_height = ss.BlackspaceHeight();
+
+                if (ss.STARTING_SCREEN_WIDTH != 0)
+                {
+                    // There is blackspaces on the horizontal axis. (left and right)
+                    if (JCS_Mathf.isPositive(blackspace_width) ||
+                        blackspace_width == 0.0f)
+                        newWidth -= blackspace_width;
+                    // Otherwise should be on the vertical axis. (top and bottom)
+                    else
+                        newWidth += blackspace_height;
+                }
+
+                if (ss.STARTING_SCREEN_HEIGHT != 0)
+                {
+                    // There is blackspaces on the vertical axis. (top and bottom)
+                    if (JCS_Mathf.isPositive(blackspace_height) ||
+                        blackspace_height == 0.0f)
+                        newHeight -= blackspace_height;
+                    // Otherwise should be on the horizontal axis. (left and right)
+                    else
+                        newHeight += blackspace_width;
+                }
+            }
 
             float currentWidth = mRectTransform.sizeDelta.x;
             float currentHeight = mRectTransform.sizeDelta.y;
@@ -132,8 +164,8 @@ namespace JCSUnity
              * set the `localPosition'.
              */
             {
-                // set the width and height from app rect
-                mRectTransform.sizeDelta = appRect.sizeDelta;
+                // set the width and height to the new app rect
+                mRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
 
                 // set to the new position
                 mRectTransform.localPosition = newPosition;
