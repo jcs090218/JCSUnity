@@ -123,6 +123,10 @@ namespace JCSUnity
 
         /// <summary>
         /// Force aspect window.
+        /// 
+        /// SOURCE: https://gamedev.stackexchange.com/questions/86707/how-to-lock-aspect-ratio-when-resizing-game-window-in-unity
+        /// AUTHOR: Entity in JavaScript.
+        /// Modefied: Jen-Chieh Shen to C#.
         /// </summary>
         private void DoFoceAspectScreen()
         {
