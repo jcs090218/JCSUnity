@@ -361,22 +361,31 @@ namespace JCSUnity
         protected override void OnResizeGame()
         {
             JCS_ScreenManager sm = JCS_ScreenManager.instance;
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
             float currentScreenRatio = sm.CURRENT_SCREEN_WIDTH / sm.CURRENT_SCREEN_HEIGHT;
-            float startingScreenRatio = (float)sm.STARTING_SCREEN_WIDTH / (float)sm.STARTING_SCREEN_HEIGHT;
+            float startingScreenRatio = (float)ss.STARTING_SCREEN_WIDTH / (float)ss.STARTING_SCREEN_HEIGHT;
 
             if (currentScreenRatio > startingScreenRatio)
             {
-                sm.CURRENT_SCREEN_WIDTH = (float)sm.STARTING_SCREEN_WIDTH;
-                sm.CURRENT_SCREEN_HEIGHT = (float)sm.STARTING_SCREEN_HEIGHT;
+                // Set the limit if reach the starting screen ratio.
+                sm.CURRENT_SCREEN_WIDTH = (float)ss.STARTING_SCREEN_WIDTH;
+                sm.CURRENT_SCREEN_HEIGHT = (float)ss.STARTING_SCREEN_HEIGHT;
             }
 
             float prevRatio = sm.PREV_SCREEN_WIDTH / sm.PREV_SCREEN_HEIGHT;
             float newRatio = sm.CURRENT_SCREEN_WIDTH / sm.CURRENT_SCREEN_HEIGHT;
 
-            float diffRatio = prevRatio / newRatio;
+            float divRatio = prevRatio / newRatio;
 
-            mCamera.orthographicSize *= diffRatio;
+            mCamera.orthographicSize *= divRatio;
+            mCamera.fieldOfView *= divRatio;
+
+            /* Store it to screen settings. */
+            {
+                ss.ORTHOGRAPHIC_SIZE = mCamera.orthographicSize;
+                ss.FIELD_OF_VIEW = mCamera.fieldOfView;
+            }
         }
 
     }
