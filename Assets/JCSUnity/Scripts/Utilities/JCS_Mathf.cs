@@ -152,7 +152,7 @@ namespace JCSUnity
         /// <returns> true: is positive, false: is negative </returns>
         public static bool isPositive(float val)
         {
-            return (val > 0 && val != 0) ? true : false;
+            return (val > 0.0f && val != 0.0f) ? true : false;
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace JCSUnity
         /// <returns> true: is negative, false: is positive </returns>
         public static bool isNegative(float val)
         {
-            return (val < 0 && val != 0) ? true : false;
+            return (val < 0.0f && val != 0.0f) ? true : false;
         }
 
         /// <summary>
