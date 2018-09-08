@@ -14,11 +14,10 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Make the proportional screen/window. 
+    /// Add all the aspect screen panel into scene.
     /// 
-    /// SOURCE: https://gamedev.stackexchange.com/questions/86707/how-to-lock-aspect-ratio-when-resizing-game-window-in-unity
-    /// AUTHOR: Entity in JavaScript.
-    /// Modefied: Jen-Chieh Shen to C#.
+    /// In order to black out the area that should not let the 
+    /// player sees!
     /// </summary>
     public class JCS_AspectScreen
         : MonoBehaviour
