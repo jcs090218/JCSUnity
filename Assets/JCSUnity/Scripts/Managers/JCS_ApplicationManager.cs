@@ -25,7 +25,9 @@ namespace JCSUnity
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
 
+
         [Header("** This will override Platform Type (Uncheck this when you want to release.)**")]
+
         public bool SIMULATE_PLATFORM_TYPE = true;
         public JCS_PlatformType PLATFORM_TYPE = JCS_PlatformType.PC;
 
@@ -49,6 +51,19 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+        private void OnApplicationQuit()
+        {
+            APP_QUITTING = true;
+
+            JCS_GameSettings gs = JCS_GameSettings.instance;
+            if (gs.SAVE_ON_EXIT_APP &&
+                gs.SAVE_GAME_DATA_FUNC != null)
+            {
+                // save when exit app
+                gs.SAVE_GAME_DATA_FUNC.Invoke();
+            }
+        }
+
         private void Awake()
         {
             instance = this;
@@ -67,19 +82,6 @@ namespace JCSUnity
 
             // done initialize the application layer.
             APP_INITIALIZING = false;
-        }
-
-        private void OnApplicationQuit()
-        {
-            APP_QUITTING = true;
-
-            JCS_GameSettings gs = JCS_GameSettings.instance;
-            if (gs.SAVE_ON_EXIT_APP && 
-                gs.SAVE_GAME_DATA_FUNC != null)
-            {
-                // save when exit app
-                gs.SAVE_GAME_DATA_FUNC.Invoke();
-            }
         }
 
         //========================================
