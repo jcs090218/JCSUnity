@@ -28,7 +28,22 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Runtime Variables (JCS_ScreenManager) **")]
+        [Header("** Check Variables (JCS_ScreenSettings) **")]
+
+        [Tooltip("When the application start, what's the screen width?")]
+        public int STARTING_SCREEN_WIDTH = 0;
+
+        [Tooltip("When the application start, what's the screen height?")]
+        public int STARTING_SCREEN_HEIGHT = 0;
+
+        [Tooltip("Store the camera orthographic size value over scene.")]
+        public float ORTHOGRAPHIC_SIZE = 10.0f;
+
+        [Tooltip("Store the camera filed of view value over scene.")]
+        public float FIELD_OF_VIEW = 90.0f;
+
+
+        [Header("** Runtime Variables (JCS_ScreenSettings) **")]
 
         [Tooltip("Type of the screen handle.")]
         public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
@@ -49,11 +64,51 @@ namespace JCSUnity
             instance = CheckSingleton(instance, this);
         }
 
+        private void Start()
+        {
+            // NOTE(jenchieh): Here is the execution order implementation.
+            // 'APPLICATION_STARTS' will be true after the first scene's 
+            // main game loop is runs. 
+            if (JCS_ApplicationSettings.instance.APPLICATION_STARTS)
+            {
+                Camera cam = JCS_Camera.main.GetCamera();
+                cam.fieldOfView = FIELD_OF_VIEW;
+                cam.orthographicSize = ORTHOGRAPHIC_SIZE;
+            }
+            // Otherwise, this will only run once at the time when 
+            // the application is starts.
+            else
+            {
+                STARTING_SCREEN_WIDTH = Screen.width;
+                STARTING_SCREEN_HEIGHT = Screen.height;
+            }
+        }
+
         /*******************************************/
         /*              Self-Define                */
         /*******************************************/
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Return width of the blackspace on the screen, if any 
+        /// after resizing the screen.
+        /// </summary>
+        /// <returns></returns>
+        public float BlackspaceWidth()
+        {
+            return Screen.width - STARTING_SCREEN_WIDTH;
+        }
+
+        /// <summary>
+        /// Return height of the blackspace on the screen, if any 
+        /// after resizing the screen.
+        /// </summary>
+        /// <returns></returns>
+        public float BlackspaceHeight()
+        {
+            return Screen.height - STARTING_SCREEN_HEIGHT;
+        }
 
         //----------------------
         // Protected Functions
@@ -72,6 +127,12 @@ namespace JCSUnity
         protected override void TransferData(JCS_ScreenSettings _old, JCS_ScreenSettings _new)
         {
             _new.SCREEN_TYPE = _old.SCREEN_TYPE;
+
+            _new.ORTHOGRAPHIC_SIZE = _old.ORTHOGRAPHIC_SIZE;
+            _new.FIELD_OF_VIEW = _old.FIELD_OF_VIEW;
+
+            _new.STARTING_SCREEN_WIDTH = _old.STARTING_SCREEN_WIDTH;
+            _new.STARTING_SCREEN_HEIGHT = _old.STARTING_SCREEN_HEIGHT;
         }
 
         //----------------------
