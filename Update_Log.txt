@@ -7,6 +7,11 @@
 # ========================================================================
 
 
+2018-09-09
+* Implement JCS_ApplicationSettings for deeper application control. (JCSUnity)
+* Update execution order with resizable screen functionalities. (JCSUnity)
+* Implement JCS_ScreenSettings for storing screen setting over scene. (JCSUnity)
+
 2018-09-08
 * Implemented resizable screen module with JCS_ApsectScreen and 
  JCS_AspectScreenPanel implemented. (JCSUnity)
