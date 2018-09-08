@@ -26,9 +26,12 @@ namespace JCSUnity
         public static bool APP_INITIALIZING = true;
 
 
-        [Header("** This will override Platform Type (Uncheck this when you want to release.)**")]
+        [Header("** Runtime Variables (JCS_ApplicationManager) **")]
 
+        [Tooltip("This will override Platform Type.")]
         public bool SIMULATE_PLATFORM_TYPE = true;
+
+        [Tooltip("Target platform type to simulate.")]
         public JCS_PlatformType PLATFORM_TYPE = JCS_PlatformType.PC;
 
         //----------------------
