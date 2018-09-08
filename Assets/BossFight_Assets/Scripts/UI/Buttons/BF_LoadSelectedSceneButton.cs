@@ -12,7 +12,8 @@ using JCSUnity;
 
 
 /// <summary>
-/// 
+/// Load the scene base on the level selected 
+/// by the player.
 /// </summary>
 public class BF_LoadSelectedSceneButton 
     : JCS_Button 
