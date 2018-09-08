@@ -13,7 +13,6 @@ using System.IO;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Holde the general game setting.
     /// </summary>
@@ -23,10 +22,20 @@ namespace JCSUnity
 
         //-- 
         [Header("** Game Settings (JCS_GameSettings) **")]
+
+        [Tooltip("Debug mode flag.")]
         public bool DEBUG_MODE = true;
+
+        [Tooltip("")]
         public bool THIS_IS_GAME_SCENE = false;
+
+        [Tooltip("")]
         public bool LEVEL_DESIGN_MODE = true;
+
+        [Tooltip("")]
         public JCS_GameType GAME_TYPE = JCS_GameType.GAME_2D;
+
+        [Tooltip("")]
         public float GRAVITY_PRODUCT = 4.5f;
 
 
@@ -53,34 +62,14 @@ namespace JCSUnity
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
 
-        [Header("** Scene Settings (JCS_GameSettings) **")]
-
-        // no one care about how black screen look so i
-        // just make it unseen in the inspector.
-        public static string BLACK_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_BlackScreen";
-        public static string BLACK_SLIDE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_BlackSlideScreen";
-        public static string BLACK_SCREEN_NAME = "JCS_BlackScreen";
-        public static string WHITE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_WhiteScreen";
-        public static string WHITE_SCREEN_NAME = "JCS_WhiteScreen";
-
-        public static string FADE_SCREEN_PATH = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_FadeScreen";
-        public static string FADE_SCREEN_NAME = "JCS_FadeScreen";
+        [Header("** Screen Shot Settings (JCS_GameSettings) **")]
 
         //-- Screen Shot
         public string SCREENSHOT_PATH = "/JCS_ScreenShot/"; // Screen shot folder path [Default: /JCS_ScreenShot/]
         public string SCREENSHOT_FILENAME = "Screenshot_"; // Screen shot file name [Default: Screenshot_]
         public string SAVED_IMG_EXTENSION = ".png"; // Extension [Default: .png]
 
-        //-- Game Data Path
-        public static string GAME_DATA_PATH = "/JCS_GameData/";
-        public static string JCS_EXTENSION = ".jcs";
-
-
-        //-- UI
-        [Header("** User Interface Settings (JCS_GameSettings) **")]
-        public bool RESIZE_UI = true;
-
-
+        
         [Header("** Save Load Settings (JCS_GameSettings) **")]
 
         [Tooltip("Save when switching the scene.")]
@@ -88,6 +77,10 @@ namespace JCSUnity
 
         [Tooltip("Save when app exit.")]
         public bool SAVE_ON_EXIT_APP = true;
+
+        //-- Game Data Path
+        public static string GAME_DATA_PATH = "/JCS_GameData/";
+        public static string JCS_EXTENSION = ".jcs";
 
         public delegate void SavedGameDataDelegate();
         public SavedGameDataDelegate SAVE_GAME_DATA_FUNC = null;
@@ -154,9 +147,6 @@ namespace JCSUnity
         {
             // Debug check
             _new.DEBUG_MODE = _old.DEBUG_MODE;
-
-            // ResizeUI option should always be the same!
-            _new.RESIZE_UI = _old.RESIZE_UI;
 
             // System Settings should always the same.
             _new.SAVE_ON_EXIT_APP = _old.SAVE_ON_EXIT_APP;
