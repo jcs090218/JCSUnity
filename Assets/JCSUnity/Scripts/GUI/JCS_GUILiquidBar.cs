@@ -38,7 +38,7 @@ namespace JCSUnity
 
         [Tooltip("please set this ")]
         [SerializeField]
-        private Mask mMask;
+        private Mask mMask = null;
 
 
         // TODO(JenChieh): Somewhat this work, better if i get the logic right
@@ -67,8 +67,7 @@ namespace JCSUnity
 
             if (mMask == null)
             {
-                JCS_Debug.LogError(
-                    "No mask applied...");
+                JCS_Debug.LogError("No mask applied...");
                 return;
             }
 
