@@ -33,15 +33,15 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_ResizeUI) **")]
 
-        [Tooltip("")]
+        [Tooltip("Width scale.")]
         [SerializeField]
         private float mWScale = 0;
 
-        [Tooltip("")]
+        [Tooltip("Height scale.")]
         [SerializeField]
         private float mHScale = 0;
 
-        [Tooltip("")]
+        [Tooltip("Target scale.")]
         [SerializeField]
         private float mTargetScale = 0;
 
@@ -52,6 +52,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public RectTransform GetResizeRect() { return this.mRect; }
+        public float TargetScale { get { return this.mTargetScale; } }
 
         //========================================
         //      Unity's function
@@ -142,7 +143,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Resize the UI if screen size changes.
         /// </summary>
         public void ResizeUI()
         {
