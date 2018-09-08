@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    
     /// <summary>
     /// 2 axis direction.
     /// </summary>
