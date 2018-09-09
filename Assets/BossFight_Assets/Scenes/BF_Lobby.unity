@@ -820,7 +820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &119225857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9567,7 +9567,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1078392641}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -9983,7 +9983,7 @@ MonoBehaviour:
   - {fileID: 1348700365}
   - {fileID: 1053367179}
   mDontPointIfButtonNotActive: 0
-  mPointerOffset: {x: 200, y: -100, z: 0}
+  mPointerOffset: {x: 100, y: 0, z: 0}
 --- !u!114 &1132112843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14421,7 +14421,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -17204,7 +17204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de375e01a1e53fd49a7cb7e0f29b8053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShowItInEditorMode: 1
+  mShowItInEditorMode: 0
   mAspectScreenPanelPath: JCSUnity_Resources/GUI/JCS_AspectScreenPanel
   mTopASP: {fileID: 0}
   mBottomASP: {fileID: 0}
