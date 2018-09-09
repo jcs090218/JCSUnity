@@ -34,7 +34,10 @@ namespace JCSUnity
 
         //----------------------
         // Protected Variables
+
         protected RectTransform mRectTransform = null;
+
+        // Is current dialgoue visible?
         protected bool mIsVisible = false;
 
 
