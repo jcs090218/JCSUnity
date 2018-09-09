@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// GUI object that will goes toward a button, so this make the 
     /// player knows where is the current gui select option goes.
@@ -32,7 +31,11 @@ namespace JCSUnity
         /*******************************************/
         /*           Private Variables             */
         /*******************************************/
+
         private JCS_SimpleTrackAction mSimpleTrackAction = null;
+
+        private JCS_PanelRoot mPanelRoot = null;
+
 
         [Header("** Initialize Variables (JCS_ButtonPointer) **")]
 
@@ -67,6 +70,7 @@ namespace JCSUnity
         private void Awake()
         {
             this.mSimpleTrackAction = this.GetComponent<JCS_SimpleTrackAction>();
+            
 
             // start at the current position. 
             // so trick make the trackaction not moving at all at the 
@@ -81,6 +85,18 @@ namespace JCSUnity
                     continue;
 
                 mButtons[index].SetSystemCallback(PointToButton);
+            }
+        }
+
+        private void Start()
+        {
+            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+
+            if (mPanelRoot != null)
+            {
+                // Adjust the offset base on the screen size.
+                mPointerOffset.x /= mPanelRoot.PanelDeltaWidthRatio;
+                mPointerOffset.y /= mPanelRoot.PanelDeltaHeightRatio;
             }
         }
 
@@ -107,7 +123,13 @@ namespace JCSUnity
                     return;
             }
 
-            mSimpleTrackAction.TargetPosition = btn.GetRectTransfom().localPosition + mPointerOffset;
+            Vector3 targetPoint = 
+                // Target position. 
+                btn.GetRectTransfom().localPosition + 
+                // Offset value.
+                mPointerOffset;
+
+            mSimpleTrackAction.TargetPosition = targetPoint;
         }
 
     }
