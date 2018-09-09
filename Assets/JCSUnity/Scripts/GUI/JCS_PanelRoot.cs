@@ -107,11 +107,13 @@ namespace JCSUnity
                 float blackspace_width = ss.BlackspaceWidth();
                 float blackspace_height = ss.BlackspaceHeight();
 
+                bool blackspace_w_valid = (JCS_Mathf.isPositive(blackspace_width) || blackspace_width == 0.0f);
+                bool blackspace_h_valid = (JCS_Mathf.isPositive(blackspace_height) || blackspace_height == 0.0f);
+
                 if (ss.STARTING_SCREEN_WIDTH != 0)
                 {
                     // There is blackspaces on the horizontal axis. (left and right)
-                    if (JCS_Mathf.isPositive(blackspace_width) ||
-                        blackspace_width == 0.0f)
+                    if (blackspace_w_valid)
                         newWidth -= blackspace_width;
                     // Otherwise should be on the vertical axis. (top and bottom)
                     else
@@ -121,8 +123,7 @@ namespace JCSUnity
                 if (ss.STARTING_SCREEN_HEIGHT != 0)
                 {
                     // There is blackspaces on the vertical axis. (top and bottom)
-                    if (JCS_Mathf.isPositive(blackspace_height) ||
-                        blackspace_height == 0.0f)
+                    if (blackspace_h_valid)
                         newHeight -= blackspace_height;
                     // Otherwise should be on the horizontal axis. (left and right)
                     else
