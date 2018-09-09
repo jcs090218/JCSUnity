@@ -1114,5 +1114,29 @@ namespace JCSUnity
                 child.SetParent(trans);
             }
         }
+
+        /// <summary>
+        /// Force to get a component, if not found we will add one then.
+        /// </summary>
+        /// <typeparam name="T"> Got or Added component. </typeparam>
+        /// <param name="mb"> Any MonoBehaviour. </param>
+        /// <returns>
+        /// Got or new added component.
+        /// </returns>
+        public static T ForceGetComponent<T>(MonoBehaviour mb)
+            where T : MonoBehaviour
+        {
+            T targetMb = mb.GetComponent<T>();
+
+            // Did found! great just returns it.
+            if (targetMb != null)
+                return targetMb;
+
+            // Sadly, we have to add it ourselves.
+            targetMb = mb.gameObject.AddComponent<T>();
+
+            // Returns the new added component.
+            return targetMb;
+        }
     }
 }
