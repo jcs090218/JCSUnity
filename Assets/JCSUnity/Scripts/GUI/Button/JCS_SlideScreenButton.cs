@@ -10,9 +10,9 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Button will do the slide screen.
     /// </summary>
