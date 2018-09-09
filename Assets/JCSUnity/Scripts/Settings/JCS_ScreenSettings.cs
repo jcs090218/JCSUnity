@@ -43,6 +43,15 @@ namespace JCSUnity
         public float FIELD_OF_VIEW = 90.0f;
 
 
+        [Header("- Resize UI (JCS_ScreenSettings)")]
+
+        [Tooltip("Record down the previous 'mWScale' value.")]
+        public float PREV_W_SCALE = 1.0f;
+
+        [Tooltip("Record down the previous 'mHScale' value.")]
+        public float PREV_H_SCALE = 1.0f;
+
+
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
 
         [Tooltip("Type of the screen handle.")]
@@ -110,6 +119,24 @@ namespace JCSUnity
             return Screen.height - STARTING_SCREEN_HEIGHT;
         }
 
+        /// <summary>
+        /// Get the visible of the screen width.
+        /// </summary>
+        /// <returns></returns>
+        public float VisibleScreenWidth()
+        {
+            return Screen.width - BlackspaceWidth();
+        }
+
+        /// <summary>
+        /// Get the size of the screen height.
+        /// </summary>
+        /// <returns></returns>
+        public float VisibleScreenHeight()
+        {
+            return Screen.height - BlackspaceHeight();
+        }
+
         //----------------------
         // Protected Functions
 
@@ -133,6 +160,9 @@ namespace JCSUnity
 
             _new.STARTING_SCREEN_WIDTH = _old.STARTING_SCREEN_WIDTH;
             _new.STARTING_SCREEN_HEIGHT = _old.STARTING_SCREEN_HEIGHT;
+
+            _new.PREV_W_SCALE = _old.PREV_W_SCALE;
+            _new.PREV_H_SCALE = _old.PREV_H_SCALE;
         }
 
         //----------------------
