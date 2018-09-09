@@ -171,7 +171,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Swicth the scene by sliding it with direction.
         /// </summary>
         /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D8Direction towardDirection)
@@ -278,8 +278,9 @@ namespace JCSUnity
         {
             // get the Screen Width and Screen Height
             Vector2 appScreenSize = mRecordGUIScreenSize;
-            float screenWidth = appScreenSize.x;
-            float screenHeight = appScreenSize.y;
+
+            float screenWidth = mRecordGUIScreenSize.x;
+            float screenHeight = mRecordGUIScreenSize.y;
 
             // make a copy of old position
             Vector3 newScenePosition = Vector3.zero;
