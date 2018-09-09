@@ -127,6 +127,9 @@ namespace JCSUnity
             float halfScreenWidth = (mRectTransform.sizeDelta.x / 2.0f) + halfAppRect.x;
             float halfScreenHeight = (mRectTransform.sizeDelta.y / 2.0f) + halfAppRect.y;
 
+            bool blackspace_w_valid = (JCS_Mathf.isPositive(half_blackspace_width) || half_blackspace_width == 0.0f);
+            bool blackspace_h_valid = (JCS_Mathf.isPositive(half_blackspace_height) || half_blackspace_height == 0.0f);
+
             switch (mASPDirection)
             {
                 case JCS_2D4Direction.TOP:
@@ -136,8 +139,7 @@ namespace JCSUnity
                         if (ss.STARTING_SCREEN_HEIGHT != 0)
                         {
                             // There is blackspaces on the vertical axis. (top and bottom)
-                            if (JCS_Mathf.isPositive(half_blackspace_height) ||
-                                half_blackspace_height == 0.0f)
+                            if (blackspace_h_valid)
                                 newPos.y -= half_blackspace_height;
                             // Otherwise should be on the horizontal axis. (left and right)
                             else
@@ -152,8 +154,7 @@ namespace JCSUnity
                         if (ss.STARTING_SCREEN_HEIGHT != 0)
                         {
                             // There is blackspaces on the vertical axis. (top and bottom)
-                            if (JCS_Mathf.isPositive(half_blackspace_height) ||
-                                half_blackspace_height == 0.0f)
+                            if (blackspace_h_valid)
                                 newPos.y += half_blackspace_height;
                             // Otherwise should be on the horizontal axis. (left and right)
                             else
@@ -168,8 +169,7 @@ namespace JCSUnity
                         if (ss.STARTING_SCREEN_WIDTH != 0)
                         {
                             // There is blackspaces on the horizontal axis. (left and right)
-                            if (JCS_Mathf.isPositive(half_blackspace_width) ||
-                                half_blackspace_width == 0.0f)
+                            if (blackspace_w_valid)
                                 newPos.x += half_blackspace_width;
                             // Otherwise should be on the vertical axis. (top and bottom)
                             else
@@ -184,8 +184,7 @@ namespace JCSUnity
                         if (ss.STARTING_SCREEN_WIDTH != 0)
                         {
                             // There is blackspaces on the horizontal axis. (left and right)
-                            if (JCS_Mathf.isPositive(half_blackspace_width) ||
-                                half_blackspace_width == 0.0f)
+                            if (blackspace_w_valid)
                                 newPos.x -= half_blackspace_width;
                             // Otherwise should be on the vertical axis. (top and bottom)
                             else
