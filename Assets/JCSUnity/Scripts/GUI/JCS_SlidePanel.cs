@@ -75,7 +75,6 @@ namespace JCSUnity
             newPosition.x += (mTargetPosition.x - newPosition.x) / mSlideFrictionX * Time.deltaTime;
             newPosition.y += (mTargetPosition.y - newPosition.y) / mSlideFrictionY * Time.deltaTime;
 
-
             this.mRectTransform.localPosition = newPosition;
         }
 

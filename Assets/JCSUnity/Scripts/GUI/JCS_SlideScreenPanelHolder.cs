@@ -25,7 +25,9 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private RectTransform mRectTransform = null;
+
 
         [Header("** Initialize Variables (JCS_SlideScreenPanelHolder) **")]
 
@@ -84,7 +86,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Add Force to  the panel.
+        /// Add Force to the panel.
         /// </summary>
         /// <param name="pos"></param>
         public void AddForce(Vector3 pos)
