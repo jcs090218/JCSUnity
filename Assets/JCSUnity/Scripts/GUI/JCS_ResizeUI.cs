@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -26,18 +27,31 @@ namespace JCSUnity
         // Public Variables
         public static JCS_ResizeUI instance = null;
 
-        public static float W_PREV_SCALE = 0.0f;
-
-        public static float H_PREV_SCALE = 0.0f;
-
-        public Vector2 PREV_SIZE_DELTA = Vector2.zero;
-
-        public Vector3 PREV_SCALE = Vector3.zero;
-
         //----------------------
         // Private Variables
 
         private RectTransform mRect = null;
+
+
+#if (UNITY_EDITOR)
+        private Image mImage = null;
+
+
+        [Header("** Helper Variables (JCS_ResizeUI) **")]
+
+        [Tooltip("Show the resize panel during debug?")]
+        [SerializeField]
+        private bool mShowResizePanel = false;
+
+        [Tooltip("Reize panel color.")]
+        [SerializeField]
+        private Color mResizePanelColor = new Color(171, 73, 73, 60);
+
+        [Tooltip("Image sprite to showw the resize panel, should just be white.")]
+        [SerializeField]
+        private Sprite mImageSprite = null;
+#endif
+
 
         [Header("** Check Variables (JCS_ResizeUI) **")]
 
@@ -59,6 +73,22 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+#if (UNITY_EDITOR)
+        public bool showResizePanel
+        {
+            get { return this.mShowResizePanel; }
+            set {
+                this.mShowResizePanel = value;
+
+                // Show or Hide?
+                if (mShowResizePanel)
+                    ShowResizePanel();
+                else
+                    HideResizePanel();
+            }
+        }
+        public Color ResizePanelColor { get { return this.mResizePanelColor; } set { this.mResizePanelColor = value; } }
+#endif
         public RectTransform GetResizeRect() { return this.mRect; }
         public float TargetScale { get { return this.mTargetScale; } }
 
@@ -69,8 +99,6 @@ namespace JCSUnity
         {
             this.mRect = this.GetComponent<RectTransform>();
 
-            RevertResizeUI();
-
             // if this is the root object set this as un destroyable
             this.gameObject.AddComponent<JCS_UniqueObject>();
 
@@ -79,8 +107,8 @@ namespace JCSUnity
                 string black_screen_name = JCS_UISettings.BLACK_SCREEN_NAME;
                 string white_screen_name = JCS_UISettings.WHITE_SCREEN_NAME;
 
-                // cuz the transform list will change while we set the transform to 
-                // the transform, 
+                // Cuz the transform list will change while we set the 
+                // transform to this transform. 
                 List<Transform> readyToSetList = new List<Transform>();
 
                 Transform tempTrans = instance.transform;
@@ -143,16 +171,37 @@ namespace JCSUnity
 
         private void Update()
         {
+#if (UNITY_EDITOR)
+            if (mShowResizePanel)
+                ShowResizePanel();
+            else
+                HideResizePanel();
+#endif
+
             ResizeUI();
         }
 
         private void OnDestroy()
         {
-            W_PREV_SCALE = mWScale - 1.0f;
-            H_PREV_SCALE = mHScale - 1.0f;
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            PREV_SIZE_DELTA = mRect.sizeDelta;
-            PREV_SCALE = mRect.localScale;
+            ss.PREV_W_SCALE = mWScale;
+            if (ss.PREV_W_SCALE > 1.0f)
+            {
+                if (ss.PREV_H_SCALE < 1.0f)
+                    ss.PREV_H_SCALE /= ss.PREV_W_SCALE;
+
+                ss.PREV_W_SCALE = 1.0f;
+            }
+
+            ss.PREV_H_SCALE = mHScale;
+            if (ss.PREV_H_SCALE > 1.0f)
+            {
+                if (ss.PREV_W_SCALE < 1.0f)
+                    ss.PREV_W_SCALE /= ss.PREV_H_SCALE;
+
+                ss.PREV_H_SCALE = 1.0f;
+            }
         }
 
         //========================================
@@ -160,6 +209,46 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+#if (UNITY_EDITOR)
+        /// <summary>
+        /// Show the resize panel, for debugging usage.
+        /// </summary>
+        public void ShowResizePanel()
+        {
+            if (mImage == null)
+                mImage = JCS_Utility.ForceGetComponent<Image>(this);
+            else
+            {
+                if (mShowResizePanel && mImage.enabled)
+                    return;
+            }
+
+            // Show it.
+            mImage.enabled = true;
+
+            // Set image. Just a white sprite!
+            mImage.sprite = mImageSprite;
+
+            // Set color.
+            mImage.color = mResizePanelColor;
+
+            mShowResizePanel = true;
+        }
+
+        /// <summary>
+        /// Hide the resize panel, for debugging usage.
+        /// </summary>
+        public void HideResizePanel()
+        {
+            if (mImage == null)
+                return;
+
+            mImage.enabled = false;
+
+            mShowResizePanel = false;
+        }
+#endif
 
         //----------------------
         // Protected Functions
@@ -175,28 +264,19 @@ namespace JCSUnity
             if (mRect == null)
                 return;
 
-            mWScale = (float)Screen.width / mRect.sizeDelta.x + W_PREV_SCALE;
-            mHScale = (float)Screen.height / mRect.sizeDelta.y + H_PREV_SCALE;
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+
+            mWScale = (float)Screen.width / ss.STARTING_SCREEN_WIDTH;
+            mHScale = (float)Screen.height / ss.STARTING_SCREEN_HEIGHT;
 
             mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
 
-            mRect.localScale = Vector3.one * mTargetScale;
-        }
+            Vector3 newScale = Vector3.one * mTargetScale;
 
-        /// <summary>
-        /// Revert the resize ui info.
-        /// </summary>
-        private void RevertResizeUI()
-        {
-            mWScale = (float)Screen.width / mRect.sizeDelta.x + W_PREV_SCALE;
-            mHScale = (float)Screen.height / mRect.sizeDelta.y + H_PREV_SCALE;
+            newScale.x /= ss.PREV_W_SCALE;
+            newScale.y /= ss.PREV_H_SCALE;
 
-            // Get back the resize UI.
-            if (PREV_SIZE_DELTA != Vector2.zero)
-                mRect.sizeDelta = PREV_SIZE_DELTA;
-
-            if (PREV_SCALE != Vector3.zero)
-                mRect.localScale = PREV_SCALE;
+            mRect.localScale = newScale;
         }
     }
 }
