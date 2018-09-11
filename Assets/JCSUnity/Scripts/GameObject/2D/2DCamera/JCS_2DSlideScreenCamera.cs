@@ -43,11 +43,6 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        // NOTE(JenChieh): according to Unity's low level architecture
-        //                Canvas size will change 
-        private Vector2 mRecordGUIScreenSize = Vector2.one;
-
-
         [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
 
         // Notice important that Designer should know what 
@@ -232,9 +227,6 @@ namespace JCSUnity
         {
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
             Vector2 appScreenSize = appRect.sizeDelta;
-
-            // get the gui screen size the first time
-            mRecordGUIScreenSize = appScreenSize;
         }
 
         /// <summary>
@@ -244,9 +236,10 @@ namespace JCSUnity
         private void UGUISwitchScene(JCS_2D4Direction towardDirection)
         {
             // get the Screen Width and Screen Height
-            Vector2 appScreenSize = mRecordGUIScreenSize;
-            float screenWidth = appScreenSize.x;
-            float screenHeight = appScreenSize.y;
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+
+            float screenWidth = ss.STARTING_SCREEN_WIDTH;
+            float screenHeight = ss.STARTING_SCREEN_HEIGHT;
 
             // make a copy of old position
             Vector3 newScenePosition = Vector3.zero;
@@ -277,10 +270,10 @@ namespace JCSUnity
         private void UGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             // get the Screen Width and Screen Height
-            Vector2 appScreenSize = mRecordGUIScreenSize;
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            float screenWidth = mRecordGUIScreenSize.x;
-            float screenHeight = mRecordGUIScreenSize.y;
+            float screenWidth = ss.STARTING_SCREEN_WIDTH;
+            float screenHeight = ss.STARTING_SCREEN_HEIGHT;
 
             // make a copy of old position
             Vector3 newScenePosition = Vector3.zero;
