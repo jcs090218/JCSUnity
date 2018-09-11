@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// A bunch of buttons do roll effect.
     /// 
@@ -32,27 +31,52 @@ namespace JCSUnity
         // the button has been focusing on.
         private JCS_RollSelectorButton mFocusBtn = null;
 
-        [Header("** Initialize Variables **")]
+
+        [Header("** Check Variables (JCS_RollBtnSelector) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_PanelRoot mPanelRoot = null;
+
+
+        [Header("** Initialize Variables (JCS_RollBtnSelector) **")]
+
         [Tooltip("Array of buttons u want to do in sequence.")]
-        [SerializeField] private JCS_RollSelectorButton[] mButtons = null;
+        [SerializeField]
+        private JCS_RollSelectorButton[] mButtons = null;
 
         [Tooltip("Space to each buttons.")]
-        [SerializeField] private float mSpacing = 60;
+        [SerializeField]
+        private float mSpacing = 60;
 
         [Tooltip("Dimension the effect.")]
-        [SerializeField] private JCS_2DDimensions mDimension = JCS_2DDimensions.VERTICAL;
+        [SerializeField]
+        private JCS_2DDimensions mDimension = JCS_2DDimensions.VERTICAL;
+
 
         [Header("** Asymptotic Order **")]
-        [SerializeField] private bool mAsympEffect = false;
-        [SerializeField] private Vector3 mAsympDiffScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+        [SerializeField]
+        private bool mAsympEffect = false;
+
+        [SerializeField]
+        private Vector3 mAsympDiffScale = new Vector3(0.5f, 0.5f, 0.5f);
+
 
         [Header("** Scroll Settings **")]
+
         [Tooltip("How fast the button move?")]
-        [SerializeField] private float mScrollFriction = 0.2f;
+        [SerializeField]
+        private float mScrollFriction = 0.2f;
+
         private bool mAnimating = false;
+
         private int mLastScrollIndex = 0;
+
         [Tooltip("How long to scroll one button per times?")]
-        [SerializeField] private float mScrollSpacingTime = 0.2f;
+        [SerializeField]
+        private float mScrollSpacingTime = 0.2f;
+
         private float mScrollSpacingTimer = 0;
 
         // target we want to scroll to one direction
@@ -71,6 +95,11 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+        private void Awake()
+        {
+            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+        }
+
         private void Start()
         {
             InitButton();
@@ -101,7 +130,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Initialize the focus selector
         /// </summary>
         /// <param name="rbs"></param>
         public void SetFocusSelector(JCS_RollSelectorButton rbs)
@@ -152,7 +181,6 @@ namespace JCSUnity
         /// </summary>
         private void InitButton()
         {
-
             JCS_RollSelectorButton currentBtn = null;
             int indexCounter = 0;
 
@@ -181,7 +209,8 @@ namespace JCSUnity
 
                 if (index != 0)
                     currentBtn.SetInteractable(false);
-                else {
+                else
+                {
                     // the first one (center)
                     mFocusBtn = currentBtn;
                     JCS_Utility.MoveToTheLastChild(mFocusBtn.transform);
@@ -192,22 +221,30 @@ namespace JCSUnity
                 if (!isEven)
                     ++indexCounter;
 
+                float intervalDistance = mSpacing * indexCounter;
+
                 switch (mDimension)
                 {
                     case JCS_2DDimensions.VERTICAL:
                         {
+                            if (mPanelRoot != null)
+                                intervalDistance /= mPanelRoot.PanelDeltaWidthRatio;
+
                             if (isEven)
-                                newPos.y += mSpacing * indexCounter;
+                                newPos.y += intervalDistance;
                             else
-                                newPos.y -= mSpacing * indexCounter;
+                                newPos.y -= intervalDistance;
                         }
                         break;
                     case JCS_2DDimensions.HORIZONTAL:
                         {
+                            if (mPanelRoot != null)
+                                intervalDistance /= mPanelRoot.PanelDeltaHeightRatio;
+
                             if (isEven)
-                                newPos.x += mSpacing * indexCounter;
+                                newPos.x += intervalDistance;
                             else
-                                newPos.x -= mSpacing * indexCounter;
+                                newPos.x -= intervalDistance;
                         }
                         break;
                 }
@@ -245,7 +282,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Initialize all the buttons' scale size.
         /// </summary>
         private void InitAsympScale()
         {
@@ -269,6 +306,12 @@ namespace JCSUnity
                     scale = (mAsympDiffScale * index) + mAsympDiffScale;
                 else
                     scale = (mAsympDiffScale * (index - ((index - centerIndex) * 2))) + mAsympDiffScale;
+
+                if (mPanelRoot != null)
+                {
+                    scale.x /= mPanelRoot.PanelDeltaWidthRatio;
+                    scale.y /= mPanelRoot.PanelDeltaHeightRatio;
+                }
 
                 JCS_ScaleEffect se = currentBtn.GetScaleEffect();
 
