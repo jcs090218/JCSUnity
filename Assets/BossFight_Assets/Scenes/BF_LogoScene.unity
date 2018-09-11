@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 170838952}
   - component: {fileID: 170838951}
   - component: {fileID: 170838950}
+  - component: {fileID: 170838955}
   m_Layer: 5
   m_Name: JCS_Canvas
   m_TagString: Untagged
@@ -222,6 +223,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &170838955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 170838949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de375e01a1e53fd49a7cb7e0f29b8053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mShowItInEditorMode: 0
+  mAspectScreenPanelPath: JCSUnity_Resources/GUI/JCS_AspectScreenPanel
+  mTopASP: {fileID: 0}
+  mBottomASP: {fileID: 0}
+  mLeftASP: {fileID: 0}
+  mRightASP: {fileID: 0}
 --- !u!1 &278959786
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +987,11 @@ Prefab:
     - target: {fileID: 11485796, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
       propertyPath: THIS_IS_GAME_SCENE
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808946587855300, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 2}
+      propertyPath: RESIZE_TO_ASPECT_WHEN_APP_STARTS
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
