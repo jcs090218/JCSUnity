@@ -13,6 +13,8 @@ using UnityEngine;
 
 namespace JCSUnity
 {
+    public delegate void OnScreenResize();
+
     /// <summary>
     /// Screen related settings.
     /// </summary>
@@ -24,9 +26,17 @@ namespace JCSUnity
         /*            Public Variables             */
         /*******************************************/
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        public OnScreenResize onScreenResize = null;
+
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_ScreenManager) **")]
+
+        public float REAL_SCREEN_WIDTH = 0.0f;
+
+        public float REAL_SCREEN_HEIGHT = 0.0f;
+#endif
+
 
         [Header("** Check Variables (JCS_ScreenSettings) **")]
 
@@ -42,6 +52,18 @@ namespace JCSUnity
         [Tooltip("Store the camera filed of view value over scene.")]
         public float FIELD_OF_VIEW = 90.0f;
 
+        [Tooltip("Current screen width.")]
+        public float CURRENT_SCREEN_WIDTH = 0.0f;
+
+        [Tooltip("Current screen height.")]
+        public float CURRENT_SCREEN_HEIGHT = 0.0f;
+
+        [Tooltip("Previous screen width.")]
+        public float PREV_SCREEN_WIDTH = 0.0f;
+
+        [Tooltip("Previous screen height.")]
+        public float PREV_SCREEN_HEIGHT = 0.0f;
+
 
         [Header("- Resize UI (JCS_ScreenSettings)")]
 
@@ -51,11 +73,36 @@ namespace JCSUnity
         [Tooltip("Record down the previous 'mHScale' value.")]
         public float PREV_H_SCALE = 1.0f;
 
+        public float PREV_W_SCALE_LEFT = 0.0f;
+
+        public float PREV_H_SCALE_LEFT = 0.0f;
+
+
+        [Header("** Initialize Variables (JCS_ScreenSettings) **")]
+
+        [Tooltip("Resize the screen/window to certain aspect when " +
+            "the application starts. Aspect ratio can be set at " +
+            "'JCS_ScreenManager'.")]
+        public bool RESIZE_TO_ASPECT_WHEN_APP_STARTS = true;
+
 
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
 
         [Tooltip("Type of the screen handle.")]
         public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
+
+        [Tooltip("Target aspect ratio screen width.")]
+        [SerializeField]
+        public int ASPECT_RATIO_SCREEN_WIDTH = 16;
+
+        [Tooltip("Target aspect ratio screen height.")]
+        [SerializeField]
+        public int ASPECT_RATIO_SCREEN_HEIGHT = 9;
+
+
+        /*******************************************/
+        /*           Private Variables             */
+        /*******************************************/
 
         /*******************************************/
         /*           Protected Variables           */
@@ -71,6 +118,22 @@ namespace JCSUnity
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
+
+            // This will only run once at the time when 
+            // the application is starts.
+            if (!JCS_ApplicationSettings.instance.APPLICATION_STARTS)
+            {
+                if (RESIZE_TO_ASPECT_WHEN_APP_STARTS)
+                {
+                    // Force resize screen/window to certain aspect
+                    // ratio once.
+                    ForceAspectScreenOnce();
+                }
+
+                // Record down the starting screen width and screen height.
+                STARTING_SCREEN_WIDTH = Screen.width;
+                STARTING_SCREEN_HEIGHT = Screen.height;
+            }
         }
 
         private void Start()
@@ -84,13 +147,16 @@ namespace JCSUnity
                 cam.fieldOfView = FIELD_OF_VIEW;
                 cam.orthographicSize = ORTHOGRAPHIC_SIZE;
             }
-            // Otherwise, this will only run once at the time when 
-            // the application is starts.
-            else
-            {
-                STARTING_SCREEN_WIDTH = Screen.width;
-                STARTING_SCREEN_HEIGHT = Screen.height;
-            }
+        }
+
+        private void LateUpdate()
+        {
+#if (UNITY_EDITOR)
+            REAL_SCREEN_WIDTH = Screen.width;
+            REAL_SCREEN_HEIGHT = Screen.height;
+#endif
+
+            DoScreenType();
         }
 
         /*******************************************/
@@ -163,10 +229,116 @@ namespace JCSUnity
 
             _new.PREV_W_SCALE = _old.PREV_W_SCALE;
             _new.PREV_H_SCALE = _old.PREV_H_SCALE;
+
+            _new.PREV_W_SCALE_LEFT = _old.PREV_W_SCALE_LEFT;
+            _new.PREV_H_SCALE_LEFT = _old.PREV_H_SCALE_LEFT;
         }
 
         //----------------------
         // Private Functions
 
+        /// <summary>
+        /// Make the screen in certain aspect ratio.
+        /// </summary>
+        private void ForceAspectScreenOnce()
+        {
+            int width = Screen.width;
+            int height = Screen.height;
+
+            // update the height
+            float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_WIDTH * ASPECT_RATIO_SCREEN_HEIGHT;
+            Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+
+            // update the width
+            float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_HEIGHT * ASPECT_RATIO_SCREEN_WIDTH;
+            Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+        }
+
+        /// <summary>
+        /// Do the task base on the screen type handle.
+        /// </summary>
+        private void DoScreenType()
+        {
+            switch (SCREEN_TYPE)
+            {
+                case JCS_ScreenType.FORCE_ASPECT:
+                    DoFoceAspectScreen();
+                    break;
+                case JCS_ScreenType.RESIZABLE:
+                    DoResizableScreen();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Force aspect window.
+        /// 
+        /// SOURCE: https://gamedev.stackexchange.com/questions/86707/how-to-lock-aspect-ratio-when-resizing-game-window-in-unity
+        /// AUTHOR: Entity in JavaScript.
+        /// Modefied: Jen-Chieh Shen to C#.
+        /// </summary>
+        private void DoFoceAspectScreen()
+        {
+            if (Screen.fullScreen)
+                return;
+
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+
+            int width = Screen.width;
+            int height = Screen.height;
+
+            // if the user is changing the width
+            if (PREV_SCREEN_WIDTH != width)
+            {
+                // update the height
+                float heightAccordingToWidth = width / ss.ASPECT_RATIO_SCREEN_WIDTH * ss.ASPECT_RATIO_SCREEN_HEIGHT;
+                Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+            }
+
+            // if the user is changing the height
+            if (PREV_SCREEN_HEIGHT != height)
+            {
+                // update the width
+                float widthAccordingToHeight = height / ss.ASPECT_RATIO_SCREEN_HEIGHT * ss.ASPECT_RATIO_SCREEN_WIDTH;
+                Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+            }
+
+            this.PREV_SCREEN_WIDTH = width;
+            this.PREV_SCREEN_HEIGHT = height;
+        }
+
+        /// <summary>
+        /// Do the resizable window.
+        /// </summary>
+        private void DoResizableScreen()
+        {
+            int screenWidth = Screen.width;
+            int screenHeight = Screen.height;
+
+            if (CURRENT_SCREEN_WIDTH == screenWidth &&
+                CURRENT_SCREEN_HEIGHT == screenHeight)
+                return;
+
+            if (PREV_SCREEN_WIDTH == 0.0f || PREV_SCREEN_HEIGHT == 0.0f)
+            {
+                // If zero, set to the same value.
+                PREV_SCREEN_WIDTH = screenWidth;
+                PREV_SCREEN_HEIGHT = screenHeight;
+            }
+            else
+            {
+                // Record previous screen info.
+                PREV_SCREEN_WIDTH = CURRENT_SCREEN_WIDTH;
+                PREV_SCREEN_HEIGHT = CURRENT_SCREEN_HEIGHT;
+            }
+
+            // Update current screen info.
+            CURRENT_SCREEN_WIDTH = screenWidth;
+            CURRENT_SCREEN_HEIGHT = screenHeight;
+
+            // Do callback.
+            if (onScreenResize != null)
+                onScreenResize.Invoke();
+        }
     }
 }
