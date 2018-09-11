@@ -73,10 +73,6 @@ namespace JCSUnity
         [Tooltip("Record down the previous 'mHScale' value.")]
         public float PREV_H_SCALE = 1.0f;
 
-        public float PREV_W_SCALE_LEFT = 0.0f;
-
-        public float PREV_H_SCALE_LEFT = 0.0f;
-
 
         [Header("** Initialize Variables (JCS_ScreenSettings) **")]
 
@@ -229,9 +225,6 @@ namespace JCSUnity
 
             _new.PREV_W_SCALE = _old.PREV_W_SCALE;
             _new.PREV_H_SCALE = _old.PREV_H_SCALE;
-
-            _new.PREV_W_SCALE_LEFT = _old.PREV_W_SCALE_LEFT;
-            _new.PREV_H_SCALE_LEFT = _old.PREV_H_SCALE_LEFT;
         }
 
         //----------------------
