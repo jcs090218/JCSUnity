@@ -209,6 +209,23 @@ namespace JCSUnity
             return Screen.height - BlackspaceHeight();
         }
 
+        /// <summary>
+        /// Make the screen in certain aspect ratio.
+        /// </summary>
+        public void ForceAspectScreenOnce()
+        {
+            int width = Screen.width;
+            int height = Screen.height;
+
+            // update the height
+            float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_WIDTH * ASPECT_RATIO_SCREEN_HEIGHT;
+            Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+
+            // update the width
+            float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_HEIGHT * ASPECT_RATIO_SCREEN_WIDTH;
+            Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+        }
+
         //----------------------
         // Protected Functions
 
@@ -238,27 +255,13 @@ namespace JCSUnity
 
             _new.PREV_W_SCALE = _old.PREV_W_SCALE;
             _new.PREV_H_SCALE = _old.PREV_H_SCALE;
+
+            _new.ASPECT_RATIO_SCREEN_WIDTH = _old.ASPECT_RATIO_SCREEN_WIDTH;
+            _new.ASPECT_RATIO_SCREEN_HEIGHT = _old.ASPECT_RATIO_SCREEN_HEIGHT;
         }
 
         //----------------------
         // Private Functions
-
-        /// <summary>
-        /// Make the screen in certain aspect ratio.
-        /// </summary>
-        private void ForceAspectScreenOnce()
-        {
-            int width = Screen.width;
-            int height = Screen.height;
-
-            // update the height
-            float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_WIDTH * ASPECT_RATIO_SCREEN_HEIGHT;
-            Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
-
-            // update the width
-            float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_HEIGHT * ASPECT_RATIO_SCREEN_WIDTH;
-            Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
-        }
 
         /// <summary>
         /// Do the task base on the screen type handle.
