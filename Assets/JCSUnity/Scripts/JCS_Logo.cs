@@ -24,12 +24,17 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         [Header("** Note: Fade Time can be set at JCS_SceneSettings. **")]
 
-        [SerializeField] private string mNextLevel = "JCS_Demo";
+        [Tooltip("Next scene to load.")]
+        [SerializeField]
+        private string mNextLevel = "JCS_Demo";
 
         // second to show logo
-        [SerializeField] private float mDelayTime = 1.0f;
+        [SerializeField]
+        private float mDelayTime = 1.0f;
+
         private float mDelayTimer = 0.0f;
 
         private bool mCycleThrough = false;
