@@ -820,7 +820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &119225857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8284,7 +8284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &968011696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17204,7 +17204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de375e01a1e53fd49a7cb7e0f29b8053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShowItInEditorMode: 1
+  mShowItInEditorMode: 0
   mAspectScreenPanelPath: JCSUnity_Resources/GUI/JCS_AspectScreenPanel
   mTopASP: {fileID: 0}
   mBottomASP: {fileID: 0}
