@@ -19,6 +19,7 @@ namespace JCSUnity
     public enum JCS_ScreenType
     {
         NONE,
+
         FORCE_ASPECT,
         RESIZABLE,
     }
