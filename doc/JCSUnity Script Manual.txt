@@ -2634,11 +2634,6 @@
           <Description/>
         </File>
 
-        <File name="JCS_ScreenManager.cs">
-          <Placement>Already assign.</Placement>
-          <Description/>
-        </File>
-
         <File name="JCS_SoundManager.cs">
           <Placement>Already assign.</Placement>
           <Description/>
