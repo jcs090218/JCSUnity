@@ -90,7 +90,7 @@ namespace JCSUnity
         protected virtual void Start()
         {
             // add to on screen resize callback.
-            JCS_ScreenManager.instance.onScreenResize += OnResizeGame;
+            JCS_ScreenSettings.instance.onScreenResize += OnResizeGame;
         }
 
         protected virtual void LateUpdate()
@@ -616,21 +616,20 @@ namespace JCSUnity
         /// </summary>
         protected virtual void OnResizeGame()
         {
-            JCS_ScreenManager sm = JCS_ScreenManager.instance;
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            float currentScreenRatio = sm.CURRENT_SCREEN_WIDTH / sm.CURRENT_SCREEN_HEIGHT;
+            float currentScreenRatio = ss.CURRENT_SCREEN_WIDTH / ss.CURRENT_SCREEN_HEIGHT;
             float startingScreenRatio = (float)ss.STARTING_SCREEN_WIDTH / (float)ss.STARTING_SCREEN_HEIGHT;
 
             if (currentScreenRatio > startingScreenRatio)
             {
                 // Set the limit if reach the starting screen ratio.
-                sm.CURRENT_SCREEN_WIDTH = (float)ss.STARTING_SCREEN_WIDTH;
-                sm.CURRENT_SCREEN_HEIGHT = (float)ss.STARTING_SCREEN_HEIGHT;
+                ss.CURRENT_SCREEN_WIDTH = (float)ss.STARTING_SCREEN_WIDTH;
+                ss.CURRENT_SCREEN_HEIGHT = (float)ss.STARTING_SCREEN_HEIGHT;
             }
 
-            float prevRatio = sm.PREV_SCREEN_WIDTH / sm.PREV_SCREEN_HEIGHT;
-            float newRatio = sm.CURRENT_SCREEN_WIDTH / sm.CURRENT_SCREEN_HEIGHT;
+            float prevRatio = ss.PREV_SCREEN_WIDTH / ss.PREV_SCREEN_HEIGHT;
+            float newRatio = ss.CURRENT_SCREEN_WIDTH / ss.CURRENT_SCREEN_HEIGHT;
 
             float divRatio = prevRatio / newRatio;
 
