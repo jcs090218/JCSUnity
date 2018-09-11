@@ -1303,7 +1303,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &196451053
@@ -3424,7 +3424,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Boss Fight
+  m_Text: FT Lobby
 --- !u!222 &493770896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4173,7 +4173,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &568001147
@@ -4580,7 +4580,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &589180224
@@ -5552,7 +5552,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &606409745
@@ -5600,6 +5600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea8168c5c9032f4c82134ebf89480b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mPanelRoot: {fileID: 0}
   mButtons:
   - {fileID: 193455528}
   - {fileID: 688828982}
@@ -6739,7 +6740,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &689288134
@@ -10471,7 +10472,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &1294710017
@@ -10708,7 +10709,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &1298234184
@@ -12041,7 +12042,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1001 &1414270698
@@ -12095,6 +12096,10 @@ Prefab:
       propertyPath: mPanelHolder
       value: 
       objectReference: {fileID: 1529597983}
+    - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 2}
+      propertyPath: testWithKey
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 2}
   m_IsPrefabAsset: 0
@@ -15256,7 +15261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
-  mTestWithKey: 1
+  mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
   mIsActive: 0
@@ -17689,7 +17694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
-  mTestWithKey: 1
+  mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
   mIsActive: 0
@@ -18042,7 +18047,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mAutoAddEvent: 1
+  mAutoAddEvent: 0
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
 --- !u!1 &2111222620
