@@ -33,6 +33,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_ScaleEffect) **")]
 
+        [Tooltip("Is the current component doing the effect now?")]
         [SerializeField]
         private bool mEffect = false;
 
@@ -222,7 +223,7 @@ namespace JCSUnity
                 // mPanelRoot will be null is the object isn't
                 // UI game object.
                 if (mPanelRoot != null)
-                    mScaleValue.y /= mPanelRoot.PanelDeltaWidthRatio;
+                    mScaleValue.y /= mPanelRoot.PanelDeltaHeightRatio;
 
                 newTargetScale.y += mScaleValue.y;
             }
