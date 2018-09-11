@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-09-12
+* Fixed roll button selector acting weird when under different resolution 
+ issue. (JCSUnity)
+
 2018-09-10
 * Fixed JCS_ButtonPointer compatible with resizable screen/window. (JCSUnity)
 
