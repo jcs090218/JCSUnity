@@ -57,15 +57,15 @@ namespace JCSUnity
 
         [Tooltip("Width scale.")]
         [SerializeField]
-        private float mWScale = 0;
+        private float mWScale = 1.0f;
 
         [Tooltip("Height scale.")]
         [SerializeField]
-        private float mHScale = 0;
+        private float mHScale = 1.0f;
 
         [Tooltip("Target scale.")]
         [SerializeField]
-        private float mTargetScale = 0;
+        private float mTargetScale = 0.0f;
 
         //----------------------
         // Protected Variables
@@ -167,40 +167,51 @@ namespace JCSUnity
 #endif
 
             this.transform.localEulerAngles = Vector3.zero;
+
+
+            // Assign resize UI to event handle.
+            JCS_ScreenSettings.instance.onScreenResize += ResizeUI;
         }
 
+#if (UNITY_EDITOR)
         private void Update()
         {
-#if (UNITY_EDITOR)
             if (mShowResizePanel)
                 ShowResizePanel();
             else
                 HideResizePanel();
-#endif
-
-            ResizeUI();
         }
+#endif
 
         private void OnDestroy()
         {
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
             ss.PREV_W_SCALE = mWScale;
-            if (ss.PREV_W_SCALE > 1.0f)
-            {
-                if (ss.PREV_H_SCALE < 1.0f)
-                    ss.PREV_H_SCALE /= ss.PREV_W_SCALE;
+            ss.PREV_H_SCALE = mHScale;
 
+            // If screen width is larget than last screen width.
+            if (ss.PREV_W_SCALE >= 1.0f)
+            {
                 ss.PREV_W_SCALE = 1.0f;
             }
-
-            ss.PREV_H_SCALE = mHScale;
-            if (ss.PREV_H_SCALE > 1.0f)
+            else
             {
-                if (ss.PREV_W_SCALE < 1.0f)
-                    ss.PREV_W_SCALE /= ss.PREV_H_SCALE;
+                // TODO(jenchieh): I give up on this section, 
+                // resizable screen will just not work at all.
+                ss.PREV_W_SCALE /= ss.PREV_H_SCALE;
+            }
 
+            // If screen height is larger than last screen height.
+            if (ss.PREV_H_SCALE >= 1.0f)
+            {
                 ss.PREV_H_SCALE = 1.0f;
+            }
+            else
+            {
+                // TODO(jenchieh): I give up on this section, 
+                // resizable screen will just not work at all.
+                ss.PREV_H_SCALE /= ss.PREV_W_SCALE;
             }
         }
 
@@ -261,13 +272,13 @@ namespace JCSUnity
         /// </summary>
         private void ResizeUI()
         {
-            if (mRect == null)
+            if (!this.enabled)
                 return;
 
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            mWScale = (float)Screen.width / ss.STARTING_SCREEN_WIDTH;
-            mHScale = (float)Screen.height / ss.STARTING_SCREEN_HEIGHT;
+            mWScale = (float)Screen.width / (float)ss.STARTING_SCREEN_WIDTH;
+            mHScale = (float)Screen.height / (float)ss.STARTING_SCREEN_HEIGHT;
 
             mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
 
@@ -276,7 +287,7 @@ namespace JCSUnity
             newScale.x /= ss.PREV_W_SCALE;
             newScale.y /= ss.PREV_H_SCALE;
 
-            mRect.localScale = newScale;
+            transform.localScale = newScale;
         }
     }
 }
