@@ -81,6 +81,9 @@ namespace JCSUnity
             "'JCS_ScreenManager'.")]
         public bool RESIZE_TO_ASPECT_WHEN_APP_STARTS = true;
 
+        [Tooltip("Resize the screen/window everytime a new scene are loaded.")]
+        public bool RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED = false;
+
 
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
 
@@ -129,6 +132,13 @@ namespace JCSUnity
                 // Record down the starting screen width and screen height.
                 STARTING_SCREEN_WIDTH = Screen.width;
                 STARTING_SCREEN_HEIGHT = Screen.height;
+            }
+            else
+            {
+                // Othereise, check if new scene loaded resize the 
+                // screen once?
+                if (RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED)
+                    ForceAspectScreenOnce();
             }
         }
 
@@ -216,6 +226,9 @@ namespace JCSUnity
         protected override void TransferData(JCS_ScreenSettings _old, JCS_ScreenSettings _new)
         {
             _new.SCREEN_TYPE = _old.SCREEN_TYPE;
+
+            _new.RESIZE_TO_ASPECT_WHEN_APP_STARTS = _old.RESIZE_TO_ASPECT_WHEN_APP_STARTS;
+            _new.RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED = _old.RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED;
 
             _new.ORTHOGRAPHIC_SIZE = _old.ORTHOGRAPHIC_SIZE;
             _new.FIELD_OF_VIEW = _old.FIELD_OF_VIEW;
