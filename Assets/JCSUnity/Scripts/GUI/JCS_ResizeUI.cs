@@ -168,51 +168,20 @@ namespace JCSUnity
 
             this.transform.localEulerAngles = Vector3.zero;
 
-
-            // Assign resize UI to event handle.
-            JCS_ScreenSettings.instance.onScreenResize += ResizeUI;
+            this.transform.localScale = Vector3.one;
         }
 
-#if (UNITY_EDITOR)
+
         private void Update()
         {
+#if (UNITY_EDITOR)
             if (mShowResizePanel)
                 ShowResizePanel();
             else
                 HideResizePanel();
-        }
 #endif
 
-        private void OnDestroy()
-        {
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
-
-            ss.PREV_W_SCALE = mWScale;
-            ss.PREV_H_SCALE = mHScale;
-
-            // If screen width is larget than last screen width.
-            if (ss.PREV_W_SCALE >= 1.0f)
-            {
-                ss.PREV_W_SCALE = 1.0f;
-            }
-            else
-            {
-                // TODO(jenchieh): I give up on this section, 
-                // resizable screen will just not work at all.
-                ss.PREV_W_SCALE /= ss.PREV_H_SCALE;
-            }
-
-            // If screen height is larger than last screen height.
-            if (ss.PREV_H_SCALE >= 1.0f)
-            {
-                ss.PREV_H_SCALE = 1.0f;
-            }
-            else
-            {
-                // TODO(jenchieh): I give up on this section, 
-                // resizable screen will just not work at all.
-                ss.PREV_H_SCALE /= ss.PREV_W_SCALE;
-            }
+            DoResizeUI();
         }
 
         //========================================
@@ -270,11 +239,8 @@ namespace JCSUnity
         /// <summary>
         /// Resize the UI if screen size changes.
         /// </summary>
-        private void ResizeUI()
+        private void DoResizeUI()
         {
-            if (!this.enabled)
-                return;
-
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
             mWScale = (float)Screen.width / (float)ss.STARTING_SCREEN_WIDTH;
@@ -282,12 +248,7 @@ namespace JCSUnity
 
             mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
 
-            Vector3 newScale = Vector3.one * mTargetScale;
-
-            newScale.x /= ss.PREV_W_SCALE;
-            newScale.y /= ss.PREV_H_SCALE;
-
-            transform.localScale = newScale;
+            transform.localScale = Vector3.one * mTargetScale;
         }
     }
 }
