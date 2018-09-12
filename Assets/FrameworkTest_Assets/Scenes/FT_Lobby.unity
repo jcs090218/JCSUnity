@@ -17209,7 +17209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de375e01a1e53fd49a7cb7e0f29b8053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mShowItInEditorMode: 0
+  mShowItInEditorMode: 1
   mAspectScreenPanelPath: JCSUnity_Resources/GUI/JCS_AspectScreenPanel
   mTopASP: {fileID: 0}
   mBottomASP: {fileID: 0}
@@ -17810,7 +17810,7 @@ MonoBehaviour:
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mPlatformType: 0
-  mSceneName: BF_Lobby
+  mSceneName: FT_Lobby
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
 --- !u!1 &2110879007
