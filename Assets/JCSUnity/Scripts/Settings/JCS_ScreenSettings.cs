@@ -64,8 +64,19 @@ namespace JCSUnity
         [Tooltip("Previous screen height.")]
         public float PREV_SCREEN_HEIGHT = 0.0f;
 
+        [Tooltip("Target aspect ratio screen width.")]
+        [SerializeField]
+        public int ASPECT_RATIO_SCREEN_WIDTH = 0;
+
+        [Tooltip("Target aspect ratio screen height.")]
+        [SerializeField]
+        public int ASPECT_RATIO_SCREEN_HEIGHT = 0;
+
 
         [Header("** Initialize Variables (JCS_ScreenSettings) **")]
+
+        [Tooltip("Type of the screen handle.")]
+        public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
 
         [Tooltip("Resize the screen/window to certain aspect when " +
             "the application starts. Aspect ratio can be set at " +
@@ -79,16 +90,9 @@ namespace JCSUnity
         [Tooltip("Resize the screen/window everytime a scene are loaded.")]
         public bool RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED = false;
 
-        [Tooltip("Type of the screen handle.")]
-        public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
-
-        [Tooltip("Target aspect ratio screen width.")]
-        [SerializeField]
-        public int ASPECT_RATIO_SCREEN_WIDTH = 0;
-
-        [Tooltip("Target aspect ratio screen height.")]
-        [SerializeField]
-        public int ASPECT_RATIO_SCREEN_HEIGHT = 0;
+        [Tooltip("When resize, resize to the smaller edge, if not true " +
+            "will resize to larger edge.")]
+        public bool RESIZE_TO_SMALLER_EDGE = true;
 
 
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
@@ -137,16 +141,27 @@ namespace JCSUnity
                 {
                     // Force resize screen/window to certain aspect
                     // ratio once.
-                    ForceAspectScreenOnce();
+                    ForceAspectScreenOnce(true);
                 }
 
                 if (RESIZE_TO_STANDARD_WHEN_APP_STARTS)
                 {
                     // Force resize screen/window to standard 
                     // resolution once.
-                    ForceStandardScreenOnce();
+                    ForceStandardScreenOnce(true);
                 }
 
+                /*
+                 * NOTE(jenchieh): This is really weird, that even we 
+                 * use 'Screen.SetResolution' function, the 'Screen.width'
+                 * and 'Screen.height' will not change immediately.
+                 * We just have to get it ourselves in all resize event
+                 * function like above these functions.
+                 * 
+                 *   -> ForceAspectScreenOnce
+                 *   -> ForceStandardScreenOnce
+                 *   
+                 */
                 // Record down the starting screen width and screen height.
                 //STARTING_SCREEN_WIDTH = Screen.width;
                 //STARTING_SCREEN_HEIGHT = Screen.height;
@@ -158,9 +173,6 @@ namespace JCSUnity
                 if (RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED)
                     ForceAspectScreenOnce();
             }
-
-            Debug.Log("Starting: " + new Vector2(STARTING_SCREEN_WIDTH, STARTING_SCREEN_HEIGHT));
-            Debug.Log("Screen: " + new Vector2(Screen.width, Screen.height));
         }
 
         private void Start()
@@ -234,19 +246,29 @@ namespace JCSUnity
         /// <summary>
         /// Make the screen in certain aspect ratio.
         /// </summary>
-        public void ForceAspectScreenOnce()
+        /// <param name="starting"> Change the starting screen as well? </param>
+        public void ForceAspectScreenOnce(bool starting = false)
         {
             int width = Screen.width;
             int height = Screen.height;
 
-            if (width > height)
+            bool smaller = width > height;
+
+            // Reverse it if resize to larger edge.
+            if (!RESIZE_TO_SMALLER_EDGE)
+                smaller = !smaller;
+
+            if (smaller)
             {
                 // update the height
                 float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_WIDTH * ASPECT_RATIO_SCREEN_HEIGHT;
                 Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
 
-                STARTING_SCREEN_WIDTH = width;
-                STARTING_SCREEN_HEIGHT = (int)heightAccordingToWidth;
+                if (starting)
+                {
+                    STARTING_SCREEN_WIDTH = width;
+                    STARTING_SCREEN_HEIGHT = (int)heightAccordingToWidth;
+                }
             }
             else
             {
@@ -254,20 +276,27 @@ namespace JCSUnity
                 float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_HEIGHT * ASPECT_RATIO_SCREEN_WIDTH;
                 Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
 
-                STARTING_SCREEN_WIDTH = (int)widthAccordingToHeight;
-                STARTING_SCREEN_HEIGHT = height;
+                if (starting)
+                {
+                    STARTING_SCREEN_WIDTH = (int)widthAccordingToHeight;
+                    STARTING_SCREEN_HEIGHT = height;
+                }
             }
         }
-        
+
         /// <summary>
         /// Resize the screen resolution to standard resolution once.
         /// </summary>
-        public void ForceStandardScreenOnce()
+        /// <param name="starting"> Change the starting screen as well? </param>
+        public void ForceStandardScreenOnce(bool starting = false)
         {
             Screen.SetResolution(STANDARD_SCREEN_WIDTH, STANDARD_SCREEN_HEIGHT, false, 0);
 
-            STARTING_SCREEN_WIDTH = STANDARD_SCREEN_WIDTH;
-            STARTING_SCREEN_HEIGHT = STANDARD_SCREEN_HEIGHT;
+            if (starting)
+            {
+                STARTING_SCREEN_WIDTH = STANDARD_SCREEN_WIDTH;
+                STARTING_SCREEN_HEIGHT = STANDARD_SCREEN_HEIGHT;
+            }
         }
 
         //----------------------
