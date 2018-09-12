@@ -1120,11 +1120,6 @@ MonoBehaviour:
   mBottomASP: {fileID: 0}
   mLeftASP: {fileID: 0}
   mRightASP: {fileID: 0}
-  mLastWidth: 0
-  mLastHeight: 0
-  mForceAspectWindow: 0
-  mAspectRatioScreenWidth: 16
-  mAspectRatioScreenHeight: 9
 --- !u!1001 &238042253
 Prefab:
   m_ObjectHideFlags: 0
@@ -5080,7 +5075,7 @@ Prefab:
       objectReference: {fileID: 510597488}
     - target: {fileID: 11427146, guid: 2412530ecb111944585d11eb62a1d621, type: 2}
       propertyPath: TOTAL_LEVEL
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11427146, guid: 2412530ecb111944585d11eb62a1d621, type: 2}
       propertyPath: GAME_IS_OVER
@@ -6614,6 +6609,10 @@ Prefab:
     - target: {fileID: 2086022, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
       propertyPath: orthographic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492924, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
+      propertyPath: isVer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03b8a2ed0bd29f040a9f140a75ef08e4, type: 2}
