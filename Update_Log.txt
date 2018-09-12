@@ -13,6 +13,7 @@
 * Add resize screen option everytime a new scene loaded to JCS_ScreenSettings. (JCSUnity)
 * Implement resize screen on particular scene functionalities in JCS_ScreenManager. (JCSUnity)
 * Resizable window/screen functionalities implemented, finally! (JCSUnity)
+* Update project version to 1.8.1. (JCSUnity)
 
 2018-09-10
 * Fixed JCS_ButtonPointer compatible with resizable screen/window. (JCSUnity)
