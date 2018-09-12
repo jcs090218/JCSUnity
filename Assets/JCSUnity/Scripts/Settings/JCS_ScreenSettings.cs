@@ -177,15 +177,14 @@ namespace JCSUnity
 
         private void Start()
         {
-            Camera cam = JCS_Camera.main.GetCamera();
-
-            // NOTE(jenchieh): Here is the execution order implementation.
-            // 'APPLICATION_STARTS' will be true after the first scene's 
-            // main game loop is runs. 
-            if (JCS_ApplicationSettings.instance.APPLICATION_STARTS)
+            // When first run in the application...
+            if (!JCS_ApplicationSettings.instance.APPLICATION_STARTS)
             {
-                cam.fieldOfView = FIELD_OF_VIEW;
-                cam.orthographicSize = ORTHOGRAPHIC_SIZE;
+                Camera cam = JCS_Camera.main.GetCamera();
+
+                // Update the data just to see better.
+                ORTHOGRAPHIC_SIZE = cam.orthographicSize;
+                FIELD_OF_VIEW = cam.fieldOfView;
             }
         }
 
