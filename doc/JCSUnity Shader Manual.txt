@@ -1,5 +1,5 @@
 
-JCSUnity version 1.7.9 Shader Manual (Status)
+JCSUnity version 1.8.1 Shader Manual (Status)
 
 When using the JCSUnity you may refer to this document,
 which will cover the various scripts and how to properly use them.
