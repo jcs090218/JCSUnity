@@ -656,15 +656,22 @@ namespace JCSUnity
                 float bw = ss.BlackspaceWidth();
                 float bh = ss.BlackspaceHeight();
 
+                // Width does not need to be calculate, but 
+                // need to set back to the original value.
+                // Hence, the 'mRecordOrthographicSize' variable.
                 if (bw > bh)
                 {
                     mCamera.orthographicSize = mRecordOrthographicSize;
                     mCamera.fieldOfView = mRecordFieldOfView;
                 }
+                // Calculating the proper hight.
                 else
                 {
+                    // Calculate what the height suppose to be!
                     float supposeHeight = ((float)Screen.width * (float)ss.STARTING_SCREEN_HEIGHT) / (float)ss.STARTING_SCREEN_WIDTH;
 
+                    // Use the 'suppose height' to find the proper 
+                    // height ratio.
                     float heightRatio = ((float)Screen.height / supposeHeight);
 
                     mCamera.orthographicSize = heightRatio * mRecordOrthographicSize;
