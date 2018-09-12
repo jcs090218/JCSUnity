@@ -94,42 +94,8 @@ namespace JCSUnity
         {
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            // get app rect
-            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
-
-            float newWidth = appRect.sizeDelta.x;
-            float newHeight = appRect.sizeDelta.y;
-
-            /* Adjust the panel width and height base on the
-             * blackspaces width and height.
-             */
-            {
-                float blackspace_width = ss.BlackspaceWidth();
-                float blackspace_height = ss.BlackspaceHeight();
-
-                bool blackspace_w_valid = (JCS_Mathf.isPositive(blackspace_width) || blackspace_width == 0.0f);
-                bool blackspace_h_valid = (JCS_Mathf.isPositive(blackspace_height) || blackspace_height == 0.0f);
-
-                if (ss.STARTING_SCREEN_WIDTH != 0)
-                {
-                    // There is blackspaces on the horizontal axis. (left and right)
-                    if (blackspace_w_valid)
-                        newWidth -= blackspace_width;
-                    // Otherwise should be on the vertical axis. (top and bottom)
-                    else
-                        newWidth += blackspace_height;
-                }
-
-                if (ss.STARTING_SCREEN_HEIGHT != 0)
-                {
-                    // There is blackspaces on the vertical axis. (top and bottom)
-                    if (blackspace_h_valid)
-                        newHeight -= blackspace_height;
-                    // Otherwise should be on the horizontal axis. (left and right)
-                    else
-                        newHeight += blackspace_width;
-                }
-            }
+            float newWidth = ss.STARTING_SCREEN_WIDTH;
+            float newHeight = ss.STARTING_SCREEN_HEIGHT;
 
             float currentWidth = mRectTransform.sizeDelta.x;
             float currentHeight = mRectTransform.sizeDelta.y;
