@@ -248,9 +248,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 278959787}
-  - component: {fileID: 278959791}
-  - component: {fileID: 278959790}
-  - component: {fileID: 278959789}
   - component: {fileID: 278959788}
   m_Layer: 5
   m_Name: JCS_BasePanel
@@ -286,7 +283,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 278959786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fb28bcdbdd8c448b4d7b82a860f238, type: 3}
+  m_Script: {fileID: 11500000, guid: df56e4554e88a74488d9e7830ba08f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mAsOriginalSize: 1
@@ -295,131 +292,6 @@ MonoBehaviour:
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
-  mDialogueIndex: -1
-  mKeyCode: 0
-  mDialogueType: 0
-  mPanelType: 0
-  mOpenWindowClip: {fileID: 0}
-  mCloseWindowClip: {fileID: 0}
---- !u!114 &278959789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 278959786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb208d196628fa64785fef78c9b23d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mType: 0
---- !u!114 &278959790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 278959786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mSoundSettingType: 0
---- !u!82 &278959791
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 278959786}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &311663126
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +864,21 @@ Prefab:
         type: 2}
       propertyPath: RESIZE_TO_ASPECT_WHEN_APP_STARTS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808946587855300, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 2}
+      propertyPath: RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808946587855300, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 2}
+      propertyPath: SCREEN_TYPE
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808946587855300, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 2}
+      propertyPath: RESIZE_STANDARD_WHEN_APP_STARTS
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
