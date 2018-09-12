@@ -6,23 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/BossFight_Assets/Scenes/BF_Lobby.unity
+    guid: 96c4c1b86d16b5d4aa4690906f847208
+  - enabled: 1
     path: Assets/BossFight_Assets/Scenes/BF_LogoScene.unity
     guid: 620bf97ff9e8b7c48a92cccc9cfb6484
+  - enabled: 1
+    path: Assets/RunningCrush_Assets/Scenes/RC_LogoScene.unity
+    guid: 797d927e078735e4b87529c67fe5c573
   - enabled: 1
     path: Assets/FrameworkTest_Assets/Scenes/FT_UITest.unity
     guid: a47747e979ccf19438c03f7da6e61ac9
   - enabled: 1
-    path: Assets/RunningCrush_Assets/Scenes/RC_LogoScene.unity
-    guid: 797d927e078735e4b87529c67fe5c573
+    path: Assets/FrameworkTest_Assets/Scenes/FT_Lobby.unity
+    guid: dad52fa8b4051814a9f73adbf6d39587
   - enabled: 1
     path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateSceneOnline.unity
     guid: 8f14fd39503fc6b46b80dbb178229d61
   - enabled: 1
     path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateScene.unity
     guid: 04f6db7d2bf5e974bbf699294c1f33f6
-  - enabled: 1
-    path: Assets/BossFight_Assets/Scenes/BF_Lobby.unity
-    guid: 96c4c1b86d16b5d4aa4690906f847208
   - enabled: 1
     path: Assets/BossFight_Assets/Scenes/BF_Game.unity
     guid: dd51279f1777da448a82e3262d0bf645
