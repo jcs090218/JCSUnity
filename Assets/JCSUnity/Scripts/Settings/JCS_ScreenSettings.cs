@@ -47,10 +47,10 @@ namespace JCSUnity
         public int STARTING_SCREEN_HEIGHT = 0;
 
         [Tooltip("Store the camera orthographic size value over scene.")]
-        public float ORTHOGRAPHIC_SIZE = 10.0f;
+        public float ORTHOGRAPHIC_SIZE = 0.0f;
 
         [Tooltip("Store the camera filed of view value over scene.")]
-        public float FIELD_OF_VIEW = 90.0f;
+        public float FIELD_OF_VIEW = 0.0f;
 
         [Tooltip("Current screen width.")]
         public float CURRENT_SCREEN_WIDTH = 0.0f;
@@ -65,15 +65,6 @@ namespace JCSUnity
         public float PREV_SCREEN_HEIGHT = 0.0f;
 
 
-        [Header("- Resize UI (JCS_ScreenSettings)")]
-
-        [Tooltip("Record down the previous 'mWScale' value.")]
-        public float PREV_W_SCALE = 1.0f;
-
-        [Tooltip("Record down the previous 'mHScale' value.")]
-        public float PREV_H_SCALE = 1.0f;
-
-
         [Header("** Initialize Variables (JCS_ScreenSettings) **")]
 
         [Tooltip("Resize the screen/window to certain aspect when " +
@@ -81,22 +72,34 @@ namespace JCSUnity
             "'JCS_ScreenManager'.")]
         public bool RESIZE_TO_ASPECT_WHEN_APP_STARTS = true;
 
-        [Tooltip("Resize the screen/window everytime a new scene are loaded.")]
-        public bool RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED = false;
+        [Tooltip("Resize the screen/window to standard resoltuion when " +
+            "application starts.")]
+        public bool RESIZE_TO_STANDARD_WHEN_APP_STARTS = false;
 
-
-        [Header("** Runtime Variables (JCS_ScreenSettings) **")]
+        [Tooltip("Resize the screen/window everytime a scene are loaded.")]
+        public bool RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED = false;
 
         [Tooltip("Type of the screen handle.")]
         public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
 
         [Tooltip("Target aspect ratio screen width.")]
         [SerializeField]
-        public int ASPECT_RATIO_SCREEN_WIDTH = 16;
+        public int ASPECT_RATIO_SCREEN_WIDTH = 0;
 
         [Tooltip("Target aspect ratio screen height.")]
         [SerializeField]
-        public int ASPECT_RATIO_SCREEN_HEIGHT = 9;
+        public int ASPECT_RATIO_SCREEN_HEIGHT = 0;
+
+
+        [Header("** Runtime Variables (JCS_ScreenSettings) **")]
+
+        [Tooltip("Standard screen width to calculate the worldspace " +
+            "obejct's camera view.")]
+        public int STANDARD_SCREEN_WIDTH = 1920;
+
+        [Tooltip("Standard screen height to calculate the worldspace " +
+            "obejct's camera view.")]
+        public int STANDARD_SCREEN_HEIGHT = 1080;
 
 
         /*******************************************/
@@ -122,6 +125,14 @@ namespace JCSUnity
             // the application is starts.
             if (!JCS_ApplicationSettings.instance.APPLICATION_STARTS)
             {
+                // Calculate standard screen width and screen height.
+                {
+                    float gcd = JCS_Mathf.GCD(STANDARD_SCREEN_WIDTH, STANDARD_SCREEN_HEIGHT);
+
+                    ASPECT_RATIO_SCREEN_WIDTH = (int)((float)STANDARD_SCREEN_WIDTH / gcd);
+                    ASPECT_RATIO_SCREEN_HEIGHT = (int)((float)STANDARD_SCREEN_HEIGHT / gcd);
+                }
+
                 if (RESIZE_TO_ASPECT_WHEN_APP_STARTS)
                 {
                     // Force resize screen/window to certain aspect
@@ -129,27 +140,38 @@ namespace JCSUnity
                     ForceAspectScreenOnce();
                 }
 
+                if (RESIZE_TO_STANDARD_WHEN_APP_STARTS)
+                {
+                    // Force resize screen/window to standard 
+                    // resolution once.
+                    ForceStandardScreenOnce();
+                }
+
                 // Record down the starting screen width and screen height.
-                STARTING_SCREEN_WIDTH = Screen.width;
-                STARTING_SCREEN_HEIGHT = Screen.height;
+                //STARTING_SCREEN_WIDTH = Screen.width;
+                //STARTING_SCREEN_HEIGHT = Screen.height;
             }
             else
             {
                 // Othereise, check if new scene loaded resize the 
                 // screen once?
-                if (RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED)
+                if (RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED)
                     ForceAspectScreenOnce();
             }
+
+            Debug.Log("Starting: " + new Vector2(STARTING_SCREEN_WIDTH, STARTING_SCREEN_HEIGHT));
+            Debug.Log("Screen: " + new Vector2(Screen.width, Screen.height));
         }
 
         private void Start()
         {
+            Camera cam = JCS_Camera.main.GetCamera();
+
             // NOTE(jenchieh): Here is the execution order implementation.
             // 'APPLICATION_STARTS' will be true after the first scene's 
             // main game loop is runs. 
             if (JCS_ApplicationSettings.instance.APPLICATION_STARTS)
             {
-                Camera cam = JCS_Camera.main.GetCamera();
                 cam.fieldOfView = FIELD_OF_VIEW;
                 cam.orthographicSize = ORTHOGRAPHIC_SIZE;
             }
@@ -217,13 +239,35 @@ namespace JCSUnity
             int width = Screen.width;
             int height = Screen.height;
 
-            // update the height
-            float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_WIDTH * ASPECT_RATIO_SCREEN_HEIGHT;
-            Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+            if (width > height)
+            {
+                // update the height
+                float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_WIDTH * ASPECT_RATIO_SCREEN_HEIGHT;
+                Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
 
-            // update the width
-            float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_HEIGHT * ASPECT_RATIO_SCREEN_WIDTH;
-            Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+                STARTING_SCREEN_WIDTH = width;
+                STARTING_SCREEN_HEIGHT = (int)heightAccordingToWidth;
+            }
+            else
+            {
+                // update the width
+                float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_HEIGHT * ASPECT_RATIO_SCREEN_WIDTH;
+                Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+
+                STARTING_SCREEN_WIDTH = (int)widthAccordingToHeight;
+                STARTING_SCREEN_HEIGHT = height;
+            }
+        }
+        
+        /// <summary>
+        /// Resize the screen resolution to standard resolution once.
+        /// </summary>
+        public void ForceStandardScreenOnce()
+        {
+            Screen.SetResolution(STANDARD_SCREEN_WIDTH, STANDARD_SCREEN_HEIGHT, false, 0);
+
+            STARTING_SCREEN_WIDTH = STANDARD_SCREEN_WIDTH;
+            STARTING_SCREEN_HEIGHT = STANDARD_SCREEN_HEIGHT;
         }
 
         //----------------------
@@ -245,7 +289,8 @@ namespace JCSUnity
             _new.SCREEN_TYPE = _old.SCREEN_TYPE;
 
             _new.RESIZE_TO_ASPECT_WHEN_APP_STARTS = _old.RESIZE_TO_ASPECT_WHEN_APP_STARTS;
-            _new.RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED = _old.RESIZE_TO_ASPECT_EVERYTIME_NEW_SCENE_LOADED;
+            _new.RESIZE_TO_STANDARD_WHEN_APP_STARTS = _old.RESIZE_TO_STANDARD_WHEN_APP_STARTS;
+            _new.RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED = _old.RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED;
 
             _new.ORTHOGRAPHIC_SIZE = _old.ORTHOGRAPHIC_SIZE;
             _new.FIELD_OF_VIEW = _old.FIELD_OF_VIEW;
@@ -253,11 +298,11 @@ namespace JCSUnity
             _new.STARTING_SCREEN_WIDTH = _old.STARTING_SCREEN_WIDTH;
             _new.STARTING_SCREEN_HEIGHT = _old.STARTING_SCREEN_HEIGHT;
 
-            _new.PREV_W_SCALE = _old.PREV_W_SCALE;
-            _new.PREV_H_SCALE = _old.PREV_H_SCALE;
-
             _new.ASPECT_RATIO_SCREEN_WIDTH = _old.ASPECT_RATIO_SCREEN_WIDTH;
             _new.ASPECT_RATIO_SCREEN_HEIGHT = _old.ASPECT_RATIO_SCREEN_HEIGHT;
+
+            _new.STANDARD_SCREEN_WIDTH = _old.STANDARD_SCREEN_WIDTH;
+            _new.STANDARD_SCREEN_HEIGHT = _old.STANDARD_SCREEN_HEIGHT;
         }
 
         //----------------------
