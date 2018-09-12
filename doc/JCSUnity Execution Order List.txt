@@ -7,6 +7,7 @@ Following Scirpt should have lower execute order then "JCS_GameManager"
 
     * JCS_ApplicationSettings
     * JCS_ScreenSettings
+    * JCS_ScreenManager
     * JCS_GameSettings
     * JCS_UniqueObject
     * JCS_UtilitiesManager
