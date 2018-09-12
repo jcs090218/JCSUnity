@@ -57,9 +57,19 @@ namespace JCSUnity
         // TopLeft -> BottomLeft
         protected Rect mCamRect = new Rect();
 
-        [Tooltip("")]
+        [Tooltip("Offset the camera position from its' original position.")]
         [SerializeField]
         protected Vector3 mPositionOffset = Vector3.zero;
+
+        // Record any necessary data, for resize screen event.
+        protected bool mSceneJustLoad = true;
+
+        // Record down the camera data, orthographic size.
+        protected float mRecordOrthographicSize = 0.0f;
+
+        // Record down the camera data, filed of view.
+        protected float mRecordFieldOfView = 0.0f;
+
 
         //========================================
         //      setter / getter
@@ -89,6 +99,10 @@ namespace JCSUnity
 
         protected virtual void Start()
         {
+            // Record down the camera data.
+            mRecordOrthographicSize = mCamera.orthographicSize;
+            mRecordFieldOfView = mCamera.fieldOfView;
+
             // add to on screen resize callback.
             JCS_ScreenSettings.instance.onScreenResize += OnResizeGame;
         }
@@ -611,6 +625,7 @@ namespace JCSUnity
             SetPosition(vec.x, vec.y, vec.z);
         }
 
+
         /// <summary>
         /// Resize the game if screen size changes.
         /// </summary>
@@ -635,6 +650,29 @@ namespace JCSUnity
 
             mCamera.orthographicSize *= divRatio;
             mCamera.fieldOfView *= divRatio;
+
+            if (mSceneJustLoad)
+            {
+                float bw = ss.BlackspaceWidth();
+                float bh = ss.BlackspaceHeight();
+
+                if (bw > bh)
+                {
+                    mCamera.orthographicSize = mRecordOrthographicSize;
+                    mCamera.fieldOfView = mRecordFieldOfView;
+                }
+                else
+                {
+                    float supposeHeight = ((float)Screen.width * (float)ss.STARTING_SCREEN_HEIGHT) / (float)ss.STARTING_SCREEN_WIDTH;
+
+                    float heightRatio = ((float)Screen.height / supposeHeight);
+
+                    mCamera.orthographicSize = heightRatio * mRecordOrthographicSize;
+                    mCamera.fieldOfView = heightRatio * mRecordFieldOfView;
+                }
+
+                mSceneJustLoad = false;
+            }
 
             /* Store it to screen settings. */
             {
