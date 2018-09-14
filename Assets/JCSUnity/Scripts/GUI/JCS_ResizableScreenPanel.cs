@@ -39,7 +39,7 @@ namespace JCSUnity
 
         [Tooltip("Type of the Aspect screen panel direction.")]
         [SerializeField]
-        private JCS_2D4Direction mASPDirection = JCS_2D4Direction.TOP;
+        private JCS_2D4Direction mPlaceDirection = JCS_2D4Direction.TOP;
 
         /*******************************************/
         /*           Protected Variables           */
@@ -50,7 +50,7 @@ namespace JCSUnity
         /*******************************************/
         public Image image { get { return this.mImage; } }
         public RectTransform sRectTransform { get { return this.mRectTransform; } }
-        public JCS_2D4Direction ASPDirection { get { return this.mASPDirection; } set { this.mASPDirection = value; } }
+        public JCS_2D4Direction PlaceDirection { get { return this.mPlaceDirection; } set { this.mPlaceDirection = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -92,7 +92,7 @@ namespace JCSUnity
         /// <summary>
         /// Show the panel.
         /// </summary>
-        public void ShowASP()
+        public void ShowPanel()
         {
             this.mImage.enabled = true;
         }
@@ -100,7 +100,7 @@ namespace JCSUnity
         /// <summary>
         /// Hide the panel.
         /// </summary>
-        public void HideASP()
+        public void HidePanel()
         {
             this.mImage.enabled = false;
         }
@@ -126,7 +126,7 @@ namespace JCSUnity
 
             Vector3 newPos = mRectTransform.localPosition;
 
-            switch (mASPDirection)
+            switch (mPlaceDirection)
             {
                 case JCS_2D4Direction.TOP:
                     {

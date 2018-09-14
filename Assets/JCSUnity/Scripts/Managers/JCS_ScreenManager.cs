@@ -87,10 +87,10 @@ namespace JCSUnity
             this.mRightASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
 
             // Set the ASP direction.
-            this.mTopASP.ASPDirection = JCS_2D4Direction.TOP;
-            this.mBottomASP.ASPDirection = JCS_2D4Direction.BOTTOM;
-            this.mLeftASP.ASPDirection = JCS_2D4Direction.LEFT;
-            this.mRightASP.ASPDirection = JCS_2D4Direction.RIGHT;
+            this.mTopASP.PlaceDirection = JCS_2D4Direction.TOP;
+            this.mBottomASP.PlaceDirection = JCS_2D4Direction.BOTTOM;
+            this.mLeftASP.PlaceDirection = JCS_2D4Direction.LEFT;
+            this.mRightASP.PlaceDirection = JCS_2D4Direction.RIGHT;
         }
 
         private void Start()
@@ -108,7 +108,7 @@ namespace JCSUnity
             }
 
             // Set the panels' color
-            SetAspectPanelsColor(ss.ASPECT_PANELS_COLOR);
+            SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
         }
 
 #if (UNITY_EDITOR)
@@ -116,20 +116,18 @@ namespace JCSUnity
         {
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            if (ss.ASPECT_PANEL_COLOR_IN_RUNTIME)
+            /* Handle color. */
             {
                 // Make color editable in runtime.
-                SetAspectPanelsColor(ss.ASPECT_PANELS_COLOR);
+                SetResizablePanelsColor(ss.RESIZABLE_PANELS_COLOR);
             }
 
-            // NOTE(jenchieh): For tesing we have to enable it.
-            if (ss.SHOW_ASPECT_PANELS)
+            /* Show hide the panels. */
             {
-                ShowAspectPanels();
-            }
-            else
-            {
-                HideAspectPanels();
+                if (ss.SHOW_RESIZABLE_PANELS)
+                    ShowResizablePanels();
+                else
+                    HideResizablePanels();
             }
         }
 #endif
@@ -141,32 +139,32 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Show the aspect panels.
+        /// Show the resizable panels.
         /// </summary>
-        public void ShowAspectPanels()
+        public void ShowResizablePanels()
         {
-            this.mTopASP.ShowASP();
-            this.mBottomASP.ShowASP();
-            this.mLeftASP.ShowASP();
-            this.mRightASP.ShowASP();
+            this.mTopASP.ShowPanel();
+            this.mBottomASP.ShowPanel();
+            this.mLeftASP.ShowPanel();
+            this.mRightASP.ShowPanel();
         }
 
         /// <summary>
-        /// Hide the aspect panels.
+        /// Hide the resizable panels.
         /// </summary>
-        public void HideAspectPanels()
+        public void HideResizablePanels()
         {
-            this.mTopASP.HideASP();
-            this.mBottomASP.HideASP();
-            this.mLeftASP.HideASP();
-            this.mRightASP.HideASP();
+            this.mTopASP.HidePanel();
+            this.mBottomASP.HidePanel();
+            this.mLeftASP.HidePanel();
+            this.mRightASP.HidePanel();
         }
 
         /// <summary>
-        /// Set the color to all aspect panels.
+        /// Set the color to all resizable panels.
         /// </summary>
         /// <param name="newColor"></param>
-        public void SetAspectPanelsColor(Color newColor)
+        public void SetResizablePanelsColor(Color newColor)
         {
             this.mTopASP.image.color = newColor;
             this.mBottomASP.image.color = newColor;

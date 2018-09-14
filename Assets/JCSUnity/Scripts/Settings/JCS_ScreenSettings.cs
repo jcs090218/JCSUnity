@@ -32,11 +32,8 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_ScreenManager) **")]
 
-        [Tooltip("Show the aspect screen panel in game?")]
-        public bool SHOW_ASPECT_PANELS = false;
-
-        [Tooltip("Able to change the color during the runtime.")]
-        public bool ASPECT_PANEL_COLOR_IN_RUNTIME = false;
+        [Tooltip("Show the resizable screen panel in game?")]
+        public bool SHOW_RESIZABLE_PANELS = true;
 #endif
 
 
@@ -98,7 +95,7 @@ namespace JCSUnity
 
         [Tooltip("Defualt color to aspect panels.")]
         [SerializeField]
-        private Color mAspectPanelsColor = Color.black;
+        private Color mResizablePanelsColor = Color.black;
 
 
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
@@ -123,14 +120,14 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
-        public Color ASPECT_PANELS_COLOR
+        public Color RESIZABLE_PANELS_COLOR
         {
-            get { return this.mAspectPanelsColor; }
+            get { return this.mResizablePanelsColor; }
             set
             {
-                this.mAspectPanelsColor = value;
+                this.mResizablePanelsColor = value;
 
-                JCS_ScreenManager.instance.SetAspectPanelsColor(this.mAspectPanelsColor);
+                JCS_ScreenManager.instance.SetResizablePanelsColor(this.mResizablePanelsColor);
             }
         }
 
@@ -343,7 +340,7 @@ namespace JCSUnity
             _new.STANDARD_SCREEN_WIDTH = _old.STANDARD_SCREEN_WIDTH;
             _new.STANDARD_SCREEN_HEIGHT = _old.STANDARD_SCREEN_HEIGHT;
 
-            _new.ASPECT_PANELS_COLOR = _old.ASPECT_PANELS_COLOR;
+            _new.RESIZABLE_PANELS_COLOR = _old.RESIZABLE_PANELS_COLOR;
         }
 
         //----------------------
