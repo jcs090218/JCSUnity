@@ -53,10 +53,10 @@ namespace JCSUnity
 
             GUILayout.Label("About JCSUnity", EditorStyles.boldLabel);
 
-            // TODO(jenchieh): info should be out source.
+            // Informations
             GUILayout.Label("Author: " + EDITOR_INI["author"]);
             GUILayout.Label("Email: " + EDITOR_INI["email"]);
-            GUILayout.Label("Current Version: " + EDITOR_INI["version"]);
+            GUILayout.Label("Project Version: " + EDITOR_INI["project_version"]);
 
             // GUI.Button that is drawn in the Label style.
             if (GUILayout.Button("Source: " + EDITOR_INI["url"], "Label"))
