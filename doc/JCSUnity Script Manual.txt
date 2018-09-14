@@ -1661,24 +1661,6 @@
       </File>
     </GameObject>
     <GUI>
-      <Aspect>
-        <File name="JCS_AspectScreen.cs">
-          <Placement>On JCS_Canvas game object.</Placement>
-          <Description>
-            Add all the aspect screen panel into scene.
-     
-            In order to black out the area that should not let the 
-            player sees!
-          </Description>
-        </File>
-
-        <File name="JCS_AspectScreenPanel.cs">
-          <Placement>Script base.</Placement>
-          <Description>
-            Aspect screen panel, the invisible area of the screen.
-          </Description>
-        </File>
-      </Aspect>
       <Button>
         <Dialogue>
           <File name="JCS_HideDialogueButton.cs">
@@ -2238,6 +2220,13 @@
           <Description>
             This will help resize the panel in to correct proportion
             and scaling.
+          </Description>
+        </File>
+
+        <File name="JCS_ResizableScreenPanel.cs">
+          <Placement>Already assign.</Placement>
+          <Description>
+            Resizable screen panel, the invisible area of the screen.
           </Description>
         </File>
 
