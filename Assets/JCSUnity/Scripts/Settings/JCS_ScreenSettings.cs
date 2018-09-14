@@ -32,9 +32,11 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_ScreenManager) **")]
 
-        public float REAL_SCREEN_WIDTH = 0.0f;
+        [Tooltip("Show the aspect screen panel in game?")]
+        public bool SHOW_ASPECT_PANELS = false;
 
-        public float REAL_SCREEN_HEIGHT = 0.0f;
+        [Tooltip("Able to change the color during the runtime.")]
+        public bool ASPECT_PANEL_COLOR_IN_RUNTIME = false;
 #endif
 
 
@@ -94,6 +96,10 @@ namespace JCSUnity
             "will resize to larger edge.")]
         public bool RESIZE_TO_SMALLER_EDGE = true;
 
+        [Tooltip("Defualt color to aspect panels.")]
+        [SerializeField]
+        private Color mAspectPanelsColor = Color.black;
+
 
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
 
@@ -117,6 +123,16 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public Color ASPECT_PANELS_COLOR
+        {
+            get { return this.mAspectPanelsColor; }
+            set
+            {
+                this.mAspectPanelsColor = value;
+
+                JCS_ScreenManager.instance.SetAspectPanelsColor(this.mAspectPanelsColor);
+            }
+        }
 
         /*******************************************/
         /*            Unity's function             */
@@ -190,11 +206,6 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-#if (UNITY_EDITOR)
-            REAL_SCREEN_WIDTH = Screen.width;
-            REAL_SCREEN_HEIGHT = Screen.height;
-#endif
-
             DoScreenType();
         }
 
@@ -331,6 +342,8 @@ namespace JCSUnity
 
             _new.STANDARD_SCREEN_WIDTH = _old.STANDARD_SCREEN_WIDTH;
             _new.STANDARD_SCREEN_HEIGHT = _old.STANDARD_SCREEN_HEIGHT;
+
+            _new.ASPECT_PANELS_COLOR = _old.ASPECT_PANELS_COLOR;
         }
 
         //----------------------
