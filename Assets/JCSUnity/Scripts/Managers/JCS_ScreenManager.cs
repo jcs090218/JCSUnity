@@ -39,6 +39,28 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
+        [Header("** Check Variables (JCS_AspectScreen) **")]
+
+        [Tooltip("Invisible object area.")]
+        [SerializeField]
+        private string mResizableScreenPanelPath = "JCSUnity_Resources/GUI/JCS_ResizableScreenPanel";
+
+        [Tooltip("Top resizable screen panel.")]
+        [SerializeField]
+        private JCS_ResizableScreenPanel mTopASP = null;
+
+        [Tooltip("Bottom resizable screen panel.")]
+        [SerializeField]
+        private JCS_ResizableScreenPanel mBottomASP = null;
+
+        [Tooltip("Left resizable screen panel.")]
+        [SerializeField]
+        private JCS_ResizableScreenPanel mLeftASP = null;
+
+        [Tooltip("Right resizable screen panel.")]
+        [SerializeField]
+        private JCS_ResizableScreenPanel mRightASP = null;
+
         /*******************************************/
         /*           Protected Variables           */
         /*******************************************/
@@ -46,6 +68,10 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public JCS_ResizableScreenPanel TopASP { get { return this.mTopASP; } }
+        public JCS_ResizableScreenPanel BottomASP { get { return this.mBottomASP; } }
+        public JCS_ResizableScreenPanel LeftASP { get { return this.mLeftASP; } }
+        public JCS_ResizableScreenPanel RightASP { get { return this.mRightASP; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -53,14 +79,26 @@ namespace JCSUnity
         private void Awake()
         {
             instance = this;
+
+            // Spawn the four aspect screen panels.
+            this.mTopASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+            this.mBottomASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+            this.mLeftASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+            this.mRightASP = JCS_Utility.SpawnGameObject(mResizableScreenPanelPath).GetComponent<JCS_ResizableScreenPanel>();
+
+            // Set the ASP direction.
+            this.mTopASP.ASPDirection = JCS_2D4Direction.TOP;
+            this.mBottomASP.ASPDirection = JCS_2D4Direction.BOTTOM;
+            this.mLeftASP.ASPDirection = JCS_2D4Direction.LEFT;
+            this.mRightASP.ASPDirection = JCS_2D4Direction.RIGHT;
         }
 
         private void Start()
         {
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+
             if (RESIZE_SCREEN_THIS_SCENE)
             {
-                JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
-
                 // Apply new screen aspect ratio.
                 ss.ASPECT_RATIO_SCREEN_WIDTH = ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE;
                 ss.ASPECT_RATIO_SCREEN_HEIGHT = ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE;
@@ -68,13 +106,73 @@ namespace JCSUnity
                 // Resize the screen base on the new screen aspect ratio.
                 ss.ForceAspectScreenOnce();
             }
+
+            // Set the panels' color
+            SetAspectPanelsColor(ss.ASPECT_PANELS_COLOR);
         }
+
+#if (UNITY_EDITOR)
+        private void Update()
+        {
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+
+            if (ss.ASPECT_PANEL_COLOR_IN_RUNTIME)
+            {
+                // Make color editable in runtime.
+                SetAspectPanelsColor(ss.ASPECT_PANELS_COLOR);
+            }
+
+            // NOTE(jenchieh): For tesing we have to enable it.
+            if (ss.SHOW_ASPECT_PANELS)
+            {
+                ShowAspectPanels();
+            }
+            else
+            {
+                HideAspectPanels();
+            }
+        }
+#endif
 
         /*******************************************/
         /*              Self-Define                */
         /*******************************************/
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Show the aspect panels.
+        /// </summary>
+        public void ShowAspectPanels()
+        {
+            this.mTopASP.ShowASP();
+            this.mBottomASP.ShowASP();
+            this.mLeftASP.ShowASP();
+            this.mRightASP.ShowASP();
+        }
+
+        /// <summary>
+        /// Hide the aspect panels.
+        /// </summary>
+        public void HideAspectPanels()
+        {
+            this.mTopASP.HideASP();
+            this.mBottomASP.HideASP();
+            this.mLeftASP.HideASP();
+            this.mRightASP.HideASP();
+        }
+
+        /// <summary>
+        /// Set the color to all aspect panels.
+        /// </summary>
+        /// <param name="newColor"></param>
+        public void SetAspectPanelsColor(Color newColor)
+        {
+            this.mTopASP.image.color = newColor;
+            this.mBottomASP.image.color = newColor;
+            this.mLeftASP.image.color = newColor;
+            this.mRightASP.image.color = newColor;
+        }
 
         //----------------------
         // Protected Functions
