@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-09-14
+* Update Unity Engine version to 2018.2.8f1. (JCSUnity)
+
 2018-09-12
 * Fixed roll button selector acting weird when under different resolution 
  issue. (JCSUnity)
