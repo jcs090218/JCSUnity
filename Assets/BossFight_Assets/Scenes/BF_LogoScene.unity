@@ -867,6 +867,11 @@ Prefab:
       propertyPath: SHOW_ASPECT_PANELS
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114808946587855300, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 2}
+      propertyPath: SHOW_RESIZABLE_PANELS
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 2}
   m_IsPrefabAsset: 0
