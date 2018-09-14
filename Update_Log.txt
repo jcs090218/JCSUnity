@@ -9,6 +9,11 @@
 
 2018-09-14
 * Update Unity Engine version to 2018.2.8f1. (JCSUnity)
+* Rename from JCS_AspectScreenPanel to JCS_ResizableScreenPanel, I 
+ think this is the proper naming, using 'resizable' than the word 
+ 'aspect'. (JCSUnity)
+* Remove JCS_AspectScreen and move the functionalities to 
+ JCS_ScreenManager. (JCSUnity)
 
 2018-09-12
 * Fixed roll button selector acting weird when under different resolution 
