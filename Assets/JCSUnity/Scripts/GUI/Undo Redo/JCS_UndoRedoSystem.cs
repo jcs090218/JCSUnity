@@ -291,6 +291,42 @@ namespace JCSUnity
             ClearRedoComp();
         }
 
+        /// <summary>
+        /// Check if there is undo history?
+        /// </summary>
+        /// <returns>
+        /// true, there is at least one undo history.
+        /// false, there is no undo history.
+        /// </returns>
+        public bool ThereIsUndoHistory()
+        {
+            return (mUndoComp.Count != 0);
+        }
+
+        /// <summary>
+        /// Check if there is redo history?
+        /// </summary>
+        /// <returns>
+        /// true, there is at least one redo history.
+        /// false, there is no redo history.
+        /// </returns>
+        public bool ThereIsRedoHistory()
+        {
+            return (mRedoComp.Count != 0);
+        }
+
+        /// <summary>
+        /// Check if there is undo/redo history?
+        /// </summary>
+        /// <returns>
+        /// true, there is at least one undo/redo history.
+        /// false, there is no undo/redo history.
+        /// </returns>
+        public bool ThereIsUndoOrRedoHistory()
+        {
+            return (ThereIsUndoHistory() || ThereIsRedoHistory());
+        }
+
         //----------------------
         // Protected Functions
 
