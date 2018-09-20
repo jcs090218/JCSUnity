@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Use to block the item going through by x-axis direction.
     /// </summary>

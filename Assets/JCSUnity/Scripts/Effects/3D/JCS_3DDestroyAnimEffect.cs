@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// When gameobject destroy, this will be activate and 
     /// play an animation.

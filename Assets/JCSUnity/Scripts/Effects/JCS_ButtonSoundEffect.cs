@@ -13,7 +13,6 @@ using UnityEngine.EventSystems;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Customize your own button sound base on different 
     /// circumstance.

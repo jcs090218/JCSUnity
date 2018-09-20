@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Event that will quit the application.
     /// </summary>
     public class JCS_QuitApplicationOnLoadEvent
         : MonoBehaviour

@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// When the gameobject is destroy it will play the sound.
     /// </summary>

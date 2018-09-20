@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Sound player specific for environment sound.
     /// </summary>
     public class JCS_EnvironmentSoundPlayer
         : JCS_SoundPlayer
@@ -25,8 +24,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+        [Header("** Initialize Variables (JCS_EnvironmentSoundPlayer) **")]
+
         [Tooltip("Careful this does not effect to any sound system.")]
-        [SerializeField] private AudioClip mEnvironmentSound = null;
+        [SerializeField]
+        private AudioClip mEnvironmentSound = null;
 
         //----------------------
         // Protected Variables

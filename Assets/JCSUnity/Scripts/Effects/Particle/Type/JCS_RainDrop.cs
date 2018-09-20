@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Rain drop particle.
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(JCS_3DGoStraightAction))]

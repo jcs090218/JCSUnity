@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Lightning particle.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     [RequireComponent(typeof(JCS_SoundPool))]

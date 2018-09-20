@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Play Animator and disable after it 
     /// played animation depends on loop times.

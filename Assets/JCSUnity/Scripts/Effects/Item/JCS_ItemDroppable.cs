@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Make the object drop,
     /// plz attach this script.

@@ -12,13 +12,12 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Event base class.
     /// </summary>
     public abstract class JCS_Event
         : MonoBehaviour
     {
-
+        // empty..
     }
 }

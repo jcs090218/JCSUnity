@@ -10,9 +10,9 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// After playing animation back and forth once, 
     /// then destroy...

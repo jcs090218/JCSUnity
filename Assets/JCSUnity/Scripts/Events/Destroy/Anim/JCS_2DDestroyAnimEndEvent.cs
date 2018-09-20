@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Play Animator and destroy after it 
     /// played animation depends on loop times.

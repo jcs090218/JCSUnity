@@ -15,7 +15,7 @@ namespace JCSUnity
     public delegate void VoidEvent();
 
     /// <summary>
-    /// 
+    /// Do the event after the certain time.
     /// </summary>
     public class JCS_CounterEvent
         : JCS_Event
@@ -27,7 +27,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        //[Header("** Initialize Varialbes **")]
+        //[Header("** Initialize Varialbes (JCS_CounterEvent) **")]
 
         //[SerializeField]
         //private float mDelayTime = 0;
@@ -54,6 +54,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Event to do after the certain time.
+        /// </summary>
         public void Event()
         {
 

@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// This will approach to specific alpha value 
     /// every frame.

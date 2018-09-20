@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// When the gameobject get destroy, spawn the gameobject and 
     /// to the particle in seconds. 
