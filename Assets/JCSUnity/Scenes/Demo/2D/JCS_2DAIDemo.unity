@@ -2411,7 +2411,6 @@ GameObject:
   - component: {fileID: 628296237}
   - component: {fileID: 628296236}
   - component: {fileID: 628296235}
-  - component: {fileID: 628296239}
   m_Layer: 5
   m_Name: JCS_Canvas
   m_TagString: Untagged
@@ -2494,22 +2493,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0
---- !u!114 &628296239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 628296234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de375e01a1e53fd49a7cb7e0f29b8053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mAspectScreenPanelPath: JCSUnity_Resources/GUI/JCS_AspectScreenPanel
-  mTopASP: {fileID: 0}
-  mBottomASP: {fileID: 0}
-  mLeftASP: {fileID: 0}
-  mRightASP: {fileID: 0}
 --- !u!1 &641628786
 GameObject:
   m_ObjectHideFlags: 0
