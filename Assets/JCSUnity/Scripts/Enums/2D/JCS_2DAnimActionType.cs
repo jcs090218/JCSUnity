@@ -9,9 +9,9 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Animation type.
     /// </summary>

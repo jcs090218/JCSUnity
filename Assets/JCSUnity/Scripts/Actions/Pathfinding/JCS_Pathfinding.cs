@@ -15,9 +15,8 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Path finding core algorithm.
     /// </summary>
     [RequireComponent(typeof(JCS_PfGrid))]
     public class JCS_Pathfinding

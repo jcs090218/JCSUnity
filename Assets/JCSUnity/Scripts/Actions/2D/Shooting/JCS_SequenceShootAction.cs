@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Shoot in Sequence act like damage text.(sequence)
     /// </summary>

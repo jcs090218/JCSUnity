@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Increment/Decrement enum.
     /// </summary>
     public enum JCS_IncDec
     {

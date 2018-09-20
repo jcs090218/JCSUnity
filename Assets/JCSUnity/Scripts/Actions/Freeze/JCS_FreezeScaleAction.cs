@@ -10,9 +10,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Do freezing for scale from transform.
     /// </summary>

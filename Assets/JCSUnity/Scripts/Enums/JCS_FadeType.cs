@@ -9,9 +9,9 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Base fade in/out enum.
     /// </summary>

@@ -13,9 +13,8 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Text shown in the application close simluate scene.
     /// </summary>
     [RequireComponent(typeof(Text))]
     public class JCS_ApplicationCloseSimulateSceneTextAction

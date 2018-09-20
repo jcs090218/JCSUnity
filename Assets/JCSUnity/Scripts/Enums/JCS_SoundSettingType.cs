@@ -11,7 +11,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// What kind of music/sound/audio.
     /// </summary>

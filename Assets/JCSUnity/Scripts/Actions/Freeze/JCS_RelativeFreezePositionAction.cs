@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Freeze the object by relative distance.
     /// </summary>

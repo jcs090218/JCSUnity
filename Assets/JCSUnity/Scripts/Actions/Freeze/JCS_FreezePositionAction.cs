@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Do freezing for position from transform.
     /// </summary>

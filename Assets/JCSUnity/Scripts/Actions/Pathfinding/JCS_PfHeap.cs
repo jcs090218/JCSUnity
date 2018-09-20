@@ -13,9 +13,8 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Path finding heap.
     /// </summary>
     public class JCS_PfHeap<T>
         where T : IHeapItem<T>

@@ -14,9 +14,9 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Path finding request manager. Manage all the path 
+    /// finding requests.
     /// </summary>
     [RequireComponent(typeof(JCS_Pathfinding))]
     public class JCS_PathRequestManager

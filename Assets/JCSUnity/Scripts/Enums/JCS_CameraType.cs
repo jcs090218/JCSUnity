@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Camera target type.
     /// </summary>
     public enum JCS_CameraType
     {

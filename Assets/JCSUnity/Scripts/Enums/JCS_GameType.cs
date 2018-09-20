@@ -9,9 +9,9 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Type of the game.
     /// </summary>

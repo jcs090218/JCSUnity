@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Do the shooting action in all angle.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     public class JCS_ShootAllAngle

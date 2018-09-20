@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Panel action type list here...
     /// </summary>

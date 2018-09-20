@@ -13,9 +13,8 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Full screen attack.
     /// </summary>
     [RequireComponent(typeof(JCS_AnimPool))]
     public class JCS_2DFullScreenAtkAction

@@ -13,9 +13,8 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Path finding grid.
     /// </summary>
     public class JCS_PfGrid
         : MonoBehaviour

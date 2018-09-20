@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// List of all the singleton object.
     /// </summary>
     public enum JCS_SingletonObject
     {

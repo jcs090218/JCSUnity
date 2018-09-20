@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Do the basic wave spawn.
     /// </summary>

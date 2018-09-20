@@ -9,11 +9,11 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// All the climb movement.
     /// </summary>
     public enum JCS_ClimbMoveType
     {

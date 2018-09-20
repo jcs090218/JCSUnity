@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// List of all type of panel action.
     /// </summary>
     public enum JCS_PanelType
     {

@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Simulate swim action in 2d.
     /// </summary>
     public class JCS_2DSwimAction
         : JCS_AIAction

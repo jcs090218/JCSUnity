@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// List of all the tween action.
     /// </summary>
     public enum JCS_TweenType
     {

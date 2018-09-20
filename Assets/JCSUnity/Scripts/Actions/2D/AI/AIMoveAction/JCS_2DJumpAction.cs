@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Simulate the AI to do jump base on 
     /// the random possiblity time zone.

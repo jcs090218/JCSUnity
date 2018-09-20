@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Vector 3d type in enum use in Unity Engine.
     /// </summary>

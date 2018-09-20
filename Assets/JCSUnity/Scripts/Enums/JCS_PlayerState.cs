@@ -10,7 +10,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// List of the attack state here.
     /// </summary>

@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Path finding node.
     /// </summary>
     public class JCS_PfNode 
         : IHeapItem<JCS_PfNode>

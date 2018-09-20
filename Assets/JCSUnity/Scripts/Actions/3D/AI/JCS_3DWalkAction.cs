@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Simulate the walk action in 3D space.
     /// </summary>
     [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
     public class JCS_3DWalkAction

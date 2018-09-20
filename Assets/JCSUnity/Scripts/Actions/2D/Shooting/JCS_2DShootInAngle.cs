@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Do the shoot action in specific angle.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     public class JCS_2DShootInAngle 

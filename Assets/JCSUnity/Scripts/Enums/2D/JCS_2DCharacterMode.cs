@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// List of character possible state.
     /// </summary>
     public enum JCS_2DCharacterState
     {

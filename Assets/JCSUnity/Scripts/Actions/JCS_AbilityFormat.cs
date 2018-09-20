@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Ability format.
     /// </summary>
     public abstract class JCS_AbilityFormat
         : MonoBehaviour

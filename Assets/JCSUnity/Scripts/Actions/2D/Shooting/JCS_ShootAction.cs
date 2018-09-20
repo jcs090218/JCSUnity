@@ -21,7 +21,7 @@ namespace JCSUnity
     public delegate bool CheckAbleToShoot();
 
     /// <summary>
-    /// 
+    /// Do the shoot action. (Basic)
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPoolAction))]
     public class JCS_ShootAction
