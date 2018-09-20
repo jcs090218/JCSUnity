@@ -10,6 +10,9 @@
 2018-09-20
 * Add test option and null sprite after done playing animation option to 
  JCS_2DAnimation module. (JCSUnity)
+* Add clear all undo/redo comps and all undo/redo history, in 
+ JCS_UndoRedoSystem and JCS_UndoRedoComponent class for undo redo module 
+ and easier function API call. (JCSUnity)
 
 2018-09-14
 * Update Unity Engine version to 2018.2.8f1. (JCSUnity)
