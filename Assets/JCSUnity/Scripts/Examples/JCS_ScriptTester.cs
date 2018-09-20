@@ -15,7 +15,7 @@ using JCSUnity;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// Tester to test the script system/dialgoue system.
     /// </summary>
     public class JCS_ScriptTester
         : MonoBehaviour

@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// One shot object.
     /// </summary>
     public class JCS_OneShotObject 
         : MonoBehaviour
