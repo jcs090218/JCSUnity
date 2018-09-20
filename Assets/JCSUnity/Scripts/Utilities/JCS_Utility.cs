@@ -59,16 +59,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="desc"></param>
-        /// <returns></returns>
-        public static string HeaderDecorator(string desc)
-        {
-            return "** " + desc + " **";
-        }
-
-        /// <summary>
         /// Check the value within the range plus acceptable range.
         /// </summary>
         /// <param name="range"></param>
