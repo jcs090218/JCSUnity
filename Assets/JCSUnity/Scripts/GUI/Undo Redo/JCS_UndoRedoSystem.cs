@@ -50,6 +50,10 @@ namespace JCSUnity
             comb = JCS_KeyCombination.ALT,
             key = KeyCode.Y,
         };
+
+        [Tooltip("Key to clear all the undo redo history data.")]
+        [SerializeField]
+        private KeyCode mClearAllUndoRedoHistoryKey = KeyCode.J;
 #endif
 
 
@@ -95,6 +99,9 @@ namespace JCSUnity
 
             if (JCS_Input.GetKeyDownWith(mRedoKey))
                 RedoComponent();
+
+            if (JCS_Input.GetKeyDown(mClearAllUndoRedoHistoryKey))
+                ClearAllUndoRedoHistory();
         }
 #endif
 
@@ -163,14 +170,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Clear all redo component queue.
-        /// </summary>
-        public void ClearRedoComp()
-        {
-            mRedoComp.Clear();
-        }
-
-        /// <summary>
         /// Record down the previous data before we do 
         /// undo/redo action.
         /// </summary>
@@ -223,6 +222,73 @@ namespace JCSUnity
 
                 comp.StartRecording();
             }
+        }
+
+        /// <summary>
+        /// Clear all undo component queue.
+        /// </summary>
+        public void ClearUndoComp()
+        {
+            // Clear all undo components' history data.
+            for (int index = 0;
+                index < mUndoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mUndoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.ClearAllUndo();
+            }
+
+            // Clear it.
+            mUndoComp.Clear();
+        }
+
+        /// <summary>
+        /// Clear all redo component queue.
+        /// </summary>
+        public void ClearRedoComp()
+        {
+            // Clear all repo components' history data.
+            for (int index = 0;
+                index < mRedoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mRedoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.ClearAllRedo();
+            }
+
+            // Clear it.
+            mRedoComp.Clear();
+        }
+
+        /// <summary>
+        /// Clear all the undo/redo history data.
+        /// </summary>
+        public void ClearAllUndoRedoHistory()
+        {
+            // Clear all undo/repo components' history data.
+            for (int index = 0;
+                index < mAllUndoRedoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.ClearAllUndoRedoHistory();
+            }
+
+            // Clear all undo redo component history data.
+            ClearUndoComp();
+            ClearRedoComp();
         }
 
         //----------------------
