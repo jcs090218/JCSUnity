@@ -13,9 +13,8 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Animator specific for Live object.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimator))]
     public class JCS_2DLiveObjectAnimator

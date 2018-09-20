@@ -9,9 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
+    /// <summary>
+    /// Animation pool action.
+    /// </summary>
     public class JCS_AnimPoolAction
         : MonoBehaviour
         , JCS_Action

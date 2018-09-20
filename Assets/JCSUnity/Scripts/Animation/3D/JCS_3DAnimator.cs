@@ -12,9 +12,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// 3D Animator. Play the animation with multiple control 
+    /// of JCS_3DAnimation objects.
     /// </summary>
     [RequireComponent(typeof(Animator))]
     public class JCS_3DAnimator

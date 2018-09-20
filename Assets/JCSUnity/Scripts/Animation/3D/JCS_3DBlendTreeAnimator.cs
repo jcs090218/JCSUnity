@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Animator Desgin for Unity Engine's Blend 
     /// Tree system.

@@ -13,7 +13,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Player must have the animation implemented
     /// </summary>

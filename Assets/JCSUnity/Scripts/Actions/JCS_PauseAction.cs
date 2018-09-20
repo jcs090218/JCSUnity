@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Select the behaviour component and drag it into the list 
     /// so the pause manager will take care of the pause object. 

@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Simulate the action when object damage the player
     /// by hitting with his body. (physically)

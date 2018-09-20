@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 無敵時間的counter. 
     /// ex: Super Mario ate the star.

@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Action to do swing attack.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SwingAttackAction

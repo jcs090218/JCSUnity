@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Do the throw action like "Plants vs Zombies"'s 
     /// corn plants. 

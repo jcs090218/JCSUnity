@@ -10,9 +10,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Anything with can dectect area must be living thing.
     /// </summary>
