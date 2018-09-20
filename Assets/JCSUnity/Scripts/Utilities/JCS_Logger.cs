@@ -23,7 +23,6 @@ namespace System.Runtime.CompilerServices
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Common Logger for JCSUnity.
     /// 

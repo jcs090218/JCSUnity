@@ -15,7 +15,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// This class help read the .ini/.properties file.
     /// </summary>

@@ -17,7 +17,7 @@ using Object = UnityEngine.Object;
 
 
 /// <summary>
-/// 
+/// Implementation of the inspector lock toggle functionalities.
 /// </summary>
 public class InspectorLockToggle
 {

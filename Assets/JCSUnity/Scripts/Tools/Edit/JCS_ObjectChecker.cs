@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Draw the gizmos on the mesh collider.
     /// </summary>

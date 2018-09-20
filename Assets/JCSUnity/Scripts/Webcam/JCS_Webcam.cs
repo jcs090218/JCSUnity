@@ -14,7 +14,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Webcam object. Must have the texture on it in order to render.
     /// </summary>

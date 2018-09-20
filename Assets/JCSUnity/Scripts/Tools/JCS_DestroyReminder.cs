@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Object remind the the current transform 
     /// should be destroy but did not destroyed.
