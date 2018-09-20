@@ -191,7 +191,7 @@ namespace JCSUnity
         /// <summary>
         /// Stop recording undo/redo.
         /// </summary>
-        public void StopRecording()
+        public void StopRecordingAll()
         {
             for (int index = 0;
                 index < mAllUndoRedoComp.Count;
@@ -209,7 +209,7 @@ namespace JCSUnity
         /// <summary>
         /// Start recording undo/redo
         /// </summary>
-        public void StartRecording()
+        public void StartRecordingAll()
         {
             for (int index = 0;
                 index < mAllUndoRedoComp.Count;
