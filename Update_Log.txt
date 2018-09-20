@@ -16,6 +16,7 @@
 * Add there is undo redo history check API. (JCSUnity)
 * Rename undo/redo system's API function call => start/stop recording to 
  start/stop recording all. (JCSUnity)
+* Organize code and add class desciption if the class do not have one. (JCSUnity)
 
 2018-09-14
 * Update Unity Engine version to 2018.2.8f1. (JCSUnity)
