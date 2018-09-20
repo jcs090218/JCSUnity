@@ -13,6 +13,7 @@
 * Add clear all undo/redo comps and all undo/redo history, in 
  JCS_UndoRedoSystem and JCS_UndoRedoComponent class for undo redo module 
  and easier function API call. (JCSUnity)
+* Add there is undo redo history check API. (JCSUnity)
 
 2018-09-14
 * Update Unity Engine version to 2018.2.8f1. (JCSUnity)
