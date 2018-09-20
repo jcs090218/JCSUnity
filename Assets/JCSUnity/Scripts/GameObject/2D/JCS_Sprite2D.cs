@@ -10,9 +10,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Sprite wrapper.
     /// </summary>
     [RequireComponent(typeof(JCS_OrderLayerObject))]
     public class JCS_Sprite2D 

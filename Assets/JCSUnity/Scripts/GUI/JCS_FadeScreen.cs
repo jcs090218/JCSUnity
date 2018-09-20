@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// Fade screen
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_FadeScreen

@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// 2d portal object.
     /// </summary>
     public class JCS_2DPortal
         : MonoBehaviour

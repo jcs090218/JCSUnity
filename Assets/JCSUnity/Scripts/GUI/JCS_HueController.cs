@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Simulate the hue control.
     /// </summary>

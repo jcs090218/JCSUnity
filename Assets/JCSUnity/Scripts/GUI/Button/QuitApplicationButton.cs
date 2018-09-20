@@ -11,7 +11,11 @@ using System;
 
 namespace JCSUnity
 {
-    public class QuitApplicationButton : JCS_Button
+    /// <summary>
+    /// Button will quit the application.
+    /// </summary>
+    public class QuitApplicationButton 
+        : JCS_Button
     {
         public override void JCS_OnClickCallback()
         {

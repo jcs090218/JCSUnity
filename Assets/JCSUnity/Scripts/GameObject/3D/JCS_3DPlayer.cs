@@ -13,9 +13,8 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// 3D base player.
     /// </summary>
     public class JCS_3DPlayer 
         : JCS_Player

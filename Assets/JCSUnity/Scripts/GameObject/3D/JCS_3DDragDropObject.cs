@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Source: https://www.youtube.com/watch?v=NMt6Ibxa_XQ
     /// 

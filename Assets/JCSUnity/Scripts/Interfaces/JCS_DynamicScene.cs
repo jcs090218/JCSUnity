@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Dynamic scene base class.
     /// </summary>
     public abstract class JCS_DynamicScene
         : MonoBehaviour

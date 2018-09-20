@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 2D light like 'MapleStory ' v62 login screen.
     /// </summary>

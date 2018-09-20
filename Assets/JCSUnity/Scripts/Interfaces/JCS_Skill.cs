@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Interface of all the skill. The base function will have to
     /// code it yourself.

@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Object that need to know who is the ppl cast, use
     /// attack, spell the thing.

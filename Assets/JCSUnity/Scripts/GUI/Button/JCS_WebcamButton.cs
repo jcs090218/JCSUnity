@@ -13,7 +13,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Base of the webcam related feature handle.
     /// </summary>

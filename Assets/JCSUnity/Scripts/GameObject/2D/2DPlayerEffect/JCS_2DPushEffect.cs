@@ -13,7 +13,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// This pushes the player.
     /// </summary>

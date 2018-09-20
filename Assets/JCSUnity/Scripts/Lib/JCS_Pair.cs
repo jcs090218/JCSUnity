@@ -12,6 +12,11 @@ using System.Collections;
 
 namespace JCSUnity
 {
+    /// <summary>
+    /// Pair data structure.
+    /// </summary>
+    /// <typeparam name="T"> type A </typeparam>
+    /// <typeparam name="U"> type B </typeparam>
     public class JCS_Pair<T, U>
     {
 

@@ -16,7 +16,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Binary Writer for JCSNetS framework use.
     /// </summary>

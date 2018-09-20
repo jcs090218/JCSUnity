@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-    
     /// <summary>
     /// This will always be ontop of any other GUI!!
     /// so use this carefully.

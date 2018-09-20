@@ -11,9 +11,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Leave the settings panel button.
     /// </summary>
     public class LeaveSettingButton 
         : JCS_Button

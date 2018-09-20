@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Provide all the info that scripter needed for 
     /// scripting the character's movement, collision 

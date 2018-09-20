@@ -10,11 +10,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Show the shader effect in the editor mode.
     /// </summary>
     [ExecuteInEditMode]
     public class JCS_CameraRenderer

@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Object in the in the scene layer.
     /// </summary>

@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Manage all Climbable object in the scene. (Under Indie manager)
     /// </summary>

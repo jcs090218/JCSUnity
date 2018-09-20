@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// 3D portal object.
     /// </summary>
     public class JCS_3DPortal
         : MonoBehaviour

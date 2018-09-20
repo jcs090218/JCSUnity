@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Bullet base class.
     /// </summary>
     [RequireComponent(typeof(JCS_AttackerInfo))]
     public abstract class JCS_Bullet

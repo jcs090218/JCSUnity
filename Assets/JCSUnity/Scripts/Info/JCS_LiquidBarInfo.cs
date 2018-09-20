@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Info to plugin to liquid bar, 
     /// to sync to information between the value and

@@ -9,8 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+    /// <summary>
+    /// Scrolling platform tag.
+    /// </summary>
     public class JCS_2DScrollPlatform 
         : JCS_2DPlatform
     {

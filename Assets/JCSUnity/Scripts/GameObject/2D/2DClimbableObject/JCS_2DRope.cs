@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 2D rope object, that player could climb on.
     /// </summary>

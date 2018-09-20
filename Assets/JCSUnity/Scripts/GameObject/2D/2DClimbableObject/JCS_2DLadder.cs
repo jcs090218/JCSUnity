@@ -13,7 +13,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 2D ladder object, that player could climb on.
     /// </summary>

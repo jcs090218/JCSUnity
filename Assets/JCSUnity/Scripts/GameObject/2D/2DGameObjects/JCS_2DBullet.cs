@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// For scripter and programmer,
     /// Override this if u want to implement this class

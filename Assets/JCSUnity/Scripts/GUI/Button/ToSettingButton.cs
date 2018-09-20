@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Button will direct to settings panel.
     /// </summary>
     public class ToSettingButton 
         : JCS_Button

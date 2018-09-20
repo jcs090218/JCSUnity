@@ -18,7 +18,6 @@ using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Util Function put here, usually systematic.
     /// </summary>

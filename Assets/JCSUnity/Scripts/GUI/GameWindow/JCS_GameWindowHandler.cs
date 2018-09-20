@@ -13,7 +13,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Object to create the instance of Game Window.
     /// </summary>

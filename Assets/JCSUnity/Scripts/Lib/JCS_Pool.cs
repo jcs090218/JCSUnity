@@ -12,11 +12,10 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Pool for all type of data struct.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> type </typeparam>
     public class JCS_Pool<T>
     {
 

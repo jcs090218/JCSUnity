@@ -12,7 +12,9 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
+    /// <summary>
+    /// Enemy that will do circle movement.
+    /// </summary>
     [RequireComponent(typeof(JCS_2DCircleAction))]
     public class JCS_CircleEnemy 
         : JCS_2DLiveObject

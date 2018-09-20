@@ -9,8 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
+    /// <summary>
+    /// Moving platform tag.
+    /// </summary>
     public class JCS_2DMovePlatform 
         : JCS_2DPlatform
     {

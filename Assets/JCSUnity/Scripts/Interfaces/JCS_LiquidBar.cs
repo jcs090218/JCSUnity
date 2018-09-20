@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     // when value is zero do this call back
     public delegate void ZeroCallback();
 

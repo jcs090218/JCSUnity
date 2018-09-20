@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// In Game Log System (IGL).
     /// </summary>

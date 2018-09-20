@@ -14,7 +14,6 @@ using JCSUnity;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Minimap of all the racers.
     /// 

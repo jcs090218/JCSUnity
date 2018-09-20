@@ -14,7 +14,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 3D Cursor in game.
     /// </summary>

@@ -17,7 +17,7 @@ namespace JCSUnity
     public delegate int[] DamageTextSpawnerFP(int minDamage, int maxDamage, Vector2 pos, int hit, int percentOfCritical);
 
     /// <summary>
-    /// 
+    /// Mix dmaage text pool object.
     /// </summary>
     public class JCS_MixDamageTextPool
         : MonoBehaviour

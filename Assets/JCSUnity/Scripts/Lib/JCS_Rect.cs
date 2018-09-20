@@ -9,9 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
+    /// <summary>
+    /// Rect definition.
+    /// </summary>
     public struct JCS_Rect
     {
         public float x;

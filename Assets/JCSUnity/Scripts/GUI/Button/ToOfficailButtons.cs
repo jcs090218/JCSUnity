@@ -11,7 +11,11 @@ using System;
 
 namespace JCSUnity
 {
-    public class ToOfficailButtons : JCS_Button
+    /// <summary>
+    /// Button will direct to official page url.
+    /// </summary>
+    public class ToOfficailButtons 
+        : JCS_Button
     {
         public override void JCS_OnClickCallback()
         {

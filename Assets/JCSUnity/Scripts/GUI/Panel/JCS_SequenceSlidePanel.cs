@@ -9,9 +9,9 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace JCSUnity
 {
-
     /// <summary>
     /// Sequence of panel that can be set by using other
     /// JCSUnity framework class's action/event.

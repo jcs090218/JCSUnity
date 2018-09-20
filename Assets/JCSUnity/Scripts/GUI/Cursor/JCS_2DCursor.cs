@@ -14,7 +14,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// 2D animate cursor.
     /// </summary>

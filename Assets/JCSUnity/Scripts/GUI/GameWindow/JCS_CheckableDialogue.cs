@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// When cursor or some trigger active, will show the object 
     /// information on it. This is what this dialogue do.

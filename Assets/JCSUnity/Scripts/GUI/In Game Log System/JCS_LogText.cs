@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Log text for JCS_IGLogSystem to handle.
     /// </summary>

@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Tag been handle by "JCS_SceneManager"
     /// </summary>

@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Velocity Object must have "CharacterController"
     /// componenet involved.

@@ -14,7 +14,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Simulate the object u cant talk to.
     /// </summary>

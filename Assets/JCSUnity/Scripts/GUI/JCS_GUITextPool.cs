@@ -13,7 +13,6 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Text pool using Unity Engine's UGUI system.
     /// </summary>

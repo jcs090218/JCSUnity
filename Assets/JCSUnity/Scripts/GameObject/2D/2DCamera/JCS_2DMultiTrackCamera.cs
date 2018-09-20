@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Game Scene Camera.
     /// For game that we need to track multiple objects at

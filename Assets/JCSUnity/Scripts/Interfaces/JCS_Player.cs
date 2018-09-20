@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Player base class.
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     public abstract class JCS_Player 

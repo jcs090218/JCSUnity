@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Bullet that will track the object.
     /// </summary>
     [RequireComponent(typeof(JCS_2DTrackAction))]
     [RequireComponent(typeof(JCS_3DGoStraightAction))]

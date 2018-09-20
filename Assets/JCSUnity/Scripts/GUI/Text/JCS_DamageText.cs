@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Damage text on the mob.
     /// </summary>
