@@ -40,6 +40,18 @@ namespace JCSUnity
 
         [SerializeField]
         private bool mTestWithKey = false;
+
+        [Tooltip("Key to play the animation.")]
+        [SerializeField]
+        private KeyCode mPlayKey = KeyCode.Q;
+
+        [Tooltip("Key to stop the animation.")]
+        [SerializeField]
+        private KeyCode mStopKey = KeyCode.W;
+
+        [Tooltip("Key to pause the animation.")]
+        [SerializeField]
+        private KeyCode mPauseKey = KeyCode.E;
 #endif
 
 
@@ -84,6 +96,10 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mNullSprite = null;
 
+        [Tooltip("Set the sprite to null after done playing the animation.")]
+        [SerializeField]
+        private bool mNullSpriteAfterDonePlayingAnim = false;
+
 
         [Tooltip("FPS for the animation to play.")]
         [SerializeField]
@@ -127,6 +143,7 @@ this, default is 1.")]
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
         public Sprite CurrentSprite { get { return this.mAnimFrames[mCurrentPlayingFrame]; } }
         public Sprite NullSprite { get { return this.mNullSprite; } set { this.mNullSprite = value; } }
+        public bool NullSpriteAfterDonePlayingAnim { get { return this.mNullSpriteAfterDonePlayingAnim; } set { this.mNullSpriteAfterDonePlayingAnim = value; } }
 
         // Bind.
         public void SetAnimationFrame(Sprite[] frames)
@@ -173,13 +190,13 @@ this, default is 1.")]
             if (!mTestWithKey)
                 return;
 
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(mPlayKey))
                 Play();
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(mStopKey))
                 Stop();
 
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(mPauseKey))
                 Pause();
         }
 #endif
@@ -284,6 +301,9 @@ this, default is 1.")]
         /// <summary>
         /// set the frame by index.
         /// </summary>
+        /// <param name="frame">
+        /// Frame index in the array, out of array play null frame.
+        /// </param>
         public void PlayFrame(int frame)
         {
             this.mCurrentPlayingFrame = frame;
@@ -298,6 +318,14 @@ this, default is 1.")]
             // callback..
             if (playFrameCallback != null)
                 playFrameCallback.Invoke();
+        }
+
+        /// <summary>
+        /// Play the animation as null frame.
+        /// </summary>
+        public void PlayNullFrame()
+        {
+            this.LocalSprite = this.mNullSprite;
         }
 
         //----------------------
@@ -346,8 +374,10 @@ this, default is 1.")]
             // add one frame, ready for next frame.
             ++mCurrentPlayingFrame;
 
+            bool playNullFrame = false;
+
             // reset the timer if reach the max frame.
-            if (mCurrentPlayingFrame == mMaxFrame)
+            if (mCurrentPlayingFrame >= mMaxFrame)
             {
                 if (mLoop)
                     mCurrentPlayingFrame = 0;
@@ -355,6 +385,11 @@ this, default is 1.")]
                 {
                     // current frame will just be the last frame.
                     mCurrentPlayingFrame = mMaxFrame;
+
+                    // Turn on the flag if play null frame at the 
+                    // end of playing the animation.
+                    if (mNullSpriteAfterDonePlayingAnim)
+                        playNullFrame = true;
                 }
 
                 // set the flag up.
@@ -365,8 +400,13 @@ this, default is 1.")]
                     donePlayingAnimCallback.Invoke();
             }
 
-            // set the current frame.
-            PlayFrame(mCurrentPlayingFrame);
+            if (playNullFrame)
+                PlayNullFrame();
+            else
+            {
+                // set the current frame.
+                PlayFrame(mCurrentPlayingFrame);
+            }
 
             // reset timer.
             mFrameTimer = 0;
