@@ -1,5 +1,5 @@
 
-JCSUnity version 1.8.1 Naming Manual (Status)
+JCSUnity version 1.8.3 Naming Manual (Status)
 
 
 -- Naming Explaination --
