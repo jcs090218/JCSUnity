@@ -7,6 +7,13 @@
 # ========================================================================
 
 
+2018-09-21
+* Implement DestroyImmediateAllTypeObjectInScene util function in 
+ JCS_Uility module. (JCSUnity)
+* Increase the preformance of the removing pause action from the pause 
+ manager. The time complexity increase from O(n^2) to O(n). (JCSUnity)
+* Remove 'JCS' folder name's prefix in the JCSUnity_Resources. (JCSUnity)
+
 2018-09-20
 * Add test option and null sprite after done playing animation option to 
  JCS_2DAnimation module. (JCSUnity)
