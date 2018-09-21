@@ -31,6 +31,26 @@ namespace JCSUnity
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
+
+        [Tooltip("Default without any params active path finding.")]
+        [SerializeField]
+        private KeyCode mActivePathfindingDefault = KeyCode.A;
+
+        [Tooltip("Test with position.")]
+        [SerializeField]
+        private KeyCode mActivePathfindingPos = KeyCode.S;
+
+        [Tooltip("Pass in with active path finding position.")]
+        [SerializeField]
+        private Vector3 mParamTargetPos = new Vector3(0.0f, 0.0f, 32.2f);
+
+        [Tooltip("Test with target transform.")]
+        [SerializeField]
+        private KeyCode mActivePathfindingTransform = KeyCode.D;
+
+        [Tooltip("Pass in with active pathing finding transform key.")]
+        [SerializeField]
+        private Transform mParamTargetTransform = null;
 #endif
 
 
@@ -72,12 +92,12 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(KeyCode.A))
+            if (JCS_Input.GetKeyDown(mActivePathfindingDefault))
                 ActivePathfinding();
-            if (JCS_Input.GetKeyDown(KeyCode.S))
-                ActivePathfinding(new Vector3(0, 0, 32));
-            if (JCS_Input.GetKeyDown(KeyCode.D))
-                ActivePathfinding(new Vector3(0, 0, 32.2f));
+            if (JCS_Input.GetKeyDown(mActivePathfindingPos))
+                ActivePathfinding(mParamTargetPos);
+            if (JCS_Input.GetKeyDown(mActivePathfindingTransform))
+                ActivePathfinding(mParamTargetTransform);
         }
 #endif
 
