@@ -101,9 +101,9 @@ namespace JCSUnity
         private float mDurationZ = 1.0f;
 
 
-        [Header("- Destory")]
+        [Header("- Destroy")]
 
-        [Tooltip("Destory this object when done tweening?")]
+        [Tooltip("Destroy this object when done tweening?")]
         [SerializeField]
         private bool mDestroyWhenDoneTweening = false;
 
