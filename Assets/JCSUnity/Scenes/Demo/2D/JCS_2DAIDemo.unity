@@ -409,6 +409,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -417,6 +420,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 185b0df9c7d81384b8ce2187c2fbd673, type: 3}
@@ -1185,6 +1189,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -1193,6 +1200,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 45ab971197485e649a8e12ac5c4b099d, type: 3}
@@ -1579,6 +1587,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -1587,6 +1598,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 6aad02c39437d4c4e8d1d9d8e0f57b85, type: 3}
@@ -2432,7 +2444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
-  mResizeUI_path: JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI
+  mResizeUI_path: JCSUnity_Resources/LevelDesignUI/ResizeUI
 --- !u!114 &628296236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,6 +3310,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -3306,6 +3321,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.5
   mAnimFrames:
   - {fileID: 21300000, guid: e7d2a2dcf475d4d488c13d714a017184, type: 3}
@@ -4994,6 +5010,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -5002,6 +5021,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 18c650c22abb65b43abb640b3072ed92, type: 3}
@@ -6822,6 +6842,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -6830,6 +6853,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 0}
@@ -7001,6 +7025,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -7009,6 +7036,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: aa950c18c50be684b8c0297eee081237, type: 3}
@@ -9400,6 +9428,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -9408,6 +9439,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: ae0126c1db7002949922e300b1e1a0fd, type: 3}
@@ -9504,6 +9536,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -9512,6 +9547,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 0
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.3
   mAnimFrames:
   - {fileID: 21300000, guid: fbf8b0a73d61f01459d2d6b4859109b2, type: 3}
@@ -10062,6 +10098,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -10070,6 +10109,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: a6052dda2fce8094bbed1e6af779e2c7, type: 3}
@@ -11071,6 +11111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mTestWithKey: 0
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -11079,6 +11122,7 @@ MonoBehaviour:
   mPlayOnAwake: 0
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 7a16345f3b3d75549a460edc9cb2dd09, type: 3}

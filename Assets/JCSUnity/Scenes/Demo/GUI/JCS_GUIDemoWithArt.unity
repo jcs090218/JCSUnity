@@ -1447,6 +1447,7 @@ MonoBehaviour:
   mPlayOnAwake: 1
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.3
   mAnimFrames:
   - {fileID: 21300000, guid: 358a4eafc42316745a91f8feff99694a, type: 3}
@@ -3112,6 +3113,7 @@ MonoBehaviour:
   mPlayOnAwake: 1
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.3
   mAnimFrames:
   - {fileID: 21300000, guid: d4e2caca624b2d747a1a5746bf92065f, type: 3}
@@ -5584,6 +5586,7 @@ MonoBehaviour:
   mPlayOnAwake: 1
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.3
   mAnimFrames:
   - {fileID: 21300000, guid: d4e2caca624b2d747a1a5746bf92065f, type: 3}
@@ -12604,6 +12607,7 @@ MonoBehaviour:
   mPlayOnAwake: 1
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.2
   mAnimFrames:
   - {fileID: 21300000, guid: 151fcf20dd1b4064f96b921337146776, type: 3}
@@ -22067,7 +22071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
-  mResizeUI_path: JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI
+  mResizeUI_path: JCSUnity_Resources/LevelDesignUI/ResizeUI
 --- !u!114 &1897997113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24092,6 +24096,7 @@ MonoBehaviour:
   mPlayOnAwake: 1
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.3
   mAnimFrames:
   - {fileID: 21300000, guid: 358a4eafc42316745a91f8feff99694a, type: 3}

@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
-  mResizeUI_path: JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI
+  mResizeUI_path: JCSUnity_Resources/LevelDesignUI/ResizeUI
 --- !u!114 &810868298
 MonoBehaviour:
   m_ObjectHideFlags: 0

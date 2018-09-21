@@ -1404,11 +1404,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &196451053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,11 +4437,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &556784618
 GameObject:
   m_ObjectHideFlags: 0
@@ -5158,11 +5170,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &593563567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5910,11 +5928,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &606409745
 GameObject:
   m_ObjectHideFlags: 0
@@ -5960,6 +5984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea8168c5c9032f4c82134ebf89480b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mPanelRoot: {fileID: 0}
   mButtons:
   - {fileID: 193455528}
   - {fileID: 688828982}
@@ -7161,11 +7186,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &689504095
 GameObject:
   m_ObjectHideFlags: 0
@@ -8982,7 +9013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
-  mResizeUI_path: JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI
+  mResizeUI_path: JCSUnity_Resources/LevelDesignUI/ResizeUI
 --- !u!114 &868245905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12043,11 +12074,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &1294710017
 GameObject:
   m_ObjectHideFlags: 0
@@ -12274,11 +12311,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &1295947939
 GameObject:
   m_ObjectHideFlags: 0
@@ -13387,11 +13430,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &1411345420
 GameObject:
   m_ObjectHideFlags: 0
@@ -17913,11 +17962,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mEffect: 0
+  mPanelRoot: {fileID: 0}
+  mEventTrigger: {fileID: 0}
   mScaleX: 1
   mScaleY: 1
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
+  mAutoAddEvent: 1
+  mActiveEventTriggerType: 0
+  mDeactiveEventTriggerType: 1
 --- !u!1 &2111639383
 GameObject:
   m_ObjectHideFlags: 0
