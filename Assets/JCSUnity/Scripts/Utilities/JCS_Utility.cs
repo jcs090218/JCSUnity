@@ -796,7 +796,7 @@ namespace JCSUnity
                index < inList.Count;
                ++index)
             {
-                // remove itself.
+                // Add itself if exists.
                 if (inList[index] != null)
                     newArray.Add(inList[index]);
             }
@@ -809,7 +809,7 @@ namespace JCSUnity
         /// </summary>
         /// <typeparam name="T"> Type of the List. </typeparam>
         /// <param name="inArray"> Array list. </param>
-        /// <returns> Cleaned up List object. </returns>
+        /// <returns> Cleaned up Array object. </returns>
         public static T[] RemoveEmptySlot<T>(T[] inArray)
         {
             List<T> newArray = new List<T>();
@@ -818,7 +818,7 @@ namespace JCSUnity
                index < inArray.Length;
                ++index)
             {
-                // remove itself.
+                // Add itself if exists.
                 if (inArray[index] != null)
                     newArray.Add(inArray[index]);
             }
@@ -826,6 +826,71 @@ namespace JCSUnity
             return newArray.ToArray();
         }
 
+        /// <summary>
+        /// Remove the empty slot in the list including remove 
+        /// the missing gameobject too. 
+        /// 
+        /// I guess Unity do the CG collection later a while when 
+        /// you call 'Destory()' function. Before scripting layer 
+        /// acknowledge this game object is destory might be too 
+        /// late in some situation. This will avoid this type of 
+        /// issue/circumstance.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inList"> List object. </param>
+        /// <returns> Cleaned up List object. </returns>
+        public static List<T> RemoveEmptySlotIncludeMissing<T>(List<T> inList)
+            where T : UnityEngine.Object
+        {
+            List<T> newArray = new List<T>(inList.Count);
+
+            for (int index = 0;
+               index < inList.Count;
+               ++index)
+            {
+                // Add itself if exists.
+                // 
+                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
+                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
+                if (inList[index] ?? false)
+                    newArray.Add(inList[index]);
+            }
+
+            return newArray;
+        }
+
+        /// <summary>
+        /// Remove the empty slot in the list including remove 
+        /// the missing gameobject too. 
+        /// 
+        /// I guess Unity do the CG collection later a while when 
+        /// you call 'Destory()' function. Before scripting layer 
+        /// acknowledge this game object is destory might be too 
+        /// late in some situation. This will avoid this type of 
+        /// issue/circumstance.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inArray"> Array list. </param>
+        /// <returns> Cleaned up Array object. </returns>
+        public static T[] RemoveEmptySlotIncludeMissing<T>(T[] inArray)
+            where T : UnityEngine.Object
+        {
+            List<T> newArray = new List<T>();
+
+            for (int index = 0;
+               index < inArray.Length;
+               ++index)
+            {
+                // Add itself if exists.
+                // 
+                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
+                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
+                if (inArray[index] ?? false)
+                    newArray.Add(inArray[index]);
+            }
+
+            return newArray.ToArray();
+        }
 
         /// <summary>
         /// Multiply all the parent localEulerAngles to get the correct 
