@@ -19,6 +19,7 @@ StreamingAssets/build_info.txt
 
 # Ignore Test file.
 FrameworkTest_Assets
+Resources/FrameworkTest_Resources
 
 # Ignore Libraries
 Libraries/GaussianBlur
