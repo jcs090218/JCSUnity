@@ -28,6 +28,9 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        private static string RESIZE_UI_PATH = "JCSUnity_Resources/LevelDesignUI/ResizeUI";
+
+
         [Header("** Check Variables (JCS_Canvas) **")]
 
         [Tooltip("Canvas object.")]
@@ -37,10 +40,6 @@ namespace JCSUnity
         [Tooltip("Resize UI object.")]
         [SerializeField]
         private JCS_ResizeUI mResizeUI = null;
-
-        [Tooltip("Path link to resize UI object.")]
-        [SerializeField]
-        private string mResizeUI_path = "JCSUnity_Resources/LevelDesignUI/ResizeUI";
 
         // Application Rect (Window)
         private RectTransform mAppRect = null;
@@ -117,7 +116,7 @@ namespace JCSUnity
             if (JCS_UISettings.instance.RESIZE_UI)
             {
                 // resizable UI in order to resize the UI correctly
-                JCS_ResizeUI rui = JCS_Utility.SpawnGameObject(mResizeUI_path).GetComponent<JCS_ResizeUI>();
+                JCS_ResizeUI rui = JCS_Utility.SpawnGameObject(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
                 rui.transform.SetParent(this.transform);
             }
         }
