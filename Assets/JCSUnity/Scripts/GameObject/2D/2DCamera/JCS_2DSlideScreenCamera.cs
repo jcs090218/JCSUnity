@@ -63,7 +63,8 @@ namespace JCSUnity
         [Tooltip("")]
         [SerializeField]
         private JCS_SlideScreenPanelHolder mPanelHolder = null;
-        private string mPanelHolderPath = "JCSUnity_Framework_Resources/JCS_LevelDesignUI/JCS_SlideScreenPanelHolder";
+
+        private string mPanelHolderPath = "JCSUnity_Framework_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
 
         //----------------------
         // Protected Variables

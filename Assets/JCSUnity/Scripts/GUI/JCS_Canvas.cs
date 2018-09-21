@@ -40,7 +40,7 @@ namespace JCSUnity
 
         [Tooltip("Path link to resize UI object.")]
         [SerializeField]
-        private string mResizeUI_path = "JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI";
+        private string mResizeUI_path = "JCSUnity_Resources/LevelDesignUI/ResizeUI";
 
         // Application Rect (Window)
         private RectTransform mAppRect = null;

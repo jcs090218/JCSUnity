@@ -414,13 +414,13 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateJCSCanvas()
         {
-            string canvas_path = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_Canvas";
+            string canvas_path = "JCSUnity_Resources/LevelDesignUI/JCS_Canvas";
             GameObject canvasObj = CreateHierarchyObject(canvas_path);
 
             Undo.RegisterCreatedObjectUndo(canvasObj, "Create JCS Canvas");
 
 
-            string eventSystem_path = "JCSUnity_Resources/JCS_LevelDesignUI/EventSystem";
+            string eventSystem_path = "JCSUnity_Resources/LevelDesignUI/EventSystem";
             GameObject evtSystemObj = CreateHierarchyObject(eventSystem_path);
 
             Undo.RegisterCreatedObjectUndo(evtSystemObj, "Create Event System");
@@ -600,7 +600,7 @@ namespace JCSUnity
                 return;
             }
 
-            string settingPath = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_SlideScreenPanelHolder";
+            string settingPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
 
             // spawn the pane holder.
             JCS_SlideScreenPanelHolder panelHolder9x9 = CreateHierarchyObjectUnderCanvas(settingPath, jcsCanvas).GetComponent<JCS_SlideScreenPanelHolder>();
@@ -611,7 +611,7 @@ namespace JCSUnity
             int starting_pos_x = -1920;
             int starting_pos_y = 1080;
 
-            string slidePanelPath = "JCSUnity_Resources/JCS_LevelDesignUI/JCS_SlidePanel";
+            string slidePanelPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlidePanel";
 
             int index = 0;
 
@@ -649,7 +649,7 @@ namespace JCSUnity
                 }
             }
 
-            string slideScreenCameraPath = "JCSUnity_Resources/JCS_Camera/JCS_2DSlideScreenCamera";
+            string slideScreenCameraPath = "JCSUnity_Resources/Camera/JCS_2DSlideScreenCamera";
             JCS_2DSlideScreenCamera slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
@@ -710,7 +710,7 @@ namespace JCSUnity
         /// </summary>
         private static void Create2DCamera()
         {
-            string camera_path = "JCSUnity_Resources/JCS_Camera/JCS_2DCamera";
+            string camera_path = "JCSUnity_Resources/Camera/JCS_2DCamera";
             GameObject gameObj = CreateHierarchyObject(camera_path);
 
             // set camera depth to default -10.
@@ -741,7 +741,7 @@ namespace JCSUnity
         /// </summary>
         private static void Create3DCamera()
         {
-            string camera_path = "JCSUnity_Resources/JCS_Camera/JCS_3DCamera";
+            string camera_path = "JCSUnity_Resources/Camera/JCS_3DCamera";
             GameObject gameObj = CreateHierarchyObject(camera_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS 3D Camera");
