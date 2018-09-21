@@ -597,6 +597,24 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Destroy all the 'TYPE' object in the scene.
+        /// </summary>
+        public static void DestroyImmediateAllTypeObjectInScene<T>()
+            where T : MonoBehaviour
+        {
+            // Destroy all the live object in the scene.
+            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
+
+            foreach (T e in rrEnemy)
+            {
+                // NOTE(JenChieh): kill the object that are clone!
+                // or else it will effect the prefab object...
+                if (e.gameObject.name.Contains("(Clone)"))
+                    DestroyImmediate(e.gameObject);
+            }
+        }
+
+        /// <summary>
         /// Find all the objects that are clone in the scene by type.
         /// </summary>
         /// <typeparam name="T"> Type to find. </typeparam>
