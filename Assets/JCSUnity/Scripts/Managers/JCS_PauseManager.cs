@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// If you are working some kind of game that need the pause 
     /// screen, you definitly need the pause manager to add it onto 
@@ -52,6 +51,7 @@ object you have in the list.")]
         //      setter / getter
         //------------------------------
         public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
+        public float ResizePauseActionListTime { get { return this.mResizePauseActionListTime; } set { this.mResizePauseActionListTime = value; } }
 
         //========================================
         //      Unity's function
@@ -111,18 +111,11 @@ object you have in the list.")]
         // Private Functions
 
         /// <summary>
-        /// Remove all the null reference object from the lis.t
+        /// Remove all the null reference object from the list.
         /// </summary>
         private void RemoveNullRefInPauseActionList()
         {
-            for (int index = 0;
-                index < mPauseActions.Count;
-                ++index)
-            {
-                // remove itself.
-                if (mPauseActions[index] == null)
-                    mPauseActions.RemoveAt(index);
-            }
+            mPauseActions = JCS_Utility.RemoveEmptySlotIncludeMissing(mPauseActions);
         }
 
         /// <summary>
