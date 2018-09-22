@@ -26,9 +26,6 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_ScreenManager) **")]
 
-        [Tooltip("Type of the screen handle.")]
-        public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
-
         [Tooltip("Resize screen once on this scene?")]
         public bool RESIZE_SCREEN_THIS_SCENE = false;
 
@@ -37,6 +34,12 @@ namespace JCSUnity
 
         [Tooltip("Aspect ratio screen height for this scene you want to resize.")]
         public int ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE = 9;
+
+
+        [Header("** Runtime Variables (JCS_ScreenManager) **")]
+
+        [Tooltip("Type of the screen handle.")]
+        public JCS_ScreenType SCREEN_TYPE_THIS_SCENE = JCS_ScreenType.RESIZABLE;
 
         /*******************************************/
         /*           Private Variables             */

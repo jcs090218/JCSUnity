@@ -18,7 +18,7 @@ namespace JCSUnity
     /// Webcam object. Must have the texture on it in order to render.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_Webcam 
+    public class JCS_Webcam
         : JCS_UnityObject
     {
 
@@ -38,8 +38,10 @@ namespace JCSUnity
         private float mResumeTimer = 0;
         private bool mResumeTrigger = false;
 
+#if (UNITY_STANDALONE || UNITY_EDITOR)
         [Header("** Key Settings **")]
         [SerializeField] private KeyCode mTakePic = KeyCode.None;
+#endif
 
         [Header("** Image Path **")]
         [Tooltip("Webcam u take will save into this path.")]
@@ -71,7 +73,7 @@ namespace JCSUnity
         public void Play() { this.mWebCamTexture.Play(); }
         public void Pause() { this.mWebCamTexture.Pause(); }
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
-        
+
         //========================================
         //      Unity's function
         //------------------------------
@@ -135,7 +137,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Active the webcam.
         /// </summary>
         public void ActiveWebcam()
         {
@@ -165,7 +167,7 @@ namespace JCSUnity
             // cannot take snap shot without the device!!
             if (!mDetectDevice)
             {
-                JCS_Debug.LogError("JCS_Webcam",   "No webcam detected in the current devices.");
+                JCS_Debug.LogError("JCS_Webcam", "No webcam detected in the current devices.");
                 return;
             }
 
@@ -240,7 +242,11 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
 #if (UNITY_STANDALONE || UNITY_EDITOR)
+        /// <summary>
+        /// Process the input.
+        /// </summary>
         private void ProcessInput()
         {
             if (JCS_Input.GetKeyDown(mTakePic))

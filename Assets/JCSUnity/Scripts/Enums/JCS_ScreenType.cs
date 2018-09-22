@@ -20,7 +20,16 @@ namespace JCSUnity
     {
         NONE,
 
+        // Always make the screen the same as standards.
+        // SEE(jenchieht): 
+        //   => JCS_ScreenSettings => STANDARD_SCREEN_WIDTH
+        //   => JCS_ScreenSettings => STANDARD_SCREEN_HEIGHT
+        ALWAYS_STANDARD, 
+
+        // Always force the screen same aspect ratio.
         FORCE_ASPECT,
+
+        // Resizable whatever.
         RESIZABLE,
     }
 }

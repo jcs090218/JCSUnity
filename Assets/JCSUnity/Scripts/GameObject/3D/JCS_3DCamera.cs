@@ -27,6 +27,15 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_3DCamera) **")]
+
+        [Tooltip("Test this component with key?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+#endif
+
+
         [Header("** Check Variables (JCS_3DCamera) **")]
 
         [Tooltip("")]
@@ -65,6 +74,7 @@ namespace JCSUnity
         [SerializeField] [Range(0.01f, 2.0f)]
         private float mAcceptRange = 1.0f;
 
+#if (UNITY_EDITOR || UNITY_STANDALONE)
         [Tooltip("Key to rotate around the left side.")]
         [SerializeField]
         private KeyCode mRotateAroundLeft = KeyCode.None;
@@ -80,9 +90,11 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mResetKeyCode = KeyCode.None;
 
+#endif
+
         [Tooltip("")]
         [SerializeField]
-        private float mResetTargetAngle = 0;
+        private float mResetTargetAngle = 0.0f;
 
         /// <summary>
         /// 
@@ -109,6 +121,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mUpDownMovement = true;
 
+#if (UNITY_EDITOR || UNITY_STANDALONE)
         [Tooltip("Key to go up")]
         [SerializeField]
         private KeyCode mUpKey = KeyCode.None;
@@ -116,6 +129,7 @@ namespace JCSUnity
         [Tooltip("Key to go down")]
         [SerializeField]
         private KeyCode mDownKey = KeyCode.None;
+#endif
 
         [Tooltip("Space between each up and down movement.")]
         [SerializeField]
@@ -281,6 +295,9 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
+            if (!mTestWithKey)
+                return;
+
             if (JCS_Input.GetKeyDown(KeyCode.N))
             {
                 SmoothTrack = !SmoothTrack;

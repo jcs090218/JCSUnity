@@ -346,8 +346,11 @@ namespace JCSUnity
         /// </summary>
         private void DoScreenType()
         {
-            switch (JCS_ScreenManager.instance.SCREEN_TYPE)
+            switch (JCS_ScreenManager.instance.SCREEN_TYPE_THIS_SCENE)
             {
+                case JCS_ScreenType.ALWAYS_STANDARD:
+                    DoAlwaysStandard();
+                    break;
                 case JCS_ScreenType.FORCE_ASPECT:
                     DoFoceAspectScreen();
                     break;
@@ -355,6 +358,25 @@ namespace JCSUnity
                     DoResizableScreen();
                     break;
             }
+        }
+
+        /// <summary>
+        /// Always make the screen the same as standards screen
+        /// width and standard screen height.
+        /// </summary>
+        private void DoAlwaysStandard()
+        {
+            int width = Screen.width;
+            int height = Screen.height;
+
+            if (width != STANDARD_SCREEN_WIDTH ||
+                height != STANDARD_SCREEN_HEIGHT)
+            {
+                Screen.SetResolution(STANDARD_SCREEN_WIDTH, STANDARD_SCREEN_HEIGHT, false, 0);
+            }
+
+            this.PREV_SCREEN_WIDTH = width;
+            this.PREV_SCREEN_HEIGHT = height;
         }
 
         /// <summary>

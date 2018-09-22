@@ -27,7 +27,9 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+#if (UNITY_STANDALONE || UNITY_EDITOR)
         private RectTransform mRectTransform = null;
+#endif
 
         // Item Contain the following data
         private Image mItemImage = null;
@@ -39,8 +41,16 @@ namespace JCSUnity
             ON_MOUSE_DOUBLE_CLICK
         };
 
-        [Header("** Runtime Variables **")]
+
+#if (UNITY_STANDALONE || UNITY_EDITOR)
+        [Header("** Check Variables (JCS_CheckableObject) **")]
+
+        [SerializeField]
         private bool mShowing = false;
+#endif
+
+
+        [Header("** Runtime Variables (JCS_CheckableObject) **")]
 
         [Header("NOTE: nGUI_2D please use Event Trigger from Unity.")]
         [SerializeField]
@@ -67,7 +77,9 @@ namespace JCSUnity
         //------------------------------
         private void Start()
         {
+#if (UNITY_STANDALONE || UNITY_EDITOR)
             this.mRectTransform = this.GetComponent<RectTransform>();
+#endif
             this.mItemImage = this.GetComponent<Image>();
 
             JCS_HideDescDialogue();
@@ -137,7 +149,10 @@ namespace JCSUnity
             }
 
             mDescDialogue.ShowDialogueWithoutSound();
+
+#if (UNITY_STANDALONE || UNITY_EDITOR)
             mShowing = true;
+#endif
         }
         public void JCS_HideDescDialogue()
         {
@@ -154,7 +169,10 @@ namespace JCSUnity
 #endif
 
             mDescDialogue.HideDialogueWithoutSound();
+
+#if (UNITY_STANDALONE || UNITY_EDITOR)
             mShowing = false;
+#endif
         }
 
         //----------------------

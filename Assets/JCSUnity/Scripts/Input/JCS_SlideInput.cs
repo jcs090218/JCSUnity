@@ -60,6 +60,7 @@ namespace JCSUnity
         //      Unity's function
         //------------------------------
 
+#if (UNITY_EDITOR || UNITY_STANDALONE)
         private void OnApplicationFocus(bool focus)
         {
             if (focus)
@@ -71,6 +72,7 @@ namespace JCSUnity
                 // Do something when not focus?
             }
         }
+#endif
 
         private void Start()
         {
