@@ -6,8 +6,9 @@ JCSUnity version 1.8.3 Libraries List (Status)
     
     ¦ Necessary:
         * SpriteMask : https://www.assetstore.unity3d.com/en/#!/content/27642
+        * StandaloneFileBrowser : https://github.com/gkngkc/UnityStandaloneFileBrowser (include)
         * Tweener : https://github.com/PeterVuorela/Tweener (include)
-        * UI-Polygon: https://github.com/CiaccoDavide/Unity-UI-Polygon (include)
+        * UI-Polygon : https://github.com/CiaccoDavide/Unity-UI-Polygon (include)
         
     ¦ Recommanded:
         * Photon PUN+ : https://www.assetstore.unity3d.com/en/#!/content/12080
