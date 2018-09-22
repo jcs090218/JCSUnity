@@ -30,5 +30,5 @@ JCS_GameData
 JCS_ScreenShot
 
 # Ignore Libraries
-GaussianBlur
-Infinity Code
+Libraries/GaussianBlur
+Libraries/Infinity Code
