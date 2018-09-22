@@ -9981,6 +9981,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 1
   mTestWithKey: 1
+  mPlayKey: 113
+  mStopKey: 119
+  mPauseKey: 101
   mCurrentPlayingFrame: 0
   mMaxFrame: 0
   mIsDonePlaying: 0
@@ -9989,6 +9992,7 @@ MonoBehaviour:
   mPlayOnAwake: 1
   mLoop: 1
   mNullSprite: {fileID: 0}
+  mNullSpriteAfterDonePlayingAnim: 0
   mFramePerSec: 0.2
   mAnimFrames:
   - {fileID: 21300000, guid: a14204b1e481d5c42937321a7031aede, type: 3}
@@ -11227,6 +11231,11 @@ Prefab:
     - target: {fileID: 11439248, guid: cea3ae018e023684283757410f3065f4, type: 2}
       propertyPath: mOverrideSetting
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114116482234633012, guid: cea3ae018e023684283757410f3065f4,
+        type: 2}
+      propertyPath: SCREEN_TYPE
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea3ae018e023684283757410f3065f4, type: 2}
@@ -17087,7 +17096,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
-  mResizeUI_path: JCSUnity_Resources/JCS_LevelDesignUI/ResizeUI
 --- !u!114 &2051649832
 MonoBehaviour:
   m_ObjectHideFlags: 0
