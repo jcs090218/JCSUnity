@@ -10,6 +10,9 @@
 2018-09-22
 * Remove 'JCS' folder name's prefix in the JCSUnity_Resources. (JCSUnity)
 * Update project version to 1.8.3. (JCSUnity)
+* Add 'Standalone File Browser' as project dependency. (JCSUnity)
+  => https://github.com/gkngkc/UnityStandaloneFileBrowser
+* Make screen type handle to individual scene. (JCSUnity)
 
 2018-09-21
 * Implement DestroyImmediateAllTypeObjectInScene util function in 
