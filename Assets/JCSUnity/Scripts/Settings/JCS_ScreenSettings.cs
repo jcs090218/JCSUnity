@@ -74,9 +74,6 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_ScreenSettings) **")]
 
-        [Tooltip("Type of the screen handle.")]
-        public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
-
         [Tooltip("Resize the screen/window to certain aspect when " +
             "the application starts. Aspect ratio can be set at " +
             "'JCS_ScreenManager'.")]
@@ -322,8 +319,6 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_ScreenSettings _old, JCS_ScreenSettings _new)
         {
-            _new.SCREEN_TYPE = _old.SCREEN_TYPE;
-
             _new.RESIZE_TO_ASPECT_WHEN_APP_STARTS = _old.RESIZE_TO_ASPECT_WHEN_APP_STARTS;
             _new.RESIZE_TO_STANDARD_WHEN_APP_STARTS = _old.RESIZE_TO_STANDARD_WHEN_APP_STARTS;
             _new.RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED = _old.RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED;
@@ -351,7 +346,7 @@ namespace JCSUnity
         /// </summary>
         private void DoScreenType()
         {
-            switch (SCREEN_TYPE)
+            switch (JCS_ScreenManager.instance.SCREEN_TYPE)
             {
                 case JCS_ScreenType.FORCE_ASPECT:
                     DoFoceAspectScreen();

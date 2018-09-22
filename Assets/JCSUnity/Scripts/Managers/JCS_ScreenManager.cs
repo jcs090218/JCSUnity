@@ -26,6 +26,9 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_ScreenManager) **")]
 
+        [Tooltip("Type of the screen handle.")]
+        public JCS_ScreenType SCREEN_TYPE = JCS_ScreenType.RESIZABLE;
+
         [Tooltip("Resize screen once on this scene?")]
         public bool RESIZE_SCREEN_THIS_SCENE = false;
 
