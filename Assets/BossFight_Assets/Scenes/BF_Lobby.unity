@@ -11237,6 +11237,11 @@ Prefab:
       propertyPath: SCREEN_TYPE
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114116482234633012, guid: cea3ae018e023684283757410f3065f4,
+        type: 2}
+      propertyPath: SCREEN_TYPE_THIS_SCENE
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea3ae018e023684283757410f3065f4, type: 2}
   m_IsPrefabAsset: 0
