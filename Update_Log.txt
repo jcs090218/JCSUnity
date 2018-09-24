@@ -9,6 +9,8 @@
 
 2018-09-24
 * Update project Unity Engine version to 2018.2.9f1. (JCSUnity)
+* JCS_TextButtonEffect implemented, for button that is only the text 
+ without sprite. (JCSUnity)
 
 2018-09-23
 * Test android build. (JCSUnity)
