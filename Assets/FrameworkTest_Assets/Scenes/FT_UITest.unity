@@ -3958,6 +3958,7 @@ MonoBehaviour:
   mOverrideSetting: 0
   mSoundFadeInTime: 1.5
   mSoundFadeOutTime: 1.5
+  mDisableSoundWheWindowNotFocus: 1
 --- !u!114 &1667905748
 MonoBehaviour:
   m_ObjectHideFlags: 0
