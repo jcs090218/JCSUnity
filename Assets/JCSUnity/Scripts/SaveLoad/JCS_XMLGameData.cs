@@ -48,13 +48,28 @@ namespace JCSUnity
         /// <param name="fileName"> name of the file u want to save. </param>
         public void Save<T>(string filePath, string fileName)
         {
+            string fullFilePath = filePath + fileName;
+
+            Save<T>(fullFilePath);
+        }
+
+        /// <summary>
+        /// Save the game data into xml file format.
+        /// </summary>
+        /// <typeparam name="T"> type of the data save. </typeparam>
+        /// <param name="filePath"> where to save. </param>
+        /// <param name="fileName"> name of the file u want to save. </param>
+        public void Save<T>(string fullFilePath)
+        {
+            string filePath = Path.GetDirectoryName(fullFilePath);
+
             // if Directory does not exits, create it prevent error!
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
 
             InitJCSFile();
 
-            using (var stream = new FileStream(filePath + fileName, FileMode.Create))
+            using (var stream = new FileStream(fullFilePath, FileMode.Create))
             {
                 var XML = new XmlSerializer(typeof(T));
                 XML.Serialize(stream, this);
