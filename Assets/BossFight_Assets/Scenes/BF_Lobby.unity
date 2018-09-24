@@ -15338,7 +15338,7 @@ MonoBehaviour:
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
-  mInteractable: 1
+  mInteractable: 0
   mInteractColor: {r: 1, g: 1, b: 1, a: 1}
   mNotInteractColor: {r: 1, g: 1, b: 1, a: 0.5}
   mSlideCameras: []
