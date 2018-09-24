@@ -64,14 +64,17 @@ namespace JCSUnity
         [SerializeField]
         private bool mOverrideSetting = false;
 
-        [Tooltip("")]
+        [Tooltip("Time to fade in the sound.")]
         [SerializeField]
         private float mSoundFadeInTime = 1.5f;
 
-        [Tooltip("")]
+        [Tooltip("Time to fade out the sound.")]
         [SerializeField]
         private float mSoundFadeOutTime = 1.5f;
 
+        [Tooltip("Disable the sound when window isn't focus.")]
+        [SerializeField]
+        private bool mDisableSoundWheWindowNotFocus = true;
 
 
         // real time that the bgm fade out.
@@ -107,12 +110,16 @@ namespace JCSUnity
         public bool OverrideSetting { get { return this.mOverrideSetting; } }
         public float SoundFadeInTime { get { return this.mSoundFadeInTime; } set { this.mSoundFadeInTime = value; } }
         public float SoundFadeOutTime { get { return this.mSoundFadeOutTime; } set { this.mSoundFadeOutTime = value; } }
+        public bool DisableSoundWheWindowNotFocus { get { return this.mDisableSoundWheWindowNotFocus; } set { this.mDisableSoundWheWindowNotFocus = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
         private void OnApplicationFocus(bool focusStatus)
         {
+            if (!mDisableSoundWheWindowNotFocus)
+                return;
+
             // turn off all the sound effect
             if (!focusStatus)
             {
