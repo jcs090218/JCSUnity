@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Do the circle action.
     /// </summary>
     public class JCS_2DCircleAction
         : MonoBehaviour

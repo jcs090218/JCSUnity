@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Spawn a skill and destroy itself after 
     /// done displaying the skill effect.
