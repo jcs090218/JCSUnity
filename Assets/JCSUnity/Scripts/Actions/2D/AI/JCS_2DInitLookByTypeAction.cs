@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// When it start, target the object by the action
     /// have chosen.

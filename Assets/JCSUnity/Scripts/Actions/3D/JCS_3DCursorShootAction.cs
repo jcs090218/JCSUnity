@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Shoot bullet toward the cursor position in 3d space.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     public class JCS_3DCursorShootAction

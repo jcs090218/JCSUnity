@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Anything with this tag will be ignore by fly object.
     /// </summary>

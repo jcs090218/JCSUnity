@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Simulate the drop item action.
     /// Control the compoenent in order to do this action.

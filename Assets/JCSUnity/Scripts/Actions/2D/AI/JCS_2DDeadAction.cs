@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Work with the "JCS_2DLiveObject" class. (Optional/Effect Class)
     /// </summary>

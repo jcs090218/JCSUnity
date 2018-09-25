@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Track object in 3d space.
     /// </summary>
     public class JCS_3DTrackAction
         : MonoBehaviour
@@ -26,11 +25,16 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_3DTrackAction) **")]
+
         [Tooltip("Transform we want to target")]
-        [SerializeField] private Transform mTargetTransform = null;
+        [SerializeField]
+        private Transform mTargetTransform = null;
+
         [Tooltip("Invers of Speed")]
-        [SerializeField] private float mMoveFriction = 1;
+        [SerializeField]
+        private float mMoveFriction = 1;
 
         //----------------------
         // Protected Variables
@@ -38,14 +42,12 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
+        public float MoveFriction { get { return this.mMoveFriction; } set { this.mMoveFriction = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
-        {
-
-        }
 
         private void Update()
         {

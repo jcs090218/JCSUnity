@@ -12,7 +12,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Handle AI action and allow scripter to use 
     /// to switch the state using State Pattern.
@@ -24,6 +23,9 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
+        /// <summary>
+        /// List of AI movement state.
+        /// </summary>
         public enum JCS_AIMoveActionType
         {
             NONE,
