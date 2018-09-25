@@ -187,7 +187,8 @@ plz set the button here.")]
         private void Start()
         {
             // Only need it for the UI.
-            if (GetObjectType() == JCS_UnityObjectType.UI)
+            if (GetObjectType() == JCS_UnityObjectType.UI ||
+                GetObjectType() == JCS_UnityObjectType.TEXT)
             {
                 // Get panel root, in order to calculate the 
                 // correct distance base on the resolution.
