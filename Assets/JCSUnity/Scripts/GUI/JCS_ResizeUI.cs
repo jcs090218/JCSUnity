@@ -90,6 +90,8 @@ namespace JCSUnity
         public Color ResizePanelColor { get { return this.mResizePanelColor; } set { this.mResizePanelColor = value; } }
 #endif
         public RectTransform GetResizeRect() { return this.mRect; }
+        public float WScale { get { return this.mWScale; } }
+        public float HScale { get { return this.mHScale; } }
         public float TargetScale { get { return this.mTargetScale; } }
 
         //========================================
