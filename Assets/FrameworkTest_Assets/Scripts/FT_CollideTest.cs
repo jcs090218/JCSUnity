@@ -9,7 +9,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class FT_CollideTest : MonoBehaviour 
+
+/// <summary>
+/// Test if the two collider collide.
+/// </summary>
+public class FT_CollideTest 
+    : MonoBehaviour 
 {
 
     //----------------------

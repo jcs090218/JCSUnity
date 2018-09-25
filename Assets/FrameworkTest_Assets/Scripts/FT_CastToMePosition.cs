@@ -12,7 +12,7 @@ using JCSUnity;
 
 
 /// <summary>
-/// 
+/// Cast position to this transform.
 /// </summary>
 public class FT_CastToMePosition
     : MonoBehaviour 
