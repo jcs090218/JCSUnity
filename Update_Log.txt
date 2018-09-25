@@ -9,6 +9,10 @@
 
 2018-09-25
 * Add option disable sound when window not focus in JCS_SoundManager. (JCSUnity)
+* Fixed JCS_PositionCastAction not compatible with resizable screen/
+ window functionalities' issue. (JCSUnity)
+* Fixed JCS_ScaleEffect and JCS_SlideEffect not part of the UI issue, 
+ missing the TEXT component. (JCSUnity)
 
 2018-09-24
 * Update project Unity Engine version to 2018.2.9f1. (JCSUnity)
