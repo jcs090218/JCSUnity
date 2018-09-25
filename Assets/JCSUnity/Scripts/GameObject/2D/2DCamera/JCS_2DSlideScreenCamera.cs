@@ -197,7 +197,7 @@ namespace JCSUnity
         {
             if (mJCS_2DCamera == null)
             {
-                JCS_Debug.LogError("JCS_2DSlideScreenCamera",   "There is not JCS_2DCamera attach to, spawn a default one!");
+                JCS_Debug.LogError("There is not JCS_2DCamera attach to, spawn a default one!");
 
                 // Spawn a Default one!
                 this.mJCS_2DCamera = JCS_Utility.SpawnGameObject(
@@ -209,7 +209,7 @@ namespace JCSUnity
             // if still null, setting error!!
             if (mJCS_2DCamera == null)
             {
-                JCS_Debug.LogError("JCS_2DMultiTrackCamera",   "The object spawn does not have the \"JCS_2DCamera\" components...");
+                JCS_Debug.LogError("The object spawn does not have the \"JCS_2DCamera\" components...");
                 return;
             }
 
