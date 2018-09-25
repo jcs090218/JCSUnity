@@ -81,15 +81,6 @@ namespace JCSUnity
                 mCastPosition = CastToScreen(mCastPosition);
             if (JCS_Input.GetKeyDown(mCastToWorldKey))
                 mCastPosition = CastToWorld(mCastPosition);
-
-            if (JCS_Input.GetKeyDown(KeyCode.A))
-            {
-                print(JCS_Camera.main.WorldToCanvasSpace(new Vector3(99, 55, 11)));
-            }
-            if (JCS_Input.GetKeyDown(KeyCode.B))
-            {
-                print(JCS_Camera.main.CanvasToWorldSpace(new Vector2(2545.7f, 1414.3f)));
-            }
         }
 #endif
 
