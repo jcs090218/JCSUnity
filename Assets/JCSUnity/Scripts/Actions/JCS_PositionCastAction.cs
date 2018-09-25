@@ -37,18 +37,30 @@ namespace JCSUnity
         [SerializeField]
         private bool mTestWithKey = false;
 
-        [Tooltip("Check to see the current casting position.")]
-        [SerializeField]
-        private Vector3 mCastPosition = Vector3.zero;
-
         [Tooltip("Key to test if cast to screen space.")]
         [SerializeField]
         private KeyCode mCastToScreenKey = KeyCode.S;
 
+        [Tooltip("Test position to cast to screen space.")]
+        [SerializeField]
+        private Vector3 mCastToScreenPosition = Vector3.zero;
+
         [Tooltip("Key to test if cast to world soace.")]
         [SerializeField]
         private KeyCode mCastToWorldKey = KeyCode.W;
+
+        [Tooltip("Test position to cast to world space.")]
+        [SerializeField]
+        private Vector3 mCastToWorldPosition = Vector3.zero;
 #endif
+
+
+        [Header("** Check Variables (JCS_PositionCastAction) **")]
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_PanelRoot mPanelRoot = null;
+
 
         [Header("** Runtime Variables (JCS_PositionCastAction) **")]
 
@@ -64,13 +76,26 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
 #if (UNITY_EDITOR)
-        public Vector3 CastPosition { get { return this.mCastPosition; } }
+        public Vector3 CastToScreenPosition { get { return this.mCastToScreenPosition; } }
+        public Vector3 CastToWorldPosition { get { return this.mCastToWorldPosition; } }
 #endif
         public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
+        private void Start()
+        {
+            // Only need it for the UI.
+            if (GetObjectType() == JCS_UnityObjectType.UI ||
+                GetObjectType() == JCS_UnityObjectType.TEXT)
+            {
+                // Get panel root, in order to calculate the 
+                // correct distance base on the resolution.
+                mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+            }
+        }
+
 #if (UNITY_EDITOR)
         private void Update()
         {
@@ -78,9 +103,9 @@ namespace JCSUnity
                 return;
 
             if (JCS_Input.GetKeyDown(mCastToScreenKey))
-                mCastPosition = CastToScreen(mCastPosition);
+                CastToScreen(mCastToScreenPosition);
             if (JCS_Input.GetKeyDown(mCastToWorldKey))
-                mCastPosition = CastToWorld(mCastPosition);
+                CastToWorld(mCastToWorldPosition);
         }
 #endif
 
@@ -91,20 +116,44 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
+        /// Make a canvas space object to a world space's position.
         /// 
+        /// NOTE(jenchieh): Make UI object (canvas space) on top of the 
+        /// world space game object.
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
         public Vector3 CastToScreen(Vector3 pos)
         {
             JCS_Camera jcsCam = JCS_Camera.main;
+            JCS_ResizeUI resizeUI = JCS_ResizeUI.instance;
+
+
+            Vector3 positionOffset = mPositionOffset;
+
+            if (mPanelRoot != null)
+            {
+                positionOffset.x /= mPanelRoot.PanelDeltaWidthRatio;
+                positionOffset.y /= mPanelRoot.PanelDeltaHeightRatio;
+            }
+
 
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.TEXT:
                 case JCS_UnityObjectType.UI:
                     {
-                        this.LocalPosition = jcsCam.WorldToCanvasSpace(pos) + (Vector2)mPositionOffset;
+                        Vector2 worldToCanvasSpace = jcsCam.WorldToCanvasSpace(pos);
+
+                        float targetScale = resizeUI.TargetScale;
+
+                        if (targetScale != 0.0f)
+                        {
+                            worldToCanvasSpace.x /= resizeUI.TargetScale;
+                            worldToCanvasSpace.y /= resizeUI.TargetScale;
+                        }
+
+                        this.LocalPosition = worldToCanvasSpace + (Vector2)positionOffset;
                     }
                     break;
             }
@@ -113,7 +162,10 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Make a 3D game object to canvas space's position.
         /// 
+        /// NOTE(jenchieh): Make world space game object on top of 
+        /// the UI object (canvas space).
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
