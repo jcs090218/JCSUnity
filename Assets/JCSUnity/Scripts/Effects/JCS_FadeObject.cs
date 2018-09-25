@@ -65,7 +65,7 @@ namespace JCSUnity
 
         [Tooltip("How long it fade?")]
         [SerializeField]
-        [Range(0, 60.0f)]
+        [Range(0.0f, 60.0f)]
         private float mFadeTime = 1.0f;
 
         [Tooltip("Override the action before it complete the action.")]
@@ -74,13 +74,13 @@ namespace JCSUnity
 
         [Tooltip("Maxinum of fade amount of value.")]
         [SerializeField]
-        [Range(0, 1)]
+        [Range(0.0f, 1)]
         private float mFadeInAmount = 1;
 
         [Tooltip("Mininum of fade amount of value.")]
         [SerializeField]
-        [Range(0, 1)]
-        private float mFadeOutAmount = 0;
+        [Range(0.0f, 1)]
+        private float mFadeOutAmount = 0.0f;
 
         //----------------------
         // Protected Variables
@@ -98,7 +98,7 @@ namespace JCSUnity
         //------------------------------
         private void Start()
         {
-            if (LocalColor.a <= 0)
+            if (LocalColor.a <= 0.0f)
                 mVisible = false;
             else
                 mVisible = true;
