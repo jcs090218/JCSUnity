@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-09-27
+* Update project unity engine version to 2018.2.10f1. (JCSUnity)
+
 2018-09-25
 * Add option disable sound when window not focus in JCS_SoundManager. (JCSUnity)
 * Fixed JCS_PositionCastAction not compatible with resizable screen/
