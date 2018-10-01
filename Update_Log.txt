@@ -10,6 +10,9 @@
 2018-10-01
 * Rename '2D Game' to just '2D' with parent folder 'Managers'. (JCSUnity)
 * Update project version to 1.8.5. (JCSUnity)
+* Revert to version 1.8.3, and update these changes. (JCSUnity)
+   - Rename In Game Log System => InGameLogSystem.
+* Revert back to 1.8.5 but keep the version 1.8.3's changes. (JCSUnity)
 
 2018-09-27
 * Update project unity engine version to 2018.2.10f1. (JCSUnity)
