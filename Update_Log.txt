@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-10-01
+* Rename '2D Game' to just '2D' with parent folder 'Managers'. (JCSUnity)
+
 2018-09-27
 * Update project unity engine version to 2018.2.10f1. (JCSUnity)
 
