@@ -1,5 +1,5 @@
 ﻿/**
- * $File: ToOfficialButtons.cs $
+ * $File: ToOfficialButton.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,12 +9,13 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 namespace JCSUnity
 {
     /// <summary>
     /// Button will direct to official page url.
     /// </summary>
-    public class ToOfficialButtons 
+    public class ToOfficialButton 
         : JCS_Button
     {
         public override void JCS_OnClickCallback()
