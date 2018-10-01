@@ -2520,7 +2520,7 @@
         </File>
       </Loader>
       <Managers>
-        <2D Game>
+        <2D>
         <File name="JCS_2DDynamicSceneManager.cs">
           <Placement>Already assign.</Placement>
           <Description/>
@@ -2535,10 +2535,10 @@
           <Placement>Already assign.</Placement>
           <Description/>
         </File>
-        </2D Game>
-        <3D Game>
+        </2D>
+        <3D>
         <empty/>
-        </3D Game>
+        </3D>
         <Indie>
           <File name="JCS_ClimbableManager.cs">
             <Placement>Already assign.</Placement>
