@@ -2013,7 +2013,7 @@
           </Description>
         </File>
       </GameWindow>
-      <In Game Log System>
+      <InGameLogSystem>
         <File name="JCS_IGLogSystem.cs">
           <Placement>Any rect-transform.</Placement>
           <Description>In Game Log System (IGL).</Description>
@@ -2024,7 +2024,7 @@
           <Description>Log text for JCS_IGLogSystem to handle.</Description>
         </File>
 
-        </In Game Log System>
+        </InGameLogSystem>
         <Panel>
           <File name="JCS_SequenceSlidePanel.cs">
             <Placement>Any rect-transform.</Placement>
