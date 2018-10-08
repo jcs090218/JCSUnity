@@ -125,19 +125,19 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_Debug.LogError("JCS_MixDamageTextPool",   "min damage cannot be higher or equal to the max damage!");
+                JCS_Debug.LogError("min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_Debug.LogError("JCS_MixDamageTextPool",   "Min or Max damage cannot be lower than 0!");
+                JCS_Debug.LogError("Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogError("JCS_MixDamageTextPool",   "Hit count should not be equal or lower than 0!");
+                JCS_Debug.LogError("Hit count should not be equal or lower than 0!");
                 return null;
             }
 
@@ -178,7 +178,7 @@ namespace JCSUnity
         {
             if (damage.Length != pos.Length)
             {
-                JCS_Debug.LogError("JCS_DamageTextPool",   "Wrong pair size!");
+                JCS_Debug.LogError("Wrong pair size!");
                 return;
             }
 

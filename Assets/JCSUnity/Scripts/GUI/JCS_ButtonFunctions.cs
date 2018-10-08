@@ -85,7 +85,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Destory the current selected dialogue.
         /// </summary>
         /// <param name="type"></param>
         public static void DestoryCurrentDialogue(JCS_DialogueType type)
@@ -106,7 +106,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check if spawning the game ui is fine. If already exists 
+        /// then is not fine.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -180,7 +181,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Spawn a white screen.
         /// </summary>
         public static void PopJCSWhiteScreen()
         {
@@ -199,7 +200,7 @@ namespace JCSUnity
         //** Game UI (Game Layer)
 
         /// <summary>
-        /// 
+        /// Spawn the game UI.
         /// </summary>
         public static void PopInGameUI()
         {
@@ -213,7 +214,7 @@ namespace JCSUnity
         //** (Application Layer)
 
         /// <summary>
-        /// 
+        /// Spawn the connect dialgoue.
         /// </summary>
         public static void PopIsConnectDialogue()
         {
@@ -228,7 +229,7 @@ namespace JCSUnity
         //** In Game Dialogue (Game Layer)
 
         /// <summary>
-        /// 
+        /// Spawn the setting dialogue.
         /// </summary>
         public static void PopSettingDialogue()
         {
@@ -241,7 +242,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Spawn the talke dialogue.
         /// </summary>
         public static void PopTalkDialogue()
         {

@@ -32,8 +32,7 @@ namespace JCSUnity
             if (undecrypted.Length < 0 || undecrypted.Length > JCS_NetworkConstant.INBUFSIZE)
             {
                 // TODO(JenChieh): split the packet system
-                JCS_Debug.LogError("JCS_PacketDecoder", 
-                    "Packet recieved is too big!!!");
+                JCS_Debug.LogError("Packet recieved is too big!!!");
                 return null;
             }
 

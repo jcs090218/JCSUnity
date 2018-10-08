@@ -144,7 +144,7 @@ namespace JCSUnity
         {
             if (mDescDialogue == null)
             {
-                JCS_Debug.LogError("JCS_CheckableObject",   "No dialogue object attached...");
+                JCS_Debug.LogError("No dialogue object attached...");
                 return;
             }
 
@@ -158,7 +158,7 @@ namespace JCSUnity
         {
             if (mDescDialogue == null)
             {
-                JCS_Debug.LogError("JCS_CheckableObject",   "No dialogue object attached...");
+                JCS_Debug.LogError("No dialogue object attached...");
                 return;
             }
 

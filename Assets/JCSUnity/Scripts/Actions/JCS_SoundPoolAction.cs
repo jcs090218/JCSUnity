@@ -30,9 +30,13 @@ namespace JCSUnity
         
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_SoundPoolAction) **")]
+
         [Tooltip("Pool of the audio clips")]
-        [SerializeField] private AudioClip[] mAudioClips = null;
+        [SerializeField]
+        private AudioClip[] mAudioClips = null;
+
         [Tooltip("Sound Type u want to organize")]
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
@@ -71,7 +75,7 @@ namespace JCSUnity
 
             if (mAudioClips[randIndex] == null)
             {
-                JCS_Debug.LogError("JCS_SoundPoolAction",   "You inlcude a null references in he audio pool...");
+                JCS_Debug.LogError("You inlcude a null references in he audio pool...");
                 return;
             }
 

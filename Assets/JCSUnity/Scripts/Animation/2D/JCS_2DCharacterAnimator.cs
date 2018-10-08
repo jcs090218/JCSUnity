@@ -197,7 +197,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Find the clip by clip name.
         /// </summary>
         /// <param name="arr"></param>
         /// <param name="animClipName"></param>
@@ -214,7 +214,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
             }
 
 
-            JCS_Debug.LogError("JCS_2DCharacterAnimator",   "No animation clip found...");
+            JCS_Debug.LogError("No animation clip found...");
             return null;
         }
 

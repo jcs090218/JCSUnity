@@ -92,7 +92,7 @@ namespace JCSUnity
                     {
                         //if (mFocusGameDialogue != null)
                         //{
-                        //    JCS_Debug.LogError("JCS_UIManager",   "Failed to set \"In Game Dialogue\"...");
+                        //    JCS_Debug.LogError("Failed to set \"In Game Dialogue\"...");
                         //    return;
                         //}
 
@@ -103,7 +103,7 @@ namespace JCSUnity
                     {
                         if (mForceDialogue != null)
                         {
-                            //JCS_Debug.LogError("JCS_UIManager",   "Failed to set \"Force Dialogue\"...");
+                            //JCS_Debug.LogError("Failed to set \"Force Dialogue\"...");
                             return;
                         }
 
