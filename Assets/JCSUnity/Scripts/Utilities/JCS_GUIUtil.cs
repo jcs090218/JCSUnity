@@ -223,7 +223,7 @@ namespace JCSUnity
 
         #region ANCHOR
         /// <summary>
-        /// Check the ahcor presets type.
+        /// Check the anchor presets type.
         /// </summary>
         /// <param name="rt"> recttransform </param>
         /// <param name="type"> type of the anchor presets. </param>
@@ -274,7 +274,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check the ahcor presets type.
+        /// Check the anchor presets type.
         /// </summary>
         /// <param name="rt"> recttransform </param>
         /// <returns>
@@ -421,7 +421,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check if the anchor point currently at the stretch.
+        /// Check if the anchor point currently at the stretch y.
         /// </summary>
         /// <param name="min"> achorMin </param>
         /// <param name="max"> achorMax </param>
