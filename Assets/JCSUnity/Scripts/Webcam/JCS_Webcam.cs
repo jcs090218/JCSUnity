@@ -27,40 +27,71 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private bool mDetectDevice = true;
 
         private string mDeviceName = "";
+
         private WebCamTexture mWebCamTexture = null;
+
         private int mCaptureCounter = 0;
 
-        [Header("** Runtime Variables **")]
-        [SerializeField] private float mResumeTime = 0;
+
+        [Header("** Runtime Variables (JCS_Webcam) **")]
+
+        [Tooltip("After the screenshot is taken, how fast to resume the webcam?")]
+        [SerializeField]
+        private float mResumeTime = 0;
+
         private float mResumeTimer = 0;
+
         private bool mResumeTrigger = false;
+
 
 #if (UNITY_STANDALONE || UNITY_EDITOR)
         [Header("** Key Settings **")]
-        [SerializeField] private KeyCode mTakePic = KeyCode.None;
+
+        [Tooltip("Key to take gameplay screenshot.")]
+        [SerializeField]
+        private KeyCode mTakePic = KeyCode.None;
 #endif
 
         [Header("** Image Path **")]
+
         [Tooltip("Webcam u take will save into this path.")]
         [SerializeField] private string mSavePath = "/JCS_GameData/WebcamShot/"; //Change the path here!
 
-        [Header("** Resolution **")]
-        [SerializeField] private int mWebcamResolutionWidth = 1920;
-        [SerializeField] private int mWebcamResolutionHeight = 1080;
+        [Tooltip("Webcam resolution width.")]
+        [SerializeField]
+        private int mWebcamResolutionWidth = 1920;
+
+        [Tooltip("Webcam resolution height.")]
+        [SerializeField]
+        private int mWebcamResolutionHeight = 1080;
 
 
         [Header("** Effect **")]
-        [SerializeField] private bool mSplash = true;
+
+        [Tooltip("Do the splash effect?")]
+        [SerializeField]
+        private bool mSplash = true;
+
+        // Is the splash effect triggered?
         private bool mSplashEffectTrigger = false;
-        [SerializeField] private float mDelay = 1.0f;
+
+        [Tooltip("Delay time to fade out the splash screen.")]
+        [SerializeField]
+        private float mDelay = 1.0f;
+
         private float mDelayTimer = 0;
 
+
         [Header("** Sound Settings **")]
+
+        [Tooltip("Sound when taking the screenshot.")]
         [SerializeField]
         private AudioClip mTakePhotoSound = null;
+
         private JCS_SoundPlayer mSoundPlayer = null;
 
         //----------------------
@@ -73,6 +104,9 @@ namespace JCSUnity
         public void Play() { this.mWebCamTexture.Play(); }
         public void Pause() { this.mWebCamTexture.Pause(); }
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
+
+        public int WebcamResolutionWidth { get { return this.mWebcamResolutionWidth; } set { this.mWebcamResolutionWidth = value; } }
+        public int WebcamResolutionHeight { get { return this.mWebcamResolutionHeight; } set { this.mWebcamResolutionHeight = value; } }
 
         //========================================
         //      Unity's function
@@ -167,7 +201,7 @@ namespace JCSUnity
             // cannot take snap shot without the device!!
             if (!mDetectDevice)
             {
-                JCS_Debug.LogError("JCS_Webcam", "No webcam detected in the current devices.");
+                JCS_Debug.LogError("No webcam detected in the current devices.");
                 return;
             }
 
@@ -209,7 +243,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Get unity specific data by type.
         /// </summary>
         public override void UpdateUnityData()
         {
