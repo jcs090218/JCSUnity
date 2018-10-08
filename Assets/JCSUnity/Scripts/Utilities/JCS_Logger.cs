@@ -31,7 +31,7 @@ namespace JCSUnity
     public static class JCS_Logger
     {
         /// <summary>
-        /// 
+        /// JCSUnity custom log function.
         /// </summary>
         /// <param name="msg"></param>
         public static void Info(

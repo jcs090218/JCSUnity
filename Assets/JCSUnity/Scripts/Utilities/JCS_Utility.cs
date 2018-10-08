@@ -27,8 +27,7 @@ namespace JCSUnity
     /// <summary>
     /// All the utility function put here.
     /// </summary>
-    public class JCS_Utility
-        : MonoBehaviour
+    public static class JCS_Utility
     {
 
         /// <summary>
@@ -40,11 +39,11 @@ namespace JCSUnity
         /// <returns></returns>
         public static GameObject SpawnGameObject(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
-            return Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
+            return MonoBehaviour.Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
         }
 
         /// <summary>
-        /// 
+        /// Spawn a gmae object.
         /// </summary>
         /// <param name="trans"></param>
         /// <param name="position"></param>
@@ -55,7 +54,7 @@ namespace JCSUnity
             if (trans == null)
                 return null;
 
-            return Instantiate(trans, position, rotation);
+            return MonoBehaviour.Instantiate(trans, position, rotation);
         }
 
         /// <summary>
@@ -145,7 +144,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Returns the size of the image.
         /// </summary>
         /// <param name="img"></param>
         /// <returns></returns>
@@ -154,7 +153,7 @@ namespace JCSUnity
             RectTransform rt = img.transform.GetComponent<RectTransform>();
             if (rt == null)
             {
-                JCS_Debug.LogError("JCS_UsefulFunctions", "No RectTransform on ur image!");
+                JCS_Debug.LogError("No RectTransform on ur image!");
                 return Vector2.one;
             }
 
@@ -165,7 +164,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Returns the size of the sprite renderer without the scale value multiply.
         /// </summary>
         /// <param name="sr"></param>
         /// <returns></returns>
@@ -177,7 +176,7 @@ namespace JCSUnity
             return new Vector2(width, height);
         }
         /// <summary>
-        /// 
+        /// Returns the size of the sprite renderer.
         /// </summary>
         /// <param name="sr"></param>
         /// <returns></returns>
@@ -268,7 +267,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the vector value.
         /// </summary>
         /// <param name="val"></param>
         /// <param name="x"></param>
@@ -297,6 +296,13 @@ namespace JCSUnity
 
             return newVec;
         }
+
+        /// <summary>
+        /// Add the vector value.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public static Vector3 IncVecX(Vector3 val, float x)
         {
             return IncVec3(val, x, 0, 0);
@@ -592,7 +598,7 @@ namespace JCSUnity
                 // NOTE(JenChieh): kill the object that are clone!
                 // or else it will effect the prefab object...
                 if (e.gameObject.name.Contains("(Clone)"))
-                    Destroy(e.gameObject);
+                    MonoBehaviour.Destroy(e.gameObject);
             }
         }
 
@@ -610,7 +616,7 @@ namespace JCSUnity
                 // NOTE(JenChieh): kill the object that are clone!
                 // or else it will effect the prefab object...
                 if (e.gameObject.name.Contains("(Clone)"))
-                    DestroyImmediate(e.gameObject);
+                    MonoBehaviour.DestroyImmediate(e.gameObject);
             }
         }
 

@@ -17,7 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Store all the GUI related utilities function here.
     /// </summary>
-    public class JCS_GUIUtil
+    public static class JCS_GUIUtil
     {
         #region DROPDOWN
         /// <summary>

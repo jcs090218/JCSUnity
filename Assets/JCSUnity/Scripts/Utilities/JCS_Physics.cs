@@ -54,8 +54,7 @@ namespace JCSUnity
     /// <summary>
     /// All physics util design here...
     /// </summary>
-    public class JCS_Physics
-        : MonoBehaviour
+    public static class JCS_Physics
     {
         /// <summary>
         /// Return Character controller's collider's width and height.

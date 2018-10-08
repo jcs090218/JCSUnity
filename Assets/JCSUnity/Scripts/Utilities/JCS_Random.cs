@@ -16,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Store of random algorithm.
     /// </summary>
-    public class JCS_Random
-        : MonoBehaviour
+    public static class JCS_Random
     {
         /// <summary>
         /// Return normal random range (Integer)

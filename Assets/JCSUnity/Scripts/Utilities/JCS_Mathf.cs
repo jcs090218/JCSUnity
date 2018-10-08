@@ -16,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Store all the useful math function here...
     /// </summary>
-    public class JCS_Mathf 
-        : MonoBehaviour
+    public static class JCS_Mathf 
     {
         // Radian to Degree.
         public const float Rad2Deg = 180.0f / Mathf.PI;
@@ -276,7 +275,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Make value approach to the target value by 
+        /// increment/decrement one.
         /// </summary>
         /// <param name="currentVal"></param>
         /// <param name="targetVal"></param>
@@ -306,14 +306,6 @@ namespace JCSUnity
         /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
         /// <param name="origin"> 以這個"點"為中心旋轉 </param>
         /// <returns></returns>
-        public static Vector3 RotatePointZ(
-            Vector3 point, float cos, float sin, Vector3 origin)
-        {
-            return new Vector3(
-            origin.x + ((point.x - origin.x) * cos) - ((point.y - origin.y) * sin),
-            origin.y + ((point.x - origin.x) * sin) + ((point.y - origin.y) * cos),
-            point.z);
-        }
         public static Vector3 RotatePointX(
             Vector3 point, float cos, float sin, Vector3 origin)
         {
@@ -321,6 +313,14 @@ namespace JCSUnity
             point.x,
             origin.z + ((point.z - origin.z) * cos) - ((point.y - origin.y) * sin),
             origin.y + ((point.z - origin.z) * sin) + ((point.y - origin.y) * cos));
+        }
+        public static Vector3 RotatePointZ(
+            Vector3 point, float cos, float sin, Vector3 origin)
+        {
+            return new Vector3(
+            origin.x + ((point.x - origin.x) * cos) - ((point.y - origin.y) * sin),
+            origin.y + ((point.x - origin.x) * sin) + ((point.y - origin.y) * cos),
+            point.z);
         }
         public static Vector3 RotatePointY(
             Vector3 point, float cos, float sin, Vector3 origin)
@@ -332,25 +332,26 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// 計算旋轉的點 (JCS_VECTOR2F)
         /// </summary>
-        /// <param name="point"></param>
-        /// <param name="origin"></param>
-        /// <param name="angle"></param>
+        /// <param name="point"> 我們要計算的"點" </param>
+        /// <param name="cos"> Cos 的角度 "Cos(angle)" </param>
+        /// <param name="sin"> Sin 的角度 "Sin(angle)" </param>
+        /// <param name="origin"> 以這個"點"為中心旋轉 </param>
         /// <returns></returns>
-        public static Vector3 RotatePointY(Vector3 point, Vector3 origin, float angle)
-        {
-            return new Vector3(
-                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.z - origin.z)),
-                point.y,
-                origin.z + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.z - origin.z)));
-        }
         public static Vector3 RotatePointX(Vector3 point, Vector3 origin, float angle)
         {
             return new Vector3(
                 point.x,
                 origin.y + ((Mathf.Cos(angle) * (point.y - origin.y))) - (Mathf.Sin(angle) * (point.z - origin.z)),
                 origin.z + ((Mathf.Sin(angle) * (point.y - origin.y))) + (Mathf.Cos(angle) * (point.z - origin.z)));
+        }
+        public static Vector3 RotatePointY(Vector3 point, Vector3 origin, float angle)
+        {
+            return new Vector3(
+                origin.x + ((Mathf.Cos(angle) * (point.x - origin.x))) - (Mathf.Sin(angle) * (point.z - origin.z)),
+                point.y,
+                origin.z + ((Mathf.Sin(angle) * (point.x - origin.x))) + (Mathf.Cos(angle) * (point.z - origin.z)));
         }
         public static Vector3 RotatePointZ(Vector3 point, Vector3 origin, float angle)
         {
@@ -434,7 +435,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Do law of sine.
         /// </summary>
         /// <returns></returns>
         public static float LawOfSine()
@@ -449,11 +450,13 @@ namespace JCSUnity
             // 都是相對應的. 
             // 角A對邊就是邊a.
 
+            // TODO(jenchieh): implement this..
+
             return 0;
         }
 
         /// <summary>
-        /// 
+        /// Dow law of cosinze
         /// </summary>
         /// <returns></returns>
         public static float LawOfCosine()
@@ -467,6 +470,8 @@ namespace JCSUnity
             // A,B,B是角
             // 都是相對應的. 
             // 角A對邊就是邊a.
+
+            // TODO(jenchieh): implement this..
 
             return 0;
         }
@@ -659,7 +664,6 @@ namespace JCSUnity
             return Mathf.Tan(DegreeToRadian(deg));
         }
 
-        /// <returns></returns>
         /// <summary>
         /// Find the point on the circle line base on the degree. (x-axis)
         /// </summary>
