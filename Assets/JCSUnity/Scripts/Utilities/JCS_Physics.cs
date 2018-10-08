@@ -171,7 +171,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Returns character controller's infomration.
         /// </summary>
         /// <param name="cap"></param>
         /// <returns></returns>
@@ -194,7 +194,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Returns character controller's infomration.
         /// </summary>
         /// <param name="rect2d"></param>
         /// <returns> width and height </returns>
@@ -299,7 +299,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set a collider on top of a box collider.
         /// </summary>
         /// <param name="cap"></param>
         /// <param name="rect"></param>
@@ -310,7 +310,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set a collider on top of a box collider.
         /// </summary>
         /// <param name="cap"></param>
         /// <param name="rect"></param>
@@ -352,7 +352,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set a collider on top of a box collider including measuring 
+        /// the slope from the box collider.
         /// </summary>
         /// <param name="cap"></param>
         /// <param name="rect"></param>
@@ -643,7 +644,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set a collider at the bottom of the box collider.
         /// </summary>
         /// <param name="botBox"></param>
         /// <param name="topBox"></param>
@@ -687,7 +688,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set a collider at the right of the box collider.
         /// </summary>
         /// <param name="leftBox"></param>
         /// <param name="rightBox"></param>
@@ -731,7 +732,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set a collider at the left of the box collider.
         /// </summary>
         /// <param name="rightBox"></param>
         /// <param name="leftBox"></param>
@@ -942,7 +943,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check if a collider under the bottom of the box collider.
         /// </summary>
         /// <param name="cap"></param>
         /// <param name="rect"></param>
@@ -984,7 +985,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Check if two collider collapse.
         /// </summary>
         /// <param name="cap"></param>
         /// <param name="rect"></param>
@@ -1119,7 +1120,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Returns the gameobject that the closest to the current 
+        /// pass in transform.
         /// </summary>
         /// <returns></returns>
         public static RaycastHit2D FindClosestHit(RaycastHit2D[] list, Transform trans)
