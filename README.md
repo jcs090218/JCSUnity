@@ -88,6 +88,9 @@ Log system inside the game. <br/>
 ## Tutorials ##
 * https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
 
+## Manual/Scripting API ##
+* Web Page: <a href="http://www.jcs-profile.com:3000">JCSUnity-Scripting-Manual</a>
+
 ## Games ##
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
   <img src="./games/hemlock_logo.png" width="100" height="100" align="middle"/>
