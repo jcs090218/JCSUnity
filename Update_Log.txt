@@ -8,6 +8,7 @@
 
 
 2018-10-10
+* Move realted section into one section in the readme file. (JCSUnity)
 * Add the manual/scripting api section into readme file. (JCSUnity)
 
 2018-10-09
