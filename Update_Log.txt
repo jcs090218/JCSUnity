@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-10-13
+* Update project unity engine version to 2018.2.12f1. (JCSUnity)
+
 2018-10-10
 * Move realted section into one section in the readme file. (JCSUnity)
 * Add the manual/scripting api section into readme file. (JCSUnity)
