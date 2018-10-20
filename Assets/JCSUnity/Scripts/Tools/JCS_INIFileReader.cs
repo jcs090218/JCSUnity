@@ -20,7 +20,6 @@ namespace JCSUnity
     /// </summary>
     public class JCS_INIFileReader
     {
-        
 
         /// <summary>
         /// Read the .ini file and return it values.
