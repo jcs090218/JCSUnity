@@ -30,54 +30,26 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Settings (JCS_SoundSettings) **")]
+        [Header("** Runtime Variables (JCS_SoundSettings) **")]
 
         [Tooltip("Background Music Mute?")]
         public bool BGM_MUTE = false;
         [Tooltip("SFX mute?")]
         public bool EFFECT_MUTE = false;
-        [Tooltip("player sound effect mute?")]
+        [Tooltip("Player sound effect mute?")]
         public bool PERFONAL_EFFECT_MUTE = false;
 
-        [Tooltip("Background music [Default: 0.5f]")]
+        [Tooltip("Background music [Default: 0.4f]")]
         [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float BGM_SOUND = 0.4f;
 
-        [Tooltip("Sound from other player/environment [Default: 0.5f]")]
+        [Tooltip("Sound from other player/environment [Default: 0.4f]")]
         [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float SFX_SOUND = 0.4f;
 
-        [Tooltip("Sound from player [Default: 0.75f]")]
+        [Tooltip("Sound from player [Default: 0.4f]")]
         [Range(MIN_SOUND_VOLUME, MAX_SOUND_VOLUME)]
         public float SKILLS_SOUND = 0.4f;
-
-
-        [Header("** Scene Sound (JCS_SoundSettings) **")]
-
-        [Tooltip("")]
-        public bool SMOOTH_SWITCH_SOUND_BETWEEN_SCENE = true;
-
-        [Tooltip("")]
-        public AudioClip BACKGROUND_MUSIC = null;
-
-
-        // Window System
-        [Header("** Window System (JCS_SoundSettings) **")]
-
-        [Tooltip("")]
-        public AudioClip DEFAULT_OPEN_WINDOW_CLIP = null;
-
-        [Tooltip("")]
-        public AudioClip DEFAULT_CLOSE_WINDOW_CLIP = null;
-
-
-        [Header("** Check Variables (JCS_SoundSettings) **")]
-
-        [Tooltip("Keep BGM current scene?")]
-        public bool KEEP_BGM_SWITCH_SCENE = false;
-
-
-        [Header("** Runtime Variables (JCS_SoundSettings) **")]
 
         [Tooltip("General Sound fadout time.")]
         [Range(MIN_SOUND_FADEOUT_TIME, MAX_SOUND_FADEOUT_TIME)]
@@ -86,6 +58,28 @@ namespace JCSUnity
         [Tooltip("General Sound fadein time.")]
         [Range(MIN_SOUND_FADEOUT_TIME, MAX_SOUND_FADEOUT_TIME)]
         public float SOUND_FADEIN_TIME = 1.5f;
+
+        [Tooltip("Keep BGM current scene?")]
+        public bool KEEP_BGM_SWITCH_SCENE = false;
+
+
+        [Header("** Scene Sound (JCS_SoundSettings) **")]
+
+        [Tooltip("Smoothly switching the sound between the switching the scene.")]
+        public bool SMOOTH_SWITCH_SOUND_BETWEEN_SCENE = true;
+
+        [Tooltip("Clip that will play as background music for this scene.")]
+        public AudioClip BACKGROUND_MUSIC = null;
+
+
+        // Window System
+        [Header("** Window System (JCS_SoundSettings) **")]
+
+        [Tooltip("Sound to play when open the window clip.")]
+        public AudioClip DEFAULT_OPEN_WINDOW_CLIP = null;
+
+        [Tooltip("Sound to play when close the window clip.")]
+        public AudioClip DEFAULT_CLOSE_WINDOW_CLIP = null;
 
         //----------------------
         // Protected Variables
