@@ -14,7 +14,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Scene setting.
+    /// Handle the scene the better way.
     /// </summary>
     public class JCS_SceneSettings
         : JCS_Settings<JCS_SceneSettings>
