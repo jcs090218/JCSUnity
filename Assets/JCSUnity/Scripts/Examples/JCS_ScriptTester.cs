@@ -27,7 +27,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Test Variables (JCS_DialogueSystem) **")]
+        [Header("** Test Variables (JCS_ScriptTester) **")]
 
         [Tooltip("Dialogue system use to test. If null will use the default from 'JCS_UtilitiesManager'.")]
         [SerializeField]
