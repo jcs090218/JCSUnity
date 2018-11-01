@@ -37,14 +37,22 @@ the server!")]
         [Tooltip("On switching the server?")]
         public bool ON_SWITCH_SERVER = false;
 
+        [Tooltip("Flag to check if is force switching the server.")]
         public bool FORCE_SWITCH_SERVER = false;
 
 
         [Header("** Online Game Configuration **")]
+
+        [Tooltip("Is the current game with online mode active?")]
         public bool ONLINE_MODE = false;
 
+        [Tooltip("Type of the client protocal.")]
         public JCS_ProtocalType PROTOCAL_TYPE = JCS_ProtocalType.TCP;
+
+        [Tooltip("Client hostname.")]
         public string HOST_NAME = "127.0.0.1";
+
+        [Tooltip("Client port.")]
         public int PORT = 5454;
 
         [Tooltip("Channel count in this game.")]
@@ -99,34 +107,6 @@ the server!")]
         /*******************************************/
         //----------------------
         // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        /// <summary>
-        /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
-        /// I would like to use own define to transfer the old instance
-        /// to the newer instance.
-        /// 
-        /// Every time when unity load the scene. The script have been
-        /// reset, in order not to lose the original setting.
-        /// transfer the data from old instance to new instance.
-        /// </summary>
-        /// <param name="_old"> old instance </param>
-        /// <param name="_new"> new instance </param>
-        protected override void TransferData(JCS_NetworkSettings _old, JCS_NetworkSettings _new)
-        {
-            _new.ONLINE_MODE = _old.ONLINE_MODE;
-            _new.HOST_NAME = _old.HOST_NAME;
-            _new.PORT = _old.PORT;
-            _new.PROTOCAL_TYPE = _old.PROTOCAL_TYPE;
-            _new.CHANNEL_COUNT = _old.CHANNEL_COUNT;
-
-            _new.ON_SWITCH_SERVER = _old.ON_SWITCH_SERVER;
-            _new.FORCE_SWITCH_SERVER = _old.FORCE_SWITCH_SERVER;
-
-            _new.CLIENT_MODE = _old.CLIENT_MODE;
-        }
 
         /// <summary>
         /// Create the socket and connect to the host and 
@@ -277,6 +257,34 @@ the server!")]
             ON_SWITCH_SERVER = true;
 
             FORCE_SWITCH_SERVER = force;
+        }
+
+        //----------------------
+        // Protected Functions
+
+        /// <summary>
+        /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
+        /// I would like to use own define to transfer the old instance
+        /// to the newer instance.
+        /// 
+        /// Every time when unity load the scene. The script have been
+        /// reset, in order not to lose the original setting.
+        /// transfer the data from old instance to new instance.
+        /// </summary>
+        /// <param name="_old"> old instance </param>
+        /// <param name="_new"> new instance </param>
+        protected override void TransferData(JCS_NetworkSettings _old, JCS_NetworkSettings _new)
+        {
+            _new.ONLINE_MODE = _old.ONLINE_MODE;
+            _new.HOST_NAME = _old.HOST_NAME;
+            _new.PORT = _old.PORT;
+            _new.PROTOCAL_TYPE = _old.PROTOCAL_TYPE;
+            _new.CHANNEL_COUNT = _old.CHANNEL_COUNT;
+
+            _new.ON_SWITCH_SERVER = _old.ON_SWITCH_SERVER;
+            _new.FORCE_SWITCH_SERVER = _old.FORCE_SWITCH_SERVER;
+
+            _new.CLIENT_MODE = _old.CLIENT_MODE;
         }
 
         //----------------------
