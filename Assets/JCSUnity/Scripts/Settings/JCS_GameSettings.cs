@@ -14,7 +14,7 @@ using System.IO;
 namespace JCSUnity
 {
     /// <summary>
-    /// Holde the general game setting.
+    /// Hold the general game setting.
     /// </summary>
     public class JCS_GameSettings
         : JCS_Settings<JCS_GameSettings>
