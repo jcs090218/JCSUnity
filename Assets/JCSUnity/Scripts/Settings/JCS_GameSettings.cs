@@ -26,28 +26,32 @@ namespace JCSUnity
         [Tooltip("Debug mode flag.")]
         public bool DEBUG_MODE = true;
 
-        [Tooltip("")]
+        [Tooltip("Game scene flag.<")]
         public bool THIS_IS_GAME_SCENE = false;
 
-        [Tooltip("")]
+        [Tooltip("Level design mode flag.")]
         public bool LEVEL_DESIGN_MODE = true;
 
-        [Tooltip("")]
+        [Tooltip("Game type flag.")]
         public JCS_GameType GAME_TYPE = JCS_GameType.GAME_2D;
 
-        [Tooltip("")]
+        [Tooltip("Gravity production. (For game that have gravity in it)")]
         public float GRAVITY_PRODUCT = 4.5f;
 
 
         //-- Camera
         [Header("** Camera Settings (JCS_GameSettings) **")]
+
+        [Tooltip("Type of the camera.")]
         public JCS_CameraType CAMERA_TYPE = JCS_CameraType.NONE;
 
 
         //-- Player
         [Header("** Player Settings (JCS_GameSettings) **")]
+
         [Tooltip("Game only allows control one player.")]
         public bool ACTIVE_ONE_PLAYER = true;
+
 
         //-- 
         [Header("** Collision Settings **")]
@@ -62,12 +66,17 @@ namespace JCSUnity
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
 
-        [Header("** Screen Shot Settings (JCS_GameSettings) **")]
-
         //-- Screen Shot
-        public string SCREENSHOT_PATH = "/JCS_ScreenShot/"; // Screen shot folder path [Default: /JCS_ScreenShot/]
-        public string SCREENSHOT_FILENAME = "Screenshot_"; // Screen shot file name [Default: Screenshot_]
-        public string SAVED_IMG_EXTENSION = ".png"; // Extension [Default: .png]
+        [Header("** Screen Shot Settings (JCS_GameSettings) **")]
+        
+        [Tooltip("Screen shot folder path [Default: /JCS_ScreenShot/]")]
+        public string SCREENSHOT_PATH = "/JCS_ScreenShot/";
+
+        [Tooltip("Screen shot file name [Default: Screenshot_]")]
+        public string SCREENSHOT_FILENAME = "Screenshot_";
+
+        [Tooltip("Extension [Default: .png]")]
+        public string SAVED_IMG_EXTENSION = ".png";
 
         
         [Header("** Save Load Settings (JCS_GameSettings) **")]
