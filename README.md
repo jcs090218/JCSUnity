@@ -85,7 +85,7 @@ Log system inside the game. <br/>
 ## Links ##
 * Demo : https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 * Tutorials : https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
-* Manual/Scripting API : <a href="http://www.jcs-profile.com:3000">JCSUnity-Scripting-Manual</a>
+* Manual/Scripting API : <a href="http://www.jcs-profile.com:3001">JCSUnity-Scripting-Manual</a>
 
 ## Games ##
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
