@@ -14,7 +14,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// JCSUnity base packet. Instead of making 'byte[]' everywhere use
     /// this class instead make more readable and meaningful.

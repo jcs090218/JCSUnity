@@ -14,7 +14,6 @@ using System.IO;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Base packet handler.
     /// </summary>

@@ -15,7 +15,6 @@ using System;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Default message handler
     /// </summary>
