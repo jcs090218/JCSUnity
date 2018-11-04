@@ -280,7 +280,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get byte array from the current input buffer memory space.
+        /// Get byte array from the current output buffer memory space.
         /// </summary>
         /// <param name="start"> start index. </param>
         /// <param name="len"> len of the byte to read. </param>
