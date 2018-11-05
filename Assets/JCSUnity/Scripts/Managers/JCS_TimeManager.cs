@@ -27,15 +27,15 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Tooltip("")]
+        [Tooltip("Time range at the current region.")]
         [SerializeField]
         private JCS_TimeRange mCurrentTimeRange = JCS_TimeRange.UNKNOWN;
 
-        [Tooltip("")]
+        [Tooltip("Season current time.")]
         [SerializeField]
         private JCS_SeasonType mCurrentSeasonType = JCS_SeasonType.UNKNOWN;
 
-        [Tooltip("")]
+        [Tooltip("Weather current time period.")]
         [SerializeField]
         private JCS_WeatherType mCurrentWeatherType = JCS_WeatherType.UNKNOWN;
 

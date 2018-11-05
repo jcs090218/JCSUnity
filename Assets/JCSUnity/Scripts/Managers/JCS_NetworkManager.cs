@@ -23,8 +23,11 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+
+        // Server close flag.
         public static bool SERVER_CLOSE = false;
 
+        // First login flag?
         public static bool FIRST_LOGIN = true;
 
         //----------------------

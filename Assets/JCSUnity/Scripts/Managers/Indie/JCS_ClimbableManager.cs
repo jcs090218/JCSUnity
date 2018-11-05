@@ -31,11 +31,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ClimbableManager) **")]
 
-        [Tooltip("")]
+        [Tooltip("Sorting order add up when climable interactable object is infront.")]
         [Range(0, 20)]
         public int SORTING_ORDER_INFRONT_OFFSET = 1;
 
-        [Tooltip("")]
+        [Tooltip("Sorting order reduce up when climable interactable object is behind.")]
         [Range(0, 20)]
         public int SORTING_ORDER_BEHIND_OFFSET = 1;
 

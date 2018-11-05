@@ -28,11 +28,11 @@ namespace JCSUnity
 
         [Header("** Check Varaibles (JCS_InputManager) **")]
 
-        [Tooltip("")]
+        [Tooltip("Slide input receiver.")]
         [SerializeField]
         private JCS_SlideInput mSlideInput = null;
 
-        [Tooltip("Handle mobile even component.")]
+        [Tooltip("Handle mobile event component.")]
         [SerializeField]
         private JCS_MobileMouseEvent mMobileMouseEvent = null;
 

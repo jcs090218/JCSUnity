@@ -27,6 +27,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+        [Header("** Runtime Variables (JCS_PatchManager) **")]
+
+        [Tooltip("Next level load after the patch checked.")]
         [SerializeField]
         private string mNextLevel = "JCS_LogoScene";
 

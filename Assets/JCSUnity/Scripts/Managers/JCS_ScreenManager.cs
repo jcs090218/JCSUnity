@@ -45,7 +45,7 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Check Variables (JCS_AspectScreen) **")]
+        [Header("** Check Variables (JCS_ScreenManager) **")]
 
         [Tooltip("Invisible object area.")]
         [SerializeField]
