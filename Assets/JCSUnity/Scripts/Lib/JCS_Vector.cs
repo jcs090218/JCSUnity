@@ -66,7 +66,7 @@ namespace JCSUnity
         /// <summary>
         /// remove the element of index, and return the element
         /// </summary>
-        /// <param name="index">Index.</param>
+        /// <param name="index">Target index.</param>
         public T slice(int index)
         {
             if (index >= 0 && index <= m_array.Length - 1)
@@ -93,6 +93,10 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// remove the element of index, and return the element
+        /// </summary>
+        /// <param name="target">Target object.</param>
         public T slice(T target)
         {
             bool isFound = false;
@@ -132,6 +136,11 @@ namespace JCSUnity
             return default(T);
         }
 
+        /// <summary>
+        /// Set the object by index.
+        /// </summary>
+        /// <param name="index">Target index.</param>
+        /// <param name="val">Object value.</param>
         public void set(int index, T val)
         {
             if (index >= 0 && index <= m_array.Length - 1)
@@ -140,6 +149,9 @@ namespace JCSUnity
                 Debug.Log("JCS_Vector::(139)::Out of Range!");
         }
 
+        /// <summary>
+        /// Clear the array.
+        /// </summary>
         public void clear()
         {
             // Call init directly clear the vector.

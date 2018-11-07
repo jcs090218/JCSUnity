@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace JCSUnity
@@ -43,12 +44,29 @@ namespace JCSUnity
         // Public Functions
         public JCS_Sort() { }
 
+        /// <summary>
+        /// Add the list of the sorting object to the array.
+        /// </summary>
+        /// <param name="arr"></param>
         public void AddAll(T[] arr)
         {
             // copy array
             mArray = arr;
         }
 
+        /// <summary>
+        /// Add the list of the sorting object to the array.
+        /// </summary>
+        /// <param name="arr"></param>
+        public void AddAll(List<T> arr)
+        {
+            AddAll(arr.ToArray());
+        }
+
+        /// <summary>
+        /// Use insertion sort method to sort the object.
+        /// </summary>
+        /// <returns>List of sorted sorting object.</returns>
         public T[] InsertionSort()
         {
             for (int i = 0; i < mArray.Length; ++i)

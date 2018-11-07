@@ -40,7 +40,7 @@ namespace JCSUnity
         //------------------------------
         public JCS_Pair()
         {
-
+            // empty..
         }
 
         public JCS_Pair(T pair1, U pair2)

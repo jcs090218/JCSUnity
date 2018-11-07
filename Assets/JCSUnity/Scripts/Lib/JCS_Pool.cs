@@ -31,9 +31,12 @@ namespace JCSUnity
             objects = new JCS_Vector<T>(num);
         }
 
+        /// <summary>
+        /// Return the object to pool.
+        /// </summary>
         public void ReturnToPool()
         {
-
+            // TODO(jenchieh): currently empty..
         }
 
     }
