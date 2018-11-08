@@ -32,12 +32,19 @@ namespace JCSUnity
         protected JCS_CharacterControllerInfo mCharacterControllerInfo = null;
 
 
-        [Header("** Initilaize Variables (JCS_Player) **")]
+        [Header("** Runtime Variables (JCS_Player) **")]
 
-        [SerializeField] protected Vector3 mVelocity = Vector3.zero;
-        [SerializeField] protected float mMoveSpeed = 0.0f;
-        
-        [SerializeField] protected bool mIsControllable = true;
+        [Tooltip("How fast this player moves.")]
+        [SerializeField]
+        protected Vector3 mVelocity = Vector3.zero;
+
+        [Tooltip("Move speed of this player.")]
+        [SerializeField]
+        protected float mMoveSpeed = 0.0f;
+
+        [Tooltip("Is the player controllable?")]
+        [SerializeField]
+        protected bool mIsControllable = true;
 
 
         //========================================
