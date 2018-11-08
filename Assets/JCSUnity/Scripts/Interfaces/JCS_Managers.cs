@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Interface of manages.
+    /// Interface of managers.
     /// 
     /// Manager have to be in every scene 
     /// in Unity Engine's scene system.
