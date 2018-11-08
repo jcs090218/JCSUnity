@@ -7,6 +7,10 @@
 # ========================================================================
 
 
+2018-11-08
+* Fixed several demo scenes. (JCSUnity)
+* Remove deprecated module component that Unity declare as deprecated. (JCSUnity)
+
 2018-10-29
 * Update project unity engine version to 2018.2.14f1. (JCSUnity)
 
