@@ -17,7 +17,7 @@ namespace JCSUnity
     public delegate void ZeroCallback();
 
     /// <summary>
-    /// 
+    /// Liquid bar object's interface declaration.
     /// </summary>
     public abstract class JCS_LiquidBar
         : MonoBehaviour
@@ -72,7 +72,7 @@ target position/value.")]
         [Range(MIN_LIQUID_BAR_VALUE, MAX_LIQUID_BAR_VALUE)]
         protected float mMaxValue = 100;
 
-        [Tooltip("")]
+        [Tooltip("Current liquid bar value.")]
         [SerializeField]
         protected float mCurrentValue = 50;
 
