@@ -44,11 +44,14 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
+        //----------------------
+        // Protected Functions
+
         /// <summary>
-        /// 
+        /// Force the setting object singleton.
         /// </summary>
-        /// <param name="_old"></param>
-        /// <param name="_new"></param>
+        /// <param name="_old"> old instance. </param>
+        /// <param name="_new"> new instance. </param>
         protected T CheckSingleton(T _old, T _new)
         {
             if (_old != null)
@@ -61,9 +64,6 @@ namespace JCSUnity
 
             return _new;
         }
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
