@@ -218,8 +218,8 @@ RectTransform:
   m_Children:
   - {fileID: 1077706353}
   - {fileID: 1063982003}
-  m_Father: {fileID: 721491502}
-  m_RootOrder: 3
+  m_Father: {fileID: 934021222}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -309,7 +309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
-  mResizeUI_path: JCSUnity_Resources/LevelDesignUI/ResizeUI
 --- !u!114 &721491499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,10 +376,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 2031414602}
   - {fileID: 934021222}
-  - {fileID: 1680278273}
-  - {fileID: 70186285}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -421,8 +417,11 @@ RectTransform:
   - {fileID: 2006004928}
   - {fileID: 1201376768}
   - {fileID: 1822043565}
+  - {fileID: 2031414602}
+  - {fileID: 70186285}
+  - {fileID: 1680278273}
   m_Father: {fileID: 721491502}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1210,15 +1209,15 @@ MonoBehaviour:
   BGM_SOUND: 0.4
   SFX_SOUND: 0.4
   SKILLS_SOUND: 0.4
+  SOUND_FADEOUT_TIME: 1.5
+  SOUND_FADEIN_TIME: 1.5
+  KEEP_BGM_SWITCH_SCENE: 0
   SMOOTH_SWITCH_SOUND_BETWEEN_SCENE: 1
   BACKGROUND_MUSIC: {fileID: 8300000, guid: aadaa2bb458696e4cb1bbc6322707e03, type: 3}
   DEFAULT_OPEN_WINDOW_CLIP: {fileID: 8300000, guid: 9ddc3d435db7ab44ea990d4bbbe7a5c4,
     type: 3}
   DEFAULT_CLOSE_WINDOW_CLIP: {fileID: 8300000, guid: 736e87ccc3170ce408ca6cf0785e0ee5,
     type: 3}
-  KEEP_BGM_SWITCH_SCENE: 0
-  SOUND_FADEOUT_TIME: 1.5
-  SOUND_FADEIN_TIME: 1.5
 --- !u!114 &1390189976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1364,6 @@ MonoBehaviour:
   PREV_SCREEN_HEIGHT: 0
   ASPECT_RATIO_SCREEN_WIDTH: 0
   ASPECT_RATIO_SCREEN_HEIGHT: 0
-  SCREEN_TYPE: 2
   RESIZE_TO_ASPECT_WHEN_APP_STARTS: 1
   RESIZE_TO_STANDARD_WHEN_APP_STARTS: 0
   RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED: 0
@@ -1730,12 +1728,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1680278272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 721491502}
-  m_RootOrder: 2
+  m_Father: {fileID: 934021222}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2204,7 +2202,7 @@ GameObject:
   - component: {fileID: 2031414604}
   - component: {fileID: 2031414603}
   m_Layer: 5
-  m_Name: Plz delete this desc text.
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2218,10 +2216,10 @@ RectTransform:
   m_GameObject: {fileID: 2031414601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9904113, y: 1.9904116, z: 1.9904116}
+  m_LocalScale: {x: 1.9904114, y: 1.9904116, z: 1.9904116}
   m_Children: []
-  m_Father: {fileID: 721491502}
-  m_RootOrder: 0
+  m_Father: {fileID: 934021222}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2398,6 +2396,7 @@ MonoBehaviour:
   mOverrideSetting: 0
   mSoundFadeInTime: 1.5
   mSoundFadeOutTime: 1.5
+  mDisableSoundWheWindowNotFocus: 1
 --- !u!114 &2085703331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2600,9 +2599,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a84b523d293cda40b73eb03a25ef83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RESIZE_SCREEN_THIS_SCENE: 0
+  RESIZE_SCREEN_THIS_SCENE: 1
   ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE: 16
   ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE: 9
+  SCREEN_TYPE_THIS_SCENE: 3
   mResizableScreenPanelPath: JCSUnity_Resources/GUI/JCS_ResizableScreenPanel
   mTopASP: {fileID: 0}
   mBottomASP: {fileID: 0}
