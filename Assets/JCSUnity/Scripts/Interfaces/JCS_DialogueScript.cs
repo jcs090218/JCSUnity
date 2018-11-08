@@ -28,15 +28,15 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Tooltip("")]
+        [Tooltip("Sprite visualize at the center.")]
         [SerializeField]
         private Sprite mCenterSprite = null;
 
-        [Tooltip("")]
+        [Tooltip("Sprite visualize at the left.")]
         [SerializeField]
         private Sprite mLeftSprite = null;
 
-        [Tooltip("")]
+        [Tooltip("Sprite visualize at the right.")]
         [SerializeField]
         private Sprite mRightSprite = null;
 
