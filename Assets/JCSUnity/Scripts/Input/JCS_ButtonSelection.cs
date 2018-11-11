@@ -193,6 +193,20 @@ namespace JCSUnity
             mButtonSelectionGroup.SelectSelection(this);
         }
 
+        /// <summary>
+        /// Make skip variable connect to interactable with button.
+        /// </summary>
+        public void SetSkip(bool act, bool fromButton = false)
+        {
+            if (mButton == null)
+                return;
+
+            this.mSkip = act;
+
+            if (!fromButton)
+                mButton.SetInteractable(!mSkip, true);
+        }
+
         //----------------------
         // Protected Functions
 
@@ -246,20 +260,6 @@ namespace JCSUnity
                     effect.LocalEnabled = act;
                 }
             }
-        }
-
-        /// <summary>
-        /// Make skip variable connect to interactable with button.
-        /// </summary>
-        public void SetSkip(bool act, bool fromButton = false)
-        {
-            if (mButton == null)
-                return;
-
-            this.mSkip = act;
-
-            if (!fromButton)
-                mButton.SetInteractable(!mSkip, true);
         }
 
     }

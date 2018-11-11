@@ -70,7 +70,7 @@ namespace JCSUnity
     };
 
     /// <summary>
-    /// 
+    /// Mouse button code definition.
     /// </summary>
     public enum JCS_MouseButton
     {
@@ -129,6 +129,19 @@ namespace JCSUnity
         /// </summary>
         public static void LateUpdate()
         {
+            #region DOUBLE_CLICK
+            if (CLICK)
+            {
+                CLICK_TIMER += Time.deltaTime;
+
+                if (CLICK_TIME < CLICK_TIMER)
+                {
+                    CLICK = false;
+                    CLICK_TIMER = 0.0f;
+                }
+            }
+            #endregion
+
             DoJoystickCallback();
 
             ClearJoystickKeymapBuffer();
@@ -188,7 +201,7 @@ namespace JCSUnity
         //----------------------------------------------------------------------
 
         /// <summary>
-        /// This sould be in the Update() function.
+        /// Check if the user double clicking?
         /// </summary>
         /// <param name="type"> type by JCS_InputType (self-define) </param>
         /// <returns> true: if double click, false nothing happens </returns>
@@ -197,7 +210,7 @@ namespace JCSUnity
             return OnMouseDoubleClick((int)type, ignorePause);
         }
         /// <summary>
-        /// This sould be in the Update() function.
+        /// Check if the user double clicking?
         /// </summary>
         /// <param name="button"> type by keycode (Unity built-in) </param>
         /// <returns> true: if double click, false nothing happens </returns>
@@ -212,19 +225,10 @@ namespace JCSUnity
             // Check double click
             else
             {
-                CLICK_TIMER += Time.deltaTime;
-
                 if (GetMouseButtonDown(button, ignorePause))
                 {
-                    CLICK_TIMER = 0;
                     CLICK = false;
                     return true;
-                }
-
-                if (CLICK_TIME < CLICK_TIMER)
-                {
-                    CLICK = false;
-                    CLICK_TIMER = 0;
                 }
             }
 
@@ -325,7 +329,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Returns the mouse position on GUI layer.
         /// </summary>
         /// <returns></returns>
         public static Vector3 MousePositionOnGUILayer()
@@ -595,7 +599,7 @@ namespace JCSUnity
             return false;
         }
         /// <summary>
-        /// 
+        /// Is the button pressed?
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
@@ -610,7 +614,7 @@ namespace JCSUnity
             return Input.GetButton(buttonName);
         }
         /// <summary>
-        /// 
+        /// Is the button down?
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
@@ -625,7 +629,7 @@ namespace JCSUnity
             return Input.GetButtonDown(buttonName);
         }
         /// <summary>
-        /// 
+        /// Is the button up?
         /// </summary>
         /// <param name="buttonName"></param>
         /// <returns></returns>
@@ -668,7 +672,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check if any key is pressed.
+        /// Check if any key is sent the input signal.
         /// </summary>
         /// <param name="type"> action u want to check. </param>
         /// <returns>
@@ -738,7 +742,7 @@ namespace JCSUnity
 
 
         /// <summary>
-        /// 
+        /// Return the joystick buffer.
         /// </summary>
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
@@ -748,7 +752,7 @@ namespace JCSUnity
             return GetAxis((int)joystickIndex, btn, ignorePause);
         }
         /// <summary>
-        /// 
+        /// Return the joystick buffer.
         /// </summary>
         /// <param name="btn"></param>
         /// <returns></returns>
@@ -794,7 +798,7 @@ namespace JCSUnity
             return GetJoystickButton((int)joystickIndex, btn, ignorePause);
         }
         /// <summary>
-        /// Get the joystick buffer.
+        /// Check if the button have pressed.
         /// </summary>
         /// <returns></returns>
         public static bool GetJoystickButton(int joystickIndex, JCS_JoystickButton btn, bool ignorePause = false)
@@ -1698,7 +1702,7 @@ namespace JCSUnity
         #region SHIFT
 
         /// <summary>
-        /// Is one the alt key pressed?
+        /// Is one the shift key pressed?
         /// </summary>
         /// <returns>
         /// One the ctrl key is pressed.
@@ -1709,7 +1713,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Is one the alt key down?
+        /// Is one the shift key down?
         /// </summary>
         /// <returns>
         /// One the ctrl key is down.
@@ -1720,7 +1724,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Is one the alt key up?
+        /// Is one the shift key up?
         /// </summary>
         /// <returns>
         /// One the ctrl key is up.
@@ -2006,6 +2010,19 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Get key pressed with certain combination.
+        /// </summary>
+        /// <param name="with"> combination of key info. </param>
+        /// <returns>
+        /// true, key with this combination is pressed.
+        /// false, key with this combination is not pressed.
+        /// </returns>
+        public static bool GetKeyWith(JCS_KeyWith with)
+        {
+            return GetKeyWith(with.comb, with.key);
+        }
+
+        /// <summary>
         /// Get key down with certain combination.
         /// </summary>
         /// <param name="comb"> combination type. </param>
@@ -2036,6 +2053,19 @@ namespace JCSUnity
 
             // Just return normal get key.
             return GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// Get key down with certain combination.
+        /// </summary>
+        /// <param name="with">combination of key info.</param>
+        /// <returns>
+        /// true, key with this combination is down.
+        /// false, key with this combination is not down.
+        /// </returns>
+        public static bool GetKeyDownWith(JCS_KeyWith with)
+        {
+            return GetKeyDownWith(with.comb, with.key);
         }
 
         /// <summary>
@@ -2072,32 +2102,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get key pressed with certain combination.
-        /// </summary>
-        /// <param name="with"> combination of key info. </param>
-        /// <returns>
-        /// true, key with this combination is pressed.
-        /// false, key with this combination is not pressed.
-        /// </returns>
-        public static bool GetKeyWith(JCS_KeyWith with)
-        {
-            return GetKeyWith(with.comb, with.key);
-        }
-
-        /// <summary>
-        /// Get key down with certain combination.
-        /// </summary>
-        /// <param name="with">combination of key info.</param>
-        /// <returns>
-        /// true, key with this combination is down.
-        /// false, key with this combination is not down.
-        /// </returns>
-        public static bool GetKeyDownWith(JCS_KeyWith with)
-        {
-            return GetKeyDownWith(with.comb, with.key);
-        }
-
-        /// <summary>
         /// Get key up with certain combination.
         /// </summary>
         /// <param name="with">combination of key info.</param>
@@ -2109,5 +2113,6 @@ namespace JCSUnity
         {
             return GetKeyUpWith(with.comb, with.key);
         }
+
     }
 }

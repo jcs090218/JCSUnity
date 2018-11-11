@@ -68,7 +68,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ButtonSelectionGroup) **")]
 
-        [Tooltip("")]
+        [Tooltip("List of all the selections this group handle.")]
         [SerializeField]
         private List<JCS_ButtonSelection> mSelections = null;
 
@@ -136,7 +136,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Reset everytime a player enter a area.
+        /// Reset the selection group to starting status.
         /// </summary>
         public void ResetAllSelections()
         {
@@ -309,25 +309,6 @@ selection is not in the group...");
         }
 
         /// <summary>
-        /// Check if all selections are skipped?
-        /// </summary>
-        /// <returns>
-        /// true: all selections are skipped.
-        /// false: at least one selection is not skipped.
-        /// </returns>
-        public bool IsAllSelectionsSkip()
-        {
-            foreach (JCS_ButtonSelection item in mSelections)
-            {
-                if (!item.Skip)
-                    return false;
-            }
-
-            CloseAllSelections();
-            return true;
-        }
-
-        /// <summary>
         /// Select the selection on the top. (Two Dimensional)
         /// </summary>
         /// <returns> true, action made. false, no action made. </returns>
@@ -391,7 +372,7 @@ selection is not in the group...");
         }
 
         /// <summary>
-        /// /// Select the selection on the left. (Two Dimensional)
+        /// Select the selection on the left. (Two Dimensional)
         /// </summary>
         /// <returns> true, action made. false, no action made. </returns>
         public bool LeftSelection()
@@ -411,82 +392,7 @@ selection is not in the group...");
             return true;
         }
 
-        /// <summary>
-        /// Is all the button selections in Up starting from current 
-        /// selection index skip?
-        /// </summary>
-        /// <returns>
-        /// true: all of the are skip.
-        /// false: at least one button selections is not skip.
-        /// </returns>
-        public bool IsAllSelectionsIsSkipUp()
-        {
-            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.UP);
-        }
-
-        /// <summary>
-        /// Is all the button selections in Down starting from current 
-        /// selection index skip?
-        /// </summary>
-        /// <returns>
-        /// true: all of the are skip.
-        /// false: at least one button selections is not skip.
-        /// </returns>
-        public bool IsAllSelectionsIsSkipDown()
-        {
-            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.DOWN);
-        }
-
-        /// <summary>
-        /// Is all the button selections in Right starting from current 
-        /// selection index skip?
-        /// </summary>
-        /// <returns>
-        /// true: all of the are skip.
-        /// false: at least one button selections is not skip.
-        /// </returns>
-        public bool IsAllSelectionsIsSkipRight()
-        {
-            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.RIGHT);
-        }
-
-        /// <summary>
-        /// Is all the button selections in Left starting from current 
-        /// selection index skip?
-        /// </summary>
-        /// <returns>
-        /// true: all of the are skip.
-        /// false: at least one button selections is not skip.
-        /// </returns>
-        public bool IsAllSelectionsIsSkipLeft()
-        {
-            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.LEFT);
-        }
-
-        /// <summary>
-        /// Is all the button selection in this direction skip?
-        /// </summary>
-        /// <param name="bs"> starting button selection. </param>
-        /// <param name="direction"> direction to loop to. </param>
-        /// <returns>
-        /// true: yes, all selections in this direction about this button selection is skip!
-        /// false: no, at least on selection is not skip in this direction behind this diection.
-        /// </returns>
-        public bool IsAllSelectionsIsSkipDirection(JCS_ButtonSelection bs, Direction direction)
-        {
-            JCS_ButtonSelection newBs = GetButtonSelectionByDirection(bs, direction);
-
-            // if the chain break, meaning all the selections is skip in 
-            // this direction.
-            if (newBs == null)
-                return true;
-
-            // if not skip, break the loop.
-            if (!newBs.Skip)
-                return false;
-
-            return IsAllSelectionsIsSkipDirection(newBs, direction);
-        }
+        
 
         /// <summary>
         /// Get the selection depends on the direction.
@@ -517,5 +423,101 @@ selection is not in the group...");
         // Private Functions
 
         private void EmptyCallbackSelectionChanged() { }
+
+        /// <summary>
+        /// Check if all selections are skipped?
+        /// </summary>
+        /// <returns>
+        /// true: all selections are skipped.
+        /// false: at least one selection is not skipped.
+        /// </returns>
+        private bool IsAllSelectionsSkip()
+        {
+            foreach (JCS_ButtonSelection item in mSelections)
+            {
+                if (!item.Skip)
+                    return false;
+            }
+
+            CloseAllSelections();
+            return true;
+        }
+
+        /// <summary>
+        /// Is all the button selections in Up starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        private bool IsAllSelectionsIsSkipUp()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.UP);
+        }
+
+        /// <summary>
+        /// Is all the button selections in Down starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        private bool IsAllSelectionsIsSkipDown()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.DOWN);
+        }
+
+        /// <summary>
+        /// Is all the button selections in Right starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        private bool IsAllSelectionsIsSkipRight()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.RIGHT);
+        }
+
+        /// <summary>
+        /// Is all the button selections in Left starting from current 
+        /// selection index skip?
+        /// </summary>
+        /// <returns>
+        /// true: all of the are skip.
+        /// false: at least one button selections is not skip.
+        /// </returns>
+        private bool IsAllSelectionsIsSkipLeft()
+        {
+            return IsAllSelectionsIsSkipDirection(mSelections[mCurrentSelectIndex], Direction.LEFT);
+        }
+
+        /// <summary>
+        /// Is all the button selection in this direction skip?
+        /// </summary>
+        /// <param name="bs"> starting button selection. </param>
+        /// <param name="direction"> direction to loop to. </param>
+        /// <returns>
+        /// true: yes, all selections in this direction about this button selection is skip!
+        /// false: no, at least on selection is not skip in this direction behind this diection.
+        /// </returns>
+        private bool IsAllSelectionsIsSkipDirection(JCS_ButtonSelection bs, Direction direction)
+        {
+            JCS_ButtonSelection newBs = GetButtonSelectionByDirection(bs, direction);
+
+            // if the chain break, meaning all the selections is skip in 
+            // this direction.
+            if (newBs == null)
+                return true;
+
+            // if not skip, break the loop.
+            if (!newBs.Skip)
+                return false;
+
+            return IsAllSelectionsIsSkipDirection(newBs, direction);
+        }
     }
 }

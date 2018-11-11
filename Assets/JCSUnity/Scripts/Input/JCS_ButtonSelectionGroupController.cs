@@ -42,7 +42,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreGamePause = false;
 
-        [Tooltip("")]
+        [Tooltip("Key type of this controller.")]
         [SerializeField]
         private JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
 
@@ -63,19 +63,19 @@ namespace JCSUnity
 
         [Header("- Full Control Settings / Keyboard (JCS_ButtonSelectionGroupController)")]
 
-        [Tooltip("Up select key.")]
+        [Tooltip("Up select key. (Keyboard)")]
         [SerializeField]
         private KeyCode mMUp = KeyCode.None;
 
-        [Tooltip("Down select key.")]
+        [Tooltip("Down select key. (Keyboard)")]
         [SerializeField]
         private KeyCode mMDown = KeyCode.None;
 
-        [Tooltip("Right select key.")]
+        [Tooltip("Right select key. (Keyboard)")]
         [SerializeField]
         private KeyCode mMRight = KeyCode.None;
 
-        [Tooltip("Left select key.")]
+        [Tooltip("Left select key. (Keyboard)")]
         [SerializeField]
         private KeyCode mMLeft = KeyCode.None;
 
@@ -102,19 +102,19 @@ namespace JCSUnity
 
         [Header("- Full Control Settings / Game Pad (JCS_ButtonSelectionGroupController)")]
 
-        [Tooltip("Up select key.")]
+        [Tooltip("Up select key. (Game Pad)")]
         [SerializeField]
         private JCS_JoystickButton mJUp = JCS_JoystickButton.NONE;
 
-        [Tooltip("Down select key.")]
+        [Tooltip("Down select key. (Game Pad)")]
         [SerializeField]
         private JCS_JoystickButton mJDown = JCS_JoystickButton.NONE;
 
-        [Tooltip("Right select key.")]
+        [Tooltip("Right select key. (Game Pad)")]
         [SerializeField]
         private JCS_JoystickButton mJRight = JCS_JoystickButton.NONE;
 
-        [Tooltip("Left select key.")]
+        [Tooltip("Left select key. (Game Pad)")]
         [SerializeField]
         private JCS_JoystickButton mJLeft = JCS_JoystickButton.NONE;
 
@@ -149,31 +149,31 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mLeftSound = null;
 
-        [Tooltip("Method to play the sound.")]
+        [Tooltip("Method to play next sound.")]
         [SerializeField]
         private JCS_SoundMethod mNextSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Tooltip("Method to play the sound.")]
+        [Tooltip("Method to play prev sound.")]
         [SerializeField]
         private JCS_SoundMethod mPrevSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Tooltip("Method to play the sound.")]
+        [Tooltip("Method to play okay sound.")]
         [SerializeField]
         private JCS_SoundMethod mOkaySoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Tooltip("Method to play the sound.")]
+        [Tooltip("Method to play up sound.")]
         [SerializeField]
         private JCS_SoundMethod mUpSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Tooltip("Method to play the sound.")]
+        [Tooltip("Method to play down sound.")]
         [SerializeField]
         private JCS_SoundMethod mDownSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Tooltip("Method to play the sound.")]
+        [Tooltip("Method to play right sound.")]
         [SerializeField]
         private JCS_SoundMethod mRightSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Tooltip("Method to play the sound.")]
+        [Tooltip("Method to play left sound.")]
         [SerializeField]
         private JCS_SoundMethod mLeftSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
@@ -189,6 +189,24 @@ namespace JCSUnity
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool IgnoreGamePause { get { return this.mIgnoreGamePause; } set { this.mIgnoreGamePause = value; } }
+
+        public KeyCode MNext { get { return this.mMNext; } set { this.mMNext = value; } }
+        public KeyCode MMPrev { get { return this.mMNext; } set { this.mMNext = value; } }
+        public KeyCode MOkay { get { return this.mMNext; } set { this.mMNext = value; } }
+        public KeyCode MUp { get { return this.mMNext; } set { this.mMNext = value; } }
+        public KeyCode MDown { get { return this.mMNext; } set { this.mMNext = value; } }
+        public KeyCode MRight { get { return this.mMNext; } set { this.mMNext = value; } }
+        public KeyCode MLeft { get { return this.mMNext; } set { this.mMNext = value; } }
+
+        public JCS_JoystickIndex GamePadId { get { return this.mGamePadId; } set { this.mGamePadId = value; } }
+
+        public JCS_JoystickButton JNext { get { return this.mJNext; } set { this.mJNext = value; } }
+        public JCS_JoystickButton JPrev { get { return this.mJPrev; } set { this.mJPrev = value; } }
+        public JCS_JoystickButton JOkay { get { return this.mJOkay; } set { this.mJOkay = value; } }
+        public JCS_JoystickButton JUp { get { return this.mJUp; } set { this.mJUp = value; } }
+        public JCS_JoystickButton JDown { get { return this.mJDown; } set { this.mJDown = value; } }
+        public JCS_JoystickButton JRight { get { return this.mJRight; } set { this.mJRight = value; } }
+        public JCS_JoystickButton JLeft { get { return this.mJLeft; } set { this.mJLeft = value; } }
 
         public AudioClip NextSound { get { return this.mNextSound; } set { this.mNextSound = value; } }
         public AudioClip PrevSound { get { return this.mPrevSound; } set { this.mPrevSound = value; } }

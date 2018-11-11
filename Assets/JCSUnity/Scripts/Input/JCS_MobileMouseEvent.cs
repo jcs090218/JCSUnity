@@ -24,15 +24,20 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         [Header("** Check Variables (JCS_MobileMouseEvent) **")]
 
-        [SerializeField] private Camera mCamera = null;
-        [SerializeField] private bool mTouched = false;
+        [SerializeField]
+        private Camera mCamera = null;
+        [SerializeField]
+        private bool mTouched = false;
+
 
         [Header("** Runtime Variables (JCS_MobileMouseEvent) **")]
 
         [Tooltip("Distance Raycast shoot.")]
-        [SerializeField] private float mRaycastDistance = 100.0f;
+        [SerializeField]
+        private float mRaycastDistance = 100.0f;
         
 
         //----------------------
@@ -41,6 +46,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public float RaycastDistance { get { return this.mRaycastDistance; } set { this.mRaycastDistance = value; } }
 
         //========================================
         //      Unity's function

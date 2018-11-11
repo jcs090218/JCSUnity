@@ -39,7 +39,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_SlideInput) **")]
 
-        [Tooltip("Is the screen thouched?")]
+        [Tooltip("Is the screen touches?")]
         [SerializeField]
         private bool mTouched = false;
 

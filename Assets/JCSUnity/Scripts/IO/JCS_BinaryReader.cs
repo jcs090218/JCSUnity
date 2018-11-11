@@ -170,8 +170,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Read until the null byte appear and put data into a 
-        /// string data.
+        /// Read ASCII until the null byte appear and put data 
+        /// into a string data.
         /// </summary>
         /// <returns> string put together from the buffer stream. </returns>
         public string ReadNullTerminatedASCIIString()
@@ -191,8 +191,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Read until the null byte appear and put data into a 
-        /// string data.
+        /// Read Unicode until the null byte appear and put 
+        /// data into a string data.
         /// </summary>
         /// <returns> string put together from the buffer stream. </returns>
         public string ReadNullTerminatedUnicodeString()
@@ -212,8 +212,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Read until the null byte appear and put data into a 
-        /// string data.
+        /// Read UTF-8 string until the null byte appear and 
+        /// put data into a string data.
         /// </summary>
         /// <returns> string put together from the buffer stream. </returns>
         public string ReadNullTerminatedUTF8String()
@@ -233,8 +233,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Read until the null byte appear and put data into a 
-        /// string data.
+        /// Read UTF-32 string until the null byte appear and put 
+        /// data into a string data.
         /// </summary>
         /// <returns> string put together from the buffer stream. </returns>
         public string ReadNullTerminatedUTF32String()
