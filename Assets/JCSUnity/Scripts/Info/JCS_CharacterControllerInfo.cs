@@ -27,10 +27,18 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private CharacterController mCharacterController = null;
-        [Header("** Check Variables **")]
-        [SerializeField] private float mWidth = 0;
-        [SerializeField] private float mHeight = 0;
+
+        [Header("** Check Variables (JCS_CharacterControllerInfo) **")]
+
+        [Tooltip("Width of the character controller.")]
+        [SerializeField]
+        private float mWidth = 0;
+
+        [Tooltip("Height of the character controller.")]
+        [SerializeField]
+        private float mHeight = 0;
 
         //----------------------
         // Protected Variables

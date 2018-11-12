@@ -28,9 +28,11 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Initialize Variables **")]
+        [Header("** Initialize Variables (JCS_AttackerInfo) **")]
+
         [Tooltip("Who is the attacker of this object(weapon)?")]
-        [SerializeField] private Transform mAttacker = null;
+        [SerializeField]
+        private Transform mAttacker = null;
 
         //----------------------
         // Protected Variables

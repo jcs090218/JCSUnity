@@ -21,6 +21,8 @@ namespace JCSUnity
         : MonoBehaviour
     {
 
+        [Header("** Runtime Variables (JCS_LiquidBarInfo) **")]
+
         [Tooltip("Tag for u to recognize each same components.")]
         [SerializeField]
         protected string mTagName = "";

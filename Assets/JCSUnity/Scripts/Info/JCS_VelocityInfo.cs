@@ -27,7 +27,11 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        private CharacterController mCharacterController = null;
+
         [Header("** Check Variables (JCS_VelocityInfo) **")]
+
+        [Tooltip("Velocity for this character controller.")]
         [SerializeField]
         private Vector3 mVelocity = Vector3.zero;
 
@@ -37,11 +41,10 @@ namespace JCSUnity
         [Tooltip("Do this character controll applies gravity.")]
         [SerializeField]
         private bool mApplyGravity = true;
-
-        private CharacterController mCharacterController = null;
-
+        
         [Tooltip("How fast it get back to original speed?")]
-        [SerializeField] private float mSpeedFriction = 0.2f;
+        [SerializeField]
+        private float mSpeedFriction = 0.2f;
 
         // 原本速度的變化量
         private Vector3 mMoveSpeed = Vector3.zero;
