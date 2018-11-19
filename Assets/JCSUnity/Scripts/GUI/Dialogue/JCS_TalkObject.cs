@@ -15,7 +15,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// Simulate the object u cant talk to.
+    /// Make the game object talkable.
     /// </summary>
     public class JCS_TalkObject 
         : MonoBehaviour
@@ -27,9 +27,9 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Initialize Variable **")]
+        [Header("** Initialize Variable (JCS_TalkObject) **")]
 
-        [Tooltip("")]
+        [Tooltip("Current dialogue script this talk object holds.")]
         [SerializeField]
         private JCS_DialogueScript mDialogueScript = null;
 
@@ -69,6 +69,11 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Create the character image.
+        /// </summary>
+        /// <param name="sp"></param>
         private void CreateCharacterImage(Sprite sp)
         {
             if (sp == null)
