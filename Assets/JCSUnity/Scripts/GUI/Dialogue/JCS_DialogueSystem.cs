@@ -15,7 +15,7 @@ using UnityEngine.EventSystems;
 namespace JCSUnity
 {
     /// <summary>
-    /// Core of the dialogue system.
+    /// Dialogue system core implementation.
     /// </summary>
     public class JCS_DialogueSystem 
         : MonoBehaviour
@@ -81,15 +81,15 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mTransparentSprite = null;
 
-        [Tooltip("Image of the character displayed.")]
+        [Tooltip("Image displayed at the center.")]
         [SerializeField]
         private Image mCenterImage = null;
 
-        [Tooltip("Image of the character displayed.")]
+        [Tooltip("Image displayed at the left.")]
         [SerializeField]
         private Image mLeftImage = null;
 
-        [Tooltip("Image of the character displayed.")]
+        [Tooltip("Image displayed at the right.")]
         [SerializeField]
         private Image mRightImage = null;
 
@@ -107,7 +107,7 @@ namespace JCSUnity
         private float mScrollTime = 0.1f;
 
         // timer to calculate the scroll time
-        private float mScrollTimer = 0;
+        private float mScrollTimer = 0.0f;
 
         [Tooltip("Panel Rect Transfrom.")]
         [SerializeField]
@@ -537,19 +537,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Reset the button selection group for dialogue system's 
-        /// selections.
-        /// </summary>
-        private void ResetButtonSelectionGroup()
-        {
-            if (mButtonSelectionGroup == null)
-                return;
-
-            // reset selections for gamepad selection choice.
-            mButtonSelectionGroup.ResetAllSelections();
-        }
-
-        /// <summary>
         /// Send a world message...
         /// 
         /// TODO(jenchieh): online mode...
@@ -790,7 +777,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Active the panel?
         /// </summary>
         /// <param name="act"></param>
         private void PanelActive(bool act)
@@ -801,7 +788,7 @@ namespace JCSUnity
             mPanelTrans.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the next button?
         /// </summary>
         /// <param name="act"></param>
         private void NextBtnActive(bool act)
@@ -812,7 +799,7 @@ namespace JCSUnity
             mNextBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the previous button?
         /// </summary>
         /// <param name="act"></param>
         private void PrevBtnActive(bool act)
@@ -823,7 +810,7 @@ namespace JCSUnity
             mPreviousBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the no button?
         /// </summary>
         /// <param name="act"></param>
         private void NoBtnActive(bool act)
@@ -834,7 +821,7 @@ namespace JCSUnity
             mNoBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the yes button?
         /// </summary>
         /// <param name="act"></param>
         private void YesBtnActive(bool act)
@@ -845,7 +832,7 @@ namespace JCSUnity
             mYesBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the okay button?
         /// </summary>
         /// <param name="act"></param>
         private void OkBtnActive(bool act)
@@ -856,7 +843,7 @@ namespace JCSUnity
             mOkBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the exit button?
         /// </summary>
         /// <param name="act"></param>
         private void ExitBtnActive(bool act)
@@ -867,7 +854,7 @@ namespace JCSUnity
             mExitBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the accept button?
         /// </summary>
         /// <param name="act"></param>
         private void AcceptBtnActive(bool act)
@@ -878,7 +865,7 @@ namespace JCSUnity
             mAcceptBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the decline button?
         /// </summary>
         /// <param name="act"></param>
         private void DeclineBtnActive(bool act)
@@ -889,7 +876,7 @@ namespace JCSUnity
             mDeclineBtn.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the current selected button.
         /// </summary>
         /// <param name="index"></param>
         /// <param name="act"></param>
@@ -906,7 +893,7 @@ namespace JCSUnity
                 selectBtn.ButtonSelection.SetSkip(!act);
         }
         /// <summary>
-        /// 
+        /// Active the current selected button.
         /// </summary>
         /// <param name="act"></param>
         private void SelectBtnsActive(bool act)
@@ -919,7 +906,7 @@ namespace JCSUnity
             }
         }
         /// <summary>
-        /// 
+        /// Active the center image?
         /// </summary>
         /// <param name="act"></param>
         private void CenterImageActive(bool act)
@@ -930,7 +917,7 @@ namespace JCSUnity
             mCenterImage.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the left image?
         /// </summary>
         /// <param name="act"></param>
         private void LeftImageActive(bool act)
@@ -941,7 +928,7 @@ namespace JCSUnity
             mLeftImage.gameObject.SetActive(act);
         }
         /// <summary>
-        /// 
+        /// Active the right iamge?
         /// </summary>
         /// <param name="act"></param>
         private void RightImageActive(bool act)
@@ -1231,5 +1218,19 @@ because button selection is not attach to all selections in the list...");
             Selection = selection;
             SelectBtnCallback();
         }
+
+        /// <summary>
+        /// Reset the button selection group for dialogue system's 
+        /// selections.
+        /// </summary>
+        private void ResetButtonSelectionGroup()
+        {
+            if (mButtonSelectionGroup == null)
+                return;
+
+            // reset selections for gamepad selection choice.
+            mButtonSelectionGroup.ResetAllSelections();
+        }
+
     }
 }
