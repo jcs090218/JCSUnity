@@ -138,7 +138,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Show the dialogue in the game.
+        /// Show the dialogue without the sound.
         /// </summary>
         public void ShowDialogueWithoutSound()
         {

@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Scene will ignore this panel and not brough into next scene.
+    /// Scene will ignore this panel and not brought into next scene.
     /// </summary>
     public class JCS_IgnoreDialogueObject 
         : MonoBehaviour

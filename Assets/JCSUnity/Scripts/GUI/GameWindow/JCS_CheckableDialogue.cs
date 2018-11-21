@@ -29,16 +29,16 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_CheckableDialogue) **")]
 
-        [Tooltip("")]
+        [Tooltip("Fit the dialogue in the screen.")]
         [SerializeField]
         private bool mFitPushScreen = true;
 
         // Script of displaying the sprite!
-        [Tooltip("")]
+        [Tooltip("Item image to display.")]
         [SerializeField]
         private Image mItemImage = null;
 
-        [Tooltip("")]
+        [Tooltip("Panel's rect transform.")]
         [SerializeField]
         private RectTransform mPanelRectTransform = null;
 
@@ -48,22 +48,30 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool fitPushScreen { get { return this.mFitPushScreen; } set { this.mFitPushScreen = value; } }
         public void SetItemSprite(Sprite sp) { this.mItemImage.sprite = sp; }
 
         //========================================
         //      Unity's function
         //------------------------------
 
+#if (UNITY_EDITOR)
         private void Update()
         {
             //this.mPanelRectTransform.localPosition = new Vector3(0, -228, 0);
         }
+#endif
 
         //========================================
         //      Self-Define
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Make dialogue follow the mouse.
+        /// </summary>
+        /// <param name="point"></param>
         public void FollowMouse(JCS_2D8Direction point)
         {
             if (mPanelRectTransform == null)
@@ -122,6 +130,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
         /// <summary>
         /// Prevent the dialogue go out of screen
         /// </summary>

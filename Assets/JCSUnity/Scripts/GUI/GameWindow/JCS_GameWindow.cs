@@ -28,6 +28,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+        /// <summary>
+        /// Window drag drop event.
+        /// </summary>
         private enum DragDrop
         {
             Drag,
@@ -39,7 +43,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_GameWindow) **")]
 
-        [Tooltip("")]
+        [Tooltip("Drag drop type.")]
         [SerializeField]
         private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
 
@@ -65,7 +69,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// On pointer down event.
         /// </summary>
         public void JCS_PointerDown()
         {
@@ -75,7 +79,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// On click event.
         /// </summary>
         public void JCS_Click()
         {
@@ -83,11 +87,10 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// On drag event.
         /// </summary>
         public void JCS_OnDrag()
         {
-
             switch (mType)
             {
                 case JCS_DragDropType.DialogueBox:
@@ -100,7 +103,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// On drop event.
         /// </summary>
         public void JCS_OnDrop()
         {
@@ -114,7 +117,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Process drag drop event.
         /// </summary>
         /// <param name="type"></param>
         private void ProcessGUI(DragDrop type)

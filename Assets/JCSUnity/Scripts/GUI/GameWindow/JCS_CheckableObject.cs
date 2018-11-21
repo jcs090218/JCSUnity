@@ -15,7 +15,7 @@ namespace JCSUnity
 {
     /// <summary>
     /// Object will pop out a dialogue so there will be 
-    /// a description on it
+    /// a description on it.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class JCS_CheckableObject
@@ -52,16 +52,22 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_CheckableObject) **")]
 
-        [Header("NOTE: nGUI_2D please use Event Trigger from Unity.")]
+        [Tooltip("")]
         [SerializeField]
         private JCS_CheckableDialogue mDescDialogue = null;
-        // Position that dialogue will be at
+
+        [Tooltip("Position that dialogue will be at.")]
         [SerializeField]
         private JCS_2D8Direction mSpawnPosition = JCS_2D8Direction.TOP_LEFT;
-        [SerializeField] private RectTransform mRootPanel = null;
+
+        [Tooltip("Root panel to calcuate the position.")]
+        [SerializeField]
+        private RectTransform mRootPanel = null;
+
 
         [Header("NOTE: For 3D Object only.")]
-        // Event to show the dialogue
+
+        [Tooltip("Event to show the dialogue.")]
         [SerializeField]
         private EventType mEventType = EventType.ON_MOUSE_OVER;
 
@@ -75,6 +81,7 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+
         private void Start()
         {
 #if (UNITY_STANDALONE || UNITY_EDITOR)
@@ -137,8 +144,9 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
         /// <summary>
-        /// Pop out the dialogue to show
+        /// Show the description dialogue.
         /// </summary>
         public void JCS_ShowDescDialogue()
         {
@@ -154,6 +162,10 @@ namespace JCSUnity
             mShowing = true;
 #endif
         }
+
+        /// <summary>
+        /// Hide the description dialogue.
+        /// </summary>
         public void JCS_HideDescDialogue()
         {
             if (mDescDialogue == null)
@@ -180,6 +192,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Make dialogue follow the mouse.
+        /// </summary>
         private void FollowMouse()
         {
             mDescDialogue.FollowMouse(mSpawnPosition);

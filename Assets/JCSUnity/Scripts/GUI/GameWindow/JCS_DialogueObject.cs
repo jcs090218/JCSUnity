@@ -29,21 +29,22 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mJCSSoundPlayer = null;
 
+
         [Header("** Runtime Variables (JCS_DialogueObject) **")]
 
-        [Tooltip("unique index to open the dialogue")]
+        [Tooltip("Unique index to open the dialogue.")]
         [SerializeField]
         private int mDialogueIndex = -1;
 
-        [Tooltip("Key to open this dialogue")]
+        [Tooltip("Key to open this dialogue.")]
         [SerializeField]
         private KeyCode mKeyCode = KeyCode.None;
 
-        [Tooltip("this type for priority")]
+        [Tooltip("Dialogue type for priority.")]
         [SerializeField]
         private JCS_DialogueType mDialogueType = JCS_DialogueType.PLAYER_DIALOGUE;
 
-        [Tooltip("type for positioning the panel every time it opens")]
+        [Tooltip("Type for positioning the panel every time it opens.")]
         [SerializeField]
         private JCS_PanelType mPanelType = JCS_PanelType.RESET_PANEL;
 

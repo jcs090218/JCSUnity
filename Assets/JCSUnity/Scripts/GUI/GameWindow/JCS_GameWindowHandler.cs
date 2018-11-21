@@ -29,7 +29,7 @@ namespace JCSUnity
         // System UI
         [Header("** System Dialogue **")]
 
-        [Tooltip("")]
+        [Tooltip("System UI instances.")]
         [SerializeField]
         private JCS_DialogueObject[] mSystemUI = null;
 
@@ -37,7 +37,7 @@ namespace JCSUnity
         // Game UI
         [Header("** Game User Interface **")]
 
-        [Tooltip("")]
+        [Tooltip("Game UI instance.")]
         [SerializeField]
         private JCS_DialogueObject mGameUI = null;
 
@@ -45,7 +45,7 @@ namespace JCSUnity
         // NPC Dialogue
         [Header("** NPC Dialogue **")]
 
-        [Tooltip("")]
+        [Tooltip("NPC dialogue instance.")]
         [SerializeField]
         private JCS_DialogueObject mNPCDialogue = null;
 
@@ -53,7 +53,7 @@ namespace JCSUnity
         // List of all the Game Window we are going to use in the game
         [Header("** Player Dialogue **")]
 
-        [Tooltip("")]
+        [Tooltip("Player dialgoue instances.")]
         [SerializeField]
         private JCS_DialogueObject[] mPlayerDialogue = null;
 
@@ -92,7 +92,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Show the game UI.
         /// </summary>
         public void ShowGameUI()
         {
@@ -107,7 +107,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Hide the game UI.
         /// </summary>
         public void HideGameUI()
         {
@@ -147,7 +147,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Pop the NPC dialogue.
         /// </summary>
         private void PopNPCDialogue()
         {
@@ -155,7 +155,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Pop the game UI.
         /// </summary>
         private void PopGameUI()
         {
@@ -163,7 +163,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Pop player dialogue.
         /// </summary>
         private void PopPlayerDialogue()
         {
@@ -172,7 +172,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Pop system UI.
         /// </summary>
         private void PopSystemUI()
         {
@@ -181,7 +181,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Pop one single dialogue.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -198,7 +198,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Pop all the dialogues in the array.
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
