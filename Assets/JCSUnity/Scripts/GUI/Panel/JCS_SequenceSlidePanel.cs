@@ -32,43 +32,58 @@ namespace JCSUnity
         private JCS_SoundPlayer mSoundPlayer = null;
         private RectTransform mRectTransform = null;
 
-        [Header("** Initialize Variables **")]
+
+        [Header("** Initialize Variables (JCS_SequenceSlidePanel) **")]
 
         [Tooltip(@"Optional choice, instead of using the auto detection. 
 (JCS_EmptyButton are the recommaned default class to use.)")]
-        [SerializeField] private JCS_Button mToggleOrExitButton = null;
+        [SerializeField]
+        private JCS_Button mToggleOrExitButton = null;
 
-        [Header("** Runtime Variables **")]
 
-        [Tooltip("Sequence of Btns with slide effect component with in the tranform.")]
-        [SerializeField] private JCS_SlideEffect[] mSlideButtons = null;
+        [Header("** Runtime Variables (JCS_SequenceSlidePanel) **")]
+
+        [Tooltip("Sequence of buttons with slide effect component with in the tranform.")]
+        [SerializeField]
+        private JCS_SlideEffect[] mSlideButtons = null;
 
         [Tooltip("Area that also control with this, plz do it manully. (only in children)")]
-        [SerializeField] private JCS_SlideEffect[] mAreaEffects = null;
+        [SerializeField]
+        private JCS_SlideEffect[] mAreaEffects = null;
+
 
         [Header("** Spacing Settings **")]
 
         [Tooltip("Time to active one button animation.")]
-        [SerializeField] private float mSpaceTime = 0.2f;
-        private float mSpaceTimer = 0;
+        [SerializeField]
+        private float mSpaceTime = 0.2f;
+
+        private float mSpaceTimer = 0.0f;
+
         private int mBtnCounter = 0;
 
-        [Tooltip("Exit when mouse is not on this GUI/panel.)")]
-        [SerializeField] private bool mExitByNoOverGUI = true;
+        [Tooltip("Exit when mouse is not on this panel.")]
+        [SerializeField]
+        private bool mExitByNoOverGUI = true;
+
 
         [Header("** Audio Settings **")]
 
         [Tooltip("Audio when active the animation the outer panel.")]
-        [SerializeField] private AudioClip mActiveClip = null;
+        [SerializeField]
+        private AudioClip mActiveClip = null;
 
         [Tooltip("Audio when exit the animation the outer panel.")]
-        [SerializeField] private AudioClip mDeactiveClip = null;
+        [SerializeField]
+        private AudioClip mDeactiveClip = null;
 
         [Tooltip("Audio when active the animation inside the panel.")]
-        [SerializeField] private AudioClip mInsideActiveClip = null;
+        [SerializeField]
+        private AudioClip mInsideActiveClip = null;
 
         [Tooltip("Audio when exit the animation inside the panel.")]
-        [SerializeField] private AudioClip mInsideDeactiveClip = null;
+        [SerializeField]
+        private AudioClip mInsideDeactiveClip = null;
 
         //----------------------
         // Protected Variables
