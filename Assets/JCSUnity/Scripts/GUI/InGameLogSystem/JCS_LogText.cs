@@ -38,9 +38,11 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_LogText) **")]
 
+        [Tooltip("Which exactly the IGL controls this.")]
         [SerializeField]
         private JCS_IGLogSystem mIGLogSystem = null;
 
+        [Tooltip("Is the log text active?")]
         [SerializeField]
         private bool mActive = false;
 
@@ -88,7 +90,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// when activate from pool.
+        /// Activate one log from pool.
         /// </summary>
         public void Execute(string message)
         {
@@ -96,7 +98,6 @@ namespace JCSUnity
             {
                 JCS_Debug.LogError( 
                     "Call this while the object is still active.");
-
                 return;
             }
 
@@ -113,7 +114,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the message text.
         /// </summary>
         /// <param name="message"></param>
         public void SetText(string message)

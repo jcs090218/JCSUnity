@@ -91,6 +91,10 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
+        /// <summary>
+        /// Make single log message on the screen.
+        /// </summary>
+        /// <param name="message"></param>
         public void SendLogMessage(string message)
         {
             // get one log text from the pool
@@ -118,6 +122,10 @@ namespace JCSUnity
             logText.Execute(message);
         }
 
+        /// <summary>
+        /// Make multiple log messages on the screen.
+        /// </summary>
+        /// <param name="messages"></param>
         public void SendLogMessages(string[] messages)
         {
             foreach (string msg in messages)
@@ -126,11 +134,19 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Remove the log message that are outdated.
+        /// </summary>
+        /// <param name="txt"></param>
         public void RemoveFromRenderVec(JCS_LogText txt)
         {
             mRenderLogText.slice(txt);
         }
 
+        /// <summary>
+        /// Update all current active log messages' spacing.
+        /// </summary>
+        /// <param name="spaces"></param>
         public void UpdateSpace(int spaces = 1)
         {
             JCS_LogText logText = null;
@@ -164,6 +180,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Active one log text object.
+        /// </summary>
         private void ActiveOneText()
         {
             // get one log text from the pool
