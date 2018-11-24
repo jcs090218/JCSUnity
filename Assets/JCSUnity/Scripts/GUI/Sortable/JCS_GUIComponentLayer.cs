@@ -13,7 +13,11 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// This will only do under the jcs panel layer.
+    /// Sort the GUI components so they will have correct 
+    /// render order.
+    /// 
+    /// NOTE(jenchieh): This will only do under the 
+    /// jcs panel layer.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class JCS_GUIComponentLayer

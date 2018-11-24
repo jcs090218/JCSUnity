@@ -13,8 +13,10 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// This will always be ontop of any other GUI!!
-    /// so use this carefully.
+    /// Sort the panels so they will have correct render order.
+    /// 
+    /// NOTE(jenchieh): This will always be ontop of any other 
+    /// GUI, so use this carefully!
     /// </summary>
     [RequireComponent(typeof(JCS_PanelRoot))] 
     public class JCS_PanelLayer

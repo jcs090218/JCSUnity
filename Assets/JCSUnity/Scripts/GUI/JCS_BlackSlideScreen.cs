@@ -60,7 +60,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Start sliding the screen in the scene
+        /// Start sliding the screen in the scene.
         /// </summary>
         /// <param name="align"> align type </param>
         public void StartSlideIn(JCS_Align align, float time)
@@ -74,7 +74,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Start sliding the screen out the scene
+        /// Start sliding the screen out the scene.
         /// </summary>
         /// <param name="align"> align type </param>
         public void StartSlideOut(JCS_Align align, float time)
@@ -125,7 +125,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Is done sliding screen
+        /// Is done sliding screen?
         /// </summary>
         /// <returns>
         /// true: done sliding

@@ -54,7 +54,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaNumber mCounterTextSprite = null;
 
-        [Tooltip("Sprite Render the max value ofthe liquid bar.")]
+        [Tooltip("Sprite Render the max value of the liquid bar.")]
         [SerializeField]
         private JCS_DeltaNumber mFullTextSprite = null;
 
