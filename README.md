@@ -1,5 +1,7 @@
 # JCSUnity #
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 JCSUnity is a component driven Framework built to allow the user 
 to quickly generate commonly used game mechanics and features 
 such as UI functionality and player movement. This will allow 
