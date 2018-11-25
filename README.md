@@ -1,5 +1,6 @@
 # JCSUnity #
 
+[![Build Status](https://travis-ci.com/jcs090218/JCSUnity.svg?branch=master)](https://travis-ci.com/jcs090218/JCSUnity)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 JCSUnity is a component driven Framework built to allow the user 
