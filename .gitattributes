@@ -1,2 +1,5 @@
 # Set default behavior to automatically normalize line endings.
 * text=auto
+
+# Unix-like line endings
+*.sh text eol=lf
