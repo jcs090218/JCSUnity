@@ -1,0 +1,27 @@
+language: objective-c
+osx_image: xcode9.2
+rvm:
+- 2.2         # see before_install for getting RVM stable.
+
+env:
+- TRAVIS_TAG="1.8.5" PROJECT_NAME="JCSUnity" UNITY_PROJECT_PATH="./" UNITY_DOWNLOAD_CACHE="$(pwd)/unity_download_cache" DEPLOY_UNITYPACKAGE="path set in deploy script"
+
+
+cache:
+  directories:
+    - $UNITY_DOWNLOAD_CACHE
+
+    
+before_install:
+- rvm get stable
+- chmod a+x ./scripts/*.sh
+
+install:
+- cat /etc/hosts
+- ./scripts/install-unity.sh
+
+script:
+- ./scripts/build.sh
+
+after_success:
+- ./scripts/export-unity-package.sh
