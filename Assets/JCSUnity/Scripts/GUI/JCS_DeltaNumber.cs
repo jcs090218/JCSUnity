@@ -14,7 +14,8 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Score system with the sprite 0 to 9.
+    /// System that control 0-9 number sprites and create 
+    /// a counter effect.
     /// </summary>
     public class JCS_DeltaNumber
         : MonoBehaviour
@@ -51,7 +52,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_DeltaNumber) **")]
 
-        [Tooltip("Current object is enable?")]
+        [Tooltip("Is current effect enabled?")]
         [SerializeField]
         private bool mIsEnable = true;
 
@@ -70,34 +71,34 @@ check value. Because this will always be animate.")]
         [Tooltip("Default null slot. [Default: transparent_256.png]")]
         [SerializeField]
         private Sprite mScoreNull = null;
-        [Tooltip("Score text 0")]
+        [Tooltip("Score text 0.")]
         [SerializeField]
         private Sprite mScoreText0 = null;
-        [Tooltip("Score text 1")]
+        [Tooltip("Score text 1.")]
         [SerializeField]
         private Sprite mScoreText1 = null;
-        [Tooltip("Score text 2")]
+        [Tooltip("Score text 2.")]
         [SerializeField]
         private Sprite mScoreText2 = null;
-        [Tooltip("Score text 3")]
+        [Tooltip("Score text 3.")]
         [SerializeField]
         private Sprite mScoreText3 = null;
-        [Tooltip("Score text 4")]
+        [Tooltip("Score text 4.")]
         [SerializeField]
         private Sprite mScoreText4 = null;
-        [Tooltip("Score text 5")]
+        [Tooltip("Score text 5.")]
         [SerializeField]
         private Sprite mScoreText5 = null;
-        [Tooltip("Score text 6")]
+        [Tooltip("Score text 6.")]
         [SerializeField]
         private Sprite mScoreText6 = null;
-        [Tooltip("Score text 7")]
+        [Tooltip("Score text 7.")]
         [SerializeField]
         private Sprite mScoreText7 = null;
-        [Tooltip("Score text 8")]
+        [Tooltip("Score text 8.")]
         [SerializeField]
         private Sprite mScoreText8 = null;
-        [Tooltip("Score text 9")]
+        [Tooltip("Score text 9.")]
         [SerializeField]
         private Sprite mScoreText9 = null;
 
@@ -128,11 +129,11 @@ check value. Because this will always be animate.")]
 
         [Header("- Min/Max Settings (JCS_DeltaNumber)")]
 
-        [Tooltip("Maxinum score")]
+        [Tooltip("Maxinum score.")]
         [SerializeField]
         private int mMaxScore = 999;
 
-        [Tooltip("Mininum score")]
+        [Tooltip("Mininum score.")]
         [SerializeField]
         private int mMinScore = 0;
 
@@ -254,7 +255,7 @@ should disable this effect for best purpose.")]
         }
 
         /// <summary>
-        /// Update the score GUI
+        /// Update the score GUI.
         /// </summary>
         public void UpdateScore()
         {
