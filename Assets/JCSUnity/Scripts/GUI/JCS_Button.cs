@@ -74,9 +74,12 @@ namespace JCSUnity
         [Header("** Initialize Variables (JCS_Button) **")]
 
         [Tooltip("Auto add listner to button click event?")]
-        [SerializeField] protected bool mAutoListener = true;
+        [SerializeField]
+        protected bool mAutoListener = true;
+
         [Tooltip("Index pairing with Dialogue, in order to call the correct index.")]
-        [SerializeField] protected int mDialogueIndex = -1;
+        [SerializeField]
+        protected int mDialogueIndex = -1;
 
 
         [Header("** Runtime Variables (JCS_Button) **")]

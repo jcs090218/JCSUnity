@@ -39,7 +39,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_ButtonPointer) **")]
 
-        [Tooltip("Button that this pointer could point.")]
+        [Tooltip("Button that this pointer could point to.")]
         [SerializeField]
         private JCS_Button[] mButtons = null;
 
