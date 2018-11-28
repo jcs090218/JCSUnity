@@ -40,6 +40,7 @@ namespace JCSUnity
          */
         protected JCS_SoundPlayer mSoundPlayer = null;
 
+
         [Header("** Runtime Variables (JCS_GamePadButton) **")]
 
         [Tooltip("Still check input when the game is pause?")]
@@ -57,14 +58,14 @@ namespace JCSUnity
 
         [Header("- Keyboard (JCS_GamePadButton)")]
 
-        [Tooltip("Key to trigger this button")]
+        [Tooltip("Key to trigger this button.")]
         [SerializeField]
         protected KeyCode mKKeyToListen = KeyCode.None;
 
 
         [Header("- Game Pad (JCS_GamePadButton)")]
 
-        [Tooltip("Key to trigger this button")]
+        [Tooltip("Key to trigger this button.")]
         [SerializeField]
         protected JCS_JoystickButton mJKeyToListen = JCS_JoystickButton.NONE;
 
