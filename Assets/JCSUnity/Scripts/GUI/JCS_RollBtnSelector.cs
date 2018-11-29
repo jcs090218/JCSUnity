@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// A bunch of buttons do roll effect.
+    /// A bunch of buttons do the roll effect.
     /// 
     /// Plz use this transform as the standard.
     /// </summary>
@@ -41,7 +41,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_RollBtnSelector) **")]
 
-        [Tooltip("Array of buttons u want to do in sequence.")]
+        [Tooltip("Array of buttons you want to do in sequence.")]
         [SerializeField]
         private JCS_RollSelectorButton[] mButtons = null;
 
@@ -56,16 +56,18 @@ namespace JCSUnity
 
         [Header("** Asymptotic Order **")]
 
+        [Tooltip("Enable the asymptotic order effect?")]
         [SerializeField]
         private bool mAsympEffect = false;
 
+        [Tooltip("Asymptotic origin offset.")]
         [SerializeField]
         private Vector3 mAsympDiffScale = new Vector3(0.5f, 0.5f, 0.5f);
 
 
         [Header("** Scroll Settings **")]
 
-        [Tooltip("How fast the button move?")]
+        [Tooltip("How fast the buttons move?")]
         [SerializeField]
         private float mScrollFriction = 0.2f;
 
@@ -130,7 +132,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Initialize the focus selector
+        /// Initialize the focus selector.
         /// </summary>
         /// <param name="rbs"></param>
         public void SetFocusSelector(JCS_RollSelectorButton rbs)
