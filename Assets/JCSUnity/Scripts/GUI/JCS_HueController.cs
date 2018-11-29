@@ -32,21 +32,22 @@ namespace JCSUnity
         [SerializeField] [Range(0, 1)]
         private float mHighestRGB = 0;
 
+        [SerializeField]
+        private Color mTargetColor = Color.white;
+
+        [SerializeField]
+        private Color[] mListColor = null;
+
+
         [Header("** Runtime Variables (JCS_HueController) **")]
 
         [Tooltip("Any Graphic with color component.")]
         [SerializeField]
         private Graphic mColorGraphic = null;
 
-        [Tooltip("How fast the hue change?")]
+        [Tooltip("How fast the hue changes?")]
         [SerializeField] [Range(0.01f, 10.0f)]
         private float mFriction = 1.0f;
-
-
-        [SerializeField] private Color mTargetColor = Color.white;
-
-        [SerializeField]
-        private Color[] mListColor = null;
 
         private int mListCounter = 0;
 
@@ -98,7 +99,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Cycle throguh the color list.
         /// </summary>
         private void DoCycle()
         {
@@ -110,7 +111,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the next color depends on the list.
         /// </summary>
         private void SetNextColorByList()
         {

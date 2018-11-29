@@ -14,7 +14,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// Text pool using Unity Engine's UGUI system.
+    /// Text pool using Unity Engine's uGUI system.
     /// </summary>
     public class JCS_GUITextPool
         : MonoBehaviour
@@ -28,10 +28,11 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_GUITextPool) **")]
 
-        [Tooltip("")]
+        [Tooltip("Log text decoration.")]
         [SerializeField]
         private JCS_LogText mLogText = null;
 
+        [Tooltip("Number of text this text pool handles.")]
         [SerializeField] [Range(3, 50)]
         private int mNumberOfHandle = 10;
 
@@ -61,58 +62,8 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
-        /// Spawn the text pool base on number of handle.
-        /// </summary>
-        private void SpawnTextPool()
-        {
-            if (mLogText == null)
-            {
-                JCS_Debug.LogReminders( 
-                    "No log text assign in the text pool...");
-
-                return;
-            }
-
-
-            // NOTE(JenChieh): this might change in
-            // the future.
-            // Get the log system from the 
-            // same transfrom/node.
-            JCS_IGLogSystem logSystem = this.GetComponent<JCS_IGLogSystem>();
-
-
-            mLogTexts = new JCS_Vector<JCS_LogText>(mNumberOfHandle);
-
-            for (int count = 0;
-                count < mNumberOfHandle;
-                ++count)
-            {
-                // spawn a new game object, 
-                // and get the component
-                JCS_LogText logText = (JCS_LogText)JCS_Utility.SpawnGameObject(mLogText);
-
-                // add to array
-                mLogTexts.set(count, logText);
-
-                // set parent
-                JCS_Utility.SetParentWithoutLosingInfo(logText.transform, this.transform);
-
-                // NOTE(JenChieh): this might change in
-                // the future.
-                // set the log system if there is one.
-                logText.SetIGLogSystem(logSystem);
-            }
-        }
-
-        /// <summary>
-        /// 
+        /// Get one text from pool.
         /// </summary>
         /// <param name="secondSearch"></param>
         /// <returns></returns>
@@ -172,6 +123,56 @@ namespace JCSUnity
             // make sure u have enough number of handle
             // or else the program might crash? (too many delay?)
             return ExecuteOneFromPool(true);
+        }
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
+
+        /// <summary>
+        /// Spawn the text pool base on number of handle.
+        /// </summary>
+        private void SpawnTextPool()
+        {
+            if (mLogText == null)
+            {
+                JCS_Debug.LogReminders( 
+                    "No log text assign in the text pool...");
+
+                return;
+            }
+
+
+            // NOTE(JenChieh): this might change in
+            // the future.
+            // Get the log system from the 
+            // same transfrom/node.
+            JCS_IGLogSystem logSystem = this.GetComponent<JCS_IGLogSystem>();
+
+
+            mLogTexts = new JCS_Vector<JCS_LogText>(mNumberOfHandle);
+
+            for (int count = 0;
+                count < mNumberOfHandle;
+                ++count)
+            {
+                // spawn a new game object, 
+                // and get the component
+                JCS_LogText logText = (JCS_LogText)JCS_Utility.SpawnGameObject(mLogText);
+
+                // add to array
+                mLogTexts.set(count, logText);
+
+                // set parent
+                JCS_Utility.SetParentWithoutLosingInfo(logText.transform, this.transform);
+
+                // NOTE(JenChieh): this might change in
+                // the future.
+                // set the log system if there is one.
+                logText.SetIGLogSystem(logSystem);
+            }
         }
 
     }

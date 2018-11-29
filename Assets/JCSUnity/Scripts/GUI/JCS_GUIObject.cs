@@ -62,7 +62,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
 
-        [Tooltip("GUI type.")]
+        [Tooltip("Select GUI type.")]
         [SerializeField]
         protected JCS_GUIType mGUIType = JCS_GUIType.NONE;
 
@@ -92,7 +92,8 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Update the GUI data.
+        /// Update the GUI data, to get all the necessary 
+        /// informations.
         /// </summary>
         public virtual void UpdateGUIData()
         {
