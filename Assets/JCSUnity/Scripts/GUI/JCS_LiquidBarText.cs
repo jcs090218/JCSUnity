@@ -14,7 +14,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// Object GUI which will do like the counter show.
+    /// Text to show the current value for the liquid bar.
     /// </summary>
     [RequireComponent(typeof(JCS_GUILiquidBar))]
     public class JCS_LiquidBarText
@@ -29,6 +29,7 @@ namespace JCSUnity
 
         // Counter with the liquid bar?
         private JCS_GUILiquidBar mLiquidBar = null;
+
 
         [Header("** Runtime Variables (JCS_LiquidBarText) **")]
 
