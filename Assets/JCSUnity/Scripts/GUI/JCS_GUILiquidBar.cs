@@ -31,7 +31,9 @@ namespace JCSUnity
         private RectTransform mMaskRectTransform = null;
 
         [Header("** Check Variables (JCS_GUILiquidBar) **")]
-        [SerializeField] private Vector3 mMaskTargetPosition = Vector3.zero;
+
+        [SerializeField]
+        private Vector3 mMaskTargetPosition = Vector3.zero;
 
 
         [Header("** Initialize Variables (JCS_GUILiquidBar) **")]
@@ -228,7 +230,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// zero the liquid bar.
+        /// Zero out the liquid bar.
         /// </summary>
         public override void Lack()
         {
@@ -297,7 +299,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Current value in liquid bar.
+        /// Returns current value in liquid bar.
         /// </summary>
         /// <returns> value in liquid bar </returns>
         public override float GetCurrentValue()
