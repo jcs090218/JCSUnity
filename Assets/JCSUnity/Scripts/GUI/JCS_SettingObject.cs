@@ -27,11 +27,11 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Tooltip("")]
+        [Tooltip("Type of the settings.")]
         [SerializeField]
         private JCS_SoundSettingType mSettingType = JCS_SoundSettingType.NONE;
 
-        [Tooltip("")]
+        [Tooltip("Type of the GUI.")]
         [SerializeField]
         private JCS_GUIType mGUIType = JCS_GUIType.NONE;
 

@@ -60,7 +60,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mRealStartTransform = null;
 
-        [Tooltip("Goal position")]
+        [Tooltip("Goal position.")]
         [SerializeField]
         private Transform mRealGoalTransfrom = null;
 
@@ -72,11 +72,12 @@ namespace JCSUnity
         [SerializeField]
         private Transform mSpriteGoalTransform = null;
 
+
         [Header("** Runtime Variables (JCS_RouteGuageSystem) **")]
 
-        [Tooltip("")]
+        [Tooltip("All the player forms.")]
         [SerializeField]
-        private PlayerRegisterForm[] mPlayersForm = null;
+        private List<PlayerRegisterForm> mPlayersForm = null;
 
         //----------------------
         // Protected Variables
@@ -84,6 +85,12 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+
+        public List<PlayerRegisterForm> PlayersForm { get { return this.mPlayersForm; } }
+        public Transform RealStartTransform { get { return this.mRealStartTransform; } set { this.mRealStartTransform = value; } }
+        public Transform RealGoalTransfrom { get { return this.mRealGoalTransfrom; } set { this.mRealGoalTransfrom = value; } }
+        public Transform SpriteStartTransform { get { return this.mSpriteStartTransform; } set { this.mSpriteStartTransform = value; } }
+        public Transform SpriteGoalTransform { get { return this.mSpriteGoalTransform; } set { this.mSpriteGoalTransform = value; } }
 
         //========================================
         //      Unity's function
@@ -117,6 +124,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
         /// <summary>
         /// Do the route guage algorithm here.
         /// </summary>
@@ -130,7 +138,7 @@ namespace JCSUnity
                 return;
 
             for (int index = 0;
-                index < mPlayersForm.Length;
+                index < mPlayersForm.Count;
                 ++index)
             {
                 // 拿到選手

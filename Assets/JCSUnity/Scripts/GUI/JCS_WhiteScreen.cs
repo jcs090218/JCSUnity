@@ -13,7 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// White screen for lightning/flash effect.
+    /// White screen for effect usage.
+    /// 
+    /// NOTE(jenchieh): For lightning/flash effect.
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_WhiteScreen 

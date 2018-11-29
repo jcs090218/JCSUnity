@@ -73,11 +73,11 @@ namespace JCSUnity
 
         [Header("** Sound Setttings (JCS_TweenPanel) **")]
 
-        [Tooltip("Sound play when active this panel.")]
+        [Tooltip("Sound plays when active this panel.")]
         [SerializeField]
         private AudioClip mActiveSound = null;
 
-        [Tooltip("Sound play when this panel is deactive.")]
+        [Tooltip("Sound plays when this panel is deactive.")]
         [SerializeField]
         private AudioClip mDeactiveSound = null;
 
@@ -141,7 +141,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Tween to the taget position and play sound effect
+        /// Tween to the taget position and play sound effect.
         /// </summary>
         public void Active()
         {
