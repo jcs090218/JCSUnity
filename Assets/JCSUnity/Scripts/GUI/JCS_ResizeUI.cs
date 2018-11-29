@@ -15,7 +15,7 @@ using System.Collections.Generic;
 namespace JCSUnity
 {
     /// <summary>
-    /// This responsoble handle all the gui into correct proportion and 
+    /// This responsible handle all the gui into correct proportion and 
     /// right scaling.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
