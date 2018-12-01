@@ -25,14 +25,19 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+        /// <summary>
+        /// Text effect when removing text on the screen.
+        /// </summary>
         private enum TextEffect
         {
             MOVE_UP,    // move up a bit and fade out
             FADE,       // stay where they are and do fade out
-            SLIDE_OUT   // slide away and fade outs
+            SLIDE_OUT,  // slide away and fade outs
         };
 
         private bool mActive = false;
+
 
         [Header("** Runtime Variables (JCS_DamageText) **")]
 
@@ -49,13 +54,13 @@ namespace JCSUnity
         [SerializeField]
         private float mMoveSpeed = 0.2f;
 
-        [Tooltip("")]
+        [Tooltip("Spacing between each digit.")]
         [SerializeField]
         private float mSpacing = 0.25f;
 
-        [Tooltip("How fast the damage fade out.")]
+        [Tooltip("How fast the damage text fade out.")]
         [SerializeField]
-        private float mFadeSpeed = 1;
+        private float mFadeSpeed = 1.0f;
 
         [Tooltip("Scene Layer in the render queue.")]
         // the lower order layer in the queue
@@ -76,22 +81,22 @@ namespace JCSUnity
 
         [Header("** Wave Zigge Effect (JCS_DamageText) **")]
 
-        [Tooltip("Each Digit will go up and down in order.")]
+        [Tooltip("Each digit will goes up and down in order.")]
         [SerializeField]
         private bool mWaveZiggeEffect = true;
 
-        [Tooltip("")]
+        [Tooltip("How much it does up and down.")]
         [SerializeField]
         private float mWaveZigge = 0.1f;
 
 
         [Header("** Asymptotic Scale Effect (JCS_DamageText) **")]
 
-        [Tooltip("")]
+        [Tooltip("Do the asymptotic scale effect?")]
         [SerializeField]
         private bool mAsymptoticScaleEffect = true;
 
-        [Tooltip("")]
+        [Tooltip("Scale value when doing the asymptotic scale effect.")]
         [SerializeField]
         private float mAsymptoticScale = 0.1f;
 
@@ -111,44 +116,81 @@ namespace JCSUnity
 
         [Header("** Critical Strike Sprite Setting (JCS_DamageText) **")]
 
-        [Tooltip("")]
+        [Tooltip("Scale value to critical sprites.")]
         [SerializeField]
         private Vector3 mCritialSpriteScale = Vector3.one;
 
-        [Tooltip("")]
+        [Tooltip("Spacing between each digit on x axis.")]
         [SerializeField]
         private float mSpacingX = 0.5f;
 
-        [Tooltip("")]
+        [Tooltip("Spacing between each digit on y axis.")]
         [SerializeField]
         private float mSpacingY = 0.5f;
 
-        [Tooltip("")]
+        [Tooltip("Randomize the size?")]
         [SerializeField]
         private bool mRandomSize = true;
 
-        [Tooltip("")]
+        [Tooltip("Minimum size value.")]
         [SerializeField]
         private float mMinSize = -1;
 
-        [Tooltip("")]
+        [Tooltip("Maximum size value.")]
         [SerializeField]
         private float mMaxSize = 1;
 
+
         // Damage Text
         [Header("** Damage Text Setting (if the game have this kind of feature fill this out!) **")]
-        [SerializeField] private Sprite mDamageTextMiss = null;
-        [SerializeField] private Sprite mCritialStrike = null;
-        [SerializeField] private Sprite mDamageText0 = null;
-        [SerializeField] private Sprite mDamageText1 = null;
-        [SerializeField] private Sprite mDamageText2 = null;
-        [SerializeField] private Sprite mDamageText3 = null;
-        [SerializeField] private Sprite mDamageText4 = null;
-        [SerializeField] private Sprite mDamageText5 = null;
-        [SerializeField] private Sprite mDamageText6 = null;
-        [SerializeField] private Sprite mDamageText7 = null;
-        [SerializeField] private Sprite mDamageText8 = null;
-        [SerializeField] private Sprite mDamageText9 = null;
+
+        [Tooltip("Damage text miss.")]
+        [SerializeField]
+        private Sprite mDamageTextMiss = null;
+
+        [Tooltip("Damage text critical strike.")]
+        [SerializeField]
+        private Sprite mCritialStrike = null;
+
+        [Tooltip("Damage text number 0.")]
+        [SerializeField]
+        private Sprite mDamageText0 = null;
+
+        [Tooltip("Damage text number 1.")]
+        [SerializeField]
+        private Sprite mDamageText1 = null;
+
+        [Tooltip("Damage text number 2.")]
+        [SerializeField]
+        private Sprite mDamageText2 = null;
+
+        [Tooltip("Damage text number 3.")]
+        [SerializeField]
+        private Sprite mDamageText3 = null;
+
+        [Tooltip("Damage text number 4.")]
+        [SerializeField]
+        private Sprite mDamageText4 = null;
+
+        [Tooltip("Damage text number 5.")]
+        [SerializeField]
+        private Sprite mDamageText5 = null;
+
+        [Tooltip("Damage text number 6.")]
+        [SerializeField]
+        private Sprite mDamageText6 = null;
+
+        [Tooltip("Damage text number 7.")]
+        [SerializeField]
+        private Sprite mDamageText7 = null;
+
+        [Tooltip("Damage text number 8.")]
+        [SerializeField]
+        private Sprite mDamageText8 = null;
+
+        [Tooltip("Damage text number 9.")]
+        [SerializeField]
+        private Sprite mDamageText9 = null;
 
         //----------------------
         // Protected Variables

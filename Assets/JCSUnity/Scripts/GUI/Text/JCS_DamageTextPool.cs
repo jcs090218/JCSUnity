@@ -32,31 +32,57 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_DamageTextPool) **")]
 
-        [Tooltip("number to handle and spawn at the beginning")]
+        [Tooltip("Number to handle and spawn at the initialize time.")]
         [SerializeField] [Range(1, 500)]
         private int mNumberOfHandle = 10;
 
         // optimize
         private int mLastSpawnPos = 0;
 
+
         // type of the damage text the object going to handle!
         [Header("NOTE: Plz put the whole set of Damage Text here!")]
-        [SerializeField] private JCS_DamageText mDamagetText = null;
+
+        [Tooltip("Damage text clone.")]
+        [SerializeField]
+        private JCS_DamageText mDamagetText = null;
+
         private JCS_Vector<JCS_DamageText> mDamageTexts = null;
 
-        [Header("** Runtime Variables (JCS_DamageTextPool) **")]
-        [SerializeField] private float mSpacingPerText = 1;
-        [SerializeField] private float mTimePerSpawn = 0.1f;
 
-        // Audio
+        [Header("** Runtime Variables (JCS_DamageTextPool) **")]
+
+        [Tooltip("Spacing per damage text.")]
+        [SerializeField]
+        private float mSpacingPerText = 1;
+
+        [Tooltip("Time per spawns.")]
+        [SerializeField]
+        private float mTimePerSpawn = 0.1f;
+
+
         [Header("** Sound (JCS_DamageTextPool) **")]
-        [SerializeField] private AudioClip mHitSound = null;
+
+        [Tooltip("Sound when spawns.")]
+        [SerializeField]
+        private AudioClip mHitSound = null;
+
         private JCS_SoundPlayer mSoundPlayer = null;
 
+
         [Header("** Zigge Right Left Effect (In Sequence)**")]
-        [SerializeField] private bool mZiggeEffect = true;
-        [SerializeField] private float mRightAlign = 0.2f;
-        [SerializeField] private float mLeftAlign = 0.2f;
+
+        [Tooltip("Do the zigge effect?")]
+        [SerializeField]
+        private bool mZiggeEffect = true;
+
+        [Tooltip("Right align value.")]
+        [SerializeField]
+        private float mRightAlign = 0.2f;
+
+        [Tooltip("Left align value.")]
+        [SerializeField]
+        private float mLeftAlign = 0.2f;
 
         private List<int> mSequenceThread = null;
         // Data we need to let Sequence Thread process!
@@ -152,11 +178,18 @@ namespace JCSUnity
                 damages[index] = dm;
             }
 
-            SpawnDamagetTexts(damages, Vector2.zero, hitSound);
+            SpawnDamagetTexts(damages, pos, hitSound);
 
             // return the damages we just create!
             return damages;
         }
+
+        /// <summary>
+        /// Spawn multiple damage texts at once.
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="pos"></param>
+        /// <param name="hitSound"></param>
         public void SpawnDamagetTexts(
             int[] damage, 
             Vector2 pos, 
@@ -212,8 +245,9 @@ namespace JCSUnity
             mSequenceSpawnCount.Add(0);
 
         }
+
         /// <summary>
-        /// Spawn One Damage Text
+        /// Spawn one damage text.
         /// </summary>
         /// <param name="damage"> damage number </param>
         /// <param name="pos"> spawn position </param>
@@ -287,7 +321,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Initialize damage text to the array.
         /// </summary>
         private void InitDamageTextToArray()
         {
@@ -375,6 +409,11 @@ namespace JCSUnity
                     mSequenceHitSoundData[process]);
             }
         }
+
+        /// <summary>
+        /// When end the process.
+        /// </summary>
+        /// <param name="processIndex"></param>
         private void EndProcessSequence(int processIndex)
         {
             mSequenceThread.RemoveAt(processIndex);
@@ -384,6 +423,7 @@ namespace JCSUnity
             mSequenceSpawnCount.RemoveAt(processIndex);
             mSequenceHitSoundData.RemoveAt(processIndex);
         }
+
         /// <summary>
         /// Hit Sound is the part of sfx sound
         /// </summary>
