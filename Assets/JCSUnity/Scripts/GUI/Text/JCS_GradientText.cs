@@ -25,23 +25,24 @@ namespace JCSUnity
     public class JCS_GradientText
         : BaseMeshEffect
     {
+        [Header("** Runtime Variables (JCS_GradientText) **")]
 
         [Tooltip("Type of the gradient action.")]
         [SerializeField]
         private JCS_GradientType mGradientType = JCS_GradientType.TOP_DOWN;
 
-        [Tooltip("First color. Either top or right.")]
+        [Tooltip("Beginning color to render the text.")]
         [SerializeField]
-        private Color32 mFirstColor = Color.white;
+        private Color32 mStartColor = Color.white;
 
-        [Tooltip("Second color. Either down or left.")]
+        [Tooltip("End color to render the text.")]
         [SerializeField]
-        private Color32 mSecondColor = Color.black;
+        private Color32 mEndColor = Color.black;
 
 
         public JCS_GradientType GradientType { get { return this.mGradientType; } set { this.mGradientType = value; } }
-        public Color32 FirstColor { get { return this.mFirstColor; } set { this.mFirstColor = value; } }
-        public Color32 SecondColor { get { return this.mSecondColor; } set { this.mSecondColor = value; } }
+        public Color32 StartColor { get { return this.mStartColor; } set { this.mStartColor = value; } }
+        public Color32 EndColor { get { return this.mEndColor; } set { this.mEndColor = value; } }
 
 
         public override void ModifyMesh(VertexHelper vh)
@@ -91,7 +92,7 @@ namespace JCSUnity
                     for (int i = 0; i < count; i++)
                     {
                         UIVertex uiVertex = vertexList[i];
-                        uiVertex.color = Color32.Lerp(mSecondColor, mFirstColor, (uiVertex.position.y - bottomY) / uiElementHeight);
+                        uiVertex.color = Color32.Lerp(mEndColor, mStartColor, (uiVertex.position.y - bottomY) / uiElementHeight);
                         vertexList[i] = uiVertex;
                     }
                 }
@@ -118,7 +119,7 @@ namespace JCSUnity
                     for (int i = 0; i < count; i++)
                     {
                         UIVertex uiVertex = vertexList[i];
-                        uiVertex.color = Color32.Lerp(mSecondColor, mFirstColor, (uiVertex.position.x - RightX) / uiElementWeight);
+                        uiVertex.color = Color32.Lerp(mEndColor, mStartColor, (uiVertex.position.x - RightX) / uiElementWeight);
                         vertexList[i] = uiVertex;
                     }
                 }

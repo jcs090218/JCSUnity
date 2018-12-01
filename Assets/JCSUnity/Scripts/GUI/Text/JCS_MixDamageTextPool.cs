@@ -25,6 +25,10 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+
+        /// <summary>
+        /// List of type of damage text.
+        /// </summary>
         public enum DamageTextType
         {
             NORMAL,
@@ -37,22 +41,53 @@ namespace JCSUnity
         // Private Variables
 
         [Header("NOTE: Plz put the whole set of Damage Text here!")]
-        [SerializeField] private JCS_DamageTextPool mCritDamageTextPool = null;
-        [SerializeField] private JCS_DamageTextPool mNormalDamageTextPool = null;
-        [SerializeField] private JCS_DamageTextPool mGetDamageDamageTextPool = null;
-        [SerializeField] private JCS_DamageTextPool mHealDamageTextPool = null;
 
-        [Header("** Runtime Variables **")]
-        [SerializeField] private float mSpacingPerText = 1;
-        [SerializeField] private float mTimePerSpawn = 0.1f;
+        [Tooltip("Critical damage text pool.")]
+        [SerializeField]
+        private JCS_DamageTextPool mCritDamageTextPool = null;
+
+        [Tooltip("Normal damage text pool.")]
+        [SerializeField]
+        private JCS_DamageTextPool mNormalDamageTextPool = null;
+
+        [Tooltip("Get damage damage text pool.")]
+        [SerializeField]
+        private JCS_DamageTextPool mGetDamageDamageTextPool = null;
+
+        [Tooltip("Head damage text pool.")]
+        [SerializeField]
+        private JCS_DamageTextPool mHealDamageTextPool = null;
+
+
+        [Header("** Runtime Variables (JCS_MixDamageTextPool) **")]
+
+        [Tooltip("Spacing per damage text.")]
+        [SerializeField]
+        private float mSpacingPerText = 1;
+
+        [Tooltip("Time per spawns.")]
+        [SerializeField]
+        private float mTimePerSpawn = 0.1f;
+
 
         [Header("** Sound (Audio can be set at the Text Pool) **\n N/A")]
+
         [Space(10)]
 
+
         [Header("** Zigge Right Left Effect (In Sequence)**")]
-        [SerializeField] private bool mZiggeEffect = true;
-        [SerializeField] private float mRightAlign = 1;
-        [SerializeField] private float mLeftAlign = 1;
+
+        [Tooltip("Do the zigge effect?")]
+        [SerializeField]
+        private bool mZiggeEffect = true;
+
+        [Tooltip("Right align value.")]
+        [SerializeField]
+        private float mRightAlign = 1.0f;
+
+        [Tooltip("Left align value.")]
+        [SerializeField]
+        private float mLeftAlign = 1.0f;
 
 
         private List<int> mSequenceThread = null;
@@ -145,9 +180,8 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
-
         /// <summary>
-        /// Default Damaget Text Spawner with the defualt Random Algorithm!
+        /// Default Damaget Text Spawner with the defualt random algorithm!
         /// </summary>
         public int[] DamageTextSpawnerSimple(
             int minDamage, 
@@ -170,6 +204,7 @@ namespace JCSUnity
                 isEnemy, 
                 hitSound);
         }
+
         /// <summary>
         /// Helper function to spawn the damaget text
         /// so scripter will not have to do all the drug code over and
@@ -298,6 +333,7 @@ namespace JCSUnity
                 isEnemy,
                 hitSound);
         }
+
         /// <summary>
         /// 使用於 如果已經計算好公式了!
         /// </summary>
@@ -344,7 +380,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Spawn a Damaget Text form Pool by the corresponding type
+        /// Spawn a damaget text form Pool by the corresponding type.
         /// </summary>
         /// <param name="damage"> value of the damage text </param>
         /// <param name="pos"> position damage text </param>
