@@ -3,4 +3,4 @@
 //-- Support Version --//
 
 JCSUnity Version: 1.8.5
-Unity Version: 2018.2.17f1 (64-bit)
+Unity Version: 2018.2.18f1 (64-bit)
