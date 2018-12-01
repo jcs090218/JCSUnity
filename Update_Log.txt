@@ -7,6 +7,9 @@
 # ========================================================================
 
 
+2018-12-01
+* Update project unity engine version to 2018.2.18f1. (JCSUnity)
+
 2018-11-27
 * Start travis continuous integration service => .travis.yml file. (JCSUnity)
 
