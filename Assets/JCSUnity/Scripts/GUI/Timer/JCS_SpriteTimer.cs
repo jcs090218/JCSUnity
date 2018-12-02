@@ -59,17 +59,17 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Current hours in teh game.")]
+        [Tooltip("Current hours in the game.")]
         [SerializeField]
         [Range(0, 23)]
         private float mCurrentHours = 0;
 
-        [Tooltip("Current minutes in teh game.")]
+        [Tooltip("Current minutes in the game.")]
         [SerializeField]
         [Range(0, 59)]
         private float mCurrentMinutes = 0;
 
-        [Tooltip("Current seconds in teh game.")]
+        [Tooltip("Current seconds in the game.")]
         [SerializeField]
         [Range(0, 59)]
         private float mCurrentSeconds = 0;
