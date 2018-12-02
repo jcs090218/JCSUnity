@@ -111,11 +111,11 @@ namespace JCSUnity
 
         [Header("- Sprite Settings (JCS_SpriteTimer) ")]
 
-        [Tooltip("Each digit for our.")]
+        [Tooltip("Each digit for hour.")]
         [SerializeField]
         private JCS_UnityObject mDigitHour1 = null;
 
-        [Tooltip("Each digit for our.")]
+        [Tooltip("Each digit for hour.")]
         [SerializeField]
         private JCS_UnityObject mDigitHour2 = null;
 
@@ -143,7 +143,7 @@ namespace JCSUnity
         [Range(0.1f, 5000.0f)]
         private float mDigitInterval = 0.5f;
 
-        [Tooltip("Interval between each digit.")]
+        [Tooltip("Interval between each unit digit.")]
         [SerializeField]
         [Range(0.1f, 5000.0f)]
         private float mDigitUnitInterval = 0.5f;
@@ -340,7 +340,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Update the time UI
+        /// Update the time UI.
         /// </summary>
         public void UpdateTimeUI()
         {
