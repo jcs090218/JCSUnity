@@ -77,34 +77,34 @@ namespace JCSUnity
 
         [Header("- Sprite Slots")]
 
-        [Tooltip("Time text 0")]
+        [Tooltip("Time text 0.")]
         [SerializeField]
         private Sprite mTimeText0 = null;
-        [Tooltip("Time text 1")]
+        [Tooltip("Time text 1.")]
         [SerializeField]
         private Sprite mTimeText1 = null;
-        [Tooltip("Time text 2")]
+        [Tooltip("Time text 2.")]
         [SerializeField]
         private Sprite mTimeText2 = null;
-        [Tooltip("Time text 3")]
+        [Tooltip("Time text 3.")]
         [SerializeField]
         private Sprite mTimeText3 = null;
-        [Tooltip("Time text 4")]
+        [Tooltip("Time text 4.")]
         [SerializeField]
         private Sprite mTimeText4 = null;
-        [Tooltip("Time text 5")]
+        [Tooltip("Time text 5.")]
         [SerializeField]
         private Sprite mTimeText5 = null;
-        [Tooltip("Time text 6")]
+        [Tooltip("Time text 6.")]
         [SerializeField]
         private Sprite mTimeText6 = null;
-        [Tooltip("Time text 7")]
+        [Tooltip("Time text 7.")]
         [SerializeField]
         private Sprite mTimeText7 = null;
-        [Tooltip("Time text 8")]
+        [Tooltip("Time text 8.")]
         [SerializeField]
         private Sprite mTimeText8 = null;
-        [Tooltip("Time text 9")]
+        [Tooltip("Time text 9.")]
         [SerializeField]
         private Sprite mTimeText9 = null;
 
