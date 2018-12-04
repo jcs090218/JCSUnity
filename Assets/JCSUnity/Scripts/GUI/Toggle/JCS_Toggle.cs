@@ -188,7 +188,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the toggle actio once.
+        /// Do the toggle action once.
         /// </summary>
         /// <returns>
         /// true, after toggle once is on.
