@@ -207,7 +207,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Start recording undo/redo
+        /// Start recording undo/redo.
         /// </summary>
         public void StartRecordingAll()
         {
