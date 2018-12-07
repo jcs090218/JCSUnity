@@ -90,6 +90,7 @@ namespace JCSUnity
         // 
         private Vector3 mCurrentFrame = Vector3.zero;
 
+
         [Header("** Runtime Variables Variables (JCS_CharacterController2D) **")]
 
         [Tooltip("Apply gravity?")]
@@ -99,6 +100,7 @@ namespace JCSUnity
         // NOTE(jenchieh): if the class get bigger, 
         // will switch to use composition instead 
         // of having all the feature here which is non-sense.
+        [Tooltip("Impetus for this object to jump.")]
         [SerializeField]
         [Range(0.0f, 50.0f)]
         private float mJumpForce = 3;
@@ -658,14 +660,14 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Do jumping
+        /// Jump once.
         /// </summary>
         public void Jump()
         {
             Jump(mJumpForce);
         }
         /// <summary>
-        /// Do jumping
+        /// Jump once.
         /// </summary>
         /// <param name="force"> force to jump </param>
         public void Jump(float force)
