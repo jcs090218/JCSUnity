@@ -85,116 +85,116 @@ namespace JCSUnity
 
         [Header("- X Axis")]
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward right.")]
         [SerializeField]
         private Transform mRightPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward left.")]
         [SerializeField]
         private Transform mLeftPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward right and up.")]
         [SerializeField]
         private Transform mRightUpPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward right and down.")]
         [SerializeField]
         private Transform mRightDownPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward left and up.")]
         [SerializeField]
         private Transform mLefttUpPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward left and down.")]
         [SerializeField]
         private Transform mLeftDownPoint = null;
 
 
         [Header("- Y Axis")]
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward up.")]
         [SerializeField]
         private Transform mUpPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward down.")]
         [SerializeField]
         private Transform mDownPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward up and forward.")]
         [SerializeField]
         private Transform mUpForwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward up and backward.")]
         [SerializeField]
         private Transform mUpBackwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward down and forward.")]
         [SerializeField]
         private Transform mDownForwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward down and backward.")]
         [SerializeField]
         private Transform mDownBackwardPoint = null;
 
 
         [Header("- Z Axis")]
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward foward.")]
         [SerializeField]
         private Transform mForwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward backward.")]
         [SerializeField]
         private Transform mBackwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward forward and right.")]
         [SerializeField]
         private Transform mForwardRightPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward forward and left.")]
         [SerializeField]
         private Transform mForwardLeftPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward backward and right.")]
         [SerializeField]
         private Transform mBackwardRightPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward backward and left.")]
         [SerializeField]
         private Transform mBackwardLeftPoint = null;
 
 
         [Header("- 8 Corners")]
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward right, up and forward.")]
         [SerializeField]
         private Transform mRightUpForwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward right, up and backward.")]
         [SerializeField]
         private Transform mRightUpBackwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward right, down and forward.")]
         [SerializeField]
         private Transform mRightDownForwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward right, down and backward.")]
         [SerializeField]
         private Transform mRightDownBackwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward left, up and forward.")]
         [SerializeField]
         private Transform mLeftUpForwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward left, up and backward.")]
         [SerializeField]
         private Transform mLeftUpBackwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward left, down, and forward.")]
         [SerializeField]
         private Transform mLeftDownForwardPoint = null;
 
-        [Tooltip("")]
+        [Tooltip("Point to move toward left, down and backward.")]
         [SerializeField]
         private Transform mLeftDownBackwardPoint = null;
 
@@ -450,7 +450,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Target point right down.
+        /// Target point left up.
         /// </summary>
         public void TargetLeftUp()
         {
@@ -472,7 +472,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Target point right down.
+        /// Target point left down.
         /// </summary>
         public void TargetLeftDown()
         {
