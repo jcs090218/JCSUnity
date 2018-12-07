@@ -26,10 +26,11 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Check Variables **")]
+        [Header("** Check Variables (JCS_AttackerRecorder) **")]
 
         // Every time this object get damage will 
         // record down the last attacker.
+        [Tooltip("Last attacker that attacked this object.")]
         [SerializeField]
         private Transform mLastAttacker= null;
 
