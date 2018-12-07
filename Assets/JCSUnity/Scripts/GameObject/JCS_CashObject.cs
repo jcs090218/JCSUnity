@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// In game item stand for cash.
+    /// In game item represents cash.
     /// </summary>
     public class JCS_CashObject
         : JCS_Item
@@ -31,7 +31,7 @@ namespace JCSUnity
         
         [Header("** Initialize Variables (JCS_CashObject) **")]
 
-        [Tooltip("Cash in the game.")]
+        [Tooltip("Value represent to this cash object.")]
         [SerializeField] [Range(1, 99999999)]
         protected int mCashValue = 1;
 
