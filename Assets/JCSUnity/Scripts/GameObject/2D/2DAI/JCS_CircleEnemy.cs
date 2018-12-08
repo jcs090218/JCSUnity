@@ -53,6 +53,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void ProcessMovement()
         {
 

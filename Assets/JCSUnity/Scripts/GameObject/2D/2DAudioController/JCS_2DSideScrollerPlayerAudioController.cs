@@ -12,7 +12,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Audio controller for player
+    /// Audio controller for player.
     /// </summary>
     public class JCS_2DSideScrollerPlayerAudioController 
         : JCS_2DPlayerAudioController
