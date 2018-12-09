@@ -29,7 +29,8 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_2DCamera) **")]
 
-        [Tooltip("")]
+        [Tooltip("Set the camera's position to the player when " +
+            "the game starts?")]
         [SerializeField]
         private bool mSetToPlayerPositionAtStart = true;
 
@@ -54,14 +55,23 @@ namespace JCSUnity
         //[SerializeField] private bool mSmoothMoveY = true;
 
         [Header("** Freeze Settings (Run Time) **")]
+
+        [Tooltip("Do freeze in runtime?")]
         [SerializeField]
         private bool mFreezeInRuntime = false;
+
+        [Tooltip("Freeze on X axis?")]
         [SerializeField]
         private bool mFreezeX = false;
+
+        [Tooltip("Freeze on Y axis?")]
         [SerializeField]
         private bool mFreezeY = false;
+
+        [Tooltip("Freeze on Z axis?")]
         [SerializeField]
         private bool mFreezeZ = false;
+
         private Vector3 mFreezeRecord = Vector3.zero;
 
         // Record down the last position and current position, in order 
@@ -79,7 +89,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mZoomWithMouse = true;
 
-        [Tooltip("Distance once u scroll.")]
+        [Tooltip("Distance once you scroll.")]
         [SerializeField]
         [Range(0.0f, 100.0f)]
         private float mScrollRange = 2.0f;
@@ -267,7 +277,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the zooming in Z axis!!
+        /// Do the zooming on Z axis.
         /// </summary>
         /// <param name="depthDistance"></param>
         public void ZoomCamera(float depthDistance)

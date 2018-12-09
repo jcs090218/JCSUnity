@@ -34,7 +34,9 @@ namespace JCSUnity
 
         private AudioListener mAudioListener = null;
 
-        [Header("Plz add the camera u want to use in the scene.")]
+        [Header("** Runtime Variables (JCS_2DMultiTrackCamera) **")]
+
+        [Tooltip("Camera use to do the action.")]
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;
         
@@ -43,19 +45,31 @@ namespace JCSUnity
 
         private float mTargetFieldOfView = 0;
 
-        [Header("Variables to control camera")]
-        [SerializeField] private float mCamerSpeed = 8;
-        [SerializeField] private float mCameraFriction = 0.7f;
+        [Tooltip("How fast the camera moves.")]
+        [SerializeField]
+        private float mCamerSpeed = 8;
+
+        [Tooltip("How fast the caemra zoom in/out.")]
+        [SerializeField]
+        private float mCameraFriction = 0.7f;
 
         // Range under this will not do the scale effect,
         // otherwise do the scale effect
-        [Header("Above these range do field of view")]
-        [SerializeField] private float mViewHeight = 5;
-        [SerializeField] private float mViewWidth = 15;
+        [Tooltip("Width for view of field.")]
+        [SerializeField]
+        private float mViewWidth = 15;
 
-        [Header("Min & Max of field of view")]
-        [SerializeField] private float mMinFieldOfView = 60;
-        [SerializeField] private float mMaxFieldOfView = 100;
+        [Tooltip("Height for view of field.")]
+        [SerializeField]
+        private float mViewHeight = 5;
+
+        [Tooltip("Mininum field of view value.")]
+        [SerializeField]
+        private float mMinFieldOfView = 60;
+
+        [Tooltip("Maxinum field of view value.")]
+        [SerializeField]
+        private float mMaxFieldOfView = 100;
 
         //----------------------
         // Protected Variables
@@ -64,6 +78,8 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public AudioListener GetAudioListener() { return this.mAudioListener; }
+        public float MinFieldOfView { get { return this.mMinFieldOfView; } set { this.mMinFieldOfView = value; } }
+        public float MaxFieldOfView { get { return this.mMaxFieldOfView; } set { this.mMaxFieldOfView = value; } }
 
         //========================================
         //      Unity's function
@@ -118,10 +134,20 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Add a target to track list.
+        /// </summary>
+        /// <param name="p"></param>
         public void AddTargetToTrackList(JCS_Player p)
         {
             mTargetList.push(p);
         }
+
+        /// <summary>
+        /// Remove a target from track list.
+        /// </summary>
+        /// <param name="p"></param>
         public void RemoveTargetFromTrackList(JCS_Player p)
         {
             mTargetList.slice(p);
@@ -132,6 +158,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Calcualte the camera position, in order to get the 
+        /// correct movement.
+        /// </summary>
+        /// <returns></returns>
         private Vector3 CalculateTheCameraPosition()
         {
             // no target trackable
