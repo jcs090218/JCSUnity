@@ -46,21 +46,15 @@ namespace JCSUnity
 
         // Notice important that Designer should know what 
         // Unity GUI type they are going to use!
-        [Tooltip("")]
+        [Tooltip("GUI type.")]
         [SerializeField]
         private JCS_UnityGUIType mUnityGUIType = JCS_UnityGUIType.nGUI_3D;
 
-
-        [Header("** Please set a 2DCamera from the asset, or it will spawn one if is null! **")]
-        [Tooltip("")]
-
+        [Tooltip("Camera itself.")]
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;
 
-
-        [Header("** Please set a JCS_SlideScreenPanelHolder from the asset, or it will spawn one if is null! **")]
-
-        [Tooltip("")]
+        [Tooltip("Slide screen panel holder for this camera.")]
         [SerializeField]
         private JCS_SlideScreenPanelHolder mPanelHolder = null;
 
@@ -149,7 +143,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Switch the panel.
+        /// Swicth the scene by sliding its with direction.
         /// </summary>
         /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D4Direction towardDirection)
@@ -166,7 +160,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Swicth the scene by sliding it with direction.
+        /// Swicth the scene by sliding its with direction.
         /// </summary>
         /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D8Direction towardDirection)
