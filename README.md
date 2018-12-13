@@ -30,7 +30,7 @@ the assets into that project. Then you can start all of the tools
 in the JCSUnity framework. <br/>
 
 ## Current Version Status ##
-JCSUnity Version => `1.8.5`
+JCSUnity Version => `1.8.7`
 <br/>
 Unity Version => `2018.3.0f2 (64-bit)`
 <br/>
