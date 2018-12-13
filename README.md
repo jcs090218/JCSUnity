@@ -32,7 +32,7 @@ in the JCSUnity framework. <br/>
 ## Current Version Status ##
 JCSUnity Version => `1.8.5`
 <br/>
-Unity Version => `2018.2.18f1 (64-bit)`
+Unity Version => `2018.3.0f2 (64-bit)`
 <br/>
 
 <br/>
