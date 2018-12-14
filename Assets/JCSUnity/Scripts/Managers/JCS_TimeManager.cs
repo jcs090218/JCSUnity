@@ -6,10 +6,11 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using System;
+using System.Collections;
 using System.Xml;
+using UnityEngine;
+using UnityEngine.Networking;
 
 
 namespace JCSUnity
@@ -236,16 +237,16 @@ namespace JCSUnity
             */
             string cityId = "1668341";
             string url = "http://api.openweathermap.org/data/2.5/forecast/city?id=" + cityId + "&APPID=ffbfe3797e856b051ec15a41ba1360c8";
-            WWW www = new WWW(url);
-            yield return www;
+            UnityWebRequest www = UnityWebRequest.Get(url);
+            yield return www.SendWebRequest();
 
             if (www.error == null)
             {
 
-                Debug.Log("Loaded following XML " + www.text);
+                Debug.Log("Loaded following XML " + www.downloadHandler.text);
 
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.LoadXml(www.text);
+                xmlDoc.LoadXml(www.downloadHandler.text);
 
                 //Debug.Log("City: " + xmlDoc.SelectSingleNode("cities/list/item/city/@name").InnerText);
                 //Debug.Log("Temperature: " + xmlDoc.SelectSingleNode("cities/list/item/temperature/@value").InnerText);
