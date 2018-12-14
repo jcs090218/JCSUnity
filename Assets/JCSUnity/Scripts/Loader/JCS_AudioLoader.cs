@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 
 namespace JCSUnity
@@ -18,7 +19,7 @@ namespace JCSUnity
     /// <summary>
     /// Audiol loader, load an external audio file.
     /// </summary>
-    public class JCS_AudioLoader
+    public static class JCS_AudioLoader
     {
         /// <summary>
         /// Load the music from path in runetime.
@@ -26,17 +27,19 @@ namespace JCSUnity
         /// <param name="ac"> A container for audio data. </param>
         /// <param name="path"> file path, not include filename. </param>
         /// <param name="filename"> file name of the ogg file. </param>
+        /// <param name="type"> Audio clip type. </param>
         /// <param name="callback"> Callback after the audio is loaded. </param>
         /// <returns> Coroutine status. </returns>
         public static IEnumerator LoadAudio(
             AudioClip ac,
             string path,
             string filename,
+            AudioType type = AudioType.OGGVORBIS,
             AudioLoaded callback = null)
         {
             string fullFilePath = path + filename;
 
-            return LoadAudio(ac, fullFilePath, callback);
+            return LoadAudio(ac, fullFilePath, type, callback);
         }
 
         /// <summary>
@@ -44,19 +47,21 @@ namespace JCSUnity
         /// </summary>
         /// <param name="ac"> A container for audio data. </param>
         /// <param name="fullFilePath"> Filpath to the target audio file. </param>
+        /// <param name="type"> Audio clip type. </param>
         /// <param name="callback"> Callback after the audio is loaded. </param>
         /// <returns> Coroutine status. </returns>
         public static IEnumerator LoadAudio(
             AudioClip ac,
             string fullFilePath,
+            AudioType type = AudioType.OGGVORBIS, 
             AudioLoaded callback = null)
         {
             string formatFullFilePath = string.Format("file://{0}", fullFilePath);
 
-            WWW request = new WWW(formatFullFilePath);
-            yield return request;
+            UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(formatFullFilePath, type);
+            yield return request.SendWebRequest();
 
-            ac = request.GetAudioClip(false, false);
+            ac = DownloadHandlerAudioClip.GetContent(request);
 
             if (callback != null)
                 callback.Invoke(ac);
