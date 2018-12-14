@@ -17,7 +17,7 @@ namespace JCSUnity
     /// <summary>
     /// Video loader, load an external video file.
     /// </summary>
-    public class JCS_VideoLoader
+    public static class JCS_VideoLoader
     {
         /// <summary>
         /// Video loader, load an external video file.

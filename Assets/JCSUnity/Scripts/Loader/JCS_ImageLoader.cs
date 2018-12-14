@@ -15,14 +15,8 @@ namespace JCSUnity
     /// <summary>
     /// Image loader, load image to sprite from resource.
     /// </summary>
-    public class JCS_ImageLoader
+    public static class JCS_ImageLoader
     {
-
-        public JCS_ImageLoader()
-        {
-
-        }
-
         /// <summary>
         /// Load image file as texture.
         /// </summary>
