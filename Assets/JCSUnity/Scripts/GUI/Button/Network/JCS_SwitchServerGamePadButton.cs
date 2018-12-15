@@ -37,6 +37,7 @@ namespace JCSUnity
         /* setter/getter */
         public int Port { get { return this.mPort; } set { this.mPort = value; } }
         public string Host { get { return this.mHost; } set { this.mHost = value; } }
+        public bool Force { get { return this.mForce; } set { this.mForce = value; } }
 
 
         public override void JCS_OnClickCallback()
