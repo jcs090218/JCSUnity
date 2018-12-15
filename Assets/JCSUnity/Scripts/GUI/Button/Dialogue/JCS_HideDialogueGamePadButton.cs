@@ -21,13 +21,13 @@ namespace JCSUnity
     {
         [Header("** Runtime Variables (JCS_HideDialogueGamePadButton) **")]
 
-        [Tooltip("")]
+        [Tooltip("List of dialogue panels you want to hide.")]
         [SerializeField]
         private JCS_DialogueObject[] mDialoguesToHide = null;
 
-        [Tooltip("")]
+        [Tooltip("When hiding play the sound.")]
         [SerializeField]
-        private bool mHideWithSound = true;
+        private bool mHideWithSound = false;
 
 
         public JCS_DialogueObject[] DialoguesToHide { get { return this.mDialoguesToHide; } }

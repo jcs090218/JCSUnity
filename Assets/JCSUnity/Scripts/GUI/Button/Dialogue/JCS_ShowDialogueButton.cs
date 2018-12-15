@@ -22,11 +22,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ShowDialogueButton) **")]
 
-        [Tooltip("")]
+        [Tooltip("List of dialogue panels you want to show.")]
         [SerializeField]
         private JCS_DialogueObject[] mDialoguesToShow = null;
 
-        [Tooltip("Play dialogue sound?")]
+        [Tooltip("When showing play the sound.")]
         [SerializeField]
         private bool mShowWithSound = false;
 

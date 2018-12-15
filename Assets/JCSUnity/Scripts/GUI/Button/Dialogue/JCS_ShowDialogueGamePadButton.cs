@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Click the button to show multiple dialogyue. (Game Pad)
+    /// Click the button to show multiple dialogue. (Gamepad)
     /// </summary>
     public class JCS_ShowDialogueGamePadButton
         : JCS_GamePadButton
@@ -22,11 +22,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ShowDialogueGamePadButton) **")]
 
-        [Tooltip("")]
+        [Tooltip("List of dialogue panels you want to show.")]
         [SerializeField]
         private JCS_DialogueObject[] mDialoguesToShow = null;
 
-        [Tooltip("Play dialogue sound?")]
+        [Tooltip("When showing play the sound.")]
         [SerializeField]
         private bool mShowWithSound = false;
 
