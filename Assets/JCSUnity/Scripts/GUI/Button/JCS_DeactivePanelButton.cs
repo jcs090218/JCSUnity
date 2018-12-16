@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Tooltip("Play dialogue sound?")]
         [SerializeField]
-        private bool mShowWithSound = true;
+        private bool mHideWithSound = true;
 
         [Tooltip("Panels to be deactive.")]
         [SerializeField]
@@ -33,13 +33,16 @@ namespace JCSUnity
         private JCS_TweenPanel[] mTweenPanels = null;
 
 
+        public bool HideithSound { get { return this.mHideWithSound; } set { this.mHideWithSound = value; } }
+
+
         public override void JCS_OnClickCallback()
         {
             foreach (JCS_DialogueObject panel in mDialogueObjects)
             {
                 if (panel != null)
                 {
-                    if (mShowWithSound)
+                    if (mHideWithSound)
                         panel.HideDialogue();
                     else
                         panel.HideDialogueWithoutSound();
