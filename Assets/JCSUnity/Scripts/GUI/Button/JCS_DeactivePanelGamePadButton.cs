@@ -36,6 +36,7 @@ namespace JCSUnity
 
         public bool HideithSound { get { return this.mHideWithSound; } set { this.mHideWithSound = value; } }
 
+
         public override void JCS_OnClickCallback()
         {
             foreach (JCS_DialogueObject panel in mDialogueObjects)
