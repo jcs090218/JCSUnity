@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Click the button to show multiple dialogyue.
+    /// Click the button to show multiple dialogue.
     /// </summary>
     public class JCS_ShowDialogueButton
         : JCS_Button
