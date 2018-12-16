@@ -4,7 +4,7 @@ rvm:
   - 2.2         # see before_install for getting RVM stable.
 
 env:
-  - TRAVIS_TAG="1.8.5" PROJECT_NAME="JCSUnity" UNITY_PROJECT_PATH="./" UNITY_DOWNLOAD_CACHE="$(pwd)/unity_download_cache" DEPLOY_UNITYPACKAGE="path set in deploy script"
+  - TRAVIS_TAG="1.8.7" PROJECT_NAME="JCSUnity" UNITY_PROJECT_PATH="./" UNITY_DOWNLOAD_CACHE="$(pwd)/unity_download_cache" DEPLOY_UNITYPACKAGE="path set in deploy script"
 
 
 cache:
