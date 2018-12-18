@@ -19,7 +19,7 @@ namespace JCSUnity
     public class JCS_WebcamButton
         : JCS_Button
     {
-        [Tooltip("")]
+        [Tooltip("Webcam to use.")]
         [SerializeField]
         private JCS_Webcam mWebcam = null;
 
