@@ -19,7 +19,7 @@ namespace JCSUnity
     public class JCS_OpenURLGamePadButton
     : JCS_GamePadButton
     {
-        [Header("** Runtime Variables (JCS_OpenURLButton) **")]
+        [Header("** Runtime Variables (JCS_OpenURLGamePadButton) **")]
 
         [Tooltip("URL to open in the default browser.")]
         [SerializeField]
