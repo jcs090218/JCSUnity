@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button exit the app.
+    /// Button exit the application.
     /// </summary>
     public class JCS_ExitAppButton
         : JCS_Button
