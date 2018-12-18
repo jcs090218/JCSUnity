@@ -14,22 +14,22 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button will load the scene. (Game Pad)
+    /// Button will load the target scene. (Gamepad)
     /// </summary>
     public class JCS_LoadSceneGamePadButton
         : JCS_GamePadButton
     {
         [Header("** Initialize Variables (JCS_LoadSceneGamePadButton) **")]
 
-        [Tooltip("Platform u want to target. NONE means all platform, so it will just load the scene")]
+        [Tooltip("Platform you want to target. NONE means all platform, so it will just load the scene")]
         [SerializeField]
         private JCS_PlatformType mPlatformType = JCS_PlatformType.NONE;
 
-        [Tooltip("Scene u want to load after clicking this button.")]
+        [Tooltip("Scene name you want to load the scene.")]
         [SerializeField]
         private string mSceneName = "JCS_ApplicationCloseSimulateScene";
 
-        [Tooltip("Screen to fade.")]
+        [Tooltip("Screen color when load the scene.")]
         [SerializeField]
         private Color mScreenColor = Color.black;
 

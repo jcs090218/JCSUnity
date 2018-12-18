@@ -14,22 +14,22 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button will load the scene.
+    /// Button will load the target scene.
     /// </summary>
     public class JCS_LoadSceneButton
         : JCS_Button
     {
         [Header("** Initialize Variables (JCS_LoadSceneButton) **")]
 
-        [Tooltip("Platform u want to target. NONE means all platform, so it will just load the scene")]
+        [Tooltip("Platform you want to target. NONE means all platform, so it will just load the scene")]
         [SerializeField]
         private JCS_PlatformType mPlatformType = JCS_PlatformType.NONE;
 
-        [Tooltip("Scene u want to load after clicking this button.")]
+        [Tooltip("Scene name you want to load the scene.")]
         [SerializeField]
         private string mSceneName = "JCS_ApplicationCloseSimulateScene";
 
-        [Tooltip("Screen to fade.")]
+        [Tooltip("Screen color when load the scene.")]
         [SerializeField]
         private Color mScreenColor = Color.black;
 
