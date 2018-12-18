@@ -38,7 +38,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_SlideScreenButton) **")]
 
-        [Tooltip("Direction u want to go.")]
+        [Tooltip("Direction you want to move.")]
         [SerializeField] private JCS_2D8Direction mDirection = JCS_2D8Direction.TOP;
 
         [Tooltip("How many times to go to that direction? (Default is 1)")]
@@ -49,13 +49,18 @@ namespace JCSUnity
         [Header("** Sound Settings (JCS_SlideScreenButton) **")]
 
         [Tooltip("Sound when sliding screen. (Switch Scene)")]
-        [SerializeField] private AudioClip mSlideScreenSound = null;
+        [SerializeField]
+        private AudioClip mSlideScreenSound = null;
 
 
         [Header("** Delay Settings (JCS_SlideScreenButton) **")]
 
-        [SerializeField] private float mDelayTime = 0;
+        [Tooltip("Time delay when slide screen.")]
+        [SerializeField]
+        private float mDelayTime = 0;
+
         private float mDelayTimer = 0;
+
         private bool mStartDelay = false;
 
         //----------------------

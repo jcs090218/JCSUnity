@@ -43,8 +43,7 @@ namespace JCSUnity
         private JCS_2D8Direction mDirection = JCS_2D8Direction.TOP;
 
         [Tooltip("How many times to go to that direction? (Default is 1)")]
-        [SerializeField]
-        [Range(1, 5)]
+        [SerializeField] [Range(1, 5)]
         private int mCount = 1;
 
 
@@ -57,9 +56,12 @@ namespace JCSUnity
 
         [Header("** Delay Settings (JCS_SlideScreenGamePadButton) **")]
 
+        [Tooltip("Time delay when slide screen.")]
         [SerializeField]
         private float mDelayTime = 0;
+
         private float mDelayTimer = 0;
+
         private bool mStartDelay = false;
 
         /*******************************************/
