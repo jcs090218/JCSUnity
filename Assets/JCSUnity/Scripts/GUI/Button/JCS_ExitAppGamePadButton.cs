@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button exit the app. (Game Pad)
+    /// Button exit the application. (Gamepad)
     /// </summary>
     public class JCS_ExitAppGamePadButton
         : JCS_GamePadButton
