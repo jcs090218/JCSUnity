@@ -13,7 +13,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Use with JCS_RollBtnSelector
+    /// Use with JCS_RollBtnSelector.
     /// </summary>
     [RequireComponent(typeof(JCS_SimpleTrackAction))]
     public class JCS_RollSelectorButton
@@ -27,9 +27,14 @@ namespace JCSUnity
         // Private Variables
         private JCS_RollBtnSelector mRollBtnSelector = null;
 
+
         [Header("** Check Variables (JCS_RollSelectorButton) **")]
-        [SerializeField] private JCS_Button[] btns = null;
-        [SerializeField] private int mScrollIndex = 0;
+
+        [SerializeField]
+        private JCS_Button[] btns = null;
+
+        [SerializeField]
+        private int mScrollIndex = 0;
 
         private JCS_SimpleTrackAction mTrackAction = null;
 
@@ -122,6 +127,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Set the target moving toward position.
+        /// </summary>
         public void SetTrackPosition()
         {
             mTrackAction.TargetPosition = this.transform.localPosition;
