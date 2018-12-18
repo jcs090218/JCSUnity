@@ -29,7 +29,7 @@ namespace JCSUnity
         private ToggleFunc mAcitveFunc = null;
         private ToggleFunc mDeactiveFunc = null;
 
-        [Header("** Check Variables (JCS_ToggleButton) **")]
+        [Header("** Check Variables (JCS_ToggleGamePadButton) **")]
 
         [SerializeField]
         private bool mActive = false;
