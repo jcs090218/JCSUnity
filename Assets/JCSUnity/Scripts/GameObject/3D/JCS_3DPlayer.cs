@@ -20,7 +20,6 @@ namespace JCSUnity
         : JCS_Player
     {
 
-
         //----------------------
         // Public Variables
 
@@ -55,6 +54,14 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Control this player or not base on boolean pass in.
+        /// </summary>
+        /// <param name="act"> 
+        /// true : control. 
+        /// false : not control. 
+        /// </param>
         public override void ControlEnable(bool act)
         {
             // enable all the component here
@@ -69,6 +76,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Play input's design.
+        /// </summary>
         public void PlayerInput()
         {
             if (JCS_Input.GetKey(KeyCode.RightArrow))
