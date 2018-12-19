@@ -27,11 +27,15 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_3DDragDropObject) **")]
+
         [Tooltip("Draw the other direction. (Horizontal)")]
-        [SerializeField] private bool mFlipX = false;
+        [SerializeField]
+        private bool mFlipX = false;
+
         [Tooltip("Draw the other direction. (Vertical)")]
-        [SerializeField] private bool mFlipY = false;
+        [SerializeField]
+        private bool mFlipY = false;
 
         private Vector3 mDistance = Vector3.zero;
         private float mPosX = 0;
