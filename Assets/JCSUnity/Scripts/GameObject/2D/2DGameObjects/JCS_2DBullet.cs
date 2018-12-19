@@ -14,7 +14,7 @@ namespace JCSUnity
 {
     /// <summary>
     /// For scripter and programmer,
-    /// Override this if u want to implement this class
+    /// Override this if you want to implement this class
     /// </summary>
     [RequireComponent(typeof(JCS_3DGoStraightAction))]
     [RequireComponent(typeof(JCS_DestroyObjectWithTime))]
