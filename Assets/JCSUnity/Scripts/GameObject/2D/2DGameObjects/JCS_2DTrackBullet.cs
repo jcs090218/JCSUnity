@@ -97,6 +97,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Do delay when track.
+        /// </summary>
         private void DoCounter()
         {
             // check effect trigger!
