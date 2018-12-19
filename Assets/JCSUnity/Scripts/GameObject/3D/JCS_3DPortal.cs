@@ -27,32 +27,34 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_3DPortal) **")]
 
-        [Tooltip("")]
+        [Tooltip("Key to trigger this portal.")]
         [SerializeField]
         private KeyCode mKeyToTrigger = KeyCode.UpArrow;
 
-        [Tooltip("")]
+        [Tooltip("Active portal when on trigger event.")]
         [SerializeField]
         private bool mAutoTrigger = false;
 
 
         [Header("Choose portal type. (JCS_2DPortal) ")]
 
-        [Tooltip("")]
+        [Tooltip("Type of the portal.")]
         [SerializeField]
         private JCS_3DPortalType mType = JCS_3DPortalType.SCENE_PORTAL;
+
 
         //** SCENE_PORTAL
         [Header("** Scene Portal Settings (JCS_2DPortal) **")]
 
-        [Tooltip("")]
+        [Tooltip("Scene name when portal load this scene.")]
         [SerializeField]
         private string mSceneName = "JCS_Demo";
+
 
         //** TRANSFER_PORTAL
         [Header("** Transfer Portal Settings (JCS_2DPortal) **")]
 
-        [Tooltip("")]
+        [Tooltip("Position when the portal moves the player's position.")]
         [SerializeField]
         private Transform mTargetPortal = null;
 
@@ -97,8 +99,10 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Do the portal.
         /// </summary>
+        /// <param name="type"> Type of the portal. </param>
+        /// <param name="player"> Player that do the portal event. </param>
         public void DoPortal(JCS_3DPortalType type, JCS_Player player)
         {
             switch (type)
