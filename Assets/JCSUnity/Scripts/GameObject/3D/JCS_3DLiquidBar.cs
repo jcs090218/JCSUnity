@@ -22,8 +22,8 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// if finding for 2D Liquid bar to do the health bar effect,
-    /// plz use the "JCS_GUILiquidBar" instead.
+    /// If finding for 2D Liquid bar to do the health bar effect,
+    /// please use the "JCS_GUILiquidBar" instead.
     /// </summary>
     public class JCS_3DLiquidBar
         : JCS_LiquidBar
@@ -69,12 +69,12 @@ namespace JCSUnity
 #if (SPRITE_MASK)
         [Header("** Initilaize Variables (JCS_3DLiquidBar) **")]
 
-        [Tooltip("Plz set this.")]
+        [Tooltip("Sprite mask that mask out the inner bar sprite.")]
         [SerializeField]
         private SpriteMask mSpriteMask = null;
 #endif
 
-        [Tooltip("Plz put the under texture bar here.")]
+        [Tooltip("Please put the under texture bar here.")]
         [SerializeField]
         private SpriteRenderer mBarSpriteRenderer = null;
 
@@ -265,7 +265,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// zero the liquid bar.
+        /// Zero the liquid bar.
         /// </summary>
         public override void Lack()
         {
