@@ -45,13 +45,13 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_3DCamera) **")]
 
-        [Tooltip("")]
+        [Tooltip("Target we want to look at.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
         private bool mDoReset = false;
 
-        [Tooltip("")]
+        [Tooltip("Angle when looking at the target.")]
         [SerializeField]
         private float mTargetAngle = 0.0f;
 
@@ -66,11 +66,11 @@ namespace JCSUnity
 
         [Header("** Rotate Camera Settings (JCS_3DCamera) **")]
 
-        [Tooltip("")]
+        [Tooltip("How fast this camera rotates.")]
         [SerializeField] [Range(0.1f, 1000.0f)]
         private float mRotateSpeed = 350.0f;
 
-        [Tooltip("")]
+        [Tooltip("Range when rotating to the target rotation.")]
         [SerializeField] [Range(0.01f, 2.0f)]
         private float mAcceptRange = 1.0f;
 
@@ -86,18 +86,18 @@ namespace JCSUnity
 
         [Header("** Reset Camera Settings (JCS_3DCamera) **")]
 
-        [Tooltip("")]
+        [Tooltip("Key to reset the camera.")]
         [SerializeField]
         private KeyCode mResetKeyCode = KeyCode.None;
 
 #endif
 
-        [Tooltip("")]
+        [Tooltip("Angle when reset the camera.")]
         [SerializeField]
         private float mResetTargetAngle = 0.0f;
 
         /// <summary>
-        /// 
+        /// State of the rotation identifier.
         /// </summary>
         enum CheckState
         {
@@ -106,7 +106,7 @@ namespace JCSUnity
             POSITIVE,
             NEGATIVE
         };
-        // 
+        // instance rotation state.
         private CheckState mCheckState = CheckState.NULL;
 
 
