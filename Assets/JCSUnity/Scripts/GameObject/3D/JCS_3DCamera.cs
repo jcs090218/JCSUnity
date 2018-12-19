@@ -117,16 +117,16 @@ namespace JCSUnity
 
         [Header("** Up Down Settings (JCS_3DCamera) **")]
 
-        [Tooltip("UpDown movement enable?")]
+        [Tooltip("Up and Down movement enable?")]
         [SerializeField]
         private bool mUpDownMovement = true;
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
-        [Tooltip("Key to go up")]
+        [Tooltip("Key to go up.")]
         [SerializeField]
         private KeyCode mUpKey = KeyCode.None;
 
-        [Tooltip("Key to go down")]
+        [Tooltip("Key to go down.")]
         [SerializeField]
         private KeyCode mDownKey = KeyCode.None;
 #endif
@@ -134,6 +134,7 @@ namespace JCSUnity
         [Tooltip("Space between each up and down movement.")]
         [SerializeField]
         private float mUpDownSpacing = 10;
+
 
         [Header("- Min / Max")]
 
@@ -148,6 +149,7 @@ namespace JCSUnity
         // 
         private float mTargetHeight = 0;
 
+
         [Header("- Speed/Friction")]
 
         [Tooltip("How fast it change the view up and down?")]
@@ -161,7 +163,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mZoomEffect = true;
 
-        [Tooltip("Distance once u scroll.")]
+        [Tooltip("Distance once you scroll.")]
         [SerializeField] [Range(0.0f, 500.0f)]
         private float mScrollRange = 120.0f;
 
@@ -312,7 +314,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Rotate around the target toward right.
         /// </summary>
         public void RotateAroundRight()
         {
@@ -320,7 +322,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Rotate around the target toward left.
         /// </summary>
         public void RotateAroundLeft()
         {
@@ -328,7 +330,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Reset the camera.
         /// </summary>
         public void ResetCamera()
         {
@@ -348,7 +350,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Move the camera upward.
         /// </summary>
         public void UpCamera()
         {
@@ -359,7 +361,7 @@ namespace JCSUnity
         }
         
         /// <summary>
-        /// 
+        /// Move the caemra downward.
         /// </summary>
         public void DownCamera()
         {
