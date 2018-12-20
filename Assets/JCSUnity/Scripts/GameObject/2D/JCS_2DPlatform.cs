@@ -24,8 +24,16 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private BoxCollider mPlatformCollider = null;
-        [SerializeField] private BoxCollider mPlatformTrigger = null;
+
+        [Header("** Runtime Variables (JCS_2DPlatform) **")]
+
+        [Tooltip("Platform's collider that player stand on.")]
+        [SerializeField]
+        private BoxCollider mPlatformCollider = null;
+
+        [Tooltip("Platform's trigger decide weather or not to active platform collider.")]
+        [SerializeField]
+        private BoxCollider mPlatformTrigger = null;
 
         //----------------------
         // Protected Variables
@@ -60,7 +68,6 @@ namespace JCSUnity
                     player.GetCharacterController(), true);
 
             }
-
         }
 
         protected virtual void OnTriggerExit(Collider other)
@@ -75,7 +82,6 @@ namespace JCSUnity
                     player.GetCharacterController(), false);
 
             }
-
         }
 
         //========================================
