@@ -28,15 +28,15 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DPositionPlatform) **")]
 
-        [Tooltip("Collider will detect to see if the player close to the actual one")]
+        [Tooltip("Collider will detect to see if the player could stand ontop of the platform collider.")]
         [SerializeField]
         private BoxCollider mPlatformTrigger = null;
 
-        [Tooltip("Collider will actually stop the player")]
+        [Tooltip("Collider will actually stop the player.")]
         [SerializeField]
         private BoxCollider mPlatformCollider = null;
 
-        [Tooltip("Can this platform be down jump?>")]
+        [Tooltip("Can this platform be down jump?")]
         [SerializeField]
         private bool mCanBeDownJump = true;
 
@@ -135,7 +135,6 @@ true meaning the fly action object cannot go throught this platform.")]
 
             p.ResetingCollision = true;
         }
-
 
         //========================================
         //      Self-Define
