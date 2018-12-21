@@ -35,12 +35,12 @@ namespace JCSUnity
         //========================================
         //      Unity's function
         //------------------------------
+
         private void Start()
         {
             // get handle!
             JCS_SceneManager.instance.SetDynamicScene(this);
         }
-
 
         //========================================
         //      Self-Define
