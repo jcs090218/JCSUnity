@@ -29,7 +29,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DPushEffect) **")]
 
-        [Tooltip("")]
+        [Tooltip("Direction this effect pushes the player.")]
         [SerializeField]
         private JCS_2DFaceType mDirection = JCS_2DFaceType.FACE_LEFT;
 
@@ -61,6 +61,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Override.
+        /// </summary>
         public void Effect()
         {
             // override   
