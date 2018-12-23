@@ -36,7 +36,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsPlayer = false;
 
-        [Tooltip("")]
+        [Tooltip("Is the live object been target?")]
         [SerializeField]
         private bool mBeenTarget = false;
 
