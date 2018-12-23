@@ -39,10 +39,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mAutoTrigger = false;
 
-
-        [Header("Choose portal type. (JCS_2DPortal) ")]
-
-        [Tooltip("")]
+        [Tooltip("Type of the portal.")]
         [SerializeField]
         private JCS_2DPortalType mType = JCS_2DPortalType.SCENE_PORTAL;
 
@@ -50,11 +47,11 @@ namespace JCSUnity
         //** SCENE_PORTAL
         [Header("** Scene Portal Settings (JCS_2DPortal) **")]
 
-        [Tooltip("")]
+        [Tooltip("Name of the scene.")]
         [SerializeField]
         private string mSceneName = "JCS_ApplicationCloseSimulateScene";
 
-        [Tooltip("Lable of the portal.")]
+        [Tooltip("Label of the portal.")]
         [SerializeField]
         private JCS_PortalLabel mPortalLabel = JCS_PortalLabel.NONE;
 
@@ -62,7 +59,7 @@ namespace JCSUnity
         //** TRANSFER_PORTAL
         [Header("** Transfer Portal Settings (JCS_2DPortal) **")]
 
-        [Tooltip("")]
+        [Tooltip("Pair portal, target portal the player will transfer to.")]
         [SerializeField]
         private Transform mTargetPortal = null;
 
@@ -109,13 +106,21 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Do the portal by portal type.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="player"></param>
+        /// <param name="player"> Player take effect by the portal. </param>
+        public void DoPortal(JCS_Player player)
+        {
+            DoPortal(mType, player);
+        }
+
+        /// <summary>
+        /// Do the portal by portal type.
+        /// </summary>
+        /// <param name="type"> Type of the portal. </param>
+        /// <param name="player"> Player take effect by the portal. </param>
         public void DoPortal(JCS_2DPortalType type, JCS_Player player)
         {
-
             switch (type)
             {
                 case JCS_2DPortalType.SCENE_PORTAL:
