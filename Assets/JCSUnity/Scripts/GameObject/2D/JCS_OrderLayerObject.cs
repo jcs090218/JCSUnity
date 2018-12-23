@@ -32,6 +32,7 @@ namespace JCSUnity
         // whats on-top of this 'order layer object'.
         private JCS_OrderLayer mOrderLayer = null;
 
+
         [Header("** Initialize Variables (JCS_OrderLayerObject) **")]
 
         [Tooltip("Extra sprite renederer you can set.")]
