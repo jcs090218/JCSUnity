@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// usually Background
+    /// Moving tile usually as a background.
     /// </summary>
     public class JCS_2DMoveTile 
         : MonoBehaviour
@@ -24,12 +24,30 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private float mMoveSpeed = 10.0f;
+
+        [Header("** Check Variables (JCS_2DMoveTile) **")]
+
+        [SerializeField]
+        private float mWidth = 0.0f;
+
+        [SerializeField]
+        private float mHeight = 0.0f;
+
+
+        [Header("** Runtime Variables (JCS_2DMoveTile) **")]
+        
+        [Tooltip("How fast this tile moves?")]
+        [SerializeField]
+        private float mMoveSpeed = 10.0f;
+
         private Vector3 mVelocity = Vector3.zero;
+
+        // Record down the starting position.
         private Vector3 mOriginPosition = Vector3.zero;
-        [SerializeField] private bool mIsYAxis = false;
-        [SerializeField] private float mWidth = 0.0f;
-        [SerializeField] private float mHeight = 0.0f;
+
+        [Tooltip("Move in y axis.")]
+        [SerializeField]
+        private bool mIsYAxis = false;
 
         //----------------------
         // Protected Variables
