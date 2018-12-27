@@ -15,7 +15,7 @@ namespace JCSUnity
     public delegate void VoidEvent();
 
     /// <summary>
-    /// Do the event after the certain time.
+    /// Event handle operate the task after a certain time.
     /// </summary>
     public class JCS_CounterEvent
         : JCS_Event
