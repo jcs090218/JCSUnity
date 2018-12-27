@@ -29,9 +29,10 @@ namespace JCSUnity
 
         private JCS_FadeObject mJCSFadeObject = null;
 
+
         [Header("** Runtime Variables (JCS_DisableWithCertainRangeEvent) **")]
 
-        [Tooltip("")]
+        [Tooltip("Use local position instead of global position.")]
         [SerializeField]
         private bool mUseLocal = false;
 
@@ -47,9 +48,10 @@ namespace JCSUnity
         [SerializeField] [Range(0, 1000)]
         private float mRange = 0;
 
+
         [Header("** Optional Variables (JCS_DisableWithCertainRangeEvent) **")]
 
-        [Tooltip("")]
+        [Tooltip("Fade before disable?")]
         [SerializeField]
         private bool mFadeEffect = false;
 
