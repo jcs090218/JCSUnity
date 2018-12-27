@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Play Animator and disable after it 
-    /// played animation depends on loop times.
+    /// Disable the gameobject after the done playing the animation.
     /// </summary>
     [RequireComponent(typeof(Animator))]
     public class JCS_DisableWithAnimEndEvent
@@ -26,9 +25,17 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private Animator mAnimator = null;
+
         private float mAnimationTimer = 0.0f;
-        [SerializeField] private uint mLoopTimes = 1;
+
+
+        [Header("** Runtime Variables (JCS_DisableWithAnimEndEvent) **")]
+
+        [Tooltip("Times the animation need to loops to trigger this event.")]
+        [SerializeField]
+        private uint mLoopTimes = 1;
 
         //----------------------
         // Protected Variables
