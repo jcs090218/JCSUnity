@@ -8,12 +8,14 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace JCSUnity
 {
     /// <summary>
-    /// Object list that return random object.
+    /// List of gameobject holder, with some utility functions provided 
+    /// messing with list of gameobject.
     /// </summary>
     public class JCS_ObjectList
         : MonoBehaviour
@@ -25,8 +27,11 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        [Header("** Runtime Variables (JCS_ObjectList) **")]
+
         [Tooltip("List of objects.")]
-        [SerializeField] private Transform[] mObjects = null;
+        [SerializeField]
+        private List<Transform> mObjects = null;
         
 
         //----------------------
@@ -35,6 +40,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public List<Transform> Objects { get { return this.mObjects; } }
 
         //========================================
         //      Unity's function
@@ -47,15 +53,15 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Return a random object from the list.
+        /// Returns a random object from the list.
         /// </summary>
         /// <returns> object </returns>
         public Transform GetRandomObjectFromList()
         {
-            if (mObjects.Length == 0)
+            if (mObjects.Count == 0)
                 return null;
 
-            int randIndex = JCS_Random.Range(0, mObjects.Length);
+            int randIndex = JCS_Random.Range(0, mObjects.Count);
 
             Transform randObj = mObjects[randIndex];
 
