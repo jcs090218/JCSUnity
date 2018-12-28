@@ -25,9 +25,16 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private JCS_SoundPlayer mSoundPlayer = null;
+
+
+        [Header("** Runtime Variables (JCS_OnDestroyPlaySoundEvent) **")]
+
+        [Tooltip("Audio clip to plays.")]
         [SerializeField]
         private AudioClip mAudioClip = null;
+
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
         //----------------------
@@ -49,7 +56,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// when is destroy play the sound.
+        /// When is on destroy play the sound.
         /// </summary>
         private void OnDestroy()
         {
