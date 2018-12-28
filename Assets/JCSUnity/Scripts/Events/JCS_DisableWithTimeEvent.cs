@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Diable the object after the time.
+    /// Disable the gameobject after a certain time.
     /// </summary>
     public class JCS_DisableWithTimeEvent
         : MonoBehaviour
@@ -24,7 +24,13 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [SerializeField] private float mTime = 2;
+
+        [Header("** Runtime Variables (JCS_DisableWithTimeEvent) **")]
+
+        [Tooltip("Time to disable.")]
+        [SerializeField]
+        private float mTime = 2;
+
         private float mTimer = 0;
 
         //----------------------
