@@ -13,6 +13,9 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
+    /// Ensure while playing the sound, this gameobject does not 
+    /// get destroyed.
+    /// 
     /// Careful this won't destroy it self!!!
     /// </summary>
     [RequireComponent(typeof(JCS_DestroyReminder))]
@@ -29,8 +32,12 @@ namespace JCSUnity
         private bool mSoundPlayed = false;
         private JCS_SoundPlayer mSoundPlayer = null;
 
+        [Header("** Runtime Variables (JCS_WaitDestroySoundEndEvent) **")]
+
+        [Tooltip("Audio clip to plays.")]
         [SerializeField]
         private AudioClip mAudioClip = null;
+
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
         //----------------------
