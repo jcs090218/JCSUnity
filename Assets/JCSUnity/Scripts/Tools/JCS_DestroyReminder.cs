@@ -46,10 +46,10 @@ namespace JCSUnity
             if (mRemindPerTime < mTimer)
             {
                 JCS_Debug.LogReminders(
-                     "Object u should destroy but u did not...");
+                     "Object you should destroy but you did not...");
 
 #if (UNITY_EDITOR)
-                gameObject.name = "Object u should destroy but u did not...";
+                gameObject.name = "Object you should destroy but you did not...";
 #endif
             }
         }
