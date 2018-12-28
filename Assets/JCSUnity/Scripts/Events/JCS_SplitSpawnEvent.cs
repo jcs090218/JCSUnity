@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Spawn multiple object in a row.
+    /// Spawn multiple objects in a row.
     /// </summary>
     [RequireComponent(typeof(JCS_ObjectList))]
     [RequireComponent(typeof(JCS_HitListEvent))]
@@ -53,6 +53,7 @@ built-in Unity Engine.")]
         [SerializeField]
         private bool mSpawnWhileDelay = false;
         
+        [Tooltip("Delay time.")]
         [SerializeField] [Range(0.1f, 10.0f)]
         private float mDelayTime = 2.0f;
         
@@ -69,57 +70,54 @@ built-in Unity Engine.")]
 
         [Header("** Random Spawn Offset Effect **")]
 
-        [Tooltip("Enable random spawn position offset effect?")]
+        [Tooltip("Enable random spawn position offset effect on x axis?")]
         [SerializeField]
         private bool mRandPosX = false;
 
-        [Tooltip("")]
+        [Tooltip("Randomize position on x axis.")]
         [SerializeField] [Range(0, 10)]
         private float mRandPosRangeX = 1f;
 
-        [Tooltip("")]
+        [Tooltip("Enable random spawn position offset effect on y axis?")]
         [SerializeField]
         private bool mRandPosY = false;
 
-        [Tooltip("")]
+        [Tooltip("Randomize position on y axis.")]
         [SerializeField] [Range(0, 10)]
         private float mRandPosRangeY = 1f;
 
-        [Tooltip("")]
+        [Tooltip("Enable random spawn position offset effect on z axis?")]
         [SerializeField]
         private bool mRandPosZ = false;
 
-        [Tooltip("")]
+        [Tooltip("Randomize position on z axis.")]
         [SerializeField] [Range(0, 10)]
         private float mRandPosRangeZ = 1f;
 
 
         [Header("** Random Degree Effects **")]
 
-        [Tooltip("Enable random degree effect?")]
+        [Tooltip("Enable random degree effect on x axis?")]
         [SerializeField]
         private bool mRandDegreeX = false;
 
-        [Tooltip(@"Randomize the object rotation 
-after spawn. Add angle around -value ~ value.")]
+        [Tooltip("Randomize rotation on x axis.")]
         [SerializeField] [Range(0, 360)]
         private float mDegreeValueX = 0;
 
-        [Tooltip("Enable random degree effect?")]
+        [Tooltip("Enable random degree effect on y axis?")]
         [SerializeField]
         private bool mRandDegreeY = false;
 
-        [Tooltip(@"Randomize the object rotation 
-after spawn. Add angle around -value ~ value.")]
+        [Tooltip("Randomize rotation on y axis.")]
         [SerializeField] [Range(0, 360)]
         private float mDegreeValueY = 0;
 
-        [Tooltip("Enable random degree effect?")]
+        [Tooltip("Enable random degree effect on z axis?")]
         [SerializeField]
         private bool mRandDegreeZ = false;
 
-        [Tooltip(@"Randomize the object rotation 
-after spawn. Add angle around -value ~ value.")]
+        [Tooltip("Randomize rotation on z axis.")]
         [SerializeField] [Range(0, 360)]
         private float mDegreeValueZ = 0;
 
