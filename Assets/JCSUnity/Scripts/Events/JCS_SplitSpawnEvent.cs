@@ -34,6 +34,7 @@ namespace JCSUnity
 
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
+
         [Header("** Runtime Variables (JCS_SplitSpawnEvent) **")]
 
         [Tooltip("How many object to spawn?")]
@@ -45,10 +46,12 @@ namespace JCSUnity
 
         [Tooltip(@"Do the event while on destroy function 
 built-in Unity Engine.")]
-        [SerializeField] private bool mSpawnWhileDestroy = true;
+        [SerializeField]
+        private bool mSpawnWhileDestroy = true;
 
         [Tooltip("Spawn once after delay time.")]
-        [SerializeField] private bool mSpawnWhileDelay = false;
+        [SerializeField]
+        private bool mSpawnWhileDelay = false;
         
         [SerializeField] [Range(0.1f, 10.0f)]
         private float mDelayTime = 2.0f;
@@ -67,15 +70,26 @@ built-in Unity Engine.")]
         [Header("** Random Spawn Offset Effect **")]
 
         [Tooltip("Enable random spawn position offset effect?")]
-        [SerializeField] private bool mRandPosX = false;
+        [SerializeField]
+        private bool mRandPosX = false;
+
+        [Tooltip("")]
         [SerializeField] [Range(0, 10)]
         private float mRandPosRangeX = 1f;
 
-        [SerializeField] private bool mRandPosY = false;
+        [Tooltip("")]
+        [SerializeField]
+        private bool mRandPosY = false;
+
+        [Tooltip("")]
         [SerializeField] [Range(0, 10)]
         private float mRandPosRangeY = 1f;
 
-        [SerializeField] private bool mRandPosZ = false;
+        [Tooltip("")]
+        [SerializeField]
+        private bool mRandPosZ = false;
+
+        [Tooltip("")]
         [SerializeField] [Range(0, 10)]
         private float mRandPosRangeZ = 1f;
 
