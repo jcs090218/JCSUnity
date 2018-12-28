@@ -36,7 +36,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mUseLocal = false;
 
-        [Tooltip("Target with in the range.")]
+        [Tooltip("Target check with in the range.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
@@ -55,7 +55,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFadeEffect = false;
 
-        [Tooltip("When do the object start to fade.")]
+        [Tooltip("Distance starting to fade.")]
         [SerializeField] [Range(0, 1000)]
         private float mFadeDistance = 0;
 
