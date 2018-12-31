@@ -38,7 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private string[] mHitObjectList = null;
 
-        [Tooltip("Base on Hit Object List will atuomatically add clone object.")]
+        [Tooltip("Base on Hit Object List will automatically add clone object.")]
         [SerializeField]
         private bool mIncludeClone = true;
 
