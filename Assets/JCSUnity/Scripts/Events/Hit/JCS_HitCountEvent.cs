@@ -13,7 +13,8 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Count the hit base on the hit list.
+    /// Event that count the hit count and check if the gameobject
+    /// needed to by destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     public class JCS_HitCountEvent
@@ -27,7 +28,10 @@ namespace JCSUnity
         // Private Variables
         private JCS_HitListEvent mHitList = null;
 
-        [Tooltip(@"How many hit to destroy this game object. 
+
+        [Header("** Runtime Variables (JCS_HitCountEvent) **")]
+
+        [Tooltip(@"How many hits needed to destroy this gameobject. 
 (If this is 0 than wont active hit animation event.)")]
         [SerializeField] [Range(0, 300)]
         private uint mHitCount = 1;
@@ -38,6 +42,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public uint HitCount { get { return this.mHitCount; } set { this.mHitCount = value; } }
 
         //========================================
         //      Unity's function
@@ -67,6 +72,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Check if the object should destroy or not.
+        /// </summary>
         private void CheckDestroy()
         {
             if (mHitCount <= 0)
