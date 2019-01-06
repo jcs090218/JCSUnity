@@ -14,8 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Play Animator and destroy after it 
-    /// played animation depends on loop times.
+    /// Destroy the gameobject after done playing the 2D animation.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimation))]
     public class JCS_2DDestroyAnimEndEvent 
@@ -28,10 +27,14 @@ namespace JCSUnity
         // Private Variables
         private JCS_2DAnimation m2DAnimation = null;
 
-        [Header("** Check Variables (JCS_2DDestroyAnimEndEvent) **")]
+        [Header("** Runtime Variables (JCS_2DDestroyAnimEndEvent) **")]
 
+        [Tooltip("How many times the animation plays before destorying.")]
         [SerializeField]
         private int mLoopTimes = 1;
+
+        // Loop count.
+        private int mLoopCount = 0;
 
         //----------------------
         // Protected Variables
@@ -54,9 +57,9 @@ namespace JCSUnity
             if (!this.m2DAnimation.IsDonePlaying)
                 return;
 
-            --mLoopTimes;
+            ++mLoopCount;
 
-            if (mLoopTimes <= 0)
+            if (mLoopCount <= mLoopTimes)
                 Destroy(this.gameObject);
             else
             {

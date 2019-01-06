@@ -14,8 +14,8 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// After playing animation back and forth once, 
-    /// then destroy...
+    /// Destroy the gameobject after plays the animation back 
+    /// and forth once.
     /// </summary>
     [RequireComponent(typeof(Animator))]
     public class JCS_DestroyAnimBackForthEvent
@@ -30,10 +30,33 @@ namespace JCSUnity
         private Animator mAnimator = null;
         private float mAnimationTimer = 0.0f;
 
+        private AnimatorStateInfo mAnimtorStateInfo;
+
         private bool mPlayBack = false;
         private bool mPlayForth = false;
 
-        private AnimatorStateInfo mAnimtorStateInfo;
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_DestroyAnimBackForthEvent) **")]
+
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [SerializeField]
+        private KeyCode mPlayForthKey = KeyCode.I;
+
+        [SerializeField]
+        private KeyCode mPlayBackKey = KeyCode.O;
+#endif
+
+
+        [Header("** Runtime Variables (JCS_DestroyAnimBackForthEvent) **")]
+
+        [Tooltip("How many times to plays back and forth before destorying.")]
+        [SerializeField] [Range(1, 30)]
+        private int mPlayTimes = 1;
+
+        // Count the play times.
+        private int mPlayCount = 0;
 
 
         //----------------------
@@ -59,10 +82,13 @@ namespace JCSUnity
         private void Update()
         {
 #if (UNITY_EDITOR)
-            if (JCS_Input.GetKeyDown(KeyCode.I))
-                PlayForth();
-            if (JCS_Input.GetKeyDown(KeyCode.O))
-                PlayBack();
+            if (mTestWithKey)
+            {
+                if (JCS_Input.GetKeyDown(mPlayForthKey))
+                    PlayForth();
+                if (JCS_Input.GetKeyDown(mPlayBackKey))
+                    PlayBack();
+            }
 #endif
 
 
@@ -96,7 +122,12 @@ namespace JCSUnity
 
                     mAnimationTimer = 0;
 
-                    Destroy(this.gameObject);
+                    // Add up the play count.
+                    ++mPlayCount;
+
+                    // If reach the play times, destroy it.
+                    if (mPlayTimes <= mPlayCount)
+                        Destroy(this.gameObject);
                 }
             }
         }

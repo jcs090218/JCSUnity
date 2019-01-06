@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Play Animator and destroy after it 
-    /// played animation depends on loop times.
+    /// Destroy the gameobject after done playing the animation.
     /// </summary>
     [RequireComponent(typeof(Animator))]
     public class JCS_DestroyAnimEndEvent
@@ -28,7 +27,12 @@ namespace JCSUnity
         // Private Variables
         private Animator mAnimator = null;
         private float mAnimationTimer = 0.0f;
-        [SerializeField] private int mLoopTimes = 1;
+
+        [Header("** Runtime Variables (JCS_DestroyAnimEndEvent) **")]
+
+        [Tooltip("How many times the animation plays before destorying.")]
+        [SerializeField]
+        private int mLoopTimes = 1;
 
         //----------------------
         // Protected Variables
