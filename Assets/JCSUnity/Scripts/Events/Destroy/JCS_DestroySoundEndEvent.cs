@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Play the sound and destroy the game object itself.
+    /// Destroy the gameobject after the sound is done playing.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_DestroySoundEndEvent
