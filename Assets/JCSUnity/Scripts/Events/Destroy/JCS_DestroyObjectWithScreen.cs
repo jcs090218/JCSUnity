@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy the game object when the object is no more render 
+    /// Destroy the gameobject when the object is no longer render 
     /// on the screen.
     /// </summary>
     public class JCS_DestroyObjectWithScreen
@@ -25,8 +25,12 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** JCS_DestroyableObject Runtime Variables **")]
-        [SerializeField] private bool mDestroyWhenOutOfScreen = true;
+
+        [Header("** Runtime Variables (JCS_DestroyObjectWithScreen) **")]
+
+        [Tooltip("Trigger event flag.")]
+        [SerializeField]
+        private bool mDestroyWhenOutOfScreen = true;
 
         //----------------------
         // Protected Variables
