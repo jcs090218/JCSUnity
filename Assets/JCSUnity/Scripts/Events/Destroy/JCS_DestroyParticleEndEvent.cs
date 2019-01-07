@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy if the particle system ends.
+    /// Destroy when the particle system ends.
     /// </summary>
     [RequireComponent(typeof(JCS_ParticleSystem))]
     public class JCS_DestroyParticleEndEvent
