@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Destroy the object with the time and timer.
+    /// Destroy the gameobject by time.
     /// </summary>
     [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_DestroyObjectWithTime
@@ -26,14 +26,16 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Runtime Variables **")]
+        [Header("** Runtime Variables (JCS_DestroyObjectWithTime) **")]
 
-        [SerializeField]
+        [Tooltip("Target time to destroy.")]
+        [SerializeField] [Range(0.0f, 3600.0f)]
         private float mDestroyTime = 10.0f;
 
         private float mTimer = 0;
         private bool mTimesUp = false;
 
+        [Tooltip("While destroying, fade out the gameobject.")]
         [SerializeField]
         private bool mDestroyWithAlphaEffect = true;
 
@@ -56,6 +58,7 @@ namespace JCSUnity
         {
             this.mFadeObject = this.GetComponent<JCS_FadeObject>();
         }
+
         private void Update()
         {
             mTimer += Time.deltaTime;
