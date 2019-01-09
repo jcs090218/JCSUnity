@@ -24,6 +24,5 @@ namespace JCSUnity
         GameObjbect_3D,
 
         Inventory,
-        
     }
 }

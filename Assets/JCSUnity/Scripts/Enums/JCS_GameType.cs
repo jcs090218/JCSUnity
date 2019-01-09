@@ -22,6 +22,5 @@ namespace JCSUnity
         GAME_3D,
         GAME_AR,
         GAME_VR
-
     }
 }
