@@ -19,6 +19,6 @@ namespace JCSUnity
     {
         SCENE_PORTAL,   // common
 
-        TRANSFER_PORTAL
+        TRANSFER_PORTAL, 
     }
 }
