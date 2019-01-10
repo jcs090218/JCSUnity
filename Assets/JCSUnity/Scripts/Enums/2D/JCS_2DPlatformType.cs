@@ -17,10 +17,9 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_2DPlatformType
     {
-        NORMAL,
+        NORMAL, 
 
-        SCROLL,
-        MOVE
-
+        SCROLL, 
+        MOVE, 
     }
 }
