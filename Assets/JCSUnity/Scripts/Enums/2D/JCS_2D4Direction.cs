@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// 2 axis direction.
+    /// Two axis direction.
     /// </summary>
     public enum JCS_2D4Direction
     {
