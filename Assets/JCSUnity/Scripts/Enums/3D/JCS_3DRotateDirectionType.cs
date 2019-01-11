@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// direction that rotate.
+    /// Type of the rotation.
     /// </summary>
     public enum JCS_3DRotateDirectionType
     {

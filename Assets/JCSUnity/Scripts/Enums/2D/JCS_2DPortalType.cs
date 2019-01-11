@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Portal type.
+    /// Type of the 2D portal.
     /// </summary>
     public enum JCS_2DPortalType
     {
