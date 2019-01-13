@@ -31,7 +31,7 @@ namespace JCSUnity
         private float mAlpha = 1;
 
 
-        [Header("** Initialize Variables (JCS_AlphaObject) **")]
+        [Header("** Runtime Variables (JCS_AlphaObject) **")]
 
         [Tooltip("Can only be within range: 0 ~ 1 .")]
         [SerializeField] [Range(0.0f, 1.0f)]
