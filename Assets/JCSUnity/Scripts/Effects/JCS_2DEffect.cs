@@ -23,12 +23,14 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DEffect) **")]
 
-        [Tooltip("")]
+        [Tooltip("Stop receive input while this effect is active.")]
         [SerializeField]
         protected bool mStopInputWhileThisEffect = false;
         
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+
+        public bool StopInputWhileThisEffect { get { return this.mStopInputWhileThisEffect; } set { this.mStopInputWhileThisEffect = value; } }
 
     }
 }
