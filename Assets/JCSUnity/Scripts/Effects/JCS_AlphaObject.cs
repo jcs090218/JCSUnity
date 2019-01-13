@@ -14,8 +14,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// This will approach to specific alpha value 
-    /// every frame.
+    /// Transition with alpha channel.
     /// </summary>
     public class JCS_AlphaObject
         : JCS_UnityObject
@@ -38,7 +37,7 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 1.0f)]
         private float mTargetAlpha = 1;
 
-        [Tooltip("How fast it alpha change?")]
+        [Tooltip("How fast the alpha channel changes.")]
         [SerializeField] [Range(0.1f, 5.0f)]
         private float mFadeFriction = 1;        
 
