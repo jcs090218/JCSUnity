@@ -33,7 +33,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_AlphaObject) **")]
 
-        [Tooltip("Can only be within range: 0 ~ 1 .")]
+        [Tooltip("Alpha value trying to approach. (0 ~ 1)")]
         [SerializeField] [Range(0.0f, 1.0f)]
         private float mTargetAlpha = 1;
 
@@ -48,6 +48,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public float TargetAlpha { get { return this.mTargetAlpha; } set { this.mTargetAlpha = value; } }
+        public float FadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
 
         //========================================
         //      Unity's function
@@ -78,6 +79,10 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Get unity specific data by type.
+        /// </summary>
         public override void UpdateUnityData()
         {
             switch (GetObjectType())
@@ -96,10 +101,16 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// Fade to specific value.
+        /// </summary>
+        /// <param name="alpha"> target alpha. </param>
+        /// <param name="friction"> how fast it fades? </param>
         public void FadeTo(float alpha, float friction)
         {
-            mTargetAlpha = alpha;
-            mFadeFriction = friction;
+            this.mTargetAlpha = alpha;
+            this.mFadeFriction = friction;
         }
 
         //----------------------
