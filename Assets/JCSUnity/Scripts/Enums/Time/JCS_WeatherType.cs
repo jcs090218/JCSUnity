@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 { 
     /// <summary>
-    /// List of type of the possible weather.
+    /// List of all weatther.
     /// </summary>
     public enum JCS_WeatherType 
     {

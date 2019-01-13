@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// List of the client mode.
+    /// Current client status, in which type of server representation.
     /// </summary>
     public enum JCS_ClientMode
     {

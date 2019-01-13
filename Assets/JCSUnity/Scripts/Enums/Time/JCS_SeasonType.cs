@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// List of all possible season.
+    /// List of all season.
     /// </summary>
     public enum JCS_SeasonType
     {

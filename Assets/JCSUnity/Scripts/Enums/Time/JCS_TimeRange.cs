@@ -13,6 +13,8 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
+    /// List of period of time.
+    /// 
     /// Source: http://blog.sina.com.cn/s/blog_5b00159f01010jvf.html
     /// </summary>
     public enum JCS_TimeRange
