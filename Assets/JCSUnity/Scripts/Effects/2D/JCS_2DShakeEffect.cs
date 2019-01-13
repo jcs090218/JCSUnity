@@ -150,7 +150,7 @@ namespace JCSUnity
 
             mEffect = true;
 
-            // Dis-enable the input
+            // Disable the input.
             if (mStopInputWhileThisEffect)
                 JCS_GameManager.instance.GAME_PAUSE = true;
 
