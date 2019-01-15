@@ -46,6 +46,9 @@ namespace JCSUnity
         //      Unity's function
         //------------------------------
 
+        /// <summary>
+        /// Call when on drag.
+        /// </summary>
         public void JCS_OnDrag()
         {
             switch (mType)
@@ -69,6 +72,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Call when on drop.
+        /// </summary>
         public void JCS_OnDrop()
         {
 
@@ -86,6 +92,11 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Process gui drag and drop event.
+        /// </summary>
+        /// <param name="type"></param>
         private void ProcessGUI(DragDrop type)
         {
             switch (type)
