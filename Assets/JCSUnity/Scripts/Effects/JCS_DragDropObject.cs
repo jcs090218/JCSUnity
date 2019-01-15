@@ -31,9 +31,11 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Tooltip("")]
+        [Header("** Runtime Variables (JCS_DragDropObject) **")]
+
+        [Tooltip("Type of the drag and drop target.")]
         [SerializeField]
-        private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
+        private JCS_DragDropType mDragDropType = JCS_DragDropType.DialogueBox;
 
         //----------------------
         // Protected Variables
@@ -41,6 +43,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_DragDropType DragDropType { get { return this.mDragDropType; } set { this.mDragDropType = value; } }
 
         //========================================
         //      Unity's function
@@ -51,7 +54,7 @@ namespace JCSUnity
         /// </summary>
         public void JCS_OnDrag()
         {
-            switch (mType)
+            switch (mDragDropType)
             {
                 case JCS_DragDropType.DialogueBox:
                     ProcessGUI(DragDrop.Drag);
