@@ -73,14 +73,14 @@ namespace JCSUnity
 
         [Tooltip("Override the action before it complete the action.")]
         [SerializeField]
-        private bool mOverriteFade = false;
+        private bool mOverrideFade = false;
 
-        [Tooltip("Maxinum of fade amount of value.")]
+        [Tooltip("Maxinum of fade value.")]
         [SerializeField]
         [Range(0.0f, 1)]
         private float mFadeInAmount = 1;
 
-        [Tooltip("Mininum of fade amount of value.")]
+        [Tooltip("Mininum of fade value.")]
         [SerializeField]
         [Range(0.0f, 1)]
         private float mFadeOutAmount = 0.0f;
@@ -92,6 +92,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
+        public bool OverrideFade { get { return this.mOverrideFade; } set { this.mOverrideFade = value; } }
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
         public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
         public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
@@ -264,7 +265,7 @@ namespace JCSUnity
         /// <param name="time"> time to fade in/out, in seconds </param>
         private void FadeEffect(JCS_FadeType type, float time)
         {
-            if (!mOverriteFade)
+            if (!mOverrideFade)
             {
                 // Check is already fade out or fade in!
                 if ((mVisible && type == JCS_FadeType.FADE_IN) ||
