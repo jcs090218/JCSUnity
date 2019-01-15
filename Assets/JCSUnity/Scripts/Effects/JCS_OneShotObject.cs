@@ -25,27 +25,29 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Tooltip("")]
+        [Header("** Runtime Variables (JCS_OneShotObject) **")]
+
+        [Tooltip("Effect on which axis?")]
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_X;
 
-        [Tooltip("")]
+        [Tooltip("Do the effect on awake event.")]
         [SerializeField]
         private bool mEffectOnAwake = true;
 
-        [Tooltip("")]
+        [Tooltip("Loop one shot?")]
         [SerializeField]
         private bool mLoop = false;
 
-        [Tooltip("")]
+        [Tooltip("Force in the last position.")]
         [SerializeField]
         private bool mStayAtLastPosition = false;
 
-        [Tooltip("")]
+        [Tooltip("How fast it moves.")]
         [SerializeField]
         private float mMoveSpeed = 5.0f;
 
-        [Tooltip("")]
+        [Tooltip("How far it moves.")]
         [SerializeField]
         private float mDistance = 100.0f;
 
@@ -60,6 +62,12 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
+        public bool EffectOnAwake { get { return this.mEffectOnAwake; } set { this.mEffectOnAwake = value; } }
+        public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
+        public bool StayAtLastPosition { get { return this.mStayAtLastPosition; } set { this.mStayAtLastPosition = value; } }
+        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
+        public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
 
         //========================================
         //      Unity's function
