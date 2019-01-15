@@ -38,6 +38,7 @@ namespace JCSUnity
 
         private float mAlpha = 1.0f;
 
+
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_FadeObject) **")]
 
@@ -50,6 +51,8 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
+
+
         [Header("** Check Variables (JCS_FadeObject) **")]
 
         [Tooltip("Is current fade object doing the effect? (fade in/out)")]
@@ -255,7 +258,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Do the fade effect.
         /// </summary>
         /// <param name="type"> Type to fade </param>
         /// <param name="time"> time to fade in/out, in seconds </param>
