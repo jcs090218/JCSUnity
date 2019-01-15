@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Object that can be drag and drop.
+    /// Drag and drop effect.
     /// </summary>
     public class JCS_DragDropObject 
         : MonoBehaviour
