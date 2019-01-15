@@ -501,7 +501,7 @@ namespace JCSUnity
             if (!mDoneFadingOut)
             {
                 // check if the sound is fade out.
-                if (!mJCSFadeSound.IsReachTargetVolue())
+                if (!mJCSFadeSound.IsReachTargetVolume())
                     return;
 
                 // get the background music audio source.
@@ -524,7 +524,7 @@ namespace JCSUnity
             else
             {
                 // check if the sound is fade in.
-                if (!mJCSFadeSound.IsReachTargetVolue())
+                if (!mJCSFadeSound.IsReachTargetVolume())
                     return;
 
                 // done switching the bgm.

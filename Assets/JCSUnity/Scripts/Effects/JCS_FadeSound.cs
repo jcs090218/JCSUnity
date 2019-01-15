@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Class do the sound fade in/out effect.
+    /// Effect that fade the sound.
     /// </summary>
     public class JCS_FadeSound
         : MonoBehaviour
@@ -28,9 +28,15 @@ namespace JCSUnity
 
         private JCS_FadeType mType = JCS_FadeType.NONE;
 
+
+        [Header("** Check Variables (JCS_FadeSound) **")]
+
         [Tooltip("Do the effect?")]
         [SerializeField]
         private bool mEffect = false;
+
+
+        [Header("** Runtime Variables (JCS_FadeSound) **")]
 
         [Tooltip("Fade out time.")]
         [SerializeField]
@@ -98,7 +104,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Set the audio source.
         /// </summary>
         /// <param name="source"></param>
         public void SetAudioSource(AudioSource source)
@@ -119,7 +125,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Fade out the sound.
         /// </summary>
         /// <param name="target_volume"></param>
         /// <param name="time"></param>
@@ -127,7 +133,7 @@ namespace JCSUnity
         {
             if (mType == JCS_FadeType.FADE_OUT)
             {
-                JCS_Debug.LogError("Already Fade out");
+                JCS_Debug.LogError("Already Fade out...");
                 return;
             }
 
@@ -147,7 +153,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Fade in the sound.
         /// </summary>
         /// <param name="target_volume"></param>
         /// <param name="time"></param>
@@ -155,7 +161,7 @@ namespace JCSUnity
         {
             if (mType == JCS_FadeType.FADE_IN)
             {
-                JCS_Debug.LogError("Already Fade in");
+                JCS_Debug.LogError("Already Fade in...");
                 return;
             }
 
@@ -206,7 +212,7 @@ namespace JCSUnity
         /// true: reached.
         /// false, vice versa.
         /// </returns>
-        public bool IsReachTargetVolue()
+        public bool IsReachTargetVolume()
         {
             return mAudioSource.volume == mTargetVolume;
         }
