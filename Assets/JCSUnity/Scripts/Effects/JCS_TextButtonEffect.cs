@@ -149,7 +149,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// When the pointer is down.
+        /// Call it when the pointer is down.
         /// </summary>
         /// <param name="data"></param>
         public void OnPointerDown(PointerEventData data)
@@ -165,7 +165,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// When the pointer is up.
+        /// Call it when the pointer is up.
         /// </summary>
         /// <param name="data"></param>
         public void OnPointerUp(PointerEventData data)
