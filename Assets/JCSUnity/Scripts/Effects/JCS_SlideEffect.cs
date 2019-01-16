@@ -49,17 +49,18 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.S;
 #endif
 
+
         [Header("** Check Variables (JCS_SlideEffect) **")]
 
         [Tooltip("Is this effect active?")]
         [SerializeField]
         private bool mIsActive = false;
 
-        [Tooltip("")]
+        [Tooltip("The panel root object.")]
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Tooltip("")]
+        [Tooltip("Event trigger system.")]
         [SerializeField]
         private EventTrigger mEventTrigger = null;
 
@@ -123,7 +124,7 @@ namespace JCSUnity
 
         [Header("** Optional Variables (JCS_SlideEffect) **")]
 
-        [Tooltip(@"If u want to active this effect by button, 
+        [Tooltip(@"If you want to active this effect by button, 
 plz set the button here.")]
         [SerializeField]
         private JCS_Button mActiveButton = null;

@@ -16,7 +16,7 @@ using UnityEngine.EventSystems;
 namespace JCSUnity
 {
     /// <summary>
-    /// Treat this button object just the text button.
+    /// Treat this button object just a text button.
     /// </summary>
     [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(EventTrigger))]
