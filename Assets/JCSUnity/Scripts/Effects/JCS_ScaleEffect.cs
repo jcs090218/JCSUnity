@@ -60,18 +60,18 @@ namespace JCSUnity
         [SerializeField]
         private bool mScaleZ = true;
 
-        [Tooltip("How much it scale on each axis.")]
+        [Tooltip("How much it scales on each axis.")]
         [SerializeField]
         private Vector3 mScaleValue = Vector3.one;
 
-        [Tooltip("How fast it scale on each axis.")]
+        [Tooltip("How fast it scales on each axis.")]
         [SerializeField]
         private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
 
 
         [Header("- UI (JCS_ScaleEffect)")]
 
-        [Tooltip("Add event to event trigger system!")]
+        [Tooltip("Add event to event trigger system.")]
         [SerializeField]
         private bool mAutoAddEvent = true;
 
