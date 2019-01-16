@@ -31,28 +31,28 @@ namespace JCSUnity
         [SerializeField]
         protected bool mEffect = false;
 
-        [Tooltip("How fast u rotate?")]
+        [Tooltip("How fast it rotates?")]
         [SerializeField]
         [Range(-1000, 1000)]
         protected float mRotateSpeed = 10;
 
-        [Tooltip("Direction u rotate.")]
+        [Tooltip("Direction it rotates.")]
         [SerializeField]
         protected JCS_Vector3Direction mRotateDirection = JCS_Vector3Direction.FORWARD;
 
 
-        [Header("-Random Effect (JCS_Rotation)")]
+        [Header("- Random Effect (JCS_Rotation)")]
 
-        [Tooltip("Randomize the rotate speed a bit at start.")]
+        [Tooltip("Randomize the rotation speed a bit at start.")]
         [SerializeField]
         protected bool mRotateRandomizeAtStart = false;
 
         [Tooltip("Value to randomize.")]
         [SerializeField]
-        [Range(0, 1000)]
+        [Range(0.0f, 1000.0f)]
         protected float mRotateRandomizeAtStartValue = 0.0f;
 
-        [Tooltip("Random the rotate direction on start.")]
+        [Tooltip("Randomize the rotate direction on start.")]
         [SerializeField]
         protected bool mRandomRotateDirectonAtStart = false;
 
@@ -96,7 +96,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Stop doing the effect
+        /// Stop doing the effect.
         /// </summary>
         public void Stop()
         {

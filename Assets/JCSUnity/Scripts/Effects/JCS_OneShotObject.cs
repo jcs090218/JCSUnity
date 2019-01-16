@@ -110,19 +110,20 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
         /// <summary>
-        /// 
+        /// Play one shot the object.
         /// </summary>
-        /// <param name="pos"></param>
+        /// <param name="pos"> Target position. </param>
         public void PlayOneShot(Vector3 pos)
         {
             PlayOneShot(pos, mDistance);
         }
         /// <summary>
-        /// 
+        /// Play one shot the object.
         /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="distance"></param>
+        /// <param name="pos"> Target position. </param>
+        /// <param name="distance"> How far this one shot object moves. </param>
         public void PlayOneShot(Vector3 pos, float distance)
         {
             mRecordPosition = pos;
@@ -135,8 +136,9 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
         /// <summary>
-        /// 
+        /// Do the movement.
         /// </summary>
         /// <param name="ax"></param>
         /// <param name="speed"></param>
