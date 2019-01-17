@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Make the attached transform do the wave effect.
+    /// Effect that make wave effect on the gameobject.
     /// </summary>
     public class JCS_2DWaveEffect
         : JCS_2DEffect
@@ -40,9 +40,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DWaveEffect) **")]
 
-        private float mTime = 0;
-
-        [Tooltip("height offset.")]
+        [Tooltip("Height offset.")]
         [SerializeField]
         private float mWaveRestPosition = 0.0f;
 
@@ -53,15 +51,18 @@ namespace JCSUnity
         [Tooltip("How fast per period in wave.")]
         [SerializeField]
         private float mFrequency = 2;
+
         private Vector3 mOrigin = Vector3.zero;
 
         [Tooltip("Effect Axis(Effect will do only on axis!, for random plz use the 3D version!)")]
         [SerializeField]
         private JCS_Axis mEffectAxis = JCS_Axis.AXIS_X;
 
-        [Tooltip("")]
-        [SerializeField]
-        private float mEffectTime = 0;
+        [Tooltip("How long the effect takes.")]
+        [SerializeField] [Range(0.001f, 360.0f)]
+        private float mEffectTime = 0.0f;
+
+        private float mTime = 0;
 
 
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
