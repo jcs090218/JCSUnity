@@ -49,12 +49,12 @@ namespace JCSUnity
         private bool mRepeatOverride = false;
 
         [Tooltip("How long it shakes.")]
-        [SerializeField]
-        private float mShakeTime = 1;
+        [SerializeField] [Range(0.001f, 360.0f)]
+        private float mShakeTime = 1.0f;
 
         [Tooltip("How intense it shakes.")]
         [SerializeField]
-        private float mShakeMargin = 3;
+        private float mShakeMargin = 3.0f;
 
         // Support
         private float mShakeTimer = 0;
@@ -77,6 +77,11 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool RepeatOverride { get { return this.mRepeatOverride; } set { this.mRepeatOverride = value; } }
+        public float ShakeTime { get { return this.mShakeTime; } set { this.mShakeTime = value; } }
+        public float ShakeMargin { get { return this.mShakeMargin; } }
+
+        public AudioClip ShakeSound { get { return this.mShakeSound; } set { this.mShakeSound = value; } }
 
         //========================================
         //      Unity's function
