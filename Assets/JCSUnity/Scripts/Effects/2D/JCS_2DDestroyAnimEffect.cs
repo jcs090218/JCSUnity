@@ -14,8 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// When gameobject destroy, this will be activate and 
-    /// play an animation. 
+    /// Play the animation when the gameobject is destroyed.
     /// 
     /// Differet from normal 'JCS_DestroyAnimEffect' was this
     /// uses the JCS_2DAnimation to display the animation.
@@ -41,7 +40,7 @@ namespace JCSUnity
         [SerializeField]
         private int mOrderLayer = 1;
 
-        [Tooltip("How many times to animate then destroy.")]
+        [Tooltip("How many times the animation will played after destroyed.")]
         [SerializeField]
         private int mLoopTimes = 1;
 
@@ -64,42 +63,45 @@ namespace JCSUnity
 
         [Header("** Position Settings (JCS_2DDestroyAnimEffectFinal) **")]
 
-        [Tooltip("The same position as the destroyed game object?")]
+        [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
         [SerializeField]
         private bool mSamePosition = true;
-        [Tooltip("The same rotation as the destroyed game object?")]
+        [Tooltip("Play the animation as the same rotation as the destroyed gameobject.")]
         [SerializeField]
         private bool mSameRotation = true;
-        [Tooltip("The same scale as the destroyed game object?")]
+        [Tooltip("Play the animation as the same scale as the destroyed gameobject.")]
         [SerializeField]
         private bool mSameScale = true;
 
 
         [Header("** Random Effect (JCS_2DDestroyAnimEffectFinal) **")]
 
-        [Tooltip("Enable/Disable Random Position Effect")]
+        [Tooltip("Randomize the position wehn the animation is played.")]
         [SerializeField]
         private bool mRandPos = false;
-        [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandPosRange = 0;
 
-        [Tooltip("Enable/Disable Random Rotation Effect")]
+        [Tooltip("Random position value added.")]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
+        private float mRandPosRange = 0.0f;
+
+        [Tooltip("Randomize the rotation wehn the animation is played.")]
         [SerializeField]
         private bool mRandRot = false;
-        [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandRotRange = 0;
 
-        [Tooltip("Enable/Disable Random Scale Effect")]
+        [Tooltip("Random rotation value added.")]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
+        private float mRandRotRange = 0.0f;
+
+        [Tooltip("Randomize the scale wehn the animation is played.")]
         [SerializeField]
         private bool mRandScale = false;
+
+        [Tooltip("Random scale value added.")]
         [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandScaleRange = 0;
+        [Range(0.0f, 10.0f)]
+        private float mRandScaleRange = 0.0f;
 
         //----------------------
         // Protected Variables
