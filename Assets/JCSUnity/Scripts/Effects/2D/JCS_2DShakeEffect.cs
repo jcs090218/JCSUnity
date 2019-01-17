@@ -14,7 +14,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Make the attached transform shake.
+    /// Effect that shake the gameobject.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_2DShakeEffect 
@@ -48,11 +48,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mRepeatOverride = false;
 
-        [Tooltip("How long it shake.")]
+        [Tooltip("How long it shakes.")]
         [SerializeField]
         private float mShakeTime = 1;
 
-        [Tooltip("How intense it shake.")]
+        [Tooltip("How intense it shakes.")]
         [SerializeField]
         private float mShakeMargin = 3;
 
@@ -64,7 +64,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;
 
-        [Header("** Sound Settings **")]
+        [Header("** Sound Settings (JCS_2DShakeEffect) **")]
+
+        [Tooltip("Sound played when effect occurs.")]
         [SerializeField]
         private AudioClip mShakeSound = null;
 
