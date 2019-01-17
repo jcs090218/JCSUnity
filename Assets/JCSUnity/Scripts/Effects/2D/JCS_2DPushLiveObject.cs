@@ -26,11 +26,14 @@ namespace JCSUnity
         // Private Variables
 
         [Header("** Runtime Variables (JCS_2DPushLiveObject) **")]
+
+        [Tooltip("Continuing push the effected object.")]
         [SerializeField]
         private bool mContinuousPush = false;
 
-        [SerializeField] [Range(1, 100)]
-        private float mPushForce = 10;
+        [Tooltip("How much force it pushed.")]
+        [SerializeField] [Range(1.0f, 100.0f)]
+        private float mPushForce = 10.0f;
 
         //----------------------
         // Protected Variables
@@ -38,11 +41,13 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool ContinuousPush { get { return this.mContinuousPush; } set { this.mContinuousPush = value; } }
+        public float PushForce { get { return this.mPushForce; } set { this.mPushForce = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
-        
+
         private void OnTriggerEnter(Collider other)
         {
             CheckAvailableToPush(other);
@@ -63,7 +68,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Do once push effect to a 2d live object.
+        /// Do once the push effect.
         /// </summary>
         public void PushEffect(JCS_2DLiveObject liveObject)
         {
