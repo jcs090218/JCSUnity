@@ -52,6 +52,7 @@ namespace JCSUnity
         [Tooltip("Active the effect by hitting the certain object.")]
         [SerializeField]
         private bool mActiveWithHitList = true;
+
         private JCS_HitListEvent mHitList = null;
 
         //-- Time
@@ -109,6 +110,19 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
+        public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
+
+        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
+        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
+        public bool SameScale { get { return this.mSameScale; } set { this.mSameScale = value; } }
+
+        public bool RandPos { get { return this.mRandPos; } set { this.mRandPos = value; } }
+        public bool RandRot { get { return this.mRandRot; } set { this.mRandRot = value; } }
+        public bool RandScale { get { return this.mRandScale; } set { this.mRandScale = value; } }
+        public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
+        public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
+        public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
 
         //========================================
         //      Unity's function
