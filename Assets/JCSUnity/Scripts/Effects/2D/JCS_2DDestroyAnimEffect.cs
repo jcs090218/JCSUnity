@@ -59,6 +59,7 @@ namespace JCSUnity
         [Tooltip("Active the effect by the destroy time.")]
         [SerializeField]
         private bool mActiveWithDestroyTime = false;
+
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
 

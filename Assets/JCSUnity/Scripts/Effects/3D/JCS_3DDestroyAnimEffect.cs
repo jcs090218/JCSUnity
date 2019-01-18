@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// When gameobject destroy, this will be activate and 
-    /// play an animation.
+    /// Play the animation when the gameobject is destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     [RequireComponent(typeof(JCS_AnimPool))]
@@ -33,7 +32,7 @@ namespace JCSUnity
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
 
-        [Header("** Runtime Variables (JCS_2DDestroyAnimEffect) **")]
+        [Header("** Runtime Variables (JCS_3DDestroyAnimEffect) **")]
 
         [Tooltip("Sorting layer this effect going to render.")]
         [SerializeField]
@@ -58,43 +57,47 @@ namespace JCSUnity
         private bool mActiveWithDestroyTime = false;
 
 
-        [Header("** Position Settings (JCS_2DDestroyAnimEffect) **")]
+        [Header("** Position Settings (JCS_3DDestroyAnimEffect) **")]
 
-        [Tooltip("The same position as the destroyed game object?")]
+        [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
         [SerializeField]
         private bool mSamePosition = true;
-        [Tooltip("The same rotation as the destroyed game object?")]
+        [Tooltip("Play the animation as the same rotation as the destroyed gameobject.")]
         [SerializeField]
         private bool mSameRotation = true;
-        [Tooltip("The same scale as the destroyed game object?")]
+        [Tooltip("Play the animation as the same scale as the destroyed gameobject.")]
         [SerializeField]
         private bool mSameScale = true;
 
-        [Header("** Random Effect (JCS_2DDestroyAnimEffect) **")]
 
-        [Tooltip("Enable/Disable Random Position Effect")]
+        [Header("** Random Effect (JCS_3DDestroyAnimEffect) **")]
+
+        [Tooltip("Randomize the position wehn the animation is played.")]
         [SerializeField]
         private bool mRandPos = false;
-        [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandPosRange = 0;
 
-        [Tooltip("Enable/Disable Random Rotation Effect")]
+        [Tooltip("Random position value added.")]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
+        private float mRandPosRange = 0.0f;
+
+        [Tooltip("Randomize the rotation wehn the animation is played.")]
         [SerializeField]
         private bool mRandRot = false;
-        [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandRotRange = 0;
 
-        [Tooltip("Enable/Disable Random Scale Effect")]
+        [Tooltip("Random rotation value added.")]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
+        private float mRandRotRange = 0.0f;
+
+        [Tooltip("Randomize the scale wehn the animation is played.")]
         [SerializeField]
         private bool mRandScale = false;
+
+        [Tooltip("Random scale value added.")]
         [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandScaleRange = 0;
+        [Range(0.0f, 10.0f)]
+        private float mRandScaleRange = 0.0f;
 
         //----------------------
         // Protected Variables
@@ -102,7 +105,19 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
         public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
+
+        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
+        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
+        public bool SameScale { get { return this.mSameScale; } set { this.mSameScale = value; } }
+
+        public bool RandPos { get { return this.mRandPos; } set { this.mRandPos = value; } }
+        public bool RandRot { get { return this.mRandRot; } set { this.mRandRot = value; } }
+        public bool RandScale { get { return this.mRandScale; } set { this.mRandScale = value; } }
+        public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
+        public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
+        public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
 
         //========================================
         //      Unity's function

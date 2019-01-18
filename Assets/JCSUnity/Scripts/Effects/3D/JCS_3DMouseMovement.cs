@@ -31,18 +31,19 @@ namespace JCSUnity
         private Vector3 mVelocity = Vector3.zero;
 
 
-        [Header("** Scroll Screen Effect (JCS_3DMouseMovement) **")]
+        [Header("** Runtime Variables (JCS_3DMouseMovement) **")]
 
-        [Tooltip("")]
-        [SerializeField] private bool mScreenScroll = false;
+        [Tooltip("Is this effect active?")]
+        [SerializeField]
+        private bool mScreenScroll = false;
 
         [Tooltip("Distance to 4 bounds. (Top/Bottom/Right/Left)")]
         [SerializeField] [Range(0, 0.5f)]
         private float mScrollScreenRange = 0.1f;
 
         [Tooltip("Speeed to scroll the screen.")]
-        [SerializeField] [Range(1, 75)]
-        private float mScrollScreenSpeed = 2;
+        [SerializeField] [Range(1.0f, 75.0f)]
+        private float mScrollScreenSpeed = 2.0f;
 
         [Tooltip("Scroll depth direction.")]
         [SerializeField]
@@ -55,6 +56,9 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public bool ScreenScroll { get { return this.mScreenScroll; } set { this.mScreenScroll = value; } }
+        public float ScrollScreenRange { get { return this.mScrollScreenRange; } set { this.mScrollScreenRange = value; } }
+        public float ScrollScreenSpeed { get { return this.mScrollScreenSpeed; } set { this.mScrollScreenSpeed = value; } }
+        public bool ScrollDepth { get { return this.mScrollDepth; } set { this.mScrollDepth = value; } }
 
         //========================================
         //      Unity's function
