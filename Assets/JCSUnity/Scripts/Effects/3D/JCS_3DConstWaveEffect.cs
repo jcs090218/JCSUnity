@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Const wave effect.
+    /// Effect that does constant wave.
     /// </summary>
     public class JCS_3DConstWaveEffect
         : JCS_UnityObject
@@ -46,14 +46,15 @@ namespace JCSUnity
 
         [Tooltip("How fast the wave move up and down.")]
         [SerializeField]
-        private float mFrequency = 2f;
+        private float mFrequency = 2.0f;
 
         // time to run the sine/cosine wave.
-        private float mTime = 0;
+        private float mTime = 0.0f;
 
-        [Tooltip("Which axis it move.")]
+        [Tooltip("Effect on which axis.")]
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_Y;
+
 
         [Header("- Randomize Setting (JCS_3DConstWaveEffect)")]
 
@@ -76,8 +77,13 @@ namespace JCSUnity
         /*******************************************/
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public bool EffectLocal { get { return this.mEffectLocal; } set { this.mEffectLocal = value; } }
+        public float Amplitude { get { return this.mAmplitude; } set { this.mAmplitude = value; } }
+        public float Frequency { get { return this.mFrequency; } set { this.mFrequency = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
+
+        public float RandomizeAmplitudeAtStart { get { return this.mRandomizeAmplitudeAtStart; } set { this.mRandomizeAmplitudeAtStart = value; } }
+        public float RandomizeFrequencyAtStart { get { return this.mRandomizeFrequencyAtStart; } set { this.mRandomizeFrequencyAtStart = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -94,7 +100,7 @@ namespace JCSUnity
         {
             if (!mEffect)
             {
-                mTime = 0;
+                mTime = 0.0f;
                 return;
             }
 
