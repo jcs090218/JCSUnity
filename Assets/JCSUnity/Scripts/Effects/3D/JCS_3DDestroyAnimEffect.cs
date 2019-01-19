@@ -57,7 +57,7 @@ namespace JCSUnity
         private bool mActiveWithDestroyTime = false;
 
 
-        [Header("** Position Settings (JCS_3DDestroyAnimEffect) **")]
+        [Header("** Transform Settings (JCS_3DDestroyAnimEffect) **")]
 
         [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
         [SerializeField]
@@ -72,7 +72,7 @@ namespace JCSUnity
 
         [Header("** Random Effect (JCS_3DDestroyAnimEffect) **")]
 
-        [Tooltip("Randomize the position wehn the animation is played.")]
+        [Tooltip("Randomize the position when the animation is played.")]
         [SerializeField]
         private bool mRandPos = false;
 
@@ -81,7 +81,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandPosRange = 0.0f;
 
-        [Tooltip("Randomize the rotation wehn the animation is played.")]
+        [Tooltip("Randomize the rotation when the animation is played.")]
         [SerializeField]
         private bool mRandRot = false;
 
@@ -90,7 +90,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandRotRange = 0.0f;
 
-        [Tooltip("Randomize the scale wehn the animation is played.")]
+        [Tooltip("Randomize the scale when the animation is played.")]
         [SerializeField]
         private bool mRandScale = false;
 
@@ -107,6 +107,10 @@ namespace JCSUnity
         //------------------------------
         public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
         public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
+
+        public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
+        public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
+        public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
 
         public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
         public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
