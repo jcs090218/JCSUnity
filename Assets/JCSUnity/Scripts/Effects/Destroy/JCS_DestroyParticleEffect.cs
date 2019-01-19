@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// When the gameobject get destroy, spawn the gameobject and 
-    /// to the particle in seconds. 
+    /// Effect when the gameobject get destroyed, spawn a particle system.
     /// </summary>
     [RequireComponent(typeof(JCS_ParticleSystem))]
     [RequireComponent(typeof(JCS_HitListEvent))]
@@ -30,7 +29,7 @@ namespace JCSUnity
         private JCS_ParticleSystem mParticleSystem = null;
 
 
-        [Header("** Initialize Variables (JCS_ParticleSystem) **")]
+        [Header("** Initialize Variables (JCS_DestroyParticleEffect) **")]
 
         //-- Hit List
         [Tooltip("Active this effect by what ever this object is destoryed.")]
@@ -40,56 +39,61 @@ namespace JCSUnity
         [Tooltip("Active the effect by hitting the certain object.")]
         [SerializeField]
         private bool mActiveWithHitList = true;
+
         private JCS_HitListEvent mHitList = null;
 
         //-- Time
         [Tooltip("Active the effect by the destroy time.")]
         [SerializeField]
         private bool mActiveWithDestroyTime = false;
+
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
 
-        [Header("** Settings **")]
+        [Header("** Transform Settings (JCS_DestroyParticleEffect) **")]
 
-        [Tooltip("The same position as the destroyed game object?")]
+        [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
         [SerializeField]
         private bool mSamePosition = true;
-        [Tooltip("The same rotation as the destroyed game object?")]
+        [Tooltip("Play the animation as the same rotation as the destroyed gameobject.")]
         [SerializeField]
         private bool mSameRotation = true;
-        [Tooltip("The same scale as the destroyed game object?")]
+        [Tooltip("Play the animation as the same scale as the destroyed gameobject.")]
         [SerializeField]
         private bool mSameScale = true;
 
 
-        [Header("** Random Effect **")]
+        [Header("** Random Effect (JCS_DestroyParticleEffect) **")]
 
-        [Tooltip("Enable/Disable Random Position Effect")]
+        [Tooltip("Randomize the position when spawn the particle system.")]
         [SerializeField]
         private bool mRandPos = false;
-        [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandPosRange = 0;
 
-        [Tooltip("Enable/Disable Random Rotation Effect")]
+        [Tooltip("Random position value added.")]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
+        private float mRandPosRange = 0.0f;
+
+        [Tooltip("Randomize the rotation when spawn the particle system.")]
         [SerializeField]
         private bool mRandRot = false;
-        [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandRotRange = 0;
 
-        [Tooltip("Enable/Disable Random Scale Effect")]
+        [Tooltip("Random rotation value added.")]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
+        private float mRandRotRange = 0.0f;
+
+        [Tooltip("Randomize the scale when spawn the particle system.")]
         [SerializeField]
         private bool mRandScale = false;
+
+        [Tooltip("Random scale value added.")]
         [SerializeField]
-        [Tooltip("Range will be within this negative to positive!")]
-        [Range(0, 10)]
-        private float mRandScaleRange = 0;
+        [Range(0.0f, 10.0f)]
+        private float mRandScaleRange = 0.0f;
 
 
-        [Header("- Peformance")]
+        [Header("- Peformance (JCS_DestroyParticleEffect)")]
 
         [Tooltip(@"Destroy the particle object by time, the 
 default is be 'JCS_DestroyParticleEndEvent'.")]
@@ -97,8 +101,8 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
         private bool mDestroyByTime = false;
 
         [Tooltip("How long the object get destroy.")]
-        [SerializeField]
-        private float mDestroyTime = 10;
+        [SerializeField] [Range(0.0f, 360.0f)]
+        private float mDestroyTime = 10.0f;
 
         //----------------------
         // Protected Variables
@@ -106,8 +110,23 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
         //========================================
         //      setter / getter
         //------------------------------
+        public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
+        public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
+        public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
+
         public bool DestroyByTime { get { return this.mDestroyByTime; } set { this.mDestroyByTime = value; } }
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
+
+        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
+        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
+        public bool SameScale { get { return this.mSameScale; } set { this.mSameScale = value; } }
+
+        public bool RandPos { get { return this.mRandPos; } set { this.mRandPos = value; } }
+        public bool RandRot { get { return this.mRandRot; } set { this.mRandRot = value; } }
+        public bool RandScale { get { return this.mRandScale; } set { this.mRandScale = value; } }
+        public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
+        public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
+        public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
 
         //========================================
         //      Unity's function

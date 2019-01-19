@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// While hit the destination destroy it.
+    /// Effect when reach the destination destroy this gameobject.
     /// </summary>
     [RequireComponent(typeof(JCS_AlphaObject))]
     public class JCS_DestinationDestroy
@@ -22,6 +22,7 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+
         public enum FadeType
         {
             IN,
@@ -33,26 +34,29 @@ namespace JCSUnity
 
         private JCS_AlphaObject mAlphaObject = null;
 
+
         [Header("** Runtime Variables *(JCS_DestinationDestroy) **")]
 
         [Tooltip("Do the action?")]
         [SerializeField]
         private bool mAction = true;
 
+        [Tooltip("Target destination.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        [Tooltip("Accept range to destroy this object.(circle)")]
+        [Tooltip("Accept range to destroy this object. (circle)")]
         [SerializeField]
         private float mDestroyDistance = 0.3f;
 
 
         [Header("** Fade Effect (JCS_DestinationDestroy) **")]
 
+        [Tooltip("Fade when destroy.")]
         [SerializeField]
         private bool mFadeEffect = true;
 
-        [Tooltip("How kind of fade?")]
+        [Tooltip("What kind of fade?")]
         [SerializeField]
         private FadeType mFadeType = FadeType.IN;
 

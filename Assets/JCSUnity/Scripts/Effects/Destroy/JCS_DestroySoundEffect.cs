@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// When the gameobject is destroy it will play the sound.
+    /// Effect that play the sound after the gameobject is destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_HitListEvent))]
     [RequireComponent(typeof(JCS_SoundPool))]
@@ -26,16 +26,26 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
-        [Tooltip("Sound to display when this occurs")]
-        [SerializeField] private JCS_SoundPool mRandomSoundAction = null;
+
+        
+        [Header("** Runtime Variables (JCS_DestroySoundEffect) **")]
+
+        [Tooltip("Sound to play when this occurs.")]
+        [SerializeField]
+        private JCS_SoundPool mRandomSoundAction = null;
 
         //-- Hit List
-        [SerializeField] private bool mOccurDestroyWithHitList = true;
+        [Tooltip("Active the effect by hitting the certain object.")]
+        [SerializeField]
+        private bool mActiveWithHitList = true;
+
         private JCS_HitListEvent mHitList = null;
 
         //-- Time
-        [SerializeField] private bool mOccurDestroyWithTime = false;
+        [Tooltip("Active the effect by the destroy time.")]
+        [SerializeField]
+        private bool mActiveWithDestroyTime = false;
+
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
         //----------------------
@@ -44,6 +54,8 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
+        public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
 
         //========================================
         //      Unity's function
@@ -67,13 +79,13 @@ namespace JCSUnity
             if (JCS_SceneManager.instance.IsSwitchingScene())
                 return;
 
-            if (!mOccurDestroyWithHitList)
+            if (!mActiveWithHitList)
             {
                 if (mHitList.IsHit)
                     return;
             }
 
-            if (!mOccurDestroyWithTime)
+            if (!mActiveWithDestroyTime)
             {
                 
                 if (mDestroyObjectWithTime != null)
