@@ -78,16 +78,15 @@ other sound. (Pick Sound)")]
         [SerializeField]
         protected bool mPlayOneShotWhileNotPlayingForPickSound = true;
 
-        [Tooltip("Audio sound when u pick up this item")]
+        [Tooltip("Sound played when you pick up this item.")]
         [SerializeField]
         protected AudioClip mPickSound = null;
 
-        [Tooltip(@"Play one shot while not playing any 
-other sound. (Effect Sound)")]
+        [Tooltip(@"Play one shot while not playing any other sound.")]
         [SerializeField]
         protected bool mPlayOneShotWhileNotPlayingForEffectSound = false;
 
-        [Tooltip("Audio sound when u pick up this item (Global) ")]
+        [Tooltip("Sound played when you pick up this item.")]
         [SerializeField]
         protected AudioClip mEffectSound = null;
 
@@ -95,8 +94,12 @@ other sound. (Effect Sound)")]
 
 
         [Header("** Optional Variables (JCS_UnityObject) **")]
+
+        [Tooltip("Make item tween to the destination.")]
         [SerializeField]
         private JCS_TransformTweener mTweener = null;
+
+        [Tooltip("Destroy when reach the destination.")]
         [SerializeField]
         private JCS_DestinationDestroy mDestinationDestroy = null;
 
@@ -112,7 +115,6 @@ other sound. (Effect Sound)")]
 
         public void SetPickCallback(PickCallback func) { this.mPickCallback = func; }
         public PickCallback GetPickCallback() { return this.mPickCallback; }
-
 
         //========================================
         //      Unity's function
@@ -178,7 +180,7 @@ other sound. (Effect Sound)")]
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Pick the item up.
         /// </summary>
         /// <param name="other"></param>
         public void Pick(Collider other)
@@ -218,7 +220,7 @@ other sound. (Effect Sound)")]
         }
 
         /// <summary>
-        /// 
+        /// Default pick up callback.
         /// </summary>
         /// <param name="other"></param>
         public static void DefaultPickCallback(Collider other)
