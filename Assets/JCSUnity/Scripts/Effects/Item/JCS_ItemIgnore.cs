@@ -13,12 +13,18 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// When every item touch this will ignore the collision
+    /// When every item touch this will ignore the collision.
     /// </summary>
     public class JCS_ItemIgnore
         : MonoBehaviour
     {
-        [SerializeField] private bool mEffectToAllChild = true;
+        [Tooltip("Add this effect to all the children from this gameobject.")]
+        [SerializeField]
+        private bool mEffectToAllChild = true;
+
+
+        public bool EffectToAllChild { get { return this.mEffectToAllChild; } set { this.mEffectToAllChild = value; } }
+
 
         private void Start()
         {

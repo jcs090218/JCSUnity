@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// Item rotation effect.
     /// </summary>
     [RequireComponent(typeof(JCS_OneJump))]
     public class JCS_ItemRotation

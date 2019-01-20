@@ -14,8 +14,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// Make the object drop,
-    /// plz attach this script.
+    /// Effect make this object able to drop items.
     /// </summary>
     [RequireComponent(typeof(JCS_ItemIgnore))]
     public class JCS_ItemDroppable
@@ -29,8 +28,9 @@ namespace JCSUnity
         public struct ItemSet
         {
             [Tooltip("Possibilty droping this item, the higher the more possiblility")]
-            [Range(0, 100)]
+            [Range(0.0f, 100.0f)]
             public float dropRate;
+
             [Tooltip("Item to drop")]
             public JCS_Item item;
         };
@@ -45,8 +45,8 @@ namespace JCSUnity
 this variables first, before to do the actually 
 compare algorithm")]
         [SerializeField]
-        [Range(0, 100)]
-        private float mPossiblityDropAction = 100;
+        [Range(0.0f, 100.0f)]
+        private float mPossiblityDropAction = 100.0f;
 
         [Tooltip("Number of Item Drap possibilty will increase exponentially.")]
         [SerializeField]
@@ -70,23 +70,24 @@ compare algorithm")]
 
         [Header("Gravity Effect (JCS_ItemDroppable)")]
 
-        [Tooltip("")]
+        [Tooltip("Make item effect by gravity.")]
         [SerializeField]
         private bool mIsGravity = true;
 
-        [Tooltip("")]
+        [Tooltip("How much the item push up to the air.")]
         [SerializeField]
-        [Range(0, 120)]
-        private float mJumpForce = 10;
+        [Range(0.0f, 120.0f)]
+        private float mJumpForce = 10.0f;
 
         [Tooltip("Randomize the jump force to each item?")]
         [SerializeField]
         private bool mRandomizeJumpForce = false;
 
-        [Tooltip("Add this force to item")]
+        [Tooltip("Add this force to item.")]
         [SerializeField]
-        [Range(0.01f, 5)]
-        private float mRandomizeJumpForceForce = 0;
+        [Range(0.01f, 5.0f)]
+        private float mRandomizeJumpForceForce = 0.0f;
+
 
         [Header("- Rotate Effect ")]
 
@@ -94,19 +95,19 @@ compare algorithm")]
         [SerializeField]
         private bool mRotateWhileDropping = true;
 
-        [Tooltip("How fast the item rotate?")]
+        [Tooltip("How fast the item rotates?")]
         [SerializeField]
-        private float mRotateSpeed = 1000;
+        private float mRotateSpeed = 1000.0f;
 
 
         [Header("Spread Effect (JCS_ItemDroppable)")]
 
-        [Tooltip("")]
+        [Tooltip("Spread the item while dropping.")]
         [SerializeField]
         private bool mSpreadEffect = true;
 
         [Tooltip("How far between a item to the item next to this item.")]
-        [SerializeField] [Range(0, 1)]
+        [SerializeField] [Range(0.0f, 1.0f)]
         private float mSpreadGap = 0.4f;
 
         [Tooltip("Did the effect include 3 dimensional?")]
@@ -120,18 +121,18 @@ compare algorithm")]
         [SerializeField]
         private bool mDestroyFadeOutEffect = true;
 
-        [Tooltip("When does the item destory?")]
+        [Tooltip("When does the item get destroyed?")]
         [SerializeField]
-        private float mDestroyTime = 30;
+        private float mDestroyTime = 30.0f;
 
-        [Tooltip("How fast it fade out when get destroy?")]
+        [Tooltip("How fast it fade out when get destroyed?")]
         [SerializeField]
-        private float mFadeTime = 1;
+        private float mFadeTime = 1.0f;
 
 
         [Header("Others (JCS_ItemDroppable)")]
 
-        [Tooltip("")]
+        [Tooltip("Do constant wave effect to all the items dropped.")]
         [SerializeField]
         private bool mConstWaveEffect = true;
 
@@ -143,7 +144,7 @@ the wall or just stop there.")]
 
         [Header("** Audio (JCS_ItemDroppable) **")]
 
-        [Tooltip("Drop Sound")]
+        [Tooltip("Drop Sound.")]
         [SerializeField]
         private AudioClip mDropSound = null;
 

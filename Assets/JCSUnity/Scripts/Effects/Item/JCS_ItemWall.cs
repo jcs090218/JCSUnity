@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Use to block the item going through by x-axis direction.
+    /// Use to block the item going through on x-axis direction.
     /// </summary>
     public class JCS_ItemWall
         : MonoBehaviour

@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Currently for GUI use.
+    /// Effect makes the item jumps and spreads.
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(BoxCollider))]
@@ -31,13 +31,17 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_OneJump) **")]
 
-        [Tooltip("How many force to apply on jump")]
+        [Tooltip("How many force to apply on jump?")]
         [SerializeField]
-        private float mJumpForce = 10;
+        private float mJumpForce = 10.0f;
+
+        [Tooltip("How fast this item moves?")]
         [SerializeField]
-        private float mMoveForce = 10;
+        private float mMoveForce = 10.0f;
+
+        [Tooltip("Item gravity.")]
         [SerializeField]
-        private float mItemGravity = 2;
+        private float mItemGravity = 2.0f;
 
         private Vector3 mVelocity = Vector3.zero;
         private BoxCollider mBoxCollider = null;
