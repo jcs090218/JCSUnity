@@ -40,7 +40,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ParticleSystem) **")]
 
-        [Tooltip("Particle u want to spawn")]
+        [Tooltip("Particle you want to spawn.")]
         [SerializeField]
         private JCS_Particle mParticle = null;
 
@@ -71,36 +71,36 @@ namespace JCSUnity
 
         [Tooltip("Randomize the X position. (Default : 0)")]
         [SerializeField]
-        [Range(0, 1000)]
-        private float mRandPosX = 0;
+        [Range(0.0f, 1000.0f)]
+        private float mRandPosX = 0.0f;
 
         [Tooltip("Randomize the Y position. (Default : 0)")]
         [SerializeField]
-        [Range(0, 1000)]
-        private float mRandPosY = 0;
+        [Range(0.0f, 1000.0f)]
+        private float mRandPosY = 0.0f;
 
         [Tooltip("Randomize the Z position. (Default : 0)")]
         [SerializeField]
-        [Range(0, 1000)]
+        [Range(0.0f, 1000.0f)]
         private float mRandPosZ = 0;
 
 
         [Header("** Rotation Settings (JCS_ParticleSystem) **")]
 
-        [Tooltip("")]
+        [Tooltip("Randomize the X rotation.")]
         [SerializeField]
-        [Range(0, 359)]
-        private float mRandAngleX = 0;
+        [Range(0.0f, 359.999f)]
+        private float mRandAngleX = 0.0f;
 
-        [Tooltip("")]
+        [Tooltip("Randomize the Y rotation.")]
         [SerializeField]
-        [Range(0, 359)]
-        private float mRandAngleY = 0;
+        [Range(0.0f, 359.999f)]
+        private float mRandAngleY = 0.0f;
 
-        [Tooltip("Wind speed in 2 dimensional.")]
+        [Tooltip("Randomize the Z rotation.")]
         [SerializeField]
-        [Range(0, 359)]
-        private float mRandAngleZ = 0;
+        [Range(0.0f, 359.999f)]
+        private float mRandAngleZ = 0.0f;
 
 
         [Header("** Scale Settings (JCS_ParticleSystem) **")]
@@ -113,35 +113,35 @@ mRandScaleY and mRandScaleZ variables.")]
 
         [Tooltip("Randomize the X scale. (Default : 0)")]
         [SerializeField]
-        [Range(0, 1000)]
-        private float mRandScaleX = 0;
+        [Range(0.0f, 1000.0f)]
+        private float mRandScaleX = 0.0f;
 
         [Tooltip("Randomize the Y scale. (Default : 0)")]
         [SerializeField]
-        [Range(0, 1000)]
-        private float mRandScaleY = 0;
+        [Range(0.0f, 1000.0f)]
+        private float mRandScaleY = 0.0f;
 
         [Tooltip("Randomize the Z scale. (Default : 0)")]
         [SerializeField]
-        [Range(0, 1000)]
-        private float mRandScaleZ = 0;
+        [Range(0.0f, 1000.0f)]
+        private float mRandScaleZ = 0.0f;
 
 
-        private float mSequenceTimer = 0;
+        private float mSequenceTimer = 0.0f;
         private float mTimeAParticle = 0.5f;
 
 
         [Header("- Freeze Effect")]
 
-        [Tooltip("")]
+        [Tooltip("Freeze the x axis.")]
         [SerializeField]
         private bool mFreezeX = false;
 
-        [Tooltip("")]
+        [Tooltip("Freeze the y axis.")]
         [SerializeField]
         private bool mFreezeY = true;
 
-        [Tooltip("")]
+        [Tooltip("Freeze the z axis.")]
         [SerializeField]
         private bool mFreezeZ = true;
 
