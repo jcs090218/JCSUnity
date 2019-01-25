@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Simulate the Rain effect
+    /// Particle System thats spawns `JCS_Particle` object.
     /// </summary>
     [RequireComponent(typeof(JCS_EnvironmentSoundPlayer))]
     public class JCS_ParticleSystem
@@ -27,7 +27,7 @@ namespace JCSUnity
         // Private Variables
 
 
-        [Header("** Initialize Variables (JCS_2DParticleSystem) **")]
+        [Header("** Initialize Variables (JCS_ParticleSystem) **")]
 
         [Tooltip("Number of particle this particle system hold.")]
         [SerializeField]
@@ -38,7 +38,7 @@ namespace JCSUnity
         private int mLastAvaliableIndex = 0;
 
 
-        [Header("** Runtime Variables (JCS_2DParticleSystem) **")]
+        [Header("** Runtime Variables (JCS_ParticleSystem) **")]
 
         [Tooltip("Particle u want to spawn")]
         [SerializeField]
@@ -67,7 +67,7 @@ namespace JCSUnity
         private float mWindSpeed = 0;
 
 
-        [Header("** Position Settings (JCS_2DParticleSystem) **")]
+        [Header("** Position Settings (JCS_ParticleSystem) **")]
 
         [Tooltip("Randomize the X position. (Default : 0)")]
         [SerializeField]
@@ -85,7 +85,7 @@ namespace JCSUnity
         private float mRandPosZ = 0;
 
 
-        [Header("** Rotation Settings (JCS_2DParticleSystem) **")]
+        [Header("** Rotation Settings (JCS_ParticleSystem) **")]
 
         [Tooltip("")]
         [SerializeField]
@@ -103,7 +103,7 @@ namespace JCSUnity
         private float mRandAngleZ = 0;
 
 
-        [Header("** Scale Settings (JCS_2DParticleSystem) **")]
+        [Header("** Scale Settings (JCS_ParticleSystem) **")]
 
         [Tooltip(@"Apply the scale always the same. This will 
 only take the and mRandScaleX as a standard and ignore 
