@@ -40,19 +40,19 @@ namespace JCSUnity
         [SerializeField]
         private bool mReverseDirection = false;
 
-        [Tooltip("Toward this target.")]
+        [Tooltip("Move toward this target.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        [Tooltip("Random Position when active.")]
-        [SerializeField] [Range(0, 1000)]
-        private float mRange = 10;
+        [Tooltip("Randomly move particle to a certain range.")]
+        [SerializeField] [Range(0.0f, 1000.0f)]
+        private float mRange = 10.0f;
 
-        [Tooltip("Range will be adjustable.")]
-        [SerializeField] [Range(0, 1000)]
-        private float mAdjustRange = 0;
+        [Tooltip("Value adjust the range value, so it will make it more random.")]
+        [SerializeField] [Range(0.0f, 1000.0f)]
+        private float mAdjustRange = 0.0f;
 
-        [Tooltip("Is 3D particle?")]
+        [Tooltip("Is a 3D particle?")]
         [SerializeField]
         private bool mIncludeDepth = false;
 

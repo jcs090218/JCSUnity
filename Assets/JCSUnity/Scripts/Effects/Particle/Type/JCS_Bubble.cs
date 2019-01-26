@@ -32,11 +32,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mDoAction = true;
 
-        [Tooltip("")]
+        [Tooltip("How intense it shakes?")]
         [SerializeField] [Range(0.0f, 10.0f)]
-        private float mShakeMargin = 2;
+        private float mShakeMargin = 2.0f;
 
-        [Tooltip("How fast it move?")]
+        [Tooltip("How fast it moves?")]
         [SerializeField] [Range(0.1f, 1000.0f)]
         private float mShakeSpeed = 1.0f;
 

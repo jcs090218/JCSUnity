@@ -80,7 +80,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Play the lightning sound once.
         /// </summary>
         private void PlayLightningSound()
         {
@@ -90,7 +90,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Play the lightning animation once.
         /// </summary>
         private void PlayLightningAnim()
         {
