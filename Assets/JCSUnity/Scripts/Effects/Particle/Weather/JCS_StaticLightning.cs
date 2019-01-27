@@ -27,24 +27,27 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Tooltip("")]
+        [Header("** Runtime Variables (JCS_StaticLightning) **")]
+
+        [Tooltip("Lightning effect.")]
         [SerializeField]
         private JCS_WhiteScreen mLightning = null;
 
-        [Tooltip("")]
+        [Tooltip("Possibility to occurs lightning effect.")]
         [SerializeField] [Range(0, 100)]
         private int mPossiblity = 50;
 
-        [Tooltip("")]
-        [SerializeField] [Range(1, 5)]
+        [Tooltip("Random time to do the lightning effect.")]
+        [SerializeField] [Range(1.0f, 5.0f)]
         private float mRandomTime = 2.5f;
 
-        [Tooltip("This amount of time do chance lightning")]
+        [Tooltip("This amount of time do chance lightning.")]
         [SerializeField]
         private float mLimitTime = 2.5f;
-        private float mLimitTimer = 0;
 
-        private float mRecordTime = 0;
+        private float mLimitTimer = 0.0f;
+
+        private float mRecordTime = 0.0f;
 
         // Sound settings
         private JCS_SoundPool mSoundPool = null;
@@ -101,7 +104,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Do the lightning effect once.
         /// </summary>
         private void DoEffect()
         {
@@ -121,7 +124,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Play the lightning sound once.
         /// </summary>
         private void PlayLightningSound()
         {
@@ -131,7 +134,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Do lightning once.
         /// </summary>
         private void DoLightning()
         {
@@ -141,7 +144,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Chance to occurs trigger lightning effect.
         /// </summary>
         private void DoRandTime()
         {

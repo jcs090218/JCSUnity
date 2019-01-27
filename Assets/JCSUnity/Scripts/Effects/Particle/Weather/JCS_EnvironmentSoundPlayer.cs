@@ -27,7 +27,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_EnvironmentSoundPlayer) **")]
 
-        [Tooltip("Careful this does not effect to any sound system.")]
+        [Tooltip("Sound to play for environment sound.")]
         [SerializeField]
         private AudioClip mEnvironmentSound = null;
 
