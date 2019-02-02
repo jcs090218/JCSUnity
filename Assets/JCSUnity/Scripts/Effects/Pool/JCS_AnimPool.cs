@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Pool of animation
+    /// Pool of animation.
     /// </summary>
     public class JCS_AnimPool
         : MonoBehaviour
@@ -27,7 +27,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_AnimPool) **")]
 
-        [Tooltip("Pool to randomly choose.")]
+        [Tooltip("Animation pool.")]
         [SerializeField]
         private RuntimeAnimatorController[] mAnimPool = null;
 

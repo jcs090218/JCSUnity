@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Pool of sound
+    /// Pool of sound.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SoundPool
@@ -25,11 +25,14 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
-        [Tooltip("Pool of the audio clips")]
+
+        [Header("** Runtime Variables (JCS_SoundPool) **")]
+
+        [Tooltip("Pool of the audio clips.")]
         [SerializeField]
         private AudioClip[] mAudioClips = null;
-        [Tooltip("Sound Type u want to organize")]
+
+        [Tooltip("Sound type you want to organize.")]
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
@@ -50,6 +53,11 @@ namespace JCSUnity
         //------------------------------
         //----------------------
         // Public Functions
+
+        /// <summary>
+        /// Get an audio clip from the pool randomly.
+        /// </summary>
+        /// <returns></returns>
         public AudioClip GetRandomSound()
         {
             if (mAudioClips.Length == 0)

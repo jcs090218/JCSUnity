@@ -27,7 +27,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_AnimPool) **")]
 
-        [Tooltip("Pool to randomly choose.")]
+        [Tooltip("Animation pool.")]
         [SerializeField]
         private JCS_2DAnimation[] mAnimPool = null;
 

@@ -28,7 +28,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ObjectPool) **")]
 
-        [Tooltip("Pool to randomly choose.")]
+        [Tooltip("Pool to randomly choose a transform.")]
         [SerializeField]
         private Transform[] mTransPool = null;
 
