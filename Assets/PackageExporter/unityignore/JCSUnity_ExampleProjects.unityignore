@@ -1,0 +1,27 @@
+# 
+# Thank you for using 'Unity Package Exporter'. This is the generated 
+# unityignore file.
+# 
+# Package Name: JCSUnity_ExampleProjects
+# Version: 1.8.7
+# Creation Date: 2019-02-04 20:44:15 
+# 
+# Package Link: https://github.com/jcs090218/UnityPackageExporter
+# Author: Shen, Jen-Chieh
+# Email: jcs090218@gmail.com
+# 
+
+# Ignore this plugin itself.
+UnityPackageExporter
+
+# Ignore build info.
+StreamingAssets/build_info.txt
+
+# Ignore Test file.
+FrameworkTest_Assets
+Resources/FrameworkTest_Resources
+
+# Ignore Libraries
+Libraries/GaussianBlur
+Libraries/Infinity Code
+Libraries/SpriteMask
