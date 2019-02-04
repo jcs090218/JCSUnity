@@ -18,7 +18,7 @@ namespace JCSUnity
     public delegate void CallBackDelegate();
 
     /// <summary>
-    /// Tween Color
+    /// Color tweener.
     /// </summary>
     public class JCS_ColorTweener
         : JCS_UnityObject
@@ -120,35 +120,35 @@ namespace JCSUnity
         private JCS_TweenType mEaseTypeA = JCS_TweenType.LINEAR;
 
         
-        [Tooltip("How fast it change the red channel.")]
+        [Tooltip("How fast it changes the red channel.")]
         [SerializeField] [Range(0.01f, 1000.0f)]
         private float mDurationRed = 0.2f;
 
-        [Tooltip("How fast it change the green channel.")]
+        [Tooltip("How fast it changes the green channel.")]
         [SerializeField] [Range(0.01f, 1000.0f)]
         private float mDurationGreen = 0.2f;
 
-        [Tooltip("How fast it change the blue channel.")]
+        [Tooltip("How fast it changes the blue channel.")]
         [SerializeField] [Range(0.01f, 1000.0f)]
         private float mDurationBlue = 0.2f;
 
-        [Tooltip("How fast it change the alpha channel.")]
+        [Tooltip("How fast it changes the alpha channel.")]
         [SerializeField] [Range(0.01f, 1000.0f)]
         private float mDurationAlpha = 0.2f;
 
-        [Tooltip("Do not do anything with red channel")]
+        [Tooltip("Do not do anything with red channel.")]
         [SerializeField]
         private bool mIgnoreR = false;
 
-        [Tooltip("Do not do anything with green channel")]
+        [Tooltip("Do not do anything with green channel.")]
         [SerializeField]
         private bool mIgnoreG = false;
 
-        [Tooltip("Do not do anything with blue channel")]
+        [Tooltip("Do not do anything with blue channel.")]
         [SerializeField]
         private bool mIgnoreB = false;
 
-        [Tooltip("Do not do anything with alpha channel")]
+        [Tooltip("Do not do anything with alpha channel.")]
         [SerializeField]
         private bool mIgnoreA = false;
 
@@ -379,7 +379,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Update red channel.
         /// </summary>
         private void UpdateRed()
         {
@@ -414,7 +414,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Update green channel.
         /// </summary>
         private void UpdateGreen()
         {
@@ -449,7 +449,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Update blue channel.
         /// </summary>
         private void UpdateBlue()
         {
@@ -484,7 +484,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Update alpha channel.
         /// </summary>
         private void UpdateAlpha()
         {
@@ -538,7 +538,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the tweening
+        /// Do the tweening.
         /// </summary>
         private void DoTweening()
         {

@@ -14,7 +14,7 @@ using PeterVuorela.Tweener;
 namespace JCSUnity
 {
     /// <summary>
-    /// Tweener Effect
+    /// Transform tweener.
     /// </summary>
     public class JCS_TransformTweener
         : JCS_UnityObject
@@ -85,17 +85,17 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mValueOffset = Vector3.zero;
 
-        [Tooltip("How fase it move on x axis.")]
+        [Tooltip("How fase it moves on x axis.")]
         [SerializeField]
         [Range(0.01f, 1000.0f)]
         private float mDurationX = 1.0f;
 
-        [Tooltip("How fase it move on y axis.")]
+        [Tooltip("How fase it moves on y axis.")]
         [SerializeField]
         [Range(0.01f, 1000.0f)]
         private float mDurationY = 1.0f;
 
-        [Tooltip("How fase it move on z axis.")]
+        [Tooltip("How fase it moves on z axis.")]
         [SerializeField]
         [Range(0.01f, 1000.0f)]
         private float mDurationZ = 1.0f;
@@ -115,7 +115,7 @@ namespace JCSUnity
 
         [Header("- Randomize Duration")]
 
-        [Tooltip("Randomize the duration with all axis at start. (x, y, z)")]
+        [Tooltip("Randomize the durations with all axis at start. (x, y, z)")]
         [SerializeField]
         [Range(0.0f, 1000.0f)]
         private float mRandomizeDuration = 0.0f;
@@ -155,7 +155,7 @@ namespace JCSUnity
 
         [Header("- Continuous Tween (JCS_TransformTweener) ")]
 
-        [Tooltip("While Continue tween when did the tweener algorithm stop?")]
+        [Tooltip("While continue tween when did the tweener algorithm stop?")]
         [SerializeField]
         [Range(0.0f, 1000.0f)]
         private float mStopTweenDistance = 1;
@@ -387,7 +387,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get itself (JCS_UnityObject) transform type's vector3 value.
+        /// Get itself transform type's vector3 value.
         /// </summary>
         /// <returns> Vector3 value base on transform type selected. </returns>
         public Vector3 GetSelfTransformTypeVector3()
