@@ -34,7 +34,6 @@ in the JCSUnity framework. <br/>
 * *JCSUnity Version* => `1.8.7`
 * *Unity Version* => `2018.3.4f1 (64-bit)`
 
-## Features ##
 
 ## Links ##
 * *Demo* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
