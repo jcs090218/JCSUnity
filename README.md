@@ -1,7 +1,7 @@
-# JCSUnity #
-
 [![Build Status](https://travis-ci.com/jcs090218/JCSUnity.svg?branch=master)](https://travis-ci.com/jcs090218/JCSUnity)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# JCSUnity #
 
 JCSUnity is a component driven framework built to allow the user 
 to quickly generate commonly used game mechanics and features 
