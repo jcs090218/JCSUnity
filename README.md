@@ -36,7 +36,7 @@ in the JCSUnity framework. <br/>
 
 
 ## Features ##
-So, what does this framework does? Check out the `features`
+So, what does this framework does? Check out the [`features`](https://github.com/jcs090218/JCSUnity/tree/master/features)
 
 
 ## Links ##
