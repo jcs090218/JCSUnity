@@ -31,8 +31,8 @@ in the JCSUnity framework. <br/>
 
 
 ## Current Version Status ##
-* *JCSUnity Version* => `1.8.7`
-* *Unity Version* => `2018.3.4f1 (64-bit)`
+* *JCSUnity Version* : `1.8.7`
+* *Unity Version* : `2018.3.4f1 (64-bit)`
 
 
 ## Links ##
