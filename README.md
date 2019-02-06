@@ -36,10 +36,9 @@ in the JCSUnity framework. <br/>
 
 
 ## Features ##
-So, what does this framework does? Check out the `features` 
-directory at the root of the project directory 
-[here](https://github.com/jcs090218/JCSUnity/tree/master/features)
-.
+So, what does this framework does? Check out the 
+[features](https://github.com/jcs090218/JCSUnity/tree/master/features)
+directory at the root of the project directory.
 
 
 ## Links ##
