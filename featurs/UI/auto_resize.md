@@ -1,4 +1,4 @@
-## Auto Resize ##
+# Auto Resize #
 
 I use to hate drag and move the anchor point around when dealing
 with different resolutions in Unity UI system. Although, this

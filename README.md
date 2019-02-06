@@ -36,20 +36,9 @@ in the JCSUnity framework. <br/>
 
 ## Features ##
 
-### Auto Resize ###
-I use to hate drag and move the anchor point around when dealing
-with different resolutions in Unity UI system. Although, this
-cost a bit of performance at initialize time, I think is worth it to
-have this feature because I will never have to drag the anchor point
-around everytime I start a new project or create a new panel in the 
-scene. <br/>
-<img src="./screenshot/auto_resize.gif"/>
 
-### GUI System ###
-Since Unity version 4.6, they have release nice uGUI system, but 
-with lack of cool effect and sound on there. Here are some simple
-effect I made so you can simple make game with details. <br/>
-<img src="./screenshot/GUI_system.gif"/>
+
+
 
 ### Network Module ###
 I have never use Unity's network module, but I heard a lot of people
