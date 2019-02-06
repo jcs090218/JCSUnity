@@ -35,6 +35,10 @@ in the JCSUnity framework. <br/>
 * *Unity Version* : `2018.3.4f1 (64-bit)`
 
 
+## Features ##
+So, what does this framework does? Check out the `features`
+
+
 ## Links ##
 * *Demo* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 * *Tutorials* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
