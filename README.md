@@ -36,11 +36,6 @@ in the JCSUnity framework. <br/>
 
 ## Features ##
 
-### In Game Log System ###
-Log system inside the game. <br/>
-<img src="./screenshot/IGLog_system.gif"/>
-
-
 ## Links ##
 * *Demo* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 * *Tutorials* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
