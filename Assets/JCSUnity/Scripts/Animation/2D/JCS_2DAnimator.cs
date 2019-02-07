@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Hold sequence of animation and play it by condition.
+    /// Hold sequence of animations and play it by condition.
     /// </summary>
     public class JCS_2DAnimator 
         : MonoBehaviour
@@ -75,21 +75,19 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DAnimator) **")]
 
-        [Tooltip(@"This will times the animation time by this, 
-default is 1.")]
+        [Tooltip(@"How fast the animation plays.")]
         [SerializeField]
-        [Range(0, 5)]
-        private float mAnimationTimeProduction = 1;
+        [Range(0.0f, 5.0f)]
+        private float mAnimationTimeProduction = 1.0f;
 
-        [Tooltip("All the animation possible to this object.")]
+        [Tooltip("All the animations this animator holds.")]
         [SerializeField]
         private List<JCS_2DAnimation> mAnimations = null;
 
 
         [Header("** Optional Variables (JCS_2DAnimator) **")]
 
-        [Tooltip(@"If you want the animation to be hold for few sec, 
-you could add this component to do the action/event.")]
+        [Tooltip("Hold animation displayed frame event.")]
         [SerializeField]
         private JCS_2DAnimDisplayHolder m2DAnimDisplayHolder = null;
 
@@ -259,7 +257,7 @@ you could add this component to do the action/event.")]
         }
 
         /// <summary>
-        /// Check if the animation in the same id.
+        /// Check what animation is currently playing by this animator.
         /// </summary>
         /// <param name="inAnimId"> id to check </param>
         /// <returns> 
@@ -272,7 +270,7 @@ you could add this component to do the action/event.")]
         }
 
         /// <summary>
-        /// play the animation in current frame.
+        /// Play the animation with current frame.
         /// </summary>
         public void PlayAnimationInFrame()
         {
@@ -283,7 +281,7 @@ you could add this component to do the action/event.")]
         }
 
         /// <summary>
-        /// Stop animation in current frame.
+        /// Stop animation with current frame.
         /// </summary>
         public void StopAnimationInFrame()
         {

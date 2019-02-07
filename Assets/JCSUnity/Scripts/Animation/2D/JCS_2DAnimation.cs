@@ -73,7 +73,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_Animation) **")]
 
-        [Tooltip("When does this animation start the frame?")]
+        [Tooltip("Starting frame index.")]
         [SerializeField]
         private int mStartingFrame = 0;
 
@@ -88,11 +88,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mPlayOnAwake = true;
 
-        [Tooltip("Did the animation loop?")]
+        [Tooltip("Does the animation loop?")]
         [SerializeField]
         private bool mLoop = true;
 
-        [Tooltip("Null sprite.")]
+        [Tooltip("Sprite displayed when the animation stopped.")]
         [SerializeField]
         private Sprite mNullSprite = null;
 
@@ -112,10 +112,9 @@ namespace JCSUnity
         [SerializeField]
         private Sprite[] mAnimFrames = null;
 
-        [Tooltip(@"This will times the animation time by 
-this, default is 1.")]
-        [SerializeField] [Range(0, 5)]
-        private float mAnimationTimeProduction = 1;
+        [Tooltip("How fast the animation plays.")]
+        [SerializeField] [Range(0.0f, 5.0f)]
+        private float mAnimationTimeProduction = 1.0f;
 
 
         //----------------------
@@ -209,7 +208,7 @@ this, default is 1.")]
 
         /// <summary>
         /// Update the maxinum frame count from the 
-        /// anim frame sequence.
+        /// animation frame sequence.
         /// </summary>
         public void UpdateMaxFrame()
         {
@@ -299,7 +298,7 @@ this, default is 1.")]
         }
 
         /// <summary>
-        /// set the frame by index.
+        /// Set the current playing frame by index.
         /// </summary>
         /// <param name="frame">
         /// Frame index in the array, out of array play null frame.
