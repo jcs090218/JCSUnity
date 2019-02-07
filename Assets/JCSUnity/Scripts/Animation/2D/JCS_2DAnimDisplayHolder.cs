@@ -31,7 +31,7 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Header("** Check Variables (JCS_2DAnimCover) **")]
+        [Header("** Check Variables (JCS_2DAnimDisplayHolder) **")]
 
         [Tooltip(@"Record down what is the current animation playing, 
 so after holding we could play the animation back in time.")]
@@ -44,13 +44,13 @@ so after holding we could play the animation back in time.")]
         private bool mHolding = false;
 
 
-        [Header("** Runtime Variables (JCS_2DAnimCover) **")]
+        [Header("** Runtime Variables (JCS_2DAnimDisplayHolder) **")]
 
-        [Tooltip("")]
-        [SerializeField] [Range(0, 10)]
+        [Tooltip("How long to hold this animation.")]
+        [SerializeField] [Range(0.0f, 10.0f)]
         private float mHoldTime = 0.5f;
 
-        private float mHoldTimer = 0;
+        private float mHoldTimer = 0.0f;
 
         /*******************************************/
         /*           Protected Variables           */
@@ -109,7 +109,7 @@ so after holding we could play the animation back in time.")]
         }
 
         /// <summary>
-        /// Force stop holding the animation.
+        /// Stop holding the animation.
         /// </summary>
         public void StopHolding()
         {
