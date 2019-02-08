@@ -28,7 +28,7 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Check Variables (H_AnimSequencePlayer) **")]
+        [Header("** Check Variables (JCS_2DAnimSequencePlayer) **")]
 
         [Tooltip("")]
         [SerializeField]
@@ -39,7 +39,7 @@ namespace JCSUnity
         private bool mDonePlayingSequence = false;
 
 
-        [Header("** Runtime Variables (H_AnimSequencePlayer) **")]
+        [Header("** Runtime Variables (JCS_2DAnimSequencePlayer) **")]
 
         [Tooltip("Active this component?")]
         [SerializeField]
@@ -52,14 +52,14 @@ namespace JCSUnity
         // counter through the animation.
         private int mAnimCounter = 0;
 
-        [Tooltip("How many time to play a animation.")]
-        [SerializeField] [Range(0, 5)]
+        [Tooltip("How many time to play an animation.")]
+        [SerializeField] [Range(0.0f, 5.0f)]
         private float mTimePerAnim = 0.5f;
 
         // timer for each animation play!
-        private float mTimer = 0;
+        private float mTimer = 0.0f;
 
-        [Tooltip("sequence of animations plays.")]
+        [Tooltip("Sequence of animations that played.")]
         [SerializeField]
         private JCS_2DAnimation[] mAnimations = null;
 
@@ -73,6 +73,7 @@ namespace JCSUnity
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool DonePlayingSequence { get { return this.mDonePlayingSequence; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
+        public float TimePerAnim { get { return this.mTimePerAnim; } set { this.mTimePerAnim = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -151,7 +152,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Start the sequence.
+        /// Start playing the animation sequence.
         /// </summary>
         public void Play()
         {

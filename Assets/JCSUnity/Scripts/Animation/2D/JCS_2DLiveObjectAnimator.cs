@@ -14,7 +14,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Animator specific for Live object.
+    /// Animator specific for live object.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimator))]
     public class JCS_2DLiveObjectAnimator
@@ -37,9 +37,9 @@ namespace JCSUnity
 
         [SerializeField]
         protected string mCurrentStateName = "";
+
         [SerializeField]
-        protected JCS_LiveObjectState mCurrentState
-            = JCS_LiveObjectState.STAND;
+        protected JCS_LiveObjectState mCurrentState = JCS_LiveObjectState.STAND;
 
 
         [Header("** Initialize Variables (JCS_2DLiveObjectAnimator) **")]
@@ -72,7 +72,7 @@ from the beginning.")]
         // Public Functions
 
         /// <summary>
-        /// Animation design here...
+        /// Do the animation.
         /// </summary>
         /// <param name="state"></param>
         public override void DoAnimation(JCS_LiveObjectState state = JCS_LiveObjectState.STAND)
@@ -92,7 +92,7 @@ from the beginning.")]
         }
 
         /// <summary>
-        /// play the animation in current frame.
+        /// Play the animation in current frame.
         /// </summary>
         public override void PlayAnimationInFrame()
         {

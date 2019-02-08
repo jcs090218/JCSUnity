@@ -73,6 +73,10 @@ use negative scale instead.")]
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public JCS_2DAnimation MirrorAnimation { get { return this.mMirrorAnimation; } set { this.mMirrorAnimation = value; } }
         public List<JCS_2DAnimation> MimicAnimations { get { return this.mMimicAnimations; } }
+        public bool MimicFrame { get { return this.mMimicFrame; } set { this.mMimicFrame = value; } }
+        public bool MimicSortingOrder { get { return this.mMimicSortingOrder; } set { this.mMimicSortingOrder = value; } }
+        public bool MimicColor { get { return this.mMimicColor; } set { this.mMimicColor = value; } }
+        public bool MimcFlip { get { return this.mMimcFlip; } set { this.mMimcFlip = value; } }
 
         /*******************************************/
         /*            Unity's function             */

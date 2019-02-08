@@ -14,7 +14,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Player must have the animation implemented
+    /// Player must have the animation implemented.
     /// </summary>
     [Obsolete(@"Old and will be remove in newer version... 
 Use JCS_2DAnimator instead.", true)]
@@ -41,8 +41,7 @@ Use JCS_2DAnimator instead.", true)]
 
         [Tooltip("")]
         [SerializeField]
-        protected JCS_LiveObjectState mCurrentState 
-            = JCS_LiveObjectState.STAND;
+        protected JCS_LiveObjectState mCurrentState = JCS_LiveObjectState.STAND;
 
         [Tooltip("")]
         [SerializeField]
