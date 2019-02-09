@@ -35,7 +35,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_2DOrderAnimPlayer) **")]
 
-        [Tooltip("Current playing animation id.")]
+        [Tooltip("Current playing animation's id.")]
         [SerializeField]
         private int mCurrentAnimationId = 0;
 
@@ -50,7 +50,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mPlayOnAwake = false;
 
-        [Tooltip("Loop the animation?")]
+        [Tooltip("Loop the animations?")]
         [SerializeField]
         private bool mLoop = false;
 
