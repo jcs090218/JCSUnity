@@ -51,7 +51,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// play the animation in current frame.
+        /// Play the animation in current frame.
         /// </summary>
         public virtual void PlayAnimationInFrame()
         {
