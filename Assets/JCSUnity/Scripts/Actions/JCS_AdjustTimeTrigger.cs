@@ -40,11 +40,11 @@ namespace JCSUnity
         [Tooltip(@"time to record down the real time to do one 
 action after we calculate the real time.")]
         [SerializeField]
-        private float mRealTimeZone = 0;
+        private float mRealTimeZone = 0.0f;
 
         [Tooltip("Timer to check if reach the real time zone.")]
         [SerializeField]
-        private float mTimer = 0;
+        private float mTimer = 0.0f;
 
         [Tooltip("check if the action trigger.")]
         [SerializeField]
@@ -57,17 +57,17 @@ action after we calculate the real time.")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Time to do one action.")]
+        [Tooltip("Time to trigger the event.")]
         [SerializeField]
         [Range(0.0f, 30.0f)]
         private float mTimeZone = 2.0f;
 
-        [Tooltip("Time that will randomly affect the Time Zone.")]
+        [Tooltip("Time that will randomly affect the time.")]
         [SerializeField]
         [Range(0.0f, 20.0f)]
         private float mAdjustTimeZone = 1.5f;
 
-        [Tooltip("Event to call if the action happens.")]
+        [Tooltip("Event that will be triggered.")]
         [SerializeField]
         private UnityEvent mUnityEvents = null;
 
@@ -80,6 +80,9 @@ action after we calculate the real time.")]
         /*             setter / getter             */
         /*******************************************/
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
+        public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
+        public UnityEvent UnityEvents { get { return this.mUnityEvents; } set { this.mUnityEvents = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -99,10 +102,28 @@ action after we calculate the real time.")]
         // Public Functions
 
         /// <summary>
+        /// Calculate the time to do event once.
+        /// </summary>
+        public void ResetTimeZone()
+        {
+            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
+            mRealTimeZone = mTimeZone + adjustTime;
+
+            mDidAction = false;
+            mTimer = 0;
+        }
+
+        //----------------------
+        // Protected Functions
+
+        //----------------------
+        // Private Functions
+
+        /// <summary>
         /// Do the timer action, execute the function pointer if the 
         /// timer had reached repeatedly.
         /// </summary>
-        public void DoAction()
+        private void DoAction()
         {
             if (mDidAction)
                 ResetTimeZone();
@@ -121,25 +142,5 @@ action after we calculate the real time.")]
 
             mDidAction = true;
         }
-
-        /// <summary>
-        /// Algorithm to calculate the time to do 
-        /// walk action include direction.
-        /// </summary>
-        public void ResetTimeZone()
-        {
-            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
-            mRealTimeZone = mTimeZone + adjustTime;
-
-            mDidAction = false;
-            mTimer = 0;
-        }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }
