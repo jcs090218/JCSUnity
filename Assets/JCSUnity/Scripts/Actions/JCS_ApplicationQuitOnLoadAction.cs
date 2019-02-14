@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Close the application when the level is load.
+    /// Close the application when the level is loaded.
     /// </summary>
     public class JCS_ApplicationQuitOnLoadAction
         : MonoBehaviour
