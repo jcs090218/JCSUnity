@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Tag for "JCS_DetectAreaAction"
+    /// Tag for "JCS_DetectAreaAction".
     /// </summary>
     [RequireComponent(typeof(JCS_2DLiveObject))]
     public class JCS_DetectAreaObject
@@ -24,8 +24,11 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Check Variables **")]
-        [SerializeField] private JCS_2DLiveObject mLiveObject = null;
+
+        [Header("** Check Variables (JCS_DetectAreaObject) **")]
+
+        [SerializeField]
+        private JCS_2DLiveObject mLiveObject = null;
 
         //----------------------
         // Protected Variables
