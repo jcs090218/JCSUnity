@@ -29,17 +29,37 @@ namespace JCSUnity
         
         [Header("** Check Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
-        [SerializeField] private bool mInSequence = false;
-        [SerializeField] private int mHit = 1;
+        [SerializeField]
+        private bool mInSequence = false;
+
+        [SerializeField]
+        private int mHit = 1;
         
-        [SerializeField] private int mMinDamage = 1;
-        [SerializeField] private int mMaxDamage = 5;
-        [SerializeField] private int mCriticalChance = 10;
+        [SerializeField]
+        private int mMinDamage = 1;
+        [SerializeField]
+        private int mMaxDamage = 5;
+
+        [SerializeField]
+        private int mCriticalChance = 10;
+
+
+        [Header("** Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
+
+        // Ability Format
+        [Tooltip("Ability format for calculation.")]
+        [SerializeField]
+        private JCS_AbilityFormat mAbilityFormat = null;
+
+        // Offset
+        [Tooltip("Position offset where damage text spawns.")]
+        [SerializeField]
+        private Vector3 mDamageTextPositionOffset = Vector3.zero;
 
 
         [Header("** Pre Calculate Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
-        [Tooltip("Enable this the attack will be calculate before hit the object.")]
+        [Tooltip("Attack will be calculate before hit the object.")]
         [SerializeField]
         private bool mPreCalculateEffect = false;
 
@@ -50,7 +70,7 @@ namespace JCSUnity
 
         [Header("** Lock Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
-        [Tooltip("Enable/Disable the effect.")]
+        [Tooltip("Lock on the target?")]
         [SerializeField]
         private bool mOnlyWithTarget = false;
 
@@ -59,32 +79,20 @@ namespace JCSUnity
         private Transform mTargetTransform = null;
 
 
-        [Header("** Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
-
-        // Ability Format
-        [Tooltip("Ability decide the min and max damage possibility.")]
-        [SerializeField]
-        private JCS_AbilityFormat mAbilityFormat = null;
-
-        // Offset
-        [Tooltip("Position + this.Offset where damage text will spawn.")]
-        [SerializeField]
-        private Vector3 mDamageTextPositionOffset = Vector3.zero;
-
-
         [Header("** Random Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
-        [Tooltip("Enable/Disable Random Position Effect")]
+        [Tooltip("Random position effect.")]
         [SerializeField]
         private bool mRandPos = false;
         
-        [Tooltip("Range will be within this negative to positive!")]
-        [SerializeField] [Range(0, 10)]
-        private float mRandPosRange = 0;
+        [Tooltip("Random position limit to within this range.")]
+        [SerializeField] [Range(0.0f, 10.0f)]
+        private float mRandPosRange = 0.0f;
 
 
         [Header("** Destroy Setting (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
+        [Tooltip("Destroy live object by this object.")]
         [SerializeField]
         private bool mDestroyByThisAction = true;
 
@@ -92,7 +100,8 @@ namespace JCSUnity
         [Header("** AOE Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         [Tooltip("Make object un-destroyable, count down by AOECount below.")]
-        [SerializeField] private bool mIsAOE = false;
+        [SerializeField]
+        private bool mIsAOE = false;
 
         [Tooltip("Once the object hit a object count one down.")]
         [SerializeField] [Range(1, 15)]
@@ -111,7 +120,7 @@ namespace JCSUnity
 
         [Header("** Sound Settings (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
-        [Tooltip(@"Usage: play this hit sound, while is action happens.")]
+        [Tooltip("Play this hit sound, while is action happens.")]
         [SerializeField]
         private AudioClip mHitSound = null;
 
@@ -287,7 +296,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Copy some information from other.
+        /// Copy some information from the other.
         /// </summary>
         public void CopyToThis(JCS_ApplyDamageTextToLiveObjectAction copy)
         {
