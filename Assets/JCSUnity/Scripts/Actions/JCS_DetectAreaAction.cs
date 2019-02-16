@@ -14,9 +14,10 @@ using System.Collections.Generic;
 namespace JCSUnity
 {
     /// <summary>
-    /// Anything with can dectect area must be living thing.
+    /// Action detects 'JCS_DetectAreaObject'.
     /// </summary>
-    [RequireComponent(typeof(JCS_2DLiveObject))]
+    // NOTE(jenchieh): Anything with can dectect area must be living thing.
+    [RequireComponent(typeof(JCS_2DLiveObject))]  
     public class JCS_DetectAreaAction
         : MonoBehaviour
     {
@@ -27,11 +28,18 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Check Variables **")]
-        [SerializeField] private JCS_2DLiveObject mLiveObject = null;
+        [Header("** Check Variables (JCS_DetectAreaAction) **")]
 
-        [Header("** Initialize Variables **")]
-        [SerializeField] private Collider[] mDetectCollider = null;
+        [SerializeField]
+        private JCS_2DLiveObject mLiveObject = null;
+
+
+        [Header("** Initialize Variables (JCS_DetectAreaAction) **")]
+
+        [Tooltip("Colliders detected.")]
+        [SerializeField]
+        private Collider[] mDetectCollider = null;
+
         private JCS_Vector<JCS_DetectAreaObject> mDetectedObjects = null;
 
         //----------------------
@@ -88,7 +96,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// If detect a Target add to list
+        /// If detect a target add it to list.
         /// </summary>
         /// <param name="jcsDo"></param>
         public void AddDetectedObject(JCS_DetectAreaObject jcsDo)
@@ -99,8 +107,8 @@ namespace JCSUnity
             mDetectedObjects.push(jcsDo);
         }
         /// <summary>
-        /// If detected Target leave the area,
-        /// remove from list!
+        /// If detected target leave the area,
+        /// remove from list.
         /// </summary>
         /// <param name="jcsDo"></param>
         public void RemoveDetectedObject(JCS_DetectAreaObject jcsDo)
@@ -174,6 +182,7 @@ namespace JCSUnity
             // return result
             return mDetectedObjects.at(furthestIndex);
         }
+
         /// <summary>
         /// Return the closest object in the array.
         /// </summary>

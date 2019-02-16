@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// The Collider to Detect "JCS_DetectAreaObject"!!
+    /// The collider to detect "JCS_DetectAreaObject".
     /// </summary>
     public class JCS_DetectArea
         : MonoBehaviour
@@ -26,8 +26,10 @@ namespace JCSUnity
         // Private Variables
         private JCS_DetectAreaAction mDetectAreaAction = null;
 
-        [Header("** Check Variables **")]
-        [SerializeField] private Collider mCollider = null;
+        [Header("** Check Variables (JCS_DetectArea) **")]
+
+        [SerializeField]
+        private Collider mCollider = null;
 
         //----------------------
         // Protected Variables

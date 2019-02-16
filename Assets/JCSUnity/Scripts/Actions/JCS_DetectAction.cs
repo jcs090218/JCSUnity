@@ -36,8 +36,8 @@ namespace JCSUnity
         private Transform[] mTargetTransforms = null;
 
         [Tooltip("Range to detect.")]
-        [SerializeField] [Range(0, 10)]
-        private float mDetectRange = 1;
+        [SerializeField] [Range(0.0f, 10.0f)]
+        private float mDetectRange = 1.0f;
 
         // Detect one transform?
         private bool mDetectOne = false;
