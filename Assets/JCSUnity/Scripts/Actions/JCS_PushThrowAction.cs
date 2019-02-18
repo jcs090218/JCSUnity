@@ -13,10 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Do the throw action like "Plants vs Zombies"'s 
-    /// corn plants. 
-    /// 
-    /// Base on the angle only. Push force does not change.
+    /// Action that throw the object to a position.
     /// </summary>
     public class JCS_PushThrowAction
         : MonoBehaviour
@@ -36,13 +33,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mEffect = false;
 
-        [Tooltip("Angle u want to throw to.")]
+        [Tooltip("Angle you want to throw to.")]
         [SerializeField]
-        private float mAngle = 0;
+        private float mAngle = 0.0f;
 
         [Tooltip("Speed of this projectile. ")]
         [SerializeField]
-        private float mG = 2;
+        private float mG = 2.0f;
 
         //----------------------
         // Protected Variables
@@ -51,6 +48,8 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+        public float Angle { get { return this.mAngle; } set { this.mAngle = value; } }
+        public float G { get { return this.mG; } set { this.mG = value; } }
 
         //========================================
         //      Unity's function

@@ -14,6 +14,8 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
+    /// Action that you will stop the components.
+    /// 
     /// Select the behaviour component and drag it into the list 
     /// so the pause manager will take care of the pause object. 
     /// If you are working on game that does not have pause, then 

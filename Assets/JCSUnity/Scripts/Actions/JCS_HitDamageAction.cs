@@ -42,7 +42,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_HitDamageAction) **")]
 
-        [Tooltip("When the action occurs play this sound.")]
+        [Tooltip("When the action occurs, play this sound.")]
         [SerializeField]
         private AudioClip mHitSound = null;
 

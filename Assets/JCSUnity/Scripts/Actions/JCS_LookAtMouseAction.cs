@@ -32,9 +32,9 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_LookAtMouseAction) **")]
 
-        [Tooltip("speed is the rate at which the object will rotate")]
+        [Tooltip("How fast to look at the mouse.")]
         [SerializeField]
-        private float mSpeed = 10;
+        private float mSpeed = 10.0f;
 
         /*******************************************/
         /*           Protected Variables           */

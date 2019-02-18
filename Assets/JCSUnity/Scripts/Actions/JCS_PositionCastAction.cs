@@ -64,7 +64,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_PositionCastAction) **")]
 
-        [Tooltip("")]
+        [Tooltip("Corresponding position offset.")]
         [SerializeField]
         private Vector3 mPositionOffset = Vector3.zero;
 
@@ -116,7 +116,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Make a canvas space object to a world space's position.
+        /// Make a canvas space object to a world space position.
         /// 
         /// NOTE(jenchieh): Make UI object (canvas space) on top of the 
         /// world space game object.
@@ -162,7 +162,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Make a 3D game object to canvas space's position.
+        /// Make a 3D game object to canvas space position.
         /// 
         /// NOTE(jenchieh): Make world space game object on top of 
         /// the UI object (canvas space).

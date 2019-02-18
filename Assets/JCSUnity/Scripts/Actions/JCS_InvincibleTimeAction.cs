@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// 無敵時間的counter. 
-    /// ex: Super Mario ate the star.
+    /// Make live object invincible for a certain time.
     /// </summary>
     [RequireComponent(typeof(JCS_LiveObject))]
     [RequireComponent(typeof(JCS_OrderLayerObject))]
@@ -31,17 +30,19 @@ namespace JCSUnity
         private JCS_LiveObject mLiveObject = null;
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
+
         [Header("** Runtime Variables (JCS_InvincibleTimeAction) **")]
 
-        [Tooltip("")]
+        [Tooltip("How long the invincible time are?")]
         [SerializeField]
         private float mInvicibleTime = 1.0f;
 
         // timer.
-        private float mInvicibleTimer = 0;
+        private float mInvicibleTimer = 0.0f;
 
         // trigger the invincible time action?
         private bool mTriggerAction = false;
+
 
         [Header("- Flash Effect (JCS_InvincibleTimeAction) ")]
 
@@ -52,7 +53,7 @@ namespace JCSUnity
         // record down the previoud color
         private Color mRecordColor = Color.white;
 
-        [Tooltip("How fast it flash back and forth?")]
+        [Tooltip("How fast it flashs back and forth.")]
         [SerializeField]
         [Range(0.01f, 3.0f)]
         private float mFlashTime = 0.1f;
@@ -64,7 +65,7 @@ namespace JCSUnity
         // current color is.
         private bool mFlashToggle = false;
 
-        [Tooltip("Play once while trigger")]
+        [Tooltip("Play once while triggered.")]
         [SerializeField]
         private AudioClip mTriggerSound = null;
 
@@ -138,8 +139,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Trigger invincible action to true, start 
-        /// the timer.
+        /// Trigger invincible action.
         /// </summary>
         public void TriggerAction()
         {
@@ -147,8 +147,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Trigger invincible action to true, start 
-        /// the timer.
+        /// Trigger invincible action.
         /// </summary>
         /// <param name="time"> time to be invincible </param>
         public void TriggerAction(float time)
