@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action that moves toward to a position.
+    /// The action that moves toward a position.
     /// </summary>
     public class JCS_SimpleTrackAction
         : JCS_UnityObject
