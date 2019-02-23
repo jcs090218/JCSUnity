@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Revolution rotation.
+    /// AAction to make the revolution to an object.
     /// </summary>
     public class JCS_RevolutioAction
         : MonoBehaviour
@@ -34,7 +34,7 @@ namespace JCSUnity
         [SerializeField]
         private int mDegree = 0;
 
-        [Tooltip("Radisu to revolution.")]
+        [Tooltip("Radius to revolution.")]
         [SerializeField] [Range(0.0f, 1000.0f)]
         private float mRadius = 10.0f;
 
@@ -84,7 +84,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Do the revolution action.
         /// </summary>
         private void DoRevolution()
         {

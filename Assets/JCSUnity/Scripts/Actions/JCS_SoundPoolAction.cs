@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// game object itself is the sound player
-    /// otherwise use sound pool
+    /// A pool of audio clips.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SoundPoolAction
@@ -33,11 +32,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_SoundPoolAction) **")]
 
-        [Tooltip("Pool of the audio clips")]
+        [Tooltip("Pool of audio clips.")]
         [SerializeField]
         private AudioClip[] mAudioClips = null;
 
-        [Tooltip("Sound Type u want to organize")]
+        [Tooltip("Sound type you want to organized.")]
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
@@ -47,6 +46,8 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public AudioClip[] AudioClips { get { return this.mAudioClips; } set { this.mAudioClips = value; } }
+        public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
 
         //========================================
         //      Unity's function
@@ -63,8 +64,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Randomly play one shot of sound 
-        /// from the audio clip pool!
+        /// Randomly play a sound from the pool.
         /// </summary>
         public void PlayRandomSound()
         {
@@ -82,7 +82,6 @@ namespace JCSUnity
             float soundVolume = JCS_SoundSettings.instance.GetSoundBaseOnType(mSoundSettingType);
             mSoundPlayer.PlayOneShot(mAudioClips[randIndex], soundVolume);
         }
-        
 
         //----------------------
         // Protected Functions

@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Random the tweener in a certain time.
+    /// Randomize the tweener in a certain time.
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
@@ -50,7 +50,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mMaxVectorRange = new Vector3(360, 360, 360);
 
-        [Tooltip("Freeze in certain vector? (x, y, z)")]
+        [Tooltip("Freeze in a certain vector? (x, y, z)")]
         [SerializeField]
         private JCS_Bool3 mFreeze = JCS_Bool3.allFalse;
 
