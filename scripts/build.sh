@@ -6,8 +6,8 @@ LOG_FILE=$UNITY_BUILD_DIR/unity-win.log
 
 
 ERROR_CODE=0
-echo "Items in project path ($project_path):"
-ls "$project_path"
+echo "Items in project path ($PROJECT_PATH):"
+ls "$PROJECT_PATH"
 
 
 echo "Building project for Windows..."
