@@ -27,67 +27,89 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Attack Range (JCS_SwingAttackAction) **")]
+        private JCS_SoundPlayer mSoundPlayer = null;
+
+
+        [Header("** Runtime Variables (JCS_SwingAttackAction) **")]
 
         [Tooltip("Collider to detect weather the enemy get hit or not.")]
-        [SerializeField] private Collider mAttackRange = null;
+        [SerializeField]
+        private Collider mAttackRange = null;
 
         // if this is true, meaning there are other action going on.
         private bool mOverrideAction = false;
 
-        [Header("** Ability Format (JCS_SwingAttackAction) **")]
-
-        [Tooltip("Ability format in order to apply damage")]
-        [SerializeField] private JCS_AbilityFormat mAbilityFormat = null;
-
-
-        [Header("** Damage Text (JCS_SwingAttackAction) **")]
-
-        [Tooltip("If u want the action apply damage text add apply this")]
+        [Tooltip("Ability format in order to apply damage.")]
         [SerializeField]
-        private JCS_ApplyDamageTextToLiveObjectAction mApplyDamageTextAction = null;
+        private JCS_AbilityFormat mAbilityFormat = null;
 
+        [Tooltip("Animation while this action is active.")]
+        [SerializeField]
+        private RuntimeAnimatorController mAtkAnim = null;
 
-        [Header("** Swing Animation (JCS_SwingAttackAction) **")]
+        [Tooltip("Transform attack animation will spawn, default will be the collider attah above.")]
+        [SerializeField]
+        private Transform mAtkAnimSpawnTrans = null;
 
-        [Tooltip("Animation while this action active.")]
-        [SerializeField] private RuntimeAnimatorController mAtkAnim = null;
+        [Tooltip("What sorting layer you want the skill to be render?")]
+        [SerializeField]
+        private int mOrderLayer = 15;
 
-        [Tooltip("Transform attack animate will spawn, default will be the collider attah above.")]
-        [SerializeField] private Transform mAtkAnimSpawnTrans = null;
-
-        [Tooltip("What sorting layer u want the skill to be render?")]
-        [SerializeField] private int mOrderLayer = 15;
-
-        [Tooltip("How many time u want the animation to loops?")]
-        [SerializeField] [Range(1, 15)]
+        [Tooltip("How many time you want the animation to loops?")]
+        [SerializeField]
+        [Range(1, 15)]
         private int mLoopTimes = 1;
 
-        [Tooltip("the same position as the spawn transform's position")]
-        [SerializeField] private bool mAsSamePosition = true;
-        [Tooltip("the same rotation as the spawn transform's rotation")]
-        [SerializeField] private bool mAsSameRotation = false;
-        [Tooltip("the same scale as the spawn transform's scale")]
-        [SerializeField] private bool mAsSameScale = false;
+        [Tooltip("The same position as the spawn transform's position.")]
+        [SerializeField]
+        private bool mAsSamePosition = true;
 
-        [SerializeField] private Vector3 mAnimOffsetPosition = Vector3.zero;
-        [SerializeField] private Vector3 mAnimOffsetScale = Vector3.zero;
+        [Tooltip("The same rotation as the spawn transform's rotation.")]
+        [SerializeField]
+        private bool mAsSameRotation = false;
 
+        [Tooltip("The same scale as the spawn transform's scale.")]
+        [SerializeField]
+        private bool mAsSameScale = false;
 
-        [Header("** Swing Sound (JCS_SwingAttackAction) **")]
-        [SerializeField] private AudioClip mAudioClip = null;
-        [SerializeField] private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
-        private JCS_SoundPlayer mSoundPlayer = null;
+        [Tooltip("Animation offset position value.")]
+        [SerializeField]
+        private Vector3 mAnimOffsetPosition = Vector3.zero;
+
+        [Tooltip("Animation offset scale value.")]
+        [SerializeField]
+        private Vector3 mAnimOffsetScale = Vector3.zero;
+
+        [Tooltip("Sound to play for this action.")]
+        [SerializeField]
+        private AudioClip mAudioClip = null;
+
+        [Tooltip("Sound settings type.")]
+        [SerializeField]
+        private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
+
+        
+        [Header("** Damage Text (JCS_SwingAttackAction) **")]
+
+        [Tooltip("If you want the action apply damage text add apply this.")]
+        [SerializeField]
+        private JCS_ApplyDamageTextToLiveObjectAction mApplyDamageTextAction = null;
 
 
         [Header("** Other Settings (JCS_SwingAttackAction) **")]
 
         [Tooltip("Key to active attack.")]
-        [SerializeField] private KeyCode mKeyCode = KeyCode.None;
+        [SerializeField]
+        private KeyCode mKeyCode = KeyCode.None;
 
-        [SerializeField] private JCS_SpeedLayer mSpeedLayer = JCS_SpeedLayer.NORMAL;
-        private float mAnimSpeed = 1;
-        [SerializeField] private float mLayerLevel = 1;
+        [Tooltip("Speed layer.")]
+        [SerializeField]
+        private JCS_SpeedLayer mSpeedLayer = JCS_SpeedLayer.NORMAL;
+
+        private float mAnimSpeed = 1.0f;
+
+        [SerializeField]
+        private float mLayerLevel = 1.0f;
 
         private bool mAction = false;
         private float mActionTimer = 0;
@@ -121,6 +143,9 @@ namespace JCSUnity
             // update speed of this action.
             ProcessSpeedLayer();
         }
+        public bool AsSamePosition { get { return this.mAsSamePosition; } set { this.mAsSamePosition = value; } }
+        public bool AsSameRotation { get { return this.mAsSameRotation; } set { this.mAsSameRotation = value; } }
+        public bool AsSameScale { get { return this.mAsSameScale; } set { this.mAsSameScale = value; } }
 
         //========================================
         //      Unity's function
@@ -195,7 +220,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Start the action.
         /// </summary>
         public void Attack()
         {
@@ -204,7 +229,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// End the action.
         /// </summary>
         public void EndAttack()
         {
@@ -219,7 +244,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Receive input.
         /// </summary>
         private void ProcessInput()
         {
@@ -233,7 +258,7 @@ namespace JCSUnity
                     SpawnAttackAnimation();
 
                     // display sound
-                    SpawnSwignSound();
+                    SpawnSwingSound();
 
                     mAction = true;
                 }
@@ -285,9 +310,7 @@ namespace JCSUnity
             if (mAtkAnim == null)
             {
                 JCS_Debug.LogReminders(
-                    "JCS_SwingAttackAction", 
-                    @"No animation assign but u 
-                    still want to spawn a animation...");
+                    "No animation assign but you still want to spawn a animation...");
 
                 return;
             }
@@ -327,9 +350,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Play the swing sound.
         /// </summary>
-        private void SpawnSwignSound()
+        private void SpawnSwingSound()
         {
             if (mAudioClip == null)
                 return;

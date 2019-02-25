@@ -78,7 +78,7 @@ namespace JCSUnity
         // Protected Functions
 
         /// <summary>
-        /// 
+        /// Active the skill.
         /// </summary>
         public override void ActiveSkill()
         {
@@ -94,7 +94,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Spawn a support animation.
         /// </summary>
         private void SpawnSupAnim()
         {
@@ -124,7 +124,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Set the gameobject to the random position.
         /// </summary>
         /// <param name="obj"></param>
         private void SetToRandomPos(ref GameObject obj)
@@ -139,7 +139,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Add the hit sound.
         /// </summary>
         /// <param name="obj"></param>
         private void AddHitSound(ref GameObject obj)
@@ -148,8 +148,8 @@ namespace JCSUnity
                 return;
 
             JCS_SoundProxyAction spa = obj.AddComponent<JCS_SoundProxyAction>();
-            spa.SetAudioClip(mHitSound);
-            spa.SetSoundSettingType(mSoundPlayer.GetSoundSettingType());
+            spa.audioClip = mHitSound;
+            spa.SoundSettingType = mSoundPlayer.GetSoundSettingType();
         }
 
     }

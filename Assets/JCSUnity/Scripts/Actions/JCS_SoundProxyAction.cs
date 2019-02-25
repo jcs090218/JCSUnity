@@ -13,8 +13,8 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// This will help to spawn a sound and play it. 
-    /// In one object layer.
+    /// Action spawns a new gameobject and play the sound, after the 
+    /// sound is played the gameobject will be destroyed.
     /// </summary>
     [RequireComponent(typeof(JCS_DestroyReminder))]
     public class JCS_SoundProxyAction
@@ -26,8 +26,15 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
+        [Header("** Runtime Variables (JCS_SoundProxyAction) **")]
+
+        [Tooltip("Sound to plays.")]
         [SerializeField]
         private AudioClip mAudioClip = null;
+
+        [Tooltip("Sound settings type.")]
+        [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
         //----------------------
@@ -36,8 +43,8 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public void SetSoundSettingType(JCS_SoundSettingType type) { mSoundSettingType = type; }
-        public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
+        public AudioClip audioClip { get { return this.mAudioClip; } set { this.mAudioClip = value; } }
+        public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
 
         //========================================
         //      Unity's function
@@ -54,9 +61,7 @@ namespace JCSUnity
             if (mAudioClip == null)
             {
                 JCS_Debug.LogError(
-                    "JCS_SoundProxyAction", 
-                      
-                    "U called a proxy action but with no data in it...");
+                    "You called a proxy action but without data in it...");
                 return;
             }
 

@@ -13,9 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// This will auto find the facing with correct direction.
-    /// 
-    /// In addition, u can use it inversely!
+    /// Action scale the sprite's gameobject to the vector direction.
     /// </summary>
     public class JCS_SpriteScaleAction
         : MonoBehaviour
@@ -28,18 +26,23 @@ namespace JCSUnity
         // Private Variables
 
         [Header("-- X Facing --")]
-        [Tooltip("Enable/Disabel the effect in X axis")]
+
+        [Tooltip("Enable/Disabel the effect on X axis.")]
         [SerializeField]
         private bool mFreezeX = false;
-        [Tooltip("Effect Only when Direction is Horizontal")]
+
+        [Tooltip("Effect only when direction is horizontal.")]
         [SerializeField]
         private bool mIsFacingRight = true;
 
+
         [Header("-- Y Facing --")]
-        [Tooltip("Enable/Disabel the effect in Y axis")]
+
+        [Tooltip("Enable/Disabel the effect on Y axis.")]
         [SerializeField]
         private bool mFreezeY = false;
-        [Tooltip("Effect Only when Direction is Vertical")]
+
+        [Tooltip("Effect only when direction is vertical.")]
         [SerializeField]
         private bool mIsFacingUp = true;
 
@@ -53,6 +56,8 @@ namespace JCSUnity
         //------------------------------
         public bool IsFacingUp { get { return this.mIsFacingUp; } }
         public bool IsFacingRight { get { return this.mIsFacingRight; } }
+        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
+        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
 
         //========================================
         //      Unity's function
