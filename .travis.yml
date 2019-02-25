@@ -13,7 +13,6 @@ cache:
 
     
 before_install:
-  - rvm get stable
   - chmod a+x ./scripts/*.sh
 
 install:
