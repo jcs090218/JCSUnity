@@ -23,14 +23,16 @@ namespace JCSUnity
         //----------------------
         // Public Variables
 
+        public ToggleFunc acitveFunc = null;
+        public ToggleFunc deactiveFunc = null;
+
         //----------------------
         // Private Variables
 
-        private ToggleFunc mAcitveFunc = null;
-        private ToggleFunc mDeactiveFunc = null;
 
-        [Header("** Check Variables (JCS_ToggleButton) **")]
+        [Header("** Runtime Variables (JCS_ToggleButton) **")]
 
+        [Tooltip("Is the toggle button currently active?")]
         [SerializeField]
         private bool mActive = false;
 
@@ -40,13 +42,20 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public void SetActiveFunc(ToggleFunc func) { this.mAcitveFunc = func; }
-        public void SetDeactiveFunc(ToggleFunc func) { this.mDeactiveFunc = func; }
+        public bool Active {
+            get { return this.mActive; }
+            set {
+                if (this.mActive != value)
+                {
+                    Toggle();
+                    this.mActive = value;
+                }
+            }
+        }
 
         //========================================
         //      Unity's function
         //------------------------------
-
 
         //========================================
         //      Self-Define
@@ -54,7 +63,18 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
+        /// <summary>
+        /// On click event.
+        /// </summary>
         public override void JCS_OnClickCallback()
+        {
+            Toggle();
+        }
+
+        /// <summary>
+        /// Toggle the button.
+        /// </summary>
+        public void Toggle()
         {
             // do the toggle function.
             if (mActive)
@@ -68,30 +88,36 @@ namespace JCSUnity
             mActive = !mActive;
         }
 
+        /// <summary>
+        /// Invoke active callback.
+        /// </summary>
         public void DoActiveFunc()
         {
-            if (mAcitveFunc == null)
+            if (acitveFunc == null)
             {
                 JCS_Debug.LogError(
-                    "U have not set the ACTIVE function ptr...");
+                    "You have not set the ACTIVE function ptr...");
                 return;
             }
 
             // do the action.
-            mAcitveFunc.Invoke();
+            acitveFunc.Invoke();
         }
 
+        /// <summary>
+        /// Invoke deactive callback.
+        /// </summary>
         public void DoDeactiveFunc()
         {
-            if (mDeactiveFunc == null)
+            if (deactiveFunc == null)
             {
                 JCS_Debug.LogError(
-                    "U have not set the DEACTIVE function ptr...");
+                    "You have not set the DEACTIVE function ptr...");
                 return;
             }
 
             // do the action.
-            mDeactiveFunc.Invoke();
+            deactiveFunc.Invoke();
         }
 
         //----------------------

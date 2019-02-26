@@ -115,8 +115,8 @@ namespace JCSUnity
                 JCS_ToggleButton tb = mToggleOrExitButton.GetComponent<JCS_ToggleButton>();
                 if (tb != null)
                 {
-                    tb.SetActiveFunc(mSlideEffect.Active);
-                    tb.SetDeactiveFunc(ClosePanel);
+                    tb.acitveFunc = mSlideEffect.Active;
+                    tb.deactiveFunc = ClosePanel;
                 }
                 else
                     mToggleOrExitButton.SetSystemCallback(ClosePanel);
