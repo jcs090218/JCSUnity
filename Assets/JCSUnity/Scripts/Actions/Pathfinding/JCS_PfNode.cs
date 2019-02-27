@@ -30,7 +30,12 @@ namespace JCSUnity
         public JCS_PfNode Parent;
 
         private int mHeapIndex;
-        
+
+
+        public int fCost { get { return gCost + hCost; } }
+        public int HeapIndex { get { return this.mHeapIndex; } set { this.mHeapIndex = value; } }
+
+
         public JCS_PfNode(bool walkable, Vector3 worldPos, int gridX, int gridY)
         {
             this.Walkable = walkable;
@@ -39,19 +44,8 @@ namespace JCSUnity
             this.GridY = gridY;
         }
 
-        public int fCost
-        {
-            get
-            {
-                return gCost + hCost;
-            }
-        }
-
-
-        public int HeapIndex { get { return this.mHeapIndex; } set { this.mHeapIndex = value; } }
-
         /// <summary>
-        /// 
+        /// Compre the two nodes.
         /// </summary>
         /// <param name="nodeToCompare"></param>
         /// <returns></returns>

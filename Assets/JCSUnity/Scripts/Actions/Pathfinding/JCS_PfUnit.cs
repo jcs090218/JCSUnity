@@ -69,8 +69,9 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_PfUnit) **")]
 
+        [Tooltip("Move speed.")]
         [SerializeField]
-        private float mSpeed = 20;
+        private float mSpeed = 20.0f;
 
         
 
@@ -81,6 +82,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public Transform Target { get { return this.mTarget; } set { this.mTarget = value; } }
+        public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
 
         //========================================
         //      Unity's function
@@ -100,6 +102,30 @@ namespace JCSUnity
                 ActivePathfinding(mParamTargetTransform);
         }
 #endif
+
+        /// <summary>
+        /// Draw out the path.
+        /// </summary>
+        public void OnDrawGizmos()
+        {
+            if (mPath != null)
+            {
+                for (int i = mTargetIndex; i < mPath.Length; i++)
+                {
+                    Gizmos.color = Color.black;
+                    Gizmos.DrawCube(mPath[i], Vector3.one);
+
+                    if (i == mTargetIndex)
+                    {
+                        Gizmos.DrawLine(transform.position, mPath[i]);
+                    }
+                    else
+                    {
+                        Gizmos.DrawLine(mPath[i - 1], mPath[i]);
+                    }
+                }
+            }
+        }
 
         //========================================
         //      Self-Define
@@ -160,29 +186,6 @@ namespace JCSUnity
             }
         }
         
-        /// <summary>
-        /// Draw out the path.
-        /// </summary>
-        public void OnDrawGizmos()
-        {
-            if (mPath != null)
-            {
-                for (int i = mTargetIndex; i < mPath.Length; i++)
-                {
-                    Gizmos.color = Color.black;
-                    Gizmos.DrawCube(mPath[i], Vector3.one);
-
-                    if (i == mTargetIndex)
-                    {
-                        Gizmos.DrawLine(transform.position, mPath[i]);
-                    }
-                    else {
-                        Gizmos.DrawLine(mPath[i - 1], mPath[i]);
-                    }
-                }
-            }
-        }
-
         //----------------------
         // Protected Functions
 
@@ -190,7 +193,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Do follow the path.
         /// </summary>
         /// <returns></returns>
         private IEnumerator FollowPath()

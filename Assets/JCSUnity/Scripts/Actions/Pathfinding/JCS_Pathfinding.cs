@@ -16,7 +16,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Path finding core algorithm.
+    /// Path finding core behaviour.
     /// </summary>
     [RequireComponent(typeof(JCS_PfGrid))]
     public class JCS_Pathfinding
@@ -30,6 +30,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         private JCS_PfGrid mPfGrid = null;
 
         //----------------------
@@ -54,7 +55,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Start finding the path.
         /// </summary>
         /// <param name="startPos"></param>
         /// <param name="targetPos"></param>
@@ -70,7 +71,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Find path algorithm.
         /// </summary>
         /// <param name="startPos"></param>
         /// <param name="targetPos"></param>
@@ -131,7 +132,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Retrace the path.
         /// </summary>
         /// <param name="startNode"></param>
         /// <param name="endNode"></param>
@@ -152,7 +153,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Simplify the path.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -178,7 +179,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Get the distance between the two nodes.
         /// </summary>
         /// <param name="nodeA"></param>
         /// <param name="nodeB"></param>

@@ -15,8 +15,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Path finding request manager. Manage all the path 
-    /// finding requests.
+    /// Manage all the path finding requests.
     /// </summary>
     [RequireComponent(typeof(JCS_Pathfinding))]
     public class JCS_PathRequestManager
@@ -25,12 +24,14 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
+
         public static JCS_PathRequestManager instance = null;
 
         //----------------------
         // Private Variables
 
         private Queue<PathRequest> mPathRequestQueue = new Queue<PathRequest>();
+
         private PathRequest mCurrentPathRequest;
 
         private JCS_Pathfinding mPathfinding = null;
@@ -38,7 +39,7 @@ namespace JCSUnity
         private bool mIsProcessingPath = false;
 
         /// <summary>
-        /// 
+        /// Path request struct.
         /// </summary>
         private struct PathRequest
         {
@@ -78,7 +79,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        /// Make a finding path request.
         /// </summary>
         /// <param name="pathStart"></param>
         /// <param name="pathEnd"></param>
@@ -91,7 +92,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Finished processing path.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="success"></param>
@@ -109,7 +110,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        /// Try next process.
         /// </summary>
         private void TryProcessNext()
         {

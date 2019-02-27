@@ -14,7 +14,7 @@ using System.Collections.Generic;
 namespace JCSUnity
 {
     /// <summary>
-    /// Path finding grid.
+    /// Path finding grid gameobject.
     /// </summary>
     public class JCS_PfGrid
         : MonoBehaviour
@@ -27,19 +27,24 @@ namespace JCSUnity
         // Private Variables
 
 #if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_PfGrid) **")]
+
         [SerializeField]
         private bool mDisplayPathGizmos = false;
 #endif
+
+
+        [Header("** Runtime Variables (JCS_PfGrid) **")]
 
         [Tooltip("Mask to detect the unwalkable object.")]
         [SerializeField]
         private LayerMask mUnwalkableMask;
 
-        [Tooltip("size of the whole grid map.")]
+        [Tooltip("Size of the whole grid map.")]
         [SerializeField]
         private Vector2 mGridiWorldSize = new Vector2(30, 30);
 
-        [Tooltip("size of each grid.")]
+        [Tooltip("Size of each grid.")]
         [SerializeField] [Range(0.1f, 5.0f)]
         private float mNodeRadius = 0.5f;
 
@@ -59,6 +64,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public int MaxSize { get { return (mGridSizeX * mGridSizeY); } }
 
         //========================================
         //      Unity's function
@@ -70,96 +76,6 @@ namespace JCSUnity
             mGridSizeX = Mathf.RoundToInt(mGridiWorldSize.x / mNodeDiameter);
             mGridSizeY = Mathf.RoundToInt(mGridiWorldSize.y / mNodeDiameter);
             CreateGrid();
-        }
-
-        public int MaxSize { get { return (mGridSizeX * mGridSizeY); } }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void CreateGrid()
-        {
-            mGrid = new JCS_PfNode[mGridSizeX, mGridSizeY];
-
-            Vector3 worldBottomLeft = 
-                transform.position - 
-                Vector3.right * 
-                mGridiWorldSize.x / 2 - 
-                JCS_Utility.VectorDirection(mDirection) * 
-                mGridiWorldSize.y / 2;
-
-            for (int x = 0;
-                x < mGridSizeX;
-                ++x)
-            {
-                for (int y = 0;
-                y < mGridSizeY;
-                ++y)
-                {
-                    Vector3 worldPoint = 
-                        worldBottomLeft + 
-                        Vector3.right * 
-                        (x * mNodeDiameter + mNodeRadius) +
-                        JCS_Utility.VectorDirection(mDirection) * 
-                        (y * mNodeDiameter + mNodeRadius);
-
-                    bool walkable = !(Physics.CheckSphere(worldPoint, mNodeRadius, mUnwalkableMask));
-                    mGrid[x, y] = new JCS_PfNode(walkable, worldPoint, x, y);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Get the node around.
-        /// </summary>
-        /// <param name="node"> node to use to find neighbours node. </param>
-        /// <returns> list of node found are neighbours node. </returns>
-        public List<JCS_PfNode> GetNeighbours(JCS_PfNode node)
-        {
-            List<JCS_PfNode> neighbours = new List<JCS_PfNode>();
-
-            for (int x = -1; 
-                x <= 1; 
-                ++x)
-            {
-                for (int y = -1; 
-                    y <= 1;
-                    ++y)
-                {
-                    if (x == 0 && y == 0)
-                        continue;
-
-                    int checkX = node.GridX + x;
-                    int checkY = node.GridY + y;
-
-                    if (checkX >= 0 && checkX < mGridSizeX && checkY >= 0 && checkY < mGridSizeY)
-                    {
-                        neighbours.Add(mGrid[checkX, checkY]);
-                    }
-                }
-            }
-
-            return neighbours;
-        }
-
-        /// <summary>
-        /// Find the node base on world position
-        /// </summary>
-        /// <param name="worldPosition"> world position to use. </param>
-        /// <returns> node found in the grid array base on the world position. </returns>
-        public JCS_PfNode NodeFromWorldPoint(Vector3 worldPosition)
-        {
-            float percentX = (worldPosition.x + mGridiWorldSize.x / 2) / mGridiWorldSize.x;
-            float percentY = (worldPosition.z + mGridiWorldSize.y / 2) / mGridiWorldSize.y;
-
-            // prevent out of grid map.
-            percentX = Mathf.Clamp01(percentX);
-            percentY = Mathf.Clamp01(percentY);
-
-            int x = Mathf.RoundToInt((mGridSizeX - 1) * percentX);
-            int y = Mathf.RoundToInt((mGridSizeY - 1) * percentY);
-
-            return mGrid[x, y];
         }
 
 #if (UNITY_EDITOR)
@@ -213,11 +129,99 @@ namespace JCSUnity
         //----------------------
         // Public Functions
 
+        /// <summary>
+        /// Get the nodes around.
+        /// </summary>
+        /// <param name="node"> node to use to find neighbours node. </param>
+        /// <returns> list of node found are neighbours node. </returns>
+        public List<JCS_PfNode> GetNeighbours(JCS_PfNode node)
+        {
+            List<JCS_PfNode> neighbours = new List<JCS_PfNode>();
+
+            for (int x = -1;
+                x <= 1;
+                ++x)
+            {
+                for (int y = -1;
+                    y <= 1;
+                    ++y)
+                {
+                    if (x == 0 && y == 0)
+                        continue;
+
+                    int checkX = node.GridX + x;
+                    int checkY = node.GridY + y;
+
+                    if (checkX >= 0 && checkX < mGridSizeX && checkY >= 0 && checkY < mGridSizeY)
+                    {
+                        neighbours.Add(mGrid[checkX, checkY]);
+                    }
+                }
+            }
+
+            return neighbours;
+        }
+
+        /// <summary>
+        /// Find the node base on world position.
+        /// </summary>
+        /// <param name="worldPosition"> world position to use. </param>
+        /// <returns> node found in the grid array base on the world position. </returns>
+        public JCS_PfNode NodeFromWorldPoint(Vector3 worldPosition)
+        {
+            float percentX = (worldPosition.x + mGridiWorldSize.x / 2) / mGridiWorldSize.x;
+            float percentY = (worldPosition.z + mGridiWorldSize.y / 2) / mGridiWorldSize.y;
+
+            // prevent out of grid map.
+            percentX = Mathf.Clamp01(percentX);
+            percentY = Mathf.Clamp01(percentY);
+
+            int x = Mathf.RoundToInt((mGridSizeX - 1) * percentX);
+            int y = Mathf.RoundToInt((mGridSizeY - 1) * percentY);
+
+            return mGrid[x, y];
+        }
+
         //----------------------
         // Protected Functions
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Create the grid.
+        /// </summary>
+        private void CreateGrid()
+        {
+            mGrid = new JCS_PfNode[mGridSizeX, mGridSizeY];
+
+            Vector3 worldBottomLeft =
+                transform.position -
+                Vector3.right *
+                mGridiWorldSize.x / 2 -
+                JCS_Utility.VectorDirection(mDirection) *
+                mGridiWorldSize.y / 2;
+
+            for (int x = 0;
+                x < mGridSizeX;
+                ++x)
+            {
+                for (int y = 0;
+                y < mGridSizeY;
+                ++y)
+                {
+                    Vector3 worldPoint =
+                        worldBottomLeft +
+                        Vector3.right *
+                        (x * mNodeDiameter + mNodeRadius) +
+                        JCS_Utility.VectorDirection(mDirection) *
+                        (y * mNodeDiameter + mNodeRadius);
+
+                    bool walkable = !(Physics.CheckSphere(worldPoint, mNodeRadius, mUnwalkableMask));
+                    mGrid[x, y] = new JCS_PfNode(walkable, worldPoint, x, y);
+                }
+            }
+        }
 
     }
 }

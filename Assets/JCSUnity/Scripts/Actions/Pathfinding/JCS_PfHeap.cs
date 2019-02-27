@@ -22,11 +22,19 @@ namespace JCSUnity
         private T[] mItems;
         private int mCurrentItemCount;
 
+
+        public int Count { get { return mCurrentItemCount; } }
+
+
         public JCS_PfHeap(int maxHeapSize)
         {
             mItems = new T[maxHeapSize];
         }
 
+        /// <summary>
+        /// Add a new item to the heap.
+        /// </summary>
+        /// <param name="item"></param>
         public void Add(T item)
         {
             item.HeapIndex = mCurrentItemCount;
@@ -35,6 +43,10 @@ namespace JCSUnity
             ++mCurrentItemCount;
         }
 
+        /// <summary>
+        /// Remove the first item from the heap.
+        /// </summary>
+        /// <returns></returns>
         public T RemoveFirst()
         {
             T firstItem = mItems[0];
@@ -46,18 +58,29 @@ namespace JCSUnity
             return firstItem;
         }
 
+        /// <summary>
+        /// Update the item by another item.
+        /// </summary>
+        /// <param name="item"></param>
         public void UpdateItem(T item)
         {
             SortUp(item);
         }
 
-        public int Count { get { return mCurrentItemCount; } }
-
+        /// <summary>
+        /// Check contains the item.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Contains(T item)
         {
             return Equals(mItems[item.HeapIndex], item);
         }
 
+        /// <summary>
+        /// Sort down the item in the heap.
+        /// </summary>
+        /// <param name="item"></param>
         private void SortDown(T item)
         {
             while (true)
@@ -94,6 +117,10 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Sort up the item in the heap.
+        /// </summary>
+        /// <param name="item"></param>
         private void SortUp(T item)
         {
             int parentIndex = (item.HeapIndex - 1) / 2;
@@ -114,6 +141,11 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Swap the two items.
+        /// </summary>
+        /// <param name="itemA"></param>
+        /// <param name="itemB"></param>
         private void Swap(T itemA, T itemB)
         {
             mItems[itemA.HeapIndex] = itemB;
@@ -126,6 +158,10 @@ namespace JCSUnity
 
     }
 
+    /// <summary>
+    /// Heap interface.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IHeapItem<T> : IComparable<T>
     {
         int HeapIndex
