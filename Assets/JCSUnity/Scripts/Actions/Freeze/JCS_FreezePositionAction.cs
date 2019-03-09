@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Do freezing for position from transform.
+    /// Action freeze the gameobject's position.
     /// </summary>
     public class JCS_FreezePositionAction
         : JCS_UnityObject
@@ -27,24 +27,21 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Check Variables (JCS_FreezePositionAction) **")]
-
-        [Tooltip("Position where we freeze at.")]
-        [SerializeField]
-        private Vector3 mPositionToFreeze = Vector3.zero;
-
-
         [Header("** Runtime Variables (JCS_FreezePositionAction) **")]
 
         [Tooltip("Is this action active?")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Is this action active?")]
+        [Tooltip("Position where this gameobject freeze at.")]
+        [SerializeField]
+        private Vector3 mPositionToFreeze = Vector3.zero;
+
+        [Tooltip("Freeze in the local space.")]
         [SerializeField]
         private bool mIsLocalPosition = true;
 
-        [Tooltip("Freeze the position?")]
+        [Tooltip("Freeze the position in each axis.")]
         [SerializeField]
         private JCS_Bool3 mFreezePosition = JCS_Bool3.allFalse;
 
@@ -56,6 +53,7 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public Vector3 PositionToFreeze { get { return this.mPositionToFreeze; } set { this.mPositionToFreeze = value; } }
         public bool IsLocalPosition
         {
             get { return this.mIsLocalPosition; }
@@ -71,7 +69,6 @@ namespace JCSUnity
             }
         }
         public JCS_Bool3 FreezePosition { get { return this.mFreezePosition; } set { this.mFreezePosition = value; } }
-        public Vector3 PositionToFreeze { get { return this.mPositionToFreeze; } set { this.mPositionToFreeze = value; } }
 
         /*******************************************/
         /*            Unity's function             */

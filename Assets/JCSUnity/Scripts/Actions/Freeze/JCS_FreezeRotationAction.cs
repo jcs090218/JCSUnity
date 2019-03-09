@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Do freezing for rotation from transform.
+    /// Action that freeze the gameobject rotation.
     /// </summary>
     public class JCS_FreezeRotationAction
         : JCS_UnityObject
@@ -28,24 +28,21 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Check Variables (JCS_FreezeTransformAction) **")]
-
-        [Tooltip("Rotation where we freeze at.")]
-        [SerializeField]
-        private Vector3 mRotationToFreeze = Vector3.zero;
-
-
         [Header("** Runtime Variables (JCS_FreezeTransformAction) **")]
 
         [Tooltip("Is this action active?")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Is this action active?")]
+        [Tooltip("Rotation where gameobject freeze at.")]
+        [SerializeField]
+        private Vector3 mRotationToFreeze = Vector3.zero;
+
+        [Tooltip("Freeze in the local space.")]
         [SerializeField]
         private bool mIsLocalRotation = true;
 
-        [Tooltip("Freeze the rotation?")]
+        [Tooltip("Freeze the rotation in each axis.")]
         [SerializeField]
         private JCS_Bool3 mFreezeRotation = JCS_Bool3.allFalse;
 
@@ -56,6 +53,8 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public Vector3 RotationToFreeze { get { return this.mRotationToFreeze; } set { this.mRotationToFreeze = value; } }
         public bool IsLocalRotation
         {
             get { return this.mIsLocalRotation; }
@@ -70,6 +69,7 @@ namespace JCSUnity
                     this.mRotationToFreeze = this.EulerAngles;
             }
         }
+        public JCS_Bool3 FreezeRotation { get { return this.mFreezeRotation; } set { this.mFreezeRotation = value; } }
 
         /*******************************************/
         /*            Unity's function             */
@@ -93,9 +93,8 @@ namespace JCSUnity
         //----------------------
         // Private Functions
 
-
         /// <summary>
-        /// Freeze position.
+        /// Freeze rotation.
         /// </summary>
         private void DoFreezeRotation()
         {

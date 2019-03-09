@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Do freezing for scale from transform.
+    /// Action that freeze the gameobject scale.
     /// </summary>
     public class JCS_FreezeScaleAction
         : JCS_UnityObject
@@ -28,22 +28,20 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Check Variables (JCS_FreezeScaleAction) **")]
-
-        [Tooltip("Scale where we freeze at.")]
-        [SerializeField]
-        private Vector3 mScaleToFreeze = Vector3.zero;
-
-
         [Header("** Runtime Variables (JCS_FreezeScaleAction) **")]
 
         [Tooltip("Is this action active?")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Freeze the scale?")]
+        [Tooltip("Scale where this gameobject freeze at.")]
+        [SerializeField]
+        private Vector3 mScaleToFreeze = Vector3.zero;
+
+        [Tooltip("Freeze the scale in each axis.")]
         [SerializeField]
         private JCS_Bool3 mFreezeScale = JCS_Bool3.allFalse;
+
         /*******************************************/
         /*           Protected Variables           */
         /*******************************************/
@@ -85,7 +83,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// Freeze position.
+        /// Freeze scale vector.
         /// </summary>
         private void DoFreezeScale()
         {

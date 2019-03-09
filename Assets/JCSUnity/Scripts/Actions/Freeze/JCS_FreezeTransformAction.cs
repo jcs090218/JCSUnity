@@ -27,44 +27,41 @@ namespace JCSUnity
         /*           Private Variables             */
         /*******************************************/
 
-        [Header("** Check Variables (JCS_FreezeTransformAction) **")]
-
-        [Tooltip("Position where we freeze at.")]
-        [SerializeField]
-        private Vector3 mPositionToFreeze = Vector3.zero;
-
-        [Tooltip("Rotation where we freeze at.")]
-        [SerializeField]
-        private Vector3 mRotationToFreeze = Vector3.zero;
-
-        [Tooltip("Scale where we freeze at.")]
-        [SerializeField]
-        private Vector3 mScaleToFreeze = Vector3.zero;
-
-
         [Header("** Runtime Variables (JCS_FreezeTransformAction) **")]
 
         [Tooltip("Is this action active?")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Is this action active?")]
+        [Tooltip("Position where this gameobject freeze at.")]
+        [SerializeField]
+        private Vector3 mPositionToFreeze = Vector3.zero;
+
+        [Tooltip("Rotation where this gameobject freeze at.")]
+        [SerializeField]
+        private Vector3 mRotationToFreeze = Vector3.zero;
+
+        [Tooltip("Scale where this gameobject freeze at.")]
+        [SerializeField]
+        private Vector3 mScaleToFreeze = Vector3.zero;
+
+        [Tooltip("Freeze in the local space.")]
         [SerializeField]
         private bool mIsLocalPosition = true;
 
-        [Tooltip("Is this action active?")]
+        [Tooltip("Freeze in the local space.")]
         [SerializeField]
         private bool mIsLocalRotation = true;
 
-        [Tooltip("Freeze the position?")]
+        [Tooltip("Freeze the position in each axis.")]
         [SerializeField]
         private JCS_Bool3 mFreezePosition = JCS_Bool3.allFalse;
 
-        [Tooltip("Freeze the rotation?")]
+        [Tooltip("Freeze the rotation in each axis.")]
         [SerializeField]
         private JCS_Bool3 mFreezeRotation = JCS_Bool3.allFalse;
 
-        [Tooltip("Freeze the scale?")]
+        [Tooltip("Freeze the scale in each axis.")]
         [SerializeField]
         private JCS_Bool3 mFreezeScale = JCS_Bool3.allFalse;
 
@@ -76,12 +73,12 @@ namespace JCSUnity
         /*             setter / getter             */
         /*******************************************/
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
-        public JCS_Bool3 FreezePosition { get { return this.mFreezePosition; } set { this.mFreezePosition = value; } }
-        public JCS_Bool3 FreezeRotation { get { return this.mFreezeRotation; } set { this.mFreezeRotation = value; } }
-        public JCS_Bool3 FreezeScale { get { return this.mFreezeScale; } set { this.mFreezeScale = value; } }
         public Vector3 PositionToFreeze { get { return this.mPositionToFreeze; } set { this.mPositionToFreeze = value; } }
         public Vector3 RotationToFreeze { get { return this.mRotationToFreeze; } set { this.mRotationToFreeze = value; } }
         public Vector3 ScaleToFreeze { get { return this.mScaleToFreeze; } set { this.mScaleToFreeze = value; } }
+        public JCS_Bool3 FreezePosition { get { return this.mFreezePosition; } set { this.mFreezePosition = value; } }
+        public JCS_Bool3 FreezeRotation { get { return this.mFreezeRotation; } set { this.mFreezeRotation = value; } }
+        public JCS_Bool3 FreezeScale { get { return this.mFreezeScale; } set { this.mFreezeScale = value; } }
         public bool IsLocalPosition
         {
             get { return this.mIsLocalPosition; }
@@ -161,7 +158,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Freeze position.
+        /// Freeze transform data.
         /// </summary>
         private void DoFreezePosition()
         {
