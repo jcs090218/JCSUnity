@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Freeze the object by relative distance.
+    /// Action freeze the gameobject by relative distance.
     /// </summary>
     public class JCS_RelativeFreezePositionAction
         : JCS_UnityObject
@@ -33,7 +33,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTrans = null;
 
-        [Tooltip("How far the object going to be freeze.")]
+        [Tooltip("How far the gameobject going to be freeze.")]
         [SerializeField]
         private Vector3 mDistance = Vector3.zero;
 
@@ -48,6 +48,9 @@ namespace JCSUnity
         /*******************************************/
         /*             setter / getter             */
         /*******************************************/
+        public Transform TargetTransform { get { return this.mTargetTrans; } set { this.mTargetTrans = value; } }
+        public Vector3 Distance { get { return this.mDistance; } set { this.mDistance = value; } }
+        public bool IsLocalPosition { get { return this.mIsLocalPosition; } set { this.mIsLocalPosition = value; } }
 
         /*******************************************/
         /*            Unity's function             */

@@ -14,7 +14,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Do freezing to all transform data.
+    /// Action that freeze the gameobject position, rotation and scale.
     /// </summary>
     public class JCS_FreezeTransformAction
         : JCS_UnityObject

@@ -25,6 +25,8 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
+        [Header("** Initialize Variables (JCS_UniqueObject) **")]
+
         [Tooltip("Type of the singleton object.")]
         [SerializeField]
         private JCS_SingletonObject mType = JCS_SingletonObject.NONE;
