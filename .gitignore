@@ -1,6 +1,7 @@
 # ignore the those directory
 /.git
 /.vs
+/.vscode
 /Temp
 /Build
 /Library
