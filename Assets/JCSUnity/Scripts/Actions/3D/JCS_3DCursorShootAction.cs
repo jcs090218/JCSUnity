@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Shoot bullet toward the cursor position in 3d space.
+    /// Shoot bullet toward the cursor position in 3D space.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     public class JCS_3DCursorShootAction
@@ -26,16 +26,19 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Check Variables **")]
+        [Header("** Check Variables (JCS_3DCursorShootAction) **")]
+
         [SerializeField]
         private JCS_ShootAction mShootAction = null;
 
-        [Header("** Runtime Variables **")]
-        [Tooltip("key code to active this action.")]
+
+        [Header("** Runtime Variables (JCS_3DCursorShootAction) **")]
+
+        [Tooltip("Key code to active this action.")]
         [SerializeField]
         private KeyCode mShootKeyCode = KeyCode.None;
 
-        [Tooltip("")]
+        [Tooltip("Vector to look at.")]
         [SerializeField]
         private JCS_Vector3Direction mDirection = JCS_Vector3Direction.UP;
 
@@ -46,6 +49,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public KeyCode ShooKeyCode { get { return this.mShootKeyCode; } }
+        public JCS_Vector3Direction Direction { get { return this.mDirection; } set { this.mDirection = value; } }
 
         //========================================
         //      Unity's function

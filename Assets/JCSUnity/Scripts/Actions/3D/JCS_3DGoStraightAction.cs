@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Move forward base on their own 
-    /// transform direction.
+    /// Move forward base on their own direction.
     /// </summary>
     public class JCS_3DGoStraightAction
         : MonoBehaviour
@@ -29,18 +28,18 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_3DGoStraightAction) **")]
 
-        [Tooltip("How fast it move.")]
+        [Tooltip("How fast it moves.")]
         [SerializeField] [Range(-500.0f, 500.0f)]
         private float mMoveSpeed = 10.0f;
 
-        [Tooltip("Which axis it move.")]
+        [Tooltip("Which axis it moves.")]
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_X;
 
 
         [Header("- Randomize Settings (JCS_3DGoStraightAction)")]
 
-        [Tooltip(@"Randomize the speed in depends on positive 
+        [Tooltip(@"Randomize the speed depends on positive
 move speed to negative move speed.")]
         [SerializeField]
         private bool mRandomizeSpeedAtStart = false;
@@ -71,9 +70,9 @@ move speed to negative move speed.")]
         }
 
         /**
-         * FixedUpdate take so much of the performance. Consider use 
+         * FixedUpdate take so much of the performance. Consider use
          * regular Update instead of FixedUpdate.
-         * 
+         *
          * NOTE(jenchieh): if you want this to be accurate use FixedUpdate.
          */
          /* Comment either one of them. */
