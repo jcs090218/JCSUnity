@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Look at a target/transform in 3 dimensional.
+    /// Look at a transform in 3D space.
     /// </summary>
     public class JCS_3DLookAtAction
         : MonoBehaviour
@@ -34,7 +34,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_3DLookAtAction) **")]
 
-        [Tooltip("Do the action avaliable?")]
+        [Tooltip("Do the action?")]
         [SerializeField]
         private bool mLookAction = true;
 
@@ -64,7 +64,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeZ = false;
 
-        [Tooltip("Offset of each angle.")]
+        [Tooltip("Offset each angle.")]
         [SerializeField]
         private Vector3 mAngleOffset = Vector3.zero;
 
@@ -167,7 +167,7 @@ namespace JCSUnity
             else
                 this.transform.eulerAngles += mAngleOffset;
 
-            // TODO(JenChieh): study the rotation going on in 
+            // TODO(JenChieh): study the rotation going on in
             //                Unity lower level archietecture.
             // rotate back to X-axis.
             if (mRotateBack90)
@@ -175,7 +175,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the asymptotic look algorithm 
+        /// Do the asymptotic look algorithm
         /// here...
         /// </summary>
         private void DoAsympLook()
@@ -184,15 +184,15 @@ namespace JCSUnity
             if (!mAsympLook)
                 return;
 
-            // NOTE(jenchieh): once we get here, mean that 
-            // we already look at the target cuz of the last 
+            // NOTE(jenchieh): once we get here, mean that
+            // we already look at the target cuz of the last
             // function call is "DoLookAt()".
 
 
             // set the target eular angles.
             mTargetEulerAngles = this.transform.localEulerAngles;
 
-            // set the angle to the angle before 
+            // set the angle to the angle before
             // we do the "DoLookAt action".
             this.transform.localEulerAngles = mLastEulerAngles;
 

@@ -3,7 +3,7 @@
  * $Date: 2017-04-10 02:04:46 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections;
@@ -14,7 +14,8 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// If object goes a certain range set back to certain 
+    /// If gameobject goes a certain range set back to
+    /// original positioin.
     /// position.
     /// </summary>
     public class JCS_3DPositionTileAction
@@ -29,11 +30,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_3DDistanceTileAction) **")]
 
-        [Tooltip("Is the component active?")]
+        [Tooltip("Is the action active?")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip(@"If object goes out of this distance, will 
+        [Tooltip(@"If object goes out of this distance, will
 be set to this position in each axis.")]
         [SerializeField]
         private Vector3 mAbsolutePositionInAxis = Vector3.zero;
@@ -75,7 +76,15 @@ be set to this position in each axis.")]
         //      setter / getter
         //------------------------------
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public Vector3 AbsolutePositionInAxis { get { return this.mAbsolutePositionInAxis; } set { this.mAbsolutePositionInAxis = value; } }
         public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
+        public float MaxX { get { return this.mMaxX; } set { this.mMaxX = value; } }
+        public float MaxY { get { return this.mMaxY; } set { this.mMaxY = value; } }
+        public float MaxZ { get { return this.mMaxZ; } set { this.mMaxZ = value; } }
+        public float MinX { get { return this.mMinX; } set { this.mMinX = value; } }
+        public float MinY { get { return this.mMinY; } set { this.mMinY = value; } }
+        public float MinZ { get { return this.mMinZ; } set { this.mMinZ = value; } }
+
 
         //========================================
         //      Unity's function

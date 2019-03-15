@@ -3,7 +3,7 @@
  * $Date: 2017-10-14 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Do the throw action like "Plants vs Zombies"'s 
-    /// corn plants.
+    /// Thorws a gameobject toward another gameobject.
     /// </summary>
     public class JCS_3DThrowAction
         : MonoBehaviour
@@ -26,7 +25,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 #if (UNITY_EDITOR)
-        [Header("** Helper Variables (JCS_ThrowAction) **")]
+        [Header("** Helper Variables (JCS_3DThrowAction) **")]
 
         [Tooltip("Target to test to throw to.")]
         [SerializeField]
@@ -36,7 +35,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mTestWithVelKey = KeyCode.None;
 
-        [Tooltip("")]
+        [Tooltip("Force to hit the target.")]
         [SerializeField] [Range(0.1f, 300.0f)]
         private float mForce = 20.0f;
 
@@ -44,12 +43,12 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mTestWithTimeKey = KeyCode.None;
 
-        [Tooltip("")]
+        [Tooltip("Target time to hit the target.")]
         [SerializeField] [Range(1.0f, 10.0f)]
         private float mTime = 1.0f;
 #endif
 
-        [Header("** Runtime Variables (JCS_ThrowAction) **")]
+        [Header("** Runtime Variables (JCS_3DThrowAction) **")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]
@@ -108,7 +107,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Do the throw action by calculate the kinematic.
+        /// Do the throw action by time.
         /// </summary>
         /// <param name="startPos"> Point to start this action. </param>
         /// <param name="targetPos"> Point you want to hit. </param>
@@ -129,7 +128,7 @@ namespace JCSUnity
             float displacementX = Mathf.Abs(targetPos.x - this.transform.position.x);
             float displacementY = Mathf.Abs(targetPos.y - this.transform.position.y);
             float displacementZ = Mathf.Abs(targetPos.z - this.transform.position.z);
-            
+
             /* Displacement include direction, is a vector quantity. */
             {
                 if (targetPos.x < this.transform.position.x)

@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -27,7 +27,7 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        // All enemy should have the nav 
+        // All enemy should have the nav
         // mesh agent for the path finding.
         private UnityEngine.AI.NavMeshAgent mNavMeshAgent = null;
 
@@ -36,7 +36,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        // count for how many search per frame. 
+        // count for how many search per frame.
         // try to avoid stack overflow function call...
         private int mSearchCount = 0;
 
@@ -46,32 +46,32 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_3DWalkAction) **")]
 
-        [Tooltip("Check weather u do this action.")]
+        [Tooltip("Check weather you want do this action.")]
         [SerializeField]
         private bool mDoAI = true;
 
         [Tooltip("Range that enemy will try to get close to.")]
         [SerializeField]
-        [Range(1, 1000)]
-        private float mRangeDistance = 5;
+        [Range(1.0f, 1000.0f)]
+        private float mRangeDistance = 5.0f;
 
-        [Tooltip("")]
+        [Tooltip("Randomly adjusts the range distance.")]
         [SerializeField]
-        [Range(1, 5)]
-        private float mAdjustRangeDistance = 0;
+        [Range(1.0f, 5.0f)]
+        private float mAdjustRangeDistance = 0.0f;
 
 
         [Header("- Tracking")]
 
-        [Tooltip("")]
+        [Tooltip("Time to target the enemy.")]
         [SerializeField]
         [Range(0.01f, 10.0f)]
         private float mTargetTime = 1;
 
         [Tooltip("Adjust a bit of the attack time.")]
         [SerializeField]
-        [Range(0, 5.0f)]
-        private float mAdjustTargetTime = 0;
+        [Range(0.0f, 5.0f)]
+        private float mAdjustTargetTime = 0.0f;
 
         // timer to simulate the time for targeting the player.
         private float mTargetTimer = 0;
@@ -106,12 +106,12 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Target One player and do in range action.
+        /// Target one player and do in taget action.
         /// </summary>
         /// <param name="target"> Target we are following. </param>
         public void TargetOne(Transform target)
         {
-            // if target is does not exist, 
+            // if target is does not exist,
             // end function call.
             if (target == null)
             {
@@ -132,7 +132,7 @@ namespace JCSUnity
             // reset the path every time it request.
             mNavMeshAgent.ResetPath();
 
-            // calculate the distance and range relationship, 
+            // calculate the distance and range relationship,
             // and find out the position enemy are approach to.
             Vector3 targetPos = CalculateRange(target.transform.position);
 
@@ -158,7 +158,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check the nav mesh agent arrive the destination.
+        /// Check if the nav mesh agent arrive the destination.
         /// </summary>
         public bool NavMeshArrive(UnityEngine.AI.NavMeshAgent agent)
         {
@@ -181,11 +181,11 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// Calculate the range and position relationship 
-        /// in order to find the best destination in the 
+        /// Calculate the range and position relationship
+        /// in order to find the best destination in the
         /// navigation map.
-        /// 
-        /// IMPORTANT(JenChieh): if the vector does not in the range, 
+        ///
+        /// IMPORTANT(JenChieh): if the vector does not in the range,
         /// enemy will stay at the place they are, which mean enemy
         /// will do nothing...
         /// </summary>

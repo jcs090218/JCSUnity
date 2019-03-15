@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Track object in 3d space.
+    /// Track a gameobject in 3D space.
     /// </summary>
     public class JCS_3DTrackAction
         : MonoBehaviour
@@ -28,13 +28,13 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_3DTrackAction) **")]
 
-        [Tooltip("Transform we want to target")]
+        [Tooltip("Transform we want to target.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        [Tooltip("Invers of Speed")]
+        [Tooltip("Invers of speed.")]
         [SerializeField]
-        private float mMoveFriction = 1;
+        private float mMoveFriction = 1.0f;
 
         //----------------------
         // Protected Variables
@@ -65,6 +65,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Do the following gameobject action.
+        /// </summary>
         private void FollowObject()
         {
             if (mTargetTransform == null)

@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -15,7 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Singleton patter in Unity scripting layer.
     /// </summary>
-    public class JCS_UniqueObject 
+    public class JCS_UniqueObject
         : MonoBehaviour
     {
 
@@ -37,7 +37,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public JCS_SingletonObject GetSingletonObjectType() { return this.mType; }
+        public JCS_SingletonObject SingletonObjectType { get { return this.mType; } }
 
         //========================================
         //      Unity's function
@@ -70,7 +70,7 @@ namespace JCSUnity
 
         /// <summary>
         /// Check the signleton by type.
-        /// 
+        ///
         /// NOTE(jenchieh): Non-use.
         /// </summary>
         private void CheckByType()
@@ -117,7 +117,7 @@ namespace JCSUnity
 
             //        } break;
             //}
-            
+
         }
 
     }
