@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -40,8 +40,8 @@ namespace JCSUnity
 
         [Header("** Reflect Effect Settings **")]
 
-        [Tooltip(@"After reflecting the bullet, add the random 
-degree in to it. In order to get this effect work, better set 
+        [Tooltip(@"After reflecting the bullet, add the random
+degree in to it. In order to get this effect work, better set
 degree lower than 90.")]
         [SerializeField] [Range(0, 180)]
         private float mRandomReflectDegree = 0;

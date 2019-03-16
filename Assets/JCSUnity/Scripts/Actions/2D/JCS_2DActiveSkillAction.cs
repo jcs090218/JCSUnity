@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Spawn a skill and destroy itself after 
+    /// Spawn a skill and destroy itself after
     /// done displaying the skill effect.
     /// </summary>
     public class JCS_2DActiveSkillAction
@@ -25,19 +25,35 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Runtime Variables **")]
+
+        [Header("** Runtime Variables (JCS_2DActiveSkillAction) **")]
+
         [Tooltip("Key to active this skill.")]
-        [SerializeField] private KeyCode mKeyCode = KeyCode.None;
-        [SerializeField] private int mOrderLayer = 15;
-        [SerializeField] private RuntimeAnimatorController mSkillAnim = null;
+        [SerializeField]
+        private KeyCode mKeyCode = KeyCode.None;
 
-        [Header("** Spawn Settings **")]
-        [SerializeField] private bool mSamePosition = true;
-        [SerializeField] private bool mSameRotation = true;
+        [Tooltip("Animation displayed order layer.")]
+        [SerializeField]
+        private int mOrderLayer = 15;
 
-        [Header("** Runtime Settings **")]
+        [Tooltip("Animation controller to use to display animation.")]
+        [SerializeField]
+        private RuntimeAnimatorController mSkillAnim = null;
+
+        [Tooltip("Stick to the parent gameobject.")]
         [SerializeField]
         private bool mStayWithActiveTarget = true;
+
+
+        [Header("** Spawn Settings (JCS_2DActiveSkillAction) **")]
+
+        [Tooltip("Spawns in the same position.")]
+        [SerializeField]
+        private bool mSamePosition = true;
+
+        [Tooltip("Spawns in the same rotation.")]
+        [SerializeField]
+        private bool mSameRotation = true;
 
         //----------------------
         // Protected Variables
@@ -45,15 +61,16 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public KeyCode KeyCode { get { return this.mKeyCode; } set { this.mKeyCode = value; } }
+        public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
+        public RuntimeAnimatorController SkillAnim { get { return this.mSkillAnim; } set { this.mSkillAnim = value; } }
+        public bool StayWithActiveTarget { get { return this.mSameRotation; } set { this.mStayWithActiveTarget = value; } }
+        public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
+        public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
 
         //========================================
         //      Unity's function
         //------------------------------
-        private void Awake()
-        {
-
-        }
-
         private void Update()
         {
             if (JCS_Input.GetKeyDown(mKeyCode))
@@ -67,7 +84,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Either use keycode or call it with script!
+        /// Active the skill.
         /// </summary>
         public void ActiveSkill()
         {

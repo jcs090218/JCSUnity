@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -26,30 +26,41 @@ namespace JCSUnity
         //----------------------
         // Private Variables
 
-        [Header("** Check Variables **")]
-        [SerializeField] private bool mDoMovement = false;
-        [SerializeField] private bool mDoRotate = false;
+        [Header("** Initialize Variables (JCS_2DCircleAction) **")]
 
-        [Header("** Initialize Variables **")]
-        [SerializeField] private float mStartingDegree = 0.0f;
-        [SerializeField] private int mRotateDegree = 360;
-        private float mRotateDegreeTimer = 0;
+        [Tooltip("Starting rotation degree.")]
+        [SerializeField]
+        private float mStartingDegree = 0.0f;
 
-        [Header("** Runtime Variables **")]
-        // How fast the force apply
-        [SerializeField] private float mMoveSpeed = 10.0f;
+        [Tooltip("Full rotate degree.")]
+        [SerializeField]
+        private int mRotateDegree = 360;
 
-        // How fast it rotate
-        [SerializeField] private float mTurnSpeed = 150.0f;
-
-        // Rotate Direction
-        [SerializeField] private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
+        private float mRotateDegreeTimer = 0.0f;
 
 
-        //[Header("** After Rotate Movement **")]
-        //[SerializeField] private bool mAfterRotateWalkStraight = true;
-        //[SerializeField] private bool mAfterRotateWalkOpposite = false;
-        //[SerializeField] private bool mAfterRotateWalkOppositeCycle = false;
+        [Header("** Runtime Variables (JCS_2DCircleAction) **")]
+
+        [Tooltip("Do the movement.")]
+        [SerializeField]
+        private bool mDoMovement = false;
+
+        [Tooltip("Do the rotation.")]
+        [SerializeField]
+        private bool mDoRotate = false;
+
+        [Tooltip("How fast the force apply.")]
+        [SerializeField]
+        private float mMoveSpeed = 10.0f;
+
+        [Tooltip("How fast it rotate.")]
+        [SerializeField]
+        private float mTurnSpeed = 150.0f;
+
+        [Tooltip("Rotate direction.")]
+        [SerializeField]
+        private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
+
 
         //----------------------
         // Protected Variables
@@ -57,10 +68,13 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
-        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float StartingPosition { get { return this.mStartingDegree; } set { this.mStartingDegree = value; } }
+        public int RotateDegree { get { return this.mRotateDegree; } set { this.mRotateDegree = value; } }
+        public float RotateDegreeTimer { get { return this.mRotateDegreeTimer; } set { this.mRotateDegreeTimer = value; } }
         public bool DoMovement { get { return this.mDoMovement; } set { this.mDoMovement = value; } }
         public bool DoRotate { get { return this.mDoRotate; } set { this.mDoRotate = value; } }
+        public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
+        public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
 
         //========================================
         //      Unity's function
@@ -74,7 +88,7 @@ namespace JCSUnity
         private void Update()
         {
             Movement();
-            Rotate();
+            DoRotation();
         }
 
         //========================================
@@ -88,6 +102,10 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Do the movement behavior.
+        /// </summary>
         private void Movement()
         {
             if (!mDoMovement)
@@ -96,7 +114,11 @@ namespace JCSUnity
             // Do movement
             this.transform.Translate(Vector3.right * MoveSpeed * Time.deltaTime);
         }
-        private void Rotate()
+
+        /// <summary>
+        /// Do the rotation behavior.
+        /// </summary>
+        private void DoRotation()
         {
             if (!mDoRotate)
                 return;
