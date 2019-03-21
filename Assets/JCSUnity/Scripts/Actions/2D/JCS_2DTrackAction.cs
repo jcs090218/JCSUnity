@@ -36,6 +36,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFollowing = true;
 
+
         [Header("** Runtime Variables (JCS_2DTrackAction) **")]
 
         [Tooltip("Transform we want to target")]
