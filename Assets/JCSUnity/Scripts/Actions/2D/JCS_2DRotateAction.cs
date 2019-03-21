@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// Do the rotate action.
+    /// Action that make gameobject rotates.
     /// </summary>
     public class JCS_2DRotateAction
         : MonoBehaviour
@@ -37,7 +36,7 @@ namespace JCSUnity
         [SerializeField] [Range(-1000.0f, 1000.0f)]
         private float mTurnSpeed = 1000.0f;
 
-        [Tooltip("")]
+        [Tooltip("Rotate direction.")]
         [SerializeField]
         private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 

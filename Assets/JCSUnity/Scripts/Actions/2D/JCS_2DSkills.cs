@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -11,7 +11,6 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Do not use add this script directly to Unity.
     /// This is for Scripter only file.
@@ -44,7 +43,7 @@ namespace JCSUnity
         /// animate action type displayed in the skills.
         /// </summary>
         [SerializeField]
-        protected JCS_2DAnimActionType mAnimType 
+        protected JCS_2DAnimActionType mAnimType
             = JCS_2DAnimActionType.DESTROY;
 
         [Header("** Spawn Settings (JCS_2DSkills) **")]
@@ -90,7 +89,7 @@ namespace JCSUnity
         /// Call this function to active the skill u want.
         /// </summary>
         public abstract void ActiveSkill();
-        
+
         /// <summary>
         /// Handle skill prevent the skill go to fast.
         /// </summary>

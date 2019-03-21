@@ -3,7 +3,7 @@
  * $Date: 2017-03-16 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using System.Collections;
@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Simple call invincible time action.
     /// </summary>
@@ -61,7 +60,7 @@ namespace JCSUnity
         // timer to do flashy effect.
         private float mFlashTimer = 0;
 
-        // just a boolean record down what the 
+        // just a boolean record down what the
         // current color is.
         private bool mFlashToggle = false;
 
@@ -145,7 +144,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Trigger invincible action to true, start 
+        /// Trigger invincible action to true, start
         /// the timer.
         /// </summary>
         public void TriggerAction()
@@ -154,7 +153,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Trigger invincible action to true, start 
+        /// Trigger invincible action to true, start
         /// the timer.
         /// </summary>
         /// <param name="time"> time to be invincible </param>

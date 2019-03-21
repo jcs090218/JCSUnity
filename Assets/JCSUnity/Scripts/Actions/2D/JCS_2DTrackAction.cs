@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -12,9 +12,8 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class JCS_2DTrackAction
         : MonoBehaviour
@@ -108,7 +107,7 @@ namespace JCSUnity
 
             SmoothTrack(ref targetPos, ref newPos);
             HardTrack(ref targetPos, ref newPos);
-            
+
 
            // apply force
             newPos += mVelocity * Time.deltaTime;
