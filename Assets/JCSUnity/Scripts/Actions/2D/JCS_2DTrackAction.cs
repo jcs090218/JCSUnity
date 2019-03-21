@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    ///
+    /// Track a gameobject on 2D.
     /// </summary>
     public class JCS_2DTrackAction
         : MonoBehaviour
@@ -25,6 +25,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         [Header("** Check Variables (JCS_2DTrackAction) **")]
 
         [SerializeField]
@@ -39,49 +40,51 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DTrackAction) **")]
 
-        [Tooltip("Transform we want to target")]
+        [Tooltip("Transform we want to target.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        [Tooltip("Which plane we want to move")]
+        [Tooltip("Which plane we want to move.")]
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_Z;
 
         private Vector3 mVelocity = Vector3.zero;
 
-        [Tooltip("")]
-        [SerializeField]
-        private bool mHardOnX = false;
-
-        [Tooltip("")]
-        [SerializeField]
-        private bool mHardOnY = false;
-
-        [Tooltip("")]
-        [SerializeField]
-        private bool mHardOnZ = false;
 
         //-- Smooth Track
-        [Tooltip("Invers of Speed, if smooth track is enable use this.")]
+        [Tooltip("Invers of speed, if smooth track is enable use this.")]
         [SerializeField]
         private float mMoveFriction = 0.2f;
 
         //-- Hard Track
-        [Tooltip("if smooth track is diable use this.")]
+        [Tooltip("If smooth track is disable use this.")]
         [SerializeField]
-        private float mMoveSpeed = 10;
+        private float mMoveSpeed = 10.0f;
 
-        [Tooltip("")]
+        [Tooltip("Accept range on hard track.")]
         [SerializeField]
         private float mAccpetRange = 0.8f;
 
-        [Header("Order Effect")]
+        [Tooltip("Hard track on x-axis.")]
+        [SerializeField]
+        private bool mHardOnX = false;
 
-        [Tooltip("")]
+        [Tooltip("Hard track on y-axis.")]
+        [SerializeField]
+        private bool mHardOnY = false;
+
+        [Tooltip("Hard track on z-axis.")]
+        [SerializeField]
+        private bool mHardOnZ = false;
+
+
+        [Header("- Order Effect (JCS_2DTrackAction)")]
+
+        [Tooltip("Set the track action order.")]
         [SerializeField]
         private bool mOrderEffect = false;
 
-        [Tooltip("")]
+        [Tooltip("Gap between each order.")]
         [SerializeField]
         private Vector3 mGap = Vector3.zero;
 
@@ -91,13 +94,15 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
         public float MoveFriction { get { return this.mMoveFriction; } set { this.mMoveFriction = value; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float Index { get { return this.mIndex; } set { this.mIndex = value; } }
         public int OrderIndex { get { return this.mOrderIndex; } set { this.mOrderIndex = value; } }
         public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
-        public Transform GetTargetTransform() { return this.mTargetTransform; }
-        public void SetTargetTransform(Transform t) { this.mTargetTransform = t; }
+        public bool HardOnX { get { return this.mHardOnX; } set { this.mHardOnX = value; } }
+        public bool HardOnY { get { return this.mHardOnY; } set { this.mHardOnY = value; } }
+        public bool HardOnZ { get { return this.mHardOnZ; } set { this.mHardOnZ = value; } }
 
         //========================================
         //      Unity's function
@@ -124,13 +129,16 @@ namespace JCSUnity
 
         //----------------------
         // Private Functions
+
+        /// <summary>
+        /// Follow the target gameobject.
+        /// </summary>
         private void FollowObject()
         {
-
             Vector3 targetPos = mTargetTransform.position;
 
-            // use this effect u can shoot up to down!
-            // if i set the index correctly!
+            // use this effect you can shoot up to down!
+            // if I set the index correctly!
             if (mOrderEffect)
                 targetPos += mGap * mIndex;
 
@@ -146,11 +154,17 @@ namespace JCSUnity
             this.transform.position = newPos;
         }
 
+        /// <summary>
+        /// Keep the same direction.
+        /// </summary>
         private void KeepOnSameDirection()
         {
             this.transform.position += mVelocity * Time.deltaTime;
         }
 
+        /// <summary>
+        /// Smooth tracking.
+        /// </summary>
         private void SmoothTrack(ref Vector3 targetPos, ref Vector3 newPos)
         {
 
@@ -174,9 +188,12 @@ namespace JCSUnity
                     break;
             }
         }
+
+        /// <summary>
+        /// Hark tracking.
+        /// </summary>
         private void HardTrack(ref Vector3 targetPos, ref Vector3 newPos)
         {
-
             if (mHardOnX)
             {
                 if (targetPos.x < newPos.x - mAccpetRange)
@@ -213,7 +230,5 @@ namespace JCSUnity
                 }
             }
         }
-
-
     }
 }

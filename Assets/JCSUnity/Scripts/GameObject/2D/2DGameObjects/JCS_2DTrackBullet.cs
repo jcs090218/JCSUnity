@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -40,7 +40,7 @@ namespace JCSUnity
         private float mDelayTimeToFollow = 0;
 
         private float mDelayTimeToFollowTimer = 0;
-        
+
 
         [Header("** Runtime Variables (JCS_2DTrackBullet) **")]
 
@@ -76,7 +76,7 @@ namespace JCSUnity
             mGoStraightAction.MoveSpeed = MoveSpeed;
 
             // if tracking are using the smooth track.
-            // move speed have to be positive in order to get to the 
+            // move speed have to be positive in order to get to the
             // correct direction.
             mTrackAction.MoveSpeed = JCS_Mathf.ToPositive(MoveSpeed);
         }
@@ -110,7 +110,7 @@ namespace JCSUnity
             if (mAct)
                 return;
 
-            if (mTrackAction.GetTargetTransform() == null)
+            if (mTrackAction.TargetTransform == null)
                 return;
 
             mDelayTimeToFollowTimer += Time.deltaTime;

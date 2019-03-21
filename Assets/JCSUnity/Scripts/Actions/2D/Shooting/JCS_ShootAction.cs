@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -15,7 +15,7 @@ namespace JCSUnity
 {
     public delegate void ShootCallback();
 
-    // If the function return 
+    // If the function return
     //              -> true, shoot the bullet.
     //              -> false not able to shoot the bullet.
     public delegate bool CheckAbleToShoot();
@@ -57,7 +57,7 @@ namespace JCSUnity
 
         [Header("** Key Variables **")]
         [SerializeField] private KeyCode mShootKeyCode = KeyCode.None;
-        
+
         [SerializeField]
         private JCS_MouseButton mMouseButton
             = JCS_MouseButton.LEFT;
@@ -160,8 +160,8 @@ namespace JCSUnity
 
         /// <summary>
         /// Function check before shooting the bullet.
-        /// 
-        /// Function itself must return a boolean, 
+        ///
+        /// Function itself must return a boolean,
         /// in order to check the shoot action.
         /// </summary>
         /// <param name="func"> functin to check able to do the shoot action. </param>
@@ -208,7 +208,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public JCS_Bullet Shoot()
@@ -225,7 +225,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="direction"></param>
@@ -240,7 +240,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="bulletSpeed"></param>
         /// <param name="pos"></param>
@@ -285,14 +285,14 @@ namespace JCSUnity
             if (bullet is JCS_2DBullet)
                 bullet.GetComponent<JCS_3DGoStraightAction>().MoveSpeed = bulletSpeed;
 
-           
-            if (mTrackSoot && 
+
+            if (mTrackSoot &&
                 target != null)
             {
                 JCS_2DTrackAction ta = bullet.GetComponent<JCS_2DTrackAction>();
                 if (ta != null)
                 {
-                    ta.SetTargetTransform(target);
+                    ta.TargetTransform = target;
 
                     // set to center
                     float newIndex = index - (hit / 2.0f);
@@ -329,7 +329,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="direction"></param>
@@ -344,7 +344,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="bulletSpeed"></param>
         /// <param name="pos"></param>
@@ -398,7 +398,7 @@ namespace JCSUnity
                 JCS_2DTrackAction ta = bullet.GetComponent<JCS_2DTrackAction>();
                 if (ta != null)
                 {
-                    ta.SetTargetTransform(target);
+                    ta.TargetTransform = target;
 
                     // set to center
                     float newIndex = index - (hit / 2.0f);
@@ -504,9 +504,9 @@ namespace JCSUnity
                 mDelayTimer = 0;
             }
         }
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="target"></param>
         public void DeviationEffect(Transform target)
@@ -536,7 +536,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the randomize the transform position 
+        /// Do the randomize the transform position
         /// offset algorithm.
         /// </summary>
         /// <param name="spawnPos"> position we want to apply. </param>
@@ -642,7 +642,7 @@ namespace JCSUnity
         /// <summary>
         /// Set Attacker Info, this make all the bullet knows their
         /// attacker object.
-        /// 
+        ///
         /// Attacker throw the star, but the star does not know anything
         /// about the attacker itself. Use this function to let them know
         /// the attacker. which i name is "attacker info".
