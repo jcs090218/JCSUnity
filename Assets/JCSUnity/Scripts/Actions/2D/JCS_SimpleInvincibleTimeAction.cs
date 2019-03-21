@@ -67,7 +67,7 @@ namespace JCSUnity
 
         [Header("- Sound Effect (JCS_SimpleInvincibleTimeAction) ")]
 
-        [Tooltip("Play once while trigger")]
+        [Tooltip("Play once while trigger.")]
         [SerializeField]
         private AudioClip mTriggerSound = null;
 

@@ -25,34 +25,64 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Check Variables **")]
-        [SerializeField] private float mIndex = 0;
-        [SerializeField] private int mOrderIndex = 0;
-        [SerializeField] private bool mFollowing = true;
+        [Header("** Check Variables (JCS_2DTrackAction) **")]
 
-        [Header("** Runtime Variables **")]
+        [SerializeField]
+        private float mIndex = 0;
+
+        [SerializeField]
+        private int mOrderIndex = 0;
+
+        [SerializeField]
+        private bool mFollowing = true;
+
+        [Header("** Runtime Variables (JCS_2DTrackAction) **")]
+
         [Tooltip("Transform we want to target")]
-        [SerializeField] private Transform mTargetTransform = null;
+        [SerializeField]
+        private Transform mTargetTransform = null;
+
         [Tooltip("Which plane we want to move")]
-        [SerializeField] private JCS_Axis mAxis = JCS_Axis.AXIS_Z;
+        [SerializeField]
+        private JCS_Axis mAxis = JCS_Axis.AXIS_Z;
 
         private Vector3 mVelocity = Vector3.zero;
 
-        [Header("Move Effect")]
-        [SerializeField] private bool mHardOnX = false;
-        [SerializeField] private bool mHardOnY = false;
-        [SerializeField] private bool mHardOnZ = false;
+        [Tooltip("")]
+        [SerializeField]
+        private bool mHardOnX = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mHardOnY = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mHardOnZ = false;
+
         //-- Smooth Track
         [Tooltip("Invers of Speed, if smooth track is enable use this.")]
-        [SerializeField] private float mMoveFriction = 0.2f;
+        [SerializeField]
+        private float mMoveFriction = 0.2f;
+
         //-- Hard Track
         [Tooltip("if smooth track is diable use this.")]
-        [SerializeField] private float mMoveSpeed = 10;
-        [SerializeField] private float mAccpetRange = 0.8f;
+        [SerializeField]
+        private float mMoveSpeed = 10;
+
+        [Tooltip("")]
+        [SerializeField]
+        private float mAccpetRange = 0.8f;
 
         [Header("Order Effect")]
-        [SerializeField] private bool mOrderEffect = false;
-        [SerializeField] private Vector3 mGap = Vector3.zero;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mOrderEffect = false;
+
+        [Tooltip("")]
+        [SerializeField]
+        private Vector3 mGap = Vector3.zero;
 
         //----------------------
         // Protected Variables
