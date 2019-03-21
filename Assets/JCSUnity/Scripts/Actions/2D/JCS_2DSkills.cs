@@ -19,59 +19,82 @@ namespace JCSUnity
     public abstract class JCS_2DSkills
         : MonoBehaviour
     {
-        [Header("** JCS_2DSkills Variables (JCS_2DSkills) **")]
+        protected JCS_SoundPlayer mSoundPlayer = null;
 
-        /// <summary>
-        /// While by pressing this key active skill
-        /// </summary>
+        [Header("** Runtime Variables (JCS_2DSkills) **")]
+
+        [Tooltip("While by pressing this key active skill.")]
         [SerializeField]
         protected KeyCode mKeyCode = KeyCode.None;
 
 
+        [Tooltip("Main animation player 1.")]
         [SerializeField]
         protected RuntimeAnimatorController mMainAnim1 = null;
+
+        [Tooltip("Main animation player 2.")]
         [SerializeField]
         protected RuntimeAnimatorController mMainAnim2 = null;
+
+        [Tooltip("Animation position offset 1.")]
         [SerializeField]
         protected Vector3 mAnimPosOffset1 = Vector3.zero;
+
+        [Tooltip("Animation position offset 2.")]
         [SerializeField]
         protected Vector3 mAnimPosOffset2 = Vector3.zero;
+
+        [Tooltip("Sprite render layer.")]
         [SerializeField]
         protected int mOrderLayer = 15;
 
-        /// <summary>
-        /// animate action type displayed in the skills.
-        /// </summary>
+        [Tooltip("animate action type displayed in the skills.")]
         [SerializeField]
-        protected JCS_2DAnimActionType mAnimType
-            = JCS_2DAnimActionType.DESTROY;
+        protected JCS_2DAnimActionType mAnimType = JCS_2DAnimActionType.DESTROY;
 
-        [Header("** Spawn Settings (JCS_2DSkills) **")]
-        [SerializeField]
-        protected bool mSamePosition = true;
-        [SerializeField]
-        protected bool mSameRotation = true;
-        [SerializeField]
-        protected bool mSameScale = true;
-
-        [Header("** Runtime Settings (JCS_2DSkills) **")]
+        [Tooltip("Stay with the parent gameobject.")]
         [SerializeField]
         protected bool mStayWithActiveTarget = true;
 
-        [Tooltip("Time before activate the action.")]
-        [SerializeField] protected float mTimeToActive = 0.0f;
+        [Tooltip("Time before activates the action.")]
+        [SerializeField]
+        protected float mTimeToActive = 0.0f;
+
         protected bool mAction = false;           // trigger action.
-        [Tooltip("Delay Time after activate this skills.")]
-        [SerializeField] protected float mActiveTime = 0.0f;
+
+        [Tooltip("Delay time after activates this skills.")]
+        [SerializeField]
+        protected float mActiveTime = 0.0f;
+
         protected bool mAfterDelay = false;       // trigger after delay.
+
         protected float mActionTimer = 0;
 
-        [Header("** Sound Settings **")]
-        protected JCS_SoundPlayer mSoundPlayer = null;
-        [Tooltip("Sound when u use the skill.")]
-        [SerializeField] protected AudioClip mUseSound = null;
-        [Tooltip("Sound when the skill hit the object.")]
-        [SerializeField] protected AudioClip mHitSound = null;
+
+        [Header("** Spawn Settings (JCS_2DSkills) **")]
+
+        [Tooltip("Spawn the same position as this gameobject.")]
+        [SerializeField]
+        protected bool mSamePosition = true;
+
+        [Tooltip("Spawn the same rotation as this gameobject.")]
+        [SerializeField]
+        protected bool mSameRotation = true;
+
+        [Tooltip("Spawn the same scale as this gameobject.")]
+        [SerializeField]
+        protected bool mSameScale = true;
+
+
+        [Header("** Sound Settings (JCS_2DSkills) **")]
+
+        [Tooltip("Sound when plays this skill.")]
+        [SerializeField]
+        protected AudioClip mUseSound = null;
+
+        [Tooltip("Sound when this skill hit the gameobject.")]
+        [SerializeField]
+        protected AudioClip mHitSound = null;
 
 
         protected virtual void Awake()
@@ -136,6 +159,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Spawn the main animattion 1.
+        /// </summary>
         protected void SpawnMainAnim1()
         {
             if (mMainAnim1 == null)
@@ -167,6 +193,9 @@ namespace JCSUnity
             obj.AddComponent<JCS_DestroyAnimEndEvent>();
         }
 
+        /// <summary>
+        /// Spawn the main animattion 2.
+        /// </summary>
         protected void SpawnMainAnim2()
         {
             if (mMainAnim2 == null)
