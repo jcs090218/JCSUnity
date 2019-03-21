@@ -28,11 +28,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DRotateAction) **")]
 
-        [Tooltip("Do the rotate action?")]
+        [Tooltip("Do the action?")]
         [SerializeField]
         private bool mAction = true;
 
-        [Tooltip("How fast it rotate?")]
+        [Tooltip("How fast it rotates?")]
         [SerializeField] [Range(-1000.0f, 1000.0f)]
         private float mTurnSpeed = 1000.0f;
 
@@ -47,8 +47,8 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public bool Action { get { return this.mAction; } set { this.mAction = value; } }
-        public JCS_2DFaceType RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
+        public JCS_2DFaceType RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
 
         //========================================
         //      Unity's function
