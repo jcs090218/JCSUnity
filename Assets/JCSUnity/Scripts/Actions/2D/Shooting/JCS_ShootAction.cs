@@ -34,20 +34,33 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Optional Variables **")]
-        [SerializeField] private JCS_2DSideScrollerPlayer mPlayer = null;
 
-        [Header("** Initialize Variables **")]
-        [SerializeField] private JCS_Bullet mBullet = null;
-        [SerializeField] private Transform mSpawnPoint = null;
+
+        [Header("** Optional Variables (JCS_ShootAction) **")]
+
+        [SerializeField]
+        private JCS_2DSideScrollerPlayer mPlayer = null;
+
+
+        [Header("** Initialize Variables (JCS_ShootAction) **")]
+
+        [SerializeField]
+        private JCS_Bullet mBullet = null;
+
+        [SerializeField]
+        private Transform mSpawnPoint = null;
+
         [Tooltip("Offset of spawn point.")]
-        [SerializeField] private Vector3 mSpanwPointOffset = Vector3.zero;
+        [SerializeField]
+        private Vector3 mSpanwPointOffset = Vector3.zero;
 
         // if this is true, meaning there are other shoot action going on.
         private bool mOverrideShoot = false;
 
-        [Header("** Runtime Variables **")]
 
+        [Header("** Runtime Variables (JCS_ShootAction) **")]
+
+        [Tooltip("")]
         [SerializeField] [Range(1, 30)]
         private int mDefaultHit = 1;
 
@@ -55,15 +68,20 @@ namespace JCSUnity
         [SerializeField] [Range(1, 50)]
         private int mShootCount = 1;
 
-        [Header("** Key Variables **")]
-        [SerializeField] private KeyCode mShootKeyCode = KeyCode.None;
 
+        [Header("** Key Variables (JCS_ShootAction) **")]
+
+        [Tooltip("")]
         [SerializeField]
-        private JCS_MouseButton mMouseButton
-            = JCS_MouseButton.LEFT;
+        private KeyCode mShootKeyCode = KeyCode.None;
+
+        [Tooltip("")]
         [SerializeField]
-        private JCS_KeyActionType mKeyAct
-            = JCS_KeyActionType.KEY;
+        private JCS_MouseButton mMouseButton = JCS_MouseButton.LEFT;
+
+        [Tooltip("")]
+        [SerializeField]
+        private JCS_KeyActionType mKeyAct = JCS_KeyActionType.KEY;
 
         // call back after we do shoot action.
         private ShootCallback mShootCallback = DefualtShootCallback;
@@ -71,63 +89,123 @@ namespace JCSUnity
         // Check we able to shoot or not
         private CheckAbleToShoot mCheckAbleToShoot = DefualtCheckFunction;
 
-        [Header("** Action Settings **")]
-        [SerializeField] private float mTimeBeforeShoot = 0;
+
+        [Header("** Action Settings (JCS_ShootAction) **")]
+
         private bool mAction = false;
-        [SerializeField] private float mTimeDelayAfterShoot = 0;
+
+        [SerializeField]
+        private float mTimeBeforeShoot = 0.0f;
+
+        [SerializeField]
+        private float mTimeDelayAfterShoot = 0.0f;
+
         private bool mAfterDelay = false;
-        private float mActionTimer = 0;
 
-        [Header("** Auto Shoot Settings **")]
+        private float mActionTimer = 0.0f;
+
+
+        [Header("** Auto Shoot Settings (JCS_ShootAction) **")]
+
         [Tooltip("Shoot the bullet depend on the delay time.")]
-        [SerializeField] private bool mAutoShoot = false;
-        [SerializeField] private bool mCanShoot = true;
+        [SerializeField]
+        private bool mAutoShoot = false;
+
+        [SerializeField]
+        private bool mCanShoot = true;
+
         [Tooltip("The speed of the bullet we spawn.")]
-        [SerializeField] private float mBulletSpeed = 20.0f;
+        [SerializeField]
+        private float mBulletSpeed = 20.0f;
+
         [Tooltip("How long it take to shoot a bullet.")]
-        [SerializeField] private float mDelayTime = 1.0f;
-        private float mDelayTimer = 0;
+        [SerializeField]
+        private float mDelayTime = 1.0f;
 
-        [Header("** Deviation Effect **")]
+        private float mDelayTimer = 0.0f;
+
+
+        [Header("** Deviation Effect (JCS_ShootAction) **")]
+
         [Tooltip("bullet will not go through to target directly")]
-        [SerializeField] private bool mDeviationEffectX = false;
-        [SerializeField] [Range(0, 359)] private float mDeviationRangeX = 1f;
-        [SerializeField] private bool mDeviationEffectY = false;
-        [SerializeField] [Range(0, 359)] private float mDeviationRangeY = 1f;
-        [SerializeField] private bool mDeviationEffectZ = false;
-        [SerializeField] [Range(0, 359)] private float mDeviationRangeZ = 1f;
+        [SerializeField]
+        private bool mDeviationEffectX = false;
 
-        [Header("** Random Spawn Effect **")]
+        [SerializeField] [Range(0.0f, 359.0f)]
+        private float mDeviationRangeX = 1.0f;
+
+        [SerializeField]
+        private bool mDeviationEffectY = false;
+
+        [SerializeField] [Range(0, 359)]
+        private float mDeviationRangeY = 1f;
+
+        [SerializeField]
+        private bool mDeviationEffectZ = false;
+        [SerializeField] [Range(0, 359)]
+        private float mDeviationRangeZ = 1f;
+
+
+        [Header("** Random Spawn Effect (JCS_ShootAction) **")]
+
         [Tooltip("Spawn Bullet randomly transform.")]
-        [SerializeField] private bool mRandPosX = false;
-        [SerializeField] [Range(0, 10)] private float mRandPosRangeX = 1f;
-        [SerializeField] private bool mRandPosY = false;
-        [SerializeField] [Range(0, 10)] private float mRandPosRangeY = 1f;
-        [SerializeField] private bool mRandPosZ = false;
-        [SerializeField] [Range(0, 10)] private float mRandPosRangeZ = 1f;
+        [SerializeField]
+        private bool mRandPosX = false;
 
-        // Audio
+        [Tooltip("")]
+        [SerializeField] [Range(0.0f, 10.0f)]
+        private float mRandPosRangeX = 1.0f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mRandPosY = false;
+
+        [Tooltip("")]
+        [SerializeField] [Range(0.0f, 10.0f)]
+        private float mRandPosRangeY = 1.0f;
+
+        [Tooltip("")]
+        [SerializeField]
+        private bool mRandPosZ = false;
+
+        [Tooltip("")]
+        [SerializeField] [Range(0.0f, 10.0f)]
+        private float mRandPosRangeZ = 1.0f;
+
+
         [Header("** Audio Settings (plz use \"JCS_SoundPoolAction\") **")]
+
         [Tooltip("Sound when shoot action occurs.")]
-        [SerializeField] private JCS_SoundPoolAction mRandomMultiSoundAction = null;
+        [SerializeField]
+        private JCS_SoundPoolAction mRandomMultiSoundAction = null;
 
-        // Ability
-        [Header("** Ability Format **")]
+
+        [Header("** Ability Format (JCS_ShootAction) **")]
+
         [Tooltip("How much damage apply to other objects.")]
-        [SerializeField] private JCS_AbilityFormat mAbilityFormat = null;
+        [SerializeField]
+        private JCS_AbilityFormat mAbilityFormat = null;
 
-        // Tracking and Detect Area
+
         [Header("** Tracking and Detect Area **")]
+
         [Tooltip("Will shoot to the target depends on Detect Area Action.")]
-        [SerializeField] private bool mTrackSoot = false;
+        [SerializeField]
+        private bool mTrackSoot = false;
+
         [Tooltip("Physical area to detect the \"JCS_DetectAreaObject\". (tag)")]
-        [SerializeField] private JCS_DetectAreaAction mDetectAreaAction = null;
+        [SerializeField]
+        private JCS_DetectAreaAction mDetectAreaAction = null;
+
         public enum TrackType
         {
             CLOSEST,
             FURTHEST
         };
-        [SerializeField] private TrackType mTrackType = TrackType.CLOSEST;
+
+        [Tooltip("")]
+        [SerializeField]
+        private TrackType mTrackType = TrackType.CLOSEST;
 
 
         //----------------------

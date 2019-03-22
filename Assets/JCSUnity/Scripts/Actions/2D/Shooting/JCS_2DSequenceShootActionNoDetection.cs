@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Shoot a bullet toward the cursor position.
+    /// Shoot bullets toward the cursor position in sequence.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     [RequireComponent(typeof(JCS_2DCursorShootAction))]
@@ -27,6 +27,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         [Header("** Check Variables (JCS_2DCursorShootAction) **")]
 
         [SerializeField]
@@ -38,7 +39,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DCursorShootAction) **")]
 
-        [Tooltip("How many shoot in sequence?")]
+        [Tooltip("How many shots in sequence?")]
         [SerializeField]
         [Range(1, 30)]
         private int mHit = 8;
@@ -48,22 +49,22 @@ namespace JCSUnity
         [Range(0.01f, 0.5f)]
         private float mTimePerShoot = 0.1f;
 
-        [Tooltip("")]
+        [Tooltip("Make the bullet shoots at the position that starts.")]
         [SerializeField]
         private bool mSequenceStay = true;
 
-        [Tooltip("Keep all the bullet in the same angle per sequence.")]
+        [Tooltip("Keep all bullets in the same angle per sequence.")]
         [SerializeField]
         private bool mKeepShootAngle = true;
 
 
         [Header("** Shoot Gap Effect (JCS_2DCursorShootAction) **")]
 
-        [Tooltip("")]
+        [Tooltip("Shoot with gap?")]
         [SerializeField]
         private bool mShootGapEffect = false;
 
-        [Tooltip("")]
+        [Tooltip("Gap distance.")]
         [SerializeField]
         private float mShootGap = 0.1f;
 
@@ -82,6 +83,12 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public int Hit { get { return this.mHit; } set { this.mHit = value; } }
+        public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
+        public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
+        public bool KeepShootAngle { get { return this.mKeepShootAngle; } set { this.mKeepShootAngle = value; } }
+        public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
+        public float ShootGap { get { return this.mShootGap; } set { this.mShootGap = value; } }
 
         /// <summary>
         /// Call back during shooting a bullet.

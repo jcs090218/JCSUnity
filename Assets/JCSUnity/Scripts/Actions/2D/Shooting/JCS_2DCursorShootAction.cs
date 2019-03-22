@@ -26,6 +26,7 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
+
         [Header("** Check Variables (JCS_2DCursorShootAction) **")]
 
         [SerializeField]

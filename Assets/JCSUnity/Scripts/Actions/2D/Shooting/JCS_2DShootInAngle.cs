@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -16,7 +16,7 @@ namespace JCSUnity
     /// Do the shoot action in specific angle.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
-    public class JCS_2DShootInAngle 
+    public class JCS_2DShootInAngle
         : MonoBehaviour
         , JCS_Action
     {
@@ -28,13 +28,20 @@ namespace JCSUnity
         // Private Variables
         private JCS_ShootAction mShootAction = null;
 
-        [SerializeField] private float mMinDegree = 120;
-        [SerializeField] private float mMaxDegree = 240;
+
+        [Header("** Runtime Variables (JCS_2DShootInAngle) **")]
 
         [Tooltip("Degree per bullet shoot.")]
-        [SerializeField] private float mDegreePerShoot = 10;
+        [SerializeField]
+        private float mDegreePerShoot = 10.0f;
 
-        //private float mDelayTimer = 0;
+        [Tooltip("Minimum degree in shoot.")]
+        [SerializeField]
+        private float mMinDegree = 120.0f;
+
+        [Tooltip("Maximum degree in shoot.")]
+        [SerializeField]
+        private float mMaxDegree = 240.0f;
 
         //----------------------
         // Protected Variables
@@ -43,9 +50,9 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public JCS_ShootAction GetShootAction() { return this.mShootAction; }
+        public float DegreePerShoot { get { return this.mDegreePerShoot; } }
         public float MinDegree { get { return this.mMinDegree; } }
         public float MaxDegree { get { return this.mMaxDegree; } }
-        public float DegreePerShoot { get { return this.mDegreePerShoot; } }
 
         //========================================
         //      Unity's function

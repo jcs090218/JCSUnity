@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -40,8 +40,8 @@ namespace JCSUnity
         private bool mAutoShootByOrder = false;
 
         [Tooltip("Degree per bullet shoot.")]
-        [SerializeField] [Range(1, 360)]
-        private float mDegreePerShoot = 10;
+        [SerializeField] [Range(1.0f, 360.0f)]
+        private float mDegreePerShoot = 10.0f;
 
         [Tooltip("Check if the enemy can shoot or not depends on the Delay Time!")]
         [SerializeField]
@@ -60,13 +60,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Axis mShootAxis = JCS_Axis.AXIS_Z;
 
-        private float mDelayTimer = 0;
+        private float mDelayTimer = 0.0f;
 
         private bool mShooted = false;
 
-        private float mRealTimeZone = 0;
+        private float mRealTimeZone = 0.0f;
 
-        private float mCount = 0;
+        private float mCount = 0.0f;
 
         //----------------------
         // Protected Variables
@@ -107,7 +107,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void ShootAllAngleByFrame()
         {
@@ -143,7 +143,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void ShootAllAngleByOrder()
         {
@@ -183,7 +183,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void AutoShootActionByFrame()
         {

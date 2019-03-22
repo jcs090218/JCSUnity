@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -40,27 +40,48 @@ namespace JCSUnity
         [SerializeField] [Range(0.01f, 0.5f)]
         private float mTimePerShoot = 0.1f;
 
-        [Tooltip("")]
-        [SerializeField] private bool mSequenceStay = true;
+        [Tooltip("Make the action do in sequence.")]
+        [SerializeField]
+        private bool mInSequenceEffect = false;
 
-        [Tooltip("")]
-        [SerializeField] private bool mInSequenceEffect = false;
+        [Tooltip("Make the bullet shoots at the position that starts.")]
+        [SerializeField]
+        private bool mSequenceStay = true;
 
 
         [Header("** Optional Variables (JCS_SequenceShootAction) **")]
-        [SerializeField] private JCS_AbilityFormat mAbilityFormat = null;
+
+        [Tooltip("Ability format to use.")]
+        [SerializeField]
+        private JCS_AbilityFormat mAbilityFormat = null;
+
 
         [Header("** Action Settings (JCS_SequenceShootAction) **")]
-        [SerializeField] private float mTimeBeforeShoot = 0;
+
+        [Tooltip("Time delay before shoot.")]
+        [SerializeField]
+        private float mTimeBeforeShoot = 0.0f;
+
         private bool mAction = false;
-        [SerializeField] private float mTimeDelayAfterShoot = 0;
+
+        [Tooltip("Time delay after a shoot.")]
+        [SerializeField]
+        private float mTimeDelayAfterShoot = 0.0f;
+
         private bool mAfterDelay = false;
-        private float mActionTimer = 0;
+
+        private float mActionTimer = 0.0f;
 
 
         [Header("** Shoot Gap Effect (JCS_SequenceShootAction) **")]
-        [SerializeField] private bool mShootGapEffect = false;
-        [SerializeField] private float mShootGap = 0.1f;
+
+        [Tooltip("Shoot with gap?")]
+        [SerializeField]
+        private bool mShootGapEffect = false;
+
+        [Tooltip("Gap distance.")]
+        [SerializeField]
+        private float mShootGap = 0.1f;
 
         private int[] mDamageApplying = null;
 
@@ -83,8 +104,15 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public int Hit { get { return this.mHit; } set { this.mHit = value; } }
+        public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
         public bool InSequenceEffect { get { return this.mInSequenceEffect; } set { this.mInSequenceEffect = value; } }
+        public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
         public void SetShootCallback(ShootCallback func) { this.mShootAction.SetShootCallback(func); }
+        public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } set { this.mAbilityFormat = value; } }
+        public float TimeBeforeShoot { get { return this.mTimeBeforeShoot; } set { this.mTimeBeforeShoot = value; } }
+        public float TimeDelayAfterShoot { get { return this.mTimeDelayAfterShoot; } set { this.mTimeDelayAfterShoot = value; } }
+        public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
+        public float ShootGap { get { return this.mShootGap; } set { this.mShootGap = value; } }
 
         //========================================
         //      Unity's function
@@ -177,18 +205,18 @@ namespace JCSUnity
                     if (liveObj.AbilityFormat != null)
                         defenseVal = liveObj.AbilityFormat.GetDefenseValue();
 
-                    // calculate the damage we are going to apply to 
+                    // calculate the damage we are going to apply to
                     // the target object.
                     mDamageApplying = PreCalculateSequenceDamage(
-                        mAbilityFormat.GetMinDamage(), 
-                        mAbilityFormat.GetMaxDamage(), 
+                        mAbilityFormat.GetMinDamage(),
+                        mAbilityFormat.GetMaxDamage(),
                         hit,
                         defenseVal);
 
                     // pre calculate the damage before the
-                    // actual bullet hit the object, 
+                    // actual bullet hit the object,
                     // so it could decide what object are dead already.
-                    // and other object or this object wont target the 
+                    // and other object or this object wont target the
                     // object is going die.
                     liveObj.ReceivePreCalDamage(mDamageApplying);
 
@@ -237,7 +265,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="processIndex"> thread id. </param>
         private void Sequence(int processIndex)
@@ -290,7 +318,7 @@ namespace JCSUnity
 
                         // after set the damage set it back to null
                         mDamageApplying = null;
-                        
+
                     }
                     // process the sub bullet in sequence
                     else {
@@ -299,11 +327,11 @@ namespace JCSUnity
                 }
                 else
                     mShootAction.Shoot(spawnPos, direction, 1, currentShootCount, false);
-                
+
 
                 ++currentShootCount;
 
-                // update new count, in order 
+                // update new count, in order
                 // to spawn next bullet
                 mShootCounter.set(processIndex, currentShootCount);
                 newTimer = 0;
