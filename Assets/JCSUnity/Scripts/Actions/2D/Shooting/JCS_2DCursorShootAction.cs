@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Shoot a bullet toward the cursor position.
+    /// Shoot a bullet toward the cursor position in 2D space.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     public class JCS_2DCursorShootAction
@@ -26,7 +26,8 @@ namespace JCSUnity
 
         //----------------------
         // Private Variables
-        [Header("** Check Variables **")]
+        [Header("** Check Variables (JCS_2DCursorShootAction) **")]
+
         [SerializeField]
         private JCS_ShootAction mShootAction = null;
 

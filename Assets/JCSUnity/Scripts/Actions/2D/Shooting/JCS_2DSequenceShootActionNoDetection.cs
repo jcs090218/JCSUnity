@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -28,12 +28,15 @@ namespace JCSUnity
         //----------------------
         // Private Variables
         [Header("** Check Variables (JCS_2DCursorShootAction) **")]
+
         [SerializeField]
         private JCS_ShootAction mShootAction = null;
+
         [SerializeField]
         private JCS_2DCursorShootAction mCursorShootAction = null;
 
-        [Header("** Sequence Shoot Settings (JCS_2DCursorShootAction) **")]
+
+        [Header("** Runtime Variables (JCS_2DCursorShootAction) **")]
 
         [Tooltip("How many shoot in sequence?")]
         [SerializeField]
@@ -52,6 +55,7 @@ namespace JCSUnity
         [Tooltip("Keep all the bullet in the same angle per sequence.")]
         [SerializeField]
         private bool mKeepShootAngle = true;
+
 
         [Header("** Shoot Gap Effect (JCS_2DCursorShootAction) **")]
 
@@ -102,7 +106,7 @@ namespace JCSUnity
             mShootAction = this.GetComponent<JCS_ShootAction>();
             mCursorShootAction = this.GetComponent<JCS_2DCursorShootAction>();
 
-            // overwrite both shoot action, 
+            // overwrite both shoot action,
             // so they won't process the input.
             mShootAction.OverrideShoot = true;
             mCursorShootAction.OverrideShoot = true;
@@ -211,7 +215,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="processIndex"></param>
         private void Sequence(int processIndex)
@@ -252,7 +256,7 @@ namespace JCSUnity
 
                 ++currentShootCount;
 
-                // update new count, in order 
+                // update new count, in order
                 // to spawn next bullet
                 mShootCounter.set(processIndex, currentShootCount);
                 newTimer = 0;

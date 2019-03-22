@@ -30,21 +30,21 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DFullScreenAtkAction) **")]
 
-        [Tooltip("Please use main animation instead.")]
+        [Tooltip("Supporting animation pool.")]
         [SerializeField]
         private JCS_AnimPool mAnimPoolSupAnim = null;
 
-        [Tooltip("How many support animation going on the scene.")]
+        [Tooltip("How many support animation going play on the scene.")]
         [SerializeField] [Range(0, 30)]
         private int mAnimDesity = 20;
 
         [Tooltip("How wide the skill effect?")]
-        [SerializeField] [Range(0, 1500)]
-        private float mSkillWide = 750;
+        [SerializeField] [Range(0.0f, 1500.0f)]
+        private float mSkillWide = 750.0f;
 
-        [Tooltip("How wide the skill effect?")]
-        [SerializeField] [Range(0, 1500)]
-        private float mSkillHeight = 750;
+        [Tooltip("How hight the skill effect?")]
+        [SerializeField] [Range(0.0f, 1500.0f)]
+        private float mSkillHeight = 750.0f;
 
         [Tooltip("Maximum the enmey kill in the scene.")]
         [SerializeField] [Range(0, 15)]
@@ -56,6 +56,9 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public int AnimDesity { get { return this.mAnimDesity; } set { this.mAnimDesity = value; } }
+        public float SkillWide { get { return this.mSkillWide; } set { this.mSkillWide = value; } }
+        public float SkillHeight { get { return this.mSkillHeight; } set { this.mSkillHeight = value; } }
         public int SkillHit { get { return this.mSkillHit; } }
 
         //========================================
