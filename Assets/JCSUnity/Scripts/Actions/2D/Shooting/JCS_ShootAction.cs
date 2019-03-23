@@ -36,31 +36,31 @@ namespace JCSUnity
         // Private Variables
 
 
-        [Header("** Optional Variables (JCS_ShootAction) **")]
+        [Header("** Check Variables (JCS_ShootAction) **")]
 
+        [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
         [SerializeField]
-        private JCS_2DSideScrollerPlayer mPlayer = null;
+        private bool mCanShoot = true;
 
 
-        [Header("** Initialize Variables (JCS_ShootAction) **")]
+        [Header("** Runtime Variables (JCS_ShootAction) **")]
 
+        [Tooltip("Bullet to use.")]
         [SerializeField]
         private JCS_Bullet mBullet = null;
 
+        [Tooltip("Spawn point.")]
         [SerializeField]
         private Transform mSpawnPoint = null;
 
-        [Tooltip("Offset of spawn point.")]
+        [Tooltip("Offset position to spawn point.")]
         [SerializeField]
         private Vector3 mSpanwPointOffset = Vector3.zero;
 
         // if this is true, meaning there are other shoot action going on.
         private bool mOverrideShoot = false;
 
-
-        [Header("** Runtime Variables (JCS_ShootAction) **")]
-
-        [Tooltip("")]
+        [Tooltip("Default hit active to live object.")]
         [SerializeField] [Range(1, 30)]
         private int mDefaultHit = 1;
 
@@ -71,15 +71,15 @@ namespace JCSUnity
 
         [Header("** Key Variables (JCS_ShootAction) **")]
 
-        [Tooltip("")]
+        [Tooltip("Shoot keycode.")]
         [SerializeField]
         private KeyCode mShootKeyCode = KeyCode.None;
 
-        [Tooltip("")]
+        [Tooltip("Mouse button to shoot.")]
         [SerializeField]
         private JCS_MouseButton mMouseButton = JCS_MouseButton.LEFT;
 
-        [Tooltip("")]
+        [Tooltip("Key action type.")]
         [SerializeField]
         private JCS_KeyActionType mKeyAct = JCS_KeyActionType.KEY;
 
@@ -92,13 +92,15 @@ namespace JCSUnity
 
         [Header("** Action Settings (JCS_ShootAction) **")]
 
-        private bool mAction = false;
-
+        [Tooltip("Delay time before shooting a bullet.")]
         [SerializeField]
         private float mTimeBeforeShoot = 0.0f;
 
+        [Tooltip("Delay time after shooting a bullet.")]
         [SerializeField]
         private float mTimeDelayAfterShoot = 0.0f;
+
+        private bool mAction = false;
 
         private bool mAfterDelay = false;
 
@@ -111,10 +113,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mAutoShoot = false;
 
-        [SerializeField]
-        private bool mCanShoot = true;
-
-        [Tooltip("The speed of the bullet we spawn.")]
+        [Tooltip("Speed apply to the bullet")]
         [SerializeField]
         private float mBulletSpeed = 20.0f;
 
@@ -127,48 +126,54 @@ namespace JCSUnity
 
         [Header("** Deviation Effect (JCS_ShootAction) **")]
 
-        [Tooltip("bullet will not go through to target directly")]
+        [Tooltip("Deviate the angle on x-axis.")]
         [SerializeField]
         private bool mDeviationEffectX = false;
 
+        [Tooltip("Deviate range on x-axis.")]
         [SerializeField] [Range(0.0f, 359.0f)]
         private float mDeviationRangeX = 1.0f;
 
+        [Tooltip("Deviate the angle on y-axis.")]
         [SerializeField]
         private bool mDeviationEffectY = false;
 
-        [SerializeField] [Range(0, 359)]
+        [Tooltip("Deviate range on y-axis.")]
+        [SerializeField] [Range(0.0f, 359.0f)]
         private float mDeviationRangeY = 1f;
 
+        [Tooltip("Deviate the angle on z-axis.")]
         [SerializeField]
         private bool mDeviationEffectZ = false;
-        [SerializeField] [Range(0, 359)]
-        private float mDeviationRangeZ = 1f;
+
+        [Tooltip("Deviate range on z-axis.")]
+        [SerializeField] [Range(0.0f, 359.0f)]
+        private float mDeviationRangeZ = 1.0f;
 
 
         [Header("** Random Spawn Effect (JCS_ShootAction) **")]
 
-        [Tooltip("Spawn Bullet randomly transform.")]
+        [Tooltip("Spawn bullet at random position on x-axis.")]
         [SerializeField]
         private bool mRandPosX = false;
 
-        [Tooltip("")]
+        [Tooltip("Random position apply on x-axis.")]
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandPosRangeX = 1.0f;
 
-        [Tooltip("")]
+        [Tooltip("Spawn bullet at random position on y-axis.")]
         [SerializeField]
         private bool mRandPosY = false;
 
-        [Tooltip("")]
+        [Tooltip("Random position apply on y-axis.")]
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandPosRangeY = 1.0f;
 
-        [Tooltip("")]
+        [Tooltip("Spawn bullet at random position on z-axis.")]
         [SerializeField]
         private bool mRandPosZ = false;
 
-        [Tooltip("")]
+        [Tooltip("Random position apply on z-axis.")]
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
 
@@ -203,9 +208,16 @@ namespace JCSUnity
             FURTHEST
         };
 
-        [Tooltip("")]
+        [Tooltip("Track type.")]
         [SerializeField]
         private TrackType mTrackType = TrackType.CLOSEST;
+
+
+        [Header("** Optional Variables (JCS_ShootAction) **")]
+
+        [Tooltip("Player uses the shoot action.")]
+        [SerializeField]
+        private JCS_2DSideScrollerPlayer mPlayer = null;
 
 
         //----------------------
@@ -286,7 +298,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        ///
+        /// Shoot a bullet.
         /// </summary>
         /// <returns></returns>
         public JCS_Bullet Shoot()
@@ -303,7 +315,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        ///
+        /// Shoot a bullet.
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="direction"></param>
@@ -318,7 +330,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        ///
+        /// Shoot a bullet.
         /// </summary>
         /// <param name="bulletSpeed"></param>
         /// <param name="pos"></param>
@@ -407,7 +419,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        ///
+        /// Shoot a bullet.
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="direction"></param>
@@ -422,7 +434,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        ///
+        /// Shoot a bullet.
         /// </summary>
         /// <param name="bulletSpeed"></param>
         /// <param name="pos"></param>
@@ -584,7 +596,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        ///
+        /// Apply deviate effect.
         /// </summary>
         /// <param name="target"></param>
         public void DeviationEffect(Transform target)
