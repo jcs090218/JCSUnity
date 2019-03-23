@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Do the shooting action in all angle.
+    /// Action that shoot in all angle.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     public class JCS_ShootAllAngle
@@ -29,13 +29,20 @@ namespace JCSUnity
         private JCS_ShootAction mShootAction = null;
 
 
+        [Header("** Check Variables (JCS_ShootAllAngle) **")]
+
+        [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
+        [SerializeField]
+        private bool mCanShoot = true;
+
+
         [Header("** Runtime Variables (JCS_ShootAllAngle) **")]
 
-        [Tooltip("Automatically shoot the bullet itself, use of AI!")]
+        [Tooltip("Automatically shoot bullets itself in frame.")]
         [SerializeField]
         private bool mAutoShootInFrame = false;
 
-        [Tooltip("Automatically shoot the bullet itself, use of AI!")]
+        [Tooltip("Automatically shoot bullets itself in order.")]
         [SerializeField]
         private bool mAutoShootByOrder = false;
 
@@ -43,20 +50,15 @@ namespace JCSUnity
         [SerializeField] [Range(1.0f, 360.0f)]
         private float mDegreePerShoot = 10.0f;
 
-        [Tooltip("Check if the enemy can shoot or not depends on the Delay Time!")]
-        [SerializeField]
-        private bool mCanShoot = true;
-
-
-        [Tooltip("How long it take to shoot a bullet.")]
+        [Tooltip("How long it takes to shoot a bullet.")]
         [SerializeField] [Range(0.01f, 15.0f)]
         private float mDelayTime = 1.0f;
 
-        [Tooltip("Time that will randomly affect the Time Zone.")]
+        [Tooltip("Time that will randomly affect the time zone.")]
         [SerializeField] [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
-        [Tooltip("Axis of the bullet shooting.")]
+        [Tooltip("Axis the bullet shoots.")]
         [SerializeField]
         private JCS_Axis mShootAxis = JCS_Axis.AXIS_Z;
 
@@ -74,9 +76,13 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool CanShoot { get { return this.mCanShoot; } set { this.mCanShoot = value; } }
         public bool AutoShootInFrame { get { return this.mAutoShootInFrame; } set { this.mAutoShootInFrame = value; } }
         public bool AutoShootByOrder { get { return this.mAutoShootByOrder; } set { this.mAutoShootByOrder = value; } }
-        public bool CanShoot { get { return this.mCanShoot; } set { this.mCanShoot = value; } }
+        public float DegreePerShoot { get { return this.mDegreePerShoot; } set { this.mDegreePerShoot = value; } }
+        public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+        public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
+        public JCS_Axis ShootAxis { get { return this.mShootAxis; } set { this.mShootAxis = value; } }
 
         //========================================
         //      Unity's function
@@ -107,7 +113,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        ///
+        /// Shoot bullets in all angle in current frame.
         /// </summary>
         public void ShootAllAngleByFrame()
         {
@@ -143,7 +149,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        ///
+        /// Shoot a bullet at a time in oder by degree.
         /// </summary>
         public void ShootAllAngleByOrder()
         {
@@ -183,7 +189,7 @@ namespace JCSUnity
         // Private Functions
 
         /// <summary>
-        ///
+        /// Automatically shoot bullets in all angle in current frame.
         /// </summary>
         private void AutoShootActionByFrame()
         {
