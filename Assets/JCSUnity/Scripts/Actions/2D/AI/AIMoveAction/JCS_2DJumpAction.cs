@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Simulate the AI to do jump base on 
+    /// Simulate the AI to do jump base on
     /// the random possiblity time zone.
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
@@ -33,12 +33,12 @@ namespace JCSUnity
 
         private JCS_VelocityInfo mVelocityInfo = null;
 
-        [Header("** Initialize Varaibles **")]
+
+        [Header("** Runtime Varaibles (JCS_2DJumpAction) **")]
 
         [Tooltip("How much force to do one jump.")]
-        [SerializeField] private float mJumpForce = 10;
-
-        [Header("** Activate Varaibles **")]
+        [SerializeField]
+        private float mJumpForce = 10.0f;
 
         [Tooltip("Possiblity to active this action.")]
         [SerializeField] [Range(0.0f, 100.0f)]
@@ -52,7 +52,7 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
-        // time to record down the real time to do one jump 
+        // time to record down the real time to do one jump
         // after we calculate the real time.
         private float mRealTimeZone = 0;
 
@@ -62,27 +62,34 @@ namespace JCSUnity
         // check to see if we can reset our time zone.
         private bool mJumped = false;
 
-        [Header("** Action Settings **")]
+
+        [Header("** Action Settings (JCS_2DJumpAction) **")]
+
         [Tooltip("Generate a random walk speed at the initilaize time.")]
         [SerializeField]
         private bool mStartRandomJumpForce = false;
 
-        [Tooltip(@"Addition value to the jump force. For 
+        [Tooltip(@"Addition value to the jump force. For
 instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         [SerializeField]
         [Range(1, 10)]
         private float mRandomJumpForceRange = 5;
 
+
         [Header("** Optional Settings (JCS_2DJumpAction) **")]
+
         [Tooltip("Plz fill this is there is animation going on to this game object.")]
         // Animator in order to set the animation.
-        [SerializeField] private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
-        // When the we jump, we start check to see if 
-        // this object is grounded or not, in order to 
+        [SerializeField]
+        private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
+
+        // When the we jump, we start check to see if
+        // this object is grounded or not, in order to
         // go back and do the animation before we do jump
         // animation.
         private bool mCheckEndJumpAnimation = false;
-        // record down the animation before jump, 
+
+        // record down the animation before jump,
         // so we can keep on the same animation after jump!
         private JCS_LiveObjectState mAnimStateBeforeJump = JCS_LiveObjectState.STAND;
 
@@ -165,7 +172,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         public void Jump(float force)
         {
             // cannot double jump, to design
-            // a double jump plz create another 
+            // a double jump plz create another
             // action class to handle the effect.
             if (!isGrounded)
                 return;
@@ -192,7 +199,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         // Private Functions
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns> true: do jump, flase: dont do jump </returns>
         private void DoJump()

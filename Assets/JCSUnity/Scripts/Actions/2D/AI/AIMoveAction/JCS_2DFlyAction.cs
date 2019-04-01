@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,12 +13,12 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Simulate the fly action by it own.
+    /// Action does the fly action on 2D.
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     [RequireComponent(typeof(JCS_VelocityInfo))]
 
-    // Sound Player cause performance, so i make 
+    // Sound Player cause performance, so i make
     // it to optional.
     //[RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_2DFlyAction
@@ -52,28 +52,32 @@ namespace JCSUnity
 
         [Header("** Runtime Varaibles (JCS_2DFlyAction) **")]
 
-        [Tooltip("Speed of flying.")]
-        [SerializeField] private float mFlyForceX = 10;
-        [SerializeField] private float mFlyForceY = 10;
+        [Tooltip("Speed of flying on x-axis.")]
+        [SerializeField]
+        private float mFlyForceX = 10.0f;
+
+        [Tooltip("Speed of flying on y-axis.")]
+        [SerializeField]
+        private float mFlyForceY = 10.0f;
 
 
         [Header("** Activate Variables (JCS_2DFlyAction) **")]
 
         [Tooltip("Possiblity of going UP.")]
-        [SerializeField] [Range(0, 100)]
-        private float mToUp = 50;
+        [SerializeField] [Range(0.0f, 100.0f)]
+        private float mToUp = 50.0f;
 
         [Tooltip("Possiblity of going DOWN.")]
-        [SerializeField] [Range(0, 100)]
-        private float mToDown = 50;
+        [SerializeField] [Range(0.0f, 100.0f)]
+        private float mToDown = 50.0f;
 
         [Tooltip("Possiblity of going LEFT.")]
-        [SerializeField] [Range(0, 100)]
-        private float mToLeft = 50;
+        [SerializeField] [Range(0.0f, 100.0f)]
+        private float mToLeft = 50.0f;
 
         [Tooltip("Possiblity of going RIGHT.")]
-        [SerializeField] [Range(0, 100)]
-        private float mToRight = 50;
+        [SerializeField] [Range(0.0f, 100.0f)]
+        private float mToRight = 50.0f;
 
         [Tooltip("Possibility to IDLE in horizontal direction.")]
         [SerializeField] [Range(0.0f, 100.0f)]
@@ -98,12 +102,12 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
-        // time to record down the real time to do one fly 
+        // time to record down the real time to do one fly
         // action after we calculate the real time.
-        private float mRealTimeZone = 0;
+        private float mRealTimeZone = 0.0f;
 
         // timer to do fly.
-        private float mTimer = 0;
+        private float mTimer = 0.0f;
 
         // check to see if we can reset our time zone.
         private bool mFlyed = false;
@@ -112,40 +116,46 @@ namespace JCSUnity
         [Header("** Space Limit Settings (JCS_2DFlyAction) **")]
 
         [Tooltip("Lowest height the object can go.")]
-        [SerializeField] [Range(-1000, 1000)]
-        private float mMinHeight = -500;
+        [SerializeField] [Range(-1000.0f, 1000.0f)]
+        private float mMinHeight = -500.0f;
 
-        [Tooltip("Heigest height the object can go.")]
-        [SerializeField] [Range(-1000, 1000)]
-        private float mMaxHeight = 500;
+        [Tooltip("Highest height the object can go.")]
+        [SerializeField] [Range(-1000.0f, 1000.0f)]
+        private float mMaxHeight = 500.0f;
 
 
         [Header("** Track Effect (JCS_2DFlyAction) **")]
 
-        [Tooltip(@"Check weather the this object get mad or not. If 
-the get mad will start tracking the object that make this object mad.")]
-        [SerializeField] private bool mMadEffect = true;
+        [Tooltip("If get mad will start tracking the object that make this object mad.")]
+        [SerializeField]
+        private bool mMadEffect = true;
 
         [Tooltip("If Mad Effect is on this object is needed.")]
-        [SerializeField] private JCS_AttackerRecorder mAttackRecorder = null;
+        [SerializeField]
+        private JCS_AttackerRecorder mAttackRecorder = null;
 
 
         [Header("** Optional Settings (JCS_2DFlyAction) **")]
 
-        [Tooltip("Plz fill this is there is animation going on to this game object.")]
-        [SerializeField] private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
+        [Tooltip("Live object animation.")]
+        [SerializeField]
+        private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
-        [Tooltip(@"Check this to make the object ignore all the platform at 
+        [Tooltip(@"Check this to make the object ignore all the platform at
 initialize time.")]
-        [SerializeField] private bool mIgnorePlatform = true;
+        [SerializeField]
+        private bool mIgnorePlatform = true;
+
 
         [Header("** Sound Settings (JCS_2DFlyAction) **")]
 
         [Tooltip("Sound while flying.")]
-        [SerializeField] private AudioClip mFlySound = null;
+        [SerializeField]
+        private AudioClip mFlySound = null;
 
-        [Tooltip("If u want the sound effect plz add jcs sound player yourself.")]
-        [SerializeField] private JCS_SoundPlayer mSoundPlayer = null;
+        [Tooltip("Sound player to play sounds.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         //----------------------
         // Protected Variables
@@ -221,7 +231,7 @@ initialize time.")]
 
         private void LateUpdate()
         {
-            // check after limit, 
+            // check after limit,
             // so before rendering will fix the position.
             SpaceLimitCheck();
         }
@@ -244,13 +254,13 @@ initialize time.")]
                 return;
 
             // start the algorithm to see if we
-            // find the direction to do, 
+            // find the direction to do,
             // if not it will just go randomly.
             FlyDirectionByPossiblity();
         }
 
         /// <summary>
-        /// 
+        /// Fly to a direction base on possibilities.
         /// </summary>
         public void FlyDirectionByPossiblity()
         {
@@ -263,11 +273,11 @@ initialize time.")]
             {
                 Transform lastAttacker = mAttackRecorder.LastAttacker;
 
-                // if the last attacker does not exist, 
+                // if the last attacker does not exist,
                 // do nothing.
                 if (lastAttacker != null)
                 {
-                    // NOTE(JenChieh): if does exist, start 
+                    // NOTE(JenChieh): if does exist, start
                     // following the attacker.
 
                     // X-axis
@@ -344,7 +354,7 @@ initialize time.")]
             }
 
             // if there are multiple result do randomly
-            if (resultCounterX >= 2 && 
+            if (resultCounterX >= 2 &&
                 resultCounterY >= 2)
                 FlyRandomly();
             // else if we successfully find the direction,
@@ -370,7 +380,7 @@ initialize time.")]
         }
 
         /// <summary>
-        /// Process velocity and animation by 
+        /// Process velocity and animation by
         /// passing the status. (Integer)
         /// </summary>
         /// <param name="statusX"> status in x axis </param>
@@ -380,7 +390,7 @@ initialize time.")]
             FlyByStatus((StatusX)statusX, (StatusY)statusY);
         }
         /// <summary>
-        /// Process velocity and animation by 
+        /// Process velocity and animation by
         /// passing the status. (Enum)
         /// </summary>
         /// <param name="statusX"> status in x axis </param>
@@ -416,16 +426,16 @@ initialize time.")]
             }
         }
 
-        
+
         /// <summary>
-        /// Function with base function implemented above.
+        /// Fly on x-axis.
         /// </summary>
         public void FlyX()
         {
             FlyX(mFlyForceX);
         }
         /// <summary>
-        /// Apply force to "vertical" direction.
+        /// Fly on x-axis.
         /// </summary>
         /// <param name="force"> foce to apply </param>
         public void FlyX(float force)
@@ -436,14 +446,14 @@ initialize time.")]
         }
 
         /// <summary>
-        /// Function with base function implemented below.
+        /// Fly on y-axis.
         /// </summary>
         public void FlyY()
         {
             FlyY(mFlyForceY);
         }
         /// <summary>
-        /// Apply force to "horizontal" direction.
+        /// Fly on y-axis.
         /// </summary>
         /// <param name="force"> foce to apply </param>
         public void FlyY(float force)
@@ -452,7 +462,7 @@ initialize time.")]
 
             mFlyed = true;
         }
-        
+
 
         //----------------------
         // Protected Functions
@@ -477,7 +487,7 @@ initialize time.")]
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do 
+        /// Algorithm to calculate the time to do
         /// fly action include direction.
         /// </summary>
         private void ResetTimeZone()
@@ -490,7 +500,7 @@ initialize time.")]
         }
 
         /// <summary>
-        /// If the object out of space we set, 
+        /// If the object out of space we set,
         /// limit it. (Let the object not go anywhere.)
         /// </summary>
         private void SpaceLimitCheck()
@@ -507,7 +517,7 @@ initialize time.")]
         }
 
         /// <summary>
-        /// Sound Settings stuff, 
+        /// Sound Settings stuff,
         /// Play the flying sound and loop the sound.
         /// </summary>
         private void PlayFlySound()
