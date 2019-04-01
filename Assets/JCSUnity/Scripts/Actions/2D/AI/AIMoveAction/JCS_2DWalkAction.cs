@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Simulate the walk action by the character itself.
+    /// Action does the AI walk action in 2D.
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     [RequireComponent(typeof(JCS_VelocityInfo))]
@@ -38,14 +38,12 @@ namespace JCSUnity
 
         private JCS_VelocityInfo mVelocityInfo = null;
 
+
         [Header("** Runtime Varaibles (JCS_2DWalkAction) **")]
 
-        [Tooltip("Speed of the action. (walk action)")]
+        [Tooltip("Speed of the action.")]
         [SerializeField]
-        private float mWalkSpeed = 10;
-
-
-        [Header("** Activate Variables **")]
+        private float mWalkSpeed = 10.0f;
 
         [Tooltip("Possibility to walk LEFT way.")]
         [SerializeField] [Range(0.0f, 100.0f)]
@@ -64,7 +62,7 @@ namespace JCSUnity
         private float mPossibility = 80.0f;
 
 
-        [Header("** Time Settings **")]
+        [Header("** Time Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Time to do one walk.")]
         [SerializeField] [Range(0.0f, 10.0f)]
@@ -74,7 +72,7 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
-        // time to record down the real time to do one walk 
+        // time to record down the real time to do one walk
         // action after we calculate the real time.
         private float mRealTimeZone = 0;
 
@@ -91,7 +89,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mStartRandomWalkSpeed = false;
 
-        [Tooltip(@"Addition value to the walk speed. For 
+        [Tooltip(@"Addition value to the walk speed. For
 instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         [SerializeField] [Range(1, 10)]
         private float mRandomWalkSpeedRange = 5;
@@ -99,8 +97,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
 
         [Header("** Track Effect (JCS_2DWalkAction) **")]
 
-        [Tooltip(@"Check weather the this object get mad or not. If 
-the get mad will start tracking the object that make this object mad.")]
+        [Tooltip("If get mad will start tracking the object that make this object mad.")]
         [SerializeField]
         private bool mMadEffect = true;
 
@@ -111,7 +108,7 @@ the get mad will start tracking the object that make this object mad.")]
 
         [Header("** Optional Settings (JCS_2DWalkAction) **")]
 
-        [Tooltip("Plz fill this is there is animation going on to this game object.")]
+        [Tooltip("Live object animation.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
@@ -133,7 +130,7 @@ the get mad will start tracking the object that make this object mad.")]
         public float RecordSpeedY { get { return this.mVelocityInfo.RecordSpeed.y; } set { this.mVelocityInfo.RecordSpeedY = value; } }
         public float RecordSpeedZ { get { return this.mVelocityInfo.RecordSpeed.z; } set { this.mVelocityInfo.RecordSpeedZ = value; } }
 
-        // Track Effects 
+        // Track Effects
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
 
         //========================================
@@ -171,7 +168,7 @@ the get mad will start tracking the object that make this object mad.")]
         // Public Functions
 
         /// <summary>
-        /// Calculate the possiblity and see if do the walk action.
+        /// Do the walk action depends on possibility.
         /// </summary>
         public void WalkByPossiblity()
         {
@@ -182,7 +179,7 @@ the get mad will start tracking the object that make this object mad.")]
                 return;
 
             // start the algorithm to see if we
-            // find the direction to do, 
+            // find the direction to do,
             // if not it will just go randomly.
             WalkDirectionPossibility();
         }
@@ -195,18 +192,18 @@ the get mad will start tracking the object that make this object mad.")]
         {
             // direction we are going to use next.
             Status direction = Status.IDLE;
-            
+
 
             // if is already get attack do the mad effect.
             if (mMadEffect && mAttackRecorder != null)
             {
                 Transform lastAttacker = mAttackRecorder.LastAttacker;
 
-                // if the last attacker does not exist, 
+                // if the last attacker does not exist,
                 // do nothing.
                 if (lastAttacker != null)
                 {
-                    // if does exist, start following 
+                    // if does exist, start following
                     // the attacker.
                     if (lastAttacker.position.x < this.transform.position.x)
                         direction = Status.LEFT;
@@ -239,7 +236,7 @@ the get mad will start tracking the object that make this object mad.")]
                 direction = Status.LEFT;
                 ++resultCounter;
             }
-            
+
             if (rightPossiblity < mToRight)
             {
                 // success to do right
@@ -259,21 +256,21 @@ the get mad will start tracking the object that make this object mad.")]
         /// <summary>
         /// Sometimes if the algorithm cannot find which direction to go.
         /// Just use the function instead of keep finding the direction.
-        /// 
+        ///
         /// For example, all three possiblity (Idle, Left, Right)
-        /// can be set to 100 percent. Than it will always have to 
+        /// can be set to 100 percent. Than it will always have to
         /// possiblity of direction to go, which mean the object could
         /// not decide which direction to go.
         /// </summary>
         public void WalkRandomly()
         {
             int result = JCS_Random.Range(-1, 1 + 1);
-            
+
             WalkByStatus(result);
         }
 
         /// <summary>
-        /// 
+        /// Walk depends on the status.
         /// </summary>
         /// <param name="direction"></param>
         public void WalkByStatus(int direction)
@@ -282,7 +279,7 @@ the get mad will start tracking the object that make this object mad.")]
         }
 
         /// <summary>
-        /// 
+        /// Walk depends on the status.
         /// </summary>
         /// <param name="status"></param>
         public void WalkByStatus(Status status)
@@ -364,7 +361,7 @@ the get mad will start tracking the object that make this object mad.")]
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do 
+        /// Algorithm to calculate the time to do
         /// walk action include direction.
         /// </summary>
         private void ResetTimeZone()

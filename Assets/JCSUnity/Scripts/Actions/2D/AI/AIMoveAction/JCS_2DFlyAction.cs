@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Action does the fly action on 2D.
+    /// Action does the AI fly action on 2D.
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     [RequireComponent(typeof(JCS_VelocityInfo))]

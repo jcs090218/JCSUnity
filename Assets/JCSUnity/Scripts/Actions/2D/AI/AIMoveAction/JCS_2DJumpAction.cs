@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Simulate the AI to do jump base on
-    /// the random possiblity time zone.
+    /// Action does the AI jump action in 2D.
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     [RequireComponent(typeof(JCS_VelocityInfo))]
@@ -72,13 +71,13 @@ namespace JCSUnity
         [Tooltip(@"Addition value to the jump force. For
 instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         [SerializeField]
-        [Range(1, 10)]
-        private float mRandomJumpForceRange = 5;
+        [Range(1.0f, 10.0f)]
+        private float mRandomJumpForceRange = 5.0f;
 
 
         [Header("** Optional Settings (JCS_2DJumpAction) **")]
 
-        [Tooltip("Plz fill this is there is animation going on to this game object.")]
+        [Tooltip("Live object animation.")]
         // Animator in order to set the animation.
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
@@ -156,6 +155,9 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         //----------------------
         // Public Functions
 
+        /// <summary>
+        /// Do the jump by possibility.
+        /// </summary>
         public void JumpByPossibility()
         {
             float possibility = JCS_Random.Range(0, 100);
@@ -165,6 +167,10 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
 
             Jump();
         }
+
+        /// <summary>
+        /// Do the jump action.
+        /// </summary>
         public void Jump()
         {
             Jump(mJumpForce);
@@ -199,7 +205,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         // Private Functions
 
         /// <summary>
-        ///
+        /// Do jump implementation.
         /// </summary>
         /// <returns> true: do jump, flase: dont do jump </returns>
         private void DoJump()
