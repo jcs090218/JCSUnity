@@ -3,7 +3,7 @@
  * $Date: 2018-09-12 02:50:44 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using System.Collections;
