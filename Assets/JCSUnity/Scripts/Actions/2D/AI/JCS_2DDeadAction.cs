@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Work with the "JCS_2DLiveObject" class. (Optional/Effect Class)
+    /// Dead action for live object.
     /// </summary>
     [RequireComponent(typeof(JCS_2DLiveObject))]
     public class JCS_2DDeadAction
@@ -28,32 +28,37 @@ namespace JCSUnity
 
         private JCS_2DLiveObject mLiveObject = null;
 
-        [Header("** Optional Settings (JCS_2DWalkAction) **")]
 
-        [Tooltip("Plz fill this is there is animation going on to this game object.")]
-        [SerializeField] private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
+        [Header("** Optional Settings (JCS_2DDeadAction) **")]
+
+        [Tooltip("Live object animation.")]
+        [SerializeField]
+        private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
 
-        [Header("** Sound Settings (JCS_2DWalkAction) **")]
+        [Header("** Sound Settings (JCS_2DDeadAction) **")]
 
         [Tooltip("Play one shot when this action active.")]
-        [SerializeField] private AudioClip mDieSound = null;
+        [SerializeField]
+        private AudioClip mDieSound = null;
 
         // check to play the die sound.
         private bool mSoundPlayed = false;
 
 
-        [Header("** Effect Setting (JCS_2DWalkAction) **")]
+        [Header("** Effect Setting (JCS_2DDeadAction) **")]
 
-        [Tooltip("Disable un-necessary componenet while die.")]
-        [SerializeField] private bool mDisableOtherComponentWhileDie = true;
+        [Tooltip("Disable unnecessary componenet when died.")]
+        [SerializeField]
+        private bool mDisableOtherComponentWhileDie = true;
 
-        [Tooltip("Freeze the object while displayin dead animation.")]
-        [SerializeField] private bool mFreezeWhileDie = true;
+        [Tooltip("Freeze the object while displaying dead animation.")]
+        [SerializeField]
+        private bool mFreezeWhileDie = true;
 
-
-        [Tooltip("Array of componenet u want to disable after die.")]
-        [SerializeField] private MonoBehaviour[] mDisableComponents = null;
+        [Tooltip("Array of componenet you want to disable when died.")]
+        [SerializeField]
+        private MonoBehaviour[] mDisableComponents = null;
 
 
         //----------------------
@@ -76,7 +81,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            // if still could damage this live object, 
+            // if still could damage this live object,
             // mean this object isn't dead yet.
             if (0 < mLiveObject.HP)
                 return;
@@ -116,8 +121,8 @@ namespace JCSUnity
                 mDisableOtherComponentWhileDie = false;
             }
 
-            // if the animation starts, 
-            // start timer and check the 
+            // if the animation starts,
+            // start timer and check the
             // dead animation is end or not.
             if (mLiveObjectAnimator.IsInState(JCS_LiveObjectState.DIE))
             {

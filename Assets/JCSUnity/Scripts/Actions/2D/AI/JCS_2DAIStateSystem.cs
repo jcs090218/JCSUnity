@@ -3,7 +3,7 @@
  * $Date: 2016-09-05 21:23:59 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Handle AI action and allow scripter to use 
+    /// Handle AI action and allow scripter to use
     /// to switch the state using State Pattern.
     /// </summary>
     public class JCS_2DAIStateSystem
@@ -41,7 +41,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_AIStateSystem) **")]
 
-        [Tooltip("")]
+        [Tooltip("State of the AI move action.")]
         [SerializeField]
         private JCS_AIMoveActionType mAIMoveActionType = JCS_AIMoveActionType.NONE;
 
@@ -89,8 +89,7 @@ namespace JCSUnity
         // Public Functions
 
         /// <summary>
-        /// Call this function to switch between 
-        /// ai move state.
+        /// Switch AI move action state.
         /// </summary>
         /// <param name="type"> type of the ai move action. </param>
         public void SwitchAIMoveState(JCS_AIMoveActionType type)

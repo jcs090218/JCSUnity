@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Simulate the drop item action.
-    /// Control the compoenent in order to do this action.
+    /// Action makes the gameobject drops item.
     /// </summary>
     [RequireComponent(typeof(JCS_ItemDroppable))]
     public class JCS_2DDropItemAction
@@ -28,30 +27,30 @@ namespace JCSUnity
         // Private Variables
         private JCS_ItemDroppable mItemDroppable = null;
 
-        [Header("** Drop when Dies Settings **")]
+
+        [Header("** Runtime Variables (JCS_2DDropItemAction) **")]
 
         [Tooltip("Drop once when the object is dead.")]
-        [SerializeField] private bool mDropWhenDies = true;
-
-
-        [Header("** Drop by time Settings **")]
+        [SerializeField]
+        private bool mDropWhenDies = true;
 
         [Tooltip("Drop by time.")]
-        [SerializeField] private bool mDropByTime = false;
+        [SerializeField]
+        private bool mDropByTime = false;
 
         [Tooltip("Time to drop one time.")]
-        [SerializeField] [Range(0, 10)]
-        private float mTimePerDrop = 0;
+        [SerializeField] [Range(0.0f, 10.0f)]
+        private float mTimePerDrop = 0.0f;
 
-        [Tooltip("Effecting the time every time it drop.")]
-        [SerializeField] [Range(0, 5)]
-        private float mRandomTimeRange = 0;
+        [Tooltip("Effect the time every time it drops.")]
+        [SerializeField] [Range(0.0f, 5.0f)]
+        private float mRandomTimeRange = 0.0f;
 
         // a time combine random + timer per drop value.
-        private float mDropRealTime = 0;
+        private float mDropRealTime = 0.0f;
 
         // timer to calculate weather to do drop action or not
-        private float mDropTimer = 0;
+        private float mDropTimer = 0.0f;
 
         // trigger to re-calculate the drop time
         private bool mDroped = false;
@@ -62,6 +61,10 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public bool DropWhenDies { get { return this.mDropWhenDies; } set {this.mDropWhenDies = value; } }
+        public bool DropByTime { get { return this.mDropByTime; } set {this.mDropByTime = value; } }
+        public float TimePerDrop { get { return this.mTimePerDrop; } set {this.mTimePerDrop = value; } }
+        public float RandomTimeRange { get { return this.mRandomTimeRange; } set {this.mRandomTimeRange = value; } }
 
         //========================================
         //      Unity's function
@@ -132,7 +135,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Once we do the drop item action, 
+        /// Once we do the drop item action,
         /// re-calculate the next drop time.
         /// so every time it drop is random.
         /// </summary>

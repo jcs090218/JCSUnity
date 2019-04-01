@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -13,8 +13,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// When it start, target the object by the action
-    /// have chosen.
+    /// Look at the gameobject depends on the find method.
     /// </summary>
     [RequireComponent(typeof(JCS_AttackerInfo))]
     public class JCS_2DInitLookByTypeAction
@@ -23,7 +22,7 @@ namespace JCSUnity
 
         //----------------------
         // Public Variables
-        
+
         public enum FindMethod
         {
             CLOSEST,
@@ -47,15 +46,18 @@ namespace JCSUnity
 
         private JCS_AttackerInfo mAttackerInfo = null;
 
+
+        [Header("** Runtime Variables (JCS_2DInitLookByTypeAction) **")]
+
         [Tooltip("Direction the target looking at.")]
         [SerializeField]
         private FindMethod mMethod = FindMethod.CLOSEST_RIGHT;
 
-        [Tooltip("")]
+        [Tooltip("Active this action.")]
         [SerializeField]
         private bool mActiveEffect = true;
 
-        [Tooltip(@"The object will recognize the object 
+        [Tooltip(@"The object will recognize the object
 which to target which not to.")]
         [SerializeField]
         private bool mUseAttacker = true;
@@ -99,8 +101,8 @@ which to target which not to.")]
         // Public Functions
 
         /// <summary>
-        /// Lock the object, and look at it.
-        /// So the object will seems like it 
+        /// Lock a gameobject, and look at it.
+        /// So the object will seems like it
         /// "approach/further away" to the object.
         /// </summary>
         public void LockOnInit()
@@ -108,8 +110,8 @@ which to target which not to.")]
             LockOnInit(mMethod);
         }
         /// <summary>
-        /// Lock the object, and look at it.
-        /// So the object will seems like it 
+        /// Lock a gameobject, and look at it.
+        /// So the object will seems like it
         /// "approach/further away" to the object.
         /// </summary>
         /// <param name="method"> method to find. </param>
@@ -178,7 +180,7 @@ which to target which not to.")]
         // Private Functions
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="liveObj"> object to check </param>
         /// <returns>
@@ -264,8 +266,8 @@ which to target which not to.")]
                 // check if the distance are closer.
                 if (checkingDistance < distance)
                 {
-                    // found another object that are 
-                    // closer than the last object we found, 
+                    // found another object that are
+                    // closer than the last object we found,
                     // Update the distance and object.
                     distance = checkingDistance;
                     targetFound = obj;
@@ -328,8 +330,8 @@ which to target which not to.")]
                     // if object is at the right!
                     if (CheckIsRight(obj.transform))
                     {
-                        // found another object that are 
-                        // closer than the last object we found, 
+                        // found another object that are
+                        // closer than the last object we found,
                         // Update the distance and object.
                         distance = checkingDistance;
                         targetFound = obj;
@@ -343,7 +345,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Check the object is at the right side of 
+        /// Check the object is at the right side of
         /// this object.
         /// </summary>
         /// <param name="trans"> object to check </param>
@@ -360,7 +362,7 @@ which to target which not to.")]
         }
 
         /// <summary>
-        /// Check the object is at the top side of 
+        /// Check the object is at the top side of
         /// this object.
         /// </summary>
         /// <param name="trans"> object to check </param>
@@ -427,8 +429,8 @@ which to target which not to.")]
                     // if object is at the right!
                     if (!CheckIsRight(obj.transform))
                     {
-                        // found another object that are 
-                        // closer than the last object we found, 
+                        // found another object that are
+                        // closer than the last object we found,
                         // Update the distance and object.
                         distance = checkingDistance;
                         targetFound = obj;
@@ -492,8 +494,8 @@ which to target which not to.")]
                     // if object is at the right!
                     if (CheckIsTop(obj.transform))
                     {
-                        // found another object that are 
-                        // closer than the last object we found, 
+                        // found another object that are
+                        // closer than the last object we found,
                         // Update the distance and object.
                         distance = checkingDistance;
                         targetFound = obj;
@@ -557,8 +559,8 @@ which to target which not to.")]
                     // if object is at the right!
                     if (!CheckIsTop(obj.transform))
                     {
-                        // found another object that are 
-                        // closer than the last object we found, 
+                        // found another object that are
+                        // closer than the last object we found,
                         // Update the distance and object.
                         distance = checkingDistance;
                         targetFound = obj;
