@@ -31,7 +31,7 @@ in the JCSUnity framework. <br/>
 
 
 ## Current Version Status ##
-* *JCSUnity Version* : `1.8.9`
+* *JCSUnity Version* : `1.9.1`
 * *Unity Version* : `2019.1.0f2 (64-bit)`
 
 
