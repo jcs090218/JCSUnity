@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="Windows-1252"?>
-<RC_GameData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0"?>
+<RC_GameData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Copyright>Copyright 2017 JCSUnity, Taiwan</Copyright>
   <Version>Package file v1.0</Version>
   <Name />
-  <Gold>1696</Gold>
+  <Gold>1500</Gold>
 </RC_GameData>

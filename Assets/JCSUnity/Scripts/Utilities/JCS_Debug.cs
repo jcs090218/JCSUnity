@@ -28,9 +28,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void Log(
             object msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Log", msg.ToString(), file, member, line);
         }
@@ -44,9 +44,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void Log(
             string msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Log", msg, file, member, line);
         }
@@ -60,9 +60,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void LogError(
             object msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Errors", msg.ToString(), file, member, line);
         }
@@ -76,9 +76,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void LogError(
             string msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Errors", msg, file, member, line);
         }
@@ -92,9 +92,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void LogWarning(
             object msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Warnings", msg.ToString(), file, member, line);
         }
@@ -108,9 +108,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void LogWarning(
             string msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Warnings", msg, file, member, line);
         }
@@ -124,9 +124,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void LogReminders(
             object msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Reminders", msg.ToString(), file, member, line);
         }
@@ -140,9 +140,9 @@ namespace JCSUnity
         /// <param name="line"> caller line number. </param>
         public static void LogReminders(
             string msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
             JcsLog("Reminders", msg, file, member, line);
         }
@@ -158,9 +158,9 @@ namespace JCSUnity
         private static void JcsLog(
             string type,
             string msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
 #if (UNITY_EDITOR)
             string filename = Path.GetFileName(file);

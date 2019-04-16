@@ -64,6 +64,7 @@ namespace JCSUnity
         //========================================
         //      setter / getter
         //------------------------------
+        public LayerMask UnwalkableMask { get { return this.mUnwalkableMask; } set { this.mUnwalkableMask = value; } }
         public int MaxSize { get { return (mGridSizeX * mGridSizeY); } }
 
         //========================================

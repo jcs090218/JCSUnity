@@ -49,15 +49,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_BlackScreen mJCSBlackScreen = null;
 
-        [Tooltip("Which direction to fade slide.")]
-        [SerializeField]
-        private JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
-
-
+        
         [Header("** Black Slide Screen Settings (JCS_SceneManager) **")]
 
         [SerializeField]
         private JCS_BlackSlideScreen mJCSBlackSlideScreen = null;
+
+        [Tooltip("Which direction to fade slide.")]
+        [SerializeField]
+        private JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
 
 
         [Header("** White Screen Settings (JCS_SceneManager) **")]

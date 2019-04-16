@@ -14,13 +14,6 @@ using System.Runtime.CompilerServices;
 using System.IO;
 
 
-namespace System.Runtime.CompilerServices
-{
-    sealed class CallerFilePathAttribute : Attribute { }
-    sealed class CallerMemberNameAttribute : Attribute { }
-    sealed class CallerLineNumberAttribute : Attribute { }
-}
-
 namespace JCSUnity
 {
     /// <summary>
@@ -36,9 +29,9 @@ namespace JCSUnity
         /// <param name="msg"></param>
         public static void Info(
             string msg,
-            [CallerFilePathAttribute] string file = "",
+            [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
-            [CallerLineNumberAttribute] int line = 0)
+            [CallerLineNumber] int line = 0)
         {
 #if (UNITY_EDITOR)
             Debug.Log("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
