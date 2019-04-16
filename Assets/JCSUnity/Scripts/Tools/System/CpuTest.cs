@@ -18,7 +18,8 @@ public class CpuTest : MonoBehaviour
 
     private void Refresh()
     {
-        CpuInfo.Update();
+        // NOTE(jenchieh): This is useless for now!
+        //CpuInfo.Update();
     }
 
     private void OnGUI()

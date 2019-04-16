@@ -44,7 +44,7 @@ public class CpuInfo
         //------------------------
 
         cpuUsageRate = (cpu2 - cpu1) / ((cpu2 + idle2) - (cpu1 + idle1)) * 100;
-        //      cpuUsageRate = (cpu2 - cpu1 - (idle2 - idle1)) / (cpu2 - cpu1) * 100 ; 
+        //      cpuUsageRate = (cpu2 - cpu1 - (idle2 - idle1)) / (cpu2 - cpu1) * 100 ;
         //      http://blog.csdn.net/jk110333/article/details/8683478
     }
 
