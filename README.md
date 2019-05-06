@@ -32,7 +32,7 @@ in the JCSUnity framework. <br/>
 
 ## Current Version Status ##
 * *JCSUnity Version* : `1.9.1`
-* *Unity Version* : `2019.1.0f2 (64-bit)`
+* *Unity Version* : `2019.1.1f1 (64-bit)`
 
 
 ## Features ##
