@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -14,10 +14,10 @@ namespace JCSUnity
 {
     /// <summary>
     /// Camera for GUI!! not in the game scene.
-    /// 
+    ///
     /// use for switching scene panel.
     /// </summary>
-    public class JCS_2DSlideScreenCamera 
+    public class JCS_2DSlideScreenCamera
         : MonoBehaviour
     {
 
@@ -44,7 +44,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
 
-        // Notice important that Designer should know what 
+        // Notice important that Designer should know what
         // Unity GUI type they are going to use!
         [Tooltip("GUI type.")]
         [SerializeField]
@@ -77,7 +77,7 @@ namespace JCSUnity
         {
             InitCamera();
 
-            // 
+            //
             if (mPanelHolder == null)
             {
                 // spawn a default one!
@@ -324,8 +324,8 @@ namespace JCSUnity
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
 
-            // apply new position and set to its 
-            // position according to the direction 
+            // apply new position and set to its
+            // position according to the direction
             // programmer pass in.
             switch (towardDirection)
             {
@@ -361,8 +361,8 @@ namespace JCSUnity
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
 
-            // apply new position and set to its 
-            // position according to the direction 
+            // apply new position and set to its
+            // position according to the direction
             // programmer pass in.
             switch (towardDirection)
             {
