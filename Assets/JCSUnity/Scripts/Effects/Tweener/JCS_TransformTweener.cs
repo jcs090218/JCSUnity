@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -452,7 +452,7 @@ namespace JCSUnity
         /// <summary>
         /// Get target transform type's vector3 value.
         /// </summary>
-        /// <returns> Target transform's vector3 value base on transform 
+        /// <returns> Target transform's vector3 value base on transform
         /// type selected. </returns>
         public Vector3 GetTargetTransformTypeVector3()
         {
@@ -527,25 +527,28 @@ namespace JCSUnity
             TweenDelegate easingZ = null,
             CallBackDelegate callback = null)
         {
-            if (tweener != null)
-            {
-                // Sets The Position From -> To
-                tweener.easeFromTo(
-                    from,
-                    to + mValueOffset,  // add offset to final value.
-                    resetElapsedTime,
-                    durationX,
-                    durationY,
-                    durationZ,
-                    easingX,
-                    easingY,
-                    easingZ,
-                    mDestinationCallback);
+            if (tweener == null)
+                return;
 
-                this.mIsDoneTweening = false;
+            if (callback != null)
+                mDestinationCallback += callback;
 
-                this.mContinueTween = false;
-            }
+            // Sets The Position From -> To
+            tweener.easeFromTo(
+                from,
+                to + mValueOffset,  // add offset to final value.
+                resetElapsedTime,
+                durationX,
+                durationY,
+                durationZ,
+                easingX,
+                easingY,
+                easingZ,
+                mDestinationCallback);
+
+            this.mIsDoneTweening = false;
+
+            this.mContinueTween = false;
         }
 
         /// <summary>
