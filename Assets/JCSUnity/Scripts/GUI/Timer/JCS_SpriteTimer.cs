@@ -3,7 +3,7 @@
  * $Date: 2017-03-10 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections;
@@ -73,6 +73,10 @@ namespace JCSUnity
         [SerializeField]
         [Range(0, 59)]
         private float mCurrentSeconds = 0;
+
+        [Tooltip("Round the time up.")]
+        [SerializeField]
+        private bool mRoundUp = false;
 
 
         [Header("- Sprite Slots")]
@@ -162,6 +166,7 @@ namespace JCSUnity
         //      setter / getter
         //------------------------------
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
 
         //========================================
         //      Unity's function
@@ -380,9 +385,13 @@ namespace JCSUnity
             }
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)hour);
+            if (RoundUp && hour != 0.0f)
+                ++valDigit;
             mDigitHour1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)hour);
+            if (RoundUp && hour != 0.0f)
+                ++valDigit;
             mDigitHour2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
@@ -408,9 +417,13 @@ namespace JCSUnity
             }
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)minute);
+            if (RoundUp && minute != 0.0f)
+                ++valDigit;
             mDigitMinute1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)minute);
+            if (RoundUp && minute != 0.0f)
+                ++valDigit;
             mDigitMinute2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
@@ -436,9 +449,13 @@ namespace JCSUnity
             }
 
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)second);
+            if (RoundUp && second != 0.0f)
+                ++valDigit;
             mDigitSecond1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)second);
+            if (RoundUp && second != 0.0f)
+                ++valDigit;
             mDigitSecond2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
