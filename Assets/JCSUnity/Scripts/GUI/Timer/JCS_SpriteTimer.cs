@@ -3,7 +3,7 @@
  * $Date: 2017-03-10 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information
+ * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections;
@@ -37,15 +37,6 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-#if (UNITY_EDITOR)
-        [Header("** Helper Variables (JCS_SpriteTimer) **")]
-
-        [SerializeField]
-        private bool mTestWithKey = false;
-
-        [SerializeField]
-        private KeyCode mTestKey = KeyCode.N;
-#endif
 
         [Header("** Check Variables (JCS_SpriteTimer) **")]
 
@@ -74,7 +65,7 @@ namespace JCSUnity
         [Range(0, 59)]
         private float mCurrentSeconds = 0;
 
-        [Tooltip("Round the time up.")]
+        [Tooltip("Do round up instead of round down.")]
         [SerializeField]
         private bool mRoundUp = false;
 
@@ -180,25 +171,11 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
-            Test();
-#endif
-
             DoTimer();
 
             DoTimeIsUpCallback();
         }
 
-#if (UNITY_EDITOR)
-        private void Test()
-        {
-            if (!mTestWithKey)
-                return;
-
-            if (JCS_Input.GetKeyDown(mTestKey))
-                SetCurrentTime(59, 59, 59);
-        }
-#endif
 
         //========================================
         //      Self-Define
@@ -384,14 +361,13 @@ namespace JCSUnity
                 return;
             }
 
+            if (RoundUp && (hour % 10.0f != 0.0f))
+                ++hour;
+
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)hour);
-            if (RoundUp && hour != 0.0f)
-                ++valDigit;
             mDigitHour1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)hour);
-            if (RoundUp && hour != 0.0f)
-                ++valDigit;
             mDigitHour2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
@@ -411,19 +387,17 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.LogError(
-                    "Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references...");
                 return;
             }
 
+            if (RoundUp && (minute % 10.0f != 0.0f))
+                ++minute;
+
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)minute);
-            if (RoundUp && minute != 0.0f)
-                ++valDigit;
             mDigitMinute1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)minute);
-            if (RoundUp && minute != 0.0f)
-                ++valDigit;
             mDigitMinute2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
@@ -448,14 +422,13 @@ namespace JCSUnity
                 return;
             }
 
+            if (RoundUp && (second % 10.0f != 0.0f))
+                ++second;
+
             int valDigit = JCS_Mathf.GetSingleDigit(1, (int)second);
-            if (RoundUp && second != 0.0f)
-                ++valDigit;
             mDigitSecond1.LocalSprite = GetSingleDigitSprite(valDigit);
 
             valDigit = JCS_Mathf.GetSingleDigit(2, (int)second);
-            if (RoundUp && second != 0.0f)
-                ++valDigit;
             mDigitSecond2.LocalSprite = GetSingleDigitSprite(valDigit);
         }
 
