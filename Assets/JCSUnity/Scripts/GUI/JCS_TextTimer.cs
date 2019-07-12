@@ -6,7 +6,10 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-//#define TMP_PRO  /* If using `TextMesh Pro!` */
+
+/* NOTE: If you are using `TextMesh Pro` uncomment this line.
+ */
+//#define TMP_PRO
 
 using System.Collections;
 using System.Collections.Generic;
