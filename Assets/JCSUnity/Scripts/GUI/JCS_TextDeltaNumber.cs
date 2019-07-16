@@ -31,6 +31,31 @@ namespace JCSUnity
     {
         /* Variables */
 
+#if UNITY_EDITOR
+        [Header("** Helper Variables (JCS_TextDeltaNumber) **")]
+
+        [Tooltip("Test module with key.")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to delta number to value a.")]
+        [SerializeField]
+        private KeyCode mDeltaToA = KeyCode.K;
+
+        [Tooltip("Target value a.")]
+        [SerializeField]
+        private float mValueA = -10.0f;
+
+        [Tooltip("Key to delta number to value b.")]
+        [SerializeField]
+        private KeyCode mDeltaToB = KeyCode.L;
+
+        [Tooltip("Target value b.")]
+        [SerializeField]
+        private float mValueB = 10.0f;
+#endif
+
+
         [Header("** Check Variables (JCS_TextDeltaNumber) **")]
 
         [Tooltip("Flag to check if is currently effecting.")]
@@ -115,14 +140,24 @@ namespace JCSUnity
         private void Update()
         {
 #if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.K))
-                UpdateNumber(10.10f);
-            if (Input.GetKeyDown(KeyCode.L))
-                UpdateNumber(-10.0f);
+            TestInput();
 #endif
 
             DoDeltaCurrentScore();
         }
+
+#if UNITY_EDITOR
+        private void TestInput()
+        {
+            if (mTestWithKey)
+                return;
+
+            if (Input.GetKeyDown(mDeltaToA))
+                UpdateNumber(mValueA);
+            if (Input.GetKeyDown(mDeltaToB))
+                UpdateNumber(mValueB);
+        }
+#endif
 
         /// <summary>
         /// Start the text delta number.
