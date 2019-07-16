@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// Store all the useful math function here...
     /// </summary>
-    public static class JCS_Mathf 
+    public static class JCS_Mathf
     {
         // Radian to Degree.
         public const float Rad2Deg = 180.0f / Mathf.PI;
@@ -25,34 +25,13 @@ namespace JCSUnity
 
 
         /// <summary>
-        /// Absolute the value. (Integer)
+        /// Absolute the value.
         /// </summary>
         /// <param name="val"> value to absolute </param>
         /// <returns> absolute value </returns>
-        public static int AbsoluteValue(int val)
-        {
-            if (val < 0)
-                return -val;
-            return val;
-        }
-
-        /// <summary>
-        /// Absolute the value. (Float)
-        /// </summary>
-        /// <param name="val"> value to absolute </param>
-        /// <returns> absolute value </returns>
-        public static float AbsoluteValue(float val)
-        {
-            if (val < 0)
-                return -val;
-            return val;
-        }
-
-        /// <summary>
-        /// Absolute the value. (Vector3)
-        /// </summary>
-        /// <param name="val"> value to absolute </param>
-        /// <returns> absolute value </returns>
+        public static int AbsoluteValue(int val) { return (val < 0) ? -val : val; }
+        public static float AbsoluteValue(float val) { return (val < 0.0f) ? -val : val; }
+        public static double AbsoluteValue(double val) { return (val < 0.0) ? -val : val; }
         public static Vector3 AbsoluteValue(Vector3 val)
         {
             Vector3 tempVal = val;
@@ -65,30 +44,13 @@ namespace JCSUnity
         }
         ///
         /// <summary>
-        /// Set the value to positive (Integer)
+        /// Set the value to positive.
         /// </summary>
         /// <param name="val"> value to positive </param>
         /// <returns> positive value </returns>
-        public static float ToPositive(int val)
-        {
-            return AbsoluteValue(val);
-        }
-
-        /// <summary>
-        /// Set the value to positive (Float)
-        /// </summary>
-        /// <param name="val"> value to positive </param>
-        /// <returns> positive value </returns>
-        public static float ToPositive(float val)
-        {
-            return AbsoluteValue(val);
-        }
-
-        /// <summary>
-        /// Set the value to positive (Vector3)
-        /// </summary>
-        /// <param name="vec3"> vector to positive. </param>
-        /// <returns> positive vector. </returns>
+        public static float ToPositive(int val) { return AbsoluteValue(val); }
+        public static float ToPositive(float val) { return AbsoluteValue(val); }
+        public static double ToPositive(double val) { return AbsoluteValue(val); }
         public static Vector3 ToPositive(Vector3 vec3)
         {
             Vector3 newVec;
@@ -100,30 +62,13 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Set the value to negative (Integer)
+        /// Set the value to negative.
         /// </summary>
         /// <param name="val"> value to negative </param>
         /// <returns> negative value </returns>
-        public static float ToNegative(int val)
-        {
-            return -(AbsoluteValue(val));
-        }
-
-        /// <summary>
-        /// Set the value to negative (Float)
-        /// </summary>
-        /// <param name="val"> value to negative </param>
-        /// <returns> negative value </returns>
-        public static float ToNegative(float val)
-        {
-            return -(AbsoluteValue(val));
-        }
-
-        /// <summary>
-        /// Set the value to negative (Vector3)
-        /// </summary>
-        /// <param name="vec3"> vector to negative. </param>
-        /// <returns> negative vector. </returns>
+        public static float ToNegative(int val) { return -(AbsoluteValue(val)); }
+        public static float ToNegative(float val) { return -(AbsoluteValue(val)); }
+        public static double ToNegative(double val) { return -(AbsoluteValue(val)); }
         public static Vector3 ToNegative(Vector3 vec3)
         {
             Vector3 newVec;
@@ -135,74 +80,49 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check if the value is positive (Integer)
+        /// Check if the value is positive.
         /// </summary>
         /// <param name="val"> value to check </param>
         /// <returns> true: is positive, false: is negative </returns>
-        public static bool isPositive(int val)
-        {
-            return (val > 0 && val != 0) ? true : false;
-        }
+        public static bool isPositive(int val) { return (val > 0 && val != 0) ? true : false; }
+        public static bool isPositive(float val) { return (val > 0.0f && val != 0.0f) ? true : false; }
+        public static bool isPositive(double val) { return (val > 0.0 && val != 0.0) ? true : false; }
 
         /// <summary>
-        /// Check if the value is positive (Float)
-        /// </summary>
-        /// <param name="val"> value to check </param>
-        /// <returns> true: is positive, false: is negative </returns>
-        public static bool isPositive(float val)
-        {
-            return (val > 0.0f && val != 0.0f) ? true : false;
-        }
-
-        /// <summary>
-        /// Check if the value is negative (Integer)
+        /// Check if the value is negative.
         /// </summary>
         /// <param name="val"> value to check </param>
         /// <returns> true: is negative, false: is positive </returns>
-        public static bool isNegative(int val)
-        {
-            return (val < 0 && val != 0) ? true : false;
-        }
-
-        /// <summary>
-        /// Check if the value is negative (Float)
-        /// </summary>
-        /// <param name="val"> value to check </param>
-        /// <returns> true: is negative, false: is positive </returns>
-        public static bool isNegative(float val)
-        {
-            return (val < 0.0f && val != 0.0f) ? true : false;
-        }
+        public static bool isNegative(int val) { return (val < 0 && val != 0) ? true : false; }
+        public static bool isNegative(float val) { return (val < 0.0f && val != 0.0f) ? true : false; }
+        public static bool isNegative(double val) { return (val < 0.0 && val != 0.0) ? true : false; }
 
         /// <summary>
         /// To Reverse the value.
         /// </summary>
         /// <param name="val"> value to reverse </param>
         /// <returns> reverse value </returns>
-        public static float ToReverse(float val)
-        {
-            return -val;
-        }
+        public static int ToReverse(int val) { return -val; }
+        public static float ToReverse(float val) { return -val; }
+        public static double ToReverse(double val) { return -val; }
 
         /// <summary>
         /// Reciprocal of the value
         /// </summary>
         /// <param name="val"> value to reciprocal </param>
         /// <returns> reciprocal value </returns>
-        public static float Reciprocal(float val)
-        {
-            return (1 / val);
-        }
+        public static int Reciprocal(int val) { return (1 / val); }
+        public static float Reciprocal(float val) { return (1.0f / val); }
+        public static double Reciprocal(double val) { return (1.0 / val); }
 
         /// <summary>
-        /// Short hand of sqr of value
+        /// Short hand of sqr of value.
         /// </summary>
         /// <param name="val"> value u want to sqr </param>
         /// <returns> sqr value </returns>
-        public static float Sqr(float val)
-        {
-            return (val * val);
-        }
+        public static int Sqr(int val) { return (val * val); }
+        public static float Sqr(float val) { return (val * val); }
+        public static double Sqr(double val) { return (val * val); }
 
         /// <summary>
         /// Framework define vector1's distance.
@@ -227,10 +147,7 @@ namespace JCSUnity
         /// true, is odd.
         /// false, is even.
         /// </returns>
-        public static bool IsOdd(int index)
-        {
-            return !IsEven(index);
-        }
+        public static bool IsOdd(int index) { return !IsEven(index); }
 
         /// <summary>
         /// Return bool to check the number is even or not.
@@ -240,20 +157,14 @@ namespace JCSUnity
         /// true, is even.
         /// false, is odd.
         /// </returns>
-        public static bool IsEven(int num)
-        {
-            return ((num % 2) == 0);
-        }
+        public static bool IsEven(int num) { return ((num % 2) == 0); }
 
         /// <summary>
         /// Center of the array length
         /// </summary>
         /// <param name="length"> length of the array </param>
         /// <returns> center of the array length </returns>
-        public static int FindMiddleIndex(int length)
-        {
-            return (length / 2);
-        }
+        public static int FindMiddleIndex(int length) { return (length / 2); }
 
         /// <summary>
         /// Pass in an index that is out of range, 
@@ -568,7 +479,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="number"> number you want to count. </param>
         /// <returns> digit count. </returns>
-        public static int DigitCount (int number)
+        public static int DigitCount(int number)
         {
             int count = 0;
 
