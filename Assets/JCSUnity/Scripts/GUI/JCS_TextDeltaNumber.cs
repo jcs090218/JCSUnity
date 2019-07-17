@@ -75,7 +75,7 @@ namespace JCSUnity
 
         [Tooltip("Target text renderer.")]
         [SerializeField]
-        private Text mText = null;
+        private Text mTextContainer = null;
 
 #if TMP_PRO
         [Tooltip("Target text renderer.")]
@@ -123,7 +123,7 @@ namespace JCSUnity
         /* Setter/Getter */
         public bool Active { get { return this.mActive; } }
         public float TargetNumber { get { return this.mTargetNumber; } }
-        public Text text { get { return this.mText; } set { this.mText = value; } }
+        public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
 #if TMP_PRO
         public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
 #endif
@@ -163,10 +163,15 @@ namespace JCSUnity
         /// Start the text delta number.
         /// </summary>
         /// <param name="targetNumber"> Number target to delt to. </param>
-        public void UpdateNumber(float targetNumber)
+        /// <param name="anime"> Set the number directly. </param>
+        public void UpdateNumber(float targetNumber, bool anime = true)
         {
             this.mTargetNumber = targetNumber;
-            mActive = true;
+
+            if (anime)
+                mActive = true;
+            else
+                this.mCurrentNumber = targetNumber;
         }
 
         /// <summary>
@@ -189,12 +194,19 @@ namespace JCSUnity
                 return;
 
             float additionNumber = (mRoundPlace == 0.0f) ? 1.0f : 1.0f / Mathf.Pow(10.0f, mRoundPlace);
-            if (mTargetNumber < mCurrentNumber)
+
+            bool wasLarger = (mTargetNumber < mCurrentNumber);
+
+            if (wasLarger)
                 additionNumber = JCS_Mathf.ToNegative(additionNumber);
 
             additionNumber *= mDeltaProduct;
 
             mCurrentNumber += additionNumber;
+
+            if ((wasLarger && mTargetNumber > mCurrentNumber) ||
+                (!wasLarger && mTargetNumber < mCurrentNumber))
+                mCurrentNumber = mTargetNumber;
 
             UpdateTextRender();
 
@@ -208,7 +220,7 @@ namespace JCSUnity
         private void UpdateTextRender()
         {
 #if TMP_PRO
-            if (mText == null && mTextMesh == null)
+            if (mTextContainer == null && mTextMesh == null)
 #else
             if (mText == null)
 #endif
@@ -227,8 +239,8 @@ namespace JCSUnity
                 + renderNumberString
                 + PostString;
 
-            if (mText)
-                mText.text = mFullString;
+            if (mTextContainer)
+                mTextContainer.text = mFullString;
 #if TMP_PRO
             if (mTextMesh)
                 mTextMesh.text = mFullString;
