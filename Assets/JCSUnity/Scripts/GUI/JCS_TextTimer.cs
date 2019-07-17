@@ -59,7 +59,7 @@ namespace JCSUnity
 
         [Tooltip("Target text renderer.")]
         [SerializeField]
-        private Text mText = null;
+        private Text mTextContainer = null;
 
 #if TMP_PRO
         [Tooltip("Target text renderer.")]
@@ -111,7 +111,7 @@ namespace JCSUnity
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
         public bool HideWhenZero { get { return this.mHideWhenZero; } set { this.mHideWhenZero = value; } }
-        public Text text { get { return this.mText; } set { this.mText = value; } }
+        public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
 #if TMP_PRO
         public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
 #endif
@@ -198,7 +198,7 @@ namespace JCSUnity
         public void UpdateTimeUI(float hour, float minute, float second)
         {
 #if TMP_PRO
-            if (mText == null && mTextMesh == null)
+            if (mTextContainer == null && mTextMesh == null)
 #else
             if (mText == null)
 #endif
@@ -211,8 +211,8 @@ namespace JCSUnity
             DoMinuteUI(minute);
             DoSecondUI(second);
 
-            if (mText)
-                mText.text = mHoursText + mMinutesText + mSecondsText;
+            if (mTextContainer)
+                mTextContainer.text = mHoursText + mMinutesText + mSecondsText;
 #if TMP_PRO
             if (mTextMesh)
                 mTextMesh.text = mHoursText + mMinutesText + mSecondsText;
