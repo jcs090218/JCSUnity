@@ -222,7 +222,7 @@ namespace JCSUnity
 #if TMP_PRO
             if (mTextContainer == null && mTextMesh == null)
 #else
-            if (mText == null)
+            if (mTextContainer == null)
 #endif
             {
                 JCS_Debug.LogError("Text slot cannot be null references...");
