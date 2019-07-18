@@ -9,7 +9,7 @@
 
 /* NOTE: If you are using `TextMesh Pro` uncomment this line.
  */
-//#define TMP_PRO
+#define TMP_PRO
 
 using System.Collections;
 using System.Collections.Generic;
@@ -107,6 +107,25 @@ namespace JCSUnity
         private bool mMinusHour = false;
 
 
+        [Header("- Sound (JCS_TextTimer)")]
+
+        [Tooltip("Sound played when hours get reduced.")]
+        [SerializeField]
+        private AudioClip mHourSound = null;
+
+        [Tooltip("Sound played when minutes get reduced.")]
+        [SerializeField]
+        private AudioClip mMinuteSound = null;
+
+        [Tooltip("Sound played when seconds get reduced.")]
+        [SerializeField]
+        private AudioClip mSecondSound = null;
+
+        // Track the second changes, so we are able to play the 
+        // second sound.
+        private int mTrackSecond = 0;
+
+
         /* Setter/Getter */
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
@@ -116,6 +135,10 @@ namespace JCSUnity
         public TextMeshPro TextMesh { get { return this.mTextMesh; } set { this.mTextMesh = value; } }
 #endif
         public string DelimiterText { get { return this.mDelimiterText; } set { this.mDelimiterText = value; } }
+
+        public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
+        public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
+        public AudioClip SecondSound { get { return this.mSecondSound; } set { this.mSecondSound = value; } }
 
         /* Functions */
 
@@ -299,6 +322,13 @@ namespace JCSUnity
 
             mCurrentSeconds -= Time.deltaTime;
 
+            int currentSecond = (int)mCurrentSeconds;
+            if (mTrackSecond != currentSecond)
+            {
+                PlayTimerSound(mSecondSound);
+                mTrackSecond = currentSecond;
+            }
+
             if (mCurrentSeconds < MIN_SECOND_TIME)
             {
                 // 檢查上面是否還有剩.
@@ -321,6 +351,7 @@ namespace JCSUnity
 
             if (mMinusMinute)
             {
+                PlayTimerSound(mMinuteSound);
                 --mCurrentMinutes;
 
                 if (mCurrentMinutes < MIN_MINUTE_TIME)
@@ -343,6 +374,7 @@ namespace JCSUnity
 
             if (mMinusHour)
             {
+                PlayTimerSound(mHourSound);
                 --mCurrentHours;
 
                 if (mCurrentHours <= MIN_HOUR_TIME)
@@ -370,6 +402,22 @@ namespace JCSUnity
 
             if (timeIsUpCallback != null)
                 timeIsUpCallback.Invoke();
+        }
+
+        /// <summary>
+        /// Play the tick sound.
+        /// </summary>
+        /// <param name="clip"></param>
+        private void PlayTimerSound(AudioClip clip)
+        {
+            if (clip == null)
+                return;
+
+            OM_SoundManager sm = OM_SoundManager.instance;
+            sm.GetGlobalSoundPlayer().PlayOneShot(clip);
+
+            //JCS_SoundPlayer sm = JCS_SoundPlayer.instance;
+            //sm.GetGlobalSoundPlayer().PlayOneShot(clip);
         }
     }
 }

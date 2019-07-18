@@ -150,6 +150,26 @@ namespace JCSUnity
         private bool mMinusMinute = false;
         private bool mMinusHour = false;
 
+
+        [Header("- Sound (JCS_SpriteTimer)")]
+
+        [Tooltip("Sound played when hours get reduced.")]
+        [SerializeField]
+        private AudioClip mHourSound = null;
+
+        [Tooltip("Sound played when minutes get reduced.")]
+        [SerializeField]
+        private AudioClip mMinuteSound = null;
+
+        [Tooltip("Sound played when seconds get reduced.")]
+        [SerializeField]
+        private AudioClip mSecondSound = null;
+
+        // Track the second changes, so we are able to play the 
+        // second sound.
+        private int mTrackSecond = 0;
+
+
         //----------------------
         // Protected Variables
 
@@ -158,6 +178,10 @@ namespace JCSUnity
         //------------------------------
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
+
+        public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
+        public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
+        public AudioClip SecondSound { get { return this.mSecondSound; } set { this.mSecondSound = value; } }
 
         //========================================
         //      Unity's function
@@ -250,8 +274,7 @@ namespace JCSUnity
         {
             if (mDigitHour1 == null || mDigitHour2 == null)
             {
-                JCS_Debug.LogError(
-                    "Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references...");
                 return;
             }
 
@@ -276,8 +299,7 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.LogError(
-                    "Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references...");
                 return;
             }
 
@@ -302,8 +324,7 @@ namespace JCSUnity
         {
             if (mDigitSecond1 == null || mDigitSecond2 == null)
             {
-                JCS_Debug.LogError(
-                    "Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references...");
                 return;
             }
 
@@ -474,6 +495,13 @@ namespace JCSUnity
 
             mCurrentSeconds -= Time.deltaTime;
 
+            int currentSecond = (int)mCurrentSeconds;
+            if (mTrackSecond != currentSecond)
+            {
+                PlayTimerSound(mSecondSound);
+                mTrackSecond = currentSecond;
+            }
+
             if (mCurrentSeconds < MIN_SECOND_TIME)
             {
                 // 檢查上面是否還有剩.
@@ -498,6 +526,7 @@ namespace JCSUnity
 
             if (mMinusMinute)
             {
+                PlayTimerSound(mMinuteSound);
                 --mCurrentMinutes;
 
                 if (mCurrentMinutes < MIN_MINUTE_TIME)
@@ -522,6 +551,7 @@ namespace JCSUnity
 
             if (mMinusHour)
             {
+                PlayTimerSound(mHourSound);
                 --mCurrentHours;
 
                 if (mCurrentHours <= MIN_HOUR_TIME)
@@ -550,6 +580,22 @@ namespace JCSUnity
 
             if (timeIsUpCallback != null)
                 timeIsUpCallback.Invoke();
+        }
+
+        /// <summary>
+        /// Play the tick sound.
+        /// </summary>
+        /// <param name="clip"></param>
+        private void PlayTimerSound(AudioClip clip)
+        {
+            if (clip == null)
+                return;
+
+            OM_SoundManager sm = OM_SoundManager.instance;
+            sm.GetGlobalSoundPlayer().PlayOneShot(clip);
+
+            //JCS_SoundPlayer sm = JCS_SoundPlayer.instance;
+            //sm.GetGlobalSoundPlayer().PlayOneShot(clip);
         }
     }
 }
