@@ -52,11 +52,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_TextAnimation) **")]
 
-        [Tooltip("Timer active or not active.")]
+        [Tooltip("Animation active or not active.")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Hold All text animation's frame.")]
+        [Tooltip("Hold all text animation's frame.")]
         [TextArea]
         public List<string> textFrame = null;
 
