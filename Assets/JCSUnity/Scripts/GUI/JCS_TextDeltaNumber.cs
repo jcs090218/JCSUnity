@@ -171,7 +171,10 @@ namespace JCSUnity
             if (anime)
                 mActive = true;
             else
+            {
+                mActive = false;  // To ensure, just deactive it.
                 this.mCurrentNumber = targetNumber;
+            }
         }
 
         /// <summary>
