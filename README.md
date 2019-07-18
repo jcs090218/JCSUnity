@@ -32,11 +32,6 @@ the assets into that project. Then you can start all of the tools
 in the JCSUnity framework. <br/>
 
 
-## Current Version Status
-* *JCSUnity Version* : `1.9.1`
-* *Unity Version* : `2019.1.7f1 (64-bit)`
-
-
 ## Features
 So, what does this framework does? Check out the
 [features](https://github.com/jcs090218/JCSUnity/tree/master/features)
