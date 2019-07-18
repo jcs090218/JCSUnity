@@ -9,7 +9,7 @@
 
 /* NOTE: If you are using `TextMesh Pro` uncomment this line.
  */
-//#define TMP_PRO
+#define TMP_PRO
 
 using System.Collections;
 using System.Collections.Generic;

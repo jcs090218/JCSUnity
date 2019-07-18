@@ -121,7 +121,7 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mSecondSound = null;
 
-        // Track the second changes, so we are able to play the 
+        // Track the second changes, so we are able to play the
         // second sound.
         private int mTrackSecond = 0;
 
@@ -413,11 +413,8 @@ namespace JCSUnity
             if (clip == null)
                 return;
 
-            OM_SoundManager sm = OM_SoundManager.instance;
+            JCS_SoundManager sm = JCS_SoundManager.instance;
             sm.GetGlobalSoundPlayer().PlayOneShot(clip);
-
-            //JCS_SoundPlayer sm = JCS_SoundPlayer.instance;
-            //sm.GetGlobalSoundPlayer().PlayOneShot(clip);
         }
     }
 }
