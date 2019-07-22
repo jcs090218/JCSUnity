@@ -9,7 +9,7 @@
 
 /* NOTE: If you are using `TextMesh Pro` uncomment this line.
  */
-#define TMP_PRO
+//#define TMP_PRO
 
 using System.Collections;
 using System.Collections.Generic;
@@ -226,7 +226,7 @@ namespace JCSUnity
 #if TMP_PRO
             if (mTextContainer == null && mTextMesh == null)
 #else
-            if (mText == null)
+            if (mTextContainer == null)
 #endif
             {
                 JCS_Debug.LogError("Text slot cannot be null references...");
