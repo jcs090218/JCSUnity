@@ -9,7 +9,7 @@
 
 /* NOTE: If you are using `TextMesh Pro` uncomment this line.
  */
-//#define TMP_PRO
+#define TMP_PRO
 
 using System.Collections;
 using System.Collections.Generic;
@@ -116,8 +116,8 @@ namespace JCSUnity
 
         [Tooltip("How much the delta value add up.")]
         [SerializeField]
-        [Range(1, 1000)]
-        private int mDeltaProduct = 1;
+        [Range(0.01f, 1000.0f)]
+        private float mDeltaProduct = 1;
 
 
         /* Setter/Getter */
@@ -132,7 +132,8 @@ namespace JCSUnity
         public float CurrentNumber { get { return this.mCurrentNumber; } set { this.mCurrentNumber = value; } }
         public string PreString { get { return this.mPreString; } set { this.mPreString = value; } }
         public string PostString { get { return this.mPostString; } set { this.mPostString = value; } }
-        public int DeltaProduct { get { return this.mDeltaProduct; } set { this.mDeltaProduct = value; } }
+        public float AnimNumberTime { get { return this.mAnimNumberTime; } set { this.mAnimNumberTime = value; } }
+        public float DeltaProduct { get { return this.mDeltaProduct; } set { this.mDeltaProduct = value; } }
 
 
         /* Functions */
@@ -196,14 +197,14 @@ namespace JCSUnity
             if (mAnimNumberTimer < mAnimNumberTime)
                 return;
 
-            float additionNumber = (mRoundPlace == 0.0f) ? 1.0f : 1.0f / Mathf.Pow(10.0f, mRoundPlace);
+            float additionNumber = 1.0f / Mathf.Pow(10.0f, mRoundPlace);
 
             bool wasLarger = (mTargetNumber < mCurrentNumber);
 
+            additionNumber *= mDeltaProduct;
+
             if (wasLarger)
                 additionNumber = JCS_Mathf.ToNegative(additionNumber);
-
-            additionNumber *= mDeltaProduct;
 
             mCurrentNumber += additionNumber;
 
@@ -225,7 +226,7 @@ namespace JCSUnity
 #if TMP_PRO
             if (mTextContainer == null && mTextMesh == null)
 #else
-            if (mTextContainer == null)
+            if (mText == null)
 #endif
             {
                 JCS_Debug.LogError("Text slot cannot be null references...");
