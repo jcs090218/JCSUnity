@@ -13,6 +13,8 @@ using UnityEngine;
 
 namespace JCSUnity
 {
+    public delegate void ResetCallback();  // Callback when after reset.
+
     /// <summary>
     /// Move a gameobject in certain distance then set the gameobject
     /// back to original position relative to the gameobject that moved.
@@ -21,12 +23,10 @@ namespace JCSUnity
     public class JCS_3DDistanceTileAction
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        public ResetCallback beforeResetCallback = null;
+        public ResetCallback afterResetCallback = null;
 
         private Vector3 mOriginPos = Vector3.zero;
 
@@ -46,19 +46,15 @@ namespace JCSUnity
         [SerializeField]
         private bool mUseLocalPosition = false;
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
+        
+        /* Setter/Getter */
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
         public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             // NOTE(jenchieh): prevent if other component want to change
@@ -88,23 +84,24 @@ namespace JCSUnity
                 return;
 
             // set back to original position.
+            ResetPosition();
+        }
+
+        /// <summary>
+        /// Set back to starting position.
+        /// </summary>
+        public void ResetPosition()
+        {
+            if (beforeResetCallback != null)
+                beforeResetCallback.Invoke();
+
             if (mUseLocalPosition)
                 this.transform.localPosition = this.mOriginPos;
             else
                 this.transform.position = this.mOriginPos;
+
+            if (afterResetCallback != null)
+                afterResetCallback.Invoke();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

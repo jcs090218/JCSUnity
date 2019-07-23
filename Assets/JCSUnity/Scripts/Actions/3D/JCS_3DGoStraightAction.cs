@@ -19,12 +19,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_3DGoStraightAction) **")]
 
@@ -48,20 +43,17 @@ move speed to negative move speed.")]
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandomSpeedValue = 5.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter/Getter */
+
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool RandomizeSpeedAtStart { get { return this.mRandomizeSpeedAtStart; } set { this.mRandomizeSpeedAtStart = value; } }
         public float RandomSpeedValue { get { return this.mRandomSpeedValue; } set { this.mRandomSpeedValue = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             // randomize speed?
@@ -73,7 +65,7 @@ move speed to negative move speed.")]
          * FixedUpdate take so much of the performance. Consider use
          * regular Update instead of FixedUpdate.
          *
-         * NOTE(jenchieh): if you want this to be accurate use FixedUpdate.
+         * NOTE: if you want this to be accurate use FixedUpdate.
          */
          /* Comment either one of them. */
         //private void Update()
@@ -104,18 +96,6 @@ move speed to negative move speed.")]
             //if (!JCS_Mathf.IsNaN(newPos))
                 this.transform.Translate(newPos);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
     }
 }
