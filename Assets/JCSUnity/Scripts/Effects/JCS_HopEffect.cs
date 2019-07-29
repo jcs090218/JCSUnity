@@ -63,9 +63,6 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-        // How many times the velocity became zero?
-        private int mRecordVelocityZero = 0;
-
 
         /* Setter/Getter */
         public float Force { get { return this.mForce; } set { this.mForce = value; } }
@@ -101,9 +98,15 @@ namespace JCSUnity
         /// </summary>
         public void StartHop(bool recordStarting = true)
         {
-            mActive = true;
+            StartHop(this.mForce, this.mGravity, recordStarting);
+        }
 
-            mRecordVelocityZero = 0;
+        /// <summary>
+        /// Start the hopping process.
+        /// </summary>
+        public void StartHop(float force, float gravity, bool recordStarting = true)
+        {
+            mActive = true;
 
             if (recordStarting)
                 mStartingPosition = this.LocalPosition;
