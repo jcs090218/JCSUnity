@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -74,7 +74,7 @@ namespace JCSUnity
 
         private Vector3 mFreezeRecord = Vector3.zero;
 
-        // Record down the last position and current position, in order 
+        // Record down the last position and current position, in order
         // to add the difference between the two frame.
         private Vector3 mLastFrameTargetPosition = Vector3.zero;
 
@@ -174,7 +174,7 @@ namespace JCSUnity
 
             if (mTargetTransform != null)
             {
-                // first assign the target transform's position 
+                // first assign the target transform's position
                 // to target position.
                 mTargetPosition = this.mTargetTransform.position;
 
@@ -217,9 +217,9 @@ namespace JCSUnity
             if (mZoomWithMouse)
             {
                 // get the wheel value from the Unity API
-                // (physical layer[mouse wheel] -> 
-                // os layer[windows7] -> 
-                // application layer[Unity itself]) -> 
+                // (physical layer[mouse wheel] ->
+                // os layer[windows7] ->
+                // application layer[Unity itself]) ->
                 // to here...
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
                 ZoomCamera(mWheelDegree);
@@ -282,7 +282,7 @@ namespace JCSUnity
         /// <param name="depthDistance"></param>
         public void ZoomCamera(float depthDistance)
         {
-            // check the trigger of the 
+            // check the trigger of the
             // scrolling effect.
             if (!mZoomEffect)
                 return;
@@ -296,7 +296,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 4 boundaries (top, bottom, right, left) that camera 
+        /// 4 boundaries (top, bottom, right, left) that camera
         /// should not go through.
         /// check the boundries and do the trick!
         /// </summary>
