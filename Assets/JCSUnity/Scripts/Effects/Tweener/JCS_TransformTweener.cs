@@ -530,7 +530,7 @@ namespace JCSUnity
             if (tweener == null)
                 return;
 
-            if (callback != null)
+            if (callback != null && mDestinationCallback != null)
                 mDestinationCallback += callback;
 
             // Sets The Position From -> To
