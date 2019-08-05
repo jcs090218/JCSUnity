@@ -41,10 +41,7 @@ namespace PeterVuorela.Tweener
         /// <param name="func"> function pointer </param>
         public void SetCallback(CallBackDelegate func)
         {
-            if (func == null)
-                return;
-
-            this._Callback += func;
+            this._Callback = func;
         }
 
         public Vector3Tweener() { }
