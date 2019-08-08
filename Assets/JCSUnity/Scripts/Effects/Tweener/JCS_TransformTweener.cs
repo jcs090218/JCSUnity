@@ -530,8 +530,7 @@ namespace JCSUnity
             if (tweener == null)
                 return;
 
-            if (callback != null && mDestinationCallback != null)
-                mDestinationCallback += callback;
+            mDestinationCallback += callback;
 
             // Sets The Position From -> To
             tweener.easeFromTo(
