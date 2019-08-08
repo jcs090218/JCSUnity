@@ -3,7 +3,7 @@
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
@@ -65,8 +65,8 @@ namespace JCSUnity
                 string black_screen_name = JCS_UISettings.BLACK_SCREEN_NAME;
                 string white_screen_name = JCS_UISettings.WHITE_SCREEN_NAME;
 
-                // cuz the transform list will change while we set the transform to 
-                // the transform, 
+                // cuz the transform list will change while we set the transform to
+                // the transform,
                 List<Transform> readyToSetList = new List<Transform>();
 
                 Transform tempTrans = instance.transform;
