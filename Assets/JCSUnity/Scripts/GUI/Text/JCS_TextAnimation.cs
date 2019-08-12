@@ -61,7 +61,8 @@ namespace JCSUnity
         public List<string> textFrame = null;
 
         [Tooltip("Seconds per frame.")]
-        [SerializeField] [Range(0.0f, 30.0f)]
+        [SerializeField]
+        [Range(0.0f, 30.0f)]
         private float mSPF = 0.5f;
 
         // Base timer to display frame.
@@ -109,6 +110,10 @@ namespace JCSUnity
         /// <param name="frameIndex"> Frame index to displayed. </param>
         public void UpdateTextFrame(int frameIndex)
         {
+            if (this.mCurrentFrame < 0 ||
+                this.mCurrentFrame >= textFrame.Count)
+                return;
+
             this.mCurrentFrame = frameIndex;
 
             /* Ensure in display range. */
@@ -128,6 +133,9 @@ namespace JCSUnity
         /// </summary>
         private void DoTextAnimation()
         {
+            if (textFrame == null)
+                return;
+
             mFrameTimer += Time.deltaTime;
 
             if (mFrameTimer < mSPF)
