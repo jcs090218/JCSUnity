@@ -16,6 +16,10 @@
 /Assets/StreamingAssets
 /Assets/StreamingAssets.meta
 
+# ignore plugin for Unity built-in functionalities.
+/Assets/Plugins
+/Assets/Plugins.meta
+
 # don't include the video.
 /Video
 
