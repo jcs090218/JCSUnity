@@ -10,8 +10,10 @@
 /Tutorials
 /Publish
 /Assets/Libraries
-!/Assets/Libraries/Tweener/
 /Assets/JCS_GameData/WebcamShot
+
+# Except these directory.
+!/Assets/Libraries/Tweener/
 
 # ignore build info
 /Assets/StreamingAssets/build_info
