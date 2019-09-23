@@ -7,7 +7,10 @@ the 'Export Package...' button.
 -> FrameworkTest_Assets
 -> JCSUnity
 -> Libraries
+    -> Reporter
     -> SpriteMask
+    -> StandaloneFileBrowser
+    -> TextMesh Pro
     -> Tweener
     -> UI-Polygon
 -> Resources 
