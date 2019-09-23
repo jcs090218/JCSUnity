@@ -10,6 +10,7 @@
 /Tutorials
 /Publish
 /Assets/Libraries
+!/Assets/Libraries/Tweener
 /Assets/JCS_GameData/WebcamShot
 
 # ignore build info
