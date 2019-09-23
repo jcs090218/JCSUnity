@@ -25,6 +25,11 @@ legal action taken against you for using, or attempting to use
 any placeholder assets commercially.
 
 
+## News
+
+* [`1.9.3`] - Started integrating In-App-Purchase (IAP) system.
+
+
 ## How to use it?
 
 JCSUnity is like other Unity plugins. You can download the latest
