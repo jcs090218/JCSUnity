@@ -15,6 +15,7 @@
 UnityPackageExporter
 
 # Ignore build info.
+StreamingAssets/build_info
 StreamingAssets/build_info.txt
 
 # Ignore example projects.
@@ -32,3 +33,6 @@ JCS_ScreenShot
 # Ignore Libraries
 Libraries/GaussianBlur
 Libraries/Infinity Code
+
+# Ignore Plugins
+Plugins

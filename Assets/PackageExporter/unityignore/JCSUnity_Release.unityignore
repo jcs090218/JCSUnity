@@ -15,6 +15,7 @@
 UnityPackageExporter
 
 # Ignore build info.
+StreamingAssets/build_info
 StreamingAssets/build_info.txt
 
 # Ignore Test file.
@@ -36,5 +37,7 @@ JCS_ScreenShot
 # Ignore Libraries
 Libraries/GaussianBlur
 Libraries/Infinity Code
-Libraries/Reporter
 Libraries/SpriteMask
+
+# Ignore Plugins
+Plugins
