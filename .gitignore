@@ -13,8 +13,8 @@
 /Assets/JCS_GameData/WebcamShot
 
 # ignore build info
-/Assets/StreamingAssets
-/Assets/StreamingAssets.meta
+/Assets/StreamingAssets/build_info
+/Assets/StreamingAssets/build_info.*
 
 # ignore plugin for Unity built-in functionalities.
 /Assets/Plugins
