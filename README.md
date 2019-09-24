@@ -53,7 +53,7 @@ These are libraries `JCSUnity` uses. Consider the usage, some plugins
 aren't necessary depend on the game your are making.
 
 * [Log Viewer](https://assetstore.unity.com/packages/tools/integration/log-viewer-12047) by [aliessmael](https://github.com/aliessmael/Unity-Logs-Viewer)
-* [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642) by TRUESOFT
+* [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642) by [TRUESOFT](https://assetstore.unity.com/publishers/10592)
 * [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) by [Gökhan Gökçe](https://github.com/gkngkc)
 * [Tweener](https://github.com/PeterVuorela/Tweener) by [Peter Vuorela](https://github.com/PeterVuorela)
 * [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) by [Ciacco Davide](https://github.com/CiaccoDavide)
