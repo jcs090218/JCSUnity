@@ -52,16 +52,11 @@ directory at the root of the project directory.
 These are libraries `JCSUnity` uses. Consider the usage, some plugins
 aren't necessary depend on the game your are making.
 
-* [Log Viewer](https://assetstore.unity.com/packages/tools/integration/log-viewer-12047) by [aliessmael](https://github.com/aliessmael/Unity-Logs-Viewer) -
-Easier debugging after built.
-* [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642) by [TRUESOFT](https://assetstore.unity.com/publishers/10592) -
-2D sprite mask support before Unity built-in sprite mask.
-* [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) by [Gökhan Gökçe](https://github.com/gkngkc) -
-File browser for UI/tool base application.
-* [Tweener](https://github.com/PeterVuorela/Tweener) by [Peter Vuorela](https://github.com/PeterVuorela) -
-Simpler and light weight tweener library.
-* [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) by [Ciacco Davide](https://github.com/CiaccoDavide) -
-Geometry shape UI renderer interface.
+* [Log Viewer](https://assetstore.unity.com/packages/tools/integration/log-viewer-12047) - Easier debugging after built.
+* [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642) - 2D sprite mask support before Unity built-in sprite mask.
+* [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) - File browser for UI/tool base application.
+* [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
+* [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
 
 
 ## Links
