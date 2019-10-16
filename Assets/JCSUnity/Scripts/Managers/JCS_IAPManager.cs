@@ -1,3 +1,5 @@
+//#define IAP_ENABLED
+#if IAP_ENABLED
 /**
  * $File: JCS_IAPManager.cs $
  * $Date: 2019-09-24 15:32:34 $
@@ -159,3 +161,4 @@ namespace JCSUnity
         }
     }
 }
+#endif
