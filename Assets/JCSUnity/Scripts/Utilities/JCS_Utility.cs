@@ -1217,5 +1217,15 @@ namespace JCSUnity
             // Returns the new added component.
             return targetMb;
         }
+
+        /// <summary>
+        /// Return JSON by passing serializable object.
+        /// </summary>
+        /// <param name="obj"> Object that are serializable. </param>
+        /// <returns> JSON string. </returns>
+        public static string ToJson<T>(T obj)
+        {
+            return JsonUtility.ToJson(obj);
+        }
     }
 }
