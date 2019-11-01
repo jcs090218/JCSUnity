@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 /// <summary>
 /// Player that will keep attacking the closest enmey, 
 /// in the scene.

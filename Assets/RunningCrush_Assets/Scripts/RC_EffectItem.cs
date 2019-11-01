@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 [RequireComponent(typeof(RC_EffectObject))]
 public class RC_EffectItem 
     : JCS_Item

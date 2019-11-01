@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 public class BF_GoldObject 
     : JCS_CashObject
 {

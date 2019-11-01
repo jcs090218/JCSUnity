@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 /// <summary>
 /// Running Crush game's player.
 /// </summary>

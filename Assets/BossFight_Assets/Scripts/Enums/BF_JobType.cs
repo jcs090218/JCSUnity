@@ -9,7 +9,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 public enum BF_JobType 
 {
     NONE,

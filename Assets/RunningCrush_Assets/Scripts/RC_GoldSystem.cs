@@ -9,7 +9,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 public class RC_GoldSystem 
     : MonoBehaviour 
 {

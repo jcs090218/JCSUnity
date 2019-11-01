@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 /// <summary>
 /// Handle liquid bar bar, etc.
 /// </summary>

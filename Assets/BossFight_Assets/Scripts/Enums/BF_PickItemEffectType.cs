@@ -9,7 +9,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 /// <summary>
 /// Item which can pick have different effect
 /// in the game. Design the effect type here.

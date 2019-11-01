@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 /// <summary>
 /// Main character movement of this game.
 /// </summary>

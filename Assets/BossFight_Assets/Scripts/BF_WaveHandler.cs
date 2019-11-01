@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 /// <summary>
 /// To simulate the wave in the scene.
 /// </summary>

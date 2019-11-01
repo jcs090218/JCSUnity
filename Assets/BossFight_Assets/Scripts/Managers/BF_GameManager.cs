@@ -11,7 +11,6 @@ using System.Collections;
 using JCSUnity;
 using UnityEngine.UI;
 
-
 /// <summary>
 /// Record down all the game information in order 
 /// to have the correct conditional judgment.

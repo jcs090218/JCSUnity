@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
-
 [RequireComponent(typeof(SpriteRenderer))]
 public class RC_RevivePointer 
     : MonoBehaviour 

@@ -9,7 +9,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 /// <summary>
 /// When object collider with the live object, 
 /// effect that live object. (BF_LiveObject)

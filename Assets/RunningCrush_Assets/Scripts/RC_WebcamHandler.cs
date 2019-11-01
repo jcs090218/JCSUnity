@@ -11,7 +11,6 @@ using System.Collections;
 using JCSUnity;
 using UnityEngine.UI;
 
-
 [RequireComponent(typeof(RectTransform))]
 public class RC_WebcamHandler 
     : MonoBehaviour 

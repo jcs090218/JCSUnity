@@ -11,7 +11,6 @@ using System.Collections;
 using JCSUnity;
 using UnityEngine.UI;
 
-
 /// <summary>
 /// 
 /// </summary>

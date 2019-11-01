@@ -11,7 +11,6 @@ using System.Collections;
 using JCSUnity;
 using System;
 
-
 public class BF_AbilityFormat 
     : JCS_AbilityFormat 
 {

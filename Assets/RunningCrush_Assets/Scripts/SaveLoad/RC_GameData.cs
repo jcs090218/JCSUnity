@@ -12,7 +12,6 @@ using JCSUnity;
 using System.Xml.Serialization;
 using System.IO;
 
-
 /// <summary>
 /// Game Data design here.
 /// </summary>

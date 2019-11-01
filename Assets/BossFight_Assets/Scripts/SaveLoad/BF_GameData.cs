@@ -11,7 +11,6 @@ using System.Collections;
 using UnityEngine;
 using JCSUnity;
 
-
 /// <summary>
 /// Game Data design here.
 /// </summary>
