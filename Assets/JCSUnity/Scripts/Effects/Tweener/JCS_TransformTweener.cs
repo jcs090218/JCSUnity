@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using PeterVuorela.Tweener;
 
-
 namespace JCSUnity
 {
     /// <summary>

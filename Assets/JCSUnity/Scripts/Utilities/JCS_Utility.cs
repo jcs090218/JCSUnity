@@ -16,7 +16,6 @@ using UnityEngine.EventSystems;
 using PeterVuorela.Tweener;
 using System.Collections.Generic;
 
-
 namespace JCSUnity
 {
     // Function pointer

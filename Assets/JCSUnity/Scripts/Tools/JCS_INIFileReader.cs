@@ -12,7 +12,6 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-
 namespace JCSUnity
 {
     /// <summary>

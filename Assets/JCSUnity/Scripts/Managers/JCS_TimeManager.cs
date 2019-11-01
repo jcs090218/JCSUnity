@@ -12,7 +12,6 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
 namespace JCSUnity
 {
     /// <summary>

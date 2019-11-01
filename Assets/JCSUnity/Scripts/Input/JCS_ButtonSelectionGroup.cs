@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 namespace JCSUnity
 {
     public delegate void SelectionChanged();

@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
 namespace JCSUnity
 {
     public delegate void AudioLoaded(AudioClip ac);

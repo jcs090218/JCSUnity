@@ -9,7 +9,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-
 namespace JCSUnity
 {
     /// <summary>

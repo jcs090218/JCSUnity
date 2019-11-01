@@ -11,7 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
-
 namespace JCSUnity
 {
     public delegate void SpawnSequenceAction(int[] damage, Vector2[] pos, float timePerSpawn, int totalSpawn);

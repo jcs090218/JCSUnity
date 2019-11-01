@@ -8,7 +8,6 @@
  */
 using UnityEngine;
 
-
 namespace JCSUnity
 {
     /// <summary>

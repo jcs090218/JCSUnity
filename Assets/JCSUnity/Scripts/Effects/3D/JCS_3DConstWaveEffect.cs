@@ -9,7 +9,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 namespace JCSUnity
 {
     /// <summary>
@@ -96,7 +95,7 @@ namespace JCSUnity
             RandomizeFrequency();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (!mEffect)
             {

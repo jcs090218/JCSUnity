@@ -1,6 +1,13 @@
-﻿using UnityEngine;
+﻿/**
+ * $File: JCS_JumpeType.cs $
+ * $Date: 2018-08-28 19:32:10 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright © 2018 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
 using System.Collections;
-
 
 namespace JCSUnity
 {

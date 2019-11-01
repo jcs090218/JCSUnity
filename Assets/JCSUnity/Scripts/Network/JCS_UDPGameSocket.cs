@@ -9,12 +9,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Net;                                    // Endpoint
-using System.Net.Sockets;                            // Socket namespace
+using System.Net;                                     // Endpoint
+using System.Net.Sockets;                             // Socket namespace
 using System.Text;                                    // Text encoders
 using System.IO;
 using System;
-
 
 namespace JCSUnity
 {

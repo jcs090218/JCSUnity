@@ -9,7 +9,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 namespace JCSUnity
 {
     public delegate void VoidEvent();

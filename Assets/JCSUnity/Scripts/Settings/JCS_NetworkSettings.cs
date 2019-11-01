@@ -1,17 +1,15 @@
-
-using System;
 /**
-* $File: JCS_NetworkSettings.cs $
-* $Date: 2017-08-20 07:08:46 $
-* $Revision: $
-* $Creator: Jen-Chieh Shen $
-* $Notice: See LICENSE.txt for modification and distribution information 
-*	                 Copyright (c) 2017 by Shen, Jen-Chieh $
-*/
+ * $File: JCS_NetworkSettings.cs $
+ * $Date: 2017-08-20 07:08:46 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
+ */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace JCSUnity
 {

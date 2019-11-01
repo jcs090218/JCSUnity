@@ -11,7 +11,6 @@ using System.Collections;
 using System.IO;
 using UnityEngine.UI;
 
-
 namespace JCSUnity
 {
     /// <summary>

@@ -10,7 +10,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 /*
  * JCSUnity.JCS_VideoPlayer's MovieTexture is deprecated and no 
  * longer supported in Unity 2018.2 or newer versions.

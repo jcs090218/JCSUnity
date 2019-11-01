@@ -15,7 +15,6 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 #endif
 
-
 namespace JCSUnity
 {
     /// <summary>

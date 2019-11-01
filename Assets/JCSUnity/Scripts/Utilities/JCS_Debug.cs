@@ -11,7 +11,6 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using System.IO;
 
-
 namespace JCSUnity
 {
     /// <summary>

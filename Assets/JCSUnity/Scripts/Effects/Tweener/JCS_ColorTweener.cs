@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 namespace JCSUnity
 {
     public delegate float TweenDelegate(float t, float b, float c, float d);

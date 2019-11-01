@@ -10,11 +10,10 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Net;                                    // Endpoint
-using System.Net.Sockets;                            // Socket namespace
+using System.Net;                                     // Endpoint
+using System.Net.Sockets;                             // Socket namespace
 using System.Text;                                    // Text encoders
 using System.IO;
-
 
 namespace JCSUnity
 {

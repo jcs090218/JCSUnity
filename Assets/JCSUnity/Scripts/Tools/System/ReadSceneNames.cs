@@ -11,7 +11,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 /// <summary>
 /// Read all the scene that are put into build setting.
 /// </summary>

@@ -4,7 +4,6 @@ using System.Threading;
 
 public class CpuInfo
 {
-
     public static readonly string statPath = "/proc/stat";
 
     public static string[] GetStatInfoArray()

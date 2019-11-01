@@ -14,7 +14,6 @@ using UnityEditor;
 using System.Collections;
 using System;
 
-
 /// <summary>
 /// Source: http://forum.unity3d.com/threads/c-script-template-how-to-make-custom-changes.273191/
 /// Author: hpjohn

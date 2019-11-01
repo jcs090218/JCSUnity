@@ -10,7 +10,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-
 namespace JCSUnity
 {
     public delegate void IsFadeOutCallback();

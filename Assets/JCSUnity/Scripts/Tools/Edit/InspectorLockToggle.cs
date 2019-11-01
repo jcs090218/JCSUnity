@@ -15,7 +15,6 @@ using UnityEngine;
 using System.Collections;
 using Object = UnityEngine.Object;
 
-
 /// <summary>
 /// Implementation of the inspector lock toggle functionalities.
 /// </summary>

@@ -10,7 +10,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace JCSUnity
 {
     public delegate void ToggleOnCallback();

@@ -12,7 +12,6 @@ using UnityEngine;
 using System.Runtime.CompilerServices;
 using System.IO;
 
-
 namespace JCSUnity
 {
     public delegate void ServerRequest(JCS_BinaryReader br, JCS_Client client);
