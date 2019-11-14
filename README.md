@@ -77,3 +77,6 @@ aren't necessary depend on the game your are making.
 <a href="https://mwgamedesign.itch.io/sugar-sleuths" target="_blank">
   <img src="./games/SugarSleuths_logo.png" width="250" height="133" align="middle"/>
 </a>
+<a href="https://play.google.com/store/apps/details?id=com.gamebly&fbclid=IwAR355yYPramH7_GMsL0NomjMVP7-56ULTJ85l3xGqomkofpgoGElVsc890M" target="_blank">
+  <img src="./games/pey_logo.png" width="100" height="100" align="middle"/>
+</a>
