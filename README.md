@@ -69,14 +69,14 @@ aren't necessary depend on the game your are making.
 ## Games
 
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
-  <img src="./games/hemlock_logo.png" width="100" height="100" align="middle"/>
+  <img src="./games/hemlock_logo.png" width="64" height="64" align="middle"/>
 </a>
 <a href="https://www.youtube.com/watch?v=si_G0zIo0P0&feature=youtu.be" target="_blank">
-  <img src="./games/might_&_blade_logo.png" width="232" height="83" align="middle"/>
+  <img src="./games/might_&_blade_logo.png" width="180" height="72" align="middle"/>
 </a>
 <a href="https://mwgamedesign.itch.io/sugar-sleuths" target="_blank">
-  <img src="./games/SugarSleuths_logo.png" width="250" height="133" align="middle"/>
+  <img src="./games/SugarSleuths_logo.png" width="124" height="65" align="middle"/>
 </a>
 <a href="https://play.google.com/store/apps/details?id=com.gamebly&fbclid=IwAR355yYPramH7_GMsL0NomjMVP7-56ULTJ85l3xGqomkofpgoGElVsc890M" target="_blank">
-  <img src="./games/pey_logo.png" width="100" height="100" align="middle"/>
+  <img src="./games/pey_logo.png" width="64" height="64" align="middle"/>
 </a>
