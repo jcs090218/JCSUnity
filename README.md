@@ -25,12 +25,12 @@ legal action taken against you for using, or attempting to use
 any placeholder assets commercially.
 
 
-## News
+## :newspaper: News
 
 * [`1.9.3`] - Started integrating In-App-Purchase (IAP) system.
 
 
-## How to use it?
+## :hammer: How to use it?
 
 JCSUnity is like other Unity plugins. You can download the latest
 release from the above tab, or from the link
@@ -40,14 +40,14 @@ the assets into that project. Then you can start all of the tools
 in the JCSUnity framework. <br/>
 
 
-## Features
+## :trophy: Features
 
 So, what does this framework does? Check out the
 [features](https://github.com/jcs090218/JCSUnity/tree/master/features)
 directory at the root of the project directory.
 
 
-## Dependencies
+## :pushpin: Dependencies
 
 These are libraries `JCSUnity` uses. Consider the usage, some plugins
 aren't necessary depend on the game your are making.
@@ -59,14 +59,14 @@ aren't necessary depend on the game your are making.
 * [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
 
 
-## Links
+## :link: Links
 
 * *Demo* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 * *Tutorials* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
 * *Manual/Scripting API* : <a href="http://www.jcs-profile.com:3001">JCSUnity-Scripting-Manual</a>
 
 
-## Games
+## :video_game: Games
 
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
   <img src="./games/hemlock_logo.png" width="64" height="64" align="middle"/>
