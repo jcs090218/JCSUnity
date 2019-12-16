@@ -14,7 +14,7 @@ while other components must be used in tandem with others.
 Individually components can be combined to create new behaviors.
 
 
-## Important Notice
+## :boom: Important Notice
 
 All media assets inside JCSUnity do not fall under its license.
 These assets are placeholders only, and should only be used for
