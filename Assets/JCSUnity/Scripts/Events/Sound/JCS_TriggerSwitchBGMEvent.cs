@@ -18,13 +18,7 @@ namespace JCSUnity
     public class JCS_TriggerSwitchBGMEvent
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_TriggerSwitchBGMEvent) **")]
 
@@ -40,16 +34,11 @@ namespace JCSUnity
         [SerializeField]
         private float mSoundFadeOutTime = 1;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void OnTriggerEnter(Collider other)
         {
             JCS_SoundManager.instance.SwitchBackgroundMusic(
@@ -57,18 +46,5 @@ namespace JCSUnity
                 mSoundFadeInTime, 
                 mSoundFadeOutTime);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

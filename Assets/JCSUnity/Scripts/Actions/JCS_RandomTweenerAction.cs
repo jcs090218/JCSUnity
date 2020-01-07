@@ -20,14 +20,7 @@ namespace JCSUnity
     public class JCS_RandomTweenerAction
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private JCS_TransformTweener mTransformTweener = null;
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
@@ -53,17 +46,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Bool3 mFreeze = JCS_Bool3.allFalse;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
+
         private void Awake()
         {
             this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
@@ -72,18 +59,6 @@ namespace JCSUnity
             // set effect function pointer.
             this.mAdjustTimeTrigger.actions = TargetNewVectorValue;
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// After a cetain time we target a new vector value to do
@@ -113,6 +88,5 @@ namespace JCSUnity
             mTargetValue = newVal;
 #endif
         }
-
     }
 }

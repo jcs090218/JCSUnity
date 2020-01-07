@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_CheckableDialogue
         : JCS_PanelRoot
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_CheckableDialogue) **")]
 
@@ -41,18 +36,14 @@ namespace JCSUnity
         [SerializeField]
         private RectTransform mPanelRectTransform = null;
 
-        //----------------------
-        // Protected Variables
+        
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool fitPushScreen { get { return this.mFitPushScreen; } set { this.mFitPushScreen = value; } }
         public void SetItemSprite(Sprite sp) { this.mItemImage.sprite = sp; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
 #if (UNITY_EDITOR)
         private void Update()
@@ -60,12 +51,6 @@ namespace JCSUnity
             //this.mPanelRectTransform.localPosition = new Vector3(0, -228, 0);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Make dialogue follow the mouse.
@@ -124,12 +109,6 @@ namespace JCSUnity
                 FitPushScreen();
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Prevent the dialogue go out of screen
         /// </summary>
@@ -182,6 +161,5 @@ namespace JCSUnity
 
             this.mPanelRectTransform.localPosition = newShowPoint;   
         }
-
     }
 }

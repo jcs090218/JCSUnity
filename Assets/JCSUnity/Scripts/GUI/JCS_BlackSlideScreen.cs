@@ -18,26 +18,17 @@ namespace JCSUnity
     public class JCS_BlackSlideScreen
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_TransformTweener mTweener = null;
 
         private Vector3 mStartingPosition = Vector3.zero;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mTweener = this.GetComponent<JCS_TransformTweener>();
@@ -51,12 +42,6 @@ namespace JCSUnity
 
             this.mStartingPosition = this.transform.localPosition;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Start sliding the screen in the scene.
@@ -158,12 +143,5 @@ namespace JCSUnity
             this.transform.localScale = recordScale;
             this.transform.localRotation = recordRot;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

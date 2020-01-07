@@ -19,14 +19,7 @@ namespace JCSUnity
     public class JCS_2DAnimDisplayHolder
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private JCS_2DAnimator m2DAnimator = null;
 
@@ -51,17 +44,11 @@ so after holding we could play the animation back in time.")]
 
         private float mHoldTimer = 0.0f;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
+
         private void Awake()
         {
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
@@ -71,12 +58,6 @@ so after holding we could play the animation back in time.")]
         {
             HoldAnim();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Hold an animation for few seconds.
@@ -117,12 +98,6 @@ so after holding we could play the animation back in time.")]
             this.mHoldTimer = 0;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Do the holding animation algorithm here...
         /// </summary>
@@ -152,6 +127,5 @@ so after holding we could play the animation back in time.")]
             // start the previous animation once.
             m2DAnimator.DoAnimation(mStoreAnimIndex);
         }
-
     }
 }

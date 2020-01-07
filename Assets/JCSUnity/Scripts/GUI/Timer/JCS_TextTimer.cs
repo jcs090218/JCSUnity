@@ -29,6 +29,7 @@ namespace JCSUnity
         : MonoBehaviour
     {
         /* Variables */
+
         public TimeIsUpFunc timeIsUpCallback = null;
 
         private const float MAX_HOUR_TIME = 23.0f;
@@ -126,7 +127,7 @@ namespace JCSUnity
         private int mTrackSecond = 0;
 
 
-        /* Setter/Getter */
+        /* Setter & Getter */
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
         public bool HideWhenZero { get { return this.mHideWhenZero; } set { this.mHideWhenZero = value; } }

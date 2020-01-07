@@ -43,7 +43,7 @@ move speed to negative move speed.")]
         private float mRandomSpeedValue = 5.0f;
 
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
@@ -95,6 +95,5 @@ move speed to negative move speed.")]
             //if (!JCS_Mathf.IsNaN(newPos))
                 this.transform.Translate(newPos);
         }
-
     }
 }

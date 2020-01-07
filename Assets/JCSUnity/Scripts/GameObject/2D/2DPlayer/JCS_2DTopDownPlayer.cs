@@ -19,26 +19,15 @@ namespace JCSUnity
     public class JCS_2DTopDownPlayer 
         : JCS_Player
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public int mIndex = 0;
 
-        //----------------------
-        // Private Variables
         private JCS_2DTopDownPlayerAudioController mTopDownAudioController = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         protected override void Awake()
         {
             base.Awake();
@@ -84,11 +73,8 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+
+        /* Functions */
 
         /// <summary>
         /// 
@@ -202,12 +188,5 @@ namespace JCSUnity
         {
             throw new NotImplementedException();
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

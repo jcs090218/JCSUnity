@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_SimpleTrackAction
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_SimpleTrackAction) **")]
 
@@ -47,21 +42,18 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreZ = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Vector3 TargetPosition { get { return this.mTargetPos; } set { this.mTargetPos = value; } }
         public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
         public bool IgnoreX { get { return this.mIgnoreX; } set { this.mIgnoreX = value; } }
         public bool IgnoreY { get { return this.mIgnoreY; } set { this.mIgnoreY = value; } }
         public bool IgnoreZ { get { return this.mIgnoreZ; } set { this.mIgnoreZ = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             Vector3 tempTargetPost = mTargetPos;
@@ -75,12 +67,6 @@ namespace JCSUnity
 
             this.LocalPosition += (tempTargetPost - LocalPosition) / mFriction * Time.deltaTime;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Change the target position on x axis by adding it.
@@ -108,12 +94,5 @@ namespace JCSUnity
         {
             mTargetPos = JCS_Utility.IncVecZ(mTargetPos, val);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

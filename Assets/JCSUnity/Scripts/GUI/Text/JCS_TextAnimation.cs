@@ -69,7 +69,7 @@ namespace JCSUnity
         private float mFrameTimer = 0.0f;
 
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }

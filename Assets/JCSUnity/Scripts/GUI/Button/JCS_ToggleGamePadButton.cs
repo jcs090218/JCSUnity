@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_ToggleGamePadButton
         : JCS_GamePadButton
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private ToggleFunc mAcitveFunc = null;
         private ToggleFunc mDeactiveFunc = null;
@@ -33,25 +28,14 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetActiveFunc(ToggleFunc func) { this.mAcitveFunc = func; }
         public void SetDeactiveFunc(ToggleFunc func) { this.mDeactiveFunc = func; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
 
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {
@@ -90,12 +74,5 @@ namespace JCSUnity
             // do the action.
             mDeactiveFunc.Invoke();
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

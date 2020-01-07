@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_TimePanel
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_TimePanel) **")]
 
@@ -56,17 +51,14 @@ namespace JCSUnity
         // check if the action active?
         private bool mActionActive = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ActiveOnAwake { get { return this.mActiveOnAwake; } set { this.mActiveOnAwake = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             if (mActiveOnAwake)
@@ -77,12 +69,6 @@ namespace JCSUnity
         {
             DoAction();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Active this action.
@@ -100,12 +86,6 @@ namespace JCSUnity
             foreach (JCS_DialogueObject panel in mDialogueObjects)
                 DoActionForeachPanel(panel, oppositeType);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do action for all the panel

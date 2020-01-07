@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_2DLiveObject
         : JCS_LiveObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private SpriteRenderer mSpriteRenderer = null;
         private JCS_2DAnimator m2DAnimator = null;
@@ -59,13 +54,8 @@ to get the information from them.")]
         private object m2DLiveObjectAnimator;
 
 
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
         public SpriteRenderer spriteRenderer { get { return this.mSpriteRenderer; } }
         public bool BeenTarget { get { return this.mBeenTarget; } set { this.mBeenTarget = value; } }
@@ -76,9 +66,9 @@ to get the information from them.")]
         public JCS_VelocityInfo VelocityInfo { get { return this.mVelocityInfo; } }
         public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -106,12 +96,6 @@ to get the information from them.")]
             // set hp the same
             mPreCalHP = HP;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         public bool IsDead()
         {
@@ -384,12 +368,6 @@ to get the information from them.")]
                 
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// 在這裡, 直接調用HP變量.
         /// 會變成即時性的攻擊. 所以 先在這裡設定一個新的變量(在這裡是mPreCalHP).
@@ -462,6 +440,5 @@ to get the information from them.")]
 
             mAttackRecorder.LastAttacker = lastAttacker;
         }
-
     }
 }

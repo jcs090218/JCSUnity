@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_DestroyObjectWithScreen
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_DestroyObjectWithScreen) **")]
 
@@ -31,17 +26,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mDestroyWhenOutOfScreen = true;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool DestroyWhenOutOfScreen { get { return this.mDestroyWhenOutOfScreen; } set { this.mDestroyWhenOutOfScreen = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void OnBecameInvisible()
         {
@@ -50,18 +41,5 @@ namespace JCSUnity
 
             Destroy(this.gameObject);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

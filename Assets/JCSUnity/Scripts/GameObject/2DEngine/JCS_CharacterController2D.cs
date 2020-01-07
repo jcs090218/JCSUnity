@@ -24,12 +24,7 @@ namespace JCSUnity
     public class JCS_CharacterController2D
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Rigidbody2D mRigidbody2d = null;
         private BoxCollider2D mBoxCollider2d = null;
@@ -134,12 +129,8 @@ namespace JCSUnity
         private bool mZeroRotationWhenIsTrigger = true;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public Vector2 BoxInfo { get { return this.mBoxInfo; } }
         public Vector3 Velocity { get { return this.mVelocity; } }
         public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
@@ -158,9 +149,8 @@ namespace JCSUnity
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Awake()
         {

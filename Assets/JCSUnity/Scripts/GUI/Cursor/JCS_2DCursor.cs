@@ -20,14 +20,7 @@ namespace JCSUnity
     public class JCS_2DCursor
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private JCS_2DAnimator m2DAnimator = null;
 
@@ -67,19 +60,15 @@ namespace JCSUnity
         [SerializeField] private JCS_2DAnimation mAlternateSelect = null;
         [SerializeField] private JCS_2DAnimation mLinkSelect = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
         public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
@@ -149,12 +138,6 @@ namespace JCSUnity
         }
 #endif
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Switch the animation state.
         /// </summary>
@@ -165,12 +148,6 @@ namespace JCSUnity
 
             this.mCursorCustomizeType = type;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Follow the cursor position.

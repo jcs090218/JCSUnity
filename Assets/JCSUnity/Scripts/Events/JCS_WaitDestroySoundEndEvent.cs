@@ -22,12 +22,8 @@ namespace JCSUnity
     public class JCS_WaitDestroySoundEndEvent
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private bool mSoundPlayed = false;
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -39,18 +35,15 @@ namespace JCSUnity
 
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetSoundSettingType(JCS_SoundSettingType type) { mSoundSettingType = type; }
         public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
@@ -66,18 +59,5 @@ namespace JCSUnity
 
             mSoundPlayed = true;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

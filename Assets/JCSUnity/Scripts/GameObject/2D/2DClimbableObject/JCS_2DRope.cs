@@ -18,28 +18,18 @@ namespace JCSUnity
     public class JCS_2DRope
         : JCS_2DClimbableObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
+        /* Variables */
 
         [Header("** Check Variable (JCS_2DRope) **")]
 
         [SerializeField]
         protected List<JCS_2DSideScrollerPlayer> mSSPlayers = null;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Setter & Getter */
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -100,13 +90,6 @@ namespace JCSUnity
             RemoveNullPlayerAndSelf(player);
         }
 
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Something that needed to check in update can be design here.
         /// This function should get call by when the player is done climbing.
@@ -152,12 +135,6 @@ namespace JCSUnity
                 }
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Add object with no duplicate.
@@ -207,6 +184,5 @@ namespace JCSUnity
             player.OrderLayerObject.SetObjectParentToOrderLayerByOrderLayerIndex(
                 layer);
         }
-
     }
 }

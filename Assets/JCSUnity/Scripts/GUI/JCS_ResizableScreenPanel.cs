@@ -21,14 +21,7 @@ namespace JCSUnity
     public class JCS_ResizableScreenPanel
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private RectTransform mRectTransform = null;
         private Image mImage = null;
@@ -40,20 +33,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2D4Direction mPlaceDirection = JCS_2D4Direction.TOP;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public Image image { get { return this.mImage; } }
         public RectTransform sRectTransform { get { return this.mRectTransform; } }
         public JCS_2D4Direction PlaceDirection { get { return this.mPlaceDirection; } set { this.mPlaceDirection = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
@@ -82,12 +70,6 @@ namespace JCSUnity
             JCS_Utility.MoveToTheLastChild(this.mRectTransform);
         }
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Show the panel.
         /// </summary>
@@ -103,12 +85,6 @@ namespace JCSUnity
         {
             this.mImage.enabled = false;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Set the panel to the edge of the screen.
@@ -151,6 +127,5 @@ namespace JCSUnity
 
             mRectTransform.localPosition = newPos;
         }
-
     }
 }

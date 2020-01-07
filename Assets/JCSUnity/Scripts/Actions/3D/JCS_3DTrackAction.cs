@@ -18,12 +18,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_3DTrackAction) **")]
 
@@ -35,35 +30,19 @@ namespace JCSUnity
         [SerializeField]
         private float mMoveFriction = 1.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
         public float MoveFriction { get { return this.mMoveFriction; } set { this.mMoveFriction = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Update()
         {
             FollowObject();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the following gameobject action.
@@ -80,6 +59,5 @@ namespace JCSUnity
 
             this.transform.position = newPos;
         }
-
     }
 }

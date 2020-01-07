@@ -19,14 +19,7 @@ namespace JCSUnity
     public class JCS_UndoRedoComponent
         : JCS_GUIObject
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_UndoRedoComponent) **")]
@@ -155,20 +148,15 @@ namespace JCSUnity
         private List<JCS_SliderData> mSli_Redo = null;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public JCS_UndoRedoSystem UndoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
         public bool FocusAfterUndo { get { return this.mFocusAfterUndo; } set { this.mFocusAfterUndo = value; } }
         public bool FocusAfterRedo { get { return this.mFocusAfterRedo; } set { this.mFocusAfterRedo = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -215,12 +203,6 @@ namespace JCSUnity
                 Redo();
         }
 #endif
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Undo this component.
@@ -546,12 +528,6 @@ namespace JCSUnity
             ClearAllUndo();
             ClearAllRedo();
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Register the undo event base on different GUI type.

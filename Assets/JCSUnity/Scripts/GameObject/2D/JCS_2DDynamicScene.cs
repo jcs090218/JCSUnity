@@ -17,41 +17,16 @@ namespace JCSUnity
     public class JCS_2DDynamicScene
         : JCS_DynamicScene
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void Start()
         {
             // get handle!
             JCS_SceneManager.instance.SetDynamicScene(this);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

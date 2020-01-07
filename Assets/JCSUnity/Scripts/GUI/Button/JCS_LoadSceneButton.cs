@@ -18,6 +18,8 @@ namespace JCSUnity
     public class JCS_LoadSceneButton
         : JCS_Button
     {
+        /* Variables */
+
         [Header("** Initialize Variables (JCS_LoadSceneButton) **")]
 
         [Tooltip("Platform you want to target. NONE means all platform, so it will just load the scene")]
@@ -36,16 +38,14 @@ namespace JCSUnity
         [SerializeField]
         private bool mKeppBGM = false;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public Color ScreenColor { get { return this.mScreenColor; } set { this.mScreenColor = value; } }
         public bool KeppBGM { get { return this.mKeppBGM; } set { this.mKeppBGM = value; } }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

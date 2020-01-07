@@ -19,12 +19,8 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_ShootAction mShootAction = null;
 
 
@@ -42,36 +38,20 @@ namespace JCSUnity
         [SerializeField]
         private float mMaxDegree = 240.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_ShootAction GetShootAction() { return this.mShootAction; }
         public float DegreePerShoot { get { return this.mDegreePerShoot; } }
         public float MinDegree { get { return this.mMinDegree; } }
         public float MaxDegree { get { return this.mMaxDegree; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        
+        /* Functions */
+
         private void Awake()
         {
             this.mShootAction = this.GetComponent<JCS_ShootAction>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

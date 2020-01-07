@@ -19,15 +19,7 @@ namespace JCSUnity
     public class JCS_2DLiveObjectAnimator
         : JCS_I2DAnimator
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
+        /* Variables */
 
         private JCS_2DAnimator m2DAnimator = null;
 
@@ -48,27 +40,20 @@ from the beginning.")]
         [SerializeField]
         protected bool mOverrideAnim = false;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+
+        /* Setter & Getter */
+
         public JCS_2DAnimator Animator { get { return this.m2DAnimator; } }
         public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
         protected override void Awake()
         {
             base.Awake();
 
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the animation.
@@ -105,12 +90,5 @@ from the beginning.")]
         {
 
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

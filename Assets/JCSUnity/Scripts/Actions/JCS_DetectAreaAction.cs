@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_DetectAreaAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_DetectAreaAction) **")]
 
@@ -41,17 +36,14 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_DetectAreaObject> mDetectedObjects = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_2DLiveObject GetLiveObject() { return this.mLiveObject; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mLiveObject = this.GetComponent<JCS_2DLiveObject>();
@@ -87,12 +79,6 @@ namespace JCSUnity
             // create list to manage all detected object
             mDetectedObjects = new JCS_Vector<JCS_DetectAreaObject>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// If detect a target add it to list.
@@ -245,12 +231,5 @@ namespace JCSUnity
             // return result
             return mDetectedObjects.at(closestIndex);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

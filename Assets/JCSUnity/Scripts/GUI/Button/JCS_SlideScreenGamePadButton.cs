@@ -19,14 +19,7 @@ namespace JCSUnity
     public class JCS_SlideScreenGamePadButton
         : JCS_GamePadButton
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Check Variables (JCS_SlideScreenGamePadButton) **")]
 
@@ -63,18 +56,14 @@ namespace JCSUnity
 
         private bool mStartDelay = false;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public void SetDirection(JCS_2D8Direction direction) { this.mDirection = direction; }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -110,14 +99,6 @@ namespace JCSUnity
             }
         }
 
-
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Button click function pointer override.
         /// </summary>
@@ -133,12 +114,6 @@ namespace JCSUnity
             // start counting delay
             mStartDelay = true;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Switch the scene.
@@ -163,6 +138,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

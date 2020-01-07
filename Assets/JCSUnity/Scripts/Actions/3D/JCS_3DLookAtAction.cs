@@ -18,9 +18,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public enum State
         {
@@ -28,8 +26,6 @@ namespace JCSUnity
             NEGATIVE = -1
         };
 
-        //----------------------
-        // Private Variables
 
         [Header("** Runtime Variables (JCS_3DLookAtAction) **")]
 
@@ -93,12 +89,9 @@ namespace JCSUnity
         // to original rotation which is the freezing effect.
         private Vector3 mCurrentEulerAngles = Vector3.zero;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Transform GetTargetTransform() { return this.mTargetTransform; }
         public void SetTargetTransform(Transform t) { this.mTargetTransform = t; }
         public bool RotateBack90 { get { return this.mRotateBack90; } set { this.mRotateBack90 = value; } }
@@ -109,9 +102,9 @@ namespace JCSUnity
         public bool AsympLook { get { return this.mAsympLook; } set { this.mAsympLook = value; } }
         public float LookFriction { get { return this.mLookFriction; } set { this.mLookFriction = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void LateUpdate()
         {
             // record the current rotation.
@@ -124,18 +117,6 @@ namespace JCSUnity
             DoAsympLook();
             DoFreeze();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the look at algorithm here...
@@ -262,6 +243,5 @@ namespace JCSUnity
             else
                 this.transform.eulerAngles = newEulerAngles;
         }
-
     }
 }

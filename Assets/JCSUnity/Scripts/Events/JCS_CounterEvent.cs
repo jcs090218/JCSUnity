@@ -19,12 +19,8 @@ namespace JCSUnity
     public class JCS_CounterEvent
         : JCS_Event
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
 
         //[Header("** Initialize Varialbes (JCS_CounterEvent) **")]
 
@@ -33,26 +29,15 @@ namespace JCSUnity
 
         //private float mDelayTimer = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Update()
         {
 
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Event to do after the certain time.
@@ -61,12 +46,5 @@ namespace JCSUnity
         {
 
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

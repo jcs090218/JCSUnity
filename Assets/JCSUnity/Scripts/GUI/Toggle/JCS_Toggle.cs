@@ -23,19 +23,12 @@ namespace JCSUnity
     public class JCS_Toggle
         : JCS_Button
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         public ToggleOnCallback toggleOnCallback = null;
         public ToggleOffCallback toggleOffCallback = null;
 
         public OnValueChanged onValueChanged = null;
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
         private JCS_ColorTweener mColorTweener = null;
 
@@ -105,13 +98,8 @@ namespace JCSUnity
         private Color mOffBackgroundColor = Color.white;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public bool IsOn
         {
             get { return this.mIsOn; }
@@ -133,9 +121,9 @@ namespace JCSUnity
         public Vector3 OnPos { get { return this.mOnPos; } set { this.mOnPos = value; } }
         public Vector3 OffPos { get { return this.mOffPos; } set { this.mOffPos = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -172,12 +160,6 @@ namespace JCSUnity
         }
 #endif
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// On click event.
         /// </summary>
@@ -206,12 +188,6 @@ namespace JCSUnity
 
             return mIsOn;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Set on/off position to the current transform position.

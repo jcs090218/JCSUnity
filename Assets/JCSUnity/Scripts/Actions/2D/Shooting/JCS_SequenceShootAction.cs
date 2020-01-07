@@ -19,12 +19,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_ShootAction mShootAction = null;
 
@@ -96,12 +91,9 @@ namespace JCSUnity
         private JCS_Vector<Transform> mTargetsPerSequence = null;
         private JCS_Vector<bool> mShootDirection = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int Hit { get { return this.mHit; } set { this.mHit = value; } }
         public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
         public bool InSequenceEffect { get { return this.mInSequenceEffect; } set { this.mInSequenceEffect = value; } }
@@ -113,9 +105,9 @@ namespace JCSUnity
         public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
         public float ShootGap { get { return this.mShootGap; } set { this.mShootGap = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mShootAction = this.GetComponent<JCS_ShootAction>();
@@ -143,12 +135,6 @@ namespace JCSUnity
             // process sequence of threads.
             ProccessSequences();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Shoot bullets multiple times in times. (not in per frame)
@@ -242,12 +228,6 @@ namespace JCSUnity
             // shoot direction
             mShootDirection.push(isLeft);   // decide which direction should the bullet goes? (right/left)
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Process the sequence of threads queue.
@@ -482,6 +462,5 @@ namespace JCSUnity
             // return the damages we just create!
             return damages;
         }
-
     }
 }

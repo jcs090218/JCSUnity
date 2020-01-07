@@ -18,9 +18,7 @@ namespace JCSUnity
     public class JCS_DestinationDestroy
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public enum FadeType
         {
@@ -28,8 +26,6 @@ namespace JCSUnity
             OUT
         }
 
-        //----------------------
-        // Private Variables
 
         private JCS_AlphaObject mAlphaObject = null;
 
@@ -63,20 +59,16 @@ namespace JCSUnity
         [SerializeField]
         private float mFadeDistance = 500;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool Action { get { return this.mAction; } set { this.mAction = value; } }
         public void SetTargetTransform(Transform pos) { this.mTargetTransform = pos; }
         public float FadeDistance { get { return this.mFadeDistance; } set { this.mFadeDistance = value; } }
         public float DestroyDistance { get { return this.mDestroyDistance; } set { this.mDestroyDistance = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -121,18 +113,5 @@ namespace JCSUnity
                 Destroy(this.gameObject);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

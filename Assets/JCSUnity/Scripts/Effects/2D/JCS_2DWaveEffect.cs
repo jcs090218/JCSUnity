@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_2DWaveEffect
         : JCS_2DEffect
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_2DWaveEffect) **")]
@@ -69,16 +64,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             if (mJCS_2DCamera == null)
@@ -107,12 +97,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Active the wave effect.
         /// </summary>
@@ -135,11 +119,6 @@ namespace JCSUnity
             mEffect = true;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
         private void DoEffect()
         {
             if (!mEffect)
@@ -188,6 +167,5 @@ namespace JCSUnity
                 mEffect = false;
             }
         }
-
     }
 }

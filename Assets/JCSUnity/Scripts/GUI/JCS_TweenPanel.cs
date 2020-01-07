@@ -23,12 +23,7 @@ namespace JCSUnity
     public class JCS_TweenPanel
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_TransformTweener mTransformTweener = null;
 
@@ -86,20 +81,17 @@ namespace JCSUnity
         private ActiveCallback mActiveCallbackFunc = null;
         private DeactiveCallback mDeactiveCallbackFunc = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool IsActive { get { return this.mIsActive; } }
         public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
         public ActiveCallback ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
         public DeactiveCallback DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
@@ -132,12 +124,6 @@ namespace JCSUnity
                 Deactive();
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Tween to the taget position and play sound effect.
@@ -177,12 +163,5 @@ namespace JCSUnity
 
             this.mIsActive = false;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

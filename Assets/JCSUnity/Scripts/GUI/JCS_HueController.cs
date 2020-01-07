@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_HueController
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_HueController) **")]
 
@@ -50,16 +45,11 @@ namespace JCSUnity
 
         private int mListCounter = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Start()
         {
             if (mColorGraphic == null)
@@ -84,18 +74,6 @@ namespace JCSUnity
             TowardColor();
 
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Cycle throguh the color list.
@@ -163,6 +141,5 @@ namespace JCSUnity
 
             return JCS_Mathf.Max(color.b, rg);
         }
-
     }
 }

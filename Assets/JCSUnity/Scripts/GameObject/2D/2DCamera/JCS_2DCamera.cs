@@ -17,6 +17,8 @@ namespace JCSUnity
     public class JCS_2DCamera
         : JCS_Camera
     {
+        /* Variables */
+
         public static string JCS_2DCAMERA_PATH = "JCSUnity_Framework_Resources/Camera/JCS_2DCamera";
 
 
@@ -130,9 +132,8 @@ namespace JCSUnity
         private float mMin_Y_PositionInScene = float.NegativeInfinity;
 
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
@@ -149,9 +150,9 @@ namespace JCSUnity
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
         public bool ZoomWithMouse { get { return this.mZoomWithMouse; } set { this.mZoomWithMouse = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -252,10 +253,6 @@ namespace JCSUnity
             // Do the camera boundaries check!!
             CameraBoundaries();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
 
         /// <summary>
         /// Set to the target's position in frame.

@@ -17,12 +17,8 @@ namespace JCSUnity
     public class JCS_3DThrowAction
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_3DThrowAction) **")]
 
@@ -60,18 +56,14 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Update()
         {
@@ -98,12 +90,6 @@ namespace JCSUnity
                 ThrowByTime(mTestTarget.position, mTime);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the throw action by time.
@@ -172,12 +158,5 @@ namespace JCSUnity
 
             ThrowByTime(targetPos, time);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

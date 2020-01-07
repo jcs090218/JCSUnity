@@ -21,10 +21,8 @@ namespace JCSUnity
     public abstract class JCS_Button
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
         public delegate void CallBackFunc();
         public delegate void CallBackFuncBtn(JCS_Button btn);
         public delegate void CallBackFuncBtnInt(int selection);
@@ -39,9 +37,6 @@ namespace JCSUnity
 
         public CallBackFunc interactableCallback = null;
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
         [Header("** Check Variables (JCS_Button) **")]
 
@@ -51,9 +46,6 @@ namespace JCSUnity
 
         private bool mInitialized = false;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
         [Header("** Optional Variables (JCS_Button) **")]
 
@@ -100,9 +92,9 @@ namespace JCSUnity
         protected Button mButton = null;
         protected Image mImage = null;
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+
+        /* Setter & Getter */
+
         public RectTransform GetRectTransfom() { return this.mRectTransform; }
         public Button ButtonComp { get { return this.mButton; } }
         public Image Image { get { return this.mImage; } }
@@ -135,19 +127,14 @@ namespace JCSUnity
 
         public int DialogueSelection { get { return this.mDialogueSelection; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         protected virtual void Awake()
         {
             InitJCSButton();
         }
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Intialize jcs button once.
@@ -261,12 +248,6 @@ namespace JCSUnity
         {
             SetInteractable(mInteractable, false);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Check if this button selected. If you are using with

@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_DamageText
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         /// <summary>
         /// Text effect when removing text on the screen.
@@ -191,17 +186,14 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mDamageText9 = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool isActive() { return this.mActive; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mSpriteRenderers = new List<SpriteRenderer>();
@@ -225,12 +217,6 @@ namespace JCSUnity
             // Do active thing
             DoEffect();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Spawn one damage text.
@@ -375,12 +361,6 @@ namespace JCSUnity
             mActive = true;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Get the single digit sprite depends on the digit value.
         /// </summary>
@@ -514,6 +494,5 @@ namespace JCSUnity
             mCriticalSprite.sprite = null;
             mCriticalSprite.color = Color.white;
         }
-
     }
 }

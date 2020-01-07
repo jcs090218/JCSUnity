@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_LiquidBarText
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // Counter with the liquid bar?
         private JCS_GUILiquidBar mLiquidBar = null;
@@ -49,18 +44,14 @@ namespace JCSUnity
         private JCS_DeltaNumber mFullTextSprite = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_DeltaNumber CounterTextSprite { get { return this.mCounterTextSprite; } set { this.mCounterTextSprite = value; } }
         public JCS_DeltaNumber FullTextSprite { get { return this.mFullTextSprite; } set { this.mFullTextSprite = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mLiquidBar = this.GetComponent<JCS_GUILiquidBar>();
@@ -70,18 +61,6 @@ namespace JCSUnity
         {
             DoTextRender();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Find the value and set the text to value.
@@ -108,6 +87,5 @@ namespace JCSUnity
                 mFullTextSprite.UpdateScore((int)mLiquidBar.MaxValue);
             }
         }
-
     }
 }

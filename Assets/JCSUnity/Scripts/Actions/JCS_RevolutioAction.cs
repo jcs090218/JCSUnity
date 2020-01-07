@@ -18,14 +18,7 @@ namespace JCSUnity
     public class JCS_RevolutioAction
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_RevolutioAction) **")]
 
@@ -49,38 +42,22 @@ namespace JCSUnity
         [SerializeField]
         private bool mRevoluteAsLocalPosition = false;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool RevoluteAsLocalPosition { get { return this.mRevoluteAsLocalPosition; } set { this.mRevoluteAsLocalPosition = value; } }
         public Transform Origin { get { return this.mOrigin; } set { this.mOrigin = value; } }
         public float Radius { get { return this.mRadius; } set { this.mRadius = value; } }
         public int Degree { get { return this.mDegree; } set { this.mDegree = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Update()
         {
             DoRevolution();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the revolution action.
@@ -160,6 +137,5 @@ namespace JCSUnity
                     break;
             }
         }
-
     }
 }

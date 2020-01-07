@@ -18,20 +18,13 @@ namespace JCSUnity
     public class JCS_BlackScreen 
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_FadeObject mFadeObject = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Color LocalColor
         {
             get { return this.mFadeObject.LocalColor; }
@@ -41,9 +34,9 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mFadeObject = this.GetComponent<JCS_FadeObject>();
@@ -55,12 +48,6 @@ namespace JCSUnity
             // move to the last child make sure everything get cover by this.
             JCS_Utility.MoveToTheLastChild(this.transform);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Fade in black screen.
@@ -121,12 +108,5 @@ namespace JCSUnity
             this.transform.localScale = recordScale;
             this.transform.localRotation = recordRot;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

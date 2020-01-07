@@ -19,12 +19,8 @@ namespace JCSUnity
     public class JCS_RollSelectorButton
         : JCS_Button
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_RollBtnSelector mRollBtnSelector = null;
 
 
@@ -40,20 +36,17 @@ namespace JCSUnity
 
         private JCS_ScaleEffect mScaleEffect = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int ScrollIndex { get { return this.mScrollIndex; } set { this.mScrollIndex = value; } }
         public void SetRollSelector(JCS_RollBtnSelector rbs) { this.mRollBtnSelector = rbs; }
         public JCS_SimpleTrackAction SimpleTrackAction { get { return this.mTrackAction; } }
         public JCS_ScaleEffect GetScaleEffect() { return this.mScaleEffect; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -70,12 +63,6 @@ namespace JCSUnity
         {
             OverwriteAllButton();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Override
@@ -135,12 +122,6 @@ namespace JCSUnity
             mTrackAction.TargetPosition = this.transform.localPosition;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// When button get focus, design the code here...
         /// </summary>
@@ -194,6 +175,5 @@ namespace JCSUnity
                 b.JCS_ButtonClick();
             }
         }
-
     }
 }

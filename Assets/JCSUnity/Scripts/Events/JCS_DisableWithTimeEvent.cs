@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_DisableWithTimeEvent
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_DisableWithTimeEvent) **")]
 
@@ -32,16 +27,11 @@ namespace JCSUnity
 
         private float mTimer = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Update()
         {
             mTimer += Time.deltaTime;
@@ -55,18 +45,5 @@ namespace JCSUnity
                 this.gameObject.SetActive(false);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

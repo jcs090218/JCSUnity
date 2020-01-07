@@ -18,13 +18,7 @@ namespace JCSUnity
     public class JCS_RelativeFreezePositionAction
         : JCS_UnityObject
     {
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_RelativeFreezePositionAction) **")]
 
@@ -40,20 +34,16 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsLocalPosition = false;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public Transform TargetTransform { get { return this.mTargetTrans; } set { this.mTargetTrans = value; } }
         public Vector3 Distance { get { return this.mDistance; } set { this.mDistance = value; } }
         public bool IsLocalPosition { get { return this.mIsLocalPosition; } set { this.mIsLocalPosition = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void LateUpdate()
         {
             if (mTargetTrans == null)
@@ -91,18 +81,5 @@ namespace JCSUnity
                 this.Position = newPos;
             }
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

@@ -23,9 +23,7 @@ namespace JCSUnity
     public class JCS_2DFlyAction
         : JCS_AIAction
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public enum StatusX
         {
@@ -43,8 +41,6 @@ namespace JCSUnity
             UP = 1,
         };
 
-        //----------------------
-        // Private Variables
 
         private JCS_VelocityInfo mVelocityInfo = null;
         private JCS_CharacterControllerInfo mCharacterControllerInfo = null;
@@ -156,12 +152,9 @@ initialize time.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public CharacterController GetCharacterController() { return this.mCharacterControllerInfo.GetCharacterController(); }
         public Vector3 Velocity { get { return this.mVelocityInfo.Velocity; } set { this.mVelocityInfo.Velocity = value; } }
         public float VelX { get { return mVelocityInfo.VelX; } set { mVelocityInfo.VelX = value; } }
@@ -173,9 +166,9 @@ initialize time.")]
 
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mVelocityInfo = this.GetComponent<JCS_VelocityInfo>();
@@ -234,12 +227,6 @@ initialize time.")]
             // so before rendering will fix the position.
             SpaceLimitCheck();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Calculate the possiblity and see if do the fly action.
@@ -461,13 +448,6 @@ initialize time.")]
 
             mFlyed = true;
         }
-
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the fly algorithmns

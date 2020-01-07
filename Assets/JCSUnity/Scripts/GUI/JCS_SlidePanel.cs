@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_SlidePanel
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private RectTransform mRectTransform = null;
 
@@ -46,20 +41,16 @@ namespace JCSUnity
         [Range(0.01f, 5.0f)]
         private float mSlideFrictionY = 0.2f;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public float SlideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
         public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
         public void SetTargetPosition(Vector3 pos) { this.mTargetPosition = pos; }
         public Vector3 GetTargetPosition() { return this.mTargetPosition; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
@@ -76,18 +67,5 @@ namespace JCSUnity
 
             this.mRectTransform.localPosition = newPosition;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

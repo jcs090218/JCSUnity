@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_DialogueSystem 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_DialogueSystem) **")]
 
@@ -172,12 +167,8 @@ namespace JCSUnity
         private AudioClip mDisposeSound = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
@@ -187,9 +178,9 @@ namespace JCSUnity
         public AudioClip AcitveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
         public AudioClip DisposeSound { get { return this.mDisposeSound; } set { this.mDisposeSound = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // try to get transfrom by 
@@ -221,12 +212,6 @@ namespace JCSUnity
 
             ScrollSelectBtnText();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Start the dialogue, in other word same as start a conversation.
@@ -637,12 +622,6 @@ namespace JCSUnity
         {
             --mDialogueScript.Status;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do scroll text action.

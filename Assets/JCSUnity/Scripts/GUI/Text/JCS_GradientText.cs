@@ -24,6 +24,8 @@ namespace JCSUnity
     public class JCS_GradientText
         : BaseMeshEffect
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_GradientText) **")]
 
         [Tooltip("Type of the gradient action.")]
@@ -39,10 +41,14 @@ namespace JCSUnity
         private Color32 mEndColor = Color.black;
 
 
+        /* Setter & Getter */
+
         public JCS_GradientType GradientType { get { return this.mGradientType; } set { this.mGradientType = value; } }
         public Color32 StartColor { get { return this.mStartColor; } set { this.mStartColor = value; } }
         public Color32 EndColor { get { return this.mEndColor; } set { this.mEndColor = value; } }
 
+
+        /* Functions */
 
         public override void ModifyMesh(VertexHelper vh)
         {
@@ -124,6 +130,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

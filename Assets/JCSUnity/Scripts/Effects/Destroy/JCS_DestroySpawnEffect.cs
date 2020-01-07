@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_DestroySpawnEffect
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_TransformPool mTransformPool = null;
         private JCS_HitListEvent mHitList = null;
@@ -94,12 +89,9 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandScaleRange = 0.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
         public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
         public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
@@ -115,9 +107,9 @@ namespace JCSUnity
         public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
         public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mHitList = this.GetComponent<JCS_HitListEvent>();
@@ -178,18 +170,6 @@ namespace JCSUnity
             // spawn the game object.
             DoSpawn();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the spawning.
@@ -284,6 +264,5 @@ namespace JCSUnity
 
             trans.localScale = newScale;
         }
-
     }
 }

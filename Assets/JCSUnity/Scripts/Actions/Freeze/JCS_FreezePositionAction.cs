@@ -18,13 +18,7 @@ namespace JCSUnity
     public class JCS_FreezePositionAction
         : JCS_UnityObject
     {
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_FreezePositionAction) **")]
 
@@ -44,13 +38,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Bool3 mFreezePosition = JCS_Bool3.allFalse;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public Vector3 PositionToFreeze { get { return this.mPositionToFreeze; } set { this.mPositionToFreeze = value; } }
         public bool IsLocalPosition
@@ -69,9 +59,9 @@ namespace JCSUnity
         }
         public JCS_Bool3 FreezePosition { get { return this.mFreezePosition; } set { this.mFreezePosition = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        
+        /* Functions */
+
         private void Start()
         {
             // get the new freeze position.
@@ -88,18 +78,6 @@ namespace JCSUnity
 
             DoFreezePosition();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Freeze position.

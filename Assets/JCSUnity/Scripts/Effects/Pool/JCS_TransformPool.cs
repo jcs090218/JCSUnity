@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_TransformPool
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_ObjectPool) **")]
 
@@ -31,22 +26,9 @@ namespace JCSUnity
         [SerializeField]
         private Transform[] mTransPool = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         /// <summary>
         /// Get a transform from the pool randomly.
@@ -61,13 +43,5 @@ namespace JCSUnity
 
             return mTransPool[randIndex];
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
-
     }
 }

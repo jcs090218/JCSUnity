@@ -17,36 +17,11 @@ namespace JCSUnity
     public class JCS_2DTopDownPlayerAudioController 
         : JCS_2DPlayerAudioController
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
+        /* Functions */
 
     }
 }

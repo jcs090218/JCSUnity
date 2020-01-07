@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_AttackerRecorder
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_AttackerRecorder) **")]
 
@@ -36,34 +31,18 @@ namespace JCSUnity
         // Record all the attacker attack this enemy!
         private JCS_Vector<Transform> mAttackers = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Transform LastAttacker { get { return this.mLastAttacker; } set { this.mLastAttacker = value; } }
         public JCS_Vector<Transform> GetAttackers() { return this.mAttackers; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mAttackers = new JCS_Vector<Transform>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

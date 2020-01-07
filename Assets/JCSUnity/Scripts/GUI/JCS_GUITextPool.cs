@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_GUITextPool
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_GUITextPool) **")]
 
@@ -40,26 +35,14 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_LogText> mLogTexts = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             SpawnTextPool();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get one text from pool.
@@ -124,12 +107,6 @@ namespace JCSUnity
             return ExecuteOneFromPool(true);
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Spawn the text pool base on number of handle.
         /// </summary>
@@ -173,6 +150,5 @@ namespace JCSUnity
                 logText.SetIGLogSystem(logSystem);
             }
         }
-
     }
 }

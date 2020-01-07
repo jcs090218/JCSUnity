@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_PfGrid
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_PfGrid) **")]
@@ -57,18 +52,14 @@ namespace JCSUnity
         private float mNodeDiameter;
         private int mGridSizeX, mGridSizeY;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public LayerMask UnwalkableMask { get { return this.mUnwalkableMask; } set { this.mUnwalkableMask = value; } }
         public int MaxSize { get { return (mGridSizeX * mGridSizeY); } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Awake()
         {
@@ -123,12 +114,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Get the nodes around.
         /// </summary>
@@ -182,12 +167,6 @@ namespace JCSUnity
             return mGrid[x, y];
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Create the grid.
         /// </summary>
@@ -222,6 +201,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

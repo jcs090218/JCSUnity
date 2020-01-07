@@ -21,9 +21,7 @@ namespace JCSUnity
     public class JCS_FadeObject
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         // callback after fadeout if complete
         public IsFadeOutCallback fadeOutCallback = DefaultFadeCallback;
@@ -31,8 +29,6 @@ namespace JCSUnity
         // callback after fade in is complete.
         public IsFadeInCallback fadeInCallback = DefaultFadeCallback;
 
-        //----------------------
-        // Private Variables
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
 
         private float mAlpha = 1.0f;
@@ -84,21 +80,18 @@ namespace JCSUnity
         [Range(0.0f, 1)]
         private float mFadeOutAmount = 0.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public bool OverrideFade { get { return this.mOverrideFade; } set { this.mOverrideFade = value; } }
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
         public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
         public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             if (LocalColor.a <= 0.0f)
@@ -206,12 +199,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Is the fade object fade in?
         /// </summary>
@@ -250,12 +237,6 @@ namespace JCSUnity
         {
             // empty.
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the fade effect.
@@ -322,6 +303,5 @@ namespace JCSUnity
             this.mFadeType = type;
             this.mEffect = true;
         }
-
     }
 }

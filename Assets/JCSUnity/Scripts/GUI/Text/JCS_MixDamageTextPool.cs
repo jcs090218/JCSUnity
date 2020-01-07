@@ -21,9 +21,7 @@ namespace JCSUnity
     public class JCS_MixDamageTextPool
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         /// <summary>
         /// List of type of damage text.
@@ -35,9 +33,6 @@ namespace JCSUnity
             GET_DAMAGE,
             HEAL
         };
-
-        //----------------------
-        // Private Variables
 
         [Header("NOTE: Plz put the whole set of Damage Text here!")]
 
@@ -101,20 +96,17 @@ namespace JCSUnity
         // IMPORTANT: index of number we want to call to spawn the damage text!
         private List<int> mSequenceSpawnCount = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         private JCS_DamageTextPool GetCriticalDamageTextPool() { return this.mCritDamageTextPool; }
         private JCS_DamageTextPool GetNormralDamageTextPool() { return this.mNormalDamageTextPool; }
         private JCS_DamageTextPool GetGetDamageDamageTextPool() { return this.mGetDamageDamageTextPool; }
         private JCS_DamageTextPool GetHealDamageTextPoll() { return this.mHealDamageTextPool; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
 
@@ -172,12 +164,6 @@ namespace JCSUnity
             }
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Default Damaget Text Spawner with the defualt random algorithm!
@@ -456,12 +442,6 @@ namespace JCSUnity
             mSequenceSpawnCount.Add(0);
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Return the damage text pool by the enum type.
         /// </summary>
@@ -552,6 +532,5 @@ namespace JCSUnity
             mSequenceSpawnCount.RemoveAt(processIndex);
             mSequenceHitSoundData.RemoveAt(processIndex);
         }
-
     }
 }

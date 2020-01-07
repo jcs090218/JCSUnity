@@ -22,12 +22,7 @@ namespace JCSUnity
     public class JCS_LogText
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Text mText = null;
 
@@ -45,12 +40,8 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = false;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public Text unityText { get { return this.mText; } }
         public bool isActive() { return this.mActive; }
 
@@ -62,9 +53,9 @@ namespace JCSUnity
             this.mIGLogSystem = sys;
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mText = this.GetComponent<Text>();
@@ -80,13 +71,6 @@ namespace JCSUnity
             // to pool).
             mFadeObject.fadeOutCallback = FadeOutCompleteCallback;
         }
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Activate one log from pool.
@@ -121,12 +105,6 @@ namespace JCSUnity
             mText.text = message;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Function assgin to FadeObject in order to let
         /// the object know when the object to deactive, 
@@ -141,6 +119,5 @@ namespace JCSUnity
 
             mSlideEffect.Deactive();
         }
-
     }
 }

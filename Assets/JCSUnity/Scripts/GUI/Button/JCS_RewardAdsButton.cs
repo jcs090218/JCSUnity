@@ -22,13 +22,7 @@ namespace JCSUnity
     public class JCS_RewardAdsButton
         : JCS_Button
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_RewardAdsButton) **")]
 
@@ -39,23 +33,13 @@ namespace JCSUnity
         // call back function.
         private Action<ShowResult> mRewardCallback = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetRewardCallback(Action<ShowResult> func) { this.mRewardCallback = func; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         /// <summary>
         /// Default function to call this, so we dont have to
@@ -103,13 +87,6 @@ namespace JCSUnity
             }
         }
 #endif
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }
 #endif

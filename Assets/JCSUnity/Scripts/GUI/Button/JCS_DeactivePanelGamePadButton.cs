@@ -18,6 +18,8 @@ namespace JCSUnity
     public class JCS_DeactivePanelGamePadButton
         : JCS_GamePadButton
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_DeactivePanelGamePadButton) **")]
 
         [Tooltip("Play dialogue sound?")]
@@ -33,8 +35,11 @@ namespace JCSUnity
         private JCS_TweenPanel[] mTweenPanels = null;
 
 
+        /* Setter & Getter */
+
         public bool HideithSound { get { return this.mHideWithSound; } set { this.mHideWithSound = value; } }
 
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_2DShakeEffect 
         : JCS_2DEffect
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -70,21 +65,17 @@ namespace JCSUnity
         private AudioClip mShakeSound = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool RepeatOverride { get { return this.mRepeatOverride; } set { this.mRepeatOverride = value; } }
         public float ShakeTime { get { return this.mShakeTime; } set { this.mShakeTime = value; } }
         public float ShakeMargin { get { return this.mShakeMargin; } }
 
         public AudioClip ShakeSound { get { return this.mShakeSound; } set { this.mShakeSound = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
@@ -114,12 +105,6 @@ namespace JCSUnity
             }
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the shake with default shake time and shake margin.
@@ -164,12 +149,6 @@ namespace JCSUnity
             mSoundPlayer.PlayOneShot(mShakeSound);
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Do the actual shake job.
         /// </summary>
@@ -211,6 +190,5 @@ namespace JCSUnity
                     JCS_GameManager.instance.GAME_PAUSE = false;
             }
         }
-
     }
 }

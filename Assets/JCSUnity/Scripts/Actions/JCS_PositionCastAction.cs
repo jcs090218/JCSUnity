@@ -22,12 +22,7 @@ namespace JCSUnity
         : JCS_UnityObject
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_PositionCastAction) **")]
@@ -68,21 +63,17 @@ namespace JCSUnity
         private Vector3 mPositionOffset = Vector3.zero;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
 #if (UNITY_EDITOR)
         public Vector3 CastToScreenPosition { get { return this.mCastToScreenPosition; } }
         public Vector3 CastToWorldPosition { get { return this.mCastToWorldPosition; } }
 #endif
         public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             // Only need it for the UI.
@@ -107,12 +98,6 @@ namespace JCSUnity
                 CastToWorld(mCastToWorldPosition);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Make a canvas space object to a world space position.
@@ -184,12 +169,5 @@ namespace JCSUnity
 
             return this.LocalPosition;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

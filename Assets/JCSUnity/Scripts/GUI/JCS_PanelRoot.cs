@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_PanelRoot
         : JCS_BaseDialogueObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_PanelRoot) **")]
 
@@ -42,19 +37,16 @@ namespace JCSUnity
         [SerializeField]
         private bool mFitScreenSize = true;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool FitScreenSize { get { return this.mFitScreenSize; } set { this.mFitScreenSize = value; } }
         public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
         public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -73,18 +65,6 @@ namespace JCSUnity
         {
             base.Start();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Fit screen size base on Unity Engine architecture.
@@ -161,6 +141,5 @@ namespace JCSUnity
                 panelChild.PanelRoot = this;
             }
         }
-
     }
 }

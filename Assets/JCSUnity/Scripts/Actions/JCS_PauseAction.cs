@@ -23,12 +23,7 @@ namespace JCSUnity
     public class JCS_PauseAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_PauseAction) **")]
 
@@ -39,26 +34,15 @@ this script is basically not the good serve for you.")]
         [SerializeField]
         private MonoBehaviour[] mActionList = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Start()
         {
             JCS_PauseManager.instance.AddActionToList(this);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Enable/Disable the behaviour component in the list.
@@ -73,12 +57,5 @@ this script is basically not the good serve for you.")]
                 b.enabled = act;
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

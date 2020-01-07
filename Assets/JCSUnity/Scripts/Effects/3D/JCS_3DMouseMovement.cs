@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_3DMouseMovement
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Vector3 mVelocity = Vector3.zero;
 
@@ -48,20 +43,16 @@ namespace JCSUnity
         [SerializeField]
         private bool mScrollDepth = true;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ScreenScroll { get { return this.mScreenScroll; } set { this.mScreenScroll = value; } }
         public float ScrollScreenRange { get { return this.mScrollScreenRange; } set { this.mScrollScreenRange = value; } }
         public float ScrollScreenSpeed { get { return this.mScrollScreenSpeed; } set { this.mScrollScreenSpeed = value; } }
         public bool ScrollDepth { get { return this.mScrollDepth; } set { this.mScrollDepth = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Update()
         {
@@ -70,18 +61,6 @@ namespace JCSUnity
             // move the camera.
             this.transform.localPosition += mVelocity;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the screen scroll algorithm.
@@ -157,6 +136,5 @@ namespace JCSUnity
                 // else apply zero, so it wont move.
                 mVelocity.z = 0;
         }
-
     }
 }

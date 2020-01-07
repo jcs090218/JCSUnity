@@ -25,15 +25,7 @@ namespace JCSUnity
     public class JCS_BaseDialogueObject
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
+        /* Variables */
 
         protected RectTransform mRectTransform = null;
 
@@ -59,17 +51,17 @@ namespace JCSUnity
         protected Vector3 mOriginalPosition = Vector3.zero;
         protected Quaternion mOriginalRotation = new Quaternion(0, 0, 0, 0);
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+
+        /* Setter & Getter */
+
         public bool IsVisible { get { return this.mIsVisible; } }
         public bool AsOriginalSize { get { return this.mAsOriginalSize; } set { this.mAsOriginalSize = value; } }
         public bool AsOriginalPosition { get { return this.mAsOriginalPosition; } set { this.mAsOriginalPosition = value; } }
         public bool AsOriginalRotation { get { return this.mAsOriginalRotation; } set { this.mAsOriginalRotation = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected virtual void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
@@ -90,12 +82,6 @@ namespace JCSUnity
         {
             
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Reset the dialgoue base on the ratio of the game.
@@ -206,9 +192,6 @@ namespace JCSUnity
             this.transform.localRotation = recordRot;
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Set the parent object base on the 
         /// fit screen setting.
@@ -236,9 +219,5 @@ namespace JCSUnity
             // set it to parent
             this.gameObject.transform.SetParent(parentObject);
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

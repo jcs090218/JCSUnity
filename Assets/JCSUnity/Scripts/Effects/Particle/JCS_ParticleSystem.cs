@@ -18,13 +18,7 @@ namespace JCSUnity
     public class JCS_ParticleSystem
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_ParticleSystem) **")]
 
@@ -174,12 +168,9 @@ mRandScaleY and mRandScaleZ variables.")]
         private JCS_Vector<int> mParticleCounter = null;         // counter per thread
 
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_Vector<JCS_Particle> GetParticles() { return this.mParticles; }
 
         // Binds.
@@ -207,9 +198,9 @@ mRandScaleY and mRandScaleZ variables.")]
         public float RandScaleZ { get { return this.mRandScaleZ; } set { this.mRandScaleZ = value; } }
         public bool DoShotImmediately { get { return this.mDoShotImmediately; } set { this.mDoShotImmediately = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mParticles = new JCS_Vector<JCS_Particle>();
@@ -264,12 +255,6 @@ mRandScaleY and mRandScaleZ variables.")]
             }
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Start the paritcle engine.
@@ -377,12 +362,6 @@ mRandScaleY and mRandScaleZ variables.")]
 
             mParticleSpawned = true;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Freee the paritcle engine position?
@@ -618,6 +597,5 @@ mRandScaleY and mRandScaleZ variables.")]
             }
             particle.transform.localScale = newScale;
         }
-
     }
 }

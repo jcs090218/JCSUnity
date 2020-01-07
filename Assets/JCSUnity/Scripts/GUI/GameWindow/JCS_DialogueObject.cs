@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_DialogueObject 
         : JCS_PanelRoot
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_SoundPlayer mJCSSoundPlayer = null;
 
@@ -57,14 +52,10 @@ namespace JCSUnity
         [Tooltip("Sound when close this dialouge window.")]
         [SerializeField]
         private AudioClip mCloseWindowClip = null;
-        
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int GetDialogueIndex() { return this.mDialogueIndex; }
         public KeyCode GetKeyCode() { return this.mKeyCode; }
         public void SetKeyCode(KeyCode key) { this.mKeyCode = key; }
@@ -72,9 +63,9 @@ namespace JCSUnity
         public JCS_PanelType GetPanelType() { return this.mPanelType; }
         public bool IsOpenWindow() { return this.mIsVisible; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
 #if !(UNITY_5_4_OR_NEWER)
         // Called by Unity after a new level was loaded.
         private void OnLevelWasLoaded()
@@ -93,7 +84,7 @@ namespace JCSUnity
             ResetDialogue();
         }
 #endif
-        
+
         protected override void Awake()
         {
 #if (UNITY_5_4_OR_NEWER)
@@ -156,12 +147,6 @@ namespace JCSUnity
 
             ProcessInput();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
         
         /// <summary>
         /// Decide what panel is this panel going to be.
@@ -258,12 +243,6 @@ namespace JCSUnity
             SwapToTheLastOpenWindowList();
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Add the panel to window open list, so will record what window 
         /// is actual open in the current game scene.
@@ -318,6 +297,5 @@ namespace JCSUnity
                 ToggleVisibility();
             }
         }
-
     }
 }

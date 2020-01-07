@@ -19,12 +19,19 @@ namespace JCSUnity
     public abstract class JCS_I2DAnimator
         : MonoBehaviour
     {
+        /* Variables */
 
         protected Animator mAnimator = null;
         protected AnimatorStateInfo mAnimatorStateInfo;
 
+
+        /* Setter & Getter */
+
         public Animator GetAnimator() { return this.mAnimator; }
         public AnimatorStateInfo GetAnimatorStateInfo() { return this.mAnimatorStateInfo; }
+
+
+        /* Functions */
 
         protected virtual void Awake()
         {
@@ -52,6 +59,5 @@ namespace JCSUnity
         {
             GetAnimator().enabled = false;
         }
-
     }
 }

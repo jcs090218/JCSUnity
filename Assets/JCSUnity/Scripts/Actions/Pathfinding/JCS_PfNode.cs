@@ -17,6 +17,7 @@ namespace JCSUnity
     public class JCS_PfNode 
         : IHeapItem<JCS_PfNode>
     {
+        /* Variables */
 
         public bool Walkable = false;
         public Vector3 mWorldPosition = Vector3.zero;
@@ -31,9 +32,13 @@ namespace JCSUnity
         private int mHeapIndex;
 
 
+        /* Setter & Getter */
+
         public int fCost { get { return gCost + hCost; } }
         public int HeapIndex { get { return this.mHeapIndex; } set { this.mHeapIndex = value; } }
 
+
+        /* Functions */
 
         public JCS_PfNode(bool walkable, Vector3 worldPos, int gridX, int gridY)
         {
@@ -57,6 +62,5 @@ namespace JCSUnity
 
             return -compare;
         }
-
     }
 }

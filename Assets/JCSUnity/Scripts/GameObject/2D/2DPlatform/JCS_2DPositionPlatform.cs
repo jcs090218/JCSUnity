@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_2DPositionPlatform
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DPositionPlatform) **")]
 
@@ -44,19 +39,16 @@ true meaning the fly action object cannot go throught this platform.")]
         [SerializeField]
         private bool mCannotBeGoThrough = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public BoxCollider GetPlatformTrigger() { return this.mPlatformTrigger; }
         public BoxCollider GetPlatformCollider() { return this.mPlatformCollider; }
         public bool CannotBeGoThrough { get { return this.mCannotBeGoThrough; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected void Start()
         {
             // add to list
@@ -134,18 +126,5 @@ true meaning the fly action object cannot go throught this platform.")]
 
             p.ResetingCollision = true;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

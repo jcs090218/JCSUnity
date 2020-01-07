@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_EnvironmentSoundPlayer
         : JCS_SoundPlayer
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_EnvironmentSoundPlayer) **")]
 
@@ -30,16 +25,11 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mEnvironmentSound = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -50,18 +40,5 @@ namespace JCSUnity
             GetAudioSource().clip = mEnvironmentSound;
             GetAudioSource().Play();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

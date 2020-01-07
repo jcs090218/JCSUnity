@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_SpriteScaleAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("-- X Facing --")]
 
@@ -47,20 +42,16 @@ namespace JCSUnity
 
         private Vector3 mLastPosition = Vector3.zero;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool IsFacingUp { get { return this.mIsFacingUp; } }
         public bool IsFacingRight { get { return this.mIsFacingRight; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void LateUpdate()
         {
@@ -127,18 +118,5 @@ namespace JCSUnity
             // apply new scale
             this.transform.localScale = newScale;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

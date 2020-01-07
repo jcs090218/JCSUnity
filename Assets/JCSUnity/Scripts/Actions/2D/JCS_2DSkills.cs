@@ -19,6 +19,8 @@ namespace JCSUnity
     public abstract class JCS_2DSkills
         : MonoBehaviour
     {
+        /* Variables */
+
         protected JCS_SoundPlayer mSoundPlayer = null;
 
         [Header("** Runtime Variables (JCS_2DSkills) **")]
@@ -96,6 +98,10 @@ namespace JCSUnity
         [SerializeField]
         protected AudioClip mHitSound = null;
 
+
+        /* Setter & Getter */
+
+        /* Functions */
 
         protected virtual void Awake()
         {
@@ -226,6 +232,5 @@ namespace JCSUnity
             // so when animation ends destroy itself.
             obj.AddComponent<JCS_DestroyAnimEndEvent>();
         }
-
     }
 }

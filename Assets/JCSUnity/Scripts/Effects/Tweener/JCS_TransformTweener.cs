@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_TransformTweener
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private CallBackDelegate mDestinationCallback = null;
 
@@ -159,12 +154,9 @@ namespace JCSUnity
         [Range(0.0f, 1000.0f)]
         private float mStopTweenDistance = 1;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool IsDoneTweening { get { return this.mIsDoneTweening; } }
         public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
         public bool TrackAsLocalSelf { get { return this.mTrackAsLocalSelf; } set { this.mTrackAsLocalSelf = value; } }
@@ -185,9 +177,9 @@ namespace JCSUnity
         public float ValueOffsetY { get { return this.mValueOffset.y; } set { this.mValueOffset.y = value; } }
         public float ValueOffsetZ { get { return this.mValueOffset.z; } set { this.mValueOffset.z = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -243,12 +235,6 @@ namespace JCSUnity
                 DoTweenContinue(mTargetTransform);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Reset tweener effect setting.
@@ -482,12 +468,6 @@ namespace JCSUnity
             return val;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Default callback when done tweening.
         /// </summary>
@@ -617,6 +597,5 @@ namespace JCSUnity
                 this.mDurationZ += randomizeDuration;
             }
         }
-
     }
 }

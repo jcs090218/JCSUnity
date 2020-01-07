@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_OrderLayerObject 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         /* Down compatible. */
         private SpriteRenderer mSpriteRenderer = null;
@@ -49,12 +44,9 @@ namespace JCSUnity
         [SerializeField] [Range(-30, 30)]
         private int mAbsotlueLayer = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public JCS_OrderLayer OrderLayer { get { return this.mOrderLayer; } }
         public List<SpriteRenderer> SpriteRenderers() { return this.mSpriteRenderers; }
@@ -63,9 +55,9 @@ namespace JCSUnity
         public int AbsotlueLayer { get { return this.mAbsotlueLayer; } }
         public int sortingOrder { get { return this.mOrderLayer.OrderLayer; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             /* Down compatible. */
@@ -95,12 +87,6 @@ namespace JCSUnity
             if (mAbsoluteLayerEffect)
                 SetObjectParentToOrderLayerByOrderLayerIndex(mAbsotlueLayer);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Set the sorting layer in absolute layer.
@@ -134,12 +120,5 @@ namespace JCSUnity
                 this, 
                 orderLayerIndex);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

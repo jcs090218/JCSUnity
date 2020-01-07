@@ -18,20 +18,13 @@ namespace JCSUnity
     public class JCS_DestroySoundEndEvent
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetAudioClipAndPlayOneShot(AudioClip clip, JCS_SoundSettingType type)
         {
             if (mSoundPlayer == null)
@@ -41,9 +34,9 @@ namespace JCSUnity
             this.mSoundPlayer.PlayOneShot(clip, type);
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             if (mSoundPlayer.GetAudioSource().isPlaying)
@@ -51,18 +44,5 @@ namespace JCSUnity
 
             Destroy(this.gameObject);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

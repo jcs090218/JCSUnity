@@ -22,12 +22,7 @@ namespace JCSUnity
     public class JCS_ColorTweener
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private TweenDelegate mEasingRed = null;
         private TweenDelegate mEasingGreen = null;
@@ -157,12 +152,8 @@ namespace JCSUnity
         private UnityEvent mUnityCallback = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool Animating { get { return (mEasingR || mEasingG || mEasingB || mEasingA); } }
         public JCS_TweenType EaseTypeR
         {
@@ -221,9 +212,9 @@ namespace JCSUnity
             this.mColorCallback = func;
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -256,12 +247,6 @@ namespace JCSUnity
                 DoTween(mTweenColorB);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Reset the tweener progress.
@@ -369,13 +354,6 @@ namespace JCSUnity
             this.mEasingB = true;
             this.mEasingA = true;
         }
-
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Update red channel.
@@ -552,6 +530,5 @@ namespace JCSUnity
             // update color.
             this.LocalColor = this.mProgressionColor;
         }
-
     }
 }

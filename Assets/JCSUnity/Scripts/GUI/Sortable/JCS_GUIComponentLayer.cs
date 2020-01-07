@@ -22,23 +22,12 @@ namespace JCSUnity
     public class JCS_GUIComponentLayer
         : JCS_SortingObject
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
+        /* Functions */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Start()
         {
             // if already sorted, return.
@@ -63,18 +52,6 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Re-order all the object.
         /// </summary>
@@ -92,6 +69,5 @@ namespace JCSUnity
                 arr[index].Sorted = true;
             }
         }
-
     }
 }

@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_Bubble
         : JCS_WeatherParticle
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_Bubble) **")]
 
@@ -39,19 +34,15 @@ namespace JCSUnity
         [SerializeField] [Range(0.1f, 1000.0f)]
         private float mShakeSpeed = 1.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool DoAction { get { return this.mDoAction; } set { this.mDoAction = value; } }
         public float ShakeSpeed { get { return this.mShakeSpeed; } set { this.mShakeSpeed = value; } }
         public float ShakeMargin { get { return this.mShakeMargin; } set { this.mShakeMargin = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Update()
         {
@@ -62,18 +53,5 @@ namespace JCSUnity
             newPos.x += JCS_Random.Range(-mShakeMargin, mShakeMargin) * ShakeSpeed * Time.deltaTime;
             this.transform.position = newPos;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

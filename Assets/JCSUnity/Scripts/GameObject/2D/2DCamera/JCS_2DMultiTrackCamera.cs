@@ -22,12 +22,7 @@ namespace JCSUnity
     public class JCS_2DMultiTrackCamera 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_Vector<JCS_Player> mTargetList = null;
 
@@ -70,19 +65,16 @@ namespace JCSUnity
         [SerializeField]
         private float mMaxFieldOfView = 100;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public AudioListener GetAudioListener() { return this.mAudioListener; }
         public float MinFieldOfView { get { return this.mMinFieldOfView; } set { this.mMinFieldOfView = value; } }
         public float MaxFieldOfView { get { return this.mMaxFieldOfView; } set { this.mMaxFieldOfView = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected void Awake()
         {
 
@@ -128,12 +120,6 @@ namespace JCSUnity
                 mJCS_2DCamera.fieldOfView = mMaxFieldOfView;
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Add a target to track list.
         /// </summary>
@@ -151,12 +137,6 @@ namespace JCSUnity
         {
             mTargetList.slice(p);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Calcualte the camera position, in order to get the 
@@ -249,6 +229,5 @@ namespace JCSUnity
 
             return new Vector3(finalPosX, finalPosY, transform.position.z);
         }
-
     }
 }

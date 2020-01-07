@@ -18,14 +18,7 @@ namespace JCSUnity
     public class JCS_FreezeRotationAction
         : JCS_UnityObject
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_FreezeTransformAction) **")]
 
@@ -45,13 +38,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Bool3 mFreezeRotation = JCS_Bool3.allFalse;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public Vector3 RotationToFreeze { get { return this.mRotationToFreeze; } set { this.mRotationToFreeze = value; } }
         public bool IsLocalRotation
@@ -70,9 +59,9 @@ namespace JCSUnity
         }
         public JCS_Bool3 FreezeRotation { get { return this.mFreezeRotation; } set { this.mFreezeRotation = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void LateUpdate()
         {
             if (!mActive)
@@ -80,17 +69,6 @@ namespace JCSUnity
 
             DoFreezeRotation();
         }
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Freeze rotation.

@@ -20,14 +20,7 @@ namespace JCSUnity
     public class JCS_LookAtMouseAction
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_LookAtMouseAction) **")]
 
@@ -35,18 +28,14 @@ namespace JCSUnity
         [SerializeField]
         private float mSpeed = 10.0f;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void FixedUpdate()
         {
             // Generate a plane that intersects the transform's position with an upwards normal.
@@ -74,18 +63,5 @@ namespace JCSUnity
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, mSpeed * Time.deltaTime);
             }
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

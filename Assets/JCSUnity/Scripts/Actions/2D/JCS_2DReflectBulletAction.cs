@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_2DReflectBulletAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DReflectBulletAction) **")]
 
@@ -64,16 +59,10 @@ degree lower than 90.")]
         [SerializeField] [Range(0.1f, 1000)]
         private float mRandPosRangeZ = 1f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void Awake()
         {
@@ -90,18 +79,6 @@ degree lower than 90.")]
             if (bullet != null)
                 ReflectBullet(bullet);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Reflect the bullet by turning the degree.
@@ -157,6 +134,5 @@ degree lower than 90.")]
             // apply result
             bullet.transform.position = newPos;
         }
-
     }
 }

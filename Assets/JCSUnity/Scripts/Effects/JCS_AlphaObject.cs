@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_AlphaObject
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Color mRecordColor;
 
@@ -38,20 +33,17 @@ namespace JCSUnity
 
         [Tooltip("How fast the alpha channel changes.")]
         [SerializeField] [Range(0.1f, 5.0f)]
-        private float mFadeFriction = 1;        
+        private float mFadeFriction = 1;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public float TargetAlpha { get { return this.mTargetAlpha; } set { this.mTargetAlpha = value; } }
         public float FadeFriction { get { return this.mFadeFriction; } set { this.mFadeFriction = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             if (mAlpha == mTargetAlpha)
@@ -72,12 +64,6 @@ namespace JCSUnity
                     break;
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get unity specific data by type.
@@ -111,12 +97,5 @@ namespace JCSUnity
             this.mTargetAlpha = alpha;
             this.mFadeFriction = friction;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

@@ -19,35 +19,22 @@ namespace JCSUnity
     public class JCS_3DAnimator
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
         protected Animator mAnimator = null;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+
+        /* Setter & Getter */
+
         public Animator GetAnimator() { return this.mAnimator; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mAnimator = this.GetComponent<Animator>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Play the animation in current frame.
@@ -64,12 +51,5 @@ namespace JCSUnity
         {
             GetAnimator().enabled = false;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

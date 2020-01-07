@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_OneShotObject 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_OneShotObject) **")]
 
@@ -55,12 +50,8 @@ namespace JCSUnity
         private Vector3 mRecordPosition = Vector3.zero;
         private float mDistanceRecorder = 0.0f;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool EffectOnAwake { get { return this.mEffectOnAwake; } set { this.mEffectOnAwake = value; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
@@ -68,9 +59,9 @@ namespace JCSUnity
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             mRecordPosition = this.transform.position;
@@ -104,12 +95,6 @@ namespace JCSUnity
 
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Play one shot the object.
         /// </summary>
@@ -130,12 +115,6 @@ namespace JCSUnity
             mEffect = true;
         }
         
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Do the movement.
         /// </summary>
@@ -156,6 +135,5 @@ namespace JCSUnity
                     break;
             }
         }
-
     }
 }

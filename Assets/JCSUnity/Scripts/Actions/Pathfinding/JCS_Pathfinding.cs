@@ -21,37 +21,22 @@ namespace JCSUnity
     public class JCS_Pathfinding
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public Transform seeker, target;
 
-        //----------------------
-        // Private Variables
 
         private JCS_PfGrid mPfGrid = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mPfGrid = this.GetComponent<JCS_PfGrid>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Start finding the path.
@@ -62,12 +47,6 @@ namespace JCSUnity
         {
             StartCoroutine(FindPath(startPos, targetPos));
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Find path algorithm.
@@ -194,6 +173,5 @@ namespace JCSUnity
 
             return 14 * distX + 10 * (distY - distX);
         }
-
     }
 }

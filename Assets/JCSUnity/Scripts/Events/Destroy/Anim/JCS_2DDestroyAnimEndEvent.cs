@@ -19,11 +19,8 @@ namespace JCSUnity
     public class JCS_2DDestroyAnimEndEvent 
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
+        /* Variables */
 
-        //----------------------
-        // Private Variables
         private JCS_2DAnimation m2DAnimation = null;
 
         [Header("** Runtime Variables (JCS_2DDestroyAnimEndEvent) **")]
@@ -35,17 +32,14 @@ namespace JCSUnity
         // Loop count.
         private int mLoopCount = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.m2DAnimation = this.GetComponent<JCS_2DAnimation>();
@@ -66,18 +60,5 @@ namespace JCSUnity
                 m2DAnimation.Play();
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

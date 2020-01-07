@@ -27,13 +27,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
+        /* Variables */
 
         [Header("** Check Variables (JCS_ShootAction) **")]
 
@@ -219,12 +213,8 @@ namespace JCSUnity
         private JCS_2DSideScrollerPlayer mPlayer = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public TrackType GetTrackType() { return this.mTrackType; }
         public JCS_DetectAreaAction GetDetectAreaAction() { return this.mDetectAreaAction; }
         public bool OverrideShoot { get { return this.mOverrideShoot; } set { this.mOverrideShoot = value; } }
@@ -257,9 +247,9 @@ namespace JCSUnity
         public void SetCheckAbleToShootFunction(CheckAbleToShoot func) { this.mCheckAbleToShoot = func; }
         public CheckAbleToShoot GetCheckAbleToShootFunction() { return this.mCheckAbleToShoot; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mRandomMultiSoundAction = this.GetComponent<JCS_SoundPoolAction>();
@@ -289,12 +279,6 @@ namespace JCSUnity
             if (!mOverrideShoot)
                 ProcessInput();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Shoot a bullet.
@@ -569,12 +553,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Do the auto shoot action algorithm.
         /// </summary>
@@ -742,6 +720,5 @@ namespace JCSUnity
         {
             bullet.AttackerInfo.Attacker = trans;
         }
-
     }
 }

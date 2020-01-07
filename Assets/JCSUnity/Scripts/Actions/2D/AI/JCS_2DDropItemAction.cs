@@ -18,12 +18,8 @@ namespace JCSUnity
     public class JCS_2DDropItemAction
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_ItemDroppable mItemDroppable = null;
 
 
@@ -54,20 +50,17 @@ namespace JCSUnity
         // trigger to re-calculate the drop time
         private bool mDroped = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool DropWhenDies { get { return this.mDropWhenDies; } set {this.mDropWhenDies = value; } }
         public bool DropByTime { get { return this.mDropByTime; } set {this.mDropByTime = value; } }
         public float TimePerDrop { get { return this.mTimePerDrop; } set {this.mTimePerDrop = value; } }
         public float RandomTimeRange { get { return this.mRandomTimeRange; } set {this.mRandomTimeRange = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mItemDroppable = this.GetComponent<JCS_ItemDroppable>();
@@ -97,18 +90,6 @@ namespace JCSUnity
             // do effects
             mItemDroppable.DropItems();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Main function runs drop by time.
@@ -154,6 +135,5 @@ namespace JCSUnity
 
             mDroped = false;
         }
-
     }
 }

@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_TalkObject 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variable (JCS_TalkObject) **")]
 
@@ -32,16 +27,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DialogueScript mDialogueScript = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void OnMouseOver()
         {
@@ -57,18 +46,6 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Create the character image.
         /// </summary>
@@ -80,6 +57,5 @@ namespace JCSUnity
 
 
         }
-
     }
 }

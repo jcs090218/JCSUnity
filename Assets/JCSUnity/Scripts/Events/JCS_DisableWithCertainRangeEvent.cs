@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_DisableWithCertainRangeEvent
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_FadeObject mJCSFadeObject = null;
 
@@ -60,12 +55,9 @@ namespace JCSUnity
 
         private bool mFaded = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool FadeEffect { get { return this.mFadeEffect; } set { this.mFadeEffect = value; } }
         public Vector3 TargetPosition { get { return this.mTargetPosition; } set { this.mTargetPosition = value; } }
         public void SetTargetTransfrom(Transform trans)
@@ -78,9 +70,9 @@ namespace JCSUnity
         }
         public float Range { get { return this.mRange; } set { this.mRange = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mJCSFadeObject = this.GetComponent<JCS_FadeObject>();
@@ -97,18 +89,6 @@ namespace JCSUnity
         {
             mFaded = false;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Disable the gameobject when whith in the range.

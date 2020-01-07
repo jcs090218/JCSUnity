@@ -20,13 +20,9 @@ namespace JCSUnity
     public class JCS_Canvas
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public static JCS_Canvas instance = null;
-
-        //----------------------
-        // Private Variables
 
         private static string RESIZE_UI_PATH = "JCSUnity_Resources/LevelDesignUI/ResizeUI";
 
@@ -44,20 +40,17 @@ namespace JCSUnity
         // Application Rect (Window)
         private RectTransform mAppRect = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public RectTransform GetAppRect() { return this.mAppRect; }
         public Canvas GetCanvas() { return this.mCanvas; }
         public void SetResizeUI(JCS_ResizeUI ui) { this.mResizeUI = ui; }
         public JCS_ResizeUI GetResizeUI() { return this.mResizeUI; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             if (instance != null)
@@ -136,13 +129,6 @@ namespace JCSUnity
             }
         }
 
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Add component to resize canvas.
         /// </summary>
@@ -158,12 +144,5 @@ namespace JCSUnity
                 com.transform.SetParent(this.mResizeUI.transform);
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

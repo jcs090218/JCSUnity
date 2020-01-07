@@ -27,12 +27,7 @@ namespace JCSUnity
     public class JCS_3DLiquidBar
         : JCS_LiquidBar
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_3DLiquidBar) **")]
@@ -78,16 +73,10 @@ namespace JCSUnity
         private SpriteRenderer mBarSpriteRenderer = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         protected void Start()
         {
             GetContainerData();
@@ -133,12 +122,6 @@ namespace JCSUnity
                 FixPercentage();
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Attach 2d live object so it will follow the
@@ -316,12 +299,6 @@ namespace JCSUnity
             return this.mCurrentValue;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Get the container data so it could so the correct 
         /// position check and value check.
@@ -468,6 +445,5 @@ namespace JCSUnity
 
             SetCurrentValue(mInfo.CurrentValue);
         }
-
     }
 }

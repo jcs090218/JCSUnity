@@ -19,37 +19,21 @@ namespace JCSUnity
     public class JCS_ObjectList
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_ObjectList) **")]
 
         [Tooltip("List of objects.")]
         [SerializeField]
         private List<Transform> mObjects = null;
-        
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public List<Transform> Objects { get { return this.mObjects; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         /// <summary>
         /// Returns a random object from the list.
@@ -66,12 +50,5 @@ namespace JCSUnity
 
             return randObj;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

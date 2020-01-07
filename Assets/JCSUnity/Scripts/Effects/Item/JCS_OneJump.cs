@@ -19,12 +19,8 @@ namespace JCSUnity
     public class JCS_OneJump
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private bool mEffect = false;
 
 
@@ -57,12 +53,9 @@ the wall or just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public Vector3 GetVelocity() { return this.mVelocity; }
 
@@ -71,9 +64,9 @@ the wall or just stop there.")]
 
         public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mBoxCollider = this.GetComponent<BoxCollider>();
@@ -120,12 +113,6 @@ the wall or just stop there.")]
             TriggerDropping(other);
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Apply force in order to do hop effect.
         /// </summary>
@@ -164,12 +151,6 @@ the wall or just stop there.")]
                     tempMoveForce);
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Only check when the item start dropping.

@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_3DDragDropObject
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_3DDragDropObject) **")]
 
@@ -40,16 +35,10 @@ namespace JCSUnity
         private float mPosX = 0;
         private float mPosY = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void OnMouseDown()
         {
@@ -71,18 +60,5 @@ namespace JCSUnity
 
             this.transform.position = worldPos;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

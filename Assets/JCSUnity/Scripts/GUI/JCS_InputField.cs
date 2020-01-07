@@ -20,14 +20,7 @@ namespace JCSUnity
     public class JCS_InputField
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private InputField mInputField = null;
 
@@ -72,19 +65,14 @@ namespace JCSUnity
         private bool mApproachSec = false;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public InputField inputField { get { return this.mInputField; } }
         public string RealText { get { return this.mRealText; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mInputField = this.GetComponent<InputField>();
@@ -119,12 +107,6 @@ namespace JCSUnity
             }
         }
 #endif
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Update the input field data, and store the real 
@@ -192,12 +174,6 @@ namespace JCSUnity
             // Apply new text data.
             mInputField.text = newTextData;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Is the value of dropdown's option already been shortcut.

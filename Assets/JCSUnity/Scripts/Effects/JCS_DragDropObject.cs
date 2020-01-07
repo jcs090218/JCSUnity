@@ -17,6 +17,8 @@ namespace JCSUnity
     public class JCS_DragDropObject 
         : MonoBehaviour
     {
+        /* Variables */
+
         private enum DragDrop
         {
             Drag,
@@ -24,29 +26,19 @@ namespace JCSUnity
         };
 
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
         [Header("** Runtime Variables (JCS_DragDropObject) **")]
 
         [Tooltip("Type of the drag and drop target.")]
         [SerializeField]
         private JCS_DragDropType mDragDropType = JCS_DragDropType.DialogueBox;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_DragDropType DragDropType { get { return this.mDragDropType; } set { this.mDragDropType = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         /// <summary>
         /// Call when on drag.
@@ -81,19 +73,6 @@ namespace JCSUnity
         {
 
         }
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Process gui drag and drop event.

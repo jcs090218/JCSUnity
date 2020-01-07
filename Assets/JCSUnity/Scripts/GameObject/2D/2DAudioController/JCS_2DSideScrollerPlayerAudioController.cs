@@ -16,12 +16,8 @@ namespace JCSUnity
     public class JCS_2DSideScrollerPlayerAudioController 
         : JCS_2DPlayerAudioController
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         [Header("** Runtime Variables (JCS_2DSideScrollerPlayerAudioController) **")]
         [SerializeField] private bool mOverrideSound = true;
 
@@ -43,22 +39,10 @@ namespace JCSUnity
         [SerializeField] private AudioClip mDeadSound = null;
         [SerializeField] private AudioClip mGhostSound = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         /// <summary>
         /// 
@@ -154,12 +138,6 @@ namespace JCSUnity
             mJCSSoundPlayer.PlayOneShot(clip);
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// 
         /// </summary>
@@ -216,6 +194,5 @@ namespace JCSUnity
 
             return null;
         }
-
     }
 }

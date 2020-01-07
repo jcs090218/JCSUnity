@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_SoundProxyAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_SoundProxyAction) **")]
 
@@ -36,18 +31,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public AudioClip audioClip { get { return this.mAudioClip; } set { this.mAudioClip = value; } }
         public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        
+        /* Functions */
+
         private void Start()
         {
             GameObject obj = new GameObject();
@@ -66,18 +58,5 @@ namespace JCSUnity
 
             dsee.SetAudioClipAndPlayOneShot(mAudioClip, mSoundSettingType);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

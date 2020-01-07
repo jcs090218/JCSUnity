@@ -18,39 +18,15 @@ namespace JCSUnity
     public class JCS_3DBlendTreeAnimator
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
+        /* Functions */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
 
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

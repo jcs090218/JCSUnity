@@ -64,10 +64,12 @@ namespace JCSUnity
         private Vector3 mVelocity = Vector3.zero;
 
 
-        /* Setter/Getter */
+        /* Setter & Getter */
+
         public float Force { get { return this.mForce; } set { this.mForce = value; } }
         public float Gravity { get { return this.mGravity; } set { this.mGravity = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
+
 
         /* Functions */
 

@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_ApplicationCloseSimulateSceneTextAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Text mText = null;
 
@@ -35,16 +30,11 @@ namespace JCSUnity
         private string mTextShowInEditMode = "";
 #endif
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             mText = this.GetComponent<Text>();
@@ -55,18 +45,5 @@ namespace JCSUnity
             mText.text = "";
 #endif
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

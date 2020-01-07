@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_ScaleEffect
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Vector3 mTowardScale = Vector3.zero;
         private Vector3 mRecordScale = Vector3.zero;
@@ -83,19 +78,15 @@ namespace JCSUnity
         private EventTriggerType mDeactiveEventTriggerType = EventTriggerType.PointerExit;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public Vector3 RecordScale { get { return this.mRecordScale; } set { this.mRecordScale = value; } }
         public Vector3 TowardScale { get { return this.mTowardScale; } set { this.mTowardScale = value; } }
         public Vector3 GetScaleValue() { return this.mScaleValue; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             // Only need it for the UI.
@@ -135,12 +126,6 @@ namespace JCSUnity
         {
             ScaleEffect();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Call it when is on mouse over.
@@ -194,12 +179,6 @@ namespace JCSUnity
             mEffect = false;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Get the target scale.
         /// </summary>
@@ -250,6 +229,5 @@ namespace JCSUnity
 
             this.transform.localScale = newScale;
         }
-
     }
 }

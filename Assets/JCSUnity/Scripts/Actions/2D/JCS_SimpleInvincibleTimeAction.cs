@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_SimpleInvincibleTimeAction
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_SimpleInvincibleTimeAction) **")]
 
@@ -70,19 +65,16 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mTriggerSound = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
         // Use to check if this effect is active?
         public bool IsInvincible { get { return this.mTriggerAction; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mRecordColors = new Color[mUnityObjects.Length];
@@ -135,12 +127,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Trigger invincible action.
         /// </summary>
@@ -182,12 +168,6 @@ namespace JCSUnity
             // play the sound once.
             JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mTriggerSound);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do flash from color 1 to color 2 and color 1... continue.

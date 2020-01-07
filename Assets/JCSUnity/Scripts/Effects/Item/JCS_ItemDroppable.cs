@@ -19,9 +19,7 @@ namespace JCSUnity
     public class JCS_ItemDroppable
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         [System.Serializable]
         public struct ItemSet
@@ -33,9 +31,6 @@ namespace JCSUnity
             [Tooltip("Item to drop")]
             public JCS_Item item;
         };
-
-        //----------------------
-        // Private Variables
 
 
         [Header("** Runtime Variables (JCS_ItemDroppable) **")]
@@ -147,18 +142,14 @@ the wall or just stop there.")]
         [SerializeField]
         private AudioClip mDropSound = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ConstWaveEffect { get { return this.mConstWaveEffect; } set { this.mConstWaveEffect = value; } }
         public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
 #if (UNITY_EDITOR)
         private void Update()
@@ -172,12 +163,6 @@ the wall or just stop there.")]
                 DropItems();
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Calculate possibility and drop the item.
@@ -327,12 +312,6 @@ the wall or just stop there.")]
                 PlayDropSound();
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Drop an item.
@@ -553,6 +532,5 @@ the wall or just stop there.")]
 
             JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDropSound);
         }
-
     }
 }

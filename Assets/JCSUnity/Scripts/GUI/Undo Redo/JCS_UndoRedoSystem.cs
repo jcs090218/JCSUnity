@@ -18,14 +18,7 @@ namespace JCSUnity
     public class JCS_UndoRedoSystem
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_UndoRedoSystem) **")]
@@ -70,17 +63,10 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_UndoRedoComponent> mRedoComp = new List<JCS_UndoRedoComponent>();
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
 
 #if (UNITY_EDITOR)
         private void Update()
@@ -103,12 +89,6 @@ namespace JCSUnity
                 ClearAllUndoRedoHistory();
         }
 #endif
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         ///  Undo next component.
@@ -325,12 +305,5 @@ namespace JCSUnity
         {
             return (ThereIsUndoHistory() || ThereIsRedoHistory());
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

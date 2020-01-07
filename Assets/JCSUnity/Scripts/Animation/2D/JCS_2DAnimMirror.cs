@@ -22,14 +22,7 @@ namespace JCSUnity
     public class JCS_2DAnimMirror
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DAnimMirrorAction) **")]
 
@@ -62,13 +55,9 @@ use negative scale instead.")]
         [SerializeField]
         private bool mMimcFlip = true;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public JCS_2DAnimation MirrorAnimation { get { return this.mMirrorAnimation; } set { this.mMirrorAnimation = value; } }
         public List<JCS_2DAnimation> MimicAnimations { get { return this.mMimicAnimations; } }
@@ -77,9 +66,9 @@ use negative scale instead.")]
         public bool MimicColor { get { return this.mMimicColor; } set { this.mMimicColor = value; } }
         public bool MimcFlip { get { return this.mMimcFlip; } set { this.mMimcFlip = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             InitMimicAnimations();
@@ -92,18 +81,6 @@ use negative scale instead.")]
 
             DoMimicAnimations();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Initialize all the minicing animations.
@@ -177,6 +154,5 @@ use negative scale instead.")]
                 }
             }
         }
-
     }
 }

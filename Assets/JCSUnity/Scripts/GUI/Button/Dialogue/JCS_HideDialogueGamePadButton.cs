@@ -18,6 +18,8 @@ namespace JCSUnity
     public class JCS_HideDialogueGamePadButton
         : JCS_GamePadButton
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_HideDialogueGamePadButton) **")]
 
         [Tooltip("List of dialogue panels you want to hide.")]
@@ -29,9 +31,13 @@ namespace JCSUnity
         private bool mHideWithSound = false;
 
 
+        /* Setter & Getter */
+
         public JCS_DialogueObject[] DialoguesToHide { get { return this.mDialoguesToHide; } }
         public bool HideithSound { get { return this.mHideWithSound; } set { this.mHideWithSound = value; } }
 
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

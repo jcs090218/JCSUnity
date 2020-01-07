@@ -21,12 +21,8 @@ namespace JCSUnity
     public class JCS_SequenceSlidePanel
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_SlideEffect mSlideEffect = null;
         private JCS_SoundPlayer mSoundPlayer = null;
         private RectTransform mRectTransform = null;
@@ -84,16 +80,11 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mInsideDeactiveClip = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             mRectTransform = this.GetComponent<RectTransform>();
@@ -146,19 +137,6 @@ namespace JCSUnity
                 }
             }
         }
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Initialize all the button under this panel.
@@ -295,6 +273,5 @@ namespace JCSUnity
             DeactiveAnim();
             mSlideEffect.Deactive();
         }
-
     }
 }

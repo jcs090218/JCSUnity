@@ -18,12 +18,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_2DTrackAction) **")]
 
@@ -87,12 +82,9 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mGap = Vector3.zero;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
         public float MoveFriction { get { return this.mMoveFriction; } set { this.mMoveFriction = value; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
@@ -103,9 +95,9 @@ namespace JCSUnity
         public bool HardOnY { get { return this.mHardOnY; } set { this.mHardOnY = value; } }
         public bool HardOnZ { get { return this.mHardOnZ; } set { this.mHardOnZ = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             if (mTargetTransform == null)
@@ -116,18 +108,6 @@ namespace JCSUnity
             else
                 KeepOnSameDirection();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Follow the target gameobject.

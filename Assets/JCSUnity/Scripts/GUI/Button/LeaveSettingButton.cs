@@ -20,6 +20,5 @@ namespace JCSUnity
         {
             JCS_UtilityFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
         }
-
     }
 }

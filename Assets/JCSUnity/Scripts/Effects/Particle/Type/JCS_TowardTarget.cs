@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_TowardTarget
         : JCS_Particle
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // tweener effect to the object.
         private JCS_TransformTweener mJCSTweener = null;
@@ -55,12 +50,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mIncludeDepth = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ReverseDirection { get { return this.mReverseDirection; } set { this.mReverseDirection = value; } }
         public void SetTargetTransfrom(Transform trans)
         {
@@ -71,9 +63,9 @@ namespace JCSUnity
         public float AdjustRange { get { return this.mAdjustRange; } set { this.mAdjustRange = value; } }
         public bool IncludeDepth { get { return this.mIncludeDepth; } set { this.mIncludeDepth = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mJCSTweener = this.GetComponent<JCS_TransformTweener>();
@@ -141,18 +133,6 @@ namespace JCSUnity
             else
                 mJCSTweener.DoTweenContinue(this.mTargetTransform);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Get the random position within the 
@@ -229,6 +209,5 @@ namespace JCSUnity
         {
             this.gameObject.SetActive(false);
         }
-
     }
 }

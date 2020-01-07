@@ -20,49 +20,24 @@ namespace JCSUnity
     public class JCS_ToggleSign
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private JCS_TransformTweener mTransformTweener = null;
 
         private JCS_ColorTweener mColorTweener = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
         public JCS_ColorTweener ColorTweener { get { return this.mColorTweener; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
             this.mColorTweener = this.GetComponent<JCS_ColorTweener>();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

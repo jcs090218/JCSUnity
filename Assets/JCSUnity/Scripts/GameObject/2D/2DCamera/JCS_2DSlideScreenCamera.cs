@@ -19,9 +19,8 @@ namespace JCSUnity
     public class JCS_2DSlideScreenCamera
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_2DSlideScreenCamera) **")]
 
@@ -37,9 +36,6 @@ namespace JCSUnity
         public KeyCode upRightKey = KeyCode.E;
         public KeyCode downRightKey = KeyCode.C;
 #endif
-
-        //----------------------
-        // Private Variables
 
         [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
 
@@ -59,19 +55,16 @@ namespace JCSUnity
 
         private string mPanelHolderPath = "JCSUnity_Framework_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
         public void SetJCS2DCamera(JCS_2DCamera cam) { this.mJCS_2DCamera = cam; }
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             InitCamera();
@@ -135,12 +128,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Swicth the scene by sliding its with direction.
         /// </summary>
@@ -174,12 +161,6 @@ namespace JCSUnity
                     break;
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         //////////// 2D //////////////////////////
 
@@ -406,6 +387,5 @@ namespace JCSUnity
             // so the camera will follow this object!
             this.transform.position = newScenePosition;
         }
-
     }
 }

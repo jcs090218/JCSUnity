@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_SlideScreenPanelHolder
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private RectTransform mRectTransform = null;
 
@@ -45,19 +40,16 @@ namespace JCSUnity
 
         private JCS_SlidePanel[] mSlidePanelsComponents = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public RectTransform rectTransform { get { return this.mRectTransform; } }
         public float SlideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
         public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
@@ -77,12 +69,6 @@ namespace JCSUnity
                 mSlidePanelsComponents[index].SlideFrictionY = mSlideFrictionY;
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Add Force to the panel.
@@ -125,12 +111,5 @@ namespace JCSUnity
 
             AddForce(tempPos);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

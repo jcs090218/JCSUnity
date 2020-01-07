@@ -19,12 +19,8 @@ namespace JCSUnity
     public class JCS_DestroyParticleEffect
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_ParticleSystem mParticleSystem = null;
 
 
@@ -103,12 +99,9 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
         [SerializeField] [Range(0.0f, 360.0f)]
         private float mDestroyTime = 10.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
         public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
         public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
@@ -127,9 +120,9 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
         public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
         public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mParticleSystem = this.GetComponent<JCS_ParticleSystem>();
@@ -261,18 +254,6 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Add random value to the effect's transform's position.
         /// </summary>
@@ -338,6 +319,5 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
 
             dae.transform.localScale = newScale;
         }
-
     }
 }

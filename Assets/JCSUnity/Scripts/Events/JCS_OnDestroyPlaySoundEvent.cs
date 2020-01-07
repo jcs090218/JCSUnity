@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_OnDestroyPlaySoundEvent
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -36,19 +31,16 @@ namespace JCSUnity
 
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetSoundSettingType(JCS_SoundSettingType type) { mSoundSettingType = type; }
         public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
         public JCS_SoundPlayer GetJCSSoundPlayer() { return this.mSoundPlayer; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
@@ -81,18 +73,5 @@ namespace JCSUnity
             dsee.SetAudioClipAndPlayOneShot(mAudioClip, mSoundSettingType);
             
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

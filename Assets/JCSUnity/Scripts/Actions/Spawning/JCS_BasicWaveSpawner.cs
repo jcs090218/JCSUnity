@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_BasicWaveSpawner
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_BasicWaveSpawner) **")]
 
@@ -133,12 +128,9 @@ namespace JCSUnity
         private float mRandScaleRangeZ = 0.0f;
 
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
 
         public bool RandPosX { get { return this.mRandPosX; } set { this.mRandPosX = value; } }
@@ -162,9 +154,9 @@ namespace JCSUnity
         public bool RandScaleZ { get { return this.mRandScaleZ; } set { this.mRandScaleZ = value; } }
         public float RandScaleRangeZ { get { return this.mRandScaleRangeZ; } set { this.mRandScaleRangeZ = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // resize the spawn list.
@@ -180,12 +172,6 @@ namespace JCSUnity
             // run the spawned algorithm
             DoSpawnRandomTransform();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Spawn a random transform.
@@ -233,12 +219,6 @@ namespace JCSUnity
             objSpawned.transform.eulerAngles = randRot;
             objSpawned.transform.localScale = randScale;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Spawn a random item.

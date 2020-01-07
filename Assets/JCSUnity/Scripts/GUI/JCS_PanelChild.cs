@@ -26,12 +26,7 @@ namespace JCSUnity
     public class JCS_PanelChild
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private RectTransform mRectTransform = null;
 
@@ -46,17 +41,14 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsUnityDefinedUI = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_PanelRoot PanelRoot { get { return this.mPanelRoot; } set { this.mPanelRoot = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
@@ -85,13 +77,6 @@ namespace JCSUnity
                 }
             }
         }
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Fit screen size base on Unity Engine architecture.
@@ -147,12 +132,6 @@ namespace JCSUnity
                 mRectTransform.localPosition = newPosition;
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Add all child with same effect.

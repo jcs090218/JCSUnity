@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_OrderLayer
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_OrderLayer) **")]
 
@@ -35,17 +30,13 @@ namespace JCSUnity
         private float mLayerFriction = 0;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public int OrderLayer { get { return this.mOrderLayer; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void FixedUpdate()       /* Should use FixedUpdate if no jitter. */
         {
             if (mLayerFriction == 0)
@@ -60,18 +51,5 @@ namespace JCSUnity
             newPos.y += cam.Velocity.y / mLayerFriction * Time.deltaTime;
             this.transform.position = newPos;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

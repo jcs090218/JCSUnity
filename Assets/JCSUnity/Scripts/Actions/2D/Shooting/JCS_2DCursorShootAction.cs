@@ -19,12 +19,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_2DCursorShootAction) **")]
 
@@ -34,12 +29,9 @@ namespace JCSUnity
         // if this is true, meaning there are other shoot action going on.
         private bool mOverrideShoot = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool OverrideShoot { get { return this.mOverrideShoot; } set { this.mOverrideShoot = value; } }
 
         /// <summary>
@@ -61,9 +53,8 @@ namespace JCSUnity
         }
 
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             mShootAction = this.GetComponent<JCS_ShootAction>();
@@ -78,18 +69,6 @@ namespace JCSUnity
             if (!OverrideShoot)
                 ProcessInput();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Algrothims to do look at mouse in 2d space.
@@ -149,6 +128,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

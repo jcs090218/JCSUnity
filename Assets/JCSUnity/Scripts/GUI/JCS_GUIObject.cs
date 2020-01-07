@@ -19,18 +19,7 @@ namespace JCSUnity
     public class JCS_GUIObject
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Check Variables (JCS_UndoRedoComponent) **")]
 
@@ -65,9 +54,9 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_GUIType mGUIType = JCS_GUIType.NONE;
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+
+        /* Setter & Getter */
+
         public JCS_GUIType GUIType { get { return this.mGUIType; } set { this.mGUIType = value; } }
         public InputField inputField { get { return this.mInputField; } }
         public Slider slider { get { return this.mSlider; } }
@@ -76,19 +65,13 @@ namespace JCSUnity
         public Dropdown dropdown { get { return this.mDropdown; } }
         public Scrollbar scrollbar { get { return this.mScrollBar; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         protected virtual void Awake()
         {
             UpdateGUIData();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Update the GUI data, to get all the necessary 
@@ -130,12 +113,5 @@ namespace JCSUnity
                     break;
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

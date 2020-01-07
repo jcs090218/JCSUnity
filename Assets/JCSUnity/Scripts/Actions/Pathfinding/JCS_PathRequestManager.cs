@@ -20,14 +20,9 @@ namespace JCSUnity
     public class JCS_PathRequestManager
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public static JCS_PathRequestManager instance = null;
-
-        //----------------------
-        // Private Variables
 
         private Queue<PathRequest> mPathRequestQueue = new Queue<PathRequest>();
 
@@ -54,28 +49,17 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
 
             mPathfinding = this.GetComponent<JCS_Pathfinding>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Make a finding path request.
@@ -102,12 +86,6 @@ namespace JCSUnity
             TryProcessNext();
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Try next process.
         /// </summary>
@@ -120,6 +98,5 @@ namespace JCSUnity
                 mPathfinding.StartFindPath(mCurrentPathRequest.pathStart, mCurrentPathRequest.pathEnd);
             }
         }
-
     }
 }

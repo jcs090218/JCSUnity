@@ -21,12 +21,7 @@ namespace JCSUnity
     public class JCS_2DTrackBullet
         : JCS_Bullet
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private bool mAct = false;
         private JCS_2DTrackAction mTrackAction = null;
@@ -47,16 +42,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mLookAtTarget = true;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -84,18 +74,6 @@ namespace JCSUnity
         {
             DoCounter();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do delay when track.
@@ -125,6 +103,5 @@ namespace JCSUnity
                 mDelayTimeToFollowTimer = 0;
             }
         }
-
     }
 }

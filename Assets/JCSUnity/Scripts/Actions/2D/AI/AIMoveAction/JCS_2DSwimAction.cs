@@ -17,23 +17,12 @@ namespace JCSUnity
     public class JCS_2DSwimAction
         : JCS_AIAction
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
+        /* Functions */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
 
@@ -43,18 +32,5 @@ namespace JCSUnity
         {
 
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

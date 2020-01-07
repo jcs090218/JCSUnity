@@ -20,18 +20,8 @@ Use JCS_2DAnimator instead.", true)]
     public class JCS_2DCharacterAnimator
         : JCS_I2DAnimator
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-        
-
-        //----------------------
-        // Protected Variables
-
-        
         [Header("** Check Variables (JCS_2DCharacterAnimator) **")]
 
         [Tooltip("")]
@@ -81,17 +71,15 @@ by naming the animation attack01/attack02/attack03, etc.")]
         protected int mAttackAnimationCount = 1;
 
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public string GetAnimationState() { return this.mAnimationState; }
         public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
         public bool GetEndAttackStage() { return this.mEndAttackStage; }
         public JCS_AttackState GetAttackState() { return this.mAttackState; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Update()
         {
@@ -110,12 +98,6 @@ by naming the animation attack01/attack02/attack03, etc.")]
             }
 
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Animation design here...
@@ -187,12 +169,6 @@ by naming the animation attack01/attack02/attack03, etc.")]
         {
             mAnimator.Play(mCurrentStateName, -1, 0);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Find the clip by clip name.
@@ -332,6 +308,5 @@ by naming the animation attack01/attack02/attack03, etc.")]
             // this sould not happens.
             return JCS_AttackState.ATTACK_01;
         }
-
     }
 }

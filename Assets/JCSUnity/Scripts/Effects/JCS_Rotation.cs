@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_Rotation
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_Rotation) **")]
 
@@ -55,19 +50,15 @@ namespace JCSUnity
         [SerializeField]
         protected bool mRandomRotateDirectonAtStart = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float RotateSpeed { get { return this.mRotateSpeed; } set { this.mRotateSpeed = value; } }
         public JCS_Vector3Direction RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         protected virtual void Awake()
         {
@@ -88,12 +79,6 @@ namespace JCSUnity
             DoRotation();
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Stop doing the effect.
         /// </summary>
@@ -102,12 +87,6 @@ namespace JCSUnity
             Effect = false;
             this.transform.localEulerAngles = Vector3.zero;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Algorithm do the rotate effect.

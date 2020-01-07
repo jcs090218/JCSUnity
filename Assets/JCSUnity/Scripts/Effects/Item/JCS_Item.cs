@@ -21,15 +21,8 @@ namespace JCSUnity
     public class JCS_Item
         : JCS_UnityObject
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
         protected bool mCanPick = true;
         protected BoxCollider mBoxCollider = null;
 
@@ -102,9 +95,9 @@ other sound. (Pick Sound)")]
         [SerializeField]
         private JCS_DestinationDestroy mDestinationDestroy = null;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+
+        /* Setter & Getter */
+
         public bool AutoPickColliderTouched { get { return this.mAutoPickColliderTouched; } set { this.mAutoPickColliderTouched = value; } }
         public bool PickByMouseDown { get { return this.mPickByMouseDown; } set { this.mPickByMouseDown = value; } }
         public bool AutoPickWhileCan { get { return this.mAutoPickWhileCan; } set { this.mAutoPickWhileCan = value; } }
@@ -115,9 +108,9 @@ other sound. (Pick Sound)")]
         public void SetPickCallback(PickCallback func) { this.mPickCallback = func; }
         public PickCallback GetPickCallback() { return this.mPickCallback; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        
+        /* Functions */
+
         protected override void Awake()
         {
             // update the data once 
@@ -172,12 +165,6 @@ other sound. (Pick Sound)")]
             Pick(mPickCollider);
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Pick the item up.
         /// </summary>
@@ -226,12 +213,6 @@ other sound. (Pick Sound)")]
         {
             // do anything after the character pick this item up.
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// 
@@ -312,6 +293,5 @@ other sound. (Pick Sound)")]
 
             Pick(mPickCollider);
         }
-
     }
 }

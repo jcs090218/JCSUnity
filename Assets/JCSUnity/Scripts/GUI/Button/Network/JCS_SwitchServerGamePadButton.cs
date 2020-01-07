@@ -19,6 +19,8 @@ namespace JCSUnity
     public class JCS_SwitchServerGamePadButton
         : JCS_GamePadButton
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_SwitchServerGamePadButton) **")]
 
         [Tooltip("Target host name to switch.")]
@@ -33,11 +35,15 @@ namespace JCSUnity
         [SerializeField]
         private bool mForce = false;
 
-        /* setter/getter */
+
+        /* Setter & Getter */
+
         public int Port { get { return this.mPort; } set { this.mPort = value; } }
         public string Host { get { return this.mHost; } set { this.mHost = value; } }
         public bool Force { get { return this.mForce; } set { this.mForce = value; } }
 
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

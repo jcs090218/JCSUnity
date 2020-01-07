@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_2DPushLiveObject
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DPushLiveObject) **")]
 
@@ -34,18 +29,14 @@ namespace JCSUnity
         [SerializeField] [Range(1.0f, 100.0f)]
         private float mPushForce = 10.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ContinuousPush { get { return this.mContinuousPush; } set { this.mContinuousPush = value; } }
         public float PushForce { get { return this.mPushForce; } set { this.mPushForce = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void OnTriggerEnter(Collider other)
         {
@@ -60,12 +51,6 @@ namespace JCSUnity
             CheckAvailableToPush(other);
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Do once the push effect.
         /// </summary>
@@ -74,12 +59,6 @@ namespace JCSUnity
             // knock back the object.
             liveObject.KnockBack(mPushForce, this.transform);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Check if the object are ok to do push.
@@ -94,6 +73,5 @@ namespace JCSUnity
             // do the effect.
             PushEffect(liveObject);
         }
-
     }
 }

@@ -18,9 +18,7 @@ namespace JCSUnity
     public class JCS_2DAIStateSystem
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         /// <summary>
         /// List of AI movement state.
@@ -35,9 +33,6 @@ namespace JCSUnity
             SWIM
         };
 
-        //----------------------
-        // Private Variables
-
         [Header("** Check Variables (JCS_AIStateSystem) **")]
 
         [Tooltip("State of the AI move action.")]
@@ -46,17 +41,14 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_AIAction> mAIActions = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_AIMoveActionType GetAIMoveActionType() { return this.mAIMoveActionType; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mAIActions = new JCS_Vector<JCS_AIAction>();
@@ -80,12 +72,6 @@ namespace JCSUnity
                 SwitchAIMoveState(JCS_AIMoveActionType.WALK);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Switch AI move action state.
@@ -161,12 +147,6 @@ namespace JCSUnity
             this.mAIMoveActionType = type;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Disable all the actions in the array.
         /// </summary>
@@ -180,6 +160,5 @@ namespace JCSUnity
                 aa.enabled = false;
             }
         }
-
     }
 }

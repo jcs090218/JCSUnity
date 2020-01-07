@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_2DPlatform 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DPlatform) **")]
 
@@ -34,16 +29,11 @@ namespace JCSUnity
         [SerializeField]
         private BoxCollider mPlatformTrigger = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected virtual void Start()
         {
             if (mPlatformCollider == null ||
@@ -53,7 +43,6 @@ namespace JCSUnity
             Physics.IgnoreCollision(mPlatformCollider,
                     mPlatformTrigger, true);
         }
-
 
         protected virtual void OnTriggerEnter(Collider other)
         {
@@ -82,18 +71,5 @@ namespace JCSUnity
 
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

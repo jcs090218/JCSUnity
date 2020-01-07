@@ -19,14 +19,7 @@ namespace JCSUnity
     public class JCS_PredictCamera
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_PredictCamera) **")]
@@ -197,14 +190,8 @@ namespace JCSUnity
         [SerializeField]
         private Transform mLeftDownBackwardPoint = null;
 
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
-
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public bool TargetingRecord { get { return this.mTargetingRecord; } }
 
         /* X axis */
@@ -241,9 +228,9 @@ namespace JCSUnity
         public Transform LeftDownForwardPoint { get { return this.mLeftDownForwardPoint; } set { this.mLeftDownForwardPoint = value; } }
         public Transform LeftDownBackwardPoint { get { return this.mLeftDownBackwardPoint; } set { this.mLeftDownBackwardPoint = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             // try to get camera from it transform.
@@ -330,12 +317,6 @@ namespace JCSUnity
                 TargetRecord();
         }
 #endif
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Apply the effect of the camera.
@@ -943,12 +924,6 @@ namespace JCSUnity
 
             mTargetingRecord = false;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Recrod down the follow target.

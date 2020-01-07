@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_2DPortal
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DPortal) **")]
 
@@ -63,12 +58,8 @@ namespace JCSUnity
         private Transform mTargetPortal = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool Active { get { return this.mActive; } }
         public bool AutoTrigger { get { return this.mAutoTrigger; } set { this.mAutoTrigger = value; } }
         public JCS_2DPortalType Type { get { return this.mType; } set { this.mType = value; } }
@@ -76,9 +67,9 @@ namespace JCSUnity
         public Transform TargetPortal { get { return this.mTargetPortal; } set { this.mTargetPortal = value; } }
         public JCS_PortalLabel PortalLabel { get { return this.mPortalLabel; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             if (mTargetPortal == null &&
@@ -97,12 +88,6 @@ namespace JCSUnity
 
             DoPortal(mType, p);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the portal by portal type.
@@ -156,12 +141,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         private void LoadScene()
         {
             // set the portal label, in order to let the next scene load.
@@ -173,6 +152,5 @@ namespace JCSUnity
             // auto do the action
             JCS_SceneManager.instance.LoadScene(mSceneName);
         }
-
     }
 }

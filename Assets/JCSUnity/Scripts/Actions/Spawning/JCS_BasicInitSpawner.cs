@@ -18,11 +18,7 @@ namespace JCSUnity
     public class JCS_BasicInitSpawner
             : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_BasicInitSpawner) **")]
 
@@ -115,12 +111,9 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandScaleRangeZ = 0.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public List<Transform> SpawnList { get { return this.mSpawnList; } set { this.mSpawnList = value; } }
         public int SpawnCount { get { return this.mSpawnCount; } set { this.mSpawnCount = value; } }
 
@@ -145,9 +138,9 @@ namespace JCSUnity
         public bool RandScaleZ { get { return this.mRandScaleZ; } set { this.mRandScaleZ = value; } }
         public float RandScaleRangeZ { get { return this.mRandScaleRangeZ; } set { this.mRandScaleRangeZ = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // resize the spawn list.
@@ -156,12 +149,6 @@ namespace JCSUnity
             // do the spawn.
             InitSpawn();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Spawn a random transform.
@@ -224,12 +211,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Resize the spawn list.
         /// </summary>
@@ -244,6 +225,5 @@ namespace JCSUnity
                     mSpawnList.RemoveAt(index);
             }
         }
-
     }
 }

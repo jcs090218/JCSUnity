@@ -18,6 +18,8 @@ namespace JCSUnity
     public class JCS_ActivePanelButton
         : JCS_Button
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_ActivePanelButton) **")]
 
         [Tooltip("Play dialogue sound?")]
@@ -32,6 +34,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TweenPanel[] mTweenPanels = null;
 
+
+        /* Setter & Getter */
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

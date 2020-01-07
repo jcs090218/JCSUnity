@@ -22,14 +22,7 @@ namespace JCSUnity
     public class JCS_TextButtonEffect
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private EventTrigger mEventTrigger = null;
 
@@ -60,22 +53,18 @@ namespace JCSUnity
         [SerializeField]
         private Color mDisabledColor = new Color(0.0f, 0.0f, 0.0f, 128.0f);
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public Text TextComp { get { return this.mText; } }
         public Color NormalColor { get { return this.mNormalColor; } set { this.mNormalColor = value; } }
         public Color HighlightedColor { get { return this.mHighlightedColor; } set { this.mHighlightedColor = value; } }
         public Color PressedColor { get { return this.mPressedColor; } set { this.mPressedColor = value; } }
         public Color DisabledColor { get { return this.mDisabledColor; } set { this.mDisabledColor = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mEventTrigger = this.GetComponent<EventTrigger>();
@@ -105,12 +94,6 @@ namespace JCSUnity
             else
                 mText.color = mDisabledColor;
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Call it when is on mouse over.
@@ -181,12 +164,6 @@ namespace JCSUnity
                 mText.color = mDisabledColor;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Get the button is current interactable or not.
         /// </summary>
@@ -202,6 +179,5 @@ namespace JCSUnity
 
             return true;
         }
-
     }
 }

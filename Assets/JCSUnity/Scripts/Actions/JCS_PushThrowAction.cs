@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_PushThrowAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Vector3 mVelocity = Vector3.zero;
 
@@ -40,19 +35,16 @@ namespace JCSUnity
         [SerializeField]
         private float mG = 2.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float Angle { get { return this.mAngle; } set { this.mAngle = value; } }
         public float G { get { return this.mG; } set { this.mG = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             // check do the effect or not?
@@ -62,12 +54,6 @@ namespace JCSUnity
             this.mVelocity.y -= mG * Time.deltaTime;
             this.transform.position += this.mVelocity * Time.deltaTime;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Call this function to start the projectile.
@@ -117,12 +103,5 @@ namespace JCSUnity
             vX = (target.x - start.x) < 0 ? vX : -vX;
             this.mVelocity = new Vector2(-vX, vY);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

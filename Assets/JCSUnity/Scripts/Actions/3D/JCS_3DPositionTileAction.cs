@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_3DPositionTileAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_3DDistanceTileAction) **")]
 
@@ -68,12 +63,9 @@ be set to this position in each axis.")]
         [SerializeField]
         private float mMinZ = float.NegativeInfinity;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public Vector3 AbsolutePositionInAxis { get { return this.mAbsolutePositionInAxis; } set { this.mAbsolutePositionInAxis = value; } }
         public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
@@ -85,9 +77,9 @@ be set to this position in each axis.")]
         public float MinZ { get { return this.mMinZ; } set { this.mMinZ = value; } }
 
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             if (!mActive)
@@ -113,18 +105,5 @@ be set to this position in each axis.")]
             else
                 this.transform.position = newPos;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

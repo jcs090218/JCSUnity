@@ -22,12 +22,7 @@ namespace JCSUnity
     public class JCS_DamageTextPool
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_DamageTextPool) **")]
 
@@ -92,18 +87,15 @@ namespace JCSUnity
         // IMPORTANT: index of number we want to call to spawn the damage text!
         private List<int> mSequenceSpawnCount = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int GetNumberOfHandle() { return this.mNumberOfHandle; }
         public void SetHitSound(AudioClip hitSound) { this.mHitSound = hitSound; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
@@ -124,12 +116,6 @@ namespace JCSUnity
         {
             ProccessSequences();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Helper function to spawn the damaget text
@@ -311,13 +297,6 @@ namespace JCSUnity
             // or else the program might crash? (too many delay?)
             SpawnDamageTextFromPool(damage, pos, hitSound, true);
         }
-        
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Initialize damage text to the array.
@@ -442,6 +421,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

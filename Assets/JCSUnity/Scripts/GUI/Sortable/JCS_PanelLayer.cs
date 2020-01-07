@@ -21,23 +21,12 @@ namespace JCSUnity
     public class JCS_PanelLayer
         : JCS_SortingObject
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
+        /* Functions */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Start()
         {
             // if already sorted, return.
@@ -56,18 +45,6 @@ namespace JCSUnity
             OriganizeChildOrder(jcspls);
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Re-order all the object.
         /// </summary>
@@ -85,6 +62,5 @@ namespace JCSUnity
                 arr[index].Sorted = true;
             }
         }
-
     }
 }

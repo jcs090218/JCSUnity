@@ -19,14 +19,8 @@ namespace JCSUnity
     public class JCS_DestroySoundEffect
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        
         [Header("** Runtime Variables (JCS_DestroySoundEffect) **")]
 
         [Tooltip("Sound to play when this occurs.")]
@@ -47,18 +41,15 @@ namespace JCSUnity
 
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool ActiveWithHitList { get { return this.mActiveWithHitList; } set { this.mActiveWithHitList = value; } }
         public bool ActiveWithDestroyTime { get { return this.mActiveWithDestroyTime; } set { this.mActiveWithDestroyTime = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mHitList = this.GetComponent<JCS_HitListEvent>();
@@ -104,18 +95,5 @@ namespace JCSUnity
             if (ac != null)
                 dse.SetAudioClipAndPlayOneShot(ac, mRandomSoundAction.SoundType);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

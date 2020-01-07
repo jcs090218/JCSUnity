@@ -22,12 +22,8 @@ namespace JCSUnity
     public class JCS_2DBullet
         : JCS_Bullet
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_3DGoStraightAction mGoStraightAction = null;
 
         [Header("** Absorb Effect (JCS_2DBullet) **")]
@@ -121,12 +117,8 @@ namespace JCSUnity
         private JCS_2DInitLookByTypeAction mInitLookAction = null;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public override float MoveSpeed
         {
             get
@@ -142,9 +134,8 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         protected override void Awake()
         {
@@ -177,18 +168,6 @@ namespace JCSUnity
             DoDegreeChangeEffect();
             DoInitLookByTypeEffect();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// 
@@ -289,6 +268,5 @@ namespace JCSUnity
                 mInitLookByTypeAction = false;
             }
         }
-
     }
 }

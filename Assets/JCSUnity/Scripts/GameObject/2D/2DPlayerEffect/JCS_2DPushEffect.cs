@@ -19,12 +19,7 @@ namespace JCSUnity
     : MonoBehaviour
     , JCS_2DPlayerEffect
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DPushEffect) **")]
 
@@ -36,16 +31,11 @@ namespace JCSUnity
         [SerializeField]
         private float mPushSpeed = 10.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void OnTriggerStay(Collider other)
         {
             JCS_Player player = other.GetComponent<JCS_Player>();
@@ -55,12 +45,6 @@ namespace JCSUnity
             player.VelX += mPushSpeed * -(int)mDirection * Time.deltaTime;
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Override.
         /// </summary>
@@ -68,12 +52,5 @@ namespace JCSUnity
         {
             // override   
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

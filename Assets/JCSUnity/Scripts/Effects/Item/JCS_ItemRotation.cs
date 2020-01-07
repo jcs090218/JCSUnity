@@ -18,26 +18,16 @@ namespace JCSUnity
     public class JCS_ItemRotation
         : JCS_Rotation
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // gravity object
         private JCS_OneJump mOneJump = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Start()
         {
             mOneJump = this.GetComponent<JCS_OneJump>();
@@ -54,18 +44,5 @@ namespace JCSUnity
             if (mOneJump.GetVelocity().y == 0)
                 Stop();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

@@ -20,14 +20,7 @@ namespace JCSUnity
     public class JCS_2DOrderAnimPlayer
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private JCS_2DAnimator mAnimator = null;
 
@@ -54,20 +47,15 @@ namespace JCSUnity
         private bool mLoop = false;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool PlayOnAwake { get { return this.mPlayOnAwake; } set { this.mPlayOnAwake = value; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        
+        /* Functions */
+
         private void Start()
         {
             this.mAnimator = this.GetComponent<JCS_2DAnimator>();
@@ -111,18 +99,5 @@ namespace JCSUnity
             // play animaiton.
             mAnimator.DoAnimation(mCurrentAnimationId, false, true);
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

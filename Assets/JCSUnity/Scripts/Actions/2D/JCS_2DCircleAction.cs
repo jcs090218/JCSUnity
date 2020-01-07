@@ -18,12 +18,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_2DCircleAction) **")]
 
@@ -61,12 +56,8 @@ namespace JCSUnity
         private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public float StartingPosition { get { return this.mStartingDegree; } set { this.mStartingDegree = value; } }
         public int RotateDegree { get { return this.mRotateDegree; } set { this.mRotateDegree = value; } }
         public float RotateDegreeTimer { get { return this.mRotateDegreeTimer; } set { this.mRotateDegreeTimer = value; } }
@@ -75,9 +66,9 @@ namespace JCSUnity
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // apply the starting position
@@ -89,18 +80,6 @@ namespace JCSUnity
             Movement();
             DoRotation();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the movement behavior.
@@ -134,6 +113,5 @@ namespace JCSUnity
             // Do rotation!
             this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * Time.deltaTime);
         }
-
     }
 }

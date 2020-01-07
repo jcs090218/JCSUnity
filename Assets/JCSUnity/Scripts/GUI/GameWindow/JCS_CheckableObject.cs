@@ -20,12 +20,8 @@ namespace JCSUnity
     public class JCS_CheckableObject
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
 #if (UNITY_STANDALONE || UNITY_EDITOR)
         private RectTransform mRectTransform = null;
 #endif
@@ -70,16 +66,10 @@ namespace JCSUnity
         [SerializeField]
         private EventType mEventType = EventType.ON_MOUSE_OVER;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void Start()
         {
@@ -138,12 +128,6 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Show the description dialogue.
         /// </summary>
@@ -185,12 +169,6 @@ namespace JCSUnity
             mShowing = false;
 #endif
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Make dialogue follow the mouse.

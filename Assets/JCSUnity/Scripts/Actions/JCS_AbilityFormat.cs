@@ -52,6 +52,5 @@ namespace JCSUnity
         /// </summary>
         /// <returns></returns>
         public abstract int GetDefenseValue();
-
     }
 }

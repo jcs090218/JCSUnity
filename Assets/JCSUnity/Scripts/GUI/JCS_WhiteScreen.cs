@@ -20,12 +20,8 @@ namespace JCSUnity
     public class JCS_WhiteScreen 
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_FadeObject mAO = null;
 
 
@@ -51,18 +47,15 @@ namespace JCSUnity
         [SerializeField]
         private float mFadeInTime = 0.2f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public float FadeOutTime { get { return this.mFadeOutTime; } set { this.mFadeOutTime = value; } }
         public float FadeInTime { get { return this.mFadeInTime; } set { this.mFadeInTime = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mAO = this.GetComponent<JCS_FadeObject>();
@@ -86,11 +79,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
         public void FadeIn()
         {
             FadeIn(mFadeInTime);
@@ -117,13 +105,5 @@ namespace JCSUnity
         {
             return mAO.IsFadeOut();
         }
-
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

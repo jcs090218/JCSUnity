@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_3DLiquidBarText
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // Counter with the liquid bar?
         private JCS_3DLiquidBar mLiquidBar = null;
@@ -57,18 +52,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaNumber mFullTextSprite = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_DeltaNumber CounterTextSprite { get { return this.mCounterTextSprite; } set { this.mCounterTextSprite = value; } }
         public JCS_DeltaNumber FullTextSprite { get { return this.mFullTextSprite; } set { this.mFullTextSprite = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mLiquidBar = this.GetComponent<JCS_3DLiquidBar>();
@@ -80,18 +72,6 @@ namespace JCSUnity
 
             DoTextRender();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Find the value and set the text to value.
@@ -128,8 +108,6 @@ namespace JCSUnity
             {
                 mFullText.rectTransform.anchoredPosition = JCS_Camera.main.WorldToCanvasSpace(this.mFullTextWorldTransform.position);
             }
-
         }
-
     }
 }

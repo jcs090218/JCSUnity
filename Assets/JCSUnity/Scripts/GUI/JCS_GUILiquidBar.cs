@@ -20,12 +20,8 @@ namespace JCSUnity
     public class JCS_GUILiquidBar
         : JCS_LiquidBar
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private RectTransform mRectTransform = null;
         private RectTransform mMaskRectTransform = null;
 
@@ -47,18 +43,13 @@ namespace JCSUnity
         private uint mCountToGetContainerData = 0;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public RectTransform GetRectTransform() { return this.mRectTransform; }
         public Mask GetMask() { return this.mMask; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
         protected override void Awake()
         {
             base.Awake();
@@ -123,12 +114,6 @@ namespace JCSUnity
                 FixPercentage();
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Attach 2d live object so it will follow the
@@ -305,12 +290,6 @@ namespace JCSUnity
         {
             return this.mCurrentValue;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Get the container data so it could so the correct 

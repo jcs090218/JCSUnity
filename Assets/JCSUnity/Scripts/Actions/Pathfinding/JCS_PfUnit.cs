@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_PfUnit
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_PfUnit) **")]
@@ -72,20 +67,14 @@ namespace JCSUnity
         [SerializeField]
         private float mSpeed = 20.0f;
 
-        
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public Transform Target { get { return this.mTarget; } set { this.mTarget = value; } }
         public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
 #if (UNITY_EDITOR)
         private void Update()
@@ -125,12 +114,6 @@ namespace JCSUnity
                 }
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Make the path finding request and 
@@ -184,12 +167,6 @@ namespace JCSUnity
                 StartCoroutine("FollowPath");
             }
         }
-        
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do follow the path.
@@ -223,6 +200,5 @@ namespace JCSUnity
                 yield return null;
             }
         }
-
     }
 }

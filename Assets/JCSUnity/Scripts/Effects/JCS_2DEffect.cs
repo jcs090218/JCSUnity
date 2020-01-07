@@ -17,19 +17,24 @@ namespace JCSUnity
     public abstract class JCS_2DEffect
         : MonoBehaviour    
     {
-        protected bool mEffect = false;
+        /* Variables */
 
+        protected bool mEffect = false;
 
         [Header("** Runtime Variables (JCS_2DEffect) **")]
 
         [Tooltip("Stop receive input while this effect is active.")]
         [SerializeField]
         protected bool mStopInputWhileThisEffect = false;
-        
+
+
+        /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
 
-        public bool StopInputWhileThisEffect { get { return this.mStopInputWhileThisEffect; } set { this.mStopInputWhileThisEffect = value; } }
 
+        /* Functions */
+
+        public bool StopInputWhileThisEffect { get { return this.mStopInputWhileThisEffect; } set { this.mStopInputWhileThisEffect = value; } }
     }
 }

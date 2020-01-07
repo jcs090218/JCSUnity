@@ -17,12 +17,8 @@ namespace JCSUnity
     public class JCS_FadeSound
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private AudioSource mAudioSource = null;
 
         private JCS_FadeType mType = JCS_FadeType.NONE;
@@ -48,20 +44,16 @@ namespace JCSUnity
         private float mTargetVolume = 0.0f;
         private float mRecordVolume = 0.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetFadeOutTime(float t) { this.mFadeOutTime = t; }
         public void SetFadeInTime(float t) { this.mFadeInTime = t; }
 
         public AudioSource GetAudioSource() { return this.mAudioSource; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Update()
         {
@@ -95,12 +87,6 @@ namespace JCSUnity
             }
 
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Set the audio source.
@@ -215,12 +201,5 @@ namespace JCSUnity
         {
             return mAudioSource.volume == mTargetVolume;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

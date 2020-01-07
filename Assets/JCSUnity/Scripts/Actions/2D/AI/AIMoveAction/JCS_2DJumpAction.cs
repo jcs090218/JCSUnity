@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_2DJumpAction
         : JCS_AIAction
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // Character Info so we can control the character better.
         private JCS_CharacterControllerInfo mCharacterControllerInfo = null;
@@ -91,12 +86,8 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         // so we can keep on the same animation after jump!
         private JCS_LiveObjectState mAnimStateBeforeJump = JCS_LiveObjectState.STAND;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
         // Info Variables
         public CharacterController GetCharacterController() { return this.mCharacterControllerInfo.GetCharacterController(); }
@@ -112,9 +103,9 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float Possibility { get { return this.mPossibility; } set { this.mPossibility = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mVelocityInfo = this.GetComponent<JCS_VelocityInfo>();
@@ -147,12 +138,6 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
 
             DoJump();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the jump by possibility.
@@ -197,12 +182,6 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
             mCheckEndJumpAnimation = true;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Do jump implementation.
         /// </summary>
@@ -231,7 +210,5 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
             mJumped = false;
             mTimer = 0;
         }
-
-
     }
 }

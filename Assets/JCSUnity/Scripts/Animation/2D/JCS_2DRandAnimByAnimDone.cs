@@ -20,29 +20,15 @@ namespace JCSUnity
     public class JCS_2DRandAnimByAnimDone
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private JCS_2DAnimator m2DAnimator = null;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Awake()
         {
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
@@ -56,18 +42,6 @@ namespace JCSUnity
                 anim.donePlayingAnimCallback = RandomPlayAnimationInAnimator;
             }
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Play a random animation in the animator.
@@ -87,6 +61,5 @@ namespace JCSUnity
             // play this animation
             m2DAnimator.DoAnimation(randIndex);
         }
-
     }
 }

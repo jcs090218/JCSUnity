@@ -23,12 +23,8 @@ namespace JCSUnity
     public class JCS_ButtonSoundEffect
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private RectTransform mRectTransform = null;
         private EventTrigger mEventTrigger = null;
 
@@ -111,12 +107,9 @@ on mouse down.")]
         [SerializeField]
         private JCS_SoundMethod mOnMouseDoubleClickRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
 
         public AudioClip OnMouseOverSound { get { return this.mOnMouseOverSound; } set { this.mOnMouseOverSound = value; } }
@@ -148,9 +141,8 @@ on mouse down.")]
         public JCS_SoundMethod OnMouseDoubleClickRefuseSoundMethod { get { return this.mOnMouseDoubleClickRefuseSoundMethod; } set { this.mOnMouseDoubleClickRefuseSoundMethod = value; } }
 
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             if (mSoundPlayer == null)
@@ -220,11 +212,6 @@ on mouse down.")]
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
         public void JCS_OnMouseOver(PointerEventData data)
         {
             JCS_OnMouseOver();
@@ -354,12 +341,5 @@ on mouse down.")]
         {
             mIsOver = true;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

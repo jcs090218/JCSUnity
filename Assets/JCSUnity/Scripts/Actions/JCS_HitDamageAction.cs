@@ -22,12 +22,7 @@ namespace JCSUnity
     public class JCS_HitDamageAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // collider use to detect player to give damage
         private BoxCollider mBoxCollider = null;
@@ -45,17 +40,14 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mHitSound = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // try to get the ability format from this object.
@@ -91,18 +83,6 @@ namespace JCSUnity
 
             mLiveObjectList.Remove(liveObject);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the damage to live object.
@@ -147,6 +127,5 @@ namespace JCSUnity
             // player do the hit effect.
             p.Hit();
         }
-
     }
 }

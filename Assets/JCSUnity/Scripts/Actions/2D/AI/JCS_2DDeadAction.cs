@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_2DDeadAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_2DLiveObject mLiveObject = null;
 
@@ -59,17 +54,11 @@ namespace JCSUnity
         [SerializeField]
         private MonoBehaviour[] mDisableComponents = null;
 
+        
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             mLiveObject = this.GetComponent<JCS_2DLiveObject>();
@@ -132,18 +121,5 @@ namespace JCSUnity
                 }
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

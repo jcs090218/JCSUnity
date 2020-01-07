@@ -19,11 +19,7 @@ namespace JCSUnity
     public class JCS_SlideScreenButton
         : JCS_Button
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -62,17 +58,13 @@ namespace JCSUnity
 
         private bool mStartDelay = false;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void SetDirection(JCS_2D8Direction direction) { this.mDirection = direction; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -106,12 +98,6 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Button click function pointer override.
         /// </summary>
@@ -127,12 +113,6 @@ namespace JCSUnity
             // start counting delay
             mStartDelay = true;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Switch the scene.
@@ -157,6 +137,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

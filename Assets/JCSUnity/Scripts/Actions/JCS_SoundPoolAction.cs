@@ -19,13 +19,8 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-        
         private JCS_SoundPlayer mSoundPlayer = null;
 
 
@@ -39,28 +34,19 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public AudioClip[] AudioClips { get { return this.mAudioClips; } set { this.mAudioClips = value; } }
         public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Randomly play a sound from the pool.
@@ -81,12 +67,5 @@ namespace JCSUnity
             float soundVolume = JCS_SoundSettings.instance.GetSoundBaseOnType(mSoundSettingType);
             mSoundPlayer.PlayOneShot(mAudioClips[randIndex], soundVolume);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

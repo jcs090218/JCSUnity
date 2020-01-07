@@ -18,9 +18,7 @@ namespace JCSUnity
     public class JCS_2DInitLookByTypeAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public enum FindMethod
         {
@@ -40,8 +38,6 @@ namespace JCSUnity
             NEGATIVE
         };
 
-        //----------------------
-        // Private Variables
 
         private JCS_AttackerInfo mAttackerInfo = null;
 
@@ -69,19 +65,16 @@ which to target which not to.")]
         // record down the first check.
         private State mDirection = State.NONE;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public FindMethod Method { get { return this.mMethod; } set { this.mMethod = value; } }
         public bool ActiveEffect { get { return this.mActiveEffect; } set { this.mActiveEffect = value; } }
         public bool UseAttacker { get { return this.mUseAttacker; } set { this.mUseAttacker = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mAttackerInfo = this.GetComponent<JCS_AttackerInfo>();
@@ -92,12 +85,6 @@ which to target which not to.")]
             if (mActiveEffect)
                 LockOnInit();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Lock a gameobject, and look at it.
@@ -171,12 +158,6 @@ which to target which not to.")]
                 JCS_Debug.PrintName(closestliveObj.transform);
 #endif
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         ///
@@ -571,6 +552,5 @@ which to target which not to.")]
 
             return targetFound;
         }
-
     }
 }

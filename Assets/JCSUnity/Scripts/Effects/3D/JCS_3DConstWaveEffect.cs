@@ -17,13 +17,7 @@ namespace JCSUnity
     public class JCS_3DConstWaveEffect
         : JCS_UnityObject
     {
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Varialbes (JCS_3DConstWaveEffect) **")]
 
@@ -67,13 +61,9 @@ namespace JCSUnity
         [Range(0.0f, 100.0f)]
         private float mRandomizeFrequencyAtStart = 0.0f;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public bool EffectLocal { get { return this.mEffectLocal; } set { this.mEffectLocal = value; } }
         public float Amplitude { get { return this.mAmplitude; } set { this.mAmplitude = value; } }
@@ -84,9 +74,9 @@ namespace JCSUnity
         public float RandomizeAmplitudeAtStart { get { return this.mRandomizeAmplitudeAtStart; } set { this.mRandomizeAmplitudeAtStart = value; } }
         public float RandomizeFrequencyAtStart { get { return this.mRandomizeFrequencyAtStart; } set { this.mRandomizeFrequencyAtStart = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -128,12 +118,6 @@ namespace JCSUnity
 
             mTime += Time.deltaTime;
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get the one of the transform type by passing the 
@@ -201,12 +185,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Randomize a bit of amplitude value.
         /// </summary>
@@ -228,6 +206,5 @@ namespace JCSUnity
 
             mFrequency += JCS_Random.Range(-mRandomizeFrequencyAtStart, mRandomizeFrequencyAtStart);
         }
-
     }
 }

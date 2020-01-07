@@ -17,12 +17,8 @@ namespace JCSUnity
     public class JCS_DetectArea
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_DetectAreaAction mDetectAreaAction = null;
 
         [Header("** Check Variables (JCS_DetectArea) **")]
@@ -30,17 +26,13 @@ namespace JCSUnity
         [SerializeField]
         private Collider mCollider = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetAction(JCS_DetectAreaAction da) { this.mDetectAreaAction = da; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Awake()
         {
@@ -94,18 +86,5 @@ namespace JCSUnity
             // remove from the list.
             mDetectAreaAction.RemoveDetectedObject(jcsDo);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

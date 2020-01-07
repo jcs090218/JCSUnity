@@ -21,12 +21,7 @@ namespace JCSUnity
     public class JCS_3DCursor
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private SpriteRenderer mSpriteRenderer = null;
         private Animator mAnimator = null;
@@ -76,18 +71,15 @@ namespace JCSUnity
         [Tooltip("Will cut the image in halft and pivot to top left.")]
         [SerializeField] private Vector2 mOffset = Vector2.zero;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
         public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -117,12 +109,6 @@ namespace JCSUnity
                 Cursor.visible = mShowCursor;
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Switch the animation state.
@@ -271,12 +257,6 @@ namespace JCSUnity
 
             this.mCursorCustomizeType = type;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Follow the cursor position.

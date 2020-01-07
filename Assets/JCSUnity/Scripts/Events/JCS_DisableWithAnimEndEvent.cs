@@ -16,14 +16,9 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(Animator))]
     public class JCS_DisableWithAnimEndEvent
-    : MonoBehaviour
+        : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Animator mAnimator = null;
 
@@ -36,17 +31,14 @@ namespace JCSUnity
         [SerializeField]
         private uint mLoopTimes = 1;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public uint LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mAnimator = this.GetComponent<Animator>();
@@ -64,18 +56,5 @@ namespace JCSUnity
                 this.gameObject.SetActive(false);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

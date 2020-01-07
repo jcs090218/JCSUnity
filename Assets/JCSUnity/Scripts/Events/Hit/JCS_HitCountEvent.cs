@@ -19,12 +19,8 @@ namespace JCSUnity
     public class JCS_HitCountEvent
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_HitListEvent mHitList = null;
 
 
@@ -35,17 +31,14 @@ namespace JCSUnity
         [SerializeField] [Range(0, 300)]
         private uint mHitCount = 1;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public uint HitCount { get { return this.mHitCount; } set { this.mHitCount = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mHitList = this.GetComponent<JCS_HitListEvent>();
@@ -59,18 +52,6 @@ namespace JCSUnity
                 CheckDestroy();
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Check if the object should destroy or not.

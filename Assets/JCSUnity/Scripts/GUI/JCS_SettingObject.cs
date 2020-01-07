@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_SettingObject 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Tooltip("Type of the settings.")]
         [SerializeField]
@@ -45,17 +40,14 @@ namespace JCSUnity
         private Dropdown mDropdown = null;
         private InputField mInputField = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public string SettingString { get { return this.mSettingString; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             InitValue();
@@ -100,17 +92,6 @@ namespace JCSUnity
 
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
         /// <summary>
         /// Set value according to the GUI type!
         /// </summary>
@@ -216,6 +197,5 @@ namespace JCSUnity
                     break;
             }
         }
-
     }
 }

@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_IGLogSystem
         : JCS_UnityObject
     {
-        
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_GUITextPool mLogTextPool = null;
 
@@ -38,16 +33,11 @@ namespace JCSUnity
         // vector of log text rendering on the screen.
         private JCS_Vector<JCS_LogText> mRenderLogText = null;
 
-        //----------------------
-        // Protected Variables
+        
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         protected override void Awake()
         {
             base.Awake();
@@ -83,12 +73,6 @@ namespace JCSUnity
             }
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Make single log message on the screen.
@@ -160,12 +144,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// move all the log text up one space.
         /// </summary>
@@ -187,6 +165,5 @@ namespace JCSUnity
             // get one log text from the pool
             mLogTextPool.ExecuteOneFromPool();
         }
-
     }
 }

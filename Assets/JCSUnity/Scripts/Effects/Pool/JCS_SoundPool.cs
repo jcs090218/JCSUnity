@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_SoundPool
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_SoundPool) **")]
 
@@ -35,23 +30,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_SoundSettingType SoundType { get { return this.mSoundSettingType; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         /// <summary>
         /// Get an audio clip from the pool randomly.
@@ -66,12 +51,5 @@ namespace JCSUnity
 
             return mAudioClips[randIndex];
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

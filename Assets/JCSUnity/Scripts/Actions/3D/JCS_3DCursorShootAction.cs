@@ -19,12 +19,8 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         [Header("** Check Variables (JCS_3DCursorShootAction) **")]
 
         [SerializeField]
@@ -41,18 +37,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Vector3Direction mDirection = JCS_Vector3Direction.UP;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public KeyCode ShooKeyCode { get { return this.mShootKeyCode; } }
         public JCS_Vector3Direction Direction { get { return this.mDirection; } set { this.mDirection = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mShootAction = this.GetComponent<JCS_ShootAction>();
@@ -65,18 +58,6 @@ namespace JCSUnity
         {
             LookAtMouse();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Source: http://wiki.unity3d.com/index.php?title=LookAtMouse
@@ -112,6 +93,5 @@ namespace JCSUnity
                 mShootAction.SpawnPoint.rotation = Quaternion.Slerp(mShootAction.SpawnPoint.rotation, targetRotation, speed * Time.deltaTime);
             }
         }
-
     }
 }

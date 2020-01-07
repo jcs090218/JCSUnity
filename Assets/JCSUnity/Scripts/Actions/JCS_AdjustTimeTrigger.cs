@@ -22,17 +22,11 @@ namespace JCSUnity
     public class JCS_AdjustTimeTrigger
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         // action to trigger if the time is reached.
         public EmptyAction actions = null;
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
         [Header("** Check Variables (JCS_AdjustTimeTrigger) **")]
 
@@ -71,21 +65,16 @@ action after we calculate the real time.")]
         private UnityEvent mUnityEvents = null;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public UnityEvent UnityEvents { get { return this.mUnityEvents; } set { this.mUnityEvents = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Update()
         {
             if (!mActive)
@@ -93,12 +82,6 @@ action after we calculate the real time.")]
 
             DoAction();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Calculate the time to do event once.
@@ -111,12 +94,6 @@ action after we calculate the real time.")]
             mDidAction = false;
             mTimer = 0;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the timer action, execute the function pointer if the 

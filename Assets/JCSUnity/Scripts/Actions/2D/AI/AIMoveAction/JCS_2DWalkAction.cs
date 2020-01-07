@@ -19,18 +19,14 @@ namespace JCSUnity
     public class JCS_2DWalkAction
         : JCS_AIAction
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public enum Status
         {
             IDLE = 0,
             LEFT = -1,
             RIGHT = 1
         };
-
-        //----------------------
-        // Private Variables
 
         // Character Info so we can control the character better.
         private JCS_CharacterControllerInfo mCharacterControllerInfo = null;
@@ -111,12 +107,9 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public CharacterController GetCharacterController() { return this.mCharacterControllerInfo.GetCharacterController(); }
         public Vector3 Velocity { get { return this.mVelocityInfo.Velocity; } set { this.mVelocityInfo.Velocity = value; } }
         public float VelX { get { return mVelocityInfo.VelX; } set { mVelocityInfo.VelX = value; } }
@@ -132,9 +125,9 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         // Track Effects
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mVelocityInfo = this.GetComponent<JCS_VelocityInfo>();
@@ -159,12 +152,6 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         {
             DoWalk();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the walk action depends on possibility.
@@ -337,12 +324,6 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             mWalked = true;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Do the walk algorithm.
         /// </summary>
@@ -371,6 +352,5 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             mWalked = false;
             mTimer = 0;
         }
-
     }
 }

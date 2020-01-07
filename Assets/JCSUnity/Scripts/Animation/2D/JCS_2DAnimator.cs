@@ -18,13 +18,7 @@ namespace JCSUnity
     public class JCS_2DAnimator 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables Variables (JCS_2DAnimator) **")]
@@ -90,12 +84,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DAnimDisplayHolder m2DAnimDisplayHolder = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
         public int CurrentAnimId { get { return this.mCurrentAnimId; } }
         public JCS_2DAnimation CurrentAnimation { get { return this.mCurrentAnimation; } }
@@ -104,9 +95,9 @@ namespace JCSUnity
 
         public JCS_2DAnimDisplayHolder AnimDisplayHolder { get { return this.m2DAnimDisplayHolder; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             /*
@@ -166,12 +157,6 @@ namespace JCSUnity
                 PlayOneShot(0);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Play the animation base on the animation ID.
@@ -289,12 +274,6 @@ namespace JCSUnity
 
             mCurrentAnimation.Pause();
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Update the maxinum frame count from the 

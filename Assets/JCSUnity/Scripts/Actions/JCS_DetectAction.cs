@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_DetectAction
         : JCS_AIAction
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_DetectAction) **")]
 
@@ -44,18 +39,15 @@ namespace JCSUnity
         // Detect all the transform?
         private bool mDetectAll = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool DoAction { get { return this.mDoAction; } set { this.mDoAction = value; } }
         public float DetectRange { get { return this.mDetectRange; } set { this.mDetectRange = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             if (!mDoAction)
@@ -63,12 +55,6 @@ namespace JCSUnity
 
             DoDetect();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Detect one of the transform?
@@ -93,12 +79,6 @@ namespace JCSUnity
         {
             return this.mDetectAll;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do detect all the transforms.
@@ -145,6 +125,5 @@ namespace JCSUnity
                 mDetectAll = true;
             }
         }
-
     }
 }

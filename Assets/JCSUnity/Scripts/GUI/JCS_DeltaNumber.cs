@@ -19,11 +19,7 @@ namespace JCSUnity
     public class JCS_DeltaNumber
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_DeltaNumber) **")]
@@ -161,12 +157,9 @@ should disable this effect for best purpose.")]
         [SerializeField] [Range(1, 1000)]
         private int mDeltaProduct = 1;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool IsEnable { get { return this.mIsEnable; } }
         public bool ClearEmptyLeftZero { get { return this.mClearEmptyLeftZero; } set { this.mClearEmptyLeftZero = value; } }
         public bool DeltaToCurrentScore { get { return this.mDeltaToCurrentScore; } set { this.mDeltaToCurrentScore = value; } }
@@ -185,9 +178,9 @@ should disable this effect for best purpose.")]
         public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
         public JCS_TextAlign TextAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // update all the unity object.
@@ -227,12 +220,6 @@ should disable this effect for best purpose.")]
                 UpdateScore(mDeltaValueB);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Set enable/disable all digit render slot.
@@ -327,12 +314,6 @@ should disable this effect for best purpose.")]
         {
             UpdateIntervalForEachDigit(mDigitInterval);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the GUI score logic.

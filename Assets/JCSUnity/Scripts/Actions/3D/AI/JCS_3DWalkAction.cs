@@ -19,12 +19,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // All enemy should have the nav
         // mesh agent for the path finding.
@@ -78,16 +73,11 @@ namespace JCSUnity
         // time that actually make the enemy target the player.
         private float mRealTargetTime = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mNavMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -97,12 +87,6 @@ namespace JCSUnity
         {
             DoAI();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Target one player and do in taget action.
@@ -172,12 +156,6 @@ namespace JCSUnity
 
             return false;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Calculate the range and position relationship
@@ -267,6 +245,5 @@ namespace JCSUnity
             // reset timer.
             mTargetTimer = 0;
         }
-
     }
 }

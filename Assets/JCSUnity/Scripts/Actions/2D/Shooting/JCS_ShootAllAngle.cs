@@ -19,12 +19,8 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_ShootAction mShootAction = null;
 
 
@@ -69,12 +65,9 @@ namespace JCSUnity
 
         private float mCount = 0.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool CanShoot { get { return this.mCanShoot; } set { this.mCanShoot = value; } }
         public bool AutoShootInFrame { get { return this.mAutoShootInFrame; } set { this.mAutoShootInFrame = value; } }
         public bool AutoShootByOrder { get { return this.mAutoShootByOrder; } set { this.mAutoShootByOrder = value; } }
@@ -83,9 +76,9 @@ namespace JCSUnity
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public JCS_Axis ShootAxis { get { return this.mShootAxis; } set { this.mShootAxis = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mShootAction = this.GetComponent<JCS_ShootAction>();
@@ -104,12 +97,6 @@ namespace JCSUnity
             if (AutoShootByOrder)
                 AutoShootActionByOrder();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Shoot bullets in all angle in current frame.
@@ -181,12 +168,6 @@ namespace JCSUnity
             mShooted = true;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Automatically shoot bullets in all angle in current frame.
         /// </summary>
@@ -242,6 +223,5 @@ namespace JCSUnity
             mShooted = false;
             mDelayTimer = 0;
         }
-
     }
 }

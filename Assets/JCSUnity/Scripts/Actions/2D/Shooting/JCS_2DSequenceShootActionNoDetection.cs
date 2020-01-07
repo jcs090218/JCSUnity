@@ -20,12 +20,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_2DCursorShootAction) **")]
 
@@ -76,12 +71,8 @@ namespace JCSUnity
         private JCS_Vector<Vector3> mShootPos = null;
         private JCS_Vector<Vector3> mShootAngles = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public int Hit { get { return this.mHit; } set { this.mHit = value; } }
         public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
         public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
@@ -104,9 +95,8 @@ namespace JCSUnity
         }
 
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             mShootAction = this.GetComponent<JCS_ShootAction>();
@@ -131,12 +121,6 @@ namespace JCSUnity
 
             ProccessSequences();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Shoot bullets in sequence queue.
@@ -179,12 +163,6 @@ namespace JCSUnity
             mShootAngles.push(mShootAction.SpawnPoint.eulerAngles);
 
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Process/Handle the inputs from the user.
@@ -286,6 +264,5 @@ namespace JCSUnity
             mShootPos.slice(processIndex);
             mShootAngles.slice(processIndex);
         }
-
     }
 }

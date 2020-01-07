@@ -21,30 +21,17 @@ namespace JCSUnity
     public class JCS_2DRandAnimByTimeController
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
         private JCS_2DAnimator m2DAnimator = null;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Awake()
         {
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
@@ -52,18 +39,6 @@ namespace JCSUnity
 
             this.mAdjustTimeTrigger.actions = RandomPlayAnimationInAnimator;
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Play a random animation in the animator.
@@ -83,6 +58,5 @@ namespace JCSUnity
             // play this animation
             m2DAnimator.DoAnimation(randIndex);
         }
-
     }
 }

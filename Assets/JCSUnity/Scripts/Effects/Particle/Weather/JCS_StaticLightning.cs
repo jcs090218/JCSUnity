@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_StaticLightning
     : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_StaticLightning) **")]
 
@@ -52,16 +47,11 @@ namespace JCSUnity
         private JCS_SoundPool mSoundPool = null;
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
@@ -89,18 +79,6 @@ namespace JCSUnity
 
             DoEffect();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the lightning effect once.
@@ -153,6 +131,5 @@ namespace JCSUnity
             // add new rand time.
             mLimitTime += JCS_Random.Range(-mRandomTime, mRandomTime);
         }
-
     }
 }

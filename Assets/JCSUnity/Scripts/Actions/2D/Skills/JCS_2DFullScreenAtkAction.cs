@@ -20,12 +20,7 @@ namespace JCSUnity
         : JCS_2DSkills
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DFullScreenAtkAction) **")]
 
@@ -49,35 +44,23 @@ namespace JCSUnity
         [SerializeField] [Range(0, 15)]
         private int mSkillHit = 15;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int AnimDesity { get { return this.mAnimDesity; } set { this.mAnimDesity = value; } }
         public float SkillWide { get { return this.mSkillWide; } set { this.mSkillWide = value; } }
         public float SkillHeight { get { return this.mSkillHeight; } set { this.mSkillHeight = value; } }
         public int SkillHit { get { return this.mSkillHit; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
 
             mAnimPoolSupAnim = this.GetComponent<JCS_AnimPool>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// Active the skill.
@@ -91,9 +74,6 @@ namespace JCSUnity
 
             mSoundPlayer.PlayOneShot(mUseSound);
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Spawn a support animation.
@@ -153,6 +133,5 @@ namespace JCSUnity
             spa.audioClip = mHitSound;
             spa.SoundSettingType = mSoundPlayer.GetSoundSettingType();
         }
-
     }
 }

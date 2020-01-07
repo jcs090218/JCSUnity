@@ -20,12 +20,8 @@ namespace JCSUnity
     public class JCS_DestroyAnimBackForthEvent
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private Animator mAnimator = null;
         private float mAnimationTimer = 0.0f;
 
@@ -58,16 +54,10 @@ namespace JCSUnity
         private int mPlayCount = 0;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             mAnimator = this.GetComponent<Animator>();
@@ -131,12 +121,6 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Play the animation forth once.
         /// </summary>
@@ -186,12 +170,5 @@ namespace JCSUnity
 
             mAnimator.Play(clipName, -1, mAnimtorStateInfo.normalizedTime);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

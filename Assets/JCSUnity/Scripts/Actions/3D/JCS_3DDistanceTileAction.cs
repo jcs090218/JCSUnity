@@ -46,7 +46,7 @@ namespace JCSUnity
         private bool mUseLocalPosition = false;
 
         
-        /* Setter/Getter */
+        /* Setter & Getter */
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
         public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }

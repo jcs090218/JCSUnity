@@ -21,12 +21,7 @@ namespace JCSUnity
     public abstract class JCS_2DClimbableObject
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         /*
          * To have this component in order to let the 
@@ -37,8 +32,6 @@ namespace JCSUnity
 
         private JCS_ClimbableManager mClimbableManager = null;
 
-        //----------------------
-        // Protected Variables
 
         [Header("** Initilaize Variable (JCS_OrderLayerObject) **")]
 
@@ -46,16 +39,16 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_2DPositionPlatform mPositionPlatform = null;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+
+        /* Setter & Getter */
+
         public JCS_OrderLayerObject OrderLayerObject { get { return this.mOrderLayerObject; } }
         public JCS_ClimbableManager ClimbableManager { get { return this.mClimbableManager; } }
         public JCS_2DPositionPlatform PositionPlatform { get { return this.mPositionPlatform; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected virtual void Awake()
         {
             this.mOrderLayerObject = this.GetComponent<JCS_OrderLayerObject>();
@@ -75,12 +68,6 @@ namespace JCSUnity
                 this.mClimbableManager = JCS_ClimbableManager.instance;
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Something that needed to check in update can be design here.
@@ -107,12 +94,5 @@ namespace JCSUnity
 
             return isTopOfBox;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

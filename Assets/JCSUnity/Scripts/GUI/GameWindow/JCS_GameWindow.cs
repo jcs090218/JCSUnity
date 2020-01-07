@@ -20,13 +20,7 @@ namespace JCSUnity
     public class JCS_GameWindow 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         /// <summary>
         /// Window drag drop event.
@@ -46,26 +40,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         public void Awake()
         {
             mDialogueObject = this.GetComponent<JCS_DialogueObject>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// On pointer down event.
@@ -109,12 +92,6 @@ namespace JCSUnity
 
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Process drag drop event.
         /// </summary>
@@ -134,6 +111,5 @@ namespace JCSUnity
                     break;
             }
         }
-
     }
 }

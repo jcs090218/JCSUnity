@@ -18,28 +18,21 @@ namespace JCSUnity
     public class JCS_2DPlayerAudioController 
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         protected AudioListener mAudioListener = null;
 
         // Audio Source equals to Audio Player!
         protected JCS_SoundPlayer mJCSSoundPlayer = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public AudioListener GetAudioListener() { return this.mAudioListener; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected virtual void Awake()
         {
             mJCSSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
@@ -54,18 +47,5 @@ namespace JCSUnity
             // the volume and mute!
             JCS_SoundManager.instance.AssignSoundSource(JCS_SoundSettingType.SKILLS_SOUND, mJCSSoundPlayer.GetAudioSource());
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_GameWindowHandler 
         : JCS_Settings<JCS_GameWindowHandler>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // System UI
         [Header("** System Dialogue **")]
@@ -56,21 +51,18 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DialogueObject[] mPlayerDialogue = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_DialogueObject GetPlayerDialogueAt(int index) { return this.mPlayerDialogue[index]; }
         public JCS_DialogueObject NPCDialogue { get { return this.mNPCDialogue; } set { this.mNPCDialogue = value; } }
         public JCS_DialogueObject[] PlayerDialogue { get { return this.mPlayerDialogue; } set { this.mPlayerDialogue = value; } }
         public JCS_DialogueObject GameUI { get { return this.mGameUI; } set { this.mGameUI = value; } }
         public JCS_DialogueObject[] SystemUI { get { return this.mSystemUI; } set { this.mSystemUI = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
@@ -83,12 +75,6 @@ namespace JCSUnity
             PopNPCDialogue();
             PopPlayerDialogue();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Show the game UI.
@@ -120,9 +106,6 @@ namespace JCSUnity
             mGameUI.HideDialogueWithoutSound();
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
         /// I would like to use own define to transfer the old instance
@@ -141,9 +124,6 @@ namespace JCSUnity
             _new.GameUI = _old.GameUI;
             _new.PlayerDialogue = _old.PlayerDialogue;
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Pop the NPC dialogue.
@@ -219,6 +199,5 @@ namespace JCSUnity
 
             return list;
         }
-
     }
 }

@@ -18,25 +18,14 @@ namespace JCSUnity
     public class JCS_3DPlayer 
         : JCS_Player
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         [SerializeField] private float mRotateSpeed = 25f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         protected override void FixedUpdate()
         {
@@ -47,12 +36,6 @@ namespace JCSUnity
 
             mCharacterController.Move(mVelocity * Time.deltaTime);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Control this player or not base on boolean pass in.
@@ -169,16 +152,9 @@ namespace JCSUnity
             throw new NotImplementedException();
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
         private void RotateRelativeToCamera()
         {
 
         }
-
-        
     }
 }

@@ -17,16 +17,9 @@ namespace JCSUnity
     public class JCS_Particle
         : MonoBehaviour
     {
-        // 
+        /* Variables */
 
-        public void SetPosition(Vector3 pos)
-        {
-            this.transform.position = pos;
-        }
-        public void SetLocalPosition(Vector3 pos)
-        {
-            this.transform.localPosition = pos;
-        }
+        /* Setter & Getter */
 
         public float PosX
         {
@@ -89,5 +82,15 @@ namespace JCSUnity
             }
         }
 
+        /* Functions */
+
+        public void SetPosition(Vector3 pos)
+        {
+            this.transform.position = pos;
+        }
+        public void SetLocalPosition(Vector3 pos)
+        {
+            this.transform.localPosition = pos;
+        }
     }
 }

@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_AnimPool
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_AnimPool) **")]
 
@@ -30,22 +25,10 @@ namespace JCSUnity
         [SerializeField]
         private RuntimeAnimatorController[] mAnimPool = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         /// <summary>
         /// Get a animation from the pool randomly.
@@ -60,12 +43,5 @@ namespace JCSUnity
 
             return mAnimPool[randIndex];
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

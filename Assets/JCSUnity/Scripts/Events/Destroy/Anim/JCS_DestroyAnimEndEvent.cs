@@ -18,12 +18,8 @@ namespace JCSUnity
     public class JCS_DestroyAnimEndEvent
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private Animator mAnimator = null;
         private float mAnimationTimer = 0.0f;
 
@@ -33,17 +29,14 @@ namespace JCSUnity
         [SerializeField]
         private int mLoopTimes = 1;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mAnimator = this.GetComponent<Animator>();
@@ -60,18 +53,5 @@ namespace JCSUnity
                 Destroy(this.gameObject);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

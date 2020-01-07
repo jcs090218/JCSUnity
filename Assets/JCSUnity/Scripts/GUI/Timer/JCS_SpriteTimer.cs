@@ -21,12 +21,9 @@ namespace JCSUnity
     public class JCS_SpriteTimer
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-        public TimeIsUpFunc timeIsUpCallback = null;
+        /* Variables */
 
-        //----------------------
-        // Private Variables
+        public TimeIsUpFunc timeIsUpCallback = null;
 
         private const float MAX_HOUR_TIME = 23.0f;
         private const float MAX_MINUTE_TIME = 59.0f;
@@ -169,12 +166,8 @@ namespace JCSUnity
         private int mTrackSecond = 0;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
 
@@ -182,9 +175,9 @@ namespace JCSUnity
         public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
         public AudioClip SecondSound { get { return this.mSecondSound; } set { this.mSecondSound = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Start()
         {
             UpdateTimeInterval();
@@ -198,13 +191,6 @@ namespace JCSUnity
 
             DoTimeIsUpCallback();
         }
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Set the current time.
@@ -361,12 +347,6 @@ namespace JCSUnity
             DoMinuteUI(minute);
             DoSecondUI(second);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the Hour GUI.

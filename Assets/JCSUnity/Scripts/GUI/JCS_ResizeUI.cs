@@ -21,13 +21,10 @@ namespace JCSUnity
     public class JCS_ResizeUI 
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public static JCS_ResizeUI instance = null;
 
-        //----------------------
-        // Private Variables
 
         private RectTransform mRect = null;
 
@@ -66,12 +63,9 @@ namespace JCSUnity
         [SerializeField]
         private float mTargetScale = 0.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
 #if (UNITY_EDITOR)
         public bool showResizePanel
         {
@@ -93,9 +87,9 @@ namespace JCSUnity
         public float HScale { get { return this.mHScale; } }
         public float TargetScale { get { return this.mTargetScale; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mRect = this.GetComponent<RectTransform>();
@@ -185,12 +179,6 @@ namespace JCSUnity
             DoResizeUI();
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
 #if (UNITY_EDITOR)
         /// <summary>
         /// Show the resize panel, for debugging usage.
@@ -230,12 +218,6 @@ namespace JCSUnity
             mShowResizePanel = false;
         }
 #endif
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Resize the UI if screen size changes.

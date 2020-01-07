@@ -19,15 +19,10 @@ namespace JCSUnity
     public class JCS_ToggleButton
         : JCS_Button
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public ToggleFunc acitveFunc = null;
         public ToggleFunc deactiveFunc = null;
-
-        //----------------------
-        // Private Variables
 
 
         [Header("** Runtime Variables (JCS_ToggleButton) **")]
@@ -36,12 +31,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Active {
             get { return this.mActive; }
             set {
@@ -53,15 +45,8 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         /// <summary>
         /// On click event.
@@ -119,12 +104,5 @@ namespace JCSUnity
             // do the action.
             deactiveFunc.Invoke();
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

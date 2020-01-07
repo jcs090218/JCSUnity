@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_HitListEvent
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_HitListEvent) **")]
 
@@ -45,17 +40,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mDestroyWhenOccurs = false;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool IsHit { get { return this.mIsHit; } set { this.mIsHit = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void OnTriggerEnter(Collider other)
         {
 
@@ -83,18 +74,5 @@ namespace JCSUnity
                 Destroy(this.gameObject);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

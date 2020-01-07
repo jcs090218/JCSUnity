@@ -20,11 +20,7 @@ namespace JCSUnity
     public class JCS_3DCamera 
         : JCS_Camera
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_3DCamera) **")]
@@ -188,12 +184,8 @@ namespace JCSUnity
         private float mMaxDistance = 200;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public Transform FollowTarget { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
         public override void SetFollowTarget(Transform targ) { this.mTargetTransform = targ; }
         public override Transform GetFollowTarget() { return this.mTargetTransform; }
@@ -211,9 +203,8 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected override void Start()
         {
             base.Start();
@@ -306,12 +297,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Rotate around the target toward right.
         /// </summary>
@@ -369,12 +354,6 @@ namespace JCSUnity
             if (mMinHeight > mTargetHeight)
                 mTargetHeight = mMinHeight;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the follow algorithm.

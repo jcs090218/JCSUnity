@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_RollBtnSelector
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // the button has been focusing on.
         private JCS_RollSelectorButton mFocusBtn = null;
@@ -86,16 +81,11 @@ namespace JCSUnity
         // counter in order to approach to "mTargetScrollIndex" about
         private int mScrollIndexCounter = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
@@ -123,12 +113,6 @@ namespace JCSUnity
                 ApplyTargetForAnim(-1);
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Initialize the focus selector.
@@ -170,12 +154,6 @@ namespace JCSUnity
         {
             return (this.mFocusBtn == btn);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Initilaize the buttons in the array.
@@ -481,6 +459,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

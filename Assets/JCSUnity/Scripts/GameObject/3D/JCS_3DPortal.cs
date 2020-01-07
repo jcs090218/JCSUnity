@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_3DPortal
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_3DPortal) **")]
 
@@ -58,20 +53,17 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetPortal = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool AutoTrigger { get { return this.mAutoTrigger; } set { this.mAutoTrigger = value; } }
         public JCS_3DPortalType Type { get { return this.mType; } set { this.mType = value; } }
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public Transform TargetPortal { get { return this.mTargetPortal; } set { this.mTargetPortal = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             if (mTargetPortal == null &&
@@ -91,12 +83,6 @@ namespace JCSUnity
             // switch the scene.
             DoPortal(mType, p);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the portal.
@@ -141,12 +127,5 @@ namespace JCSUnity
                     break;
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

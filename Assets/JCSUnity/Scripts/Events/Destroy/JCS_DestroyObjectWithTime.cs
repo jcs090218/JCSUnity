@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_DestroyObjectWithTime
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_DestroyObjectWithTime) **")]
 
@@ -40,19 +35,16 @@ namespace JCSUnity
 
         private JCS_FadeObject mFadeObject = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_FadeObject GetFadeObject() { return this.mFadeObject; }
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
         public bool TimesUp { get { return this.mTimesUp; } set { this.mTimesUp = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mFadeObject = this.GetComponent<JCS_FadeObject>();
@@ -74,18 +66,5 @@ namespace JCSUnity
                 Destroy(this.gameObject);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

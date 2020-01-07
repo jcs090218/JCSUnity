@@ -20,11 +20,9 @@ namespace JCSUnity
     public class JCS_EaseMath
         : MonoBehaviour
     {
-
        public static float Linear(float time, float from, float to, float duration)
         {
             return to * time / duration + from;
         }
-
     }
 }

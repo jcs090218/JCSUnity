@@ -19,44 +19,19 @@ namespace JCSUnity
     public class JCS_FadeScreen
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
         private JCS_FadeObject mFadeObject = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public JCS_FadeObject FadeObject { get { return this.mFadeObject; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
+
         private void Awake()
         {
             this.mFadeObject = this.GetComponent<JCS_FadeObject>();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

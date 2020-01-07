@@ -18,12 +18,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DRotateAction) **")]
 
@@ -39,19 +34,16 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Action { get { return this.mAction; } set { this.mAction = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
         public JCS_2DFaceType RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             if (!mAction)
@@ -59,18 +51,5 @@ namespace JCSUnity
 
             this.transform.Rotate(Vector3.forward * mTurnSpeed * -((int)mRotateDirection) * Time.deltaTime);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

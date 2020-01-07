@@ -23,11 +23,7 @@ namespace JCSUnity
     public class JCS_2DDestroyAnimEffect
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // pool to grab animation to play.
         private JCS_2DAnimPool m2DAnimPool = null;
@@ -104,12 +100,9 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandScaleRange = 0.0f;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
         public int LoopTimes { get { return this.mLoopTimes; } set { this.mLoopTimes = value; } }
 
@@ -128,9 +121,9 @@ namespace JCSUnity
         public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
         public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mHitList = this.GetComponent<JCS_HitListEvent>();
@@ -227,18 +220,6 @@ namespace JCSUnity
             if (mRandScale)
                 AddRandomScale(sr);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Add random value to the effect's transform's position.

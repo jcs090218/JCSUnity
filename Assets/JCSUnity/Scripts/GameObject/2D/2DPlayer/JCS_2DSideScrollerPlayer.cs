@@ -21,14 +21,7 @@ namespace JCSUnity
     public class JCS_2DSideScrollerPlayer
         : JCS_Player
     {
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         protected JCS_2DAnimator mJCS2DAnimator = null;
         protected JCS_OrderLayerObject mOrderLayerObject = null;
@@ -188,14 +181,8 @@ namespace JCSUnity
         private bool mJustClimbOnTopOfBox = false;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public bool JustClimbOnTopOfBox { get { return this.mJustClimbOnTopOfBox; } set { this.mJustClimbOnTopOfBox = value; } }
         public bool AutoClimb { get { return this.mAutoClimb; } set { this.mAutoClimb = value; } }
         public JCS_ClimbMoveType AutoClimbDirection { get { return this.mAutoClimbDirection; } set { this.mAutoClimbDirection = value; } }
@@ -224,9 +211,9 @@ namespace JCSUnity
 
         public JCS_2DClimbableObject ClimbableObject { get { return this.m2DClimbingObject; } set { this.m2DClimbingObject = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -247,12 +234,6 @@ namespace JCSUnity
 
             ProcessState();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// 
@@ -790,9 +771,6 @@ namespace JCSUnity
             return false;
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Check if we are still in the attack stage.
         /// </summary>
@@ -858,10 +836,6 @@ namespace JCSUnity
         {
             GetAudioController().PlaySoundByPlayerState(state);
         }
-
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Process State Pattern.
@@ -1165,6 +1139,5 @@ namespace JCSUnity
             return false;
 
         }
-
     }
 }

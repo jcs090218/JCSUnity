@@ -20,14 +20,7 @@ namespace JCSUnity
     public class JCS_Dropdown
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private Dropdown mDropdown = null;
 
@@ -69,22 +62,18 @@ namespace JCSUnity
         [SerializeField]
         private bool mApproachSec = false;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public Dropdown dropdown { get { return this.mDropdown; } }
         public int MaxLetters { get { return this.mMaxLetters; } set { this.mMaxLetters = value; } }
         public int DotCount { get { return this.mDotCount; } set { this.mDotCount = value; } }
         public List<string> DropdownRealTexts { get { return this.mDropdownRealTexts; } }
         public List<string> DropdownBackupTexts { get { return this.mDropdownBackupTexts; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mDropdown = this.GetComponent<Dropdown>();
@@ -102,12 +91,6 @@ namespace JCSUnity
             }
         }
 #endif
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Update the dropdown data.
@@ -196,12 +179,6 @@ namespace JCSUnity
             // Refresh the selection.
             JCS_GUIUtil.Dropdown_RefreshSelection(mDropdown);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Is the value of dropdown's option already been shortcut.

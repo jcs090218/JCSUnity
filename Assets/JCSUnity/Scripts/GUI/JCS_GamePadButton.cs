@@ -20,18 +20,7 @@ namespace JCSUnity
     public abstract class JCS_GamePadButton
         : JCS_Button
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Variables */
 
         /*
          * TODO(jenchieh): Consider this to put at `JCS_Button' class
@@ -87,9 +76,9 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_SoundMethod mSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+
+        /* Setter & Getter */
+
         public KeyCode KKeyToListen { get { return this.mKKeyToListen; } set { this.mKKeyToListen = value; } }
         public JCS_JoystickButton JKeyToListen { get { return this.mJKeyToListen; } set { this.mJKeyToListen = value; } }
         public JCS_JoystickIndex JoystickLitener { get { return this.mJoystickLitener; } set { this.mJoystickLitener = value; } }
@@ -101,9 +90,9 @@ namespace JCSUnity
 
         public bool IgnorePauseCheck { get { return this.mIgnorePauseCheck; } set { this.mIgnorePauseCheck = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -136,18 +125,6 @@ namespace JCSUnity
             }
         }
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Play the button click sound.
         /// </summary>
@@ -163,6 +140,5 @@ namespace JCSUnity
 
             soundPlayer.PlayOneShotByMethod(mButtonClickSound, mSoundMethod);
         }
-
     }
 }

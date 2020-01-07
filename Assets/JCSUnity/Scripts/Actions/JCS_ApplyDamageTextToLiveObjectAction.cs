@@ -18,14 +18,8 @@ namespace JCSUnity
     public class JCS_ApplyDamageTextToLiveObjectAction
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        
         [Header("** Check Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         [SerializeField]
@@ -124,12 +118,9 @@ namespace JCSUnity
         private AudioClip mHitSound = null;
 
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
         public int Hit { get { return this.mHit; } set { this.mHit = value; } }
         public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } set { this.mAbilityFormat = value; } }
@@ -138,9 +129,9 @@ namespace JCSUnity
         public int[] DamageApplying { get { return this.mDamageApplying; } set { this.mDamageApplying = value; } }
         public JCS_AttackerInfo AttackerInfo { get { return this.mAttackerInfo; } set { this.mAttackerInfo = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mAttackerInfo = this.GetComponent<JCS_AttackerInfo>();
@@ -288,12 +279,6 @@ namespace JCSUnity
             DestroyWithAction();
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Copy some information from the other.
         /// </summary>
@@ -303,12 +288,6 @@ namespace JCSUnity
             this.Hit = copy.Hit;
             this.AttackerInfo = copy.AttackerInfo;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Randomize the position.
@@ -374,6 +353,5 @@ namespace JCSUnity
 
             return false;
         }
-
     }
 }

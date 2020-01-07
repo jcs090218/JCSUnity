@@ -22,14 +22,7 @@ namespace JCSUnity
     public class JCS_ButtonPointer
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         private JCS_SimpleTrackAction mSimpleTrackAction = null;
 
@@ -53,19 +46,15 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mPointerOffset = Vector3.zero;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool DontPointIfButtonNotActive { get { return this.mDontPointIfButtonNotActive; } set { this.mDontPointIfButtonNotActive = value; } }
         public Vector3 PointerOffset { get { return this.mPointerOffset; } set { this.mPointerOffset = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mSimpleTrackAction = this.GetComponent<JCS_SimpleTrackAction>();
@@ -99,18 +88,6 @@ namespace JCSUnity
             }
         }
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Callback if the button get focus.
         /// </summary>
@@ -130,6 +107,5 @@ namespace JCSUnity
 
             mSimpleTrackAction.TargetPosition = targetPoint;
         }
-
     }
 }

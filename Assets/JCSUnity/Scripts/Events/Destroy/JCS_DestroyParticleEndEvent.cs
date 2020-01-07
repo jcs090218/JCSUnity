@@ -19,24 +19,15 @@ namespace JCSUnity
     public class JCS_DestroyParticleEndEvent
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_ParticleSystem mParticleSystem = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mParticleSystem = this.GetComponent<JCS_ParticleSystem>();
@@ -47,18 +38,5 @@ namespace JCSUnity
             if (mParticleSystem.IsParticleEnd())
                 Destroy(this.gameObject);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

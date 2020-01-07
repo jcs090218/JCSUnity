@@ -19,12 +19,7 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
@@ -129,12 +124,8 @@ namespace JCSUnity
         private float mRecordActTime = 0;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void SetSpeedLayer(JCS_SpeedLayer sl)
         {
             this.mSpeedLayer = sl;
@@ -146,9 +137,9 @@ namespace JCSUnity
         public bool AsSameRotation { get { return this.mAsSameRotation; } set { this.mAsSameRotation = value; } }
         public bool AsSameScale { get { return this.mAsSameScale; } set { this.mAsSameScale = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // try to get it own transform's componenet.
@@ -212,12 +203,6 @@ namespace JCSUnity
                 SetSpeedLayer(JCS_SpeedLayer.VERY_SLOW);
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Start the action.
         /// </summary>
@@ -235,12 +220,6 @@ namespace JCSUnity
             // de-active the object
             mAttackRange.gameObject.SetActive(false);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Receive input.
@@ -404,6 +383,5 @@ namespace JCSUnity
             mTimeToActTime = timeToAct;
             mActTime = timeActing;
         }
-
     }
 }

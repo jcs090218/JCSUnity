@@ -17,13 +17,19 @@ namespace JCSUnity
     public class JCS_ItemIgnore
         : MonoBehaviour
     {
+        /* Variables */
+
         [Tooltip("Add this effect to all the children from this gameobject.")]
         [SerializeField]
         private bool mEffectToAllChild = true;
 
 
+        /* Setter & Getter */
+
         public bool EffectToAllChild { get { return this.mEffectToAllChild; } set { this.mEffectToAllChild = value; } }
 
+
+        /* Functions */
 
         private void Start()
         {

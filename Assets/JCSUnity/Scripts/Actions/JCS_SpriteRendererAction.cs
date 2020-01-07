@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_SpriteRendererAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         /* Down compatible. */
         private SpriteRenderer mSpriteRenderer = null;
@@ -57,20 +52,17 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsFacingUp = true;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool IsFacingUp { get { return this.mIsFacingUp; } }
         public bool IsFacingRight { get { return this.mIsFacingRight; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // try to get the sprite renderer
@@ -96,18 +88,6 @@ namespace JCSUnity
             // update last position
             mLastPosition = currentPos;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the sprite action.
@@ -166,6 +146,5 @@ namespace JCSUnity
                     sr.flipY = !sr.flipY;
             }
         }
-
     }
 }

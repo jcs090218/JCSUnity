@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_SlideEffect
         : JCS_UnityObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private Vector3 mTargetPosition = Vector3.zero;
 
@@ -128,12 +123,9 @@ plz set the button here.")]
         [SerializeField]
         private JCS_Button mActiveButton = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool IsActive { get { return this.mIsActive; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public void SetActiveSound(AudioClip ac) { this.mActiveClip = ac; }
@@ -169,9 +161,9 @@ plz set the button here.")]
         }
         public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -268,12 +260,6 @@ plz set the button here.")]
                 Deactive();
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Call it when is on mouse over.
@@ -377,12 +363,6 @@ plz set the button here.")]
 
             return false;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Main algorithm to do the slide effect.

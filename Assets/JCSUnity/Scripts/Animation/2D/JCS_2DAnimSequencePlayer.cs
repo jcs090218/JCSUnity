@@ -18,14 +18,7 @@ namespace JCSUnity
     public class JCS_2DAnimSequencePlayer
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Check Variables (JCS_2DAnimSequencePlayer) **")]
 
@@ -62,21 +55,17 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DAnimation[] mAnimations = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool DonePlayingSequence { get { return this.mDonePlayingSequence; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
         public float TimePerAnim { get { return this.mTimePerAnim; } set { this.mTimePerAnim = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             // select first animation.
@@ -144,12 +133,6 @@ namespace JCSUnity
         }
 #endif
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Start playing the animation sequence.
         /// </summary>
@@ -179,12 +162,5 @@ namespace JCSUnity
                 anim.Stop();
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

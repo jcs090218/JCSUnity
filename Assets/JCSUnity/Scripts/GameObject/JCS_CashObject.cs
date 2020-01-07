@@ -17,17 +17,8 @@ namespace JCSUnity
     public class JCS_CashObject
         : JCS_Item
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        
         [Header("** Initialize Variables (JCS_CashObject) **")]
 
         [Tooltip("Value represent to this cash object.")]
@@ -45,16 +36,15 @@ namespace JCSUnity
         [SerializeField] [Range(0, 500)]
         protected int mRandomizeCashValue = 0;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+
+        /* Setter & Getter */
+
         public int CashValue { get { return this.mCashValue; } set { this.mCashValue = value; } }
         public bool RandomizeCashValueEffect { get { return this.mRandomizeCashValueEffect; } set { this.mRandomizeCashValueEffect = value; } }
         public int RandomizeCashValue { get { return this.mRandomizeCashValue; } set { this.mRandomizeCashValue = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         protected override void Awake()
         {
@@ -68,18 +58,5 @@ namespace JCSUnity
             // randomize the cash value a bit.
             mCashValue += JCS_Random.Range(-mRandomizeCashValue, mRandomizeCashValue + 1);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

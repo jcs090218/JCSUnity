@@ -18,12 +18,18 @@ namespace JCSUnity
     public class JCS_PfHeap<T>
         where T : IHeapItem<T>
     {
+        /* Variables */
+
         private T[] mItems;
         private int mCurrentItemCount;
 
 
+        /* Setter & Getter */
+
         public int Count { get { return mCurrentItemCount; } }
 
+
+        /* Functions */
 
         public JCS_PfHeap(int maxHeapSize)
         {
@@ -154,7 +160,6 @@ namespace JCSUnity
             itemA.HeapIndex = itemB.HeapIndex;
             itemB.HeapIndex = itemAIndex;
         }
-
     }
 
     /// <summary>
@@ -169,5 +174,4 @@ namespace JCSUnity
             set;
         }
     }
-
 }

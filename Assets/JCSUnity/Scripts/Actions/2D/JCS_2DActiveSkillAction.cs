@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_2DActiveSkillAction
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DActiveSkillAction) **")]
 
@@ -54,12 +49,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameRotation = true;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public KeyCode KeyCode { get { return this.mKeyCode; } set { this.mKeyCode = value; } }
         public int OrderLayer { get { return this.mOrderLayer; } set { this.mOrderLayer = value; } }
         public RuntimeAnimatorController SkillAnim { get { return this.mSkillAnim; } set { this.mSkillAnim = value; } }
@@ -67,20 +59,14 @@ namespace JCSUnity
         public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
         public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Update()
         {
             if (JCS_Input.GetKeyDown(mKeyCode))
                 ActiveSkill();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Active the skill.
@@ -113,13 +99,5 @@ namespace JCSUnity
             // so when animation ends destroy itself.
             obj.AddComponent<JCS_DestroyAnimEndEvent>();
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
-
     }
 }

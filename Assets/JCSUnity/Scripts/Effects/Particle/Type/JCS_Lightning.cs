@@ -23,12 +23,8 @@ namespace JCSUnity
     public class JCS_Lightning
         : JCS_WeatherParticle
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private JCS_AnimPool mAnimPool = null;
         private Animator mAnimator = null;
 
@@ -36,16 +32,11 @@ namespace JCSUnity
         private JCS_SoundPool mSoundPool = null;
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
@@ -66,18 +57,6 @@ namespace JCSUnity
             PlayLightningAnim();
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Play the lightning sound once.
         /// </summary>
@@ -96,6 +75,5 @@ namespace JCSUnity
             RuntimeAnimatorController con = this.mAnimPool.GetRandomAnim();
             mAnimator.runtimeAnimatorController = con;
         }
-
     }
 }

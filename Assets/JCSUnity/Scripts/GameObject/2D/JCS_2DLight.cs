@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_2DLight
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_AlphaObject mAlphaObject = null;
 
@@ -65,17 +60,13 @@ namespace JCSUnity
         private float mMaxFadeValue = 1.0f;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
@@ -89,18 +80,6 @@ namespace JCSUnity
 
             DoFade();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the fade algorithm.
@@ -138,6 +117,5 @@ namespace JCSUnity
 
             mFaded = false;
         }
-
     }
 }

@@ -21,11 +21,7 @@ namespace JCSUnity
     public class JCS_RouteGuageSystem
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [System.Serializable]
         public struct PlayerRegisterForm
@@ -78,12 +74,7 @@ namespace JCSUnity
         [SerializeField]
         private List<PlayerRegisterForm> mPlayersForm = null;
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
         public List<PlayerRegisterForm> PlayersForm { get { return this.mPlayersForm; } }
         public Transform RealStartTransform { get { return this.mRealStartTransform; } set { this.mRealStartTransform = value; } }
@@ -91,9 +82,9 @@ namespace JCSUnity
         public Transform SpriteStartTransform { get { return this.mSpriteStartTransform; } set { this.mSpriteStartTransform = value; } }
         public Transform SpriteGoalTransform { get { return this.mSpriteGoalTransform; } set { this.mSpriteGoalTransform = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             // get the position from two target transform.
@@ -111,18 +102,6 @@ namespace JCSUnity
         {
             DoRouteGuage();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the route guage algorithm here.
@@ -188,6 +167,5 @@ namespace JCSUnity
 
             prf.spriteTransform.position = playerSpritePos;
         }
-
     }
 }

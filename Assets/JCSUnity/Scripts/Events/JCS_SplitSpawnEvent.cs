@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_SplitSpawnEvent
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private JCS_ObjectList mObjectList = null;
 
@@ -120,16 +115,11 @@ built-in Unity Engine.")]
         [SerializeField] [Range(0, 360)]
         private float mDegreeValueZ = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             this.mObjectList = this.GetComponent<JCS_ObjectList>();
@@ -169,12 +159,6 @@ built-in Unity Engine.")]
             if (mSpawnWhileDestroy)
                 SpawnObjects();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do the randomize the transform position 
@@ -282,12 +266,6 @@ built-in Unity Engine.")]
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Algorithm base on time.
         /// </summary>
@@ -317,6 +295,5 @@ built-in Unity Engine.")]
             // do once!
             mSpawned = true;
         }
-
     }
 }

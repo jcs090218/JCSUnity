@@ -18,6 +18,7 @@ namespace JCSUnity
     public class JCS_ShowDialogueGamePadButton
         : JCS_GamePadButton
     {
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_ShowDialogueGamePadButton) **")]
 
@@ -30,9 +31,13 @@ namespace JCSUnity
         private bool mShowWithSound = false;
 
 
+        /* Setter & Getter */
+
         public JCS_DialogueObject[] DialoguesToShow { get { return this.mDialoguesToShow; } }
         public bool ShowWithSound { get { return this.mShowWithSound; } set { this.mShowWithSound = value; } }
 
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

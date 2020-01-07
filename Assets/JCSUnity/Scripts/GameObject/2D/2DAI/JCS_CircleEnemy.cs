@@ -18,40 +18,16 @@ namespace JCSUnity
     public class JCS_CircleEnemy 
         : JCS_2DLiveObject
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void Update()
         {
             
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// 
@@ -60,6 +36,5 @@ namespace JCSUnity
         {
 
         }
-
     }
 }

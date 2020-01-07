@@ -21,15 +21,11 @@ namespace JCSUnity
     public class JCS_2DAnimation
         : JCS_UnityObject
     {
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         // call back when done playing the animation.
         public DonePlayingAnimation donePlayingAnimCallback = null;
         public PlayFrameCallback playFrameCallback = null;
-
-        //----------------------
-        // Private Variables
 
         // animator using this animation?
         private JCS_2DAnimator mJCS2DAnimator = null;
@@ -116,12 +112,8 @@ namespace JCSUnity
         private float mAnimationTimeProduction = 1.0f;
 
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool PlayOnAwake { get { return this.mPlayOnAwake; } set { this.mPlayOnAwake = value; } }
         public int CurrentPlayingFrame {
@@ -151,11 +143,10 @@ namespace JCSUnity
         }
         public Sprite[] GetAnimationFrame() { return this.mAnimFrames; }
         public float FramePerSec { get { return this.mFramePerSec; } set { this.mFramePerSec = value; } }
-        
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -198,12 +189,6 @@ namespace JCSUnity
                 Pause();
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Update the maxinum frame count from the 
@@ -326,12 +311,6 @@ namespace JCSUnity
             this.LocalSprite = this.mNullSprite;
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Put the animation in the frame count.
         /// </summary>
@@ -409,6 +388,5 @@ namespace JCSUnity
             // reset timer.
             mFrameTimer = 0;
         }
-
     }
 }

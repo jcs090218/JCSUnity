@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_2DMoveTile 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_2DMoveTile) **")]
 
@@ -48,16 +43,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsYAxis = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
@@ -93,18 +83,5 @@ namespace JCSUnity
 
             this.transform.position += mVelocity * Time.deltaTime;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

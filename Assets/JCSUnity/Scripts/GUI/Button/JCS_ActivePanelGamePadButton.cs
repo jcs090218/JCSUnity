@@ -18,6 +18,8 @@ namespace JCSUnity
     public class JCS_ActivePanelGamePadButton
         : JCS_GamePadButton
     {
+        /* Variables */
+
         [Header("** Runtime Variables (JCS_ActivePanelGamePadButton) **")]
 
         [Tooltip("Play dialogue sound?")]
@@ -33,8 +35,12 @@ namespace JCSUnity
         private JCS_TweenPanel[] mTweenPanels = null;
 
 
+        /* Setter & Getter */
+
         public bool ShowWithSound { get { return this.mShowWithSound; } set { this.mShowWithSound = value; } }
 
+
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {
