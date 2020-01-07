@@ -34,7 +34,7 @@ namespace JCSUnity
         public string mConsumableProductId = "product_id_01";
         public string mNonConsumableProductId = "product_id_02";
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         /* Functions */
 

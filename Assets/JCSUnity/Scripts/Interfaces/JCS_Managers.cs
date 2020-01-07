@@ -20,38 +20,13 @@ namespace JCSUnity
     public class JCS_Managers<T>
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public static T instance = default(T);
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
+        /* Functions */
 
     }
 }

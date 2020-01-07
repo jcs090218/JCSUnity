@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_LiquidBarHandler
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_LiquidBarHandler) **")]
 
@@ -30,29 +25,19 @@ namespace JCSUnity
         [SerializeField]
         private JCS_LiquidBar mLiquidBar = null;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_LiquidBar LiquidBar { get { return this.mLiquidBar; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
         private void Awake()
         {
             if (mLiquidBar == null)
                 mLiquidBar = this.GetComponent<JCS_LiquidBar>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Delta the current value.
@@ -135,12 +120,5 @@ namespace JCSUnity
         {
             mLiquidBar.AttachInfo(info);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

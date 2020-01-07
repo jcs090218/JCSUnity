@@ -16,14 +16,11 @@ namespace JCSUnity
     public class JCS_ApplicationManager 
         : JCS_Managers<JCS_ApplicationManager>
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public static bool APP_PAUSE = false;
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
-
 
         [Header("** Runtime Variables (JCS_ApplicationManager) **")]
 
@@ -33,15 +30,8 @@ namespace JCSUnity
         [Tooltip("Target platform type to simulate.")]
         public JCS_PlatformType PLATFORM_TYPE = JCS_PlatformType.PC;
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
         private void SetPlatformType(JCS_PlatformType pt)
         {
             if (SIMULATE_PLATFORM_TYPE)
@@ -50,9 +40,8 @@ namespace JCSUnity
             PLATFORM_TYPE = pt;
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void OnApplicationQuit()
         {
             APP_QUITTING = true;
@@ -86,11 +75,6 @@ namespace JCSUnity
             APP_INITIALIZING = false;
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
         /// <summary>
         /// Is platform pc?
         /// </summary>
@@ -131,13 +115,5 @@ namespace JCSUnity
                 Application.Quit();
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
-
     }
 }

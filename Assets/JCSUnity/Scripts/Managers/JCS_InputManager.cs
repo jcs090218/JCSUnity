@@ -17,13 +17,7 @@ namespace JCSUnity
     public class JCS_InputManager
         : JCS_Managers<JCS_InputManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
+        /* Variables */
 
         [Header("** Check Varaibles (JCS_InputManager) **")]
 
@@ -35,21 +29,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_MobileMouseEvent mMobileMouseEvent = null;
 
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void SetJCSSlideInput(JCS_SlideInput sl) { this.mSlideInput = sl; }
         public JCS_SlideInput GetJCSSlideInput() { return this.mSlideInput; }
         public void SetJCSMobileMouseEvent(JCS_MobileMouseEvent me) { this.mMobileMouseEvent = me; }
         public JCS_MobileMouseEvent GetJCSMobileMouseEvent() { return this.mMobileMouseEvent; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -59,19 +47,6 @@ namespace JCSUnity
         {
             AddInputBaseOnPlatform();
         }
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Add the input type base on the platform type.
@@ -86,6 +61,5 @@ namespace JCSUnity
                     break;
             }
         }
-
     }
 }

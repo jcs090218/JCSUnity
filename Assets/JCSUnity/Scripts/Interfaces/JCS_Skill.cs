@@ -18,15 +18,7 @@ namespace JCSUnity
     public class JCS_Skill
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_Skill) **")]
 
@@ -34,26 +26,11 @@ namespace JCSUnity
         [SerializeField]
         protected AudioClip mSkillSound = null;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public AudioClip SkillSound { get { return this.mSkillSound; } set { this.mSkillSound = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
+        /* Functions */
 
     }
 }

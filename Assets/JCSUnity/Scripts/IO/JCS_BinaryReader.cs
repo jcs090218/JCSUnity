@@ -20,10 +20,23 @@ namespace JCSUnity
     /// </summary>
     public class JCS_BinaryReader
     {
+        /* Variables */
+
         private BinaryReader mBuffer = null;
 
         private int mFloatPrecise = 1000;
 
+        /* Setter & Getter */
+
+        public BinaryReader GetBinaryReader() { return this.mBuffer; }
+
+        /// <summary>
+        /// How the float precise? (Default : 1000)
+        /// </summary>
+        /// <param name="fp"> Float precise value. </param>
+        public void SetFloatPercise(int fp) { this.mFloatPrecise = fp; }
+
+        /* Functions */
 
         public JCS_BinaryReader(BinaryReader br)
         {
@@ -260,17 +273,5 @@ namespace JCSUnity
         {
             return mBuffer.BaseStream.Length - mBuffer.BaseStream.Position;
         }
-
-
-        //---------------------------------------------
-        // setter / getter
-        //---------------------------------------------
-        public BinaryReader GetBinaryReader() { return this.mBuffer; }
-
-        /// <summary>
-        /// How the float precise? (Default : 1000)
-        /// </summary>
-        /// <param name="fp"> Float precise value. </param>
-        public void SetFloatPercise(int fp) { this.mFloatPrecise = fp; }
     }
 }

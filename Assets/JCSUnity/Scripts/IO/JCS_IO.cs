@@ -18,7 +18,6 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_IO
     {
-
         /// <summary>
         /// Check if the path is a directory.
         /// </summary>

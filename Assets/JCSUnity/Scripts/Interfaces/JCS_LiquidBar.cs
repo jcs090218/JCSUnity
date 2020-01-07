@@ -21,9 +21,7 @@ namespace JCSUnity
     public abstract class JCS_LiquidBar
         : MonoBehaviour
     {
-        //========================================
-        //      Variable-Define
-        //------------------------------
+        /* Variables */
 
         private const float MIN_LIQUID_BAR_VALUE = -9999999;
         private const float MAX_LIQUID_BAR_VALUE = 9999999;
@@ -119,10 +117,8 @@ recover can be damage too.")]
         [SerializeField] [Range(0.01f, 7.0f)]
         protected float mGetBackFriction = 1.0f;
 
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public ZeroCallback ZeroCallbackFunc { get { return this.mZeroCallbackFunc; } set { this.mZeroCallbackFunc = value; } }
 
         public JCS_LiquidBarInfo Info { get { return this.mInfo; } }
@@ -137,9 +133,7 @@ recover can be damage too.")]
 
         public JCS_Align GetAlign() { return this.mAlign; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         protected virtual void Awake()
         { 
@@ -164,10 +158,6 @@ recover can be damage too.")]
             // the Awake function).
             this.mRecoverValue += (mRecordValue - mRecoverValue) / mGetBackFriction * Time.deltaTime;
         }
-
-        //========================================
-        //      Interface-Define
-        //------------------------------
 
         /// <summary>
         /// Attach 2d live object so it will follow the

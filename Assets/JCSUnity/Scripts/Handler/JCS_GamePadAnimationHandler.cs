@@ -19,10 +19,7 @@ namespace JCSUnity
     public class JCS_GamePadAnimationHandler
     : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         /// <summary>
         /// Target sprite set to handle.
@@ -48,21 +45,11 @@ namespace JCSUnity
         [Tooltip("Any animation element you want to change depends on controller connection.")]
         public List<AnimationSet> animationSets = null;
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Start()
         {
             this.animationSets = JCS_Utility.RemoveEmptySlot(this.animationSets);
@@ -84,15 +71,6 @@ namespace JCSUnity
                 JCS_Input.joystickUnPluggedCallback -= JoystickUnPluggedCallback;
             }
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// When joystick plugged.
@@ -123,9 +101,5 @@ namespace JCSUnity
                 ss.animator.DoAnimation(ss.keyboardAnimationId);
             }
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

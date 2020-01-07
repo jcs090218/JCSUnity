@@ -18,44 +18,25 @@ namespace JCSUnity
     public class JCS_ClientManager
         : JCS_Managers<JCS_ClientManager>
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
         /**
          * Please fill up the local client.
          */
         public static JCS_Client LOCAL_CLIENT = null;
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
-
         [Tooltip("All the player in the scene now.")]
         [SerializeField]
         private List<JCS_Client> mClients = new List<JCS_Client>();
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Awake()
         {
             instance = this;
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Add the client to the manager.
@@ -74,12 +55,5 @@ namespace JCSUnity
         {
             mClients.Remove(client);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

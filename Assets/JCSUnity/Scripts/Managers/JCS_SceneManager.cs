@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_SceneManager
         : JCS_Managers<JCS_SceneManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Tooltip("Type/Method to switch the scene.")]
         [SerializeField]
@@ -91,12 +86,8 @@ namespace JCSUnity
         // 比起Unity的Scene比較動態, 因為自己宣告的操控比較多.
         private JCS_DynamicScene mDynamicScene = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_SwitchSceneType SwitchSceneType { get { return this.mSwitchSceneType; } set { this.mSwitchSceneType = value; } }
         public JCS_DynamicScene GetDynamicScene() { return this.mDynamicScene; }
         public void SetDynamicScene(JCS_DynamicScene ds) { this.mDynamicScene = ds; }
@@ -110,9 +101,8 @@ namespace JCSUnity
         public float SceneFadeInTime { get { return this.mSceneFadeInTime; } set { this.mSceneFadeInTime = value; } }
         public float SceneFadeOutTime { get { return this.mSceneFadeOutTime; } set { this.mSceneFadeOutTime = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -239,12 +229,6 @@ namespace JCSUnity
                     break;
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Load the scene with default fade in time
@@ -437,12 +421,5 @@ namespace JCSUnity
         {
             return this.mSwitchSceneEffect;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

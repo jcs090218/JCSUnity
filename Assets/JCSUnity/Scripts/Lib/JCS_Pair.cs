@@ -18,25 +18,15 @@ namespace JCSUnity
     /// <typeparam name="U"> type B </typeparam>
     public class JCS_Pair<T, U>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         public T pair1 = default(T);
         public U pair2 = default(U);
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Constructor
-        //------------------------------
         public JCS_Pair()
         {
             // empty..
@@ -46,12 +36,6 @@ namespace JCSUnity
         {
             Set(pair1, pair2);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Set the pair value.
@@ -63,12 +47,5 @@ namespace JCSUnity
             this.pair1 = pair1;
             this.pair2 = pair2;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

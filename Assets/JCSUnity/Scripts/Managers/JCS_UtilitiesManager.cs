@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_UtilitiesManager
         : JCS_Managers<JCS_UtilitiesManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_UtilitiesManager) **")]
 
@@ -38,12 +33,8 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DialogueSystem mDialogueSystem = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void SetMixDamageTextPool(JCS_MixDamageTextPool tp) { this.mMixDamageTextPool = tp; }
         public JCS_MixDamageTextPool GetMixDamageTextPool() { return this.mMixDamageTextPool; }
 
@@ -53,25 +44,11 @@ namespace JCSUnity
         public void SetDiaglogueSystem(JCS_DialogueSystem ds) { this.mDialogueSystem = ds; }
         public JCS_DialogueSystem GetDialogueSystem() { return this.mDialogueSystem; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;   
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

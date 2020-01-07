@@ -26,18 +26,11 @@ namespace JCSUnity
     public class JCS_ButtonSelection
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
         public SelectionEnable selectionEnable = SelectionEnable;
         public SelectionDisable selectionDisable = SelectionDisable;
         public SelectionActive selectionActive = SelectionActive;
-
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
@@ -99,13 +92,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_ButtonSelection mLeftSelection = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool DeactiveAtAwake { get { return this.mDeactiveAtAwake; } set { this.mDeactiveAtAwake = value; } }
         public bool SelfAsButton { get { return this.mSelfAsButton; } set { this.mSelfAsButton = value; } }
         public JCS_Button Button { get { return this.mButton; } set { this.mButton = value; } }
@@ -127,9 +116,9 @@ namespace JCSUnity
         public JCS_ButtonSelection RightSelection { get { return this.mRightSelection; } set { this.mRightSelection = value; } }
         public JCS_ButtonSelection LeftSelection { get { return this.mLeftSelection; } set { this.mLeftSelection = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             if (mDeactiveAtAwake)
@@ -153,12 +142,6 @@ namespace JCSUnity
         {
             SetSkip(mSkip);
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Do stuff if this selection been checked.
@@ -205,12 +188,6 @@ namespace JCSUnity
             if (!fromButton)
                 mButton.SetInteractable(!mSkip, true);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /* Default Function Pointers. */
         private static void SelectionEnable() { }
@@ -260,6 +237,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

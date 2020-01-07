@@ -19,15 +19,10 @@ namespace JCSUnity
     public class JCS_GameManager 
         : JCS_Managers<JCS_GameManager>
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         // Callback after the game is done initialize.
         public AfterGameInitializeCallback afterGameInitializeCallback = null;
-
-        //----------------------
-        // Private Variables
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_GameManager) **")]
@@ -63,12 +58,8 @@ namespace JCSUnity
         private JCS_Player mJCSPlayer = null;
         private JCS_GameSettings mJCSGameSettings = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //--------------------------------
-        // setter / getter
-        //--------------------------------
         public bool GAME_DONE_INITIALIZE { get { return this.mGameDoneInitialize; } }
         public bool GAME_PAUSE
         {
@@ -94,9 +85,8 @@ namespace JCSUnity
         public void SetJCSGameSettings(JCS_GameSettings gs) { this.mJCSGameSettings = gs; }
         public JCS_GameSettings GetJCSGameSettings() { return this.mJCSGameSettings; }
 
-        //--------------------------------
-        // Unity's functions
-        //--------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -149,18 +139,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Add specific game manager type.
         /// </summary>
@@ -189,7 +167,6 @@ namespace JCSUnity
             if (afterGameInitializeCallback != null)
                 afterGameInitializeCallback.Invoke();
         }
-
     }
 }
 

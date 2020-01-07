@@ -18,10 +18,7 @@ namespace JCSUnity
     public class JCS_ScreenManager
         : JCS_Managers<JCS_ScreenManager>
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_ScreenManager) **")]
 
@@ -40,9 +37,6 @@ namespace JCSUnity
         [Tooltip("Type of the screen handle.")]
         public JCS_ScreenType SCREEN_TYPE_THIS_SCENE = JCS_ScreenType.RESIZABLE;
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
         [Header("** Check Variables (JCS_ScreenManager) **")]
 
@@ -66,21 +60,17 @@ namespace JCSUnity
         [SerializeField]
         private JCS_ResizableScreenPanel mRightASP = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public JCS_ResizableScreenPanel TopASP { get { return this.mTopASP; } }
         public JCS_ResizableScreenPanel BottomASP { get { return this.mBottomASP; } }
         public JCS_ResizableScreenPanel LeftASP { get { return this.mLeftASP; } }
         public JCS_ResizableScreenPanel RightASP { get { return this.mRightASP; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -137,12 +127,6 @@ namespace JCSUnity
         }
 #endif
 
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Show the resizable panels.
         /// </summary>
@@ -176,12 +160,5 @@ namespace JCSUnity
             this.mLeftASP.image.color = newColor;
             this.mRightASP.image.color = newColor;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

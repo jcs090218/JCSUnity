@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_CharacterControllerInfo
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private CharacterController mCharacterController = null;
 
@@ -39,12 +34,9 @@ namespace JCSUnity
         [SerializeField]
         private float mHeight = 0;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public CharacterController GetCharacterController() { return this.mCharacterController; }
         public bool isGrounded { get { return this.mCharacterController.isGrounded; } }
         public float Width { get { return this.mWidth; } }
@@ -52,9 +44,9 @@ namespace JCSUnity
         public float HalfWidth { get { return this.Width / 2.0f; } }
         public float HalfHeight { get { return this.Height / 2.0f; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mCharacterController = this.GetComponent<CharacterController>();
@@ -65,18 +57,5 @@ namespace JCSUnity
             mWidth = widthHeight.x;
             mHeight = widthHeight.y;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

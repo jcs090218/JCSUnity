@@ -17,17 +17,8 @@ namespace JCSUnity
     public abstract class JCS_LiveObject
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        
         [Header("** Runtime Variables (JCS_LiveObject) **")]
 
         [Tooltip(@"Health, Auto add, for better design plz 
@@ -73,9 +64,8 @@ add JCS_LiquidBarInfo manually.")]
         [SerializeField]
         protected JCS_InvincibleTimeAction mInvincibleTimeAction = null;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_LiquidBarInfo HPInfo { get { return this.mHPInfo; } }
         public JCS_LiquidBarInfo MPInfo { get { return this.mMPInfo; } }
         public JCS_LiquidBarInfo EXPInfo { get { return this.mEXPInfo; } }
@@ -96,9 +86,8 @@ add JCS_LiquidBarInfo manually.")]
         }
         public bool CanDamage { get { return this.mCanDamage; } set { this.mCanDamage = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected virtual void Awake()
         {
             // try to get the action component by itself.
@@ -124,12 +113,6 @@ add JCS_LiquidBarInfo manually.")]
             }
             mEXPInfo.TagName = "EXP";
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Call this when the live object get hits.
@@ -163,12 +146,5 @@ add JCS_LiquidBarInfo manually.")]
         /// <param name="attacker"> attacker in order to determine the direction 
         ///                     this object get know back. </param>
         public abstract void KnockBack(float force, Transform attacker = null);
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

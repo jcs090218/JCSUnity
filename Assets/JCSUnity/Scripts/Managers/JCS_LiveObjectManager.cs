@@ -17,23 +17,12 @@ namespace JCSUnity
     public class JCS_LiveObjectManager
         : JCS_Managers<JCS_LiveObjectManager>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
+        /* Functions */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
@@ -43,18 +32,6 @@ namespace JCSUnity
         {
             SetSpecificGameTypeGameManager();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Base on different type of game add different type of manager.
@@ -70,6 +47,5 @@ namespace JCSUnity
                     break;
             }
         }
-
     }
 }

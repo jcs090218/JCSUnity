@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_PatchManager 
         : JCS_Managers<JCS_PatchManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_PatchManager) **")]
 
@@ -40,17 +35,12 @@ namespace JCSUnity
         // timer for connection.
         private float mConnectTimer = 0;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public string NextLevel() { return this.mNextLevel; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -83,13 +73,6 @@ namespace JCSUnity
             DoTimeOut();
         }
 
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Load the next level.
         /// </summary>
@@ -97,12 +80,6 @@ namespace JCSUnity
         {
             JCS_SceneManager.instance.LoadScene(mNextLevel);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the connection time out.

@@ -17,45 +17,22 @@ namespace JCSUnity
     public abstract class JCS_SortingObject
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        [Tooltip(@"With this higher the panel have higher sorthing 
-order. (Higher will be in the front.)")]
+        [Tooltip(@"With this higher the panel have higher sorthing order. 
+(Higher will be in the front.)")]
         [SerializeField]
         protected int mOrderIndex = 0;
 
         // check if this is sorted?
         protected bool mSorted = false;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public int OrderIndex { get { return this.mOrderIndex; } }
         public bool Sorted { get { return this.mSorted; } set { this.mSorted = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
+        /* Functions */
 
     }
 }

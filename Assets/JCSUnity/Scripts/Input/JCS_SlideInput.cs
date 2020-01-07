@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_SlideInput
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
         [Header("** Check Variables (JCS_SlideInput) **")]
@@ -46,18 +41,14 @@ namespace JCSUnity
         [SerializeField]
         private Vector2 mDeltaPos = Vector2.zero;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public bool Touched { get { return this.mTouched; } }
         public Vector2 DeltaPos { get { return this.mDeltaPos; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
         private void OnApplicationFocus(bool focus)
@@ -113,18 +104,5 @@ namespace JCSUnity
 
 #endif
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

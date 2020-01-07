@@ -19,9 +19,7 @@ namespace JCSUnity
     public class JCS_NetworkManager
         : JCS_Managers<JCS_NetworkManager>
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         // Server close flag.
         public static bool SERVER_CLOSE = false;
@@ -29,21 +27,12 @@ namespace JCSUnity
         // First login flag?
         public static bool FIRST_LOGIN = true;
 
-        //----------------------
-        // Private Variables
         private float mConnectionCounter = 0.0f;
 
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
@@ -97,12 +86,6 @@ namespace JCSUnity
         }
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Spawn the security key for the packet.
         /// 
@@ -155,12 +138,5 @@ namespace JCSUnity
                 mConnectionCounter = 0;
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

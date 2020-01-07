@@ -18,23 +18,12 @@ namespace JCSUnity
     public class JCS_CollisionManager
         : JCS_Managers<JCS_CollisionManager>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
+        /* Functions */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
@@ -44,12 +33,6 @@ namespace JCSUnity
         {
             SetCollisionMode();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Call this everytime u spawn a object 
@@ -78,12 +61,5 @@ namespace JCSUnity
                 }
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

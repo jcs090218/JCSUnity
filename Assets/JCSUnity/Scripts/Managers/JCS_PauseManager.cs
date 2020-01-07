@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_PauseManager
         : JCS_Managers<JCS_PauseManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_PauseManager) **")]
 
@@ -46,18 +41,13 @@ object you have in the list.")]
         // resize timer.
         private float mResizePauseActionListTimer = 0;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
         public float ResizePauseActionListTime { get { return this.mResizePauseActionListTime; } set { this.mResizePauseActionListTime = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -67,12 +57,6 @@ object you have in the list.")]
         {
             ResizePauseActionListPeriodically();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Add the pause action to the list of pause action list, 
@@ -106,12 +90,6 @@ object you have in the list.")]
             RemoveNullRefInPauseActionList();
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Remove all the null reference object from the list.
         /// </summary>
@@ -136,6 +114,5 @@ object you have in the list.")]
             // reset timer.
             mResizePauseActionListTimer = 0;
         }
-
     }
 }

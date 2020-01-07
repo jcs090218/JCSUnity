@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_AttackerInfo
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_AttackerInfo) **")]
 
@@ -33,12 +28,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mAttacker = null;
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
         /// <summary>
         /// * If the attacker is throwing the star, 
@@ -51,21 +41,7 @@ namespace JCSUnity
         /// </summary>
         public Transform Attacker { get { return this.mAttacker; } set { this.mAttacker = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
+        /* Functions */
 
     }
 }

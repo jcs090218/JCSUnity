@@ -17,15 +17,10 @@ namespace JCSUnity
     public abstract class JCS_DialogueScript
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         [Tooltip("use to design the pages.")]
         public int Status = -1;
-
-        //----------------------
-        // Private Variables
 
         [Tooltip("Sprite visualize at the center.")]
         [SerializeField]
@@ -39,13 +34,10 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mRightSprite = null;
 
-        //----------------------
-        // Protected Variables
         protected JCS_DialogueSystem mDialogueSystem = null;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public JCS_DialogueSystem DialogueSystem
         {
             get
@@ -62,20 +54,13 @@ namespace JCSUnity
         public Sprite LeftSprite { get { return this.mLeftSprite; } }
         public Sprite RightSprite { get { return this.mRightSprite; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected virtual void Start()
         {
             // get dialogue system. (singleton)
             mDialogueSystem = JCS_UtilitiesManager.instance.GetDialogueSystem();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Starting point of the dialogue.
@@ -113,12 +98,5 @@ namespace JCSUnity
         {
             Status = -1;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

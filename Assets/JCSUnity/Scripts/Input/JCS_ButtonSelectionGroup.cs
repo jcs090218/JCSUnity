@@ -23,10 +23,7 @@ namespace JCSUnity
     public class JCS_ButtonSelectionGroup
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         // Callback triggered when selection has changed.
         public SelectionChanged selectionChanged = null;
@@ -42,10 +39,6 @@ namespace JCSUnity
             LEFT,
         };
 
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
         [Header("** Check Variables (JCS_ButtonSelectionGroup) **")]
 
@@ -71,19 +64,15 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_ButtonSelection> mSelections = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool OnEnableResetSelections { get { return this.mOnEnableResetSelections; } set { this.mOnEnableResetSelections = value; } }
         public JCS_ButtonSelection StartingSelection { get { return this.mStartingSelection; } set { this.mStartingSelection = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mSelections = JCS_Utility.RemoveEmptySlot(mSelections);
@@ -109,12 +98,6 @@ namespace JCSUnity
             // reset once.
             ResetAllSelections();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Add a selection into list.
@@ -414,12 +397,6 @@ selection is not in the group...");
             JCS_Debug.Log("Failed to get button selection by direction, this should not happens...");
             return null;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         private void EmptyCallbackSelectionChanged() { }
 

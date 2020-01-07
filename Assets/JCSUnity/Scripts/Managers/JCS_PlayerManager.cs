@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_PlayerManager 
         : JCS_Managers<JCS_PlayerManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_PlayerManager) **")]
 
@@ -35,20 +30,14 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_Player> mPlayers = null;
 
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_Player GetActivePlayer() { return this.mActivePlayer; }
         public List<JCS_Player> GetJCSPlayerList() { return this.mPlayers; }
         public JCS_Player GetJCSPlayerAt(int index) { return this.mPlayers[index]; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -91,15 +80,8 @@ namespace JCSUnity
             //    ActiveOnePlayer(1);
             //}
         }
-
 #endif
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-        
         /// <summary>
         /// Add the player to the list, in order to get manage 
         /// by this manager.
@@ -478,13 +460,5 @@ namespace JCSUnity
                 jcs2dmtc.RemoveTargetFromTrackList(p);
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
-
     }
 }

@@ -18,14 +18,7 @@ namespace JCSUnity
     public abstract class JCS_Player 
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
+        /* Variables */
 
         protected CharacterController mCharacterController = null;
         protected JCS_CharacterControllerInfo mCharacterControllerInfo = null;
@@ -45,10 +38,8 @@ namespace JCSUnity
         [SerializeField]
         protected bool mIsControllable = true;
 
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool GetIsControllable() { return this.mIsControllable; }
         public void SetIsControllable(bool act) { this.mIsControllable = act; }
         public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
@@ -59,9 +50,8 @@ namespace JCSUnity
         public JCS_CharacterControllerInfo CharacterControllerInfo { get { return this.mCharacterControllerInfo; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected virtual void Awake()
         {
             mCharacterController = this.GetComponent<CharacterController>();
@@ -95,12 +85,6 @@ namespace JCSUnity
                 mCharacterController.Move(mVelocity * Time.deltaTime);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Control this player or not base on boolean pass in.
@@ -167,12 +151,5 @@ namespace JCSUnity
         /// 
         /// </summary>
         public virtual void Ghost() { }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

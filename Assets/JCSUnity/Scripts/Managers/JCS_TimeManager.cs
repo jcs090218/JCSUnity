@@ -20,12 +20,7 @@ namespace JCSUnity
     public class JCS_TimeManager
         : JCS_Managers<JCS_TimeManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Tooltip("Time range at the current region.")]
         [SerializeField]
@@ -39,12 +34,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_WeatherType mCurrentWeatherType = JCS_WeatherType.UNKNOWN;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public void SetCurrentTimeRange()
         {
             mCurrentTimeRange = LoadCurrentTimeRange();
@@ -63,9 +55,8 @@ namespace JCSUnity
         public JCS_SeasonType GetCurrentSeasonType() { return this.mCurrentSeasonType; }
         public JCS_WeatherType GetCurrentWeatherType() { return this.mCurrentWeatherType; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -74,12 +65,6 @@ namespace JCSUnity
             SetCurrentSeasonType();
             SetCurrentWeather();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get the current time in base on time zone in OS.
@@ -261,13 +246,6 @@ namespace JCSUnity
 
         }
 
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Check what time range are in the OS time.
         /// </summary>
@@ -290,6 +268,5 @@ namespace JCSUnity
 
             return false;
         }
-
     }
 }

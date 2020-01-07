@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_MobileMouseEvent 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_MobileMouseEvent) **")]
 
@@ -37,19 +32,13 @@ namespace JCSUnity
         [Tooltip("Distance Raycast shoot.")]
         [SerializeField]
         private float mRaycastDistance = 100.0f;
-        
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public float RaycastDistance { get { return this.mRaycastDistance; } set { this.mRaycastDistance = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Start()
         {
             if (mCamera == null)
@@ -84,18 +73,5 @@ namespace JCSUnity
                 }
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

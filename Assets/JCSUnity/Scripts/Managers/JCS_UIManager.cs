@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_UIManager 
         : JCS_Managers<JCS_UIManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_UIManager) **")]
@@ -65,13 +60,8 @@ namespace JCSUnity
         [SerializeField]
         private JCS_FadeScreen mFadeScreen = null;
 
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void SetJCSDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
         {
             switch (type)
@@ -133,9 +123,8 @@ namespace JCSUnity
         public JCS_FadeScreen FadeScreen { get { return this.mFadeScreen; } set { this.mFadeScreen = value; } }
         public JCS_UndoRedoSystem GetGlobalUndoRedoSystem() { return this.mGlobalUndoRedoSystem; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -196,12 +185,6 @@ namespace JCSUnity
             }
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Hide the last open dialogue in the current scene.
@@ -308,12 +291,5 @@ namespace JCSUnity
             JCS_FadeObject fadeObj = this.mFadeScreen.FadeObject;
             fadeObj.FadeOut(time);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

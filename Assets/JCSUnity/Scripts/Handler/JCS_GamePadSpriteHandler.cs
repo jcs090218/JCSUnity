@@ -18,10 +18,7 @@ namespace JCSUnity
     public class JCS_GamePadSpriteHandler
         : MonoBehaviour
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         /// <summary>
         /// Target sprite set to handle.
@@ -46,21 +43,10 @@ namespace JCSUnity
         public List<SpriteSet> spriteSets = null;
 
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
-
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Start()
         {
             this.spriteSets = JCS_Utility.RemoveEmptySlot(this.spriteSets);
@@ -82,15 +68,6 @@ namespace JCSUnity
                 JCS_Input.joystickUnPluggedCallback -= JoystickUnPluggedCallback;
             }
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// When joystick plugged.
@@ -121,9 +98,5 @@ namespace JCSUnity
                 ss.objectSprite.LocalSprite = ss.keyboardSprite;
             }
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

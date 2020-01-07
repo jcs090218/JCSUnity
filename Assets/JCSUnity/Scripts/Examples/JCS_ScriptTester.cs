@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_ScriptTester
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Test Variables (JCS_ScriptTester) **")]
 
@@ -39,16 +34,11 @@ namespace JCSUnity
         public KeyCode DisposeKey = KeyCode.Q;
         public KeyCode RunScriptKey = KeyCode.W;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Start()
         {
             // use default.
@@ -66,19 +56,6 @@ namespace JCSUnity
             if (JCS_Input.GetKeyDown(RunScriptKey))
                 mDialogueSystem.ActiveDialogue(mTestDialogueScript);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }
 #endif

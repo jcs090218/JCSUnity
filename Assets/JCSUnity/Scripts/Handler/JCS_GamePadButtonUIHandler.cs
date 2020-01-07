@@ -21,15 +21,8 @@ namespace JCSUnity
     public class JCS_GamePadButtonUIHandler
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-
-        /*******************************************/
         private Image mNormalImage = null;
         private Button mButton = null;
 
@@ -78,13 +71,9 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mJDisabledSprite = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Setter & Getter */
+
         public bool ActiveSpriteSwapAtAwake { get { return this.mActiveSpriteSwapAtAwake; } set { this.mActiveSpriteSwapAtAwake = value; } }
 
         public Sprite KNormalSprite { get { return this.mKNormalSprite; } set { this.mKNormalSprite = value; } }
@@ -97,9 +86,9 @@ namespace JCSUnity
         public Sprite JPressedSprite { get { return this.mJPressedSprite; } set { this.mJPressedSprite = value; } }
         public Sprite JDisabledSprite { get { return this.mJDisabledSprite; } set { this.mJDisabledSprite = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mNormalImage = this.GetComponent<Image>();
@@ -126,15 +115,6 @@ namespace JCSUnity
                 JCS_Input.joystickUnPluggedCallback -= JoystickUnPluggedCallback;
             }
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// When joystick plugged.
@@ -167,9 +147,6 @@ namespace JCSUnity
 
             this.mButton.spriteState = newSpriteState;
         }
-
-        //----------------------
-        // Private Functions
 
     }
 }

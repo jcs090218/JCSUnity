@@ -18,29 +18,17 @@ namespace JCSUnity
     public class JCS_Sort<T>
         where T : JCS_SortingObject
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         // NOTE(JenChieh): not sure template support this kind of feature.
         private T[] mArray = null;  // any array with this sort
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public T[] Array { get { return this.mArray; } }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
+
         public JCS_Sort() { }
 
         /// <summary>
@@ -83,12 +71,5 @@ namespace JCSUnity
 
             return mArray;
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

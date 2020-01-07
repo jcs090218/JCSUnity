@@ -17,12 +17,8 @@ namespace JCSUnity
     public class JCS_SoundManager
         : JCS_Managers<JCS_SoundManager>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private AudioListener mAudioListener = null;
 
         // environment, ui, etc.
@@ -81,13 +77,8 @@ namespace JCSUnity
 
         private bool mDoneFadingOut = false;
 
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void SetAudioListener(AudioListener al) { this.mAudioListener = al; }
         public AudioListener GetAudioListener() { return this.mAudioListener; }
         public AudioSource GetBGMAudioSource()
@@ -111,9 +102,8 @@ namespace JCSUnity
         public float SoundFadeOutTime { get { return this.mSoundFadeOutTime; } set { this.mSoundFadeOutTime = value; } }
         public bool DisableSoundWheWindowNotFocus { get { return this.mDisableSoundWheWindowNotFocus; } set { this.mDisableSoundWheWindowNotFocus = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void OnApplicationFocus(bool focusStatus)
         {
             if (!mDisableSoundWheWindowNotFocus)
@@ -168,12 +158,6 @@ namespace JCSUnity
 
             DoStackBGM();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Switch the background music, fading in and out.
@@ -380,12 +364,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// Set the sound volume in the list.
         /// </summary>
@@ -562,6 +540,5 @@ namespace JCSUnity
             // clean stack
             mOnStackAudioClip = null;
         }
-
     }
 }

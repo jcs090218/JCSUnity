@@ -17,41 +17,18 @@ namespace JCSUnity
     public class JCS_DynamicSceneManager
         : JCS_Managers<JCS_DynamicSceneManager>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
+        /* Functions */
 
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
 
             SetSpecificGameTypeDynamicSceneManager();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Base on different type of game use different 
@@ -68,6 +45,5 @@ namespace JCSUnity
                     break;
             }
         }
-
     }
 }

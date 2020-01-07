@@ -20,14 +20,8 @@ namespace JCSUnity
     public class JCS_ButtonSelectionGroupController
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
 
@@ -177,13 +171,8 @@ namespace JCSUnity
         private JCS_SoundMethod mLeftSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } }
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -223,9 +212,9 @@ namespace JCSUnity
         public JCS_SoundMethod RightSoundMethod { get { return this.mRightSoundMethod; } set { this.mRightSoundMethod = value; } }
         public JCS_SoundMethod LeftSoundMethod { get { return this.mLeftSoundMethod; } set { this.mLeftSoundMethod = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+
+        /* Functions */
+
         private void Awake()
         {
             this.mButtonSelectionGroup = this.GetComponent<JCS_ButtonSelectionGroup>();
@@ -288,18 +277,6 @@ namespace JCSUnity
                 }
             }
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Active next selection? (Key Depends)

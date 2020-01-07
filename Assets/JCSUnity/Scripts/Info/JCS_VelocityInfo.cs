@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_VelocityInfo
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private CharacterController mCharacterController = null;
 
@@ -63,12 +58,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeZ = false;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public CharacterController GetCharacterController() { return this.mCharacterController; }
         public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
         public float VelX { get { return this.mVelocity.x; } set { this.mVelocity.x = value; } }
@@ -88,9 +80,9 @@ namespace JCSUnity
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public bool FreezeZ { get { return this.mFreezeZ; } set { this.mFreezeZ = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             mCharacterController = this.GetComponent<CharacterController>();
@@ -133,12 +125,6 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Set all freeze axis to the act
         /// </summary>
@@ -157,12 +143,6 @@ namespace JCSUnity
         {
             Freeze(false);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         private void DoFreeze()
         {
