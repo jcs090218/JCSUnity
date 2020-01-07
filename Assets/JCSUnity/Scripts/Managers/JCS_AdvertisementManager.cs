@@ -29,9 +29,7 @@ namespace JCSUnity
     public class JCS_AdvertisementManager
         : JCS_Managers<JCS_AdvertisementManager>
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
 #if (UNITY_ANDROID)
         [Tooltip("Andriod game id provided by Unity Server window.")]
@@ -41,19 +39,10 @@ namespace JCSUnity
         public string IOS_GAME_ID = "";
 #endif
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
@@ -65,12 +54,6 @@ namespace JCSUnity
 #endif
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Start the reward ads video. This will pop out the video screen.
         /// </summary>
@@ -80,12 +63,6 @@ namespace JCSUnity
         {
             StartCoroutine(DelayedRewardVideo(delayTime, result));
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Main function delay and show reward ads.

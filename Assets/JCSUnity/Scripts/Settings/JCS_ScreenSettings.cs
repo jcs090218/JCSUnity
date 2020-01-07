@@ -20,10 +20,7 @@ namespace JCSUnity
     public class JCS_ScreenSettings
         : JCS_Settings<JCS_ScreenSettings>
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         public OnScreenResize onScreenResize = null;
 
@@ -104,18 +101,8 @@ namespace JCSUnity
             "obejct's camera view.")]
         public int STANDARD_SCREEN_HEIGHT = 1080;
 
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
-
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public Color RESIZABLE_PANELS_COLOR
         {
             get { return this.mResizablePanelsColor; }
@@ -127,9 +114,8 @@ namespace JCSUnity
             }
         }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
+
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
@@ -201,12 +187,6 @@ namespace JCSUnity
         {
             DoScreenType();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Return width of the blackspace on the screen, if any 
@@ -302,9 +282,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
         /// I would like to use own define to transfer the old instance
@@ -336,9 +313,6 @@ namespace JCSUnity
 
             _new.RESIZABLE_PANELS_COLOR = _old.RESIZABLE_PANELS_COLOR;
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Do the task base on the screen type handle.

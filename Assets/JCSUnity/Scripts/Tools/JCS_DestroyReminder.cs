@@ -18,25 +18,14 @@ namespace JCSUnity
     public class JCS_DestroyReminder
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private float mTimer = 0;
         private float mRemindPerTime = 5;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void Update()
         {
@@ -52,18 +41,5 @@ namespace JCSUnity
 #endif
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

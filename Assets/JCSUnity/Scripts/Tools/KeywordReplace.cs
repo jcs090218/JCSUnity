@@ -22,7 +22,6 @@ using System;
 public class KeywordReplace 
     : UnityEditor.AssetModificationProcessor
 {
-
     public static void OnWillCreateAsset(string path)
     {
         path = path.Replace(".meta", "");

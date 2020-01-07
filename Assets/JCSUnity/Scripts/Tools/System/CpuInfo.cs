@@ -4,7 +4,13 @@ using System.Threading;
 
 public class CpuInfo
 {
+    /* Variables */
+
     public static readonly string statPath = "/proc/stat";
+
+    /* Setter & Getter */
+
+    /* Functions */
 
     public static string[] GetStatInfoArray()
     {
@@ -47,13 +53,12 @@ public class CpuInfo
         //      http://blog.csdn.net/jk110333/article/details/8683478
     }
 
-    static string[] Split(string data)
+    private static string[] Split(string data)
     {
         data = data.Replace(" ", " ");
         data = data.Replace(" ", " ");
         data = data.Replace(" ", " ");
         return data.Split(' ');
     }
-
 }
 #endif

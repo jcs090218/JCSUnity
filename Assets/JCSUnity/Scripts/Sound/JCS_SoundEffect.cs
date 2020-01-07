@@ -17,24 +17,14 @@ namespace JCSUnity
     [RequireComponent(typeof(AudioSource))]
     public class JCS_SoundEffect : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         private AudioSource mAudioSource = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             this.mAudioSource = this.GetComponent<AudioSource>();
@@ -49,18 +39,5 @@ namespace JCSUnity
             // add sound to let "SoundManager" take care of all the effect
             JCS_SoundManager.instance.AssignSoundSource(JCS_SoundSettingType.SFX_SOUND, mAudioSource);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

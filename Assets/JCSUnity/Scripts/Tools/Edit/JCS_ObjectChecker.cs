@@ -18,24 +18,15 @@ namespace JCSUnity
     public class JCS_ObjectChecker
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
         public Color wireColor = Color.blue;
 
-        //----------------------
-        // Protected Variables
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void OnDrawGizmos()
         {
             MeshFilter filter = this.GetComponent<MeshFilter>();
@@ -46,18 +37,5 @@ namespace JCSUnity
                 Gizmos.DrawWireMesh(mesh, transform.position, transform.rotation, transform.localScale);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

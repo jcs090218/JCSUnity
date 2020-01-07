@@ -19,30 +19,18 @@ namespace JCSUnity
     public class JCS_CameraRenderer
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
         [Tooltip("Material going to use render the image.")]
         [SerializeField]
         private Material mRenderMaterial = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public Material RenderMaterial { get { return this.mRenderMaterial; } set { this.mRenderMaterial = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
+
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
         {
             if (mRenderMaterial == null)
@@ -50,18 +38,5 @@ namespace JCSUnity
 
             Graphics.Blit(source, destination, mRenderMaterial);
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

@@ -17,25 +17,14 @@ namespace JCSUnity
     public class JCS_BGMPlayer 
         : JCS_SoundPlayer
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public static JCS_BGMPlayer instance = null;
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         protected override void Awake()
         {
             base.Awake();
@@ -70,18 +59,5 @@ namespace JCSUnity
                 }
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

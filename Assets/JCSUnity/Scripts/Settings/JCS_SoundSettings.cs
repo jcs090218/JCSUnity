@@ -17,17 +17,13 @@ namespace JCSUnity
     public class JCS_SoundSettings
         : JCS_Settings<JCS_SoundSettings>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public const float MAX_SOUND_VOLUME = 1.0f;
         public const float MIN_SOUND_VOLUME = 0.0f;
 
         public const float MAX_SOUND_FADEOUT_TIME = 5.0f;
         public const float MIN_SOUND_FADEOUT_TIME = 0.0f;
-
-        //----------------------
-        // Private Variables
 
         [Header("** Runtime Variables (JCS_SoundSettings) **")]
 
@@ -80,12 +76,8 @@ namespace JCSUnity
         [Tooltip("Sound to play when close the window clip.")]
         public AudioClip DEFAULT_CLOSE_WINDOW_CLIP = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public float GetBGM_Volume() { return BGM_SOUND; }
         public void SetBGM_Volume(float volume)
         {
@@ -123,19 +115,13 @@ namespace JCSUnity
             return 0;
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+
+        /* Functions */
+
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get the real sound fade out time base on 
@@ -179,9 +165,6 @@ namespace JCSUnity
             return SOUND_FADEIN_TIME;
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Make limit so not all the data override the by the new data!
         /// </summary>
@@ -198,9 +181,5 @@ namespace JCSUnity
 
             _new.KEEP_BGM_SWITCH_SCENE = _old.KEEP_BGM_SWITCH_SCENE;
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

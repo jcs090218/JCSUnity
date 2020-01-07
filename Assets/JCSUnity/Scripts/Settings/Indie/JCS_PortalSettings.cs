@@ -11,19 +11,13 @@ using System.Collections;
 
 namespace JCSUnity
 {
-
     /// <summary>
-    /// 
+    /// Settings for the game that uses the portal.
     /// </summary>
     public class JCS_PortalSettings
         : JCS_Settings<JCS_PortalSettings>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_PortalSettings) **")]
 
@@ -36,29 +30,14 @@ namespace JCSUnity
         [Tooltip("Reset the player position to portal?")]
         public bool RESET_POSITION_AT_START = true;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// Make limit so not all the data override the by the new data!
@@ -69,9 +48,5 @@ namespace JCSUnity
         {
             _new.SCENE_PORTAL_LABEL = _old.SCENE_PORTAL_LABEL;
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

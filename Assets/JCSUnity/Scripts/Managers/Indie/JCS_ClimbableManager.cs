@@ -18,15 +18,9 @@ namespace JCSUnity
     public class JCS_ClimbableManager
         : MonoBehaviour
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
         public static JCS_ClimbableManager instance = null;
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
 
         [Header("** Runtime Variables (JCS_ClimbableManager) **")]
 
@@ -38,33 +32,13 @@ namespace JCSUnity
         [Range(0, 20)]
         public int SORTING_ORDER_BEHIND_OFFSET = 1;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Awake()
         {
             instance = this;
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

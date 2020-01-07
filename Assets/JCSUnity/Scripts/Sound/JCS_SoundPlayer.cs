@@ -19,12 +19,7 @@ namespace JCSUnity
     public class JCS_SoundPlayer 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private AudioSource mAudioSource = null;
 
@@ -32,18 +27,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public AudioSource GetAudioSource() { return this.mAudioSource; }
         public JCS_SoundSettingType GetSoundSettingType() { return this.mSoundSettingType; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected virtual void Awake()
         {
             mAudioSource = this.GetComponent<AudioSource>();
@@ -55,12 +45,6 @@ namespace JCSUnity
             // to be manage be him(Sound Manager)
             JCS_SoundManager.instance.AssignSoundSource(mSoundSettingType, GetAudioSource());
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Play one shot of sound.
@@ -173,9 +157,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Set either the sound player in 2d space or 3d space.
         /// </summary>
@@ -192,9 +173,5 @@ namespace JCSUnity
                     break;
             }
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

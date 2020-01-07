@@ -22,29 +22,16 @@ namespace JCSUnity
     public class JCS_ServerRequestProcessor
         : JCS_Settings<JCS_ServerRequestProcessor>
     {
+        /* Variables */
 
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
         private List<ServerRequest> mServerRequest = new List<ServerRequest>();
         private List<JCS_Client> mClient = new List<JCS_Client>();
         private List<JCS_BinaryReader> mBinaryReader = new List<JCS_BinaryReader>();
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
@@ -54,12 +41,6 @@ namespace JCSUnity
         {
             ProcessServerRequest();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Register request from server.
@@ -81,9 +62,6 @@ namespace JCSUnity
             mClient.Remove(client);
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
         /// I would like to use own define to transfer the old instance
@@ -100,9 +78,6 @@ namespace JCSUnity
             // before transfer, do all the packet request.
             ProcessServerRequest();
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Process through the server request.

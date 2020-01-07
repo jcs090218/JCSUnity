@@ -7,7 +7,13 @@ using System.Text;
 
 public class CpuTest : MonoBehaviour
 {
+    /* Variables */
+
     private int m_fontSize = 4;     // Change the Font Size
+
+    /* Setter & Getter */
+
+    /* Functions */
 
     private void Start()
     {
@@ -33,7 +39,6 @@ public class CpuTest : MonoBehaviour
         string text = "\nCPU 使用率：" + CpuInfo.cpuUsageRate.ToString("0.0") + " %";
         GUI.Label(rect, text, style);
     }
-
 }
 
 #endif

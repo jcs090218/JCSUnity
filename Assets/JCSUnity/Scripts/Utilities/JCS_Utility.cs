@@ -28,7 +28,6 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Utility
     {
-
         /// <summary>
         /// Spawn a gmae object.
         /// </summary>

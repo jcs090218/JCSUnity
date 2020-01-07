@@ -22,14 +22,7 @@ namespace JCSUnity
     public class JCS_PacketLostPreventer
         : JCS_Settings<JCS_PacketLostPreventer>
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_PacketLostPreventer) **")]
 
@@ -47,20 +40,14 @@ namespace JCSUnity
 
         private HashSet<short> mRespondPacketIds = new HashSet<short>();
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public List<JCS_Packet> Packets { get { return this.mWaitingPackets; } set { this.mWaitingPackets = value; } }
         public List<short> PacketIds { get { return this.mWaitingPacketIds; } set { this.mWaitingPacketIds = value; } }
         public HashSet<short> RespondPacketIds { get { return this.mRespondPacketIds; } set { this.mRespondPacketIds = value; } }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
+
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
@@ -70,12 +57,6 @@ namespace JCSUnity
         {
             TrackPacket();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Track this packet. If the packet does not responed.
@@ -156,9 +137,6 @@ namespace JCSUnity
             mRespondPacketIds.Clear();
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
         /// I would like to use own define to transfer the old instance
@@ -177,9 +155,6 @@ namespace JCSUnity
             _new.RespondPacketIds = _old.RespondPacketIds;
 
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Track each packet, if need to resend packet. Send it.

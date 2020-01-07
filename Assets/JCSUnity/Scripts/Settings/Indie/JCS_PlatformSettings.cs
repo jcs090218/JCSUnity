@@ -14,19 +14,13 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Setting of all the platform type.
     /// </summary>
     public class JCS_PlatformSettings
         : JCS_Settings<JCS_PlatformSettings>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_PlatformSettings) **")]
 
@@ -34,29 +28,14 @@ namespace JCSUnity
         [Range(0, 1)]
         public float POSITION_PLATFORM_DOWN_JUMP_FORCE = 0.01f;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
@@ -73,9 +52,5 @@ namespace JCSUnity
         {
             _new.POSITION_PLATFORM_DOWN_JUMP_FORCE = _old.POSITION_PLATFORM_DOWN_JUMP_FORCE;
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

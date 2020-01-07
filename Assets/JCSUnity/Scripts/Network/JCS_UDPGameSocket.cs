@@ -23,6 +23,8 @@ namespace JCSUnity
     public class JCS_UDPGameSocket
         : JCS_GameSocket
     {
+        /* Variables */
+
         private Socket mSocket = null;  // Server connection
 
         private byte[] mInputBuff = new byte[JCS_NetworkConstant.INBUFSIZE];    // Recieved data buffer
@@ -30,10 +32,22 @@ namespace JCSUnity
 
         private JCS_ClientHandler mClientHandler = null;
 
+        /* Setter & Getter */
 
-        //-----------------------------------------
-        // functions
-        //-----------------------------------------
+        public byte[] GetInputBuffer() { return this.mInputBuff; }
+        public byte[] GetOutPutBuffer() { return this.mOutputBuff; }
+
+        /// <summary>
+        /// Set the client handler.
+        /// </summary>
+        /// <param name="handler"> handler. </param>
+        public void SetHandler(JCS_ClientHandler handler)
+        {
+            this.mClientHandler = handler;
+        }
+
+        /* Functions */
+
         public JCS_UDPGameSocket(JCS_ClientHandler handler = null)
         {
             if (handler != null)
@@ -312,22 +326,5 @@ namespace JCSUnity
         {
             return mSocket.Connected;
         }
-
-        //-----------------------------------------
-        // setter / getter
-        //-----------------------------------------
-
-        public byte[] GetInputBuffer() { return this.mInputBuff; }
-        public byte[] GetOutPutBuffer() { return this.mOutputBuff; }
-
-        /// <summary>
-        /// Set the client handler.
-        /// </summary>
-        /// <param name="handler"> handler. </param>
-        public void SetHandler(JCS_ClientHandler handler)
-        {
-            this.mClientHandler = handler;
-        }
-
     }
 }

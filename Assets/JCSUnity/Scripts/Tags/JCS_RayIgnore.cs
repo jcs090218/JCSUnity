@@ -17,6 +17,8 @@ namespace JCSUnity
     public class JCS_RayIgnore
         : MonoBehaviour
     {
+        /* Variables */
+
         // Tags Component.
 
         // STUDY(jenchieh): tell me if u like the tag system more.
@@ -26,10 +28,13 @@ namespace JCSUnity
         // Using this have the better control of usage 
         // in component system wise.
 
-
         [Tooltip("Attach all tag to child?")]
         [SerializeField]
         private bool mEffectToAllChild = true;
+
+        /* Setter & Getter */
+
+        /* Functions */
 
         private void Awake()
         {
@@ -46,6 +51,5 @@ namespace JCSUnity
                 this.transform.GetChild(index).gameObject.AddComponent<JCS_RayIgnore>();
             }
         }
-
     }
 }

@@ -18,7 +18,13 @@ using System.Collections.Generic;
 public class ReadSceneNames 
     : MonoBehaviour
 {
+    /* Variables */
+
     public static ReadSceneNames instance = null;
+
+    /* Setter & Getter */
+
+    /* Functions */
 
     private void OnGUI()
     {
@@ -88,7 +94,6 @@ public class ReadSceneNames
     {
         SCENES_IN_BUILD_SETTING = ReadNames();
     }
-
 }
 
 #endif

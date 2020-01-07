@@ -18,6 +18,7 @@ namespace JCSUnity
     public class JCS_GameSettings
         : JCS_Settings<JCS_GameSettings>
     {
+        /* Variables */
 
         //-- 
         [Header("** Game Settings (JCS_GameSettings) **")]
@@ -108,14 +109,10 @@ namespace JCSUnity
         [Tooltip("Maxinum damage can be in the game.")]
         public int MAX_DAMAGE = 999999;
 
+        /* Setter & Getter */
 
-        //--------------------------------
-        // setter / getter
-        //--------------------------------
+        /* Functions */
 
-        //--------------------------------
-        // Unity's functions
-        //--------------------------------
         private void Awake()
         {
             instance = CheckSingleton(instance, this);

@@ -17,9 +17,7 @@ namespace JCSUnity
     public class JCS_UISettings 
         : JCS_Settings<JCS_UISettings>
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         // no one care about how black screen look so i
         // just make it unseen in the inspector.
@@ -38,32 +36,14 @@ namespace JCSUnity
         [Tooltip("Resize the UI in runtime?")]
         public bool RESIZE_UI = true;
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// Make limit so not all the data override the by the new data!
@@ -75,9 +55,5 @@ namespace JCSUnity
             // ResizeUI option should always be the same!
             _new.RESIZE_UI = _old.RESIZE_UI;
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

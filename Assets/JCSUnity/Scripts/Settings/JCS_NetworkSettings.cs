@@ -21,10 +21,7 @@ namespace JCSUnity
     public class JCS_NetworkSettings
         : JCS_Settings<JCS_NetworkSettings>
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         [Header("** Check Variables (JCS_NetworkSettings) **")]
 
@@ -59,28 +56,18 @@ the server!")]
         private static JCS_GameSocket GAME_SOCKET = null;
         private static JCS_ClientHandler PRESET_CLIENT_HANDLER = null;
 
-
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
         private JCS_ServerRequestProcessor mServerRequestProcessor = null;
         private JCS_PacketLostPreventer mPacketLostPreventer = null;
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
         public static void PresetClientHandler(JCS_ClientHandler handler) { PRESET_CLIENT_HANDLER = handler; }
         public static JCS_ClientHandler GetPresetClientHandler() { return PRESET_CLIENT_HANDLER; }
         public JCS_ServerRequestProcessor GetServerRequestProcessor() { return this.mServerRequestProcessor; }
         public JCS_PacketLostPreventer GetPacketLostPreventer() { return this.mPacketLostPreventer; }
 
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
+        /* Functions */
+
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
@@ -99,12 +86,6 @@ the server!")]
         {
             OnSwitchServer();
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Create the socket and connect to the host and 
@@ -257,9 +238,6 @@ the server!")]
             FORCE_SWITCH_SERVER = force;
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
         /// I would like to use own define to transfer the old instance
@@ -284,9 +262,6 @@ the server!")]
 
             _new.CLIENT_MODE = _old.CLIENT_MODE;
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// On switching the server.

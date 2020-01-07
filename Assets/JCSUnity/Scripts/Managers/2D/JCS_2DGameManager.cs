@@ -18,38 +18,21 @@ namespace JCSUnity
     public class JCS_2DGameManager
         : JCS_Managers<JCS_2DGameManager>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
-        
         // a list of item object will ignore their collision detection.
         private List<JCS_2DPositionPlatform> mPlatformList = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
 
             mPlatformList = new List<JCS_2DPositionPlatform>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Add a platform to the list.
@@ -89,12 +72,5 @@ namespace JCSUnity
                     c, true);
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

@@ -17,9 +17,8 @@ namespace JCSUnity
     public class JCS_PackageDataSettings
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public static JCS_PackageDataSettings instance = null;
 
 
@@ -31,35 +30,13 @@ namespace JCSUnity
         [Tooltip("Package Data version information.")]
         public string VersionString = "Package file v1.0";
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

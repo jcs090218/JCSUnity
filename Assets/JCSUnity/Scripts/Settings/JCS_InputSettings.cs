@@ -20,9 +20,8 @@ namespace JCSUnity
     public class JCS_InputSettings
         : JCS_Settings<JCS_InputSettings>
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public const string HOME_BUTTON = "jcsunity button home";
         public const string JOYSTICK_BUTTON_START = "jcsunity button start";
         public const string JOYSTICK_BUTTON_BACK = "jcsunity button back";
@@ -63,9 +62,6 @@ namespace JCSUnity
 
         // constant from Unity.
         public const int MAX_JOYSTICK_COUNT = 12;
-
-        //----------------------
-        // Private Variables
 
         /// <summary>
         /// Map of the joystick.
@@ -198,12 +194,8 @@ namespace JCSUnity
         [Range(0, MAX_JOYSTICK_COUNT)]
         private int mTotalGamePadInGame = 0;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_GamePadType TargetGamePad { get { return this.mTargetGamePad; } }
         public JoystickMap[] Joysticks { get { return this.mJoysticks; } set { this.mJoysticks = value; } }
         public JoystickMap GetJoysitckMapByIndex(int index)
@@ -212,9 +204,8 @@ namespace JCSUnity
         }
         public int TotalGamePadInGame { get { return this.mTotalGamePadInGame; } set { this.mTotalGamePadInGame = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
@@ -232,12 +223,6 @@ namespace JCSUnity
 
             JCS_Input.LateUpdate();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get the joystick button name by joystick button label.
@@ -655,9 +640,6 @@ button is not allow...");
         }
 #endif
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
         /// I would like to use own define to transfer the old instance
@@ -673,9 +655,6 @@ button is not allow...");
         {
             _new.Joysticks = _old.Joysticks;
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Update the joystick info.

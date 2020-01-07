@@ -6,22 +6,23 @@ using System.Collections;
 // http://wiki.unity3d.com/index.php?title=FramesPerSecond
 public class FPSDisplay : MonoBehaviour
 {
+    /* Variables */
 
     private int m_fontSize = 4;     // Change the Font Size
 
     private float deltaTime = 0.0f;
 
+    /* Setter & Getter */
+
+    /* Functions */
 
     private void Update()
     {
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
     }
 
-
     private void OnGUI()
     {
-
-
         int w = Screen.width, h = Screen.height;
 
         GUIStyle style = new GUIStyle();
@@ -35,7 +36,5 @@ public class FPSDisplay : MonoBehaviour
         string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         GUI.Label(rect, text, style);
     }
-    
-
 }
 #endif

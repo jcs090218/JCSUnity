@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_2DDynamicSceneManager
         : JCS_Managers<JCS_2DDynamicSceneManager>
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_2DDynamicSceneManager) **")]
 
@@ -30,16 +25,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_OrderLayer[] mJCSOrderLayer = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
@@ -48,13 +37,6 @@ namespace JCSUnity
             // so it could be manage
             mJCSOrderLayer = JCS_Utility.FindObjectsOfTypeAllInHierarchy<JCS_OrderLayer>();
         }
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Function provide to return the targeting order layer, 
@@ -116,12 +98,5 @@ namespace JCSUnity
             // set order layer to the pass in object.
             jcsOlo.SetOrderLayer(orderLayerIndex);
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

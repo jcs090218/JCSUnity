@@ -17,9 +17,7 @@ namespace JCSUnity
     public class JCS_2DLiveObjectManager
         : JCS_Managers<JCS_2DLiveObjectManager>
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_2DLiveObjectManager) **")]
 
@@ -29,31 +27,16 @@ namespace JCSUnity
         [Tooltip("Time to find all the live object in the scene periodically.")]
         public float TIME_TO_FIND_ALL_LIVE_OBJECT_IN_SCENE = 3;
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = this;
 
             StartCoroutine(FindAllLiveObjectInScene(TIME_TO_FIND_ALL_LIVE_OBJECT_IN_SCENE));
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Destroy all the live object in the scene.
@@ -72,12 +55,6 @@ namespace JCSUnity
                     lo.Die();
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Time to find all live object in scene.

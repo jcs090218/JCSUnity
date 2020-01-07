@@ -18,9 +18,7 @@ namespace JCSUnity
     public class JCS_SceneSettings
         : JCS_Settings<JCS_SceneSettings>
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables */
 
         public const float MAX_SCENE_FADEIN_TIME = 5.0f;
         public const float MIN_SCENE_FADEIN_TIME = 0.0f;
@@ -38,29 +36,14 @@ namespace JCSUnity
         [Tooltip("Screen color to fade in/out the scene.")]
         public Color SCREEN_COLOR = Color.black;
 
-        //----------------------
-        // Private Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Protected Variables
+        /* Functions */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get the real scene fade out time base on
@@ -104,9 +87,6 @@ namespace JCSUnity
             return SCENE_FADEIN_TIME;
         }
 
-        //----------------------
-        // Protected Functions
-
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
         /// I would like to use own define to transfer the old instance
@@ -124,9 +104,5 @@ namespace JCSUnity
             _new.SCENE_FADEOUT_TIME = _old.SCENE_FADEOUT_TIME;
             _new.SCREEN_COLOR = _old.SCREEN_COLOR;
         }
-
-        //----------------------
-        // Private Functions
-
     }
 }

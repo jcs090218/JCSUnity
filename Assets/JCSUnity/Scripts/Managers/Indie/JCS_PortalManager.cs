@@ -17,13 +17,9 @@ namespace JCSUnity
     public class JCS_PortalManager
         : MonoBehaviour
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
         public static JCS_PortalManager instance = null;
-
-        //----------------------
-        // Private Variables
 
         [Header("** Initialize Variables (JCS_PortalManager) **")]
 
@@ -31,17 +27,12 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DPortal[] mPortals = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_2DPortal[] Portals { get { return this.mPortals; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             instance = this;
@@ -51,18 +42,6 @@ namespace JCSUnity
         {
             SetPlayerToPortalByLabel();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Set the player to current portal label.
@@ -99,6 +78,5 @@ namespace JCSUnity
                 }
             }
         }
-
     }
 }

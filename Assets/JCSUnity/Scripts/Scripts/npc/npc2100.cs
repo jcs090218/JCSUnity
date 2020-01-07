@@ -20,30 +20,11 @@ namespace JCSUnity
     public class npc2100
         : JCS_DialogueScript
     {
+        /* Variables */
 
-        //----------------------
-        // Public Variables
+        /* Setter & Getter */
 
-        //----------------------
-        // Private Variables
-
-        //----------------------
-        // Protected Variables
-
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
+        /* Functions */
 
         public override void Action(int mode, int type, int selection)
         {
@@ -129,12 +110,5 @@ namespace JCSUnity
                 jcsDs.SendOk(msg);
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

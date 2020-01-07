@@ -20,10 +20,7 @@ namespace JCSUnity
     public class JCS_ApplicationSettings
         : JCS_Settings<JCS_ApplicationSettings>
     {
-
-        /*******************************************/
-        /*            Public Variables             */
-        /*******************************************/
+        /* Variables */
 
         // Callback when application starts. This should only run once
         // per application is starts.
@@ -35,21 +32,10 @@ namespace JCSUnity
         [Tooltip("Is the application start?")]
         public bool APPLICATION_STARTS = false;
 
-        /*******************************************/
-        /*           Private Variables             */
-        /*******************************************/
+        /* Setter & Getter */
 
-        /*******************************************/
-        /*           Protected Variables           */
-        /*******************************************/
+        /* Functions */
 
-        /*******************************************/
-        /*             setter / getter             */
-        /*******************************************/
-
-        /*******************************************/
-        /*            Unity's function             */
-        /*******************************************/
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
@@ -61,15 +47,6 @@ namespace JCSUnity
             if (!APPLICATION_STARTS)
                 JCS_GameManager.instance.afterGameInitializeCallback += DoApplicationStart;
         }
-
-        /*******************************************/
-        /*              Self-Define                */
-        /*******************************************/
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
 
         /// <summary>
         /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
@@ -86,9 +63,6 @@ namespace JCSUnity
         {
             _new.APPLICATION_STARTS = _old.APPLICATION_STARTS;
         }
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Enable applicatin start flag after the first 'Update()'
