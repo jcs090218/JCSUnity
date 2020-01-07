@@ -21,11 +21,7 @@ namespace JCSUnity
         : JCS_UnityObject
     {
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         private bool mDetectDevice = true;
 
@@ -93,12 +89,8 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void Stop() { if (mWebCamTexture != null) this.mWebCamTexture.Stop(); }
         public void Play() { this.mWebCamTexture.Play(); }
         public void Pause() { this.mWebCamTexture.Pause(); }
@@ -107,9 +99,8 @@ namespace JCSUnity
         public int WebcamResolutionWidth { get { return this.mWebcamResolutionWidth; } set { this.mWebcamResolutionWidth = value; } }
         public int WebcamResolutionHeight { get { return this.mWebcamResolutionHeight; } set { this.mWebcamResolutionHeight = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -162,12 +153,6 @@ namespace JCSUnity
         {
             Stop();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Active the webcam.
@@ -270,12 +255,6 @@ namespace JCSUnity
             }
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
 #if (UNITY_STANDALONE || UNITY_EDITOR)
         /// <summary>
         /// Process the input.
@@ -288,6 +267,5 @@ namespace JCSUnity
             }
         }
 #endif
-
     }
 }

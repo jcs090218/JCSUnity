@@ -19,6 +19,8 @@ namespace JCSUnity
     public abstract class JCS_Camera 
         : MonoBehaviour
     {
+        /* Variables */
+
         public static JCS_Camera main = null;
 
         // Unity's camera object to handle.
@@ -70,9 +72,8 @@ namespace JCSUnity
         protected float mRecordFieldOfView = 0.0f;
 
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public Vector3 PositionOffset { get { return this.mPositionOffset; } }
         public Vector3 CamRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
         public Rect CamRect { get { return this.mCamRect; } }
@@ -85,9 +86,7 @@ namespace JCSUnity
         public abstract void SetFollowTarget(Transform trans);
         public abstract Transform GetFollowTarget();
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         protected virtual void Awake()
         {
@@ -112,10 +111,6 @@ namespace JCSUnity
             DisplayGameDepthCamera();
 #endif
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
 
         /// <summary>
         /// Weather if we want to take a screen shot, call

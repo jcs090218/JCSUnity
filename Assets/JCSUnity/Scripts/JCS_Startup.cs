@@ -15,6 +15,11 @@ namespace JCSUnity
     /// </summary>
     public class JCS_Startup
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
 
         /// <summary>
         /// Initialize the whole application. (In Unity layer.)

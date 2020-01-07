@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_UniqueObject
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_UniqueObject) **")]
 
@@ -30,17 +25,12 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SingletonObject mType = JCS_SingletonObject.NONE;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_SingletonObject SingletonObjectType { get { return this.mType; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             CheckByType();
@@ -54,18 +44,6 @@ namespace JCSUnity
                     "Only the root object can be use DontDestoryOnLoad...");
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Check the signleton by type.

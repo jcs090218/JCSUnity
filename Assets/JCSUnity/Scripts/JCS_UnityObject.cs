@@ -18,12 +18,7 @@ namespace JCSUnity
     public class JCS_UnityObject
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Initialize Variables (JCS_Unityobject) **")]
 
@@ -41,12 +36,8 @@ namespace JCSUnity
         //-- Text
         protected Text mText = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public void SetObjectType(JCS_UnityObjectType ob) { this.mObjectType = ob; }
         public JCS_UnityObjectType GetObjectType() { return this.mObjectType; }
         public Image GetImage() { return this.mImage; }
@@ -54,19 +45,12 @@ namespace JCSUnity
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public RectTransform GetRectTransform() { return this.mRectTransform; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected virtual void Awake()
         {
             UpdateUnityData();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Get unity specific data by type.
@@ -1011,12 +995,5 @@ namespace JCSUnity
 
             }
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

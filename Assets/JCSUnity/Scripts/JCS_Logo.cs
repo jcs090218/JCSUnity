@@ -17,12 +17,7 @@ namespace JCSUnity
     public class JCS_Logo 
         : MonoBehaviour
     {
-
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Note: Fade Time can be set at JCS_SceneSettings. **")]
 
@@ -38,16 +33,9 @@ namespace JCSUnity
 
         private bool mCycleThrough = false;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void Start()
         {
@@ -74,18 +62,5 @@ namespace JCSUnity
                 JCS_SceneManager.instance.LoadScene(mNextLevel);
             }
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
 }

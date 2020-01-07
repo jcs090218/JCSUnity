@@ -32,11 +32,7 @@ namespace JCSUnity
         : JCS_UnityObject
     {
 
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_VideoPlayer) **")]
 
@@ -70,12 +66,8 @@ namespace JCSUnity
         // check if the clip played?
         private bool mClipPlayed = false;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool loop
         {
             get
@@ -95,9 +87,8 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -132,12 +123,6 @@ namespace JCSUnity
                 Pause();
         }
 #endif
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Play the video.
@@ -177,12 +162,6 @@ namespace JCSUnity
             mMovieTexture.Stop();
             mAudioSource.Stop();
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Check if the moive dont playing, 
@@ -243,11 +222,7 @@ namespace JCSUnity
     public class JCS_VideoPlayer
         : JCS_UnityObject
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_VideoPlayer) **")]
 
@@ -315,12 +290,8 @@ namespace JCSUnity
         // timer to load next scene
         private float mLoadNextSceneTimer = 0;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public bool loop
         {
             get
@@ -338,9 +309,8 @@ namespace JCSUnity
         }
         public AudioSource AudioSource { get { return this.mAudioSource; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -361,12 +331,6 @@ namespace JCSUnity
 
             LoadNextScene();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
 
         /// <summary>
         /// Play the video.
@@ -402,12 +366,6 @@ namespace JCSUnity
             JCS_Debug.LogError(
                     this, "Stop does not work in Andriod Platform...");
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Check if the moive dont playing, 
