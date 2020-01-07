@@ -16,28 +16,16 @@ using UnityEngine.UI;
 public class BF_CashText 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
-
+    /* Variables */
+    
     [Tooltip("")]
     [SerializeField]
     private Text mCashText = null;
 
+    /* Setter & Getter */
 
-    //----------------------
-    // Protected Variables
+    /* Functions */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         if (mCashText == null)
@@ -49,12 +37,6 @@ public class BF_CashText
         // lazy code, update the text every frame.
         UpdateText();
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
 
     public void UpdateText()
     {
@@ -64,11 +46,4 @@ public class BF_CashText
     {
         mCashText.text = val.ToString();
     }
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

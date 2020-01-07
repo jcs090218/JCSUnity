@@ -18,6 +18,8 @@ using JCSUnity;
 public class BF_GameData 
     : JCS_BinGameData
 {
+    /* Variables */
+
     [Serializable]
     public struct ItemIdInclude
     {
@@ -44,7 +46,10 @@ public class BF_GameData
     public ItemIdInclude[] ItemsInclude = null;
 
 
-    //---------------------------------------------------
+    /* Setter & Getter */
+
+    /* Functions */
+
     public BF_GameData()
     {
 

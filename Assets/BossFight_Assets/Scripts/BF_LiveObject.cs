@@ -16,12 +16,7 @@ using JCSUnity;
 public class BF_LiveObject 
     : JCS_2DLiveObject
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [Header("** Check Variables (BF_LiveObject) **")]
 
@@ -43,16 +38,10 @@ public class BF_LiveObject
 
     private bool mIsBurn = false;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     protected void Start()
     {
         /* This will make the object follow the mad target. */
@@ -81,14 +70,8 @@ public class BF_LiveObject
     }
 #endif
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
     /// <summary>
-    /// 
+    /// You died!
     /// </summary>
     public override void Die()
     {
@@ -176,12 +159,6 @@ public class BF_LiveObject
         spriteRenderer.color = Color.white;
         mIsBurn = false;
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Freeze Effect algorithms.

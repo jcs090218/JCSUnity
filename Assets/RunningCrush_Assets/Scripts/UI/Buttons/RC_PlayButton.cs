@@ -14,7 +14,13 @@ using System;
 public class RC_PlayButton 
     :  JCS_Button
 {
+    /* Variables */
+
     private JCS_2DSlideScreenCamera mSlideCamera = null;
+
+    /* Setter & Getter */
+
+    /* Functions */
 
     protected override void Awake()
     {

@@ -16,12 +16,8 @@ using JCSUnity;
 public class BF_Player 
     : JCS_2DSideScrollerPlayer
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
+    
     [Header("** Optional Variables (BF_Player) **")]
     [SerializeField] private JCS_2DCursorShootAction mCursorShootAction = null;
 
@@ -30,16 +26,9 @@ public class BF_Player
     [SerializeField] [Range(0, 100)]
     private float mManaCastPerShoot = 1;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
 
     protected override void Awake()
     {
@@ -98,18 +87,6 @@ public class BF_Player
             Prone();
     }
 #endif
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     private void ShootActionFunc()
     {

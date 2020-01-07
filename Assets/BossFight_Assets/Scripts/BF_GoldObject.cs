@@ -14,22 +14,11 @@ public class BF_GoldObject
     : JCS_CashObject
 {
 
-    //----------------------
-    // Public Variables
+    /* Variables */
 
-    //----------------------
-    // Private Variables
+    /* Setter & Getter */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
 
     protected override void Awake()
     {
@@ -46,12 +35,6 @@ public class BF_GoldObject
         SetPickCallback(PickCallback);
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
     /// <summary>
     /// Call back when item were picked.
     /// </summary>
@@ -60,11 +43,4 @@ public class BF_GoldObject
     {
         BF_GameSettings.BF_GAME_DATA.Cash += mCashValue;
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

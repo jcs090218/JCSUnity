@@ -11,11 +11,16 @@ using System.Collections;
 using JCSUnity;
 using System;
 
-
 public class RC_BackToMenuButton
     : JCS_Button
 {
+    /* Variables */
+
     private JCS_2DSlideScreenCamera mSlideCamera = null;
+
+    /* Setter & Getter */
+
+    /* Functions */
 
     protected override void Awake()
     {

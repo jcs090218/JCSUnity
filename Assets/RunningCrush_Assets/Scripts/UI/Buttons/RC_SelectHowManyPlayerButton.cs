@@ -14,8 +14,15 @@ using System;
 public class RC_SelectHowManyPlayerButton
     : JCS_Button
 {
+    /* Variables */
+
     [Tooltip("After hitting this button decide how many player in this game.")]
-    [SerializeField] private int mPlayersInGame = 1; 
+    [SerializeField] 
+    private int mPlayersInGame = 1;
+
+    /* Setter & Getter */
+
+    /* Functions */
 
     public override void JCS_OnClickCallback()
     {

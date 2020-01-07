@@ -18,10 +18,7 @@ using JCSUnity;
 public class RC_UIManager 
     : MonoBehaviour 
 {
-
-    /*******************************************/
-    /*            Public Variables             */
-    /*******************************************/
+    /* Variables */
 
     public static RC_UIManager instance = null;
 
@@ -31,36 +28,12 @@ public class RC_UIManager
     [Tooltip("Panel when one player reach the goal.")]
     public JCS_TweenPanel EXIT_PANEL = null;
 
-    /*******************************************/
-    /*           Private Variables             */
-    /*******************************************/
+    /* Setter & Getter */
 
-    /*******************************************/
-    /*           Protected Variables           */
-    /*******************************************/
+    /* Functions */
 
-    /*******************************************/
-    /*             setter / getter             */
-    /*******************************************/
-
-    /*******************************************/
-    /*            Unity's function             */
-    /*******************************************/
     private void Awake()
     {
         instance = this;
     }
-    
-    /*******************************************/
-    /*              Self-Define                */
-    /*******************************************/
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

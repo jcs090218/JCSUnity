@@ -17,9 +17,7 @@ using System.IO;
 public class BF_GameSettings 
     : JCS_Settings<BF_GameSettings> 
 {
-
-    //----------------------
-    // Public Variables
+    /* Variables */
 
     [Header("** Player Settings **")]
 
@@ -53,19 +51,10 @@ public class BF_GameSettings
     [Tooltip("Name of the scene player selected.")]
     public string LEVEL_SELECTED_NAME = "";
 
-    //----------------------
-    // Private Variables
+    /* Setter & Getter */
 
-    //----------------------
-    // Protected Variables
+    /* Functions */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         instance = CheckSingleton(instance, this);
@@ -85,18 +74,6 @@ public class BF_GameSettings
         JCS_GameSettings.instance.SAVE_GAME_DATA_FUNC = SaveGameData;
         JCS_GameSettings.instance.LOAD_GAME_DATA_FUNC = LoadGameData;
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
@@ -171,5 +148,4 @@ public class BF_GameSettings
 
         BF_GAME_DATA.Save<BF_GameData>(mFullFilePath, mFullFileName);
     }
-
 }

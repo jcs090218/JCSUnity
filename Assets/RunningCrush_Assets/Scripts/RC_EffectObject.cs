@@ -13,12 +13,8 @@ using JCSUnity;
 public class RC_EffectObject 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     [SerializeField] private RC_EffectType mEffectType = RC_EffectType.BLOCK;
     [SerializeField] private bool mAutoEffect = true;
 
@@ -37,17 +33,12 @@ public class RC_EffectObject
     [Tooltip("If add point absolute number of this value, if lose point then opposite of this method.")]
     [SerializeField] private float mPoint = 10;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public bool AutoEffect { get { return this.mAutoEffect; } set { this.mAutoEffect = value; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void OnTriggerEnter(Collider other)
     {
         if (!mAutoEffect)
@@ -60,11 +51,6 @@ public class RC_EffectObject
         DoEffect(p);
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
     public void DoEffect(RC_Player p)
     {
         switch (mEffectType)
@@ -98,13 +84,5 @@ public class RC_EffectObject
                 break;
 
         }
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
     }
-    
 }

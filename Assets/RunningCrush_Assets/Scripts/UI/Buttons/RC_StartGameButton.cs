@@ -18,26 +18,17 @@ using UnityEngine.UI;
 public class RC_StartGameButton 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     private RectTransform mRectTransform = null;
     private Image mImage = null;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public RectTransform rectTransform { get { return this.mRectTransform; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         mRectTransform = this.GetComponent<RectTransform>();
@@ -55,17 +46,4 @@ public class RC_StartGameButton
             JCS_Utility.SetActiveToAllChildren(this.transform, true);
         }
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

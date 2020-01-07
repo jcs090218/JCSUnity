@@ -14,26 +14,14 @@ using JCSUnity;
 public class RC_EffectItem 
     : JCS_Item
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     private RC_EffectObject mEffectObject = null;
 
-    
+    /* Setter & Getter */
 
-    //----------------------
-    // Protected Variables
+    /* Functions */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     protected override void Awake()
     {
         base.Awake();
@@ -49,21 +37,8 @@ public class RC_EffectItem
         SetPickCallback(PickCallback);
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
     private void PickCallback(Collider other)
     {
-
         // apply effect to player
         RC_Player p = other.GetComponent<RC_Player>();
         if (p == null)
@@ -78,5 +53,4 @@ public class RC_EffectItem
 
         mEffectObject.DoEffect(p);
     }
-
 }

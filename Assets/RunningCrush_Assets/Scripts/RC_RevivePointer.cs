@@ -14,12 +14,8 @@ using JCSUnity;
 public class RC_RevivePointer 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
+    
     private SpriteRenderer mSpriteRenderer = null;
 
     private RC_Player mRCPlayer = null;
@@ -29,17 +25,11 @@ public class RC_RevivePointer
     [Tooltip("How low below the top boundary.")]
     [SerializeField] private float mOffsetY = -1;
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Setter & Getter */
+    
     public void SetRCPlayer(RC_Player p) { this.mRCPlayer = p; }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
     private void Awake()
     {
         mSpriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -73,18 +63,6 @@ public class RC_RevivePointer
 
         FollowPlayer();
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
     private void FollowPlayer()
     {
         Vector3 newPos = this.transform.position;
@@ -101,5 +79,4 @@ public class RC_RevivePointer
 
         this.transform.position = newPos;
     }
-    
 }

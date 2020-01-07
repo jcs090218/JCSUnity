@@ -16,27 +16,18 @@ using JCSUnity;
 public class RC_GameManager 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
     public static RC_GameManager instance = null;
 
     public int ORDER_LAYER_FOR_ALL_PLAYER = 4;
 
-    //----------------------
-    // Private Variables
     private bool mDoIgnoreOnce = false;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         instance = this;
@@ -74,12 +65,6 @@ public class RC_GameManager
     }
 #endif
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
     /// <summary>
     /// Do exit the game.
     /// </summary>
@@ -96,12 +81,6 @@ public class RC_GameManager
 
         uim.EXIT_PANEL.Active();
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Spawn the player at the beginning of the game.
@@ -174,8 +153,5 @@ public class RC_GameManager
                 rcrp.transform.SetParent(rcp.transform);
             }
         }
-
-        
     }
-
 }

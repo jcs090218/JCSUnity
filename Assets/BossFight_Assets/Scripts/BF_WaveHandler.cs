@@ -17,11 +17,7 @@ public class BF_WaveHandler
     : MonoBehaviour 
 {
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [Header("** Check Variables **")]
     [SerializeField] private int mCurrentSpawnIndex = 0;
@@ -55,19 +51,14 @@ set to thie scene layer.")]
     // spawn the enmey.
     private float mWaveTimer = 0;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public Transform SpawnTransform { get { return this.mSpawnTransform; } set { this.mSpawnTransform = value; } }
     public int EnemyPerWave { get { return this.mEnemyPerWave; } set { this.mEnemyPerWave = value; } }
     public int CurrentSpawnIndex { get { return this.mCurrentSpawnIndex; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         // if nothing assigned then set itself 
@@ -84,12 +75,6 @@ set to thie scene layer.")]
 
         DoSpawn();
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
 
     /// <summary>
     /// Spawn a wave by passing in wave count.
@@ -130,12 +115,6 @@ set to thie scene layer.")]
             JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref jcsolo, mOrderLayer);
         }
     }
-
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Do the spawning, timer etc.

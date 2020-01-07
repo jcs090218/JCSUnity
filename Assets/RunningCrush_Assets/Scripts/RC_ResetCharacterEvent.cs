@@ -9,42 +9,20 @@
 using UnityEngine;
 using System.Collections;
 
-
+/// <summary>
+/// 
+/// </summary>
 public class RC_ResetCharacterEvent 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
+    /* Setter & Getter */
 
-    //----------------------
-    // Private Variables
+    /* Functions */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void OnBecameInvisible()
     {
         
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

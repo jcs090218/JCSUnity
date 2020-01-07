@@ -17,29 +17,11 @@ using JCSUnity;
 public class BF_LoadSelectedSceneButton 
     : JCS_Button 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
+    /* Setter & Getter */
 
-    //----------------------
-    // Private Variables
-
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
+    /* Functions */
 
     public override void JCS_OnClickCallback()
     {
@@ -47,11 +29,4 @@ public class BF_LoadSelectedSceneButton
 
         JCS_SceneManager.instance.LoadScene(sceneName);
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

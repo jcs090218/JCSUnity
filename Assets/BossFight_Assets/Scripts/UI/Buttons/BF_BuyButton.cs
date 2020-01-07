@@ -17,12 +17,7 @@ using UnityEngine.UI;
 public class BF_BuyButton 
     :  JCS_Button
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [Header("** Initialize Variables (BF_BuyButton) **")]
 
@@ -38,16 +33,9 @@ public class BF_BuyButton
     [SerializeField]
     private string mBaseString = "$ ";
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
 
     private void Start()
     {
@@ -61,21 +49,8 @@ public class BF_BuyButton
             this.Interactable = false;
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
     public override void JCS_OnClickCallback()
     {
         BF_GameSettings.BF_GAME_DATA.Cash -= mBuyValue;
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

@@ -17,11 +17,7 @@ public class BF_PickItem
     : JCS_Item 
 {
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [Header("** Optional Variables (BF_PickItem) **")]
 
@@ -29,16 +25,10 @@ public class BF_PickItem
     [SerializeField]
     private BF_EffectPickItem mEffectPickItem = null;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     protected override void Awake()
     {
         base.Awake();
@@ -57,12 +47,6 @@ public class BF_PickItem
         if (mEffectPickItem == null)
             mEffectPickItem = this.GetComponent<BF_EffectPickItem>();
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
 
     /// <summary>
     /// Call back when item were picked.
@@ -97,13 +81,4 @@ public class BF_PickItem
         }
 
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
-
-
 }

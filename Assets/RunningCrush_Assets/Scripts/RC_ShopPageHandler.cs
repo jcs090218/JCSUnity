@@ -16,12 +16,7 @@ using JCSUnity;
 public class RC_ShopPageHandler 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [SerializeField] private int mMaxHorizontalPage = 1;
     [SerializeField] private int mMinHorizontalPage = 0;
@@ -38,20 +33,14 @@ public class RC_ShopPageHandler
     [SerializeField] private JCS_Button mBotBtn = null;
     [SerializeField] private JCS_Button mLeftBtn = null;
     [SerializeField] private JCS_Button mRightBtn = null;
-    
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     private int MaxVeticalPage { get { return this.mMaxVerticalPage; } }
     private int MinVerticalPage { get { return this.mMinVerticalPage; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         if (mLeftBtn != null)
@@ -74,12 +63,6 @@ public class RC_ShopPageHandler
         InitButton();
     }
 
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
     public void LeftClick()
     {
         --mHorizontalPageCounter;
@@ -127,11 +110,6 @@ public class RC_ShopPageHandler
         --mVerticalPageCounter;
     }
     
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
     /// <summary>
     /// Initialize the button the first time entered.
     /// </summary>
@@ -149,5 +127,4 @@ public class RC_ShopPageHandler
                 mRightBtn.SetInteractable(false);
         }
     }
-    
 }

@@ -13,41 +13,16 @@ using JCSUnity;
 public class BF_InitCharacterInGame 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [Tooltip("Facing direction starting of the game.")]
     [SerializeField]
-    private JCS_2DFaceType mFacing 
-        = JCS_2DFaceType.FACE_RIGHT;
+    private JCS_2DFaceType mFacing = JCS_2DFaceType.FACE_RIGHT;
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Setter & Getter */
+    
     public JCS_2DFaceType Facing { get { return mFacing; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
-    
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
+    /* Functions */
+
 }

@@ -18,12 +18,8 @@ using JCSUnity;
 public class RC_PlayerPointer 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
+    
     private RC_Player mRCPlayer = null;
 
     [SerializeField] private Sprite mPlayerImage = null;
@@ -39,17 +35,12 @@ public class RC_PlayerPointer
 Photo Order Layer will minus one in case the photo does not be ontop of the frame.")]
     [SerializeField] private int mOrderLayer = 17;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public void SetRCPlayer(RC_Player p) { this.mRCPlayer = p; }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         mSpriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -93,17 +84,4 @@ Photo Order Layer will minus one in case the photo does not be ontop of the fram
         // set pointer to player + pivot position
         this.transform.localPosition = newPos;
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

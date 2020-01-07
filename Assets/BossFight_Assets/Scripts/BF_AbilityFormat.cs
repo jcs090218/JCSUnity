@@ -14,12 +14,8 @@ using System;
 public class BF_AbilityFormat 
     : JCS_AbilityFormat 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     [SerializeField] private int mStr = 1;
     [SerializeField] private int mDex = 1;
     [SerializeField] private int mInt = 1;
@@ -30,13 +26,8 @@ public class BF_AbilityFormat
     [SerializeField] private int mAttackValue = 0;
     [SerializeField] private int mDefenseValue = 0;
 
+    /* Setter & Getter */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
     public int Str { get { return this.mStr; } set { this.mStr = value; } }
     public int Dex { get { return this.mDex; } set { this.mDex = value; } }
     public int Int { get { return this.mInt; } set { this.mInt = value; } }
@@ -47,16 +38,8 @@ public class BF_AbilityFormat
     public int AttackValue { get { return this.mAttackValue; } set { this.mAttackValue = value; } }
     public int DefenseValue { get { return this.mDefenseValue; } set { this.mDefenseValue = value; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
 
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
     public override int GetAbsoluteDamage()
     {
         // Not implement yet.
@@ -89,10 +72,4 @@ public class BF_AbilityFormat
         // Do calculation about defense value
         return mDefenseValue;
     }
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

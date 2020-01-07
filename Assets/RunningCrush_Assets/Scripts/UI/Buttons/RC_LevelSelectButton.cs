@@ -15,13 +15,17 @@ using System.Collections;
 public class RC_LevelSelectButton 
     : JCSUnity.JCS_Button 
 {
+    /* Variables */
 
     [SerializeField] private string mLevelName = "RC_Game";
+
+    /* Setter & Getter */
+
+    /* Functions */
 
     public override void JCS_OnClickCallback()
     {
         RC_GameSettings.instance.LEVEL_SELECTED_NAME = mLevelName;
         RC_GameSettings.instance.SetCorrectSceneNameToAllButtonInScene();
     }
-
 }

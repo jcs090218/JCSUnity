@@ -20,12 +20,7 @@ using JCSUnity;
 public class BF_AutoAttacker 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [Header("** Check Variables (BF_AutoAttacker) **")]
     [SerializeField] private JCS_DetectAreaAction mDetectAreaAction = null;
@@ -48,16 +43,10 @@ public class BF_AutoAttacker
 
     private bool mShooted = false;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         mDetectAreaAction = this.GetComponentInParent<JCS_DetectAreaAction>();
@@ -81,18 +70,6 @@ public class BF_AutoAttacker
             LockShoot();
     }
 #endif
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Calculate the time and see when to shoot the bullet.
@@ -182,5 +159,4 @@ public class BF_AutoAttacker
         mShooted = false;
         mTimer = 0;
     }
-
 }

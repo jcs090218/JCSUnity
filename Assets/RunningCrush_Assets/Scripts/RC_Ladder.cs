@@ -16,26 +16,16 @@ using JCSUnity;
 public class RC_Ladder 
     : JCS_2DLadder
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     [Header("** Runtime Variables (RC_Ladder) **")]
     [SerializeField]
     private JCS_ClimbMoveType mAutoClimbDirection = JCS_ClimbMoveType.MOVE_UP;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void OnTriggerStay(Collider other)
     {
         JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
@@ -78,17 +68,4 @@ public class RC_Ladder
 
         p.AutoClimb = false;
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

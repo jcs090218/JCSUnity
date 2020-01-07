@@ -12,23 +12,11 @@ using System.Collections;
 public class BF_Ground 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
+    /* Setter & Getter */
 
-    //----------------------
-    // Private Variables
-
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,17 +27,4 @@ public class BF_Ground
         // in some reason collider keep breaking...
         bfLivObject.VelocityInfo.VelY = 0;
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

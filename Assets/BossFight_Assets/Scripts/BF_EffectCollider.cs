@@ -16,9 +16,7 @@ using System.Collections;
 public class BF_EffectCollider 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
+    /* Variables */
 
     /// <summary>
     /// Effect type list and design here...
@@ -31,26 +29,16 @@ public class BF_EffectCollider
         BURN
     };
 
-    //----------------------
-    // Private Variables
-
     [SerializeField]
     private EffectType mEffectType = EffectType.NONE;
 
     [SerializeField] [Range(1, 10)]
     private float mEffectTime = 1;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
-    
     private void OnTriggerEnter(Collider other)
     {
         BF_LiveObject liveObject = other.GetComponent<BF_LiveObject>();
@@ -59,12 +47,6 @@ public class BF_EffectCollider
 
         DoEffect(liveObject, mEffectType);
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
 
     /// <summary>
     /// Do the effect base on the enum type.
@@ -94,11 +76,4 @@ public class BF_EffectCollider
                 break;
         }
     }
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

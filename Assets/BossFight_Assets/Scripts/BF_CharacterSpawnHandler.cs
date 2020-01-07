@@ -16,25 +16,14 @@ using JCSUnity;
 public class BF_CharacterSpawnHandler 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
+    
     [SerializeField] private BF_InitCharacterInGame[] mSpawnPos = null;
     [SerializeField] private int mOrderLayer = 16;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
 
     private void Start()
     {
@@ -48,18 +37,6 @@ public class BF_CharacterSpawnHandler
         // 'JCS_Settings' object's setting variables.
         JCS_CollisionManager.instance.SetCollisionMode();
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Spawn the player according to the pointed position.
@@ -104,5 +81,4 @@ public class BF_CharacterSpawnHandler
             JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref jcsolo, mOrderLayer);
         }
     }
-
 }

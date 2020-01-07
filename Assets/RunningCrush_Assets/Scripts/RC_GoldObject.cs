@@ -16,23 +16,12 @@ using JCSUnity;
 public class RC_GoldObject 
     : JCS_CashObject
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
+    /* Setter & Getter */
 
-    //----------------------
-    // Private Variables
+    /* Functions */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     protected override void Awake()
     {
         base.Awake();
@@ -43,18 +32,6 @@ public class RC_GoldObject
         SetPickCallback(PickCallback);
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
     private void PickCallback(Collider other)
     {
 
@@ -76,5 +53,4 @@ public class RC_GoldObject
         if (RC_GameSettings.instance.GAME_MODE == RC_GameMode.SINGLE_PLAYERS)
             RC_GameSettings.RC_GAME_DATA.Gold += mCashValue;
     }
-
 }

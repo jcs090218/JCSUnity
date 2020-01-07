@@ -16,29 +16,20 @@ using System.Collections;
 public class BF_HealthTarget 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     private BF_LiveObject mLiveObject = null;
 
     [Tooltip("Plz plugin this!!")]
     [SerializeField]
     private BF_LiquidBarHandler mLiquidBarHandler = null;
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Setter & Getter */
+    
     public BF_LiveObject LiveObject { get { return this.mLiveObject; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         mLiveObject = this.GetComponent<BF_LiveObject>();
@@ -53,17 +44,4 @@ public class BF_HealthTarget
 
         mLiveObject.IsPlayer = true;
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

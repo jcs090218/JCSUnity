@@ -15,13 +15,8 @@ using UnityEngine.UI;
 public class RC_WebcamHandler 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-
-    //----------------------
-    // Private Variables
     [SerializeField]
     private RectTransform mRectTransform = null;
 
@@ -40,16 +35,10 @@ public class RC_WebcamHandler
 
     private int mPanelIndex = 0;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Start()
     {
         mRectTransform = this.GetComponent<RectTransform>();
@@ -91,11 +80,6 @@ public class RC_WebcamHandler
         }
     }
     
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
     public void RC_SetActiveInTime(int way)
     {
         if (mStartTimer)
@@ -163,12 +147,4 @@ public class RC_WebcamHandler
         mStartGameButton.localPosition = newStartGameButtonPos;
         mStartGameButton.SetParent(mWebcamPanel[mPanelIndex].transform);
     }
-    
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

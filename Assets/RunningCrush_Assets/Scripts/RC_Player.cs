@@ -16,12 +16,8 @@ using JCSUnity;
 public class RC_Player 
     : JCS_2DSideScrollerPlayer
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     [Header("** RC_Player Settings (RC_Player) **")]
     [SerializeField] private int mControlIndex = 0;
 
@@ -59,12 +55,8 @@ public class RC_Player
     // if is multi-player mode then we threat this as a point.
     [SerializeField] private int mCurrentGold = -1;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public void SetRCPlayerPointer(RC_PlayerPointer pp) { this.mRCPlayerPointer = pp; }
     public void SetRCRevivePointer(RC_RevivePointer rp) { this.mRCRevivePointer = rp; }
     public bool IsDead { get { return this.mIsDead; } set { this.mIsDead = value; } }
@@ -79,9 +71,8 @@ public class RC_Player
     public RC_PlayerPointer GetRCPlayerPointer() { return this.mRCPlayerPointer; }
     public RC_RevivePointer GetRCRevivePointer() { return this.mRCRevivePointer; }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     protected override void Awake()
     {
         base.Awake();
@@ -155,13 +146,6 @@ public class RC_Player
     }
 #endif
 
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
     public void Block()
     {
         // when it get block minus the speed a bit.
@@ -211,11 +195,6 @@ public class RC_Player
         mLiquidBar.DeltaCurrentValue(val);
     }
 
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
     private void ProcessInput()
     {
         if (RC_GameSettings.instance.GAME_OVER)
@@ -360,12 +339,8 @@ public class RC_Player
                     // back to game!
                     mIsDead = false;
                 }
-
             }
-
-
         }
-
     }
     private void Revive()
     {
@@ -390,7 +365,6 @@ public class RC_Player
             // Do lose animation
             DoAnimation(JCS_LiveObjectState.PRONE);
         }
-        
 
         // dont move.
         mVelocity.x = 0;
@@ -404,5 +378,4 @@ public class RC_Player
         newPos += RC_GameSettings.instance.LIQUIDBAR_OFFSET;
         mLiquidBar.transform.position = newPos;
     }
-
 }

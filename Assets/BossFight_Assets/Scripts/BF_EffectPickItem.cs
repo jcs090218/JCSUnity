@@ -18,12 +18,7 @@ using JCSUnity;
 public class BF_EffectPickItem 
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     private BF_PickItem mPickItem = null;
 
@@ -41,16 +36,9 @@ public class BF_EffectPickItem
     [SerializeField] [Range(0, 30000)]
     private int mEffectValue = 0;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
 
     private void Awake()
     {
@@ -61,12 +49,6 @@ public class BF_EffectPickItem
     {
         SetPickColliderByObject();
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
 
     /// <summary>
     /// Do the design effect.
@@ -147,11 +129,4 @@ public class BF_EffectPickItem
                 break;
         }
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

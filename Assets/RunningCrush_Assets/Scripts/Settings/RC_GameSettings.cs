@@ -14,9 +14,8 @@ using System.IO;
 public class RC_GameSettings 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
     public static RC_GameSettings instance = null;
 
     // at least 1 player in game.
@@ -49,20 +48,10 @@ public class RC_GameSettings
     public RC_PlayerPointer[] PLAYER_POINTERS = null;
     public RC_RevivePointer[] PLAYER_REVIVE_POINTERS = null;
 
+    /* Setter & Getter */
 
-    //----------------------
-    // Private Variables
+    /* Functions */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         if (instance != null)
@@ -93,12 +82,6 @@ public class RC_GameSettings
         JCS_GameSettings.instance.LOAD_GAME_DATA_FUNC = LoadGameData;
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
     /// <summary>
     /// In order to let the designer do all the job needed, 
     /// set any button that will use to load the game scene
@@ -124,12 +107,6 @@ public class RC_GameSettings
             btn.SceneName = LEVEL_SELECTED_NAME;
         }
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
@@ -231,5 +208,4 @@ public class RC_GameSettings
 
         return RC_GameMode.SINGLE_PLAYERS;
     }
-
 }

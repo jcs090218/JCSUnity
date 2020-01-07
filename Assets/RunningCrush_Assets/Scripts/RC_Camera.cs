@@ -15,9 +15,8 @@ using System.Collections.Generic;
 public class RC_Camera 
     : MonoBehaviour
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
     public static RC_Camera instance = null;
 
     public enum TrackingTarget
@@ -28,8 +27,6 @@ public class RC_Camera
         DOWN
     };
 
-    //----------------------
-    // Private Variables
     private JCS_2DCamera mJCSCamera = null;
 
     [Header("** RC_Camera Settings **")]
@@ -40,17 +37,11 @@ public class RC_Camera
 
     private RC_Player mTrackingPlayer = null;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public RC_Player GetTrackingPlayer() { return this.mTrackingPlayer; }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
     private void Awake() 
     {
         instance = this;
@@ -63,18 +54,6 @@ public class RC_Camera
         DecideTrack();
 
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// Decide which player we want to track.
@@ -126,5 +105,4 @@ public class RC_Camera
 
         return (RC_Player)currentPlayerAndNotDead;
     }
-    
 }

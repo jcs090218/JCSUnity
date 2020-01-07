@@ -12,26 +12,17 @@ using System.Collections;
 public class RC_GoldSystem 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
     public static RC_GoldSystem instance = null;
 
-    //----------------------
-    // Private Variables
     private int mCurrentGold = -1;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
     public int GetCurrentGold() { return this.mCurrentGold; }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         instance = this;
@@ -47,22 +38,10 @@ public class RC_GoldSystem
     {
 
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
+
     public int DeltaGold(int val)
     {
         mCurrentGold += val;
         return mCurrentGold;
     }
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

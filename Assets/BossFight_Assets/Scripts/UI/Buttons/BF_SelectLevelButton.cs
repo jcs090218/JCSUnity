@@ -16,43 +16,18 @@ using JCSUnity;
 public class BF_SelectLevelButton 
     : JCS_Button
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [Tooltip("Name of the scene u want to load for game.")]
     [SerializeField]
     private string mSceneName = "";
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
+    /* Functions */
 
     public override void JCS_OnClickCallback()
     {
         BF_GameSettings.instance.LEVEL_SELECTED_NAME = mSceneName;
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

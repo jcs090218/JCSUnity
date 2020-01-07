@@ -18,12 +18,13 @@ using System.IO;
 public class RC_GameData
     : JCS_XMLGameData
 {
+    /* Variables */
 
-    //---------------------------------------------------
-    // Data Struct
     public string Name { get; set; }        // name of the player
     public int Gold { get; set; }           // cash in the game
     public int[] ItemNo { get; set; }       // Array of item unlocked.
 
+    /* Setter & Getter */
 
+    /* Functions */
 }

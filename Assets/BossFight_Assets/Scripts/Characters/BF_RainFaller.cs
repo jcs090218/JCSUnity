@@ -17,12 +17,8 @@ using JCSUnity;
 public class BF_RainFaller 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     private JCS_ShootAction mShootAction = null;
     private BF_Player mBFPlayer = null;
 
@@ -51,16 +47,10 @@ public class BF_RainFaller
     // check to see if we can reset our time zone.
     private bool mShooted = false;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         mShootAction = this.GetComponent<JCS_ShootAction>();
@@ -84,12 +74,6 @@ public class BF_RainFaller
     {
         DoRainFall();
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
 
     public void ShootRainFall()
     {
@@ -110,12 +94,6 @@ public class BF_RainFaller
 
         mShooted = true;
     }
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
 
     /// <summary>
     /// 

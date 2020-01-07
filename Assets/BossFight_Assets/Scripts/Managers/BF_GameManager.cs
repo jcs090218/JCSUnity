@@ -18,9 +18,8 @@ using UnityEngine.UI;
 public class BF_GameManager 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
     public static BF_GameManager instance = null;
 
     [Header("** Check Varaibles (BF_GameManager) **")]
@@ -85,20 +84,10 @@ public class BF_GameManager
     [Tooltip("Win/Lose condition dependency.")]
     public BF_HealthTarget mHealthTarget = null;
 
+    /* Setter & Getter */
 
-    //----------------------
-    // Private Variables
+    /* Functions */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
         instance = this;
@@ -113,12 +102,6 @@ public class BF_GameManager
             HEALTH_LIQUIDBAR.LiquidBar.ZeroCallbackFunc = LostTheGame;
         }
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
 
     public void DeltaCurrentExp(int val)
     {
@@ -161,12 +144,6 @@ public class BF_GameManager
         // Destroy all the live object in the scene.
         JCS_2DLiveObjectManager.instance.DestroyAllLiveObject();
     }
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
 
     private void CheckLevelUp()
     {
