@@ -7,7 +7,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 2020-01-07
 
-* Changed Unity scripting's default foramt, still WIP. (JCSUnity)
+* Changed Unity scripting's default foramt. (JCSUnity)
 
 ### 2019-11-14
 
