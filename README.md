@@ -27,6 +27,7 @@ any placeholder assets commercially.
 
 ## :newspaper: News
 
+* [`1.9.4`] - Changed base scripting format for better readability.
 * [`1.9.3`] - Started integrating In-App-Purchase (IAP) system.
 
 
