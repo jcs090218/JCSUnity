@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-01-07
+
+* Changed Unity scripting's default foramt, still WIP. (JCSUnity)
+
 ### 2019-11-14
 
 * Added PEY game logo to Games made. (JCSUnity)
