@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-01-19
+
+* Update project's Unity Engine version to 2019.2.18f1. (JCSUnity)
+
 ### 2020-01-07
 
 * Changed Unity scripting's default foramt. (JCSUnity)
