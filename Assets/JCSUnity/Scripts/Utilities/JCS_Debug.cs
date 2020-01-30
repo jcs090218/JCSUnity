@@ -31,7 +31,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Log", msg.ToString(), file, member, line);
+            JcsLog("LOG", msg.ToString(), file, member, line);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Log", msg, file, member, line);
+            JcsLog("LOG", msg, file, member, line);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Errors", msg.ToString(), file, member, line);
+            JcsLog("ERROR", msg.ToString(), file, member, line);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Errors", msg, file, member, line);
+            JcsLog("ERROR", msg, file, member, line);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Warnings", msg.ToString(), file, member, line);
+            JcsLog("WARNING", msg.ToString(), file, member, line);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace JCSUnity
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Warnings", msg, file, member, line);
+            JcsLog("WARNING", msg, file, member, line);
         }
 
         /// <summary>
@@ -121,13 +121,13 @@ namespace JCSUnity
         /// <param name="file"> caller file path. </param>
         /// <param name="member"> caller function. </param>
         /// <param name="line"> caller line number. </param>
-        public static void LogReminders(
+        public static void LogReminder(
             object msg,
             [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Reminders", msg.ToString(), file, member, line);
+            JcsLog("REMINDER", msg.ToString(), file, member, line);
         }
 
         /// <summary>
@@ -137,13 +137,13 @@ namespace JCSUnity
         /// <param name="file"> caller file path. </param>
         /// <param name="member"> caller function. </param>
         /// <param name="line"> caller line number. </param>
-        public static void LogReminders(
+        public static void LogReminder(
             string msg,
             [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-            JcsLog("Reminders", msg, file, member, line);
+            JcsLog("REMINDER", msg, file, member, line);
         }
 
         /// <summary>
@@ -163,15 +163,12 @@ namespace JCSUnity
         {
 #if (UNITY_EDITOR)
             string filename = Path.GetFileName(file);
-            Debug.Log("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Debug.Log("=-= JCSUnity." + type + " - [" + filename + "](" + line + ")" + msg + " =-=");
-            Debug.Log("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+            Debug.Log("¶ [" + type + "] { " + filename + " } ( " + line + " ) - " + msg);
 #endif
-
         }
 
         /// <summary>
-        /// 
+        /// Debug draw line.
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
@@ -183,7 +180,7 @@ namespace JCSUnity
             Debug.DrawLine(tempFrom, tempTo);
         }
         /// <summary>
-        /// 
+        /// Debug draw line.
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
@@ -196,7 +193,7 @@ namespace JCSUnity
             Debug.DrawLine(tempFrom, tempTo, col);
         }
         /// <summary>
-        /// 
+        /// Debug draw line.
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
@@ -205,7 +202,7 @@ namespace JCSUnity
             Debug.DrawLine(from, to);
         }
         /// <summary>
-        /// 
+        /// Debug draw line.
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
@@ -216,7 +213,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Debug draw rectangle shape.
         /// </summary>
         /// <param name="topLeft"></param>
         /// <param name="topRight"></param>
@@ -231,7 +228,7 @@ namespace JCSUnity
             Debug.DrawLine(botLeft, topLeft, col);
         }
         /// <summary>
-        /// 
+        /// Debug draw rectangle shape.
         /// </summary>
         /// <param name="topLeft"></param>
         /// <param name="topRight"></param>
