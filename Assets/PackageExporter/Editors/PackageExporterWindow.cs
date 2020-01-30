@@ -336,9 +336,22 @@ namespace PackageExporter
         /// </returns>
         private static bool MakeIgnore(string path, string[] ignoreList)
         {
+            // NOTE: Here is actually where we compare the path and ignore path.
+
+            // We use this to get rid of the first part of the path.
+            // Cuz all path includes `Assets/` infront!
+            const string assetPath = "Assets/";
+            
             foreach (string ignorePath in ignoreList)
             {
-                if (path.Contains(ignorePath))
+                // Path we use to compare.
+                int len = (ignorePath.Length > path.Length) ? path.Length : ignorePath.Length;
+                if (path.Length < assetPath.Length + len)
+                    len = path.Length - assetPath.Length;
+                // NOTE: Get rid of the `Assets/` infront of the path here!
+                string pathCompare = path.Substring(assetPath.Length, len);
+
+                if (pathCompare == ignorePath)
                     return true;
             }
 
