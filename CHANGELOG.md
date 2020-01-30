@@ -7,6 +7,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 2020-01-30
 
+* Update package exporter to version `1.0.3`. (JCSUnity)
 * Re-design debug module. (JCSUnity)
 
 ### 2020-01-19
