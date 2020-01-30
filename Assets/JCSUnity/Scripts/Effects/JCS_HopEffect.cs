@@ -78,8 +78,6 @@ namespace JCSUnity
 #if UNITY_EDITOR
             TestInput();
 #endif
-            JCS_Debug.Log("Hello World");
-
             DoHop();
         }
 
