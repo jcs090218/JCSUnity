@@ -75,7 +75,7 @@ namespace JCSUnity
         {
             if (mSkillAnim == null)
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                     "Assigning active skill action without animation is not allowed.");
 
                 return;

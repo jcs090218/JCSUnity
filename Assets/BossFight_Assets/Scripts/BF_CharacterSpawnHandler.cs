@@ -53,7 +53,7 @@ public class BF_CharacterSpawnHandler
         {
             if (mSpawnPos[index] == null)
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                     "No Spawn position references, plz check the transform in the array...");
                 break;
             }

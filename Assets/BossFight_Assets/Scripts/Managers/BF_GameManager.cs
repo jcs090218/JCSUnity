@@ -126,7 +126,7 @@ public class BF_GameManager
             mHealthTarget.LiveObject.CanDamage = false;
         else
         {
-            JCS_Debug.LogReminders(
+            JCS_Debug.LogReminder(
                 "No health object in the assign...");
         }
 

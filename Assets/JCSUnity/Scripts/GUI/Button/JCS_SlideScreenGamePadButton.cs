@@ -106,7 +106,7 @@ namespace JCSUnity
         {
             if (mSlideCameras.Length == 0)
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                     "Assign the button without camera is not allowed...");
                 return;
             }

@@ -33,7 +33,7 @@ namespace JCSUnity
 
             if (mRemindPerTime < mTimer)
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                      "Object you should destroy but you did not...");
 
 #if (UNITY_EDITOR)

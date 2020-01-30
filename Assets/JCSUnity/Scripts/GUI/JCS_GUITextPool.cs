@@ -114,7 +114,7 @@ namespace JCSUnity
         {
             if (mLogText == null)
             {
-                JCS_Debug.LogReminders( 
+                JCS_Debug.LogReminder( 
                     "No log text assign in the text pool...");
 
                 return;

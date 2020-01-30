@@ -326,7 +326,7 @@ namespace JCSUnity
             // this help level designer to do their job.
             if (!ReadSceneNames.CheckSceneAvailable(sceneName))
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                     "Scene [" + sceneName + "] u want to load is not in the Build Setting...");
 
                 return;

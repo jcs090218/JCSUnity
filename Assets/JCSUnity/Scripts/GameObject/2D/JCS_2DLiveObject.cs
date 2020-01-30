@@ -233,7 +233,7 @@ to get the information from them.")]
                 defenseValue = mAbilityFormat.GetDefenseValue();
             else
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                     "No Ability Format attached.");
             }
 

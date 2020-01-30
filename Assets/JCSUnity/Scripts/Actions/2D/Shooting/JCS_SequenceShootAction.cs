@@ -143,7 +143,7 @@ namespace JCSUnity
         {
             if (mShootAction.Bullet == null)
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                     "There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
 
                 return;
@@ -151,7 +151,7 @@ namespace JCSUnity
 
             if (hit <= 0)
             {
-                JCS_Debug.LogReminders(
+                JCS_Debug.LogReminder(
                     "Cannot shoot sequence of bullet with lower than 0 hit...");
 
                 return;
