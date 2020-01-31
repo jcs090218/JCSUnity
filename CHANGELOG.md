@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-01-31
+
+* Fixed ensure all class inherit all parent class for settings. (JCSUnity)
+* Fixed ensure all class inherit all parent class for managers. (JCSUnity)
+
 ### 2020-01-30
 
 * Update package exporter to version `1.0.3`. (JCSUnity)
