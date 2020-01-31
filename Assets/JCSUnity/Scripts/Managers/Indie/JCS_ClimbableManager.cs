@@ -20,8 +20,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static JCS_ClimbableManager instance = null;
-
         [Header("** Runtime Variables (JCS_ClimbableManager) **")]
 
         [Tooltip("Sorting order add up when climable interactable object is infront.")]
