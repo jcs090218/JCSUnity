@@ -15,12 +15,9 @@ namespace JCSUnity
     /// Package data settings.
     /// </summary>
     public class JCS_PackageDataSettings
-        : MonoBehaviour
+        : JCS_Settings<JCS_PackageDataSettings>
     {
         /* Variables */
-
-        public static JCS_PackageDataSettings instance = null;
-
 
         [Header("** Package Data Settings (JCS_PackageDataSettings) **")]
 
@@ -36,7 +33,24 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            instance = CheckSingleton(instance, this);
+        }
+
+        /// <summary>
+        /// Instead of Unity Engine's scripting layer's DontDestroyOnLoad.
+        /// I would like to use own define to transfer the old instance
+        /// to the newer instance.
+        /// 
+        /// Every time when unity load the scene. The script have been
+        /// reset, in order not to lose the original setting.
+        /// transfer the data from old instance to new instance.
+        /// </summary>
+        /// <param name="_old"> old instance </param>
+        /// <param name="_new"> new instance </param>
+        protected override void TransferData(JCS_PackageDataSettings _old, JCS_PackageDataSettings _new)
+        {
+            _new.CopyrightString = _old.CopyrightString;
+            _new.VersionString = _old.VersionString;
         }
     }
 }
