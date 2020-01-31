@@ -16,7 +16,7 @@ namespace JCSUnity
     /// Manage all Climbable object in the scene. (Under Indie manager)
     /// </summary>
     public class JCS_ClimbableManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_ClimbableManager>
     {
         /* Variables */
 

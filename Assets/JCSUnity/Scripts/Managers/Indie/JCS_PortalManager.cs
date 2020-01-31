@@ -15,11 +15,9 @@ namespace JCSUnity
     /// Handle all the portal in the scene.
     /// </summary>
     public class JCS_PortalManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_PortalManager>
     {
         /* Variables */
-
-        public static JCS_PortalManager instance = null;
 
         [Header("** Initialize Variables (JCS_PortalManager) **")]
 

@@ -16,11 +16,9 @@ namespace JCSUnity
     /// Game independent manager tag.
     /// </summary>
     public class JCS_IndieManager
-        : MonoBehaviour
+        : JCS_Managers<JCS_IndieManager>
     {
         /* Variables */
-
-        public static JCS_IndieManager instance = null;
 
         /* Setter & Getter */
 
