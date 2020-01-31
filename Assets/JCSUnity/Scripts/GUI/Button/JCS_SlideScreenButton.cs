@@ -61,6 +61,9 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public void SetDirection(JCS_2D8Direction direction) { this.mDirection = direction; }
+        public JCS_2D8Direction Direction { get { return this.mDirection; } }
+        public int Count { get { return this.mCount; } }
+        public float DelayTime { get { return this.mDelayTime; } }
 
 
         /* Functions */
