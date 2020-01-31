@@ -27,8 +27,8 @@ BossFight_Assets
 RunningCrush_Assets
 
 # Ignore example projects' resources.
-BossFight_Resources
-RunningCrush_Resources
+Resources/BossFight_Resources
+Resources/RunningCrush_Resources
 
 # Ignore self data
 JCS_GameData
