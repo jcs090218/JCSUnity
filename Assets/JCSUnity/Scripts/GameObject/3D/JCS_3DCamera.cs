@@ -17,7 +17,7 @@ namespace JCSUnity
     /// Basic camera in 3d game.
     /// </summary>
     [RequireComponent(typeof(AudioListener))]
-    public class JCS_3DCamera 
+    public class JCS_3DCamera
         : JCS_Camera
     {
         /* Variables */
@@ -55,18 +55,21 @@ namespace JCSUnity
         private bool mSmoothTrack = false;
 
         [Tooltip("How fast the camera track in each axis?")]
-        [SerializeField] [Range(0.01f, 10.0f)]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
         private float mSmoothTrackFriction = 0.2f;
-        
+
 
         [Header("** Rotate Camera Settings (JCS_3DCamera) **")]
 
         [Tooltip("How fast this camera rotates.")]
-        [SerializeField] [Range(0.1f, 1000.0f)]
+        [SerializeField]
+        [Range(0.1f, 1000.0f)]
         private float mRotateSpeed = 350.0f;
 
         [Tooltip("Range when rotating to the target rotation.")]
-        [SerializeField] [Range(0.01f, 2.0f)]
+        [SerializeField]
+        [Range(0.01f, 2.0f)]
         private float mAcceptRange = 1.0f;
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
@@ -103,7 +106,6 @@ namespace JCSUnity
         };
         // instance rotation state.
         private CheckState mCheckState = CheckState.NULL;
-
 
 
         //-- Follow Object with frame distance
@@ -159,11 +161,13 @@ namespace JCSUnity
         private bool mZoomEffect = true;
 
         [Tooltip("Distance once you scroll.")]
-        [SerializeField] [Range(0.0f, 500.0f)]
+        [SerializeField]
+        [Range(0.0f, 500.0f)]
         private float mScrollRange = 120.0f;
 
         [Tooltip("How fast it scroll speed get reduce?")]
-        [SerializeField] [Range(0.1f, 5.0f)]
+        [SerializeField]
+        [Range(0.1f, 5.0f)]
         private float mScrollSpeedFriction = 0.4f;
 
         // the real target of the speed
@@ -176,11 +180,13 @@ namespace JCSUnity
         [Header("- Min / Max")]
 
         [Tooltip("Mininum distance camera can approach to?")]
-        [SerializeField] [Range(0.01f, 500.0f)]
+        [SerializeField]
+        [Range(0.01f, 500.0f)]
         private float mMinDistance = 2;
 
         [Tooltip("Maxinum distance camera can far away from?")]
-        [SerializeField] [Range(10.0f, 1000.0f)]
+        [SerializeField]
+        [Range(10.0f, 1000.0f)]
         private float mMaxDistance = 200;
 
 
@@ -255,9 +261,6 @@ namespace JCSUnity
             mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
             ZoomCamera(mWheelDegree);
 
-            // Fix the speed if reach the distance!
-            FixedMinMaxDistance();
-
             Vector3 newPos = Vector3.forward * mTargetScrollSpeed * Time.deltaTime;
 
             // if is valid, do action.
@@ -278,10 +281,11 @@ namespace JCSUnity
                 mTrackPosition += afterTransPos - currentPos;
             }
 
-            // asymptotic back to zero
-            mTargetScrollSpeed += (0 - mTargetScrollSpeed) / mScrollSpeedFriction * Time.deltaTime;
+            // Fix the speed if reach the distance!
+            FixedMinMaxDistance();
 
-            
+            // asymptotic back to zero
+            mTargetScrollSpeed += (0.0f - mTargetScrollSpeed) / mScrollSpeedFriction * Time.deltaTime;
         }
 
 #if (UNITY_EDITOR)
@@ -324,11 +328,11 @@ namespace JCSUnity
                 return;
             }
 
-            float wantedDegree = mTargetAngle + 180;
+            float wantedDegree = mTargetAngle + 180.0f;
 
             // set the degree with in 0-360 range to prevent 
             // out of range possiblity.
-            float withIn360Degree = wantedDegree % 360;
+            float withIn360Degree = wantedDegree % 360.0f;
 
             SetToRevoluationAngle(withIn360Degree);
         }
@@ -343,7 +347,7 @@ namespace JCSUnity
             if (mMaxHeight < mTargetHeight)
                 mTargetHeight = mMaxHeight;
         }
-        
+
         /// <summary>
         /// Move the caemra downward.
         /// </summary>
@@ -401,7 +405,7 @@ namespace JCSUnity
             }
 
             // to the rotate formula.
-            this.transform.position = JCS_Mathf.RotatePointY(transform.position, Mathf.Cos(speed / 1000), Mathf.Sin(speed / 1000), mTargetTransform.position);
+            this.transform.position = JCS_Mathf.RotatePointY(transform.position, Mathf.Cos(speed / 1000.0f), Mathf.Sin(speed / 1000.0f), mTargetTransform.position);
 
             // NOTE(jenchieh): also set to the track position.
             mTrackPosition = this.transform.position;
@@ -435,7 +439,7 @@ namespace JCSUnity
 
             if (JCS_Mathf.isPositive(circumferenceDistance))
             {
-                if (circumferenceDistance + mAcceptRange <= 0 ||
+                if (circumferenceDistance + mAcceptRange <= 0.0f ||
                     mCheckState == CheckState.NEGATIVE)
                 {
                     mDoReset = false;
@@ -448,7 +452,7 @@ namespace JCSUnity
             }
             else
             {
-                if (circumferenceDistance + mAcceptRange >= 0 ||
+                if (circumferenceDistance + mAcceptRange >= 0.0f ||
                     mCheckState == CheckState.POSITIVE)
                 {
                     mDoReset = false;
@@ -537,31 +541,38 @@ namespace JCSUnity
             if (!mZoomEffect)
                 return;
 
-            if (depthDistance == 0)
+            if (depthDistance == 0.0f)
                 return;
 
             this.mTargetScrollSpeed = this.mWheelDegree * this.mScrollRange;
         }
 
         /// <summary>
-        /// Fix the speed/range if reach 
-        /// the min/max distance.
+        /// Fix the speed/range if reach the min/max distance.
         /// </summary>
         private void FixedMinMaxDistance()
         {
             float currentDistance = Vector3.Distance(this.transform.position, mTargetTransform.position);
             if (JCS_Mathf.isPositive(mTargetScrollSpeed))
             {
-                if (currentDistance < mMinDistance)
+                if (currentDistance <= mMinDistance)
                 {
-                    mTargetScrollSpeed = 0;
+                    mTargetScrollSpeed = 0.0f;
+
+                    Vector3 newPos = this.transform.position;
+                    newPos.z = mTargetTransform.position.z - mMinDistance;
+                    this.transform.position = newPos;
                 }
             }
             else
             {
-                if (currentDistance > mMaxDistance)
+                if (currentDistance >= mMaxDistance)
                 {
-                    mTargetScrollSpeed = 0;
+                    mTargetScrollSpeed = 0.0f;
+
+                    Vector3 newPos = this.transform.position;
+                    newPos.z = mTargetTransform.position.z - mMaxDistance;
+                    this.transform.position = newPos;
                 }
             }
         }
