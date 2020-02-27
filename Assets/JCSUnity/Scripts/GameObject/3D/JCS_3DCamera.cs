@@ -171,10 +171,13 @@ namespace JCSUnity
         private float mScrollSpeedFriction = 0.4f;
 
         // the real target of the speed
-        private float mTargetScrollSpeed = 0;
+        private float mTargetScrollSpeed = 0.0f;
+
+        // Record the position down for zoom effect.
+        private Vector3 mRecordPosition = Vector3.zero;
 
         // scroll distance.
-        private float mWheelDegree = 0;
+        private float mWheelDegree = 0.0f;
 
 
         [Header("- Min / Max")]
@@ -182,12 +185,12 @@ namespace JCSUnity
         [Tooltip("Mininum distance camera can approach to?")]
         [SerializeField]
         [Range(0.01f, 500.0f)]
-        private float mMinDistance = 2;
+        private float mMinDistance = 2.0f;
 
         [Tooltip("Maxinum distance camera can far away from?")]
         [SerializeField]
         [Range(10.0f, 1000.0f)]
-        private float mMaxDistance = 200;
+        private float mMaxDistance = 200.0f;
 
 
         /* Setter & Getter */
@@ -252,6 +255,8 @@ namespace JCSUnity
 
             UpDownMovement();
 
+
+            this.mRecordPosition = this.transform.position;
 
             // get the wheel value from the Unity API
             // (physical layer[mouse wheel] -> 
@@ -560,7 +565,7 @@ namespace JCSUnity
                     mTargetScrollSpeed = 0.0f;
 
                     Vector3 newPos = this.transform.position;
-                    newPos.z = mTargetTransform.position.z - mMinDistance;
+                    newPos.z = mRecordPosition.z;
                     this.transform.position = newPos;
                 }
             }
@@ -571,7 +576,7 @@ namespace JCSUnity
                     mTargetScrollSpeed = 0.0f;
 
                     Vector3 newPos = this.transform.position;
-                    newPos.z = mTargetTransform.position.z - mMaxDistance;
+                    newPos.z = mRecordPosition.z;
                     this.transform.position = newPos;
                 }
             }
