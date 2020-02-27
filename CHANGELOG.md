@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-01-27
 
 * Update project's Unity Engine version to 2019.3.3f1. (JCSUnity)
+* Fixed `JCS_3DCamera` out of range issue. (JCSUnity)
 
 ### 2020-02-24
 
