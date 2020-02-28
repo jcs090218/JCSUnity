@@ -37,6 +37,9 @@ namespace JCSUnity
         public KeyCode downRightKey = KeyCode.C;
 #endif
 
+        // Path that points to the panel.
+        private string mPanelHolderPath = "JCSUnity_Framework_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
+
         [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
 
         // Notice important that Designer should know what
@@ -53,7 +56,30 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SlideScreenPanelHolder mPanelHolder = null;
 
-        private string mPanelHolderPath = "JCSUnity_Framework_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
+        [Header("- Mobile")]
+
+        [Tooltip("How sticky to the original of the panel's position.")]
+        [Range(0.001f, 300.0f)]
+        [SerializeField]
+        private float mSlideStickiness = 60.0f;
+
+        [Tooltip("")]
+        [Range(0.0f, 5000.0f)]
+        [SerializeField]
+        private float mSlideDistanceX = 5.0f;
+
+        [Tooltip("")]
+        [Range(0.0f, 5000)]
+        [SerializeField]
+        private float mSlideDistanceY = 5.0f;
+
+        [Tooltip("Freeze the x axis sliding action.")]
+        [SerializeField]
+        private bool mFreezeX = false;
+
+        [Tooltip("Freeze the y axis sliding action.")]
+        [SerializeField]
+        private bool mFreezeY = false;
 
 
         /* Setter & Getter */
@@ -61,7 +87,8 @@ namespace JCSUnity
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
         public void SetJCS2DCamera(JCS_2DCamera cam) { this.mJCS_2DCamera = cam; }
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
-
+        public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
+        public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
 
         /* Functions */
 
@@ -90,16 +117,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
             Test();
 #endif
-
-            if (mPanelHolder != null)
-            {
-                JCS_SlideInput si = JCS_InputManager.instance.GetJCSSlideInput();
-                if (si != null)
-                {
-                    mPanelHolder.AddForce(-si.DeltaPos.x, JCS_Axis.AXIS_X);
-                    mPanelHolder.AddForce(-si.DeltaPos.y, JCS_Axis.AXIS_Y);
-                }
-            }
+            DoMobileSlide();
         }
 
 #if (UNITY_EDITOR)
@@ -159,6 +177,53 @@ namespace JCSUnity
                 case JCS_UnityGUIType.nGUI_3D:
                     NGUISwitchScene(towardDirection);
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Handle the mobile slide input.
+        /// </summary>
+        private void DoMobileSlide()
+        {
+            JCS_SlideInput si = JCS_InputManager.instance.GetJCSSlideInput();
+            if (si == null)
+                return;
+
+            if (si.Touched)
+            {
+                mPanelHolder.EnableSlidePanels(false);
+
+                Vector3 deltaPos = si.DeltaPos;
+
+                if (mFreezeX) deltaPos.x = 0.0f;
+                if (mFreezeY) deltaPos.y = 0.0f;
+
+                mPanelHolder.DeltaMove(-deltaPos / mSlideStickiness);
+            }
+            else
+            {
+                mPanelHolder.EnableSlidePanels(true);
+            }
+
+            if (JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
+            {
+                Vector3 posDiff = mPanelHolder.PositionDiff();
+
+                if (!mFreezeX && posDiff.x > this.mSlideDistanceX)
+                {
+                    if (JCS_Mathf.isPositive(si.DragDisplacement.x))
+                        SwitchScene(JCS_2D4Direction.LEFT);
+                    else
+                        SwitchScene(JCS_2D4Direction.RIGHT);
+                }
+
+                if (!mFreezeY && posDiff.y > this.mSlideDistanceY)
+                {
+                    if (JCS_Mathf.isPositive(si.DragDisplacement.y))
+                        SwitchScene(JCS_2D4Direction.BOTTOM);
+                    else
+                        SwitchScene(JCS_2D4Direction.TOP);
+                }
             }
         }
 

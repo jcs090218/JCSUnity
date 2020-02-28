@@ -71,6 +71,38 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Enable/Disable slide panels by ACT.
+        /// </summary>
+        /// <param name="act"></param>
+        public void EnableSlidePanels(bool act)
+        {
+            foreach (JCS_SlidePanel sp in mSlidePanelsComponents)
+                sp.enabled = act;
+        }
+
+        /// <summary>
+        /// Move the position by delta position.
+        /// </summary>
+        /// <param name="deltaPos"></param>
+        public void DeltaMove(Vector3 deltaPos)
+        {
+            foreach (JCS_SlidePanel sp in mSlidePanelsComponents)
+                sp.transform.position -= deltaPos;
+        }
+
+        /// <summary>
+        /// Difference between target position and current position.
+        /// </summary>
+        /// <returns></returns>
+        public Vector3 PositionDiff()
+        {
+            JCS_SlidePanel sp = mSlidePanelsComponents[0];
+            Vector3 curPos = sp.transform.position;
+            Vector3 targPos = sp.GetTargetPosition();
+            return JCS_Mathf.AbsoluteValue(curPos - targPos);
+        }
+
+        /// <summary>
         /// Add Force to the panel.
         /// </summary>
         /// <param name="pos"></param>
@@ -106,7 +138,6 @@ namespace JCSUnity
                 case JCS_Axis.AXIS_Z:
                     tempPos.z = force;
                     break;
-
             }
 
             AddForce(tempPos);

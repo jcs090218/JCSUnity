@@ -702,5 +702,18 @@ namespace JCSUnity
 
             return (a == 0) ? b : a;
         }
+
+        public static float GetSign(float val)
+        {
+            if (val == 0.0f)
+                return 0.0f;
+            else
+            {
+                if (isPositive(val))
+                    return 1;
+                else
+                    return -1;
+            }
+        }
     }
 }
