@@ -5,9 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-02-29
+
+* Added sound settings for `JCS_2DSlideScreenCamera`. (JCSUnity)
+
 ### 2020-02-28
 
-* Add mobile slide GUI feature. (JCSUnity)
+* Added mobile slide GUI feature. (JCSUnity)
 
 ### 2020-01-27
 
