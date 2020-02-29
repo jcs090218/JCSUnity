@@ -56,19 +56,19 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SlideScreenPanelHolder mPanelHolder = null;
 
-        [Header("- Mobile")]
+        [Header("## Mobile")]
 
         [Tooltip("How sticky to the original of the panel's position.")]
         [Range(0.001f, 300.0f)]
         [SerializeField]
         private float mSlideStickiness = 60.0f;
 
-        [Tooltip("")]
+        [Tooltip("Distance to slide over next scene on x axis.")]
         [Range(0.0f, 5000.0f)]
         [SerializeField]
         private float mSlideDistanceX = 5.0f;
 
-        [Tooltip("")]
+        [Tooltip("Distance to slide over next scene on y axis.")]
         [Range(0.0f, 5000)]
         [SerializeField]
         private float mSlideDistanceY = 5.0f;
@@ -81,6 +81,12 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeY = false;
 
+        [Header("## Sound")]
+
+        [Tooltip("Sound when trigger switch scene.")]
+        [SerializeField]
+        private AudioClip mSwitchSceneSound = null;
+
 
         /* Setter & Getter */
 
@@ -89,6 +95,7 @@ namespace JCSUnity
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
+        public AudioClip SwitchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
 
         /* Functions */
 
@@ -161,6 +168,8 @@ namespace JCSUnity
                     NGUISwitchScene(towardDirection);
                     break;
             }
+
+            PlaySwitchSceneSound();
         }
 
         /// <summary>
@@ -178,6 +187,8 @@ namespace JCSUnity
                     NGUISwitchScene(towardDirection);
                     break;
             }
+
+            PlaySwitchSceneSound();
         }
 
         /// <summary>
@@ -225,6 +236,15 @@ namespace JCSUnity
                         SwitchScene(JCS_2D4Direction.TOP);
                 }
             }
+        }
+        
+        /// <summary>
+        /// Play switch scene sound.
+        /// </summary>
+        private void PlaySwitchSceneSound()
+        {
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShot(this.mSwitchSceneSound);
         }
 
         //////////// 2D //////////////////////////

@@ -29,6 +29,12 @@ namespace JCSUnity
         [SerializeField]
         private Vector2 mDragDisplacement = Vector2.zero;
 
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+        [Tooltip("Multiple touches distance in average.")]
+        [SerializeField]
+        private float mTouchDistance = 0.0f;
+#endif
+
 #if (UNITY_EDITOR || UNITY_STANDALONE)
         [Tooltip("Previous position.")]
         [SerializeField]
@@ -57,6 +63,9 @@ namespace JCSUnity
         public Vector2 DeltaPos { get { return this.mDeltaPos; } }
         public Vector2 DragDistance { get { return this.mDragDistance; } }
         public Vector2 DragDisplacement { get { return this.mDragDisplacement; } }
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+        public float TouchDistance { get { return this.mTouchDistance; } }
+#endif
 
 
         /* Functions */
@@ -98,13 +107,15 @@ namespace JCSUnity
             mPrePos = currPos;
 
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-
             // Detect Touch
             mTouched = (Input.touchCount == 1);
             if (mTouched)
                 WhenTouched();
-            else 
+            else
+            {
                 WhenUntouched();
+                HandleMultiTouches();
+            }
 #endif
         }
 
@@ -150,5 +161,31 @@ namespace JCSUnity
             mFocus = false;
 #endif
         }
+
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+        /// <summary>
+        /// Handle multi touches.
+        /// </summary>
+        private void HandleMultiTouches()
+        {
+            if (Input.touchCount <= 1)
+            {
+                this.mTouchDistance = 0.0f;
+                return;
+            }
+
+            float sumTotal = 0.0f;
+
+            for (int index = 1; index < Input.touchCount; ++index)
+            {
+                var firstTouch = Input.touches[index - 1];
+                var currentTouch = Input.touches[index];
+                float distance = Vector2.Distance(firstTouch.position, currentTouch.position);
+                sumTotal += distance;
+            }
+
+            sumTotal /= (Input.touchCount - 1);
+        }
+#endif
     }
 }
