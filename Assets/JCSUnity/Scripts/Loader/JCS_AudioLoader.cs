@@ -69,8 +69,6 @@ namespace JCSUnity
             ac = request.GetAudioClip(false, false);
 #endif
 
-            ac = DownloadHandlerAudioClip.GetContent(request);
-
             if (callback != null)
                 callback.Invoke(ac);
         }
