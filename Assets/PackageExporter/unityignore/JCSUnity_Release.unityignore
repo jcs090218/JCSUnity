@@ -23,12 +23,12 @@ FrameworkTest_Assets
 Resources/FrameworkTest_Resources
 
 # Ignore example projects.
-BossFight_Assets
-RunningCrush_Assets
+_BossFight_Assets
+_RunningCrush_Assets
 
 # Ignore example projects' resources.
-Resources/BossFight_Resources
-Resources/RunningCrush_Resources
+Resources/_BossFight_Resources
+Resources/_RunningCrush_Resources
 
 # Ignore self data
 JCS_GameData
