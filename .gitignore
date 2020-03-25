@@ -9,11 +9,22 @@
 /obj
 /Tutorials
 /Publish
-/Assets/Libraries
-/Assets/JCS_GameData/WebcamShot
 
-# Except these directory.
-!/Assets/Libraries/Tweener/
+# 3rd party plugins
+/Assets/GaussianBlur
+/Assets/GaussianBlur.*
+/Assets/Infinity Code
+/Assets/Infinity Code.*
+/Assets/LogViewer
+/Assets/LogViewer.*
+/Assets/SpriteMask
+/Assets/SpriteMask.*
+/Assets/StandaloneFileBrowser
+/Assets/StandaloneFileBrowser.*
+/Assets/TextMesh Pro
+/Assets/TextMesh Pro.*
+/Assets/UI-Polygon
+/Assets/UI-Polygon.*
 
 # ignore build info
 /Assets/StreamingAssets/build_info
