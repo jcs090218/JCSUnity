@@ -213,7 +213,12 @@ namespace JCSUnity
         /// </summary>
         /// <param name="button"> type by keycode (Unity built-in) </param>
         /// <returns> true: if double click, false nothing happens </returns>
-        public static bool OnMouseDoubleClick(int button, bool ignorePause = false)
+#if UNITY_5_4_OR_NEWER  // NOTE: Resolve ambiguous issue.
+        public
+#else
+        private
+#endif 
+        static bool OnMouseDoubleClick(int button, bool ignorePause = false)
         {
             // Check first click
             if (!CLICK)
@@ -250,7 +255,12 @@ namespace JCSUnity
         /// <param name="button"></param>
         /// <param name="ignorePause"></param>
         /// <returns></returns>
-        public static bool OnMouseDrag(JCS_MouseButton button, bool ignorePause = false)
+#if UNITY_5_4_OR_NEWER  // NOTE: Resolve ambiguous issue.
+        public
+#else
+        private
+#endif
+        static bool OnMouseDrag(JCS_MouseButton button, bool ignorePause = false)
         {
             if (START_DRAGGING)
             {
@@ -364,7 +374,12 @@ namespace JCSUnity
         /// true, the mouse state is correct.
         /// false, the mouse state is incorrect.
         /// </returns>
-        public static bool GetMouseByAction(JCS_KeyActionType act, JCS_MouseButton button, bool ignorePause = false)
+#if UNITY_5_4_OR_NEWER  // NOTE: Resolve ambiguous issue.
+        public
+#else
+        private
+#endif
+        static bool GetMouseByAction(JCS_KeyActionType act, JCS_MouseButton button, bool ignorePause = false)
         {
             return GetMouseByAction(act, (int)button, ignorePause);
         }
@@ -412,7 +427,12 @@ namespace JCSUnity
         /// true, button is down.
         /// false, button is not down.
         /// </returns>
-        public static bool GetMouseButtonDown(int button, bool ignorePause = false)
+#if UNITY_5_4_OR_NEWER  // NOTE: Resolve ambiguous issue.
+        public
+#else
+        private
+#endif
+        static bool GetMouseButtonDown(int button, bool ignorePause = false)
         {
             if (!ignorePause)
             {
@@ -445,7 +465,12 @@ namespace JCSUnity
         /// true, button is pressed.
         /// false, button is not pressed.
         /// </returns>
-        public static bool GetMouseButton(int button, bool ignorePause = false)
+#if UNITY_5_4_OR_NEWER  // NOTE: Resolve ambiguous issue.
+        public
+#else
+        private
+#endif
+        static bool GetMouseButton(int button, bool ignorePause = false)
         {
             if (!ignorePause)
             {
@@ -478,7 +503,12 @@ namespace JCSUnity
         /// true, button is up.
         /// false, button is not up.
         /// </returns>
-        public static bool GetMouseButtonUp(int button, bool ignorePause = false)
+#if UNITY_5_4_OR_NEWER  // NOTE: Resolve ambiguous issue.
+        public
+#else
+        private
+#endif
+        static bool GetMouseButtonUp(int button, bool ignorePause = false)
         {
             if (!ignorePause)
             {
@@ -1546,7 +1576,7 @@ namespace JCSUnity
         }
 
 
-        #region CTRL
+#region CTRL
 
         /// <summary>
         /// Is one the ctrl key pressed?
@@ -1621,9 +1651,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-        #endregion
+#endregion
 
-        #region ALT
+#region ALT
 
         /// <summary>
         /// Is one the alt key pressed?
@@ -1696,9 +1726,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-        #endregion
+#endregion
 
-        #region SHIFT
+#region SHIFT
 
         /// <summary>
         /// Is one the shift key pressed?
@@ -1771,9 +1801,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-        #endregion
+#endregion
 
-        #region CTRL_SHIFT
+#region CTRL_SHIFT
         /// <summary>
         /// Check if the 'key' and the ctrl and shift key is pressed.
         /// </summary>
@@ -1821,9 +1851,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-        #endregion
+#endregion
 
-        #region ALT_CTRL
+#region ALT_CTRL
         /// <summary>
         /// Check if the 'key' and the ctrl and alt key is pressed.
         /// </summary>
@@ -1871,9 +1901,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-        #endregion
+#endregion
 
-        #region ALT_SHIFT
+#region ALT_SHIFT
         /// <summary>
         /// Check if the 'key' and the alt and shift key is pressed.
         /// </summary>
@@ -1921,9 +1951,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-        #endregion
+#endregion
 
-        #region ALT_CTRL_SHIFT
+#region ALT_CTRL_SHIFT
 
         /// <summary>
         /// Check if the 'key', alt, shift and ctrl key is pressed.
@@ -1973,7 +2003,7 @@ namespace JCSUnity
             return GetKeyUp(key);
         }
 
-        #endregion
+#endregion
 
         /// <summary>
         /// Get key with certain combination.
