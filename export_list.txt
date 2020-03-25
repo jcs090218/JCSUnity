@@ -1,18 +1,15 @@
 
-Make sure you select 'Assets' folder before click 
+Make sure you select 'Assets' folder before click
 the 'Export Package...' button.
 
 
-
--> FrameworkTest_Assets
+-> _FrameworkTest_Assets
 -> JCSUnity
--> Libraries
-    -> Reporter
-    -> SpriteMask
-    -> StandaloneFileBrowser
-    -> TextMesh Pro
-    -> Tweener
-    -> UI-Polygon
--> Resources 
+-> Reporter
+-> SpriteMask
+-> StandaloneFileBrowser
+-> TextMesh Pro
+-> Tweener
+-> UI-Polygon
+-> Resources
     -> JCSUnity_Resources
--> StreamingAssets
