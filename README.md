@@ -27,7 +27,7 @@ any placeholder assets commercially.
 
 ## :newspaper: News
 
-* `1.9.6` - Fixed down compatibility to Unity version `5.3.3`.
+* `2.0.0` - Fixed down compatibility to Unity version `5.3.3`.
 * `1.9.4` - Changed base scripting format for better readability.
 * `1.9.3` - Started integrating In-App-Purchase (IAP) system.
 
