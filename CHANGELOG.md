@@ -8,6 +8,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-03-25
 
 * Fixed down compatibility to Unity version `5.3.3`. (JCSUnity)
+* Changed project structure to have all the 3rd party dependencies on the 
+ root of the `Assets` folder. (JCSUnity)
 
 ### 2020-02-29
 
