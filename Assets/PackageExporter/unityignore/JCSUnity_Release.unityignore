@@ -35,9 +35,9 @@ JCS_GameData
 JCS_ScreenShot
 
 # Ignore Libraries
-Libraries/GaussianBlur
-Libraries/Infinity Code
-Libraries/SpriteMask
+GaussianBlur
+Infinity Code
+SpriteMask
 
 # Ignore Plugins
 Plugins

@@ -23,9 +23,9 @@ _FrameworkTest_Assets
 Resources/_FrameworkTest_Resources
 
 # Ignore Libraries
-Libraries/GaussianBlur
-Libraries/Infinity Code
-Libraries/SpriteMask
+GaussianBlur
+Infinity Code
+SpriteMask
 
 # Ignore Plugins
 Plugins
