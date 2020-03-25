@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace JCSUnity
 {
@@ -25,6 +26,13 @@ namespace JCSUnity
 
         /* Functions */
 
+#if !UNITY_5_4_OR_NEWER
+        private void OnLevelWasLoaded(int level)
+        {
+            LevelLoaded();
+        }
+#endif
+
         protected override void Awake()
         {
             base.Awake();
@@ -36,20 +44,13 @@ namespace JCSUnity
             {
                 instance = this;
 
+#if UNITY_5_4_OR_NEWER
                 // ==> OnLevelWasLoaded <==
-                UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
+                SceneManager.sceneLoaded += (scene, loadingMode) =>
                 {
-                    // set to Sound Manager in order to get manage
-                    JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
-
-                    if (!JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE)
-                    {
-                        // Assign BGM from Sound Manager!
-                        GetAudioSource().clip = JCS_SoundSettings.instance.BACKGROUND_MUSIC;
-
-                        GetAudioSource().Play();
-                    }
+                    LevelLoaded();
                 };
+#endif
             }
             else
             {
@@ -57,6 +58,25 @@ namespace JCSUnity
                 {
                     Destroy(this.gameObject);
                 }
+            }
+        }
+
+        /// <summary>
+        /// On level was loaded callback.
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <param name="loadingMode"></param>
+        private void LevelLoaded()
+        {
+            // set to Sound Manager in order to get manage
+            JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
+
+            if (!JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE)
+            {
+                // Assign BGM from Sound Manager!
+                GetAudioSource().clip = JCS_SoundSettings.instance.BACKGROUND_MUSIC;
+
+                GetAudioSource().Play();
             }
         }
     }

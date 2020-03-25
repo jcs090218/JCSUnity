@@ -1,3 +1,4 @@
+#if UNITY_5_6_OR_NEWER
 /**
  * $File: JCS_VideoLoader.cs $
  * $Date: 2018-07-30 18:55:46 $
@@ -52,3 +53,4 @@ namespace JCSUnity
         }
     }
 }
+#endif

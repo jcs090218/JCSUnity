@@ -57,8 +57,17 @@ namespace JCSUnity
         {
             string formatFullFilePath = string.Format("file://{0}", fullFilePath);
 
+#if UNITY_2018_1_OR_NEWER
             UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(formatFullFilePath, type);
             yield return request.SendWebRequest();
+
+            ac = DownloadHandlerAudioClip.GetContent(request);
+#else
+            WWW request = new WWW(formatFullFilePath);
+            yield return request;
+
+            ac = request.GetAudioClip(false, false);
+#endif
 
             ac = DownloadHandlerAudioClip.GetContent(request);
 

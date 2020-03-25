@@ -28,7 +28,7 @@ namespace JCSUnity
         BUTTON_A,       // KeyOrMouseButton  (Circle)
         BUTTON_B,       // KeyOrMouseButton  (Square)
         BUTTON_X,       // KeyOrMouseButton
-        BUTTON_Y,       // KeyOrMouseButton (Triangle)
+        BUTTON_Y,       // KeyOrMouseButton  (Triangle)
 
         LEFT_BUMPER,    // KeyOrMouseButton  (L1)
         RIGHT_BUMPER,   // KeyOrMouseButton  (R1)

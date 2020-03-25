@@ -124,8 +124,10 @@ namespace JCSUnity
 
             if (mTextContainer)
                 mTextContainer.text = textFrame[this.mCurrentFrame];
+#if TMP_PRO
             if (mTextMesh)
                 mTextMesh.text = textFrame[this.mCurrentFrame];
+#endif
         }
 
         /// <summary>

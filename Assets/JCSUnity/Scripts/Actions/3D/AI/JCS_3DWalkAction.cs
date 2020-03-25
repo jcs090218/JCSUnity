@@ -8,13 +8,16 @@
  */
 using UnityEngine;
 using System.Collections;
+#if UNITY_5_4_OR_NEWER
+using UnityEngine.AI;
+#endif
 
 namespace JCSUnity
 {
     /// <summary>
     /// Simulate the walk action in 3D space.
     /// </summary>
-    [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshAgent))]
     public class JCS_3DWalkAction
         : MonoBehaviour
         , JCS_Action
@@ -23,7 +26,7 @@ namespace JCSUnity
 
         // All enemy should have the nav
         // mesh agent for the path finding.
-        private UnityEngine.AI.NavMeshAgent mNavMeshAgent = null;
+        private NavMeshAgent mNavMeshAgent = null;
 
         [Header("** Check Variables (JCS_3DWalkAction) **")]
 
@@ -80,7 +83,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mNavMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
+            this.mNavMeshAgent = this.GetComponent<NavMeshAgent>();
         }
 
         private void Update()
@@ -143,12 +146,12 @@ namespace JCSUnity
         /// <summary>
         /// Check if the nav mesh agent arrive the destination.
         /// </summary>
-        public bool NavMeshArrive(UnityEngine.AI.NavMeshAgent agent)
+        public bool NavMeshArrive(NavMeshAgent agent)
         {
             float dist = agent.remainingDistance;
 
             if (dist != Mathf.Infinity &&
-                agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
+                agent.pathStatus == NavMeshPathStatus.PathComplete &&
                 agent.remainingDistance == 0)
             {
                 return true;

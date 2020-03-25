@@ -11,7 +11,7 @@ using System.Collections;
 
 // Starting Version 5.3.0 Unity use SceneManageement 
 // instead of Application on load function call.
-#if (UNITY_5_3_OR_NEWER)
+#if (UNITY_5_3 || UNITY_5_3_OR_NEWER)
 using UnityEngine.SceneManagement;
 #endif
 
@@ -189,7 +189,7 @@ namespace JCSUnity
 
             if (ws == null)
             {
-                JCS_Debug.LogError("GameObject without \"JCS_WhiteScreen\" Component attached!!!");
+                JCS_Debug.LogError("GameObject without `JCS_WhiteScreen` Component attached!!!");
                 return;
             }
 

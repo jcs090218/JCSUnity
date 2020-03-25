@@ -114,11 +114,6 @@ namespace JCSUnity
             }
         }
 
-        private void Start()
-        {
-            GetInitGUIScreenSize();
-        }
-
         private void Update()
         {
 #if (UNITY_EDITOR)
@@ -274,18 +269,6 @@ namespace JCSUnity
 
             // set target to follow!
             mJCS_2DCamera.SetFollowTarget(this.transform);
-        }
-
-        /// <summary>
-        /// According to Unity's low level code architecture,
-        /// Unity Engine itself start handle the screen size resolution
-        /// only during runtime, so we just have to get the screen size once
-        /// for GUI(UGUI) switch scene functions.
-        /// </summary>
-        private void GetInitGUIScreenSize()
-        {
-            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
-            Vector2 appScreenSize = appRect.sizeDelta;
         }
 
         /// <summary>

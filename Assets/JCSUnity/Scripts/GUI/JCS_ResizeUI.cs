@@ -150,12 +150,11 @@ namespace JCSUnity
 
         private void Start()
         {
+#if (UNITY_5_4_OR_NEWER)
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
-#if (UNITY_5_4_OR_NEWER)
-            // TODO(JenChieh): unknown reason that 
-            //                something changes this to 
-            //                somewhere else. (since 5.4.0f3)
+            // TODO(jenchieh): unknown reason that something changes this to 
+            // somewhere else. (since 5.4.0f3)
             Vector3 tempPos = appRect.localPosition;
             tempPos.z = 0;
             this.transform.localPosition = Vector3.zero;

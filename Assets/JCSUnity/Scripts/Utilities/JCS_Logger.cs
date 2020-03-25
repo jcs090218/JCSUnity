@@ -1,4 +1,4 @@
-/**
+﻿/**
  * $File: JCS_Logger.cs $
  * $Date: 2017-08-20 12:34:33 $
  * $Revision: $
@@ -12,6 +12,20 @@ using UnityEngine;
 using System;
 using System.Runtime.CompilerServices;
 using System.IO;
+
+#if (!NET_STANDARD_2_0 && !NET_4_6)
+namespace System.Runtime.CompilerServices
+{
+    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]
+    public class CallerMemberNameAttribute : Attribute { }
+
+    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]
+    public class CallerFilePathAttribute : Attribute { }
+
+    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]
+    public class CallerLineNumberAttribute : Attribute { }
+}
+#endif
 
 namespace JCSUnity
 {
@@ -33,10 +47,10 @@ namespace JCSUnity
             [CallerLineNumber] int line = 0)
         {
 #if (UNITY_EDITOR)
-            Debug.Log("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Debug.Log("INFO: " + msg);
-            Debug.Log(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " " + Path.GetFileName(file) + " " + member + "(" + line + ")");
-            Debug.Log("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+            Debug.Log("¶ [INFO] " + msg + " " + 
+                DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " " + 
+                Path.GetFileName(file) + " " + 
+                member + "(" + line + ")");
 #endif
         }
 

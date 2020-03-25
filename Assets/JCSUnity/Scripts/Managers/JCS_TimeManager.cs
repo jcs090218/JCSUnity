@@ -221,16 +221,28 @@ namespace JCSUnity
             */
             string cityId = "1668341";
             string url = "http://api.openweathermap.org/data/2.5/forecast/city?id=" + cityId + "&APPID=ffbfe3797e856b051ec15a41ba1360c8";
+#if UNITY_2018_1_OR_NEWER
             UnityWebRequest www = UnityWebRequest.Get(url);
             yield return www.SendWebRequest();
+#else
+            WWW www = new WWW(url);
+            yield return www;
+#endif
 
             if (www.error == null)
             {
-
+#if UNITY_2018_1_OR_NEWER
                 Debug.Log("Loaded following XML " + www.downloadHandler.text);
+#else
+                Debug.Log("Loaded following XML " + www.text);
+#endif
 
                 XmlDocument xmlDoc = new XmlDocument();
+#if UNITY_2018_1_OR_NEWER
                 xmlDoc.LoadXml(www.downloadHandler.text);
+#else
+                xmlDoc.LoadXml(www.text);
+#endif
 
                 //Debug.Log("City: " + xmlDoc.SelectSingleNode("cities/list/item/city/@name").InnerText);
                 //Debug.Log("Temperature: " + xmlDoc.SelectSingleNode("cities/list/item/temperature/@value").InnerText);

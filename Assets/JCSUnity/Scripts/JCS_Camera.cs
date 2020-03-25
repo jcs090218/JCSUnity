@@ -119,11 +119,11 @@ namespace JCSUnity
         public virtual void TakeScreenShot()
         {
 #if (UNITY_STANDALONE || UNITY_EDITOR)
+#if (UNITY_2017_1_OR_NEWER)
             /**
              * Data path info:
              *      - http://docs.unity3d.com/ScriptReference/Application-dataPath.html
              */
-
 
             // get the last saved screen shot's index
             int last_saved_index = SearchDirectory(
@@ -137,6 +137,7 @@ namespace JCSUnity
                 JCS_GameSettings.instance.SCREENSHOT_FILENAME +
                 last_saved_index +
                 JCS_GameSettings.instance.SAVED_IMG_EXTENSION);
+#endif
 #endif
         }
 
