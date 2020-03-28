@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-03-28
 
 * Renamed some of the weird API naming in system module. (JCSUnity)
+* You can now zoom in/out with touches in mobile device. (JCSUnity)
 
 ### 2020-03-26
 
