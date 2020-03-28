@@ -146,19 +146,21 @@ namespace JCSUnity
         // 
         private float mTargetHeight = 0;
 
-
         [Header("- Speed/Friction")]
 
         [Tooltip("How fast it change the view up and down?")]
         [SerializeField]
         private float mUpDownFriction = 0.2f;
 
-
         [Header("** Scroll / Zoom Settings **")]
 
         [Tooltip("Do the zoom effect?")]
         [SerializeField]
         private bool mZoomEffect = true;
+
+        [Tooltip("Zoom with the mouse or touches.")]
+        [SerializeField]
+        private bool mZoomWithMouseOrTouch = true;
 
         [Tooltip("Distance once you scroll.")]
         [SerializeField]
@@ -211,6 +213,8 @@ namespace JCSUnity
                 mTrackPosition = this.transform.position;
             }
         }
+        public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
+        public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
 
         /* Functions */
 
@@ -258,13 +262,22 @@ namespace JCSUnity
 
             this.mRecordPosition = this.transform.position;
 
-            // get the wheel value from the Unity API
-            // (physical layer[mouse wheel] -> 
-            // os layer[windows7] -> 
-            // application layer[Unity itself]) -> 
-            // to here...
-            mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
-            ZoomCamera(mWheelDegree);
+            if (mZoomWithMouseOrTouch)
+            {
+#if (UNITY_EDITOR || UNITY_STANDALONE)
+                // Get the wheel value from the Unity API
+                // 
+                // physical layer [mouse wheel] ->
+                // OS layer ->
+                // application layer [Unity itself] ->
+                // to here...
+                mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
+#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+                JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+                mWheelDegree = slideInput.TouchDistance;
+#endif
+                ZoomCamera(mWheelDegree);
+            }
 
             Vector3 newPos = Vector3.forward * mTargetScrollSpeed * Time.deltaTime;
 

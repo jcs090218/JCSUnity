@@ -82,13 +82,13 @@ namespace JCSUnity
         //-- Scroll
         [Header("** Scroll Setting **")]
 
-        [Tooltip("Do the zoom effect?")]
+        [Tooltip("Do the zoom effect.")]
         [SerializeField]
         private bool mZoomEffect = true;
 
-        [Tooltip("Zoom with the mouse?")]
+        [Tooltip("Zoom with the mouse or touches.")]
         [SerializeField]
-        private bool mZoomWithMouse = true;
+        private bool mZoomWithMouseOrTouch = true;
 
         [Tooltip("Distance once you scroll.")]
         [SerializeField]
@@ -148,7 +148,7 @@ namespace JCSUnity
         public bool HardTrack { get { return this.mHardTrack; } set { this.mHardTrack = value; } }
         public bool ResetVelocityToZeroWhileNotActive { get { return this.mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
-        public bool ZoomWithMouse { get { return this.mZoomWithMouse; } set { this.mZoomWithMouse = value; } }
+        public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
 
 
         /* Functions */
@@ -214,14 +214,20 @@ namespace JCSUnity
             if (mFreezeInRuntime)
                 this.mFreezeRecord = this.transform.position;
 
-            if (mZoomWithMouse)
+            if (mZoomWithMouseOrTouch)
             {
-                // get the wheel value from the Unity API
-                // (physical layer[mouse wheel] ->
-                // os layer[windows7] ->
-                // application layer[Unity itself]) ->
+#if (UNITY_EDITOR || UNITY_STANDALONE)
+                // Get the wheel value from the Unity API
+                // 
+                // physical layer [mouse wheel] ->
+                // OS layer ->
+                // application layer [Unity itself] ->
                 // to here...
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
+#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+                JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+                mWheelDegree = slideInput.TouchDistance;
+#endif
                 ZoomCamera(mWheelDegree);
             }
 
