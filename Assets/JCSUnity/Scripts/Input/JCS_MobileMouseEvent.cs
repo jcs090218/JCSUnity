@@ -43,9 +43,6 @@ namespace JCSUnity
         {
             if (mCamera == null)
                 this.mCamera = JCS_Camera.main.GetCamera();
-
-            // set to manager in order to get manage by "JCS_InputManager"
-            JCS_InputManager.instance.SetJCSMobileMouseEvent(this);
         }
 
         private void Update()

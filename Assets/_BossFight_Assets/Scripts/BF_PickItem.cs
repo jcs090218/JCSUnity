@@ -67,13 +67,13 @@ public class BF_PickItem
     {
         JCS_ApplicationManager am = JCS_ApplicationManager.instance;
 
-        if (am.isPC())
+        if (am.IsPC())
         {
             // pc version will have to pick by mouse
             jcsItem.PickByMouseDown = true;
         }
 
-        if (am.isMobile())
+        if (am.IsMobile())
         {
             // set to true so when the item hit the ground, 
             // pick event will be activate.

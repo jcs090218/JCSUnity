@@ -76,25 +76,25 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Is platform pc?
+        /// Check if the platform on PC.
         /// </summary>
         /// <returns>
-        /// true: is pc,
-        /// false: not pc.
+        ///   -> Return true, if it is on PC.
+        ///   -> Return false, if it is NOT on PC.
         /// </returns>
-        public bool isPC()
+        public bool IsPC()
         {
             return (PLATFORM_TYPE == JCS_PlatformType.PC);
         }
 
         /// <summary>
-        /// Check the platform mobile?
+        /// Check if the platform on mobile.
         /// </summary>
         /// <returns>
-        /// ture: is mobile,
-        /// false: not mobile
+        ///   -> Return true, if it is on mobile.
+        ///   -> Return false, if it is NOT on mobile.
         /// </returns>
-        public bool isMobile()
+        public bool IsMobile()
         {
             return (PLATFORM_TYPE == JCS_PlatformType.MOBILE);
         }

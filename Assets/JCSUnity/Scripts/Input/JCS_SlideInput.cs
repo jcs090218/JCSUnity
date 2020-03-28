@@ -84,12 +84,6 @@ namespace JCSUnity
         }
 #endif
 
-        private void Start()
-        {
-            // set to manager in order to get manage by "JCS_InputManager"
-            JCS_InputManager.instance.SetJCSSlideInput(this);
-        }
-
         private void Update()
         {
 #if (UNITY_EDITOR || UNITY_STANDALONE)

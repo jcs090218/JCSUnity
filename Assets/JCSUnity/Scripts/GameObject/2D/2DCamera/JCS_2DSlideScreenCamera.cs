@@ -191,7 +191,7 @@ namespace JCSUnity
         /// </summary>
         private void DoMobileSlide()
         {
-            JCS_SlideInput si = JCS_InputManager.instance.GetJCSSlideInput();
+            JCS_SlideInput si = JCS_InputManager.instance.GetGlobalSlideInput();
             if (si == null)
                 return;
 

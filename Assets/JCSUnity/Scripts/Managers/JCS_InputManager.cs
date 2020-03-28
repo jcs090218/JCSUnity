@@ -31,10 +31,28 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void SetJCSSlideInput(JCS_SlideInput sl) { this.mSlideInput = sl; }
-        public JCS_SlideInput GetJCSSlideInput() { return this.mSlideInput; }
-        public void SetJCSMobileMouseEvent(JCS_MobileMouseEvent me) { this.mMobileMouseEvent = me; }
-        public JCS_MobileMouseEvent GetJCSMobileMouseEvent() { return this.mMobileMouseEvent; }
+        public JCS_SlideInput GetGlobalSlideInput()
+        {
+#if UNITY_EDITOR
+            if (JCS_GameSettings.instance.DEBUG_MODE)
+            {
+                JCS_Debug.LogWarning("You tried to access global slide input but doesn't exists");
+                return null;
+            }
+#endif
+            return this.mSlideInput;
+        }
+        public JCS_MobileMouseEvent GetGlobalMobileMouseEvent()
+        {
+#if UNITY_EDITOR
+            if (JCS_GameSettings.instance.DEBUG_MODE)
+            {
+                JCS_Debug.LogWarning("You tried to access global mobile mouse event but doesn't exists");
+                return null;
+            }
+#endif
+            return this.mMobileMouseEvent;
+        }
 
         /* Functions */
 
@@ -56,8 +74,8 @@ namespace JCSUnity
             switch (JCS_ApplicationManager.instance.PLATFORM_TYPE)
             {
                 case JCS_PlatformType.MOBILE:
-                    this.gameObject.AddComponent<JCS_SlideInput>();
-                    this.gameObject.AddComponent<JCS_MobileMouseEvent>();
+                    this.mSlideInput = this.gameObject.AddComponent<JCS_SlideInput>();
+                    this.mMobileMouseEvent = this.gameObject.AddComponent<JCS_MobileMouseEvent>();
                     break;
             }
         }
