@@ -95,10 +95,12 @@ namespace JCSUnity
 
         [Tooltip("Standard screen width to calculate the worldspace " +
             "obejct's camera view.")]
+        [Range(1, 8192)]
         public int STANDARD_SCREEN_WIDTH = 1920;
 
         [Tooltip("Standard screen height to calculate the worldspace " +
             "obejct's camera view.")]
+        [Range(1, 8192)]
         public int STANDARD_SCREEN_HEIGHT = 1080;
 
         /* Setter & Getter */
