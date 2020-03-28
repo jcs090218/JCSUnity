@@ -29,6 +29,10 @@ namespace JCSUnity
         [SerializeField]
         private Vector2 mDragDisplacement = Vector2.zero;
 
+        [Tooltip("Flag to check if drag.")]
+        [SerializeField]
+        private bool mDragging = false;
+
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         [Tooltip("Multiple touches distance in average.")]
         [SerializeField]
@@ -60,6 +64,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool Touched { get { return this.mTouched; } }
+        public bool Dragging { get { return this.mDragging; } }
         public Vector2 DeltaPos { get { return this.mDeltaPos; } }
         public Vector2 DragDistance { get { return this.mDragDistance; } }
         public Vector2 DragDisplacement { get { return this.mDragDisplacement; } }
@@ -120,10 +125,13 @@ namespace JCSUnity
         {
             Vector3 currPos = Input.mousePosition;
 
-            if (mDeltaPos == Vector2.zero)
+            if (mDeltaPos == Vector2.zero && mDragDistance == Vector2.zero)
+            {
                 this.mDragStartPosition = currPos;
+            }
             else
             {
+                this.mDragging = true;
                 Vector2 dragEndPosition = currPos;
 
                 this.mDragDistance.x = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.x, dragEndPosition.x);
@@ -145,6 +153,7 @@ namespace JCSUnity
         /// </summary>
         private void WhenUntouched()
         {
+            mDragging = false;
             mDragDistance = Vector2.zero;
             mDragDisplacement = Vector2.zero;
 
