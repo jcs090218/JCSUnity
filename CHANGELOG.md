@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Renamed some of the weird API naming in system module. (JCSUnity)
 * You can now zoom in/out with touches in mobile device. (JCSUnity)
+* Implemented touch event compatible with mouse event. (JCSUnity)
 
 ### 2020-03-26
 
