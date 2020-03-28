@@ -178,7 +178,7 @@ namespace JCSUnity
                 sumTotal += distance;
             }
 
-            sumTotal /= (Input.touchCount - 1);
+            this.mTouchDistance = sumTotal / (Input.touchCount - 1);
         }
 #endif
     }
