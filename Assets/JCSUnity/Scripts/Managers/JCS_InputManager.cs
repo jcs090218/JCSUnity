@@ -29,6 +29,32 @@ namespace JCSUnity
         [SerializeField]
         private JCS_MobileMouseEvent mMobileMouseEvent = null;
 
+        [Header("** Runtime Varaibles (JCS_InputManager) **")]
+
+        [Tooltip("Support OnMouseEnter event from mobile.")]
+        [SerializeField]
+        private bool mSupport_OnMouseEnter = false;
+
+        [Tooltip("Support OnMouseExit event from mobile.")]
+        [SerializeField]
+        private bool mSupport_OnMouseExit = false;
+
+        [Tooltip("Support OnMouseDown event from mobile.")]
+        [SerializeField]
+        private bool mSupport_OnMouseDown = true;
+
+        [Tooltip("Support OnMouseUp event from mobile.")]
+        [SerializeField]
+        private bool mSupport_OnMouseUp = true;
+
+        [Tooltip("Support OnMouseOver event from mobile.")]
+        [SerializeField]
+        private bool mSupport_OnMouseOver = false;
+
+        [Tooltip("Support OnMouseDrag event from mobile.")]
+        [SerializeField]
+        private bool mSupport_OnMouseDrag = false;
+
         /* Setter & Getter */
 
         public JCS_SlideInput GetGlobalSlideInput()
@@ -53,6 +79,13 @@ namespace JCSUnity
 #endif
             return this.mMobileMouseEvent;
         }
+
+        public bool Support_OnMouseEnter { get { return this.mSupport_OnMouseEnter; } }
+        public bool Support_OnMouseExit { get { return this.mSupport_OnMouseExit; } }
+        public bool Support_OnMouseDown { get { return this.mSupport_OnMouseDown; } }
+        public bool Support_OnMouseUp { get { return this.mSupport_OnMouseUp; } }
+        public bool Support_OnMouseOver { get { return this.mSupport_OnMouseOver; } }
+        public bool Support_OnMouseDrag { get { return this.mSupport_OnMouseDrag; } }
 
         /* Functions */
 

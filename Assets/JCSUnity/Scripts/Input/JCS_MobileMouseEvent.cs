@@ -8,24 +8,31 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Use this to receiving the single from mobile touch input/bufffer.
     /// </summary>
-    public class JCS_MobileMouseEvent 
+    public class JCS_MobileMouseEvent
         : MonoBehaviour
     {
         /* Variables */
 
         [Header("** Check Variables (JCS_MobileMouseEvent) **")]
 
+        [Tooltip("")]
         [SerializeField]
         private Camera mCamera = null;
-        [SerializeField]
-        private bool mTouched = false;
 
+        [SerializeField]
+        private RaycastHit[] mHits = new RaycastHit[0];
+
+        [Tooltip("Check if touched last frame.")]
+        [SerializeField]
+        private bool mTouchedLastFrame = false;
 
         [Header("** Runtime Variables (JCS_MobileMouseEvent) **")]
 
@@ -47,28 +54,151 @@ namespace JCSUnity
 
         private void Update()
         {
-            mTouched = JCS_Input.GetMouseButton(0);
-            if (mTouched)
-            {
-                // A ray is an infinite line starting at an origin and going into a direction
-                // For this we will use our mouse position
-                Ray ray = mCamera.ScreenPointToRay(Input.mousePosition);
+            Handle_EnterExit();
+            Handle_UpOver();
+            Handle_DownDrag();
+        }
 
-                RaycastHit[] hits = Physics.RaycastAll(ray, mRaycastDistance);
+        /// <summary>
+        /// Send OBJ the message NAME.
+        /// </summary>
+        /// <param name="obj"> Game object you want to send. </param>
+        /// <param name="name"> Event name. </param>
+        private void _SendMessage(GameObject obj, string name)
+        {
+            obj.SendMessage(name, SendMessageOptions.DontRequireReceiver);
+        }
 
-                foreach (RaycastHit hit in hits)
-                {
-                    hit.transform.gameObject.SendMessage("OnMouseDown", SendMessageOptions.DontRequireReceiver);
-
+        /// <summary>
+        /// Debug print name.
+        /// </summary>
+        /// <param name="trans"></param>
+        private void PrintName(Transform trans)
+        {
 #if (UNITY_EDITOR)
-                    if (JCS_GameSettings.instance.DEBUG_MODE)
-                    {
-                        // print the name of the detected transform.
-                        JCS_Debug.PrintName(hit.transform);
-                    }
+            if (!JCS_GameSettings.instance.DEBUG_MODE)
+                return;
+
+            // print the name of the detected transform.
+            JCS_Debug.PrintName(trans);
 #endif
-                }
+        }
+
+        /// <summary>
+        /// Handle these events.
+        ///   -> OnMouseEnter
+        ///   -> OnMouseExit
+        /// </summary>
+        private void Handle_EnterExit()
+        {
+            JCS_InputManager im = JCS_InputManager.instance;
+
+            // A ray is an infinite line starting at an origin and going into a direction
+            // For this we will use our mouse position
+            Ray ray = mCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] hits = Physics.RaycastAll(ray, mRaycastDistance);
+
+            foreach (RaycastHit hit in hits)
+            {
+                GameObject obj = hit.transform.gameObject;
+
+                if (mHits.Contains(hit))
+                    continue;
+
+                if (im.Support_OnMouseEnter)
+                    _SendMessage(obj, "OnMouseEnter");
             }
+
+            foreach (RaycastHit hit in mHits)
+            {
+                GameObject obj = hit.transform.gameObject;
+
+                if (hits.Contains(hit))
+                    continue;
+
+                if (im.Support_OnMouseExit)
+                    _SendMessage(obj, "OnMouseExit");
+
+                PrintName(hit.transform);
+            }
+
+            mHits = hits;
+        }
+
+        /// <summary>
+        /// Handle these events.
+        ///   -> OnMouseUp
+        ///   -> OnMouseOver
+        /// </summary>
+        private void Handle_UpOver()
+        {
+            JCS_InputManager im = JCS_InputManager.instance;
+
+            JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+
+            foreach (RaycastHit hit in mHits)
+            {
+                GameObject obj = hit.transform.gameObject;
+
+                if (im.Support_OnMouseOver)
+                    _SendMessage(obj, "OnMouseOver");
+
+                if (im.Support_OnMouseUp)
+                {
+                    if (mTouchedLastFrame && !slideInput.Touched)
+                        _SendMessage(obj, "OnMouseUp");
+                }
+
+                PrintName(hit.transform);
+            }
+        }
+
+        /// <summary>
+        /// Handle these events.
+        ///   -> OnMouseDown
+        ///   -> OnMouseDrag
+        /// </summary>
+        private void Handle_DownDrag()
+        {
+            JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+
+            if (!slideInput.Touched)
+            {
+                this.mTouchedLastFrame = false;
+                return;
+            }
+
+            JCS_InputManager im = JCS_InputManager.instance;
+
+            // A ray is an infinite line starting at an origin and going into a direction
+            // For this we will use our mouse position
+            Ray ray = mCamera.ScreenPointToRay(Input.mousePosition);
+
+            mHits = Physics.RaycastAll(ray, mRaycastDistance);
+
+            foreach (RaycastHit hit in mHits)
+            {
+                GameObject obj = hit.transform.gameObject;
+
+                if (slideInput.Touched)
+                {
+                    if (im.Support_OnMouseDown)
+                    {
+                        if (!mTouchedLastFrame)
+                            _SendMessage(obj, "OnMouseDown");
+                    }
+
+                    if (im.Support_OnMouseDrag)
+                    {
+                        if (slideInput.DeltaPos != Vector2.zero)
+                            _SendMessage(obj, "OnMouseDrag");
+                    }
+                }
+
+                PrintName(hit.transform);
+            }
+
+            this.mTouchedLastFrame = true;
         }
     }
 }
