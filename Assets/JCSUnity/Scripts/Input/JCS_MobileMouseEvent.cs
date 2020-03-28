@@ -134,7 +134,7 @@ namespace JCSUnity
         {
             JCS_InputManager im = JCS_InputManager.instance;
 
-            JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+            JCS_SlideInput slideInput = im.GetGlobalSlideInput();
 
             foreach (RaycastHit hit in mHits)
             {
@@ -160,15 +160,15 @@ namespace JCSUnity
         /// </summary>
         private void Handle_DownDrag()
         {
-            JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
+            JCS_InputManager im = JCS_InputManager.instance;
+
+            JCS_SlideInput slideInput = im.GetGlobalSlideInput();
 
             if (!slideInput.Touched)
             {
                 this.mTouchedLastFrame = false;
                 return;
             }
-
-            JCS_InputManager im = JCS_InputManager.instance;
 
             // A ray is an infinite line starting at an origin and going into a direction
             // For this we will use our mouse position
