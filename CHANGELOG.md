@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-03-29
+
+* Implemented zoom in/out on mobile device. (JCSUnity)
+
 ### 2020-03-28
 
 * Renamed some of the weird API naming in system module. (JCSUnity)
