@@ -220,6 +220,8 @@ namespace JCSUnity
         }
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
         public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
+        public float ScrollRange_Mouse { get { return this.mScrollRange_Mouse; } set { this.mScrollRange_Mouse = value; } }
+        public float ScrollRange_Touch { get { return this.mScrollRange_Touch; } set { this.mScrollRange_Touch = value; } }
 
         /* Functions */
 
