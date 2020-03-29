@@ -90,12 +90,12 @@ namespace JCSUnity
         [SerializeField]
         private bool mZoomWithMouseOrTouch = true;
 
-        [Tooltip("Distance once you scroll.")]
+        [Tooltip("Distance once you scroll with mouse.")]
         [SerializeField]
         [Range(0.001f, 500.0f)]
         private float mScrollRange_Mouse = 2.0f;
 
-        [Tooltip("Distance once you scroll.")]
+        [Tooltip("Distance once you scroll with multi-touch.")]
         [SerializeField]
         [Range(0.001f, 500.0f)]
         private float mScrollRange_Touch = 1.0f;
