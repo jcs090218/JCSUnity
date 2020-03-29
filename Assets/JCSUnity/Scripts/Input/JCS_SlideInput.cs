@@ -31,6 +31,16 @@ namespace JCSUnity
         private bool mFocus = false;
 #endif
 
+        [Header("** Runtime Variables (JCS_SlideInput) **")]
+
+        [Tooltip("Is the screen touches?")]
+        [SerializeField]
+        private bool mTouched = false;
+
+        [Tooltip("Delta value changes on the screen.")]
+        [SerializeField]
+        private Vector2 mDeltaPos = Vector2.zero;
+
         [Tooltip("Drag distance.")]
         [SerializeField]
         private Vector2 mDragDistance = Vector2.zero;
@@ -56,16 +66,6 @@ namespace JCSUnity
         [SerializeField]
         private float mTouchDistanceDelta = 0.0f;
 #endif
-
-        [Header("** Runtime Variables (JCS_SlideInput) **")]
-
-        [Tooltip("Is the screen touches?")]
-        [SerializeField]
-        private bool mTouched = false;
-
-        [Tooltip("Delta value changes on the screen.")]
-        [SerializeField]
-        private Vector2 mDeltaPos = Vector2.zero;
 
         private Vector2 mDragStartPosition = Vector2.zero;
 
