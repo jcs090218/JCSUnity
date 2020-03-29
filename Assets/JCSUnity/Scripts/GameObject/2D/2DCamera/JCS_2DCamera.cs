@@ -92,8 +92,13 @@ namespace JCSUnity
 
         [Tooltip("Distance once you scroll.")]
         [SerializeField]
-        [Range(0.0f, 100.0f)]
-        private float mScrollRange = 2.0f;
+        [Range(0.001f, 500.0f)]
+        private float mScrollRange_Mouse = 2.0f;
+
+        [Tooltip("Distance once you scroll.")]
+        [SerializeField]
+        [Range(0.001f, 500.0f)]
+        private float mScrollRange_Touch = 1.0f;
 
         [Tooltip("How fast it scroll. (Zoom In/Out)")]
         [SerializeField]
@@ -226,7 +231,7 @@ namespace JCSUnity
                 mWheelDegree = Input.GetAxis("Mouse ScrollWheel");
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
                 JCS_SlideInput slideInput = JCS_InputManager.instance.GetGlobalSlideInput();
-                mWheelDegree = slideInput.TouchDistance;
+                mWheelDegree = slideInput.TouchDistanceDelta;
 #endif
                 ZoomCamera(mWheelDegree);
             }
@@ -284,15 +289,18 @@ namespace JCSUnity
         /// <param name="depthDistance"></param>
         public void ZoomCamera(float depthDistance)
         {
-            // check the trigger of the
-            // scrolling effect.
+            // Check the trigger of the scrolling effect.
             if (!mZoomEffect)
                 return;
 
             if (depthDistance == 0)
                 return;
 
-            float cameraDepth = depthDistance * mScrollRange;
+#if (UNITY_EDITOR || UNITY_STANDALONE)
+            float cameraDepth = depthDistance * mScrollRange_Mouse;
+#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+            float cameraDepth = depthDistance * mScrollRange_Touch;
+#endif
 
             this.mTargetPosition.z += cameraDepth;
         }
