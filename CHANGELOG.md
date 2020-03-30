@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-03-30
+
+* Fixed camera position offset logic with hard track in both 
+ 2D/3D camera. (JCSUnity)
+
 ### 2020-03-29
 
 * Implemented zoom in/out on mobile device. (JCSUnity)
