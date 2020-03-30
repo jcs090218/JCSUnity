@@ -185,7 +185,6 @@ namespace JCSUnity
         [Range(10.0f, 1000.0f)]
         private float mMaxDistance = 200.0f;
 
-
         /* Setter & Getter */
 
         public Transform FollowTarget { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
