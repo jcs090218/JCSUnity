@@ -30,13 +30,11 @@ namespace JCSUnity
         private bool mTestWithKey = false;
 #endif
 
-
         [Header("** Check Variables (JCS_3DCamera) **")]
 
         [Tooltip("")]
         [SerializeField]
         private Vector3 mTrackPosition = Vector3.zero;
-
 
         [Header("** Runtime Variables (JCS_3DCamera) **")]
 
@@ -50,15 +48,12 @@ namespace JCSUnity
         [SerializeField]
         private float mTargetAngle = 0.0f;
 
-        [Tooltip("Do the smooth track instead of hard track.")]
-        [SerializeField]
-        private bool mSmoothTrack = false;
+        [Header("** Speed / Friction **")]
 
         [Tooltip("How fast the camera track in each axis?")]
         [SerializeField]
         [Range(0.01f, 10.0f)]
         private float mSmoothTrackFriction = 0.2f;
-
 
         [Header("** Rotate Camera Settings (JCS_3DCamera) **")]
 
@@ -81,7 +76,6 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mRotateAroundRight = KeyCode.None;
 
-
         [Header("** Reset Camera Settings (JCS_3DCamera) **")]
 
         [Tooltip("Key to reset the camera.")]
@@ -89,7 +83,6 @@ namespace JCSUnity
         private KeyCode mResetKeyCode = KeyCode.None;
 
 #endif
-
         [Tooltip("Angle when reset the camera.")]
         [SerializeField]
         private float mResetTargetAngle = 0.0f;
@@ -106,11 +99,6 @@ namespace JCSUnity
         };
         // instance rotation state.
         private CheckState mCheckState = CheckState.NULL;
-
-
-        //-- Follow Object with frame distance
-        private Vector3 mLastFramePos = Vector3.zero;
-
 
         [Header("** Up Down Settings (JCS_3DCamera) **")]
 
@@ -131,7 +119,6 @@ namespace JCSUnity
         [Tooltip("Space between each up and down movement.")]
         [SerializeField]
         private float mUpDownSpacing = 10;
-
 
         [Header("- Min / Max")]
 
@@ -186,7 +173,6 @@ namespace JCSUnity
         // scroll distance.
         private float mWheelDegree = 0.0f;
 
-
         [Header("- Min / Max")]
 
         [Tooltip("Mininum distance camera can approach to?")]
@@ -207,17 +193,6 @@ namespace JCSUnity
         public override Transform GetFollowTarget() { return this.mTargetTransform; }
 
         public void SetRotateSpeed(float val) { this.mRotateSpeed = val; }
-        public bool SmoothTrack
-        {
-            get { return this.mSmoothTrack; }
-            set
-            {
-                this.mSmoothTrack = value;
-
-                // record down the position if enabled.
-                mTrackPosition = this.transform.position;
-            }
-        }
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
         public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
         public float ScrollRange_Mouse { get { return this.mScrollRange_Mouse; } set { this.mScrollRange_Mouse = value; } }
@@ -231,9 +206,7 @@ namespace JCSUnity
 
             if (mTargetTransform == null)
             {
-                JCS_Debug.LogError(
-                    "Cannot record the frame without the target transform...");
-
+                JCS_Debug.LogError("Cannot record the frame without the target transform");
                 return;
             }
 
@@ -392,28 +365,28 @@ namespace JCSUnity
             if (!mFollowing)
                 return;
 
-            // Hard track
-            if (!mSmoothTrack)
-            {
-                // follow the object with frame distance.
-                // distance = current frame position - last frame position
-                Vector3 currentFramePos = mTargetTransform.position;
-                this.transform.position += currentFramePos - mLastFramePos;
-                mLastFramePos = currentFramePos;
-            }
             // Smooth track.
-            else
+            if (mSmoothTrack)
             {
                 // follow the object with frame distance.
                 // distance = current frame position - last frame position
                 // , but in smooth track, we set the track position instead 
                 // of the real position.
-                Vector3 currentFramePos = mTargetTransform.position;
+                Vector3 currentFramePos = mTargetTransform.position + mPositionOffset;
                 mTrackPosition += currentFramePos - mLastFramePos;
                 mLastFramePos = currentFramePos;
 
                 // update the transform position
                 this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * Time.deltaTime;
+            }
+            // Hard track
+            else
+            {
+                // follow the object with frame distance.
+                // distance = current frame position - last frame position
+                Vector3 currentFramePos = mTargetTransform.position + mPositionOffset;
+                this.transform.position += currentFramePos - mLastFramePos;
+                mLastFramePos = currentFramePos;
             }
         }
 

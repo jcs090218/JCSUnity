@@ -26,28 +26,33 @@ namespace JCSUnity
         // Unity's camera object to handle.
         protected Camera mCamera = null;
 
+        // Record down the last position and current position, in order
+        // to add the difference between the two frame.
+        protected Vector3 mLastFramePos = Vector3.zero;
 
         [Header("** Check Variables (JCS_Camera) **")]
 
+        [Tooltip("Current camera's velocity.")]
         [SerializeField]
         protected Vector3 mVelocity = Vector3.zero;
 
-        
         [Header("** Initialize Variables (JCS_Camera) **")]
 
         [Tooltip("Distance as game origin depth.")]
         [SerializeField]
         protected float mGameDepth = 0;
 
+        [Tooltip("Display the camera depth.")]
         [SerializeField]
         protected bool mDisplayGameDepthCamera = false;
 
+        [Tooltip("The color of the camera depth.")]
         [SerializeField]
         protected Color mGameCamColor = Color.white;
 
-
         [Header("** Runtime Variables (JCS_Camera) **")]
 
+        [Tooltip("Flag to check if currently the camera following the target object.")]
         [SerializeField]
         protected bool mFollowing = true;
 
@@ -71,6 +76,9 @@ namespace JCSUnity
         // Record down the camera data, filed of view.
         protected float mRecordFieldOfView = 0.0f;
 
+        [Tooltip("Flag to check if using smooth track, otherwise hard track.")]
+        [SerializeField]
+        protected bool mSmoothTrack = true;
 
         /* Setter & Getter */
 
@@ -81,6 +89,7 @@ namespace JCSUnity
         public float fieldOfView { get { return this.mCamera.fieldOfView; } set { this.mCamera.fieldOfView = value; } }
         public Vector3 Velocity { get { return this.mVelocity; } set { this.mVelocity = value; } }
         public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
+        public bool SmoothTrack { get { return this.mSmoothTrack; } set { this.mSmoothTrack = value; } }
 
         /* Get/Set the target this camera follows. */
         public abstract void SetFollowTarget(Transform trans);

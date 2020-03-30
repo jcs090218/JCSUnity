@@ -21,7 +21,6 @@ namespace JCSUnity
 
         public static string JCS_2DCAMERA_PATH = "JCSUnity_Framework_Resources/Camera/JCS_2DCamera";
 
-
         [Header("** Check Varialbes (JCS_2DCamera) **")]
 
         [SerializeField]
@@ -35,17 +34,12 @@ namespace JCSUnity
         [SerializeField]
         private bool mSetToPlayerPositionAtStart = true;
 
-
         [Header("** Runtime Variables (JCS_2DCamera) **")]
 
         //-- Target information
         [Tooltip("Target transform information.")]
         [SerializeField]
         private Transform mTargetTransform = null;
-
-        [Tooltip("Hard track the target's transform?")]
-        [SerializeField]
-        private bool mHardTrack = false;
 
         [Tooltip("Set velocity to zero while the follow not active.")]
         [SerializeField]
@@ -54,6 +48,18 @@ namespace JCSUnity
         // effect: camera will do the smooth movement
         //[SerializeField] private bool mSmoothMoveX = true;
         //[SerializeField] private bool mSmoothMoveY = true;
+
+        [Header("** Speed / Friction **")]
+
+        [Tooltip("How fast this camera move toward the target. (x-axis)")]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
+        private float mFrictionX = 0.6f;
+
+        [Tooltip("How fast this camera move toward the target. (y-axis)")]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
+        private float mFrictionY = 0.6f;
 
         [Header("** Freeze Settings (Run Time) **")]
 
@@ -74,10 +80,6 @@ namespace JCSUnity
         private bool mFreezeZ = false;
 
         private Vector3 mFreezeRecord = Vector3.zero;
-
-        // Record down the last position and current position, in order
-        // to add the difference between the two frame.
-        private Vector3 mLastFrameTargetPosition = Vector3.zero;
 
         //-- Scroll
         [Header("** Scroll Setting **")]
@@ -106,20 +108,6 @@ namespace JCSUnity
         private float mScrollFriction = 0.4f;
 
         private float mWheelDegree = 0;
-
-
-        [Header("** Speed / Friction **")]
-
-        [Tooltip("How fast this camera move toward the target. (x-axis)")]
-        [SerializeField]
-        [Range(0.01f, 10.0f)]
-        private float mFrictionX = 0.6f;
-
-        [Tooltip("How fast this camera move toward the target. (y-axis)")]
-        [SerializeField]
-        [Range(0.01f, 10.0f)]
-        private float mFrictionY = 0.6f;
-
 
         [Header("** Scene Setting **")]
 
@@ -150,7 +138,6 @@ namespace JCSUnity
         public bool GetFollowing() { return this.mFollowing; }
         public void SetFollowing(bool val) { this.mFollowing = val; }
         public Transform GetTargetTransform() { return this.mTargetTransform; }
-        public bool HardTrack { get { return this.mHardTrack; } set { this.mHardTrack = value; } }
         public bool ResetVelocityToZeroWhileNotActive { get { return this.mResetVelocityToZeroWhileNotActive; } set { this.mResetVelocityToZeroWhileNotActive = value; } }
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
         public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
@@ -185,7 +172,7 @@ namespace JCSUnity
                 mTargetPosition = this.mTargetTransform.position;
 
                 // record the target position
-                mLastFrameTargetPosition = this.mTargetTransform.position;
+                mLastFramePos = this.mTargetTransform.position;
             }
 
             if (mSetToPlayerPositionAtStart)
@@ -195,9 +182,7 @@ namespace JCSUnity
                 if (player != null)
                 {
                     // set the camera position
-                    JCS_Camera.main.SetPosition(
-                        player.transform.position.x,
-                        player.transform.position.y);
+                    JCS_Camera.main.SetPosition(player.transform.position.x, player.transform.position.y);
                 }
             }
         }
@@ -237,7 +222,8 @@ namespace JCSUnity
                 ZoomCamera(mWheelDegree);
             }
 
-            if (!mHardTrack)
+            // Smooth track.
+            if (mSmoothTrack)
             {
                 // Try to approach to the target position.
                 mVelocity.x = ((this.mTargetTransform.position.x + mPositionOffset.x) -
@@ -246,18 +232,19 @@ namespace JCSUnity
                     this.transform.position.y) / mFrictionY;
                 mVelocity.z = ((this.mTargetPosition.z + mPositionOffset.z) -
                     this.transform.position.z) / mScrollFriction;
+
+                // Update self position
+                this.transform.position += this.mVelocity * Time.deltaTime;
             }
+            // Hard track
             else
             {
-                Vector3 differencePosition = this.mTargetTransform.position - mLastFrameTargetPosition;
-                this.transform.position += differencePosition;
-
-                // assign last frame position.
-                mLastFrameTargetPosition = this.mTargetTransform.position;
+                // follow the object with frame distance.
+                // distance = current frame position - last frame position
+                Vector3 currentFramePos = mTargetTransform.position + mPositionOffset;
+                this.transform.position += currentFramePos - mLastFramePos;
+                mLastFramePos = currentFramePos;
             }
-
-            // Update self position
-            this.transform.position += this.mVelocity * Time.deltaTime;
 
             // do freezing the last
             DoFreezing();
