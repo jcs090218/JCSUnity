@@ -24,13 +24,11 @@ namespace JCSUnity
         public ToggleFunc acitveFunc = null;
         public ToggleFunc deactiveFunc = null;
 
-
         [Header("** Runtime Variables (JCS_ToggleButton) **")]
 
         [Tooltip("Is the toggle button currently active?")]
         [SerializeField]
         private bool mActive = false;
-
 
         /* Setter & Getter */
 
@@ -44,7 +42,6 @@ namespace JCSUnity
                 }
             }
         }
-
 
         /* Functions */
 
