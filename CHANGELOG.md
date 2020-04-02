@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-04-02
 
 * Implemented toggle panel default button. (JCSUnity)
+* Added dispose callback for dialogue system. (JCSUnity)
 
 ### 2020-03-30
 
