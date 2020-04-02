@@ -41,10 +41,15 @@ namespace JCSUnity
         [SerializeField]
         private bool mRandom = false;
 
+        [Tooltip("Do continue tween instead of just tween.")]
+        [SerializeField]
+        private bool mContinueTween = false;
+
         /* Setter & Getter */
 
         public List<Transform> Points { get { return this.mPoints; } }
         public bool Random { get { return this.mRandom; } set { this.mRandom = value; } }
+        public bool ContinueTween { get { return this.mContinueTween; } set { this.mContinueTween = value; } }
 
         /* Functions */
 
@@ -84,7 +89,10 @@ namespace JCSUnity
         {
             GetNextPoint();
 
-            mTransformTweener.DoTween(mPoints[mTargetPointIndex].position);
+            if (mContinueTween)
+                mTransformTweener.DoTweenContinue(mPoints[mTargetPointIndex]);
+            else
+                mTransformTweener.DoTween(mPoints[mTargetPointIndex].position);
         }
     }
 }
