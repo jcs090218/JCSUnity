@@ -10,6 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Implemented toggle panel default button. (JCSUnity)
 * Added dispose callback for dialogue system. (JCSUnity)
 * Updated the execution order with more reasonable reason. (JCSUnity)
+* Implemented `JCS_SimplePathAction` component. (JCSUnity)
 
 ### 2020-03-30
 
