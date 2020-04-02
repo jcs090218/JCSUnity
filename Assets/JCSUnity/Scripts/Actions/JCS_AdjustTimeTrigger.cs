@@ -17,7 +17,6 @@ namespace JCSUnity
 
     /// <summary>
     /// Trigger a event while the time is reached.
-    /// Script base.
     /// </summary>
     public class JCS_AdjustTimeTrigger
         : MonoBehaviour
