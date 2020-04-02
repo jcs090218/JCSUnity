@@ -22,11 +22,11 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_TogglePanelGamePadButton) **")]
 
-        [Tooltip("Panel you want to toggle.")]
+        [Tooltip("Panel (dialogue) you want to toggle.")]
         [SerializeField]
         private JCS_DialogueObject mDialogueObject = null;
 
-        [Tooltip("Panel you want to toggle.")]
+        [Tooltip("Panel (tween) you want to toggle.")]
         [SerializeField]
         private JCS_TweenPanel mTweenPanel = null;
 
