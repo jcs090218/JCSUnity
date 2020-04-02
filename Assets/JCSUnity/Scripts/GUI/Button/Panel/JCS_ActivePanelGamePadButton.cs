@@ -34,11 +34,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TweenPanel[] mTweenPanels = null;
 
-
         /* Setter & Getter */
 
         public bool ShowWithSound { get { return this.mShowWithSound; } set { this.mShowWithSound = value; } }
-
 
         /* Functions */
 

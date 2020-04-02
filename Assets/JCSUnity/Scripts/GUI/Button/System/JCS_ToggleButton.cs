@@ -28,7 +28,7 @@ namespace JCSUnity
 
         [Tooltip("Is the toggle button currently active?")]
         [SerializeField]
-        private bool mActive = false;
+        protected bool mActive = false;
 
         /* Setter & Getter */
 
