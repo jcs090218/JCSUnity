@@ -13,6 +13,8 @@ using UnityEngine.EventSystems;
 
 namespace JCSUnity
 {
+    public delegate void DisposeCallback();
+
     /// <summary>
     /// Dialogue system core implementation.
     /// </summary>
@@ -20,6 +22,9 @@ namespace JCSUnity
         : MonoBehaviour
     {
         /* Variables */
+
+        // Callback when successfully dispose the dialogue.
+        public DisposeCallback callback_dispose = null;
 
         [Header("** Check Variables (JCS_DialogueSystem) **")]
 
@@ -232,8 +237,10 @@ namespace JCSUnity
 
             // check if the script attached is available?
             if (DialogueScript == null)
+            {
+                JCS_Debug.LogWarning("Can't run dialogue system without the dialogue script");
                 return;
-
+            }
 
             // reset the action, so it will always start
             // from the beginning.
@@ -261,15 +268,13 @@ namespace JCSUnity
         {
             if (mSelectBtn.Length <= index)
             {
-                JCS_Debug.LogWarning(
-                    "Select button call is out of range...");
+                JCS_Debug.LogWarning("Select button call is out of range");
                 return;
             }
 
             if (mSelectBtn[index] == null)
             {
-                JCS_Debug.LogWarning(
-                    "There are space in the array but does no assign the value...");
+                JCS_Debug.LogWarning("There are space in the array but does no assign the value");
                 return;
             }
 
@@ -484,6 +489,10 @@ namespace JCSUnity
 
             // de-active dialogue system.
             mActive = false;
+
+            // Check initialize to ignore dispose called at the very beginning!
+            if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && callback_dispose != null)
+                callback_dispose.Invoke();
 
             // Play the dispose dialogue sound.
             JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDisposeSound);
@@ -1146,8 +1155,7 @@ because button selection is not attach to all selections in the list...");
         /// </summary>
         private void OkBtnCallback()
         {
-            // when exit button happens, 
-            // exit the dialogue box.
+            // when exit button happens, exit the dialogue box.
             Dispose();
         }
         /// <summary>
@@ -1155,8 +1163,7 @@ because button selection is not attach to all selections in the list...");
         /// </summary>
         private void ExitBtnCallback()
         {
-            // when exit button happens, 
-            // exit the dialogue box.
+            // when exit button happens, exit the dialogue box.
             Dispose();
         }
         /// <summary>
