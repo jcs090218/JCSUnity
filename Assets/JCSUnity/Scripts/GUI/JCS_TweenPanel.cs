@@ -42,17 +42,15 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.L;
 #endif
 
-
         [Header("** Check Variables (JCS_TweenPanel) **")]
 
         [Tooltip("")]
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Tooltip("Record down the starting position, in order to go back.")]
+        [Tooltip("Record down the starting value, in order to go back.")]
         [SerializeField]
-        private Vector3 mStartingPosition = Vector3.zero;
-
+        private Vector3 mStartingValue = Vector3.zero;
 
         [Header("** Runtime Variables (JCS_TweenPanel) **")]
 
@@ -60,10 +58,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsActive = false;
 
-        [Tooltip("Do the tween effect to this position.")]
+        [Tooltip("Do the tween effect to this value.")]
         [SerializeField]
-        private Vector3 mTargetPosition = Vector3.zero;
-
+        private Vector3 mTargetValue = Vector3.zero;
 
         [Header("** Sound Setttings (JCS_TweenPanel) **")]
 
@@ -81,14 +78,12 @@ namespace JCSUnity
         private ActiveCallback mActiveCallbackFunc = null;
         private DeactiveCallback mDeactiveCallbackFunc = null;
 
-
         /* Setter & Getter */
 
         public bool IsActive { get { return this.mIsActive; } }
         public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
         public ActiveCallback ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
         public DeactiveCallback DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
-
 
         /* Functions */
 
@@ -99,15 +94,15 @@ namespace JCSUnity
         }
         private void Start()
         {
-            this.mStartingPosition = this.mTransformTweener.LocalPosition;
+            this.mStartingValue = this.mTransformTweener.LocalPosition;
 
-            // NOTE(jenchieh): Make compatible to resizable screen.
+            // NOTE: Make compatible to resizable screen.
             {
                 this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
                 if (mPanelRoot != null)
                 {
-                    mTargetPosition.x /= mPanelRoot.PanelDeltaWidthRatio;
-                    mTargetPosition.y /= mPanelRoot.PanelDeltaHeightRatio;
+                    mTargetValue.x /= mPanelRoot.PanelDeltaWidthRatio;
+                    mTargetValue.y /= mPanelRoot.PanelDeltaHeightRatio;
                 }
             }
         }
@@ -133,10 +128,10 @@ namespace JCSUnity
             if (!mTransformTweener.IsDoneTweening)
                 return;
 
-            if (this.transform.localPosition == mTargetPosition)
+            if (this.transform.localPosition == mTargetValue)
                 return;
 
-            mTransformTweener.DoTween(mTargetPosition);
+            mTransformTweener.DoTween(mTargetValue);
             mSoundPlayer.PlayOneShotWhileNotPlaying(mActiveSound);
 
             if (mActiveCallbackFunc != null)
@@ -152,10 +147,7 @@ namespace JCSUnity
             if (!mTransformTweener.IsDoneTweening)
                 return;
 
-            if (this.transform.localPosition == mStartingPosition)
-                return;
-
-            mTransformTweener.DoTween(mStartingPosition);
+            mTransformTweener.DoTween(mStartingValue);
             mSoundPlayer.PlayOneShotWhileNotPlaying(mDeactiveSound);
 
             if (mDeactiveCallbackFunc != null)
