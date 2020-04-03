@@ -30,13 +30,11 @@ namespace JCSUnity
         [SerializeField]
         private float mPanelDeltaHeightRatio = 0;
 
-
         [Header("** Initialize Variables (JCS_PanelRoot) **")]
 
         [Tooltip("Fit the whole screen size?")]
         [SerializeField]
         private bool mFitScreenSize = true;
-
 
         /* Setter & Getter */
 
@@ -44,15 +42,13 @@ namespace JCSUnity
         public float PanelDeltaWidthRatio { get { return this.mPanelDeltaWidthRatio; } }
         public float PanelDeltaHeightRatio { get { return this.mPanelDeltaHeightRatio; } }
 
-
         /* Functions */
 
         protected override void Awake()
         {
             base.Awake();
 
-            // NOTE(jenhiche): not sure is this the 
-            // correct position for the code or not.
+            // NOTE: not sure is this the correct position for the code or not.
             if (mFitScreenSize)
             {
                 FitPerfectSize();
@@ -134,7 +130,8 @@ namespace JCSUnity
                 Transform child = tempTrans.GetChild(index);
 
                 // Only added once.
-                if (child.GetComponent<JCS_PanelChild>() != null)
+                if (child.GetComponent<JCS_PanelChild>() != null ||
+                    child.GetComponent<JCS_PanelRoot>() != null)
                     continue;
 
                 JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();

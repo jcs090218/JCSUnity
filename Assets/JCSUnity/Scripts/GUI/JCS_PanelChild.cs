@@ -30,7 +30,6 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-
         [Header("** Check Variables (JCS_PanelChild) **")]
 
         [Tooltip("Panel root object cache.")]
@@ -41,11 +40,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsUnityDefinedUI = false;
 
-
         /* Setter & Getter */
 
         public JCS_PanelRoot PanelRoot { get { return this.mPanelRoot; } set { this.mPanelRoot = value; } }
-
 
         /* Functions */
 
@@ -161,9 +158,10 @@ namespace JCSUnity
         /// <returns></returns>
         private bool IsUnityDefinedUI()
         {
-            return (this.GetComponent<Button>() || 
-                this.GetComponent<Dropdown>() || 
-                this.GetComponent<Slider>() || 
+            return (this.GetComponent<Image>() ||
+                this.GetComponent<Button>() ||
+                this.GetComponent<Dropdown>() ||
+                this.GetComponent<Slider>() ||
                 this.GetComponent<Scrollbar>() ||
                 this.GetComponent<Toggle>() ||
                 this.GetComponent<InputField>());

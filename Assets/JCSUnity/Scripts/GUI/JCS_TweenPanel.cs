@@ -27,7 +27,6 @@ namespace JCSUnity
 
         private JCS_TransformTweener mTransformTweener = null;
 
-
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_TweenPanel) **")]
 
@@ -92,9 +91,21 @@ namespace JCSUnity
             this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
             this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
+
         private void Start()
         {
-            this.mStartingValue = this.mTransformTweener.LocalPosition;
+            switch (mTransformTweener.TweenType)
+            {
+                case JCS_TransformType.POSITION:
+                    this.mStartingValue = this.mTransformTweener.LocalPosition;
+                    break;
+                case JCS_TransformType.ROTATION:
+                    this.mStartingValue = this.mTransformTweener.LocalEulerAngles;
+                    break;
+                case JCS_TransformType.SCALE:
+                    this.mStartingValue = this.mTransformTweener.LocalScale;
+                    break;
+            }
 
             // NOTE: Make compatible to resizable screen.
             {
@@ -126,9 +137,6 @@ namespace JCSUnity
         public void Active()
         {
             if (!mTransformTweener.IsDoneTweening)
-                return;
-
-            if (this.transform.localPosition == mTargetValue)
                 return;
 
             mTransformTweener.DoTween(mTargetValue);
