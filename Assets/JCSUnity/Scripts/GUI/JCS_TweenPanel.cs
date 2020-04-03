@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -23,9 +24,32 @@ namespace JCSUnity
     public class JCS_TweenPanel
         : MonoBehaviour
     {
-        /* Variables */
+        /// <summary>
+        /// Tweener information.
+        /// 
+        /// Contain these informations.
+        ///   -> startingValue
+        ///   -> transformTweener
+        ///   -> targetValue
+        /// </summary>
+        [System.Serializable]
+        public class JCS_TweenInfo
+        {
+            [Header("## Check Variables (JCS_TweenInfo)")]
 
-        private JCS_TransformTweener mTransformTweener = null;
+            [Tooltip("Record down the starting value, in order to go back.")]
+            public Vector3 startingValue = Vector3.zero;
+
+            [Header("## Runtime Variables (JCS_TweenInfo)")]
+
+            [Tooltip("Transform tweener we want to use.")]
+            public JCS_TransformTweener transformTweener = null;
+
+            [Tooltip("Do the tween effect to this value.")]
+            public Vector3 targetValue = Vector3.zero;
+        }
+
+        /* Variables */
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_TweenPanel) **")]
@@ -47,19 +71,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Tooltip("Record down the starting value, in order to go back.")]
-        [SerializeField]
-        private Vector3 mStartingValue = Vector3.zero;
-
         [Header("** Runtime Variables (JCS_TweenPanel) **")]
 
         [Tooltip("Is panel active/tweened?")]
         [SerializeField]
         private bool mIsActive = false;
 
-        [Tooltip("Do the tween effect to this value.")]
+        [Tooltip("List of tweener informations.")]
         [SerializeField]
-        private Vector3 mTargetValue = Vector3.zero;
+        private List<JCS_TweenInfo> mTweenInfos = null;
 
         [Header("** Sound Setttings (JCS_TweenPanel) **")]
 
@@ -80,7 +100,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool IsActive { get { return this.mIsActive; } }
-        public JCS_TransformTweener TransformTweener { get { return this.mTransformTweener; } }
+        public List<JCS_TweenInfo> TweenInfos { get { return this.mTweenInfos; } }
         public ActiveCallback ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
         public DeactiveCallback DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
 
@@ -88,23 +108,27 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
             this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
 
         private void Start()
         {
-            switch (mTransformTweener.TweenType)
+            // NOTE: Record down all the starting values.
+            for (int index = 0; index < mTweenInfos.Count; ++index)
             {
-                case JCS_TransformType.POSITION:
-                    this.mStartingValue = this.mTransformTweener.LocalPosition;
-                    break;
-                case JCS_TransformType.ROTATION:
-                    this.mStartingValue = this.mTransformTweener.LocalEulerAngles;
-                    break;
-                case JCS_TransformType.SCALE:
-                    this.mStartingValue = this.mTransformTweener.LocalScale;
-                    break;
+                JCS_TweenInfo ti = mTweenInfos[index];
+                switch (ti.transformTweener.TweenType)
+                {
+                    case JCS_TransformType.POSITION:
+                        ti.startingValue = ti.transformTweener.LocalPosition;
+                        break;
+                    case JCS_TransformType.ROTATION:
+                        ti.startingValue = ti.transformTweener.LocalEulerAngles;
+                        break;
+                    case JCS_TransformType.SCALE:
+                        ti.startingValue = ti.transformTweener.LocalScale;
+                        break;
+                }
             }
 
             // NOTE: Make compatible to resizable screen.
@@ -112,8 +136,12 @@ namespace JCSUnity
                 this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
                 if (mPanelRoot != null)
                 {
-                    mTargetValue.x /= mPanelRoot.PanelDeltaWidthRatio;
-                    mTargetValue.y /= mPanelRoot.PanelDeltaHeightRatio;
+                    for (int index = 0; index < mTweenInfos.Count; ++index)
+                    {
+                        JCS_TweenInfo tt = mTweenInfos[index];
+                        tt.targetValue.x /= mPanelRoot.PanelDeltaWidthRatio;
+                        tt.targetValue.y /= mPanelRoot.PanelDeltaHeightRatio;
+                    }
                 }
             }
         }
@@ -136,10 +164,10 @@ namespace JCSUnity
         /// </summary>
         public void Active()
         {
-            if (!mTransformTweener.IsDoneTweening)
+            if (!IsDoneTweening())
                 return;
 
-            mTransformTweener.DoTween(mTargetValue);
+            DoTweenToTargetValue();
             mSoundPlayer.PlayOneShotWhileNotPlaying(mActiveSound);
 
             if (mActiveCallbackFunc != null)
@@ -152,16 +180,51 @@ namespace JCSUnity
         /// </summary>
         public void Deactive()
         {
-            if (!mTransformTweener.IsDoneTweening)
+            if (!IsDoneTweening())
                 return;
 
-            mTransformTweener.DoTween(mStartingValue);
+            DoTweenToStartValue();
             mSoundPlayer.PlayOneShotWhileNotPlaying(mDeactiveSound);
 
             if (mDeactiveCallbackFunc != null)
                 mDeactiveCallbackFunc.Invoke();
 
             this.mIsActive = false;
+        }
+
+        /// <summary>
+        /// Check if done tweeening for all transform tweeners.
+        /// </summary>
+        /// <returns>
+        /// Return true, when is done with tweening.
+        /// Return false, when is NOT done with tweening.
+        /// </returns>
+        private bool IsDoneTweening()
+        {
+            foreach (JCS_TweenInfo ti in mTweenInfos)
+            {
+                if (!ti.transformTweener.IsDoneTweening)
+                    return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Make all transform tweeners tweene to the start value.
+        /// </summary>
+        private void DoTweenToStartValue()
+        {
+            foreach (JCS_TweenInfo ti in mTweenInfos)
+                ti.transformTweener.DoTween(ti.startingValue);
+        }
+
+        /// <summary>
+        /// Make all transform tweeners tweene to the target value.
+        /// </summary>
+        private void DoTweenToTargetValue()
+        {
+            foreach (JCS_TweenInfo ti in mTweenInfos)
+                ti.transformTweener.DoTween(ti.targetValue);
         }
     }
 }
