@@ -45,6 +45,7 @@ namespace JCSUnity
 
         [Tooltip("Range that will stop the movement.")]
         [SerializeField]
+        [Range(0.0f, 3000.0f)]
         private float mAcceptRange = 0.3f;
 
         /* Setter & Getter */
