@@ -5,12 +5,16 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-04-03
+
+* Implemented `JCS_SimplePathAction` component. (JCSUnity)
+
 ### 2020-04-02
 
 * Implemented toggle panel default button. (JCSUnity)
 * Added dispose callback for dialogue system. (JCSUnity)
 * Updated the execution order with more reasonable reason. (JCSUnity)
-* Implemented `JCS_SimplePathAction` component. (JCSUnity)
+* Implemented `JCS_TweenPathAction` component. (JCSUnity)
 
 ### 2020-03-30
 
