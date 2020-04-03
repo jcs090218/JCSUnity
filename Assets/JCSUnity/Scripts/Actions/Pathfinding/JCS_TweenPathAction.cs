@@ -1,6 +1,6 @@
 /**
- * $File: JCS_SimplePathAction.cs $
- * $Date: 2020-04-03 08:03:51 $
+ * $File: JCS_TweenPathAction.cs $
+ * $Date: 2020-04-02 19:06:04 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information 
@@ -13,27 +13,25 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// The point to point simple path action.
+    /// The point to point simple path action that uses tween to move.
     /// </summary>
-    [RequireComponent(typeof(JCS_3DGoStraightAction))]
-    [RequireComponent(typeof(JCS_3DLookAtAction))]
+    [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
-    public class JCS_SimplePathAction
+    public class JCS_TweenPathAction
         : MonoBehaviour
     {
         /* Variables */
 
-        private JCS_3DGoStraightAction mGoStraightAction = null;
-        private JCS_3DLookAtAction mLookAtAction = null;
+        private JCS_TransformTweener mTransformTweener = null;
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
-        [Header("** Check Variables (JCS_SimplePathAction) **")]
+        [Header("** Check Variables (JCS_TweenPathAction) **")]
 
         [Tooltip("Current target point index that this object to going approach.")]
         [SerializeField]
         private int mTargetPointIndex = -1;
 
-        [Header("** Runtime Variables (JCS_SimplePathAction) **")]
+        [Header("** Runtime Variables (JCS_TweenPathAction) **")]
 
         [Tooltip("List of points for setting up the path.")]
         [SerializeField]
@@ -43,44 +41,29 @@ namespace JCSUnity
         [SerializeField]
         private bool mRandom = false;
 
-        [Tooltip("Range that will stop the movement.")]
+        [Tooltip("Do continue tween instead of just tween.")]
         [SerializeField]
-        private float mAcceptRange = 0.3f;
+        private bool mContinueTween = false;
 
         /* Setter & Getter */
 
         public List<Transform> Points { get { return this.mPoints; } }
         public bool Random { get { return this.mRandom; } set { this.mRandom = value; } }
-        public float AcceptRange { get { return this.mAcceptRange; } set { this.mAcceptRange = value; } }
+        public bool ContinueTween { get { return this.mContinueTween; } set { this.mContinueTween = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            this.mGoStraightAction = this.GetComponent<JCS_3DGoStraightAction>();
-            this.mLookAtAction = this.GetComponent<JCS_3DLookAtAction>();
+            this.mTransformTweener = this.GetComponent<JCS_TransformTweener>();
             this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
-
-            this.mAdjustTimerTrigger.actions = DoPath;
 
 #if UNITY_EDITOR
             if (mPoints.Count == 0)
                 JCS_Debug.LogWarning("Path action with 0 path point is not valid");
 #endif
 
-            GetNextPoint();
-        }
-
-        private void Update()
-        {
-            if (!this.mGoStraightAction.enabled)
-                return;
-
-            Transform target = mPoints[mTargetPointIndex];
-            float distance = Vector3.Distance(target.position, this.transform.position);
-
-            if (mAcceptRange >= distance)
-                this.mGoStraightAction.enabled = false;
+            mAdjustTimerTrigger.actions = DoPath;
         }
 
         /// <summary>
@@ -111,9 +94,10 @@ namespace JCSUnity
         {
             GetNextPoint();
 
-            this.mGoStraightAction.enabled = true;
-
-            mLookAtAction.SetTargetTransform(mPoints[mTargetPointIndex]);
+            if (mContinueTween)
+                mTransformTweener.DoTweenContinue(mPoints[mTargetPointIndex]);
+            else
+                mTransformTweener.DoTween(mPoints[mTargetPointIndex].position);
         }
     }
 }
