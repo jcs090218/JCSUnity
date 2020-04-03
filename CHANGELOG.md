@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-04-03
 
 * Implemented `JCS_SimplePathAction` component. (JCSUnity)
+* Now tween panel support multiple transform tweeners. (JCSUnity)
 
 ### 2020-04-02
 
