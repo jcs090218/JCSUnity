@@ -53,11 +53,11 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_3DHintBubble) **")]
 
-        [Tooltip("Tweener handler to do tween to the bubble hint.")]
+        [Tooltip("Tweener handler to do tween to the hint bubble.")]
         [SerializeField]
         private JCS_TweenerHandler mTweenerHandler = null;
 
-        [Tooltip("Fade the bubble hint.")]
+        [Tooltip("Fade the hint bubble.")]
         [SerializeField]
         private JCS_FadeObject mFadeObject = null;
 
@@ -105,7 +105,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Active this bubble hint.
+        /// Active this hint bubble.
         /// </summary>
         public void Active()
         {
@@ -114,7 +114,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Deactive this bubble hint.
+        /// Deactive this hint bubble.
         /// </summary>
         public void Deactive()
         {
