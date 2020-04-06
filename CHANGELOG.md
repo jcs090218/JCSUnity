@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-04-06
+
+* Implemented `JCS_3DHintBubble` component to `GameObject` module. (JCSUnity)
+
 ### 2020-04-03
 
 * Implemented `JCS_SimplePathAction` component. (JCSUnity)
