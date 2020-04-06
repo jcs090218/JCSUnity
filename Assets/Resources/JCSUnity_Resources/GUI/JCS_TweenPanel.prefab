@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 222234008040085296}
   - component: {fileID: 114400850168060406}
   - component: {fileID: 114304603041978312}
+  - component: {fileID: -161361591436516535}
   - component: {fileID: 114033109570745038}
   - component: {fileID: 82760082251195884}
   - component: {fileID: 114903964410367410}
@@ -192,6 +193,23 @@ MonoBehaviour:
   mEasingY: 29
   mEasingZ: 5
   mStopTweenDistance: 1
+--- !u!114 &-161361591436516535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299254873998570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1d481050008994b9557a8d6eb2c8c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPanelRoot: {fileID: 0}
+  mTweenInfos:
+  - startingValue: {x: 0, y: 0, z: 0}
+    transformTweener: {fileID: 114304603041978312}
+    targetValue: {x: 0, y: 0, z: 0}
 --- !u!114 &114033109570745038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,12 +225,8 @@ MonoBehaviour:
   mTestWithKey: 0
   mActiveKey: 107
   mDeactiveKey: 108
-  mPanelRoot: {fileID: 0}
   mIsActive: 0
-  mTweenInfos:
-  - startingValue: {x: 0, y: 0, z: 0}
-    transformTweener: {fileID: 114304603041978312}
-    targetValue: {x: 0, y: 0, z: 0}
+  mTweenerHandler: {fileID: 0}
   mActiveSound: {fileID: 0}
   mDeactiveSound: {fileID: 0}
 --- !u!82 &82760082251195884

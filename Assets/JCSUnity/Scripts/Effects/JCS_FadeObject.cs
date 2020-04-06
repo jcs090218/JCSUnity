@@ -33,7 +33,6 @@ namespace JCSUnity
 
         private float mAlpha = 1.0f;
 
-
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_FadeObject) **")]
 
@@ -46,7 +45,6 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
-
 
         [Header("** Check Variables (JCS_FadeObject) **")]
 
@@ -80,7 +78,6 @@ namespace JCSUnity
         [Range(0.0f, 1)]
         private float mFadeOutAmount = 0.0f;
 
-
         /* Setter & Getter */
 
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
@@ -88,7 +85,6 @@ namespace JCSUnity
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
         public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
         public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
-
 
         /* Functions */
 
