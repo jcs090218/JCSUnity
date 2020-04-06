@@ -6,9 +6,18 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+
+/* NOTE: If you are using `TextMesh Pro` uncomment this line.
+ */
+#define TMP_PRO
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+
+#if TMP_PRO
+using TMPro;
+#endif
 
 namespace JCSUnity
 {
@@ -35,6 +44,10 @@ namespace JCSUnity
         protected SpriteRenderer mSpriteRenderer = null;
         //-- Text
         protected Text mText = null;
+#if TMP_PRO
+        //-- Text Mesh Pro
+        protected TextMeshPro mTextMesh = null;
+#endif
 
         /* Setter & Getter */
 
@@ -44,6 +57,10 @@ namespace JCSUnity
         public Renderer GetRenderer() { return this.mRenderer; }
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public RectTransform GetRectTransform() { return this.mRectTransform; }
+        public Text GetText() { return this.mText; }
+#if TMP_PRO
+        public TextMeshPro GetTextMesh() { return this.mTextMesh; }
+#endif
 
         /* Functions */
 
@@ -73,6 +90,11 @@ namespace JCSUnity
                     this.mText = this.GetComponent<Text>();
                     this.mRectTransform = this.GetComponent<RectTransform>();
                     break;
+#if TMP_PRO
+                case JCS_UnityObjectType.TMP:
+                    this.mTextMesh = this.GetComponent<TextMeshPro>();
+                    break;
+#endif
             }
         }
 
@@ -98,6 +120,10 @@ namespace JCSUnity
                         return this.mImage;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh;
+#endif
                 }
 
                 return null;
@@ -119,6 +145,11 @@ namespace JCSUnity
                     case JCS_UnityObjectType.TEXT:
                         this.mText = (Text)value;
                         break;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh = (TextMeshPro)value;
+                        break;
+#endif
                 }
             }
         }
@@ -139,6 +170,10 @@ namespace JCSUnity
                         return this.mRectTransform;
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.transform;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.transform;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -164,6 +199,10 @@ namespace JCSUnity
                         return this.mRectTransform.position;
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.transform.position;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.transform.position;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -186,6 +225,11 @@ namespace JCSUnity
                     case JCS_UnityObjectType.SPRITE:
                         this.mSpriteRenderer.transform.position = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.transform.position = value;
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -209,6 +253,10 @@ namespace JCSUnity
                         return this.mRectTransform.localPosition;
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.transform.localPosition;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.transform.localPosition;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -231,6 +279,11 @@ namespace JCSUnity
                     case JCS_UnityObjectType.SPRITE:
                         this.mSpriteRenderer.transform.localPosition = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.transform.localPosition = value;
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -254,6 +307,10 @@ namespace JCSUnity
                         return this.mRectTransform.eulerAngles;
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.transform.eulerAngles;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.transform.eulerAngles;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -276,6 +333,11 @@ namespace JCSUnity
                     case JCS_UnityObjectType.SPRITE:
                         this.mSpriteRenderer.transform.eulerAngles = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.transform.eulerAngles = value;
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -299,6 +361,10 @@ namespace JCSUnity
                         return this.mRectTransform.localEulerAngles;
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.transform.localEulerAngles;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.transform.localEulerAngles;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -321,6 +387,11 @@ namespace JCSUnity
                     case JCS_UnityObjectType.SPRITE:
                         this.mSpriteRenderer.transform.localEulerAngles = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.transform.localEulerAngles = value;
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -344,6 +415,10 @@ namespace JCSUnity
                         return this.mRectTransform.localScale;
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.transform.localScale;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.transform.localScale;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -366,6 +441,11 @@ namespace JCSUnity
                     case JCS_UnityObjectType.SPRITE:
                         this.mSpriteRenderer.transform.localScale = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.transform.localScale = value;
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -390,6 +470,10 @@ namespace JCSUnity
                         return this.mSpriteRenderer.enabled;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText.enabled;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.enabled;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -416,6 +500,11 @@ namespace JCSUnity
                     case JCS_UnityObjectType.TEXT:
                         this.mSpriteRenderer.enabled = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.enabled = value;
+                        return;
+#endif
                 }
             }
         }
@@ -437,6 +526,10 @@ namespace JCSUnity
                         return this.mSpriteRenderer.color;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText.color;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.color;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -450,25 +543,23 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        {
-                            this.mRenderer.material.color = value;
-                        }
+                        this.mRenderer.material.color = value;
                         return;
                     case JCS_UnityObjectType.UI:
-                        {
-                            this.mImage.color = value;
-                        }
+                        this.mImage.color = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        {
-                            this.mSpriteRenderer.color = value;
-                        }
+                        this.mSpriteRenderer.color = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
-                        {
-                            this.mText.color = value;
-                        }
+                        this.mText.color = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.color = value;
+                        return;
+#endif
+
                 }
 
                 JCS_Debug.LogError(
@@ -493,6 +584,10 @@ namespace JCSUnity
                         return this.mSpriteRenderer.color.a;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText.color.a;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.color.a;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -535,6 +630,15 @@ namespace JCSUnity
                             this.mText.color = newColor;
                         }
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        {
+                            newColor = this.mTextMesh.color;
+                            newColor.a = value;
+                            this.mTextMesh.color = newColor;
+                        }
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -559,6 +663,10 @@ namespace JCSUnity
                         return this.mSpriteRenderer.color.r;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText.color.r;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.color.r;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -601,6 +709,15 @@ namespace JCSUnity
                             this.mText.color = newColor;
                         }
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        {
+                            newColor = this.mTextMesh.color;
+                            newColor.r = value;
+                            this.mTextMesh.color = newColor;
+                        }
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -625,6 +742,10 @@ namespace JCSUnity
                         return this.mSpriteRenderer.color.g;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText.color.g;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.color.g;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -667,6 +788,15 @@ namespace JCSUnity
                             this.mText.color = newColor;
                         }
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        {
+                            newColor = this.mTextMesh.color;
+                            newColor.g = value;
+                            this.mTextMesh.color = newColor;
+                        }
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -691,6 +821,10 @@ namespace JCSUnity
                         return this.mSpriteRenderer.color.b;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText.color.b;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.color.b;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -733,6 +867,15 @@ namespace JCSUnity
                             this.mText.color = newColor;
                         }
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        {
+                            newColor = this.mTextMesh.color;
+                            newColor.b = value;
+                            this.mTextMesh.color = newColor;
+                        }
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -757,6 +900,10 @@ namespace JCSUnity
                         return this.mSpriteRenderer.material.mainTexture;
                     case JCS_UnityObjectType.TEXT:
                         return this.mText.material.mainTexture;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        return this.mTextMesh.material.mainTexture;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -770,25 +917,22 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        {
-                            this.mRenderer.material.mainTexture = value;
-                        }
+                        this.mRenderer.material.mainTexture = value;
                         return;
                     case JCS_UnityObjectType.UI:
-                        {
-                            this.mImage.material.mainTexture = value;
-                        }
+                        this.mImage.material.mainTexture = value;
                         return;
                     case JCS_UnityObjectType.SPRITE:
-                        {
-                            this.mSpriteRenderer.material.mainTexture = value;
-                        }
+                        this.mSpriteRenderer.material.mainTexture = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
-                        {
-                            this.mText.material.mainTexture = value;
-                        }
+                        this.mText.material.mainTexture = value;
                         return;
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+                        this.mTextMesh.material.mainTexture = value;
+                        return;
+#endif
                 }
 
                 JCS_Debug.LogError(
@@ -878,6 +1022,9 @@ namespace JCSUnity
                         return this.mSpriteRenderer.flipX;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+#endif
                         return JCS_Mathf.isPositive(this.mRectTransform.localScale.x);
                 }
 
@@ -910,6 +1057,9 @@ namespace JCSUnity
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+#endif
                         {
                             newScale = this.mRectTransform.localScale;
 
@@ -945,6 +1095,9 @@ namespace JCSUnity
                         return this.mSpriteRenderer.flipY;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+#endif
                         return JCS_Mathf.isPositive(this.mRectTransform.localScale.y);
                 }
 
@@ -977,6 +1130,9 @@ namespace JCSUnity
                         return;
                     case JCS_UnityObjectType.TEXT:
                     case JCS_UnityObjectType.UI:
+#if TMP_PRO
+                    case JCS_UnityObjectType.TMP:
+#endif
                         {
                             newScale = this.mRectTransform.localScale;
 

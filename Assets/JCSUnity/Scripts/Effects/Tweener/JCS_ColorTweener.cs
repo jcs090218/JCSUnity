@@ -151,7 +151,6 @@ namespace JCSUnity
         [SerializeField]
         private UnityEvent mUnityCallback = null;
 
-
         /* Setter & Getter */
 
         public bool Animating { get { return (mEasingR || mEasingG || mEasingB || mEasingA); } }
@@ -211,7 +210,6 @@ namespace JCSUnity
         {
             this.mColorCallback = func;
         }
-
 
         /* Functions */
 

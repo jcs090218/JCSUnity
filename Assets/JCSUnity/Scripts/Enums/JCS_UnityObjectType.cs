@@ -6,6 +6,10 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+/* NOTE: If you are using `TextMesh Pro` uncomment this line.
+ */
+#define TMP_PRO
+
 using UnityEngine;
 using System.Collections;
 
@@ -19,6 +23,9 @@ namespace JCSUnity
         GAME_OBJECT,
         UI,
         SPRITE,
-        TEXT
+        TEXT,
+#if TMP_PRO
+        TMP,  // Text Mesh Pro
+#endif
     }
 }

@@ -37,6 +37,10 @@ namespace JCSUnity
 #if UNITY_EDITOR
         [Header("** Helper Variables (JCS_3DHintBubble) **")]
 
+        [Tooltip("Test this component with these keys.")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
         [Tooltip("Key to active hint bubble.")]
         [SerializeField]
         private KeyCode mActiveKey = KeyCode.A;
@@ -49,7 +53,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_3DHintBubble) **")]
 
-        [Tooltip("Tweeener handler.")]
+        [Tooltip("Tweener handler to do tween to the bubble hint.")]
         [SerializeField]
         private JCS_TweenerHandler mTweenerHandler = null;
 
@@ -75,6 +79,14 @@ namespace JCSUnity
 #if UNITY_EDITOR
         private void Update()
         {
+            Test();
+        }
+
+        private void Test()
+        {
+            if (!mTestWithKey)
+                return;
+
             if (JCS_Input.GetKeyDown(mActiveKey))
                 Active();
             else if (JCS_Input.GetKeyDown(mDeactiveKey))
@@ -82,19 +94,32 @@ namespace JCSUnity
         }
 #endif
 
+        /// <summary>
+        /// Set the text and active.
+        /// </summary>
+        /// <param name="msg"></param>
         public void SendText(string msg)
         {
             mTextMesh.text = msg;
+            Active();
         }
 
+        /// <summary>
+        /// Active this bubble hint.
+        /// </summary>
         public void Active()
         {
             TweenerHandler.DoAllTweenToTargetValue();
+            mFadeObject.FadeIn();
         }
 
+        /// <summary>
+        /// Deactive this bubble hint.
+        /// </summary>
         public void Deactive()
         {
             TweenerHandler.DoAllTweenToStartValue();
+            mFadeObject.FadeOut();
         }
     }
 }
