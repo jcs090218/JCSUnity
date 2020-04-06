@@ -53,6 +53,10 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_3DHintBubble) **")]
 
+        [Tooltip("Flag to check if the hint bubble active.")]
+        [SerializeField]
+        private bool mActive = false;
+
         [Tooltip("Tweener handler to do tween to the hint bubble.")]
         [SerializeField]
         private JCS_TweenerHandler mTweenerHandler = null;
@@ -63,6 +67,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool active { get { return this.mActive; } }
         public TextMeshPro TextMesh { get { return this.mTextMesh; } }
         public JCS_TweenerHandler TweenerHandler { get { return this.mTweenerHandler; } }
         public JCS_FadeObject FadeObject { get { return this.mFadeObject; } }
@@ -111,6 +116,8 @@ namespace JCSUnity
         {
             TweenerHandler.DoAllTweenToTargetValue();
             mFadeObject.FadeIn();
+
+            this.mActive = true;
         }
 
         /// <summary>
@@ -120,6 +127,8 @@ namespace JCSUnity
         {
             TweenerHandler.DoAllTweenToStartValue();
             mFadeObject.FadeOut();
+
+            this.mActive = false;
         }
     }
 }
