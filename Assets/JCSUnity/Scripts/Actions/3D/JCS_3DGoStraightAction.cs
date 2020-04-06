@@ -23,13 +23,13 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_3DGoStraightAction) **")]
 
         [Tooltip("How fast it moves.")]
-        [SerializeField] [Range(-500.0f, 500.0f)]
+        [SerializeField]
+        [Range(-500.0f, 500.0f)]
         private float mMoveSpeed = 10.0f;
 
         [Tooltip("Which axis it moves.")]
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_X;
-
 
         [Header("- Randomize Settings (JCS_3DGoStraightAction)")]
 
@@ -39,9 +39,9 @@ move speed to negative move speed.")]
         private bool mRandomizeSpeedAtStart = false;
 
         [Tooltip("Value randomize the move speed.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandomSpeedValue = 5.0f;
-
 
         /* Setter & Getter */
 
@@ -49,7 +49,6 @@ move speed to negative move speed.")]
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
         public bool RandomizeSpeedAtStart { get { return this.mRandomizeSpeedAtStart; } set { this.mRandomizeSpeedAtStart = value; } }
         public float RandomSpeedValue { get { return this.mRandomSpeedValue; } set { this.mRandomSpeedValue = value; } }
-
 
         /* Functions */
 
@@ -66,7 +65,7 @@ move speed to negative move speed.")]
          *
          * NOTE: if you want this to be accurate use FixedUpdate.
          */
-         /* Comment either one of them. */
+        /* Comment either one of them. */
         //private void Update()
         private void FixedUpdate()
         {
@@ -93,7 +92,7 @@ move speed to negative move speed.")]
 
             // if is valid, do action.
             //if (!JCS_Mathf.IsNaN(newPos))
-                this.transform.Translate(newPos);
+            this.transform.Translate(newPos);
         }
     }
 }

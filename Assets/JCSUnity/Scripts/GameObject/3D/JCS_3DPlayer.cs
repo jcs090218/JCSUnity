@@ -20,21 +20,32 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [SerializeField] private float mRotateSpeed = 25f;
+        [Header("** Runtime Variables (JCS_3DPlayer) **")]
 
+        [Tooltip("How fast it rotates.")]
+        [SerializeField]
+        [Range(0.0f, 3000.0f)]
+        protected float mRotateSpeed = 25.0f;
 
         /* Setter & Getter */
 
+        public float RotateSpeed { get { return this.mRotateSpeed; } }
+
         /* Functions */
+
+        protected override void Update()
+        {
+            base.Update();
+
+            PlayerInput();
+        }
 
         protected override void FixedUpdate()
         {
-            PlayerInput();
-
             if (!mCharacterController.isGrounded)
                 mVelocity.y -= (JCS_GameConstant.GRAVITY * Time.deltaTime * JCS_GameSettings.instance.GRAVITY_PRODUCT);
 
-            mCharacterController.Move(mVelocity * Time.deltaTime);
+            base.FixedUpdate();
         }
 
         /// <summary>
@@ -61,7 +72,7 @@ namespace JCSUnity
         /// <summary>
         /// Play input's design.
         /// </summary>
-        public void PlayerInput()
+        protected virtual void PlayerInput()
         {
             if (JCS_Input.GetKey(KeyCode.RightArrow))
             {
@@ -154,7 +165,7 @@ namespace JCSUnity
 
         private void RotateRelativeToCamera()
         {
-
+            // empty.
         }
     }
 }

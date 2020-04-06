@@ -23,7 +23,6 @@ namespace JCSUnity
         protected CharacterController mCharacterController = null;
         protected JCS_CharacterControllerInfo mCharacterControllerInfo = null;
 
-
         [Header("** Runtime Variables (JCS_Player) **")]
 
         [Tooltip("How fast this player moves.")]
@@ -32,7 +31,8 @@ namespace JCSUnity
 
         [Tooltip("Move speed of this player.")]
         [SerializeField]
-        protected float mMoveSpeed = 0.0f;
+        [Range(0.0f, 3000.0f)]
+        protected float mMoveSpeed = 10.0f;
 
         [Tooltip("Is the player controllable?")]
         [SerializeField]
