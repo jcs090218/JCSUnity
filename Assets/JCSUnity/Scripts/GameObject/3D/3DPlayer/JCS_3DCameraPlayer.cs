@@ -60,6 +60,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public Transform LookPoint { get { return this.mLookPoint; } set { this.mLookPoint = value; } }
+        public float LookDistance { get { return this.mLookDistance; } set { this.mLookDistance = value; } }
+
+        public float JumpForce { get { return this.mJumpForce; } set { this.mJumpForce = value; } }
+
+        public KeyCode UpKey { get { return this.mUpKey; } set { this.mUpKey = value; } }
+        public KeyCode DownKey { get { return this.mDownKey; } set { this.mDownKey = value; } }
+        public KeyCode RightKey { get { return this.mRightKey; } set { this.mRightKey = value; } }
+        public KeyCode LeftKey { get { return this.mLeftKey; } set { this.mLeftKey = value; } }
+
         /* Functions */
 
         protected override void Awake()
