@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-04-11
+
+* Added the path action for path finding module. (JCSUnity)
+
 ### 2020-04-07
 
 * Implemented `JCS_3DCameraPlayer` for character control relatives 
