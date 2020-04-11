@@ -32,9 +32,13 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_3DCamera) **")]
 
-        [Tooltip("")]
+        [Tooltip("Current tracking position.")]
         [SerializeField]
         private Vector3 mTrackPosition = Vector3.zero;
+
+        [Tooltip("Current revolution that do the revolution.")]
+        [SerializeField]
+        private float mCurrentRevolution = 0.0f;
 
         [Header("** Runtime Variables (JCS_3DCamera) **")]
 
@@ -42,11 +46,9 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        private bool mDoReset = false;
-
-        [Tooltip("Angle when looking at the target.")]
+        [Tooltip("Targeting revolution.")]
         [SerializeField]
-        private float mTargetAngle = 0.0f;
+        private float mTargetRevolution = 0.0f;
 
         [Header("** Speed / Friction **")]
 
@@ -59,13 +61,13 @@ namespace JCSUnity
 
         [Tooltip("How fast this camera rotates.")]
         [SerializeField]
-        [Range(0.1f, 1000.0f)]
-        private float mRotateSpeed = 350.0f;
+        [Range(0.001f, 30.0f)]
+        private float mRotateFriction = 0.2f;
 
-        [Tooltip("Range when rotating to the target rotation.")]
+        [Tooltip("Angle that rotate once.")]
         [SerializeField]
-        [Range(0.01f, 2.0f)]
-        private float mAcceptRange = 1.0f;
+        [Range(0.0f, 360.0f)]
+        private float mRotateAngle = 10.0f;
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
         [Tooltip("Key to rotate around the left side.")]
@@ -85,20 +87,8 @@ namespace JCSUnity
 #endif
         [Tooltip("Angle when reset the camera.")]
         [SerializeField]
+        [Range(0.0f, 180.0f)]
         private float mResetTargetAngle = 0.0f;
-
-        /// <summary>
-        /// State of the rotation identifier.
-        /// </summary>
-        enum CheckState
-        {
-            NULL,
-
-            POSITIVE,
-            NEGATIVE
-        };
-        // instance rotation state.
-        private CheckState mCheckState = CheckState.NULL;
 
         [Header("** Up Down Settings (JCS_3DCamera) **")]
 
@@ -191,11 +181,17 @@ namespace JCSUnity
         public override void SetFollowTarget(Transform targ) { this.mTargetTransform = targ; }
         public override Transform GetFollowTarget() { return this.mTargetTransform; }
 
-        public void SetRotateSpeed(float val) { this.mRotateSpeed = val; }
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
         public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
+
         public float ScrollRange_Mouse { get { return this.mScrollRange_Mouse; } set { this.mScrollRange_Mouse = value; } }
         public float ScrollRange_Touch { get { return this.mScrollRange_Touch; } set { this.mScrollRange_Touch = value; } }
+
+        public float RotateAngle { get { return this.mRotateAngle; } set { this.mRotateAngle = value; } }
+        public float ResetTargetAngle { get { return this.mResetTargetAngle; } set { this.mResetTargetAngle = value; } }
+
+        public float MinDistance { get { return this.mMinDistance; } set { this.mMinDistance = value; } }
+        public float MaxDistance { get { return this.mMaxDistance; } set { this.mMaxDistance = value; } }
 
         /* Functions */
 
@@ -228,13 +224,7 @@ namespace JCSUnity
 
             InputCamera();
 
-            // update the angle from target we are following
-            mTargetAngle = mTargetTransform.localEulerAngles.y;
-
-
             DoFollowing();
-
-            DoResetToAxis();
 
             UpDownMovement();
 
@@ -283,6 +273,15 @@ namespace JCSUnity
 
             // asymptotic back to zero
             mTargetScrollSpeed += (0.0f - mTargetScrollSpeed) / mScrollSpeedFriction * Time.deltaTime;
+
+            // asymptotic revolution
+            {
+                float revoDelta = (mTargetRevolution - mCurrentRevolution) / mRotateFriction * Time.deltaTime;
+
+                mCurrentRevolution += revoDelta;
+
+                this.transform.RotateAround(mTargetTransform.position, Vector3.up, revoDelta);
+            }
         }
 
 #if (UNITY_EDITOR)
@@ -303,7 +302,7 @@ namespace JCSUnity
         /// </summary>
         public void RotateAroundRight()
         {
-            RotateAround(-mRotateSpeed);
+            DeltaRevolution(-mRotateAngle);
         }
 
         /// <summary>
@@ -311,7 +310,7 @@ namespace JCSUnity
         /// </summary>
         public void RotateAroundLeft()
         {
-            RotateAround(mRotateSpeed);
+            DeltaRevolution(mRotateAngle);
         }
 
         /// <summary>
@@ -325,13 +324,7 @@ namespace JCSUnity
                 return;
             }
 
-            float wantedDegree = mTargetAngle + 180.0f;
-
-            // set the degree with in 0-360 range to prevent 
-            // out of range possiblity.
-            float withIn360Degree = wantedDegree % 360.0f;
-
-            SetToRevoluationAngle(withIn360Degree);
+            SetToRevoluationAngle(mResetTargetAngle);
         }
 
         /// <summary>
@@ -390,93 +383,25 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the revolution rotate base on speed.
-        /// </summary>
-        /// <param name="speed"> direction and speed. </param>
-        private void RotateAround(float speed)
-        {
-            if (mTargetTransform == null)
-            {
-                JCS_Debug.LogError("There is no target to reset the camera!");
-                return;
-            }
-
-            // to the rotate formula.
-            this.transform.position = JCS_Mathf.RotatePointY(transform.position, Mathf.Cos(speed / 1000.0f), Mathf.Sin(speed / 1000.0f), mTargetTransform.position);
-
-            // NOTE(jenchieh): also set to the track position.
-            mTrackPosition = this.transform.position;
-        }
-
-        /// <summary>
-        /// Reset the camera to certain axis.
-        /// </summary>
-        private void DoResetToAxis()
-        {
-            if (!mDoReset)
-                return;
-
-            Vector2 selfPos = new Vector2(
-                this.transform.position.x,
-                this.transform.position.z);
-            Vector2 targetPos = new Vector2(
-                mTargetTransform.position.x,
-                mTargetTransform.position.z);
-
-            // radius = distance between the two but not including y axis.
-            float radius = Vector2.Distance(selfPos, targetPos);
-
-            float diameter = radius * 2;
-
-            float circumference = diameter * Mathf.PI;
-
-            float currentAngle = this.transform.localEulerAngles.y;
-            float circumferenceDistance = circumference * (mResetTargetAngle - currentAngle) / 360.0f;
-
-
-            if (JCS_Mathf.isPositive(circumferenceDistance))
-            {
-                if (circumferenceDistance + mAcceptRange <= 0.0f ||
-                    mCheckState == CheckState.NEGATIVE)
-                {
-                    mDoReset = false;
-                    return;
-                }
-
-                RotateAroundRight();
-
-                mCheckState = CheckState.POSITIVE;
-            }
-            else
-            {
-                if (circumferenceDistance + mAcceptRange >= 0.0f ||
-                    mCheckState == CheckState.POSITIVE)
-                {
-                    mDoReset = false;
-                    return;
-                }
-
-                RotateAroundLeft();
-
-                mCheckState = CheckState.NEGATIVE;
-            }
-        }
-
-        /// <summary>
-        /// 
+        /// Set the current revolution angle.
         /// </summary>
         /// <param name="angle"></param>
         private void SetToRevoluationAngle(float angle)
         {
-            if (mDoReset)
-                return;
+            float targetAngle = angle;
 
-            mResetTargetAngle = angle;
+            // Make it respect to the target transform.
+            if (mTargetTransform)
+                targetAngle += mTargetTransform.eulerAngles.y;
 
-            mDoReset = true;
+            // Calculate in order to rotate revolution to the nearest distance.
+            float delta = targetAngle - mTargetRevolution;
+            if (delta < -180.0f)
+                delta += 360.0f;
+            else if (delta > 180.0f)
+                delta -= 360.0f;
 
-            // reset check state
-            mCheckState = CheckState.NULL;
+            DeltaRevolution(delta);
         }
 
         /// <summary>
@@ -574,6 +499,26 @@ namespace JCSUnity
                     newPos.z = mRecordPosition.z;
                     this.transform.position = newPos;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Safely delta the current revolution by ANGLE.
+        /// </summary>
+        /// <param name="angle"> Angle value to delta. </param>
+        private void DeltaRevolution(float angle)
+        {
+            mTargetRevolution += angle;
+
+            if (mTargetRevolution < 0.0f)
+            {
+                mTargetRevolution += 360.0f;
+                mCurrentRevolution += 360.0f;
+            }
+            else if (mTargetRevolution > 360.0f)
+            {
+                mTargetRevolution -= 360.0f;
+                mCurrentRevolution -= 360.0f;
             }
         }
     }
