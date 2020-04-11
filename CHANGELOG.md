@@ -8,6 +8,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-04-11
 
 * Added the path action for path finding module. (JCSUnity)
+* Upgraded 3D camera revolution rotate action, is more stable and 
+ has the improvement of the UX. (JCSUnity)
 
 ### 2020-04-07
 
