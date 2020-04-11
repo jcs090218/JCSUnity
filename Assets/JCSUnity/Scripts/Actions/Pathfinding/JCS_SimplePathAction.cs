@@ -39,9 +39,9 @@ namespace JCSUnity
         [SerializeField]
         private List<Transform> mPoints = null;
 
-        [Tooltip("Random the path by randomizing the target point.")]
+        [Tooltip("Type of the path action.")]
         [SerializeField]
-        private bool mRandom = false;
+        private JCS_PathActionType mPathActionType = JCS_PathActionType.INCREMENT;
 
         [Tooltip("Range that will stop the movement.")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public List<Transform> Points { get { return this.mPoints; } }
-        public bool Random { get { return this.mRandom; } set { this.mRandom = value; } }
+        public JCS_PathActionType PathActionType { get { return this.mPathActionType; } set { this.mPathActionType = value; } }
         public float AcceptRange { get { return this.mAcceptRange; } set { this.mAcceptRange = value; } }
 
         /* Functions */
@@ -89,22 +89,49 @@ namespace JCSUnity
         /// </summary>
         private void GetNextPoint()
         {
-            if (mRandom)
+            switch (mPathActionType)
             {
-                int len = mPoints.Count;
-                int newIndex = JCS_Random.RangeInclude(0, len - 1);
+                case JCS_PathActionType.INCREMENT:
+                    {
+                        ++mTargetPointIndex;
 
-                if (newIndex == mTargetPointIndex && len != 1)
-                    GetNextPoint();
-                else
-                    mTargetPointIndex = newIndex;
-            }
-            else
-            {
-                ++mTargetPointIndex;
+                        if (mTargetPointIndex >= mPoints.Count)
+                            mTargetPointIndex = 0;
+                    }
+                    break;
+                case JCS_PathActionType.DECREMENT:
+                    {
+                        --mTargetPointIndex;
 
-                if (mTargetPointIndex >= mPoints.Count)
-                    mTargetPointIndex = 0;
+                        if (mTargetPointIndex < 0)
+                            mTargetPointIndex = mPoints.Count - 1;
+                    }
+                    break;
+                case JCS_PathActionType.INC_OR_DEC:
+                    {
+                        int incOrDec = JCS_Random.RangeInclude(0, 1);
+
+                        if (incOrDec == 0)
+                            mPathActionType = JCS_PathActionType.INCREMENT;
+                        else
+                            mPathActionType = JCS_PathActionType.DECREMENT;
+
+                        GetNextPoint();
+
+                        mPathActionType = JCS_PathActionType.INC_OR_DEC;
+                    }
+                    break;
+                case JCS_PathActionType.RANDOM_ALL:
+                    {
+                        int len = mPoints.Count;
+                        int newIndex = JCS_Random.RangeInclude(0, len - 1);
+
+                        if (newIndex == mTargetPointIndex && len != 1)
+                            GetNextPoint();
+                        else
+                            mTargetPointIndex = newIndex;
+                    }
+                    break;
             }
         }
 
