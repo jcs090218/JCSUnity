@@ -18,7 +18,7 @@ namespace JCSUnity
     public static class JCS_Random
     {
         /// <summary>
-        /// Return normal random range (Integer)
+        /// Return normal random range.
         /// </summary>
         /// <param name="min"> mininum value </param>
         /// <param name="max"> maxinum value </param>
@@ -31,9 +31,13 @@ namespace JCSUnity
         {
             return (uint)Random.Range(min, max);
         }
+        public static float Range(float min, float max)
+        {
+            return Random.Range(min, max);
+        }
 
         /// <summary>
-        /// Return normal random range and cover the max value. (Integer)
+        /// Return normal random range and cover the max value.
         /// </summary>
         /// <param name="min"> mininum value </param>
         /// <param name="max"> maxinum value </param>
@@ -46,16 +50,10 @@ namespace JCSUnity
         {
             return Range(min, max + 1);
         }
-
-        /// <summary>
-        /// Return normal random range (Float)
-        /// </summary>
-        /// <param name="min"> mininum value </param>
-        /// <param name="max"> maxinum value </param>
-        /// <returns> random number </returns>
-        public static float Range(float min, float max)
+        public static float RangeInclude(float min, float max)
         {
-            return Random.Range(min, max);
+            float include = FindDecimalInclude(max);
+            return Range(min, max + include);
         }
 
         /// <summary>
@@ -64,12 +62,22 @@ namespace JCSUnity
         /// <returns> random color object. </returns>
         public static Color RandomColor(float a = 1.0f)
         {
-            return new Color(
-                Range(0.0f, 1.0f),
-                Range(0.0f, 1.0f),
-                Range(0.0f, 1.0f),
-                a);
+            return new Color(Range(0.0f, 1.0f), Range(0.0f, 1.0f), Range(0.0f, 1.0f), a);
         }
 
+        /// <summary>
+        /// Find the decimal include.
+        /// </summary>
+        /// <param name="num"> Number use to calculate. </param>
+        /// <returns> Return the include decimal number. </returns>
+        private static float FindDecimalInclude(float num)
+        {
+            string str = num.ToString();
+
+            if (str.Contains("."))
+                str = str.Split('.')[1];
+
+            return 1.0f / Mathf.Pow(10.0f, str.Length);
+        }
     }
 }
