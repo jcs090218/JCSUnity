@@ -22,6 +22,15 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
+        /// <summary>
+        /// List of all the walk type.
+        /// </summary>
+        public enum JCS_3DWalkType
+        {
+            CLOSEST_POINT,
+            IN_RANGE,
+        };
+
         /* Variables */
 
         // All enemy should have the nav
@@ -40,34 +49,36 @@ namespace JCSUnity
         // use for checking the action is approve or not.
         private bool mTargeted = false;
 
-
         [Header("** Runtime Variables (JCS_3DWalkAction) **")]
 
         [Tooltip("Check weather you want do this action.")]
         [SerializeField]
-        private bool mDoAI = true;
+        private bool mActive = true;
+
+        [Tooltip("Type of the walk behaviour calculation.")]
+        [SerializeField]
+        private JCS_3DWalkType mWalkType = JCS_3DWalkType.CLOSEST_POINT;
 
         [Tooltip("Range that enemy will try to get close to.")]
         [SerializeField]
-        [Range(1.0f, 1000.0f)]
+        [Range(0.001f, 1000.0f)]
         private float mRangeDistance = 5.0f;
 
         [Tooltip("Randomly adjusts the range distance.")]
         [SerializeField]
-        [Range(1.0f, 5.0f)]
+        [Range(1.0f, 30.0f)]
         private float mAdjustRangeDistance = 0.0f;
-
 
         [Header("- Tracking")]
 
         [Tooltip("Time to target the enemy.")]
         [SerializeField]
-        [Range(0.01f, 10.0f)]
-        private float mTargetTime = 1;
+        [Range(0.01f, 180.0f)]
+        private float mTargetTime = 1.0f;
 
         [Tooltip("Adjust a bit of the attack time.")]
         [SerializeField]
-        [Range(0.0f, 5.0f)]
+        [Range(0.0f, 160.0f)]
         private float mAdjustTargetTime = 0.0f;
 
         // timer to simulate the time for targeting the player.
@@ -76,8 +87,15 @@ namespace JCSUnity
         // time that actually make the enemy target the player.
         private float mRealTargetTime = 0;
 
-
         /* Setter & Getter */
+
+        public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public JCS_3DWalkType WalkType { get { return this.mWalkType; } set { this.mWalkType = value; } }
+
+        public float RangeDistance { get { return this.mRangeDistance; } set { this.mRangeDistance = value; } }
+        public float AdjustRangeDistance { get { return this.mAdjustRangeDistance; } set { this.mAdjustRangeDistance = value; } }
+        public float TargetTime { get { return this.mTargetTime; } set { this.mTargetTime = value; } }
+        public float AdjustTargetTime { get { return this.mAdjustTargetTime; } set { this.mAdjustTargetTime = value; } }
 
         /* Functions */
 
@@ -92,7 +110,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Target one player and do in taget action.
+        /// Target one player and do in target action.
         /// </summary>
         /// <param name="target"> Target we are following. </param>
         public void TargetOne(Transform target)
@@ -101,8 +119,7 @@ namespace JCSUnity
             // end function call.
             if (target == null)
             {
-                JCS_Debug.LogError(
-                    "This transform u are targeting are null...");
+                JCS_Debug.LogError("The transform you are targeting is null");
                 return;
             }
 
@@ -120,11 +137,10 @@ namespace JCSUnity
 
             // calculate the distance and range relationship,
             // and find out the position enemy are approach to.
-            Vector3 targetPos = CalculateRange(target.transform.position);
+            Vector3 targetPos = GetTargetPosByWalkType(target.transform.position);
 
             // set to the destination.
             bool found = mNavMeshAgent.SetDestination(targetPos);
-
 
             // increase the search count.
             ++mSearchCount;
@@ -161,6 +177,52 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return the target position base on walk type.
+        /// </summary>
+        /// <param name="targetPos"> Target position. </param>
+        /// <returns>
+        /// Target position that calculated depends walk type.
+        /// </returns>
+        private Vector3 GetTargetPosByWalkType(Vector3 targetPos)
+        {
+            switch (mWalkType)
+            {
+                case JCS_3DWalkType.CLOSEST_POINT:
+                    return CalculateClosest(targetPos);
+                case JCS_3DWalkType.IN_RANGE:
+                    return CalculateRange(targetPos);
+            }
+            JCS_Debug.LogError("Walk type can't happens");
+            return targetPos;
+        }
+
+        /// <summary>
+        /// Calculate the the closest point by range and targetPos.
+        /// </summary>
+        /// <param name="targetPos"></param>
+        /// <returns></returns>
+        private Vector3 CalculateClosest(Vector3 targetPos)
+        {
+            Vector3 newTargetPos = targetPos;
+
+            Vector3 vec = this.transform.position - targetPos;
+
+            vec = vec.normalized;
+
+            float distance = GetRangeDistance();
+
+            float hyp = JCS_Mathf.PythagoreanTheorem(vec.x, vec.z, JCS_Mathf.TriSides.hyp);
+
+            float ratio = distance / hyp;
+
+            newTargetPos.x += vec.x * ratio;
+            newTargetPos.z += vec.z * ratio;
+            newTargetPos.y = this.transform.position.y;
+
+            return newTargetPos;
+        }
+
+        /// <summary>
         /// Calculate the range and position relationship
         /// in order to find the best destination in the
         /// navigation map.
@@ -178,13 +240,7 @@ namespace JCSUnity
             // 隨機"內角"
             float angle = JCS_Random.Range(0, 360);
 
-            // define offset
-            float hypOffset = JCS_Random.Range(
-                    -mAdjustRangeDistance,
-                    mAdjustRangeDistance);
-
-            // add offset to current distance (hyp)
-            float hyp = mRangeDistance + hypOffset;
+            float hyp = GetRangeDistance();
 
             float opp = Mathf.Sin(angle) * hyp;
 
@@ -213,7 +269,7 @@ namespace JCSUnity
         private void DoAI()
         {
             // Check function trigger.
-            if (!mDoAI)
+            if (!mActive)
                 return;
 
             // start timer
@@ -247,6 +303,17 @@ namespace JCSUnity
 
             // reset timer.
             mTargetTimer = 0;
+        }
+
+        /// <summary>
+        /// Return the range distance.
+        /// </summary>
+        /// <returns> Value of the range distance. </returns>
+        private float GetRangeDistance()
+        {
+            float hypOffset = JCS_Random.Range(-mAdjustRangeDistance, mAdjustRangeDistance);
+
+            return mRangeDistance + hypOffset;
         }
     }
 }
