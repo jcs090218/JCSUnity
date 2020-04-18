@@ -46,10 +46,10 @@ namespace JCSUnity
         private Color mFromColor = Color.white;
 
         // these value are actually going to use.
-        private float mRealDurationRed = 0f;
-        private float mRealDurationGreen = 0f;
-        private float mRealDurationBlue = 0f;
-        private float mRealDurationAlpha = 0f;
+        private float mRealDurationRed = 0.0f;
+        private float mRealDurationGreen = 0.0f;
+        private float mRealDurationBlue = 0.0f;
+        private float mRealDurationAlpha = 0.0f;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_ColorTweener) **")]
@@ -103,31 +103,37 @@ namespace JCSUnity
         [Tooltip("Tween type for red channel.")]
         [SerializeField]
         private JCS_TweenType mEaseTypeR = JCS_TweenType.LINEAR;
+
         [Tooltip("Tween type for green channel.")]
         [SerializeField]
         private JCS_TweenType mEaseTypeG = JCS_TweenType.LINEAR;
+
         [Tooltip("Tween type for blue channel.")]
         [SerializeField]
         private JCS_TweenType mEaseTypeB = JCS_TweenType.LINEAR;
+
         [Tooltip("Tween type for alpha channel.")]
         [SerializeField]
         private JCS_TweenType mEaseTypeA = JCS_TweenType.LINEAR;
 
-        
         [Tooltip("How fast it changes the red channel.")]
-        [SerializeField] [Range(0.01f, 1000.0f)]
+        [SerializeField]
+        [Range(0.01f, 1000.0f)]
         private float mDurationRed = 0.2f;
 
         [Tooltip("How fast it changes the green channel.")]
-        [SerializeField] [Range(0.01f, 1000.0f)]
+        [SerializeField]
+        [Range(0.01f, 1000.0f)]
         private float mDurationGreen = 0.2f;
 
         [Tooltip("How fast it changes the blue channel.")]
-        [SerializeField] [Range(0.01f, 1000.0f)]
+        [SerializeField]
+        [Range(0.01f, 1000.0f)]
         private float mDurationBlue = 0.2f;
 
         [Tooltip("How fast it changes the alpha channel.")]
-        [SerializeField] [Range(0.01f, 1000.0f)]
+        [SerializeField]
+        [Range(0.01f, 1000.0f)]
         private float mDurationAlpha = 0.2f;
 
         [Tooltip("Do not do anything with red channel.")]
@@ -146,6 +152,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreA = false;
 
+        [Header("- Callback")]
 
         [Tooltip("Callback after easing.")]
         [SerializeField]
@@ -274,10 +281,10 @@ namespace JCSUnity
         public void DoTween(Color inToColor)
         {
             DoTween(
-                inToColor, 
+                inToColor,
                 this.mEaseTypeR,
-                this.mEaseTypeG, 
-                this.mEaseTypeB, 
+                this.mEaseTypeG,
+                this.mEaseTypeB,
                 this.mEaseTypeR);
         }
 
@@ -290,7 +297,7 @@ namespace JCSUnity
         /// <param name="inTweenTypeB"> tween type for blue channel </param>
         /// <param name="inTweenTypeA"> tween type for alpha channel </param>
         public void DoTween(
-            Color inToColor, 
+            Color inToColor,
             JCS_TweenType inTweenTypeR,
             JCS_TweenType inTweenTypeG,
             JCS_TweenType inTweenTypeB,
@@ -324,7 +331,7 @@ namespace JCSUnity
         /// <param name="inDurationA"> how fast it tween in alpha channel </param>
         public void DoTween(
             Color inFromColor,
-            Color inToColor, 
+            Color inToColor,
             JCS_TweenType inTweenTypeR,
             JCS_TweenType inTweenTypeG,
             JCS_TweenType inTweenTypeB,
@@ -473,7 +480,7 @@ namespace JCSUnity
             {
                 this.mProgressionColor.a = mEasingAlpha.Invoke(
                     mTimeElapsed.w,
-                    mFromColor.a, 
+                    mFromColor.a,
                     (mTargetColor.a - mFromColor.a),
                     mRealDurationAlpha);
 

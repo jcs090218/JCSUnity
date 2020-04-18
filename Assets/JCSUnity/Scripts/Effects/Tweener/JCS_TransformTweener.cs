@@ -50,6 +50,10 @@ namespace JCSUnity
         private KeyCode mContinueKeyTween = KeyCode.C;
 #endif
 
+        private Tweener mTweenerX = new Tweener();
+        private Tweener mTweenerY = new Tweener();
+        private Tweener mTweenerZ = new Tweener();
+
         [Header("** Check Variables (JCS_TransformTweener) **")]
 
         [SerializeField]
@@ -64,10 +68,21 @@ namespace JCSUnity
 
         private Transform mRecordTransform = null;
 
+        [Tooltip("Flag to check if done tweening on x-axis.")]
+        [SerializeField]
+        private bool mDoneTweenX = false;
+
+        [Tooltip("Flag to check if done tweening on y-axis.")]
+        [SerializeField]
+        private bool mDoneTweenY = false;
+
+        [Tooltip("Flag to check if done tweening on z-axis.")]
+        [SerializeField]
+        private bool mDoneTweenZ = false;
+
         [Tooltip("Is done tweening/animating?")]
         [SerializeField]
         private bool mIsDoneTweening = false;
-
 
         [Header("** Runtime Variables (JCS_TransformTweener) **")]
 
@@ -79,21 +94,20 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mValueOffset = Vector3.zero;
 
-        [Tooltip("How fase it moves on x axis.")]
+        [Tooltip("How fast it moves on x axis.")]
         [SerializeField]
         [Range(0.01f, 1000.0f)]
         private float mDurationX = 1.0f;
 
-        [Tooltip("How fase it moves on y axis.")]
+        [Tooltip("How fast it moves on y axis.")]
         [SerializeField]
         [Range(0.01f, 1000.0f)]
         private float mDurationY = 1.0f;
 
-        [Tooltip("How fase it moves on z axis.")]
+        [Tooltip("How fast it moves on z axis.")]
         [SerializeField]
         [Range(0.01f, 1000.0f)]
         private float mDurationZ = 1.0f;
-
 
         [Header("- Destroy")]
 
@@ -106,14 +120,12 @@ namespace JCSUnity
         [Range(1, 10)]
         private int mDestroyDoneTweeningCount = 1;
 
-
         [Header("- Randomize Duration")]
 
         [Tooltip("Randomize the durations with all axis at start. (x, y, z)")]
         [SerializeField]
         [Range(0.0f, 1000.0f)]
         private float mRandomizeDuration = 0.0f;
-
 
         [Header("- Tweener Effect Transform")]
 
@@ -129,7 +141,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mTrackAsLocalTarget = false;
 
-
         [Header("- Tweener Formula Type")]
 
         [Tooltip("Tweener formula on x axis.")]
@@ -144,9 +155,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TweenType mEasingZ = JCS_TweenType.LINEAR;
 
-        private Vector3Tweener tweener = new Vector3Tweener();
-
-
         [Header("- Continuous Tween (JCS_TransformTweener) ")]
 
         [Tooltip("While continue tween when did the tweener algorithm stop?")]
@@ -158,20 +166,28 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool IsDoneTweening { get { return this.mIsDoneTweening; } }
+        public bool DoneTweenX { get { return this.mDoneTweenX; } }
+        public bool DoneTweenY { get { return this.mDoneTweenY; } }
+        public bool DoneTweenZ { get { return this.mDoneTweenZ; } }
+
         public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
         public bool TrackAsLocalSelf { get { return this.mTrackAsLocalSelf; } set { this.mTrackAsLocalSelf = value; } }
         public bool TrackAsLocalTarget { get { return this.mTrackAsLocalTarget; } set { this.mTrackAsLocalTarget = value; } }
         public float StopTweenDistance { get { return this.mStopTweenDistance; } set { this.mStopTweenDistance = value; } }
+
         public float DurationX { get { return this.mDurationX; } set { this.mDurationX = value; } }
         public float DurationY { get { return this.mDurationY; } set { this.mDurationY = value; } }
         public float DurationZ { get { return this.mDurationZ; } set { this.mDurationZ = value; } }
+
         public JCS_TweenType EasingX { get { return this.mEasingX; } set { this.mEasingX = value; } }
         public JCS_TweenType EasingY { get { return this.mEasingY; } set { this.mEasingY = value; } }
         public JCS_TweenType EasingZ { get { return this.mEasingZ; } set { this.mEasingZ = value; } }
+
         public void SetTargetTransform(Transform trans) { this.mTargetTransform = trans; }
         public Transform RecordTransform { get { return this.mRecordTransform; } }
         public bool DestroyWhenDoneTweening { get { return this.mDestroyWhenDoneTweening; } set { this.mDestroyWhenDoneTweening = value; } }
         public JCS_TransformType TweenType { get { return this.mTweenType; } set { this.mTweenType = value; } }
+
         public Vector3 ValueOffset { get { return this.mValueOffset; } set { this.mValueOffset = value; } }
         public float ValueOffsetX { get { return this.mValueOffset.x; } set { this.mValueOffset.x = value; } }
         public float ValueOffsetY { get { return this.mValueOffset.y; } set { this.mValueOffset.y = value; } }
@@ -186,7 +202,9 @@ namespace JCSUnity
 
             RandomizeDuration();
 
-            tweener.SetCallback(DoneTweening);
+            mTweenerX.SetCallback(DoneTweeningX);
+            mTweenerY.SetCallback(DoneTweeningY);
+            mTweenerZ.SetCallback(DoneTweeningZ);
         }
 
         private void LateUpdate()
@@ -202,21 +220,30 @@ namespace JCSUnity
             // check if do continue tweening
             ContinueTween();
 
-            if (tweener.animating)
+            // Updates the Tweener
             {
-                // Updates the Tweener
-                tweener.updateX();
-                tweener.updateY();
-                tweener.updateZ();
+                if (mTweenerX.animating) mTweenerX.update();
+                if (mTweenerY.animating) mTweenerY.update();
+                if (mTweenerZ.animating) mTweenerZ.update();
 
-                // Set value to one of the transform properties.
-                SetSelfTransformTypeVector3(tweener.progression);
+                bool animating = mTweenerX.animating || mTweenerY.animating || mTweenerZ.animating;
 
-                mIsDoneTweening = false;
-            }
-            else
-            {
-                mIsDoneTweening = true;
+                if (animating)
+                {
+                    Vector3 newVal = new Vector3(
+                        mTweenerX.progression,
+                        mTweenerY.progression,
+                        mTweenerZ.progression);
+
+                    // Set value to one of the transform properties.
+                    SetSelfTransformTypeVector3(newVal);
+
+                    mIsDoneTweening = false;
+                }
+                else
+                {
+                    mIsDoneTweening = true;
+                }
             }
         }
 
@@ -241,7 +268,13 @@ namespace JCSUnity
         /// </summary>
         public void ResetTweener()
         {
-            tweener.ResetTweener();
+            this.mDoneTweenX = false;
+            this.mDoneTweenY = false;
+            this.mDoneTweenZ = false;
+
+            mTweenerX.ResetTweener();
+            mTweenerY.ResetTweener();
+            mTweenerZ.ResetTweener();
         }
 
         /// <summary>
@@ -252,7 +285,6 @@ namespace JCSUnity
         {
             mDestinationCallback = func;
         }
-
 
         /// <summary>
         /// Tween to this vector either position, scale, rotation.
@@ -469,18 +501,48 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Default callback when done tweening.
+        /// Default callback when done tweening for destroying.
         /// </summary>
-        protected void DoneTweening()
+        protected void DoneTweeningDestroy()
         {
+            if (!mDestroyWhenDoneTweening)
+                return;
+
             --mDestroyDoneTweeningCount;
 
-            if (mDestroyWhenDoneTweening)
-            {
-                if (mDestroyDoneTweeningCount <= 0)
-                    Destroy(this.gameObject);
-            }
+            if (mDestroyDoneTweeningCount <= 0)
+                Destroy(this.gameObject);
         }
+
+        /// <summary>
+        /// Do the callback.
+        /// </summary>
+        private void DoCallback()
+        {
+            mTweenerX.DoCallback();
+            mTweenerY.DoCallback();
+            mTweenerZ.DoCallback();
+
+            SafeDoCallback();
+        }
+
+        private void SafeDoCallback()
+        {
+            if (mDestinationCallback == null)
+                return;
+
+            if (!this.mDoneTweenX || !this.mDoneTweenY || !this.mDoneTweenZ)
+                return;
+
+            mDestinationCallback.Invoke();
+        }
+
+        /// <summary>
+        /// Callback for each tweener.
+        /// </summary>
+        private void DoneTweeningX() { this.mDoneTweenX = true; SafeDoCallback(); }
+        private void DoneTweeningY() { this.mDoneTweenY = true; SafeDoCallback(); }
+        private void DoneTweeningZ() { this.mDoneTweenZ = true; SafeDoCallback(); }
 
         /// <summary>
         /// Prepare for tweening.
@@ -506,27 +568,41 @@ namespace JCSUnity
             TweenDelegate easingZ = null,
             CallBackDelegate callback = null)
         {
-            if (tweener == null)
-                return;
-
             mDestinationCallback = callback;
 
-            // Sets The Position From -> To
-            tweener.easeFromTo(
-                from,
-                to + mValueOffset,  // add offset to final value.
-                resetElapsedTime,
-                durationX,
-                durationY,
-                durationZ,
-                easingX,
-                easingY,
-                easingZ,
-                mDestinationCallback);
-
             this.mIsDoneTweening = false;
+            this.mDoneTweenX = false;
+            this.mDoneTweenY = false;
+            this.mDoneTweenZ = false;
 
             this.mContinueTween = false;
+
+            // Sets The Position From -> To
+            mTweenerX.easeFromTo(
+                from.x,
+                to.x + mValueOffset.x,  // add offset to final value.
+                resetElapsedTime,
+                durationX,
+                easingX,
+                DoneTweeningX);
+
+            // Sets The Position From -> To
+            mTweenerY.easeFromTo(
+                from.y,
+                to.y + mValueOffset.y,  // add offset to final value.
+                resetElapsedTime,
+                durationY,
+                easingY,
+                DoneTweeningY);
+
+            // Sets The Position From -> To
+            mTweenerZ.easeFromTo(
+                from.z,
+                to.z + mValueOffset.z,  // add offset to final value.
+                resetElapsedTime,
+                durationZ,
+                easingZ,
+                DoneTweeningZ);
         }
 
         /// <summary>
@@ -544,8 +620,7 @@ namespace JCSUnity
                 // so do it only when is debug mode.
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogError(
-                        "Start the tween but the target transform are null...");
+                    JCS_Debug.LogError("Start the tween but the target transform are null");
                 }
 #endif
 
@@ -575,11 +650,11 @@ namespace JCSUnity
             distance = Vector3.Distance(selfVal, targetVal);
             if (distance <= mStopTweenDistance)
             {
-                mContinueTween = false;
-
                 // call the call back.
-                tweener.ResetTweener();
-                tweener.DoCallBack();
+                ResetTweener();
+                DoCallback();
+
+                mContinueTween = false;
             }
         }
 

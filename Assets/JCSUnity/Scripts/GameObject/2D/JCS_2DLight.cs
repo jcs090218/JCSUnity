@@ -16,6 +16,7 @@ namespace JCSUnity
     /// 2D light like 'MapleStory ' v62 login screen.
     /// </summary>
     [RequireComponent(typeof(JCS_AlphaObject))]
+    [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
     public class JCS_2DLight
         : MonoBehaviour
     {
@@ -23,32 +24,15 @@ namespace JCSUnity
 
         private JCS_AlphaObject mAlphaObject = null;
 
+        private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
         [Header("** Runtime Variables (JCS_2DLight) **")]
 
-        [Tooltip("Active this?")]
+        [Tooltip("Flag for active this component.")]
         [SerializeField]
         private bool mActive = true;
 
-        [Tooltip("Time to change target light value.")]
-        [SerializeField] [Range(0.1f, 10.0f)]
-        private float mTimeToChange = 2.0f;
-
-        [Tooltip("Time variable adjust the time to change variable.")]
-        [SerializeField] [Range(0, 5)]
-        private float mAdjustTimeToChange = 1.5f;
-
-        // Real time to change
-        private float mRealTimeToChange = 0;
-
-        // use to check if the object faded?
-        private bool mFaded = false;
-
-        // timer to check to do the fade.
-        private float mTimeToChangeTimer = 0;
-
-
-        [Header("** Min/Max Settings (JCS_2DLight) **")]
+        [Header("** Min / Max Settings (JCS_2DLight) **")]
 
         [Tooltip("Mininum value of the light can fade.")]
         [SerializeField] [Range(0, 1.0f)]
@@ -59,26 +43,21 @@ namespace JCSUnity
         [Range(0, 1.0f)]
         private float mMaxFadeValue = 1.0f;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
 
+        public float MinFadeValue { get { return this.mMinFadeValue; } set { this.mMinFadeValue = value; } }
+        public float MaxFadeValue { get { return this.mMaxFadeValue; } set { this.mMaxFadeValue = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
-        }
+            this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-        private void Update()
-        {
-            // check active.
-            if (!mActive)
-                return;
-
-            DoFade();
+            this.mAdjustTimeTrigger.actions = DoFade;
         }
 
         /// <summary>
@@ -86,36 +65,7 @@ namespace JCSUnity
         /// </summary>
         private void DoFade()
         {
-            // if faded, redefine new time zone.
-            if (mFaded)
-                ResetTimeZone();
-
-            mTimeToChangeTimer += Time.deltaTime;
-
-            if (mTimeToChangeTimer < mRealTimeToChange)
-                return;
-
             this.mAlphaObject.TargetAlpha = JCS_Random.Range(mMinFadeValue, mMaxFadeValue);
-
-            // set flag for time zone.
-            mFaded = true;
-
-            // reset timer.
-            mTimeToChangeTimer = 0;
-        }
-
-        /// <summary>
-        /// Reset real time fade to change value base on 
-        /// the setting.
-        /// </summary>
-        private void ResetTimeZone()
-        {
-            mRealTimeToChange = mTimeToChange + JCS_Random.Range(-mAdjustTimeToChange, mAdjustTimeToChange);
-
-            // reset timer.
-            mTimeToChangeTimer = 0;
-
-            mFaded = false;
         }
     }
 }
