@@ -2,15 +2,16 @@
 using System.Collections;
 
 /** 
- * Example MonoBehaviour. Put it to a GameObject and give it some coordinates with startTweenTo();
+ * Example MonoBehaviour. 
+ * 
+ * Put it to a GameObject and give it some coordinates with `startTweenTo();`.
  */
 namespace PeterVuorela.Tweener
 {
-
     public class Example 
         : MonoBehaviour
     {
-        private Vector3Tweener tweener = new Vector3Tweener();
+        private Tweener tweener = new Tweener();
 
         public void startTweenTo(Vector3 to)
         {
@@ -36,10 +37,12 @@ namespace PeterVuorela.Tweener
             if (tweener != null && tweener.animating)
             {
                 // Updates the Tweener
-                tweener.updateX();
+                tweener.update();
 
                 // Set the Position
-                transform.localPosition = tweener.progression;
+                Vector3 newPos = transform.localPosition;
+                newPos.x = tweener.progression;
+                transform.localPosition = newPos;
 
                 Debug.Log("Progression Percentage: " + tweener.progressPct);
                 Debug.Log("Progression Position: " + tweener.progression);
