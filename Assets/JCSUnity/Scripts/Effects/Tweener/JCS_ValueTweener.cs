@@ -20,7 +20,7 @@ namespace JCSUnity
     /// <summary>
     /// Tweener thats tweens one specific variable value.
     /// 
-    /// Can only use for number.
+    /// Can only use for `float`.
     /// </summary>
     public class JCS_ValueTweener
         : MonoBehaviour
@@ -109,6 +109,7 @@ namespace JCSUnity
 
         public bool Animating { get { return this.mAnimating; } }
         public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
+        public float ValueOffset { get { return this.mValueOffset; } set { this.mValueOffset = value; } }
         public float Duration { get { return this.mDuration; } set { this.mDuration = value; } }
         public JCS_TweenType Easing
         {
@@ -119,6 +120,7 @@ namespace JCSUnity
                 this.mEasingFunc = JCS_Utility.GetEasing(this.mEasing);
             }
         }
+        public UnityEvent UnityCallback { get { return this.mUnityCallback; } set { this.mUnityCallback = value; } }
 
         /* Functions */
 
