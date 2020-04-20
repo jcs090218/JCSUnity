@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -1224,6 +1225,19 @@ namespace JCSUnity
         public static string ToJson<T>(T obj)
         {
             return JsonUtility.ToJson(obj);
+        }
+
+        /// <summary>
+        /// Check current scene's with NAME.
+        /// </summary>
+        /// <param name="name"> Name of the scene. </param>
+        /// <returns>
+        /// Return true, if the current scene name the same as NAME.
+        /// Return false, if the current scene name NOT the same as NAME.
+        /// </returns>
+        public static bool IsScene(string name)
+        {
+            return SceneManager.GetActiveScene().name == name;
         }
     }
 }
