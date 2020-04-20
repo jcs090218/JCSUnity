@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-04-21
+
+* Revert tween panel active/deactive logic. (JCSUnity)
+
+### 2020-04-20
+
+* Add check scene utility function. (JCSUnity)
+
 ### 2020-04-18
 
 * Implemented `JCS_ValueTweener` compnent for tweener module. (JCSUnity)
