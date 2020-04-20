@@ -25,8 +25,9 @@ namespace JCSUnity
         [SerializeField]
         private string mNextLevel = "JCS_Demo";
 
-        // second to show logo
+        [Tooltip("Second to show logo and load to the next scene.")]
         [SerializeField]
+        [Range(0.0f, 3600.0f)]
         private float mDelayTime = 1.0f;
 
         private float mDelayTimer = 0.0f;

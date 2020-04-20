@@ -53,7 +53,6 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-
         [Header("** Check Variables (JCS_3DLiquidBar) **")]
 
         [SerializeField]
@@ -71,7 +70,6 @@ namespace JCSUnity
         [Tooltip("Please put the under texture bar here.")]
         [SerializeField]
         private SpriteRenderer mBarSpriteRenderer = null;
-
 
         /* Setter & Getter */
 

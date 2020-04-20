@@ -53,14 +53,12 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetPortal = null;
 
-
         /* Setter & Getter */
 
         public bool AutoTrigger { get { return this.mAutoTrigger; } set { this.mAutoTrigger = value; } }
         public JCS_3DPortalType Type { get { return this.mType; } set { this.mType = value; } }
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public Transform TargetPortal { get { return this.mTargetPortal; } set { this.mTargetPortal = value; } }
-
 
         /* Functions */
 

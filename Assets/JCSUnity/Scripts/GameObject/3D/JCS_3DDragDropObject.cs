@@ -35,7 +35,6 @@ namespace JCSUnity
         private float mPosX = 0;
         private float mPosY = 0;
 
-
         /* Setter & Getter */
 
         /* Functions */

@@ -26,7 +26,6 @@ namespace JCSUnity
             NEGATIVE = -1
         };
 
-
         [Header("** Runtime Variables (JCS_3DLookAtAction) **")]
 
         [Tooltip("Do the action?")]
@@ -67,7 +66,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mLocalEulerAngles = false;
 
-
         [Header("- Asymptotic Look (JCS_3DLookAtAction)")]
 
         [Tooltip("Did the object gradually look at the target?")]
@@ -89,7 +87,6 @@ namespace JCSUnity
         // to original rotation which is the freezing effect.
         private Vector3 mCurrentEulerAngles = Vector3.zero;
 
-
         /* Setter & Getter */
 
         public Transform GetTargetTransform() { return this.mTargetTransform; }
@@ -101,7 +98,6 @@ namespace JCSUnity
 
         public bool AsympLook { get { return this.mAsympLook; } set { this.mAsympLook = value; } }
         public float LookFriction { get { return this.mLookFriction; } set { this.mLookFriction = value; } }
-
 
         /* Functions */
 

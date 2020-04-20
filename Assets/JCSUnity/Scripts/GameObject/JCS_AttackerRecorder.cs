@@ -31,12 +31,10 @@ namespace JCSUnity
         // Record all the attacker attack this enemy!
         private JCS_Vector<Transform> mAttackers = null;
 
-
         /* Setter & Getter */
 
         public Transform LastAttacker { get { return this.mLastAttacker; } set { this.mLastAttacker = value; } }
         public JCS_Vector<Transform> GetAttackers() { return this.mAttackers; }
-
 
         /* Functions */
 

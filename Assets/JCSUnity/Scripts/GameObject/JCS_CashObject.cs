@@ -36,13 +36,11 @@ namespace JCSUnity
         [SerializeField] [Range(0, 500)]
         protected int mRandomizeCashValue = 0;
 
-
         /* Setter & Getter */
 
         public int CashValue { get { return this.mCashValue; } set { this.mCashValue = value; } }
         public bool RandomizeCashValueEffect { get { return this.mRandomizeCashValueEffect; } set { this.mRandomizeCashValueEffect = value; } }
         public int RandomizeCashValue { get { return this.mRandomizeCashValue; } set { this.mRandomizeCashValue = value; } }
-
 
         /* Functions */
 

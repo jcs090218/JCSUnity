@@ -67,13 +67,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mTargetingRecord = true;
 
-
         [Header("** Runtime Variables (JCS_PredictCamera) **")]
 
         [Tooltip("Camera to apply the effect.")]
         [SerializeField]
         private JCS_Camera mCamera = null;
-
 
         [Header("- X Axis")]
 
@@ -101,7 +99,6 @@ namespace JCSUnity
         [SerializeField]
         private Transform mLeftDownPoint = null;
 
-
         [Header("- Y Axis")]
 
         [Tooltip("Point to move toward up.")]
@@ -128,7 +125,6 @@ namespace JCSUnity
         [SerializeField]
         private Transform mDownBackwardPoint = null;
 
-
         [Header("- Z Axis")]
 
         [Tooltip("Point to move toward foward.")]
@@ -154,7 +150,6 @@ namespace JCSUnity
         [Tooltip("Point to move toward backward and left.")]
         [SerializeField]
         private Transform mBackwardLeftPoint = null;
-
 
         [Header("- 8 Corners")]
 
@@ -227,7 +222,6 @@ namespace JCSUnity
         public Transform LeftUpBackwardPoint { get { return this.mLeftUpBackwardPoint; } set { this.mLeftUpBackwardPoint = value; } }
         public Transform LeftDownForwardPoint { get { return this.mLeftDownForwardPoint; } set { this.mLeftDownForwardPoint = value; } }
         public Transform LeftDownBackwardPoint { get { return this.mLeftDownBackwardPoint; } set { this.mLeftDownBackwardPoint = value; } }
-
 
         /* Functions */
 
