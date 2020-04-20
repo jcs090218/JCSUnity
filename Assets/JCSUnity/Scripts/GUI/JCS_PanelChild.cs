@@ -158,7 +158,8 @@ namespace JCSUnity
         /// <returns></returns>
         private bool IsUnityDefinedUI()
         {
-            return (this.GetComponent<Image>() ||
+            return (this.GetComponent<RawImage>() ||
+                this.GetComponent<Image>() ||
                 this.GetComponent<Button>() ||
                 this.GetComponent<Dropdown>() ||
                 this.GetComponent<Slider>() ||

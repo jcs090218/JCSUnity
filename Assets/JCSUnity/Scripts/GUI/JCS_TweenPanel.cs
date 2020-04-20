@@ -103,6 +103,9 @@ namespace JCSUnity
             if (!mTweenerHandler.IsAllDoneTweening())
                 return;
 
+            if (this.mIsActive)
+                return;
+
             mTweenerHandler.DoAllTweenToTargetValue();
             mSoundPlayer.PlayOneShotWhileNotPlaying(mActiveSound);
 
@@ -117,6 +120,9 @@ namespace JCSUnity
         public void Deactive()
         {
             if (!mTweenerHandler.IsAllDoneTweening())
+                return;
+
+            if (!this.mIsActive)
                 return;
 
             mTweenerHandler.DoAllTweenToStartValue();

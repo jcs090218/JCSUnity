@@ -220,11 +220,11 @@ namespace JCSUnity
 
             // Updates the Tweener
             {
+                bool animating = mTweenerX.animating || mTweenerY.animating || mTweenerZ.animating;
+
                 if (mTweenerX.animating) mTweenerX.update();
                 if (mTweenerY.animating) mTweenerY.update();
                 if (mTweenerZ.animating) mTweenerZ.update();
-
-                bool animating = mTweenerX.animating || mTweenerY.animating || mTweenerZ.animating;
 
                 if (animating)
                 {

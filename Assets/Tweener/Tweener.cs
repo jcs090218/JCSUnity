@@ -10,13 +10,13 @@ namespace PeterVuorela.Tweener
     public class Tweener
     {
         /* Variables */
-        
+
         private CallBackDelegate _Callback = null;
 
         private TweenDelegate _Easing = null;
 
-        private float _From = -999999.0f;
-        private float _To = -999999.0f;
+        private float _From = 0.0f;
+        private float _To = 0.0f;
 
         private float _ProgressPct = 0.0f;
 
@@ -53,7 +53,7 @@ namespace PeterVuorela.Tweener
         /// <param name="to">To.</param>
         /// <param name="duration">Duration.</param>
         /// <param name="easing">Easing.</param>
-        public void easeFromTo(float from, float to, bool resetElapsedTime = true, float duration = 1f, TweenDelegate easing = null, CallBackDelegate callback = null)
+        public void easeFromTo(float from, float to, bool resetElapsedTime = true, float duration = 1.0f, TweenDelegate easing = null, CallBackDelegate callback = null)
         {
             if (easing == null)
                 easing = Easing.Linear;
@@ -93,8 +93,8 @@ namespace PeterVuorela.Tweener
                 _Progression = _To;
 
                 _Animating = false;
-                _TimeElapsed = 0f;
-                _ProgressPct = 1f;
+                _TimeElapsed = 0.0f;
+                _ProgressPct = 1.0f;
 
                 if (callCallBack && _Callback != null)
                     _Callback.Invoke();
