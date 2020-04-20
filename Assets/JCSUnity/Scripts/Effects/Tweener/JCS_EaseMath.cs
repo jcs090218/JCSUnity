@@ -17,8 +17,7 @@ namespace JCSUnity
     /// URL: http://gizma.com/easing/#quint1
     /// GitHub: https://github.com/PeterVuorela/Tweener (Third Party Library)
     /// </summary>
-    public class JCS_EaseMath
-        : MonoBehaviour
+    public static class JCS_EaseMath
     {
        public static float Linear(float time, float from, float to, float duration)
         {

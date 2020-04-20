@@ -70,19 +70,19 @@ namespace JCSUnity
 
         [Tooltip("Flag to check if done tweening on x-axis.")]
         [SerializeField]
-        private bool mDoneTweenX = false;
+        private bool mDoneTweenX = true;
 
         [Tooltip("Flag to check if done tweening on y-axis.")]
         [SerializeField]
-        private bool mDoneTweenY = false;
+        private bool mDoneTweenY = true;
 
         [Tooltip("Flag to check if done tweening on z-axis.")]
         [SerializeField]
-        private bool mDoneTweenZ = false;
+        private bool mDoneTweenZ = true;
 
         [Tooltip("Is done tweening/animating?")]
         [SerializeField]
-        private bool mIsDoneTweening = false;
+        private bool mIsDoneTweening = true;
 
         [Header("** Runtime Variables (JCS_TransformTweener) **")]
 
@@ -162,7 +162,6 @@ namespace JCSUnity
         [Range(0.0f, 1000.0f)]
         private float mStopTweenDistance = 1;
 
-
         /* Setter & Getter */
 
         public bool IsDoneTweening { get { return this.mIsDoneTweening; } }
@@ -192,7 +191,6 @@ namespace JCSUnity
         public float ValueOffsetX { get { return this.mValueOffset.x; } set { this.mValueOffset.x = value; } }
         public float ValueOffsetY { get { return this.mValueOffset.y; } set { this.mValueOffset.y = value; } }
         public float ValueOffsetZ { get { return this.mValueOffset.z; } set { this.mValueOffset.z = value; } }
-
 
         /* Functions */
 
