@@ -57,6 +57,24 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public void SetGlobalSlideInput(JCS_SlideInput si)
+        {
+            if (mSlideInput != null)
+            {
+                JCS_Debug.LogWarning("You are trying to override an existing `slide input`");
+                return;
+            }
+            this.mSlideInput = si;
+        }
+        public void SetGlobalMobileMouseEvent(JCS_MobileMouseEvent mme)
+        {
+            if (mMobileMouseEvent != null)
+            {
+                JCS_Debug.LogWarning("You are trying to override an existing `mobile mouse event`");
+                return;
+            }
+            this.mMobileMouseEvent = mme;
+        }
         public JCS_SlideInput GetGlobalSlideInput()
         {
 #if UNITY_EDITOR
@@ -107,8 +125,13 @@ namespace JCSUnity
             switch (JCS_ApplicationManager.instance.PLATFORM_TYPE)
             {
                 case JCS_PlatformType.MOBILE:
-                    this.mSlideInput = this.gameObject.AddComponent<JCS_SlideInput>();
-                    this.mMobileMouseEvent = this.gameObject.AddComponent<JCS_MobileMouseEvent>();
+                    {
+                        if (this.mSlideInput == null)
+                            this.mSlideInput = this.gameObject.AddComponent<JCS_SlideInput>();
+
+                        if (this.mMobileMouseEvent == null)
+                            this.mMobileMouseEvent = this.gameObject.AddComponent<JCS_MobileMouseEvent>();
+                    }
                     break;
             }
         }

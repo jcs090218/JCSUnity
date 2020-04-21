@@ -21,7 +21,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_SlideInput) **")]
 
-#if (UNITY_EDITOR || UNITY_STANDALONE)
+#if (UNITY_STANDALONE)
         [Tooltip("Previous position.")]
         [SerializeField]
         private Vector3 mPrePos = Vector3.zero;
@@ -53,7 +53,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mDragging = false;
 
-#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+#if (UNITY_STANDALONE)
+        [Tooltip("Mouse event type of identify the touch event.")]
+        [SerializeField]
+        private JCS_MouseButton mMouseType = JCS_MouseButton.LEFT;
+#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         [Tooltip("Flag to check if mult touches.")]
         [SerializeField]
         private bool mMultiTouches = false;
@@ -76,7 +80,9 @@ namespace JCSUnity
         public Vector2 DeltaPos { get { return this.mDeltaPos; } }
         public Vector2 DragDistance { get { return this.mDragDistance; } }
         public Vector2 DragDisplacement { get { return this.mDragDisplacement; } }
-#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+#if (UNITY_STANDALONE)
+        public JCS_MouseButton MouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
+#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         public bool MultiTouches { get { return this.mMultiTouches; } }
         public float TouchDistance { get { return this.mTouchDistance; } }
         public float TouchDistanceDelta { get { return this.mTouchDistanceDelta; } }
@@ -85,25 +91,15 @@ namespace JCSUnity
 
         /* Functions */
 
-#if (UNITY_EDITOR || UNITY_STANDALONE)
-        private void OnApplicationFocus(bool focus)
+        private void Start()
         {
-            if (focus)
-            {
-                mFocus = true;
-            }
-            else
-            {
-                // Do something when not focus?
-            }
+            JCS_InputManager.instance.SetGlobalSlideInput(this);
         }
-#endif
 
         private void Update()
         {
-#if (UNITY_EDITOR || UNITY_STANDALONE)
-
-            mTouched = Input.GetMouseButton(0);
+#if (UNITY_STANDALONE)
+            mTouched = JCS_Input.GetMouseButton(mMouseType);
 
             Vector3 currPos = Input.mousePosition;
 
@@ -118,6 +114,7 @@ namespace JCSUnity
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             // Detect Touch
             mTouched = (Input.touchCount == 1);
+
             if (mTouched)
                 WhenTouched();
             else
@@ -127,6 +124,20 @@ namespace JCSUnity
             }
 #endif
         }
+
+#if (UNITY_STANDALONE)
+        private void OnApplicationFocus(bool focus)
+        {
+            if (focus)
+            {
+                mFocus = true;
+            }
+            else
+            {
+                // Do something when not focus?
+            }
+        }
+#endif
 
         /// <summary>
         /// Do thing when is touched.
@@ -154,7 +165,7 @@ namespace JCSUnity
                 this.mDragDisplacement.y = mDragDistance.y * JCS_Mathf.GetSign(yDiff);
             }
 
-#if (UNITY_EDITOR || UNITY_STANDALONE)
+#if (UNITY_STANDALONE)
             mDeltaPos = currPos - mPrePos;
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             mDeltaPos = Input.GetTouch(0).deltaPosition;
@@ -172,7 +183,7 @@ namespace JCSUnity
 
             mDeltaPos = Vector2.zero;
 
-#if (UNITY_EDITOR || UNITY_STANDALONE)
+#if (UNITY_STANDALONE)
             // If focus, ignore one frame.
             mFocus = false;
 #endif
