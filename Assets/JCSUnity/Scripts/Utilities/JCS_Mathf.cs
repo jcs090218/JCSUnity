@@ -83,18 +83,18 @@ namespace JCSUnity
         /// </summary>
         /// <param name="val"> value to check </param>
         /// <returns> true: is positive, false: is negative </returns>
-        public static bool isPositive(int val) { return (val > 0 && val != 0) ? true : false; }
-        public static bool isPositive(float val) { return (val > 0.0f && val != 0.0f) ? true : false; }
-        public static bool isPositive(double val) { return (val > 0.0 && val != 0.0) ? true : false; }
+        public static bool IsPositive(int val) { return (val > 0 && val != 0) ? true : false; }
+        public static bool IsPositive(float val) { return (val > 0.0f && val != 0.0f) ? true : false; }
+        public static bool IsPositive(double val) { return (val > 0.0 && val != 0.0) ? true : false; }
 
         /// <summary>
         /// Check if the value is negative.
         /// </summary>
         /// <param name="val"> value to check </param>
         /// <returns> true: is negative, false: is positive </returns>
-        public static bool isNegative(int val) { return (val < 0 && val != 0) ? true : false; }
-        public static bool isNegative(float val) { return (val < 0.0f && val != 0.0f) ? true : false; }
-        public static bool isNegative(double val) { return (val < 0.0 && val != 0.0) ? true : false; }
+        public static bool IsNegative(int val) { return (val < 0 && val != 0) ? true : false; }
+        public static bool IsNegative(float val) { return (val < 0.0f && val != 0.0f) ? true : false; }
+        public static bool IsNegative(double val) { return (val < 0.0 && val != 0.0) ? true : false; }
 
         /// <summary>
         /// To Reverse the value.
@@ -703,16 +703,27 @@ namespace JCSUnity
             return (a == 0) ? b : a;
         }
 
+        /// <summary>
+        /// Return the positive/negative 1 sign from VAL.
+        /// 
+        /// If the value is 0 then return 0.
+        /// </summary>
+        /// <param name="val"> Value you want to idenfity. </param>
+        /// <returns>
+        /// Return 0, if the VAL can't be identify.
+        /// Return 1, if the VAL is positive value.
+        /// Return -1, if the VAL is negative value.
+        /// </returns>
         public static float GetSign(float val)
         {
             if (val == 0.0f)
                 return 0.0f;
             else
             {
-                if (isPositive(val))
-                    return 1;
+                if (IsPositive(val))
+                    return 1.0f;
                 else
-                    return -1;
+                    return -1.0f;
             }
         }
     }

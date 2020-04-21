@@ -228,6 +228,18 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Check if mosue is over any UI element.
+        /// </summary>
+        /// <returns>
+        /// Return true, if there are UI element infront.
+        /// Return false, if there are NO UI element infront.
+        /// </returns>
+        public static bool IsOverGUI()
+        {
+            return EventSystem.current.IsPointerOverGameObject();
+        }
+
+        /// <summary>
         /// Spawn an animate object.
         /// </summary>
         /// <param name="anim"> anim assign </param>
