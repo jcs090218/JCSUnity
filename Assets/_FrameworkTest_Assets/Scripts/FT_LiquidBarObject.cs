@@ -15,25 +15,15 @@ using UnityEngine.UI;
 public class FT_LiquidBarObject
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
     public JCS_GUILiquidBar mBar = null;
     public Vector3 mOffset = Vector3.zero;
 
-    //----------------------
-    // Private Variables
+    /* Setter/Getter */
 
-    //----------------------
-    // Protected Variables
+    /* Functions */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
 
@@ -44,18 +34,7 @@ public class FT_LiquidBarObject
         if (mBar != null)
             FollowObject();
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
+
     private void FollowObject()
     {
         Camera cam = JCS_Camera.main.GetCamera();
@@ -64,5 +43,4 @@ public class FT_LiquidBarObject
         newPos.z = mBar.GetMask().rectTransform.parent.position.z;
         mBar.GetMask().rectTransform.parent.position = newPos;
     }
-    
 }

@@ -18,14 +18,8 @@ using JCSUnity;
 public class FT_RotatePointTest 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    /*******************************************/
-    /*            Public Variables             */
-    /*******************************************/
-
-    /*******************************************/
-    /*           Private Variables             */
-    /*******************************************/
     public Transform origin = null;
     public float angleX = 10;
     public float angleY = 10;
@@ -33,17 +27,10 @@ public class FT_RotatePointTest
 
     public float radius = 10;
 
-    /*******************************************/
-    /*           Protected Variables           */
-    /*******************************************/
+    /* Setter/Getter */
 
-    /*******************************************/
-    /*             setter / getter             */
-    /*******************************************/
+    /* Functions */
 
-    /*******************************************/
-    /*            Unity's function             */
-    /*******************************************/
     private void Awake()
     {
 
@@ -76,17 +63,4 @@ public class FT_RotatePointTest
                 this.transform.position);
         }
     }
-    
-    /*******************************************/
-    /*              Self-Define                */
-    /*******************************************/
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

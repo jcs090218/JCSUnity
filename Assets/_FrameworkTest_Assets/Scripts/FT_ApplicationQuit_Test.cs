@@ -11,30 +11,18 @@ using System.Collections;
 using JCSUnity;
 using UnityEngine.SceneManagement;
 
-
 /// <summary>
 /// 
 /// </summary>
 public class FT_ApplicationQuit_Test
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
+    /* Setter/Getter */
 
-    //----------------------
-    // Private Variables
+    /* Functions */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
 
@@ -47,17 +35,4 @@ public class FT_ApplicationQuit_Test
             JCS_UtilityFunctions.QuitApplicationWithSwithScene();
         }
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

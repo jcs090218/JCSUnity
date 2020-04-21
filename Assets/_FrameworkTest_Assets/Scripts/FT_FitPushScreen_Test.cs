@@ -12,25 +12,16 @@ using JCSUnity;
 
 public class FT_FitPushScreen_Test : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     [SerializeField]
     private RectTransform mPanelRectTransform = null;
 
-    //----------------------
-    // Protected Variables
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Setter/Getter */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake() 
     {
         
@@ -68,17 +59,6 @@ public class FT_FitPushScreen_Test : MonoBehaviour
         FitPushScreen();
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
     private void FitPushScreen()
     {
         Vector2 rectSize = mPanelRectTransform.sizeDelta;
@@ -130,5 +110,4 @@ public class FT_FitPushScreen_Test : MonoBehaviour
 
         this.mPanelRectTransform.localPosition = newShowPoint;
     }
-
 }

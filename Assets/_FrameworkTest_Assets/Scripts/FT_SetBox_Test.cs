@@ -14,25 +14,15 @@ using JCSUnity;
 public class FT_SetBox_Test
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     public BoxCollider mBoxCollider = null;
     public CharacterController mCharacterController = null;
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake()
     {
 
@@ -43,17 +33,4 @@ public class FT_SetBox_Test
         JCS_Physics.SetOnTopOfBox(mCharacterController, mBoxCollider);
         //print(JCS_Physics.TopOfBox(mCharacterController, mBoxCollider));
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

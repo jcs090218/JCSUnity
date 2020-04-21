@@ -17,25 +17,14 @@ using JCSUnity;
 public class FT_XInput_Test
     : MonoBehaviour
 {
-
-    //----------------------
-    // Public Variables
+    /* Variables */
 
     public bool valueKeyTest = true;
 
-    //----------------------
-    // Private Variables
+    /* Setter & Getter */
 
-    //----------------------
-    // Protected Variables
+    /* Functions */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Update()
     {
         PrintGamepadInfo(false);
@@ -161,18 +150,6 @@ public class FT_XInput_Test
         }
     }
 
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
     private void PrintGamepadInfo(bool fullInfo)
     {
         print("Joysitck connected: " + JCS_Input.IsJoystickConnected());
@@ -187,5 +164,4 @@ public class FT_XInput_Test
             print("Index[" + index + "] => [" + Input.GetJoystickNames()[index] + "]");
         }
     }
-
 }

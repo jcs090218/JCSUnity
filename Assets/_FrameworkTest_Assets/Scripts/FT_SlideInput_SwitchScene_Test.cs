@@ -5,23 +5,12 @@ using JCSUnity;
 public class FT_SlideInput_SwitchScene_Test
     : MonoBehaviour 
 {
-    
-    //----------------------
-    // Public Variables
-    
-    //----------------------
-    // Private Variables
-    
-    //----------------------
-    // Protected Variables
+    /* Variables */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-    
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Setter & Getter */
+
+    /* Functions */
+
     private void Awake() 
     {
         
@@ -31,17 +20,4 @@ public class FT_SlideInput_SwitchScene_Test
     {
         
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

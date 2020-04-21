@@ -16,12 +16,8 @@ using JCSUnity;
 public class FT_ScreenSpace_Test
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     [SerializeField]
     private Transform mTransformShow = null;
     [SerializeField]
@@ -31,21 +27,15 @@ public class FT_ScreenSpace_Test
     private SpriteRenderer mSpriteRenderer = null;
 
     private JCS_Camera jcsCam = null;
-    
 
-    //----------------------
-    // Protected Variables
+    /* Setter & Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public SpriteRenderer SpriteRenderer { get { return this.mSpriteRenderer; } }
     public Transform TransformTemp { get { return this.mTransform; } }
     public Transform TransformShow { get { return this.mTransformShow; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         mSpriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -61,17 +51,4 @@ public class FT_ScreenSpace_Test
     {
         print(jcsCam.CheckInScreenSpace(mCharacterController));
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

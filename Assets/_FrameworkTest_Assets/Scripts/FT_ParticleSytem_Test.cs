@@ -16,12 +16,7 @@ using JCSUnity;
 public class FT_ParticleSytem_Test
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     [SerializeField]
     private JCS_TowardTarget mParticle = null;
@@ -31,16 +26,10 @@ public class FT_ParticleSytem_Test
 
     private JCS_Vector<JCS_Particle> mParticles = null;
 
-    //----------------------
-    // Protected Variables
+    /* Setter/Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Start()
     {
         this.mParticle.transform.SetParent(this.transform);
@@ -80,17 +69,4 @@ public class FT_ParticleSytem_Test
             print("Particles updated.");
         }
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

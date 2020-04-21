@@ -14,29 +14,20 @@ using System.Collections;
 public class FT_BoxCollider_Test
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     private BoxCollider mBoxCollider = null;
     [Header("** Check Variables **")]
     [SerializeField] private float mWidth = 0;
     [SerializeField] private float mHeight = 0;
 
-    //----------------------
-    // Protected Variables
+    /* Setter/Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public float Width { get { return this.mWidth; } }
     public float Height { get { return this.mHeight; } }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         mBoxCollider = this.GetComponent<BoxCollider>();
@@ -57,17 +48,4 @@ public class FT_BoxCollider_Test
         Debug.DrawLine(new Vector3(pos.x + (Width / 2), pos.y, pos.z),
             new Vector3(pos.x - (Width / 2), pos.y, pos.z));
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

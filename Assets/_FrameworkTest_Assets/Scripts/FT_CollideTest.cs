@@ -16,26 +16,15 @@ using System.Collections;
 public class FT_CollideTest 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
     public BoxCollider mBoxCollider = null;
     public CharacterController mCharacterController = null;
 
+    /* Setter/Getter */
 
-    //----------------------
-    // Private Variables
-    
-    //----------------------
-    // Protected Variables
+    /* Functions */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-    
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake() 
     {
         
@@ -45,17 +34,4 @@ public class FT_CollideTest
     {
         print(JCSUnity.JCS_Physics.JcsOnTriggerCheck(mCharacterController, mBoxCollider));
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

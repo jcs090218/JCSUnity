@@ -13,23 +13,12 @@ using System.Collections;
 public class FT_Collision_Overlap
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
+    /* Setter/Getter */
 
-    //----------------------
-    // Private Variables
+    /* Functions */
 
-    //----------------------
-    // Protected Variables
-
-    //========================================
-    //      setter / getter
-    //------------------------------
-
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void OnTriggerEnter(Collider other)
     {
         //BF_LiveObject bfLivObject = other.GetComponent<BF_LiveObject>();
@@ -38,17 +27,4 @@ public class FT_Collision_Overlap
 
         //bfLivObject.VelocityInfo.VelY = 0;
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

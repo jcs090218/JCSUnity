@@ -12,23 +12,12 @@ using JCSUnity;
 
 public class FT_FollowMouse_Test : MonoBehaviour 
 {
-    
-    //----------------------
-    // Public Variables
-    
-    //----------------------
-    // Private Variables
-    
-    //----------------------
-    // Protected Variables
+    /* Variables */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-    
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Setter/Getter */
+
+    /* Functions */
+
     private void Awake() 
     {
         
@@ -44,17 +33,4 @@ public class FT_FollowMouse_Test : MonoBehaviour
         transform.position = JCS_Input.CanvasMousePosition();
 
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

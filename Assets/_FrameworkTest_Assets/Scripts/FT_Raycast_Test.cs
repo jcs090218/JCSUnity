@@ -17,25 +17,16 @@ using UnityEngine;
 public class FT_Raycast_Test
     : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     private CharacterController mCharacterController = null;
 
-    //----------------------
-    // Protected Variables
+    /* Setter/Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
     public CharacterController GetCC() { return this.mCharacterController; }
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
         mCharacterController = this.GetComponent<CharacterController>();
@@ -48,17 +39,4 @@ public class FT_Raycast_Test
             100, 
             JCSUnity.JCS_Vector3Direction.DOWN);
     }
-
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-
-    //----------------------
-    // Protected Functions
-
-    //----------------------
-    // Private Functions
-
 }

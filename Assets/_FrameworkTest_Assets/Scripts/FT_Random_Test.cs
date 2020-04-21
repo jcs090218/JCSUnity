@@ -12,23 +12,12 @@ using JCSUnity;
 
 public class FT_Random_Test : MonoBehaviour 
 {
-    
-    //----------------------
-    // Public Variables
-    
-    //----------------------
-    // Private Variables
-    
-    //----------------------
-    // Protected Variables
+    /* Variables */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
-    
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Setter/Getter */
+
+    /* Functions */
+
     private void Awake() 
     {
         
@@ -42,17 +31,4 @@ public class FT_Random_Test : MonoBehaviour
             print(JCS_TimeManager.isAfternoon());
         }
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

@@ -5,15 +5,12 @@ using JCSUnity;
 public class FT_Player
     : JCS_2DSideScrollerPlayer
 {
+    /* Variables */
 
-    //------------------------------
-    // setter / getter
-    //------------------------------
+    /* Setter/Getter */
 
+    /* Functions */
 
-    //------------------------------
-    // Unity's function
-    //------------------------------
     protected override void Update()
     {
         base.Update();

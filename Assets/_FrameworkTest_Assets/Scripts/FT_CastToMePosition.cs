@@ -17,25 +17,15 @@ using JCSUnity;
 public class FT_CastToMePosition
     : MonoBehaviour 
 {
-
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
+    /* Variables */
 
     public JCS_PositionCastAction castAction = null;
 
-    //----------------------
-    // Protected Variables
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Setter/Getter */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
+    /* Functions */
+
     private void Awake()
     {
 
@@ -48,17 +38,4 @@ public class FT_CastToMePosition
         if (JCS_Input.GetKeyDown(KeyCode.T))
             castAction.CastToScreen(this.transform.localPosition);
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

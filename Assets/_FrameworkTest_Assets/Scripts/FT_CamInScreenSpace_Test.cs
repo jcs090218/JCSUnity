@@ -13,24 +13,14 @@ using JCSUnity;
 [RequireComponent(typeof(RectTransform))]
 public class FT_CamInScreenSpace_Test : MonoBehaviour 
 {
+    /* Variables */
 
-    //----------------------
-    // Public Variables
-
-    //----------------------
-    // Private Variables
     private RectTransform mRectTransform = null;
 
-    //----------------------
-    // Protected Variables
+    /* Setter/Getter */
 
-    //========================================
-    //      setter / getter
-    //------------------------------
+    /* Functions */
 
-    //========================================
-    //      Unity's function
-    //------------------------------
     private void Awake() 
     {
         mRectTransform = this.GetComponent<RectTransform>();
@@ -41,17 +31,4 @@ public class FT_CamInScreenSpace_Test : MonoBehaviour
     {
         print(JCS_Camera.main.CheckInScreenSpace(mRectTransform));
     }
-    
-    //========================================
-    //      Self-Define
-    //------------------------------
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

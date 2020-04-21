@@ -17,42 +17,16 @@ using UnityEngine;
 public class FT_UtilityTest 
     : MonoBehaviour 
 {
+    /* Variables */
 
-    /*******************************************/
-    /*            Public Variables             */
-    /*******************************************/
-
-    /*******************************************/
-    /*           Private Variables             */
-    /*******************************************/
     public List<SpriteRenderer> something = null;
 
-    /*******************************************/
-    /*           Protected Variables           */
-    /*******************************************/
+    /* Setter & Getter */
 
-    /*******************************************/
-    /*             setter / getter             */
-    /*******************************************/
+    /* Functions */
 
-    /*******************************************/
-    /*            Unity's function             */
-    /*******************************************/
     private void Awake()
     {
         something = JCSUnity.JCS_Utility.RemoveEmptySlot<SpriteRenderer>(something);
     }
-
-    /*******************************************/
-    /*              Self-Define                */
-    /*******************************************/
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

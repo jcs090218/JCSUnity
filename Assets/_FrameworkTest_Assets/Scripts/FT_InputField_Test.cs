@@ -19,45 +19,18 @@ using UnityEngine.UI;
 public class FT_InputField_Test 
     : MonoBehaviour 
 {
-
-    /*******************************************/
-    /*            Public Variables             */
-    /*******************************************/
+    /* Variables */
 
     public InputField inputField = null;
 
-    /*******************************************/
-    /*           Private Variables             */
-    /*******************************************/
+    /* Setter/Getter */
 
-    /*******************************************/
-    /*           Protected Variables           */
-    /*******************************************/
+    /* Functions */
 
-    /*******************************************/
-    /*             setter / getter             */
-    /*******************************************/
-
-    /*******************************************/
-    /*            Unity's function             */
-    /*******************************************/
     private void Awake()
     {
         this.inputField = this.GetComponent<InputField>();
 
         inputField.text = "Hello World";
     }
-
-    /*******************************************/
-    /*              Self-Define                */
-    /*******************************************/
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

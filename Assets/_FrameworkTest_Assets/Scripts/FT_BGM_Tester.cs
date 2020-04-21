@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using JCSUnity;
 
-
 public class FT_BGM_Tester
     : MonoBehaviour
 {
+    /* Variables */
+
     public AudioClip mBGM_01 = null;
     public AudioClip mBGM_02 = null;
 
     public AudioClip mOneShotBGM = null;
     public AudioClip mOnStackBGM = null;
+
+    /* Setter/Getter */
+
+    /* Functions */
 
     private void Update()
     {
@@ -23,5 +28,4 @@ public class FT_BGM_Tester
         if (JCS_Input.GetKeyDown(KeyCode.D))
             JCS_SoundManager.instance.PlayOneShotBackgroundMusic(mOneShotBGM, mOnStackBGM);
     }
-
 }

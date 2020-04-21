@@ -18,52 +18,24 @@ public class FT_SlopeTest
     : MonoBehaviour 
 {
 
-    /*******************************************/
-    /*            Public Variables             */
-    /*******************************************/
+    /* Variables */
 
-    /*******************************************/
-    /*           Private Variables             */
-    /*******************************************/
-
-    [Header("** Check Variables **")]
+    [Header("** Check Variables (FT_SlopeTest) **")]
 
     public CharacterController mCharacterController = null;
 
     public BoxCollider mBoxCollider = null;
 
-
     public BoxCollider mTopBoxCollider = null;
     public BoxCollider mBotBoxCollider = null;
 
-    /*******************************************/
-    /*           Protected Variables           */
-    /*******************************************/
+    /* Setter & Getter */
 
-    /*******************************************/
-    /*             setter / getter             */
-    /*******************************************/
-
-    /*******************************************/
-    /*            Unity's function             */
-    /*******************************************/
+    /* Functions */
 
     private void Update()
     {
         //print(JCSUnity.JCS_Physics.SetOnTopOfBoxWithSlope(mCharacterController, mBoxCollider));
         print(JCSUnity.JCS_Physics.SetOnTopOfBoxWithSlope(mTopBoxCollider, mBotBoxCollider));
     }
-    
-    /*******************************************/
-    /*              Self-Define                */
-    /*******************************************/
-    //----------------------
-    // Public Functions
-    
-    //----------------------
-    // Protected Functions
-    
-    //----------------------
-    // Private Functions
-    
 }

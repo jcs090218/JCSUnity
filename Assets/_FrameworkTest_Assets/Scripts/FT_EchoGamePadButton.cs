@@ -18,8 +18,13 @@ using JCSUnity;
 public class FT_EchoGamePadButton 
     :  JCS_GamePadButton
 {
+    /* Variables */
+
     public JCS_DialogueObject closeDialogue = null;
 
+    /* Setter/Getter */
+
+    /* Functions */
 
     public override void JCS_OnClickCallback()
     {
