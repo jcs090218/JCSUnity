@@ -1017,7 +1017,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return JCS_Mathf.isPositive(this.transform.localScale.x);
+                        return JCS_Mathf.IsPositive(this.transform.localScale.x);
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.flipX;
                     case JCS_UnityObjectType.TEXT:
@@ -1025,7 +1025,7 @@ namespace JCSUnity
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
 #endif
-                        return JCS_Mathf.isPositive(this.mRectTransform.localScale.x);
+                        return JCS_Mathf.IsPositive(this.mRectTransform.localScale.x);
                 }
 
                 JCS_Debug.LogError(
@@ -1090,7 +1090,7 @@ namespace JCSUnity
                 switch (mObjectType)
                 {
                     case JCS_UnityObjectType.GAME_OBJECT:
-                        return JCS_Mathf.isPositive(this.transform.localScale.y);
+                        return JCS_Mathf.IsPositive(this.transform.localScale.y);
                     case JCS_UnityObjectType.SPRITE:
                         return this.mSpriteRenderer.flipY;
                     case JCS_UnityObjectType.TEXT:
@@ -1098,7 +1098,7 @@ namespace JCSUnity
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
 #endif
-                        return JCS_Mathf.isPositive(this.mRectTransform.localScale.y);
+                        return JCS_Mathf.IsPositive(this.mRectTransform.localScale.y);
                 }
 
                 JCS_Debug.LogError(

@@ -478,7 +478,7 @@ namespace JCSUnity
         private void FixedMinMaxDistance()
         {
             float currentDistance = Vector3.Distance(this.transform.position, mTargetTransform.position);
-            if (JCS_Mathf.isPositive(mTargetScrollSpeed))
+            if (JCS_Mathf.IsPositive(mTargetScrollSpeed))
             {
                 if (currentDistance <= mMinDistance)
                 {

@@ -88,7 +88,7 @@ namespace JCSUnity
             // the scale will change the direction of the shooting
             // angle, fix the angle to the correct angle base
             // on the scale.
-            if (JCS_Mathf.isPositive(transform.localScale.x))
+            if (JCS_Mathf.IsPositive(transform.localScale.x))
             {
                 lockPos = new Vector3(0, 0,
                     Mathf.Atan2((Mouse.y - mShootAction.SpawnPoint.position.y),

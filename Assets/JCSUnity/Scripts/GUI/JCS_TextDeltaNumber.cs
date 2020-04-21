@@ -235,7 +235,7 @@ namespace JCSUnity
 
             double renderNumber = System.Math.Round(mCurrentNumber, mRoundPlace);
             string renderNumberString = renderNumber.ToString();
-            if (mPlusSignWhenPositive && JCS_Mathf.isPositive(renderNumber))
+            if (mPlusSignWhenPositive && JCS_Mathf.IsPositive(renderNumber))
                 renderNumberString = "+" + renderNumberString;
 
             mFullString

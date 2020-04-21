@@ -141,7 +141,7 @@ which to target which not to.")]
             {
                 if (mDirection == State.NONE)
                 {
-                    if (JCS_Mathf.isNegative(mAttackerInfo.Attacker.localScale.x))
+                    if (JCS_Mathf.IsNegative(mAttackerInfo.Attacker.localScale.x))
                         mDirection = State.NEGATIVE;
                     else
                         mDirection = State.POSITIVE;

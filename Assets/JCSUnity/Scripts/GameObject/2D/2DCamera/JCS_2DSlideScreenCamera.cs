@@ -217,7 +217,7 @@ namespace JCSUnity
 
                 if (!mFreezeX && posDiff.x > this.mSlideDistanceX)
                 {
-                    if (JCS_Mathf.isPositive(si.DragDisplacement.x))
+                    if (JCS_Mathf.IsPositive(si.DragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
                     else
                         SwitchScene(JCS_2D4Direction.RIGHT);
@@ -225,7 +225,7 @@ namespace JCSUnity
 
                 if (!mFreezeY && posDiff.y > this.mSlideDistanceY)
                 {
-                    if (JCS_Mathf.isPositive(si.DragDisplacement.y))
+                    if (JCS_Mathf.IsPositive(si.DragDisplacement.y))
                         SwitchScene(JCS_2D4Direction.BOTTOM);
                     else
                         SwitchScene(JCS_2D4Direction.TOP);
