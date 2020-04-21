@@ -147,8 +147,11 @@ namespace JCSUnity
                 this.mDragDistance.x = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.x, dragEndPosition.x);
                 this.mDragDistance.y = JCS_Mathf.DistanceOfUnitVector(mDragStartPosition.y, dragEndPosition.y);
 
-                this.mDragDisplacement.x = mDragDistance.x * JCS_Mathf.GetSign(mDeltaPos.x);
-                this.mDragDisplacement.y = mDragDistance.y * JCS_Mathf.GetSign(mDeltaPos.y);
+                float xDiff = dragEndPosition.x - mDragStartPosition.x;
+                float yDiff = dragEndPosition.y - mDragStartPosition.y;
+
+                this.mDragDisplacement.x = mDragDistance.x * JCS_Mathf.GetSign(xDiff);
+                this.mDragDisplacement.y = mDragDistance.y * JCS_Mathf.GetSign(yDiff);
             }
 
 #if (UNITY_EDITOR || UNITY_STANDALONE)
