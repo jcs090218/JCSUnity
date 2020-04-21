@@ -9,6 +9,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Revert tween panel active/deactive logic. (JCSUnity)
 * Added over GUI element check for utility module. (JCSUnity)
+* Make `slide input` and `mobile mouse event` as optional to 
+ prevent multiple same scripts' execution. (JCSUnity)
 
 ### 2020-04-20
 
