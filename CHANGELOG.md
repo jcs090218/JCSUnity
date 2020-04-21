@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-04-21
 
 * Revert tween panel active/deactive logic. (JCSUnity)
+* Added over GUI element check for utility module. (JCSUnity)
 
 ### 2020-04-20
 
