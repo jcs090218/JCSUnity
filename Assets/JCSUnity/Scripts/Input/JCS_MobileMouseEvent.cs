@@ -46,12 +46,15 @@ namespace JCSUnity
 
         /* Functions */
 
+        private void Awake()
+        {
+            JCS_InputManager.instance.SetGlobalMobileMouseEvent(this);
+        }
+
         private void Start()
         {
             if (mCamera == null)
                 this.mCamera = JCS_Camera.main.GetCamera();
-
-            JCS_InputManager.instance.SetGlobalMobileMouseEvent(this);
         }
 
         private void Update()

@@ -91,7 +91,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Start()
+        private void Awake()
         {
             JCS_InputManager.instance.SetGlobalSlideInput(this);
         }
