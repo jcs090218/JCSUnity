@@ -121,6 +121,11 @@ namespace JCSUnity
 #endif
         }
 
+        protected virtual void Update()
+        {
+            // empty
+        }
+
         /// <summary>
         /// Weather if we want to take a screen shot, call
         /// this function will do the trick!

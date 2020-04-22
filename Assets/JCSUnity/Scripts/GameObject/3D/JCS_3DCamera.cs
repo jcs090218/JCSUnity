@@ -214,11 +214,13 @@ namespace JCSUnity
             mTrackPosition = this.transform.position;
         }
 
-        private void Update()
+        protected override void LateUpdate()
         {
 #if (UNITY_EDITOR)
             Test();
 #endif
+            base.LateUpdate();
+
             if (mTargetTransform == null)
                 return;
 
