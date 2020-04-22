@@ -19,6 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        private Vector2 mDragStartPosition = Vector2.zero;
+
         [Header("** Check Variables (JCS_SlideInput) **")]
 
 #if (UNITY_STANDALONE)
@@ -30,8 +32,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mFocus = false;
 #endif
-
-        [Header("** Runtime Variables (JCS_SlideInput) **")]
 
         [Tooltip("Is the screen touches?")]
         [SerializeField]
@@ -53,11 +53,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mDragging = false;
 
-#if (UNITY_STANDALONE)
-        [Tooltip("Mouse event type of identify the touch event.")]
-        [SerializeField]
-        private JCS_MouseButton mMouseType = JCS_MouseButton.LEFT;
-#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         [Tooltip("Flag to check if mult touches.")]
         [SerializeField]
         private bool mMultiTouches = false;
@@ -71,7 +67,18 @@ namespace JCSUnity
         private float mTouchDistanceDelta = 0.0f;
 #endif
 
-        private Vector2 mDragStartPosition = Vector2.zero;
+        [Header("** Runtime Variables (JCS_SlideInput) **")]
+
+#if (UNITY_STANDALONE)
+        [Tooltip("Mouse event type of identify the touch event.")]
+        [SerializeField]
+        private JCS_MouseButton mMouseType = JCS_MouseButton.LEFT;
+#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+        [Tooltip("Touch count that will detect as touched.")]
+        [SerializeField]
+        [Range(0, 60)]
+        private int mDetectTouchCount = 1;
+#endif
 
         /* Setter & Getter */
 
@@ -86,6 +93,7 @@ namespace JCSUnity
         public bool MultiTouches { get { return this.mMultiTouches; } }
         public float TouchDistance { get { return this.mTouchDistance; } }
         public float TouchDistanceDelta { get { return this.mTouchDistanceDelta; } }
+        public int DetectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
 #endif
 
 
@@ -113,7 +121,7 @@ namespace JCSUnity
 
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             // Detect Touch
-            mTouched = (Input.touchCount == 1);
+            mTouched = (Input.touchCount == mDetectTouchCount);
 
             if (mTouched)
                 WhenTouched();
