@@ -114,16 +114,16 @@ namespace JCSUnity
             JCS_ScreenSettings.instance.onScreenResize += OnResizeGame;
         }
 
+        protected virtual void Update()
+        {
+            // empty
+        }
+
         protected virtual void LateUpdate()
         {
 #if (UNITY_EDITOR)
             DisplayGameDepthCamera();
 #endif
-        }
-
-        protected virtual void Update()
-        {
-            // empty
         }
 
         /// <summary>
