@@ -27,6 +27,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        private JCS_TweenerHandler mTweenerHandler = null;
+
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_TweenPanel) **")]
 
@@ -41,16 +43,14 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.L;
 #endif
 
-        [Header("** Runtime Variables (JCS_TweenPanel) **")]
+        [Header("** Check Variables (JCS_TweenPanel) **")]
 
         [Tooltip("Is panel active/tweened?")]
         [SerializeField]
         private bool mIsActive = false;
 
-        [Tooltip("Handle multiple tweeners.")]
-        [SerializeField]
-        private JCS_TweenerHandler mTweenerHandler = null;
-
+        [Header("** Runtime Variables (JCS_TweenPanel) **")]
+        
         [Tooltip("Override the tween animation while is still playing.")]
         [SerializeField]
         private bool mOverrideTween = false;
