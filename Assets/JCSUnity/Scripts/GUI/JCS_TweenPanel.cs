@@ -51,6 +51,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TweenerHandler mTweenerHandler = null;
 
+        [Tooltip("Override the tween animation while is still playing.")]
+        [SerializeField]
+        private bool mOverrideTween = false;
+
         [Header("** Sound Setttings (JCS_TweenPanel) **")]
 
         [Tooltip("Sound plays when active this panel.")]
@@ -71,6 +75,8 @@ namespace JCSUnity
 
         public bool IsActive { get { return this.mIsActive; } }
         public JCS_TweenerHandler TweenerHandler { get { return this.mTweenerHandler; } }
+        public bool OverrideTween { get { return this.mOverrideTween; } set { this.mOverrideTween = value; } }
+
         public ActiveCallback ActiveCallbackFunc { get { return this.mActiveCallbackFunc; } set { this.mActiveCallbackFunc = value; } }
         public DeactiveCallback DeactiveCallbackFunc { get { return this.mDeactiveCallbackFunc; } set { this.mDeactiveCallbackFunc = value; } }
 
@@ -100,8 +106,11 @@ namespace JCSUnity
         /// </summary>
         public void Active()
         {
-            if (!mTweenerHandler.IsAllDoneTweening())
-                return;
+            if (!mOverrideTween)
+            {
+                if (!mTweenerHandler.IsAllDoneTweening())
+                    return;
+            }
 
             if (this.mIsActive)
                 return;
@@ -119,8 +128,11 @@ namespace JCSUnity
         /// </summary>
         public void Deactive()
         {
-            if (!mTweenerHandler.IsAllDoneTweening())
-                return;
+            if (!mOverrideTween)
+            {
+                if (!mTweenerHandler.IsAllDoneTweening())
+                    return;
+            }
 
             if (!this.mIsActive)
                 return;
