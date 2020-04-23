@@ -199,13 +199,8 @@ namespace JCSUnity
         {
             base.Start();
 
-            if (mTargetTransform == null)
-            {
-                JCS_Debug.LogError("Cannot record the frame without the target transform");
-                return;
-            }
-
-            mLastFramePos = mTargetTransform.position;
+            if (mTargetTransform != null)
+                mLastFramePos = mTargetTransform.position;
 
             // record down the height
             mTargetHeight = this.transform.position.y;
