@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-04-26
+
+* Updated 3D walk action for AI module. (JCSUnity)
+
 ### 2020-04-22
 
 * Updated with detect touch count for touch event. (JCSUnity)
