@@ -18,6 +18,7 @@ namespace JCSUnity
     /// Simulate the walk action in 3D space.
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
     public class JCS_3DWalkAction
         : MonoBehaviour
         , JCS_Action
@@ -37,17 +38,17 @@ namespace JCSUnity
         // mesh agent for the path finding.
         private NavMeshAgent mNavMeshAgent = null;
 
+        private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
+
         [Header("** Check Variables (JCS_3DWalkAction) **")]
 
+        [Tooltip("Target transform that we are going to follow.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
         // count for how many search per frame.
         // try to avoid stack overflow function call...
         private int mSearchCount = 0;
-
-        // use for checking the action is approve or not.
-        private bool mTargeted = false;
 
         [Header("** Runtime Variables (JCS_3DWalkAction) **")]
 
@@ -69,44 +70,37 @@ namespace JCSUnity
         [Range(1.0f, 30.0f)]
         private float mAdjustRangeDistance = 0.0f;
 
-        [Header("- Tracking")]
-
-        [Tooltip("Time to target the enemy.")]
+        [Tooltip("Minimum randomly add vector with magnitude of distance at target position.")]
         [SerializeField]
-        [Range(0.01f, 180.0f)]
-        private float mTargetTime = 1.0f;
+        [Range(0.0f, 30.0f)]
+        private float mMinOffDistance = 0.0f;
 
-        [Tooltip("Adjust a bit of the attack time.")]
+        [Tooltip("Maximum randomly add vector with magnitude of distance at target position.")]
         [SerializeField]
-        [Range(0.0f, 160.0f)]
-        private float mAdjustTargetTime = 0.0f;
-
-        // timer to simulate the time for targeting the player.
-        private float mTargetTimer = 0;
-
-        // time that actually make the enemy target the player.
-        private float mRealTargetTime = 0;
+        [Range(0.0f, 30.0f)]
+        private float mMaxOffDistance = 0.0f;
 
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public JCS_3DWalkType WalkType { get { return this.mWalkType; } set { this.mWalkType = value; } }
 
+        public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
+
         public float RangeDistance { get { return this.mRangeDistance; } set { this.mRangeDistance = value; } }
         public float AdjustRangeDistance { get { return this.mAdjustRangeDistance; } set { this.mAdjustRangeDistance = value; } }
-        public float TargetTime { get { return this.mTargetTime; } set { this.mTargetTime = value; } }
-        public float AdjustTargetTime { get { return this.mAdjustTargetTime; } set { this.mAdjustTargetTime = value; } }
+
+        public float MinOffDistance { get { return this.mMinOffDistance; } set { this.mMinOffDistance = value; } }
+        public float MaxOffDistance { get { return this.mMaxOffDistance; } set { this.mMaxOffDistance = value; } }
 
         /* Functions */
 
         private void Awake()
         {
             this.mNavMeshAgent = this.GetComponent<NavMeshAgent>();
-        }
+            this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-        private void Update()
-        {
-            DoAI();
+            mAdjustTimeTrigger.actions = DoAI;
         }
 
         /// <summary>
@@ -115,8 +109,7 @@ namespace JCSUnity
         /// <param name="target"> Target we are following. </param>
         public void TargetOne(Transform target)
         {
-            // if target is does not exist,
-            // end function call.
+            // if target is does not exist, end function call.
             if (target == null)
             {
                 JCS_Debug.LogError("The transform you are targeting is null");
@@ -154,9 +147,6 @@ namespace JCSUnity
                 // reset search count.
                 mSearchCount = 0;
             }
-
-            // make sure the action is approve.
-            mTargeted = true;
         }
 
         /// <summary>
@@ -177,6 +167,18 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Check if nav mesh agent path completed.
+        /// </summary>
+        /// <returns>
+        /// Return true, if the path finding is complete.
+        /// Return false, if the path finding is NOT complete.
+        /// </returns>
+        public bool IsArrived()
+        {
+            return NavMeshArrive(mNavMeshAgent);
+        }
+
+        /// <summary>
         /// Return the target position base on walk type.
         /// </summary>
         /// <param name="targetPos"> Target position. </param>
@@ -185,15 +187,21 @@ namespace JCSUnity
         /// </returns>
         private Vector3 GetTargetPosByWalkType(Vector3 targetPos)
         {
+            Vector3 newTargetPos = targetPos;
+
             switch (mWalkType)
             {
                 case JCS_3DWalkType.CLOSEST_POINT:
-                    return CalculateClosest(targetPos);
+                    newTargetPos = CalculateClosest(targetPos);
+                    break;
                 case JCS_3DWalkType.IN_RANGE:
-                    return CalculateRange(targetPos);
+                    newTargetPos = CalculateRange(targetPos);
+                    break;
             }
-            JCS_Debug.LogError("Walk type can't happens");
-            return targetPos;
+
+            newTargetPos = AddOffDistance(newTargetPos);
+
+            return newTargetPos;
         }
 
         /// <summary>
@@ -236,31 +244,37 @@ namespace JCSUnity
         {
             Vector3 newTargetPos = targetPos;
 
-            // set up the unknown angle
-            // 隨機"內角"
-            float angle = JCS_Random.Range(0, 360);
+            Vector3 randVec = new Vector3(
+                JCS_Random.RangeInclude(-1.0f, 1.0f),
+                0.0f,
+                JCS_Random.RangeInclude(-1.0f, 1.0f)).normalized;
 
-            float hyp = GetRangeDistance();
+            float magnitude = GetRangeDistance();
 
-            float opp = Mathf.Sin(angle) * hyp;
+            randVec *= magnitude;
 
-            float adj = JCS_Mathf.PythagoreanTheorem(hyp, opp, JCS_Mathf.TriSides.adj);
+            return newTargetPos + randVec;
+        }
 
-            bool flipX = JCS_Mathf.IsPossible(50);
-            bool flipZ = JCS_Mathf.IsPossible(50);
+        /// <summary>
+        /// Add the off distance.
+        /// </summary>
+        /// <param name="targetPos"> Target position use to calculate. </param>
+        /// <returns>
+        /// Return new position with off distance added.
+        /// </returns>
+        private Vector3 AddOffDistance(Vector3 targetPos)
+        {
+            Vector3 randVec = new Vector3(
+                JCS_Random.RangeInclude(-1.0f, 1.0f),
+                0.0f,
+                JCS_Random.RangeInclude(-1.0f, 1.0f)).normalized;
 
+            float magnitude = JCS_Random.RangeInclude(mMinOffDistance, mMaxOffDistance);
 
-            if (flipX)
-                newTargetPos.x -= adj;
-            else
-                newTargetPos.x += adj;
+            randVec *= magnitude;
 
-            if (flipZ)
-                newTargetPos.z -= opp;
-            else
-                newTargetPos.z += opp;
-
-            return newTargetPos;
+            return targetPos + randVec;
         }
 
         /// <summary>
@@ -272,37 +286,10 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            // start timer
-            mTargetTimer += Time.deltaTime;
-
-            // if is target, reset the real time (mRealTargetTime).
-            if (mTargeted)
-                ResetTargetTimeZone();
-
-            // check if the timer have been reach.
-            if (mTargetTimer < mRealTargetTime)
+            if (mTargetTransform == null)
                 return;
 
-            // Target the player
             TargetOne(mTargetTransform);
-
-            // reset timer
-            mTargetTimer = 0;
-        }
-
-        /// <summary>
-        /// Target time zone algorithm design here...
-        /// </summary>
-        private void ResetTargetTimeZone()
-        {
-            // calculate the real time.
-            mRealTargetTime = mTargetTime + JCS_Random.Range(-mAdjustTargetTime, mAdjustTargetTime);
-
-
-            mTargeted = false;
-
-            // reset timer.
-            mTargetTimer = 0;
         }
 
         /// <summary>
