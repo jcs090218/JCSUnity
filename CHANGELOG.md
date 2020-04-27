@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-04-27
+
+* Now damage text system supports 3D space. (JCSUnity)
+
 ### 2020-04-26
 
 * Updated 3D walk action for AI module. (JCSUnity)
