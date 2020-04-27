@@ -25,11 +25,34 @@ namespace JCSUnity
         private RectTransform mRectTransform = null;
         private RectTransform mMaskRectTransform = null;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_GUILiquidBar) **")]
+
+        [Tooltip("Test functionalities works?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Make the bar to min value.")]
+        [SerializeField]
+        private KeyCode mLackKey = KeyCode.J;
+
+        [Tooltip("Make the bar to max value.")]
+        [SerializeField]
+        private KeyCode mFullKey = KeyCode.K;
+
+        [Tooltip("Make the bar to half value.")]
+        [SerializeField]
+        private KeyCode mHalfKey = KeyCode.H;
+
+        [Tooltip("Fixed the value if the min and max value has changed.")]
+        [SerializeField]
+        private KeyCode mFixedKey = KeyCode.X;
+#endif
+
         [Header("** Check Variables (JCS_GUILiquidBar) **")]
 
         [SerializeField]
         private Vector3 mMaskTargetPosition = Vector3.zero;
-
 
         [Header("** Initialize Variables (JCS_GUILiquidBar) **")]
 
@@ -38,18 +61,17 @@ namespace JCSUnity
         private Mask mMask = null;
 
 
-        // TODO(JenChieh): Somewhat this work, better if i get the logic right
-        //              then this can be optimize
+        // TODO(jenchieh): Somewhat this work, better if i get the logic right 
+        // then this can be optimized.
         private uint mCountToGetContainerData = 0;
-
 
         /* Setter & Getter */
 
         public RectTransform GetRectTransform() { return this.mRectTransform; }
         public Mask GetMask() { return this.mMask; }
 
-
         /* Functions */
+
         protected override void Awake()
         {
             base.Awake();
@@ -59,7 +81,7 @@ namespace JCSUnity
 
             if (mMask == null)
             {
-                JCS_Debug.LogError("No mask applied...");
+                JCS_Debug.LogError("No mask applied");
                 return;
             }
 
@@ -101,16 +123,19 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.J))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mLackKey))
                 Lack();
-            if (JCS_Input.GetKeyDown(KeyCode.K))
+            if (JCS_Input.GetKeyDown(mFullKey))
                 Full();
 
             // half
-            if (JCS_Input.GetKeyDown(KeyCode.H))
-                SetCurrentValue(MaxValue / 2);
+            if (JCS_Input.GetKeyDown(mHalfKey))
+                SetCurrentValue(MaxValue / 2.0f);
 
-            if (JCS_Input.GetKeyDown(KeyCode.X))
+            if (JCS_Input.GetKeyDown(mFixedKey))
                 FixPercentage();
         }
 #endif
@@ -352,21 +377,16 @@ namespace JCSUnity
         /// </summary>
         private void FixPercentage()
         {
-            if (mCurrentValue < mMinValue || 
-                mCurrentValue > mMaxValue)
+            if (mCurrentValue < mMinValue || mCurrentValue > mMaxValue)
 
             {
-                JCS_Debug.LogError(
-                    "JCS_GUILiquidBar", 
-                      
-                    "Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");
-
+                JCS_Debug.LogError("Value should with in min(" + mMinValue +
+                    ") ~ max(" + mMaxValue + ") value");
                 return;
             }
 
             float realValue = mMaxValue - mMinValue;
             float currentPercentage = mCurrentValue / realValue;
-
 
             float realDistance = (mMaxPos - mMinPos) * currentPercentage;
 
@@ -381,7 +401,6 @@ namespace JCSUnity
                     mMaskTargetPosition.y = mMinPos + realDistance;
                     break;
             }
-            
         }
 
         /// <summary>

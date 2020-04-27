@@ -6,15 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-
-/* 
- * If you had purchase a copy of 'SpriteMask' and willing to use this
- * component, uncomment a line below. 
- * 
- * SpriteMask: https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642
- */
-//#define SPRITE_MASK
-
 using UnityEngine;
 using System.Collections;
 
@@ -58,14 +49,11 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
-
-#if (SPRITE_MASK)
         [Header("** Initilaize Variables (JCS_3DLiquidBar) **")]
 
         [Tooltip("Sprite mask that mask out the inner bar sprite.")]
         [SerializeField]
         private SpriteMask mSpriteMask = null;
-#endif
 
         [Tooltip("Please put the under texture bar here.")]
         [SerializeField]
@@ -91,6 +79,9 @@ namespace JCSUnity
             if (mBarSpriteRenderer == null)
                 return;
 
+            if (mSpriteMask == null)
+                return;
+
             // update value.
             UpdateInfo();
 
@@ -114,7 +105,7 @@ namespace JCSUnity
 
             // half
             if (JCS_Input.GetKeyDown(mHalfKey))
-                SetCurrentValue(MaxValue / 2);
+                SetCurrentValue(MaxValue / 2.0f);
 
             if (JCS_Input.GetKeyDown(mFixedKey))
                 FixPercentage();
@@ -306,9 +297,17 @@ namespace JCSUnity
             if (mBarSpriteRenderer == null)
                 return;
 
-#if (SPRITE_MASK)
+            if (mSpriteMask == null)
+            {
+                JCS_Debug.LogError("No sprite mask attached");
+                return;
+            }
+
             // find the width and height of the image from sprite renderer
-            Vector2 maskSize = mSpriteMask.size;
+            Rect maskRect = mSpriteMask.sprite.rect;
+            Vector2 spriteSize = new Vector2(maskRect.width, maskRect.height);
+            float worldUnit = 100.0f;
+            Vector2 maskSize = new Vector2(spriteSize.x / worldUnit, spriteSize.y / worldUnit);
 
             switch (GetAlign())
             {
@@ -340,7 +339,6 @@ namespace JCSUnity
                     }
                     break;
             }
-#endif
 
             // do starting percent
             FixPercentage();
@@ -351,13 +349,11 @@ namespace JCSUnity
         /// </summary>
         private void FixPercentage()
         {
-            if (mCurrentValue < mMinValue ||
-                mCurrentValue > mMaxValue)
+            if (mCurrentValue < mMinValue || mCurrentValue > mMaxValue)
 
             {
-                //JCS_Debug.LogWarning(
-                //    "Value should with in min(" + mMinValue + ") ~ max(" + mMaxValue + ") value");
-
+                JCS_Debug.LogWarning("Value should with in min(" + mMinValue +
+                    ") ~ max(" + mMaxValue + ") value");
                 return;
             }
 
@@ -384,10 +380,8 @@ namespace JCSUnity
         /// </summary>
         private void TowardToTargetValue()
         {
-#if (SPRITE_MASK)
             Vector3 speed = (mMaskTargetPosition - mSpriteMask.transform.localPosition) / mDeltaFriction * Time.deltaTime;
             mSpriteMask.transform.localPosition += speed;
-#endif
         }
 
         /// <summary>

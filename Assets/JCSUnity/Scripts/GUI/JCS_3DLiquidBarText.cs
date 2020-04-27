@@ -34,6 +34,8 @@ namespace JCSUnity
         [SerializeField]
         private Transform mCounterTextWorldTransform = null;
 
+        [Header("- Text")]
+
         [Tooltip("Text Render maxinum of the liquid bar value.")]
         [SerializeField]
         private Text mFullText = null;
@@ -42,6 +44,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mFullTextWorldTransform = null;
 
+        [Header("- Sprite")]
 
         [Tooltip("Sprite Render the current value of the liquid bar.")]
         [SerializeField]
@@ -93,15 +96,12 @@ namespace JCSUnity
         /// </summary>
         private void FitCanvas()
         {
-            if (mCounterText != null &&
-                mCounterTextWorldTransform != null
-                )
+            if (mCounterText != null && mCounterTextWorldTransform != null)
             {
                 mCounterText.rectTransform.anchoredPosition = JCS_Camera.main.WorldToCanvasSpace(this.mCounterTextWorldTransform.position);
             }
 
-            if (mFullText != null &&
-                mFullTextWorldTransform != null)
+            if (mFullText != null && mFullTextWorldTransform != null)
             {
                 mFullText.rectTransform.anchoredPosition = JCS_Camera.main.WorldToCanvasSpace(this.mFullTextWorldTransform.position);
             }
