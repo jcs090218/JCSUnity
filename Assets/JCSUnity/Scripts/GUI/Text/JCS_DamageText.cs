@@ -129,7 +129,6 @@ namespace JCSUnity
         [SerializeField]
         private float mMaxSize = 1;
 
-
         // Damage Text
         [Header("** Damage Text Setting (if the game have this kind of feature fill this out!) **")]
 
@@ -216,7 +215,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="damage"> damage value. </param>
         /// <param name="pos"> effect position. (world space) </param>
-        public void SpawnDamageText(int damage, Vector2 pos)
+        public void SpawnDamageText(int damage, Vector3 pos)
         {
             this.transform.position = pos;
 

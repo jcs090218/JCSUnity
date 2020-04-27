@@ -24,7 +24,6 @@ namespace JCSUnity
         // Counter with the liquid bar?
         private JCS_3DLiquidBar mLiquidBar = null;
 
-
         [Header("** Runtime Variables (JCS_3DLiquidBarText) **")]
 
         [Tooltip("Text to do the effect.")]
@@ -52,12 +51,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaNumber mFullTextSprite = null;
 
-
         /* Setter & Getter */
 
         public JCS_DeltaNumber CounterTextSprite { get { return this.mCounterTextSprite; } set { this.mCounterTextSprite = value; } }
         public JCS_DeltaNumber FullTextSprite { get { return this.mFullTextSprite; } set { this.mFullTextSprite = value; } }
-
 
         /* Functions */
 

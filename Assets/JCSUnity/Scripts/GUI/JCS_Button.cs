@@ -37,7 +37,6 @@ namespace JCSUnity
 
         public CallBackFunc interactableCallback = null;
 
-
         [Header("** Check Variables (JCS_Button) **")]
 
         [Tooltip("Record down the selection choice for dialogue system.")]
@@ -45,7 +44,6 @@ namespace JCSUnity
         private int mDialogueSelection = -1;
 
         private bool mInitialized = false;
-
 
         [Header("** Optional Variables (JCS_Button) **")]
 
@@ -61,7 +59,6 @@ namespace JCSUnity
         // 'JCS_ButtonSelectionGroup' and 'JCS_ButtonSelection'.
         protected bool mIsSelectedInGroup = false;
 
-
         [Header("** Initialize Variables (JCS_Button) **")]
 
         [Tooltip("Auto add listner to button click event?")]
@@ -71,7 +68,6 @@ namespace JCSUnity
         [Tooltip("Index pairing with Dialogue, in order to call the correct index.")]
         [SerializeField]
         protected int mDialogueIndex = -1;
-
 
         [Header("** Runtime Variables (JCS_Button) **")]
 
@@ -87,11 +83,9 @@ namespace JCSUnity
         [SerializeField]
         protected Color mNotInteractColor = new Color(1, 1, 1, 0.5f);
 
-
         protected RectTransform mRectTransform = null;
         protected Button mButton = null;
         protected Image mImage = null;
-
 
         /* Setter & Getter */
 
@@ -126,7 +120,6 @@ namespace JCSUnity
         }
 
         public int DialogueSelection { get { return this.mDialogueSelection; } }
-
 
         /* Functions */
 

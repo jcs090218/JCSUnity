@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace JCSUnity
 {
-    public delegate void SpawnSequenceAction(int[] damage, Vector2[] pos, float timePerSpawn, int totalSpawn);
+    public delegate void SpawnSequenceAction(int[] damage, Vector3[] pos, float timePerSpawn, int totalSpawn);
 
     /// <summary>
     /// Reusable damage text pool.
@@ -78,7 +78,7 @@ namespace JCSUnity
         private List<int> mSequenceThread = null;
         // Data we need to let Sequence Thread process!
         private List<int[]> mSequenceDamageData = null;
-        private List<Vector2[]> mSequencePosData = null;
+        private List<Vector3[]> mSequencePosData = null;
         private List<AudioClip> mSequenceHitSoundData = null;
         private List<float> mSequenceSpanwTimer = null;
         // IMPORTANT: index of number we want to call to spawn the damage text!
@@ -101,7 +101,7 @@ namespace JCSUnity
             // spawn all the sequence
             mSequenceThread = new List<int>();
             mSequenceDamageData = new List<int[]>();
-            mSequencePosData = new List<Vector2[]>();
+            mSequencePosData = new List<Vector3[]>();
             mSequenceSpanwTimer = new List<float>();
             mSequenceHitSoundData = new List<AudioClip>();
             mSequenceSpawnCount = new List<int>();
@@ -125,7 +125,7 @@ namespace JCSUnity
         public int[] DamageTextSpawnerSimple(
             int minDamage,
             int maxDamage,
-            Vector2 pos,
+            Vector3 pos,
             int hit,
             AudioClip hitSound = null)
         {
@@ -172,10 +172,10 @@ namespace JCSUnity
         /// <param name="hitSound"></param>
         public void SpawnDamagetTexts(
             int[] damage,
-            Vector2 pos,
+            Vector3 pos,
             AudioClip hitSound = null)
         {
-            Vector2[] poses = new Vector2[damage.Length];
+            Vector3[] poses = new Vector3[damage.Length];
             for (int index = 0;
                 index < poses.Length;
                 ++index)
@@ -186,7 +186,7 @@ namespace JCSUnity
         }
         public void SpawnDamagetTexts(
             int[] damage,
-            Vector2[] pos,
+            Vector3[] pos,
             AudioClip hitSound = null)
         {
             if (damage.Length != pos.Length)
@@ -233,7 +233,7 @@ namespace JCSUnity
         /// <param name="pos"> spawn position </param>
         public void SpawnDamageTextFromPool(
             int damage,
-            Vector2 pos,
+            Vector3 pos,
             AudioClip hitSound,
             bool secondSearch = false)
         {
@@ -330,7 +330,7 @@ namespace JCSUnity
         private void Sequence(
             int processIndex,
             int[] damage,
-            Vector2[] pos,
+            Vector3[] pos,
             float timer,
             AudioClip hitSound)
         {

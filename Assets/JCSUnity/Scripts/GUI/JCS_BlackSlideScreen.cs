@@ -24,7 +24,6 @@ namespace JCSUnity
 
         private Vector3 mStartingPosition = Vector3.zero;
 
-
         /* Setter & Getter */
 
         /* Functions */

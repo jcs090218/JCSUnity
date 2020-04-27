@@ -22,7 +22,6 @@ namespace JCSUnity
 
         private JCS_FadeObject mFadeObject = null;
 
-
         /* Setter & Getter */
 
         public Color LocalColor
@@ -33,7 +32,6 @@ namespace JCSUnity
                 this.mFadeObject.LocalColor = value;
             }
         }
-
 
         /* Functions */
 

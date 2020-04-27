@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace JCSUnity
 {
     // Function pointer.
-    public delegate int[] DamageTextSpawnerFP(int minDamage, int maxDamage, Vector2 pos, int hit, int percentOfCritical);
+    public delegate int[] DamageTextSpawnerFP(int minDamage, int maxDamage, Vector3 pos, int hit, int percentOfCritical);
 
     /// <summary>
     /// Mix dmaage text pool object.
@@ -92,7 +92,7 @@ namespace JCSUnity
         private List<int> mSequenceThread = null;
         // Data we need to let Sequence Thread process!
         private List<int[]> mSequenceDamageData = null;
-        private List<Vector2[]> mSequencePosData = null;
+        private List<Vector3[]> mSequencePosData = null;
         private List<DamageTextType[]> mSequenceTypeData = null;
         private List<AudioClip> mSequenceHitSoundData = null;
 
@@ -115,7 +115,7 @@ namespace JCSUnity
             // spawn all the sequence
             mSequenceThread = new List<int>();
             mSequenceDamageData = new List<int[]>();
-            mSequencePosData = new List<Vector2[]>();
+            mSequencePosData = new List<Vector3[]>();
             mSequenceTypeData = new List<DamageTextType[]>();
             mSequenceSpanwTimer = new List<float>();
             mSequenceSpawnCount = new List<int>();
@@ -158,9 +158,10 @@ namespace JCSUnity
                     DamageTextSpawnerSimple(
                         0,
                         9999,
-                        new Vector2(
+                        new Vector3(
                             x_distance * count,
-                            JCS_Random.Range(-y_randDistance, y_randDistance)),
+                            JCS_Random.Range(-y_randDistance, y_randDistance),
+                            10.0f),
                         6,
                         30,
                         0);
@@ -175,7 +176,7 @@ namespace JCSUnity
         public int[] DamageTextSpawnerSimple(
             int minDamage,
             int maxDamage,
-            Vector2 pos,
+            Vector3 pos,
             int hit,
             int percentOfCritical,
             int defenseValue,
@@ -212,7 +213,7 @@ namespace JCSUnity
         public int[] DamageTextSpawnerSimple(
             int minDamage,
             int maxDamage,
-            Vector2 pos,
+            Vector3 pos,
             int hit,
             int percentOfCritical,
             JCS_Range algorithm,
@@ -309,7 +310,7 @@ namespace JCSUnity
         /// <returns> damage array </returns>
         public int[] DamageTextSpawnerSimple(
             int[] damages,
-            Vector2 pos,
+            Vector3 pos,
             int cirticalChance,
             bool isEnemy = false,
             AudioClip hitSound = null)
@@ -333,7 +334,7 @@ namespace JCSUnity
         /// <returns></returns>
         public int[] DamageTextSpawnerSimple(
             int[] damages,
-            Vector2 pos,
+            Vector3 pos,
             int cirticalChance,
             JCS_Range algorithm,
             bool isEnemy = false,
@@ -376,7 +377,7 @@ namespace JCSUnity
         /// <param name="type"> type of the damage text (Default: Normal Damage Text) </param>
         public void SpawnDamageTextFromPoolByType(
             int damage,
-            Vector2 pos,
+            Vector3 pos,
             AudioClip hitSound,
             DamageTextType type = DamageTextType.NORMAL)
         {
@@ -387,11 +388,11 @@ namespace JCSUnity
         }
         public void SpawnDamageTextsFromPoolByType(
             int[] damage,
-            Vector2 pos,
+            Vector3 pos,
             DamageTextType[] types,
             AudioClip hitSound = null)
         {
-            Vector2[] poses = new Vector2[damage.Length];
+            Vector3[] poses = new Vector3[damage.Length];
             for (int index = 0;
                 index < poses.Length;
                 ++index)
@@ -402,7 +403,7 @@ namespace JCSUnity
         }
         public void SpawnDamageTextsFromPoolByType(
             int[] damage,
-            Vector2[] pos,
+            Vector3[] pos,
             DamageTextType[] types,
             AudioClip hitSound = null)
         {
@@ -478,7 +479,7 @@ namespace JCSUnity
         private void Sequence(
             int processIndex,
             int[] damage,
-            Vector2[] pos,
+            Vector3[] pos,
             DamageTextType[] types,
             float timer,
             AudioClip hitSound)

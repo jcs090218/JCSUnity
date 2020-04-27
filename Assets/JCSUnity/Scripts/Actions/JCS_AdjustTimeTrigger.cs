@@ -26,7 +26,6 @@ namespace JCSUnity
         // action to trigger if the time is reached.
         public EmptyAction actions = null;
 
-
         [Header("** Check Variables (JCS_AdjustTimeTrigger) **")]
 
         [Tooltip(@"time to record down the real time to do one 
@@ -41,7 +40,6 @@ action after we calculate the real time.")]
         [Tooltip("check if the action trigger.")]
         [SerializeField]
         private bool mDidAction = false;
-
 
         [Header("** Runtime Variables (JCS_AdjustTimeTrigger) **")]
 
@@ -63,14 +61,12 @@ action after we calculate the real time.")]
         [SerializeField]
         private UnityEvent mUnityEvents = null;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public UnityEvent UnityEvents { get { return this.mUnityEvents; } set { this.mUnityEvents = value; } }
-
 
         /* Functions */
 
