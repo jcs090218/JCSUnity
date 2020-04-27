@@ -34,7 +34,19 @@ namespace JCSUnity
             HEAL
         };
 
-        [Header("NOTE: Plz put the whole set of Damage Text here!")]
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_MixDamageTextPool) **")]
+
+        [Tooltip("Test this component with key event.")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key code to test.")]
+        [SerializeField]
+        private KeyCode mTestKey = KeyCode.N;
+#endif
+
+        [Header("** Initialize Variables (JCS_MixDamageTextPool) **")]
 
         [Tooltip("Critical damage text pool.")]
         [SerializeField]
@@ -52,7 +64,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DamageTextPool mHealDamageTextPool = null;
 
-
         [Header("** Runtime Variables (JCS_MixDamageTextPool) **")]
 
         [Tooltip("Spacing per damage text.")]
@@ -62,12 +73,6 @@ namespace JCSUnity
         [Tooltip("Time per spawns.")]
         [SerializeField]
         private float mTimePerSpawn = 0.1f;
-
-
-        [Header("** Sound (Audio can be set at the Text Pool) **\n N/A")]
-
-        [Space(10)]
-
 
         [Header("** Zigge Right Left Effect (In Sequence)**")]
 
@@ -96,7 +101,6 @@ namespace JCSUnity
         // IMPORTANT: index of number we want to call to spawn the damage text!
         private List<int> mSequenceSpawnCount = null;
 
-
         /* Setter & Getter */
 
         private JCS_DamageTextPool GetCriticalDamageTextPool() { return this.mCritDamageTextPool; }
@@ -104,12 +108,10 @@ namespace JCSUnity
         private JCS_DamageTextPool GetGetDamageDamageTextPool() { return this.mGetDamageDamageTextPool; }
         private JCS_DamageTextPool GetHealDamageTextPoll() { return this.mHealDamageTextPool; }
 
-
         /* Functions */
 
         private void Awake()
         {
-
             // spawn all the sequence
             mSequenceThread = new List<int>();
             mSequenceDamageData = new List<int[]>();
@@ -138,7 +140,10 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.N))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mTestKey))
             {
                 // Testing helper function so spawn sequence of damage
                 // Showing u can get the damage from ite
@@ -151,16 +156,15 @@ namespace JCSUnity
                     ++count)
                 {
                     DamageTextSpawnerSimple(
-                        0, 
-                        9999, 
+                        0,
+                        9999,
                         new Vector2(
-                            x_distance * count, 
-                            JCS_Random.Range(-y_randDistance, y_randDistance)), 
-                        6, 
-                        30, 
+                            x_distance * count,
+                            JCS_Random.Range(-y_randDistance, y_randDistance)),
+                        6,
+                        30,
                         0);
                 }
-                
             }
         }
 #endif
@@ -169,24 +173,24 @@ namespace JCSUnity
         /// Default Damaget Text Spawner with the defualt random algorithm!
         /// </summary>
         public int[] DamageTextSpawnerSimple(
-            int minDamage, 
-            int maxDamage, 
-            Vector2 pos, 
-            int hit, 
-            int percentOfCritical, 
+            int minDamage,
+            int maxDamage,
+            Vector2 pos,
+            int hit,
+            int percentOfCritical,
             int defenseValue,
             bool isEnemy = false,
             AudioClip hitSound = null)
         {
             return DamageTextSpawnerSimple(
-                minDamage, 
-                maxDamage, 
-                pos, 
-                hit, 
-                percentOfCritical, 
-                JCS_Random.Range, 
-                defenseValue, 
-                isEnemy, 
+                minDamage,
+                maxDamage,
+                pos,
+                hit,
+                percentOfCritical,
+                JCS_Random.Range,
+                defenseValue,
+                isEnemy,
                 hitSound);
         }
 
@@ -206,7 +210,7 @@ namespace JCSUnity
         /// </param>
         /// <returns> data we produced </returns>
         public int[] DamageTextSpawnerSimple(
-            int minDamage, 
+            int minDamage,
             int maxDamage,
             Vector2 pos,
             int hit,
@@ -264,12 +268,12 @@ namespace JCSUnity
                     // 如果小於最下限得值, 就設定為最下限的值
                     if (damages[index] < jcsGm.MIN_DAMAGE)
                         damages[index] = jcsGm.MIN_DAMAGE;
-                    
+
                     // 如果大於最上限得值, 就設定為最上限的值
                     if (damages[index] > jcsGm.MAX_DAMAGE)
                         damages[index] = jcsGm.MAX_DAMAGE;
                 }
-                
+
                 // see if this damage text a critical damage text?
                 bool isCritical = (algorithm(0, 100) < percentOfCritical);
 
@@ -311,9 +315,9 @@ namespace JCSUnity
             AudioClip hitSound = null)
         {
             return DamageTextSpawnerSimple(
-                damages, 
-                pos, 
-                cirticalChance, 
+                damages,
+                pos,
+                cirticalChance,
                 JCS_Random.Range,
                 isEnemy,
                 hitSound);
@@ -328,11 +332,11 @@ namespace JCSUnity
         /// <param name="algorithm"></param>
         /// <returns></returns>
         public int[] DamageTextSpawnerSimple(
-            int[] damages, 
-            Vector2 pos, 
-            int cirticalChance, 
+            int[] damages,
+            Vector2 pos,
+            int cirticalChance,
             JCS_Range algorithm,
-            bool isEnemy = false, 
+            bool isEnemy = false,
             AudioClip hitSound = null)
         {
             int hit = damages.Length;
@@ -371,7 +375,7 @@ namespace JCSUnity
         /// <param name="pos"> position damage text </param>
         /// <param name="type"> type of the damage text (Default: Normal Damage Text) </param>
         public void SpawnDamageTextFromPoolByType(
-            int damage, 
+            int damage,
             Vector2 pos,
             AudioClip hitSound,
             DamageTextType type = DamageTextType.NORMAL)
@@ -382,9 +386,9 @@ namespace JCSUnity
                 dtp.SpawnDamageTextFromPool(damage, pos, hitSound);
         }
         public void SpawnDamageTextsFromPoolByType(
-            int[] damage, 
-            Vector2 pos, 
-            DamageTextType[] types, 
+            int[] damage,
+            Vector2 pos,
+            DamageTextType[] types,
             AudioClip hitSound = null)
         {
             Vector2[] poses = new Vector2[damage.Length];
@@ -397,13 +401,13 @@ namespace JCSUnity
             SpawnDamageTextsFromPoolByType(damage, poses, types, hitSound);
         }
         public void SpawnDamageTextsFromPoolByType(
-            int[] damage, 
-            Vector2[] pos, 
-            DamageTextType[] types, 
+            int[] damage,
+            Vector2[] pos,
+            DamageTextType[] types,
             AudioClip hitSound = null)
         {
-            if (damage.Length != pos.Length || 
-                damage.Length !=types.Length)
+            if (damage.Length != pos.Length ||
+                damage.Length != types.Length)
             {
                 JCS_Debug.LogError(
                     "Wrong triple pair size!");
@@ -472,11 +476,11 @@ namespace JCSUnity
         /// <param name="pos"> memory data thread needed </param>
         /// <param name="timer"> memory data thread needed </param>
         private void Sequence(
-            int processIndex, 
-            int[] damage, 
-            Vector2[] pos, 
-            DamageTextType[] types, 
-            float timer, 
+            int processIndex,
+            int[] damage,
+            Vector2[] pos,
+            DamageTextType[] types,
+            float timer,
             AudioClip hitSound)
         {
             float newTimer = timer;
@@ -507,6 +511,7 @@ namespace JCSUnity
             // update timer
             mSequenceSpanwTimer[processIndex] = newTimer;
         }
+
         private void ProccessSequences()
         {
             for (int process = 0;
@@ -522,6 +527,7 @@ namespace JCSUnity
                     mSequenceHitSoundData[process]);
             }
         }
+
         private void EndProcessSequence(int processIndex)
         {
             mSequenceThread.RemoveAt(processIndex);

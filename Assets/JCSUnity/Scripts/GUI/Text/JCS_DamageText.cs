@@ -32,7 +32,6 @@ namespace JCSUnity
 
         private bool mActive = false;
 
-
         [Header("** Runtime Variables (JCS_DamageText) **")]
 
         [Tooltip("Type of how damage text goes out.")]
@@ -61,7 +60,6 @@ namespace JCSUnity
         [SerializeField]
         private int mBaseOrderLayer = 5;
 
-
         [Header("** Caplitaize Effect (JCS_DamageText) **")]
 
         [Tooltip("The first letter will be bigger then other base on the scale variable below.")]
@@ -72,7 +70,6 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mCapitalLetterScale = new Vector3(2, 2, 2);
 
-
         [Header("** Wave Zigge Effect (JCS_DamageText) **")]
 
         [Tooltip("Each digit will goes up and down in order.")]
@@ -82,7 +79,6 @@ namespace JCSUnity
         [Tooltip("How much it does up and down.")]
         [SerializeField]
         private float mWaveZigge = 0.1f;
-
 
         [Header("** Asymptotic Scale Effect (JCS_DamageText) **")]
 
@@ -105,7 +101,6 @@ namespace JCSUnity
         private List<SpriteRenderer> mSpriteRenderers = null;
 
         private SpriteRenderer mCriticalSprite = null;
-        
 
 
         [Header("** Critical Strike Sprite Setting (JCS_DamageText) **")]
@@ -186,11 +181,9 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mDamageText9 = null;
 
-
         /* Setter & Getter */
 
         public bool isActive() { return this.mActive; }
-
 
         /* Functions */
 

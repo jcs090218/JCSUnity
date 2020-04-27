@@ -27,12 +27,12 @@ namespace JCSUnity
         [Header("** Initialize Variables (JCS_DamageTextPool) **")]
 
         [Tooltip("Number to handle and spawn at the initialize time.")]
-        [SerializeField] [Range(1, 500)]
+        [SerializeField]
+        [Range(1, 500)]
         private int mNumberOfHandle = 10;
 
         // optimize
         private int mLastSpawnPos = 0;
-
 
         // type of the damage text the object going to handle!
         [Header("NOTE: Plz put the whole set of Damage Text here!")]
@@ -42,7 +42,6 @@ namespace JCSUnity
         private JCS_DamageText mDamagetText = null;
 
         private JCS_Vector<JCS_DamageText> mDamageTexts = null;
-
 
         [Header("** Runtime Variables (JCS_DamageTextPool) **")]
 
@@ -54,7 +53,6 @@ namespace JCSUnity
         [SerializeField]
         private float mTimePerSpawn = 0.1f;
 
-
         [Header("** Sound (JCS_DamageTextPool) **")]
 
         [Tooltip("Sound when spawns.")]
@@ -62,7 +60,6 @@ namespace JCSUnity
         private AudioClip mHitSound = null;
 
         private JCS_SoundPlayer mSoundPlayer = null;
-
 
         [Header("** Zigge Right Left Effect (In Sequence)**")]
 
@@ -87,12 +84,10 @@ namespace JCSUnity
         // IMPORTANT: index of number we want to call to spawn the damage text!
         private List<int> mSequenceSpawnCount = null;
 
-
         /* Setter & Getter */
 
         public int GetNumberOfHandle() { return this.mNumberOfHandle; }
         public void SetHitSound(AudioClip hitSound) { this.mHitSound = hitSound; }
-
 
         /* Functions */
 
@@ -128,10 +123,10 @@ namespace JCSUnity
         /// <param name="hit"> how many damage text we spawn </param>
         /// <returns> data we produced </returns>
         public int[] DamageTextSpawnerSimple(
-            int minDamage, 
-            int maxDamage, 
-            Vector2 pos, 
-            int hit, 
+            int minDamage,
+            int maxDamage,
+            Vector2 pos,
+            int hit,
             AudioClip hitSound = null)
         {
             if (minDamage > maxDamage)
@@ -176,8 +171,8 @@ namespace JCSUnity
         /// <param name="pos"></param>
         /// <param name="hitSound"></param>
         public void SpawnDamagetTexts(
-            int[] damage, 
-            Vector2 pos, 
+            int[] damage,
+            Vector2 pos,
             AudioClip hitSound = null)
         {
             Vector2[] poses = new Vector2[damage.Length];
@@ -237,8 +232,8 @@ namespace JCSUnity
         /// <param name="damage"> damage number </param>
         /// <param name="pos"> spawn position </param>
         public void SpawnDamageTextFromPool(
-            int damage, 
-            Vector2 pos, 
+            int damage,
+            Vector2 pos,
             AudioClip hitSound,
             bool secondSearch = false)
         {
@@ -333,10 +328,10 @@ namespace JCSUnity
         /// <param name="pos"> memory data thread needed </param>
         /// <param name="timer"> memory data thread needed </param>
         private void Sequence(
-            int processIndex, 
-            int[] damage, 
-            Vector2[] pos, 
-            float timer, 
+            int processIndex,
+            int[] damage,
+            Vector2[] pos,
+            float timer,
             AudioClip hitSound)
         {
             float newTimer = timer;
@@ -380,7 +375,7 @@ namespace JCSUnity
                 ++process)
             {
                 // pass in all the data wee need in order to process the data
-                Sequence(process, 
+                Sequence(process,
                     mSequenceDamageData[process],
                     mSequencePosData[process],
                     mSequenceSpanwTimer[process],
