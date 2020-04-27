@@ -38,21 +38,20 @@ namespace JCSUnity
         [SerializeField]
         private TextEffect mDamageTextEffectType = TextEffect.FADE;
 
-        [Tooltip("Total scale of the damage text. (optional)")]
-        [SerializeField]
-        private Vector3 mScale = Vector3.one;
-
         [Tooltip("How fast the damage text moving.")]
         // the damage text moving speed
         [SerializeField]
+        [Range(0.0f, 300.0f)]
         private float mMoveSpeed = 0.2f;
 
         [Tooltip("Spacing between each digit.")]
         [SerializeField]
+        [Range(0.0f, 3000.0f)]
         private float mSpacing = 0.25f;
 
         [Tooltip("How fast the damage text fade out.")]
         [SerializeField]
+        [Range(0.0f, 30.0f)]
         private float mFadeSpeed = 1.0f;
 
         [Tooltip("Scene Layer in the render queue.")]
@@ -123,11 +122,11 @@ namespace JCSUnity
 
         [Tooltip("Minimum size value.")]
         [SerializeField]
-        private float mMinSize = -1;
+        private float mMinSize = -1.0f;
 
         [Tooltip("Maximum size value.")]
         [SerializeField]
-        private float mMaxSize = 1;
+        private float mMaxSize = 1.0f;
 
         // Damage Text
         [Header("** Damage Text Setting (if the game have this kind of feature fill this out!) **")]
@@ -231,9 +230,7 @@ namespace JCSUnity
             if ((totalDigit % 2) == 0)
                 isEvenNumber = true;
 
-            for (int digit = 1;
-                digit <= totalDigit;
-                ++digit)
+            for (int digit = 1; digit <= totalDigit; ++digit)
             {
                 if (mSpriteRenderers.Count <= digit - 1)
                 {
@@ -242,6 +239,11 @@ namespace JCSUnity
 
                     // set the parent
                     gm.transform.SetParent(this.transform);
+
+                    // Reset transform values.
+                    gm.transform.localPosition = Vector3.zero;
+                    gm.transform.localEulerAngles = Vector3.zero;
+                    gm.transform.localScale = Vector3.one;
 
                     // add to manage
                     mSpriteRenderers.Add(newSr);
@@ -282,7 +284,7 @@ namespace JCSUnity
                 }
                 sr.gameObject.transform.position = newPos;
 
-                Vector3 newScale = mScale;
+                Vector3 newScale = this.transform.localScale;
                 // Asymptotic scale
                 if (mAsymptoticScaleEffect)
                 {
@@ -305,8 +307,7 @@ namespace JCSUnity
             }
 
             // Check if critical texture exist and spawn it
-            if (mCritialStrike != null && 
-                damage != 0)
+            if (mCritialStrike != null && damage != 0)
             {
                 SpriteRenderer sr = mCriticalSprite;
 
@@ -342,8 +343,7 @@ namespace JCSUnity
                         newScale.y += applyRandom;
                     }
                     else
-                        JCS_Debug.LogError(
-                            "Max size cannot be smaller than Min size...");
+                        JCS_Debug.LogError("Max size cannot be smaller than Min size");
                 }
 
                 sr.gameObject.transform.localScale = newScale;
@@ -459,7 +459,6 @@ namespace JCSUnity
                 /* No longer using this. */
                 SetAllDigitToNull();
             }
-
         }
 
         /// <summary>

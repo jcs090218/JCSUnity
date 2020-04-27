@@ -39,7 +39,7 @@ namespace JCSUnity
 
         [Tooltip("Damage text clone.")]
         [SerializeField]
-        private JCS_DamageText mDamagetText = null;
+        private JCS_DamageText mDamageText = null;
 
         private JCS_Vector<JCS_DamageText> mDamageTexts = null;
 
@@ -47,10 +47,12 @@ namespace JCSUnity
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]
-        private float mSpacingPerText = 1;
+        [Range(0.0f, 3000.0f)]
+        private float mSpacingPerText = 1.0f;
 
         [Tooltip("Time per spawns.")]
         [SerializeField]
+        [Range(0.001f, 5.0f)]
         private float mTimePerSpawn = 0.1f;
 
         [Header("** Sound (JCS_DamageTextPool) **")]
@@ -147,12 +149,9 @@ namespace JCSUnity
                 return null;
             }
 
-
             int[] damages = new int[hit];
 
-            for (int index = 0;
-                index < hit;
-                ++index)
+            for (int index = 0; index < hit; ++index)
             {
                 int dm = Random.Range(minDamage, maxDamage);
                 damages[index] = dm;
@@ -176,12 +175,12 @@ namespace JCSUnity
             AudioClip hitSound = null)
         {
             Vector3[] poses = new Vector3[damage.Length];
-            for (int index = 0;
-                index < poses.Length;
-                ++index)
+
+            for (int index = 0; index < poses.Length; ++index)
             {
                 poses[index] = pos;
             }
+
             SpawnDamagetTexts(damage, poses, hitSound);
         }
         public void SpawnDamagetTexts(
@@ -197,9 +196,7 @@ namespace JCSUnity
 
             if (mZiggeEffect)
             {
-                for (int count = 0;
-                    count < pos.Length;
-                    ++count)
+                for (int count = 0; count < pos.Length; ++count)
                 {
                     if ((count % 2) == 0)
                         pos[count].x += mRightAlign;
@@ -223,7 +220,6 @@ namespace JCSUnity
 
             // always start with the first index
             mSequenceSpawnCount.Add(0);
-
         }
 
         /// <summary>
@@ -242,9 +238,7 @@ namespace JCSUnity
 
             JCS_DamageText dt;
 
-            for (int index = mLastSpawnPos;
-                index < mNumberOfHandle;
-                ++index)
+            for (int index = mLastSpawnPos; index < mNumberOfHandle; ++index)
             {
                 dt = mDamageTexts.at(index);
                 // if not active, meaning we can spawn the text
@@ -280,8 +274,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                 {
-                    JCS_Debug.LogWarning(
-                        "Prevent, stack overflow function call.");
+                    JCS_Debug.LogWarning("Prevent, stack overflow function call.");
                 }
 #endif
                 return;
@@ -300,16 +293,17 @@ namespace JCSUnity
         {
             mDamageTexts = new JCS_Vector<JCS_DamageText>(mNumberOfHandle);
 
-            if (mDamagetText == null)
+            if (mDamageText == null)
                 return;
 
-            for (int count = 0;
-                count < mNumberOfHandle;
-                ++count)
+            for (int count = 0; count < mNumberOfHandle; ++count)
             {
                 // spawn a new game object, 
                 // and get the component
-                JCS_DamageText dt = (JCS_DamageText)JCS_Utility.SpawnGameObject(mDamagetText);
+                JCS_DamageText dt = JCS_Utility.SpawnGameObject(
+                    mDamageText,
+                    mDamageText.transform.position,
+                    mDamageText.transform.rotation) as JCS_DamageText;
 
                 // add to array
                 mDamageTexts.set(count, dt);
@@ -370,9 +364,7 @@ namespace JCSUnity
         /// </summary>
         private void ProccessSequences()
         {
-            for (int process = 0;
-                process < mSequenceThread.Count;
-                ++process)
+            for (int process = 0; process < mSequenceThread.Count; ++process)
             {
                 // pass in all the data wee need in order to process the data
                 Sequence(process,

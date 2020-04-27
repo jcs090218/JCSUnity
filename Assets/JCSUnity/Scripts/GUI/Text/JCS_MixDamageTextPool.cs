@@ -68,10 +68,11 @@ namespace JCSUnity
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]
-        private float mSpacingPerText = 1;
+        private float mSpacingPerText = 1.0f;
 
         [Tooltip("Time per spawns.")]
         [SerializeField]
+        [Range(0.0f, 5.0f)]
         private float mTimePerSpawn = 0.1f;
 
         [Header("** Zigge Right Left Effect (In Sequence)**")]
