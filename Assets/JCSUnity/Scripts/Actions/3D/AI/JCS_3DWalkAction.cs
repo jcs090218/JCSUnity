@@ -67,7 +67,7 @@ namespace JCSUnity
 
         [Tooltip("Randomly adjusts the range distance.")]
         [SerializeField]
-        [Range(1.0f, 30.0f)]
+        [Range(0.0f, 30.0f)]
         private float mAdjustRangeDistance = 0.0f;
 
         [Tooltip("Minimum randomly add vector with magnitude of distance at target position.")]
