@@ -22,6 +22,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Header("** Check Variables (JCS_TimeManager) **")]
+
         [Tooltip("Time range at the current region.")]
         [SerializeField]
         private JCS_TimeRange mCurrentTimeRange = JCS_TimeRange.UNKNOWN;
@@ -33,7 +35,6 @@ namespace JCSUnity
         [Tooltip("Weather current time period.")]
         [SerializeField]
         private JCS_WeatherType mCurrentWeatherType = JCS_WeatherType.UNKNOWN;
-
 
         /* Setter & Getter */
 

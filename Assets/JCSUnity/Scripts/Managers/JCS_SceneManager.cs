@@ -30,7 +30,6 @@ namespace JCSUnity
         // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;
 
-
         [Header("** Game Settings (JCS_SceneManager) **")]
 
         [Tooltip("Pause the game while the scene start to load?")]
@@ -42,7 +41,6 @@ namespace JCSUnity
 
         [SerializeField]
         private JCS_BlackScreen mJCSBlackScreen = null;
-
         
         [Header("** Black Slide Screen Settings (JCS_SceneManager) **")]
 
@@ -53,7 +51,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
 
-
         [Header("** White Screen Settings (JCS_SceneManager) **")]
 
         [Tooltip("Do u need the white screen in ur game?")]
@@ -62,7 +59,6 @@ namespace JCSUnity
 
         [SerializeField]
         private JCS_WhiteScreen mJCSWhiteScreen = null;
-
 
         [Header("** General Screen Settings (JCS_SceneManager) **")]
 

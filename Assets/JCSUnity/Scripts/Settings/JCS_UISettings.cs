@@ -30,7 +30,6 @@ namespace JCSUnity
         public static string FADE_SCREEN_PATH = "JCSUnity_Resources/LevelDesignUI/JCS_FadeScreen";
         public static string FADE_SCREEN_NAME = "JCS_FadeScreen";
 
-
         [Header("** Initialize Variables (JCS_UISettings) **")]
 
         [Tooltip("Resize the UI in runtime?")]

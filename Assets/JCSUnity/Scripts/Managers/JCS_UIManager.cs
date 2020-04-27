@@ -28,13 +28,11 @@ namespace JCSUnity
         private bool mTestWithKey = false;
 #endif
 
-
         [Header("** Check Variables (JCS_UIManager) **")]
 
         [Tooltip("Global undo redo system.")]
         [SerializeField]
         private JCS_UndoRedoSystem mGlobalUndoRedoSystem = null;
-
 
         [Header("** Initialize Variables (JCS_UIManager) **")]
 

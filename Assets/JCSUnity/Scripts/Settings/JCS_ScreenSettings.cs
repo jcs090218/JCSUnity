@@ -24,14 +24,12 @@ namespace JCSUnity
 
         public OnScreenResize onScreenResize = null;
 
-
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_ScreenManager) **")]
 
         [Tooltip("Show the resizable screen panel in game?")]
         public bool SHOW_RESIZABLE_PANELS = true;
 #endif
-
 
         [Header("** Check Variables (JCS_ScreenSettings) **")]
 
@@ -67,39 +65,32 @@ namespace JCSUnity
         [SerializeField]
         public int ASPECT_RATIO_SCREEN_HEIGHT = 0;
 
-
         [Header("** Initialize Variables (JCS_ScreenSettings) **")]
 
         [Tooltip("Resize the screen/window to certain aspect when " +
-            "the application starts. Aspect ratio can be set at " +
-            "'JCS_ScreenManager'.")]
+            "the application starts. Aspect ratio can be set at 'JCS_ScreenManager'.")]
         public bool RESIZE_TO_ASPECT_WHEN_APP_STARTS = true;
 
-        [Tooltip("Resize the screen/window to standard resoltuion when " +
-            "application starts.")]
+        [Tooltip("Resize the screen/window to standard resoltuion when application starts.")]
         public bool RESIZE_TO_STANDARD_WHEN_APP_STARTS = false;
 
         [Tooltip("Resize the screen/window everytime a scene are loaded.")]
         public bool RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED = false;
 
-        [Tooltip("When resize, resize to the smaller edge, if not true " +
-            "will resize to larger edge.")]
+        [Tooltip("When resize, resize to the smaller edge, if not true will resize to larger edge.")]
         public bool RESIZE_TO_SMALLER_EDGE = true;
 
         [Tooltip("Defualt color to aspect panels.")]
         [SerializeField]
         private Color mResizablePanelsColor = Color.black;
 
-
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
 
-        [Tooltip("Standard screen width to calculate the worldspace " +
-            "obejct's camera view.")]
+        [Tooltip("Standard screen width to calculate the worldspace obejct's camera view.")]
         [Range(1, 8192)]
         public int STANDARD_SCREEN_WIDTH = 1920;
 
-        [Tooltip("Standard screen height to calculate the worldspace " +
-            "obejct's camera view.")]
+        [Tooltip("Standard screen height to calculate the worldspace obejct's camera view.")]
         [Range(1, 8192)]
         public int STANDARD_SCREEN_HEIGHT = 1080;
 

@@ -20,24 +20,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_ScreenManager) **")]
-
-        [Tooltip("Resize screen once on this scene?")]
-        public bool RESIZE_SCREEN_THIS_SCENE = false;
-
-        [Tooltip("Aspect ratio screen width for this scene you want to resize.")]
-        public int ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE = 16;
-
-        [Tooltip("Aspect ratio screen height for this scene you want to resize.")]
-        public int ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE = 9;
-
-
-        [Header("** Runtime Variables (JCS_ScreenManager) **")]
-
-        [Tooltip("Type of the screen handle.")]
-        public JCS_ScreenType SCREEN_TYPE_THIS_SCENE = JCS_ScreenType.RESIZABLE;
-
-
         [Header("** Check Variables (JCS_ScreenManager) **")]
 
         [Tooltip("Invisible object area.")]
@@ -60,6 +42,21 @@ namespace JCSUnity
         [SerializeField]
         private JCS_ResizableScreenPanel mRightASP = null;
 
+        [Header("** Initialize Variables (JCS_ScreenManager) **")]
+
+        [Tooltip("Resize screen once on this scene?")]
+        public bool RESIZE_SCREEN_THIS_SCENE = false;
+
+        [Tooltip("Aspect ratio screen width for this scene you want to resize.")]
+        public int ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE = 16;
+
+        [Tooltip("Aspect ratio screen height for this scene you want to resize.")]
+        public int ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE = 9;
+
+        [Header("** Runtime Variables (JCS_ScreenManager) **")]
+
+        [Tooltip("Type of the screen handle.")]
+        public JCS_ScreenType SCREEN_TYPE_THIS_SCENE = JCS_ScreenType.RESIZABLE;
 
         /* Setter & Getter */
 
@@ -67,7 +64,6 @@ namespace JCSUnity
         public JCS_ResizableScreenPanel BottomASP { get { return this.mBottomASP; } }
         public JCS_ResizableScreenPanel LeftASP { get { return this.mLeftASP; } }
         public JCS_ResizableScreenPanel RightASP { get { return this.mRightASP; } }
-
 
         /* Functions */
 

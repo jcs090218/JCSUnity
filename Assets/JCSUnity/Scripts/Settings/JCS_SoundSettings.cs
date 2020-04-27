@@ -57,7 +57,6 @@ namespace JCSUnity
         [Tooltip("Keep BGM current scene?")]
         public bool KEEP_BGM_SWITCH_SCENE = false;
 
-
         [Header("** Scene Sound (JCS_SoundSettings) **")]
 
         [Tooltip("Smoothly switching the sound between the switching the scene.")]
@@ -65,7 +64,6 @@ namespace JCSUnity
 
         [Tooltip("Clip that will play as background music for this scene.")]
         public AudioClip BACKGROUND_MUSIC = null;
-
 
         // Window System
         [Header("** Window System (JCS_SoundSettings) **")]
@@ -114,7 +112,6 @@ namespace JCSUnity
             JCS_Debug.LogError("Get unknown volume...");
             return 0;
         }
-
 
         /* Functions */
 

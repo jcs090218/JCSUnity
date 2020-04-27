@@ -28,7 +28,6 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_PauseAction> mPauseActions = null;
 
-
         [Header("** Runtime Variables (JCS_PauseManager) **")]
 
         [Tooltip(@"Time to resize the pause action list, in seconds.

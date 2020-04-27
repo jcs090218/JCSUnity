@@ -43,7 +43,6 @@ namespace JCSUnity
         public float TIME_SCALE = 1;
 #endif
 
-
         [Header("** Check Variable (JCS_GameManager) **")]
 
         [Tooltip("Is the game pasue?")]
@@ -53,7 +52,6 @@ namespace JCSUnity
         [Tooltip("Is game done initialize?")]
         [SerializeField]
         private bool mGameDoneInitialize = false;
-
 
         private JCS_Player mJCSPlayer = null;
         private JCS_GameSettings mJCSGameSettings = null;
