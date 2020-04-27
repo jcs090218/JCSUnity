@@ -27,6 +27,8 @@ any placeholder assets commercially.
 
 ## :newspaper: News
 
+* `2.0.3` - Use built-in `sprite mask` and removed [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642)
+as dependency.
 * `2.0.0` - Fixed down compatibility to Unity version `5.3.3`.
 * `1.9.4` - Changed base scripting format for better readability.
 * `1.9.3` - Started integrating In-App-Purchase (IAP) system.
@@ -55,7 +57,6 @@ These are libraries `JCSUnity` uses. Consider the usage, some plugins
 aren't necessary depend on the game your are making.
 
 * [Log Viewer](https://assetstore.unity.com/packages/tools/integration/log-viewer-12047) - Easier debugging after built.
-* [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642) - 2D sprite mask support before Unity built-in sprite mask.
 * [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) - File browser for UI/tool base application.
 * [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
 * [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
