@@ -60,6 +60,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_3DWalkType mWalkType = JCS_3DWalkType.CLOSEST_POINT;
 
+        [Tooltip("What value count as path complete action.")]
+        [SerializeField]
+        [Range(0.0f, 30.0f)]
+        private float mAcceptRemainDistance = 0.1f;
+
         [Tooltip("Range that enemy will try to get close to.")]
         [SerializeField]
         [Range(0.001f, 1000.0f)]
@@ -67,7 +72,7 @@ namespace JCSUnity
 
         [Tooltip("Randomly adjusts the range distance.")]
         [SerializeField]
-        [Range(0.0f, 30.0f)]
+        [Range(0.001f, 30.0f)]
         private float mAdjustRangeDistance = 0.0f;
 
         [Tooltip("Minimum randomly add vector with magnitude of distance at target position.")]
@@ -84,6 +89,7 @@ namespace JCSUnity
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public JCS_3DWalkType WalkType { get { return this.mWalkType; } set { this.mWalkType = value; } }
+        public float AcceptRemainDistance { get { return this.mAcceptRemainDistance; } set { this.mAcceptRemainDistance = value; } }
 
         public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
 
@@ -156,9 +162,9 @@ namespace JCSUnity
         {
             float dist = agent.remainingDistance;
 
-            if (dist != Mathf.Infinity &&
+            if (!float.IsNaN(dist) &&
                 agent.pathStatus == NavMeshPathStatus.PathComplete &&
-                agent.remainingDistance == 0)
+                agent.remainingDistance <= mAcceptRemainDistance)
             {
                 return true;
             }
