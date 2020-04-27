@@ -5,8 +5,7 @@ the 'Export Package...' button.
 
 -> _FrameworkTest_Assets
 -> JCSUnity
--> Reporter
--> SpriteMask
+-> LogViewer
 -> StandaloneFileBrowser
 -> TextMesh Pro
 -> Tweener
