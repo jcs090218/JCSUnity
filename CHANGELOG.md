@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-04-27
 
 * Now damage text system supports 3D space. (JCSUnity)
+* Upgrade damage text system's user experience. (JCSUnity)
 
 ### 2020-04-26
 
