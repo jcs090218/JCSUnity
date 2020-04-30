@@ -83,11 +83,13 @@ namespace JCSUnity
 
         [Tooltip("Right align value.")]
         [SerializeField]
-        private float mRightAlign = 1.0f;
+        [Range(0.0f, 300.0f)]
+        private float mRightAlign = 0.0f;
 
         [Tooltip("Left align value.")]
         [SerializeField]
-        private float mLeftAlign = 1.0f;
+        [Range(0.0f, 300.0f)]
+        private float mLeftAlign = 0.0f;
 
 
         private List<int> mSequenceThread = null;
@@ -224,29 +226,25 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_Debug.LogError(
-                    "min damage cannot be higher or equal to the max damage!");
+                JCS_Debug.LogError("Min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
             if (minDamage < 0 || maxDamage < 0)
             {
-                JCS_Debug.LogError(
-                    "Min or Max damage cannot be lower than 0!");
+                JCS_Debug.LogError("Min or Max damage cannot be lower than 0!");
                 return null;
             }
 
             if (percentOfCritical < 0 || percentOfCritical > 100)
             {
-                JCS_Debug.LogError(
-                    "Percent Of Critical should within range of 0 ~ 100...");
+                JCS_Debug.LogError("Percent Of Critical should within range of 0 ~ 100...");
                 return null;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogError(
-                    "Hit count should not be equal or lower than 0!");
+                JCS_Debug.LogError("Hit count should not be equal or lower than 0!");
                 return null;
             }
 
@@ -256,9 +254,7 @@ namespace JCSUnity
             // get the game setting first
             JCS_GameSettings jcsGm = JCS_GameSettings.instance;
 
-            for (int index = 0;
-                index < hit;
-                ++index)
+            for (int index = 0; index < hit; ++index)
             {
                 int dm = Random.Range(minDamage, maxDamage);
 
@@ -394,12 +390,10 @@ namespace JCSUnity
             AudioClip hitSound = null)
         {
             Vector3[] poses = new Vector3[damage.Length];
-            for (int index = 0;
-                index < poses.Length;
-                ++index)
-            {
+
+            for (int index = 0; index < poses.Length; ++index)
                 poses[index] = pos;
-            }
+
             SpawnDamageTextsFromPoolByType(damage, poses, types, hitSound);
         }
         public void SpawnDamageTextsFromPoolByType(
@@ -408,20 +402,15 @@ namespace JCSUnity
             DamageTextType[] types,
             AudioClip hitSound = null)
         {
-            if (damage.Length != pos.Length ||
-                damage.Length != types.Length)
+            if (damage.Length != pos.Length || damage.Length != types.Length)
             {
-                JCS_Debug.LogError(
-                    "Wrong triple pair size!");
-
+                JCS_Debug.LogError("Wrong triple pair size");
                 return;
             }
 
             if (mZiggeEffect)
             {
-                for (int count = 0;
-                    count < pos.Length;
-                    ++count)
+                for (int count = 0; count < pos.Length; ++count)
                 {
                     if ((count % 2) == 0)
                         pos[count].x += mRightAlign;
@@ -466,7 +455,6 @@ namespace JCSUnity
                 case DamageTextType.HEAL:
                     return this.GetHealDamageTextPoll();
             }
-
             return null;
         }
 
@@ -503,12 +491,10 @@ namespace JCSUnity
                 SpawnDamageTextFromPoolByType(damage[count], pos[count], hitSound, types[count]);
 
                 ++count;
-                // update new count, in order 
-                // to spawn next damage text
+                // Update new count, in order to spawn next damage text.
                 mSequenceSpawnCount[processIndex] = count;
-                newTimer = 0;
+                newTimer = 0.0f;
             }
-
 
             // update timer
             mSequenceSpanwTimer[processIndex] = newTimer;
@@ -516,9 +502,7 @@ namespace JCSUnity
 
         private void ProccessSequences()
         {
-            for (int process = 0;
-                process < mSequenceThread.Count;
-                ++process)
+            for (int process = 0; process < mSequenceThread.Count; ++process)
             {
                 // pass in all the data wee need in order to process the data
                 Sequence(process,

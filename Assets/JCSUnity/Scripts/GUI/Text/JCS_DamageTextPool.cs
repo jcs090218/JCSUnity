@@ -55,6 +55,10 @@ namespace JCSUnity
         [Range(0.001f, 5.0f)]
         private float mTimePerSpawn = 0.1f;
 
+        [Tooltip("Face the camera when called damage text.")]
+        [SerializeField]
+        private bool mFaceCamera = true;
+
         [Header("** Sound (JCS_DamageTextPool) **")]
 
         [Tooltip("Sound when spawns.")]
@@ -89,6 +93,15 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public int GetNumberOfHandle() { return this.mNumberOfHandle; }
+
+        public float SpacingPerText { get { return this.mSpacingPerText; } set { this.mSpacingPerText = value; } }
+        public float TimePerSpawn { get { return this.mTimePerSpawn; } set { this.mTimePerSpawn = value; } }
+        public bool FaceCamera { get { return this.mFaceCamera; } set { this.mFaceCamera = value; } }
+
+        public bool ZiggeEffect { get { return this.mZiggeEffect; } set { this.mZiggeEffect = value; } }
+        public float RightAlign { get { return this.mRightAlign; } set { this.mRightAlign = value; } }
+        public float LeftAlign { get { return this.mLeftAlign; } set { this.mLeftAlign = value; } }
+
         public void SetHitSound(AudioClip hitSound) { this.mHitSound = hitSound; }
 
         /* Functions */
@@ -133,7 +146,7 @@ namespace JCSUnity
         {
             if (minDamage > maxDamage)
             {
-                JCS_Debug.LogError("min damage cannot be higher or equal to the max damage!");
+                JCS_Debug.LogError("Min damage cannot be higher or equal to the max damage!");
                 return null;
             }
 
@@ -236,7 +249,7 @@ namespace JCSUnity
             if (mNumberOfHandle == 0)
                 return;
 
-            JCS_DamageText dt;
+            JCS_DamageText dt = null;
 
             for (int index = mLastSpawnPos; index < mNumberOfHandle; ++index)
             {
@@ -246,14 +259,22 @@ namespace JCSUnity
                 {
                     dt.SpawnDamageText(damage, pos);
 
-                    // Hit Sound is the part of sfx sound
+                    // Hit Sound is the part of SFX sound
                     PlayHitSound(hitSound);
 
                     // set the last spawn count
                     mLastSpawnPos = index;
+
+                    // Look at the camera once!
+                    if (mFaceCamera)
+                    {
+                        dt.transform.LookAt(Camera.main.transform.position);
+
+                        dt.transform.Rotate(0.0f, 180.0f, 0.0f);
+                    }
+
                     return;
                 }
-
             }
 
             // if we get here mean we cycle once but we
@@ -311,7 +332,6 @@ namespace JCSUnity
                 // set parent
                 dt.transform.SetParent(this.transform);
             }
-
         }
 
         /// <summary>
@@ -348,9 +368,8 @@ namespace JCSUnity
                 // update new count, in order 
                 // to spawn next damage text
                 mSequenceSpawnCount[processIndex] = count;
-                newTimer = 0;
+                newTimer = 0.0f;
             }
-
 
             // update timer
             mSequenceSpanwTimer[processIndex] = newTimer;

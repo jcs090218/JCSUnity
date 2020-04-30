@@ -220,6 +220,9 @@ namespace JCSUnity
 
             int totalDigit = damage.ToString().Length;
 
+            // Number is from `left` to `right`, calculate the very left position.
+            float leftPosX = mSpacing * (totalDigit - 1) / 2.0f;
+
             // if damage lower than equals to one
             // set digit to 1 in order to get one
             // "MISS" text!
@@ -232,6 +235,7 @@ namespace JCSUnity
 
             for (int digit = 1; digit <= totalDigit; ++digit)
             {
+                // Add one new digit.
                 if (mSpriteRenderers.Count <= digit - 1)
                 {
                     GameObject gm = new GameObject();
@@ -264,10 +268,10 @@ namespace JCSUnity
                 // set the sorting layer
                 sr.sortingOrder = mBaseOrderLayer - digit;
 
-                // set the position base on the spacing 
-                // and target's center!
-                Vector3 newPos = gameObject.transform.position;
-                newPos.x -= mSpacing * digit;
+                // set the position base on the spacing and target's center!
+                Vector3 newPos = sr.transform.localPosition;
+
+                newPos.x = leftPosX - (mSpacing * (digit - 1));
 
                 // do wave effect
                 if (mWaveZiggeEffect)
@@ -282,9 +286,9 @@ namespace JCSUnity
 
                     newPos.y += diffZig;
                 }
-                sr.gameObject.transform.position = newPos;
+                sr.transform.localPosition = newPos;
 
-                Vector3 newScale = this.transform.localScale;
+                Vector3 newScale = sr.transform.localScale;
                 // Asymptotic scale
                 if (mAsymptoticScaleEffect)
                 {
@@ -303,7 +307,7 @@ namespace JCSUnity
                     }
                 }
 
-                sr.gameObject.transform.localScale = newScale;
+                sr.transform.localScale = newScale;
             }
 
             // Check if critical texture exist and spawn it
@@ -319,7 +323,7 @@ namespace JCSUnity
 
                 sr.sortingOrder = mBaseOrderLayer - theLeftDigitSpace;
 
-                Vector3 newPos = gameObject.transform.position;
+                Vector3 newPos = gameObject.transform.localPosition;
                 newPos.x -= mSpacing * theLeftDigitSpace;
 
                 // Adjust a bit so we have a little control
@@ -327,7 +331,7 @@ namespace JCSUnity
                 newPos.x += mSpacingX;
                 newPos.y += mSpacingY;
 
-                sr.gameObject.transform.position = newPos;
+                sr.transform.localPosition = newPos;
 
                 //---------------
                 // Apply Scale
@@ -346,7 +350,7 @@ namespace JCSUnity
                         JCS_Debug.LogError("Max size cannot be smaller than Min size");
                 }
 
-                sr.gameObject.transform.localScale = newScale;
+                sr.transform.localScale = newScale;
             }
 
             // start the effect
