@@ -124,12 +124,18 @@ Careful that recover can be damage too.")]
         public JCS_LiquidBarInfo Info { get { return this.mInfo; } set { this.mInfo = value; } }
         public Image InfoImage { get { return this.mInfoImage; } set { this.mInfoImage = value; } }
 
+        public bool OverrideZero { get { return this.mOverrideZero; } set { this.mOverrideZero = value; } }
+
+        public float DeltaFriction { get { return this.mDeltaFriction; } set { this.mDeltaFriction = value; } }
+
         public bool RecoverEffect { get { return this.mRecoverEffect; } set { this.mRecoverEffect = value; } }
         public float TimeToRecover { get { return this.mTimeToRecover; } set { this.mTimeToRecover = value; } }
         public float RecoverValue { get { return this.mRecoverValue; } set { this.mRecoverValue = value; } }
 
         public float MinValue { get { return this.mMinValue; } }
         public float MaxValue { get { return this.mMaxValue; } }
+
+        public bool BackToRecordRecoverValue { get { return this.mBackToRecordRecoverValue; } set { this.mBackToRecordRecoverValue = value; } }
 
         public JCS_Align GetAlign() { return this.mAlign; }
 
@@ -233,8 +239,7 @@ Careful that recover can be damage too.")]
         public abstract void SetMaxValue(float val);
 
         /// <summary>
-        /// Set the source sprite from the Image component.
-        /// in Unity Engine.
+        /// Set the source sprite from the Image component in Unity Engine.
         /// </summary>
         /// <param name="sprite"></param>
         public void SetInfoSprite(Sprite sprite)
