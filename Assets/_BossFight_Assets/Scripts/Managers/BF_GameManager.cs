@@ -99,7 +99,7 @@ public class BF_GameManager
         if (HEALTH_LIQUIDBAR != null)
         {
             // set call back when the hp bar is zero.
-            HEALTH_LIQUIDBAR.LiquidBar.ZeroCallbackFunc = LostTheGame;
+            HEALTH_LIQUIDBAR.LiquidBar.callback_min = LostTheGame;
         }
     }
 

@@ -11,30 +11,38 @@ using System.Collections;
 using JCSUnity;
 
 /// <summary>
-/// 
+/// Live object for example game `Boss Fight`.
 /// </summary>
-public class BF_LiveObject 
+public class BF_LiveObject
     : JCS_2DLiveObject
 {
     /* Variables */
 
     [Header("** Check Variables (BF_LiveObject) **")]
 
-    [SerializeField] private float mFreezeTime = 0;
-    [SerializeField] private float mFreezeTimer = 0;
+    [SerializeField]
+    private float mFreezeTime = 0;
 
-    [SerializeField] private float mBurnTime = 0;
-    [SerializeField] private float mBurnTimer = 0;
+    [SerializeField]
+    private float mFreezeTimer = 0;
+
+    [SerializeField]
+    private float mBurnTime = 0;
+
+    [SerializeField]
+    private float mBurnTimer = 0;
 
     [Header("** Game Feature Settings (BF_LiveObject) **")]
 
     [Tooltip("Can this live object be freeze?")]
-    [SerializeField] private bool mCanFreeze = true;
+    [SerializeField]
+    private bool mCanFreeze = true;
 
     private bool mIsFreeze = false;
 
     [Tooltip("Can this live object be burn?")]
-    [SerializeField] private bool mCanBurn = true;
+    [SerializeField]
+    private bool mCanBurn = true;
 
     private bool mIsBurn = false;
 
@@ -124,7 +132,7 @@ public class BF_LiveObject
     {
         if (VelocityInfo != null)
             VelocityInfo.UnFreeze();
-        
+
         spriteRenderer.color = Color.white;
         mIsFreeze = false;
 
