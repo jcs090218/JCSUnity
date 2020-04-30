@@ -121,8 +121,8 @@ Careful that recover can be damage too.")]
 
         /* Setter & Getter */
 
-        public JCS_LiquidBarInfo Info { get { return this.mInfo; } }
-        public Image InfoImage { get { return this.mInfoImage; } }
+        public JCS_LiquidBarInfo Info { get { return this.mInfo; } set { this.mInfo = value; } }
+        public Image InfoImage { get { return this.mInfoImage; } set { this.mInfoImage = value; } }
 
         public bool RecoverEffect { get { return this.mRecoverEffect; } set { this.mRecoverEffect = value; } }
         public float TimeToRecover { get { return this.mTimeToRecover; } set { this.mTimeToRecover = value; } }
