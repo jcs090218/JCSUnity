@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-04-30
 
 * Upgraded the liquid bar module for better understanding API calls. (JCSUnity)
+* Upgraded the damage text system for better default UX. (JCSUnity)
 
 ### 2020-04-28
 
