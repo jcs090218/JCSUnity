@@ -75,10 +75,12 @@ namespace JCSUnity
 
         [Tooltip("Right align value.")]
         [SerializeField]
+        [Range(0.0f, 300.0f)]
         private float mRightAlign = 0.2f;
 
         [Tooltip("Left align value.")]
         [SerializeField]
+        [Range(0.0f, 300.0f)]
         private float mLeftAlign = 0.2f;
 
         private List<int> mSequenceThread = null;
