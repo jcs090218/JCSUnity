@@ -34,8 +34,7 @@ namespace JCSUnity
 
         /* Variables */
 
-        // All enemy should have the nav
-        // mesh agent for the path finding.
+        // All enemy should have the nav mesh agent for the path finding.
         private NavMeshAgent mNavMeshAgent = null;
 
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
@@ -87,6 +86,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public NavMeshAgent navMeshAgent { get { return this.mNavMeshAgent; } }
+        public JCS_AdjustTimeTrigger AdjustTimeTrigger { get { return this.mAdjustTimeTrigger; } }
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public JCS_3DWalkType WalkType { get { return this.mWalkType; } set { this.mWalkType = value; } }
         public float AcceptRemainDistance { get { return this.mAcceptRemainDistance; } set { this.mAcceptRemainDistance = value; } }
@@ -115,6 +117,9 @@ namespace JCSUnity
         /// <param name="target"> Target we are following. </param>
         public void TargetOne(Transform target)
         {
+            if (!mNavMeshAgent.enabled)
+                return;
+
             // if target is does not exist, end function call.
             if (target == null)
             {
@@ -160,6 +165,9 @@ namespace JCSUnity
         /// </summary>
         public bool NavMeshArrive(NavMeshAgent agent)
         {
+            if (!mNavMeshAgent.enabled)
+                return false;
+
             float dist = agent.remainingDistance;
 
             if (!float.IsNaN(dist) &&
