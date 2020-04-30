@@ -132,9 +132,7 @@ namespace JCSUnity
         {
             if (val <= mMinValue)
             {
-                JCS_Debug.LogError(
-                    "Max value u r setting cannot be lower than min value.");
-
+                JCS_Debug.LogError("Max value you set can't be lower than min value.");
                 return;
             }
 
@@ -154,9 +152,7 @@ namespace JCSUnity
         {
             if (val >= mMaxValue)
             {
-                JCS_Debug.LogError(
-                    "Min value u r setting cannot be higher than max value.");
-
+                JCS_Debug.LogError("Min value you set can be higher than max value");
                 return;
             }
 
@@ -176,9 +172,14 @@ namespace JCSUnity
         {
             if (!mOverrideZero)
             {
-                if (mZeroed)
+                if (mReachMin)
                 {
-                    mCurrentValue = 0;
+                    mCurrentValue = mMinValue;
+                    return;
+                }
+                else if (mReachMax)
+                {
+                    mCurrentValue = mMaxValue;
                     return;
                 }
             }
@@ -199,7 +200,7 @@ namespace JCSUnity
             FixPercentage();
 
             // do call back
-            DoZeroCallback();
+            DoCallback();
         }
 
         /// <summary>
@@ -401,25 +402,34 @@ namespace JCSUnity
             DeltaCurrentValue(mRecoverValue);
 
             // reset timer.
-            mRecoverTimer = 0;
+            mRecoverTimer = 0.0f;
         }
 
         /// <summary>
         /// Do call back if call back was there.
         /// </summary>
-        private void DoZeroCallback()
+        private void DoCallback()
         {
-            if (mCurrentValue != 0)
-                return;
+            mReachMin = false;
+            mReachMax = false;
 
-            // do zero call back.
-            if (ZeroCallbackFunc != null)
+            if (mCurrentValue == mMinValue)
             {
-                ZeroCallbackFunc.Invoke();
+                // do min call back.
+                if (callback_min != null)
+                    callback_min.Invoke();
+
+                mReachMin = true;
             }
 
-            // did zero.
-            mZeroed = true;
+            if (mCurrentValue == mMaxValue)
+            {
+
+                if (callback_max != null)
+                    callback_max.Invoke();
+
+                mReachMax = true;
+            }
         }
 
         /// <summary>
@@ -427,8 +437,7 @@ namespace JCSUnity
         /// </summary>
         private void UpdateInfo()
         {
-            // without info attach, we cannot
-            // do anything.
+            // without info attach, we can't do anything.
             if (mInfo == null)
                 return;
 

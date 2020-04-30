@@ -1592,13 +1592,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bb5f45d7e70e246bdcf574469bbcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mInfo: {fileID: 0}
+  mReachMin: 0
+  mReachMax: 0
   mOverrideZero: 1
   mAlign: 1
   mDeltaFriction: 0.2
   mMinValue: 0
   mMaxValue: 100
   mCurrentValue: 50
+  mInfo: {fileID: 0}
   mInfoImage: {fileID: 0}
   mRecoverEffect: 1
   mTimeToRecover: 1
@@ -1750,6 +1752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8910336157820374999, guid: 37e6f42bd9813c64c9888955d2840592,
+        type: 3}
+      propertyPath: mInfo
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37e6f42bd9813c64c9888955d2840592, type: 3}

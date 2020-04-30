@@ -23,7 +23,6 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private JCS_2DAnimator m2DAnimator = null;
 
-
         [Header("** Check Variables (JCS_2DLiveObject) **")]
 
         [Tooltip("This boolean to check what type of object is this.")]
@@ -33,7 +32,6 @@ namespace JCSUnity
         [Tooltip("Is the live object been target?")]
         [SerializeField]
         private bool mBeenTarget = false;
-
 
         [Header("** Optional Variables (JCS_2DLiveObject) **")]
 
@@ -53,7 +51,6 @@ to get the information from them.")]
 
         private object m2DLiveObjectAnimator;
 
-
         /* Setter & Getter */
 
         public JCS_2DAnimator LiveObjectAnimator { get { return this.m2DAnimator; } }
@@ -65,7 +62,6 @@ to get the information from them.")]
         // Optional Variables
         public JCS_VelocityInfo VelocityInfo { get { return this.mVelocityInfo; } }
         public JCS_AbilityFormat AbilityFormat { get { return this.mAbilityFormat; } }
-
 
         /* Functions */
 

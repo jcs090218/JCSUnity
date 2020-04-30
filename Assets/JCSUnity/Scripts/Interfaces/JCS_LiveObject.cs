@@ -21,21 +21,17 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_LiveObject) **")]
 
-        [Tooltip(@"Health, Auto add, for better design plz 
-add JCS_LiquidBarInfo manually.")]
+        [Tooltip(@"Health, Auto add, for better design plz add JCS_LiquidBarInfo manually.")]
         [SerializeField]
         protected JCS_LiquidBarInfo mHPInfo = null;
 
-        [Tooltip(@"Mana, Auto add, for better design plz 
-add JCS_LiquidBarInfo manually.")]
+        [Tooltip(@"Mana, Auto add, for better design plz add JCS_LiquidBarInfo manually.")]
         [SerializeField]
         protected JCS_LiquidBarInfo mMPInfo = null;
 
-        [Tooltip(@"Experience, Auto add, for better design plz 
-add JCS_LiquidBarInfo manually.")]
+        [Tooltip(@"Experience, Auto add, for better design plz add JCS_LiquidBarInfo manually.")]
         [SerializeField]
         protected JCS_LiquidBarInfo mEXPInfo = null;
-
 
         // HP before really apply the attack
         protected int mPreCalHP = 0;
@@ -56,7 +52,6 @@ add JCS_LiquidBarInfo manually.")]
         [Tooltip("Can the live object be damage?")]
         [SerializeField]
         protected bool mCanDamage = true;
-
 
         [Header("** Optional Variables (JCS_LiveObject) **")]
 

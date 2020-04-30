@@ -12,8 +12,7 @@ using UnityEngine.UI;
 
 namespace JCSUnity
 {
-    // when value is zero do this call back
-    public delegate void ZeroCallback();
+    public delegate void LiquidBar_Callback();  // Callback for liquid bar.
 
     /// <summary>
     /// Liquid bar object's interface declaration.
@@ -23,17 +22,21 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private const float MIN_LIQUID_BAR_VALUE = -9999999;
-        private const float MAX_LIQUID_BAR_VALUE = 9999999;
+        public const float MIN_LIQUID_BAR_VALUE = -999999999;
+        public const float MAX_LIQUID_BAR_VALUE = 999999999;
 
-        // when value is zero do this call back
-        protected ZeroCallback mZeroCallbackFunc = null;
-
+        // When value reachs the minimum value.
+        public LiquidBar_Callback callback_min = null;
+        // When value reachs the maximum value.
+        public LiquidBar_Callback callback_max = null;
 
         [Header("** Check Variables (JCS_LiquidBar) **")]
 
         [SerializeField]
-        protected JCS_LiquidBarInfo mInfo = null;
+        protected bool mReachMin = false;
+
+        [SerializeField]
+        protected bool mReachMax = false;
 
         [Header("** Initilaize Variables (JCS_LiquidBar) **")]
 
@@ -41,48 +44,45 @@ namespace JCSUnity
         [SerializeField]
         protected bool mOverrideZero = false;
 
-        // check if object do zero.
-        protected bool mZeroed = false;
-
-
         [Header("** Initialize Variables (JCS_LiquidBar) **")]
 
         [Tooltip("Align on which side? (top/bottom/right/left)")]
         [SerializeField]
         protected JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
 
-
         [Header("** Runtime Variables (JCS_LiquidBar) **")]
 
-        [Tooltip(@"How fast the liquid bar move approach to 
-target position/value.")]
-        [SerializeField] [Range(0.01f, 10.0f)]
+        [Tooltip(@"How fast the liquid bar move approach to target position/value.")]
+        [SerializeField]
+        [Range(0.01f, 10.0f)]
         protected float mDeltaFriction = 0.2f;
 
         [Tooltip("Mininum value of the liquid bar.")]
         [SerializeField]
         [Range(MIN_LIQUID_BAR_VALUE, MAX_LIQUID_BAR_VALUE)]
-        protected float mMinValue = 0;
+        protected float mMinValue = 0.0f;
 
         [Tooltip("Maxinum value of the liquid bar.")]
         [SerializeField]
         [Range(MIN_LIQUID_BAR_VALUE, MAX_LIQUID_BAR_VALUE)]
-        protected float mMaxValue = 100;
+        protected float mMaxValue = 100.0f;
 
         [Tooltip("Current liquid bar value.")]
         [SerializeField]
-        protected float mCurrentValue = 50;
+        protected float mCurrentValue = 50.0f;
 
-        protected float mMinPos = 0;
-        protected float mMaxPos = 0;
-
+        protected float mMinPos = 0.0f;
+        protected float mMaxPos = 0.0f;
 
         [Header("** Optional Variables (JCS_LiquidBar) **")]
+
+        [Tooltip("Liquid bar info that will be use for this liquid bar.")]
+        [SerializeField]
+        protected JCS_LiquidBarInfo mInfo = null;
 
         [Tooltip("Information Image set here.")]
         [SerializeField]
         protected Image mInfoImage = null;
-
 
         [Header("** Asmptotic Recover Effect (JCS_LiquidBar) **")]
 
@@ -90,36 +90,36 @@ target position/value.")]
         [SerializeField]
         protected bool mRecoverEffect = true;
 
-        [Tooltip(@"Time for one recover. If the 
-time is minimal will recover like per frame.")]
+        [Tooltip(@"Time for one recover. 
+If the time is minimal will recover like per frame.")]
         [SerializeField]
         [Range(0.01f, 10.0f)]
         protected float mTimeToRecover = 1.0f;
 
         // timer to do one recover.
-        protected float mRecoverTimer = 0;
+        protected float mRecoverTimer = 0.0f;
 
-        [Tooltip(@"Recover Value per time. Careful that 
-recover can be damage too.")]
+        [Tooltip(@"Recover Value per time. 
+Careful that recover can be damage too.")]
         [SerializeField]
         [Range(-300000.0f, 300000.0f)]
-        protected float mRecoverValue = 1;
+        protected float mRecoverValue = 1.0f;
 
-        [Header("- addition settings")]
+        [Header("- Additional Settings")]
+
         [Tooltip("Will try to go back to the original value.")]
         [SerializeField]
         protected bool mBackToRecordRecoverValue = true;
 
         // record down the value in order to get 
         // back the original value.
-        protected float mRecordValue = 0;
+        protected float mRecordValue = 0.0f;
 
-        [SerializeField] [Range(0.01f, 7.0f)]
+        [SerializeField]
+        [Range(0.01f, 7.0f)]
         protected float mGetBackFriction = 1.0f;
 
         /* Setter & Getter */
-
-        public ZeroCallback ZeroCallbackFunc { get { return this.mZeroCallbackFunc; } set { this.mZeroCallbackFunc = value; } }
 
         public JCS_LiquidBarInfo Info { get { return this.mInfo; } }
         public Image InfoImage { get { return this.mInfoImage; } }
@@ -136,7 +136,7 @@ recover can be damage too.")]
         /* Functions */
 
         protected virtual void Awake()
-        { 
+        {
             // record down the recover value.
             this.mRecordValue = this.mRecoverValue;
 
@@ -241,9 +241,7 @@ recover can be damage too.")]
         {
             if (mInfoImage == null)
             {
-                JCS_Debug.LogError(
-                    "Cannot set the sprite without the image component.");
-
+                JCS_Debug.LogError("Can't set the sprite without the image component.");
                 return;
             }
 

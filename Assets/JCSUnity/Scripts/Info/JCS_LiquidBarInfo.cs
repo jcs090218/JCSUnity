@@ -12,37 +12,40 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Info to plugin to liquid bar, 
-    /// to sync to information between the value and
-    /// the gui part.
+    /// Info to plugin to liquid bar, in order to sync to information between 
+    /// the value and the GUI layer.
     /// </summary>
     public class JCS_LiquidBarInfo
         : MonoBehaviour
     {
+        /* Variables */
 
         [Header("** Runtime Variables (JCS_LiquidBarInfo) **")]
 
-        [Tooltip("Tag for u to recognize each same components.")]
+        [Tooltip("Tag name to identify the same components.")]
         [SerializeField]
         protected string mTagName = "";
 
-        [Tooltip("current value in liquid bar.")]
-        [SerializeField] [Range(0, 999999999)]
+        [Tooltip("Current value in liquid bar.")]
+        [SerializeField]
+        [Range(JCS_LiquidBar.MIN_LIQUID_BAR_VALUE, JCS_LiquidBar.MAX_LIQUID_BAR_VALUE)]
         protected int mCurrentValue = 50;
 
-        [Tooltip("min value in liquid bar.")]
-        [SerializeField] [Range(0, 999999999)]
+        [Tooltip("Min value in liquid bar.")]
+        [SerializeField]
+        [Range(JCS_LiquidBar.MIN_LIQUID_BAR_VALUE, JCS_LiquidBar.MAX_LIQUID_BAR_VALUE)]
         protected int mMinValue = 0;
 
-        [Tooltip("max value in liquid bar.")]
-        [SerializeField] [Range(0, 999999999)]
+        [Tooltip("Max value in liquid bar.")]
+        [SerializeField]
+        [Range(JCS_LiquidBar.MIN_LIQUID_BAR_VALUE, JCS_LiquidBar.MAX_LIQUID_BAR_VALUE)]
         protected int mMaxValue = 100;
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Setter & Getter */
+
         public string TagName { get { return this.mTagName; } set { this.mTagName = value; } }
-        public int CurrentValue {
+        public int CurrentValue
+        {
             get { return this.mCurrentValue; }
             set
             {
@@ -60,16 +63,7 @@ namespace JCSUnity
         public int MinValue { get { return this.mMinValue; } set { this.mMinValue = value; } }
         public int MaxValue { get { return this.mMaxValue; } set { this.mMaxValue = value; } }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
-
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-
-
+        /* Functions */
 
     }
 }
