@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-04-30
+
+* Upgraded the liquid bar module for better understanding API calls. (JCSUnity)
+
 ### 2020-04-28
 
 * Updated walk action with remaining distance accept variable. (JCSUnity)
