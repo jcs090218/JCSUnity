@@ -56,10 +56,9 @@ namespace JCSUnity
         [SerializeField]
         private bool mVisible = true;
 
-
         [Header("** Runtime Variables (JCS_FadeObject) **")]
 
-        [Tooltip("How long it fade?")]
+        [Tooltip("How long it fades.")]
         [SerializeField]
         [Range(0.0f, 60.0f)]
         private float mFadeTime = 1.0f;
@@ -70,12 +69,12 @@ namespace JCSUnity
 
         [Tooltip("Maxinum of fade value.")]
         [SerializeField]
-        [Range(0.0f, 1)]
-        private float mFadeInAmount = 1;
+        [Range(0.0f, 1.0f)]
+        private float mFadeInAmount = 1.0f;
 
         [Tooltip("Mininum of fade value.")]
         [SerializeField]
-        [Range(0.0f, 1)]
+        [Range(0.0f, 1.0f)]
         private float mFadeOutAmount = 0.0f;
 
         /* Setter & Getter */
@@ -108,7 +107,6 @@ namespace JCSUnity
 
             if (!mEffect)
                 return;
-
 
             switch (mFadeType)
             {

@@ -32,6 +32,17 @@ namespace JCSUnity
             public JCS_Item item;
         };
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_ItemDroppable) **")]
+
+        [Tooltip("Test this component with key.")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to drop item once.")]
+        [SerializeField]
+        private KeyCode mDropItemKey = KeyCode.B;
+#endif
 
         [Header("** Runtime Variables (JCS_ItemDroppable) **")]
 
@@ -61,7 +72,6 @@ compare algorithm")]
         [SerializeField]
         private ItemSet[] mItemSet = null;
 
-
         [Header("Gravity Effect (JCS_ItemDroppable)")]
 
         [Tooltip("Make item effect by gravity.")]
@@ -82,7 +92,6 @@ compare algorithm")]
         [Range(0.01f, 5.0f)]
         private float mRandomizeJumpForceForce = 0.0f;
 
-
         [Header("- Rotate Effect ")]
 
         [Tooltip("Does the item rotate while dropping?")]
@@ -93,7 +102,6 @@ compare algorithm")]
         [SerializeField]
         private float mRotateSpeed = 1000.0f;
 
-
         [Header("Spread Effect (JCS_ItemDroppable)")]
 
         [Tooltip("Spread the item while dropping.")]
@@ -101,13 +109,13 @@ compare algorithm")]
         private bool mSpreadEffect = true;
 
         [Tooltip("How far between a item to the item next to this item.")]
-        [SerializeField] [Range(0.0f, 1.0f)]
+        [SerializeField]
+        [Range(0.0f, 1.0f)]
         private float mSpreadGap = 0.4f;
 
         [Tooltip("Did the effect include 3 dimensional?")]
         [SerializeField]
         private bool mIncludeDepth = false;
-
 
         [Header("Destroy Effect (JCS_ItemDroppable)")]
 
@@ -123,7 +131,6 @@ compare algorithm")]
         [SerializeField]
         private float mFadeTime = 1.0f;
 
-
         [Header("Others (JCS_ItemDroppable)")]
 
         [Tooltip("Do constant wave effect to all the items dropped.")]
@@ -135,19 +142,16 @@ the wall or just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
-
         [Header("** Audio (JCS_ItemDroppable) **")]
 
         [Tooltip("Drop Sound.")]
         [SerializeField]
         private AudioClip mDropSound = null;
 
-
         /* Setter & Getter */
 
         public bool ConstWaveEffect { get { return this.mConstWaveEffect; } set { this.mConstWaveEffect = value; } }
         public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
-
 
         /* Functions */
 
@@ -159,7 +163,10 @@ the wall or just stop there.")]
 
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.B))
+            if (!mTestWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(mDropItemKey))
                 DropItems();
         }
 #endif
@@ -171,8 +178,7 @@ the wall or just stop there.")]
         {
             if (mMinNumItemDrop > mMaxNumItemDrop)
             {
-                JCS_Debug.LogError(
-                    "No item drop. min max.");
+                JCS_Debug.LogError("No item drop. min max.");
                 return;
             }
 
@@ -187,12 +193,9 @@ the wall or just stop there.")]
 
             bool isEven = ((itemDrop % 2) == 0) ? true : false;
 
-
             int index = 0;
 
-            for (index = 0;
-                index < itemDrop;
-                ++index)
+            for (index = 0; index < itemDrop; ++index)
             {
                 JCS_Item item = ItemDropped();
 
@@ -221,17 +224,13 @@ the wall or just stop there.")]
         {
             if (mustDropItem == null)
             {
-                JCS_Debug.LogError(
-                    "Must drop item cannot be null references...");
-
+                JCS_Debug.LogError("Must drop item cannot be null references");
                 return;
             }
 
             if (count <= 0)
             {
-                JCS_Debug.LogError(
-                    "Cannot drop item with count less or equal to zero...");
-
+                JCS_Debug.LogError("Cannot drop item with count less or equal to zero");
                 return;
             }
 
@@ -260,8 +259,7 @@ the wall or just stop there.")]
             {
                 if (mMinNumItemDrop > mMaxNumItemDrop)
                 {
-                    JCS_Debug.LogError(
-                        "No item drop. min max.");
+                    JCS_Debug.LogError("No item drop. min max.");
                     return;
                 }
 
@@ -362,7 +360,6 @@ the wall or just stop there.")]
 
             if (isGravity)
             {
-
                 JCS_OneJump jcsoj = jcsi.gameObject.AddComponent<JCS_OneJump>();
 
                 float gapDirection = mSpreadGap;
@@ -375,7 +372,6 @@ the wall or just stop there.")]
 
                 if (spreadEffect)
                 {
-
                     if (isEven)
                     {
                         if (!isEvenIndex)
@@ -399,8 +395,6 @@ the wall or just stop there.")]
                             gapForce = (gapDirection * (index)) + gapDirection;
                         }
                     }
-
-
                 }
 
                 float jumpForce = mJumpForce;
@@ -438,13 +432,17 @@ the wall or just stop there.")]
             if (destroyFade)
             {
                 JCS_DestroyObjectWithTime jcsao = jcsi.gameObject.AddComponent<JCS_DestroyObjectWithTime>();
-                jcsao.GetFadeObject().FadeTime = mFadeTime;
+                jcsao.FadeTime = mFadeTime;
                 jcsao.DestroyTime = mDestroyTime;
 
                 // set the object type the same.
-                jcsao.GetFadeObject().SetObjectType(item.GetObjectType());
+                JCS_FadeObject fo = jcsao.GetFadeObject();
 
-                jcsao.GetFadeObject().UpdateUnityData();
+                if (fo)
+                {
+                    fo.SetObjectType(item.GetObjectType());
+                    fo.UpdateUnityData();
+                }
             }
         }
 
@@ -460,9 +458,7 @@ the wall or just stop there.")]
             float totalChance = 0;
 
             // add all possiblity chance together.
-            for (int index = 0;
-                index < mItemSet.Length;
-                ++index)
+            for (int index = 0; index < mItemSet.Length; ++index)
             {
                 totalChance += mItemSet[index].dropRate;
             }
@@ -472,18 +468,13 @@ the wall or just stop there.")]
             float accumMaxDropRate = 0;
             float accumMinDropRate = 0;
 
-            for (int index = 0;
-                index < mItemSet.Length;
-                ++index)
+            for (int index = 0; index < mItemSet.Length; ++index)
             {
                 accumMaxDropRate += mItemSet[index].dropRate;
 
                 if (index == 0)
                 {
-                    if (JCS_Utility.WithInRange(
-                        0,
-                        mItemSet[0].dropRate,
-                        dropIndex))
+                    if (JCS_Utility.WithInRange(0, mItemSet[0].dropRate, dropIndex))
                     {
                         item = mItemSet[0].item;
                         break;
@@ -498,10 +489,7 @@ the wall or just stop there.")]
                 // Loop 2: 20(30-10) ~ 30
                 // Loop 3: 30(60-30) ~ 60
                 // Loop 4: 40(100-60) ~ 100     每個都減掉上一個的Drop Rate!
-                if (JCS_Utility.WithInRange(
-                        accumMinDropRate,
-                        accumMaxDropRate,
-                        dropIndex))
+                if (JCS_Utility.WithInRange(accumMinDropRate, accumMaxDropRate, dropIndex))
                 {
                     item = mItemSet[index].item;
                     break;
