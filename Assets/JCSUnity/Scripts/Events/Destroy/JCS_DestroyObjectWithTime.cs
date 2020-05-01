@@ -8,47 +8,52 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Destroy the gameobject by time.
     /// </summary>
-    [RequireComponent(typeof(JCS_FadeObject))]
     public class JCS_DestroyObjectWithTime
         : MonoBehaviour
     {
         /* Variables */
 
+        private float mTimer = 0;
+        private bool mTimesUp = false;
+
         [Header("** Runtime Variables (JCS_DestroyObjectWithTime) **")]
 
         [Tooltip("Target time to destroy.")]
-        [SerializeField] [Range(0.0f, 3600.0f)]
+        [SerializeField]
+        [Range(0.0f, 3600.0f)]
         private float mDestroyTime = 10.0f;
 
-        private float mTimer = 0;
-        private bool mTimesUp = false;
+        [Header("** Optional Variables (JCS_DestroyObjectWithTime) **")]
 
         [Tooltip("While destroying, fade out the gameobject.")]
         [SerializeField]
         private bool mDestroyWithAlphaEffect = true;
 
-        private JCS_FadeObject mFadeObject = null;
+        [Tooltip("Fade out objects that fade out after the time is up.")]
+        [SerializeField]
+        private List<JCS_FadeObject> mFadeObjects = new List<JCS_FadeObject>();
 
+        [Tooltip("How long it fades.")]
+        [SerializeField]
+        [Range(0.0f, 60.0f)]
+        private float mFadeTime = 1.0f;
 
         /* Setter & Getter */
-
-        public JCS_FadeObject GetFadeObject() { return this.mFadeObject; }
+        
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
         public bool TimesUp { get { return this.mTimesUp; } set { this.mTimesUp = value; } }
 
+        public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
+        public List<JCS_FadeObject> FadeObjects { get { return this.mFadeObjects; } set { this.mFadeObjects = value; } }
 
         /* Functions */
-
-        private void Awake()
-        {
-            this.mFadeObject = this.GetComponent<JCS_FadeObject>();
-        }
 
         private void Update()
         {
@@ -56,14 +61,43 @@ namespace JCSUnity
 
             if (mDestroyWithAlphaEffect)
             {
-                if (mDestroyTime - mTimer <= mFadeObject.FadeTime)
-                    mFadeObject.FadeOut();
+                if (mDestroyTime - mTimer <= mFadeTime)
+                    FadeOut();
             }
 
             if (mDestroyTime < mTimer)
             {
                 TimesUp = true;
                 Destroy(this.gameObject);
+            }
+        }
+
+        /// <summary>
+        /// Return the first fade object in the array.
+        /// </summary>
+        /// <returns></returns>
+        public JCS_FadeObject GetFadeObject()
+        {
+            foreach (JCS_FadeObject fo in mFadeObjects)
+            {
+                if (fo == null)
+                    continue;
+                return fo;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Fade out for all the fade objects in list.
+        /// </summary>
+        private void FadeOut()
+        {
+            foreach (JCS_FadeObject fo in mFadeObjects)
+            {
+                if (fo == null)
+                    continue;
+                fo.FadeTime = mFadeTime;
+                fo.FadeOut();
             }
         }
     }
