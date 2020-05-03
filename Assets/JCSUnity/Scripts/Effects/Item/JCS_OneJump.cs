@@ -187,13 +187,13 @@ just stop there.")]
             if (JCS_GameSettings.instance.DEBUG_MODE)
                 JCS_Debug.PrintName(other.transform);
 
-            mFixCollider = other;
+            mColliderName = other.name;
 #endif
 
             mVelocity.y = 0;
             mEffect = false;
 
-            mColliderName = other.name;
+            mFixCollider = other;
 
             // TODO(jenchieh): not all the object we get set are 
             //                 box collider only.
