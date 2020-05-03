@@ -18,6 +18,10 @@ UnityPackageExporter
 StreamingAssets/build_info
 StreamingAssets/build_info.txt
 
+# Ignore Test file.
+_FrameworkTest_Assets
+Resources/_FrameworkTest_Resources
+
 # Ignore example projects.
 _BossFight_Assets
 _RunningCrush_Assets
