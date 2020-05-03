@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-05-03
 
 * Organized shader sources. (JCSUnity)
+* Updated export settings so it no longer export frame test files. (JCSUnity)
 
 ### 2020-05-01
 
