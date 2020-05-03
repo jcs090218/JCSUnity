@@ -29,9 +29,8 @@ namespace JCSUnity
         [Header("** Check Variables (JCS_Item) **")]
 
         [Tooltip(@"Collider detect can be picked.
-u can set this directly in order to get the pick effect too.
-Once u set this, the object will do tween 
-effect to this transform.")]
+You can set this directly in order to get the pick effect too. Once you set this, 
+the object will do tween effect to this transform.")]
         [SerializeField]
         protected Collider mPickCollider = null;
 
@@ -57,16 +56,15 @@ effect to this transform.")]
         [SerializeField]
         protected bool mAutoPickColliderTouched = false;
 
-        [Tooltip(@"When the item are on the ground, pick it up when there 
-is object that we target.")]
+        [Tooltip(@"When the item are on the ground, pick it up when there is 
+object that we target.")]
         [SerializeField]
         protected bool mAutoPickWhileCan = false;
 
 
         [Header("** Sound Settings (JCS_Item) **")]
 
-        [Tooltip(@"Play one shot while not playing any 
-other sound. (Pick Sound)")]
+        [Tooltip(@"Play one shot while not playing any other sound. (Pick Sound)")]
         [SerializeField]
         protected bool mPlayOneShotWhileNotPlayingForPickSound = true;
 
@@ -95,7 +93,6 @@ other sound. (Pick Sound)")]
         [SerializeField]
         private JCS_DestinationDestroy mDestinationDestroy = null;
 
-
         /* Setter & Getter */
 
         public bool AutoPickColliderTouched { get { return this.mAutoPickColliderTouched; } set { this.mAutoPickColliderTouched = value; } }
@@ -108,13 +105,11 @@ other sound. (Pick Sound)")]
         public void SetPickCallback(PickCallback func) { this.mPickCallback = func; }
         public PickCallback GetPickCallback() { return this.mPickCallback; }
 
-        
         /* Functions */
 
         protected override void Awake()
         {
-            // update the data once 
-            // depends on what game object is.
+            // Update the data once depends on what game object is.
             base.Awake();
 
             mBoxCollider = this.GetComponent<BoxCollider>();
@@ -139,7 +134,6 @@ other sound. (Pick Sound)")]
             {
                 // picked
                 Pick(other);
-
                 return;
             }
 
@@ -156,9 +150,7 @@ other sound. (Pick Sound)")]
 
             if (mPickCollider == null)
             {
-                JCS_Debug.LogError(
-                    "Cannot pick the item cuz there is no collider set.");
-
+                JCS_Debug.LogError("Cannot pick the item cuz there is no collider set");
                 return;
             }
 
@@ -222,26 +214,28 @@ other sound. (Pick Sound)")]
         {
             DropEffect(other);
 
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+
             /* Play Pick Sound */
             if (mPlayOneShotWhileNotPlayingForPickSound)
-                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShotWhileNotPlaying(mPickSound);
+                sp.PlayOneShotWhileNotPlaying(mPickSound);
             else
-                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mPickSound);
+                sp.PlayOneShot(mPickSound);
 
             // call item effect.
             mPickCallback.Invoke(other);
 
             /* Play Effect Sound */
             if (mPlayOneShotWhileNotPlayingForEffectSound)
-                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShotWhileNotPlaying(mEffectSound);
+                sp.PlayOneShotWhileNotPlaying(mEffectSound);
             else
-                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mEffectSound);
+                sp.PlayOneShot(mEffectSound);
 
             mCanPick = false;
         }
 
         /// <summary>
-        /// 
+        /// Do the drop effect.
         /// </summary>
         /// <param name="other"></param>
         private void DropEffect(Collider other)

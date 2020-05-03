@@ -34,7 +34,6 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_Vector3Direction mRotateDirection = JCS_Vector3Direction.FORWARD;
 
-
         [Header("- Random Effect (JCS_Rotation)")]
 
         [Tooltip("Randomize the rotation speed a bit at start.")]
@@ -50,13 +49,11 @@ namespace JCSUnity
         [SerializeField]
         protected bool mRandomRotateDirectonAtStart = false;
 
-
         /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float RotateSpeed { get { return this.mRotateSpeed; } set { this.mRotateSpeed = value; } }
         public JCS_Vector3Direction RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
-
 
         /* Functions */
 

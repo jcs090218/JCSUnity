@@ -23,7 +23,6 @@ namespace JCSUnity
 
         private bool mEffect = false;
 
-
         [Header("** Runtime Variables (JCS_OneJump) **")]
 
         [Tooltip("How many force to apply on jump?")]
@@ -48,11 +47,10 @@ namespace JCSUnity
         // trigger once then disable to save performance.
         private bool mHitTheWall = false;
 
-        [Tooltip(@"Do the item bounce back from the wall after hit 
-the wall or just stop there.")]
+        [Tooltip(@"Do the item bounce back from the wall after hit the wall or 
+just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
-
 
         /* Setter & Getter */
 
@@ -64,7 +62,6 @@ the wall or just stop there.")]
 
         public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
 
-
         /* Functions */
 
         private void Awake()
@@ -74,11 +71,14 @@ the wall or just stop there.")]
         }
         private void Start()
         {
-            if (JCS_PlayerManager.instance != null)
-                JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(mBoxCollider);
+            JCS_PlayerManager pm = JCS_PlayerManager.instance;
+            JCS_2DGameManager gm2d = JCS_2DGameManager.instance;
 
-            if (JCS_2DGameManager.instance != null)
-                JCS_2DGameManager.instance.IgnoreAllPlatformTrigger(mBoxCollider);
+            if (pm != null)
+                pm.IgnorePhysicsToAllPlayer(mBoxCollider);
+
+            if (gm2d != null)
+                gm2d.IgnoreAllPlatformTrigger(mBoxCollider);
         }
 
         private void FixedUpdate()
@@ -138,17 +138,13 @@ the wall or just stop there.")]
             // including depth!
             if (depth)
             {
-                float tempMoveForce = moveForce / 2;
+                float tempMoveForce = moveForce / 2.0f;
 
                 // override x
-                mVelocity.x = JCS_Random.Range(
-                    -tempMoveForce,
-                    tempMoveForce);
+                mVelocity.x = JCS_Random.Range(-tempMoveForce, tempMoveForce);
 
                 // apply depth
-                mVelocity.z = JCS_Random.Range(
-                    -tempMoveForce,
-                    tempMoveForce);
+                mVelocity.z = JCS_Random.Range(-tempMoveForce, tempMoveForce);
             }
         }
 
@@ -167,12 +163,11 @@ the wall or just stop there.")]
                 return;
 
             JCS_Item otherItem = this.GetComponent<JCS_Item>();
-            // if itself it a item, we check other is a item or not.
+            // if itself is a item, we check other is a item or not.
             if (otherItem != null)
             {
                 otherItem = other.GetComponent<JCS_Item>();
-                // if both are item then we dont bother 
-                // each other action.
+                // if both are item then we dont bother each other action.
                 if (otherItem != null)
                     return;
             }
@@ -188,17 +183,15 @@ the wall or just stop there.")]
             mVelocity.y = 0;
             mEffect = false;
 
-
             mFixCollider = other;
 
-            // TODO(JenChieh): not all the object we get set are 
+            // TODO(jenchieh): not all the object we get set are 
             //                 box collider only.
             BoxCollider beSetBox = other.GetComponent<BoxCollider>();
 
             // set this ontop of the other box(ground)
             if (beSetBox != null)
                 JCS_Physics.SetOnTopOfBoxWithSlope(mBoxCollider, beSetBox);
-
 
             // enable the physic once on the ground
             JCS_PlayerManager.instance.IgnorePhysicsToAllPlayer(this.mBoxCollider, false);

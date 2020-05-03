@@ -48,7 +48,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_Y;
 
-
         [Header("- Randomize Setting (JCS_3DConstWaveEffect)")]
 
         [Tooltip("Randomize a bit the amplitude value at start.")]
@@ -61,7 +60,6 @@ namespace JCSUnity
         [Range(0.0f, 100.0f)]
         private float mRandomizeFrequencyAtStart = 0.0f;
 
-
         /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
@@ -73,7 +71,6 @@ namespace JCSUnity
 
         public float RandomizeAmplitudeAtStart { get { return this.mRandomizeAmplitudeAtStart; } set { this.mRandomizeAmplitudeAtStart = value; } }
         public float RandomizeFrequencyAtStart { get { return this.mRandomizeFrequencyAtStart; } set { this.mRandomizeFrequencyAtStart = value; } }
-
 
         /* Functions */
 

@@ -24,7 +24,7 @@ namespace JCSUnity
         [System.Serializable]
         public struct ItemSet
         {
-            [Tooltip("Possibilty droping this item, the higher the more possiblility")]
+            [Tooltip("Possibilty droping this item, the higher the more possiblility.")]
             [Range(0.0f, 100.0f)]
             public float dropRate;
 
@@ -89,7 +89,7 @@ compare algorithm")]
 
         [Tooltip("Add this force to item.")]
         [SerializeField]
-        [Range(0.01f, 5.0f)]
+        [Range(0.01f, 50.0f)]
         private float mRandomizeJumpForceForce = 0.0f;
 
         [Header("- Rotate Effect ")]
@@ -100,6 +100,7 @@ compare algorithm")]
 
         [Tooltip("How fast the item rotates?")]
         [SerializeField]
+        [Range(-5000.0f, 5000.0f)]
         private float mRotateSpeed = 1000.0f;
 
         [Header("Spread Effect (JCS_ItemDroppable)")]
@@ -110,25 +111,27 @@ compare algorithm")]
 
         [Tooltip("How far between a item to the item next to this item.")]
         [SerializeField]
-        [Range(0.0f, 1.0f)]
+        [Range(0.0f, 300.0f)]
         private float mSpreadGap = 0.4f;
 
-        [Tooltip("Did the effect include 3 dimensional?")]
+        [Tooltip("Did the effect include 3 dimensional.")]
         [SerializeField]
         private bool mIncludeDepth = false;
 
         [Header("Destroy Effect (JCS_ItemDroppable)")]
 
-        [Tooltip("Does the item fade out when is destroyed?")]
+        [Tooltip("Does the item fade out when is destroyed.")]
         [SerializeField]
         private bool mDestroyFadeOutEffect = true;
 
-        [Tooltip("When does the item get destroyed?")]
+        [Tooltip("When does the item get destroyed.")]
         [SerializeField]
+        [Range(0.0f, 360.0f)]
         private float mDestroyTime = 30.0f;
 
-        [Tooltip("How fast it fade out when get destroyed?")]
+        [Tooltip("How fast it fade out when get destroyed.")]
         [SerializeField]
+        [Range(0.0f, 30.0f)]
         private float mFadeTime = 1.0f;
 
         [Header("Others (JCS_ItemDroppable)")]
@@ -137,8 +140,8 @@ compare algorithm")]
         [SerializeField]
         private bool mConstWaveEffect = true;
 
-        [Tooltip(@"Do the item bounce back from the wall after hit 
-the wall or just stop there.")]
+        [Tooltip(@"Do the item bounce back from the wall after hit the wall or 
+just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
@@ -281,10 +284,7 @@ the wall or just stop there.")]
                 if (specIndex < 0 || specIndex >= itemDrop)
                     randDropIndex = JCS_Random.Range(0, itemDrop);
 
-
-                for (index = 0;
-                    index < itemDrop;
-                    ++index)
+                for (index = 0; index < itemDrop; ++index)
                 {
                     JCS_Item item = null;
 
@@ -351,7 +351,7 @@ the wall or just stop there.")]
             bool waveEffect,
             bool destroyFade)
         {
-            JCS_Item jcsi = (JCS_Item)JCS_Utility.SpawnGameObject(
+            JCS_Item newItem = (JCS_Item)JCS_Utility.SpawnGameObject(
                item,
                this.transform.position,
                this.transform.rotation);
@@ -360,13 +360,13 @@ the wall or just stop there.")]
 
             if (isGravity)
             {
-                JCS_OneJump jcsoj = jcsi.gameObject.AddComponent<JCS_OneJump>();
+                JCS_OneJump oj = newItem.gameObject.AddComponent<JCS_OneJump>();
 
                 float gapDirection = mSpreadGap;
                 if (isEvenIndex)
                     gapDirection = -mSpreadGap;
 
-                jcsoj.BounceBackfromWall = BounceBackfromWall;
+                oj.BounceBackfromWall = BounceBackfromWall;
 
                 float gapForce = 0;
 
@@ -403,43 +403,55 @@ the wall or just stop there.")]
                     jumpForce += JCS_Random.Range(-mRandomizeJumpForceForce, mRandomizeJumpForceForce);
                 }
 
-                jcsoj.DoForce(gapForce, jumpForce, mIncludeDepth);
+                oj.DoForce(gapForce, jumpForce, mIncludeDepth);
 
                 if (rotateDrop)
                 {
-                    JCS_ItemRotation jcsir = jcsi.gameObject.AddComponent<JCS_ItemRotation>();
-                    jcsir.RotateSpeed = mRotateSpeed;
-                    jcsir.Effect = true;
+                    JCS_ItemRotation irx = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                    irx.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
+                    irx.Effect = true;
+                    irx.RotateDirection = JCS_Vector3Direction.FORWARD;
 
                     // if z axis interact in game
                     if (mIncludeDepth)
                     {
-                        // add one more axis.
-                        JCS_ItemRotation jcsir2 = jcsi.gameObject.AddComponent<JCS_ItemRotation>();
-                        jcsir2.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
-                        jcsir2.Effect = true;
-                        jcsir2.RotateDirection = JCS_Vector3Direction.UP;
+                        // add rotation on y axis.
+                        JCS_ItemRotation iry = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                        iry.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
+                        iry.Effect = true;
+                        iry.RotateDirection = JCS_Vector3Direction.UP;
+
+                        // add rotation on z axis.
+                        JCS_ItemRotation irz = newItem.gameObject.AddComponent<JCS_ItemRotation>();
+                        irz.RotateSpeed = JCS_Random.Range(-mRotateSpeed, mRotateSpeed);
+                        irz.Effect = true;
+                        irz.RotateDirection = JCS_Vector3Direction.RIGHT;
                     }
                 }
             }
 
             if (waveEffect)
             {
-                JCS_3DConstWaveEffect jcscw = jcsi.gameObject.AddComponent<JCS_3DConstWaveEffect>();
-                jcscw.Effect = true;
+                JCS_3DConstWaveEffect cwe = newItem.gameObject.AddComponent<JCS_3DConstWaveEffect>();
+                cwe.SetObjectType(newItem.GetObjectType());
+                cwe.Effect = true;
             }
 
             if (destroyFade)
             {
-                JCS_DestroyObjectWithTime jcsao = jcsi.gameObject.AddComponent<JCS_DestroyObjectWithTime>();
-                jcsao.FadeTime = mFadeTime;
-                jcsao.DestroyTime = mDestroyTime;
+                JCS_DestroyObjectWithTime dowt = newItem.gameObject.AddComponent<JCS_DestroyObjectWithTime>();
+                dowt.FadeTime = mFadeTime;
+                dowt.DestroyTime = mDestroyTime;
 
-                // set the object type the same.
-                JCS_FadeObject fo = jcsao.GetFadeObject();
+                Renderer[] renderers = newItem.GetComponentsInChildren<Renderer>();
 
-                if (fo)
+                foreach (Renderer rdr in renderers)
                 {
+                    JCS_FadeObject fo = rdr.gameObject.AddComponent<JCS_FadeObject>();
+
+                    dowt.FadeObjects.Add(fo);
+
+                    // set the object type the same.
                     fo.SetObjectType(item.GetObjectType());
                     fo.UpdateUnityData();
                 }

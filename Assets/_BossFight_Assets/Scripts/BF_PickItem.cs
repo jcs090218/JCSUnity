@@ -16,7 +16,6 @@ using JCSUnity;
 public class BF_PickItem 
     : JCS_Item 
 {
-
     /* Variables */
 
     [Header("** Optional Variables (BF_PickItem) **")]
@@ -79,6 +78,5 @@ public class BF_PickItem
             // pick event will be activate.
             jcsItem.AutoPickWhileCan = true;
         }
-
     }
 }

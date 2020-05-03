@@ -23,7 +23,6 @@ namespace JCSUnity
         // gravity object
         private JCS_OneJump mOneJump = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

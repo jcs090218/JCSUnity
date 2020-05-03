@@ -105,6 +105,9 @@ namespace JCSUnity
 
             foreach (RaycastHit hit in hits)
             {
+                if (hit.transform == null)
+                    continue;
+
                 GameObject obj = hit.transform.gameObject;
 
                 if (mHits.Contains(hit))
@@ -116,6 +119,9 @@ namespace JCSUnity
 
             foreach (RaycastHit hit in mHits)
             {
+                if (hit.transform == null)
+                    continue;
+
                 GameObject obj = hit.transform.gameObject;
 
                 if (hits.Contains(hit))
@@ -143,6 +149,9 @@ namespace JCSUnity
 
             foreach (RaycastHit hit in mHits)
             {
+                if (hit.transform == null)
+                    continue;
+
                 GameObject obj = hit.transform.gameObject;
 
                 if (im.Support_OnMouseOver)
@@ -183,6 +192,9 @@ namespace JCSUnity
 
             foreach (RaycastHit hit in mHits)
             {
+                if (hit.transform == null)
+                    continue;
+
                 GameObject obj = hit.transform.gameObject;
 
                 if (slideInput.Touched)
