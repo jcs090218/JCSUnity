@@ -1,12 +1,11 @@
 ﻿/**
-* $File: VertexLit with Z.shader $
-* $Date: 2017-10-01 05:28:58 $
-* $Revision: $
-* $Creator: Jen-Chieh Shen $
-* $Notice: See LICENSE.txt for modification and distribution information
-*                   Copyright (c) 2017 by Shen, Jen-Chieh $
-*/
-
+ * $File: VertexLit with Z.shader $
+ * $Date: 2017-10-01 05:28:58 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright (c) 2017 by Shen, Jen-Chieh $
+ */
 
 Shader "JCSUnity/Model/VertexLit with Z"
 {

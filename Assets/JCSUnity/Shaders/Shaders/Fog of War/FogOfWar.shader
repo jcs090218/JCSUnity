@@ -5,10 +5,9 @@
  * $Date: 2016-11-20 21:58:21 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
+ * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-
 
 Shader "JCSUnity/Fog of War/FogOfWar" {
     Properties{
@@ -82,104 +81,103 @@ Shader "JCSUnity/Fog of War/FogOfWar" {
     }
 
     SubShader{
-            Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-            LOD 200
-            Blend SrcAlpha OneMinusSrcAlpha
-            Cull Off
+        Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+        LOD 200
+        Blend SrcAlpha OneMinusSrcAlpha
+        Cull Off
 
-            CGPROGRAM
+        CGPROGRAM
 #pragma surface surf Lambert vertex:vert alpha:blend
 
-            sampler2D _MainTex;
-            fixed4 	_Color;
+        sampler2D _MainTex;
+        fixed4 	_Color;
 
-            float 	_FogRadius;
-            float 	_FogMaxRadius;
-            float _isSight0, _isSight1, _isSight2, _isSight3, _isSight4,
-                _isSight5, _isSight6, _isSight7, _isSight8, _isSight9,
-                _isSight10, _isSight11, _isSight12, _isSight13, _isSight14,
-                _isSight15, _isSight16, _isSight17, _isSight18, _isSight19,
-                _isSight20, _isSight21, _isSight22, _isSight23, _isSight24,
-                _isSight25, _isSight26, _isSight27, _isSight28, _isSight29;
+        float 	_FogRadius;
+        float 	_FogMaxRadius;
+        float _isSight0, _isSight1, _isSight2, _isSight3, _isSight4,
+        _isSight5, _isSight6, _isSight7, _isSight8, _isSight9,
+        _isSight10, _isSight11, _isSight12, _isSight13, _isSight14,
+        _isSight15, _isSight16, _isSight17, _isSight18, _isSight19,
+        _isSight20, _isSight21, _isSight22, _isSight23, _isSight24,
+        _isSight25, _isSight26, _isSight27, _isSight28, _isSight29;
 
 
-            float4 	_Player0_Pos, _Player1_Pos, _Player2_Pos, _Player3_Pos, _Player4_Pos, 
-                    _Player5_Pos, _Player6_Pos, _Player7_Pos, _Player8_Pos, _Player9_Pos, 
-                    _Player10_Pos, _Player11_Pos, _Player12_Pos, _Player13_Pos, _Player14_Pos, 
-                    _Player15_Pos, _Player16_Pos, _Player17_Pos, _Player18_Pos, _Player19_Pos, 
-                    _Player20_Pos, _Player21_Pos, _Player22_Pos, _Player23_Pos, _Player24_Pos, 
-                    _Player25_Pos, _Player26_Pos, _Player27_Pos, _Player28_Pos, _Player29_Pos;
-            
+        float4 	_Player0_Pos, _Player1_Pos, _Player2_Pos, _Player3_Pos, _Player4_Pos,
+        _Player5_Pos, _Player6_Pos, _Player7_Pos, _Player8_Pos, _Player9_Pos,
+        _Player10_Pos, _Player11_Pos, _Player12_Pos, _Player13_Pos, _Player14_Pos,
+        _Player15_Pos, _Player16_Pos, _Player17_Pos, _Player18_Pos, _Player19_Pos,
+        _Player20_Pos, _Player21_Pos, _Player22_Pos, _Player23_Pos, _Player24_Pos,
+        _Player25_Pos, _Player26_Pos, _Player27_Pos, _Player28_Pos, _Player29_Pos;
 
-            struct Input
-            {
-                float2 uv_MainTex;
-                float2 location;
-            };
 
-            // forward declare function...
-            float powerForPos(float4 pos, float2 nearVertex, float isSight);
+        struct Input
+        {
+            float2 uv_MainTex;
+            float2 location;
+        };
 
-            void vert(inout appdata_full vertexData, out Input outData)
-            {
-                float4 pos = UnityObjectToClipPos(vertexData.vertex);
-                float4 posWorld = mul(unity_ObjectToWorld, vertexData.vertex);
+        // forward declare function...
+        float powerForPos(float4 pos, float2 nearVertex, float isSight);
 
-                outData.uv_MainTex = vertexData.texcoord;
-                outData.location = posWorld.xz;
-            }
+        void vert(inout appdata_full vertexData, out Input outData)
+        {
+            float4 pos = UnityObjectToClipPos(vertexData.vertex);
+            float4 posWorld = mul(unity_ObjectToWorld, vertexData.vertex);
 
-            void surf(Input IN, inout SurfaceOutput o)
-            {
-                fixed4 baseColor = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-
-                float alpha = (1.0 - (baseColor.a + 
-                    powerForPos(_Player0_Pos, IN.location, _isSight0) +
-                    powerForPos(_Player1_Pos, IN.location, _isSight1) +
-                    powerForPos(_Player2_Pos, IN.location, _isSight2) +
-                    powerForPos(_Player3_Pos, IN.location, _isSight3) +
-                    powerForPos(_Player4_Pos, IN.location, _isSight4) +
-                    powerForPos(_Player5_Pos, IN.location, _isSight5) +
-                    powerForPos(_Player6_Pos, IN.location, _isSight6) +
-                    powerForPos(_Player7_Pos, IN.location, _isSight7) +
-                    powerForPos(_Player8_Pos, IN.location, _isSight8) +
-                    powerForPos(_Player9_Pos, IN.location, _isSight9) +
-                    powerForPos(_Player10_Pos, IN.location, _isSight10) +
-                    powerForPos(_Player11_Pos, IN.location, _isSight11) +
-                    powerForPos(_Player12_Pos, IN.location, _isSight12) +
-                    powerForPos(_Player13_Pos, IN.location, _isSight13) +
-                    powerForPos(_Player14_Pos, IN.location, _isSight14) +
-                    powerForPos(_Player15_Pos, IN.location, _isSight15) +
-                    powerForPos(_Player16_Pos, IN.location, _isSight16) +
-                    powerForPos(_Player17_Pos, IN.location, _isSight17) +
-                    powerForPos(_Player18_Pos, IN.location, _isSight18) +
-                    powerForPos(_Player19_Pos, IN.location, _isSight19) +
-                    powerForPos(_Player20_Pos, IN.location, _isSight20) +
-                    powerForPos(_Player21_Pos, IN.location, _isSight21) +
-                    powerForPos(_Player22_Pos, IN.location, _isSight22) +
-                    powerForPos(_Player23_Pos, IN.location, _isSight23) +
-                    powerForPos(_Player24_Pos, IN.location, _isSight24) +
-                    powerForPos(_Player25_Pos, IN.location, _isSight25) +
-                    powerForPos(_Player26_Pos, IN.location, _isSight26) +
-                    powerForPos(_Player27_Pos, IN.location, _isSight27) +
-                    powerForPos(_Player28_Pos, IN.location, _isSight28) +
-                    powerForPos(_Player29_Pos, IN.location, _isSight29)
-                    ));
-
-                o.Albedo = baseColor.rgb;
-                o.Alpha = alpha;
-            }
-
-            //return 0 if (pos - nearVertex) > _FogRadius
-            float powerForPos(float4 pos, float2 nearVertex, float isSight)
-            {
-                float atten = clamp(_FogRadius - length(pos.xz - nearVertex.xy), 0.0, _FogRadius);
-
-                return ((1.0 / _FogMaxRadius)*atten / _FogRadius) * isSight;
-            }
-
-            ENDCG
+            outData.uv_MainTex = vertexData.texcoord;
+            outData.location = posWorld.xz;
         }
 
-        Fallback "Transparent/VertexLit"
+        void surf(Input IN, inout SurfaceOutput o)
+        {
+            fixed4 baseColor = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+
+            float alpha = (1.0 - (baseColor.a +
+                powerForPos(_Player0_Pos, IN.location, _isSight0) +
+                powerForPos(_Player1_Pos, IN.location, _isSight1) +
+                powerForPos(_Player2_Pos, IN.location, _isSight2) +
+                powerForPos(_Player3_Pos, IN.location, _isSight3) +
+                powerForPos(_Player4_Pos, IN.location, _isSight4) +
+                powerForPos(_Player5_Pos, IN.location, _isSight5) +
+                powerForPos(_Player6_Pos, IN.location, _isSight6) +
+                powerForPos(_Player7_Pos, IN.location, _isSight7) +
+                powerForPos(_Player8_Pos, IN.location, _isSight8) +
+                powerForPos(_Player9_Pos, IN.location, _isSight9) +
+                powerForPos(_Player10_Pos, IN.location, _isSight10) +
+                powerForPos(_Player11_Pos, IN.location, _isSight11) +
+                powerForPos(_Player12_Pos, IN.location, _isSight12) +
+                powerForPos(_Player13_Pos, IN.location, _isSight13) +
+                powerForPos(_Player14_Pos, IN.location, _isSight14) +
+                powerForPos(_Player15_Pos, IN.location, _isSight15) +
+                powerForPos(_Player16_Pos, IN.location, _isSight16) +
+                powerForPos(_Player17_Pos, IN.location, _isSight17) +
+                powerForPos(_Player18_Pos, IN.location, _isSight18) +
+                powerForPos(_Player19_Pos, IN.location, _isSight19) +
+                powerForPos(_Player20_Pos, IN.location, _isSight20) +
+                powerForPos(_Player21_Pos, IN.location, _isSight21) +
+                powerForPos(_Player22_Pos, IN.location, _isSight22) +
+                powerForPos(_Player23_Pos, IN.location, _isSight23) +
+                powerForPos(_Player24_Pos, IN.location, _isSight24) +
+                powerForPos(_Player25_Pos, IN.location, _isSight25) +
+                powerForPos(_Player26_Pos, IN.location, _isSight26) +
+                powerForPos(_Player27_Pos, IN.location, _isSight27) +
+                powerForPos(_Player28_Pos, IN.location, _isSight28) +
+                powerForPos(_Player29_Pos, IN.location, _isSight29)));
+
+            o.Albedo = baseColor.rgb;
+            o.Alpha = alpha;
+        }
+
+        // return 0 if (pos - nearVertex) > _FogRadius
+        float powerForPos(float4 pos, float2 nearVertex, float isSight)
+        {
+            float atten = clamp(_FogRadius - length(pos.xz - nearVertex.xy), 0.0, _FogRadius);
+
+            return ((1.0 / _FogMaxRadius)*atten / _FogRadius) * isSight;
+        }
+
+        ENDCG
+    }
+
+    Fallback "Transparent/VertexLit"
 }
