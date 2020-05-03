@@ -23,6 +23,14 @@ namespace JCSUnity
 
         private bool mEffect = false;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_OneJump) **")]
+
+        [Tooltip("Name of the collider that blocks the jump.")]
+        [SerializeField]
+        private string mColliderName = null;
+#endif
+
         [Header("** Runtime Variables (JCS_OneJump) **")]
 
         [Tooltip("How many force to apply on jump?")]
@@ -178,12 +186,14 @@ just stop there.")]
             // stop this movement.
             if (JCS_GameSettings.instance.DEBUG_MODE)
                 JCS_Debug.PrintName(other.transform);
+
+            mFixCollider = other;
 #endif
 
             mVelocity.y = 0;
             mEffect = false;
 
-            mFixCollider = other;
+            mColliderName = other.name;
 
             // TODO(jenchieh): not all the object we get set are 
             //                 box collider only.

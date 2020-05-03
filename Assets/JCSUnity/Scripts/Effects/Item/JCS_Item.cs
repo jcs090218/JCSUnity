@@ -34,7 +34,6 @@ the object will do tween effect to this transform.")]
         [SerializeField]
         protected Collider mPickCollider = null;
 
-
         [Header("** Player Specific Settings (JCS_Item) **")]
 
         [Tooltip("Is the auto pick collider must be player?")]
@@ -44,7 +43,6 @@ the object will do tween effect to this transform.")]
         [Tooltip("Key to active pick event.")]
         [SerializeField]
         protected KeyCode mPickKey = KeyCode.Z;
-
 
         [Header("** System Settings (JCS_Item) **")]
 
@@ -60,7 +58,6 @@ the object will do tween effect to this transform.")]
 object that we target.")]
         [SerializeField]
         protected bool mAutoPickWhileCan = false;
-
 
         [Header("** Sound Settings (JCS_Item) **")]
 
@@ -81,7 +78,6 @@ object that we target.")]
         protected AudioClip mEffectSound = null;
 
         protected PickCallback mPickCallback = DefaultPickCallback;
-
 
         [Header("** Optional Variables (JCS_UnityObject) **")]
 
@@ -169,7 +165,6 @@ object that we target.")]
             JCS_OneJump joj = this.GetComponent<JCS_OneJump>();
             if (joj != null)
             {
-
                 // Only when item is on the ground!
                 if (joj.GetVelocity().y != 0)
                     return;
