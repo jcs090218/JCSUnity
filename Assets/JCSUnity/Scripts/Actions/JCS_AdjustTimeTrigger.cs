@@ -28,8 +28,8 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_AdjustTimeTrigger) **")]
 
-        [Tooltip(@"time to record down the real time to do one 
-action after we calculate the real time.")]
+        [Tooltip(@"Time to record down the real time to do one action after 
+we calculate the real time.")]
         [SerializeField]
         private float mRealTimeZone = 0.0f;
 

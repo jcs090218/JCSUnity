@@ -103,6 +103,10 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
+            // check if the effect and target avaliable?
+            if (mTargetTransform == null || !mLookAction)
+                return;
+
             // record the current rotation.
             if (mLocalEulerAngles)
                 mCurrentEulerAngles = this.transform.localEulerAngles;
@@ -119,10 +123,6 @@ namespace JCSUnity
         /// </summary>
         private void DoLookAt()
         {
-            // check if the effect and target avaliable?
-            if (mTargetTransform == null || !mLookAction)
-                return;
-
             // record down the euler angle before we changes.
             if (mLocalEulerAngles)
                 mLastEulerAngles = this.transform.localEulerAngles;
@@ -143,8 +143,9 @@ namespace JCSUnity
             else
                 this.transform.eulerAngles += mAngleOffset;
 
-            // TODO(JenChieh): study the rotation going on in
-            //                Unity lower level archietecture.
+            // TODO(jenchieh): study the rotation going on in Unity lower 
+            // level archietecture.
+            //
             // rotate back to X-axis.
             if (mRotateBack90)
                 transform.Rotate(0, -90, 0);

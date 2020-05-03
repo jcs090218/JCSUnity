@@ -23,15 +23,6 @@ namespace JCSUnity
         : MonoBehaviour
         , JCS_Action
     {
-        /// <summary>
-        /// List of all the walk type.
-        /// </summary>
-        public enum JCS_3DWalkType
-        {
-            CLOSEST_POINT,
-            IN_RANGE,
-        };
-
         /* Variables */
 
         // All enemy should have the nav mesh agent for the path finding.
@@ -49,6 +40,10 @@ namespace JCSUnity
         // try to avoid stack overflow function call...
         private int mSearchCount = 0;
 
+        [Tooltip("Record down the starting position.")]
+        [SerializeField]
+        private Vector3 mStartingPosition = Vector3.zero;
+
         [Header("** Runtime Variables (JCS_3DWalkAction) **")]
 
         [Tooltip("Check weather you want do this action.")]
@@ -57,22 +52,12 @@ namespace JCSUnity
 
         [Tooltip("Type of the walk behaviour calculation.")]
         [SerializeField]
-        private JCS_3DWalkType mWalkType = JCS_3DWalkType.CLOSEST_POINT;
+        private JCS_3DWalkType mWalkType = JCS_3DWalkType.SELF_IN_DISTANCE;
 
         [Tooltip("What value count as path complete action.")]
         [SerializeField]
         [Range(0.0f, 30.0f)]
         private float mAcceptRemainDistance = 0.1f;
-
-        [Tooltip("Range that enemy will try to get close to.")]
-        [SerializeField]
-        [Range(0.001f, 1000.0f)]
-        private float mRangeDistance = 5.0f;
-
-        [Tooltip("Randomly adjusts the range distance.")]
-        [SerializeField]
-        [Range(0.001f, 30.0f)]
-        private float mAdjustRangeDistance = 0.0f;
 
         [Tooltip("Minimum randomly add vector with magnitude of distance at target position.")]
         [SerializeField]
@@ -84,7 +69,28 @@ namespace JCSUnity
         [Range(0.0f, 30.0f)]
         private float mMaxOffDistance = 0.0f;
 
+        [Header("- Self In Distance")]
+
+        [Tooltip("Self distance without target transform interact.")]
+        [SerializeField]
+        [Range(0.0f, 300.0f)]
+        private float mSelfDistance = 5.0f;
+
+        [Header("- To Target")]
+
+        [Tooltip("Range that enemy will try to get close to.")]
+        [SerializeField]
+        [Range(0.001f, 1000.0f)]
+        private float mRangeDistance = 5.0f;
+
+        [Tooltip("Randomly adjusts the range distance.")]
+        [SerializeField]
+        [Range(0.001f, 30.0f)]
+        private float mAdjustRangeDistance = 0.0f;
+
         /* Setter & Getter */
+
+        public Vector3 StartingPosition { get { return this.mStartingPosition; } set { this.mStartingPosition = value; } }
 
         public NavMeshAgent navMeshAgent { get { return this.mNavMeshAgent; } }
         public JCS_AdjustTimeTrigger AdjustTimeTrigger { get { return this.mAdjustTimeTrigger; } }
@@ -95,11 +101,13 @@ namespace JCSUnity
 
         public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
 
+        public float MinOffDistance { get { return this.mMinOffDistance; } set { this.mMinOffDistance = value; } }
+        public float MaxOffDistance { get { return this.mMaxOffDistance; } set { this.mMaxOffDistance = value; } }
+
         public float RangeDistance { get { return this.mRangeDistance; } set { this.mRangeDistance = value; } }
         public float AdjustRangeDistance { get { return this.mAdjustRangeDistance; } set { this.mAdjustRangeDistance = value; } }
 
-        public float MinOffDistance { get { return this.mMinOffDistance; } set { this.mMinOffDistance = value; } }
-        public float MaxOffDistance { get { return this.mMaxOffDistance; } set { this.mMaxOffDistance = value; } }
+        public float SelfDistance { get { return this.mSelfDistance; } set { this.mSelfDistance = value; } }
 
         /* Functions */
 
@@ -109,6 +117,8 @@ namespace JCSUnity
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
             mAdjustTimeTrigger.actions = DoAI;
+
+            this.mStartingPosition = this.transform.position;
         }
 
         /// <summary>
@@ -121,7 +131,7 @@ namespace JCSUnity
                 return;
 
             // if target is does not exist, end function call.
-            if (target == null)
+            if (IsTargetType() && target == null)
             {
                 JCS_Debug.LogError("The transform you are targeting is null");
                 return;
@@ -141,7 +151,7 @@ namespace JCSUnity
 
             // calculate the distance and range relationship,
             // and find out the position enemy are approach to.
-            Vector3 targetPos = GetTargetPosByWalkType(target.transform.position);
+            Vector3 targetPos = GetPosByWalkType(target);
 
             // set to the destination.
             bool found = mNavMeshAgent.SetDestination(targetPos);
@@ -193,23 +203,56 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Check if the transform in the range of the distance.
+        /// </summary>
+        /// <returns>
+        /// Return true, if is in the range of distance.
+        /// Return false, if is NOT in the range of distance.
+        /// </returns>
+        public bool InRangeDistance()
+        {
+            Vector3 targetPos = mTargetTransform.position;
+            Vector3 selfPos = this.transform.position;
+            float distance = Vector3.Distance(targetPos, selfPos);
+            float maxDistance = 0.0f;
+
+            switch (mWalkType)
+            {
+                case JCS_3DWalkType.SELF_IN_DISTANCE:
+                    maxDistance = mSelfDistance + mMaxOffDistance;
+                    break;
+                case JCS_3DWalkType.TARGET_CLOSEST_POINT:
+                case JCS_3DWalkType.TARGET_IN_RANGE:
+                    maxDistance = mRangeDistance + mAdjustRangeDistance + mMaxOffDistance;
+                    break;
+            }
+
+            return distance <= maxDistance;
+        }
+
+        /// <summary>
         /// Return the target position base on walk type.
         /// </summary>
         /// <param name="targetPos"> Target position. </param>
         /// <returns>
         /// Target position that calculated depends walk type.
         /// </returns>
-        private Vector3 GetTargetPosByWalkType(Vector3 targetPos)
+        private Vector3 GetPosByWalkType(Transform target)
         {
+            Vector3 targetPos = Vector3.zero;
+            if (target) targetPos = target.transform.position;
             Vector3 newTargetPos = targetPos;
 
             switch (mWalkType)
             {
-                case JCS_3DWalkType.CLOSEST_POINT:
+                case JCS_3DWalkType.SELF_IN_DISTANCE:
+                    newTargetPos = CalculateRange(mStartingPosition, mSelfDistance);
+                    break;
+                case JCS_3DWalkType.TARGET_CLOSEST_POINT:
                     newTargetPos = CalculateClosest(targetPos);
                     break;
-                case JCS_3DWalkType.IN_RANGE:
-                    newTargetPos = CalculateRange(targetPos);
+                case JCS_3DWalkType.TARGET_IN_RANGE:
+                    newTargetPos = CalculateRange(targetPos, GetRangeDistance());
                     break;
             }
 
@@ -254,16 +297,13 @@ namespace JCSUnity
         /// will do nothing...
         /// </summary>
         /// <returns> result destination </returns>
-        private Vector3 CalculateRange(Vector3 targetPos)
+        private Vector3 CalculateRange(Vector3 targetPos, float distance)
         {
             Vector3 newTargetPos = targetPos;
 
-            Vector3 randVec = new Vector3(
-                JCS_Random.RangeInclude(-1.0f, 1.0f),
-                0.0f,
-                JCS_Random.RangeInclude(-1.0f, 1.0f)).normalized;
+            Vector3 randVec = GetRandomVec();
 
-            float magnitude = GetRangeDistance();
+            float magnitude = distance;
 
             randVec *= magnitude;
 
@@ -279,10 +319,7 @@ namespace JCSUnity
         /// </returns>
         private Vector3 AddOffDistance(Vector3 targetPos)
         {
-            Vector3 randVec = new Vector3(
-                JCS_Random.RangeInclude(-1.0f, 1.0f),
-                0.0f,
-                JCS_Random.RangeInclude(-1.0f, 1.0f)).normalized;
+            Vector3 randVec = GetRandomVec();
 
             float magnitude = JCS_Random.RangeInclude(mMinOffDistance, mMaxOffDistance);
 
@@ -300,9 +337,6 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            if (mTargetTransform == null)
-                return;
-
             TargetOne(mTargetTransform);
         }
 
@@ -313,8 +347,36 @@ namespace JCSUnity
         private float GetRangeDistance()
         {
             float hypOffset = JCS_Random.Range(-mAdjustRangeDistance, mAdjustRangeDistance);
-
             return mRangeDistance + hypOffset;
+        }
+
+        /// <summary>
+        /// Get a random vector as unit vector. (direction)
+        /// </summary>
+        /// <returns>
+        /// Random unit vector.
+        /// </returns>
+        private Vector3 GetRandomVec()
+        {
+            float xVec = JCS_Random.RangeInclude(-1.0f, 1.0f);
+            float yVec = 0.0f;  // no direction on y axis.
+            float zVec = JCS_Random.RangeInclude(-1.0f, 1.0f);
+
+            return new Vector3(xVec, yVec, zVec).normalized;
+        }
+
+        /// <summary>
+        /// Check if the current walk type target type.
+        /// </summary>
+        private bool IsTargetType()
+        {
+            switch (mWalkType)
+            {
+                case JCS_3DWalkType.TARGET_CLOSEST_POINT:
+                case JCS_3DWalkType.TARGET_IN_RANGE:
+                    return true;
+            }
+            return false;
         }
     }
 }

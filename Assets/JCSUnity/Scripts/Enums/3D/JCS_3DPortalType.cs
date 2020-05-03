@@ -16,8 +16,10 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_3DPortalType
     {
+        // Portal that jump into another scene.
         SCENE_PORTAL,   // common
 
-        TRANSFER_PORTAL
+        // Portal that transfer object to another position. (portal)
+        TRANSFER_PORTAL,
     }
 }
