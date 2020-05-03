@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-05-03
+
+* Organized shader sources. (JCSUnity)
+
 ### 2020-05-01
 
 * Updated the destory with time module with better flexible control. (JCSUnity)
