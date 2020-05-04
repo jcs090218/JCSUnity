@@ -26,7 +26,6 @@ namespace JCSUnity
 
         private static string RESIZE_UI_PATH = "JCSUnity_Resources/LevelDesignUI/ResizeUI";
 
-
         [Header("** Check Variables (JCS_Canvas) **")]
 
         [Tooltip("Canvas object.")]
@@ -40,14 +39,12 @@ namespace JCSUnity
         // Application Rect (Window)
         private RectTransform mAppRect = null;
 
-
         /* Setter & Getter */
 
         public RectTransform GetAppRect() { return this.mAppRect; }
         public Canvas GetCanvas() { return this.mCanvas; }
         public void SetResizeUI(JCS_ResizeUI ui) { this.mResizeUI = ui; }
         public JCS_ResizeUI GetResizeUI() { return this.mResizeUI; }
-
 
         /* Functions */
 
@@ -64,9 +61,7 @@ namespace JCSUnity
 
                 Transform tempTrans = instance.transform;
                 // so record all the transform
-                for (int index = 0;
-                    index < tempTrans.childCount;
-                    ++index)
+                for (int index = 0; index < tempTrans.childCount; ++index)
                 {
                     Transform child = tempTrans.GetChild(index);
                     if (child.name == black_screen_name ||

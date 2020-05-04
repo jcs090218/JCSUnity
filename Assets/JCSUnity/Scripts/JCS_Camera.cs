@@ -91,7 +91,6 @@ namespace JCSUnity
         public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
         public bool SmoothTrack { get { return this.mSmoothTrack; } set { this.mSmoothTrack = value; } }
 
-        /* Get/Set the target this camera follows. */
         public abstract void SetFollowTarget(Transform trans);
         public abstract Transform GetFollowTarget();
 

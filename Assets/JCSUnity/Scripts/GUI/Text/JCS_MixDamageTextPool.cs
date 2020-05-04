@@ -106,10 +106,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        private JCS_DamageTextPool GetCriticalDamageTextPool() { return this.mCritDamageTextPool; }
-        private JCS_DamageTextPool GetNormralDamageTextPool() { return this.mNormalDamageTextPool; }
-        private JCS_DamageTextPool GetGetDamageDamageTextPool() { return this.mGetDamageDamageTextPool; }
-        private JCS_DamageTextPool GetHealDamageTextPoll() { return this.mHealDamageTextPool; }
+        public JCS_DamageTextPool CriticalDamageTextPool { get { return this.mCritDamageTextPool; } }
+        public JCS_DamageTextPool NormralDamageTextPool { get { return this.mNormalDamageTextPool; } }
+        public JCS_DamageTextPool GetDamageDamageTextPool { get { return this.mGetDamageDamageTextPool; } }
+        public JCS_DamageTextPool HealDamageTextPoll { get { return this.mHealDamageTextPool; } }
 
         /* Functions */
 
@@ -375,13 +375,26 @@ namespace JCSUnity
         public void SpawnDamageTextFromPoolByType(
             int damage,
             Vector3 pos,
-            AudioClip hitSound,
-            DamageTextType type = DamageTextType.NORMAL)
+            DamageTextType type = DamageTextType.NORMAL,
+            AudioClip hitSound = null)
         {
             JCS_DamageTextPool dtp = GetDamageTextPoolByType(type);
 
             if (dtp != null)
                 dtp.SpawnDamageTextFromPool(damage, pos, hitSound);
+        }
+        public void SpawnDamageTextsFromPoolByType(
+            int[] damage,
+            Vector3 pos,
+            DamageTextType type,
+            AudioClip hitSound = null)
+        {
+            DamageTextType[] types = new DamageTextType[damage.Length];
+
+            for (int index = 0; index < types.Length; ++index)
+                types[index] = type;
+
+            SpawnDamageTextsFromPoolByType(damage, pos, types, hitSound);
         }
         public void SpawnDamageTextsFromPoolByType(
             int[] damage,
@@ -447,13 +460,13 @@ namespace JCSUnity
             switch (type)
             {
                 case DamageTextType.NORMAL:
-                    return this.GetNormralDamageTextPool();
+                    return this.NormralDamageTextPool;
                 case DamageTextType.CRITICAL:
-                    return this.GetCriticalDamageTextPool();
+                    return this.CriticalDamageTextPool;
                 case DamageTextType.GET_DAMAGE:
-                    return this.GetGetDamageDamageTextPool();
+                    return this.GetDamageDamageTextPool;
                 case DamageTextType.HEAL:
-                    return this.GetHealDamageTextPoll();
+                    return this.HealDamageTextPoll;
             }
             return null;
         }
@@ -488,7 +501,7 @@ namespace JCSUnity
                 }
 
                 // spawn that specific damage text!
-                SpawnDamageTextFromPoolByType(damage[count], pos[count], hitSound, types[count]);
+                SpawnDamageTextFromPoolByType(damage[count], pos[count], types[count], hitSound);
 
                 ++count;
                 // Update new count, in order to spawn next damage text.
