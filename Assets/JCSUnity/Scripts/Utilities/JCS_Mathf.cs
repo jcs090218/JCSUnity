@@ -423,7 +423,7 @@ namespace JCSUnity
                     {
                         // a^2 + b^2 = c^2
                         float a = Mathf.Pow(s1, 2);
-                        float b = Mathf.Pow(s1, 2);
+                        float b = Mathf.Pow(s2, 2);
 
                         return Mathf.Sqrt(a + b);
                     }
