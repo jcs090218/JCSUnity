@@ -8,6 +8,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-05-05
 
 * Released more mix damage text pool API. (JCSUnity)
+* Fixed `Pythagorean Theorem` calculation in math module. (JCSUnity)
+* Fixed 3D Walk action AI with remaining distance calculation. (JCSUnity)
 
 ### 2020-05-03
 
