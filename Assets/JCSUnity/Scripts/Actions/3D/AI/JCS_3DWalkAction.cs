@@ -219,11 +219,11 @@ namespace JCSUnity
             switch (mWalkType)
             {
                 case JCS_3DWalkType.SELF_IN_DISTANCE:
-                    maxDistance = mSelfDistance + mMaxOffDistance;
+                    maxDistance = mSelfDistance + mMaxOffDistance + mAcceptRemainDistance;
                     break;
                 case JCS_3DWalkType.TARGET_CLOSEST_POINT:
                 case JCS_3DWalkType.TARGET_IN_RANGE:
-                    maxDistance = mRangeDistance + mAdjustRangeDistance + mMaxOffDistance;
+                    maxDistance = mRangeDistance + mAdjustRangeDistance + mMaxOffDistance + mAcceptRemainDistance;
                     break;
             }
 
