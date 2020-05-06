@@ -54,6 +54,14 @@ namespace JCSUnity
         [SerializeField]
         private JCS_3DWalkType mWalkType = JCS_3DWalkType.SELF_IN_DISTANCE;
 
+        [Tooltip("Allow each walk action having the same destination.")]
+        [SerializeField]
+        private bool mAllowOverlapDestination = false;
+
+        [Tooltip("Distance that would count as overlap destination.")]
+        [Range(0.0f, 30.0f)]
+        private float mOverlapDistance = 0.5f;
+
         [Tooltip("What value count as path complete action.")]
         [SerializeField]
         [Range(0.0f, 30.0f)]
@@ -104,6 +112,9 @@ namespace JCSUnity
         public float MinOffDistance { get { return this.mMinOffDistance; } set { this.mMinOffDistance = value; } }
         public float MaxOffDistance { get { return this.mMaxOffDistance; } set { this.mMaxOffDistance = value; } }
 
+        public bool AllowOverlapDestination { get { return this.mAllowOverlapDestination; } set { this.mAllowOverlapDestination = value; } }
+        public float OverlapDistance { get { return this.mOverlapDistance; } set { this.mOverlapDistance = value; } }
+
         public float RangeDistance { get { return this.mRangeDistance; } set { this.mRangeDistance = value; } }
         public float AdjustRangeDistance { get { return this.mAdjustRangeDistance; } set { this.mAdjustRangeDistance = value; } }
 
@@ -121,6 +132,12 @@ namespace JCSUnity
             this.mStartingPosition = this.transform.position;
         }
 
+        private void Start()
+        {
+            JCS_3DWalkActionManager wam = JCS_3DWalkActionManager.instance;
+            wam.AddWalkAction(this);
+        }
+
         /// <summary>
         /// Target one player and do in target action.
         /// </summary>
@@ -136,6 +153,8 @@ namespace JCSUnity
                 JCS_Debug.LogError("The transform you are targeting is null");
                 return;
             }
+
+            JCS_3DWalkActionManager wam = JCS_3DWalkActionManager.instance;
 
             if (mSearchCount == 2)
             {
@@ -155,6 +174,12 @@ namespace JCSUnity
 
             // set to the destination.
             bool found = mNavMeshAgent.SetDestination(targetPos);
+
+            if (!mAllowOverlapDestination)
+            {
+                if (found)
+                    found = !wam.OverlapWithOthers(targetPos, mOverlapDistance);
+            }
 
             // increase the search count.
             ++mSearchCount;
