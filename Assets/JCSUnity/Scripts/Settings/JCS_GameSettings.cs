@@ -38,23 +38,17 @@ namespace JCSUnity
         [Tooltip("Gravity production. (For game that have gravity in it)")]
         public float GRAVITY_PRODUCT = 4.5f;
 
-
-        //-- Camera
-        [Header("** Camera Settings (JCS_GameSettings) **")]
+        [Header("- Camera")]
 
         [Tooltip("Type of the camera.")]
         public JCS_CameraType CAMERA_TYPE = JCS_CameraType.NONE;
 
-
-        //-- Player
-        [Header("** Player Settings (JCS_GameSettings) **")]
+        [Header("- Player")]
 
         [Tooltip("Game only allows control one player.")]
         public bool ACTIVE_ONE_PLAYER = true;
 
-
-        //-- 
-        [Header("** Collision Settings **")]
+        [Header("- Collision")]
 
         [Tooltip("Do collusion happen with eacth other. (Player)")]
         public bool PLAYER_IGNORE_EACH_OTHER = true;
@@ -65,9 +59,7 @@ namespace JCSUnity
         [Tooltip("Careful, this will override player ignore options!")]
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
-
-        //-- Screen Shot
-        [Header("** Screen Shot Settings (JCS_GameSettings) **")]
+        [Header("- Screen Shot")]
         
         [Tooltip("Screen shot folder path [Default: /JCS_ScreenShot/]")]
         public string SCREENSHOT_PATH = "/JCS_ScreenShot/";
@@ -78,8 +70,7 @@ namespace JCSUnity
         [Tooltip("Extension [Default: .png]")]
         public string SAVED_IMG_EXTENSION = ".png";
 
-        
-        [Header("** Save Load Settings (JCS_GameSettings) **")]
+        [Header("- Save Load")]
 
         [Tooltip("Save when switching the scene.")]
         public bool SAVE_ON_SWITCH_SCENE = true;
@@ -94,14 +85,12 @@ namespace JCSUnity
         public delegate void SavedGameDataDelegate();
         public SavedGameDataDelegate SAVE_GAME_DATA_FUNC = null;
 
-
         public delegate void LoadGameDataDelegate();    // NOT USED
         public LoadGameDataDelegate LOAD_GAME_DATA_FUNC = null; // NOT USED
 
         public static JCS_XMLGameData GAME_DATA = null;    // NOT USED
 
-
-        [Header("** Damage Settings (JCS_GameSettings) **")]
+        [Header("- Damage")]
 
         [Tooltip("Mininum damage can be in the game.")]
         public int MIN_DAMAGE = 1;

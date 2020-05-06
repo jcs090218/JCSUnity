@@ -53,6 +53,8 @@ namespace JCSUnity
             if (player == null)
                 return;
 
+            JCS_ClimbableManager cm = JCS_ClimbableManager.instance;
+
             AddSafe(player);
 
             bool isTopOfBox = JCS_Physics.TopOfBox(
@@ -62,13 +64,13 @@ namespace JCSUnity
             if (isTopOfBox)
             {
                 // show character behind the ladder
-                int backOrderLayer = OrderLayerObject.sortingOrder - ClimbableManager.SORTING_ORDER_BEHIND_OFFSET;
+                int backOrderLayer = OrderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
                 SetPlayerSortingOrder(player, backOrderLayer);
             }
             else
             {
                 // show character infront
-                int frontOrderLayer = OrderLayerObject.sortingOrder + ClimbableManager.SORTING_ORDER_INFRONT_OFFSET;
+                int frontOrderLayer = OrderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
                 SetPlayerSortingOrder(player, frontOrderLayer);
             }
 
@@ -96,6 +98,8 @@ namespace JCSUnity
         /// </summary>
         public override void ClimbableUpdate()
         {
+            JCS_ClimbableManager cm = JCS_ClimbableManager.instance;
+
             foreach (JCS_2DSideScrollerPlayer player in mSSPlayers)
             {
                 if (player.isGrounded())
@@ -110,7 +114,7 @@ namespace JCSUnity
                 if (player.CharacterState == JCS_2DCharacterState.CLIMBING)
                 {
                     // show character infront
-                    int frontOrderLayer = OrderLayerObject.sortingOrder + ClimbableManager.SORTING_ORDER_INFRONT_OFFSET;
+                    int frontOrderLayer = OrderLayerObject.sortingOrder + cm.SORTING_ORDER_INFRONT_OFFSET;
                     SetPlayerSortingOrder(player, frontOrderLayer);
 
 
@@ -128,7 +132,7 @@ namespace JCSUnity
                         player.JustClimbOnTopOfBox = true;
 
                         // show character behind the ladder
-                        int backOrderLayer = OrderLayerObject.sortingOrder - ClimbableManager.SORTING_ORDER_BEHIND_OFFSET;
+                        int backOrderLayer = OrderLayerObject.sortingOrder - cm.SORTING_ORDER_BEHIND_OFFSET;
                         SetPlayerSortingOrder(player, backOrderLayer);
                     }
                 }

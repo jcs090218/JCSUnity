@@ -24,7 +24,6 @@ namespace JCSUnity
         [Tooltip("Current Portal Lable are.")]
         public JCS_PortalLabel SCENE_PORTAL_LABEL = JCS_PortalLabel.NONE;
 
-
         [Header("** Initialize Variables (JCS_PortalSettings) **")]
 
         [Tooltip("Reset the player position to portal?")]

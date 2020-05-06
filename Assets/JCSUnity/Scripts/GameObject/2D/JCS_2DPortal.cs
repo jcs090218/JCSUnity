@@ -37,9 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DPortalType mType = JCS_2DPortalType.SCENE_PORTAL;
 
-
-        //** SCENE_PORTAL
-        [Header("** Scene Portal Settings (JCS_2DPortal) **")]
+        [Header("- Scene Portal")]
 
         [Tooltip("Name of the scene.")]
         [SerializeField]
@@ -49,14 +47,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PortalLabel mPortalLabel = JCS_PortalLabel.NONE;
 
-
-        //** TRANSFER_PORTAL
-        [Header("** Transfer Portal Settings (JCS_2DPortal) **")]
+        [Header("- Transfer Portal")]
 
         [Tooltip("Pair portal, target portal the player will transfer to.")]
         [SerializeField]
         private Transform mTargetPortal = null;
-
 
         /* Setter & Getter */
 
@@ -66,7 +61,6 @@ namespace JCSUnity
         public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public Transform TargetPortal { get { return this.mTargetPortal; } set { this.mTargetPortal = value; } }
         public JCS_PortalLabel PortalLabel { get { return this.mPortalLabel; } }
-
 
         /* Functions */
 

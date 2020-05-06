@@ -26,7 +26,6 @@ namespace JCSUnity
         // per application is starts.
         public ApplicationStartsCallback onApplicationStarts = null;
 
-
         [Header("** Check Variables (JCS_ApplicationSettings) **")]
 
         [Tooltip("Is the application start?")]
