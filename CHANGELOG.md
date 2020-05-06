@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-05-07
+
+* Added 3D walk action manager. (JCSUnity)
+* Removed indie standard, use `others`/`2D`/`3D` instead. (JCSUnity)
+
 ### 2020-05-05
 
 * Released more mix damage text pool API. (JCSUnity)
