@@ -25,8 +25,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_NetworkSettings) **")]
 
-        [Tooltip(@"Current mode this client in, should be update by
-the server!")]
+        [Tooltip(@"Current mode this client in, should be update by the server!")]
         public JCS_ClientMode CLIENT_MODE = JCS_ClientMode.LOGIN_SERVER;
 
         [Tooltip("On switching the server?")]
@@ -35,8 +34,7 @@ the server!")]
         [Tooltip("Flag to check if is force switching the server.")]
         public bool FORCE_SWITCH_SERVER = false;
 
-
-        [Header("** Online Game Configuration **")]
+        [Header("- Online Game Configuration")]
 
         [Tooltip("Is the current game with online mode active?")]
         public bool ONLINE_MODE = false;

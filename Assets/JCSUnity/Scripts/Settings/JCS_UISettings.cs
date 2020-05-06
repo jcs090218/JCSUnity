@@ -19,8 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        // no one care about how black screen look so i
-        // just make it unseen in the inspector.
+        // No one care about how black screen look so I just make it unseen 
+        // in the inspector.
         public static string BLACK_SCREEN_PATH = "JCSUnity_Resources/LevelDesignUI/JCS_BlackScreen";
         public static string BLACK_SLIDE_SCREEN_PATH = "JCSUnity_Resources/LevelDesignUI/JCS_BlackSlideScreen";
         public static string BLACK_SCREEN_NAME = "JCS_BlackScreen";
