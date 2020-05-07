@@ -22,10 +22,6 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_DeactivePanelGamePadButton) **")]
 
-        [Tooltip("Play dialogue sound?")]
-        [SerializeField]
-        private bool mHideWithSound = true;
-
         [Tooltip("Panels to be deactive.")]
         [SerializeField]
         private JCS_DialogueObject[] mDialogueObjects = null;
@@ -34,30 +30,23 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TweenPanel[] mTweenPanels = null;
 
+        [Tooltip("Play dialogue sound.")]
+        [SerializeField]
+        private bool mPlaySound = true;
+
         /* Setter & Getter */
 
-        public bool HideithSound { get { return this.mHideWithSound; } set { this.mHideWithSound = value; } }
+        public JCS_DialogueObject[] DialogueObjects { get { return this.mDialogueObjects; } }
+        public JCS_TweenPanel[] TweenPanels { get { return this.mTweenPanels; } }
+
+        public bool PlaySound { get { return this.mPlaySound; } set { this.mPlaySound = value; } }
 
         /* Functions */
 
         public override void JCS_OnClickCallback()
         {
-            foreach (JCS_DialogueObject panel in mDialogueObjects)
-            {
-                if (panel != null)
-                {
-                    if (mHideWithSound)
-                        panel.HideDialogue();
-                    else
-                        panel.HideDialogueWithoutSound();
-                }
-            }
-
-            foreach (JCS_TweenPanel panel in mTweenPanels)
-            {
-                if (panel != null)
-                    panel.Deactive();
-            }
+            JCS_GUIUtil.DeactivePanels(mDialogueObjects, mPlaySound);
+            JCS_GUIUtil.DeactivePanels(mTweenPanels);
         }
     }
 }

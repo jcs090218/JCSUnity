@@ -24,16 +24,22 @@ namespace JCSUnity
 
         [Tooltip("Panel (dialogue) you want to toggle.")]
         [SerializeField]
-        private JCS_DialogueObject mDialogueObject = null;
+        private JCS_DialogueObject[] mDialogueObjects = null;
 
         [Tooltip("Panel (tween) you want to toggle.")]
         [SerializeField]
-        private JCS_TweenPanel mTweenPanel = null;
+        private JCS_TweenPanel[] mTweenPanels = null;
+
+        [Tooltip("Play dialogue sound.")]
+        [SerializeField]
+        private bool mPlaySound = true;
 
         /* Setter & Getter */
 
-        public JCS_DialogueObject DialogueObject { get { return this.mDialogueObject; } }
-        public JCS_TweenPanel TweenPanel { get { return this.mTweenPanel; } }
+        public JCS_DialogueObject[] DialogueObjects { get { return this.mDialogueObjects; } }
+        public JCS_TweenPanel[] TweenPanels { get { return this.mTweenPanels; } }
+
+        public bool PlaySound { get { return this.mPlaySound; } set { this.mPlaySound = value; } }
 
         /* Functions */
 
@@ -45,40 +51,14 @@ namespace JCSUnity
 
         private void ActivePanel()
         {
-            if (!CheckPanel())
-                return;
-
-            if (mDialogueObject != null)
-                mDialogueObject.ShowDialogue();
-
-            if (mTweenPanel != null)
-                mTweenPanel.Active();
+            JCS_GUIUtil.ActivePanels(mDialogueObjects, mPlaySound);
+            JCS_GUIUtil.ActivePanels(mTweenPanels);
         }
 
         private void DeactivePanel()
         {
-            if (!CheckPanel())
-                return;
-
-            if (mDialogueObject != null)
-                mDialogueObject.HideDialogue();
-
-            if (mTweenPanel != null)
-                mTweenPanel.Deactive();
-        }
-
-        /// <summary>
-        /// Check if panel valid to toggle.
-        /// </summary>
-        /// <returns></returns>
-        private bool CheckPanel()
-        {
-            if (mDialogueObject == null && mTweenPanel == null)
-            {
-                JCS_Debug.LogWarning("Toggle panel must assign either one `dialogue object` or `tween panel`");
-                return false;
-            }
-            return true;
+            JCS_GUIUtil.DeactivePanels(mDialogueObjects, mPlaySound);
+            JCS_GUIUtil.DeactivePanels(mTweenPanels);
         }
     }
 }
