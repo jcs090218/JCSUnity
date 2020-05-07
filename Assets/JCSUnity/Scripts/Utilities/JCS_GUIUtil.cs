@@ -230,7 +230,7 @@ namespace JCSUnity
         /// true, is anchor presets type.
         /// false, not this anchor presets type.
         /// </returns>
-        public static bool IsAchorPresets(RectTransform rt , JCS_AnchorPresetsType type)
+        public static bool IsAchorPresets(RectTransform rt, JCS_AnchorPresetsType type)
         {
             Vector2 min = rt.anchorMin;
             Vector2 max = rt.anchorMax;
@@ -431,6 +431,58 @@ namespace JCSUnity
         public static bool IsAnchorStretchY(Vector2 min, Vector2 max)
         {
             return (min.y == 0.0f && max.y == 1.0f);
+        }
+        #endregion
+
+        #region PANELS
+        /// <summary>
+        /// Active panels in array.
+        /// </summary>
+        public static void ActivePanels(JCS_DialogueObject[] dos, bool sound)
+        {
+            foreach (JCS_DialogueObject panel in dos)
+            {
+                if (panel != null)
+                {
+                    if (sound)
+                        panel.ShowDialogue();
+                    else
+                        panel.ShowDialogueWithoutSound();
+                }
+            }
+        }
+        public static void ActivePanels(JCS_TweenPanel[] tps)
+        {
+            foreach (JCS_TweenPanel panel in tps)
+            {
+                if (panel != null)
+                    panel.Active();
+            }
+        }
+
+        /// <summary>
+        /// Deactive panels in array.
+        /// </summary>
+        public static void DeactivePanels(JCS_DialogueObject[] dos, bool sound)
+        {
+            foreach (JCS_DialogueObject panel in dos)
+            {
+                if (panel != null)
+                {
+                    if (sound)
+                        panel.HideDialogue();
+                    else
+                        panel.HideDialogueWithoutSound();
+                }
+            }
+        }
+        public static void DeactivePanels(JCS_TweenPanel[] tps)
+        {
+            foreach (JCS_TweenPanel panel in tps)
+            {
+                if (panel != null)
+                    panel.Deactive();
+            }
         }
         #endregion
     }
