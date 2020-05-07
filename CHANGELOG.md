@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-05-08
+
+* Added panels section for GUI utility functions. (JCSUnity)
+* Removed `GUI/Button/Dialogue` for repetitive functionalities with 
+ other components/scripts. (JCSUnity)
+
 ### 2020-05-07
 
 * Added 3D walk action manager. (JCSUnity)
