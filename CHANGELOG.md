@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Added 3D walk action manager. (JCSUnity)
 * Removed indie standard, use `others`/`2D`/`3D` instead. (JCSUnity)
+* Fixed 3D walk action overlap destination search path logic error. (JCSUnity)
 
 ### 2020-05-05
 
