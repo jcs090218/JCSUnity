@@ -27,7 +27,7 @@ namespace JCSUnity
         private List<JCS_3DWalkAction> mWalkActions = null;
 
         /* Setter & Getter */
-        
+
         public List<JCS_3DWalkAction> WalkActions { get { return this.mWalkActions; } }
 
         /* Functions */
@@ -51,16 +51,20 @@ namespace JCSUnity
         /// <summary>
         /// Check if there are other walk action having the same destination.
         /// </summary>
+        /// <param name="self"></param>
         /// <param name="targetPos"> Current targeting position. </param>
         /// <param name="overlapDistance"> Allow overlapping distance. </param>
         /// <returns>
         /// Return true, if it does overlaps with other walk action.
         /// Return false, if it does NOT overlap with other walk action.
         /// </returns>
-        public bool OverlapWithOthers(Vector3 targetPos, float overlapDistance)
+        public bool OverlapWithOthers(JCS_3DWalkAction self, Vector3 targetPos, float overlapDistance)
         {
             foreach (JCS_3DWalkAction wa in mWalkActions)
             {
+                if (self == wa)
+                    continue;
+
                 Vector3 dest = wa.navMeshAgent.destination;
                 float distance = Vector3.Distance(targetPos, dest);
                 if (distance < overlapDistance)

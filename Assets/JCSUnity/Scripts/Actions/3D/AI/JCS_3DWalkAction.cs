@@ -30,19 +30,32 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_3DWalkAction) **")]
+
+        [Tooltip("Current target destination.")]
+        [SerializeField]
+        private Vector3 mTargetDestination = Vector3.zero;
+
+        [Tooltip("Found the path now.")]
+        [SerializeField]
+        private bool mFoundPath = false;
+#endif
+
         [Header("** Check Variables (JCS_3DWalkAction) **")]
 
         [Tooltip("Target transform that we are going to follow.")]
         [SerializeField]
         private Transform mTargetTransform = null;
 
-        // count for how many search per frame.
-        // try to avoid stack overflow function call...
-        private int mSearchCount = 0;
-
         [Tooltip("Record down the starting position.")]
         [SerializeField]
         private Vector3 mStartingPosition = Vector3.zero;
+
+        // try to avoid stack overflow function call...
+        [Tooltip("Count for how many search per frame.")]
+        [SerializeField]
+        private int mSearchCount = 0;
 
         [Header("** Runtime Variables (JCS_3DWalkAction) **")]
 
@@ -175,22 +188,26 @@ namespace JCSUnity
             // set to the destination.
             bool found = mNavMeshAgent.SetDestination(targetPos);
 
-            if (!mAllowOverlapDestination)
-            {
-                if (found)
-                    found = !wam.OverlapWithOthers(targetPos, mOverlapDistance);
-            }
+            if (!mAllowOverlapDestination && found)
+                found = !wam.OverlapWithOthers(this, targetPos, mOverlapDistance);
 
             // increase the search count.
             ++mSearchCount;
+
+#if (UNITY_EDITOR)
+            this.mFoundPath = found;
+#endif
 
             // if faild, try it again.
             if (!found)
                 TargetOne(target);
             else
             {
-                // if succesed.
-                // reset search count.
+#if (UNITY_EDITOR)
+                this.mTargetDestination = mNavMeshAgent.destination;
+#endif
+
+                // if succesed, reset search count.
                 mSearchCount = 0;
             }
         }
