@@ -24,7 +24,6 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

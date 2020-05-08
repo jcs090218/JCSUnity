@@ -58,7 +58,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Bool3 mFreezeScale = JCS_Bool3.allFalse;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -96,7 +95,6 @@ namespace JCSUnity
                     this.mRotationToFreeze = this.EulerAngles;
             }
         }
-
 
         /* Functions */
 

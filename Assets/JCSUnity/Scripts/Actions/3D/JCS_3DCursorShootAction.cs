@@ -26,7 +26,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_ShootAction mShootAction = null;
 
-
         [Header("** Runtime Variables (JCS_3DCursorShootAction) **")]
 
         [Tooltip("Key code to active this action.")]
@@ -37,12 +36,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Vector3Direction mDirection = JCS_Vector3Direction.UP;
 
-
         /* Setter & Getter */
 
         public KeyCode ShooKeyCode { get { return this.mShootKeyCode; } }
         public JCS_Vector3Direction Direction { get { return this.mDirection; } set { this.mDirection = value; } }
-
 
         /* Functions */
 

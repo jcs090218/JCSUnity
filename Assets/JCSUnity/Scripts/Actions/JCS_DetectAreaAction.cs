@@ -27,7 +27,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DLiveObject mLiveObject = null;
 
-
         [Header("** Initialize Variables (JCS_DetectAreaAction) **")]
 
         [Tooltip("Colliders detected.")]
@@ -36,11 +35,9 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_DetectAreaObject> mDetectedObjects = null;
 
-
         /* Setter & Getter */
 
         public JCS_2DLiveObject GetLiveObject() { return this.mLiveObject; }
-
 
         /* Functions */
 

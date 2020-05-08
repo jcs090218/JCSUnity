@@ -34,13 +34,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 
-
         /* Setter & Getter */
 
         public bool Action { get { return this.mAction; } set { this.mAction = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
         public JCS_2DFaceType RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
-
 
         /* Functions */
 

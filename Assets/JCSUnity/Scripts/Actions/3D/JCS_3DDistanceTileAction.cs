@@ -29,7 +29,6 @@ namespace JCSUnity
 
         private Vector3 mOriginPos = Vector3.zero;
 
-
         [Header("** Runtime Variables (JCS_3DDistanceTileAction) **")]
 
         [Tooltip("Is this component active?")]
@@ -45,12 +44,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mUseLocalPosition = false;
 
-        
         /* Setter & Getter */
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
         public bool UseLocalPosition { get { return this.mUseLocalPosition; } set { this.mUseLocalPosition = value; } }
-
 
         /* Functions */
 

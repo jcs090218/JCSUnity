@@ -42,7 +42,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreZ = false;
 
-
         /* Setter & Getter */
 
         public Vector3 TargetPosition { get { return this.mTargetPos; } set { this.mTargetPos = value; } }
@@ -50,7 +49,6 @@ namespace JCSUnity
         public bool IgnoreX { get { return this.mIgnoreX; } set { this.mIgnoreX = value; } }
         public bool IgnoreY { get { return this.mIgnoreY; } set { this.mIgnoreY = value; } }
         public bool IgnoreZ { get { return this.mIgnoreZ; } set { this.mIgnoreZ = value; } }
-
 
         /* Functions */
 

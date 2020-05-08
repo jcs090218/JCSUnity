@@ -38,7 +38,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Bool3 mFreezePosition = JCS_Bool3.allFalse;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -59,7 +58,6 @@ namespace JCSUnity
         }
         public JCS_Bool3 FreezePosition { get { return this.mFreezePosition; } set { this.mFreezePosition = value; } }
 
-        
         /* Functions */
 
         private void Start()

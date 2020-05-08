@@ -24,12 +24,10 @@ namespace JCSUnity
         protected Animator mAnimator = null;
         protected AnimatorStateInfo mAnimatorStateInfo;
 
-
         /* Setter & Getter */
 
         public Animator GetAnimator() { return this.mAnimator; }
         public AnimatorStateInfo GetAnimatorStateInfo() { return this.mAnimatorStateInfo; }
-
 
         /* Functions */
 

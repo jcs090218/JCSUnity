@@ -29,7 +29,6 @@ namespace JCSUnity
         [SerializeField]
         protected KeyCode mKeyCode = KeyCode.None;
 
-
         [Tooltip("Main animation player 1.")]
         [SerializeField]
         protected RuntimeAnimatorController mMainAnim1 = null;
@@ -72,8 +71,7 @@ namespace JCSUnity
 
         protected float mActionTimer = 0;
 
-
-        [Header("** Spawn Settings (JCS_2DSkills) **")]
+        [Header("- Spawn")]
 
         [Tooltip("Spawn the same position as this gameobject.")]
         [SerializeField]
@@ -87,8 +85,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mSameScale = true;
 
-
-        [Header("** Sound Settings (JCS_2DSkills) **")]
+        [Header("- Sound")]
 
         [Tooltip("Sound when plays this skill.")]
         [SerializeField]
@@ -97,7 +94,6 @@ namespace JCSUnity
         [Tooltip("Sound when this skill hit the gameobject.")]
         [SerializeField]
         protected AudioClip mHitSound = null;
-
 
         /* Setter & Getter */
 

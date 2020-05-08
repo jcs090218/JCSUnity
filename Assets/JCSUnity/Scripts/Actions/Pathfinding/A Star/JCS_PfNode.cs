@@ -31,12 +31,10 @@ namespace JCSUnity
 
         private int mHeapIndex;
 
-
         /* Setter & Getter */
 
         public int fCost { get { return gCost + hCost; } }
         public int HeapIndex { get { return this.mHeapIndex; } set { this.mHeapIndex = value; } }
-
 
         /* Functions */
 

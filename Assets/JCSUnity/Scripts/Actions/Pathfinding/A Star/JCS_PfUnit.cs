@@ -47,7 +47,6 @@ namespace JCSUnity
         private Transform mParamTargetTransform = null;
 #endif
 
-
         [Header("** Check Variables (JCS_PfUnit) **")]
 
         [Tooltip("Target we want to track.")]
@@ -60,19 +59,16 @@ namespace JCSUnity
         [SerializeField]
         private int mTargetIndex = 0;
 
-
         [Header("** Runtime Variables (JCS_PfUnit) **")]
 
         [Tooltip("Move speed.")]
         [SerializeField]
         private float mSpeed = 20.0f;
 
-
         /* Setter & Getter */
 
         public Transform Target { get { return this.mTarget; } set { this.mTarget = value; } }
         public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
-
 
         /* Functions */
 

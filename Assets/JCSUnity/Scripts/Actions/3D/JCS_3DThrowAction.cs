@@ -56,12 +56,10 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
-
 
         /* Functions */
 

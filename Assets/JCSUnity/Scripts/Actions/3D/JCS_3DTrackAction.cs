@@ -30,12 +30,10 @@ namespace JCSUnity
         [SerializeField]
         private float mMoveFriction = 1.0f;
 
-
         /* Setter & Getter */
 
         public Transform TargetTransform { get { return this.mTargetTransform; } set { this.mTargetTransform = value; } }
         public float MoveFriction { get { return this.mMoveFriction; } set { this.mMoveFriction = value; } }
-
 
         /* Functions */
 

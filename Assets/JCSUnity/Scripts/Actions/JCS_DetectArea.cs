@@ -26,11 +26,9 @@ namespace JCSUnity
         [SerializeField]
         private Collider mCollider = null;
 
-
         /* Setter & Getter */
 
         public void SetAction(JCS_DetectAreaAction da) { this.mDetectAreaAction = da; }
-
 
         /* Functions */
 

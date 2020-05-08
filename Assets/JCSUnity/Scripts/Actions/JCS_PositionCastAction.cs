@@ -48,20 +48,17 @@ namespace JCSUnity
         private Vector3 mCastToWorldPosition = Vector3.zero;
 #endif
 
-
         [Header("** Check Variables (JCS_PositionCastAction) **")]
 
         [Tooltip("")]
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
 
-
         [Header("** Runtime Variables (JCS_PositionCastAction) **")]
 
         [Tooltip("Corresponding position offset.")]
         [SerializeField]
         private Vector3 mPositionOffset = Vector3.zero;
-
 
         /* Setter & Getter */
 
@@ -70,7 +67,6 @@ namespace JCSUnity
         public Vector3 CastToWorldPosition { get { return this.mCastToWorldPosition; } }
 #endif
         public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
-
 
         /* Functions */
 

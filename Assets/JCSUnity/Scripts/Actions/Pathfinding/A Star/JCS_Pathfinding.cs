@@ -25,9 +25,7 @@ namespace JCSUnity
 
         public Transform seeker, target;
 
-
         private JCS_PfGrid mPfGrid = null;
-
 
         /* Setter & Getter */
 

@@ -31,7 +31,6 @@ namespace JCSUnity
         public Vector3 mTargetValue = Vector3.zero;
 #endif
 
-
         [Header("** Runtime Variables (JCS_RandomTweenerAction) **")]
 
         [Tooltip("Mininum vector value.")]
@@ -45,7 +44,6 @@ namespace JCSUnity
         [Tooltip("Freeze in a certain vector? (x, y, z)")]
         [SerializeField]
         private JCS_Bool3 mFreeze = JCS_Bool3.allFalse;
-
 
         /* Setter & Getter */
 

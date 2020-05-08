@@ -39,12 +39,10 @@ namespace JCSUnity
         // Detect all the transform?
         private bool mDetectAll = false;
 
-
         /* Setter & Getter */
 
         public bool DoAction { get { return this.mDoAction; } set { this.mDoAction = value; } }
         public float DetectRange { get { return this.mDetectRange; } set { this.mDetectRange = value; } }
-
 
         /* Functions */
 

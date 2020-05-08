@@ -46,7 +46,6 @@ namespace JCSUnity
         // check if do the spawn?
         private bool mSpawned = false;
 
-
         [Header("- Randomize Position (JCS_BasicWaveSpawner)")]
 
         [Tooltip("Spawn the item random position, in x-axis.")]
@@ -72,7 +71,6 @@ namespace JCSUnity
         [Tooltip("Randomize value in z-axis.")]
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
-
 
         [Header("- Randomize Rotation (JCS_BasicWaveSpawner)")]
 
@@ -100,7 +98,6 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 360.0f)]
         private float mRandRotRangeZ = 0.0f;
 
-
         [Header("- Randomize Scale (JCS_BasicWaveSpawner)")]
 
         [Tooltip("Randomize the scale in x-axis?")]
@@ -127,8 +124,6 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandScaleRangeZ = 0.0f;
 
-
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -153,7 +148,6 @@ namespace JCSUnity
         public float RandScaleRangeY { get { return this.mRandScaleRangeY; } set { this.mRandScaleRangeY = value; } }
         public bool RandScaleZ { get { return this.mRandScaleZ; } set { this.mRandScaleZ = value; } }
         public float RandScaleRangeZ { get { return this.mRandScaleRangeZ; } set { this.mRandScaleRangeZ = value; } }
-
 
         /* Functions */
 

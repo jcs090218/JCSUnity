@@ -32,7 +32,6 @@ namespace JCSUnity
 
         private float mRotateDegreeTimer = 0.0f;
 
-
         [Header("** Runtime Variables (JCS_2DCircleAction) **")]
 
         [Tooltip("Do the movement.")]
@@ -55,7 +54,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DFaceType mRotateDirection = JCS_2DFaceType.FACE_LEFT;
 
-
         /* Setter & Getter */
 
         public float StartingPosition { get { return this.mStartingDegree; } set { this.mStartingDegree = value; } }
@@ -65,7 +63,6 @@ namespace JCSUnity
         public bool DoRotate { get { return this.mDoRotate; } set { this.mDoRotate = value; } }
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float TurnSpeed { get { return this.mTurnSpeed; } set { this.mTurnSpeed = value; } }
-
 
         /* Functions */
 

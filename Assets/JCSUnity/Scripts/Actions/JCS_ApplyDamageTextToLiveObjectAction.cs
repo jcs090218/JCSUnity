@@ -36,7 +36,6 @@ namespace JCSUnity
         [SerializeField]
         private int mCriticalChance = 10;
 
-
         [Header("** Runtime Variables (JCS_ApplyDamageTextToLiveObjectAction) **")]
 
         // Ability Format
@@ -49,8 +48,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mDamageTextPositionOffset = Vector3.zero;
 
-
-        [Header("** Pre Calculate Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Header("- Pre Calculate")]
 
         [Tooltip("Attack will be calculate before hit the object.")]
         [SerializeField]
@@ -60,8 +58,7 @@ namespace JCSUnity
         [SerializeField]
         private int[] mDamageApplying = null;
 
-
-        [Header("** Lock Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Header("- Lock Effect")]
 
         [Tooltip("Lock on the target?")]
         [SerializeField]
@@ -71,8 +68,7 @@ namespace JCSUnity
         [SerializeField]
         private Transform mTargetTransform = null;
 
-
-        [Header("** Random Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Header("- Random Effect")]
 
         [Tooltip("Random position effect.")]
         [SerializeField]
@@ -82,15 +78,13 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 10.0f)]
         private float mRandPosRange = 0.0f;
 
-
-        [Header("** Destroy Setting (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Header("- Destroy")]
 
         [Tooltip("Destroy live object by this object.")]
         [SerializeField]
         private bool mDestroyByThisAction = true;
 
-
-        [Header("** AOE Effect (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Header("- AOE")]
 
         [Tooltip("Make object un-destroyable, count down by AOECount below.")]
         [SerializeField]
@@ -110,14 +104,11 @@ namespace JCSUnity
         // a boolean handler the detection.
         private bool mIsDestroyed = false;
 
-
-        [Header("** Sound Settings (JCS_ApplyDamageTextToLiveObjectAction) **")]
+        [Header("- Sound")]
 
         [Tooltip("Play this hit sound, while is action happens.")]
         [SerializeField]
         private AudioClip mHitSound = null;
-
-
 
         /* Setter & Getter */
 
@@ -128,7 +119,6 @@ namespace JCSUnity
 
         public int[] DamageApplying { get { return this.mDamageApplying; } set { this.mDamageApplying = value; } }
         public JCS_AttackerInfo AttackerInfo { get { return this.mAttackerInfo; } set { this.mAttackerInfo = value; } }
-
 
         /* Functions */
 

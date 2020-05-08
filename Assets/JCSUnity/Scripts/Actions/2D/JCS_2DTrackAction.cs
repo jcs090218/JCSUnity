@@ -31,7 +31,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mFollowing = true;
 
-
         [Header("** Runtime Variables (JCS_2DTrackAction) **")]
 
         [Tooltip("Transform we want to target.")]
@@ -43,7 +42,6 @@ namespace JCSUnity
         private JCS_Axis mAxis = JCS_Axis.AXIS_Z;
 
         private Vector3 mVelocity = Vector3.zero;
-
 
         //-- Smooth Track
         [Tooltip("Invers of speed, if smooth track is enable use this.")]
@@ -71,8 +69,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mHardOnZ = false;
 
-
-        [Header("- Order Effect (JCS_2DTrackAction)")]
+        [Header("- Order")]
 
         [Tooltip("Set the track action order.")]
         [SerializeField]
@@ -81,7 +78,6 @@ namespace JCSUnity
         [Tooltip("Gap between each order.")]
         [SerializeField]
         private Vector3 mGap = Vector3.zero;
-
 
         /* Setter & Getter */
 
@@ -94,7 +90,6 @@ namespace JCSUnity
         public bool HardOnX { get { return this.mHardOnX; } set { this.mHardOnX = value; } }
         public bool HardOnY { get { return this.mHardOnY; } set { this.mHardOnY = value; } }
         public bool HardOnZ { get { return this.mHardOnZ; } set { this.mHardOnZ = value; } }
-
 
         /* Functions */
 

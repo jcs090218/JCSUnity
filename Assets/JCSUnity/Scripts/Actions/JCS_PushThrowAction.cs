@@ -35,13 +35,11 @@ namespace JCSUnity
         [SerializeField]
         private float mG = 2.0f;
 
-
         /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float Angle { get { return this.mAngle; } set { this.mAngle = value; } }
         public float G { get { return this.mG; } set { this.mG = value; } }
-
 
         /* Functions */
 

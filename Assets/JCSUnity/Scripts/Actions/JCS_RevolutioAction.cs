@@ -42,7 +42,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mRevoluteAsLocalPosition = false;
 
-
         /* Setter & Getter */
 
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
@@ -50,7 +49,6 @@ namespace JCSUnity
         public Transform Origin { get { return this.mOrigin; } set { this.mOrigin = value; } }
         public float Radius { get { return this.mRadius; } set { this.mRadius = value; } }
         public int Degree { get { return this.mDegree; } set { this.mDegree = value; } }
-
 
         /* Functions */
 

@@ -27,7 +27,6 @@ namespace JCSUnity
         private bool mDisplayPathGizmos = false;
 #endif
 
-
         [Header("** Runtime Variables (JCS_PfGrid) **")]
 
         [Tooltip("Mask to detect the unwalkable object.")]
@@ -52,12 +51,10 @@ namespace JCSUnity
         private float mNodeDiameter;
         private int mGridSizeX, mGridSizeY;
 
-
         /* Setter & Getter */
 
         public LayerMask UnwalkableMask { get { return this.mUnwalkableMask; } set { this.mUnwalkableMask = value; } }
         public int MaxSize { get { return (mGridSizeX * mGridSizeY); } }
-
 
         /* Functions */
 

@@ -23,7 +23,6 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-
         [Header("** Check Variables (JCS_2DLiveObjectAnimator) **")]
 
         [SerializeField]
@@ -32,7 +31,6 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_LiveObjectState mCurrentState = JCS_LiveObjectState.STAND;
 
-
         [Header("** Initialize Variables (JCS_2DLiveObjectAnimator) **")]
 
         [Tooltip(@"Override the current animation, start 
@@ -40,12 +38,10 @@ from the beginning.")]
         [SerializeField]
         protected bool mOverrideAnim = false;
 
-
         /* Setter & Getter */
 
         public JCS_2DAnimator Animator { get { return this.m2DAnimator; } }
         public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
-
 
         /* Functions */
         protected override void Awake()

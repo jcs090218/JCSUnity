@@ -34,13 +34,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsLocalPosition = false;
 
-
         /* Setter & Getter */
 
         public Transform TargetTransform { get { return this.mTargetTrans; } set { this.mTargetTrans = value; } }
         public Vector3 Distance { get { return this.mDistance; } set { this.mDistance = value; } }
         public bool IsLocalPosition { get { return this.mIsLocalPosition; } set { this.mIsLocalPosition = value; } }
-
 
         /* Functions */
 

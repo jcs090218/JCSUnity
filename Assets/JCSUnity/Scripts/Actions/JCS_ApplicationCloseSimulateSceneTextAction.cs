@@ -30,7 +30,6 @@ namespace JCSUnity
         private string mTextShowInEditMode = "";
 #endif
 
-
         /* Setter & Getter */
 
         /* Functions */

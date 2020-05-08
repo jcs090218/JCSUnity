@@ -37,7 +37,6 @@ be set to this position in each axis.")]
         [SerializeField]
         private bool mUseLocalPosition = false;
 
-
         [Header("** - Max Settings (JCS_3DDistanceTileAction) **")]
 
         [Tooltip("If axis x is over this will get reset.")]
@@ -49,7 +48,6 @@ be set to this position in each axis.")]
         [Tooltip("If axis z is over this will get reset.")]
         [SerializeField]
         private float mMaxZ = float.PositiveInfinity;
-
 
         [Header("** - Min Settings (JCS_3DDistanceTileAction) **")]
 
@@ -63,7 +61,6 @@ be set to this position in each axis.")]
         [SerializeField]
         private float mMinZ = float.NegativeInfinity;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -75,8 +72,6 @@ be set to this position in each axis.")]
         public float MinX { get { return this.mMinX; } set { this.mMinX = value; } }
         public float MinY { get { return this.mMinY; } set { this.mMinY = value; } }
         public float MinZ { get { return this.mMinZ; } set { this.mMinZ = value; } }
-
-
 
         /* Functions */
 

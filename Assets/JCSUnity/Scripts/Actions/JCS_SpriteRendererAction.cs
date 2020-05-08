@@ -23,13 +23,11 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private Vector3 mLastPosition = Vector3.zero;
 
-
         [Header("** Runtime Variables (JCS_SpriteRendererAction) **")]
 
         [Tooltip("List of all the sprite renderer components.")]
         [SerializeField]
         private SpriteRenderer[] mSpriteRenderers = null;
-
 
         [Header("-- X Facing --")]
 
@@ -41,7 +39,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsFacingRight = true;
 
-
         [Header("-- Y Facing --")]
 
         [Tooltip("Enable/Disabel the effect on Y axis.")]
@@ -52,14 +49,12 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsFacingUp = true;
 
-
         /* Setter & Getter */
 
         public bool IsFacingUp { get { return this.mIsFacingUp; } }
         public bool IsFacingRight { get { return this.mIsFacingRight; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
-
 
         /* Functions */
 

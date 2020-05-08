@@ -18,45 +18,22 @@ namespace JCSUnity
     public class JCS_DetectAreaObject
         : MonoBehaviour
     {
-        //----------------------
-        // Public Variables
-
-        //----------------------
-        // Private Variables
+        /* Variables */
 
         [Header("** Check Variables (JCS_DetectAreaObject) **")]
 
         [SerializeField]
         private JCS_2DLiveObject mLiveObject = null;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
         public JCS_2DLiveObject GetLiveObject() { return this.mLiveObject; }
 
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
+
         private void Awake()
         {
             mLiveObject = this.GetComponent<JCS_2DLiveObject>();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
-
     }
 }

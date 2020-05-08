@@ -34,13 +34,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Bool3 mFreezeScale = JCS_Bool3.allFalse;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public JCS_Bool3 FreezeScale { get { return this.mFreezeScale; } set { this.mFreezeScale = value; } }
         public Vector3 ScaleToFreeze { get { return this.mScaleToFreeze; } set { this.mScaleToFreeze = value; } }
-
 
         /* Functions */
 

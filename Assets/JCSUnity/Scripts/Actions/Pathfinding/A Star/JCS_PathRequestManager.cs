@@ -49,7 +49,6 @@ namespace JCSUnity
             }
         }
 
-
         /* Setter & Getter */
 
         /* Functions */

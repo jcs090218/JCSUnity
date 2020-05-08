@@ -34,7 +34,6 @@ this script is basically not the good serve for you.")]
         [SerializeField]
         private MonoBehaviour[] mActionList = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

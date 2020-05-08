@@ -24,13 +24,11 @@ namespace JCSUnity
 
         private JCS_2DAnimator mAnimator = null;
 
-
         [Header("** Check Variables (JCS_2DOrderAnimPlayer) **")]
 
         [Tooltip("Current playing animation's id.")]
         [SerializeField]
         private int mCurrentAnimationId = 0;
-
 
         [Header("** Runtime Variables (JCS_2DOrderAnimPlayer) **")]
 
@@ -46,13 +44,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mLoop = false;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool PlayOnAwake { get { return this.mPlayOnAwake; } set { this.mPlayOnAwake = value; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
-
         
         /* Functions */
 

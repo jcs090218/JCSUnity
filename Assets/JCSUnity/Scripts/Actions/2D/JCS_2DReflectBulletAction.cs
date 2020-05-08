@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_2DReflectBulletAction) **")]
 
-        // TODO(Jen-Chieh): not done yet.
+        // TODO(jenchieh): not done yet.
         [Tooltip("Force add on after reflect.")]
         [SerializeField] private float mReflectForce = 0;
 
@@ -32,14 +32,14 @@ namespace JCSUnity
         // Sound
         private JCS_SoundPoolAction mSoundPoolAction = null;
 
-        [Header("** Reflect Effect Settings **")]
+        [Header("- Reflect")]
 
         [Tooltip(@"After reflecting the bullet, add the random
 degree in to it. In order to get this effect work, better set
 degree lower than 90.")]
-        [SerializeField] [Range(0, 180)]
+        [SerializeField]
+        [Range(0, 180)]
         private float mRandomReflectDegree = 0;
-
 
         [Header("** Random Teleport Effect (JCS_2DReflectBulletAction) **")]
 
@@ -47,18 +47,26 @@ degree lower than 90.")]
         [SerializeField] private Vector3 mPosOffset = Vector3.zero;
 
         [Tooltip("after bullet get reflected, teleport the bullet to somewhere else.")]
-        [SerializeField] private bool mRandPosX = false;
-        [SerializeField] [Range(0.1f, 1000)]
+        [SerializeField]
+        private bool mRandPosX = false;
+
+        [SerializeField]
+        [Range(0.1f, 1000)]
         private float mRandPosRangeX = 1f;
 
-        [SerializeField] private bool mRandPosY = false;
-        [SerializeField] [Range(0.1f, 1000)]
+        [SerializeField]
+        private bool mRandPosY = false;
+
+        [SerializeField]
+        [Range(0.1f, 1000)]
         private float mRandPosRangeY = 1f;
 
-        [SerializeField] private bool mRandPosZ = false;
-        [SerializeField] [Range(0.1f, 1000)]
-        private float mRandPosRangeZ = 1f;
+        [SerializeField]
+        private bool mRandPosZ = false;
 
+        [SerializeField]
+        [Range(0.1f, 1000)]
+        private float mRandPosRangeZ = 1f;
 
         /* Setter & Getter */
 

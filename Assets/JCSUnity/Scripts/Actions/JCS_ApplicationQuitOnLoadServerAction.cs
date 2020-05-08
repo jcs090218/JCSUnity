@@ -26,6 +26,12 @@ namespace JCSUnity
     public class JCS_ApplicationQuitOnLoadServerAction
         : MonoBehaviour
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         private void Update()
         {
             // If there are no packet waiting for confirm then meaning

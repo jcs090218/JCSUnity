@@ -17,6 +17,12 @@ namespace JCSUnity
     public class JCS_ApplicationQuitOnLoadAction
         : MonoBehaviour
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         private void Awake()
         {
             Application.Quit();

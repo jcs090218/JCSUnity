@@ -36,7 +36,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject[] mUnityObjects = null;
 
-
         [Header("- Flash Effect (JCS_SimpleInvincibleTimeAction) ")]
 
         [Tooltip("Color when is invincible.")]
@@ -58,20 +57,17 @@ namespace JCSUnity
         // current color is.
         private bool mFlashToggle = false;
 
-
         [Header("- Sound Effect (JCS_SimpleInvincibleTimeAction) ")]
 
         [Tooltip("Play once while triggered.")]
         [SerializeField]
         private AudioClip mTriggerSound = null;
 
-
         /* Setter & Getter */
 
         public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
         // Use to check if this effect is active?
         public bool IsInvincible { get { return this.mTriggerAction; } }
-
 
         /* Functions */
 

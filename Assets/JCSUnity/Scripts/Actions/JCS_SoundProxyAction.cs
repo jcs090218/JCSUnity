@@ -31,12 +31,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-
         /* Setter & Getter */
 
         public AudioClip audioClip { get { return this.mAudioClip; } set { this.mAudioClip = value; } }
         public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
-
         
         /* Functions */
 

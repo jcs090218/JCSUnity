@@ -23,7 +23,6 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-
         [Header("** Runtime Variables (JCS_SoundPoolAction) **")]
 
         [Tooltip("Pool of audio clips.")]
@@ -34,12 +33,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-
         /* Setter & Getter */
 
         public AudioClip[] AudioClips { get { return this.mAudioClips; } set { this.mAudioClips = value; } }
         public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } set { this.mSoundSettingType = value; } }
-
 
         /* Functions */
 

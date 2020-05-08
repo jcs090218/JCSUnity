@@ -23,11 +23,9 @@ namespace JCSUnity
         private T[] mItems;
         private int mCurrentItemCount;
 
-
         /* Setter & Getter */
 
         public int Count { get { return mCurrentItemCount; } }
-
 
         /* Functions */
 

@@ -28,11 +28,9 @@ namespace JCSUnity
         [SerializeField]
         private float mSpeed = 10.0f;
 
-
         /* Setter & Getter */
 
         public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
-
 
         /* Functions */
 

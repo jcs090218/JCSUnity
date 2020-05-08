@@ -38,7 +38,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mStayWithActiveTarget = true;
 
-
         [Header("** Spawn Settings (JCS_2DActiveSkillAction) **")]
 
         [Tooltip("Spawns in the same position.")]
@@ -49,7 +48,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameRotation = true;
 
-
         /* Setter & Getter */
 
         public KeyCode KeyCode { get { return this.mKeyCode; } set { this.mKeyCode = value; } }
@@ -58,7 +56,6 @@ namespace JCSUnity
         public bool StayWithActiveTarget { get { return this.mSameRotation; } set { this.mStayWithActiveTarget = value; } }
         public bool SamePosition { get { return this.mSamePosition; } set { this.mSamePosition = value; } }
         public bool SameRotation { get { return this.mSameRotation; } set { this.mSameRotation = value; } }
-
 
         /* Functions */
 

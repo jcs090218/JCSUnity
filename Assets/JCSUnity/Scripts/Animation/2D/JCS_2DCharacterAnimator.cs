@@ -44,7 +44,6 @@ Use JCS_2DAnimator instead.", true)]
         [SerializeField]
         protected float mAnimationTimer = 0.0f;
 
-
         [Header("** Initialize Variables (JCS_2DCharacterAnimator) **")]
 
         [Tooltip(@"Override the current animation, start 
@@ -70,14 +69,12 @@ by naming the animation attack01/attack02/attack03, etc.")]
         [SerializeField] [Range(1, 5)]
         protected int mAttackAnimationCount = 1;
 
-
         /* Setter & Getter */
 
         public string GetAnimationState() { return this.mAnimationState; }
         public JCS_LiveObjectState GetCurrentAnimationState() { return this.mCurrentState; }
         public bool GetEndAttackStage() { return this.mEndAttackStage; }
         public JCS_AttackState GetAttackState() { return this.mAttackState; }
-
 
         /* Functions */
 

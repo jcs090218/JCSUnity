@@ -23,11 +23,9 @@ namespace JCSUnity
 
         protected Animator mAnimator = null;
 
-
         /* Setter & Getter */
 
         public Animator GetAnimator() { return this.mAnimator; }
-
 
         /* Functions */
 

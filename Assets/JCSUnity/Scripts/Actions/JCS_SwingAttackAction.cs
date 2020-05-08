@@ -23,7 +23,6 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-
         [Header("** Runtime Variables (JCS_SwingAttackAction) **")]
 
         [Tooltip("Collider to detect weather the enemy get hit or not.")]
@@ -82,13 +81,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
 
-        
         [Header("** Damage Text (JCS_SwingAttackAction) **")]
 
         [Tooltip("If you want the action apply damage text add apply this.")]
         [SerializeField]
         private JCS_ApplyDamageTextToLiveObjectAction mApplyDamageTextAction = null;
-
 
         [Header("** Other Settings (JCS_SwingAttackAction) **")]
 
@@ -123,7 +120,6 @@ namespace JCSUnity
         private float mRecordTimeToAttackTime = 0;
         private float mRecordActTime = 0;
 
-
         /* Setter & Getter */
 
         public void SetSpeedLayer(JCS_SpeedLayer sl)
@@ -136,7 +132,6 @@ namespace JCSUnity
         public bool AsSamePosition { get { return this.mAsSamePosition; } set { this.mAsSamePosition = value; } }
         public bool AsSameRotation { get { return this.mAsSameRotation; } set { this.mAsSameRotation = value; } }
         public bool AsSameScale { get { return this.mAsSameScale; } set { this.mAsSameScale = value; } }
-
 
         /* Functions */
 

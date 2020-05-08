@@ -24,7 +24,6 @@ namespace JCSUnity
         private JCS_LiveObject mLiveObject = null;
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
-
         [Header("** Runtime Variables (JCS_InvincibleTimeAction) **")]
 
         [Tooltip("How long the invincible time are?")]
@@ -36,7 +35,6 @@ namespace JCSUnity
 
         // trigger the invincible time action?
         private bool mTriggerAction = false;
-
 
         [Header("- Flash Effect (JCS_InvincibleTimeAction) ")]
 
@@ -63,13 +61,11 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mTriggerSound = null;
 
-
         /* Setter & Getter */
 
         public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
         // Use to check if this effect is active?
         public bool IsInvincible { get { return this.mTriggerAction; } }
-
 
         /* Functions */
 
