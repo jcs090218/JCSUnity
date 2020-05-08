@@ -48,7 +48,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Awake()
+        protected virtual void Awake()
         {
             DetectColliderOnce();
         }
