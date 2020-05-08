@@ -263,7 +263,7 @@ namespace JCSUnity
         /// </summary>
         public void Replay()
         {
-            Play(0);
+            Play(0, true);
         }
 
         /// <summary>
