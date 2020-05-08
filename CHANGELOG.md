@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Added panels section for GUI utility functions. (JCSUnity)
 * Removed `GUI/Button/Dialogue` for repetitive functionalities with 
  other components/scripts. (JCSUnity)
+* Implemented `JCS_ColliderType` enum for collider identification. (JCSUnity)
+* Implemented `JCS_ColliderObject` for collider component management 
+ for single transform.
 
 ### 2020-05-07
 
