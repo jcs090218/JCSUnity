@@ -49,7 +49,6 @@ namespace JCSUnity
         private KeyCode mPauseKey = KeyCode.E;
 #endif
 
-
         [Header("** Check Variables (JCS_Animation) **")]
 
         [Tooltip("Frame this animation current playing.")]
@@ -65,13 +64,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsDonePlaying = false;
 
-
         [Header("** Initialize Variables (JCS_Animation) **")]
 
         [Tooltip("Starting frame index.")]
         [SerializeField]
         private int mStartingFrame = 0;
-
 
         [Header("** Runtime Variables (JCS_Animation) **")]
 
@@ -95,7 +92,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mNullSpriteAfterDonePlayingAnim = false;
 
-
         [Tooltip("FPS for the animation to play.")]
         [SerializeField]
         private float mFramePerSec = 0.1f;
@@ -110,7 +106,6 @@ namespace JCSUnity
         [Tooltip("How fast the animation plays.")]
         [SerializeField] [Range(0.0f, 5.0f)]
         private float mAnimationTimeProduction = 1.0f;
-
 
         /* Setter & Getter */
 
@@ -143,7 +138,6 @@ namespace JCSUnity
         }
         public Sprite[] GetAnimationFrame() { return this.mAnimFrames; }
         public float FramePerSec { get { return this.mFramePerSec; } set { this.mFramePerSec = value; } }
-
 
         /* Functions */
 
@@ -260,6 +254,16 @@ namespace JCSUnity
 
             // stop the animation.
             mActive = false;
+        }
+
+        /// <summary>
+        /// Play animation from the start of the frame.
+        /// 
+        /// For animation that aren't loop.
+        /// </summary>
+        public void Replay()
+        {
+            Play(0);
         }
 
         /// <summary>

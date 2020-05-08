@@ -35,7 +35,6 @@ so after holding we could play the animation back in time.")]
         // trigger holding?
         private bool mHolding = false;
 
-
         [Header("** Runtime Variables (JCS_2DAnimDisplayHolder) **")]
 
         [Tooltip("How long to hold this animation.")]
@@ -43,7 +42,6 @@ so after holding we could play the animation back in time.")]
         private float mHoldTime = 0.5f;
 
         private float mHoldTimer = 0.0f;
-
 
         /* Setter & Getter */
 

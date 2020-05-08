@@ -30,7 +30,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mDonePlayingSequence = false;
 
-
         [Header("** Runtime Variables (JCS_2DAnimSequencePlayer) **")]
 
         [Tooltip("Active this component?")]
@@ -55,14 +54,12 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DAnimation[] mAnimations = null;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool DonePlayingSequence { get { return this.mDonePlayingSequence; } }
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
         public float TimePerAnim { get { return this.mTimePerAnim; } set { this.mTimePerAnim = value; } }
-
 
         /* Functions */
 

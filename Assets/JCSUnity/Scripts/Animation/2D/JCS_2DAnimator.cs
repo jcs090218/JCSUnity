@@ -44,7 +44,6 @@ namespace JCSUnity
         private KeyCode mPlayOneShotAnimKey = KeyCode.F;
 #endif
 
-
         [Header("** Check Variables Variables (JCS_2DAnimator) **")]
 
         [Tooltip("Current animation id.")]
@@ -65,7 +64,6 @@ namespace JCSUnity
 
         private JCS_2DAnimation mOneShotAnim = null;
 
-
         [Header("** Runtime Variables (JCS_2DAnimator) **")]
 
         [Tooltip(@"How fast the animation plays.")]
@@ -77,13 +75,11 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_2DAnimation> mAnimations = null;
 
-
         [Header("** Optional Variables (JCS_2DAnimator) **")]
 
         [Tooltip("Hold animation displayed frame event.")]
         [SerializeField]
         private JCS_2DAnimDisplayHolder m2DAnimDisplayHolder = null;
-
 
         /* Setter & Getter */
 
@@ -94,7 +90,6 @@ namespace JCSUnity
         public int AnimationsLength { get { return this.mAnimations.Count; } }
 
         public JCS_2DAnimDisplayHolder AnimDisplayHolder { get { return this.m2DAnimDisplayHolder; } }
-
 
         /* Functions */
 

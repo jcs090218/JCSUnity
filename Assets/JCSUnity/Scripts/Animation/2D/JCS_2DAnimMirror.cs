@@ -55,7 +55,6 @@ use negative scale instead.")]
         [SerializeField]
         private bool mMimcFlip = true;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -65,7 +64,6 @@ use negative scale instead.")]
         public bool MimicSortingOrder { get { return this.mMimicSortingOrder; } set { this.mMimicSortingOrder = value; } }
         public bool MimicColor { get { return this.mMimicColor; } set { this.mMimicColor = value; } }
         public bool MimcFlip { get { return this.mMimcFlip; } set { this.mMimcFlip = value; } }
-
 
         /* Functions */
 
