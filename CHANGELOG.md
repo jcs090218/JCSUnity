@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-05-11
+
+* Upgraded 3D walk action from 3D AI module. (JCSUnity)
+
 ### 2020-05-08
 
 * Added panels section for GUI utility functions. (JCSUnity)
