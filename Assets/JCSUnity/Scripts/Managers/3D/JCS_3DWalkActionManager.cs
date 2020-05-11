@@ -58,19 +58,20 @@ namespace JCSUnity
         /// Return true, if it does overlaps with other walk action.
         /// Return false, if it does NOT overlap with other walk action.
         /// </returns>
-        public bool OverlapWithOthers(JCS_3DWalkAction self, Vector3 targetPos, float overlapDistance)
+        public JCS_3DWalkAction OverlapWithOthers(JCS_3DWalkAction self, Vector3 targetPos, float overlapDistance)
         {
             foreach (JCS_3DWalkAction wa in mWalkActions)
             {
                 if (self == wa)
                     continue;
 
-                Vector3 dest = wa.navMeshAgent.destination;
+                Vector3 dest = wa.TargetDestination;
                 float distance = Vector3.Distance(targetPos, dest);
-                if (distance < overlapDistance)
-                    return true;
+
+                if (distance <= overlapDistance)
+                    return wa;
             }
-            return false;
+            return null;
         }
     }
 }

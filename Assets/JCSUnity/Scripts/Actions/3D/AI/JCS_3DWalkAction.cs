@@ -18,6 +18,7 @@ namespace JCSUnity
     /// Simulate the walk action in 3D space.
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshObstacle))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
     public class JCS_3DWalkAction
         : MonoBehaviour
@@ -28,21 +29,27 @@ namespace JCSUnity
         // All enemy should have the nav mesh agent for the path finding.
         private NavMeshAgent mNavMeshAgent = null;
 
+        private NavMeshObstacle mNavMeshObstacle = null;
+
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_3DWalkAction) **")]
 
-        [Tooltip("Current target destination.")]
-        [SerializeField]
-        private Vector3 mTargetDestination = Vector3.zero;
-
         [Tooltip("Found the path now.")]
         [SerializeField]
         private bool mFoundPath = false;
+
+        [Tooltip("Remaining distance between destination position.")]
+        [SerializeField]
+        private float mRemainingDistance = 0.0f;
 #endif
 
         [Header("** Check Variables (JCS_3DWalkAction) **")]
+
+        [Tooltip("Current target destination.")]
+        [SerializeField]
+        private Vector3 mTargetDestination = Vector3.negativeInfinity;
 
         [Tooltip("Target transform that we are going to follow.")]
         [SerializeField]
@@ -53,9 +60,9 @@ namespace JCSUnity
         private Vector3 mStartingPosition = Vector3.zero;
 
         // try to avoid stack overflow function call...
-        [Tooltip("Count for how many search per frame.")]
+        [Tooltip("Counter for how many search per frame.")]
         [SerializeField]
-        private int mSearchCount = 0;
+        private int mSearchCounter = 0;
 
         [Header("** Runtime Variables (JCS_3DWalkAction) **")]
 
@@ -67,18 +74,25 @@ namespace JCSUnity
         [SerializeField]
         private JCS_3DWalkType mWalkType = JCS_3DWalkType.SELF_IN_DISTANCE;
 
+        // try to avoid stack overflow function call...
+        [Tooltip("Count for how many search per frame.")]
+        [SerializeField]
+        [Range(1, 5)]
+        private int mSearchCount = 2;
+
         [Tooltip("Allow each walk action having the same destination.")]
         [SerializeField]
         private bool mAllowOverlapDestination = false;
 
         [Tooltip("Distance that would count as overlap destination.")]
+        [SerializeField]
         [Range(0.0f, 30.0f)]
         private float mOverlapDistance = 0.5f;
 
         [Tooltip("What value count as path complete action.")]
         [SerializeField]
         [Range(0.0f, 30.0f)]
-        private float mAcceptRemainDistance = 0.1f;
+        private float mAcceptRemainDistance = 0.2f;
 
         [Tooltip("Minimum randomly add vector with magnitude of distance at target position.")]
         [SerializeField]
@@ -112,8 +126,12 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public Vector3 StartingPosition { get { return this.mStartingPosition; } set { this.mStartingPosition = value; } }
+        public Vector3 TargetDestination { get { return this.mTargetDestination; } }
+
+        public int SearchCount { get { return this.mSearchCount; } set { this.mSearchCount = value; } }
 
         public NavMeshAgent navMeshAgent { get { return this.mNavMeshAgent; } }
+        public NavMeshObstacle navMeshObstacle { get { return this.mNavMeshObstacle; } }
         public JCS_AdjustTimeTrigger AdjustTimeTrigger { get { return this.mAdjustTimeTrigger; } }
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -138,6 +156,9 @@ namespace JCSUnity
         private void Awake()
         {
             this.mNavMeshAgent = this.GetComponent<NavMeshAgent>();
+            this.mNavMeshObstacle = this.GetComponent<NavMeshObstacle>();
+            ObstacleNow();
+
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
             mAdjustTimeTrigger.actions = DoAI;
@@ -151,6 +172,44 @@ namespace JCSUnity
             wam.AddWalkAction(this);
         }
 
+        private void Update()
+        {
+            if (IsArrived())
+                ObstacleNow();
+        }
+
+        /// <summary>
+        /// Do AI action once.
+        /// </summary>
+        public void DoAI()
+        {
+            // Check function trigger.
+            if (!mActive)
+                return;
+
+            AgentNow();
+
+            TargetOne(mTargetTransform);
+        }
+
+        /// <summary>
+        /// Trun the current nav mesh to agent.
+        /// </summary>
+        public void AgentNow()
+        {
+            navMeshObstacle.enabled = false;
+            navMeshAgent.enabled = true;
+        }
+
+        /// <summary>
+        /// Trun the current nav mesh to obstacle.
+        /// </summary>
+        public void ObstacleNow()
+        {
+            navMeshAgent.enabled = false;
+            navMeshObstacle.enabled = true;
+        }
+
         /// <summary>
         /// Target one player and do in target action.
         /// </summary>
@@ -160,8 +219,11 @@ namespace JCSUnity
             if (!mNavMeshAgent.enabled)
                 return;
 
+            if (!IsTargetType())
+                return;
+
             // if target is does not exist, end function call.
-            if (IsTargetType() && target == null)
+            if (target == null)
             {
                 JCS_Debug.LogError("The transform you are targeting is null");
                 return;
@@ -169,10 +231,10 @@ namespace JCSUnity
 
             JCS_3DWalkActionManager wam = JCS_3DWalkActionManager.instance;
 
-            if (mSearchCount == 2)
+            if (mSearchCounter == mSearchCount)
             {
                 // reset search count.
-                mSearchCount = 0;
+                mSearchCounter = 0;
 
                 // exit out of recursive function call...
                 return;
@@ -181,18 +243,20 @@ namespace JCSUnity
             // reset the path every time it request.
             mNavMeshAgent.ResetPath();
 
-            // calculate the distance and range relationship,
-            // and find out the position enemy are approach to.
+            // calculate the distance and range relationship, and find out the 
+            // position agent are approach to.
             Vector3 targetPos = GetPosByWalkType(target);
 
+            JCS_3DWalkAction overlapped = null;
+            if (!mAllowOverlapDestination)
+                overlapped = wam.OverlapWithOthers(this, targetPos, mOverlapDistance);
+
             // set to the destination.
-            bool found = mNavMeshAgent.SetDestination(targetPos);
+            bool found = false;
+            if (!overlapped)
+                found = mNavMeshAgent.SetDestination(targetPos);
 
-            if (!mAllowOverlapDestination && found)
-                found = !wam.OverlapWithOthers(this, targetPos, mOverlapDistance);
-
-            // increase the search count.
-            ++mSearchCount;
+            ++mSearchCounter;
 
 #if (UNITY_EDITOR)
             this.mFoundPath = found;
@@ -200,15 +264,18 @@ namespace JCSUnity
 
             // if faild, try it again.
             if (!found)
-                TargetOne(target);
+            {
+                if (overlapped)
+                    TargetOne(overlapped.transform);
+                else
+                    TargetOne(target);
+            }
             else
             {
-#if (UNITY_EDITOR)
-                this.mTargetDestination = mNavMeshAgent.destination;
-#endif
+                this.mTargetDestination = targetPos;
 
                 // if succesed, reset search count.
-                mSearchCount = 0;
+                mSearchCounter = 0;
             }
         }
 
@@ -217,14 +284,15 @@ namespace JCSUnity
         /// </summary>
         public bool NavMeshArrive(NavMeshAgent agent)
         {
-            if (!mNavMeshAgent.enabled)
-                return false;
+            float remDist = Vector3.Distance(agent.destination, agent.transform.position);
 
-            float dist = agent.remainingDistance;
+#if (UNITY_EDITOR)
+            this.mRemainingDistance = remDist;
+#endif
 
-            if (!float.IsNaN(dist) &&
+            if (!float.IsNaN(remDist) &&
                 agent.pathStatus == NavMeshPathStatus.PathComplete &&
-                agent.remainingDistance <= mAcceptRemainDistance)
+                remDist <= mAcceptRemainDistance)
             {
                 return true;
             }
@@ -291,7 +359,7 @@ namespace JCSUnity
                     newTargetPos = CalculateRange(mStartingPosition, mSelfDistance);
                     break;
                 case JCS_3DWalkType.TARGET_CLOSEST_POINT:
-                    newTargetPos = CalculateClosest(targetPos);
+                    newTargetPos = CalculateClosest(targetPos, GetRangeDistance());
                     break;
                 case JCS_3DWalkType.TARGET_IN_RANGE:
                     newTargetPos = CalculateRange(targetPos, GetRangeDistance());
@@ -308,15 +376,13 @@ namespace JCSUnity
         /// </summary>
         /// <param name="targetPos"></param>
         /// <returns></returns>
-        private Vector3 CalculateClosest(Vector3 targetPos)
+        private Vector3 CalculateClosest(Vector3 targetPos, float distance)
         {
             Vector3 newTargetPos = targetPos;
 
             Vector3 vec = this.transform.position - targetPos;
 
             vec = vec.normalized;
-
-            float distance = GetRangeDistance();
 
             float hyp = JCS_Mathf.PythagoreanTheorem(vec.x, vec.z, JCS_Mathf.TriSides.hyp);
 
@@ -368,18 +434,6 @@ namespace JCSUnity
             randVec *= magnitude;
 
             return targetPos + randVec;
-        }
-
-        /// <summary>
-        /// Do AI algorithm here...
-        /// </summary>
-        private void DoAI()
-        {
-            // Check function trigger.
-            if (!mActive)
-                return;
-
-            TargetOne(mTargetTransform);
         }
 
         /// <summary>
