@@ -87,7 +87,6 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mSwitchSceneSound = null;
 
-
         /* Setter & Getter */
 
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }

@@ -15,21 +15,16 @@ namespace JCSUnity
     /// <summary>
     /// Button will do the slide screen.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_SlideScreenButton
         : JCS_Button
     {
         /* Variables */
-
-        private JCS_SoundPlayer mSoundPlayer = null;
-
 
         [Header("** Check Variables (JCS_SlideScreenButton) **")]
 
         [Tooltip("This action are using \"JCS_2DSlideScreenCamera\".")]
         [SerializeField]
         private JCS_2DSlideScreenCamera[] mSlideCameras = null;
-
 
         [Header("** Runtime Variables (JCS_SlideScreenButton) **")]
 
@@ -40,15 +35,17 @@ namespace JCSUnity
         [SerializeField] [Range(1, 5)]
         private int mCount = 1;
 
+        [Header("- Sound")]
 
-        [Header("** Sound Settings (JCS_SlideScreenButton) **")]
+        [Tooltip("Sound player for 3D sounds calculation.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Sound when sliding screen. (Switch Scene)")]
         [SerializeField]
         private AudioClip mSlideScreenSound = null;
 
-
-        [Header("** Delay Settings (JCS_SlideScreenButton) **")]
+        [Header("- Delay")]
 
         [Tooltip("Time delay when slide screen.")]
         [SerializeField]
@@ -65,14 +62,14 @@ namespace JCSUnity
         public int Count { get { return this.mCount; } }
         public float DelayTime { get { return this.mDelayTime; } }
 
-
         /* Functions */
 
         protected override void Awake()
         {
             base.Awake();
 
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            if (mSoundPlayer == null)
+                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
             this.mSlideCameras = (JCS_2DSlideScreenCamera[])FindObjectsOfType(typeof(JCS_2DSlideScreenCamera));
@@ -91,7 +88,7 @@ namespace JCSUnity
                 SwitchScene();
 
                 // play sound.
-                mSoundPlayer.PlayOneShot(mSlideScreenSound);
+                JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mSlideScreenSound);
 
                 // reset timer (ready for next use)
                 mDelayTimer = 0;
@@ -108,8 +105,7 @@ namespace JCSUnity
         {
             if (mSlideCameras.Length == 0)
             {
-                JCS_Debug.LogReminder(
-                    "Assign the button without camera is not allowed...");
+                JCS_Debug.LogReminder("Assign the button without camera is not allowed");
                 return;
             }
 
@@ -124,13 +120,9 @@ namespace JCSUnity
         {
             JCS_2DSlideScreenCamera slideCamera = null;
 
-            for (int index = 0;
-                index < mCount;
-                ++index)
+            for (int index = 0; index < mCount; ++index)
             {
-                for (int index2 = 0;
-                    index2 < mSlideCameras.Length;
-                    ++index2)
+                for (int index2 = 0; index2 < mSlideCameras.Length; ++index2)
                 {
                     slideCamera = this.mSlideCameras[index2];
 

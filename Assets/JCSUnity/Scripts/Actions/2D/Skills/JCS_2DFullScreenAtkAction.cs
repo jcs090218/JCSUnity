@@ -29,21 +29,24 @@ namespace JCSUnity
         private JCS_AnimPool mAnimPoolSupAnim = null;
 
         [Tooltip("How many support animation going play on the scene.")]
-        [SerializeField] [Range(0, 30)]
+        [SerializeField]
+        [Range(0, 30)]
         private int mAnimDesity = 20;
 
         [Tooltip("How wide the skill effect?")]
-        [SerializeField] [Range(0.0f, 1500.0f)]
+        [SerializeField]
+        [Range(0.0f, 1500.0f)]
         private float mSkillWide = 750.0f;
 
         [Tooltip("How hight the skill effect?")]
-        [SerializeField] [Range(0.0f, 1500.0f)]
+        [SerializeField]
+        [Range(0.0f, 1500.0f)]
         private float mSkillHeight = 750.0f;
 
         [Tooltip("Maximum the enmey kill in the scene.")]
-        [SerializeField] [Range(0, 15)]
+        [SerializeField]
+        [Range(0, 15)]
         private int mSkillHit = 15;
-
 
         /* Setter & Getter */
 
@@ -51,7 +54,6 @@ namespace JCSUnity
         public float SkillWide { get { return this.mSkillWide; } set { this.mSkillWide = value; } }
         public float SkillHeight { get { return this.mSkillHeight; } set { this.mSkillHeight = value; } }
         public int SkillHit { get { return this.mSkillHit; } }
-
 
         /* Functions */
 
@@ -131,7 +133,7 @@ namespace JCSUnity
 
             JCS_SoundProxyAction spa = obj.AddComponent<JCS_SoundProxyAction>();
             spa.audioClip = mHitSound;
-            spa.SoundSettingType = mSoundPlayer.GetSoundSettingType();
+            spa.SoundSettingType = mSoundPlayer.SoundSettingType;
         }
     }
 }

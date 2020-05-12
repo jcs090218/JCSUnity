@@ -22,7 +22,6 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-
         /* Setter & Getter */
 
         public void SetAudioClipAndPlayOneShot(AudioClip clip, JCS_SoundSettingType type)
@@ -33,7 +32,6 @@ namespace JCSUnity
             this.mSoundPlayer.GetAudioSource().clip = clip;
             this.mSoundPlayer.PlayOneShot(clip, type);
         }
-
 
         /* Functions */
 

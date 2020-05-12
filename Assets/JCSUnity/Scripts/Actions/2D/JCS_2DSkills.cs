@@ -15,13 +15,10 @@ namespace JCSUnity
     /// Do not use add this script directly to Unity.
     /// This is for Scripter only file.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public abstract class JCS_2DSkills
         : MonoBehaviour
     {
         /* Variables */
-
-        protected JCS_SoundPlayer mSoundPlayer = null;
 
         [Header("** Runtime Variables (JCS_2DSkills) **")]
 
@@ -87,6 +84,10 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
+        [Tooltip("Optional sound player for 3D sounds calculation.")]
+        [SerializeField]
+        protected JCS_SoundPlayer mSoundPlayer = null;
+
         [Tooltip("Sound when plays this skill.")]
         [SerializeField]
         protected AudioClip mUseSound = null;
@@ -101,7 +102,8 @@ namespace JCSUnity
 
         protected virtual void Awake()
         {
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            if (mSoundPlayer == null)
+                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
 
         protected virtual void Update()

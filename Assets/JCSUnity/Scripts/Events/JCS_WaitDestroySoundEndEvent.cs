@@ -35,12 +35,10 @@ namespace JCSUnity
 
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-
         /* Setter & Getter */
 
         public void SetSoundSettingType(JCS_SoundSettingType type) { mSoundSettingType = type; }
         public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
-
 
         /* Functions */
 

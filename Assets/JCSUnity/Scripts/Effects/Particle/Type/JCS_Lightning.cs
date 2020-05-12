@@ -32,7 +32,6 @@ namespace JCSUnity
         private JCS_SoundPool mSoundPool = null;
         private JCS_SoundPlayer mSoundPlayer = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

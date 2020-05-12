@@ -180,6 +180,7 @@ namespace JCSUnity
             ProcessInput();
         }
 
+#if (UNITY_EDITOR)
         private void Test()
         {
             if (JCS_Input.GetKeyDown(KeyCode.Alpha1))
@@ -197,6 +198,7 @@ namespace JCSUnity
             if (JCS_Input.GetKeyDown(KeyCode.Alpha5))
                 SetSpeedLayer(JCS_SpeedLayer.VERY_SLOW);
         }
+#endif
 
         /// <summary>
         /// Start the action.

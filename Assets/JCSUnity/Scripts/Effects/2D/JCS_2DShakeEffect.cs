@@ -13,18 +13,15 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Effect that shake the gameobject.
+    /// Effect that shake the transform.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_2DShakeEffect 
+    public class JCS_2DShakeEffect
         : JCS_2DEffect
     {
         /* Variables */
 
-        private JCS_SoundPlayer mSoundPlayer = null;
-
 #if (UNITY_EDITOR)
-        [Header("** Helper Variables (JCS_2DWaveEffect) **")]
+        [Header("** Helper Variables (JCS_2DShakeEffect) **")]
 
         [Tooltip("Test with key?")]
         [SerializeField]
@@ -35,7 +32,6 @@ namespace JCSUnity
         private KeyCode mDoShakeEffectKey = KeyCode.Y;
 #endif
 
-
         [Header("** Runtime Variables (JCS_2DShakeEffect) **")]
 
         [Tooltip("Override the effect even the the effect is enabled already.")]
@@ -43,45 +39,54 @@ namespace JCSUnity
         private bool mRepeatOverride = false;
 
         [Tooltip("How long it shakes.")]
-        [SerializeField] [Range(0.001f, 360.0f)]
+        [SerializeField]
+        [Range(0.001f, 360.0f)]
         private float mShakeTime = 1.0f;
 
         [Tooltip("How intense it shakes.")]
         [SerializeField]
         private float mShakeMargin = 3.0f;
 
+        [Tooltip("Shake for each steps.")]
+        [SerializeField]
+        private float mShakeSteps = 5.0f;
+
         // Support
-        private float mShakeTimer = 0;
+        private float mShakeTimer = 0.0f;
         private Vector3 mShakeOrigin = Vector3.zero;
 
-        [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
-        [SerializeField]
-        private JCS_2DCamera mJCS_2DCamera = null;
+        [Header("- Camera")]
 
-        [Header("** Sound Settings (JCS_2DShakeEffect) **")]
+        [Tooltip("(NOTE: If the effect object is camera, plz fill the camera in here.)")]
+        [SerializeField]
+        private JCS_2DCamera m2DCamera = null;
+
+        [Header("- Sound")]
+
+        [Tooltip("Sound player for 3D sounds calculation.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Sound played when effect occurs.")]
         [SerializeField]
         private AudioClip mShakeSound = null;
 
-
         /* Setter & Getter */
 
         public bool RepeatOverride { get { return this.mRepeatOverride; } set { this.mRepeatOverride = value; } }
         public float ShakeTime { get { return this.mShakeTime; } set { this.mShakeTime = value; } }
-        public float ShakeMargin { get { return this.mShakeMargin; } }
+        public float ShakeMargin { get { return this.mShakeMargin; } set { this.mShakeMargin = value; } }
+        public float ShakeSteps { get { return this.mShakeSteps; } set { this.mShakeSteps = value; } }
 
+        public JCS_SoundPlayer SoundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
         public AudioClip ShakeSound { get { return this.mShakeSound; } set { this.mShakeSound = value; } }
-
 
         /* Functions */
 
         private void Awake()
         {
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
-
-            if (mJCS_2DCamera == null)
-                mJCS_2DCamera = this.GetComponent<JCS_2DCamera>();
+            if (m2DCamera == null)
+                m2DCamera = this.GetComponent<JCS_2DCamera>();
         }
 
         private void Update()
@@ -145,8 +150,7 @@ namespace JCSUnity
             if (mStopInputWhileThisEffect)
                 JCS_GameManager.instance.GAME_PAUSE = true;
 
-            // play sound effect!
-            mSoundPlayer.PlayOneShot(mShakeSound);
+            PlayeSound();
         }
 
         /// <summary>
@@ -159,10 +163,10 @@ namespace JCSUnity
 
             Vector3 pos = mShakeOrigin;
 
-            if (mJCS_2DCamera != null)
+            if (m2DCamera != null)
             {
-                this.mShakeOrigin.x = mJCS_2DCamera.GetTargetTransform().position.x;
-                this.mShakeOrigin.y = mJCS_2DCamera.GetTargetTransform().position.y;
+                this.mShakeOrigin.x = m2DCamera.GetTargetTransform().position.x;
+                this.mShakeOrigin.y = m2DCamera.GetTargetTransform().position.y;
             }
 
             mShakeTimer += Time.deltaTime;
@@ -171,8 +175,8 @@ namespace JCSUnity
             {
                 // shake randomly
                 // shakeTime / shakeTimer = shakeRate
-                pos.x += (JCS_Random.Range(-1, 1 + 1)) * mShakeMargin * (mShakeTime / mShakeTimer) / 5;
-                pos.y += (JCS_Random.Range(-1, 1 + 1)) * mShakeMargin * (mShakeTime / mShakeTimer) / 5;
+                pos.x += (JCS_Random.Range(-1.0f, 1.0f + 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
+                pos.y += (JCS_Random.Range(-1.0f, 1.0f + 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
 
                 // apply pos
                 this.transform.position = pos;
@@ -182,12 +186,30 @@ namespace JCSUnity
                 // back to original position
                 this.transform.position = mShakeOrigin;
 
-                mShakeTimer = 0;
+                mShakeTimer = 0.0f;
                 mEffect = false;
 
                 // Enable the input
                 if (mStopInputWhileThisEffect)
                     JCS_GameManager.instance.GAME_PAUSE = false;
+            }
+        }
+
+        /// <summary>
+        /// Play shake sound.
+        /// </summary>
+        private void PlayeSound()
+        {
+            if (mShakeSound == null)
+                return;
+
+            if (mSoundPlayer)
+            {
+                mSoundPlayer.PlayOneShot(mShakeSound);
+            }
+            else
+            {
+                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mShakeSound);
             }
         }
     }

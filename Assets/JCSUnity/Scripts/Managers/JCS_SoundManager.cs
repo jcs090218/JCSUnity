@@ -139,9 +139,7 @@ namespace JCSUnity
         {
             if (JCS_Camera.main == null)
             {
-                JCS_Debug.LogError(
-                    "There is no \"JCS_Camera\" assign!");
-
+                JCS_Debug.LogError("There is no \"JCS_Camera\" assign!");
                 return;
             }
 

@@ -71,10 +71,12 @@ namespace JCSUnity
             // set to Sound Manager in order to get manage
             JCS_SoundManager.instance.SetBackgroundMusic(GetAudioSource());
 
-            if (!JCS_SoundSettings.instance.KEEP_BGM_SWITCH_SCENE)
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+
+            if (!ss.KEEP_BGM_SWITCH_SCENE)
             {
                 // Assign BGM from Sound Manager!
-                GetAudioSource().clip = JCS_SoundSettings.instance.BACKGROUND_MUSIC;
+                GetAudioSource().clip = ss.BACKGROUND_MUSIC;
 
                 GetAudioSource().Play();
             }

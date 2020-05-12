@@ -16,11 +16,9 @@ namespace JCSUnity
     /// <summary>
     /// Webcam object. Must have the texture on it in order to render.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_Webcam
         : JCS_UnityObject
     {
-
         /* Variables */
 
         private bool mDetectDevice = true;
@@ -30,7 +28,6 @@ namespace JCSUnity
         private WebCamTexture mWebCamTexture = null;
 
         private int mCaptureCounter = 0;
-
 
         [Header("** Runtime Variables (JCS_Webcam) **")]
 
@@ -42,16 +39,15 @@ namespace JCSUnity
 
         private bool mResumeTrigger = false;
 
-
 #if (UNITY_STANDALONE || UNITY_EDITOR)
-        [Header("** Key Settings **")]
+        [Header("- Keys")]
 
         [Tooltip("Key to take gameplay screenshot.")]
         [SerializeField]
         private KeyCode mTakePic = KeyCode.None;
 #endif
 
-        [Header("** Image Path **")]
+        [Header("- Image Path")]
 
         [Tooltip("Webcam u take will save into this path.")]
         [SerializeField] private string mSavePath = "/JCS_GameData/WebcamShot/"; //Change the path here!
@@ -64,8 +60,7 @@ namespace JCSUnity
         [SerializeField]
         private int mWebcamResolutionHeight = 1080;
 
-
-        [Header("** Effect **")]
+        [Header("- Effect")]
 
         [Tooltip("Do the splash effect?")]
         [SerializeField]
@@ -80,14 +75,15 @@ namespace JCSUnity
 
         private float mDelayTimer = 0;
 
+        [Header("- Sound")]
 
-        [Header("** Sound Settings **")]
+        [Tooltip("Sound player for 3D sounds calculation.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Sound when taking the screenshot.")]
         [SerializeField]
         private AudioClip mTakePhotoSound = null;
-
-        private JCS_SoundPlayer mSoundPlayer = null;
 
         /* Setter & Getter */
 
@@ -105,7 +101,8 @@ namespace JCSUnity
         {
             base.Awake();
 
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            if (mSoundPlayer == null)
+                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             ActiveWebcam();
         }

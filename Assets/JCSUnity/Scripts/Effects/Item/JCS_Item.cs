@@ -34,7 +34,7 @@ the object will do tween effect to this transform.")]
         [SerializeField]
         protected Collider mPickCollider = null;
 
-        [Header("** Player Specific Settings (JCS_Item) **")]
+        [Header("** Runtime Settings (JCS_Item) **")]
 
         [Tooltip("Is the auto pick collider must be player?")]
         [SerializeField]
@@ -44,7 +44,7 @@ the object will do tween effect to this transform.")]
         [SerializeField]
         protected KeyCode mPickKey = KeyCode.Z;
 
-        [Header("** System Settings (JCS_Item) **")]
+        [Header("- System")]
 
         [Tooltip("Pick item by click/mouse?")]
         [SerializeField]
@@ -59,7 +59,7 @@ object that we target.")]
         [SerializeField]
         protected bool mAutoPickWhileCan = false;
 
-        [Header("** Sound Settings (JCS_Item) **")]
+        [Header("- Sound")]
 
         [Tooltip(@"Play one shot while not playing any other sound. (Pick Sound)")]
         [SerializeField]

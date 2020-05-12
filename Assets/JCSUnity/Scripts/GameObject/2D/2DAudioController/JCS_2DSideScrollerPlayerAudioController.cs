@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Audio controller for player.
     /// </summary>
-    public class JCS_2DSideScrollerPlayerAudioController 
+    public class JCS_2DSideScrollerPlayerAudioController
         : JCS_2DPlayerAudioController
     {
         /* Variables */
@@ -39,7 +39,6 @@ namespace JCSUnity
         [SerializeField] private AudioClip mDeadSound = null;
         [SerializeField] private AudioClip mGhostSound = null;
 
-
         /* Setter & Getter */
 
         /* Functions */
@@ -54,11 +53,10 @@ namespace JCSUnity
 
             if (mJumpSound[0] == null)
             {
-                JCS_Debug.LogError(
-                    "Play sound with null references...");
+                JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mJumpSound[0], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[0], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -70,10 +68,10 @@ namespace JCSUnity
 
             if (mJumpSound[1] == null)
             {
-                JCS_Debug.LogError( "Play sound with null references...");
+                JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mJumpSound[1], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[1], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -85,10 +83,10 @@ namespace JCSUnity
 
             if (mJumpSound[2] == null)
             {
-                JCS_Debug.LogError( "Play sound with null references...");
+                JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mJumpSound[2], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mJumpSound[2], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -98,7 +96,7 @@ namespace JCSUnity
             if (!mOverrideSound)
             {
                 // do not override the sound
-                if (mJCSSoundPlayer.GetAudioSource().isPlaying)
+                if (mSoundPlayer.GetAudioSource().isPlaying)
                     return;
             }
 
@@ -106,12 +104,10 @@ namespace JCSUnity
 
             if (mAttackSounds[rand] == null)
             {
-                JCS_Debug.LogError(
-                    "Play sound with null references...");
-
+                JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mAttackSounds[rand], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mAttackSounds[rand], JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -120,12 +116,10 @@ namespace JCSUnity
         {
             if (mWalkSound == null)
             {
-                JCS_Debug.LogError(
-                    "Play sound with null references...");
-
+                JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mJCSSoundPlayer.PlayOneShot(mWalkSound, JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            mSoundPlayer.PlayOneShot(mWalkSound, JCS_SoundSettings.instance.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -135,7 +129,7 @@ namespace JCSUnity
         {
             AudioClip clip = GetSoundByPlayerState(state);
 
-            mJCSSoundPlayer.PlayOneShot(clip);
+            mSoundPlayer.PlayOneShot(clip);
         }
 
         /// <summary>
@@ -187,11 +181,7 @@ namespace JCSUnity
                     return mGhostSound;
             }
 
-            JCS_Debug.LogError(
-                "JCS_2DSideScrollerPlayerAudioController",
-                 
-                "Return sound that aren't in the player state...");
-
+            JCS_Debug.LogError("Return sound that aren't in the player state...");
             return null;
         }
     }

@@ -25,7 +25,6 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mEnvironmentSound = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

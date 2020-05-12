@@ -27,14 +27,12 @@ namespace JCSUnity
         private JCS_SoundPlayer mSoundPlayer = null;
         private RectTransform mRectTransform = null;
 
-
         [Header("** Initialize Variables (JCS_SequenceSlidePanel) **")]
 
         [Tooltip(@"Optional choice, instead of using the auto detection. 
 (JCS_EmptyButton are the recommaned default class to use.)")]
         [SerializeField]
         private JCS_Button mToggleOrExitButton = null;
-
 
         [Header("** Runtime Variables (JCS_SequenceSlidePanel) **")]
 
@@ -46,8 +44,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SlideEffect[] mAreaEffects = null;
 
-
-        [Header("** Spacing Settings **")]
+        [Header("- Spacing")]
 
         [Tooltip("Time to active one button animation.")]
         [SerializeField]
@@ -61,8 +58,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mExitByNoOverGUI = true;
 
-
-        [Header("** Audio Settings **")]
+        [Header("- Sound")]
 
         [Tooltip("Audio when active the animation the outer panel.")]
         [SerializeField]
@@ -80,8 +76,14 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mInsideDeactiveClip = null;
 
-
         /* Setter & Getter */
+
+        public float SpaceTime { get { return this.mSpaceTime; } set { this.mSpaceTime = value; } }
+
+        public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
+        public AudioClip DeactiveClip { get { return this.mDeactiveClip; } set { this.mDeactiveClip = value; } }
+        public AudioClip InsideActiveClip { get { return this.mInsideActiveClip; } set { this.mInsideActiveClip = value; } }
+        public AudioClip InsideDeactiveClip { get { return this.mInsideDeactiveClip; } set { this.mInsideDeactiveClip = value; } }
 
         /* Functions */
 

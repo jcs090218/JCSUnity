@@ -27,7 +27,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DSlideScreenCamera[] mSlideCameras = null;
 
-
         [Header("** Runtime Variables (JCS_SlideScreenGamePadButton) **")]
 
         [Tooltip("Direction u want to go.")]
@@ -38,15 +37,13 @@ namespace JCSUnity
         [SerializeField] [Range(1, 5)]
         private int mCount = 1;
 
-
-        [Header("** Sound Settings (JCS_SlideScreenGamePadButton) **")]
+        [Header("- Sound")]
 
         [Tooltip("Sound when sliding screen. (Switch Scene)")]
         [SerializeField]
         private AudioClip mSlideScreenSound = null;
 
-
-        [Header("** Delay Settings (JCS_SlideScreenGamePadButton) **")]
+        [Header("- Delay")]
 
         [Tooltip("Time delay when slide screen.")]
         [SerializeField]
@@ -56,12 +53,10 @@ namespace JCSUnity
 
         private bool mStartDelay = false;
 
-
         /* Setter & Getter */
 
         public void SetDirection(JCS_2D8Direction direction) { this.mDirection = direction; }
 
-        
         /* Functions */
 
         protected override void Awake()
@@ -106,8 +101,7 @@ namespace JCSUnity
         {
             if (mSlideCameras.Length == 0)
             {
-                JCS_Debug.LogReminder(
-                    "Assign the button without camera is not allowed...");
+                JCS_Debug.LogReminder("Assign the button without camera is not allowed...");
                 return;
             }
 

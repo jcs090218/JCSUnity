@@ -27,11 +27,9 @@ namespace JCSUnity
         [SerializeField]
         protected bool mStopInputWhileThisEffect = false;
 
-
         /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
-
 
         /* Functions */
 

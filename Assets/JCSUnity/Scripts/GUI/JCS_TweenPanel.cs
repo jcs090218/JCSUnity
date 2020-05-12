@@ -21,7 +21,6 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_TransformTweener))]
     [RequireComponent(typeof(JCS_TweenerHandler))]
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_TweenPanel
         : MonoBehaviour
     {
@@ -55,7 +54,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mOverrideTween = false;
 
-        [Header("** Sound Setttings (JCS_TweenPanel) **")]
+        [Header("- Sound")]
+
+        [Tooltip("Sound player for 3D sounds calculation.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Sound plays when active this panel.")]
         [SerializeField]
@@ -64,8 +67,6 @@ namespace JCSUnity
         [Tooltip("Sound plays when this panel is deactive.")]
         [SerializeField]
         private AudioClip mDeactiveSound = null;
-
-        private JCS_SoundPlayer mSoundPlayer = null;
 
         // call backs
         private ActiveCallback mActiveCallbackFunc = null;
@@ -85,7 +86,8 @@ namespace JCSUnity
         private void Awake()
         {
             this.mTweenerHandler = this.GetComponent<JCS_TweenerHandler>();
-            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            if (mSoundPlayer == null)
+                this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
 
 #if (UNITY_EDITOR)
@@ -116,7 +118,7 @@ namespace JCSUnity
                 return;
 
             mTweenerHandler.DoAllTweenToTargetValue();
-            mSoundPlayer.PlayOneShotWhileNotPlaying(mActiveSound);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mActiveSound, JCS_SoundMethod.PLAY_SOUND_WHILE_NOT_PLAYING);
 
             if (mActiveCallbackFunc != null)
                 mActiveCallbackFunc.Invoke();
@@ -138,7 +140,7 @@ namespace JCSUnity
                 return;
 
             mTweenerHandler.DoAllTweenToStartValue();
-            mSoundPlayer.PlayOneShotWhileNotPlaying(mDeactiveSound);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mDeactiveSound, JCS_SoundMethod.PLAY_SOUND_WHILE_NOT_PLAYING);
 
             if (mDeactiveCallbackFunc != null)
                 mDeactiveCallbackFunc.Invoke();

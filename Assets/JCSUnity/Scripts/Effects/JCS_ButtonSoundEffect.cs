@@ -28,7 +28,6 @@ namespace JCSUnity
         private RectTransform mRectTransform = null;
         private EventTrigger mEventTrigger = null;
 
-
         [Header("** Optional Variables (JCS_ButtonSoundEffect) **")]
 
         [Tooltip(@"Sound Player for this button, if this transform dose not 
@@ -36,14 +35,14 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
-
         [Header("Auto add to Unity's \"Event Trigger(Script)\" or not?")]
+
         [Tooltip("is true u dont have to add manully!")]
         [SerializeField]
         private bool mAutoAddEvent = true;
 
-
         [Header("*USAGE: Please use this component with Unity's \"Event Trigger(Script)\"!!!")]
+
         [SerializeField]
         private AudioClip mOnMouseOverSound = null;
         [SerializeField]
@@ -72,15 +71,13 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundMethod mOnMouseDoubleClickSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-
-        [Header("** Optional Settings (JCS_ButtonSoundEffect) **")]
+        [Header("- Optional")]
 
         [Tooltip("Use to detect to see if the button is interactable or not.")]
         [SerializeField]
         private JCS_Button mJCSButton = null;
 
-        [Tooltip(@"When button is not interactable will active these when 
-on mouse down.")]
+        [Tooltip(@"When button is not interactable will active these when on mouse down.")]
         [SerializeField]
         private AudioClip mOnMouseOverRefuseSound = null;
         [SerializeField]
@@ -106,7 +103,6 @@ on mouse down.")]
         private JCS_SoundMethod mOnMouseClickRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
         [SerializeField]
         private JCS_SoundMethod mOnMouseDoubleClickRefuseSoundMethod = JCS_SoundMethod.PLAY_SOUND;
-
 
         /* Setter & Getter */
 
@@ -139,7 +135,6 @@ on mouse down.")]
         public JCS_SoundMethod OnMouseUpRefuseSoundMethod { get { return this.mOnMouseUpRefuseSoundMethod; } set { this.mOnMouseUpRefuseSoundMethod = value; } }
         public JCS_SoundMethod OnMouseClickRefuseSoundMethod { get { return this.mOnMouseClickRefuseSoundMethod; } set { this.mOnMouseClickRefuseSoundMethod = value; } }
         public JCS_SoundMethod OnMouseDoubleClickRefuseSoundMethod { get { return this.mOnMouseDoubleClickRefuseSoundMethod; } set { this.mOnMouseDoubleClickRefuseSoundMethod = value; } }
-
 
         /* Functions */
 

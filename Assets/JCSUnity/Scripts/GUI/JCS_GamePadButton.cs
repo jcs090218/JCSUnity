@@ -16,18 +16,10 @@ namespace JCSUnity
     /// Button will listen to the gamepad. Note it compatible with
     /// PC/desktop too.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public abstract class JCS_GamePadButton
         : JCS_Button
     {
         /* Variables */
-
-        /*
-         * TODO(jenchieh): Consider this to put at `JCS_Button' class
-         * instead of this subclass.
-         */
-        protected JCS_SoundPlayer mSoundPlayer = null;
-
 
         [Header("** Runtime Variables (JCS_GamePadButton) **")]
 
@@ -43,15 +35,13 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
 
-
-        [Header("- Keyboard (JCS_GamePadButton)")]
+        [Header("- Keyboard")]
 
         [Tooltip("Key to trigger this button.")]
         [SerializeField]
         protected KeyCode mKKeyToListen = KeyCode.None;
 
-
-        [Header("- Game Pad (JCS_GamePadButton)")]
+        [Header("- Game Pad")]
 
         [Tooltip("Key to trigger this button.")]
         [SerializeField]
@@ -61,12 +51,11 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_JoystickIndex mJoystickLitener = JCS_JoystickIndex.FROM_ALL_JOYSTICK;
 
+        [Header("- Sound")]
 
-        [Header("- Audio Settings (JCS_GamePadButton)")]
-
-        [Tooltip("Play with the global sound player.")]
+        [Tooltip("Sound player for 3D sounds calculation.")]
         [SerializeField]
-        protected bool mPlayWithGlobalSoundPlayer = false;
+        protected JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Sound when button is pressed.")]
         [SerializeField]
@@ -75,7 +64,6 @@ namespace JCSUnity
         [Tooltip("Sound method.")]
         [SerializeField]
         protected JCS_SoundMethod mSoundMethod = JCS_SoundMethod.PLAY_SOUND;
-
 
         /* Setter & Getter */
 
@@ -90,14 +78,14 @@ namespace JCSUnity
 
         public bool IgnorePauseCheck { get { return this.mIgnorePauseCheck; } set { this.mIgnorePauseCheck = value; } }
 
-
         /* Functions */
 
         protected override void Awake()
         {
             base.Awake();
 
-            this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            if (mSoundPlayer == null)
+                this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
         }
 
         protected virtual void Update()
@@ -116,8 +104,7 @@ namespace JCSUnity
                 if (// listen to keyboard.
                     JCS_Input.GetKeyByAction(mKeyActionType, mKKeyToListen, mIgnorePauseCheck) ||
                     // listen to game pad.
-                    JCS_Input.GetJoystickKeyByAction(mKeyActionType, mJoystickLitener, mJKeyToListen, mIgnorePauseCheck)
-                    )
+                    JCS_Input.GetJoystickKeyByAction(mKeyActionType, mJoystickLitener, mJKeyToListen, mIgnorePauseCheck))
                 {
                     JCS_ButtonClick();
                     PlayButtonClickSound();
@@ -130,15 +117,7 @@ namespace JCSUnity
         /// </summary>
         private void PlayButtonClickSound()
         {
-            if (mButtonClickSound == null)
-                return;
-
-            JCS_SoundPlayer soundPlayer = mSoundPlayer;
-            /* Get sound plaeyr according to the chosen choice. */
-            if (mPlayWithGlobalSoundPlayer)
-                soundPlayer = JCS_SoundManager.instance.GetGlobalSoundPlayer();
-
-            soundPlayer.PlayOneShotByMethod(mButtonClickSound, mSoundMethod);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mButtonClickSound, mSoundMethod);
         }
     }
 }

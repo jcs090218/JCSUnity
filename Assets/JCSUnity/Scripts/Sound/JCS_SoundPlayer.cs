@@ -23,14 +23,16 @@ namespace JCSUnity
 
         private AudioSource mAudioSource = null;
 
-        [Tooltip("Sound setting type for this perfab.")]
+        [Header("** Runtime Variables (JCS_SoundPlayer) **")]
+
+        [Tooltip("Sound setting type for this sound player.")]
         [SerializeField]
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
         /* Setter & Getter */
 
         public AudioSource GetAudioSource() { return this.mAudioSource; }
-        public JCS_SoundSettingType GetSoundSettingType() { return this.mSoundSettingType; }
+        public JCS_SoundSettingType SoundSettingType { get { return this.mSoundSettingType; } }
 
         /* Functions */
 
@@ -47,23 +49,40 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Play AC by method depends on the attachement of the SP.
+        /// </summary>
+        /// <param name="sp"> Used sound player, if null use global sound player. </param>
+        /// <param name="ac"> Target audio clip. </param>
+        /// <param name="method"> Method to play. </param>
+        /// <param name="volume"> Sound volume. </param>
+        public static void PlayByAttachment(JCS_SoundPlayer sp, AudioClip ac, JCS_SoundMethod method = JCS_SoundMethod.PLAY_SOUND, float volume = 1.0f)
+        {
+            JCS_SoundPlayer useSp = sp;
+            if (useSp == null)
+                useSp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            useSp.PlayOneShotByMethod(ac, method, volume);
+        }
+
+        /// <summary>
         /// Play one shot of sound.
         /// </summary>
         /// <param name="clip"></param>
         /// <param name="type"></param>
         public void PlayOneShot(AudioClip clip, JCS_SoundSettingType type)
         {
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+
             float volume = 0;
             switch (type)
             {
                 case JCS_SoundSettingType.BGM_SOUND:
-                    volume = JCS_SoundSettings.instance.GetBGM_Volume();
+                    volume = ss.GetBGM_Volume();
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
-                    volume = JCS_SoundSettings.instance.GetSFXSound_Volume();
+                    volume = ss.GetSFXSound_Volume();
                     break;
                 case JCS_SoundSettingType.SKILLS_SOUND:
-                    volume = JCS_SoundSettings.instance.GetSkillsSound_Volume();
+                    volume = ss.GetSkillsSound_Volume();
                     break;
             }
 
@@ -81,31 +100,6 @@ namespace JCSUnity
                 return;
 
             GetAudioSource().PlayOneShot(clip, volume);
-        }
-
-        /// <summary>
-        /// Play one shot of sound.
-        /// </summary>
-        /// <param name="clip"></param>
-        /// <param name="volume"></param>
-        /// <param name="type"></param>
-        public void PlayOneShot(AudioClip clip, float volume, JCS_SoundType type)
-        {
-            SetSoundType(type);
-
-            PlayOneShot(clip, volume);
-        }
-
-        /// <summary>
-        /// Play one shot of sound.
-        /// </summary>
-        /// <param name="clip"></param>
-        /// <param name="type"></param>
-        public void PlayOneShot(AudioClip clip, JCS_SoundType type)
-        {
-            SetSoundType(type);
-
-            GetAudioSource().PlayOneShot(clip);
         }
 
         /// <summary>
@@ -153,23 +147,6 @@ namespace JCSUnity
                     break;
                 case JCS_SoundMethod.PLAY_SOUND_INTERRUPT:
                     PlayOneShotInterrupt(clip, volume);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Set either the sound player in 2d space or 3d space.
-        /// </summary>
-        /// <param name="type"> 2d or 3d space. </param>
-        protected void SetSoundType(JCS_SoundType type)
-        {
-            switch (type)
-            {
-                case JCS_SoundType.SOUND_2D:
-                    GetAudioSource().spatialBlend = 0;
-                    break;
-                case JCS_SoundType.SOUND_3D:
-                    GetAudioSource().spatialBlend = 1;
                     break;
             }
         }

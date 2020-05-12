@@ -26,7 +26,6 @@ namespace JCSUnity
         private Vector3 mRecordPosition = Vector3.zero;
         private Vector3 mTowardPosition = Vector3.zero;
 
-
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_SlideEffect) **")]
 
@@ -43,7 +42,6 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.S;
 #endif
 
-
         [Header("** Check Variables (JCS_SlideEffect) **")]
 
         [Tooltip("Is this effect active?")]
@@ -57,7 +55,6 @@ namespace JCSUnity
         [Tooltip("Event trigger system.")]
         [SerializeField]
         private EventTrigger mEventTrigger = null;
-
 
         [Header("** Initialize Variables (JCS_SlideEffect) **")]
 
@@ -74,8 +71,7 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mFriction = 0.2f;
 
-
-        [Header("- UI (JCS_SlideEffect)")]
+        [Header("- UI")]
 
         [Tooltip("Add event to event trigger system!")]
         [SerializeField]
@@ -89,9 +85,9 @@ namespace JCSUnity
         [SerializeField]
         private EventTriggerType mDeactiveEventTriggerType = EventTriggerType.PointerExit;
 
+        [Header("- Sound")]
 
-
-        [Header("Usage:(Audio) Add JCS_SoundPlayer components, if u want the SFX.")]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("If slide out, do the sound.")]
         [SerializeField]
@@ -100,8 +96,6 @@ namespace JCSUnity
         [Tooltip("If slide back the original position, do the sound.")]
         [SerializeField]
         private AudioClip mDeactiveClip = null;
-
-        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Don't track on x-axis?")]
         [SerializeField]
@@ -115,21 +109,16 @@ namespace JCSUnity
         [SerializeField]
         private bool mIgnoreZ = false;
 
+        [Header("- Optional")]
 
-        [Header("** Optional Variables (JCS_SlideEffect) **")]
-
-        [Tooltip(@"If you want to active this effect by button, 
-plz set the button here.")]
+        [Tooltip(@"If you want to active this effect by button, plz set the button here.")]
         [SerializeField]
         private JCS_Button mActiveButton = null;
-
 
         /* Setter & Getter */
 
         public bool IsActive { get { return this.mIsActive; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-        public void SetActiveSound(AudioClip ac) { this.mActiveClip = ac; }
-        public void SetDeactiveSound(AudioClip ac) { this.mDeactiveClip = ac; }
         public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
         public float Distance
         {
@@ -161,6 +150,12 @@ plz set the button here.")]
         }
         public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
 
+        public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
+        public AudioClip DeactiveClip { get { return this.mDeactiveClip; } set { this.mDeactiveClip = value; } }
+
+        public bool IgnoreX { get { return this.mIgnoreX; } set { this.mIgnoreX = value; } }
+        public bool IgnoreY { get { return this.mIgnoreY; } set { this.mIgnoreY = value; } }
+        public bool IgnoreZ { get { return this.mIgnoreZ; } set { this.mIgnoreZ = value; } }
 
         /* Functions */
 
@@ -168,8 +163,9 @@ plz set the button here.")]
         {
             base.Awake();
 
-            // JCS_SoundPlayer will be optional.
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            // sound player will be optional.
+            if (mSoundPlayer == null)
+                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             // set the call back function if there is button assigned.
             if (mActiveButton != null)
@@ -299,8 +295,7 @@ plz set the button here.")]
             mIsActive = true;
             mTargetPosition = mTowardPosition;
 
-            if (mSoundPlayer != null)
-                mSoundPlayer.PlayOneShot(mActiveClip);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mActiveClip);
         }
 
         /// <summary>
@@ -311,8 +306,7 @@ plz set the button here.")]
             mIsActive = false;
             mTargetPosition = mRecordPosition;
 
-            if (mSoundPlayer != null)
-                mSoundPlayer.PlayOneShot(mDeactiveClip);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mDeactiveClip);
         }
 
 

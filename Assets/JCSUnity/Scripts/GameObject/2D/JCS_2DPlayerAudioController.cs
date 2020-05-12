@@ -23,29 +23,29 @@ namespace JCSUnity
         protected AudioListener mAudioListener = null;
 
         // Audio Source equals to Audio Player!
-        protected JCS_SoundPlayer mJCSSoundPlayer = null;
-
+        protected JCS_SoundPlayer mSoundPlayer = null;
 
         /* Setter & Getter */
 
         public AudioListener GetAudioListener() { return this.mAudioListener; }
 
-
         /* Functions */
 
         protected virtual void Awake()
         {
-            mJCSSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
             mAudioListener = this.GetComponent<AudioListener>();
         }
 
         protected virtual void Start()
         {
-            JCS_SoundManager.instance.SetAudioListener(GetAudioListener());
+            JCS_SoundManager sm = JCS_SoundManager.instance;
+
+            sm.SetAudioListener(GetAudioListener());
 
             // add it to Sound Manager so it could manage
             // the volume and mute!
-            JCS_SoundManager.instance.AssignSoundSource(JCS_SoundSettingType.SKILLS_SOUND, mJCSSoundPlayer.GetAudioSource());
+            sm.AssignSoundSource(JCS_SoundSettingType.SKILLS_SOUND, mSoundPlayer.GetAudioSource());
         }
     }
 }

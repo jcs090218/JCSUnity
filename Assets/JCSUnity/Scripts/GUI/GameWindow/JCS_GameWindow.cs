@@ -33,13 +33,11 @@ namespace JCSUnity
 
         private JCS_DialogueObject mDialogueObject = null;
 
-
         [Header("** Initialize Variables (JCS_GameWindow) **")]
 
         [Tooltip("Drag drop type.")]
         [SerializeField]
         private JCS_DragDropType mType = JCS_DragDropType.DialogueBox;
-
 
         /* Setter & Getter */
 
@@ -56,7 +54,7 @@ namespace JCSUnity
         public void JCS_PointerDown()
         {
             mDialogueObject.MoveToTheLastChild();
-            if (mDialogueObject.GetDialogueType() == JCS_DialogueType.PLAYER_DIALOGUE)
+            if (mDialogueObject.DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
                 JCS_UIManager.instance.SetJCSDialogue(JCS_DialogueType.PLAYER_DIALOGUE, mDialogueObject);
         }
 
@@ -65,7 +63,7 @@ namespace JCSUnity
         /// </summary>
         public void JCS_Click()
         {
-
+            // default.
         }
 
         /// <summary>

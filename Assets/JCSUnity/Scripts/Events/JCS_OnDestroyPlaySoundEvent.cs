@@ -14,14 +14,10 @@ namespace JCSUnity
     /// <summary>
     /// When object is destroy, play the sound.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_OnDestroyPlaySoundEvent
         : MonoBehaviour
     {
         /* Variables */
-
-        private JCS_SoundPlayer mSoundPlayer = null;
-
 
         [Header("** Runtime Variables (JCS_OnDestroyPlaySoundEvent) **")]
 
@@ -31,20 +27,12 @@ namespace JCSUnity
 
         private JCS_SoundSettingType mSoundSettingType = JCS_SoundSettingType.NONE;
 
-
         /* Setter & Getter */
 
         public void SetSoundSettingType(JCS_SoundSettingType type) { mSoundSettingType = type; }
         public void SetAudioClip(AudioClip ac) { this.mAudioClip = ac; }
-        public JCS_SoundPlayer GetJCSSoundPlayer() { return this.mSoundPlayer; }
-
 
         /* Functions */
-
-        private void Awake()
-        {
-            mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
-        }
 
         /// <summary>
         /// When is on destroy play the sound.
@@ -71,7 +59,6 @@ namespace JCSUnity
             obj.name = "JCS_OnDestroyPlaySoundEvent";
 #endif
             dsee.SetAudioClipAndPlayOneShot(mAudioClip, mSoundSettingType);
-            
         }
     }
 }

@@ -59,7 +59,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFaceCamera = true;
 
-        [Header("** Sound (JCS_DamageTextPool) **")]
+        [Header("- Sound")]
 
         [Tooltip("Sound when spawns.")]
         [SerializeField]
@@ -67,7 +67,7 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Header("** Zigge Right Left Effect (In Sequence)**")]
+        [Header("- Zigge Right Left (In Sequence)")]
 
         [Tooltip("Do the zigge effect?")]
         [SerializeField]

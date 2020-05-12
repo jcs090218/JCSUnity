@@ -171,7 +171,7 @@ namespace JCSUnity
 
             obj = (JCS_DialogueObject)JCS_Utility.SpawnGameObject(obj);
             obj.ShowDialogue();
-            obj.SetKeyCode(KeyCode.None);
+            obj.OpenKey = KeyCode.None;
 
             return obj;
         }

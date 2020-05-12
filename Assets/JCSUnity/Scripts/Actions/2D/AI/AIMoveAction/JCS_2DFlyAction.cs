@@ -16,10 +16,6 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_CharacterControllerInfo))]
     [RequireComponent(typeof(JCS_VelocityInfo))]
-
-    // Sound Player cause performance, so i make
-    // it to optional.
-    //[RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_2DFlyAction
         : JCS_AIAction
     {
@@ -41,7 +37,6 @@ namespace JCSUnity
             UP = 1,
         };
 
-
         private JCS_VelocityInfo mVelocityInfo = null;
         private JCS_CharacterControllerInfo mCharacterControllerInfo = null;
 
@@ -55,46 +50,53 @@ namespace JCSUnity
         [SerializeField]
         private float mFlyForceY = 10.0f;
 
-
-        [Header("** Activate Variables (JCS_2DFlyAction) **")]
+        [Header("- Activate")]
 
         [Tooltip("Possiblity of going UP.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToUp = 50.0f;
 
         [Tooltip("Possiblity of going DOWN.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToDown = 50.0f;
 
         [Tooltip("Possiblity of going LEFT.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToLeft = 50.0f;
 
         [Tooltip("Possiblity of going RIGHT.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToRight = 50.0f;
 
         [Tooltip("Possibility to IDLE in horizontal direction.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToIdleHorizontal = 50.0f;
 
         [Tooltip("Possibility to IDLE in vertical direction.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToIdleVetical = 50.0f;
 
         [Tooltip("Possiblity to active this action.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mPossibility = 80.0f;
-
 
         [Header("** Time Settings (JCS_2DFlyAction) **")]
 
         [Tooltip("Time to do one Fly.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mTimeZone = 2.0f;
 
         [Tooltip("Time that will randomly affect the Time Zone.")]
-        [SerializeField] [Range(0.0f, 3.0f)]
+        [SerializeField]
+        [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
         // time to record down the real time to do one fly
@@ -107,19 +109,19 @@ namespace JCSUnity
         // check to see if we can reset our time zone.
         private bool mFlyed = false;
 
-
-        [Header("** Space Limit Settings (JCS_2DFlyAction) **")]
+        [Header("- Space Limitation")]
 
         [Tooltip("Lowest height the object can go.")]
-        [SerializeField] [Range(-1000.0f, 1000.0f)]
+        [SerializeField]
+        [Range(-1000.0f, 1000.0f)]
         private float mMinHeight = -500.0f;
 
         [Tooltip("Highest height the object can go.")]
-        [SerializeField] [Range(-1000.0f, 1000.0f)]
+        [SerializeField]
+        [Range(-1000.0f, 1000.0f)]
         private float mMaxHeight = 500.0f;
 
-
-        [Header("** Track Effect (JCS_2DFlyAction) **")]
+        [Header("- Track")]
 
         [Tooltip("If get mad will start tracking the object that make this object mad.")]
         [SerializeField]
@@ -129,20 +131,17 @@ namespace JCSUnity
         [SerializeField]
         private JCS_AttackerRecorder mAttackRecorder = null;
 
-
-        [Header("** Optional Settings (JCS_2DFlyAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Live object animation.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
-        [Tooltip(@"Check this to make the object ignore all the platform at
-initialize time.")]
+        [Tooltip(@"Check this to make the object ignore all the platform at initialize time.")]
         [SerializeField]
         private bool mIgnorePlatform = true;
 
-
-        [Header("** Sound Settings (JCS_2DFlyAction) **")]
+        [Header("- Sound")]
 
         [Tooltip("Sound while flying.")]
         [SerializeField]
@@ -151,7 +150,6 @@ initialize time.")]
         [Tooltip("Sound player to play sounds.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
-
 
         /* Setter & Getter */
 
@@ -165,7 +163,6 @@ initialize time.")]
         public Vector3 RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
 
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
-
 
         /* Functions */
 
@@ -212,7 +209,6 @@ initialize time.")]
                     Physics.IgnoreCollision(platform.GetPlatformTrigger(),
                         this.GetCharacterController());
                 }
-
             }
         }
 

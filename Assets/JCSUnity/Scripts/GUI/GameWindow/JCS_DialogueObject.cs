@@ -15,14 +15,10 @@ namespace JCSUnity
     /// Base class of Game Window.
     /// </summary>
     [RequireComponent(typeof(JCS_GameWindow))]
-    [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_DialogueObject 
+    public class JCS_DialogueObject
         : JCS_PanelRoot
     {
         /* Variables */
-
-        private JCS_SoundPlayer mJCSSoundPlayer = null;
-
 
         [Header("** Runtime Variables (JCS_DialogueObject) **")]
 
@@ -32,7 +28,7 @@ namespace JCSUnity
 
         [Tooltip("Key to open this dialogue.")]
         [SerializeField]
-        private KeyCode mKeyCode = KeyCode.None;
+        private KeyCode mOpenKey = KeyCode.None;
 
         [Tooltip("Dialogue type for priority.")]
         [SerializeField]
@@ -42,8 +38,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_PanelType mPanelType = JCS_PanelType.RESET_PANEL;
 
+        [Header("- Sound")]
 
-        [Header("- Sound Setting (JCS_DialogueObject) ")]
+        [Tooltip("Sound player for 3D sounds calculation.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Tooltip("Sound when open this dialouge window.")]
         [SerializeField]
@@ -53,16 +52,17 @@ namespace JCSUnity
         [SerializeField]
         private AudioClip mCloseWindowClip = null;
 
-
         /* Setter & Getter */
 
-        public int GetDialogueIndex() { return this.mDialogueIndex; }
-        public KeyCode GetKeyCode() { return this.mKeyCode; }
-        public void SetKeyCode(KeyCode key) { this.mKeyCode = key; }
-        public JCS_DialogueType GetDialogueType() { return this.mDialogueType; }
-        public JCS_PanelType GetPanelType() { return this.mPanelType; }
-        public bool IsOpenWindow() { return this.mIsVisible; }
+        public int DialogueIndex { get { return this.mDialogueIndex; } }
+        public KeyCode OpenKey { get { return this.mOpenKey; } set { this.mOpenKey = value; } }
+        public JCS_DialogueType DialogueType { get { return this.mDialogueType; } }
+        public JCS_PanelType PanelType { get { return this.mPanelType; } }
+        public bool IsWindowOpened() { return this.mIsVisible; }
 
+        public JCS_SoundPlayer SoundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
+        public AudioClip OpenWindowClip { get { return this.mOpenWindowClip; } set { this.mOpenWindowClip = value; } }
+        public AudioClip CloseWindowClip { get { return this.mCloseWindowClip; } set { this.mCloseWindowClip = value; } }
 
         /* Functions */
 
@@ -109,7 +109,8 @@ namespace JCSUnity
             };
 #endif
 
-            this.mJCSSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            if (mSoundPlayer == null)
+                this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             base.Awake();
 
@@ -124,7 +125,6 @@ namespace JCSUnity
                 if (mCloseWindowClip == null)
                     this.mCloseWindowClip = ss.DEFAULT_CLOSE_WINDOW_CLIP;
             }
-
         }
 
         protected override void Start()
@@ -147,7 +147,7 @@ namespace JCSUnity
 
             ProcessInput();
         }
-        
+
         /// <summary>
         /// Decide what panel is this panel going to be.
         /// </summary>
@@ -183,14 +183,13 @@ namespace JCSUnity
             ShowDialogueWithoutSound();
 
             // set focus dialogue
-            if (GetDialogueType() == JCS_DialogueType.PLAYER_DIALOGUE)
+            if (DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
                 JCS_UIManager.instance.SetJCSDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
 
             // let UIManager know the window is opened
             SwapToTheLastOpenWindowList();
 
-            if (mOpenWindowClip != null && mJCSSoundPlayer != null)
-                mJCSSoundPlayer.PlayOneShot(mOpenWindowClip, JCS_SoundType.SOUND_2D);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mOpenWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>
@@ -212,9 +211,7 @@ namespace JCSUnity
         {
             HideDialogueWithoutSound();
 
-            // Apply sound
-            if (mCloseWindowClip != null && mJCSSoundPlayer != null)
-                mJCSSoundPlayer.PlayOneShot(mCloseWindowClip, JCS_SoundType.SOUND_2D);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mCloseWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>
@@ -257,7 +254,7 @@ namespace JCSUnity
             }
 
             // first check the window is open or not open
-            if (!IsOpenWindow())
+            if (!IsWindowOpened())
                 return;
 
             // add to the list so the manager know what window is opened
@@ -292,7 +289,7 @@ namespace JCSUnity
         /// </summary>
         private void ProcessInput()
         {
-            if (JCS_Input.GetKeyDown(GetKeyCode()))
+            if (JCS_Input.GetKeyDown(mOpenKey))
             {
                 ToggleVisibility();
             }
