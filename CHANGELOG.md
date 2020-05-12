@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-05-12
 
 * Organized sound player attachment default behaviour. (JCSUnity)
+* Removed `JCS_2DShakeEffect`, please use `JCS_3DShakeEffect` instead. (JCSUnity)
 
 ### 2020-05-11
 
