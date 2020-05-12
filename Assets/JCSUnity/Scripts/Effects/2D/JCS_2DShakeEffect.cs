@@ -13,7 +13,7 @@ using System;
 namespace JCSUnity
 {
     /// <summary>
-    /// Effect that shake the transform.
+    /// Effect that shake the transform in 2D.
     /// </summary>
     public class JCS_2DShakeEffect
         : JCS_2DEffect
