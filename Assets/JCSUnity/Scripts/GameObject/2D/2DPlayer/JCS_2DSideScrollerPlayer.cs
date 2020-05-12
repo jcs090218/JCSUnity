@@ -805,7 +805,6 @@ namespace JCSUnity
                     if (!GetCharacterAnimator().CurrentAnimation.IsDonePlaying)
                         return false;
                 }
-
             }
 
             if (state != JCS_LiveObjectState.RAND_ATTACK)

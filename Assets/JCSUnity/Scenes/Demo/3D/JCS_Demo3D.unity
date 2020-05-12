@@ -628,7 +628,6 @@ GameObject:
   - component: {fileID: 426173579}
   - component: {fileID: 426173578}
   - component: {fileID: 426173577}
-  - component: {fileID: 426173576}
   m_Layer: 5
   m_Name: JCS_Canvas
   m_TagString: Untagged
@@ -636,26 +635,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &426173576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426173575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a268d9d3e0ebc469b96efe5ba5f08d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mStopInputWhileThisEffect: 0
-  mTestWithKey: 0
-  mDoShakeEffectKey: 121
-  mRepeatOverride: 0
-  mShakeTime: 1
-  mShakeMargin: 3
-  mJCS_2DCamera: {fileID: 0}
-  mShakeSound: {fileID: 0}
 --- !u!114 &426173577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,7 +727,7 @@ RectTransform:
   m_Children:
   - {fileID: 2001225294}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1714,7 +1693,7 @@ Transform:
   - {fileID: 2000954695}
   - {fileID: 1308822490}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1045784368
 GameObject:
@@ -1917,19 +1896,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bb5f45d7e70e246bdcf574469bbcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mInfo: {fileID: 0}
+  mReachMin: 0
+  mReachMax: 0
   mOverrideZero: 1
   mAlign: 1
   mDeltaFriction: 0.2
   mMinValue: 0
   mMaxValue: 100
   mCurrentValue: 50
+  mInfo: {fileID: 0}
   mInfoImage: {fileID: 0}
   mRecoverEffect: 1
   mTimeToRecover: 1
   mRecoverValue: 1
   mBackToRecordRecoverValue: 1
   mGetBackFriction: 1
+  mTestWithKey: 0
+  mLackKey: 106
+  mFullKey: 107
+  mHalfKey: 104
+  mFixedKey: 120
   mMaskTargetPosition: {x: 0, y: 0, z: 0}
   mMask: {fileID: 1748915075}
 --- !u!114 &1066188633
@@ -2329,7 +2315,7 @@ Transform:
   m_LocalScale: {x: 282.38388, y: 0.39585206, z: 266.90173}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1691874976
 PrefabInstance:
@@ -2663,9 +2649,10 @@ MonoBehaviour:
   mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mDialogueIndex: -1
-  mKeyCode: 0
+  mOpenKey: 0
   mDialogueType: 0
   mPanelType: 0
+  mSoundPlayer: {fileID: 0}
   mOpenWindowClip: {fileID: 0}
   mCloseWindowClip: {fileID: 0}
 --- !u!114 &2001225296
@@ -2883,7 +2870,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &2050619024
 GameObject:

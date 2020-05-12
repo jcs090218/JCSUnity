@@ -286,7 +286,7 @@ public class RC_Player
                 Die();
 
                 JCS_DynamicScene jcsds = JCS_SceneManager.instance.GetDynamicScene();
-                JCS_2DShakeEffect jcsse = jcsds.GetComponent<JCS_2DShakeEffect>();
+                JCS_3DShakeEffect jcsse = jcsds.GetComponent<JCS_3DShakeEffect>();
 
                 // shake once! if player is dead
                 if (jcsse != null)

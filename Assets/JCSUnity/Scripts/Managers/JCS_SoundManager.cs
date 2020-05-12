@@ -38,7 +38,6 @@ namespace JCSUnity
         private float mOnStackFadeInTime = 0;
         private float mOnStackFadeOutTime = 0;
 
-
         [Header("** Check Variables (JCS_SoundManager) **")]
 
         [Tooltip("Current background music audio source.")]
@@ -53,7 +52,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSwitchingBGM = false;
 
-        [Header("** General Music Settings (JCS_SoundManager) **")]
+        [Header("- General")]
 
         [Tooltip("Do this scene using the specific setting?")]
         [SerializeField]
@@ -91,8 +90,10 @@ namespace JCSUnity
         {
             this.mBGM = music;
 
-            this.mBGM.volume = JCS_SoundSettings.instance.GetBGM_Volume();
-            this.mBGM.mute = JCS_SoundSettings.instance.BGM_MUTE;
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+
+            this.mBGM.volume = ss.GetBGM_Volume();
+            this.mBGM.mute = ss.BGM_MUTE;
         }
         public JCS_Vector<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
         public JCS_SoundPlayer GetGlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
@@ -139,15 +140,17 @@ namespace JCSUnity
         {
             if (JCS_Camera.main == null)
             {
-                JCS_Debug.LogError("There is no \"JCS_Camera\" assign!");
+                JCS_Debug.LogError("There is no 'JCS_Camera' assign!");
                 return;
             }
 
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+
             // Reset the sound every scene
-            SetSFXSoundVolume(JCS_SoundSettings.instance.GetSFXSound_Volume());
-            SetSkillsSoundVolume(JCS_SoundSettings.instance.GetSkillsSound_Volume());
-            SetSFXSoundMute(JCS_SoundSettings.instance.EFFECT_MUTE);
-            SetSkillsSoundMute(JCS_SoundSettings.instance.PERFONAL_EFFECT_MUTE);
+            SetSFXSoundVolume(ss.GetSFXSound_Volume());
+            SetSkillsSoundVolume(ss.GetSkillsSound_Volume());
+            SetSFXSoundMute(ss.EFFECT_MUTE);
+            SetSkillsSoundMute(ss.PERFONAL_EFFECT_MUTE);
         }
 
         private void Update()
@@ -167,10 +170,12 @@ namespace JCSUnity
             AudioClip soundClip, 
             bool loop = true)
         {
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+
             SwitchBackgroundMusic(
                 soundClip,
-                JCS_SoundSettings.instance.GetSoundFadeOutTimeBaseOnSetting(),
-                JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
+                ss.GetSoundFadeOutTimeBaseOnSetting(),
+                ss.GetSoundFadeInTimeBaseOnSetting());
         }
 
         /// /// <summary>
@@ -240,11 +245,13 @@ namespace JCSUnity
             AudioClip oneShotClip,
             AudioClip onStackClip)
         {
+            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+
             return PlayOneShotBackgroundMusic(
                 oneShotClip, 
                 onStackClip,
-                JCS_SoundSettings.instance.GetSoundFadeOutTimeBaseOnSetting(),
-                JCS_SoundSettings.instance.GetSoundFadeInTimeBaseOnSetting());
+                ss.GetSoundFadeOutTimeBaseOnSetting(),
+                ss.GetSoundFadeInTimeBaseOnSetting());
         }
 
         /// <summary>
