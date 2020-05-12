@@ -19,13 +19,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        protected bool mEffect = false;
+        [Header("** Check Variables (JCS_2DEffect) **")]
 
-        [Header("** Runtime Variables (JCS_2DEffect) **")]
-
-        [Tooltip("Stop receive input while this effect is active.")]
+        [Tooltip("Flag to check if currently the effect active.")]
         [SerializeField]
-        protected bool mStopInputWhileThisEffect = false;
+        protected bool mEffect = false;
 
         /* Setter & Getter */
 
@@ -33,6 +31,5 @@ namespace JCSUnity
 
         /* Functions */
 
-        public bool StopInputWhileThisEffect { get { return this.mStopInputWhileThisEffect; } set { this.mStopInputWhileThisEffect = value; } }
     }
 }

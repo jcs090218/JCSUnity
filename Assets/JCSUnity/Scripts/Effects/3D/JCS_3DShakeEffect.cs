@@ -32,9 +32,21 @@ namespace JCSUnity
         private KeyCode mDoShakeEffectKey = KeyCode.Y;
 #endif
 
+        [Header("** Check Variables (JCS_3DShakeEffect) **")]
+
+        [Tooltip("Flag to check if currently the effect active.")]
+        [SerializeField]
         private bool mEffect = false;
 
+        [Tooltip("Shake delta changes on transform properties.")]
+        [SerializeField]
+        private Vector3 mShakeDelta = Vector3.zero;
+
         [Header("** Runtime Variables (JCS_3DShakeEffect) **")]
+
+        [Tooltip("Shake on this transform properties.")]
+        [SerializeField]
+        private JCS_TransformType mTransformType = JCS_TransformType.POSITION;
 
         [Tooltip("Override the effect even the the effect is enabled already.")]
         [SerializeField]
@@ -55,13 +67,20 @@ namespace JCSUnity
 
         // Support
         private float mShakeTimer = 0.0f;
-        private Vector3 mShakeOrigin = Vector3.zero;
 
-        [Header("- Camera")]
+        [Header("- Axis")]
 
-        [Tooltip("(NOTE: If the effect object is camera, plz fill the camera in here.)")]
+        [Tooltip("Do shake on z axis.")]
         [SerializeField]
-        private JCS_3DCamera m3DCamera = null;
+        private bool mShakeOnX = true;
+
+        [Tooltip("Do shake on y axis.")]
+        [SerializeField]
+        private bool mShakeOnY = true;
+
+        [Tooltip("Do shake on z axis.")]
+        [SerializeField]
+        private bool mShakeOnZ = true;
 
         [Header("- Sound")]
 
@@ -75,21 +94,22 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+
+        public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
         public bool RepeatOverride { get { return this.mRepeatOverride; } set { this.mRepeatOverride = value; } }
         public float ShakeTime { get { return this.mShakeTime; } set { this.mShakeTime = value; } }
         public float ShakeMargin { get { return this.mShakeMargin; } }
         public float ShakeSteps { get { return this.mShakeSteps; } set { this.mShakeSteps = value; } }
 
+        public bool ShakeOnX { get { return this.mShakeOnX; } set { this.mShakeOnX = value; } }
+        public bool ShakeOnY { get { return this.mShakeOnY; } set { this.mShakeOnY = value; } }
+        public bool ShakeOnZ { get { return this.mShakeOnZ; } set { this.mShakeOnZ = value; } }
+
         public JCS_SoundPlayer SoundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
         public AudioClip ShakeSound { get { return this.mShakeSound; } set { this.mShakeSound = value; } }
 
         /* Functions */
-
-        private void Awake()
-        {
-            if (m3DCamera == null)
-                m3DCamera = this.GetComponent<JCS_3DCamera>();
-        }
 
         private void Update()
         {
@@ -138,13 +158,11 @@ namespace JCSUnity
                 }
             }
 
-            // only record down the first time
-            if (!mEffect)
-                this.mShakeOrigin = this.transform.position;
-
             this.mShakeTime = time;
             this.mShakeTimer = 0;
             this.mShakeMargin = margin;
+
+            mShakeDelta = Vector3.zero;
 
             mEffect = true;
 
@@ -159,31 +177,26 @@ namespace JCSUnity
             if (!mEffect)
                 return;
 
-            Vector3 pos = mShakeOrigin;
+            RevertShakeByTransformType(mShakeDelta);
 
-            if (m3DCamera != null)
-            {
-                this.mShakeOrigin = m3DCamera.transform.position;
-            }
+            mShakeDelta = Vector3.zero;
 
             mShakeTimer += Time.deltaTime;
 
             if (mShakeTimer < mShakeTime)
             {
                 // shake randomly
-                // shakeTime / shakeTimer = shakeRate
-                pos.x += (JCS_Random.Range(-1.0f, 1.0f + 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
-                pos.y += (JCS_Random.Range(-1.0f, 1.0f + 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
-                pos.z += (JCS_Random.Range(-1.0f, 1.0f + 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
+                if (mShakeOnX)
+                    mShakeDelta.x = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
+                if (mShakeOnY)
+                    mShakeDelta.y = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
+                if (mShakeOnZ)
+                    mShakeDelta.z = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
 
-                // apply pos
-                this.transform.position = pos;
+                ApplyShakeByTransformType(mShakeDelta);
             }
             else
             {
-                // back to original position
-                this.transform.position = mShakeOrigin;
-
                 mShakeTimer = 0.0f;
                 mEffect = false;
             }
@@ -197,13 +210,46 @@ namespace JCSUnity
             if (mShakeSound == null)
                 return;
 
-            if (mSoundPlayer)
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mShakeSound);
+        }
+
+        /// <summary>
+        /// Apply shake delta by transform type.
+        /// </summary>
+        /// <param name="shakeDelta"> Shake delta value. </param>
+        private void ApplyShakeByTransformType(Vector3 shakeDelta)
+        {
+            switch (this.mTransformType)
             {
-                mSoundPlayer.PlayOneShot(mShakeSound);
+                case JCS_TransformType.POSITION:
+                    this.transform.position += shakeDelta;
+                    break;
+                case JCS_TransformType.ROTATION:
+                    this.transform.eulerAngles += shakeDelta;
+                    break;
+                case JCS_TransformType.SCALE:
+                    this.transform.localScale += shakeDelta;
+                    break;
             }
-            else
+        }
+
+        /// <summary>
+        /// Revert shake delta by transform type.
+        /// </summary>
+        /// <param name="shakeDelta"> Shake delta value. </param>
+        private void RevertShakeByTransformType(Vector3 shakeDelta)
+        {
+            switch (this.mTransformType)
             {
-                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mShakeSound);
+                case JCS_TransformType.POSITION:
+                    this.transform.position -= shakeDelta;
+                    break;
+                case JCS_TransformType.ROTATION:
+                    this.transform.eulerAngles -= shakeDelta;
+                    break;
+                case JCS_TransformType.SCALE:
+                    this.transform.localScale -= shakeDelta;
+                    break;
             }
         }
     }
