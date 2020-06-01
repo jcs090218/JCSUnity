@@ -21,7 +21,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-
         //[Header("** Initialize Varialbes (JCS_CounterEvent) **")]
 
         //[SerializeField]
@@ -29,14 +28,13 @@ namespace JCSUnity
 
         //private float mDelayTimer = 0;
 
-
         /* Setter & Getter */
 
         /* Functions */
 
         private void Update()
         {
-
+            // empty..
         }
 
         /// <summary>
@@ -44,7 +42,7 @@ namespace JCSUnity
         /// </summary>
         public void Event()
         {
-
+            // empty..
         }
     }
 }

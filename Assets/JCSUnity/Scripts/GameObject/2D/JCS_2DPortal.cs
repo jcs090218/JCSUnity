@@ -66,12 +66,8 @@ namespace JCSUnity
 
         private void Awake()
         {
-            if (mTargetPortal == null &&
-                mType == JCS_2DPortalType.TRANSFER_PORTAL)
-            {
+            if (mType == JCS_2DPortalType.TRANSFER_PORTAL && mTargetPortal == null)
                 JCS_Debug.LogError( "Transform portal does not exists.");
-                return;
-            }
         }
 
         private void OnTriggerStay(Collider other)

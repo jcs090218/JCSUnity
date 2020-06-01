@@ -16,17 +16,21 @@ namespace JCSUnity
     /// Open a URL in the default browser. (Game Pad)
     /// </summary>
     public class JCS_OpenURLGamePadButton
-    : JCS_GamePadButton
+        : JCS_GamePadButton
     {
+        /* Variables*/
+
         [Header("** Runtime Variables (JCS_OpenURLGamePadButton) **")]
 
         [Tooltip("URL to open in the default browser.")]
         [SerializeField]
         private string mURL = "www.your-url.com";
 
+        /* Setter & Getter */
 
         public string URL { get { return this.mURL; } set { this.mURL = value; } }
 
+        /* Functions */
 
         public override void JCS_OnClickCallback()
         {

@@ -18,10 +18,19 @@ namespace JCSUnity
     public class JCS_WebcamButton
         : JCS_Button
     {
+        /* Variables*/
+
+        [Header("** Initialize Variables (JCS_WebcamButton) **")]
+
         [Tooltip("Webcam to use.")]
         [SerializeField]
         private JCS_Webcam mWebcam = null;
 
+        /* Setter & Getter */
+
+        public JCS_Webcam Webcam { get { return this.mWebcam; } set { this.mWebcam = value; } }
+
+        /* Functions */
 
         protected override void Awake()
         {
@@ -46,9 +55,7 @@ namespace JCSUnity
         {
             if (mWebcam == null)
             {
-                JCS_Debug.LogReminder(
-                    "Assign the button but no webcam attached or in the scene.");
-
+                JCS_Debug.LogReminder("Assign the button but no webcam attached or in the scene");
                 return;
             }
 

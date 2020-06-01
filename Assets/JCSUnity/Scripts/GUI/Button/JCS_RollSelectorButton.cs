@@ -23,7 +23,6 @@ namespace JCSUnity
 
         private JCS_RollBtnSelector mRollBtnSelector = null;
 
-
         [Header("** Check Variables (JCS_RollSelectorButton) **")]
 
         [SerializeField]
@@ -36,14 +35,12 @@ namespace JCSUnity
 
         private JCS_ScaleEffect mScaleEffect = null;
 
-
         /* Setter & Getter */
 
         public int ScrollIndex { get { return this.mScrollIndex; } set { this.mScrollIndex = value; } }
         public void SetRollSelector(JCS_RollBtnSelector rbs) { this.mRollBtnSelector = rbs; }
         public JCS_SimpleTrackAction SimpleTrackAction { get { return this.mTrackAction; } }
         public JCS_ScaleEffect GetScaleEffect() { return this.mScaleEffect; }
-
 
         /* Functions */
 

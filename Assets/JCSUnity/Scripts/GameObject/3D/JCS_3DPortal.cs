@@ -30,24 +30,17 @@ namespace JCSUnity
         [SerializeField]
         private bool mAutoTrigger = false;
 
-
-        [Header("Choose portal type. (JCS_2DPortal) ")]
-
         [Tooltip("Type of the portal.")]
         [SerializeField]
         private JCS_3DPortalType mType = JCS_3DPortalType.SCENE_PORTAL;
 
-
-        //** SCENE_PORTAL
-        [Header("** Scene Portal Settings (JCS_2DPortal) **")]
+        [Header("- Scene Portal")]
 
         [Tooltip("Scene name when portal load this scene.")]
         [SerializeField]
         private string mSceneName = "JCS_Demo";
 
-
-        //** TRANSFER_PORTAL
-        [Header("** Transfer Portal Settings (JCS_2DPortal) **")]
+        [Header("- Transfer Portal")]
 
         [Tooltip("Position when the portal moves the player's position.")]
         [SerializeField]
@@ -64,12 +57,8 @@ namespace JCSUnity
 
         private void Awake()
         {
-            if (mTargetPortal == null &&
-                mType == JCS_3DPortalType.TRANSFER_PORTAL)
-            {
+            if (mType == JCS_3DPortalType.TRANSFER_PORTAL && mTargetPortal == null)
                 JCS_Debug.LogError("Transform portal does not exists.");
-                return;
-            }
         }
 
         private void OnTriggerStay(Collider other)

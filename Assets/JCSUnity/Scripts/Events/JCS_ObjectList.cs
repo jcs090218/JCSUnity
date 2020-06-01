@@ -27,11 +27,9 @@ namespace JCSUnity
         [SerializeField]
         private List<Transform> mObjects = null;
 
-
         /* Setter & Getter */
 
         public List<Transform> Objects { get { return this.mObjects; } }
-
 
         /* Functions */
 

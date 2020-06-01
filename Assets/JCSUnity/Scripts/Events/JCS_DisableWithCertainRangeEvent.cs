@@ -23,7 +23,6 @@ namespace JCSUnity
 
         private JCS_FadeObject mJCSFadeObject = null;
 
-
         [Header("** Runtime Variables (JCS_DisableWithCertainRangeEvent) **")]
 
         [Tooltip("Use local position instead of global position.")]
@@ -42,7 +41,6 @@ namespace JCSUnity
         [SerializeField] [Range(0, 1000)]
         private float mRange = 0;
 
-
         [Header("** Optional Variables (JCS_DisableWithCertainRangeEvent) **")]
 
         [Tooltip("Fade before disable?")]
@@ -54,7 +52,6 @@ namespace JCSUnity
         private float mFadeDistance = 0;
 
         private bool mFaded = false;
-
 
         /* Setter & Getter */
 
@@ -69,7 +66,6 @@ namespace JCSUnity
             this.mTargetPosition = this.transform.position;
         }
         public float Range { get { return this.mRange; } set { this.mRange = value; } }
-
 
         /* Functions */
 

@@ -33,11 +33,9 @@ namespace JCSUnity
         // call back function.
         private Action<ShowResult> mRewardCallback = null;
 
-
         /* Setter & Getter */
 
         public void SetRewardCallback(Action<ShowResult> func) { this.mRewardCallback = func; }
-
 
         /* Functions */
 

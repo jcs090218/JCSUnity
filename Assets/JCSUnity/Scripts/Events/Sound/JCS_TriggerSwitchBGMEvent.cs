@@ -28,14 +28,19 @@ namespace JCSUnity
 
         [Tooltip("Time to fade in the sound.")]
         [SerializeField]
-        private float mSoundFadeInTime = 1;
+        [Range(0.0f, 10.0f)]
+        private float mSoundFadeInTime = 1.0f;
 
         [Tooltip("Time to fade out the sound.")]
         [SerializeField]
-        private float mSoundFadeOutTime = 1;
-
+        [Range(0.0f, 10.0f)]
+        private float mSoundFadeOutTime = 1.0f;
 
         /* Setter & Getter */
+
+        public AudioClip SoundClip { get { return this.mSoundClip; } set { this.mSoundClip = value; } }
+        public float SoundFadeInTime { get { return this.mSoundFadeInTime; } set { this.mSoundFadeInTime = value; } }
+        public float SoundFadeOutTime { get { return this.mSoundFadeOutTime; } set { this.mSoundFadeOutTime = value; } }
 
         /* Functions */
 

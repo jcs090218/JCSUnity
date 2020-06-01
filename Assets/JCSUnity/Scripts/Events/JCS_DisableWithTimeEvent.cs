@@ -27,7 +27,6 @@ namespace JCSUnity
 
         private float mTimer = 0;
 
-
         /* Setter & Getter */
 
         /* Functions */
