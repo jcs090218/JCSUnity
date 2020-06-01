@@ -13,7 +13,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// Button that switches the background music.
     /// </summary>
     public class JCS_SwitchBGMButton
         : JCS_Button
