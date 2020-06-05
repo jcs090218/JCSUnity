@@ -21,31 +21,20 @@ namespace JCSUnity
     public class JCSUnity_About
         : EditorWindow      // TODO(jenchieh): change to normal window.
     {
-
-        //----------------------
-        // Public Variables
+        /* Variables*/
 
         /* all the .ini file located here. */
         public static Dictionary<string, string> EDITOR_INI = new Dictionary<string, string>();
 
-        //----------------------
-        // Private Variables
         private static string INI_FILE_PATH = "";
         private static string EDITOR_PROPERTIES_FILENAME = "editor.properties";
 
         private static int WINDOW_WIDTH = 400;
         private static int WINDOW_HEIGHT = 200;
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
-
-        //========================================
-        //      Unity's function
-        //------------------------------
+        /* Functions */
 
         private void OnGUI()
         {
@@ -66,12 +55,6 @@ namespace JCSUnity
             }
         }
 
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
         /// <summary>
         /// Read the .ini/.properties file for this editor window.
         /// </summary>
@@ -85,12 +68,6 @@ namespace JCSUnity
             EDITOR_INI = JCS_INIFileReader.ReadINIFile(path);
         }
 
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
-
         /// <summary>
         /// About JCSUnity.
         /// </summary>
@@ -102,7 +79,6 @@ namespace JCSUnity
             window.maxSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
             window.Show();
         }
-        
     }
 }
 

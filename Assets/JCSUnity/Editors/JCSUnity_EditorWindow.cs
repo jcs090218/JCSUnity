@@ -15,7 +15,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 namespace JCSUnity
 {
     /// <summary>
@@ -24,9 +23,8 @@ namespace JCSUnity
     public class JCSUnity_EditorWindow
         : EditorWindow
     {
+        /* Variables*/
 
-        //----------------------
-        // Public Variables
         public static JCSUnity_EditorWindow instance = null;
 
         public int GAME_PAD_COUNT = 0;  // How many gampad in this game?
@@ -64,9 +62,6 @@ namespace JCSUnity
             "XBox One",
         };
 
-        //----------------------
-        // Private Variables
-
         private bool mOCSFoldeout = false;      // OCS = One click serialize
         private bool mBOFoldout = false;        // BO = Bases Object
         private bool mGUIFoldout = false;
@@ -78,16 +73,10 @@ namespace JCSUnity
 
         private bool mToolFoldout = false;  // Utitlies
 
-        //----------------------
-        // Protected Variables
+        /* Setter & Getter */
 
-        //========================================
-        //      setter / getter
-        //------------------------------
+        /* Functions */
 
-        //========================================
-        //      Unity's function
-        //------------------------------
         private void OnEnable()
         {
             instance = this;
@@ -131,18 +120,6 @@ namespace JCSUnity
             if (mToolFoldout)
                 PartTool();
         }
-
-        //========================================
-        //      Self-Define
-        //------------------------------
-        //----------------------
-        // Public Functions
-
-        //----------------------
-        // Protected Functions
-
-        //----------------------
-        // Private Functions
 
         /// <summary>
         /// Initialize the one click serialize part buttons.
@@ -193,14 +170,17 @@ namespace JCSUnity
 
             GUILayout.Label("** Panel **");
 
-            if (GUILayout.Button("Create Slide Panel 9x9 - 16:9"))
-                CreateSlidePanel();
+            if (GUILayout.Button("Create Base Panel"))
+                CreateBasePanel();
 
-            if (GUILayout.Button("Create clean GUI panel"))
-                CreateBaseGUIPanel();
+            if (GUILayout.Button("Create Dialogue Panel"))
+                CreateDialoguePanel();
 
             if (GUILayout.Button("Create Tween Panel"))
                 CreateTweenPanel();
+
+            if (GUILayout.Button("Create Slide Panel 9x9 - 16:9"))
+                CreateSlidePanel();
 
 
             GUILayout.Label("** Undo/Redo **");
@@ -328,7 +308,7 @@ namespace JCSUnity
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
-            string desc_path = "JCSUnity_Resources/GUI/Plz delete this desc text.";
+            const string desc_path = "JCSUnity_Resources/GUI/Plz delete this desc text.";
             GameObject desc_obj = JCS_Utility.SpawnGameObject(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
@@ -364,7 +344,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Bases Object/JCSUnity Manager", false, 10)]
         private static GameObject CreateJCSManagers()
         {
-            string manager_path = "JCSUnity_Resources/JCS_Managers";
+            const string manager_path = "JCSUnity_Resources/JCS_Managers";
             GameObject gameObj = CreateHierarchyObject(manager_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS Managers");
@@ -379,7 +359,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Bases Object/JCSUnity Setting", false, 10)]
         private static GameObject CreateJCSSettings()
         {
-            string setting_path = "JCSUnity_Resources/JCS_Settings";
+            const string setting_path = "JCSUnity_Resources/JCS_Settings";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS Settings");
@@ -414,13 +394,13 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateJCSCanvas()
         {
-            string canvas_path = "JCSUnity_Resources/LevelDesignUI/JCS_Canvas";
+            const string canvas_path = "JCSUnity_Resources/LevelDesignUI/JCS_Canvas";
             GameObject canvasObj = CreateHierarchyObject(canvas_path);
 
             Undo.RegisterCreatedObjectUndo(canvasObj, "Create JCS Canvas");
 
 
-            string eventSystem_path = "JCSUnity_Resources/LevelDesignUI/EventSystem";
+            const string eventSystem_path = "JCSUnity_Resources/LevelDesignUI/EventSystem";
             GameObject evtSystemObj = CreateHierarchyObject(eventSystem_path);
 
             Undo.RegisterCreatedObjectUndo(evtSystemObj, "Create Event System");
@@ -434,7 +414,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Bases Object/JCS_BGMPlayer", false, 11)]
         private static void CreateJCSBGMPlayer()
         {
-            string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
+            const string player_path = "JCSUnity_Resources/Sound/JCS_BGMPlayer";
             GameObject gameObj = CreateHierarchyObject(player_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create BGM Player");
@@ -446,7 +426,7 @@ namespace JCSUnity
         [MenuItem("JCSUnity/Bases Object/Debug Tools", false, 12)]
         private static void CreateDebugTools()
         {
-            string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
+            const string tools_path = "JCSUnity_Resources/Tools/JCS_Tools";
             GameObject gameObj = CreateHierarchyObject(tools_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create Debug Tools");
@@ -485,8 +465,7 @@ namespace JCSUnity
         {
             // TODO(jenchieh): check framework need to update or not?
             bool upToDate = true;
-            string title = "Check for Update - JCSUnity";
-
+            const string title = "Check for Update - JCSUnity";
 
             if (upToDate)
             {
@@ -523,7 +502,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject Create2DCurosr()
         {
-            string setting_path = "JCSUnity_Resources/GUI/JCS_2DCursor";
+            const string setting_path = "JCSUnity_Resources/GUI/JCS_2DCursor";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
@@ -536,7 +515,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject Create3DCurosr()
         {
-            string setting_path = "JCSUnity_Resources/GUI/JCS_3DCursor";
+            const string setting_path = "JCSUnity_Resources/GUI/JCS_3DCursor";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
@@ -552,25 +531,54 @@ namespace JCSUnity
         ///     1) JCS_Canvas
         /// in the scene before create base panel.
         /// </summary>
-        private static GameObject CreateBaseGUIPanel()
+        private static GameObject CreateBasePanel()
         {
             JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
             if (jcsCanvas == null)
             {
                 JCS_Debug.Log(
                     "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the base panel.");
-
                 return null;
             }
 
-            string setting_path = "JCSUnity_Resources/GUI/JCS_BasePanel";
+            const string setting_path = "JCSUnity_Resources/GUI/JCS_BasePanel";
             GameObject basePanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(basePanel, "Create Base GUI Panel");
 
             basePanel.transform.localScale = Vector3.one;
+            basePanel.name = "_BasePanel";
 
             return basePanel;
+        }
+
+        /// <summary>
+        /// Create the clean dialogue panel for JCSUnity.
+        /// and add in under to the canvas.
+        /// 
+        /// Need:
+        ///     1) JCS_Canvas
+        /// in the scene before create dialogue panel.
+        /// </summary>
+        private static GameObject CreateDialoguePanel()
+        {
+            JCS_Canvas jcsCanvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            if (jcsCanvas == null)
+            {
+                JCS_Debug.Log(
+                    "Cannot find the JCS_Canvas in the hierarchy. Plz create the canvas before create the base panel.");
+                return null;
+            }
+
+            const string setting_path = "JCSUnity_Resources/GUI/JCS_DialoguePanel";
+            GameObject dialoguePanel = CreateHierarchyObjectUnderCanvas(setting_path);
+
+            Undo.RegisterCreatedObjectUndo(dialoguePanel, "Create Dialogue Panel");
+
+            dialoguePanel.transform.localScale = Vector3.one;
+            dialoguePanel.name = "_DialoguePanel";
+
+            return dialoguePanel;
         }
 
         /// <summary>
@@ -600,7 +608,7 @@ namespace JCSUnity
                 return;
             }
 
-            string settingPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
+            const string settingPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
 
             // spawn the pane holder.
             JCS_SlideScreenPanelHolder panelHolder9x9 = CreateHierarchyObjectUnderCanvas(settingPath, jcsCanvas).GetComponent<JCS_SlideScreenPanelHolder>();
@@ -611,18 +619,14 @@ namespace JCSUnity
             int starting_pos_x = -1920;
             int starting_pos_y = 1080;
 
-            string slidePanelPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlidePanel";
+            const string slidePanelPath = "JCSUnity_Resources/LevelDesignUI/JCS_SlidePanel";
 
             int index = 0;
 
             // create all nine panel and assign to the slide panel.
-            for (int row = 0;
-                row < 3;
-                ++row)
+            for (int row = 0; row < 3; ++row)
             {
-                for (int column = 0;
-                    column < 3;
-                    ++column)
+                for (int column = 0; column < 3; ++column)
                 {
                     // get the rect transform from the slide panel object.
                     RectTransform slidePanel = CreateHierarchyObjectUnderCanvas(slidePanelPath, jcsCanvas).GetComponent<RectTransform>();
@@ -649,14 +653,15 @@ namespace JCSUnity
                 }
             }
 
-            string slideScreenCameraPath = "JCSUnity_Resources/Camera/JCS_2DSlideScreenCamera";
+            const string slideScreenCameraPath = "JCSUnity_Resources/Camera/JCS_2DSlideScreenCamera";
             JCS_2DSlideScreenCamera slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
 
+            slideScreenCamera.name = "_2DSlideScreenCamera";
+
             // set the panel holder.
             slideScreenCamera.PanelHolder = panelHolder9x9;
-
 
             slideScreenCamera.SetJCS2DCamera(cam);
 
@@ -677,10 +682,12 @@ namespace JCSUnity
                 return null;
             }
 
-            string setting_path = "JCSUnity_Resources/GUI/JCS_TweenPanel";
+            const string setting_path = "JCSUnity_Resources/GUI/JCS_TweenPanel";
             GameObject tweenPanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(tweenPanel, "Create Tween Panel");
+
+            tweenPanel.name = "_TweenPanel (Created)";
 
             return tweenPanel;
         }
@@ -691,10 +698,12 @@ namespace JCSUnity
         /// <returns></returns>
         private static GameObject CreateUndoRedoSystem()
         {
-            string setting_path = "JCSUnity_Resources/GUI/JCS_UndoRedoSystem";
+            const string setting_path = "JCSUnity_Resources/GUI/JCS_UndoRedoSystem";
             GameObject undoRedoSystem = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(undoRedoSystem, "Create Undo Redo System");
+
+            undoRedoSystem.name = "_UndoRedoSystem";
 
             return undoRedoSystem;
         }
@@ -710,7 +719,7 @@ namespace JCSUnity
         /// </summary>
         private static void Create2DCamera()
         {
-            string camera_path = "JCSUnity_Resources/Camera/JCS_2DCamera";
+            const string camera_path = "JCSUnity_Resources/Camera/JCS_2DCamera";
             GameObject gameObj = CreateHierarchyObject(camera_path);
 
             // set camera depth to default -10.
@@ -724,7 +733,7 @@ namespace JCSUnity
         /// </summary>
         private static void CreateMixDamageTextPool()
         {
-            string setting_path = "JCSUnity_Resources/GUI/DamageText/JCS_MixDamageTextPool";
+            const string setting_path = "JCSUnity_Resources/GUI/DamageText/JCS_MixDamageTextPool";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create Min Damage Text Pool");
@@ -741,7 +750,7 @@ namespace JCSUnity
         /// </summary>
         private static void Create3DCamera()
         {
-            string camera_path = "JCSUnity_Resources/Camera/JCS_3DCamera";
+            const string camera_path = "JCSUnity_Resources/Camera/JCS_3DCamera";
             GameObject gameObj = CreateHierarchyObject(camera_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create JCS 3D Camera");
@@ -817,7 +826,6 @@ namespace JCSUnity
             string projectName = s[s.Length - 2];
             return projectName;
         }
-
     }
 }
 
