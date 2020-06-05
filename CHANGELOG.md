@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-06-05
+
+* Differentiate the base panel and dialgoue panel for JCSUnity editor. (JCSUnity)
+
 ### 2020-06-01
 
 * Implemented switch BGM button component for GUI module. (JCSUnity)
