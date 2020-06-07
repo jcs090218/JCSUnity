@@ -507,6 +507,8 @@ namespace JCSUnity
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
 
+            gameObj.name = "_2DCursor (Created)";
+
             return gameObj;
         }
 
@@ -519,6 +521,8 @@ namespace JCSUnity
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
+
+            gameObj.name = "_3DCursor (Created)";
 
             return gameObj;
         }
@@ -547,7 +551,7 @@ namespace JCSUnity
             Undo.RegisterCreatedObjectUndo(basePanel, "Create Base GUI Panel");
 
             basePanel.transform.localScale = Vector3.one;
-            basePanel.name = "_BasePanel";
+            basePanel.name = "_BasePanel (Created)";
 
             return basePanel;
         }
@@ -576,7 +580,7 @@ namespace JCSUnity
             Undo.RegisterCreatedObjectUndo(dialoguePanel, "Create Dialogue Panel");
 
             dialoguePanel.transform.localScale = Vector3.one;
-            dialoguePanel.name = "_DialoguePanel";
+            dialoguePanel.name = "_DialoguePanel (Created)";
 
             return dialoguePanel;
         }
@@ -658,7 +662,7 @@ namespace JCSUnity
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
 
-            slideScreenCamera.name = "_2DSlideScreenCamera";
+            slideScreenCamera.name = "_2DSlideScreenCamera (Created)";
 
             // set the panel holder.
             slideScreenCamera.PanelHolder = panelHolder9x9;
@@ -703,7 +707,7 @@ namespace JCSUnity
 
             Undo.RegisterCreatedObjectUndo(undoRedoSystem, "Create Undo Redo System");
 
-            undoRedoSystem.name = "_UndoRedoSystem";
+            undoRedoSystem.name = "_UndoRedoSystem (Created)";
 
             return undoRedoSystem;
         }
