@@ -32,7 +32,6 @@ namespace JCSUnity
         // Is current dialgoue visible?
         protected bool mIsVisible = false;
 
-
         [Header("** Runtime Variables (JCS_BaseDialogueObject) **")]
         
         [Tooltip(@"Set the rect transfrom size the same as before playing it.")]
@@ -51,14 +50,12 @@ namespace JCSUnity
         protected Vector3 mOriginalPosition = Vector3.zero;
         protected Quaternion mOriginalRotation = new Quaternion(0, 0, 0, 0);
 
-
         /* Setter & Getter */
 
         public bool IsVisible { get { return this.mIsVisible; } }
         public bool AsOriginalSize { get { return this.mAsOriginalSize; } set { this.mAsOriginalSize = value; } }
         public bool AsOriginalPosition { get { return this.mAsOriginalPosition; } set { this.mAsOriginalPosition = value; } }
         public bool AsOriginalRotation { get { return this.mAsOriginalRotation; } set { this.mAsOriginalRotation = value; } }
-
 
         /* Functions */
 
@@ -80,7 +77,7 @@ namespace JCSUnity
 
         protected virtual void Start()
         {
-            
+            // empty..
         }
 
         /// <summary>
@@ -97,12 +94,10 @@ namespace JCSUnity
             else
                 mRectTransform.localScale = Vector3.one;
 
-
             if (mAsOriginalPosition)
                 mRectTransform.localPosition = mOriginalPosition;
             else
                 mRectTransform.localPosition = Vector3.zero;
-
 
             if (mAsOriginalRotation)
                 mRectTransform.localRotation = mOriginalRotation;
@@ -132,9 +127,7 @@ namespace JCSUnity
             //this.gameObject.SetActive(true);
 
             // active all the child object
-            for (int index = 0;
-                index < this.transform.childCount;
-                ++index)
+            for (int index = 0; index < this.transform.childCount; ++index)
             {
                 this.transform.GetChild(index).gameObject.SetActive(true);
             }
@@ -156,15 +149,11 @@ namespace JCSUnity
             // we deactive all the child object
             //this.gameObject.SetActive(false);
 
-
             // deactive all the child object
-            for (int index = 0;
-                index < this.transform.childCount;
-                ++index)
+            for (int index = 0; index < this.transform.childCount; ++index)
             {
                 this.transform.GetChild(index).gameObject.SetActive(false);
             }
-
         }
 
         /// <summary>
