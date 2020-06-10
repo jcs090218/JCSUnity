@@ -24,9 +24,9 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_DeltaNumber) **")]
 
-        [Tooltip("Test with key?")]
+        [Tooltip("Test component with key.")]
         [SerializeField]
-        private bool mTestKey = true;
+        private bool mTestWithKey = false;
 
         [Tooltip("Key delta to value A.")]
         [SerializeField]
@@ -54,7 +54,6 @@ namespace JCSUnity
         [Tooltip("How many visible digit?")]
         [SerializeField]
         private int mCurrentDigitCount = 1;
-
 
         [Header("** Initialize Variables (JCS_DeltaNumber) **")]
 
@@ -106,7 +105,6 @@ check value. Because this will always be animate.")]
         [Range(0.1f, 4000.0f)]
         private float mDigitInterval = 0.5f;
 
-
         [Header("** Runtime Variables (JCS_DeltaNumber) **")]
 
         [Tooltip("Clear all the empty zero from the left.")]
@@ -121,7 +119,6 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private JCS_TextAlign mTextAlign = JCS_TextAlign.RIGHT;
 
-
         [Header("- Min/Max Settings (JCS_DeltaNumber)")]
 
         [Tooltip("Maxinum score.")]
@@ -131,7 +128,6 @@ check value. Because this will always be animate.")]
         [Tooltip("Mininum score.")]
         [SerializeField]
         private int mMinScore = 0;
-
 
         [Header("- Delta Animation Settings (JCS_DeltaNumber)")]
 
@@ -157,7 +153,6 @@ should disable this effect for best purpose.")]
         [SerializeField] [Range(1, 1000)]
         private int mDeltaProduct = 1;
 
-
         /* Setter & Getter */
 
         public bool IsEnable { get { return this.mIsEnable; } }
@@ -177,7 +172,6 @@ should disable this effect for best purpose.")]
         }
         public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
         public JCS_TextAlign TextAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
-
 
         /* Functions */
 
@@ -211,7 +205,7 @@ should disable this effect for best purpose.")]
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (!mTestKey)
+            if (!mTestWithKey)
                 return;
 
             if (JCS_Input.GetKey(mDeltaToA))

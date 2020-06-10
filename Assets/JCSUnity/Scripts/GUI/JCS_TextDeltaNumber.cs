@@ -34,7 +34,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
         [Header("** Helper Variables (JCS_TextDeltaNumber) **")]
 
-        [Tooltip("Test module with key.")]
+        [Tooltip("Test component with key.")]
         [SerializeField]
         private bool mTestWithKey = false;
 
@@ -55,7 +55,6 @@ namespace JCSUnity
         private float mValueB = 10.0f;
 #endif
 
-
         [Header("** Check Variables (JCS_TextDeltaNumber) **")]
 
         [Tooltip("Flag to check if is currently effecting.")]
@@ -70,7 +69,6 @@ namespace JCSUnity
         [SerializeField]
         private float mTargetNumber = 0.0f;
 
-
         [Header("** Initialize Variables (JCS_TextDeltaNumber) **")]
 
         [Tooltip("Target text renderer.")]
@@ -82,7 +80,6 @@ namespace JCSUnity
         [SerializeField]
         private TextMeshPro mTextMesh = null;
 #endif
-
 
         [Header("** Runtime Variables (JCS_TextDeltaNumber) **")]
 
@@ -119,8 +116,8 @@ namespace JCSUnity
         [Range(0.01f, 1000.0f)]
         private float mDeltaProduct = 1;
 
-
         /* Setter/Getter */
+
         public bool Active { get { return this.mActive; } }
         public float TargetNumber { get { return this.mTargetNumber; } }
         public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
@@ -134,7 +131,6 @@ namespace JCSUnity
         public string PostString { get { return this.mPostString; } set { this.mPostString = value; } }
         public float AnimNumberTime { get { return this.mAnimNumberTime; } set { this.mAnimNumberTime = value; } }
         public float DeltaProduct { get { return this.mDeltaProduct; } set { this.mDeltaProduct = value; } }
-
 
         /* Functions */
 
@@ -150,7 +146,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
         private void TestInput()
         {
-            if (mTestWithKey)
+            if (!mTestWithKey)
                 return;
 
             if (Input.GetKeyDown(mDeltaToA))
