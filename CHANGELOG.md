@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-06-10
+
+* Fixed minor logic error from testing component. (JCSUnity)
+
 ### 2020-06-07
 
 * Updated the create section from edtiro module for better UX. (JCSUnity)
