@@ -89,7 +89,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 2020-04-20
 
-* Add check scene utility function. (JCSUnity)
+* Add check scene utility function.
 
 ### 2020-04-18
 
@@ -503,11 +503,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 2018-09-22
 
-* Remove 'JCS' folder name's prefix in the JCSUnity_Resources. (JCSUnity)
-* Update project version to 1.8.3. (JCSUnity)
-* Add 'Standalone File Browser' as project dependency. (JCSUnity)
+* Remove 'JCS' folder name's prefix in the JCSUnity_Resources.
+* Update project version to 1.8.3.
+* Add 'Standalone File Browser' as project dependency.
   => https://github.com/gkngkc/UnityStandaloneFileBrowser
-* Make screen type handle to individual scene. (JCSUnity)
+* Make screen type handle to individual scene.
 
 ### 2018-09-21
 
@@ -551,12 +551,10 @@ the proper naming, using 'resizable' than the word 'aspect'.
 
 ### 2018-09-08
 
-* Implemented resizable screen module with JCS_ApsectScreen and 
- JCS_AspectScreenPanel implemented. (JCSUnity)
-* Implemented OnResizeScreen callback for resizable module in all camera 
- module. (JCSUnity)
-* JCS_ScreenManager implemented for resizable screen task handle. (JCSUnity)
-* JCS_ScreenSettings implemented for screen related settings storage. (JCSUnity)
+* Implemented resizable screen module with JCS_ApsectScreen and JCS_AspectScreenPanel implemented.
+* Implemented OnResizeScreen callback for resizable module in all camera module.
+* JCS_ScreenManager implemented for resizable screen task handle.
+* JCS_ScreenSettings implemented for screen related settings storage.
 
 ### 2018-09-06
 
@@ -704,7 +702,7 @@ shift combination key info.
 
 ### 2018-08-07
 
-* Add test key option on few effect modules/components. (JCSUnity)
+* Add test key option on few effect modules/components.
 
 ### 2018-08-06
 
@@ -1128,7 +1126,7 @@ save a bit of performance comparing 60 packets (frame rate) per second.
 
 ### 2017-09-03
 
-* Rename PacketDecoder to JCS_DefaultPacketDecoder private same file name. (JCSUnity)
+* Rename PacketDecoder to JCS_DefaultPacketDecoder private same file name.
 * Rename PacketEncoder to JCS_DefaultPacketEncoder prevent same file name.
 * Out of range Bugs fixed with 'JCS_ServerRequestProcessor'.
 
