@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Net.NetworkInformation;
 
 namespace JCSUnity
 {
@@ -17,11 +18,23 @@ namespace JCSUnity
     /// NOTE(jenchieh): This will always be ontop of any other 
     /// GUI, so use this carefully!
     /// </summary>
-    [RequireComponent(typeof(JCS_PanelRoot))] 
+    [RequireComponent(typeof(JCS_PanelRoot))]
     public class JCS_PanelLayer
         : JCS_SortingObject
     {
         /* Variables */
+
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_PanelLayer) **")]
+
+        [Tooltip("Test this component.")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to active move to last child.")]
+        [SerializeField]
+        private KeyCode mMoveLastKey = KeyCode.L;
+#endif
 
         /* Setter & Getter */
 
@@ -36,7 +49,7 @@ namespace JCSUnity
             // get all the jcs_panellayer in the scene
             JCS_PanelLayer[] jcspls = (JCS_PanelLayer[])Resources.FindObjectsOfTypeAll(typeof(JCS_PanelLayer));
 
-            JCS_Sort<JCS_PanelLayer> jcsS = new JCS_Sort<JCS_PanelLayer>();
+            var jcsS = new JCS_Sort<JCS_PanelLayer>();
 
             jcsS.AddAll(jcspls);
 
@@ -45,15 +58,29 @@ namespace JCSUnity
             OriganizeChildOrder(jcspls);
         }
 
+#if (UNITY_EDITOR)
+        private void Update()
+        {
+            Test();
+        }
+
+        private void Test()
+        {
+            if (!mTestWithKey)
+                return;
+
+            if (Input.GetKeyDown(mMoveLastKey))
+                JCS_Utility.MoveToTheLastChild(this.transform);
+        }
+#endif
+
         /// <summary>
         /// Re-order all the object.
         /// </summary>
         /// <param name="arr">sorted object. </param>
         private void OriganizeChildOrder(JCS_PanelLayer[] arr)
         {
-            for (int index = 0;
-                index < arr.Length;
-                ++index)
+            for (int index = 0; index < arr.Length; ++index)
             {
                 // this will make gui ontop of each other.
                 JCS_Utility.MoveToTheLastChild(arr[index].transform);

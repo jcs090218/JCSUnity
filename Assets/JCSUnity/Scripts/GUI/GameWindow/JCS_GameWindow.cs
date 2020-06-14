@@ -28,7 +28,7 @@ namespace JCSUnity
         private enum DragDrop
         {
             Drag,
-            Drop
+            Drop,
         };
 
         private JCS_DialogueObject mDialogueObject = null;
@@ -87,7 +87,7 @@ namespace JCSUnity
         /// </summary>
         public void JCS_OnDrop()
         {
-
+            // empty..
         }
 
         /// <summary>

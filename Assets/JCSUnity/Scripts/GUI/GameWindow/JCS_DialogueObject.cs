@@ -231,12 +231,11 @@ namespace JCSUnity
         /// Move the last child of the current child will make the 
         /// panel in front of any other GUI in the current panel.
         /// </summary>
-        public override void MoveToTheLastChild()
+        public void MoveToTheLastChild()
         {
-            base.MoveToTheLastChild();
+            JCS_Utility.MoveToTheLastChild(this.transform);
 
-            // once it move to the last child, (meaning the window have been focus)
-            // 
+            // Once it move to the last child, meaning the window have been focus.
             SwapToTheLastOpenWindowList();
         }
 

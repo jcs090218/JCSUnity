@@ -33,7 +33,7 @@ namespace JCSUnity
         protected bool mIsVisible = false;
 
         [Header("** Runtime Variables (JCS_BaseDialogueObject) **")]
-        
+
         [Tooltip(@"Set the rect transfrom size the same as before playing it.")]
         [SerializeField]
         protected bool mAsOriginalSize = false;
@@ -67,8 +67,8 @@ namespace JCSUnity
             mOriginalPosition = mRectTransform.localPosition;
             mOriginalRotation = mRectTransform.localRotation;
 
-            // Find the correct parent depend on the mode
-            // developer choose and do the command.
+            // Find the correct parent depend on the mode developer choose and do 
+            // the command.
             //     - Either "ResizeUI" or "JCS_Canvas"
             SetParentObjectByMode();
 
@@ -132,7 +132,7 @@ namespace JCSUnity
                 this.transform.GetChild(index).gameObject.SetActive(true);
             }
 
-            MoveToTheLastChild();
+            JCS_Utility.MoveToTheLastChild(this.transform);
         }
 
         /// <summary>
@@ -145,8 +145,7 @@ namespace JCSUnity
 
             mIsVisible = false;
 
-            // Instead of disable the object it self,
-            // we deactive all the child object
+            // Instead of disable the object it self, we deactive all the child object.
             //this.gameObject.SetActive(false);
 
             // deactive all the child object
@@ -154,31 +153,6 @@ namespace JCSUnity
             {
                 this.transform.GetChild(index).gameObject.SetActive(false);
             }
-        }
-
-        /// <summary>
-        /// Move the last child of the current child will make the 
-        /// panel in front of any other GUI in the current panel.
-        /// </summary>
-        public virtual void MoveToTheLastChild()
-        {
-            Transform parent = this.transform.parent;
-
-            Vector3 recordPos = this.transform.localPosition;
-            Vector3 recordScale = this.transform.localScale;
-            Quaternion recordRot = this.transform.localRotation;
-
-            // this part will mess up the transform
-            // so we record all we need and set it back
-            {
-                this.transform.SetParent(null);
-                this.transform.SetParent(parent);
-            }
-
-            // here we set it back!
-            this.transform.localPosition = recordPos;
-            this.transform.localScale = recordScale;
-            this.transform.localRotation = recordRot;
         }
 
         /// <summary>
@@ -197,8 +171,7 @@ namespace JCSUnity
 
             Transform parentObject = null;
 
-            // if is Resize UI is enable than add Dialogue under
-            // resize ui transform
+            // if is Resize UI is enable than add Dialogue under resize ui transform
             if (JCS_UISettings.instance.RESIZE_UI)
                 parentObject = jcsCanvas.GetResizeUI().transform;
             // Else we add it directly under the Canvas

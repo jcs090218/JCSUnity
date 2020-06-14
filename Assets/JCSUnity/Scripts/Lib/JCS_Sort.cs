@@ -68,7 +68,6 @@ namespace JCSUnity
                     }
                 }
             }
-
             return mArray;
         }
     }

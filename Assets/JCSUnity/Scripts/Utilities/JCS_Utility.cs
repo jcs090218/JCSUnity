@@ -77,12 +77,8 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool WithInRange(float minRange, float maxRange, float currentVal)
         {
-            if (currentVal >= minRange &&
-                currentVal <= maxRange)
-            {
+            if (currentVal >= minRange && currentVal <= maxRange)
                 return true;
-            }
-
             return false;
         }
 
@@ -370,8 +366,8 @@ namespace JCSUnity
             Vector3 recordScale = trans.localScale;
             Quaternion recordRot = trans.localRotation;
 
-            // this part will mess up the transform
-            // so we record all we need and set it back
+            // This part will mess up the transform so we record all we need and 
+            // set it back.
             {
                 trans.SetParent(null);
                 trans.SetParent(parent);
@@ -827,9 +823,7 @@ namespace JCSUnity
         {
             List<T> newArray = new List<T>(inList.Count);
 
-            for (int index = 0;
-               index < inList.Count;
-               ++index)
+            for (int index = 0; index < inList.Count; ++index)
             {
                 // Add itself if exists.
                 if (inList[index] != null)
@@ -849,9 +843,7 @@ namespace JCSUnity
         {
             List<T> newArray = new List<T>();
 
-            for (int index = 0;
-               index < inArray.Length;
-               ++index)
+            for (int index = 0; index < inArray.Length; ++index)
             {
                 // Add itself if exists.
                 if (inArray[index] != null)
@@ -879,9 +871,7 @@ namespace JCSUnity
         {
             List<T> newArray = new List<T>(inList.Count);
 
-            for (int index = 0;
-               index < inList.Count;
-               ++index)
+            for (int index = 0; index < inList.Count; ++index)
             {
                 // Add itself if exists.
                 // 
@@ -912,9 +902,7 @@ namespace JCSUnity
         {
             List<T> newArray = new List<T>();
 
-            for (int index = 0;
-               index < inArray.Length;
-               ++index)
+            for (int index = 0; index < inArray.Length; ++index)
             {
                 // Add itself if exists.
                 // 
@@ -976,9 +964,7 @@ namespace JCSUnity
             T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
 
             // combine the rest.
-            for (int index = 2;
-                index < arrList.Length;
-                ++index)
+            for (int index = 2; index < arrList.Length; ++index)
             {
                 data = MergeArrays2<T>(data, arrList[index]);
             }
@@ -1018,9 +1004,7 @@ namespace JCSUnity
 
             List<T> newList = new List<T>();
 
-            for (int index = 0;
-                index < lists.Length;
-                ++index)
+            for (int index = 0; index < lists.Length; ++index)
             {
                 // Loop through all list.
                 List<T> list = lists[index];
@@ -1028,9 +1012,7 @@ namespace JCSUnity
                 if (list == null)
                     continue;
 
-                for (int listIndex = 0;
-                    listIndex < list.Count;
-                    ++listIndex)
+                for (int listIndex = 0; listIndex < list.Count; ++listIndex)
                 {
                     // Loop through item.
                     T item = list[listIndex];
@@ -1053,9 +1035,7 @@ namespace JCSUnity
         {
             byte[] bytes = new byte[len];
 
-            for (int count = 0;
-                count < len;
-                ++count)
+            for (int count = 0; count < len; ++count)
             {
                 bytes[count] = inBuf[count];
             }
@@ -1080,9 +1060,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool IsArrayEmpty(string[] list)
         {
-            for (int index = 0;
-                index < list.Length;
-                ++index)
+            for (int index = 0; index < list.Length; ++index)
             {
                 if (list[index] != "")
                     return false;
@@ -1146,9 +1124,7 @@ namespace JCSUnity
         {
             List<Transform> childs = new List<Transform>();
 
-            for (int index = 0;
-                index < trans.childCount;
-                ++index)
+            for (int index = 0; index < trans.childCount; ++index)
             {
                 Transform child = trans.GetChild(index);
 
@@ -1194,9 +1170,7 @@ namespace JCSUnity
             if (trans == null || childs == null)
                 return;
 
-            for (int index = 0;
-                index < childs.Count;
-                ++index)
+            for (int index = 0; index < childs.Count; ++index)
             {
                 Transform child = childs[index];
 

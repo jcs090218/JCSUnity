@@ -19,6 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Header("** Initialize Variables (JCS_SortingObject) **")]
+
         [Tooltip(@"With this higher the panel have higher sorthing order. 
 (Higher will be in the front.)")]
         [SerializeField]

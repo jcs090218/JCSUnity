@@ -48,8 +48,12 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsActive = false;
 
+        [Tooltip("Find root panel layer.")]
+        [SerializeField]
+        private JCS_PanelRoot mPanelRoot = null;
+
         [Header("** Runtime Variables (JCS_TweenPanel) **")]
-        
+
         [Tooltip("Override the tween animation while is still playing.")]
         [SerializeField]
         private bool mOverrideTween = false;
@@ -88,10 +92,17 @@ namespace JCSUnity
             this.mTweenerHandler = this.GetComponent<JCS_TweenerHandler>();
             if (mSoundPlayer == null)
                 this.mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+
+            this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
         }
 
 #if (UNITY_EDITOR)
         private void Update()
+        {
+            Test();
+        }
+
+        private void Test()
         {
             if (!mTestWithKey)
                 return;
@@ -119,6 +130,9 @@ namespace JCSUnity
 
             mTweenerHandler.DoAllTweenToTargetValue();
             JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mActiveSound, JCS_SoundMethod.PLAY_SOUND_WHILE_NOT_PLAYING);
+
+            if (mPanelRoot != null)
+                mPanelRoot.ShowDialogueWithoutSound();
 
             if (mActiveCallbackFunc != null)
                 mActiveCallbackFunc.Invoke();
