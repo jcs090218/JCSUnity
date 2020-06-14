@@ -3,7 +3,6 @@
 [![Release Tag](https://img.shields.io/github/tag/jcs090218/JCSUnity.svg?label=release)](https://github.com/jcs090218/JCSUnity/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
 # JCSUnity
 
 JCSUnity is a component driven framework built to allow the user
@@ -12,7 +11,6 @@ such as UI functionality and player movement. This will allow
 for a faster initial development. Most components work individually
 while other components must be used in tandem with others.
 Individually components can be combined to create new behaviors.
-
 
 ## :boom: Important Notice
 
@@ -24,7 +22,6 @@ terms, and understand that you are solely responsible for any
 legal action taken against you for using, or attempting to use
 any placeholder assets commercially.
 
-
 ## :newspaper: News
 
 * `2.0.3` - Use built-in `sprite mask` and removed [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642)
@@ -32,7 +29,6 @@ as dependency.
 * `2.0.0` - Fixed down compatibility to Unity version `5.3.3`.
 * `1.9.4` - Changed base scripting format for better readability.
 * `1.9.3` - Started integrating In-App-Purchase (IAP) system.
-
 
 ## :hammer: How to use it?
 
@@ -43,13 +39,11 @@ release from the above tab, or from the link
 the assets into that project. Then you can start all of the tools
 in the JCSUnity framework. <br/>
 
-
 ## :trophy: Features
 
 So, what does this framework does? Check out the
 [features](https://github.com/jcs090218/JCSUnity/tree/master/features)
 directory at the root of the project directory.
-
 
 ## :pushpin: Dependencies
 
@@ -61,13 +55,11 @@ aren't necessary depend on the game your are making.
 * [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
 * [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
 
-
 ## :link: Links
 
 * *Demo* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
 * *Tutorials* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
 * *Manual/Scripting API* : [Scripting-Manual-JCSUnity](http://www.jcs-profile.com:3001)
-
 
 ## :video_game: Games
 
