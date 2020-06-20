@@ -10,7 +10,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using JCSUnity;
-using System.CodeDom;
 
 /// <summary>
 /// Test the component `JCS_OrderEvent`.
@@ -48,6 +47,7 @@ public class FT_OrderEvent_Test
 
             ++mCounter;
 
+            // Check for termination.
             if (mCounter == printCount)
                 mOrderEvent.DoneEvent();
         });
