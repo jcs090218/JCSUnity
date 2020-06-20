@@ -87,11 +87,16 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
+            this.mTimer += Time.deltaTime;
+
             if (this.mTimer < this.mIntervalTime)
                 return;
 
             if (mExecution != null)
                 mExecution.Invoke();
+
+            if (mUnityExecution != null)
+                mUnityExecution.Invoke();
 
             this.mTimer = 0.0f;
         }
