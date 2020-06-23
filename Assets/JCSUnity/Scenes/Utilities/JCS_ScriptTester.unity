@@ -275,9 +275,10 @@ MonoBehaviour:
   mPanelDeltaHeightRatio: 0
   mFitScreenSize: 1
   mDialogueIndex: -1
-  mKeyCode: 0
+  mOpenKey: 0
   mDialogueType: 0
   mPanelType: 0
+  mSoundPlayer: {fileID: 0}
   mOpenWindowClip: {fileID: 0}
   mCloseWindowClip: {fileID: 0}
 --- !u!114 &61666230
@@ -474,6 +475,11 @@ PrefabInstance:
     - target: {fileID: 11485796, guid: f3f4b7d5553961e4cb7509494c81b400, type: 3}
       propertyPath: DEBUG_MODE
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090550959267644780, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 3}
@@ -1420,12 +1426,7 @@ PrefabInstance:
     - target: {fileID: 4431048296620540127, guid: 11e5c739135b1e34d8a1164d3c66f6f8,
         type: 3}
       propertyPath: m_Name
-      value: JCS_Dialogue_System
-      objectReference: {fileID: 0}
-    - target: {fileID: 4431048296620540127, guid: 11e5c739135b1e34d8a1164d3c66f6f8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: JCS_DialogueSystem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11e5c739135b1e34d8a1164d3c66f6f8, type: 3}

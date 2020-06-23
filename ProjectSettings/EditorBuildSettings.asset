@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/Demo/3D/JCS_Demo3D.unity
+    path: Assets/JCSUnity/Scenes/Demo/3D/JCS_3D.unity
     guid: 3de7ce144db68854f86687563f7a39fe
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/Demo/GUI/JCS_GUIDemo.unity
+    path: Assets/JCSUnity/Scenes/Demo/GUI/JCS_GUI.unity
     guid: ecc9dddb602ab8b4cac997a044d17085
   - enabled: 1
     path: Assets/_BossFight_Assets/Scenes/BF_Logo.unity
@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateSceneOnline.unity
     guid: 8f14fd39503fc6b46b80dbb178229d61
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateScene.unity
+    path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulate.unity
     guid: 04f6db7d2bf5e974bbf699294c1f33f6
   - enabled: 1
     path: Assets/_BossFight_Assets/Scenes/BF_Lobby.unity
@@ -48,9 +48,9 @@ EditorBuildSettings:
     path: Assets/_RunningCrush_Assets/Scenes/RC_EndGame.unity
     guid: 26dc9a66adce7894faed66899ee9dddd
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/Demo/2D/JCS_2DAIDemo.unity
+    path: Assets/JCSUnity/Scenes/Demo/2D/JCS_2DAI.unity
     guid: a7192e9fe705d574c8b921528811f52f
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/Demo/GUI/JCS_GamePadUIHandlerDemo.unity
+    path: Assets/JCSUnity/Scenes/Demo/GUI/JCS_GamePadUIHandler.unity
     guid: c6763af20233ccb43b62412e9dab766a
   m_configObjects: {}
