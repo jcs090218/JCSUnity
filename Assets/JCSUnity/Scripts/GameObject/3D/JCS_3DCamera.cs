@@ -135,10 +135,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mZoomEffect = true;
 
-        [Tooltip("Zoom with the mouse or touches.")]
-        [SerializeField]
-        private bool mZoomWithMouseOrTouch = true;
-
         [Tooltip("Distance once you scroll with mouse.")]
         [SerializeField]
         [Range(0.001f, 500.0f)]
@@ -182,7 +178,6 @@ namespace JCSUnity
         public override Transform GetFollowTarget() { return this.mTargetTransform; }
 
         public bool ZoomEffect { get { return this.mZoomEffect; } set { this.mZoomEffect = value; } }
-        public bool ZoomWithMouseOrTouch { get { return this.mZoomWithMouseOrTouch; } set { this.mZoomWithMouseOrTouch = value; } }
 
         public float ScrollRange_Mouse { get { return this.mScrollRange_Mouse; } set { this.mScrollRange_Mouse = value; } }
         public float ScrollRange_Touch { get { return this.mScrollRange_Touch; } set { this.mScrollRange_Touch = value; } }
@@ -228,7 +223,6 @@ namespace JCSUnity
 
             this.mRecordPosition = this.transform.position;
 
-            if (mZoomWithMouseOrTouch)
             {
 #if (UNITY_EDITOR || UNITY_STANDALONE)
                 // Get the wheel value from the Unity API

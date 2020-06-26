@@ -39,7 +39,6 @@ namespace JCSUnity
         public RectTransform sRectTransform { get { return this.mRectTransform; } }
         public JCS_2D4Direction PlaceDirection { get { return this.mPlaceDirection; } set { this.mPlaceDirection = value; } }
 
-
         /* Functions */
 
         private void Awake()

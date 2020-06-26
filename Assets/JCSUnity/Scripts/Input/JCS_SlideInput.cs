@@ -96,7 +96,6 @@ namespace JCSUnity
         public int DetectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
 #endif
 
-
         /* Functions */
 
         private void Awake()

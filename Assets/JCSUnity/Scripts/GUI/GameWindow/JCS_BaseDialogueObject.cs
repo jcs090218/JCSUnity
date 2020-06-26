@@ -102,7 +102,7 @@ namespace JCSUnity
             if (mAsOriginalRotation)
                 mRectTransform.localRotation = mOriginalRotation;
             else
-                mRectTransform.localRotation = new Quaternion(0, 0, 0, 0);
+                mRectTransform.localRotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         }
 
         /// <summary>

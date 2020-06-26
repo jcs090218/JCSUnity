@@ -123,9 +123,7 @@ namespace JCSUnity
 
             // loop through the child object and 
             // add on to it.
-            for (int index = 0;
-                index < transform.childCount;
-                ++index)
+            for (int index = 0; index < transform.childCount; ++index)
             {
                 Transform child = tempTrans.GetChild(index);
 
