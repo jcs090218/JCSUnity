@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-06-26
+
+* Organized source code for better document string.
+* Removed unused variables in `JCS_3DCamera` component.
+
 ### 2020-06-23
 
 * Renamed framework scenes to a better standard.
