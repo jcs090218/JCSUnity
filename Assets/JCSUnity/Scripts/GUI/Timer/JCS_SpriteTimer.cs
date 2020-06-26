@@ -33,12 +33,10 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-
         [Header("** Check Variables (JCS_SpriteTimer) **")]
 
         [SerializeField]
         private bool mDoTimeIsUpCallback = false;
-
 
         [Header("** Runtime Variables (JCS_SpriteTimer) **")]
 
@@ -64,7 +62,6 @@ namespace JCSUnity
         [Tooltip("Do round up instead of round down.")]
         [SerializeField]
         private bool mRoundUp = false;
-
 
         [Header("- Sprite Slots")]
 
@@ -99,8 +96,7 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mTimeText9 = null;
 
-
-        [Header("- Sprite Settings (JCS_SpriteTimer) ")]
+        [Header("- Sprite")]
 
         [Tooltip("Each digit for hour.")]
         [SerializeField]
@@ -126,8 +122,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityObject mDigitSecond2 = null;
 
-
-        [Header("- Sprite Settings (JCS_SpriteTimer) ")]
+        [Header("- Spacing")]
 
         [Tooltip("Interval between each digit.")]
         [SerializeField]
@@ -146,8 +141,7 @@ namespace JCSUnity
         private bool mMinusMinute = false;
         private bool mMinusHour = false;
 
-
-        [Header("- Sound (JCS_SpriteTimer)")]
+        [Header("- Sound")]
 
         [Tooltip("Sound played when hours get reduced.")]
         [SerializeField]
@@ -165,7 +159,6 @@ namespace JCSUnity
         // second sound.
         private int mTrackSecond = 0;
 
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -174,7 +167,6 @@ namespace JCSUnity
         public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
         public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
         public AudioClip SecondSound { get { return this.mSecondSound; } set { this.mSecondSound = value; } }
-
 
         /* Functions */
 
@@ -259,7 +251,7 @@ namespace JCSUnity
         {
             if (mDigitHour1 == null || mDigitHour2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -284,7 +276,7 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -309,7 +301,7 @@ namespace JCSUnity
         {
             if (mDigitSecond1 == null || mDigitSecond2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -356,7 +348,7 @@ namespace JCSUnity
         {
             if (mDigitHour1 == null || mDigitHour2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -386,7 +378,7 @@ namespace JCSUnity
         {
             if (mDigitMinute1 == null || mDigitMinute2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 
@@ -416,7 +408,7 @@ namespace JCSUnity
         {
             if (mDigitSecond1 == null || mDigitSecond2 == null)
             {
-                JCS_Debug.LogError("Digit slot cannot be null references...");
+                JCS_Debug.LogError("Digit slot cannot be null references");
                 return;
             }
 

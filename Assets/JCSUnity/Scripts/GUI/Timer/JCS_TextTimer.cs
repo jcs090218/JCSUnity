@@ -40,7 +40,6 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-
         [Header("** Check Variables (JCS_SpriteTimer) **")]
 
         [SerializeField]
@@ -55,7 +54,6 @@ namespace JCSUnity
         [SerializeField]
         private string mSecondsText = "";
 
-
         [Header("** Initialize Variables (JCS_TextTimer) **")]
 
         [Tooltip("Target text renderer.")]
@@ -67,7 +65,6 @@ namespace JCSUnity
         [SerializeField]
         private TextMeshPro mTextMesh = null;
 #endif
-
 
         [Header("** Runtime Variables (JCS_TextTimer) **")]
 
@@ -102,13 +99,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mHideWhenZero = false;
 
-
         // -- flags --
         private bool mMinusMinute = false;
         private bool mMinusHour = false;
 
-
-        [Header("- Sound (JCS_TextTimer)")]
+        [Header("- Sound")]
 
         [Tooltip("Sound played when hours get reduced.")]
         [SerializeField]
@@ -126,8 +121,8 @@ namespace JCSUnity
         // second sound.
         private int mTrackSecond = 0;
 
-
         /* Setter & Getter */
+
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
         public bool HideWhenZero { get { return this.mHideWhenZero; } set { this.mHideWhenZero = value; } }

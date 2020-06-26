@@ -23,6 +23,9 @@ namespace JCSUnity
     {
         /* Variables */
 
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Serializable]
         public struct PlayerRegisterForm
         {
@@ -32,7 +35,6 @@ namespace JCSUnity
             [Tooltip("Sprite transfrom represent this player.")]
             public Transform spriteTransform;
         };
-
 
         [Header("** Check Variables (JCS_RouteGuageSystem) **")]
 
@@ -47,7 +49,6 @@ namespace JCSUnity
         [Tooltip("Ratio between real distance and sprite ditance.")]
         [SerializeField]
         private float mDistanceRatio = 0;
-
 
         [Header("** Initialize Variables (JCS_RouteGuageSystem) **")]
 
@@ -67,7 +68,6 @@ namespace JCSUnity
         [SerializeField]
         private Transform mSpriteGoalTransform = null;
 
-
         [Header("** Runtime Variables (JCS_RouteGuageSystem) **")]
 
         [Tooltip("All the player forms.")]
@@ -81,7 +81,6 @@ namespace JCSUnity
         public Transform RealGoalTransfrom { get { return this.mRealGoalTransfrom; } set { this.mRealGoalTransfrom = value; } }
         public Transform SpriteStartTransform { get { return this.mSpriteStartTransform; } set { this.mSpriteStartTransform = value; } }
         public Transform SpriteGoalTransform { get { return this.mSpriteGoalTransform; } set { this.mSpriteGoalTransform = value; } }
-
 
         /* Functions */
 
@@ -115,9 +114,7 @@ namespace JCSUnity
                 mSpriteGoalTransform == null)
                 return;
 
-            for (int index = 0;
-                index < mPlayersForm.Count;
-                ++index)
+            for (int index = 0; index < mPlayersForm.Count; ++index)
             {
                 // 拿到選手
                 PlayerRegisterForm prf = mPlayersForm[index];

@@ -53,7 +53,6 @@ namespace JCSUnity
             this.mIGLogSystem = sys;
         }
 
-
         /* Functions */
 
         private void Awake()
@@ -79,8 +78,7 @@ namespace JCSUnity
         {
             if (mActive)
             {
-                JCS_Debug.LogError( 
-                    "Call this while the object is still active.");
+                JCS_Debug.LogError( "Call this while the object is still active");
                 return;
             }
 

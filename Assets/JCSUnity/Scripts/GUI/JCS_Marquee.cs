@@ -28,18 +28,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_3DDistanceTileAction mDistanceTileAction = null;
 
-
         [Header("** Initialize Variables (JCS_Marquee) **")]
 
         [Tooltip("Text object that is hiddent under mask.")]
         [SerializeField]
         private Text mTextContainer = null;
-        
 
         /* Setter/Getter */
 
         public Text TextContainer { get { return this.mTextContainer; } set { this.mTextContainer = value; } }
-
 
         /* Functions */
 

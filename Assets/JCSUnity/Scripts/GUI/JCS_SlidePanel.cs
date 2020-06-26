@@ -22,12 +22,10 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-
         [Header("** Check Variables (JCS_SlidePanel) **")]
 
         [SerializeField]
         private Vector3 mTargetPosition = Vector3.zero;
-
 
         [Header("** Runtime Variables (JCS_SlidePanel) **")]
 
@@ -47,7 +45,6 @@ namespace JCSUnity
         public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
         public void SetTargetPosition(Vector3 pos) { this.mTargetPosition = pos; }
         public Vector3 GetTargetPosition() { return this.mTargetPosition; }
-
 
         /* Functions */
 

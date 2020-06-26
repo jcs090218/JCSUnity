@@ -27,7 +27,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DialogueScript mDialogueScript = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

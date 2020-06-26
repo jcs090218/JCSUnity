@@ -25,13 +25,10 @@ namespace JCSUnity
 
         public static JCS_ResizeUI instance = null;
 
-
         private RectTransform mRect = null;
-
 
 #if (UNITY_EDITOR)
         private Image mImage = null;
-
 
         [Header("** Helper Variables (JCS_ResizeUI) **")]
 
@@ -48,7 +45,6 @@ namespace JCSUnity
         private Sprite mImageSprite = null;
 #endif
 
-
         [Header("** Check Variables (JCS_ResizeUI) **")]
 
         [Tooltip("Width scale.")]
@@ -62,7 +58,6 @@ namespace JCSUnity
         [Tooltip("Target scale.")]
         [SerializeField]
         private float mTargetScale = 0.0f;
-
 
         /* Setter & Getter */
 
@@ -87,7 +82,6 @@ namespace JCSUnity
         public float HScale { get { return this.mHScale; } }
         public float TargetScale { get { return this.mTargetScale; } }
 
-
         /* Functions */
 
         private void Awake()
@@ -107,9 +101,7 @@ namespace JCSUnity
                 List<Transform> readyToSetList = new List<Transform>();
 
                 Transform tempTrans = instance.transform;
-                for (int index = 0;
-                    index < tempTrans.childCount;
-                    ++index)
+                for (int index = 0; index < tempTrans.childCount; ++index)
                 {
                     Transform child = tempTrans.GetChild(index);
                     if (child.name == black_screen_name ||
@@ -164,7 +156,6 @@ namespace JCSUnity
 
             this.transform.localScale = Vector3.one;
         }
-
 
         private void Update()
         {

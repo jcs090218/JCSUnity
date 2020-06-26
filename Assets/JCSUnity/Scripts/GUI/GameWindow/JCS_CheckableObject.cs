@@ -44,7 +44,6 @@ namespace JCSUnity
         private bool mShowing = false;
 #endif
 
-
         [Header("** Runtime Variables (JCS_CheckableObject) **")]
 
         [Tooltip("")]
@@ -59,13 +58,11 @@ namespace JCSUnity
         [SerializeField]
         private RectTransform mRootPanel = null;
 
-
         [Header("NOTE: For 3D Object only.")]
 
         [Tooltip("Event to show the dialogue.")]
         [SerializeField]
         private EventType mEventType = EventType.ON_MOUSE_OVER;
-
 
         /* Setter & Getter */
 
@@ -177,6 +174,5 @@ namespace JCSUnity
         {
             mDescDialogue.FollowMouse(mSpawnPosition);
         }
-
     }
 }

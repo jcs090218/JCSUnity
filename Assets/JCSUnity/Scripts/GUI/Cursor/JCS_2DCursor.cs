@@ -24,7 +24,6 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_2DCursor) **")]
 
@@ -38,12 +37,10 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mCursorOffset = Vector3.zero;
 
-
         [Header("** Cursor State (JCS_Cursor) **")]
 
         [SerializeField]
-        private JCS_CursorCustomizeType mCursorCustomizeType 
-            = JCS_CursorCustomizeType.NORMAL_SELECT;
+        private JCS_CursorCustomizeType mCursorCustomizeType = JCS_CursorCustomizeType.NORMAL_SELECT;
         [SerializeField] private JCS_2DAnimation mNormalSelect = null;
         [SerializeField] private JCS_2DAnimation mHelpSelect = null;
         [SerializeField] private JCS_2DAnimation mWorkingInBackground = null;
@@ -60,12 +57,10 @@ namespace JCSUnity
         [SerializeField] private JCS_2DAnimation mAlternateSelect = null;
         [SerializeField] private JCS_2DAnimation mLinkSelect = null;
 
-
         /* Setter & Getter */
 
         public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
         public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
-
 
         /* Functions */
 

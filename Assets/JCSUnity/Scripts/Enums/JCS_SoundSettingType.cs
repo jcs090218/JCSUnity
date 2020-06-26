@@ -17,7 +17,6 @@ namespace JCSUnity
     {
         NONE,
 
-        //-- Sound
         BGM_SOUND,
         SFX_SOUND,
         SKILLS_SOUND

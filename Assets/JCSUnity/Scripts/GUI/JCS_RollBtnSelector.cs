@@ -25,13 +25,11 @@ namespace JCSUnity
         // the button has been focusing on.
         private JCS_RollSelectorButton mFocusBtn = null;
 
-
         [Header("** Check Variables (JCS_RollBtnSelector) **")]
 
         [Tooltip("")]
         [SerializeField]
         private JCS_PanelRoot mPanelRoot = null;
-
 
         [Header("** Initialize Variables (JCS_RollBtnSelector) **")]
 
@@ -47,8 +45,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DDimensions mDimension = JCS_2DDimensions.VERTICAL;
 
-
-        [Header("** Asymptotic Order **")]
+        [Header("- Asymptotic Order")]
 
         [Tooltip("Enable the asymptotic order effect?")]
         [SerializeField]
@@ -58,8 +55,7 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mAsympDiffScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-
-        [Header("** Scroll Settings **")]
+        [Header("- Scroll")]
 
         [Tooltip("How fast the buttons move?")]
         [SerializeField]
@@ -73,14 +69,13 @@ namespace JCSUnity
         [SerializeField]
         private float mScrollSpacingTime = 0.2f;
 
-        private float mScrollSpacingTimer = 0;
+        private float mScrollSpacingTimer = 0.0f;
 
         // target we want to scroll to one direction
         private int mTargetScrollIndex = 0;
 
         // counter in order to approach to "mTargetScrollIndex" about
         private int mScrollIndexCounter = 0;
-
 
         /* Setter & Getter */
 
@@ -165,16 +160,13 @@ namespace JCSUnity
 
             JCS_RollSelectorButton[] buttons = new JCS_RollSelectorButton[mButtons.Length];
 
-            for (int index = 0;
-                index < mButtons.Length;
-                ++index)
+            for (int index = 0; index < mButtons.Length; ++index)
             {
                 currentBtn = mButtons[index];
 
                 if (currentBtn == null)
                 {
-                    JCS_Debug.LogError(
-                        "Missing jcs_button assign in the inspector...");
+                    JCS_Debug.LogError("Missing jcs_button assign in the inspector");
                     continue;
                 }
 
@@ -274,9 +266,7 @@ namespace JCSUnity
             int centerIndex = JCS_Mathf.FindMiddleIndex(mButtons.Length);
 
             // initialzie the scroll index.
-            for (int index = 0;
-                index < mButtons.Length;
-                ++index)
+            for (int index = 0; index < mButtons.Length; ++index)
             {
                 currentBtn = mButtons[index];
 
@@ -324,8 +314,7 @@ namespace JCSUnity
         {
             if (mFocusBtn == null)
             {
-                JCS_Debug.LogError(
-                    "Cannot do the movement without focus button...");
+                JCS_Debug.LogError("Cannot do the movement without focus button");
                 return;
             }
 
@@ -334,8 +323,7 @@ namespace JCSUnity
 
             if (mLastScrollIndex == currentScrollIndex)
             {
-                JCS_Debug.LogError(
-                    "Last Scroll Index and Current Scroll Index are the same...");
+                JCS_Debug.LogError("Last Scroll Index and Current Scroll Index are the same");
                 return;
             }
 
@@ -397,7 +385,6 @@ namespace JCSUnity
         /// <param name="diffIndex"></param>
         private void ApplyTargetForAnim(int diffIndex)
         {
-
             JCS_RollSelectorButton currentBtn = null;
             JCS_RollSelectorButton targetBtn = null;
 
@@ -408,9 +395,7 @@ namespace JCSUnity
             Vector3[] newRecordScaleHolder = new Vector3[mButtons.Length];
             Vector3[] newTowardScaleHolder = new Vector3[mButtons.Length];
 
-            for (int index = 0;
-                index < mButtons.Length;
-                ++index)
+            for (int index = 0; index < mButtons.Length; ++index)
             {
                 int overflowIndex = JCS_Mathf.OverFlowIndex(index + diffIndex, mButtons.Length);
 
@@ -419,9 +404,7 @@ namespace JCSUnity
 
                 if (currentBtn == null || targetBtn == null)
                 {
-                    JCS_Debug.LogError(
-                        "Missing jcs_button assign in the inspector...");
-
+                    JCS_Debug.LogError("Missing jcs_button assign in the inspector...");
                     continue;
                 }
 
@@ -439,9 +422,7 @@ namespace JCSUnity
                 }
             }
 
-            for (int index = 0;
-                index < mButtons.Length;
-                ++index)
+            for (int index = 0; index < mButtons.Length; ++index)
             {
                 currentBtn = mButtons[index];
 

@@ -24,7 +24,6 @@ namespace JCSUnity
 
         private JCS_FadeObject mAO = null;
 
-
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_WhiteScreen) **")]
 
@@ -47,12 +46,10 @@ namespace JCSUnity
         [SerializeField]
         private float mFadeInTime = 0.2f;
 
-
         /* Setter & Getter */
 
         public float FadeOutTime { get { return this.mFadeOutTime; } set { this.mFadeOutTime = value; } }
         public float FadeInTime { get { return this.mFadeInTime; } set { this.mFadeInTime = value; } }
-
 
         /* Functions */
 

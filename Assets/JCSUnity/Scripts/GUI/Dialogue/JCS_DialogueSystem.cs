@@ -66,13 +66,11 @@ namespace JCSUnity
         [SerializeField]
         private int mRenderSelectTextIndex = 0;
 
-
         [Header("** Initialize Variables (JCS_DialogueSystem) **")]
 
         [Tooltip("If the mouse hover then select the selection.")]
         [SerializeField]
         private bool mMakeHoverSelect = true;
-
 
         [Header("** Runtime Variables (JCS_DialogueSystem) **")]
 
@@ -153,15 +151,13 @@ namespace JCSUnity
         private string mSelectStringFront = "#L" + 0 + "##b";
         private string mSelectStringBack = "#k#l";
 
-
-        [Header("** Optional Variables (JCS_DialogueSystem) **")]
+        [Header("- Optional Variables")]
 
         [Tooltip("Button selection group for this dialogue system.")]
         [SerializeField]
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-
-        [Header("** Sound Variables (JCS_DialogueSystem) **")]
+        [Header("- Sound")]
 
         [Tooltip("Sound plays when active dialogue.")]
         [SerializeField]
@@ -170,7 +166,6 @@ namespace JCSUnity
         [Tooltip("Sound plays when dispose dialogue.")]
         [SerializeField]
         private AudioClip mDisposeSound = null;
-
 
         /* Setter & Getter */
 
@@ -182,7 +177,6 @@ namespace JCSUnity
 
         public AudioClip AcitveSound { get { return this.mActiveSound; } set { this.mActiveSound = value; } }
         public AudioClip DisposeSound { get { return this.mDisposeSound; } set { this.mDisposeSound = value; } }
-
 
         /* Functions */
 

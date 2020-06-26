@@ -147,17 +147,13 @@ namespace JCSUnity
         {
             JCS_SlideEffect se = null;
 
-            for (int index = 0;
-                index < mSlideButtons.Length;
-                ++index)
+            for (int index = 0; index < mSlideButtons.Length; ++index)
             {
                 se = mSlideButtons[index];
 
                 if (se == null)
                 {
-                    JCS_Debug.LogError(
-                        "Missing jcs_button assign in the inspector...");
-
+                    JCS_Debug.LogError("Missing jcs_button assign in the inspector");
                     continue;
                 }
 
@@ -167,17 +163,13 @@ namespace JCSUnity
                 se.AutoAddEvent = false;
             }
 
-            for (int index = 0;
-                index < mAreaEffects.Length;
-                ++index)
+            for (int index = 0; index < mAreaEffects.Length; ++index)
             {
                 se = mAreaEffects[index];
 
                 if (se == null)
                 {
-                    JCS_Debug.LogError(
-                        "Missing jcs_button assign in the inspector...");
-
+                    JCS_Debug.LogError("Missing jcs_button assign in the inspector");
                     continue;
                 }
 
@@ -208,9 +200,7 @@ namespace JCSUnity
                     return;
             }
 
-            JCS_SlideEffect se = null;
-
-            se = mSlideButtons[mBtnCounter];
+            JCS_SlideEffect se = mSlideButtons[mBtnCounter];
 
             // stop checking if exits
             se.AutoAddEvent = false;
@@ -229,9 +219,7 @@ namespace JCSUnity
         {
             JCS_SlideEffect se = null;
 
-            for (int index = 0;
-                index < mSlideButtons.Length;
-                ++index)
+            for (int index = 0; index < mSlideButtons.Length; ++index)
             {
                 se = mSlideButtons[index];
 

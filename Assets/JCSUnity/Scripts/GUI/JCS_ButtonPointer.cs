@@ -28,13 +28,11 @@ namespace JCSUnity
 
         private JCS_PanelRoot mPanelRoot = null;
 
-
         [Header("** Initialize Variables (JCS_ButtonPointer) **")]
 
         [Tooltip("Button that this pointer could point to.")]
         [SerializeField]
         private JCS_Button[] mButtons = null;
-
 
         [Header("** Runtime Variables (JCS_ButtonPointer) **")]
 
@@ -46,28 +44,23 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mPointerOffset = Vector3.zero;
 
-
         /* Setter & Getter */
 
         public bool DontPointIfButtonNotActive { get { return this.mDontPointIfButtonNotActive; } set { this.mDontPointIfButtonNotActive = value; } }
         public Vector3 PointerOffset { get { return this.mPointerOffset; } set { this.mPointerOffset = value; } }
-
 
         /* Functions */
 
         private void Awake()
         {
             this.mSimpleTrackAction = this.GetComponent<JCS_SimpleTrackAction>();
-            
 
             // start at the current position. 
             // so trick make the trackaction not moving at all at the 
             // beginning of the action.
             this.mSimpleTrackAction.TargetPosition = this.transform.localPosition;
 
-            for (int index = 0;
-                index < mButtons.Length;
-                ++index)
+            for (int index = 0; index < mButtons.Length; ++index)
             {
                 if (mButtons[index] == null)
                     continue;
@@ -100,10 +93,8 @@ namespace JCSUnity
             }
 
             Vector3 targetPoint = 
-                // Target position. 
-                btn.GetRectTransfom().localPosition + 
-                // Offset value.
-                mPointerOffset;
+                btn.GetRectTransfom().localPosition +  // Target position. 
+                mPointerOffset;  // Offset value.
 
             mSimpleTrackAction.TargetPosition = targetPoint;
         }

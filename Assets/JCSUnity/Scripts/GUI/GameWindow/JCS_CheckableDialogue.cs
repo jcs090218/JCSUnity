@@ -35,13 +35,11 @@ namespace JCSUnity
         [Tooltip("Panel's rect transform.")]
         [SerializeField]
         private RectTransform mPanelRectTransform = null;
-
         
         /* Setter & Getter */
 
         public bool fitPushScreen { get { return this.mFitPushScreen; } set { this.mFitPushScreen = value; } }
         public void SetItemSprite(Sprite sp) { this.mItemImage.sprite = sp; }
-
 
         /* Functions */
 
@@ -66,8 +64,8 @@ namespace JCSUnity
 
             Vector2 dialogueRect = mPanelRectTransform.sizeDelta;
 
-            float halfPanelWidth = dialogueRect.x / 2 * mPanelRectTransform.localScale.x;
-            float halfPanelHeight = dialogueRect.y / 2 * mPanelRectTransform.localScale.x; ;
+            float halfPanelWidth = dialogueRect.x / 2.0f * mPanelRectTransform.localScale.x;
+            float halfPanelHeight = dialogueRect.y / 2.0f * mPanelRectTransform.localScale.x; ;
 
             switch (point)
             {
@@ -102,7 +100,6 @@ namespace JCSUnity
                     break;
             }
 
-
             this.mPanelRectTransform.localPosition = showPoint;
 
             if (mFitPushScreen)
@@ -117,8 +114,8 @@ namespace JCSUnity
             Vector2 rectSize = mPanelRectTransform.sizeDelta;
             Vector3 panelPos = mPanelRectTransform.localPosition;
 
-            float halfSlotWidth = rectSize.x / 2 * mPanelRectTransform.localScale.x;
-            float halfSlotHeight = rectSize.y / 2 * mPanelRectTransform.localScale.y;
+            float halfSlotWidth = rectSize.x / 2.0f * mPanelRectTransform.localScale.x;
+            float halfSlotHeight = rectSize.y / 2.0f * mPanelRectTransform.localScale.y;
 
             float panelLeftBorder = panelPos.x - halfSlotWidth;
             float panelRightBorder = panelPos.x + halfSlotWidth;
@@ -134,10 +131,10 @@ namespace JCSUnity
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
             Vector2 screenRect = appRect.sizeDelta;
 
-            float camLeftBorder = camPosToScreen.x - screenRect.x / 2;
-            float camRightBorder = camPosToScreen.x + screenRect.x / 2;
-            float camTopBorder = camPosToScreen.y + screenRect.y / 2;
-            float camBottomBorder = camPosToScreen.y - screenRect.y / 2; ;
+            float camLeftBorder = camPosToScreen.x - screenRect.x / 2.0f;
+            float camRightBorder = camPosToScreen.x + screenRect.x / 2.0f;
+            float camTopBorder = camPosToScreen.y + screenRect.y / 2.0f;
+            float camBottomBorder = camPosToScreen.y - screenRect.y / 2.0f;
 
             Vector3 newShowPoint = this.mPanelRectTransform.localPosition;
 

@@ -58,9 +58,7 @@ namespace JCSUnity
         /// <param name="arr"> sorted object. </param>
         private void OriganizeChildOrder(JCS_GUIComponentLayer[] arr)
         {
-            for (int index = 0;
-                index < arr.Length;
-                ++index)
+            for (int index = 0; index < arr.Length; ++index)
             {
                 // this will make gui ontop of each other.
                 JCS_Utility.MoveToTheLastChild(arr[index].transform);

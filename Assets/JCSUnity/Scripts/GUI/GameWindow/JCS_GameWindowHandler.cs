@@ -20,29 +20,23 @@ namespace JCSUnity
     {
         /* Variables */
 
-        // System UI
         [Header("** System Dialogue **")]
 
         [Tooltip("System UI instances.")]
         [SerializeField]
         private JCS_DialogueObject[] mSystemUI = null;
 
-
-        // Game UI
         [Header("** Game User Interface **")]
 
         [Tooltip("Game UI instance.")]
         [SerializeField]
         private JCS_DialogueObject mGameUI = null;
 
-
-        // NPC Dialogue
         [Header("** NPC Dialogue **")]
 
         [Tooltip("NPC dialogue instance.")]
         [SerializeField]
         private JCS_DialogueObject mNPCDialogue = null;
-
 
         // List of all the Game Window we are going to use in the game
         [Header("** Player Dialogue **")]
@@ -51,7 +45,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DialogueObject[] mPlayerDialogue = null;
 
-
         /* Setter & Getter */
 
         public JCS_DialogueObject GetPlayerDialogueAt(int index) { return this.mPlayerDialogue[index]; }
@@ -59,7 +52,6 @@ namespace JCSUnity
         public JCS_DialogueObject[] PlayerDialogue { get { return this.mPlayerDialogue; } set { this.mPlayerDialogue = value; } }
         public JCS_DialogueObject GameUI { get { return this.mGameUI; } set { this.mGameUI = value; } }
         public JCS_DialogueObject[] SystemUI { get { return this.mSystemUI; } set { this.mSystemUI = value; } }
-
 
         /* Functions */
 
@@ -83,8 +75,7 @@ namespace JCSUnity
         {
             if (mGameUI == null)
             {
-                JCS_Debug.LogError(
-                    "Game UI is not avialiable references...");
+                JCS_Debug.LogError("Game UI is not an avialiable references");
                 return;
             }
 
@@ -98,8 +89,7 @@ namespace JCSUnity
         {
             if (mGameUI == null)
             {
-                JCS_Debug.LogError(
-                    "Game UI is not avialiable references...");
+                JCS_Debug.LogError("Game UI is not an avialiable references");
                 return;
             }
 
@@ -186,9 +176,7 @@ namespace JCSUnity
             if (list.Length == 0)
                 return null;
 
-            for (int index = 0;
-                index < list.Length;
-                ++index)
+            for (int index = 0; index < list.Length; ++index)
             {
                 if (list[index] == null)
                     continue;

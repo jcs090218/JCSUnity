@@ -21,6 +21,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Header("** Initialize Variables (JCS_SettingObject) **")]
+
         [Tooltip("Type of the settings.")]
         [SerializeField]
         private JCS_SoundSettingType mSettingType = JCS_SoundSettingType.NONE;
@@ -40,11 +42,9 @@ namespace JCSUnity
         private Dropdown mDropdown = null;
         private InputField mInputField = null;
 
-
         /* Setter & Getter */
 
         public string SettingString { get { return this.mSettingString; } }
-
 
         /* Functions */
 
@@ -54,7 +54,6 @@ namespace JCSUnity
 
             // get the corrosponding gui type!!
             InitGUIComponent();
-
         }
 
         private void Update()
@@ -89,7 +88,6 @@ namespace JCSUnity
                     }
                     break;
             }
-
         }
 
         /// <summary>

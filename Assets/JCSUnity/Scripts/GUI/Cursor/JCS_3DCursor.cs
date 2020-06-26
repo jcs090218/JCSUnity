@@ -26,7 +26,6 @@ namespace JCSUnity
         private SpriteRenderer mSpriteRenderer = null;
         private Animator mAnimator = null;
 
-
         [Header("** Runtime Variables (JCS_3DCursor) **")]
 
         [Tooltip("Show the cursor or not.")]
@@ -37,12 +36,12 @@ namespace JCSUnity
         private Vector3 mCursorOffset = Vector3.zero;
 
         [Tooltip("Since is the 3D cursor, set where the cursor u want this to be.")]
-        [SerializeField] [Range(-30, 30)]
+        [SerializeField]
+        [Range(-30, 30)]
         private float mDepth = 3.0f;
 
         [Tooltip("Recommand that set this very hight so no object can block the cursor.")]
         [SerializeField] private int mOrderLayer = 100;
-
 
         [Header("** Animation Settings (JCS_3DCursor) **")]
 
@@ -63,20 +62,20 @@ namespace JCSUnity
         [SerializeField] private RuntimeAnimatorController mAlternateSelect = null;
         [SerializeField] private RuntimeAnimatorController mLinkSelect = null;
 
-
-        [Header("** Other Settings (JCS_3DCursor) **")]
+        [Header("- Other")]
 
         [Tooltip("If the art team do stuff correctly, no need to use this.")]
-        [SerializeField] private bool mDoOffset = false;
-        [Tooltip("Will cut the image in halft and pivot to top left.")]
-        [SerializeField] private Vector2 mOffset = Vector2.zero;
+        [SerializeField] 
+        private bool mDoOffset = false;
 
+        [Tooltip("Will cut the image in halft and pivot to top left.")]
+        [SerializeField] 
+        private Vector2 mOffset = Vector2.zero;
 
         /* Setter & Getter */
 
         public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
         public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
-
 
         /* Functions */
 
@@ -247,8 +246,7 @@ namespace JCSUnity
 
             if (notFound)
             {
-                JCS_Debug.LogError(
-                    type.ToString() +  " animation does not assign...");
+                JCS_Debug.LogError(type.ToString() + " animation does not assign");
                 return;
             }
 

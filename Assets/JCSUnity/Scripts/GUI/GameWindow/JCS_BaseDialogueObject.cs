@@ -165,7 +165,7 @@ namespace JCSUnity
 
             if (jcsCanvas == null)
             {
-                JCS_Debug.LogReminder("Does not use JCS_Canvas Object...");
+                JCS_Debug.LogReminder("Doesn't use JCS_Canvas object");
                 return;
             }
 

@@ -26,7 +26,6 @@ namespace JCSUnity
         private RectTransform mRectTransform = null;
         private Image mImage = null;
 
-
         [Header("** Check Variables (JCS_AspectScreenPanel) **")]
 
         [Tooltip("Type of the Aspect screen panel direction.")]
@@ -96,7 +95,6 @@ namespace JCSUnity
 
             float halfScreenWidth = (mRectTransform.sizeDelta.x / 2.0f) + halfAppRect.x;
             float halfScreenHeight = (mRectTransform.sizeDelta.y / 2.0f) + halfAppRect.y;
-
 
             Vector3 newPos = mRectTransform.localPosition;
 

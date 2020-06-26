@@ -27,7 +27,6 @@ namespace JCSUnity
         /* Setter & Getter */
 
         /* Functions */
-
         private void Awake()
         {
             this.mTweener = this.GetComponent<JCS_TransformTweener>();

@@ -45,7 +45,6 @@ namespace JCSUnity
         };
 #endif
 
-
         [Header("** Check Variables (JCS_UndoRedoComponent) **")]
 
         [Tooltip("Ignore record now.")]
@@ -55,7 +54,6 @@ namespace JCSUnity
         [Tooltip("Is the current component focused.")]
         [SerializeField]
         private bool mIsFocused = false;
-
 
         [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
 
@@ -72,8 +70,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mFocusAfterRedo = true;
 
-
-        [Header("- Input Field (JCS_UndoRedoComponent)")]
+        [Header("- Input Field")]
 
         [Tooltip("Record down the previous input field data.")]
         [SerializeField]
@@ -87,8 +84,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_InputFieldData> mIF_Redo = null;
 
-
-        [Header("- Dropdown (JCS_UndoRedoComponent)")]
+        [Header("- Dropdown")]
 
         [Tooltip("Record down the previous dropdown data.")]
         [SerializeField]
@@ -102,8 +98,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_DropdownData> mDD_Redo = null;
 
-
-        [Header("- Toggle (JCS_UndoRedoComponent)")]
+        [Header("- Toggle")]
 
         [Tooltip("Record down the previous toggle data.")]
         [SerializeField]
@@ -117,8 +112,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_ToggleData> mTog_Redo = null;
 
-
-        [Header("- Scroll Bar (JCS_UndoRedoComponent)")]
+        [Header("- Scroll Bar")]
 
         [Tooltip("Record down the previous scroll bar data.")]
         [SerializeField]
@@ -132,8 +126,7 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_ScrollbarData> mSB_Redo = null;
 
-
-        [Header("- Slider (JCS_UndoRedoComponent)")]
+        [Header("- Slider")]
 
         [Tooltip("Record down the previous slider data.")]
         [SerializeField]
@@ -147,13 +140,11 @@ namespace JCSUnity
         [SerializeField]
         private List<JCS_SliderData> mSli_Redo = null;
 
-
         /* Setter & Getter */
 
         public JCS_UndoRedoSystem UndoRedoSystem { get { return this.mUndoRedoSystem; } set { this.mUndoRedoSystem = value; } }
         public bool FocusAfterUndo { get { return this.mFocusAfterUndo; } set { this.mFocusAfterUndo = value; } }
         public bool FocusAfterRedo { get { return this.mFocusAfterRedo; } set { this.mFocusAfterRedo = value; } }
-
 
         /* Functions */
 

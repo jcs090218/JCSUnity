@@ -24,6 +24,25 @@ namespace JCSUnity
 
         private JCS_GUITextPool mLogTextPool = null;
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_IGLogSystem) **")]
+
+        [Tooltip("Test this component with keys.")]
+        public bool testWithKey = false;
+
+        public KeyCode sendTextAKey = KeyCode.Q;
+
+        public KeyCode sendTextBKey = KeyCode.W;
+
+        public KeyCode sendRandomTextArrayKey = KeyCode.E;
+
+        public string textA = "Hello World!";
+
+        public string textB = "EXP: 10";
+
+        public string[] textArray = new string[] { "Ok", "Cool?", "Awesome!" };
+#endif
+
         [Header("** Initialize Variables (JCS_IGLogSystem) **")]
 
         [Tooltip("Space between each log message.")]
@@ -33,7 +52,6 @@ namespace JCSUnity
         // vector of log text rendering on the screen.
         private JCS_Vector<JCS_LogText> mRenderLogText = null;
 
-        
         /* Setter & Getter */
 
         /* Functions */
@@ -61,15 +79,16 @@ namespace JCSUnity
 
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.Q))
-                SendLogMessage("Hello World!");
-            if (JCS_Input.GetKeyDown(KeyCode.W))
-                SendLogMessage("EXP: 10");
-            if (JCS_Input.GetKeyDown(KeyCode.E))
-            {
-                string[] msgs = { "Ok", "Cool?", "Awesome!" };
+            if (!testWithKey)
+                return;
 
-                SendLogMessages(msgs);
+            if (JCS_Input.GetKeyDown(sendTextAKey))
+                SendLogMessage(textA);
+            if (JCS_Input.GetKeyDown(sendTextBKey))
+                SendLogMessage(textB);
+            if (JCS_Input.GetKeyDown(sendRandomTextArrayKey))
+            {
+                SendLogMessages(textArray);
             }
         }
 #endif
@@ -94,8 +113,8 @@ namespace JCSUnity
             Vector3 newPos = logText.SimpleTrackAction.TargetPosition;
 
             // set back to position.
-            // NOTE(JenChieh): 不太懂這邊的原理...
-            newPos.y = 0;
+            // NOTE(jenchieh): 不太懂這邊的原理...
+            newPos.y = 0.0f;
 
             logText.SimpleTrackAction.TargetPosition = newPos;
             logText.SimpleTrackAction.LocalPosition = newPos;
@@ -134,9 +153,7 @@ namespace JCSUnity
         {
             JCS_LogText logText = null;
 
-            for (int index = 0;
-                index < mRenderLogText.length;
-                ++index)
+            for (int index = 0; index < mRenderLogText.length; ++index)
             {
                 logText = mRenderLogText.at(index);
 
@@ -149,9 +166,7 @@ namespace JCSUnity
         /// </summary>
         private void IncSpacing()
         {
-            for (int index =0;
-                index < mRenderLogText.length;
-                ++index)
+            for (int index = 0; index < mRenderLogText.length; ++index)
             {
                 mRenderLogText.at(index);
             }
