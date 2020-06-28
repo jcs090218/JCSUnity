@@ -31,15 +31,15 @@ namespace JCSUnity
         [SerializeField]
         private bool mActive = false;
 
-        [Tooltip("Time for each execution.")]
-        [SerializeField]
-        private float mIntervalTime = 0.0f;
-
         [Tooltip("Timer to run through all executions.")]
         [SerializeField]
         private float mTimer = 0.0f;
 
         [Header("** Runtime Variables (JCS_OrderEvent) **")]
+
+        [Tooltip("Time for each execution.")]
+        [SerializeField]
+        private float mIntervalTime = 0.0f;
 
         [Tooltip("Unity execution event.")]
         [SerializeField]
