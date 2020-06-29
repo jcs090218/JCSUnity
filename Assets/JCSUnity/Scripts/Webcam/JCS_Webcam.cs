@@ -33,17 +33,16 @@ namespace JCSUnity
 
         private bool mResumeTrigger = false;
 
-        [Header("** Check Variables (JCS_Webcam) **")]
-
-        [Tooltip("Record down the screen width.")]
-        [SerializeField]
-        private int mWebcamWidth = 0;
-
-        [Tooltip("Record down the screen height.")]
-        [SerializeField]
-        private int mWebcamHeight = 0;
-
         [Header("** Runtime Variables (JCS_Webcam) **")]
+
+        [Tooltip("Make webcam maximize to the widest edge.")]
+        [SerializeField]
+        private bool mMustBeFullScreen = false;
+
+        [Tooltip("FPS for webcam.")]
+        [SerializeField]
+        [Range(1, 120)]
+        private int mFPS = 12;
 
         [Tooltip("After the screenshot is taken, how fast to resume the webcam.")]
         [SerializeField]
@@ -92,12 +91,16 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
+        public bool MustBeFullScreen { get { return this.mMustBeFullScreen; } set { this.mMustBeFullScreen = value; } }
+        public int FPS { get { return this.mFPS; } set { this.mFPS = value; } }
         public float ResumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+#if (UNITY_STANDALONE || UNITY_EDITOR)
         public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
+#endif
         public string SavePath { get { return this.mSavePath; } set { this.mSavePath = value; } }
         public string SaveExtension { get { return this.mSaveExtension; } set { this.mSaveExtension = value; } }
+        public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
         public AudioClip TakePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
 
         /* Functions */
@@ -148,11 +151,11 @@ namespace JCSUnity
             }
 
             var scs = JCS_ScreenSettings.instance;
-            mWebcamWidth = scs.STANDARD_SCREEN_WIDTH;
-            mWebcamHeight = scs.STANDARD_SCREEN_HEIGHT;
+            int screenWidth = scs.STANDARD_SCREEN_WIDTH;
+            int screenHeight = scs.STANDARD_SCREEN_HEIGHT;
 
             mDeviceName = devices[0].name;
-            mWebCamTexture = new WebCamTexture(mDeviceName, mWebcamWidth, mWebcamHeight, 12);
+            mWebCamTexture = new WebCamTexture(mDeviceName, screenWidth, screenHeight, mFPS);
             UpdateUnityData();
 
             Play();
@@ -297,9 +300,29 @@ namespace JCSUnity
                 return;
             }
 
-            float xRatio = (float)mWebcamWidth / (float)mWebCamTexture.width;
-            float width = mWebcamWidth;
-            float height = (float)mWebCamTexture.height * xRatio;
+            var scs = JCS_ScreenSettings.instance;
+            float screenWidth = scs.STANDARD_SCREEN_WIDTH;
+            float screenHeight = scs.STANDARD_SCREEN_HEIGHT;
+
+            float xRatio = screenWidth / (float)mWebCamTexture.width;
+            float yRatio = screenHeight / (float)mWebCamTexture.height;
+
+            float width = 0;
+            float height = 0;
+
+            bool mode = (mMustBeFullScreen) ? (screenWidth > screenHeight) : (screenWidth < screenHeight);
+
+            if (mode)
+            {
+                width = screenWidth;
+                height = (float)mWebCamTexture.height * xRatio;
+            }
+            else
+            {
+                width = (float)mWebCamTexture.width * yRatio;
+                height = screenHeight;
+            }
+
             this.GetRectTransform().sizeDelta = new Vector2(width, height);
 
             float scaleY = mWebCamTexture.videoVerticallyMirrored ? -1f : 1f;

@@ -779,7 +779,7 @@ PrefabInstance:
     - target: {fileID: 5090550957556680164, guid: f3f4b7d5553961e4cb7509494c81b400,
         type: 3}
       propertyPath: SHOW_RESIZABLE_PANELS
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 3}
