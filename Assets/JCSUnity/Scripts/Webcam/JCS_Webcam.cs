@@ -35,6 +35,10 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_Webcam) **")]
 
+        [Tooltip("Manually preserve the size in scene.")]
+        [SerializeField]
+        private bool mManuallySetSize = false;
+
         [Tooltip("Make webcam maximize to the widest edge.")]
         [SerializeField]
         private bool mMustBeFullScreen = false;
@@ -91,6 +95,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool ManuallySetSize { get { return this.mManuallySetSize; } set { this.mManuallySetSize = value; } }
         public bool MustBeFullScreen { get { return this.mMustBeFullScreen; } set { this.mMustBeFullScreen = value; } }
         public int FPS { get { return this.mFPS; } set { this.mFPS = value; } }
         public float ResumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
@@ -294,6 +299,9 @@ namespace JCSUnity
         /// </summary>
         private void DoAspect()
         {
+            if (mManuallySetSize)
+                return;
+
             if (!mDetectDevice)
             {
                 JCS_Debug.LogError("No webcam detected in the current devices");
