@@ -308,30 +308,34 @@ namespace JCSUnity
                 return;
             }
 
-            var scs = JCS_ScreenSettings.instance;
-            float screenWidth = scs.STANDARD_SCREEN_WIDTH;
-            float screenHeight = scs.STANDARD_SCREEN_HEIGHT;
-
-            float xRatio = screenWidth / (float)mWebCamTexture.width;
-            float yRatio = screenHeight / (float)mWebCamTexture.height;
-
-            float width = 0;
-            float height = 0;
-
-            bool mode = (mMustBeFullScreen) ? (screenWidth > screenHeight) : (screenWidth < screenHeight);
-
-            if (mode)
+            if (GetRectTransform() != null)
             {
-                width = screenWidth;
-                height = (float)mWebCamTexture.height * xRatio;
-            }
-            else
-            {
-                width = (float)mWebCamTexture.width * yRatio;
-                height = screenHeight;
-            }
+                var scs = JCS_ScreenSettings.instance;
 
-            this.GetRectTransform().sizeDelta = new Vector2(width, height);
+                float screenWidth = scs.STANDARD_SCREEN_WIDTH;
+                float screenHeight = scs.STANDARD_SCREEN_HEIGHT;
+
+                float xRatio = screenWidth / (float)mWebCamTexture.width;
+                float yRatio = screenHeight / (float)mWebCamTexture.height;
+
+                float width = 0;
+                float height = 0;
+
+                bool mode = (mMustBeFullScreen) ? (screenWidth > screenHeight) : (screenWidth < screenHeight);
+
+                if (mode)
+                {
+                    width = screenWidth;
+                    height = (float)mWebCamTexture.height * xRatio;
+                }
+                else
+                {
+                    width = (float)mWebCamTexture.width * yRatio;
+                    height = screenHeight;
+                }
+
+                this.GetRectTransform().sizeDelta = new Vector2(width, height);
+            }
 
             float scaleY = mWebCamTexture.videoVerticallyMirrored ? -1f : 1f;
             {
