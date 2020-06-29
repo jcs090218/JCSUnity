@@ -86,10 +86,6 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
-        [Tooltip("Sound player for 3D sounds calculation.")]
-        [SerializeField]
-        private JCS_SoundPlayer mSoundPlayer = null;
-
         [Tooltip("Sound when taking the screenshot.")]
         [SerializeField]
         private AudioClip mTakePhotoSound = null;
@@ -105,14 +101,6 @@ namespace JCSUnity
         public AudioClip TakePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
 
         /* Functions */
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            if (mSoundPlayer == null)
-                mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
-        }
 
         private void Start()
         {
@@ -217,7 +205,11 @@ namespace JCSUnity
             mResumeTrigger = true;
 
             // play sound.
-            mSoundPlayer.PlayOneShot(mTakePhotoSound);
+            {
+                var soundm = JCS_SoundManager.instance;
+                JCS_SoundPlayer sp = soundm.GetGlobalSoundPlayer();
+                sp.PlayOneShot(mTakePhotoSound);
+            }
         }
 
         /// <summary>
