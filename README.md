@@ -24,6 +24,7 @@ any placeholder assets commercially.
 
 ## :newspaper: News
 
+* `2.0.4` - Renamed all framework's scenes without useless postfix like `Demo`, `Scene`, etc.
 * `2.0.3` - Use built-in `sprite mask` and removed [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642)
 as dependency.
 * `2.0.0` - Fixed down compatibility to Unity version `5.3.3`.
