@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/JCSUnity/Scenes/Demo/JCS_Webcam.unity
+    guid: 997f786741bd06648a968793f3b40d23
+  - enabled: 1
     path: Assets/JCSUnity/Scenes/Demo/3D/JCS_3D.unity
     guid: 3de7ce144db68854f86687563f7a39fe
   - enabled: 1
