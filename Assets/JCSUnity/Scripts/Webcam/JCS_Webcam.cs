@@ -29,36 +29,26 @@ namespace JCSUnity
 
         private int mCaptureCounter = 0;
 
-        [Header("** Runtime Variables (JCS_Webcam) **")]
-
-        [Tooltip("After the screenshot is taken, how fast to resume the webcam?")]
-        [SerializeField]
-        private float mResumeTime = 0;
-
-        private float mResumeTimer = 0;
+        private float mResumeTimer = 0.0f;
 
         private bool mResumeTrigger = false;
 
-#if (UNITY_STANDALONE || UNITY_EDITOR)
-        [Header("- Keys")]
+        [Header("** Check Variables (JCS_Webcam) **")]
 
-        [Tooltip("Key to take gameplay screenshot.")]
+        [Tooltip("Record down the screen width.")]
         [SerializeField]
-        private KeyCode mTakePic = KeyCode.None;
-#endif
+        private int mWebcamWidth = 0;
 
-        [Header("- Image Path")]
-
-        [Tooltip("Webcam u take will save into this path.")]
-        [SerializeField] private string mSavePath = "/JCS_GameData/WebcamShot/"; //Change the path here!
-
-        [Tooltip("Webcam resolution width.")]
+        [Tooltip("Record down the screen height.")]
         [SerializeField]
-        private int mWebcamResolutionWidth = 1920;
+        private int mWebcamHeight = 0;
 
-        [Tooltip("Webcam resolution height.")]
+        [Header("** Runtime Variables (JCS_Webcam) **")]
+
+        [Tooltip("After the screenshot is taken, how fast to resume the webcam.")]
         [SerializeField]
-        private int mWebcamResolutionHeight = 1080;
+        [Range(0.001f, 5.0f)]
+        private float mResumeTime = 1.0f;
 
         [Header("- Effect")]
 
@@ -71,9 +61,28 @@ namespace JCSUnity
 
         [Tooltip("Delay time to fade out the splash screen.")]
         [SerializeField]
-        private float mDelay = 1.0f;
+        [Range(0.001f, 5.0f)]
+        private float mDelayTime = 1.0f;
 
-        private float mDelayTimer = 0;
+        private float mDelayTimer = 0.0f;
+
+#if (UNITY_STANDALONE || UNITY_EDITOR)
+        [Header("- Keys")]
+
+        [Tooltip("Key to take webcam image.")]
+        [SerializeField]
+        private KeyCode mTakePicKey = KeyCode.None;
+#endif
+
+        [Header("- Image")]
+
+        [Tooltip("Image save path.")]
+        [SerializeField]
+        private string mSavePath = "/JCS_GameData/WebcamShot/"; //Change the path here!
+
+        [Tooltip("Default save image file extension.")]
+        [SerializeField]
+        private string mSaveExtension = ".png";
 
         [Header("- Sound")]
 
@@ -87,13 +96,13 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public void Stop() { if (mWebCamTexture != null) this.mWebCamTexture.Stop(); }
-        public void Play() { this.mWebCamTexture.Play(); }
-        public void Pause() { this.mWebCamTexture.Pause(); }
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
-
-        public int WebcamResolutionWidth { get { return this.mWebcamResolutionWidth; } set { this.mWebcamResolutionWidth = value; } }
-        public int WebcamResolutionHeight { get { return this.mWebcamResolutionHeight; } set { this.mWebcamResolutionHeight = value; } }
+        public float ResumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
+        public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+        public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
+        public string SavePath { get { return this.mSavePath; } set { this.mSavePath = value; } }
+        public string SaveExtension { get { return this.mSaveExtension; } set { this.mSaveExtension = value; } }
+        public AudioClip TakePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
 
         /* Functions */
 
@@ -103,7 +112,10 @@ namespace JCSUnity
 
             if (mSoundPlayer == null)
                 mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+        }
 
+        private void Start()
+        {
             ActiveWebcam();
         }
 
@@ -113,31 +125,8 @@ namespace JCSUnity
             ProcessInput();
 #endif
 
-            if (mResumeTrigger)
-            {
-                mResumeTimer += Time.deltaTime;
-
-                if (mResumeTime < mResumeTimer)
-                {
-                    if (mWebCamTexture != null)
-                        mWebCamTexture.Play();
-
-                    // done resume.
-                    mResumeTrigger = false;
-                }
-            }
-
-            if (mSplashEffectTrigger)
-            {
-                mDelayTimer += Time.deltaTime;
-
-                if (mDelayTimer > mDelay)
-                {
-                    mDelayTimer = 0;
-                    JCS_SceneManager.instance.GetJCSWhiteScreen().FadeOut();
-                    mSplashEffectTrigger = false;
-                }
-            }
+            DoSplash();
+            DoAspect();
         }
 
         private void OnApplicationQuit()
@@ -150,6 +139,10 @@ namespace JCSUnity
         {
             Stop();
         }
+
+        public void Stop() { if (mWebCamTexture != null) this.mWebCamTexture.Stop(); }
+        public void Play() { this.mWebCamTexture.Play(); }
+        public void Pause() { this.mWebCamTexture.Pause(); }
 
         /// <summary>
         /// Active the webcam.
@@ -166,15 +159,19 @@ namespace JCSUnity
                 return;
             }
 
+            var scs = JCS_ScreenSettings.instance;
+            mWebcamWidth = scs.STANDARD_SCREEN_WIDTH;
+            mWebcamHeight = scs.STANDARD_SCREEN_HEIGHT;
+
             mDeviceName = devices[0].name;
-            mWebCamTexture = new WebCamTexture(mDeviceName, mWebcamResolutionWidth, mWebcamResolutionHeight, 12);
+            mWebCamTexture = new WebCamTexture(mDeviceName, mWebcamWidth, mWebcamHeight, 12);
             UpdateUnityData();
 
-            mWebCamTexture.Play();
+            Play();
         }
 
         /// <summary>
-        /// 
+        /// Take a snapshot and store image to data path.
         /// </summary>
         public void TakeSnapshotWebcam()
         {
@@ -182,7 +179,7 @@ namespace JCSUnity
             // cannot take snap shot without the device!!
             if (!mDetectDevice)
             {
-                JCS_Debug.LogError("No webcam detected in the current devices.");
+                JCS_Debug.LogError("No webcam detected in the current devices");
                 return;
             }
 
@@ -258,11 +255,70 @@ namespace JCSUnity
         /// </summary>
         private void ProcessInput()
         {
-            if (JCS_Input.GetKeyDown(mTakePic))
+            if (JCS_Input.GetKeyDown(mTakePicKey))
             {
                 TakeSnapshotWebcam();
             }
         }
 #endif
+
+        /// <summary>
+        /// Do splash effect.
+        /// </summary>
+        private void DoSplash()
+        {
+            if (mResumeTrigger)
+            {
+                mResumeTimer += Time.deltaTime;
+
+                if (mResumeTime < mResumeTimer)
+                {
+                    if (mWebCamTexture != null)
+                        mWebCamTexture.Play();
+
+                    // done resume.
+                    mResumeTrigger = false;
+                }
+            }
+
+            if (mSplashEffectTrigger)
+            {
+                mDelayTimer += Time.deltaTime;
+
+                if (mDelayTimer > mDelayTime)
+                {
+                    mDelayTimer = 0;
+                    JCS_SceneManager.instance.GetJCSWhiteScreen().FadeOut();
+                    mSplashEffectTrigger = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Do aspect ratio calculation to webcam.
+        /// </summary>
+        private void DoAspect()
+        {
+            if (!mDetectDevice)
+            {
+                JCS_Debug.LogError("No webcam detected in the current devices");
+                return;
+            }
+
+            float xRatio = (float)mWebcamWidth / (float)mWebCamTexture.width;
+            float width = mWebcamWidth;
+            float height = (float)mWebCamTexture.height * xRatio;
+            this.GetRectTransform().sizeDelta = new Vector2(width, height);
+
+            float scaleY = mWebCamTexture.videoVerticallyMirrored ? -1f : 1f;
+            {
+                Vector3 newScale = this.LocalScale;
+                newScale.y *= scaleY;
+                this.LocalScale = newScale;
+            }
+
+            int orient = -this.mWebCamTexture.videoRotationAngle;
+            this.LocalEulerAngles = new Vector3(0.0f, 0.0f, orient);
+        }
     }
 }
