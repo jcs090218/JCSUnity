@@ -53,6 +53,12 @@ namespace JCSUnity
             DetectColliderOnce();
         }
 
+        /// <summary>
+        /// Identify the current collider type once.
+        /// </summary>
+        /// <returns>
+        /// Type of the current collider.
+        /// </returns>
         public JCS_ColliderType DetectColliderOnce()
         {
             this.mCharacterController = this.GetComponent<CharacterController>();
@@ -72,6 +78,19 @@ namespace JCSUnity
             if (mCapsuleCollider2D) this.mColliderType = JCS_ColliderType.CAPSULE_2D;
 
             return this.mColliderType;
+        }
+
+        /// <summary>
+        /// Check if TYPE current collider type.
+        /// </summary>
+        /// <param name="type"> Collider type you want to confirm. </param>
+        /// <returns>
+        /// Return true, if TYPE is this collider type.
+        /// Return false, if TYPE isn't this collider type.
+        /// </returns>
+        public bool IsColliderType(JCS_ColliderType type)
+        {
+            return this.mColliderType == type;
         }
 
         public Vector3 center
