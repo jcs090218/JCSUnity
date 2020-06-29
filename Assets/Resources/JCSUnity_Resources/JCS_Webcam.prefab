@@ -103,7 +103,6 @@ MonoBehaviour:
   mTakePicKey: 0
   mSavePath: /JCS_GameData/WebcamShot/
   mSaveExtension: .png
-  mSoundPlayer: {fileID: 0}
   mTakePhotoSound: {fileID: 0}
 --- !u!82 &134284150
 AudioSource:
