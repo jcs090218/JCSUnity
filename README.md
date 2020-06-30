@@ -24,6 +24,8 @@ any placeholder assets commercially.
 
 ## :newspaper: News
 
+Here is the list of few important and recent changes to this framework.
+
 * `2.0.4` - Renamed all framework's scenes without useless postfix like `Demo`, `Scene`, etc.
 * `2.0.3` - Use built-in `sprite mask` and removed [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642)
 as dependency.
