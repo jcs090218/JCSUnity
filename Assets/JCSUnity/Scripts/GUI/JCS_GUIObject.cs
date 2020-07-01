@@ -47,13 +47,11 @@ namespace JCSUnity
         [SerializeField]
         protected Scrollbar mScrollBar = null;
 
-
         [Header("** Runtime Variables (JCS_UndoRedoComponent) **")]
 
         [Tooltip("Select GUI type.")]
         [SerializeField]
         protected JCS_GUIType mGUIType = JCS_GUIType.NONE;
-
 
         /* Setter & Getter */
 
@@ -64,7 +62,6 @@ namespace JCSUnity
         public JCS_Toggle jcsToggle { get { return this.mJCSToggle; } }
         public Dropdown dropdown { get { return this.mDropdown; } }
         public Scrollbar scrollbar { get { return this.mScrollBar; } }
-
 
         /* Functions */
 

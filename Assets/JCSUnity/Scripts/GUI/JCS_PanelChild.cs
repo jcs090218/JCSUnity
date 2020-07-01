@@ -137,9 +137,7 @@ namespace JCSUnity
         {
             Transform tempTrans = this.transform;
 
-            for (int index = 0;
-                index < transform.childCount;
-                ++index)
+            for (int index = 0; index < transform.childCount; ++index)
             {
                 Transform child = tempTrans.GetChild(index);
 

@@ -36,7 +36,6 @@ namespace JCSUnity
         private KeyCode mUpdateInputField = KeyCode.U;
 #endif
 
-
         [Header("** Check Variables (JCS_InputField) **")]
 
         [Tooltip("Real text data this input field hold.")]
@@ -46,7 +45,6 @@ namespace JCSUnity
         [Tooltip("Is the input field focused?")]
         [SerializeField]
         private bool mIsFocus = false;
-
 
         [Header("** Runtime Variables (JCS_InputField) **")]
 
@@ -64,12 +62,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mApproachSec = false;
 
-
         /* Setter & Getter */
 
         public InputField inputField { get { return this.mInputField; } }
         public string RealText { get { return this.mRealText; } }
-
 
         /* Functions */
 

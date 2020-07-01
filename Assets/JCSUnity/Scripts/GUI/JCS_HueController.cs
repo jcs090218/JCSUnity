@@ -32,7 +32,6 @@ namespace JCSUnity
         [SerializeField]
         private Color[] mListColor = null;
 
-
         [Header("** Runtime Variables (JCS_HueController) **")]
 
         [Tooltip("Any Graphic with color component.")]
@@ -45,7 +44,6 @@ namespace JCSUnity
 
         private int mListCounter = 0;
 
-
         /* Setter & Getter */
 
         /* Functions */
@@ -54,9 +52,7 @@ namespace JCSUnity
         {
             if (mColorGraphic == null)
             {
-                JCS_Debug.LogError(
-                    "Do nothing without Graphic object assign...");
-
+                JCS_Debug.LogError("Do nothing without Graphic object assign");
                 return;
             }
 

@@ -23,6 +23,25 @@ namespace JCSUnity
     {
         /* Variables */
 
+#if UNITY_EDITOR
+        [Header("** Helper Variables (JCS_Marquee) **")]
+
+        [Tooltip("Test this component with key event.")]
+        public bool testWithKey = false;
+
+        [Tooltip("Key to send message A.")]
+        public KeyCode sendMsgAKey = KeyCode.H;
+
+        [Tooltip("Text message A ready to be test display.")]
+        public string msgA = "爽拉~";
+
+        [Tooltip("Key to send message B.")]
+        public KeyCode sendMsgBKey = KeyCode.J;
+
+        [Tooltip("Text message B ready to be test display.")]
+        public string msgB = "又是一個廣播~";
+#endif
+
         [Header("** Check Variables (JCS_Marquee) **")]
 
         [SerializeField]
@@ -51,10 +70,19 @@ namespace JCSUnity
 #if UNITY_EDITOR
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.H))
-                SetText("爽拉~", true);
-            if (Input.GetKeyDown(KeyCode.J))
-                SetText("又是一個廣播~", false);
+            Test();
+        }
+
+        private void Test()
+        {
+            if (!testWithKey)
+                return;
+
+            if (Input.GetKeyDown(sendMsgAKey))
+                SetText(msgA, true);
+
+            if (Input.GetKeyDown(sendMsgBKey))
+                SetText(msgB, false);
         }
 #endif
 
