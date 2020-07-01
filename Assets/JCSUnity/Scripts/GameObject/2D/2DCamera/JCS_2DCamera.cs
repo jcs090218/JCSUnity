@@ -26,7 +26,6 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mTargetPosition = Vector3.zero;
 
-
         [Header("** Initialize Variables (JCS_2DCamera) **")]
 
         [Tooltip("Set the camera's position to the player when " +
@@ -49,7 +48,7 @@ namespace JCSUnity
         //[SerializeField] private bool mSmoothMoveX = true;
         //[SerializeField] private bool mSmoothMoveY = true;
 
-        [Header("** Speed / Friction **")]
+        [Header("- Speed / Friction")]
 
         [Tooltip("How fast this camera move toward the target. (x-axis)")]
         [SerializeField]
@@ -81,8 +80,7 @@ namespace JCSUnity
 
         private Vector3 mFreezeRecord = Vector3.zero;
 
-        //-- Scroll
-        [Header("** Scroll Setting **")]
+        [Header("- Scroll")]
 
         [Tooltip("Do the zoom effect.")]
         [SerializeField]
@@ -109,7 +107,7 @@ namespace JCSUnity
 
         private float mWheelDegree = 0;
 
-        [Header("** Scene Setting **")]
+        [Header("- Scene")]
 
         [Tooltip("Maxinum this camera can go in x-axis.")]
         [SerializeField]

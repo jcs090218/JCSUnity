@@ -57,7 +57,7 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mSmoothTrackFriction = 0.2f;
 
-        [Header("** Rotate Camera Settings (JCS_3DCamera) **")]
+        [Header("- Rotate Camera")]
 
         [Tooltip("How fast this camera rotates.")]
         [SerializeField]
@@ -120,16 +120,15 @@ namespace JCSUnity
         [SerializeField]
         private float mMinHeight = 0;
 
-        // 
         private float mTargetHeight = 0;
 
-        [Header("- Speed/Friction")]
+        [Header("- Speed / Friction")]
 
         [Tooltip("How fast it change the view up and down?")]
         [SerializeField]
         private float mUpDownFriction = 0.2f;
 
-        [Header("** Scroll / Zoom Settings **")]
+        [Header("- Scroll / Zoom Settings")]
 
         [Tooltip("Do the zoom effect?")]
         [SerializeField]
