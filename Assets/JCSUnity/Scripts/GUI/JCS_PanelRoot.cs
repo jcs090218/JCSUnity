@@ -24,11 +24,11 @@ namespace JCSUnity
 
         [Tooltip("Delta ratio change of the screen width.")]
         [SerializeField]
-        private float mPanelDeltaWidthRatio = 0;
+        private float mPanelDeltaWidthRatio = 0.0f;
 
         [Tooltip("Delta ratio change of the screen height.")]
         [SerializeField]
-        private float mPanelDeltaHeightRatio = 0;
+        private float mPanelDeltaHeightRatio = 0.0f;
 
         [Header("** Initialize Variables (JCS_PanelRoot) **")]
 
@@ -87,10 +87,16 @@ namespace JCSUnity
 
                 if (cam != null)
                 {
+                    Vector3 panelPos = mRectTransform.localPosition;
+                    // This was `camer position`, but we don't need to
+                    // add up the camera position because Canvas has their 
+                    // own coordinate system or you can call it Canvas Space.
+                    Vector3 centerPos = Vector3.zero;
+
                     // Find the distance between the dialogue object and 
                     // the center (which is camera in this case)
-                    float distanceX = mRectTransform.localPosition.x - cam.transform.localPosition.x;
-                    float distanceY = mRectTransform.localPosition.y - cam.transform.localPosition.y;
+                    float distanceX = panelPos.x - centerPos.x;
+                    float distanceY = panelPos.y - centerPos.y;
 
                     newPosition.x = (distanceX / mPanelDeltaWidthRatio);
                     newPosition.y = (distanceY / mPanelDeltaHeightRatio);
