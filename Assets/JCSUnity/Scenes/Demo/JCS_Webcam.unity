@@ -1039,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JCS_UIWebcam
       objectReference: {fileID: 0}
+    - target: {fileID: 11481776, guid: 5fcfcce7565a5444a948cff121d0b260, type: 3}
+      propertyPath: mResumeTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 22435030, guid: 5fcfcce7565a5444a948cff121d0b260, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
