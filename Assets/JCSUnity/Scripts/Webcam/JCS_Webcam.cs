@@ -49,7 +49,7 @@ namespace JCSUnity
         [Tooltip("After the screenshot is taken, how fast to resume the webcam.")]
         [SerializeField]
         [Range(0.001f, 5.0f)]
-        private float mResumeTime = 1.0f;
+        private float mResumeTime = 3.0f;
 
         [Header("- Effect")]
 
@@ -83,7 +83,7 @@ namespace JCSUnity
 
         [Tooltip("Save file name prefix.")]
         [SerializeField]
-        private string mFilePrefix = "";
+        private string mSaveFilePrefix = "";
 
         [Tooltip("Default save image file extension.")]
         [SerializeField]
@@ -106,7 +106,7 @@ namespace JCSUnity
         public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
 #endif
         public string SavePath { get { return this.mSavePath; } set { this.mSavePath = value; } }
-        public string FilePrefix { get { return this.mFilePrefix; } set { this.mFilePrefix = value; } }
+        public string SaveFilePrefix { get { return this.mSaveFilePrefix; } set { this.mSaveFilePrefix = value; } }
         public string SaveExtension { get { return this.mSaveExtension; } set { this.mSaveExtension = value; } }
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
         public AudioClip TakePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
@@ -212,7 +212,7 @@ namespace JCSUnity
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
-            int last_saved_index = SearchDirectory(Application.dataPath + mSavePath, mFilePrefix) + 1;
+            int last_saved_index = JCS_Utility.LastFileIndex(Application.dataPath + mSavePath, mSaveFilePrefix) + 1;
 
             string fullPath = savePath + last_saved_index.ToString() + mSaveExtension;
 
@@ -233,7 +233,7 @@ namespace JCSUnity
             }
 
             // Stop the camera
-            mWebCamTexture.Stop();
+            mWebCamTexture.Pause();
 
             // start the timer wait for resume
             mResumeTrigger = true;
@@ -302,6 +302,8 @@ namespace JCSUnity
 
                 if (mResumeTime < mResumeTimer)
                 {
+                    mResumeTimer = 0.0f;
+
                     if (mWebCamTexture != null)
                         mWebCamTexture.Play();
 
@@ -316,7 +318,7 @@ namespace JCSUnity
 
                 if (mDelayTimer > mDelayTime)
                 {
-                    mDelayTimer = 0;
+                    mDelayTimer = 0.0f;
                     JCS_SceneManager.instance.GetJCSWhiteScreen().FadeOut();
                     mSplashEffectTrigger = false;
                 }
@@ -378,48 +380,6 @@ namespace JCSUnity
 
             int orient = -this.mWebCamTexture.videoRotationAngle;
             this.LocalEulerAngles = new Vector3(0.0f, 0.0f, orient);
-        }
-
-        /// <summary>
-        /// Method to do search directory and check to see 
-        /// image index that are already exist.
-        /// </summary>
-        /// <param name="path"> path to search index. </param>
-        /// <param name="removeStr">  </param>
-        /// <returns></returns>
-        private int SearchDirectory(string path, string removeStr)
-        {
-            // if Directory does not exits, create it prevent error!
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
-            var gs = JCS_GameSettings.instance;
-
-            string fileName = "";
-            string ext = "";
-            int last_saved_screenshot = 0;
-            foreach (string file in Directory.GetFiles(path))
-            {
-                fileName = Path.GetFileNameWithoutExtension(file);
-                ext = Path.GetExtension(file);
-
-                // check if is the .png file 
-                // (screen shot can only be image file)
-                if (!ext.Equals(gs.SAVED_IMG_EXTENSION))
-                    continue;
-
-                int index = fileName.IndexOf(removeStr);
-                int len = removeStr.Length;
-                string startOfString = fileName.Substring(0, index);
-                string endOfString = fileName.Substring(index + len);
-                string cleanPath = startOfString + endOfString;
-
-                //print(cleanPath);
-
-                last_saved_screenshot = System.Int32.Parse(cleanPath);
-            }
-
-            return last_saved_screenshot;
         }
     }
 }
