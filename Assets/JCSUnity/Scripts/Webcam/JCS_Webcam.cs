@@ -27,8 +27,6 @@ namespace JCSUnity
 
         private WebCamTexture mWebCamTexture = null;
 
-        private int mCaptureCounter = 0;
-
         private float mResumeTimer = 0.0f;
 
         private bool mResumeTrigger = false;
@@ -83,6 +81,10 @@ namespace JCSUnity
         [SerializeField]
         private string mSavePath = "/JCS_GameData/WebcamShot/"; //Change the path here!
 
+        [Tooltip("Save file name prefix.")]
+        [SerializeField]
+        private string mFilePrefix = "";
+
         [Tooltip("Default save image file extension.")]
         [SerializeField]
         private string mSaveExtension = ".png";
@@ -104,6 +106,7 @@ namespace JCSUnity
         public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
 #endif
         public string SavePath { get { return this.mSavePath; } set { this.mSavePath = value; } }
+        public string FilePrefix { get { return this.mFilePrefix; } set { this.mFilePrefix = value; } }
         public string SaveExtension { get { return this.mSaveExtension; } set { this.mSaveExtension = value; } }
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
         public AudioClip TakePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
@@ -209,10 +212,11 @@ namespace JCSUnity
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
-            string fullPath = savePath + mCaptureCounter.ToString() + mSaveExtension;
+            int last_saved_index = SearchDirectory(Application.dataPath + mSavePath, mFilePrefix) + 1;
+
+            string fullPath = savePath + last_saved_index.ToString() + mSaveExtension;
 
             System.IO.File.WriteAllBytes(fullPath, snap.EncodeToPNG());
-            ++mCaptureCounter;
 
 
             if (mSplash)
@@ -374,6 +378,48 @@ namespace JCSUnity
 
             int orient = -this.mWebCamTexture.videoRotationAngle;
             this.LocalEulerAngles = new Vector3(0.0f, 0.0f, orient);
+        }
+
+        /// <summary>
+        /// Method to do search directory and check to see 
+        /// image index that are already exist.
+        /// </summary>
+        /// <param name="path"> path to search index. </param>
+        /// <param name="removeStr">  </param>
+        /// <returns></returns>
+        private int SearchDirectory(string path, string removeStr)
+        {
+            // if Directory does not exits, create it prevent error!
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            var gs = JCS_GameSettings.instance;
+
+            string fileName = "";
+            string ext = "";
+            int last_saved_screenshot = 0;
+            foreach (string file in Directory.GetFiles(path))
+            {
+                fileName = Path.GetFileNameWithoutExtension(file);
+                ext = Path.GetExtension(file);
+
+                // check if is the .png file 
+                // (screen shot can only be image file)
+                if (!ext.Equals(gs.SAVED_IMG_EXTENSION))
+                    continue;
+
+                int index = fileName.IndexOf(removeStr);
+                int len = removeStr.Length;
+                string startOfString = fileName.Substring(0, index);
+                string endOfString = fileName.Substring(index + len);
+                string cleanPath = startOfString + endOfString;
+
+                //print(cleanPath);
+
+                last_saved_screenshot = System.Int32.Parse(cleanPath);
+            }
+
+            return last_saved_screenshot;
         }
     }
 }

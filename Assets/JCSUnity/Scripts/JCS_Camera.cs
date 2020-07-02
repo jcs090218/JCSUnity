@@ -138,18 +138,18 @@ namespace JCSUnity
              *      - http://docs.unity3d.com/ScriptReference/Application-dataPath.html
              */
 
-            // get the last saved screen shot's index
-            int last_saved_index = SearchDirectory(
-                Application.dataPath +
-                JCS_GameSettings.instance.SCREENSHOT_PATH,
-                JCS_GameSettings.instance.SCREENSHOT_FILENAME) + 1;
+            var gs = JCS_GameSettings.instance;
 
-            ScreenCapture.CaptureScreenshot(
-                Application.dataPath +
-                JCS_GameSettings.instance.SCREENSHOT_PATH +
-                JCS_GameSettings.instance.SCREENSHOT_FILENAME +
-                last_saved_index +
-                JCS_GameSettings.instance.SAVED_IMG_EXTENSION);
+            string dir = Application.dataPath + gs.SCREENSHOT_PATH;
+            string prefix = gs.SCREENSHOT_FILENAME;
+            string ext = gs.SAVED_IMG_EXTENSION;
+
+            // get the last saved screen shot's index
+            int last_saved_index = SearchDirectory(dir, prefix) + 1;
+
+            string savePath = dir + prefix + last_saved_index + ext;
+
+            ScreenCapture.CaptureScreenshot(savePath);
 #endif
 #endif
         }
