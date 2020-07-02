@@ -18,7 +18,7 @@ public class BF_SelectLevelButton
 {
     /* Variables */
 
-    [Tooltip("Name of the scene u want to load for game.")]
+    [Tooltip("Name of the scene you want to load for game.")]
     [SerializeField]
     private string mSceneName = "";
 

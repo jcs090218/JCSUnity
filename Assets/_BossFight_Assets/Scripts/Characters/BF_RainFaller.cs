@@ -14,8 +14,8 @@ using JCSUnity;
 /// Character shoot rain fall
 /// </summary>
 [RequireComponent(typeof(JCS_ShootAction))]
-public class BF_RainFaller 
-    : MonoBehaviour 
+public class BF_RainFaller
+    : MonoBehaviour
 {
     /* Variables */
 
@@ -25,16 +25,20 @@ public class BF_RainFaller
     private float mShootAngle = 0;
 
     [Header("** Runtime Variables (BF_RainFaller) **")]
-    [SerializeField] private bool mCanShoot = true;
+
+    [SerializeField] 
+    private bool mCanShoot = true;
 
     [Header("** Time Settings (BF_RainFaller) **")]
 
     [Tooltip("Time to do one walk.")]
-    [SerializeField] [Range(0.01f, 10.0f)]
+    [SerializeField]
+    [Range(0.01f, 10.0f)]
     private float mTimeZone = 2.0f;
 
     [Tooltip("Time that will randomly affect the Time Zone.")]
-    [SerializeField] [Range(0.0f, 3.0f)]
+    [SerializeField]
+    [Range(0.0f, 3.0f)]
     private float mAdjustTimeZone = 1.5f;
 
     // time to record down the real time to do one walk 
@@ -80,9 +84,7 @@ public class BF_RainFaller
         if (!mCanShoot)
             return;
 
-        for (int count = 0;
-            count < mShootAction.ShootCount;
-            ++count)
+        for (int count = 0; count < mShootAction.ShootCount; ++count)
         {
             JCS_Bullet bullet = mShootAction.Shoot();
             if (bullet != null)
@@ -123,5 +125,4 @@ public class BF_RainFaller
         mShooted = false;
         mTimer = 0;
     }
-
 }

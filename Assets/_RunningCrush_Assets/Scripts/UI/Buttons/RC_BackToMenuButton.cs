@@ -34,8 +34,7 @@ public class RC_BackToMenuButton
     {
         if (mSlideCamera == null)
         {
-            JCS_Debug.LogError(
-                "No JCS_2DSlideScreenCamera in the scene...");
+            JCS_Debug.LogError("No JCS_2DSlideScreenCamera in the scene");
             return;
         }
 

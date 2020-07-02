@@ -83,9 +83,7 @@ public class RC_Player
         {
             mRecordJumpForce = new float[mJumpYForces.Length];
             this.mRecordJumpForce[0] = mJumpYForces[0];
-            for (int index = 0;
-                index < mRecordJumpForce.Length;
-                ++index)
+            for (int index = 0; index < mRecordJumpForce.Length; ++index)
             {
                 this.mRecordJumpForce[index] = mJumpYForces[index];
             }
@@ -111,9 +109,7 @@ public class RC_Player
         {
             this.MoveSpeed += (this.mRecordSpeed - this.MoveSpeed) / mSpeedFriction * Time.deltaTime;
 
-            for (int index = 0;
-                index < mRecordJumpForce.Length;
-                ++index)
+            for (int index = 0; index < mRecordJumpForce.Length; ++index)
             {
                 mJumpYForces[index] += (this.mRecordJumpForce[index] - mJumpYForces[index]) / mJumpFriction * Time.deltaTime;
             }

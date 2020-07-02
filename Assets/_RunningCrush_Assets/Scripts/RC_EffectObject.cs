@@ -82,7 +82,6 @@ public class RC_EffectObject
             case RC_EffectType.LOSE_POINT:
                 p.DeltaPoint(JCS_Mathf.ToNegative(mPoint));
                 break;
-
         }
     }
 }

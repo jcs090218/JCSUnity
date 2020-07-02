@@ -12,8 +12,8 @@ using JCSUnity;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
-public class RC_WebcamHandler 
-    : MonoBehaviour 
+public class RC_WebcamHandler
+    : MonoBehaviour
 {
     /* Variables */
 
@@ -79,7 +79,7 @@ public class RC_WebcamHandler
             }
         }
     }
-    
+
     public void RC_SetActiveInTime(int way)
     {
         if (mStartTimer)
@@ -98,24 +98,16 @@ public class RC_WebcamHandler
             --mPanelIndex;
 
         // check length
-        if (mWebcamPanel.Length < mPanelIndex ||
-            mPanelIndex < 0)
+        if (mWebcamPanel.Length < mPanelIndex || mPanelIndex < 0)
         {
-            JCS_Debug.LogError(
-                "RC_WebcamHandler",
-                 
-                "Out of range index.");
+            JCS_Debug.LogError("Out of range index");
 
             return;
         }
         // check object
         if (mWebcamPanel[mPanelIndex] == null)
         {
-            JCS_Debug.LogError(
-                "RC_WebcamHandler",
-                 
-                "Call the function but does not assign panel at [" + mPanelIndex + "]...");
-
+            JCS_Debug.LogError("Call the function but does not assign panel at [" + mPanelIndex + "]...");
             return;
         }
 

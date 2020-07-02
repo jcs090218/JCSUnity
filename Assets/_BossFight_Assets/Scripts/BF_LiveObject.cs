@@ -209,8 +209,5 @@ public class BF_LiveObject
         mBurnTimer = 0;
 
         UnBurn();
-
     }
-
-
 }

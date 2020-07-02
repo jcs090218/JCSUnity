@@ -43,11 +43,7 @@ public class RC_EffectItem
         RC_Player p = other.GetComponent<RC_Player>();
         if (p == null)
         {
-            JCS_Debug.LogError(
-                "RC_GoldObjec",
-
-                "U are using RC game object but the player isn't RC gameobject...");
-
+            JCS_Debug.LogError("You are using RC game object but the player isn't RC gameobject...");
             return;
         }
 

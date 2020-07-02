@@ -17,24 +17,31 @@ using JCSUnity;
 [RequireComponent(typeof(JCS_DetectAreaAction))]
 [RequireComponent(typeof(JCS_ShootAction))]
 [RequireComponent(typeof(BF_Player))]
-public class BF_AutoAttacker 
-    : MonoBehaviour 
+public class BF_AutoAttacker
+    : MonoBehaviour
 {
     /* Variables */
 
     [Header("** Check Variables (BF_AutoAttacker) **")]
-    [SerializeField] private JCS_DetectAreaAction mDetectAreaAction = null;
-    [SerializeField] private JCS_ShootAction mShootAction = null;
 
-    [SerializeField] private BF_Player mBFPlayer = null;
+    [SerializeField] 
+    private JCS_DetectAreaAction mDetectAreaAction = null;
+
+    [SerializeField] 
+    private JCS_ShootAction mShootAction = null;
+
+    [SerializeField] 
+    private BF_Player mBFPlayer = null;
 
     [Header("** Runtime Variables (BF_AutoAttacker) **")]
 
     [Tooltip("How much time per shoot?")]
-    [SerializeField] [Range(0.01f, 10.0f)]
+    [SerializeField]
+    [Range(0.01f, 10.0f)]
     private float mTimeZone = 0;
 
-    [SerializeField] [Range(0.0f, 5.0f)]
+    [SerializeField]
+    [Range(0.0f, 5.0f)]
     private float mAdjustTimeZone = 1.5f;
 
     private float mRealTimeZone = 0;
@@ -112,7 +119,6 @@ public class BF_AutoAttacker
 
         bullet.transform.LookAt(dao.transform);
 
-
         if (dao.transform.position.x < this.transform.position.x)
         {
             bullet.transform.Rotate(0, 90, 0);
@@ -134,7 +140,7 @@ public class BF_AutoAttacker
             switch (mBFPlayer.Face)
             {
                 case JCS_2DFaceType.FACE_LEFT:
-                    
+
                     break;
                 case JCS_2DFaceType.FACE_RIGHT:
                     bullet.MoveSpeed = -bullet.MoveSpeed;

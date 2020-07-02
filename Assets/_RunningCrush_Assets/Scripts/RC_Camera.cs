@@ -30,10 +30,10 @@ public class RC_Camera
     private JCS_2DCamera mJCSCamera = null;
 
     [Header("** RC_Camera Settings **")]
+
     [Tooltip("Depend on which direction should the camera track.")]
     [SerializeField]
-    private JCS_2D4Direction mTrackingTarget 
-        = JCS_2D4Direction.RIGHT;
+    private JCS_2D4Direction mTrackingTarget = JCS_2D4Direction.RIGHT;
 
     private RC_Player mTrackingPlayer = null;
 
@@ -89,9 +89,7 @@ public class RC_Camera
         List<JCS_Player> players = pm.GetJCSPlayerList();
         List<JCS_Player> activePlayers = new List<JCS_Player>();
 
-        for (int index= 0;
-            index < players.Count;
-            ++index)
+        for (int index= 0; index < players.Count; ++index)
         {
             RC_Player rcPlayer = ((RC_Player)players[index]);
 

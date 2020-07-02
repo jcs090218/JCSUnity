@@ -15,25 +15,32 @@ using JCSUnity;
 /// they are.
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
-public class RC_PlayerPointer 
-    : MonoBehaviour 
+public class RC_PlayerPointer
+    : MonoBehaviour
 {
     /* Variables */
-    
+
     private RC_Player mRCPlayer = null;
 
-    [SerializeField] private Sprite mPlayerImage = null;
+    [SerializeField] 
+    private Sprite mPlayerImage = null;
 
     private SpriteRenderer mSpriteRenderer = null;
-    [SerializeField] private SpriteRenderer mPhotoSpriteRenderer = null;
 
-    [SerializeField] private Vector3 mOffset = Vector3.zero;
+    [SerializeField] 
+    private SpriteRenderer mPhotoSpriteRenderer = null;
+
+    [SerializeField] 
+    private Vector3 mOffset = Vector3.zero;
 
     [Tooltip("How big the image in unit per pixel. 越大圖片越小, 越小圖越大.")]
-    [SerializeField] private float mUnitPerPixel = 400;
+    [SerializeField]
+    private float mUnitPerPixel = 400;
+
     [Tooltip(@"Order Layer for frame and the photo in frame. 
 Photo Order Layer will minus one in case the photo does not be ontop of the frame.")]
-    [SerializeField] private int mOrderLayer = 17;
+    [SerializeField]
+    private int mOrderLayer = 17;
 
     /* Setter & Getter */
 
@@ -60,8 +67,9 @@ Photo Order Layer will minus one in case the photo does not be ontop of the fram
         {
             var gs = JCS_GameSettings.instance;
 
-            mPlayerImage = JCS_ImageLoader.LoadImage(
-                Application.dataPath + "/JCS_GameData/WebcamShot/" + mRCPlayer.ControlIndex + gs.SAVED_IMG_EXTENSION, mUnitPerPixel);
+            string imagePath = Application.dataPath + "/JCS_GameData/WebcamShot/" + mRCPlayer.ControlIndex + gs.SAVED_IMG_EXTENSION;
+
+            mPlayerImage = JCS_ImageLoader.LoadImage(imagePath, mUnitPerPixel);
 
             if (mPhotoSpriteRenderer != null)
             {

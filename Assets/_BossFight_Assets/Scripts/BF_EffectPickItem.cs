@@ -26,9 +26,7 @@ public class BF_EffectPickItem
 
     [Tooltip("What happed after pick up this item?")]
     [SerializeField]
-    private BF_PickItemEffectType mEffectType 
-        = BF_PickItemEffectType.NONE;
-
+    private BF_PickItemEffectType mEffectType = BF_PickItemEffectType.NONE;
 
     [Header("** Liquid Variables (BF_EffectPickItem) **")]
 
@@ -99,7 +97,6 @@ public class BF_EffectPickItem
                 break;
         }
     }
-
 
     public void SetPickColliderByObject()
     {

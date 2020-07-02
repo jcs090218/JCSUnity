@@ -28,12 +28,14 @@ public class RC_GameSettings
     public bool LIQUID_MODE = true;
 
     [Header("** Game Settings **")]
+
     public RC_GameMode GAME_MODE = RC_GameMode.SINGLE_PLAYERS;
     public string LEVEL_SELECTED_NAME = "RC_Game";
     [Tooltip("Any button u need to load the correct level.")]
     public JCS_LoadSceneButton[] SCENE_BUTTONS = null;
 
     [Header("** Save Load Settings **")]
+
     public string FILE_PATH = "SavedData/";
     public string FILE_NAME = "RC_GameData";
     public static RC_GameData RC_GAME_DATA = null;
@@ -42,6 +44,7 @@ public class RC_GameSettings
     private string mFullFileName = "";
 
     [Header("** Player Settings **")]
+
     public JCS_3DLiquidBar GLOBAL_LIQUIDBAR = null;
     public Vector3 LIQUIDBAR_OFFSET = Vector3.zero;
     public RC_Player[] PLAYERS = null;
@@ -96,11 +99,7 @@ public class RC_GameSettings
         {
             if (btn == null)
             {
-                JCS_Debug.LogError(
-                    "RC_GameSettings",
-                     
-                    "You have open a space for button load in the scene, but does not assigned...");
-
+                JCS_Debug.LogError("You have open a space for button load in the scene, but does not assigned...");
                 continue;
             }
 
@@ -175,11 +174,7 @@ public class RC_GameSettings
     {
         if (RC_GAME_DATA == null)
         {
-            JCS_Debug.LogError(
-                "RC_GameSetting", 
-                  
-                "Save Data without data??? (Fatal Error)");
-
+            JCS_Debug.LogError("Save Data without data??? (Fatal Error)");
             return;
         }
 
@@ -201,10 +196,7 @@ public class RC_GameSettings
         }
 
         // This should not happens...
-        JCS_Debug.LogError(
-            "RC_GameSetting",
-             
-            "Game Mode Undefined...");
+        JCS_Debug.LogError("Game mode undefined");
 
         return RC_GameMode.SINGLE_PLAYERS;
     }

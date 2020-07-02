@@ -33,7 +33,6 @@ public class BF_Player
     protected override void Awake()
     {
         base.Awake();
-
     }
 
     protected override void Start()

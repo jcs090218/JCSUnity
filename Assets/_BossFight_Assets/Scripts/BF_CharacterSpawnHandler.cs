@@ -47,24 +47,19 @@ public class BF_CharacterSpawnHandler
 
         BF_Player[] bfPlayers = bfgs.CHARACTERS_IN_GAME;
 
-        for (int index = 0; 
-            index < bfgs.CHARACTERS_IN_TEAM;
-            ++index)
+        for (int index = 0; index < bfgs.CHARACTERS_IN_TEAM; ++index)
         {
             if (mSpawnPos[index] == null)
             {
-                JCS_Debug.LogReminder(
-                    "No Spawn position references, plz check the transform in the array...");
+                JCS_Debug.LogReminder("No Spawn position references, plz check the transform in the array");
                 break;
             }
 
             if (bfPlayers[index] == null)
             {
-                JCS_Debug.LogError(
-                    "Character you want to spawn does not exist...");
+                JCS_Debug.LogError("Character you want to spawn does not exist");
                 break;
             }
-
 
             // Spawn the player, and get the 
             // player we just spawned, in order 

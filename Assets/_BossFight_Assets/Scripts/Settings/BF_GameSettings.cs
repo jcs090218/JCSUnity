@@ -30,6 +30,7 @@ public class BF_GameSettings
     public BF_Player[] CHARACTERS_IN_GAME = null;
 
     [Header("** Save Load Settings **")]
+
     public string FILE_PATH = "SavedData/";
     public string FILE_NAME = "BF_GameData";
     public static BF_GameData BF_GAME_DATA = null;
@@ -37,7 +38,6 @@ public class BF_GameSettings
     private string mFullFilePath = "";
     private string mFullFileName = "";
 
-    //-- Game Features
     [Header("** Game Feature Settings **")]
 
     [Tooltip("Maximum mob in the scene.")]
@@ -48,6 +48,7 @@ public class BF_GameSettings
     public Color BURN_COLOR = Color.red;
 
     [Header("** Level Settings **")]
+
     [Tooltip("Name of the scene player selected.")]
     public string LEVEL_SELECTED_NAME = "";
 
@@ -141,8 +142,7 @@ public class BF_GameSettings
     {
         if (BF_GAME_DATA == null)
         {
-            JCS_Debug.LogError(
-                "Save Data without data??? (Fatal Error)");
+            JCS_Debug.LogError("Save Data without data");
             return;
         }
 
