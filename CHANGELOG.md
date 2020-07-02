@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-07-03
 
 * Updated webcam image utility functions.
+* Implemented new component `JCS_ScreenshotButton`.
 
 ### 2020-07-02
 
