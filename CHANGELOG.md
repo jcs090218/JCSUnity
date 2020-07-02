@@ -9,6 +9,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Updated webcam image utility functions.
 * Implemented new component `JCS_ScreenshotButton`.
+* Added remove from dir utility function.
+* Added util function for webcam images.
+* Added util function for screenshot images.
+* Organized and added webcam settings to game settings.
 
 ### 2020-07-02
 
