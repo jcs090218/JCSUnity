@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-07-02
+
+* Updated webcam stopping logic.
+* Fixed webcam texture remaining to the next scene issue.
+
 ### 2020-07-01
 
 * Fixed resize panel logic from `JCS_PanelRoot` component.
