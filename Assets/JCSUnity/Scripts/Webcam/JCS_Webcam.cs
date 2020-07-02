@@ -136,9 +136,29 @@ namespace JCSUnity
             Stop();
         }
 
-        public void Stop() { if (mWebCamTexture != null) this.mWebCamTexture.Stop(); }
-        public void Play() { this.mWebCamTexture.Play(); }
-        public void Pause() { this.mWebCamTexture.Pause(); }
+        private void OnDisable()
+        {
+            Stop();
+        }
+
+        public void Stop()
+        {
+            if (mWebCamTexture == null)
+                return;
+
+            this.mWebCamTexture.Stop();
+            this.mWebCamTexture = null;
+
+            SetWebcamTexture(null);
+        }
+        public void Play()
+        {
+            this.mWebCamTexture.Play();
+        }
+        public void Pause()
+        {
+            this.mWebCamTexture.Pause();
+        }
 
         /// <summary>
         /// Active the webcam.
@@ -189,7 +209,7 @@ namespace JCSUnity
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
-            System.IO.File.WriteAllBytes(fullPath + mCaptureCounter.ToString() + ".png", snap.EncodeToPNG());
+            System.IO.File.WriteAllBytes(fullPath + mCaptureCounter.ToString() + mSaveExtension, snap.EncodeToPNG());
             ++mCaptureCounter;
 
 
@@ -225,26 +245,27 @@ namespace JCSUnity
         /// </summary>
         public override void UpdateUnityData()
         {
+            base.UpdateUnityData();
+
+            SetWebcamTexture(mWebCamTexture);
+        }
+
+        /// <summary>
+        /// Set the webcam texture.
+        /// </summary>
+        /// <param name="tex"> Texture you want to be set. </param>
+        private void SetWebcamTexture(WebCamTexture tex)
+        {
             switch (GetObjectType())
             {
                 case JCS_UnityObjectType.GAME_OBJECT:
-                    this.mRenderer = this.GetComponent<Renderer>();
-
-                    // set texture to webcam texture (Mesh)
-                    this.mRenderer.material.mainTexture = mWebCamTexture;
+                    this.mRenderer.material.mainTexture = tex;
                     break;
                 case JCS_UnityObjectType.UI:
-                    this.mImage = this.GetComponent<Image>();
-                    this.mRectTransform = this.GetComponent<RectTransform>();
-
-                    // set texture to webcam texture (UI)
-                    this.mImage.material.mainTexture = mWebCamTexture;
+                    this.mImage.material.mainTexture = tex;
                     break;
                 case JCS_UnityObjectType.SPRITE:
-                    this.mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-
-                    // set texture to webcam texture (Sprite)
-                    this.mSpriteRenderer.material.mainTexture = mWebCamTexture;
+                    this.mSpriteRenderer.material.mainTexture = tex;
                     break;
             }
         }
@@ -299,6 +320,9 @@ namespace JCSUnity
         /// </summary>
         private void DoAspect()
         {
+            if (mWebCamTexture == null)
+                return;
+
             if (mManuallySetSize)
                 return;
 
