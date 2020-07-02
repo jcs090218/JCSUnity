@@ -189,27 +189,29 @@ namespace JCSUnity
         /// <summary>
         /// Take a snapshot and store image to data path.
         /// </summary>
-        public void TakeSnapshotWebcam()
+        public string TakeSnapshotWebcam()
         {
             // No device detected!!
             // cannot take snap shot without the device!!
             if (!mDetectDevice)
             {
                 JCS_Debug.LogError("No webcam detected in the current devices");
-                return;
+                return null;
             }
 
-            string fullPath = Application.dataPath + mSavePath;
+            string savePath = Application.dataPath + mSavePath;
 
             // if Directory does not exits, create it prevent error!
-            if (!Directory.Exists(fullPath))
-                Directory.CreateDirectory(fullPath);
+            if (!Directory.Exists(savePath))
+                Directory.CreateDirectory(savePath);
 
             Texture2D snap = new Texture2D(mWebCamTexture.width, mWebCamTexture.height);
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
-            System.IO.File.WriteAllBytes(fullPath + mCaptureCounter.ToString() + mSaveExtension, snap.EncodeToPNG());
+            string fullPath = savePath + mCaptureCounter.ToString() + mSaveExtension;
+
+            System.IO.File.WriteAllBytes(fullPath, snap.EncodeToPNG());
             ++mCaptureCounter;
 
 
@@ -238,6 +240,8 @@ namespace JCSUnity
                 JCS_SoundPlayer sp = soundm.GetGlobalSoundPlayer();
                 sp.PlayOneShot(mTakePhotoSound);
             }
+
+            return fullPath;
         }
 
         /// <summary>
@@ -342,8 +346,8 @@ namespace JCSUnity
                 float xRatio = screenWidth / (float)mWebCamTexture.width;
                 float yRatio = screenHeight / (float)mWebCamTexture.height;
 
-                float width = 0;
-                float height = 0;
+                float width = 0.0f;
+                float height = 0.0f;
 
                 bool mode = (mMustBeFullScreen) ? (screenWidth > screenHeight) : (screenWidth < screenHeight);
 

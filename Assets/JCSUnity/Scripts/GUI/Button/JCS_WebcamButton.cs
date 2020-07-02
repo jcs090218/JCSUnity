@@ -20,6 +20,12 @@ namespace JCSUnity
     {
         /* Variables*/
 
+        [Header("** Check Variables (JCS_WebcamButton) **")]
+
+        [Tooltip("Current webcam image path.")]
+        [SerializeField]
+        private string mCurrentWebcamImagePath = "";
+
         [Header("** Initialize Variables (JCS_WebcamButton) **")]
 
         [Tooltip("Webcam to use.")]
@@ -29,6 +35,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public JCS_Webcam Webcam { get { return this.mWebcam; } set { this.mWebcam = value; } }
+        public string CurrentWebcamImagePath { get { return this.mCurrentWebcamImagePath; } }
 
         /* Functions */
 
@@ -43,8 +50,8 @@ namespace JCSUnity
 
         public override void JCS_OnClickCallback()
         {
-            // current only one function applied,
-            // so just do take snap shot as defualt action!
+            // Current only one function applied, so just do take snap shot 
+            // as defualt action!
             TakeSnapshotWebcam();
         }
 
@@ -59,7 +66,7 @@ namespace JCSUnity
                 return;
             }
 
-            mWebcam.TakeSnapshotWebcam();
+            mCurrentWebcamImagePath = mWebcam.TakeSnapshotWebcam();
         }
     }
 }
