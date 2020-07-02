@@ -12,6 +12,9 @@ using System.IO;
 
 namespace JCSUnity
 {
+    public delegate void SavedGameDataDelegate();
+    public delegate void LoadGameDataDelegate();    // NOT USED
+
     /// <summary>
     /// Hold the general game setting.
     /// </summary>
@@ -19,6 +22,11 @@ namespace JCSUnity
         : JCS_Settings<JCS_GameSettings>
     {
         /* Variables */
+
+        public SavedGameDataDelegate SAVE_GAME_DATA_FUNC = null;
+        public LoadGameDataDelegate LOAD_GAME_DATA_FUNC = null; // NOT USED
+
+        public static JCS_XMLGameData GAME_DATA = null;    // NOT USED
 
         [Header("** Game Settings (JCS_GameSettings) **")]
 
@@ -58,17 +66,6 @@ namespace JCSUnity
         [Tooltip("Careful, this will override player ignore options!")]
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
-        [Header("- Screenshot")]
-        
-        [Tooltip("Screen shot folder path [Default: /JCS_ScreenShot/]")]
-        public string SCREENSHOT_PATH = "/JCS_ScreenShot/";
-
-        [Tooltip("Screen shot file name [Default: Screenshot_]")]
-        public string SCREENSHOT_FILENAME = "Screenshot_";
-
-        [Tooltip("Extension [Default: .png]")]
-        public string SAVED_IMG_EXTENSION = ".png";
-
         [Header("- Save Load")]
 
         [Tooltip("Save when switching the scene.")]
@@ -77,17 +74,30 @@ namespace JCSUnity
         [Tooltip("Save when app exit.")]
         public bool SAVE_ON_EXIT_APP = true;
 
-        //-- Game Data Path
         public static string GAME_DATA_PATH = "/JCS_GameData/";
         public static string JCS_EXTENSION = ".jcs";
 
-        public delegate void SavedGameDataDelegate();
-        public SavedGameDataDelegate SAVE_GAME_DATA_FUNC = null;
+        [Header("- Screenshot")]
+        
+        [Tooltip("Screenshot folder path.")]
+        public string SCREENSHOT_PATH = "/JCS_GameData/Screenshot/";
 
-        public delegate void LoadGameDataDelegate();    // NOT USED
-        public LoadGameDataDelegate LOAD_GAME_DATA_FUNC = null; // NOT USED
+        [Tooltip("Screenshot file name.")]
+        public string SCREENSHOT_FILENAME = "Screenshot_";
 
-        public static JCS_XMLGameData GAME_DATA = null;    // NOT USED
+        [Tooltip("Screenshot image extension.")]
+        public string SCREENSHOT_EXTENSION = ".png";
+
+        [Header("- Webcam")]
+
+        [Tooltip("Webcam image save path.")]
+        public string WEBCAM_SAVE_PATH = "/JCS_GameData/WebcamShot/";
+
+        [Tooltip("Webcam file name.")]
+        public string WEBCAM_FILENAME = "";
+
+        [Tooltip("Webcam image extension.")]
+        public string WEBCAM_EXTENSION = ".png";
 
         [Header("- Damage")]
 
