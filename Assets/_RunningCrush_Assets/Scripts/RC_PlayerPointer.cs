@@ -58,8 +58,10 @@ Photo Order Layer will minus one in case the photo does not be ontop of the fram
         if (RC_GameSettings.instance.WEBCAM_MODE &&
             RC_GameSettings.instance.GAME_MODE != RC_GameMode.SINGLE_PLAYERS)
         {
+            var gs = JCS_GameSettings.instance;
+
             mPlayerImage = JCS_ImageLoader.LoadImage(
-                Application.dataPath + "/JCS_GameData/WebcamShot/" + mRCPlayer.ControlIndex + ".png", mUnitPerPixel);
+                Application.dataPath + "/JCS_GameData/WebcamShot/" + mRCPlayer.ControlIndex + gs.SAVED_IMG_EXTENSION, mUnitPerPixel);
 
             if (mPhotoSpriteRenderer != null)
             {
@@ -70,8 +72,7 @@ Photo Order Layer will minus one in case the photo does not be ontop of the fram
             }
             else
             {
-                JCS_Debug.LogError(
-                    "No Photo sprite renderer assigned.");
+                JCS_Debug.LogError("No Photo sprite renderer assigned");
             }
         }
 

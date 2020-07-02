@@ -34,6 +34,7 @@ public class BF_GameManager
     [SerializeField] private int mCurrentExp = 0;
 
     [Header("** Initialize Varaibles (BF_GameManager) **")]
+
     [Tooltip("How many level in this scene.")]
     public int TOTAL_LEVEL = 30;
 
@@ -49,14 +50,12 @@ public class BF_GameManager
     [Tooltip("Check weather player win the game or lose the game.")]
     public BF_GameState GAME_STATE = BF_GameState.NONE;
 
-
-    [Header("** Liquid Bar **")]
+    [Header("- Protect")]
 
     [Tooltip("Object need to be protected.")]
     public JCS_2DLiveObject PROTECT_OBJECT = null;
 
-
-    [Header("** Liquid Bar **")]
+    [Header("- Liquid Bar")]
 
     [Tooltip("Health Liquid bar should be in the scene.")]
     public BF_LiquidBarHandler HEALTH_LIQUIDBAR = null;
@@ -66,8 +65,7 @@ public class BF_GameManager
     public BF_LiquidBarHandler MANA_LIQUIDBAR = null;
     public Collider MANA_OBJECT = null;
 
-
-    [Header("** GUI Settings **")]
+    [Header("- GUI")]
 
     [Tooltip("String in-front of level.")]
     public string LEVEL_STRING = "Level ";
@@ -78,8 +76,7 @@ public class BF_GameManager
     [Tooltip("Current monster count in the scene.")]
     public int MOB_CURRENT_IN_SCENE = 0;
 
-
-    [Header("** Health Target **")]
+    [Header("- Health Targe")]
 
     [Tooltip("Win/Lose condition dependency.")]
     public BF_HealthTarget mHealthTarget = null;
@@ -126,15 +123,12 @@ public class BF_GameManager
             mHealthTarget.LiveObject.CanDamage = false;
         else
         {
-            JCS_Debug.LogReminder(
-                "No health object in the assign...");
+            JCS_Debug.LogReminder("No health object in the assign");
         }
 
         if (GAME_OVER_PANEL == null)
         {
-            JCS_Debug.LogError(
-                "No game over panel have been set.");
-
+            JCS_Debug.LogError("No game over panel have been set");
             return;
         }
 

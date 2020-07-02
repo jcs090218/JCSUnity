@@ -82,11 +82,13 @@ namespace JCSUnity
         {
             for (int index = 0; index < arr.Length; ++index)
             {
+                var layer = arr[index];
+
                 // this will make gui ontop of each other.
-                JCS_Utility.MoveToTheLastChild(arr[index].transform);
+                JCS_Utility.MoveToTheLastChild(layer.transform);
 
                 // make sure is sorted already.
-                arr[index].Sorted = true;
+                layer.Sorted = true;
             }
         }
     }

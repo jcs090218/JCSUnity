@@ -37,7 +37,6 @@ public class RC_GameManager
     {
         // spawn the player in the game
         SpawnPlayer();
-
     }
 
     private void Update()
@@ -74,8 +73,7 @@ public class RC_GameManager
 
         if (uim.EXIT_PANEL == null)
         {
-            JCS_Debug.Log(
-                "No exit panel assign...");
+            JCS_Debug.Log("No exit panel assign");
             return;
         }
 
@@ -95,8 +93,7 @@ public class RC_GameManager
         {
             if (gs.PLAYERS[index] == null)
             {
-                JCS_Debug.LogError(
-                    "Player List in RC_GameSetting are null...");
+                JCS_Debug.LogError("Player List in RC_GameSetting are null");
                 return;
             }
 
@@ -123,8 +120,7 @@ public class RC_GameManager
                     rcp.SetLiquidBar(lb);
                 }
                 else {
-                    JCS_Debug.LogError(
-                        "No liquid bar attach to \"RC_GameSetting\" and u still want to access it.");
+                    JCS_Debug.LogError("No liquid bar attach to `RC_GameSetting` and u still want to access it");
                 }
             }
 

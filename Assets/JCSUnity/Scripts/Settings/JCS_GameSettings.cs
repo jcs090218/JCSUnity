@@ -20,7 +20,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        //-- 
         [Header("** Game Settings (JCS_GameSettings) **")]
 
         [Tooltip("Debug mode flag.")]
@@ -59,7 +58,7 @@ namespace JCSUnity
         [Tooltip("Careful, this will override player ignore options!")]
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
-        [Header("- Screen Shot")]
+        [Header("- Screenshot")]
         
         [Tooltip("Screen shot folder path [Default: /JCS_ScreenShot/]")]
         public string SCREENSHOT_PATH = "/JCS_ScreenShot/";
@@ -147,6 +146,5 @@ namespace JCSUnity
             _new.SAVE_ON_SWITCH_SCENE = _old.SAVE_ON_SWITCH_SCENE;
 
         }
-
     }
 }

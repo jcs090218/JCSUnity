@@ -167,6 +167,8 @@ namespace JCSUnity
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
+            var gs = JCS_GameSettings.instance;
+
             string fileName = "";
             string ext = "";
             int last_saved_screenshot = 0;
@@ -177,7 +179,7 @@ namespace JCSUnity
 
                 // check if is the .png file 
                 // (screen shot can only be image file)
-                if (!ext.Equals(".png"))
+                if (!ext.Equals(gs.SAVED_IMG_EXTENSION))
                     continue;
 
                 int index = fileName.IndexOf(removeStr);
@@ -213,14 +215,14 @@ namespace JCSUnity
             Vector3 camPos = cam.transform.position;
             // only need to know the depth.
             {
-                camPos.x = 0;
-                camPos.y = 0;
+                camPos.x = 0.0f;
+                camPos.y = 0.0f;
             }
             Vector3 canvasPos = JCS_Canvas.instance.transform.position;
             // only need to know the depth.
             {
-                canvasPos.x = 0;
-                canvasPos.y = 0;
+                canvasPos.x = 0.0f;
+                canvasPos.y = 0.0f;
             }
             float camToCanvasDistance = Vector3.Distance(camPos, canvasPos);
 
@@ -246,10 +248,10 @@ namespace JCSUnity
             // cannot name the same.
             Vector3 cCamPos = cam.transform.position;
 
-            float camTopBound = cCamPos.y + mCamRectSize.y / 2;
-            float camBotBound = cCamPos.y - mCamRectSize.y / 2;
-            float camRightBound = cCamPos.x + mCamRectSize.x / 2;
-            float camLeftBound = cCamPos.x - mCamRectSize.x / 2;
+            float camTopBound = cCamPos.y + mCamRectSize.y / JCS_Mathf.D_HALF;
+            float camBotBound = cCamPos.y - mCamRectSize.y / JCS_Mathf.D_HALF;
+            float camRightBound = cCamPos.x + mCamRectSize.x / JCS_Mathf.D_HALF;
+            float camLeftBound = cCamPos.x - mCamRectSize.x / JCS_Mathf.D_HALF;
 
             // top left -> bot right
             mCamRect.x = camLeftBound;
@@ -258,20 +260,20 @@ namespace JCSUnity
             mCamRect.height = camBotBound;
 
             Vector3 topLeft = cam.transform.position;
-            topLeft.x -= mCamRectSize.x / 2;
-            topLeft.y += mCamRectSize.y / 2;
+            topLeft.x -= mCamRectSize.x / JCS_Mathf.D_HALF;
+            topLeft.y += mCamRectSize.y / JCS_Mathf.D_HALF;
 
             Vector3 topRight = cam.transform.position;
-            topRight.x += mCamRectSize.x / 2;
-            topRight.y += mCamRectSize.y / 2;
+            topRight.x += mCamRectSize.x / JCS_Mathf.D_HALF;
+            topRight.y += mCamRectSize.y / JCS_Mathf.D_HALF;
 
             Vector3 botLeft = cam.transform.position;
-            botLeft.x -= mCamRectSize.x / 2;
-            botLeft.y -= mCamRectSize.y / 2;
+            botLeft.x -= mCamRectSize.x / JCS_Mathf.D_HALF;
+            botLeft.y -= mCamRectSize.y / JCS_Mathf.D_HALF;
 
             Vector3 botRight = cam.transform.position;
-            botRight.x += mCamRectSize.x / 2;
-            botRight.y -= mCamRectSize.y / 2;
+            botRight.x += mCamRectSize.x / JCS_Mathf.D_HALF;
+            botRight.y -= mCamRectSize.y / JCS_Mathf.D_HALF;
 
             // set depth to the same
             topLeft.z = mGameDepth;
@@ -306,13 +308,13 @@ namespace JCSUnity
                 cap.center.z * capScale.z);
 
             float cR = cap.radius * capScale.x;
-            float cH = (cap.height - (cap.radius * 2.0f)) * capScale.y;
+            float cH = (cap.height - (cap.radius * JCS_Mathf.D_HALF)) * capScale.y;
 
-            if (cH < 0)
-                cH = 0;
+            if (cH < 0.0f)
+                cH = 0.0f;
 
-            float cTopBound = cap.transform.position.y + cCenter.y + (cH / 2.0f) + cR;
-            float cBotBound = cap.transform.position.y + cCenter.y - (cH / 2.0f) - cR;
+            float cTopBound = cap.transform.position.y + cCenter.y + (cH / JCS_Mathf.D_HALF) + cR;
+            float cBotBound = cap.transform.position.y + cCenter.y - (cH / JCS_Mathf.D_HALF) - cR;
             float cRightBound = cap.transform.position.x + cCenter.x + cR;
             float cLeftBound = cap.transform.position.x + cCenter.x - cR;
 
@@ -336,18 +338,18 @@ namespace JCSUnity
             Vector3 camPos = cam.transform.position;
             // only need to know the depth.
             {
-                camPos.x = 0;
-                camPos.y = 0;
+                camPos.x = 0.0f;
+                camPos.y = 0.0f;
             }
             Vector3 canvasPos = jcsCanvas.transform.position;
             // only need to know the depth.
             {
-                canvasPos.x = 0;
-                canvasPos.y = 0;
+                canvasPos.x = 0.0f;
+                canvasPos.y = 0.0f;
             }
             float camToCanvasDistance = Vector3.Distance(camPos, canvasPos);
 
-            Vector3 gameDepth = new Vector3(0, cap.transform.position.z, 0);
+            Vector3 gameDepth = new Vector3(0, cap.transform.position.z, 0.0f);
             float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
 
             //print("To Game depth Distance: " + camToGameDepthDistance);
@@ -369,27 +371,27 @@ namespace JCSUnity
             // cannot name the same.
             Vector3 cCamPos = cam.transform.position;
 
-            float camTopBound = cCamPos.y + gameRect.y / 2;
-            float camBotBound = cCamPos.y - gameRect.y / 2;
-            float camRightBound = cCamPos.x + gameRect.x / 2;
-            float camLeftBound = cCamPos.x - gameRect.x / 2;
+            float camTopBound = cCamPos.y + gameRect.y / JCS_Mathf.D_HALF;
+            float camBotBound = cCamPos.y - gameRect.y / JCS_Mathf.D_HALF;
+            float camRightBound = cCamPos.x + gameRect.x / JCS_Mathf.D_HALF;
+            float camLeftBound = cCamPos.x - gameRect.x / JCS_Mathf.D_HALF;
 
 #if (UNITY_EDITOR)
             Vector3 topLeft = cam.transform.position;
-            topLeft.x -= gameRect.x / 2;
-            topLeft.y += gameRect.y / 2;
+            topLeft.x -= gameRect.x / JCS_Mathf.D_HALF;
+            topLeft.y += gameRect.y / JCS_Mathf.D_HALF;
 
             Vector3 topRight = cam.transform.position;
-            topRight.x += gameRect.x / 2;
-            topRight.y += gameRect.y / 2;
+            topRight.x += gameRect.x / JCS_Mathf.D_HALF;
+            topRight.y += gameRect.y / JCS_Mathf.D_HALF;
 
             Vector3 botLeft = cam.transform.position;
-            botLeft.x -= gameRect.x / 2;
-            botLeft.y -= gameRect.y / 2;
+            botLeft.x -= gameRect.x / JCS_Mathf.D_HALF;
+            botLeft.y -= gameRect.y / JCS_Mathf.D_HALF;
 
             Vector3 botRight = cam.transform.position;
-            botRight.x += gameRect.x / 2;
-            botRight.y -= gameRect.y / 2;
+            botRight.x += gameRect.x / JCS_Mathf.D_HALF;
+            botRight.y -= gameRect.y / JCS_Mathf.D_HALF;
 
             // set depth to the same
             topLeft.z = mGameDepth;
@@ -430,26 +432,26 @@ namespace JCSUnity
             Vector2 objPos = cam.WorldToViewportPoint(checkTrans.transform.position);
             Vector2 camPos = cam.WorldToViewportPoint(cam.transform.position);
 
-            float objLeft = objPos.x - (objectRect.x / 2);
-            float objRight = objPos.x + (objectRect.x / 2);
-            float objTop = objPos.y + (objectRect.y / 2);
-            float objBot = objPos.y - (objectRect.y / 2);
+            float objLeft = objPos.x - (objectRect.x / JCS_Mathf.D_HALF);
+            float objRight = objPos.x + (objectRect.x / JCS_Mathf.D_HALF);
+            float objTop = objPos.y + (objectRect.y / JCS_Mathf.D_HALF);
+            float objBot = objPos.y - (objectRect.y / JCS_Mathf.D_HALF);
 
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
 
             float camWidth = appRect.sizeDelta.x;
             float camHeight = appRect.sizeDelta.y;
 
-            float camLeft = camPos.x - (camWidth / 2);
-            float camRight = camPos.x + (camWidth / 2);
-            float camTop = camPos.y + (camHeight / 2);
-            float camBot = camPos.y - (camHeight / 2);
+            float camLeft = camPos.x - (camWidth / JCS_Mathf.D_HALF);
+            float camRight = camPos.x + (camWidth / JCS_Mathf.D_HALF);
+            float camTop = camPos.y + (camHeight / JCS_Mathf.D_HALF);
+            float camBot = camPos.y - (camHeight / JCS_Mathf.D_HALF);
 
 #if (UNITY_EDITOR)
-            Vector3 topLeft = new Vector3(objLeft, objTop, 0);
-            Vector3 topRight = new Vector3(objRight, objTop, 0);
-            Vector3 botRight = new Vector3(objRight, objBot, 0);
-            Vector3 botLeft = new Vector3(objLeft, objBot, 0);
+            Vector3 topLeft = new Vector3(objLeft, objTop, 0.0f);
+            Vector3 topRight = new Vector3(objRight, objTop, 0.0f);
+            Vector3 botRight = new Vector3(objRight, objBot, 0.0f);
+            Vector3 botLeft = new Vector3(objLeft, objBot, 0.0f);
 
             Debug.DrawLine(topLeft, topRight);
             Debug.DrawLine(topLeft, botLeft);
@@ -494,8 +496,8 @@ namespace JCSUnity
             Vector2 rectSize = checkTrans.sizeDelta;
             Vector3 panelPos = checkTrans.localPosition;
 
-            float halfSlotWidth = rectSize.x / 2 * checkTrans.localScale.x;
-            float halfSlotHeight = rectSize.y / 2 * checkTrans.localScale.y;
+            float halfSlotWidth = rectSize.x / JCS_Mathf.D_HALF * checkTrans.localScale.x;
+            float halfSlotHeight = rectSize.y / JCS_Mathf.D_HALF * checkTrans.localScale.y;
 
             float panelLeftBorder = panelPos.x - halfSlotWidth;
             float panelRightBorder = panelPos.x + halfSlotWidth;
@@ -511,10 +513,10 @@ namespace JCSUnity
             RectTransform appRect = JCS_Canvas.instance.GetAppRect();
             Vector2 screenRect = appRect.sizeDelta;
 
-            float camLeftBorder = camPosToScreen.x - screenRect.x / 2;
-            float camRightBorder = camPosToScreen.x + screenRect.x / 2;
-            float camTopBorder = camPosToScreen.y + screenRect.y / 2;
-            float camBottomBorder = camPosToScreen.y - screenRect.y / 2; ;
+            float camLeftBorder = camPosToScreen.x - screenRect.x / JCS_Mathf.D_HALF;
+            float camRightBorder = camPosToScreen.x + screenRect.x / JCS_Mathf.D_HALF;
+            float camTopBorder = camPosToScreen.y + screenRect.y / JCS_Mathf.D_HALF;
+            float camBottomBorder = camPosToScreen.y - screenRect.y / JCS_Mathf.D_HALF;
 
             if (panelRightBorder - rectSize.x > camRightBorder ||
                 panelLeftBorder + rectSize.x < camLeftBorder ||
@@ -551,8 +553,8 @@ namespace JCSUnity
             Vector3 viewportPos = cam.WorldToViewportPoint(targetWorldPos);
 
             Vector2 worldObject_ScreenPosition = new Vector2(
-                ((viewportPos.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)),
-                ((viewportPos.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)));
+                ((viewportPos.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * JCS_Mathf.T_HALF)),
+                ((viewportPos.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * JCS_Mathf.T_HALF)));
 
             //now you can set the position to the ui element
             return worldObject_ScreenPosition;
@@ -574,8 +576,8 @@ namespace JCSUnity
             RectTransform canvasRect = JCS_Canvas.instance.GetAppRect();
 
             Vector2 canvasObject_WorldPosition = new Vector2(
-                ((targetCanvasPos.x + (canvasRect.sizeDelta.x * 0.5f)) / canvasRect.sizeDelta.x),
-                ((targetCanvasPos.y + (canvasRect.sizeDelta.y * 0.5f)) / canvasRect.sizeDelta.y));
+                ((targetCanvasPos.x + (canvasRect.sizeDelta.x * JCS_Mathf.T_HALF)) / canvasRect.sizeDelta.x),
+                ((targetCanvasPos.y + (canvasRect.sizeDelta.y * JCS_Mathf.T_HALF)) / canvasRect.sizeDelta.y));
 
             Vector3 worldPos = cam.ViewportToWorldPoint(canvasObject_WorldPosition);
 
