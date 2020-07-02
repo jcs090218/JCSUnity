@@ -129,8 +129,9 @@ namespace JCSUnity
         /// Weather if we want to take a screen shot, call
         /// this function will do the trick!
         /// </summary>
-        public virtual void TakeScreenShot()
+        public virtual string TakeScreenshot()
         {
+            string savePath = "";
 #if (UNITY_STANDALONE || UNITY_EDITOR)
 #if (UNITY_2017_1_OR_NEWER)
             /**
@@ -145,55 +146,14 @@ namespace JCSUnity
             string ext = gs.SAVED_IMG_EXTENSION;
 
             // get the last saved screen shot's index
-            int last_saved_index = SearchDirectory(dir, prefix) + 1;
+            int last_saved_index = JCS_Utility.LastFileIndex(dir, prefix) + 1;
 
-            string savePath = dir + prefix + last_saved_index + ext;
+            savePath = dir + prefix + last_saved_index + ext;
 
             ScreenCapture.CaptureScreenshot(savePath);
 #endif
 #endif
-        }
-
-        /// <summary>
-        /// Method to do search directory and check to see 
-        /// image index that are already exist.
-        /// </summary>
-        /// <param name="path"> path to search index. </param>
-        /// <param name="removeStr">  </param>
-        /// <returns></returns>
-        public virtual int SearchDirectory(string path, string removeStr)
-        {
-            // if Directory does not exits, create it prevent error!
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
-            var gs = JCS_GameSettings.instance;
-
-            string fileName = "";
-            string ext = "";
-            int last_saved_screenshot = 0;
-            foreach (string file in Directory.GetFiles(path))
-            {
-                fileName = Path.GetFileNameWithoutExtension(file);
-                ext = Path.GetExtension(file);
-
-                // check if is the .png file 
-                // (screen shot can only be image file)
-                if (!ext.Equals(gs.SAVED_IMG_EXTENSION))
-                    continue;
-
-                int index = fileName.IndexOf(removeStr);
-                int len = removeStr.Length;
-                string startOfString = fileName.Substring(0, index);
-                string endOfString = fileName.Substring(index + len);
-                string cleanPath = startOfString + endOfString;
-
-                //print(cleanPath);
-
-                last_saved_screenshot = System.Int32.Parse(cleanPath);
-            }
-
-            return last_saved_screenshot;
+            return savePath;
         }
 
 #if (UNITY_EDITOR)

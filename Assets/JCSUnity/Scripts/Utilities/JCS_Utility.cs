@@ -8,6 +8,7 @@
  */
 using System;
 using System.Collections;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ using UnityEngine.EventSystems;
 
 using PeterVuorela.Tweener;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace JCSUnity
 {
@@ -1224,6 +1226,47 @@ namespace JCSUnity
         public static bool IsScene(string name)
         {
             return SceneManager.GetActiveScene().name == name;
+        }
+
+        /// <summary>
+        /// Method to do search directory and get the last file index.
+        /// </summary>
+        /// <param name="path"> path to search index. </param>
+        /// <param name="prefixStr"> Filen name prefix. </param>
+        /// <returns></returns>
+        public static int LastFileIndex(string path, string prefixStr)
+        {
+            // if Directory does not exits, create it prevent error!
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            var gs = JCS_GameSettings.instance;
+
+            string fileName = "";
+            string ext = "";
+            int last_saved_screenshot = 0;
+            foreach (string file in Directory.GetFiles(path))
+            {
+                fileName = Path.GetFileNameWithoutExtension(file);
+                ext = Path.GetExtension(file);
+
+                // check if is the .png file 
+                // (screen shot can only be image file)
+                if (!ext.Equals(gs.SAVED_IMG_EXTENSION))
+                    continue;
+
+                int index = fileName.IndexOf(prefixStr);
+                int len = prefixStr.Length;
+                string startOfString = fileName.Substring(0, index);
+                string endOfString = fileName.Substring(index + len);
+                string cleanPath = startOfString + endOfString;
+
+                //print(cleanPath);
+
+                last_saved_screenshot = System.Int32.Parse(cleanPath);
+            }
+
+            return last_saved_screenshot;
         }
     }
 }
