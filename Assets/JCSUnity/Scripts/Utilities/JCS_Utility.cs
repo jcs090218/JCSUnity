@@ -1233,8 +1233,9 @@ namespace JCSUnity
         /// </summary>
         /// <param name="path"> path to search index. </param>
         /// <param name="prefixStr"> Filen name prefix. </param>
+        /// <param name="ext"> Filen name extension. </param>
         /// <returns></returns>
-        public static int LastFileIndex(string path, string prefixStr)
+        public static int LastFileIndex(string path, string prefixStr, string ext)
         {
             // if Directory does not exits, create it prevent error!
             if (!Directory.Exists(path))
@@ -1243,16 +1244,17 @@ namespace JCSUnity
             var gs = JCS_GameSettings.instance;
 
             string fileName = "";
-            string ext = "";
+            string curExt = "";
             int last_saved_screenshot = 0;
+
             foreach (string file in Directory.GetFiles(path))
             {
                 fileName = Path.GetFileNameWithoutExtension(file);
-                ext = Path.GetExtension(file);
+                curExt = Path.GetExtension(file);
 
                 // check if is the .png file 
                 // (screen shot can only be image file)
-                if (!ext.Equals(gs.SAVED_IMG_EXTENSION))
+                if (!curExt.Equals(ext))
                     continue;
 
                 int index = fileName.IndexOf(prefixStr);
@@ -1267,6 +1269,18 @@ namespace JCSUnity
             }
 
             return last_saved_screenshot;
+        }
+
+        /// <summary>
+        /// Delete all files in directory.
+        /// </summary>
+        /// <param name="dirPath"> Target delete directory. </param>
+        public static void DeleteAllFilesFromDir(string dirPath)
+        {
+            DirectoryInfo di = new DirectoryInfo(dirPath);
+
+            foreach (FileInfo file in di.GetFiles())
+                file.Delete();
         }
     }
 }
