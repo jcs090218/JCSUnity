@@ -143,10 +143,10 @@ namespace JCSUnity
 
             string dir = Application.dataPath + gs.SCREENSHOT_PATH;
             string prefix = gs.SCREENSHOT_FILENAME;
-            string ext = gs.SAVED_IMG_EXTENSION;
+            string ext = gs.SCREENSHOT_EXTENSION;
 
             // get the last saved screen shot's index
-            int last_saved_index = JCS_Utility.LastFileIndex(dir, prefix) + 1;
+            int last_saved_index = JCS_Utility.LastFileIndex(dir, prefix, ext) + 1;
 
             savePath = dir + prefix + last_saved_index + ext;
 
@@ -154,6 +154,16 @@ namespace JCSUnity
 #endif
 #endif
             return savePath;
+        }
+
+        /// <summary>
+        /// Delete all screenshot images from disk.
+        /// </summary>
+        public void CleanAllScreenshotImages()
+        {
+            var gs = JCS_GameSettings.instance;
+            string savePath = Application.dataPath + gs.SCREENSHOT_PATH;
+            JCS_Utility.DeleteAllFilesFromDir(savePath);
         }
 
 #if (UNITY_EDITOR)

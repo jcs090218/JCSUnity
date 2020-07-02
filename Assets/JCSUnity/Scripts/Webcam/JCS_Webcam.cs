@@ -75,20 +75,6 @@ namespace JCSUnity
         private KeyCode mTakePicKey = KeyCode.None;
 #endif
 
-        [Header("- Image")]
-
-        [Tooltip("Image save path.")]
-        [SerializeField]
-        private string mSavePath = "/JCS_GameData/WebcamShot/"; //Change the path here!
-
-        [Tooltip("Save file name prefix.")]
-        [SerializeField]
-        private string mSaveFilePrefix = "";
-
-        [Tooltip("Default save image file extension.")]
-        [SerializeField]
-        private string mSaveExtension = ".png";
-
         [Header("- Sound")]
 
         [Tooltip("Sound when taking the screenshot.")]
@@ -105,9 +91,6 @@ namespace JCSUnity
 #if (UNITY_STANDALONE || UNITY_EDITOR)
         public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
 #endif
-        public string SavePath { get { return this.mSavePath; } set { this.mSavePath = value; } }
-        public string SaveFilePrefix { get { return this.mSaveFilePrefix; } set { this.mSaveFilePrefix = value; } }
-        public string SaveExtension { get { return this.mSaveExtension; } set { this.mSaveExtension = value; } }
         public bool isPlaying { get { return this.mWebCamTexture.isPlaying; } }
         public AudioClip TakePhotoSound { get { return this.mTakePhotoSound; } set { this.mTakePhotoSound = value; } }
 
@@ -202,7 +185,11 @@ namespace JCSUnity
                 return null;
             }
 
-            string savePath = Application.dataPath + mSavePath;
+            var gs = JCS_GameSettings.instance;
+            var prefix = gs.WEBCAM_FILENAME;
+            var ext = gs.WEBCAM_EXTENSION;
+
+            string savePath = Application.dataPath + gs.WEBCAM_SAVE_PATH;
 
             // if Directory does not exits, create it prevent error!
             if (!Directory.Exists(savePath))
@@ -212,9 +199,9 @@ namespace JCSUnity
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
-            int last_saved_index = JCS_Utility.LastFileIndex(Application.dataPath + mSavePath, mSaveFilePrefix) + 1;
+            int last_saved_index = JCS_Utility.LastFileIndex(savePath, prefix, ext) + 1;
 
-            string fullPath = savePath + last_saved_index.ToString() + mSaveExtension;
+            string fullPath = savePath + last_saved_index.ToString() + ext;
 
             System.IO.File.WriteAllBytes(fullPath, snap.EncodeToPNG());
 
@@ -246,6 +233,16 @@ namespace JCSUnity
             }
 
             return fullPath;
+        }
+
+        /// <summary>
+        /// Delete all webcam images from disk.
+        /// </summary>
+        public static void CleanAllWebcamImages()
+        {
+            var gs = JCS_GameSettings.instance;
+            string savePath = Application.dataPath + gs.WEBCAM_SAVE_PATH;
+            JCS_Utility.DeleteAllFilesFromDir(savePath);
         }
 
         /// <summary>

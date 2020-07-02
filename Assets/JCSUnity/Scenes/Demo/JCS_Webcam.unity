@@ -1007,6 +1007,11 @@ PrefabInstance:
       propertyPath: THIS_IS_GAME_SCENE
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5090550957556680161, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 3}
+      propertyPath: WEBCAM_FILENAME
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5090550957556680164, guid: f3f4b7d5553961e4cb7509494c81b400,
         type: 3}
       propertyPath: SHOW_RESIZABLE_PANELS
