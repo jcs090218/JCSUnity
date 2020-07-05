@@ -28,8 +28,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_2DCamera) **")]
 
-        [Tooltip("Set the camera's position to the player when " +
-            "the game starts?")]
+        [Tooltip("Set the camera's position to the player when the game starts?")]
         [SerializeField]
         private bool mSetToPlayerPositionAtStart = true;
 
@@ -60,7 +59,7 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mFrictionY = 0.6f;
 
-        [Header("** Freeze Settings (Run Time) **")]
+        [Header("- Freeze")]
 
         [Tooltip("Do freeze in runtime?")]
         [SerializeField]
