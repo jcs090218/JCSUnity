@@ -67,9 +67,7 @@ Photo Order Layer will minus one in case the photo does not be ontop of the fram
         {
             var gs = JCS_GameSettings.instance;
 
-            string imagePath = Application.dataPath + "/JCS_GameData/WebcamShot/" + mRCPlayer.ControlIndex + gs.SCREENSHOT_EXTENSION;
-
-            mPlayerImage = JCS_ImageLoader.LoadImage(imagePath, mUnitPerPixel);
+            mPlayerImage = JCS_Webcam.LoadImageByIndex(mRCPlayer.ControlIndex, mUnitPerPixel);
 
             if (mPhotoSpriteRenderer != null)
             {
