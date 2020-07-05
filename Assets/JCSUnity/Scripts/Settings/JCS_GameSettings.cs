@@ -91,7 +91,7 @@ namespace JCSUnity
         [Header("- Webcam")]
 
         [Tooltip("Webcam image save path.")]
-        public string WEBCAM_SAVE_PATH = "/JCS_GameData/WebcamShot/";
+        public string WEBCAM_PATH = "/JCS_GameData/WebcamShot/";
 
         [Tooltip("Webcam file name.")]
         public string WEBCAM_FILENAME = "";
