@@ -7,7 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine.UI;
 
@@ -189,7 +189,7 @@ namespace JCSUnity
             var prefix = gs.WEBCAM_FILENAME;
             var ext = gs.WEBCAM_EXTENSION;
 
-            string savePath = Application.dataPath + gs.WEBCAM_SAVE_PATH;
+            string savePath = SavePath();
 
             // if Directory does not exits, create it prevent error!
             if (!Directory.Exists(savePath))
@@ -199,11 +199,12 @@ namespace JCSUnity
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
-            int last_saved_index = JCS_Utility.LastFileIndex(savePath, prefix, ext) + 1;
+            // get the last saved webcam image's index
+            int last_saved_index = LastImageFileIndex() + 1;
 
-            string fullPath = savePath + last_saved_index.ToString() + ext;
+            string fullPath = ImagePathByIndex(last_saved_index);
 
-            System.IO.File.WriteAllBytes(fullPath, snap.EncodeToPNG());
+            File.WriteAllBytes(fullPath, snap.EncodeToPNG());
 
 
             if (mSplash)
@@ -236,13 +237,83 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Delete all webcam images from disk.
+        /// Get the webcam images' save path.
         /// </summary>
-        public static void CleanAllWebcamImages()
+        public static string SavePath()
         {
             var gs = JCS_GameSettings.instance;
-            string savePath = Application.dataPath + gs.WEBCAM_SAVE_PATH;
-            JCS_Utility.DeleteAllFilesFromDir(savePath);
+            return Application.dataPath + gs.WEBCAM_PATH;
+        }
+
+        /// <summary>
+        /// Last webcam image's file index.
+        /// </summary>
+        public static int LastImageFileIndex()
+        {
+            var gs = JCS_GameSettings.instance;
+            var prefix = gs.WEBCAM_FILENAME;
+            var ext = gs.WEBCAM_EXTENSION;
+            return JCS_Utility.LastFileIndex(SavePath(), prefix, ext);
+        }
+
+        /// <summary>
+        /// Form webcam image path by index.
+        /// </summary>
+        /// <param name="index"> Image file's index. </param>
+        /// <returns> Image path form by index. </returns>
+        public static string ImagePathByIndex(int index)
+        {
+            var gs = JCS_GameSettings.instance;
+            string path = SavePath() + gs.WEBCAM_FILENAME + index + gs.WEBCAM_EXTENSION;
+            return path;
+        }
+
+        /// <summary>
+        /// Load webcam image by file index.
+        /// </summary>
+        /// <param name="index"> File's index. </param>
+        /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
+        /// <returns> Sprite object that loaded image file by index. </returns>
+        public static Sprite LoadImageByIndex(int index, float pixelPerUnit = 100.0f)
+        {
+            string path = ImagePathByIndex(index);
+            return JCS_ImageLoader.LoadImage(path, pixelPerUnit);
+        }
+
+        /// <summary>
+        /// Load all webcam images.
+        /// </summary>
+        /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
+        /// <returns>
+        /// Return a list of sprite with loaded webcam image data.
+        /// </returns>
+        public static List<Sprite> LoadAllImages(float pixelPerUnit = 100.0f)
+        {
+            var images = new List<Sprite>();
+            int last = LastImageFileIndex();
+            for (int index = 0; index < last; ++index)
+            {
+                Sprite sprite = LoadImageByIndex(index, pixelPerUnit);
+                images.Add(sprite);
+            }
+            return images;
+        }
+
+        /// <summary>
+        /// Delete webcam image by image file's index.
+        /// </summary>
+        public static void DeleteImageByIndex(int index)
+        {
+            string path = ImagePathByIndex(index);
+            File.Delete(path);
+        }
+
+        /// <summary>
+        /// Delete all webcam images from disk.
+        /// </summary>
+        public static void DeleteAllImages()
+        {
+            JCS_Utility.DeleteAllFilesFromDir(SavePath());
         }
 
         /// <summary>
