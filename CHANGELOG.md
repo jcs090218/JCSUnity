@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-07-05
+
+* Added more Camera screenshot image's API.
+* Added more Webcam image's API.
+
 ### 2020-07-03
 
 * Updated webcam image utility functions.
