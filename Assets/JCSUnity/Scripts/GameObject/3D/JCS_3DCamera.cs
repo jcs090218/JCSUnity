@@ -50,7 +50,7 @@ namespace JCSUnity
         [SerializeField]
         private float mTargetRevolution = 0.0f;
 
-        [Header("** Speed / Friction **")]
+        [Header("- Speed / Friction")]
 
         [Tooltip("How fast the camera track in each axis?")]
         [SerializeField]
@@ -90,7 +90,7 @@ namespace JCSUnity
         [Range(0.0f, 180.0f)]
         private float mResetTargetAngle = 0.0f;
 
-        [Header("** Up Down Settings (JCS_3DCamera) **")]
+        [Header("- Up Down")]
 
         [Tooltip("Up and Down movement enable?")]
         [SerializeField]
