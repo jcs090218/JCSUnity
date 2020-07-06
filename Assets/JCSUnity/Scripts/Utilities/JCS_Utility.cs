@@ -1245,7 +1245,7 @@ namespace JCSUnity
 
             string fileName = "";
             string curExt = "";
-            int last_saved_screenshot = 0;
+            int last_saved_screenshot = -1;
 
             foreach (string file in Directory.GetFiles(path))
             {
@@ -1262,8 +1262,6 @@ namespace JCSUnity
                 string startOfString = fileName.Substring(0, index);
                 string endOfString = fileName.Substring(index + len);
                 string cleanPath = startOfString + endOfString;
-
-                //print(cleanPath);
 
                 last_saved_screenshot = System.Int32.Parse(cleanPath);
             }
