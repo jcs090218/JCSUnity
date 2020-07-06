@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine.UI;
+using System;
 
 namespace JCSUnity
 {
@@ -287,15 +288,18 @@ namespace JCSUnity
         /// <returns>
         /// Return a list of sprite with loaded webcam image data.
         /// </returns>
-        public static List<Sprite> LoadAllImages(float pixelPerUnit = 100.0f)
+        public static List<JCS_LoadedSpriteData> LoadAllImages(float pixelPerUnit = 100.0f)
         {
-            var images = new List<Sprite>();
+            var images = new List<JCS_LoadedSpriteData>();
             int last = LastImageFileIndex() + 1;
             for (int index = 0; index < last; ++index)
             {
                 Sprite sprite = LoadImageByIndex(index, pixelPerUnit);
-                if (sprite) 
-                    images.Add(sprite);
+                if (sprite == null)
+                    continue;
+
+                var data = new JCS_LoadedSpriteData(sprite, index);
+                images.Add(data);
             }
             return images;
         }
