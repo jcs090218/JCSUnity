@@ -209,7 +209,8 @@ namespace JCSUnity
             for (int index = 0; index < last; ++index)
             {
                 Sprite sprite = LoadImageByIndex(index, pixelPerUnit);
-                images.Add(sprite);
+                if (sprite)
+                    images.Add(sprite);
             }
             return images;
         }
