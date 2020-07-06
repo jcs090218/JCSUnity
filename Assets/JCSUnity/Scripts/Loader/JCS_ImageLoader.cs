@@ -79,11 +79,11 @@ namespace JCSUnity
         public static Sprite LoadImage(string filePath, float pixelPerUnit = 100.0f)
         {
             Sprite img = null;
-
-            Texture2D tex = LoadTexture(filePath);
-
-            img = Create(tex, 0.0f, 0.0f, tex.width, tex.height, pixelPerUnit);
-
+            if (JCS_IO.IsFileOrDirectoryExists(filePath))
+            {
+                Texture2D tex = LoadTexture(filePath);
+                img = Create(tex, 0.0f, 0.0f, tex.width, tex.height, pixelPerUnit);
+            }
             return img;
         }
 
