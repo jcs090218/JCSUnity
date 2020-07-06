@@ -290,7 +290,7 @@ namespace JCSUnity
         public static List<Sprite> LoadAllImages(float pixelPerUnit = 100.0f)
         {
             var images = new List<Sprite>();
-            int last = LastImageFileIndex();
+            int last = LastImageFileIndex() + 1;
             for (int index = 0; index < last; ++index)
             {
                 Sprite sprite = LoadImageByIndex(index, pixelPerUnit);
