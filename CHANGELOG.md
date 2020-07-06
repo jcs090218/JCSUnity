@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Fixed load all images last index logic issue from `JCS_Webcam`.
 * Fixed load all images last index logic issue from `JCS_Camera`.
+* Fixed image file not exist load for `JCS_ImageLoader`.
 
 ### 2020-07-05
 
