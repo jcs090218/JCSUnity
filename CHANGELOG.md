@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-07-06
+
+* Fixed load all images last index logic issue from `JCS_Webcam`.
+* Fixed load all images last index logic issue from `JCS_Camera`.
+
 ### 2020-07-05
 
 * Added more Camera screenshot image's API.
