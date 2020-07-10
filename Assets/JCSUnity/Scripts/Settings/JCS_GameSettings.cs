@@ -68,14 +68,17 @@ namespace JCSUnity
 
         [Header("- Save Load")]
 
+        [Tooltip("Data folder path.")]
+        public string DATA_PATH = "/JCS_GameData/";
+
+        [Tooltip("Data file extension.")]
+        public string DATA_EXTENSION = ".jcs";
+
         [Tooltip("Save when switching the scene.")]
         public bool SAVE_ON_SWITCH_SCENE = true;
 
         [Tooltip("Save when app exit.")]
         public bool SAVE_ON_EXIT_APP = true;
-
-        public static string GAME_DATA_PATH = "/JCS_GameData/";
-        public static string JCS_EXTENSION = ".jcs";
 
         [Header("- Screenshot")]
         
@@ -114,6 +117,9 @@ namespace JCSUnity
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
+
+            Directory.CreateDirectory(JCS_Camera.SavePath());
+            Directory.CreateDirectory(JCS_Webcam.SavePath());
         }
 
         private void Start()

@@ -18,23 +18,30 @@ public class RC_GameSettings
 
     public static RC_GameSettings instance = null;
 
+    [Header("** Runtime Variables (RC_GameSettings) **")]
+
     // at least 1 player in game.
     [Tooltip("How many player in the game. (Default: at least one player in game.)")]
     public int PLAYER_IN_GAME = 1;
+
     public bool READY_TO_START_GAME = false;
+
     public bool GAME_OVER = true;
 
     public bool WEBCAM_MODE = true;
+
     public bool LIQUID_MODE = true;
 
-    [Header("** Game Settings **")]
+    [Header("- Game")]
 
     public RC_GameMode GAME_MODE = RC_GameMode.SINGLE_PLAYERS;
+
     public string LEVEL_SELECTED_NAME = "RC_Game";
+
     [Tooltip("Any button u need to load the correct level.")]
     public JCS_LoadSceneButton[] SCENE_BUTTONS = null;
 
-    [Header("** Save Load Settings **")]
+    [Header("- Save Load")]
 
     public string FILE_PATH = "SavedData/";
     public string FILE_NAME = "RC_GameData";
@@ -43,7 +50,7 @@ public class RC_GameSettings
     private string mFullFilePath = "";
     private string mFullFileName = "";
 
-    [Header("** Player Settings **")]
+    [Header("- Player")]
 
     public JCS_3DLiquidBar GLOBAL_LIQUIDBAR = null;
     public Vector3 LIQUIDBAR_OFFSET = Vector3.zero;
@@ -66,9 +73,11 @@ public class RC_GameSettings
         }
 
         instance = this;
+    }
 
-        // IMPORTANT(JenChieh): initial the path
-        // before save and load!
+    private void Start()
+    {
+        // IMPORTANT: initial the path before save and load!
         InitPath();
 
         // only load once
@@ -76,10 +85,7 @@ public class RC_GameSettings
             LoadGameData();
 
         GAME_MODE = FindGameMode(PLAYER_IN_GAME);
-    }
 
-    private void Start()
-    {
         // set load and save game data
         JCS_GameSettings.instance.SAVE_GAME_DATA_FUNC = SaveGameData;
         JCS_GameSettings.instance.LOAD_GAME_DATA_FUNC = LoadGameData;
@@ -130,13 +136,10 @@ public class RC_GameSettings
     /// </summary>
     private void InitPath()
     {
-        mFullFilePath =
-            Application.dataPath +
-            JCS_GameSettings.GAME_DATA_PATH +
-            FILE_PATH;
+        var gs = JCS_GameSettings.instance;
 
-        mFullFileName = FILE_NAME +
-            JCS_GameSettings.JCS_EXTENSION;
+        mFullFilePath = Application.dataPath + gs.DATA_PATH + FILE_PATH;
+        mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
     }
     private void LoadGameData()
     {

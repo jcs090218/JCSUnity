@@ -19,7 +19,7 @@ public class BF_GameSettings
 {
     /* Variables */
 
-    [Header("** Player Settings **")]
+    [Header("- Player")]
 
     [Tooltip("How many character on players team.")]
     public int CHARACTERS_IN_TEAM = 4;
@@ -29,7 +29,7 @@ public class BF_GameSettings
     [Tooltip("Player in the game will be store here.")]
     public BF_Player[] CHARACTERS_IN_GAME = null;
 
-    [Header("** Save Load Settings **")]
+    [Header("- Save Load")]
 
     public string FILE_PATH = "SavedData/";
     public string FILE_NAME = "BF_GameData";
@@ -38,7 +38,7 @@ public class BF_GameSettings
     private string mFullFilePath = "";
     private string mFullFileName = "";
 
-    [Header("** Game Feature Settings **")]
+    [Header("- Game Feature")]
 
     [Tooltip("Maximum mob in the scene.")]
     [Range(10, 100)]
@@ -47,7 +47,7 @@ public class BF_GameSettings
     public Color FREEZE_COLOR = Color.blue;
     public Color BURN_COLOR = Color.red;
 
-    [Header("** Level Settings **")]
+    [Header("- Level")]
 
     [Tooltip("Name of the scene player selected.")]
     public string LEVEL_SELECTED_NAME = "";
@@ -59,18 +59,17 @@ public class BF_GameSettings
     private void Awake()
     {
         instance = CheckSingleton(instance, this);
+    }
 
-        // IMPORTANT(JenChieh): initial the path
-        // before save and load!
+    private void Start()
+    {
+        // IMPORTANT: initial the path before save and load!
         InitPath();
 
         // only load once
         if (BF_GAME_DATA == null)
             LoadGameData();
-    }
 
-    private void Start()
-    {
         // set load and save game data
         JCS_GameSettings.instance.SAVE_GAME_DATA_FUNC = SaveGameData;
         JCS_GameSettings.instance.LOAD_GAME_DATA_FUNC = LoadGameData;
@@ -99,13 +98,10 @@ public class BF_GameSettings
     /// </summary>
     private void InitPath()
     {
-        mFullFilePath =
-            Application.dataPath +
-            JCS_GameSettings.GAME_DATA_PATH +
-            FILE_PATH;
+        var gs = JCS_GameSettings.instance;
 
-        mFullFileName = FILE_NAME +
-            JCS_GameSettings.JCS_EXTENSION;
+        mFullFilePath = Application.dataPath + gs.DATA_PATH + FILE_PATH;
+        mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
     }
     private void LoadGameData()
     {

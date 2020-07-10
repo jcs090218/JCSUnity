@@ -18,17 +18,20 @@ namespace JCSUnity
     [System.Serializable]
     public class JCS_BinGameData
     {
+        /* Variables */
+
         public string Copyright = "";
         public string Version = "";
+
+        /* Setter & Getter */
+
+        /* Functions */
 
         private void InitJCSFile()
         {
             if (JCS_PackageDataSettings.instance == null)
             {
-#if (UNITY_EDITOR)
-                JCS_Debug.LogError(
-                    "Failed to load the copyright and version information text...");
-#endif 
+                JCS_Debug.LogError("Failed to load the copyright and version text");
                 return;
             }
 
