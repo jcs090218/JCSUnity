@@ -32,10 +32,13 @@ public class BF_GameSettings
     [Header("- Save Load")]
 
     public string FILE_PATH = "SavedData/";
+
     public string FILE_NAME = "BF_GameData";
+
     public static BF_GameData BF_GAME_DATA = null;
 
     private string mFullFilePath = "";
+
     private string mFullFileName = "";
 
     [Header("- Game Feature")]
@@ -44,7 +47,10 @@ public class BF_GameSettings
     [Range(10, 100)]
     public int TOTAL_MOB_IN_SCENE = 30;
 
+    [Tooltip("Color that represent the freezing effect.")]
     public Color FREEZE_COLOR = Color.blue;
+
+    [Tooltip("Color that represent the burning effect.")]
     public Color BURN_COLOR = Color.red;
 
     [Header("- Level")]

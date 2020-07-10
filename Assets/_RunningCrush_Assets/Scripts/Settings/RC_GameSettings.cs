@@ -44,18 +44,25 @@ public class RC_GameSettings
     [Header("- Save Load")]
 
     public string FILE_PATH = "SavedData/";
+
     public string FILE_NAME = "RC_GameData";
+
     public static RC_GameData RC_GAME_DATA = null;
 
     private string mFullFilePath = "";
+
     private string mFullFileName = "";
 
     [Header("- Player")]
 
     public JCS_3DLiquidBar GLOBAL_LIQUIDBAR = null;
+
     public Vector3 LIQUIDBAR_OFFSET = Vector3.zero;
+
     public RC_Player[] PLAYERS = null;
+
     public RC_PlayerPointer[] PLAYER_POINTERS = null;
+
     public RC_RevivePointer[] PLAYER_REVIVE_POINTERS = null;
 
     /* Setter & Getter */
