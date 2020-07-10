@@ -16,7 +16,8 @@ namespace JCSUnity
     /// Interface of storing game data as binary format.
     /// </summary>
     [System.Serializable]
-    public class JCS_BinGameData
+    public abstract class JCS_BinGameData 
+        : JCS_GameData
     {
         /* Variables */
 

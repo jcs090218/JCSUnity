@@ -18,6 +18,7 @@ namespace JCSUnity
     /// Interface of storing game data as XML format.
     /// </summary>
     public abstract class JCS_XMLGameData
+        : JCS_GameData
     {
         /* Variables */
 

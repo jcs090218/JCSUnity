@@ -118,6 +118,7 @@ namespace JCSUnity
         {
             instance = CheckSingleton(instance, this);
 
+            Directory.CreateDirectory(JCS_GameData.SavePath());
             Directory.CreateDirectory(JCS_Camera.SavePath());
             Directory.CreateDirectory(JCS_Webcam.SavePath());
         }

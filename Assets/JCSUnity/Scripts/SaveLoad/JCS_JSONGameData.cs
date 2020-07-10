@@ -19,6 +19,7 @@ namespace JCSUnity
     /// </summary>
     [System.Serializable]
     public abstract class JCS_JSONGameData
+        : JCS_GameData
     {
         /* Variables */
 
