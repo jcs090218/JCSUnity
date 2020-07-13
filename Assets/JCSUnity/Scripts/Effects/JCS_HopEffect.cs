@@ -31,7 +31,6 @@ namespace JCSUnity
         private KeyCode mHopKey = KeyCode.A;
 #endif
 
-
         [Header("** Check Variables (JCS_HopEffect) **")]
 
         [Tooltip("Flag for the effect activation.")]
@@ -43,7 +42,6 @@ namespace JCSUnity
         private Vector3 mStartingPosition = Vector3.zero;
 
         private float mRealGravity = 0.0f;
-
 
         [Header("** Runtime Variables (JCS_HopEffect) **")]
 
@@ -63,13 +61,11 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-
         /* Setter & Getter */
 
         public float Force { get { return this.mForce; } set { this.mForce = value; } }
         public float Gravity { get { return this.mGravity; } set { this.mGravity = value; } }
         public JCS_Axis Axis { get { return this.mAxis; } set { this.mAxis = value; } }
-
 
         /* Functions */
 

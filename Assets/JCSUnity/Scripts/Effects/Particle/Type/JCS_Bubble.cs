@@ -34,13 +34,11 @@ namespace JCSUnity
         [SerializeField] [Range(0.1f, 1000.0f)]
         private float mShakeSpeed = 1.0f;
 
-
         /* Setter & Getter */
 
         public bool DoAction { get { return this.mDoAction; } set { this.mDoAction = value; } }
         public float ShakeSpeed { get { return this.mShakeSpeed; } set { this.mShakeSpeed = value; } }
         public float ShakeMargin { get { return this.mShakeMargin; } set { this.mShakeMargin = value; } }
-
 
         /* Functions */
 

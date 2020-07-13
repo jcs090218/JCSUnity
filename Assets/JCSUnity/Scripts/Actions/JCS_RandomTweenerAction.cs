@@ -28,7 +28,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_RandomTweenerAction) **")]
 
-        public Vector3 mTargetValue = Vector3.zero;
+        public Vector3 targetValue = Vector3.zero;
 #endif
 
         [Header("** Runtime Variables (JCS_RandomTweenerAction) **")]
@@ -64,7 +64,7 @@ namespace JCSUnity
         /// </summary>
         private void TargetNewVectorValue()
         {
-            // do nothing if not done tweening.
+            // Do nothing if not done tweening.
             //if (!mTransformTweener.IsDoneTweening)
             //    return;
 
@@ -83,7 +83,7 @@ namespace JCSUnity
             mTransformTweener.DoTween(newVal);
 
 #if (UNITY_EDITOR)
-            mTargetValue = newVal;
+            targetValue = newVal;
 #endif
         }
     }

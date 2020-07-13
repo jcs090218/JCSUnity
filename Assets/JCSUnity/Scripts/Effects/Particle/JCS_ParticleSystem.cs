@@ -20,6 +20,26 @@ namespace JCSUnity
     {
         /* Variables */
 
+#if (UNITY_EDITOR)
+        [Header("** Variables Variables (JCS_ParticleSystem) **")]
+
+        [Tooltip("Flag for component testing.")]
+        public bool testWithKey = false;
+
+        [Tooltip("Key that starts this particle system.")]
+        public KeyCode startKey = KeyCode.C;
+
+        [Tooltip("Key that stops this particle system.")]
+        public KeyCode stopKey = KeyCode.V;
+
+        [Tooltip("Key that plays one shot of particles.")]
+        public KeyCode playOneShotKey = KeyCode.B;
+
+        [Tooltip("Particle count for testing one shot.")]
+        [Range(1, 300)]
+        public int oneShotParticleCount = 10;
+#endif
+
         [Header("** Initialize Variables (JCS_ParticleSystem) **")]
 
         [Tooltip("Number of particle this particle system hold.")]
@@ -29,7 +49,6 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_Particle> mParticles = null;
         private int mLastAvaliableIndex = 0;
-
 
         [Header("** Runtime Variables (JCS_ParticleSystem) **")]
 
@@ -59,8 +78,7 @@ namespace JCSUnity
         [Range(-180, 179)]
         private float mWindSpeed = 0;
 
-
-        [Header("** Position Settings (JCS_ParticleSystem) **")]
+        [Header("- Position")]
 
         [Tooltip("Randomize the X position. (Default : 0)")]
         [SerializeField]
@@ -77,8 +95,7 @@ namespace JCSUnity
         [Range(0.0f, 1000.0f)]
         private float mRandPosZ = 0;
 
-
-        [Header("** Rotation Settings (JCS_ParticleSystem) **")]
+        [Header("- Rotation")]
 
         [Tooltip("Randomize the X rotation.")]
         [SerializeField]
@@ -95,12 +112,10 @@ namespace JCSUnity
         [Range(0.0f, 359.999f)]
         private float mRandAngleZ = 0.0f;
 
+        [Header("- Scale")]
 
-        [Header("** Scale Settings (JCS_ParticleSystem) **")]
-
-        [Tooltip(@"Apply the scale always the same. This will 
-only take the and mRandScaleX as a standard and ignore 
-mRandScaleY and mRandScaleZ variables.")]
+        [Tooltip(@"Apply the scale always the same. This will only take the and 
+mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         [SerializeField]
         private bool mAlwaysTheSameScale = true;
 
@@ -119,10 +134,8 @@ mRandScaleY and mRandScaleZ variables.")]
         [Range(0.0f, 1000.0f)]
         private float mRandScaleZ = 0.0f;
 
-
         private float mSequenceTimer = 0.0f;
         private float mTimeAParticle = 0.5f;
-
 
         [Header("- Freeze Effect")]
 
@@ -140,8 +153,7 @@ mRandScaleY and mRandScaleZ variables.")]
 
         private Vector3 mFreezePos = Vector3.zero;
 
-
-        [Header("- One shot Setting")]
+        [Header("- One shot")]
 
         [Tooltip("Do not process the particle by thread, by main thread.")]
         [SerializeField]
@@ -150,8 +162,7 @@ mRandScaleY and mRandScaleZ variables.")]
         // check if the particle spawned.
         private bool mParticleSpawned = false;
 
-
-        [Header("- Other Setting")]
+        [Header("- Other")]
 
         [Tooltip("Set the particles as child?")]
         [SerializeField]
@@ -166,8 +177,6 @@ mRandScaleY and mRandScaleZ variables.")]
         private JCS_Vector<float> mTimers = null;           // timer per thread
         private JCS_Vector<int> mParticleCount = null;         // how many shoot should process per thread
         private JCS_Vector<int> mParticleCounter = null;         // counter per thread
-
-
 
         /* Setter & Getter */
 
@@ -197,7 +206,6 @@ mRandScaleY and mRandScaleZ variables.")]
         public float RandScaleY { get { return this.mRandScaleY; } set { this.mRandScaleY = value; } }
         public float RandScaleZ { get { return this.mRandScaleZ; } set { this.mRandScaleZ = value; } }
         public bool DoShotImmediately { get { return this.mDoShotImmediately; } set { this.mDoShotImmediately = value; } }
-
 
         /* Functions */
 
@@ -239,20 +247,17 @@ mRandScaleY and mRandScaleZ variables.")]
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.C))
-            {
+            if (!testWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(startKey))
                 StartActive();
-            }
 
-            if (JCS_Input.GetKeyDown(KeyCode.V))
-            {
+            if (JCS_Input.GetKeyDown(stopKey))
                 StopActive();
-            }
 
-            if (JCS_Input.GetKeyDown(KeyCode.X))
-            {
-                PlayOneShot(10);
-            }
+            if (JCS_Input.GetKeyDown(playOneShotKey))
+                PlayOneShot(oneShotParticleCount);
         }
 #endif
 

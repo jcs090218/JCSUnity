@@ -25,7 +25,6 @@ namespace JCSUnity
         private JCS_HitListEvent mHitList = null;
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-
         [Header("** Runtime Variables (JCS_3DDestroyAnimEffect) **")]
 
         [Tooltip("Sorting layer this effect going to render.")]
@@ -50,8 +49,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActiveWithDestroyTime = false;
 
-
-        [Header("** Transform Settings (JCS_3DDestroyAnimEffect) **")]
+        [Header("- Transform")]
 
         [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
         [SerializeField]
@@ -63,8 +61,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameScale = true;
 
-
-        [Header("** Random Effect (JCS_3DDestroyAnimEffect) **")]
+        [Header("- Random Effect")]
 
         [Tooltip("Randomize the position when the animation is played.")]
         [SerializeField]
@@ -113,7 +110,6 @@ namespace JCSUnity
         public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
         public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
 
-        
         /* Functions */
 
         private void Awake()
@@ -163,8 +159,7 @@ namespace JCSUnity
                     }
                     else
                     {
-                        JCS_Debug.LogError(
-                            "You active the destroy time but without the JCS_DestroyObjectWithTime component...");
+                        JCS_Debug.LogError("You can't active destroy time without `JCS_DestroyObjectWithTime` component");
                     }
                 }
             }

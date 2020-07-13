@@ -374,6 +374,5 @@ namespace JCSUnity
 
             LocalPosition += (tempTargetPost - LocalPosition) / mFriction * Time.deltaTime;
         }
-
     }
 }

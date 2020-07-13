@@ -59,7 +59,6 @@ namespace JCSUnity
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float Distance { get { return this.mDistance; } set { this.mDistance = value; } }
 
-
         /* Functions */
 
         private void Start()

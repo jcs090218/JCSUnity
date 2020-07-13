@@ -81,13 +81,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
 
-        [Header("** Damage Text (JCS_SwingAttackAction) **")]
+        [Header("- Damage Text")]
 
         [Tooltip("If you want the action apply damage text add apply this.")]
         [SerializeField]
         private JCS_ApplyDamageTextToLiveObjectAction mApplyDamageTextAction = null;
 
-        [Header("** Other Settings (JCS_SwingAttackAction) **")]
+        [Header("- Other")]
 
         [Tooltip("Key to active attack.")]
         [SerializeField]
@@ -175,8 +175,6 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
             Test();
 #endif
-
-            // 
             ProcessInput();
         }
 
@@ -248,7 +246,7 @@ namespace JCSUnity
                         EndAttack();
 
                         // reset timer
-                        mActionTimer = 0;
+                        mActionTimer = 0.0f;
 
                         // can do the next shoot
                         mAction = false;
@@ -271,7 +269,7 @@ namespace JCSUnity
                         mAfterDelay = true;
 
                         // reset timer for "mAfterDelay" Trigger.
-                        mActionTimer = 0;
+                        mActionTimer = 0.0f;
                     }
                 }
             }
@@ -284,9 +282,7 @@ namespace JCSUnity
         {
             if (mAtkAnim == null)
             {
-                JCS_Debug.LogReminder(
-                    "No animation assign but you still want to spawn a animation...");
-
+                JCS_Debug.LogReminder("No animation assign but you still want to spawn a animation");
                 return;
             }
 
@@ -306,7 +302,7 @@ namespace JCSUnity
             gm.transform.position += mAnimOffsetPosition;
             gm.transform.localScale += mAnimOffsetScale;
 
-            if (this.transform.localScale.x < 0)
+            if (this.transform.localScale.x < 0.0f)
             {
                 Vector3 newScale = gm.transform.localScale;
                 newScale.x = JCS_Mathf.ToNegative(newScale.x);

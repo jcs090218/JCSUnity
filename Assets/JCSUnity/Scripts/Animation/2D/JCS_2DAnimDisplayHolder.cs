@@ -25,8 +25,8 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_2DAnimDisplayHolder) **")]
 
-        [Tooltip(@"Record down what is the current animation playing, 
-so after holding we could play the animation back in time.")]
+        [Tooltip(@"Record down what is the current animation playing, so after 
+holding we could play the animation back in time.")]
         [SerializeField]
         private int mStoreAnimIndex = 0;
 
@@ -81,7 +81,7 @@ so after holding we could play the animation back in time.")]
             this.m2DAnimator.DoAnimation(this.mHoldAnimIndex);
 
             this.mHoldTime = time;
-            this.mHoldTimer = 0;
+            this.mHoldTimer = 0.0f;
 
             mHolding = true;
         }
@@ -93,7 +93,7 @@ so after holding we could play the animation back in time.")]
         {
             mHolding = false;
 
-            this.mHoldTimer = 0;
+            this.mHoldTimer = 0.0f;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ so after holding we could play the animation back in time.")]
                 return;
 
             // reset timer and trigger.
-            mHoldTimer = 0;
+            mHoldTimer = 0.0f;
             mHolding = false;
 
             // start the previous animation once.

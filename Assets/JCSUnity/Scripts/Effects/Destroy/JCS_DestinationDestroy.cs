@@ -26,9 +26,7 @@ namespace JCSUnity
             OUT
         }
 
-
         private JCS_AlphaObject mAlphaObject = null;
-
 
         [Header("** Runtime Variables *(JCS_DestinationDestroy) **")]
 
@@ -44,8 +42,7 @@ namespace JCSUnity
         [SerializeField]
         private float mDestroyDistance = 0.3f;
 
-
-        [Header("** Fade Effect (JCS_DestinationDestroy) **")]
+        [Header("- Fade Effect")]
 
         [Tooltip("Fade when destroy.")]
         [SerializeField]
@@ -66,7 +63,6 @@ namespace JCSUnity
         public float FadeDistance { get { return this.mFadeDistance; } set { this.mFadeDistance = value; } }
         public float DestroyDistance { get { return this.mDestroyDistance; } set { this.mDestroyDistance = value; } }
 
-
         /* Functions */
 
         protected override void Awake()
@@ -85,10 +81,7 @@ namespace JCSUnity
             {
 #if (UNITY_EDITOR)
                 if (JCS_GameSettings.instance.DEBUG_MODE)
-                {
-                    JCS_Debug.LogError(
-                        "No target found...");
-                }
+                    JCS_Debug.LogError("No target found");
 #endif
                 return;
             }
@@ -106,7 +99,6 @@ namespace JCSUnity
                         mAlphaObject.TargetAlpha = 1 - (currentDistance - mDestroyDistance) / alphaDeltaDistance;
                 }
             }
-
 
             if (currentDistance <= mDestroyDistance)
             {

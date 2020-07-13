@@ -30,7 +30,6 @@ namespace JCSUnity
 
         private JCS_Button mJCS_Button = null;
 
-
         [Header("** Runtime Variables (JCS_TextButtonEffect) **")]
 
         [Tooltip("Text object to change color.")]
@@ -53,7 +52,6 @@ namespace JCSUnity
         [SerializeField]
         private Color mDisabledColor = new Color(0.0f, 0.0f, 0.0f, 128.0f);
 
-
         /* Setter & Getter */
 
         public Text TextComp { get { return this.mText; } }
@@ -61,7 +59,6 @@ namespace JCSUnity
         public Color HighlightedColor { get { return this.mHighlightedColor; } set { this.mHighlightedColor = value; } }
         public Color PressedColor { get { return this.mPressedColor; } set { this.mPressedColor = value; } }
         public Color DisabledColor { get { return this.mDisabledColor; } set { this.mDisabledColor = value; } }
-
 
         /* Functions */
 

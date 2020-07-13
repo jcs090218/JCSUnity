@@ -27,11 +27,13 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_AlphaObject) **")]
 
         [Tooltip("Alpha value trying to approach. (0 ~ 1)")]
-        [SerializeField] [Range(0.0f, 1.0f)]
+        [SerializeField]
+        [Range(0.0f, 1.0f)]
         private float mTargetAlpha = 1.0f;
 
         [Tooltip("How fast the alpha channel changes.")]
-        [SerializeField] [Range(0.1f, 5.0f)]
+        [SerializeField]
+        [Range(0.1f, 5.0f)]
         private float mFadeFriction = 1.0f;
 
         /* Setter & Getter */

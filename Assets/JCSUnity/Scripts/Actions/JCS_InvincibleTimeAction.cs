@@ -111,7 +111,7 @@ namespace JCSUnity
             }
 
             // reset timer.
-            mInvicibleTimer = 0;
+            mInvicibleTimer = 0.0f;
 
             this.mFlashToggle = false;
 
@@ -141,7 +141,7 @@ namespace JCSUnity
             this.mInvicibleTime = time;
 
             // reset timer.
-            this.mInvicibleTimer = 0;
+            this.mInvicibleTimer = 0.0f;
 
             // set the live object's can damage immdeiate to false.
             // so it won't get damage in the same frame.
@@ -179,9 +179,7 @@ namespace JCSUnity
                 if (mOrderLayerObject.GetSpriteRenderer() != null)
                     mOrderLayerObject.GetSpriteRenderer().color = mInvincibleColor;
 
-                for (int index = 0; 
-                    index < mOrderLayerObject.SpriteRenderers().Count;
-                    ++index)
+                for (int index = 0; index < mOrderLayerObject.SpriteRenderers().Count; ++index)
                 {
                     /* 
                      * No need to check null, this will always be there. 
@@ -196,9 +194,7 @@ namespace JCSUnity
                 if (mOrderLayerObject.GetSpriteRenderer() != null)
                     mOrderLayerObject.GetSpriteRenderer().color = mRecordColor;
 
-                for (int index = 0;
-                    index < mOrderLayerObject.SpriteRenderers().Count;
-                    ++index)
+                for (int index = 0; index < mOrderLayerObject.SpriteRenderers().Count; ++index)
                 {
                     /* 
                      * No need to check null, this will always be there. 
@@ -213,7 +209,7 @@ namespace JCSUnity
             mFlashToggle = !mFlashToggle;
 
             // reset flash timer.
-            mFlashTimer = 0;
+            mFlashTimer = 0.0f;
         }
     }
 }

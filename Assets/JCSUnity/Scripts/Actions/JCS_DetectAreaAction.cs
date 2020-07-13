@@ -47,21 +47,16 @@ namespace JCSUnity
 
             if (mDetectCollider.Length == 0)
             {
-                JCS_Debug.LogReminder(
-                    "No Collider assing for dectetion...");
+                JCS_Debug.LogReminder("No Collider assing for dectetion");
             }
 
 
-            for (int index = 0;
-                index < mDetectCollider.Length;
-                ++index)
+            for (int index = 0; index < mDetectCollider.Length; ++index)
             {
 
                 if (mDetectCollider[index] == null)
                 {
-                    JCS_Debug.LogReminder(
-                        "No Collider assing for dectetion...");
-
+                    JCS_Debug.LogReminder("No Collider assing for dectetion");
                     continue;
                 }
 
@@ -109,13 +104,11 @@ namespace JCSUnity
         {
             int furthestIndex = -1;
 
-            float furthestDistance = -1;
+            float furthestDistance = -1.0f;
 
             bool theFirstAssign = true;
 
-            for (int index = 0;
-                index < mDetectedObjects.length;
-                ++index)
+            for (int index = 0; index < mDetectedObjects.length; ++index)
             {
                 JCS_DetectAreaObject obj = mDetectedObjects.at(index);
                 if (mDetectedObjects.at(index) == null)
@@ -173,13 +166,11 @@ namespace JCSUnity
         {
             int closestIndex = -1;
 
-            float closestDistance = -1;
+            float closestDistance = -1.0f;
 
             bool theFirstAssign = true;
 
-            for (int index = 0;
-                index < mDetectedObjects.length;
-                ++index)
+            for (int index = 0; index < mDetectedObjects.length; ++index)
             {
                 JCS_DetectAreaObject obj = mDetectedObjects.at(index);
                 if (mDetectedObjects.at(index) == null)

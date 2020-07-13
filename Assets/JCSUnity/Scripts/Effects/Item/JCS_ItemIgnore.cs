@@ -19,6 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Header("** Initialize Variables (JCS_ItemIgnore) **")]
+
         [Tooltip("Add this effect to all the children from this gameobject.")]
         [SerializeField]
         private bool mEffectToAllChild = true;

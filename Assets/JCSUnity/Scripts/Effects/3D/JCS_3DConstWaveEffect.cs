@@ -48,7 +48,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Axis mAxis = JCS_Axis.AXIS_Y;
 
-        [Header("- Randomize Setting (JCS_3DConstWaveEffect)")]
+        [Header("- Randomize")]
 
         [Tooltip("Randomize a bit the amplitude value at start.")]
         [SerializeField]

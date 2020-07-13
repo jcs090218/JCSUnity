@@ -90,9 +90,7 @@ namespace JCSUnity
             int count = 0;
             int actualCount = mTargetTransforms.Length;
 
-            for (int index = 0; 
-                index < mTargetTransforms.Length; 
-                ++index)
+            for (int index = 0; index < mTargetTransforms.Length;  ++index)
             {
                 Transform targetTrans = mTargetTransforms[index];
 

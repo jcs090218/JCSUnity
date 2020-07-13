@@ -25,7 +25,6 @@ namespace JCSUnity
         [SerializeField]
         private RuntimeAnimatorController[] mAnimPool = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

@@ -390,7 +390,7 @@ namespace JCSUnity
             }
 
             // reset timer.
-            mFrameTimer = 0;
+            mFrameTimer = 0.0f;
         }
     }
 }

@@ -46,8 +46,7 @@ Use JCS_2DAnimator instead.", true)]
 
         [Header("** Initialize Variables (JCS_2DCharacterAnimator) **")]
 
-        [Tooltip(@"Override the current animation, start 
-from the beginning.")]
+        [Tooltip(@"Override the current animation, start from the beginning.")]
         [SerializeField]
         protected bool mOverrideAnim = false;
 
@@ -64,8 +63,8 @@ Control the animation state with code are much easier to programmer.")]
         [SerializeField]
         protected string mFullClipStateName = "Player_01_%jcs";
 
-        [Tooltip(@"U can implement multiple attack animation here.
-by naming the animation attack01/attack02/attack03, etc.")]
+        [Tooltip(@"U can implement multiple attack animation here by naming the 
+animation `attack01/attack02/attack03`, etc.")]
         [SerializeField] [Range(1, 5)]
         protected int mAttackAnimationCount = 1;
 
@@ -89,11 +88,10 @@ by naming the animation attack01/attack02/attack03, etc.")]
 
                 if (mAnimationTimer >= mAnimatorStateInfo.length + mAnimationOffset)
                 {
-                    mAnimationTimer = 0;
+                    mAnimationTimer = 0.0f;
                     mEndAttackStage = true;
                 }
             }
-
         }
 
         /// <summary>
@@ -107,10 +105,8 @@ by naming the animation attack01/attack02/attack03, etc.")]
             {
                 if (mOverrideAnim)
                     PlayAtBeginning();
-
                 return;
             }
-
 
             // state in Unity Animator System.
             int stateIndex = (int)state;
@@ -127,14 +123,12 @@ by naming the animation attack01/attack02/attack03, etc.")]
 
                 // ready to check attack ends.
                 mEndAttackStage = false;
-                mAnimationTimer = 0;
+                mAnimationTimer = 0.0f;
             }
             else
                 mCurrentStateName = GetStateName(state);
 
-
-            // set the state machine into Unity Engine's
-            // animator system!
+            // Set the state machine into Unity Engine's animator system!
             GetAnimator().SetInteger(GetAnimationState(), stateIndex);
 
             // record down the current state we are in.
@@ -184,8 +178,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
                     return arr[index];
             }
 
-
-            JCS_Debug.LogError("No animation clip found...");
+            JCS_Debug.LogError("No animation's clip found");
             return null;
         }
 
@@ -299,8 +292,7 @@ by naming the animation attack01/attack02/attack03, etc.")]
                     return JCS_AttackState.ATTACK_05;
             }
 
-            JCS_Debug.LogError(
-                "This should not happens...");
+            JCS_Debug.LogError("This shouldn't happens");
 
             // this sould not happens.
             return JCS_AttackState.ATTACK_01;

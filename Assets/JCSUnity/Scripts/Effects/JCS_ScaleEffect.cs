@@ -24,7 +24,6 @@ namespace JCSUnity
         private Vector3 mRecordScale = Vector3.zero;
         private Vector3 mTargetScale = Vector3.zero;
 
-
         [Header("** Check Variables (JCS_ScaleEffect) **")]
 
         [Tooltip("Is the current component doing the effect now?")]
@@ -38,7 +37,6 @@ namespace JCSUnity
         [Tooltip("")]
         [SerializeField]
         private EventTrigger mEventTrigger = null;
-
 
         [Header("** Initialize Variables (JCS_ScaleEffect) **")]
 
@@ -62,7 +60,6 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
 
-
         [Header("- UI (JCS_ScaleEffect)")]
 
         [Tooltip("Add event to event trigger system.")]
@@ -77,13 +74,11 @@ namespace JCSUnity
         [SerializeField]
         private EventTriggerType mDeactiveEventTriggerType = EventTriggerType.PointerExit;
 
-
         /* Setter & Getter */
 
         public Vector3 RecordScale { get { return this.mRecordScale; } set { this.mRecordScale = value; } }
         public Vector3 TowardScale { get { return this.mTowardScale; } set { this.mTowardScale = value; } }
         public Vector3 GetScaleValue() { return this.mScaleValue; }
-
 
         /* Functions */
 
@@ -93,8 +88,8 @@ namespace JCSUnity
             if (GetObjectType() == JCS_UnityObjectType.UI ||
                 GetObjectType() == JCS_UnityObjectType.TEXT)
             {
-                // Get panel root, in order to calculate the 
-                // correct distance base on the resolution.
+                // Get panel root, in order to calculate the correct distance 
+                // base on the resolution.
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
 
                 if (mAutoAddEvent)
@@ -117,7 +112,6 @@ namespace JCSUnity
             // record down the scale.
             mRecordScale = currentScale;
             mTargetScale = currentScale;
-
 
             SetTargetScale();
         }

@@ -31,11 +31,13 @@ namespace JCSUnity
         private List<Transform> mSpawnList = null;
 
         [Tooltip("Time to spawn a object.")]
-        [SerializeField] [Range(0.0f, 60.0f)]
+        [SerializeField]
+        [Range(0.0f, 60.0f)]
         private float mSpawnTime = 0.0f;
 
         [Tooltip("Randomize the spawn time a bit.")]
-        [SerializeField] [Range(0, 10)]
+        [SerializeField]
+        [Range(0, 10)]
         private float mRandomizeSpawnTime = 0.0f;
 
         private float mSpawnTimer = 0.0f;
@@ -46,14 +48,15 @@ namespace JCSUnity
         // check if do the spawn?
         private bool mSpawned = false;
 
-        [Header("- Randomize Position (JCS_BasicWaveSpawner)")]
+        [Header("- Randomize Position")]
 
         [Tooltip("Spawn the item random position, in x-axis.")]
         [SerializeField]
         private bool mRandPosX = false;
 
         [Tooltip("Randomize value in x-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandPosRangeX = 1.0f;
 
         [Tooltip("Spawn the item random position, in y-axis.")]
@@ -61,7 +64,8 @@ namespace JCSUnity
         private bool mRandPosY = false;
 
         [Tooltip("Randomize value in y-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandPosRangeY = 1.0f;
 
         [Tooltip("Spawn the item random position, in z-axis.")]
@@ -69,17 +73,19 @@ namespace JCSUnity
         private bool mRandPosZ = false;
 
         [Tooltip("Randomize value in z-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
 
-        [Header("- Randomize Rotation (JCS_BasicWaveSpawner)")]
+        [Header("- Randomize Rotation")]
 
         [Tooltip("Randomize the rotation in x-axis?")]
         [SerializeField]
         private bool mRandRotationX = false;
 
         [Tooltip("Random rotation in range in x-axis.")]
-        [SerializeField] [Range(0.0f, 360.0f)]
+        [SerializeField]
+        [Range(0.0f, 360.0f)]
         private float mRandRotRangeX = 0.0f;
 
         [Tooltip("Randomize the rotation in y-axis?")]
@@ -87,7 +93,8 @@ namespace JCSUnity
         private bool mRandRotationY = false;
 
         [Tooltip("Random rotation in range in y-axis.")]
-        [SerializeField] [Range(0.0f, 360.0f)]
+        [SerializeField]
+        [Range(0.0f, 360.0f)]
         private float mRandRotRangeY = 0.0f;
 
         [Tooltip("Randomize the rotation in z-axis?")]
@@ -95,17 +102,19 @@ namespace JCSUnity
         private bool mRandRotationZ = false;
 
         [Tooltip("Random rotation in range in z-axis.")]
-        [SerializeField] [Range(0.0f, 360.0f)]
+        [SerializeField]
+        [Range(0.0f, 360.0f)]
         private float mRandRotRangeZ = 0.0f;
 
-        [Header("- Randomize Scale (JCS_BasicWaveSpawner)")]
+        [Header("- Randomize Scale")]
 
         [Tooltip("Randomize the scale in x-axis?")]
         [SerializeField]
         private bool mRandScaleX = false;
 
         [Tooltip("Random scale in range in x-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandScaleRangeX = 0.0f;
 
         [Tooltip("Randomize the scale in y-axis?")]
@@ -113,7 +122,8 @@ namespace JCSUnity
         private bool mRandScaleY = false;
 
         [Tooltip("Random scale in range in y-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandScaleRangeY = 0.0f;
 
         [Tooltip("Randomize the scale in z-axis?")]
@@ -121,7 +131,8 @@ namespace JCSUnity
         private bool mRandScaleZ = false;
 
         [Tooltip("Random scale in range in z-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandScaleRangeZ = 0.0f;
 
         /* Setter & Getter */
@@ -177,14 +188,13 @@ namespace JCSUnity
             // check null ref.
             if (mSpawnList[spawnIndex] == null)
             {
-                JCS_Debug.Log(
-                    "Cannot spawn a null reference. Plz check the spawn list if there are transform attach or empty slot.");
+                JCS_Debug.Log("Can't spawn a null reference. Plz check the spawn list if there are transform attach or empty slot.");
                 return;
             }
 
             // spawn a object
             Transform objSpawned = (Transform)JCS_Utility.SpawnGameObject(
-                mSpawnList[spawnIndex], 
+                mSpawnList[spawnIndex],
                 this.transform.position);
 
 
@@ -239,9 +249,7 @@ namespace JCSUnity
         /// </summary>
         private void ResizeSpawnList()
         {
-            for (int index = 0;
-                index < mSpawnList.Count;
-                ++index)
+            for (int index = 0; index < mSpawnList.Count; ++index)
             {
                 // remove everythin that are empty or null reference.
                 if (mSpawnList[index] == null)

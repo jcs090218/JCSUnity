@@ -68,11 +68,7 @@ namespace JCSUnity
         {
             if (mLightning == null)
             {
-                JCS_Debug.LogWarning(
-                    "JCS_Lightning",
-                     
-                    "Lightning effect without white screen invalid!");
-
+                JCS_Debug.LogWarning("Lightning effect without white screen invalid");
                 return;
             }
 
@@ -89,7 +85,7 @@ namespace JCSUnity
             if (mLimitTime > mLimitTimer)
                 return;
 
-            mLimitTimer = 0;
+            mLimitTimer = 0.0F;
 
             int randNum = JCS_Random.Range(0, 100);
 

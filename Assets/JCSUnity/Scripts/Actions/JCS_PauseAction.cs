@@ -27,10 +27,9 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_PauseAction) **")]
 
-        [Tooltip(@"Select the behaviour component and drag it into the list 
-so the pause manager will take care of the pause object. 
-If you are working on game that does not have pause, then 
-this script is basically not the good serve for you.")]
+        [Tooltip(@"Select the behaviour component and drag it into the list so the 
+pause manager will take care of the pause object. If you are working on game that 
+does not have pause, then this script is basically not the good serve for you.")]
         [SerializeField]
         private MonoBehaviour[] mActionList = null;
 

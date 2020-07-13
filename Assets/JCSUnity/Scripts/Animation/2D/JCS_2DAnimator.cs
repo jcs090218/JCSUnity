@@ -182,10 +182,7 @@ namespace JCSUnity
             {
 #if (UNITY_EDITOR)
                 if (JCS_GameSettings.instance.DEBUG_MODE)
-                {
-                    JCS_Debug.LogError(
-                        "Swtich animation failed cuz of null reference animation assigned...");
-                }
+                    JCS_Debug.LogError("Swtich animation failed cuz of null reference animation assigned...");
 #endif
                 return;
             }
@@ -324,26 +321,24 @@ namespace JCSUnity
         private void DoPlayOneShot()
         {
             /**
-             * Check stack empty, if not empty meaning
-             * there are PlayOneShot() animation going on.
+             * Check stack empty, if not empty meaning there are PlayOneShot() 
+             * animation going on.
              * 
-             * ATTENTION(jenchieh): make sure to clean up the 
-             * stack after the animatin is played.
+             * ATTENTION(jenchieh): make sure to clean up the stack after the 
+             * animatin is played.
              */
             if (mStackAnim == null)
                 return;
 
 
-            // clean up the stack after the animation is 
-            // done playing.
+            // clean up the stack after the animation is done playing.
 
             /* During the one shot animation, if there are animation change  */
             if (mOneShotAnim != mCurrentAnimation || 
                 /* Of the animation done playing. */
                 mCurrentAnimation.IsDonePlaying)
             {
-                // switch the animation back to original 
-                // animation by stack id.
+                // switch the animation back to original animation by stack id.
                 DoAnimation(mStackAnimId);
 
                 // clean up the stack pointer.

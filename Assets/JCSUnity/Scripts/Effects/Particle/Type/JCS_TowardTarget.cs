@@ -27,7 +27,6 @@ namespace JCSUnity
         // when reach the certain range disable it.
         private JCS_DisableWithCertainRangeEvent mDisableWidthCertainRangeEvent = null;
 
-
         [Header("** Runtime Variables (JCS_TowardTarget) **")]
 
         [Tooltip("Reverse the particle direction?")]
@@ -50,7 +49,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mIncludeDepth = false;
 
-
         /* Setter & Getter */
 
         public bool ReverseDirection { get { return this.mReverseDirection; } set { this.mReverseDirection = value; } }
@@ -62,7 +60,6 @@ namespace JCSUnity
         public float Range { get { return this.mRange; } set { this.mRange = value; } }
         public float AdjustRange { get { return this.mAdjustRange; } set { this.mAdjustRange = value; } }
         public bool IncludeDepth { get { return this.mIncludeDepth; } set { this.mIncludeDepth = value; } }
-
 
         /* Functions */
 
@@ -79,8 +76,7 @@ namespace JCSUnity
         {
             if (mTargetTransform == null)
             {
-                JCS_Debug.LogError(
-                    "Cannot set the calculate circle position with null target transform...");
+                JCS_Debug.LogError("Can't set calculated circle position with null target transform");
                 return;
             }
 

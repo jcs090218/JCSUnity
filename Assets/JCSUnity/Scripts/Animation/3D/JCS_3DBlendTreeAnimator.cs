@@ -12,8 +12,7 @@ using System.Collections;
 namespace JCSUnity
 {
     /// <summary>
-    /// Animator Desgin for Unity Engine's Blend 
-    /// Tree system.
+    /// Animator Desgin for Unity Engine's Blend Tree system.
     /// </summary>
     public class JCS_3DBlendTreeAnimator
         : MonoBehaviour
@@ -26,7 +25,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-
+            // empty.
         }
     }
 }

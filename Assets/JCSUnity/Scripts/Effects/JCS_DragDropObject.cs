@@ -22,9 +22,8 @@ namespace JCSUnity
         private enum DragDrop
         {
             Drag,
-            Drop
+            Drop,
         };
-
 
         [Header("** Runtime Variables (JCS_DragDropObject) **")]
 
@@ -32,11 +31,9 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DragDropType mDragDropType = JCS_DragDropType.DialogueBox;
 
-
         /* Setter & Getter */
 
         public JCS_DragDropType DragDropType { get { return this.mDragDropType; } set { this.mDragDropType = value; } }
-
 
         /* Functions */
 
@@ -71,7 +68,7 @@ namespace JCSUnity
         /// </summary>
         public void JCS_OnDrop()
         {
-
+            // empty..
         }
 
         /// <summary>
@@ -82,14 +79,16 @@ namespace JCSUnity
         {
             switch (type)
             {
-                // Process Drag
-                case DragDrop.Drag:
-                    Vector3 delta = JCS_Input.MouseDeltaPosition();
-                    this.transform.localPosition += delta;
+                case DragDrop.Drag:  /* Process Drag */
+                    {
+                        Vector3 delta = JCS_Input.MouseDeltaPosition();
+                        this.transform.localPosition += delta;
+                    }
                     break;
-
-                // Process Drop
-                case DragDrop.Drop:
+                case DragDrop.Drop:  /* Process Drop */
+                    {
+                        // empty..
+                    }
                     break;
             }
         }

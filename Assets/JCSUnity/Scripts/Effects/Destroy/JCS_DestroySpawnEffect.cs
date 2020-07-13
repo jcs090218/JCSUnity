@@ -25,7 +25,6 @@ namespace JCSUnity
         private JCS_HitListEvent mHitList = null;
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-
         [Header("** Runtime Variables (JCS_TransformPool) **")]
 
         [Tooltip("How many transform spawn?")]
@@ -46,8 +45,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mActiveWithDestroyTime = false;
 
-
-        [Header("** Transform Settings (JCS_DestroySpawnEffect) **")]
+        [Header("- Transform")]
 
         [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
         [SerializeField]
@@ -59,8 +57,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameScale = true;
 
-
-        [Header("** Random Effect (JCS_DestroySpawnEffect) **")]
+        [Header("- Random Effect")]
 
         [Tooltip("Randomize the position when spawn the gameobject.")]
         [SerializeField]
@@ -89,7 +86,6 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandScaleRange = 0.0f;
 
-
         /* Setter & Getter */
 
         public bool ActiveWhatever { get { return this.mActiveWhatever; } set { this.mActiveWhatever = value; } }
@@ -106,7 +102,6 @@ namespace JCSUnity
         public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
         public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
         public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
-
 
         /* Functions */
 
@@ -156,8 +151,7 @@ namespace JCSUnity
                     }
                     else
                     {
-                        JCS_Debug.LogError(
-                            "You active the destroy time but without the JCS_DestroyObjectWithTime component...");
+                        JCS_Debug.LogError("You can't active destroy time without `JCS_DestroyObjectWithTime` component");
                     }
                 }
             }

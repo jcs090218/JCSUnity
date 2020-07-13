@@ -87,7 +87,7 @@ we calculate the real time.")]
             mRealTimeZone = mTimeZone + adjustTime;
 
             mDidAction = false;
-            mTimer = 0;
+            mTimer = 0.0f;
         }
 
         /// <summary>

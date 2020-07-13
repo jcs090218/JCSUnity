@@ -20,6 +20,18 @@ namespace JCSUnity
     {
         /* Variables */
 
+#if (UNITY_EDITOR)
+        [Header("** Helper Variables (JCS_2DAnimSequencePlayer) **")]
+
+        public bool testWithKey = false;
+
+        [Tooltip("Play the animation sequence.")]
+        public KeyCode playKey = KeyCode.H;
+
+        [Tooltip("Stop the animation sequence.")]
+        public KeyCode stopKey = KeyCode.J;
+#endif
+
         [Header("** Check Variables (JCS_2DAnimSequencePlayer) **")]
 
         [Tooltip("")]
@@ -44,7 +56,8 @@ namespace JCSUnity
         private int mAnimCounter = 0;
 
         [Tooltip("How many time to play an animation.")]
-        [SerializeField] [Range(0.0f, 5.0f)]
+        [SerializeField]
+        [Range(0.0f, 5.0f)]
         private float mTimePerAnim = 0.5f;
 
         // timer for each animation play!
@@ -108,7 +121,7 @@ namespace JCSUnity
             if (mTimer < mTimePerAnim)
                 return;
 
-            mTimer = 0;
+            mTimer = 0.0f;
 
             // do the animation base on counter.
             mCurrentAnimation = mAnimations[mAnimCounter];
@@ -122,10 +135,13 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         private void Test()
         {
-            if (JCS_Input.GetKeyDown(KeyCode.H))
+            if (!testWithKey)
+                return;
+
+            if (JCS_Input.GetKeyDown(playKey))
                 Play();
 
-            if (JCS_Input.GetKeyDown(KeyCode.J))
+            if (JCS_Input.GetKeyDown(stopKey))
                 Stop();
         }
 #endif

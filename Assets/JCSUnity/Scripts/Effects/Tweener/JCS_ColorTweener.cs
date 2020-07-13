@@ -75,7 +75,6 @@ namespace JCSUnity
         private Color mTweenColorB = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 #endif
 
-
         [Header("** Check Variables (JCS_ColorTweener) **")]
 
         // progress color
@@ -96,7 +95,6 @@ namespace JCSUnity
         private bool mEasingB = false;
         [SerializeField]
         private bool mEasingA = false;
-
 
         [Header("** Runtime Variables (JCS_ColorTweener) **")]
 
@@ -260,10 +258,10 @@ namespace JCSUnity
         {
             this.mProgressionColor = this.mTargetColor;
 
-            this.mProgressPctColor.r = 1;
-            this.mProgressPctColor.g = 1;
-            this.mProgressPctColor.b = 1;
-            this.mProgressPctColor.a = 1;
+            this.mProgressPctColor.r = 1.0f;
+            this.mProgressPctColor.g = 1.0f;
+            this.mProgressPctColor.b = 1.0f;
+            this.mProgressPctColor.a = 1.0f;
 
             this.mTimeElapsed = Vector4.zero;
 
@@ -388,8 +386,8 @@ namespace JCSUnity
                 this.mProgressionColor.r = this.mTargetColor.r;
 
                 this.mEasingR = false;
-                this.mTimeElapsed.x = 0;
-                this.mProgressPctColor.r = 1;
+                this.mTimeElapsed.x = 0.0f;
+                this.mProgressPctColor.r = 1.0f;
 
                 CheckDoneEasing();
             }
@@ -423,8 +421,8 @@ namespace JCSUnity
                 this.mProgressionColor.g = this.mTargetColor.g;
 
                 this.mEasingG = false;
-                this.mTimeElapsed.y = 0;
-                this.mProgressPctColor.g = 1;
+                this.mTimeElapsed.y = 0.0f;
+                this.mProgressPctColor.g = 1.0f;
 
                 CheckDoneEasing();
             }
@@ -458,8 +456,8 @@ namespace JCSUnity
                 this.mProgressionColor.b = this.mTargetColor.b;
 
                 this.mEasingB = false;
-                this.mTimeElapsed.z = 0;
-                this.mProgressPctColor.b = 1;
+                this.mTimeElapsed.z = 0.0f;
+                this.mProgressPctColor.b = 1.0f;
 
                 CheckDoneEasing();
             }
@@ -493,8 +491,8 @@ namespace JCSUnity
                 this.mProgressionColor.a = this.mTargetColor.a;
 
                 this.mEasingA = false;
-                this.mTimeElapsed.w = 0;
-                this.mProgressPctColor.a = 1;
+                this.mTimeElapsed.w = 0.0f;
+                this.mProgressPctColor.a = 1.0f;
 
                 CheckDoneEasing();
             }

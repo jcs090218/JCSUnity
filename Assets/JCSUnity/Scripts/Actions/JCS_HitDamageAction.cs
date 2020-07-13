@@ -43,7 +43,6 @@ namespace JCSUnity
 
         public BoxCollider GetBoxCollider() { return this.mBoxCollider; }
 
-
         /* Functions */
 
         private void Awake()

@@ -23,7 +23,6 @@ namespace JCSUnity
 
         private JCS_ParticleSystem mParticleSystem = null;
 
-
         [Header("** Initialize Variables (JCS_DestroyParticleEffect) **")]
 
         //-- Hit List
@@ -44,8 +43,7 @@ namespace JCSUnity
 
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-
-        [Header("** Transform Settings (JCS_DestroyParticleEffect) **")]
+        [Header("- Transform")]
 
         [Tooltip("Play the animation as the same position as the destroyed gameobject.")]
         [SerializeField]
@@ -57,8 +55,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mSameScale = true;
 
-
-        [Header("** Random Effect (JCS_DestroyParticleEffect) **")]
+        [Header("- Random")]
 
         [Tooltip("Randomize the position when spawn the particle system.")]
         [SerializeField]
@@ -87,8 +84,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandScaleRange = 0.0f;
 
-
-        [Header("- Peformance (JCS_DestroyParticleEffect)")]
+        [Header("- Peformance")]
 
         [Tooltip(@"Destroy the particle object by time, the 
 default is be 'JCS_DestroyParticleEndEvent'.")]
@@ -98,7 +94,6 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
         [Tooltip("How long the object get destroy.")]
         [SerializeField] [Range(0.0f, 360.0f)]
         private float mDestroyTime = 10.0f;
-
 
         /* Setter & Getter */
 
@@ -119,7 +114,6 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
         public float RandPosRange { get { return this.mRandPosRange; } set { this.mRandPosRange = value; } }
         public float RandRotRange { get { return this.mRandRotRange; } set { this.mRandRotRange = value; } }
         public float RandScaleRange { get { return this.mRandScaleRange; } set { this.mRandScaleRange = value; } }
-
 
         /* Functions */
 
@@ -167,8 +161,7 @@ default is be 'JCS_DestroyParticleEndEvent'.")]
                     }
                     else
                     {
-                        JCS_Debug.LogError(
-                            "You active the destroy time but without the JCS_DestroyObjectWithTime component...");
+                        JCS_Debug.LogError("You can't active destroy time without `JCS_DestroyObjectWithTime` component");
                     }
                 }
             }

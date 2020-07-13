@@ -31,7 +31,6 @@ namespace JCSUnity
         private KeyCode mDoWaveEffectKey = KeyCode.T;
 #endif
 
-
         [Header("** Runtime Variables (JCS_2DWaveEffect) **")]
 
         [Tooltip("Height offset.")]
@@ -44,7 +43,7 @@ namespace JCSUnity
 
         [Tooltip("How fast per period in wave.")]
         [SerializeField]
-        private float mFrequency = 2;
+        private float mFrequency = 2.0f;
 
         private Vector3 mOrigin = Vector3.zero;
 
@@ -53,17 +52,16 @@ namespace JCSUnity
         private JCS_Axis mEffectAxis = JCS_Axis.AXIS_X;
 
         [Tooltip("How long the effect takes.")]
-        [SerializeField] [Range(0.001f, 360.0f)]
+        [SerializeField]
+        [Range(0.001f, 360.0f)]
         private float mEffectTime = 0.0f;
 
-        private float mTime = 0;
-
+        private float mTime = 0.0f;
 
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
 
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;
-
 
         /* Setter & Getter */
 
@@ -91,9 +89,7 @@ namespace JCSUnity
                 return;
 
             if (JCS_Input.GetKeyDown(mDoWaveEffectKey))
-            {
                 DoWaveEffect(1, mFrequency);
-            }
         }
 #endif
 
@@ -139,16 +135,16 @@ namespace JCSUnity
 
                 float force =
                     (mAmplitude *
-                    Mathf.Cos(mTime * Mathf.PI * mFrequency * 2));
+                    Mathf.Cos(mTime * Mathf.PI * mFrequency * 2.0f));
 
                 switch (mEffectAxis)
                 {
                     case JCS_Axis.AXIS_X:
-                        newPos.x = force + 
+                        newPos.x = force +
                             (mWaveRestPosition + mOrigin.x);
                         break;
                     case JCS_Axis.AXIS_Y:
-                        newPos.y = force + 
+                        newPos.y = force +
                             (mWaveRestPosition + mOrigin.y);
                         break;
                     case JCS_Axis.AXIS_Z:
@@ -156,7 +152,6 @@ namespace JCSUnity
                             (mWaveRestPosition + mOrigin.z);
                         break;
                 }
-                
 
                 this.transform.position = newPos;
             }

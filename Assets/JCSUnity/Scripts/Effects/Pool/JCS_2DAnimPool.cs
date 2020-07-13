@@ -26,7 +26,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DAnimation[] mAnimPool = null;
 
-
         /* Setter & Getter */
 
         /* Functions */

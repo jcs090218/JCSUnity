@@ -49,8 +49,7 @@ namespace JCSUnity
                 return;
 
             /* 
-             * Just pick a random animation from the 
-             * animator's animation array. 
+             * Just pick a random animation from the animator's animation array. 
              */
             int randIndex = JCS_Random.Range(0, animLength);
 

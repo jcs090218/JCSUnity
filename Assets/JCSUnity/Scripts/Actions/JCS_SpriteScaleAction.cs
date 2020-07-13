@@ -54,8 +54,8 @@ namespace JCSUnity
         {
             Vector3 currentPos = this.transform.position;
 
-            // if the position are the same, meaning the object
-            // is idle. (have not been move)
+            // if the position are the same, meaning the object is idle. 
+            // (have not been move)
             if (currentPos == mLastPosition)
                 return;
 

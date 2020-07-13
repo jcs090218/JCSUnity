@@ -33,8 +33,7 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_2DLiveObjectAnimator) **")]
 
-        [Tooltip(@"Override the current animation, start 
-from the beginning.")]
+        [Tooltip(@"Override the current animation, start from the beginning.")]
         [SerializeField]
         protected bool mOverrideAnim = false;
 
@@ -76,7 +75,7 @@ from the beginning.")]
         /// </summary>
         public override void PlayAnimationInFrame()
         {
-
+            // empty..
         }
 
         /// <summary>
@@ -84,7 +83,7 @@ from the beginning.")]
         /// </summary>
         public override void StopAnimationInFrame()
         {
-
+            // empty..
         }
     }
 }

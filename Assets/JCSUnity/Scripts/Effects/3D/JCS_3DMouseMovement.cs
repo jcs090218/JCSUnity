@@ -24,7 +24,6 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-
         [Header("** Runtime Variables (JCS_3DMouseMovement) **")]
 
         [Tooltip("Is this effect active?")]
@@ -43,14 +42,12 @@ namespace JCSUnity
         [SerializeField]
         private bool mScrollDepth = true;
 
-
         /* Setter & Getter */
 
         public bool ScreenScroll { get { return this.mScreenScroll; } set { this.mScreenScroll = value; } }
         public float ScrollScreenRange { get { return this.mScrollScreenRange; } set { this.mScrollScreenRange = value; } }
         public float ScrollScreenSpeed { get { return this.mScrollScreenSpeed; } set { this.mScrollScreenSpeed = value; } }
         public bool ScrollDepth { get { return this.mScrollDepth; } set { this.mScrollDepth = value; } }
-
 
         /* Functions */
 
@@ -74,10 +71,10 @@ namespace JCSUnity
             Vector2 mouse01 = JCS_Input.MousePosition0To1();
 
             // get the 4 bounds.
-            float rightBound = 1 - mScrollScreenRange;
+            float rightBound = 1.0f - mScrollScreenRange;
             float leftBound = mScrollScreenRange;
 
-            float topBound = 1 - mScrollScreenRange;
+            float topBound = 1.0f - mScrollScreenRange;
             float botBound = mScrollScreenRange;
 
 
@@ -96,7 +93,7 @@ namespace JCSUnity
             }
             else
                 // else apply zero, so it wont move.
-                mVelocity.x = 0;
+                mVelocity.x = 0.0f;
 
 
             //-- check y direction. --//
@@ -134,7 +131,7 @@ namespace JCSUnity
             }
             else
                 // else apply zero, so it wont move.
-                mVelocity.z = 0;
+                mVelocity.z = 0.0f;
         }
     }
 }
