@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df56e4554e88a74488d9e7830ba08f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAsOriginalSize: 0
+  mAsOriginalSize: 1
   mAsOriginalPosition: 0
   mAsOriginalRotation: 0
   mPanelDeltaWidthRatio: 0
