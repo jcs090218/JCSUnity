@@ -31,7 +31,6 @@ namespace JCSUnity
     public class JCS_VideoPlayer
         : JCS_UnityObject
     {
-
         /* Variables */
 
         [Header("** Runtime Variables (JCS_VideoPlayer) **")]
@@ -50,8 +49,7 @@ namespace JCSUnity
 
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
-        private string mSceneName = "JCS_ApplicationCloseSimulateScene";
-
+        private string mSceneName = "JCS_ApplicationCloseSimulate";
 
         [Header("- Delay Playback")]
 
@@ -255,7 +253,7 @@ namespace JCSUnity
 
         [Tooltip("Next scene will be loaded.")]
         [SerializeField]
-        private string mSceneName = "JCS_ApplicationCloseSimulateScene";
+        private string mSceneName = "JCS_ApplicationCloseSimulate";
 
         [Header("- Delay Playback")]
 

@@ -190,40 +190,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            // check if during the switch scene?
-            if (!mSwitchSceneEffect)
-                return;
-
-
-            switch (mSwitchSceneType)
-            {
-                case JCS_SwitchSceneType.BLACK_SCREEN:
-                    {
-                        if (mJCSBlackScreen.IsFadeIn())
-                        {
-                            // No need this anymore, since we have the
-                            // to clean up everything before we load the scene.
-                            // we need this boolean to check weather the event can
-                            // spawn new "GameObject" when "OnDestroy" function was 
-                            // called in Unity.
-                            //mSwitchSceneEffect = false;
-
-                            // load the scene if is ready
-                            mAsyncOperation.allowSceneActivation = true;
-                        }
-                    }
-                    break;
-
-                case JCS_SwitchSceneType.SLIDE_SCREEN:
-                    {
-                        if (mJCSBlackSlideScreen.IsDoneSliding())
-                        {
-                            // load the scene if is ready
-                            mAsyncOperation.allowSceneActivation = true;
-                        }
-                    }
-                    break;
-            }
+            DoSwitchScene();
         }
 
         /// <summary>
@@ -322,9 +289,7 @@ namespace JCSUnity
             // this help level designer to do their job.
             if (!ReadSceneNames.CheckSceneAvailable(sceneName))
             {
-                JCS_Debug.LogReminder(
-                    "Scene [" + sceneName + "] u want to load is not in the Build Setting...");
-
+                JCS_Debug.LogReminder("Scene [" + sceneName + "] you want to load is not in the Build Setting");
                 return;
             }
 #endif
@@ -416,6 +381,46 @@ namespace JCSUnity
         public bool IsSwitchingScene()
         {
             return this.mSwitchSceneEffect;
+        }
+
+        /// <summary>
+        /// Do the async switch scene.
+        /// </summary>
+        private void DoSwitchScene()
+        {
+            // check if during the switch scene?
+            if (!mSwitchSceneEffect)
+                return;
+
+            switch (mSwitchSceneType)
+            {
+                case JCS_SwitchSceneType.BLACK_SCREEN:
+                    {
+                        if (mJCSBlackScreen.IsFadeIn())
+                        {
+                            // No need this anymore, since we have the
+                            // to clean up everything before we load the scene.
+                            // we need this boolean to check weather the event can
+                            // spawn new "GameObject" when "OnDestroy" function was 
+                            // called in Unity.
+                            //mSwitchSceneEffect = false;
+
+                            // load the scene if is ready
+                            mAsyncOperation.allowSceneActivation = true;
+                        }
+                    }
+                    break;
+
+                case JCS_SwitchSceneType.SLIDE_SCREEN:
+                    {
+                        if (mJCSBlackSlideScreen.IsDoneSliding())
+                        {
+                            // load the scene if is ready
+                            mAsyncOperation.allowSceneActivation = true;
+                        }
+                    }
+                    break;
+            }
         }
     }
 }

@@ -107,7 +107,7 @@ namespace JCSUnity
             if (fade)
             {
                 // load the quit scene.
-                JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulateScene");
+                JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulate");
             }
             else
             {

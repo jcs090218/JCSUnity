@@ -100,84 +100,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
             Test();
 #endif
-
-            if (GetObjectType() == JCS_UnityObjectType.GAME_OBJECT &&
-                JCS_GameManager.instance.GAME_PAUSE)
-                return;
-
-            if (!mEffect)
-                return;
-
-            switch (mFadeType)
-            {
-                case JCS_FadeType.FADE_OUT:
-                    {
-                        // Fade out effect complete
-                        if (mAlpha < mFadeOutAmount)
-                        {
-                            switch (GetObjectType())
-                            {
-                                case JCS_UnityObjectType.GAME_OBJECT:
-                                    {
-                                        //this.gameObject.SetActive(false);
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.UI:
-                                    {
-                                        if (mImage != null)
-                                            mImage.enabled = false;
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.SPRITE:
-                                    {
-                                        if (mSpriteRenderer != null)
-                                            mSpriteRenderer.enabled = false;
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.TEXT:
-                                    {
-                                        if (mText != null)
-                                            mText.enabled = false;
-                                    }
-                                    break;
-                            }
-
-                            mEffect = false;
-
-                            // do fade out callback
-                            if (fadeOutCallback != null)
-                                fadeOutCallback.Invoke();
-
-                            return;
-                        }
-
-                        mAlpha -= Time.deltaTime / mFadeTime;
-                    }
-                    break;
-
-                case JCS_FadeType.FADE_IN:
-                    {
-                        // Fade in effect complete
-                        if (mAlpha > mFadeInAmount)
-                        {
-                            mEffect = false;
-
-                            // do fade in callback
-                            if (fadeInCallback != null)
-                                fadeInCallback.Invoke();
-
-                            return;
-                        }
-
-                        mAlpha += Time.deltaTime / mFadeTime;
-                    }
-                    break;
-            }
-
-            Color screenColor = this.LocalColor;
-            screenColor.a = mAlpha;
-            this.LocalColor = screenColor;
-
+            DoFade();
         }
 
 #if (UNITY_EDITOR)
@@ -296,6 +219,89 @@ namespace JCSUnity
             this.mFadeTime = time;
             this.mFadeType = type;
             this.mEffect = true;
+        }
+
+        /// <summary>
+        /// Do the core fade effect.
+        /// </summary>
+        private void DoFade()
+        {
+            if (GetObjectType() == JCS_UnityObjectType.GAME_OBJECT &&
+                JCS_GameManager.instance.GAME_PAUSE)
+                return;
+
+            if (!mEffect)
+                return;
+
+            switch (mFadeType)
+            {
+                case JCS_FadeType.FADE_OUT:
+                    {
+                        // Fade out effect complete
+                        if (mAlpha < mFadeOutAmount)
+                        {
+                            switch (GetObjectType())
+                            {
+                                case JCS_UnityObjectType.GAME_OBJECT:
+                                    {
+                                        //this.gameObject.SetActive(false);
+                                    }
+                                    break;
+                                case JCS_UnityObjectType.UI:
+                                    {
+                                        if (mImage != null)
+                                            mImage.enabled = false;
+                                    }
+                                    break;
+                                case JCS_UnityObjectType.SPRITE:
+                                    {
+                                        if (mSpriteRenderer != null)
+                                            mSpriteRenderer.enabled = false;
+                                    }
+                                    break;
+                                case JCS_UnityObjectType.TEXT:
+                                    {
+                                        if (mText != null)
+                                            mText.enabled = false;
+                                    }
+                                    break;
+                            }
+
+                            mEffect = false;
+
+                            // do fade out callback
+                            if (fadeOutCallback != null)
+                                fadeOutCallback.Invoke();
+
+                            return;
+                        }
+
+                        mAlpha -= Time.deltaTime / mFadeTime;
+                    }
+                    break;
+
+                case JCS_FadeType.FADE_IN:
+                    {
+                        // Fade in effect complete
+                        if (mAlpha > mFadeInAmount)
+                        {
+                            mEffect = false;
+
+                            // do fade in callback
+                            if (fadeInCallback != null)
+                                fadeInCallback.Invoke();
+
+                            return;
+                        }
+
+                        mAlpha += Time.deltaTime / mFadeTime;
+                    }
+                    break;
+            }
+
+            Color screenColor = this.LocalColor;
+            screenColor.a = mAlpha;
+            this.LocalColor = screenColor;
         }
     }
 }

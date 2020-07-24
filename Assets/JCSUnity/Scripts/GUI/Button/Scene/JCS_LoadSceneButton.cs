@@ -28,7 +28,7 @@ namespace JCSUnity
 
         [Tooltip("Scene name you want to load the scene.")]
         [SerializeField]
-        private string mSceneName = "JCS_ApplicationCloseSimulateScene";
+        private string mSceneName = "JCS_ApplicationCloseSimulate";
 
         [Tooltip("Screen color when load the scene.")]
         [SerializeField]
