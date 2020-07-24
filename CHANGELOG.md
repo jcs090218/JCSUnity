@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-07-24
+
+* Updated project Unity Engine version to `2020.1.0f1`.
+
 ### 2020-07-10
 
 * Implemented game data structure => `JCS_GameData`.
