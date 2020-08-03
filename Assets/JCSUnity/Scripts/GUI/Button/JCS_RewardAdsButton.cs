@@ -15,7 +15,6 @@ using UnityEngine.Advertisements;
 
 namespace JCSUnity
 {
-
     /// <summary>
     /// Reward type of Ads button.
     /// </summary>
@@ -45,15 +44,11 @@ namespace JCSUnity
         /// 
         /// * Good for organize code and game data file in Unity.
         /// </summary>
-        public override void JCS_ButtonClick()
+        public override void JCS_OnClickCallback()
         {
-            base.JCS_ButtonClick();
-
             if (mRewardCallback == null)
             {
-                JCS_Debug.LogWarning(
-                    this, 
-                    "Active default reward function, please fill the reward callback!");
+                JCS_Debug.LogWarning("Active default reward function, please fill the reward callback!");
                 return;
             }
 

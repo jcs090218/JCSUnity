@@ -66,6 +66,14 @@ namespace JCSUnity
         [Tooltip("Careful, this will override player ignore options!")]
         public bool IGNORE_EACH_OTHER_CHARACTER_CONTROLLER = true;
 
+        [Header("- Resources")]
+
+        [Tooltip("Base URL for streaming assets, please point to a directory.")]
+        public string STREAMING_BASE_URL = "https://wwww.example.com/";
+
+        [Tooltip("Cache streaming assets' data path.")]
+        public string STREAMING_CACHE_PATH = "/JCS_GameData/Cache_StreamingAssets/";
+
         [Header("- Save Load")]
 
         [Tooltip("Data folder path.")]
@@ -81,7 +89,7 @@ namespace JCSUnity
         public bool SAVE_ON_EXIT_APP = true;
 
         [Header("- Screenshot")]
-        
+
         [Tooltip("Screenshot folder path.")]
         public string SCREENSHOT_PATH = "/JCS_GameData/Screenshot/";
 
@@ -121,21 +129,20 @@ namespace JCSUnity
             JCS_IO.CreateDirectory(JCS_GameData.SavePath());
             JCS_IO.CreateDirectory(JCS_Camera.SavePath());
             JCS_IO.CreateDirectory(JCS_Webcam.SavePath());
+            JCS_IO.CreateDirectory(JCS_StreamingAssets.CachePath());
         }
 
         private void Start()
         {
             JCS_GameWindowHandler gwh = JCS_GameWindowHandler.instance;
 
-            // if this is the game scene, 
-            // enable the game ui.
+            // if this is the game scene, enable the game ui.
             if (THIS_IS_GAME_SCENE)
             {
                 if (gwh != null)
                     gwh.ShowGameUI();
             }
-            // if this is NOT the game scene, 
-            // dis-enable the game ui.
+            // if this is NOT the game scene, disable the game ui.
             else
             {
                 if (gwh != null)
@@ -158,10 +165,21 @@ namespace JCSUnity
             // Debug check
             _new.DEBUG_MODE = _old.DEBUG_MODE;
 
-            // System Settings should always the same.
+            _new.STREAMING_BASE_URL = _old.STREAMING_BASE_URL;
+            _new.STREAMING_CACHE_PATH = _old.STREAMING_CACHE_PATH;
+
+            _new.DATA_PATH = _old.DATA_PATH;
+            _new.DATA_EXTENSION = _old.DATA_EXTENSION;
             _new.SAVE_ON_EXIT_APP = _old.SAVE_ON_EXIT_APP;
             _new.SAVE_ON_SWITCH_SCENE = _old.SAVE_ON_SWITCH_SCENE;
 
+            _new.SCREENSHOT_PATH = _old.SCREENSHOT_PATH;
+            _new.SCREENSHOT_FILENAME = _old.SCREENSHOT_FILENAME;
+            _new.SCREENSHOT_EXTENSION = _old.SCREENSHOT_EXTENSION;
+
+            _new.WEBCAM_PATH = _old.WEBCAM_PATH;
+            _new.WEBCAM_FILENAME = _old.WEBCAM_FILENAME;
+            _new.WEBCAM_EXTENSION = _old.WEBCAM_EXTENSION;
         }
     }
 }

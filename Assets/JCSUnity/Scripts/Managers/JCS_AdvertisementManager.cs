@@ -28,8 +28,11 @@ namespace JCSUnity
     /// </summary>
     public class JCS_AdvertisementManager
         : JCS_Managers<JCS_AdvertisementManager>
+        , IUnityAdsListener
     {
         /* Variables */
+
+        [Header("** Initialize Variables (JCS_AdvertisementManager) **")]
 
 #if (UNITY_ANDROID)
         [Tooltip("Andriod game id provided by Unity Server window.")]
@@ -39,7 +42,14 @@ namespace JCSUnity
         public string IOS_GAME_ID = "";
 #endif
 
+        private string mPlacementId = "rewardedVideo";
+
+        [Tooltip("Test mode for advertisement module.")]
+        private bool mTestMode = false;
+
         /* Setter & Getter */
+
+        public bool TestMode { get { return this.mTestMode; } set { this.mTestMode = value; } }
 
         /* Functions */
 
@@ -48,9 +58,9 @@ namespace JCSUnity
             instance = this;
 
 #if (UNITY_ANDROID)
-        Advertisement.Initialize(ANDRIOD_GAME_ID);
+            Advertisement.Initialize(ANDRIOD_GAME_ID, mTestMode);
 #elif (UNITY_IOS)
-        Advertisement.Initialize(IOS_GAME_ID);
+            Advertisement.Initialize(IOS_GAME_ID, mTestMode);
 #endif
         }
 
@@ -83,12 +93,33 @@ namespace JCSUnity
         /// <param name="callback"> function accept the result. </param>
         public void ShowRewardedAd(Action<ShowResult> callback)
         {
-            if (Advertisement.IsReady())
-            {
-                ShowOptions options = new ShowOptions();
-                options.resultCallback = callback;
-                Advertisement.Show("rewardedVideo", options);
-            }
+            if (!Advertisement.IsReady(mPlacementId))
+                return;
+
+            Advertisement.AddListener(this);
+            Advertisement.Show(mPlacementId);
+        }
+
+        //----------------------------------------------------------------------
+
+        void IUnityAdsListener.OnUnityAdsDidError(string message)
+        {
+            // empty..
+        }
+
+        void IUnityAdsListener.OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+        {
+            // empty..
+        }
+
+        void IUnityAdsListener.OnUnityAdsDidStart(string placementId)
+        {
+            // empty..
+        }
+
+        void IUnityAdsListener.OnUnityAdsReady(string placementId)
+        {
+            // empty..
         }
     }
 }

@@ -101,12 +101,11 @@ namespace JCSUnity
         /// </summary>
         /// <param name="path"> file path to check. </param>
         /// <returns>
-        /// true, exists.
-        /// false, not exists.
+        /// true, exists. false, not exists.
         /// </returns>
-        public static bool IsFileOrDirectoryExists(string name)
+        public static bool IsFileOrDirectoryExists(string path)
         {
-            return (Directory.Exists(name) || File.Exists(name));
+            return (Directory.Exists(path) || File.Exists(path));
         }
 
         /// <summary>
@@ -118,7 +117,7 @@ namespace JCSUnity
         /// </returns>
         public static bool CreateDirectory(string path)
         {
-            if (Directory.Exists(path))
+            if (IsFileOrDirectoryExists(path))
                 return false;
             Directory.CreateDirectory(path);
             return true;
