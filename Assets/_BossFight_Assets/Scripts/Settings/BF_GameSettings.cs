@@ -14,8 +14,8 @@ using System.IO;
 /// <summary>
 /// 
 /// </summary>
-public class BF_GameSettings 
-    : JCS_Settings<BF_GameSettings> 
+public class BF_GameSettings
+    : JCS_Settings<BF_GameSettings>
 {
     /* Variables */
 
@@ -111,10 +111,7 @@ public class BF_GameSettings
     }
     private void LoadGameData()
     {
-        // if Directory does not exits, create it prevent error!
-        if (!Directory.Exists(mFullFilePath))
-            Directory.CreateDirectory(mFullFilePath);
-
+        JCS_IO.CreateDirectory(mFullFilePath);
 
         // if file does not exist, create the default value file!
         if (!File.Exists(mFullFilePath + mFullFileName))

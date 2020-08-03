@@ -11,8 +11,8 @@ using System.Collections;
 using JCSUnity;
 using System.IO;
 
-public class RC_GameSettings 
-    : MonoBehaviour 
+public class RC_GameSettings
+    : MonoBehaviour
 {
     /* Variables */
 
@@ -150,10 +150,7 @@ public class RC_GameSettings
     }
     private void LoadGameData()
     {
-        // if Directory does not exits, create it prevent error!
-        if (!Directory.Exists(mFullFilePath))
-            Directory.CreateDirectory(mFullFilePath);
-
+        JCS_IO.CreateDirectory(mFullFilePath);
 
         // if file does not exist, create the default value file!
         if (!File.Exists(mFullFilePath + mFullFileName))

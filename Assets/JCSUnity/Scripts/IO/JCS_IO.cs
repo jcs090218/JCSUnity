@@ -108,5 +108,20 @@ namespace JCSUnity
         {
             return (Directory.Exists(name) || File.Exists(name));
         }
+
+        /// <summary>
+        /// Create directory the safe way.
+        /// </summary>
+        /// <param name="path"> Path you want to create. </param>
+        /// <returns>
+        /// Return true, if created; else return false.
+        /// </returns>
+        public static bool CreateDirectory(string path)
+        {
+            if (Directory.Exists(path))
+                return false;
+            Directory.CreateDirectory(path);
+            return true;
+        }
     }
 }

@@ -192,9 +192,7 @@ namespace JCSUnity
 
             string savePath = SavePath();
 
-            // if Directory does not exits, create it prevent error!
-            if (!Directory.Exists(savePath))
-                Directory.CreateDirectory(savePath);
+            JCS_IO.CreateDirectory(savePath);
 
             Texture2D snap = new Texture2D(mWebCamTexture.width, mWebCamTexture.height);
             snap.SetPixels(mWebCamTexture.GetPixels());

@@ -1237,9 +1237,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static int LastFileIndex(string path, string prefixStr, string ext)
         {
-            // if Directory does not exits, create it prevent error!
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
+            JCS_IO.CreateDirectory(path);
 
             var gs = JCS_GameSettings.instance;
 

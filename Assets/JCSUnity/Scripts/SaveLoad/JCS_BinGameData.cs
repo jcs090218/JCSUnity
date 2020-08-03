@@ -16,7 +16,7 @@ namespace JCSUnity
     /// Interface of storing game data as binary format.
     /// </summary>
     [System.Serializable]
-    public abstract class JCS_BinGameData 
+    public abstract class JCS_BinGameData
         : JCS_GameData
     {
         /* Variables */
@@ -62,9 +62,7 @@ namespace JCSUnity
         {
             string filePath = Path.GetDirectoryName(fullFilePath);
 
-            // if Directory does not exits, create it prevent error!
-            if (!Directory.Exists(filePath))
-                Directory.CreateDirectory(filePath);
+            JCS_IO.CreateDirectory(filePath);
 
             InitJCSFile();
 
