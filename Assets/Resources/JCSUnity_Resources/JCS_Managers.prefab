@@ -26,7 +26,6 @@ GameObject:
   - component: {fileID: 11461692}
   - component: {fileID: 11407940}
   - component: {fileID: 114914540437033550}
-  - component: {fileID: -1332835446664361958}
   m_Layer: 0
   m_Name: JCS_Managers
   m_TagString: Untagged
@@ -397,23 +396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPauseActions: []
   mResizePauseActionListTime: 20
---- !u!114 &-1332835446664361958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e490bbba26129644858e6c0d8864796, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mDownloadList: []
-  mRequesting: 0
-  mRequestURL: 
-  mRequestPath: 
-  mPreloadPath: []
 --- !u!1 &1678435913
 GameObject:
   m_ObjectHideFlags: 0

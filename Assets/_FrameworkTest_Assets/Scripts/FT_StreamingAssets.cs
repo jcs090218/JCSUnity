@@ -52,7 +52,7 @@ public class FT_StreamingAssets
 
         if (data != null)
         {
-            string test = Encoding.ASCII.GetString(data);
+            string test = JCS_ResConverter.AsText(data, JCS_CharsetType.ASCII);
             print(test);
         }
     }
