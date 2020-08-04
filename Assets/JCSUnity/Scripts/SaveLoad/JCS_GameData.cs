@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright © 2020 by Shen, Jen-Chieh $
+ *                   Copyright ?2020 by Shen, Jen-Chieh $
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -24,7 +24,8 @@ namespace JCSUnity
         public static string SavePath()
         {
             var gs = JCS_GameSettings.instance;
-            return Application.dataPath + gs.DATA_PATH;
+            string path = JCS_Utility.PathCombine(Application.dataPath, gs.DATA_PATH);
+            return path;
         }
     }
 }

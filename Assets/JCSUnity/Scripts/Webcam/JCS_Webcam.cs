@@ -241,7 +241,8 @@ namespace JCSUnity
         public static string SavePath()
         {
             var gs = JCS_GameSettings.instance;
-            return Application.dataPath + gs.WEBCAM_PATH;
+            string path = JCS_Utility.PathCombine(Application.dataPath, gs.WEBCAM_PATH);
+            return path;
         }
 
         /// <summary>

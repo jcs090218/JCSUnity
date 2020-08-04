@@ -6,14 +6,12 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using Ookii.Dialogs;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UIElements;
 
 namespace JCSUnity
 {
@@ -36,20 +34,16 @@ namespace JCSUnity
         [Header("** Check Variables (JCS_StreamingAssets) **")]
 
         [Tooltip("List of file that we are going to download as target.")]
-        [SerializeField]
         public List<string> downloadList = null;
 
         [Tooltip("Flag to see if currently downloading the file.")]
-        [SerializeField]
-        private bool mRequesting = false;
+        public bool requesting = false;
 
         [Tooltip("Full request URL.")]
-        [SerializeField]
-        private string mRequestURL = "";
+        public string requestURL = "";
 
         [Tooltip("Request data path.")]
-        [SerializeField]
-        private string mRequestPath = "";
+        public string requestPath = "";
 
         [Header("** Initialize Variables (JCS_StreamingAssets) **")]
 
@@ -57,10 +51,6 @@ namespace JCSUnity
         public List<string> preloadPath = null;
 
         /* Setter & Getter */
-
-        public bool Requesting { get { return this.mRequesting; } }
-        public string RequestURL { get { return this.mRequestURL; } }
-        public string RequestPath { get { return this.mRequestPath; } }
 
         /* Functions */
 
@@ -90,7 +80,8 @@ namespace JCSUnity
         public static string CachePath()
         {
             var gs = JCS_GameSettings.instance;
-            return Application.dataPath + gs.STREAMING_CACHE_PATH;
+            string path = JCS_Utility.PathCombine(Application.dataPath, gs.STREAMING_CACHE_PATH);
+            return path;
         }
 
         /// <summary>
@@ -146,8 +137,14 @@ namespace JCSUnity
 
         protected override void TransferData(JCS_StreamingAssets _old, JCS_StreamingAssets _new)
         {
-            _old.downloadList = _new.downloadList;
             _old.requestCallback = _new.requestCallback;
+
+            _old.downloadList = _new.downloadList;
+            _old.requesting = _new.requesting;
+            _old.requestURL = _new.requestURL;
+            _old.requestPath = _new.requestPath;
+
+            _old.preloadPath = _new.preloadPath;
         }
 
         private bool ValidCacheData(string path)
@@ -181,17 +178,17 @@ namespace JCSUnity
         private void TryUrlData(string path)
         {
             mResultData = null;
-            mRequestPath = path;
-            mRequestURL = UrlPath() + mRequestPath;
+            requestPath = path;
+            requestURL = UrlPath() + requestPath;
 
-            mRequesting = true;
+            requesting = true;
 
             StartCoroutine(GetData());
         }
 
         private IEnumerator GetData()
         {
-            UnityWebRequest www = UnityWebRequest.Get(mRequestURL);
+            UnityWebRequest www = UnityWebRequest.Get(requestURL);
             yield return www.SendWebRequest();
 
             bool success = false;
@@ -204,17 +201,17 @@ namespace JCSUnity
             else
             {
                 mResultData = www.downloadHandler.data;
-                WriteFileAsCache(mRequestPath, mResultData);
+                WriteFileAsCache(requestPath, mResultData);
 
                 success = true;
             }
 
             if (requestCallback != null)
-                requestCallback.Invoke(mRequestPath, success);
+                requestCallback.Invoke(requestPath, success);
             requestCallback = null;
 
-            downloadList.Remove(mRequestPath);
-            mRequesting = false;
+            downloadList.Remove(requestPath);
+            requesting = false;
         }
 
         /// <summary>
@@ -235,10 +232,17 @@ namespace JCSUnity
         /// </summary>
         private void ProcessDownload()
         {
-            if (downloadList.Count == 0 || mRequesting)
+            if (downloadList.Count == 0 || requesting)
                 return;
 
-            TryUrlData(downloadList[0]);
+            string path = downloadList[0];
+
+            if (NeedRequestData(ReadAllBytes(path)))
+                TryUrlData(path);
+            else
+            {
+                downloadList.RemoveAt(0);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
+using JCSUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class FT_SaveLoad_Test : MonoBehaviour
     /* Functions */
     private void Awake()
     {
-        string path = Application.dataPath + "/JCS_GameData/SavedData/FT_GameData.jcs";
+        string path = JCS_Utility.PathCombine(Application.dataPath, "/JCS_GameData/SavedData/FT_GameData.jcs");
 
         FT_JSONGameData data = new FT_JSONGameData();
         data.Save<FT_JSONGameData>(path);

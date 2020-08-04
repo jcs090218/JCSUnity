@@ -12,12 +12,20 @@ using JCSUnity;
 using System.IO;
 
 /// <summary>
-/// 
+/// Game settings for Boss Fight example game.
 /// </summary>
 public class BF_GameSettings
     : JCS_Settings<BF_GameSettings>
 {
     /* Variables */
+
+    [Header("** Check Variables (BF_GameSettings) **")]
+
+    [SerializeField]
+    private string mFullFilePath = "";
+
+    [SerializeField]
+    private string mFullFileName = "";
 
     [Header("- Player")]
 
@@ -36,10 +44,6 @@ public class BF_GameSettings
     public string FILE_NAME = "BF_GameData";
 
     public static BF_GameData BF_GAME_DATA = null;
-
-    private string mFullFilePath = "";
-
-    private string mFullFileName = "";
 
     [Header("- Game Feature")]
 
@@ -106,7 +110,7 @@ public class BF_GameSettings
     {
         var gs = JCS_GameSettings.instance;
 
-        mFullFilePath = Application.dataPath + gs.DATA_PATH + FILE_PATH;
+        mFullFilePath = JCS_Utility.PathCombine(Application.dataPath, gs.DATA_PATH, FILE_PATH);
         mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
     }
     private void LoadGameData()

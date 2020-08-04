@@ -11,12 +11,23 @@ using System.Collections;
 using JCSUnity;
 using System.IO;
 
+/// <summary>
+/// Game settings for Running Crush example game.
+/// </summary>
 public class RC_GameSettings
     : MonoBehaviour
 {
     /* Variables */
 
     public static RC_GameSettings instance = null;
+
+    [Header("** Check Variables (RC_GameSettings) **")]
+
+    [SerializeField]
+    private string mFullFilePath = "";
+
+    [SerializeField]
+    private string mFullFileName = "";
 
     [Header("** Runtime Variables (RC_GameSettings) **")]
 
@@ -48,10 +59,6 @@ public class RC_GameSettings
     public string FILE_NAME = "RC_GameData";
 
     public static RC_GameData RC_GAME_DATA = null;
-
-    private string mFullFilePath = "";
-
-    private string mFullFileName = "";
 
     [Header("- Player")]
 
@@ -145,7 +152,7 @@ public class RC_GameSettings
     {
         var gs = JCS_GameSettings.instance;
 
-        mFullFilePath = Application.dataPath + gs.DATA_PATH + FILE_PATH;
+        mFullFilePath = JCS_Utility.PathCombine(Application.dataPath, gs.DATA_PATH, FILE_PATH);
         mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
     }
     private void LoadGameData()
