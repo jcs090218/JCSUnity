@@ -26,6 +26,10 @@
 /Assets/UI-Polygon
 /Assets/UI-Polygon.*
 
+# ignore build info
+/Assets/StreamingAssets/build_info
+/Assets/StreamingAssets/build_info.*
+
 # ignore plugin for Unity built-in functionalities.
 /Assets/Plugins
 /Assets/Plugins.meta
