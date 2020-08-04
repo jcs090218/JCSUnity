@@ -17,16 +17,26 @@ namespace JCSUnity
     public static class JCS_ImageLoader
     {
         /// <summary>
+        /// Convert byte array to texture object.
+        /// </summary>
+        /// <param name="data"> Image byte array. </param>
+        /// <returns> Texture object that fills with image DATA. </returns>
+        public static Texture2D ConvertToTexture(byte[] data)
+        {
+            var tex = new Texture2D(2, 2);
+            tex.LoadImage(data);
+            return tex;
+        }
+
+        /// <summary>
         /// Load image file as texture.
         /// </summary>
         /// <param name="filePath"> Image file path. </param>
         /// <returns> Image data. </returns>
         public static Texture2D LoadTexture(string filePath)
         {
-            var tex = new Texture2D(2, 2);
-            var pngBytes = System.IO.File.ReadAllBytes(filePath);
-            tex.LoadImage(pngBytes);
-
+            byte[] pngBytes = System.IO.File.ReadAllBytes(filePath);
+            var tex = ConvertToTexture(pngBytes);
             return tex;
         }
 
@@ -36,15 +46,9 @@ namespace JCSUnity
         /// <param name="tex"> image data </param>
         /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
         /// <returns> sprite object. </returns>
-        public static Sprite Create(
-            Texture2D tex,
-            float pixelPerUnit = 100.0f)
+        public static Sprite Create(Texture2D tex, float pixelPerUnit = 100.0f)
         {
-            return Create(
-                tex,
-                0.0f, 0.0f,
-                tex.width, tex.height,
-                pixelPerUnit);
+            return Create(tex, 0.0f, 0.0f, tex.width, tex.height, pixelPerUnit);
         }
 
         /// <summary>

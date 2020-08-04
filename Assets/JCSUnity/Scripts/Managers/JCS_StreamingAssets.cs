@@ -17,13 +17,13 @@ using UnityEngine.UIElements;
 
 namespace JCSUnity
 {
-    public delegate void RequestCallback(string path);
+    public delegate void RequestCallback(string path, bool success);
 
     /// <summary>
     /// Generic streaming assets interface.
     /// </summary>
     public class JCS_StreamingAssets
-        : JCS_Managers<JCS_StreamingAssets>
+        : JCS_Settings<JCS_StreamingAssets>
     {
         /* Variables */
 
@@ -31,13 +31,13 @@ namespace JCSUnity
 
         private byte[] mResultData = null;
 
-        private RequestCallback mRequestCallback = null;
+        private RequestCallback requestCallback = null;
 
         [Header("** Check Variables (JCS_StreamingAssets) **")]
 
         [Tooltip("List of file that we are going to download as target.")]
         [SerializeField]
-        private List<string> mDownloadList = null;
+        public List<string> downloadList = null;
 
         [Tooltip("Flag to see if currently downloading the file.")]
         [SerializeField]
@@ -66,9 +66,9 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
+            instance = CheckSingleton(instance, this);
 
-            mDownloadList = preloadPath;
+            downloadList = preloadPath;
         }
 
         private void Update()
@@ -121,8 +121,17 @@ namespace JCSUnity
             if (data == null) data = TryStreamingAssets(path);
             if (data == null)
             {
+                if (callback != null)
+                {
+                    if (requestCallback == null)
+                        requestCallback = callback;
+                    else
+                    {
+                        JCS_Debug.LogWarning("Override request callback is denied");
+                    }
+                }
                 AddDownloadTarget(path);
-                data = REQ_KEY;
+                data = REQ_KEY;  // Set to `wait` key!
             }
             return data;
         }
@@ -132,7 +141,13 @@ namespace JCSUnity
         /// </summary>
         public void AddDownloadTarget(string path)
         {
-            mDownloadList.Add(path);
+            downloadList.Add(path);
+        }
+
+        protected override void TransferData(JCS_StreamingAssets _old, JCS_StreamingAssets _new)
+        {
+            _old.downloadList = _new.downloadList;
+            _old.requestCallback = _new.requestCallback;
         }
 
         private bool ValidCacheData(string path)
@@ -179,6 +194,8 @@ namespace JCSUnity
             UnityWebRequest www = UnityWebRequest.Get(mRequestURL);
             yield return www.SendWebRequest();
 
+            bool success = false;
+
             if (www.isNetworkError || www.isHttpError)
             {
                 if (JCS_GameSettings.instance.DEBUG_MODE)
@@ -188,8 +205,15 @@ namespace JCSUnity
             {
                 mResultData = www.downloadHandler.data;
                 WriteFileAsCache(mRequestPath, mResultData);
+
+                success = true;
             }
 
+            if (requestCallback != null)
+                requestCallback.Invoke(mRequestPath, success);
+            requestCallback = null;
+
+            downloadList.Remove(mRequestPath);
             mRequesting = false;
         }
 
@@ -211,12 +235,10 @@ namespace JCSUnity
         /// </summary>
         private void ProcessDownload()
         {
-            if (mDownloadList.Count == 0 || mRequesting)
+            if (downloadList.Count == 0 || mRequesting)
                 return;
 
-            TryUrlData(mDownloadList[0]);
-
-            mDownloadList.RemoveAt(0);
+            TryUrlData(downloadList[0]);
         }
     }
 }

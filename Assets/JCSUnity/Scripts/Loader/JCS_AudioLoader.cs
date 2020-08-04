@@ -37,7 +37,6 @@ namespace JCSUnity
             AudioLoaded callback = null)
         {
             string fullFilePath = path + filename;
-
             return LoadAudio(ac, fullFilePath, type, callback);
         }
 
@@ -60,12 +59,10 @@ namespace JCSUnity
 #if UNITY_2018_1_OR_NEWER
             UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(formatFullFilePath, type);
             yield return request.SendWebRequest();
-
             ac = DownloadHandlerAudioClip.GetContent(request);
 #else
             WWW request = new WWW(formatFullFilePath);
             yield return request;
-
             ac = request.GetAudioClip(false, false);
 #endif
 
