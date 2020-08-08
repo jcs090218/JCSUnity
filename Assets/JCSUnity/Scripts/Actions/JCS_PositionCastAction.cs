@@ -27,7 +27,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_PositionCastAction) **")]
 
-        [Tooltip("Test the component with key?")]
+        [Tooltip("Test this component with key.")]
         [SerializeField]
         private bool mTestWithKey = false;
 

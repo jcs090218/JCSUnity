@@ -308,11 +308,11 @@ namespace JCSUnity
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
-            const string desc_path = "JCSUnity_Resources/GUI/Plz delete this desc text.";
+            const string desc_path = "JCSUnity_Resources/GUI/Describe Panel";
             GameObject desc_obj = JCS_Utility.SpawnGameObject(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
-            desc_obj.transform.localPosition = new Vector3(-703, 198, 0);
+            desc_obj.transform.localPosition = Vector3.zero;
         }
 
         /// <summary>

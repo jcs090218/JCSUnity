@@ -33,6 +33,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
 
+        [Tooltip("Test this component with key.")]
         [SerializeField]
         private bool mTestWithKey = false;
 

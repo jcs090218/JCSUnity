@@ -24,7 +24,6 @@ namespace JCSUnity
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-
         [Header("** Runtime Variables (JCS_ButtonSelectionGroupController) **")]
 
         [Tooltip("Active key listener?")]
@@ -39,8 +38,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_KeyActionType mKeyActionType = JCS_KeyActionType.KEY_DOWN;
 
-
-        [Header("- Keyboard Settings (JCS_ButtonSelectionGroupController)")]
+        [Header("- Keyboard")]
 
         [Tooltip("Key for next selection. (Keyboard)")]
         [SerializeField]
@@ -54,7 +52,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mMOkay = KeyCode.None;
 
-        [Header("- Full Control Settings / Keyboard (JCS_ButtonSelectionGroupController)")]
+        [Header("- Full Control (Keyboard)")]
 
         [Tooltip("Up select key. (Keyboard)")]
         [SerializeField]
@@ -72,8 +70,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mMLeft = KeyCode.None;
 
-
-        [Header("- Game Pad Settings (JCS_ButtonSelectionGroupController)")]
+        [Header("- Game Pad")]
 
         [Tooltip("Which device we are listening to?")]
         [SerializeField]
@@ -87,13 +84,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_JoystickButton mJPrev = JCS_JoystickButton.NONE;
 
-
         [Tooltip("Okay for this selection. (Game Pad)")]
         [SerializeField]
         private JCS_JoystickButton mJOkay = JCS_JoystickButton.NONE;
 
-
-        [Header("- Full Control Settings / Game Pad (JCS_ButtonSelectionGroupController)")]
+        [Header("- Full Control (Game Pad)")]
 
         [Tooltip("Up select key. (Game Pad)")]
         [SerializeField]
@@ -111,8 +106,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_JoystickButton mJLeft = JCS_JoystickButton.NONE;
 
-
-        [Header("- Audio Settings (JCS_ButtonSelectionGroupController)")]
+        [Header("- Audio")]
 
         [Tooltip("Sound when next button is pressed.")]
         [SerializeField]
@@ -170,7 +164,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundMethod mLeftSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-
         /* Setter & Getter */
 
         public JCS_ButtonSelectionGroup ButtonSelectionGroup { get { return this.mButtonSelectionGroup; } }
@@ -211,7 +204,6 @@ namespace JCSUnity
         public JCS_SoundMethod DownSoundMethod { get { return this.mDownSoundMethod; } set { this.mDownSoundMethod = value; } }
         public JCS_SoundMethod RightSoundMethod { get { return this.mRightSoundMethod; } set { this.mRightSoundMethod = value; } }
         public JCS_SoundMethod LeftSoundMethod { get { return this.mLeftSoundMethod; } set { this.mLeftSoundMethod = value; } }
-
 
         /* Functions */
 
@@ -353,19 +345,17 @@ namespace JCSUnity
         {
             if (mNextSound == null)
                 return;
-
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mNextSound, mNextSoundMethod);
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShotByMethod(mNextSound, mNextSoundMethod);
         }
 
         /* Play the prev sound. */
         private void PlayPrevSound()
         {
             if (mPrevSound == null)
-                return;
-
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mPrevSound, mPrevSoundMethod);
+                return; 
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShotByMethod(mPrevSound, mPrevSoundMethod);
         }
 
         /* Play the okay sound. */
@@ -373,9 +363,8 @@ namespace JCSUnity
         {
             if (mOkaySound == null)
                 return;
-
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mOkaySound, mOkaySoundMethod);
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShotByMethod(mOkaySound, mOkaySoundMethod);
         }
 
         /* Play the up sound. */
@@ -383,9 +372,8 @@ namespace JCSUnity
         {
             if (mUpSound == null)
                 return;
-
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mUpSound, mUpSoundMethod);
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShotByMethod(mUpSound, mUpSoundMethod);
         }
 
         /* Play the down sound. */
@@ -393,9 +381,8 @@ namespace JCSUnity
         {
             if (mDownSound == null)
                 return;
-
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mDownSound, mDownSoundMethod);
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShotByMethod(mDownSound, mDownSoundMethod);
         }
 
         /* Play the right sound. */
@@ -403,9 +390,8 @@ namespace JCSUnity
         {
             if (mRightSound == null)
                 return;
-
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mRightSound, mRightSoundMethod);
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShotByMethod(mRightSound, mRightSoundMethod);
         }
 
         /* Play the left sound. */
@@ -413,9 +399,8 @@ namespace JCSUnity
         {
             if (mLeftSound == null)
                 return;
-
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().
-                PlayOneShotByMethod(mLeftSound, mLeftSoundMethod);
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            sp.PlayOneShotByMethod(mLeftSound, mLeftSoundMethod);
         }
     }
 }

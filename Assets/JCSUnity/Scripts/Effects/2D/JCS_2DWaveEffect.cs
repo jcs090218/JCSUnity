@@ -22,7 +22,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_2DWaveEffect) **")]
 
-        [Tooltip("Test with key?")]
+        [Tooltip("Test this component with key.")]
         [SerializeField]
         private bool mTestWithKey = false;
 
