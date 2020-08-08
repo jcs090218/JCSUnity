@@ -13,7 +13,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// 
+    /// Controller that controls `JCS_TransformLinkedObject` component.
     /// </summary>
     public class JCS_TransformLinkedObjectController
     : MonoBehaviour
