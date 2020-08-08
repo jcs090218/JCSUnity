@@ -69,12 +69,13 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_TransformLinkedObjectController) **")]
 
-        [Tooltip("Each index offset.")]
+        [Tooltip("Transform vector offset for each linked object.")]
         [SerializeField]
         private Vector3 mIndexOffset = new Vector3(0.0f, 1.0f, 0.0f);
 
         /* Setter & Getter */
 
+        public List<JCS_TransformLinkedObject> ManagedList { get { return this.mManagedList; } }
         public JCS_TransformLinkedObject Clone { get { return this.mClone; } }
         public Vector3 IndexOffset { get { return this.mIndexOffset; } set { this.mIndexOffset = value; } }
 
