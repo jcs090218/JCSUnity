@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-08-08
+
+* Implemented new component `JCS_TransformLinkedObject`.
+* Implemented new component `JCS_TransformLinkedObjectController`.
+
 ### 2020-08-04
 
 * Implemented streaming assets consistency over platforms using web request.
