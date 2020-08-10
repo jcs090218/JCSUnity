@@ -72,7 +72,7 @@ aren't necessary depend on the game your are making.
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
   <img src="./games/hemlock_logo.png" width="64" height="64" align="middle"/>
 </a>
-<a href="https://www.youtube.com/watch?v=si_G0zIo0P0&feature=youtu.be" target="_blank">
+<a href="https://www.youtube.com/watch?v=vPapMMxzNGg&feature=youtu.be" target="_blank">
   <img src="./games/might_&_blade_logo.png" width="180" height="72" align="middle"/>
 </a>
 <a href="https://mwgamedesign.itch.io/sugar-sleuths" target="_blank">
