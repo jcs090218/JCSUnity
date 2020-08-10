@@ -63,8 +63,8 @@ aren't necessary depend on the game your are making.
 
 ## :link: Links
 
-* *Demo* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83SBfBSzk0SMchegZFO9lKI
-* *Tutorials* : https://www.youtube.com/playlist?list=PLZgPIJqrkb83DW7sN_dO6sZoxsuu9RhTx
+* *Demo* : https://www.youtube.com/watch?v=s5gMNIEmGqo&list=PLp13qyXnE6zDioC30eW_-aqr4gsswxJo0
+* *Tutorials* : https://www.youtube.com/playlist?list=PLp13qyXnE6zCmRobHV9uEjv-1_ieCPwjc
 * *Manual/Scripting API* : [Scripting-Manual-JCSUnity](http://www.jcs-profile.com:3001)
 
 ## :video_game: Games
