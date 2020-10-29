@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-10-30
+
+* Filled default camera, microphone, location usage information.
+
 ### 2020-10-29
 
 * Changed from `Travis CI` to `GitHub Actions`.
