@@ -80,6 +80,7 @@ jobs:
           - StandaloneOSX
           - StandaloneWindows64
           - StandaloneLinux64
+          - Android
           - iOS
           - WebGL
     steps:
