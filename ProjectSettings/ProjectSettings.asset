@@ -172,7 +172,7 @@ PlayerSettings:
     Android: com.ALDES.JCSUnity_Framework
     Standalone: unity.ALDES.JCSUnity_Framework
     Tizen: com.ALDES.JCSUnity_Framework
-    iPhone: com.ALDES.JCSUnity_Framework
+    iPhone: com.ALDES.JCSUnity
     tvOS: com.ALDES.JCSUnity_Framework
   buildNumber:
     iPhone: 0
