@@ -6,7 +6,7 @@ on:
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  UNITY_VERSION: 2020.1.7f1
+  UNITY_VERSION: 2020.1.2f1
   PROJECT_PATH: .
 
 jobs:
