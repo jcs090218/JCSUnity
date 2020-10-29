@@ -27,7 +27,6 @@ any placeholder assets commercially.
 Here is the list of few important and recent changes to this framework.
 
 * `2.0.7` - Support consistent streaming assets loading with web request.
-          - Move from `Travis CI` to `GitHub Actions`.
 * `2.0.6` - Updated project to Unity version `2020.1.0f1`.
 * `2.0.5` - Supplied full version of `webcam` module.
 * `2.0.4` - Renamed all framework's scenes without useless postfix like `Demo`, `Scene`, etc.
