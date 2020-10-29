@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-10-29
+
+* Changed from `Travis CI` to `GitHub Actions`.
+
 ### 2020-08-13
 
 * Updated project's Unity Engine version to `2020.1.2f1`.
