@@ -80,9 +80,9 @@ jobs:
           - StandaloneOSX
           - StandaloneWindows64
           - StandaloneLinux64
-          - Android
-          - iOS
-          - WebGL
+          #- Android
+          #- iOS
+          #- WebGL
     steps:
       - uses: actions/checkout@v2
         with:
