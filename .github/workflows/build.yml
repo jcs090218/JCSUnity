@@ -83,6 +83,13 @@ jobs:
           - Android
           - iOS
           - WebGL
+          - WSAPlayer
+          - PS4
+          - XboxOne
+          - tvOS
+          - Switch
+          - Stadia
+          - CloudRendering
     steps:
       - uses: actions/checkout@v2
         with:
