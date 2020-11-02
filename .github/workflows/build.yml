@@ -89,7 +89,7 @@ jobs:
           - tvOS
           - Switch
           - Stadia
-          - CloudRendering
+          #- CloudRendering
     steps:
       - uses: actions/checkout@v2
         with:
