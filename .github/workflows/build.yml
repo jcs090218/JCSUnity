@@ -106,6 +106,7 @@ jobs:
           projectPath: ${{ env.PROJECT_PATH }}
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
+          customParameters: "-nographics"
       - uses: actions/upload-artifact@v1
         with:
           name: Build
