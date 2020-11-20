@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-11-20
+
+* Added boundary for `JCS_2DSlideScreenCamera` in swiping behaviour.
+* Fixed position differences when swiping screen UI.
+
 ### 2020-10-30
 
 * Filled default camera, microphone, location usage information.
