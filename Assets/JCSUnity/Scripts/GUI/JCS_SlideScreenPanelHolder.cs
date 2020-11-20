@@ -7,7 +7,10 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace JCSUnity
 {
@@ -22,15 +25,16 @@ namespace JCSUnity
 
         private RectTransform mRectTransform = null;
 
-
         [Header("** Initialize Variables (JCS_SlideScreenPanelHolder) **")]
 
         [Tooltip("How fast the this slide panel slide in x axis.")]
-        [SerializeField] [Range(0.01f, 5.0f)]
+        [SerializeField]
+        [Range(0.01f, 5.0f)]
         private float mSlideFrictionX = 0.2f;
 
         [Tooltip("How fast the this slide panel slide in y axis.")]
-        [SerializeField] [Range(0.01f, 5.0f)]
+        [SerializeField]
+        [Range(0.01f, 5.0f)]
         private float mSlideFrictionY = 0.2f;
 
         // Panel rect transform holder.
@@ -40,13 +44,11 @@ namespace JCSUnity
 
         private JCS_SlidePanel[] mSlidePanelsComponents = null;
 
-
         /* Setter & Getter */
 
         public RectTransform rectTransform { get { return this.mRectTransform; } }
         public float SlideFrictionX { get { return this.mSlideFrictionX; } set { this.mSlideFrictionX = value; } }
         public float SlideFrictionY { get { return this.mSlideFrictionY; } set { this.mSlideFrictionY = value; } }
-
 
         /* Functions */
 
@@ -56,9 +58,7 @@ namespace JCSUnity
 
             mSlidePanelsComponents = new JCS_SlidePanel[slidePanels.Length];
 
-            for (int index = 0;
-                index < slidePanels.Length;
-                ++index)
+            for (int index = 0; index < slidePanels.Length; ++index)
             {
                 // add the component to the slide panel
                 mSlidePanelsComponents[index] =
@@ -96,10 +96,40 @@ namespace JCSUnity
         /// <returns></returns>
         public Vector3 PositionDiff()
         {
-            JCS_SlidePanel sp = mSlidePanelsComponents[0];
-            Vector3 curPos = sp.transform.position;
-            Vector3 targPos = sp.GetTargetPosition();
-            return JCS_Mathf.AbsoluteValue(curPos - targPos);
+            // SOURCE: https://docs.unity3d.com/2018.1/Documentation/ScriptReference/UI.GraphicRaycaster.Raycast.html
+            PointerEventData pointerEventData = null;
+            Canvas canvas = JCS_Canvas.instance.GetCanvas();
+            GraphicRaycaster raycaster = canvas.GetComponent<GraphicRaycaster>();
+
+            // Set up the new Pointer Event
+            pointerEventData = new PointerEventData(EventSystem.current);
+            // Set the Pointer Event Position to that of the mouse position
+            pointerEventData.position = Input.mousePosition;
+
+            // Create a list of Raycast Results
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            // Raycast using the Graphics Raycaster and mouse click position
+            raycaster.Raycast(pointerEventData, results);
+
+            JCS_SlidePanel sp = null;
+
+            // For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+            foreach (RaycastResult result in results)
+            {
+                sp = result.gameObject.GetComponent<JCS_SlidePanel>();
+                if (sp != null)
+                    break;
+            }
+
+            if (sp != null)
+            {
+                Vector3 curPos = sp.transform.position;
+                Vector3 targPos = sp.GetTargetPosition();
+                return JCS_Mathf.AbsoluteValue(curPos - targPos);
+            }
+
+            return Vector3.zero;
         }
 
         /// <summary>
