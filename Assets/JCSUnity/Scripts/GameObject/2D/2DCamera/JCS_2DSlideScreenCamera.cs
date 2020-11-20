@@ -40,6 +40,12 @@ namespace JCSUnity
         // Path that points to the panel.
         private string mPanelHolderPath = "JCSUnity_Framework_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
 
+        [Header("** Check Variables (JCS_2DSlideScreenCamera) **")]
+
+        [Tooltip("Page start from center.")]
+        [SerializeField]
+        private Vector2 mCurrentPage = Vector2.zero;
+
         [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
 
         // Notice important that Designer should know what
@@ -61,17 +67,17 @@ namespace JCSUnity
         [Tooltip("How sticky to the original of the panel's position.")]
         [Range(0.001f, 300.0f)]
         [SerializeField]
-        private float mSlideStickiness = 60.0f;
+        private float mSwipeStickiness = 60.0f;
 
         [Tooltip("Distance to slide over next scene on x axis.")]
         [Range(0.0f, 5000.0f)]
         [SerializeField]
-        private float mSlideDistanceX = 5.0f;
+        private float mSwipeDistanceX = 5.0f;
 
         [Tooltip("Distance to slide over next scene on y axis.")]
         [Range(0.0f, 5000)]
         [SerializeField]
-        private float mSlideDistanceY = 5.0f;
+        private float mSwipeDistanceY = 5.0f;
 
         [Tooltip("Freeze the x axis sliding action.")]
         [SerializeField]
@@ -86,6 +92,28 @@ namespace JCSUnity
         [Tooltip("Sound when trigger switch scene.")]
         [SerializeField]
         private AudioClip mSwitchSceneSound = null;
+
+        [Header("## Boundary")]
+
+        [Tooltip("Minimum page on x-axis.")]
+        [SerializeField]
+        [Range(-30, 30)]
+        private int mMinPageX = -5;
+
+        [Tooltip("Maximum page on x-axis.")]
+        [SerializeField]
+        [Range(-30, 30)]
+        private int mMaxPageX = 5;
+
+        [Tooltip("Minimum page on y-axis.")]
+        [SerializeField]
+        [Range(-30, 30)]
+        private int mMinPageY = -5;
+
+        [Tooltip("Maximum page on y-axis.")]
+        [SerializeField]
+        [Range(-30, 30)]
+        private int mMaxPageY = 5;
 
         /* Setter & Getter */
 
@@ -118,7 +146,7 @@ namespace JCSUnity
 #if (UNITY_EDITOR)
             Test();
 #endif
-            DoMobileSlide();
+            DoMobileSwipe();
         }
 
 #if (UNITY_EDITOR)
@@ -153,6 +181,10 @@ namespace JCSUnity
         /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D4Direction towardDirection)
         {
+            bool valid = CalculatePage(towardDirection);
+            if (!valid)
+                return;
+
             switch (mUnityGUIType)
             {
                 case JCS_UnityGUIType.uGUI_2D:
@@ -162,7 +194,6 @@ namespace JCSUnity
                     NGUISwitchScene(towardDirection);
                     break;
             }
-
             PlaySwitchSceneSound();
         }
 
@@ -172,6 +203,10 @@ namespace JCSUnity
         /// <param name="towardDirection"></param>
         public void SwitchScene(JCS_2D8Direction towardDirection)
         {
+            bool valid = CalculatePage(towardDirection);
+            if (!valid)
+                return;
+
             switch (mUnityGUIType)
             {
                 case JCS_UnityGUIType.uGUI_2D:
@@ -181,14 +216,119 @@ namespace JCSUnity
                     NGUISwitchScene(towardDirection);
                     break;
             }
-
             PlaySwitchSceneSound();
         }
 
         /// <summary>
-        /// Handle the mobile slide input.
+        /// Check if the NEWPAGE is the valid page.
         /// </summary>
-        private void DoMobileSlide()
+        /// <param name="newPage"> New page to test for min/max boundary. </param>
+        /// <returns>
+        /// Return true, if NEWPAGE is valid from current min/max boundary.
+        /// </returns>
+        private bool IsValidPage(Vector2 newPage)
+        {
+            bool canDo = true;
+
+            if (newPage.x < mMinPageX)
+                canDo = false;
+            else if (newPage.x > mMaxPageX)
+                canDo = false;
+
+            if (newPage.y < mMinPageY)
+                canDo = false;
+            else if (newPage.y > mMaxPageY)
+                canDo = false;
+
+            return canDo;
+        }
+
+        /// <summary>
+        /// Calculate the currnet page with DIRECTION.
+        /// </summary>
+        /// <param name="direction"> Page direction. </param>
+        /// <returns>
+        /// Return true, if is under the min/max boundary.
+        /// </returns>
+        private bool CalculatePage(JCS_2D4Direction direction)
+        {
+            Vector2 newPage = mCurrentPage;
+
+            switch (direction)
+            {
+                case JCS_2D4Direction.TOP:
+                    ++newPage.y;
+                    break;
+                case JCS_2D4Direction.BOTTOM:
+                    --newPage.y;
+                    break;
+                case JCS_2D4Direction.RIGHT:
+                    ++newPage.x;
+                    break;
+                case JCS_2D4Direction.LEFT:
+                    --newPage.x;
+                    break;
+            }
+
+            bool canDo = IsValidPage(newPage);
+            if (canDo) mCurrentPage = newPage;
+            return canDo;
+        }
+
+        /// <summary>
+        /// Calculate the currnet page with DIRECTION.
+        /// </summary>
+        /// <param name="direction"> Page direction. </param>
+        /// <returns>
+        /// Return true, if is under the min/max boundary.
+        /// </returns>
+        private bool CalculatePage(JCS_2D8Direction direction)
+        {
+            Vector2 newPage = mCurrentPage;
+
+            switch (direction)
+            {
+                case JCS_2D8Direction.TOP:
+                    ++newPage.y;
+                    break;
+                case JCS_2D8Direction.BOTTOM:
+                    --newPage.y;
+                    break;
+                case JCS_2D8Direction.RIGHT:
+                    ++newPage.x;
+                    break;
+                case JCS_2D8Direction.LEFT:
+                    --newPage.x;
+                    break;
+
+                // 4 corners
+                case JCS_2D8Direction.TOP_LEFT:
+                    ++newPage.y;
+                    --newPage.x;
+                    break;
+                case JCS_2D8Direction.TOP_RIGHT:
+                    ++newPage.y;
+                    ++newPage.x;
+                    break;
+                case JCS_2D8Direction.BOTTOM_RIGHT:
+                    --newPage.y;
+                    ++newPage.x;
+                    break;
+                case JCS_2D8Direction.BOTTOM_LEFT:
+                    --newPage.y;
+                    --newPage.x;
+                    break;
+            }
+
+            bool canDo = IsValidPage(newPage);
+            if (canDo) mCurrentPage = newPage;
+            return canDo;
+        }
+
+        /// <summary>
+        /// Handle the mobile swipe input.
+        /// </summary>
+        private void DoMobileSwipe()
         {
             JCS_SlideInput si = JCS_InputManager.instance.GetGlobalSlideInput();
             if (si == null)
@@ -203,7 +343,7 @@ namespace JCSUnity
                 if (mFreezeX) deltaPos.x = 0.0f;
                 if (mFreezeY) deltaPos.y = 0.0f;
 
-                mPanelHolder.DeltaMove(-deltaPos / mSlideStickiness);
+                mPanelHolder.DeltaMove(-deltaPos / mSwipeStickiness);
             }
             else
             {
@@ -214,7 +354,7 @@ namespace JCSUnity
             {
                 Vector3 posDiff = mPanelHolder.PositionDiff();
 
-                if (!mFreezeX && posDiff.x > this.mSlideDistanceX)
+                if (!mFreezeX && posDiff.x > this.mSwipeDistanceX)
                 {
                     if (JCS_Mathf.IsPositive(si.DragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
@@ -222,7 +362,7 @@ namespace JCSUnity
                         SwitchScene(JCS_2D4Direction.RIGHT);
                 }
 
-                if (!mFreezeY && posDiff.y > this.mSlideDistanceY)
+                if (!mFreezeY && posDiff.y > this.mSwipeDistanceY)
                 {
                     if (JCS_Mathf.IsPositive(si.DragDisplacement.y))
                         SwitchScene(JCS_2D4Direction.BOTTOM);
@@ -231,7 +371,7 @@ namespace JCSUnity
                 }
             }
         }
-        
+
         /// <summary>
         /// Play switch scene sound.
         /// </summary>
