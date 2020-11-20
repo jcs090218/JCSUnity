@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4080961288663933058}
   - component: {fileID: 4080961288663933085}
   m_Layer: 5
-  m_Name: Plz delete this desc text.
+  m_Name: Please delete this description text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,10 +79,10 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "===========================================================\r\n* Something
-    u need to do before using this scene.\r\n----------------------------------------------------\r\n\r\n1.
-    \"JCS_GameSetting->THIS_IS_GAME_SCENE\" check or uncheck.\r\n\r\n2. [Audio Listener]
-    either on \"Player\" or on \"Camera\".\r\n\t* Recommanded\r\n        -> if isnt
-    a game scene add [Aduio Listener] on \"Camera\".\r\n        -> if is a game scene,
+    you need to do before using this scene.\r\n----------------------------------------------------\r\n\r\n1.
+    `JCS_GameSetting->THIS_IS_GAME_SCENE` check or uncheck.\r\n\r\n2. [Audio Listener]
+    either on `Player` or on `Camera`.\r\n\t* Recommanded\r\n        -> if isnt a
+    game scene add [Aduio Listener] on `Camera`.\r\n        -> if is a game scene,
     add [Aduio Listener] either on \"Player\" or on \"Camera\" is fine.\r\n"
 --- !u!1 &4080961288756045062
 GameObject:
