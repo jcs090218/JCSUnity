@@ -10,7 +10,7 @@ to quickly generate commonly used game mechanics and features
 such as UI functionality and player movement. This will allow
 for a faster initial development. Most components work individually
 while other components must be used in tandem with others.
-Individually components can be combined to create new behaviors.
+Individually components can be combined to create new behaviors.c
 
 ## :boom: Important Notice
 
