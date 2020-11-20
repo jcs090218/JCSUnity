@@ -68,8 +68,7 @@ namespace JCSUnity
         {
             if (mRollBtnSelector == null)
             {
-                JCS_Debug.LogError(
-                    "Not Roll Button Selector attached...");
+                JCS_Debug.LogError("No Roll Button Selector attached");
                 return;
             }
 

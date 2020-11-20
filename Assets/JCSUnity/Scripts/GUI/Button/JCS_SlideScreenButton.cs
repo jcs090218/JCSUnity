@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_SlideScreenButton) **")]
 
-        [Tooltip("This action are using \"JCS_2DSlideScreenCamera\".")]
+        [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
         [SerializeField]
         private JCS_2DSlideScreenCamera[] mSlideCameras = null;
 
@@ -31,8 +31,9 @@ namespace JCSUnity
         [Tooltip("Direction you want to move.")]
         [SerializeField] private JCS_2D8Direction mDirection = JCS_2D8Direction.TOP;
 
-        [Tooltip("How many times to go to that direction? (Default is 1)")]
-        [SerializeField] [Range(1, 5)]
+        [Tooltip("Times to switch scene.")]
+        [SerializeField]
+        [Range(1, 5)]
         private int mCount = 1;
 
         [Header("- Sound")]
@@ -41,7 +42,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Tooltip("Sound when sliding screen. (Switch Scene)")]
+        [Tooltip("Sound when sliding screen.")]
         [SerializeField]
         private AudioClip mSlideScreenSound = null;
 
@@ -49,9 +50,9 @@ namespace JCSUnity
 
         [Tooltip("Time delay when slide screen.")]
         [SerializeField]
-        private float mDelayTime = 0;
+        private float mDelayTime = 0.0f;
 
-        private float mDelayTimer = 0;
+        private float mDelayTimer = 0.0f;
 
         private bool mStartDelay = false;
 
@@ -120,11 +121,11 @@ namespace JCSUnity
         {
             JCS_2DSlideScreenCamera slideCamera = null;
 
-            for (int index = 0; index < mCount; ++index)
+            for (int slideCount = 0; slideCount < mCount; ++slideCount)
             {
-                for (int index2 = 0; index2 < mSlideCameras.Length; ++index2)
+                for (int camIndex = 0; camIndex < mSlideCameras.Length; ++camIndex)
                 {
-                    slideCamera = this.mSlideCameras[index2];
+                    slideCamera = this.mSlideCameras[camIndex];
 
                     // do the slide screen effect.
                     if (slideCamera != null)
