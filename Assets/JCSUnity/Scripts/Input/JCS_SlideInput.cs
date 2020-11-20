@@ -69,15 +69,15 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_SlideInput) **")]
 
-#if (UNITY_STANDALONE)
-        [Tooltip("Mouse event type of identify the touch event.")]
-        [SerializeField]
-        private JCS_MouseButton mMouseType = JCS_MouseButton.LEFT;
-#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         [Tooltip("Touch count that will detect as touched.")]
         [SerializeField]
         [Range(0, 60)]
         private int mDetectTouchCount = 1;
+#else
+        [Tooltip("Mouse event type of identify the touch event.")]
+        [SerializeField]
+        private JCS_MouseButton mMouseType = JCS_MouseButton.LEFT;
 #endif
 
         /* Setter & Getter */
@@ -87,13 +87,13 @@ namespace JCSUnity
         public Vector2 DeltaPos { get { return this.mDeltaPos; } }
         public Vector2 DragDistance { get { return this.mDragDistance; } }
         public Vector2 DragDisplacement { get { return this.mDragDisplacement; } }
-#if (UNITY_STANDALONE)
-        public JCS_MouseButton MouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
-#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         public bool MultiTouches { get { return this.mMultiTouches; } }
         public float TouchDistance { get { return this.mTouchDistance; } }
         public float TouchDistanceDelta { get { return this.mTouchDistanceDelta; } }
         public int DetectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
+#else
+        public JCS_MouseButton MouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
 #endif
 
         /* Functions */

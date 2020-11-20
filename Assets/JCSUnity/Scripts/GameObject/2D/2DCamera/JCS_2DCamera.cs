@@ -281,10 +281,10 @@ namespace JCSUnity
             if (depthDistance == 0)
                 return;
 
-#if (UNITY_EDITOR || UNITY_STANDALONE)
-            float cameraDepth = depthDistance * mScrollRange_Mouse;
-#elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
+#if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             float cameraDepth = depthDistance * mScrollRange_Touch;
+#else
+            float cameraDepth = depthDistance * mScrollRange_Mouse;
 #endif
 
             this.mTargetPosition.z += cameraDepth;
