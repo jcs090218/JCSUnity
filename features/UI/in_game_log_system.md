@@ -1,5 +1,5 @@
-# In Game Log System #
+# In Game Log System
 
 Log system inside the game. 
 <br/>
-<img src="../../screenshot/IGLog_system.gif"/>
+<img src="../../etc/IGLog_system.gif"/>

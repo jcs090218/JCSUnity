@@ -1,4 +1,4 @@
-# Create Scene with JCSUnity #
+# Create Scene with JCSUnity
 
 Create the simple scene with smooth switching the scene and 
 smooth switching the background music is always painful. Not 
@@ -9,4 +9,4 @@ Background music can be switch at `JCS_Settings` object to
 `JCS_SoundSetting` component in the scene. Scene relative variables 
 can be found at `JCS_Settings` object 'JCS_SceneSetting' component.
 <br/>
-<img src="../../screenshot/fast_create_scene.gif"/>
+<img src="../../etc/fast_create_scene.gif"/>
