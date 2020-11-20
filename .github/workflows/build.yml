@@ -62,6 +62,7 @@ jobs:
           projectPath: ${{ env.PROJECT_PATH }}
           unityVersion: ${{ env.UNITY_VERSION }}
           testMode: all
+          customParameters: "-nographics"
       - uses: actions/upload-artifact@v1
         with:
           name: Test results (all modes)
