@@ -3,13 +3,14 @@
 --- !u!1 &184380
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
-  - 4: {fileID: 473926}
-  - 81: {fileID: 8178290}
-  - 114: {fileID: 11406734}
+  - component: {fileID: 473926}
+  - component: {fileID: 8178290}
+  - component: {fileID: 11406734}
   m_Layer: 0
   m_Name: JCS_2DSlideScreenCamera
   m_TagString: Untagged
@@ -19,9 +20,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &473926
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -29,34 +31,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &8178290
 AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184380}
   m_Enabled: 1
 --- !u!114 &11406734
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184380}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aced5a0f8b8186c4792c067572fc63db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testWithKey: 0
+  upKey: 119
+  downKey: 120
+  leftKey: 97
+  rightKey: 100
+  upLeftKey: 113
+  downLeftKey: 122
+  upRightKey: 101
+  downRightKey: 99
+  mCurrentPage: {x: 0, y: 0}
   mUnityGUIType: 1
   mJCS_2DCamera: {fileID: 0}
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 184380}
-  m_IsPrefabParent: 1
+  mPanelHolder: {fileID: 0}
+  mSwipeStickiness: 100
+  mSwipeDistanceX: 5
+  mSwipeDistanceY: 5
+  mFreezeX: 0
+  mFreezeY: 0
+  mSwitchSceneSound: {fileID: 0}
+  mMinPageX: -5
+  mMaxPageX: 5
+  mMinPageY: -5
+  mMaxPageY: 5

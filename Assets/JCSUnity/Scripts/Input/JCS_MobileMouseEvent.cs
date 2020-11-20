@@ -38,6 +38,7 @@ namespace JCSUnity
 
         [Tooltip("Distance Raycast shoot.")]
         [SerializeField]
+        [Range(0.0f, 5000.0f)]
         private float mRaycastDistance = 100.0f;
 
         /* Setter & Getter */

@@ -123,6 +123,10 @@ namespace JCSUnity
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public AudioClip SwitchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
+        public int MinPageX { get { return this.mMinPageX; } set { this.mMinPageX = value; } }
+        public int MaxPageX { get { return this.mMaxPageX; } set { this.mMaxPageX = value; } }
+        public int MinPageY { get { return this.mMinPageY; } set { this.mMinPageY = value; } }
+        public int MaxPageY { get { return this.mMaxPageY; } set { this.mMaxPageY = value; } }
 
         /* Functions */
 
@@ -402,7 +406,7 @@ namespace JCSUnity
             // if still null, setting error!!
             if (mJCS_2DCamera == null)
             {
-                JCS_Debug.LogError("The object spawn does not have the \"JCS_2DCamera\" components...");
+                JCS_Debug.LogError("The object spawn does not have the `JCS_2DCamera` components...");
                 return;
             }
 
