@@ -205,9 +205,7 @@ namespace JCSUnity
             if (targetVal < currentVal)
                 return --currentVal;
 
-            JCS_Debug.LogError(
-                "Errors with approaching to a value...");
-
+            JCS_Debug.LogError("Errors with approaching to a value");
             return 0;
         }
 
