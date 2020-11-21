@@ -274,7 +274,7 @@ namespace JCSUnity
                 else
                     scale = (mAsympDiffScale * (index - ((index - centerIndex) * 2))) + mAsympDiffScale;
 
-                if (mPanelRoot != null && mPanelRoot.transform == currentBtn.transform.parent)
+                if (mPanelRoot != null)
                 {
                     scale.x /= mPanelRoot.PanelDeltaWidthRatio;
                     scale.y /= mPanelRoot.PanelDeltaHeightRatio;
