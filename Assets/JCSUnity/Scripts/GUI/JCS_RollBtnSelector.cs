@@ -261,14 +261,12 @@ namespace JCSUnity
             if (!mAsympEffect)
                 return;
 
-            JCS_RollSelectorButton currentBtn = null;
-
             int centerIndex = JCS_Mathf.FindMiddleIndex(mButtons.Length);
 
             // initialzie the scroll index.
             for (int index = 0; index < mButtons.Length; ++index)
             {
-                currentBtn = mButtons[index];
+                JCS_RollSelectorButton currentBtn = mButtons[index];
 
                 Vector3 scale = Vector3.zero;
                 if (index <= centerIndex)
@@ -276,7 +274,7 @@ namespace JCSUnity
                 else
                     scale = (mAsympDiffScale * (index - ((index - centerIndex) * 2))) + mAsympDiffScale;
 
-                if (mPanelRoot != null)
+                if (mPanelRoot != null && mPanelRoot.transform == currentBtn.transform.parent)
                 {
                     scale.x /= mPanelRoot.PanelDeltaWidthRatio;
                     scale.y /= mPanelRoot.PanelDeltaHeightRatio;
@@ -286,8 +284,7 @@ namespace JCSUnity
 
                 if (se == null)
                 {
-                    JCS_Debug.LogError(
-                        "JCS_ScaleEffect are null but we still want the effect. plz make sure all the button have JCS_ScaleEffet component!");
+                    JCS_Debug.LogError("JCS_ScaleEffect are null but we still want the effect. Please make sure all the button have JCS_ScaleEffet component!");
 
                     // close the effect.
                     mAsympEffect = false;
@@ -302,19 +299,19 @@ namespace JCSUnity
                 // level designer.
                 se.TowardScale += scale + se.GetScaleValue();
 
-                se.JCS_OnMouseOver();
+                se.Active();
             }
 
         }
 
         /// <summary>
-        /// 
+        /// Figure out the scroll index and start animating.
         /// </summary>
         private void FindScrollIndex()
         {
             if (mFocusBtn == null)
             {
-                JCS_Debug.LogError("Cannot do the movement without focus button");
+                JCS_Debug.LogError("Can't do the movement without focus button");
                 return;
             }
 
@@ -340,7 +337,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Do the scroll animation.
         /// </summary>
         private void DoAnim()
         {
@@ -374,8 +371,8 @@ namespace JCSUnity
 
             if (mScrollIndexCounter == mTargetScrollIndex)
             {
-                mAnimating = false;     // disable the anim
-                mScrollIndexCounter = 0;    // reset counter
+                mAnimating = false;  // disable the anim
+                mScrollIndexCounter = 0;  // reset counter
             }
         }
 
@@ -404,7 +401,7 @@ namespace JCSUnity
 
                 if (currentBtn == null || targetBtn == null)
                 {
-                    JCS_Debug.LogError("Missing jcs_button assign in the inspector...");
+                    JCS_Debug.LogError("Missing `JCS_Button` assign in the inspector...");
                     continue;
                 }
 
@@ -436,7 +433,7 @@ namespace JCSUnity
 
                     se.RecordScale = newRecordScaleHolder[index];
                     se.TowardScale = newTowardScaleHolder[index];
-                    se.JCS_OnMouseOver();
+                    se.Active();
                 }
             }
         }

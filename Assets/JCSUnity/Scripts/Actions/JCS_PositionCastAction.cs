@@ -108,7 +108,6 @@ namespace JCSUnity
             JCS_Camera jcsCam = JCS_Camera.main;
             JCS_ResizeUI resizeUI = JCS_ResizeUI.instance;
 
-
             Vector3 positionOffset = mPositionOffset;
 
             if (mPanelRoot != null)
@@ -116,7 +115,6 @@ namespace JCSUnity
                 positionOffset.x /= mPanelRoot.PanelDeltaWidthRatio;
                 positionOffset.y /= mPanelRoot.PanelDeltaHeightRatio;
             }
-
 
             switch (GetObjectType())
             {

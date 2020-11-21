@@ -125,8 +125,7 @@ namespace JCSUnity
         {
             if (mRollBtnSelector == null)
             {
-                JCS_Debug.LogError(
-                    "This button has been set focus but without the handler...");
+                JCS_Debug.LogError("This button has been set focus but without the handler");
                 return;
             }
 

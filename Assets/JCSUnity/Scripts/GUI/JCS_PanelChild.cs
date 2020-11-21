@@ -96,11 +96,11 @@ namespace JCSUnity
                 List<Transform> childs = null;
                 if (!mIsUnityDefinedUI)
                 {
-                    // NOTE(jenchieh): If not the Unity define UI, we 
-                    // need to dettach all the child transform before 
-                    // we can resize it. If we resize it without dettach 
-                    // all child transforms, the children transform 
-                    // will also be scaled/changed.
+                    // NOTE: If not the Unity define UI, we need to 
+                    // dettach all the child transform before we can 
+                    // resize it. If we resize it without dettach all 
+                    // child transforms, the children transform will 
+                    // also be scaled/changed.
                     // 
                     // 這個有點暴力解法... 不知道為什麼Unity沒有辦法
                     // 在初始化階段一次清乾淨.
@@ -108,13 +108,13 @@ namespace JCSUnity
                 }
 
                 Vector3 newScale = mRectTransform.localScale;
-                newScale.x = newScale.x / xRatio;
-                newScale.y = newScale.y / yRatio;
+                newScale.x /= xRatio;
+                newScale.y /= yRatio;
                 mRectTransform.localScale = newScale;
 
                 if (!mIsUnityDefinedUI)
                 {
-                    // NOTE(jenchieh): Reattach all the previous child.
+                    // NOTE: Reattach all the previous child.
                     JCS_Utility.AttachChildren(this.mRectTransform, childs);
                 }
             }
@@ -122,8 +122,8 @@ namespace JCSUnity
             /* Do the position. */
             {
                 Vector3 newPosition = mRectTransform.localPosition;
-                newPosition.x = newPosition.x / xRatio;
-                newPosition.y = newPosition.y / yRatio;
+                newPosition.x /= xRatio;
+                newPosition.y /= yRatio;
 
                 // set to the new position
                 mRectTransform.localPosition = newPosition;
