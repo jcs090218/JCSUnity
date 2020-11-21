@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-11-22
+
+* Fixed `JCS_TransformTweener` applying panel root logic.
+
 ### 2020-11-20
 
 * Added boundary for `JCS_2DSlideScreenCamera` in swiping behaviour.
