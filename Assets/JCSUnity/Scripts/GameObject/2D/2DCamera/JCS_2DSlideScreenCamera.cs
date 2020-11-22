@@ -399,13 +399,13 @@ namespace JCSUnity
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
             JCS_Camera cam = JCS_Camera.main;
 
-            JCS_PanelRoot paneRoot = JCS_GUIUtil.GetPanelRoot(this.transform);
+            JCS_PanelRoot panelRoot = mPanelHolder.slidePanels[0].GetComponent<JCS_PanelRoot>();
 
             switch (mUnityGUIType)
             {
                 case JCS_UnityGUIType.uGUI_2D:
                     {
-                        if (paneRoot != null)
+                        if (panelRoot != null)
                         {
                             screenWidth = ss.STARTING_SCREEN_WIDTH;
                             screenHeight = ss.STARTING_SCREEN_HEIGHT;
