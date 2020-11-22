@@ -385,6 +385,49 @@ namespace JCSUnity
             sp.PlayOneShot(this.mSwitchSceneSound);
         }
 
+        /// <summary>
+        /// Return the screen size according to the GUI mode.
+        /// </summary>
+        /// <returns>
+        /// Return a Vector2 with screen width and height.
+        /// </returns>
+        private Vector2 GetScreenSize()
+        {
+            float screenWidth = 0.0f;
+            float screenHeight = 0.0f;
+
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            JCS_Camera cam = JCS_Camera.main;
+
+            JCS_PanelRoot paneRoot = JCS_GUIUtil.GetPanelRoot(this.transform);
+
+            switch (mUnityGUIType)
+            {
+                case JCS_UnityGUIType.uGUI_2D:
+                    {
+                        if (paneRoot != null)
+                        {
+                            screenWidth = ss.STARTING_SCREEN_WIDTH;
+                            screenHeight = ss.STARTING_SCREEN_HEIGHT;
+                        }
+                        else
+                        {
+                            screenWidth = ss.STANDARD_SCREEN_WIDTH;
+                            screenHeight = ss.STANDARD_SCREEN_HEIGHT;
+                        }
+                    }
+                    break;
+                case JCS_UnityGUIType.nGUI_3D:
+                    {
+                        screenWidth = cam.CamRectSize.x;
+                        screenHeight = cam.CamRectSize.y;
+                    }
+                    break;
+            }
+
+            return new Vector2(screenWidth, screenHeight);
+        }
+
         //////////// 2D //////////////////////////
 
         /// <summary>
@@ -423,8 +466,9 @@ namespace JCSUnity
             // get the Screen Width and Screen Height
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            float screenWidth = ss.STARTING_SCREEN_WIDTH;
-            float screenHeight = ss.STARTING_SCREEN_HEIGHT;
+            Vector2 screenSize = GetScreenSize();
+            float screenWidth = screenSize.x;
+            float screenHeight = screenSize.y;
 
             // make a copy of old position
             Vector3 newScenePosition = Vector3.zero;
@@ -457,8 +501,9 @@ namespace JCSUnity
             // get the Screen Width and Screen Height
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            float screenWidth = ss.STARTING_SCREEN_WIDTH;
-            float screenHeight = ss.STARTING_SCREEN_HEIGHT;
+            Vector2 screenSize = GetScreenSize();
+            float screenWidth = screenSize.x;
+            float screenHeight = screenSize.y;
 
             // make a copy of old position
             Vector3 newScenePosition = Vector3.zero;
@@ -509,8 +554,9 @@ namespace JCSUnity
         private void NGUISwitchScene(JCS_2D4Direction towardDirection)
         {
             // get the Screen Width and Screen Height
-            float screenWidth = JCS_Camera.main.CamRectSize.x;
-            float screenHeight = JCS_Camera.main.CamRectSize.y;
+            Vector2 screenSize = GetScreenSize();
+            float screenWidth = screenSize.x;
+            float screenHeight = screenSize.y;
 
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
@@ -546,8 +592,9 @@ namespace JCSUnity
         private void NGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             // get the Screen Width and Screen Height
-            float screenWidth = JCS_Camera.main.CamRectSize.x;
-            float screenHeight = JCS_Camera.main.CamRectSize.y;
+            Vector2 screenSize = GetScreenSize();
+            float screenWidth = screenSize.x;
+            float screenHeight = screenSize.y;
 
             // make a copy of old position
             Vector3 newScenePosition = this.transform.position;
