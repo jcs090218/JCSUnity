@@ -18,6 +18,21 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_GUIUtil
     {
+        /// <summary>
+        /// Safely get the panel root.
+        /// </summary>
+        /// <param name="trans"> Transform you want to get panel root. </param>
+        /// <returns>
+        /// Return panel root object if valid. Otherwise, return null.
+        /// </returns>
+        public static JCS_PanelRoot GetPanelRoot(Transform trans)
+        {
+            JCS_PanelRoot panelRoot = null;
+            if (trans.parent)
+                panelRoot = trans.parent.GetComponent<JCS_PanelRoot>();
+            return panelRoot;
+        }
+
         #region DROPDOWN
         /// <summary>
         /// Returns item vlaue by index.
