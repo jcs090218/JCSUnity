@@ -7,7 +7,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 2020-11-22
 
-* Fixed `JCS_TransformTweener` applying panel root logic.
+* Fixed logic `JCS_TransformTweener` for applying panel root.
+* Fixed logic `JCS_2DSlideScreenCamera` for screen size.
 
 ### 2020-11-20
 
