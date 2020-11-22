@@ -60,8 +60,8 @@ namespace JCSUnity
 
             // NOTE: Make compatible to resizable screen.
             {
-                this.mPanelRoot = JCS_GUIUtil.GetPanelRoot(this.transform);
-                if (mPanelRoot != null)
+                this.mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+                if (mPanelRoot != null && this.mPanelRoot.transform == this.transform.parent)
                 {
                     for (int index = 0; index < mTweenInfos.Count; ++index)
                     {
