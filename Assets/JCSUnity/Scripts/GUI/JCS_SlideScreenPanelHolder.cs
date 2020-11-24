@@ -87,7 +87,7 @@ namespace JCSUnity
         public void DeltaMove(Vector3 deltaPos)
         {
             foreach (JCS_SlidePanel sp in mSlidePanelsComponents)
-                sp.transform.position -= deltaPos;
+                sp.transform.localPosition += deltaPos;
         }
 
         /// <summary>

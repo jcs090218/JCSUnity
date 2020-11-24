@@ -64,11 +64,6 @@ namespace JCSUnity
 
         [Header("## Mobile")]
 
-        [Tooltip("How sticky to the original of the panel's position.")]
-        [Range(0.001f, 300.0f)]
-        [SerializeField]
-        private float mSwipeStickiness = 60.0f;
-
         [Tooltip("Distance to slide over next scene on x axis.")]
         [Range(0.0f, 5000.0f)]
         [SerializeField]
@@ -347,7 +342,7 @@ namespace JCSUnity
                 if (mFreezeX) deltaPos.x = 0.0f;
                 if (mFreezeY) deltaPos.y = 0.0f;
 
-                mPanelHolder.DeltaMove(-deltaPos / mSwipeStickiness);
+                mPanelHolder.DeltaMove(deltaPos);
             }
             else
             {

@@ -163,41 +163,30 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Return width of the blackspace on the screen, if any 
+        /// Return screen size of the blackspace on the screen, if any 
         /// after resizing the screen.
         /// </summary>
-        /// <returns></returns>
-        public float BlackspaceWidth()
+        /// <returns>
+        /// Screen size information contain `width` and `height` value.
+        /// </returns>
+        public JCS_ScreenSizef BlackspaceSize()
         {
-            return Screen.width - STARTING_SCREEN_SIZE.width;
+            return new JCS_ScreenSizef(
+                Screen.width - STARTING_SCREEN_SIZE.width,
+                Screen.height - STARTING_SCREEN_SIZE.height);
         }
 
         /// <summary>
-        /// Return height of the blackspace on the screen, if any 
-        /// after resizing the screen.
+        /// Get the screen size of the visible area.
         /// </summary>
-        /// <returns></returns>
-        public float BlackspaceHeight()
+        /// <returns>
+        /// Screen size information contain `width` and `height` value.
+        /// </returns>
+        public JCS_ScreenSizef VisibleScreenSize()
         {
-            return Screen.height - STARTING_SCREEN_SIZE.height;
-        }
-
-        /// <summary>
-        /// Get the visible of the screen width.
-        /// </summary>
-        /// <returns></returns>
-        public float VisibleScreenWidth()
-        {
-            return Screen.width - BlackspaceWidth();
-        }
-
-        /// <summary>
-        /// Get the size of the screen height.
-        /// </summary>
-        /// <returns></returns>
-        public float VisibleScreenHeight()
-        {
-            return Screen.height - BlackspaceHeight();
+            return new JCS_ScreenSizef(
+                Screen.width - BlackspaceSize().width,
+                Screen.height - BlackspaceSize().height);
         }
 
         /// <summary>
@@ -209,7 +198,7 @@ namespace JCSUnity
             int width = Screen.width;
             int height = Screen.height;
 
-            bool smaller = width > height;
+            bool smaller = ASPECT_RATIO_SCREEN_SIZE.width > ASPECT_RATIO_SCREEN_SIZE.height;
 
             // Reverse it if resize to larger edge.
             if (!RESIZE_TO_SMALLER_EDGE)

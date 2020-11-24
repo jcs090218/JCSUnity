@@ -703,8 +703,10 @@ namespace JCSUnity
 
             if (mSceneJustLoad)
             {
-                float bw = ss.BlackspaceWidth();
-                float bh = ss.BlackspaceHeight();
+                JCS_ScreenSizef bs = ss.BlackspaceSize();
+
+                float bw = bs.width;
+                float bh = bs.height;
 
                 // Width does not need to be calculate, but 
                 // need to set back to the original value.
