@@ -33,11 +33,8 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_ScreenSettings) **")]
 
-        [Tooltip("When the application start, what's the screen width?")]
-        public int STARTING_SCREEN_WIDTH = 0;
-
-        [Tooltip("When the application start, what's the screen height?")]
-        public int STARTING_SCREEN_HEIGHT = 0;
+        [Tooltip("Screen size when the application starts.")]
+        public JCS_ScreenSize STARTING_SCREEN_SIZE = JCS_ScreenSize.zero;
 
         [Tooltip("Store the camera orthographic size value over scene.")]
         public float ORTHOGRAPHIC_SIZE = 0.0f;
@@ -45,25 +42,14 @@ namespace JCSUnity
         [Tooltip("Store the camera filed of view value over scene.")]
         public float FIELD_OF_VIEW = 0.0f;
 
-        [Tooltip("Current screen width.")]
-        public float CURRENT_SCREEN_WIDTH = 0.0f;
+        [Tooltip("Previous screen size.")]
+        public JCS_ScreenSizef PREV_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
-        [Tooltip("Current screen height.")]
-        public float CURRENT_SCREEN_HEIGHT = 0.0f;
+        [Tooltip("Current screen size.")]
+        public JCS_ScreenSizef CURRENT_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
-        [Tooltip("Previous screen width.")]
-        public float PREV_SCREEN_WIDTH = 0.0f;
-
-        [Tooltip("Previous screen height.")]
-        public float PREV_SCREEN_HEIGHT = 0.0f;
-
-        [Tooltip("Target aspect ratio screen width.")]
-        [SerializeField]
-        public int ASPECT_RATIO_SCREEN_WIDTH = 0;
-
-        [Tooltip("Target aspect ratio screen height.")]
-        [SerializeField]
-        public int ASPECT_RATIO_SCREEN_HEIGHT = 0;
+        [Tooltip("Target aspect ratio screen size.")]
+        public JCS_ScreenSize ASPECT_RATIO_SCREEN_SIZE = JCS_ScreenSize.zero;
 
         [Header("** Initialize Variables (JCS_ScreenSettings) **")]
 
@@ -86,13 +72,8 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ScreenSettings) **")]
 
-        [Tooltip("Standard screen width to calculate the worldspace obejct's camera view.")]
-        [Range(1, 8192)]
-        public int STANDARD_SCREEN_WIDTH = 1920;
-
-        [Tooltip("Standard screen height to calculate the worldspace obejct's camera view.")]
-        [Range(1, 8192)]
-        public int STANDARD_SCREEN_HEIGHT = 1080;
+        [Tooltip("Standard screen size to calculate the worldspace obejct's camera view.")]
+        public JCS_ScreenSize STANDARD_SCREEN_SIZE = new JCS_ScreenSize(1920, 1080);
 
         /* Setter & Getter */
 
@@ -119,10 +100,10 @@ namespace JCSUnity
             {
                 // Calculate standard screen width and screen height.
                 {
-                    float gcd = JCS_Mathf.GCD(STANDARD_SCREEN_WIDTH, STANDARD_SCREEN_HEIGHT);
+                    float gcd = JCS_Mathf.GCD(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height);
 
-                    ASPECT_RATIO_SCREEN_WIDTH = (int)((float)STANDARD_SCREEN_WIDTH / gcd);
-                    ASPECT_RATIO_SCREEN_HEIGHT = (int)((float)STANDARD_SCREEN_HEIGHT / gcd);
+                    ASPECT_RATIO_SCREEN_SIZE.width = (int)((float)STANDARD_SCREEN_SIZE.width / gcd);
+                    ASPECT_RATIO_SCREEN_SIZE.height = (int)((float)STANDARD_SCREEN_SIZE.height / gcd);
                 }
 
                 if (RESIZE_TO_ASPECT_WHEN_APP_STARTS)
@@ -151,8 +132,8 @@ namespace JCSUnity
                  *   
                  */
                 // Record down the starting screen width and screen height.
-                //STARTING_SCREEN_WIDTH = Screen.width;
-                //STARTING_SCREEN_HEIGHT = Screen.height;
+                //STARTING_SCREEN_SIZE.x = Screen.width;
+                //STARTING_SCREEN_SIZE.y = Screen.height;
             }
             else
             {
@@ -188,7 +169,7 @@ namespace JCSUnity
         /// <returns></returns>
         public float BlackspaceWidth()
         {
-            return Screen.width - STARTING_SCREEN_WIDTH;
+            return Screen.width - STARTING_SCREEN_SIZE.width;
         }
 
         /// <summary>
@@ -198,7 +179,7 @@ namespace JCSUnity
         /// <returns></returns>
         public float BlackspaceHeight()
         {
-            return Screen.height - STARTING_SCREEN_HEIGHT;
+            return Screen.height - STARTING_SCREEN_SIZE.height;
         }
 
         /// <summary>
@@ -237,25 +218,25 @@ namespace JCSUnity
             if (smaller)
             {
                 // update the height
-                float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_WIDTH * ASPECT_RATIO_SCREEN_HEIGHT;
+                float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
                 Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
 
                 if (starting)
                 {
-                    STARTING_SCREEN_WIDTH = width;
-                    STARTING_SCREEN_HEIGHT = (int)heightAccordingToWidth;
+                    STARTING_SCREEN_SIZE.width = width;
+                    STARTING_SCREEN_SIZE.height = (int)heightAccordingToWidth;
                 }
             }
             else
             {
                 // update the width
-                float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_HEIGHT * ASPECT_RATIO_SCREEN_WIDTH;
+                float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
                 Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
 
                 if (starting)
                 {
-                    STARTING_SCREEN_WIDTH = (int)widthAccordingToHeight;
-                    STARTING_SCREEN_HEIGHT = height;
+                    STARTING_SCREEN_SIZE.width = (int)widthAccordingToHeight;
+                    STARTING_SCREEN_SIZE.height = height;
                 }
             }
         }
@@ -266,12 +247,12 @@ namespace JCSUnity
         /// <param name="starting"> Change the starting screen as well? </param>
         public void ForceStandardScreenOnce(bool starting = false)
         {
-            Screen.SetResolution(STANDARD_SCREEN_WIDTH, STANDARD_SCREEN_HEIGHT, false, 0);
+            Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false, 0);
 
             if (starting)
             {
-                STARTING_SCREEN_WIDTH = STANDARD_SCREEN_WIDTH;
-                STARTING_SCREEN_HEIGHT = STANDARD_SCREEN_HEIGHT;
+                STARTING_SCREEN_SIZE.width = STANDARD_SCREEN_SIZE.width;
+                STARTING_SCREEN_SIZE.height = STANDARD_SCREEN_SIZE.height;
             }
         }
 
@@ -295,14 +276,10 @@ namespace JCSUnity
             _new.ORTHOGRAPHIC_SIZE = _old.ORTHOGRAPHIC_SIZE;
             _new.FIELD_OF_VIEW = _old.FIELD_OF_VIEW;
 
-            _new.STARTING_SCREEN_WIDTH = _old.STARTING_SCREEN_WIDTH;
-            _new.STARTING_SCREEN_HEIGHT = _old.STARTING_SCREEN_HEIGHT;
+            _new.STARTING_SCREEN_SIZE = _old.STARTING_SCREEN_SIZE;
+            _new.ASPECT_RATIO_SCREEN_SIZE = _old.ASPECT_RATIO_SCREEN_SIZE;
 
-            _new.ASPECT_RATIO_SCREEN_WIDTH = _old.ASPECT_RATIO_SCREEN_WIDTH;
-            _new.ASPECT_RATIO_SCREEN_HEIGHT = _old.ASPECT_RATIO_SCREEN_HEIGHT;
-
-            _new.STANDARD_SCREEN_WIDTH = _old.STANDARD_SCREEN_WIDTH;
-            _new.STANDARD_SCREEN_HEIGHT = _old.STANDARD_SCREEN_HEIGHT;
+            _new.STANDARD_SCREEN_SIZE = _old.STANDARD_SCREEN_SIZE;
 
             _new.RESIZABLE_PANELS_COLOR = _old.RESIZABLE_PANELS_COLOR;
         }
@@ -335,14 +312,14 @@ namespace JCSUnity
             int width = Screen.width;
             int height = Screen.height;
 
-            if (width != STANDARD_SCREEN_WIDTH ||
-                height != STANDARD_SCREEN_HEIGHT)
+            if (width != STANDARD_SCREEN_SIZE.width ||
+                height != STANDARD_SCREEN_SIZE.height)
             {
-                Screen.SetResolution(STANDARD_SCREEN_WIDTH, STANDARD_SCREEN_HEIGHT, false, 0);
+                Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false, 0);
             }
 
-            this.PREV_SCREEN_WIDTH = width;
-            this.PREV_SCREEN_HEIGHT = height;
+            this.PREV_SCREEN_SIZE.width = width;
+            this.PREV_SCREEN_SIZE.height = height;
         }
 
         /// <summary>
@@ -363,23 +340,23 @@ namespace JCSUnity
             int height = Screen.height;
 
             // if the user is changing the width
-            if (PREV_SCREEN_WIDTH != width)
+            if (PREV_SCREEN_SIZE.width != width)
             {
                 // update the height
-                float heightAccordingToWidth = width / ss.ASPECT_RATIO_SCREEN_WIDTH * ss.ASPECT_RATIO_SCREEN_HEIGHT;
+                float heightAccordingToWidth = width / ss.ASPECT_RATIO_SCREEN_SIZE.width * ss.ASPECT_RATIO_SCREEN_SIZE.height;
                 Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
             }
 
             // if the user is changing the height
-            if (PREV_SCREEN_HEIGHT != height)
+            if (PREV_SCREEN_SIZE.height != height)
             {
                 // update the width
-                float widthAccordingToHeight = height / ss.ASPECT_RATIO_SCREEN_HEIGHT * ss.ASPECT_RATIO_SCREEN_WIDTH;
+                float widthAccordingToHeight = height / ss.ASPECT_RATIO_SCREEN_SIZE.height * ss.ASPECT_RATIO_SCREEN_SIZE.width;
                 Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
             }
 
-            this.PREV_SCREEN_WIDTH = width;
-            this.PREV_SCREEN_HEIGHT = height;
+            this.PREV_SCREEN_SIZE.width = width;
+            this.PREV_SCREEN_SIZE.height = height;
         }
 
         /// <summary>
@@ -390,26 +367,26 @@ namespace JCSUnity
             int screenWidth = Screen.width;
             int screenHeight = Screen.height;
 
-            if (CURRENT_SCREEN_WIDTH == screenWidth &&
-                CURRENT_SCREEN_HEIGHT == screenHeight)
+            if (CURRENT_SCREEN_SIZE.width == screenWidth &&
+                CURRENT_SCREEN_SIZE.height == screenHeight)
                 return;
 
-            if (PREV_SCREEN_WIDTH == 0.0f || PREV_SCREEN_HEIGHT == 0.0f)
+            if (PREV_SCREEN_SIZE.width == 0.0f || PREV_SCREEN_SIZE.height == 0.0f)
             {
                 // If zero, set to the same value.
-                PREV_SCREEN_WIDTH = screenWidth;
-                PREV_SCREEN_HEIGHT = screenHeight;
+                PREV_SCREEN_SIZE.width = screenWidth;
+                PREV_SCREEN_SIZE.height = screenHeight;
             }
             else
             {
                 // Record previous screen info.
-                PREV_SCREEN_WIDTH = CURRENT_SCREEN_WIDTH;
-                PREV_SCREEN_HEIGHT = CURRENT_SCREEN_HEIGHT;
+                PREV_SCREEN_SIZE.width = CURRENT_SCREEN_SIZE.width;
+                PREV_SCREEN_SIZE.height = CURRENT_SCREEN_SIZE.height;
             }
 
             // Update current screen info.
-            CURRENT_SCREEN_WIDTH = screenWidth;
-            CURRENT_SCREEN_HEIGHT = screenHeight;
+            CURRENT_SCREEN_SIZE.width = screenWidth;
+            CURRENT_SCREEN_SIZE.height = screenHeight;
 
             // Do callback.
             if (onScreenResize != null)

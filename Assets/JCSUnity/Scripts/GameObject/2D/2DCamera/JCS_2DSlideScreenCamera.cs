@@ -407,13 +407,13 @@ namespace JCSUnity
                     {
                         if (panelRoot != null)
                         {
-                            screenWidth = ss.STARTING_SCREEN_WIDTH;
-                            screenHeight = ss.STARTING_SCREEN_HEIGHT;
+                            screenWidth = ss.STARTING_SCREEN_SIZE.width;
+                            screenHeight = ss.STARTING_SCREEN_SIZE.height;
                         }
                         else
                         {
-                            screenWidth = ss.STANDARD_SCREEN_WIDTH;
-                            screenHeight = ss.STANDARD_SCREEN_HEIGHT;
+                            screenWidth = ss.STANDARD_SCREEN_SIZE.width;
+                            screenHeight = ss.STANDARD_SCREEN_SIZE.height;
                         }
                     }
                     break;

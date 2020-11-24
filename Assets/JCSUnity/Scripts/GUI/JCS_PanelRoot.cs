@@ -69,8 +69,8 @@ namespace JCSUnity
         {
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            float newWidth = ss.STARTING_SCREEN_WIDTH;
-            float newHeight = ss.STARTING_SCREEN_HEIGHT;
+            float newWidth = ss.STARTING_SCREEN_SIZE.width;
+            float newHeight = ss.STARTING_SCREEN_SIZE.height;
 
             float currentWidth = mRectTransform.sizeDelta.x;
             float currentHeight = mRectTransform.sizeDelta.y;

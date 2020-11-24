@@ -683,18 +683,18 @@ namespace JCSUnity
         {
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            float currentScreenRatio = ss.CURRENT_SCREEN_WIDTH / ss.CURRENT_SCREEN_HEIGHT;
-            float startingScreenRatio = (float)ss.STARTING_SCREEN_WIDTH / (float)ss.STARTING_SCREEN_HEIGHT;
+            float currentScreenRatio = ss.CURRENT_SCREEN_SIZE.width / ss.CURRENT_SCREEN_SIZE.height;
+            float startingScreenRatio = (float)ss.STARTING_SCREEN_SIZE.width / (float)ss.STARTING_SCREEN_SIZE.height;
 
             if (currentScreenRatio > startingScreenRatio)
             {
                 // Set the limit if reach the starting screen ratio.
-                ss.CURRENT_SCREEN_WIDTH = (float)ss.STARTING_SCREEN_WIDTH;
-                ss.CURRENT_SCREEN_HEIGHT = (float)ss.STARTING_SCREEN_HEIGHT;
+                ss.CURRENT_SCREEN_SIZE.width = (float)ss.STARTING_SCREEN_SIZE.width;
+                ss.CURRENT_SCREEN_SIZE.height = (float)ss.STARTING_SCREEN_SIZE.height;
             }
 
-            float prevRatio = ss.PREV_SCREEN_WIDTH / ss.PREV_SCREEN_HEIGHT;
-            float newRatio = ss.CURRENT_SCREEN_WIDTH / ss.CURRENT_SCREEN_HEIGHT;
+            float prevRatio = ss.PREV_SCREEN_SIZE.width / ss.PREV_SCREEN_SIZE.height;
+            float newRatio = ss.CURRENT_SCREEN_SIZE.width / ss.CURRENT_SCREEN_SIZE.height;
 
             float divRatio = prevRatio / newRatio;
 
@@ -718,7 +718,7 @@ namespace JCSUnity
                 else
                 {
                     // Calculate what the height suppose to be!
-                    float supposeHeight = ((float)Screen.width * (float)ss.STARTING_SCREEN_HEIGHT) / (float)ss.STARTING_SCREEN_WIDTH;
+                    float supposeHeight = ((float)Screen.width * (float)ss.STARTING_SCREEN_SIZE.height) / (float)ss.STARTING_SCREEN_SIZE.width;
 
                     // Use the 'suppose height' to find the proper 
                     // height ratio.

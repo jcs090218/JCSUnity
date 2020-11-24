@@ -91,8 +91,8 @@ namespace JCSUnity
             if (RESIZE_SCREEN_THIS_SCENE)
             {
                 // Apply new screen aspect ratio.
-                ss.ASPECT_RATIO_SCREEN_WIDTH = ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE;
-                ss.ASPECT_RATIO_SCREEN_HEIGHT = ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE;
+                ss.ASPECT_RATIO_SCREEN_SIZE.width = ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE;
+                ss.ASPECT_RATIO_SCREEN_SIZE.height = ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE;
 
                 // Resize the screen base on the new screen aspect ratio.
                 ss.ForceAspectScreenOnce();

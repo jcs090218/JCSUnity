@@ -163,8 +163,8 @@ namespace JCSUnity
             }
 
             var scs = JCS_ScreenSettings.instance;
-            int screenWidth = scs.STANDARD_SCREEN_WIDTH;
-            int screenHeight = scs.STANDARD_SCREEN_HEIGHT;
+            int screenWidth = scs.STANDARD_SCREEN_SIZE.width;
+            int screenHeight = scs.STANDARD_SCREEN_SIZE.height;
 
             mDeviceName = devices[0].name;
             mWebCamTexture = new WebCamTexture(mDeviceName, screenWidth, screenHeight, mFPS);
@@ -418,8 +418,8 @@ namespace JCSUnity
             {
                 var scs = JCS_ScreenSettings.instance;
 
-                float screenWidth = scs.STANDARD_SCREEN_WIDTH;
-                float screenHeight = scs.STANDARD_SCREEN_HEIGHT;
+                float screenWidth = scs.STANDARD_SCREEN_SIZE.width;
+                float screenHeight = scs.STANDARD_SCREEN_SIZE.height;
 
                 float xRatio = screenWidth / (float)mWebCamTexture.width;
                 float yRatio = screenHeight / (float)mWebCamTexture.height;
