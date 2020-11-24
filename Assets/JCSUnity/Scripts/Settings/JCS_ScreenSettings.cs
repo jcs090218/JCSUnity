@@ -132,8 +132,8 @@ namespace JCSUnity
                  *   
                  */
                 // Record down the starting screen width and screen height.
-                //STARTING_SCREEN_SIZE.x = Screen.width;
-                //STARTING_SCREEN_SIZE.y = Screen.height;
+                //STARTING_SCREEN_SIZE.width = Screen.width;
+                //STARTING_SCREEN_SIZE.height = Screen.height;
             }
             else
             {
@@ -278,7 +278,6 @@ namespace JCSUnity
 
             _new.STARTING_SCREEN_SIZE = _old.STARTING_SCREEN_SIZE;
             _new.ASPECT_RATIO_SCREEN_SIZE = _old.ASPECT_RATIO_SCREEN_SIZE;
-
             _new.STANDARD_SCREEN_SIZE = _old.STANDARD_SCREEN_SIZE;
 
             _new.RESIZABLE_PANELS_COLOR = _old.RESIZABLE_PANELS_COLOR;
