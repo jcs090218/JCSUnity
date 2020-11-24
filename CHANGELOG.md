@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Simplify screen variables by merging `width` and `height` to just the `size`.
 * Fixed screen space calculation for resizable screen.
+* Swiping previous/next page are now calculated by percentage of the page space.
 
 ### 2020-11-22
 
