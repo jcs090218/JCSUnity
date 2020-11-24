@@ -64,15 +64,9 @@ namespace JCSUnity
 
         [Header("## Mobile")]
 
-        [Tooltip("Distance to slide over next scene on x axis.")]
-        [Range(0.0f, 5000.0f)]
+        [Tooltip("Area space to swipe for previous/next page.")]
         [SerializeField]
-        private float mSwipeDistanceX = 5.0f;
-
-        [Tooltip("Distance to slide over next scene on y axis.")]
-        [Range(0.0f, 5000)]
-        [SerializeField]
-        private float mSwipeDistanceY = 5.0f;
+        private Vector2 mSwipeArea = new Vector2(0.5f, 0.5f);
 
         [Tooltip("Freeze the x axis sliding action.")]
         [SerializeField]
@@ -115,6 +109,7 @@ namespace JCSUnity
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
         public void SetJCS2DCamera(JCS_2DCamera cam) { this.mJCS_2DCamera = cam; }
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
+        public Vector2 SwipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
         public bool FreezeX { get { return this.mFreezeX; } set { this.mFreezeX = value; } }
         public bool FreezeY { get { return this.mFreezeY; } set { this.mFreezeY = value; } }
         public AudioClip SwitchSceneSound { get { return this.mSwitchSceneSound; } set { this.mSwitchSceneSound = value; } }
@@ -351,17 +346,21 @@ namespace JCSUnity
 
             if (JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
-                Vector3 posDiff = mPanelHolder.PositionDiff();
+                Vector3 posDiff = si.DragDistance;
+                JCS_ScreenSizef vs = JCS_ScreenSettings.instance.VisibleScreenSize();
+                JCS_ScreenSizef target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
 
-                if (!mFreezeX && posDiff.x > this.mSwipeDistanceX)
+                if (!mFreezeX && posDiff.x > target_vs.width)
                 {
+                    print(posDiff);
+
                     if (JCS_Mathf.IsPositive(si.DragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
                     else
                         SwitchScene(JCS_2D4Direction.RIGHT);
                 }
 
-                if (!mFreezeY && posDiff.y > this.mSwipeDistanceY)
+                if (!mFreezeY && posDiff.y > target_vs.height)
                 {
                     if (JCS_Mathf.IsPositive(si.DragDisplacement.y))
                         SwitchScene(JCS_2D4Direction.BOTTOM);

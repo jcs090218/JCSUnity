@@ -91,48 +91,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Difference between target position and current position.
-        /// </summary>
-        /// <returns></returns>
-        public Vector3 PositionDiff()
-        {
-            // SOURCE: https://docs.unity3d.com/2018.1/Documentation/ScriptReference/UI.GraphicRaycaster.Raycast.html
-            PointerEventData pointerEventData = null;
-            Canvas canvas = JCS_Canvas.instance.GetCanvas();
-            GraphicRaycaster raycaster = canvas.GetComponent<GraphicRaycaster>();
-
-            // Set up the new Pointer Event
-            pointerEventData = new PointerEventData(EventSystem.current);
-            // Set the Pointer Event Position to that of the mouse position
-            pointerEventData.position = Input.mousePosition;
-
-            // Create a list of Raycast Results
-            List<RaycastResult> results = new List<RaycastResult>();
-
-            // Raycast using the Graphics Raycaster and mouse click position
-            raycaster.Raycast(pointerEventData, results);
-
-            JCS_SlidePanel sp = null;
-
-            // For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-            foreach (RaycastResult result in results)
-            {
-                sp = result.gameObject.GetComponent<JCS_SlidePanel>();
-                if (sp != null)
-                    break;
-            }
-
-            if (sp != null)
-            {
-                Vector3 curPos = sp.transform.position;
-                Vector3 targPos = sp.GetTargetPosition();
-                return JCS_Mathf.AbsoluteValue(curPos - targPos);
-            }
-
-            return Vector3.zero;
-        }
-
-        /// <summary>
         /// Add Force to the panel.
         /// </summary>
         /// <param name="pos"></param>
