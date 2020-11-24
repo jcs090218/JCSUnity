@@ -30,7 +30,7 @@ namespace JCSUnity
             if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return false;
 
-            JCS_Debug.Log("Online Mode is enabled...");
+            JCS_Debug.Log("Online Mode is enabled");
 
             // Create Connection
             if (!JCS_NetworkSettings.CreateNetwork(
