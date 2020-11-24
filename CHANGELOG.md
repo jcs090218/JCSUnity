@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-11-24
 
 * Simplify screen variables by merging `width` and `height` to just the `size`.
+* Fixed screen space calculation for resizable screen.
 
 ### 2020-11-22
 
