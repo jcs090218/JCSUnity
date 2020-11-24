@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-11-24
+
+* Simplify screen variables by merging `width` and `height` to just the `size`.
+
 ### 2020-11-22
 
 * Fixed logic `JCS_TransformTweener` for applying panel root.
