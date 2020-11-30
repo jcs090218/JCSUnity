@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-11- 30
+
+* Fixed panel root bug from `JCS_2DSlideScreenCamera` for incorrect swiping calculation.
+
 ### 2020-11-24
 
 * Simplify screen variables by merging `width` and `height` to just the `size`.
