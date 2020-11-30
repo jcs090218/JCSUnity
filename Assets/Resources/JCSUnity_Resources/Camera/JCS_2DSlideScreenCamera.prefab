@@ -65,9 +65,7 @@ MonoBehaviour:
   mUnityGUIType: 1
   mJCS_2DCamera: {fileID: 0}
   mPanelHolder: {fileID: 0}
-  mSwipeStickiness: 100
-  mSwipeDistanceX: 5
-  mSwipeDistanceY: 5
+  mSwipeArea: {x: 0.3, y: 0.3}
   mFreezeX: 0
   mFreezeY: 0
   mSwitchSceneSound: {fileID: 0}

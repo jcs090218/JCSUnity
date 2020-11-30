@@ -66,7 +66,7 @@ namespace JCSUnity
 
         [Tooltip("Area space to swipe for previous/next page.")]
         [SerializeField]
-        private Vector2 mSwipeArea = new Vector2(0.5f, 0.5f);
+        private Vector2 mSwipeArea = new Vector2(0.3f, 0.3f);
 
         [Tooltip("Freeze the x axis sliding action.")]
         [SerializeField]
@@ -352,8 +352,6 @@ namespace JCSUnity
 
                 if (!mFreezeX && posDiff.x > target_vs.width)
                 {
-                    print(posDiff);
-
                     if (JCS_Mathf.IsPositive(si.DragDisplacement.x))
                         SwitchScene(JCS_2D4Direction.LEFT);
                     else
@@ -394,6 +392,8 @@ namespace JCSUnity
             JCS_Camera cam = JCS_Camera.main;
 
             JCS_PanelRoot panelRoot = mPanelHolder.slidePanels[0].GetComponent<JCS_PanelRoot>();
+            if (panelRoot == null)
+                panelRoot = mPanelHolder.slidePanels[0].GetComponentInParent<JCS_PanelRoot>();
 
             switch (mUnityGUIType)
             {
