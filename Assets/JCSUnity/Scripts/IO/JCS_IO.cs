@@ -119,7 +119,14 @@ namespace JCSUnity
         {
             if (IsFileOrDirectoryExists(path))
                 return false;
-            Directory.CreateDirectory(path);
+            try
+            {
+                Directory.CreateDirectory(path);
+            }
+            catch (IOException e) 
+            {
+                JCS_Debug.LogWarning("Can't create directory due to: " + e);
+            }
             return true;
         }
     }
