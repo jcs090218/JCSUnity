@@ -7,7 +7,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 2020-12-04
 
-* Fixed create directory form IO module.
+* Clarify create directory from IO module.
 
 ### 2020-11-30
 
