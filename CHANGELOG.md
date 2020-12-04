@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Clarify create directory from IO module.
 * Use `persistentDataPath` instead of `dataPath` for data saving.
+* Ignored all streaming assets for packaging.
 
 ### 2020-11-30
 
