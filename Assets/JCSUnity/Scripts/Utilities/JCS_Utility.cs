@@ -1336,7 +1336,7 @@ namespace JCSUnity
                 result += "/" + path;
             }
             result = result.Replace("\\", "/");
-            result = result.Replace("///", "/");
+            result = result.Replace("//", "/");
             return result;
         }
     }

@@ -23,7 +23,7 @@ public class FT_SaveLoad_Test : MonoBehaviour
     /* Functions */
     private void Awake()
     {
-        string path = JCS_Utility.PathCombine(Application.dataPath, "/JCS_GameData/SavedData/FT_GameData.jcs");
+        string path = JCS_Utility.PathCombine(Application.persistentDataPath, "/JCS_GameData/SavedData/FT_GameData.jcs");
 
         FT_JSONGameData data = new FT_JSONGameData();
         data.Save<FT_JSONGameData>(path);

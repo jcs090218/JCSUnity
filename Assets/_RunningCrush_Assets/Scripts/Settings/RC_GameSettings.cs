@@ -152,7 +152,7 @@ public class RC_GameSettings
     {
         var gs = JCS_GameSettings.instance;
 
-        mFullFilePath = JCS_Utility.PathCombine(Application.dataPath, gs.DATA_PATH, FILE_PATH);
+        mFullFilePath = JCS_Utility.PathCombine(Application.persistentDataPath, gs.DATA_PATH, FILE_PATH);
         mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
     }
     private void LoadGameData()

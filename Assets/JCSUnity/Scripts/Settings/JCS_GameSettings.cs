@@ -28,6 +28,20 @@ namespace JCSUnity
 
         public static JCS_XMLGameData GAME_DATA = null;    // NOT USED
 
+        [Header("** Check Variables (JCS_GameSettings) **")]
+
+        [SerializeField]
+        private string REAL_DATA_PATH = "";
+
+        [SerializeField]
+        private string REAL_SCREENSHOT_PATH = "";
+
+        [SerializeField]
+        private string REAL_WEBCAM_PATH = "";
+
+        [SerializeField]
+        private string REAL_STREAMING_CACHE_PATH = "";
+
         [Header("** Game Settings (JCS_GameSettings) **")]
 
         [Tooltip("Debug mode flag.")]
@@ -126,10 +140,15 @@ namespace JCSUnity
         {
             instance = CheckSingleton(instance, this);
 
-            JCS_IO.CreateDirectory(JCS_GameData.SavePath());
-            JCS_IO.CreateDirectory(JCS_Camera.SavePath());
-            JCS_IO.CreateDirectory(JCS_Webcam.SavePath());
-            JCS_IO.CreateDirectory(JCS_StreamingAssets.CachePath());
+            REAL_DATA_PATH = JCS_GameData.SavePath();
+            REAL_SCREENSHOT_PATH = JCS_Camera.SavePath();
+            REAL_WEBCAM_PATH = JCS_Webcam.SavePath();
+            REAL_STREAMING_CACHE_PATH = JCS_StreamingAssets.CachePath();
+
+            JCS_IO.CreateDirectory(REAL_DATA_PATH);
+            JCS_IO.CreateDirectory(REAL_SCREENSHOT_PATH);
+            JCS_IO.CreateDirectory(REAL_WEBCAM_PATH);
+            JCS_IO.CreateDirectory(REAL_STREAMING_CACHE_PATH);
         }
 
         private void Start()
