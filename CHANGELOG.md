@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-12-04
 
 * Clarify create directory from IO module.
-* Use `persistentDataPath` instead of `dataPath`.
+* Use `persistentDataPath` instead of `dataPath` for data saving.
 
 ### 2020-11-30
 
