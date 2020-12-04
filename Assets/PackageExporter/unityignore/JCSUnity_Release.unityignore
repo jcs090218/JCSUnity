@@ -3,7 +3,7 @@
 # unityignore file.
 # 
 # Package Name: JCSUnity_Release
-# Version: 1.8.7
+# Version: 2.1.1
 # Creation Date: 2019-02-04 20:44:15 
 # 
 # Package Link: https://github.com/jcs090218/UnityPackageExporter
@@ -15,8 +15,7 @@
 UnityPackageExporter
 
 # Ignore build info.
-StreamingAssets/build_info
-StreamingAssets/build_info.txt
+StreamingAssets
 
 # Ignore Test file.
 FrameworkTest_Assets
