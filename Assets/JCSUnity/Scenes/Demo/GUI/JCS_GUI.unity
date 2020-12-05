@@ -14226,7 +14226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
       propertyPath: mFreezeX
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
       propertyPath: mSlideFriction
@@ -14238,10 +14238,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
       propertyPath: mFreezeY
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
       propertyPath: mSlideDistanceY
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
+      propertyPath: mMinPageX
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
+      propertyPath: mMaxPageX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
+      propertyPath: mMinPageY
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406734, guid: 1d1d50ad298a6634abb4b134adf38a15, type: 3}
+      propertyPath: mMaxPageY
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []

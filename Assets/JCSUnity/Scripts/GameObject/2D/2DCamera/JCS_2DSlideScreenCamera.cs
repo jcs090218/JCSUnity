@@ -328,21 +328,44 @@ namespace JCSUnity
             if (si == null)
                 return;
 
+            bool enableSlidePanel = true;
+
             if (si.Touched)
             {
-                mPanelHolder.EnableSlidePanels(false);
-
                 Vector3 deltaPos = si.DeltaPos;
 
-                if (mFreezeX) deltaPos.x = 0.0f;
-                if (mFreezeY) deltaPos.y = 0.0f;
+                bool cancelX = false;
+                bool cancelY = false;
 
-                mPanelHolder.DeltaMove(deltaPos);
+                if (mFreezeX) cancelX = true;
+                if (mFreezeY) cancelY = true;
+
+                /* Fix so you don't swipe over boundaries! */
+                {
+                    bool positiveX = JCS_Mathf.IsPositive(deltaPos.x);
+                    bool positiveY = JCS_Mathf.IsPositive(deltaPos.y);
+
+                    if (mCurrentPage.x <= mMinPageX && positiveX ||
+                        mCurrentPage.x >= mMaxPageX && !positiveX)
+                        cancelX = true;
+
+                    if (mCurrentPage.y <= mMinPageY && positiveY ||
+                        mCurrentPage.y >= mMaxPageY && !positiveY)
+                        cancelY = true;
+                }
+
+                if (cancelX) deltaPos.x = 0.0f;
+                if (cancelY) deltaPos.y = 0.0f;
+
+                // If you can move at least one dimension,
+                if (!cancelX || !cancelY)
+                    enableSlidePanel = false;
+
+                if (!enableSlidePanel)
+                    mPanelHolder.DeltaMove(deltaPos);
             }
-            else
-            {
-                mPanelHolder.EnableSlidePanels(true);
-            }
+
+            mPanelHolder.EnableSlidePanels(enableSlidePanel);
 
             if (JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
@@ -443,7 +466,7 @@ namespace JCSUnity
             // if still null, setting error!!
             if (mJCS_2DCamera == null)
             {
-                JCS_Debug.LogError("The object spawn does not have the `JCS_2DCamera` components...");
+                JCS_Debug.LogError("The object spawn does not have the `JCS_2DCamera` component");
                 return;
             }
 
@@ -458,8 +481,6 @@ namespace JCSUnity
         private void UGUISwitchScene(JCS_2D4Direction towardDirection)
         {
             // get the Screen Width and Screen Height
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
-
             Vector2 screenSize = GetScreenSize();
             float screenWidth = screenSize.x;
             float screenHeight = screenSize.y;
@@ -493,8 +514,6 @@ namespace JCSUnity
         private void UGUISwitchScene(JCS_2D8Direction towardDirection)
         {
             // get the Screen Width and Screen Height
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
-
             Vector2 screenSize = GetScreenSize();
             float screenWidth = screenSize.x;
             float screenHeight = screenSize.y;
