@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2020-12-05
+
+* Fixed swipe over boundary point issue from UI module.
+
 ### 2020-12-04
 
 * Clarify create directory from IO module.
