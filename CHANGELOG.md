@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-12-05
 
 * Fixed swipe over boundary point issue from UI module.
+* Fixed slide input for mobile platforms.
 
 ### 2020-12-04
 
