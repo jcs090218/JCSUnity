@@ -23,7 +23,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_SlideInput) **")]
 
-#if (UNITY_STANDALONE)
+#if (UNITY_STANDALONE || UNITY_EDITOR)
         [Tooltip("Previous position.")]
         [SerializeField]
         private Vector3 mPrePos = Vector3.zero;
@@ -67,17 +67,19 @@ namespace JCSUnity
         private float mTouchDistanceDelta = 0.0f;
 #endif
 
+#if UNITY_EDITOR
         [Header("** Runtime Variables (JCS_SlideInput) **")]
+
+        [Tooltip("Mouse event type of identify the touch event.")]
+        [SerializeField]
+        private JCS_MouseButton mMouseType = JCS_MouseButton.LEFT;
+#endif
 
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         [Tooltip("Touch count that will detect as touched.")]
         [SerializeField]
         [Range(0, 60)]
         private int mDetectTouchCount = 1;
-#else
-        [Tooltip("Mouse event type of identify the touch event.")]
-        [SerializeField]
-        private JCS_MouseButton mMouseType = JCS_MouseButton.LEFT;
 #endif
 
         /* Setter & Getter */
@@ -105,7 +107,7 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_STANDALONE)
+#if (UNITY_STANDALONE || UNITY_EDITOR)
             mTouched = JCS_Input.GetMouseButton(mMouseType);
 
             Vector3 currPos = Input.mousePosition;
@@ -132,7 +134,7 @@ namespace JCSUnity
 #endif
         }
 
-#if (UNITY_STANDALONE)
+#if (UNITY_STANDALONE || UNITY_EDITOR)
         private void OnApplicationFocus(bool focus)
         {
             if (focus)
@@ -172,7 +174,7 @@ namespace JCSUnity
                 this.mDragDisplacement.y = mDragDistance.y * JCS_Mathf.GetSign(yDiff);
             }
 
-#if (UNITY_STANDALONE)
+#if (UNITY_STANDALONE || UNITY_EDITOR)
             mDeltaPos = currPos - mPrePos;
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             mDeltaPos = Input.GetTouch(0).deltaPosition;
@@ -190,7 +192,7 @@ namespace JCSUnity
 
             mDeltaPos = Vector2.zero;
 
-#if (UNITY_STANDALONE)
+#if (UNITY_STANDALONE || UNITY_EDITOR)
             // If focus, ignore one frame.
             mFocus = false;
 #endif
