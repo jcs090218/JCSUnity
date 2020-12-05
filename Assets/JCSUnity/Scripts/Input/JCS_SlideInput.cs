@@ -67,7 +67,7 @@ namespace JCSUnity
         private float mTouchDistanceDelta = 0.0f;
 #endif
 
-#if UNITY_EDITOR
+#if (UNITY_STANDALONE || UNITY_EDITOR)
         [Header("** Runtime Variables (JCS_SlideInput) **")]
 
         [Tooltip("Mouse event type of identify the touch event.")]
