@@ -10,23 +10,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Screen size definition. (Float)
-/// </summary>
-[System.Serializable]
-public class JCS_ScreenSizef
+namespace JCSUnity
 {
-    public static JCS_ScreenSizef zero { get { return new JCS_ScreenSizef(0.0f, 0.0f); } }
-
-    [Tooltip("Width of the screen.")]
-    public float width = 0;
-
-    [Tooltip("Height of the screen.")]
-    public float height = 0;
-
-    public JCS_ScreenSizef(float width, float height)
+    /// <summary>
+    /// Screen size definition. (Float)
+    /// </summary>
+    [System.Serializable]
+    public class JCS_ScreenSizef
     {
-        this.width = width;
-        this.height = height;
+        public static JCS_ScreenSizef zero { get { return new JCS_ScreenSizef(0.0f, 0.0f); } }
+
+        [Tooltip("Width of the screen.")]
+        public float width = 0;
+
+        [Tooltip("Height of the screen.")]
+        public float height = 0;
+
+        public JCS_ScreenSizef(float width, float height)
+        {
+            this.width = width;
+            this.height = height;
+        }
     }
 }

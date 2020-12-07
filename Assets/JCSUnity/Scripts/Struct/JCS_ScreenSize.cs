@@ -10,25 +10,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Screen size definition. (Integer)
-/// </summary>
-[System.Serializable]
-public class JCS_ScreenSize 
+namespace JCSUnity
 {
-    public static JCS_ScreenSize zero { get { return new JCS_ScreenSize(0, 0); } }
-
-    [Tooltip("Width of the screen.")]
-    [Range(1, 8192)]
-    public int width = 0;
-
-    [Tooltip("Height of the screen.")]
-    [Range(1, 8192)]
-    public int height = 0;
-
-    public JCS_ScreenSize(int width, int height)
+    /// <summary>
+    /// Screen size definition. (Integer)
+    /// </summary>
+    [System.Serializable]
+    public class JCS_ScreenSize
     {
-        this.width = width;
-        this.height = height;
+        public static JCS_ScreenSize zero { get { return new JCS_ScreenSize(0, 0); } }
+
+        [Tooltip("Width of the screen.")]
+        [Range(1, 8192)]
+        public int width = 0;
+
+        [Tooltip("Height of the screen.")]
+        [Range(1, 8192)]
+        public int height = 0;
+
+        public JCS_ScreenSize(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
     }
 }
