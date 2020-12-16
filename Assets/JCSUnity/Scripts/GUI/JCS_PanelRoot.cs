@@ -91,7 +91,7 @@ namespace JCSUnity
                     // This was `camera position`, but we don't need to
                     // add up the camera position because Canvas has their 
                     // own coordinate system or you can call it Canvas Space.
-                    Vector3 centerPos = Vector3.zero;
+                    Vector3 centerPos = ss.ViewCenter();
 
                     // Find the distance between the dialogue object and 
                     // the center (which is camera in this case)

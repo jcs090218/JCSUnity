@@ -163,6 +163,32 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Screen width that calculate with safe area view.
+        /// </summary>
+        public int SafeWidth()
+        {
+            return (int)(Screen.safeArea.width - Screen.safeArea.x);
+        }
+
+        /// <summary>
+        /// Screen height that calculate with safe area view.
+        /// </summary>
+        /// <returns></returns>
+        public int SafeHeight()
+        {
+            return (int)(Screen.safeArea.height - Screen.safeArea.y);
+        }
+
+        /// <summary>
+        /// Return the center of the view.
+        /// </summary>
+        public Vector3 ViewCenter()
+        {
+            Rect safeArea = Screen.safeArea;
+            return new Vector3(safeArea.x, safeArea.y, 0.0f);
+        }
+
+        /// <summary>
         /// Return screen size of the blackspace on the screen, if any 
         /// after resizing the screen.
         /// </summary>
@@ -195,8 +221,8 @@ namespace JCSUnity
         /// <param name="starting"> Change the starting screen as well? </param>
         public void ForceAspectScreenOnce(bool starting = false)
         {
-            int width = Screen.width;
-            int height = Screen.height;
+            int width = SafeWidth();
+            int height = SafeHeight();
 
             bool smaller = ASPECT_RATIO_SCREEN_SIZE.width > ASPECT_RATIO_SCREEN_SIZE.height;
 
