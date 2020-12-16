@@ -269,9 +269,6 @@ namespace JCSUnity
             Vector3 gameDepth = new Vector3(0, mGameDepth, 0);
             float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
 
-            //print("To Game depth Distance: " + camToGameDepthDistance);
-            //print("To Cavas Distnace: " + camToCanvasDistance);
-
             Vector2 canvasRect = jcsCanvas.GetAppRect().sizeDelta;
             // transfer rect from screen space to world space
             {
@@ -391,9 +388,6 @@ namespace JCSUnity
 
             Vector3 gameDepth = new Vector3(0, cap.transform.position.z, 0.0f);
             float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
-
-            //print("To Game depth Distance: " + camToGameDepthDistance);
-            //print("To Cavas Distnace: " + camToCanvasDistance);
 
             Vector2 canvasRect = jcsCanvas.GetAppRect().sizeDelta;
             // transfer rect from screen space to world space
@@ -710,7 +704,8 @@ namespace JCSUnity
 
                 // Width does not need to be calculate, but 
                 // need to set back to the original value.
-                // Hence, the 'mRecordOrthographicSize' variable.
+                // Hence, the `mRecordOrthographicSize` and
+                // `mRecordFieldOfView` variables.
                 if (bw > bh)
                 {
                     mCamera.orthographicSize = mRecordOrthographicSize;

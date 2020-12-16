@@ -102,24 +102,16 @@ namespace JCSUnity
             switch (mPlaceDirection)
             {
                 case JCS_2D4Direction.TOP:
-                    {
-                        newPos.y += halfScreenHeight;
-                    }
+                    newPos.y += halfScreenHeight;
                     break;
                 case JCS_2D4Direction.BOTTOM:
-                    {
-                        newPos.y -= halfScreenHeight;
-                    }
+                    newPos.y -= halfScreenHeight;
                     break;
                 case JCS_2D4Direction.LEFT:
-                    {
-                        newPos.x -= halfScreenWidth;
-                    }
+                    newPos.x -= halfScreenWidth;
                     break;
                 case JCS_2D4Direction.RIGHT:
-                    {
-                        newPos.x += halfScreenWidth;
-                    }
+                    newPos.x += halfScreenWidth;
                     break;
             }
 
