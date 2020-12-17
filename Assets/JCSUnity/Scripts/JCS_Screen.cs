@@ -17,6 +17,9 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Screen
     {
+        /// <summary>
+        /// Screen's width includes safe area view calculation.
+        /// </summary>
         public static int width 
         { 
             get
@@ -29,6 +32,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Screen's height includes safe area view calculation.
+        /// </summary>
         public static int height
         {
             get
@@ -41,6 +47,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Safe way to se screen's resolution base on platforms.
+        /// </summary>
         public static void SetResolution(int width, int height, bool fullscreen, int preferredRefreshRate = 0)
         {
 #if !(UNITY_IOS || UNITY_ANDROID)
