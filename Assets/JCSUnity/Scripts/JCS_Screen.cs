@@ -40,5 +40,12 @@ namespace JCSUnity
 #endif
             }
         }
+
+        public static void SetResolution(int width, int height, bool fullscreen, int preferredRefreshRate = 0)
+        {
+#if !(UNITY_IOS || UNITY_ANDROID)
+            Screen.SetResolution(width, height, fullscreen, preferredRefreshRate);
+#endif
+        }
     }
 }
