@@ -216,8 +216,17 @@ namespace JCSUnity
         {
             JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
 
-            mWScale = (float)Screen.width / (float)ss.STARTING_SCREEN_SIZE.width;
-            mHScale = (float)Screen.height / (float)ss.STARTING_SCREEN_SIZE.height;
+            float width = (float)Screen.width;
+            float height = (float)Screen.height;
+
+            if (ss.ENSURE_INSIDE_SAFE_AREA)
+            {
+                width = (float)JCS_Screen.width;
+                height = (float)JCS_Screen.height;
+            }
+
+            mWScale = width / (float)ss.STARTING_SCREEN_SIZE.width;
+            mHScale = height / (float)ss.STARTING_SCREEN_SIZE.height;
 
             mTargetScale = (mWScale > mHScale) ? mHScale : mWScale;
 

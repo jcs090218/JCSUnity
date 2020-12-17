@@ -75,6 +75,9 @@ namespace JCSUnity
         [Tooltip("Standard screen size to calculate the worldspace obejct's camera view.")]
         public JCS_ScreenSize STANDARD_SCREEN_SIZE = new JCS_ScreenSize(1920, 1080);
 
+        [Tooltip("Ensure all UI is inside the safe area.")]
+        public bool ENSURE_INSIDE_SAFE_AREA = false;
+
         /* Setter & Getter */
 
         public Color RESIZABLE_PANELS_COLOR
