@@ -93,6 +93,9 @@ namespace JCSUnity
                     // own coordinate system or you can call it Canvas Space.
                     Vector3 centerPos = ss.ViewCenter();
 
+                    centerPos.x /= mPanelDeltaWidthRatio;
+                    centerPos.y /= mPanelDeltaHeightRatio;
+
                     // Find the distance between the dialogue object and 
                     // the center (which is camera in this case)
                     float distanceX = panelPos.x - centerPos.x;
