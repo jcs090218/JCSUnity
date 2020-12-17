@@ -26,13 +26,13 @@ any placeholder assets commercially.
 
 Here is the list of few important and recent changes to this framework.
 
+* `2.1.1` - Add support for safe area view for iPhone X or above.
 * `2.1.0` - Multiple minor fix for screen module for resizable screen feature.
 * `2.0.7` - Support consistent streaming assets loading with web request.
 * `2.0.6` - Updated project to Unity version `2020.1.0f1`.
 * `2.0.5` - Supplied full version of `webcam` module.
 * `2.0.4` - Renamed all framework's scenes without useless postfix like `Demo`, `Scene`, etc.
-* `2.0.3` - Use built-in `sprite mask` and removed [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642)
-as dependency.
+* `2.0.3` - Use built-in `sprite mask` and removed [SpriteMask](https://assetstore.unity.com/packages/tools/sprite-management/sprite-mask-27642) as dependency.
 * `2.0.0` - Fixed down compatibility to Unity version `5.3.3`.
 * `1.9.4` - Changed base scripting format for better readability.
 * `1.9.3` - Started integrating In-App-Purchase (IAP) system.
