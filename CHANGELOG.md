@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-12-17
 
 * Added safe area flag for iPhone X or above.
+* Fixed stretches issue from safe area view.
 
 ### 2020-12-05
 
