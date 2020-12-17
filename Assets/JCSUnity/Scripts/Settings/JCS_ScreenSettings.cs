@@ -187,9 +187,10 @@ namespace JCSUnity
         /// </returns>
         public JCS_ScreenSizef VisibleScreenSize()
         {
+            JCS_ScreenSizef blackScreenSize = BlackspaceSize();
             return new JCS_ScreenSizef(
-                JCS_Screen.width - BlackspaceSize().width,
-                JCS_Screen.height- BlackspaceSize().height);
+                JCS_Screen.width - blackScreenSize.width,
+                JCS_Screen.height- blackScreenSize.height);
         }
 
         /// <summary>
