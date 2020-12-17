@@ -735,7 +735,7 @@ PrefabInstance:
     - target: {fileID: 5090550957556680164, guid: f3f4b7d5553961e4cb7509494c81b400,
         type: 3}
       propertyPath: mResizablePanelsColor.a
-      value: 0.77254903
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5090550957556680188, guid: f3f4b7d5553961e4cb7509494c81b400,
         type: 3}
