@@ -96,6 +96,8 @@ namespace JCSUnity
                     centerPos.x /= mPanelDeltaWidthRatio;
                     centerPos.y /= mPanelDeltaHeightRatio;
 
+                    Debug.Log("Center Pos: " + centerPos);
+
                     // Find the distance between the dialogue object and 
                     // the center (which is camera in this case)
                     float distanceX = panelPos.x - centerPos.x;
