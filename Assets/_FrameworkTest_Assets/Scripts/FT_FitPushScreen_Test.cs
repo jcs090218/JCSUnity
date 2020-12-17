@@ -79,7 +79,7 @@ public class FT_FitPushScreen_Test : MonoBehaviour
 
         //RectTransform appRect = JCS_Canvas.instance.GetAppRect();
         //Vector2 screenRect = appRect.sizeDelta;
-        Vector2 screenRect = new Vector2(Screen.width, Screen.height);
+        Vector2 screenRect = new Vector2(JCS_Screen.width, JCS_Screen.height);
 
         float camLeftBorder = camPosToScreen.x - screenRect.x / 2;
         float camRightBorder = camPosToScreen.x + screenRect.x / 2;

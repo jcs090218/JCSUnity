@@ -347,8 +347,8 @@ namespace JCSUnity
 
             // original point is at the center of the screen,  
             // so set (0, 0) back to bottom left
-            guiMousePosition.x -= Screen.width / 2;
-            guiMousePosition.y -= Screen.height / 2;
+            guiMousePosition.x -= JCS_Screen.width / 2;
+            guiMousePosition.y -= JCS_Screen.height / 2;
 
             return guiMousePosition;
         }
@@ -359,8 +359,8 @@ namespace JCSUnity
         /// <returns> values </returns>
         public static Vector2 MousePosition0To1()
         {
-            float mouseRatioX = Input.mousePosition.x / Screen.width;
-            float mouseRatioY = Input.mousePosition.y / Screen.height;
+            float mouseRatioX = Input.mousePosition.x / JCS_Screen.width;
+            float mouseRatioY = Input.mousePosition.y / JCS_Screen.height;
 
             return new Vector2(mouseRatioX, mouseRatioY);
         }
@@ -404,7 +404,7 @@ namespace JCSUnity
                     return GetMouseButtonUp(button, ignorePause);
             }
 
-            JCS_Debug.LogError("This cannot happed.");
+            JCS_Debug.LogError("This cannot happed");
             return false;
         }
         /// <summary>

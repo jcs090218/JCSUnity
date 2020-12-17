@@ -4,6 +4,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System;
 using System.Text;
+using JCSUnity;
 
 public class CpuTest : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class CpuTest : MonoBehaviour
 
     private void OnGUI()
     {
-        int w = Screen.width, h = Screen.height;
+        int w = JCS_Screen.width;
+        int h = JCS_Screen.height;
 
         GUIStyle style = new GUIStyle();
 

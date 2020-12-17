@@ -26,6 +26,8 @@ namespace JCSUnity
         private RectTransform mRectTransform = null;
         private Image mImage = null;
 
+        private JCS_PanelRoot mPanelRoot = null;
+
         [Header("** Check Variables (JCS_AspectScreenPanel) **")]
 
         [Tooltip("Type of the Aspect screen panel direction.")]
@@ -55,7 +57,7 @@ namespace JCSUnity
             {
                 Vector2 originalSize = mRectTransform.sizeDelta;
 
-                this.gameObject.AddComponent<JCS_PanelRoot>();
+                this.mPanelRoot = this.gameObject.AddComponent<JCS_PanelRoot>();
 
                 mRectTransform.sizeDelta = originalSize;
             }

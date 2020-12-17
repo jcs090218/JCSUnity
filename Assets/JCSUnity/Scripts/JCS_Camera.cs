@@ -715,11 +715,11 @@ namespace JCSUnity
                 else
                 {
                     // Calculate what the height suppose to be!
-                    float supposeHeight = ((float)Screen.width * (float)ss.STARTING_SCREEN_SIZE.height) / (float)ss.STARTING_SCREEN_SIZE.width;
+                    float supposeHeight = ((float)JCS_Screen.width * (float)ss.STARTING_SCREEN_SIZE.height) / (float)ss.STARTING_SCREEN_SIZE.width;
 
                     // Use the 'suppose height' to find the proper 
                     // height ratio.
-                    float heightRatio = ((float)Screen.height / supposeHeight);
+                    float heightRatio = ((float)JCS_Screen.height / supposeHeight);
 
                     mCamera.orthographicSize = heightRatio * mRecordOrthographicSize;
                     mCamera.fieldOfView = heightRatio * mRecordFieldOfView;

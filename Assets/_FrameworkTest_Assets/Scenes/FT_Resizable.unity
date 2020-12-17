@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 1078392645}
   - component: {fileID: 1078392646}
   m_Layer: 5
-  m_Name: Menu_Panel
+  m_Name: _Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,6 +732,16 @@ PrefabInstance:
       propertyPath: SHOW_RESIZABLE_PANELS
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5090550957556680164, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 3}
+      propertyPath: mResizablePanelsColor.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090550957556680188, guid: f3f4b7d5553961e4cb7509494c81b400,
+        type: 3}
+      propertyPath: RESIZE_UI
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f4b7d5553961e4cb7509494c81b400, type: 3}
 --- !u!1001 &1819292401
@@ -877,7 +887,6 @@ GameObject:
   - component: {fileID: 2051649833}
   - component: {fileID: 2051649832}
   - component: {fileID: 2051649831}
-  - component: {fileID: 2051649835}
   m_Layer: 5
   m_Name: JCS_Canvas
   m_TagString: Untagged
@@ -963,15 +972,3 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0
---- !u!114 &2051649835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051649830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b4d41958b07bbf4aa4c4da78d93d0ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

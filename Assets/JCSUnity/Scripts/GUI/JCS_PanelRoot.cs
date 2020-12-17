@@ -78,31 +78,6 @@ namespace JCSUnity
             mPanelDeltaWidthRatio = currentWidth / newWidth;
             mPanelDeltaHeightRatio = currentHeight / newHeight;
 
-            Vector3 newPosition = mRectTransform.localPosition;
-
-            if (JCS_Camera.main != null)
-            {
-                // make toward to the camera position
-                Camera cam = JCS_Camera.main.GetCamera();
-
-                if (cam != null)
-                {
-                    Vector3 panelPos = mRectTransform.localPosition;
-                    // This was `camera position`, but we don't need to
-                    // add up the camera position because Canvas has their 
-                    // own coordinate system or you can call it Canvas Space.
-                    Vector3 centerPos = Vector3.zero;
-
-                    // Find the distance between the dialogue object and 
-                    // the center (which is camera in this case)
-                    float distanceX = panelPos.x - centerPos.x;
-                    float distanceY = panelPos.y - centerPos.y;
-
-                    newPosition.x = (distanceX / mPanelDeltaWidthRatio);
-                    newPosition.y = (distanceY / mPanelDeltaHeightRatio);
-                }
-            }
-
             /*
              * NOTE(jenchieh): 
              * Cool, `sizeDelta' will actually change the `localPosition'
@@ -114,6 +89,24 @@ namespace JCSUnity
             {
                 // set the width and height to the new app rect
                 mRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
+            }
+
+            // make toward to the canvas center point
+            {
+                Vector3 newPosition = mRectTransform.localPosition;
+
+                // This was `camera position`, but we don't need to
+                // add up the camera position because Canvas has their 
+                // own coordinate system or you can call it's Canvas Space.
+                Vector3 centerPos = Vector3.zero;
+
+                // Find the distance between the dialogue object and 
+                // the center (which is camera in this case)
+                float distanceX = newPosition.x - centerPos.x;
+                float distanceY = newPosition.y - centerPos.y;
+
+                newPosition.x = (distanceX / mPanelDeltaWidthRatio);
+                newPosition.y = (distanceY / mPanelDeltaHeightRatio);
 
                 // set to the new position
                 mRectTransform.localPosition = newPosition;

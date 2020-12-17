@@ -1,6 +1,7 @@
 ﻿#if (UNITY_EDITOR)
 using UnityEngine;
 using System.Collections;
+using JCSUnity;
 
 // Dave Hampson 
 // http://wiki.unity3d.com/index.php?title=FramesPerSecond
@@ -23,7 +24,8 @@ public class FPSDisplay : MonoBehaviour
 
     private void OnGUI()
     {
-        int w = Screen.width, h = Screen.height;
+        int w = JCS_Screen.width;
+        int h = JCS_Screen.height;
 
         GUIStyle style = new GUIStyle();
 
