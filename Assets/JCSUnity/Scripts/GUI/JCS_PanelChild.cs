@@ -162,6 +162,7 @@ namespace JCSUnity
                 this.GetComponent<Dropdown>() ||
                 this.GetComponent<Slider>() ||
                 this.GetComponent<Scrollbar>() ||
+                this.GetComponent<Text>() ||
                 this.GetComponent<Toggle>() ||
                 this.GetComponent<InputField>());
         }
