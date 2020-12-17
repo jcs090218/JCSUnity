@@ -94,24 +94,38 @@ namespace JCSUnity
             Vector2 appRect = new Vector2(ss.STARTING_SCREEN_SIZE.width, ss.STARTING_SCREEN_SIZE.height);
             Vector2 halfAppRect = appRect / 2.0f;
 
-            float halfScreenWidth = (mRectTransform.sizeDelta.x / 2.0f) + halfAppRect.x;
-            float halfScreenHeight = (mRectTransform.sizeDelta.y / 2.0f) + halfAppRect.y;
+            Vector2 panelSize = mRectTransform.sizeDelta;
+
+            float halfScreenWidth = (panelSize.x / 2.0f) + halfAppRect.x;
+            float halfScreenHeight = (panelSize.y / 2.0f) + halfAppRect.y;
 
             Vector3 newPos = mRectTransform.localPosition;
 
             switch (mPlaceDirection)
             {
                 case JCS_2D4Direction.TOP:
-                    newPos.y += halfScreenHeight;
+                    {
+                        newPos.y += halfScreenHeight;
+                        this.name += " (Top)";
+                    }
                     break;
                 case JCS_2D4Direction.BOTTOM:
-                    newPos.y -= halfScreenHeight;
+                    {
+                        newPos.y -= halfScreenHeight;
+                        this.name += " (Bottom)";
+                    }
                     break;
                 case JCS_2D4Direction.LEFT:
-                    newPos.x -= halfScreenWidth;
+                    {
+                        newPos.x -= halfScreenWidth;
+                        this.name += " (Left)";
+                    }
                     break;
                 case JCS_2D4Direction.RIGHT:
-                    newPos.x += halfScreenWidth;
+                    {
+                        newPos.x += halfScreenWidth;
+                        this.name += " (Right)";
+                    }
                     break;
             }
 
