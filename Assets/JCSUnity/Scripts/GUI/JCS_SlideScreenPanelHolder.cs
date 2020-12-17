@@ -56,6 +56,18 @@ namespace JCSUnity
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
+            UpdateSlidePanels();
+        }
+
+        /// <summary>
+        /// Update all the slide panels once.
+        /// </summary>
+        /// <param name="force"> If true, force update the existing panels </param>
+        public void UpdateSlidePanels(bool force = false)
+        {
+            if (mSlidePanelsComponents != null && !force)
+                return;
+
             mSlidePanelsComponents = new JCS_SlidePanel[slidePanels.Length];
 
             for (int index = 0; index < slidePanels.Length; ++index)
@@ -76,6 +88,8 @@ namespace JCSUnity
         /// <param name="act"></param>
         public void EnableSlidePanels(bool act)
         {
+            UpdateSlidePanels();
+
             foreach (JCS_SlidePanel sp in mSlidePanelsComponents)
                 sp.enabled = act;
         }
@@ -86,6 +100,8 @@ namespace JCSUnity
         /// <param name="deltaPos"></param>
         public void DeltaMove(Vector3 deltaPos)
         {
+            UpdateSlidePanels();
+
             foreach (JCS_SlidePanel sp in mSlidePanelsComponents)
                 sp.transform.localPosition += deltaPos;
         }
@@ -96,6 +112,8 @@ namespace JCSUnity
         /// <param name="pos"></param>
         public void AddForce(Vector3 pos)
         {
+            UpdateSlidePanels();
+
             foreach (JCS_SlidePanel sp in mSlidePanelsComponents)
             {
                 Vector3 tempPos = sp.GetTargetPosition() - pos;
