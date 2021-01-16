@@ -16,9 +16,9 @@ namespace JCSUnity
     /// </summary>
     public enum JCS_2D4Direction
     {
-        TOP,
-        BOTTOM,
-        RIGHT,
-        LEFT
+        TOP = 0,
+        BOTTOM = 1,
+        RIGHT = 2,
+        LEFT = 3,
     }
 }
