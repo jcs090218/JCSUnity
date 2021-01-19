@@ -26,7 +26,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mTestWithKey = false;
 
-        [Tooltip("Key that hop!")]
+        [Tooltip("Key that record starting position and hops.")]
+        [SerializeField]
+        private KeyCode mHopRecordKey = KeyCode.S;
+
+        [Tooltip("Key that does normal hop effect.")]
         [SerializeField]
         private KeyCode mHopKey = KeyCode.A;
 #endif
@@ -83,7 +87,11 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(mHopKey))
+            if (JCS_Input.GetKeyDown(mHopRecordKey))
+            {
+                StartHop(true);
+            }
+            else if (JCS_Input.GetKeyDown(mHopKey))
             {
                 StartHop(false);
             }
