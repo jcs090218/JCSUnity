@@ -1,10 +1,10 @@
+# JCSUnity
+
 ![Unity Actions](https://github.com/jcs090218/JCSUnity/workflows/Unity%20Actions/badge.svg)
 [![Unity Engine](https://img.shields.io/badge/Unity%20Engine-2020.1.2f1-blue.svg)](https://unity3d.com/get-unity/download/archive)
 [![Release Tag](https://img.shields.io/github/tag/jcs090218/JCSUnity.svg?label=release)](https://github.com/jcs090218/JCSUnity/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![.NET 4.x Scripting Runtime](https://img.shields.io/badge/.NET-4.x-blueviolet.svg?style=flat&cacheSeconds=2592000)](https://docs.unity3d.com/2018.3/Documentation/Manual/ScriptingRuntimeUpgrade.html)
-
-# JCSUnity
 
 JCSUnity is a component driven framework built to allow the user
 to quickly generate commonly used game mechanics and features
