@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2021-01-25
+
+* Update materials module's metadata.
+
 ### 2021-01-19
 
 * Improved unit testing for component `JCS_HopEffect`.
