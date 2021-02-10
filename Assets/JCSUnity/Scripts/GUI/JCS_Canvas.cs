@@ -130,14 +130,35 @@ namespace JCSUnity
         /// <param name="com"> Component add to canvas. </param>
         public void AddComponentToResizeCanvas(Component com)
         {
-            if (mResizeUI == null)
-            {
-                com.transform.SetParent(this.mCanvas.transform);
-            }
+            Transform newParent = (mResizeUI != null) ? this.mResizeUI.transform : this.mCanvas.transform;
+            if (newParent == null)
+                JCS_Debug.LogError("Attach resize canvas exception: " + com);
             else
-            {
-                com.transform.SetParent(this.mResizeUI.transform);
-            }
+                com.transform.SetParent(newParent);
+
+            // We will expect COM to be one of the UI component from built-in 
+            // Unity. If this is true, we resize it's component to match
+            // the current screen space.
+            RectTransform rect = com.GetComponent<RectTransform>();
+            FitScreenSize(rect);
+        }
+
+        /// <summary>
+        /// Fit RECT into our screen space.
+        /// </summary>
+        /// <param name="rect"> The `RectTransform` object to resize fro screen. </param>
+        private void FitScreenSize(RectTransform rect)
+        {
+            if (rect == null)
+                return;
+
+            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            JCS_ScreenSizef screenRaio = ss.ScreenRatio();
+
+            Vector3 newScale = rect.localScale;
+            newScale.x /= screenRaio.width;
+            newScale.y /= screenRaio.height;
+            rect.localScale = newScale;
         }
     }
 }
