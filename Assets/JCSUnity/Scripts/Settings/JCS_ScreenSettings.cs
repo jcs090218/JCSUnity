@@ -166,6 +166,16 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return the ratio from expected screen size to actual screen size.
+        /// </summary>
+        public JCS_ScreenSizef ScreenRatio()
+        {
+            return new JCS_ScreenSizef(
+                STANDARD_SCREEN_SIZE.width / STARTING_SCREEN_SIZE.width,
+                STANDARD_SCREEN_SIZE.height / STARTING_SCREEN_SIZE.height);
+        }
+
+        /// <summary>
         /// Return screen size of the blackspace on the screen, if any 
         /// after resizing the screen.
         /// </summary>
