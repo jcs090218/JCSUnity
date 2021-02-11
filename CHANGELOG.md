@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2021-02-11
+
+* Add fill slot function for array and list data type.
+
 ### 2021-02-10
 
 * Fix resize after attach UI component to resize canvas object.
