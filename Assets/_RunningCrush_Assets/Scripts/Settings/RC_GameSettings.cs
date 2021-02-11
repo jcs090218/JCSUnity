@@ -58,7 +58,7 @@ public class RC_GameSettings
 
     public string FILE_NAME = "RC_GameData";
 
-    public static RC_GameData RC_GAME_DATA = null;
+    public static RC_GameData GAME_DATA = null;
 
     [Header("- Player")]
 
@@ -95,7 +95,7 @@ public class RC_GameSettings
         InitPath();
 
         // only load once
-        if (RC_GAME_DATA == null)
+        if (GAME_DATA == null)
             LoadGameData();
 
         GAME_MODE = FindGameMode(PLAYER_IN_GAME);
@@ -167,7 +167,7 @@ public class RC_GameSettings
         }
 
         // else we just load the data commonly.
-        RC_GAME_DATA = JCS_XMLGameData.LoadFromFile<RC_GameData>(mFullFilePath, mFullFileName);
+        GAME_DATA = JCS_XMLGameData.LoadFromFile<RC_GameData>(mFullFilePath, mFullFileName);
     }
     /// <summary>
     /// Use only when player "First" play this game or 
@@ -175,24 +175,28 @@ public class RC_GameSettings
     /// </summary>
     private void CreateDefaultGameData()
     {
-        RC_GAME_DATA = new RC_GameData();
-        RC_GAME_DATA.Name = "";
-        RC_GAME_DATA.Gold = 1500;       // [default: 1500]
+        GAME_DATA = new RC_GameData();
+        
+        // Set game data's default values
+        {
+            GAME_DATA.Name = "";
+            GAME_DATA.Gold = 1500;       // [default: 1500]
 
-        RC_GAME_DATA.ItemNo = null;
+            GAME_DATA.ItemNo = null;
+        }
 
         // save it once
         SaveGameData();
     }
     private void SaveGameData()
     {
-        if (RC_GAME_DATA == null)
+        if (GAME_DATA == null)
         {
-            JCS_Debug.LogError("Save Data without data??? (Fatal Error)");
+            JCS_Debug.LogError("Save Data without data");
             return;
         }
 
-        RC_GAME_DATA.Save<RC_GameData>(mFullFilePath, mFullFileName);
+        GAME_DATA.Save<RC_GameData>(mFullFilePath, mFullFileName);
     }
 
     private RC_GameMode FindGameMode(int players)

@@ -40,7 +40,7 @@ public class BF_CashText
 
     public void UpdateText()
     {
-        UpdateText(BF_GameSettings.BF_GAME_DATA.Cash);
+        UpdateText(BF_GameSettings.GAME_DATA.Cash);
     }
     public void UpdateText(int val)
     {

@@ -12,7 +12,7 @@ using JCSUnity;
 using UnityEngine.UI;
 
 /// <summary>
-/// 
+/// Button that buys the item.
 /// </summary>
 public class BF_BuyButton 
     :  JCS_Button
@@ -45,12 +45,12 @@ public class BF_BuyButton
 
     private void Update()
     {
-        if (BF_GameSettings.BF_GAME_DATA.Cash < mBuyValue)
+        if (BF_GameSettings.GAME_DATA.Cash < mBuyValue)
             this.Interactable = false;
     }
 
     public override void JCS_OnClickCallback()
     {
-        BF_GameSettings.BF_GAME_DATA.Cash -= mBuyValue;
+        BF_GameSettings.GAME_DATA.Cash -= mBuyValue;
     }
 }

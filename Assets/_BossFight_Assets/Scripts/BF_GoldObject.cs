@@ -10,6 +10,9 @@ using UnityEngine;
 using System.Collections;
 using JCSUnity;
 
+/// <summary>
+/// Gold object.
+/// </summary>
 public class BF_GoldObject 
     : JCS_CashObject
 {
@@ -41,6 +44,6 @@ public class BF_GoldObject
     /// <param name="other"> collider detection if needed. </param>
     public void PickCallback(Collider other)
     {
-        BF_GameSettings.BF_GAME_DATA.Cash += mCashValue;
+        BF_GameSettings.GAME_DATA.Cash += mCashValue;
     }
 }

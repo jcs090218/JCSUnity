@@ -43,7 +43,7 @@ public class BF_GameSettings
 
     public string FILE_NAME = "BF_GameData";
 
-    public static BF_GameData BF_GAME_DATA = null;
+    public static BF_GameData GAME_DATA = null;
 
     [Header("- Game Feature")]
 
@@ -77,7 +77,7 @@ public class BF_GameSettings
         InitPath();
 
         // only load once
-        if (BF_GAME_DATA == null)
+        if (GAME_DATA == null)
             LoadGameData();
 
         // set load and save game data
@@ -125,7 +125,7 @@ public class BF_GameSettings
         }
 
         // else we just load the data commonly.
-        BF_GAME_DATA = BF_GameData.LoadFromFile<BF_GameData>(mFullFilePath, mFullFileName);
+        GAME_DATA = BF_GameData.LoadFromFile<BF_GameData>(mFullFilePath, mFullFileName);
     }
     /// <summary>
     /// Use only when player "First" play this game or 
@@ -133,22 +133,24 @@ public class BF_GameSettings
     /// </summary>
     private void CreateDefaultGameData()
     {
-        BF_GAME_DATA = new BF_GameData();
-        BF_GAME_DATA.Name = "";
-        BF_GAME_DATA.Cash = 1500;       // [default: 1500]
+        GAME_DATA = new BF_GameData();
 
+        // Set game data's default values
+        {
+            GAME_DATA.Name = "";
+            GAME_DATA.Cash = 1500;       // [default: 1500]
+        }
 
-        // save it once
         SaveGameData();
     }
     private void SaveGameData()
     {
-        if (BF_GAME_DATA == null)
+        if (GAME_DATA == null)
         {
             JCS_Debug.LogError("Save Data without data");
             return;
         }
 
-        BF_GAME_DATA.Save<BF_GameData>(mFullFilePath, mFullFileName);
+        GAME_DATA.Save<BF_GameData>(mFullFilePath, mFullFileName);
     }
 }

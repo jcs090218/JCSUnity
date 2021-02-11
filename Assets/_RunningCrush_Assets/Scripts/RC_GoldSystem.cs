@@ -9,6 +9,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Gold system.
+/// </summary>
 public class RC_GoldSystem 
     : MonoBehaviour 
 {
@@ -31,7 +34,7 @@ public class RC_GoldSystem
     private void Start()
     {
         // get the gold from game data.
-        mCurrentGold = RC_GameSettings.RC_GAME_DATA.Gold;
+        mCurrentGold = RC_GameSettings.GAME_DATA.Gold;
     }
 
     private void Update()
