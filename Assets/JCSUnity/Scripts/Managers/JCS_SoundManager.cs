@@ -60,10 +60,12 @@ namespace JCSUnity
 
         [Tooltip("Time to fade in the sound.")]
         [SerializeField]
+        [Range(JCS_SoundSettings.MIN_SOUND_FADEOUT_TIME, JCS_SoundSettings.MAX_SOUND_FADEOUT_TIME)]
         private float mSoundFadeInTime = 1.5f;
 
         [Tooltip("Time to fade out the sound.")]
         [SerializeField]
+        [Range(JCS_SoundSettings.MIN_SOUND_FADEOUT_TIME, JCS_SoundSettings.MAX_SOUND_FADEOUT_TIME)]
         private float mSoundFadeOutTime = 1.5f;
 
         [Tooltip("Disable the sound when window isn't focus.")]

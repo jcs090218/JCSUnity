@@ -30,48 +30,45 @@ namespace JCSUnity
         // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;
 
-        [Header("** Game Settings (JCS_SceneManager) **")]
-
-        [Tooltip("Pause the game while the scene start to load?")]
-        [SerializeField]
-        private bool mPauseGameWhileLoadingScene = true;
-
-
-        [Header("** Black Screen Settings (JCS_SceneManager) **")]
+        [Header("** Check Variables (JCS_SceneManager) **")]
 
         [SerializeField]
-        private JCS_BlackScreen mJCSBlackScreen = null;
+        private JCS_BlackScreen mBlackScreen = null;
         
-        [Header("** Black Slide Screen Settings (JCS_SceneManager) **")]
-
         [SerializeField]
-        private JCS_BlackSlideScreen mJCSBlackSlideScreen = null;
+        private JCS_BlackSlideScreen mBlackSlideScreen = null;
 
         [Tooltip("Which direction to fade slide.")]
         [SerializeField]
         private JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
-
-        [Header("** White Screen Settings (JCS_SceneManager) **")]
 
         [Tooltip("Do u need the white screen in ur game?")]
         [SerializeField]
         private bool mPopWhiteScreen = false;
 
         [SerializeField]
-        private JCS_WhiteScreen mJCSWhiteScreen = null;
+        private JCS_WhiteScreen mWhiteScreen = null;
 
-        [Header("** General Screen Settings (JCS_SceneManager) **")]
+        [Header("** Game Settings (JCS_SceneManager) **")]
 
-        [Tooltip("Do this scene using the specific setting?")]
+        [Tooltip("Pause the game while the scene start to load.")]
+        [SerializeField]
+        private bool mPauseGameWhileLoadingScene = true;
+
+        [Header("- Screen")]
+
+        [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]
         private bool mOverrideSetting = false;
 
         [Tooltip("Fade in time. (For this scene)")]
         [SerializeField]
+        [Range(JCS_SceneSettings.MIN_SCENE_FADEIN_TIME, JCS_SceneSettings.MAX_SCENE_FADEIN_TIME)]
         private float mSceneFadeInTime = 1.0f;
 
         [Tooltip("Fade out time. (For this scene)")]
         [SerializeField]
+        [Range(JCS_SceneSettings.MIN_SCENE_FADEIN_TIME, JCS_SceneSettings.MAX_SCENE_FADEIN_TIME)]
         private float mSceneFadeOutTime = 1.0f;
 
         // fade the sound while switching the scene.
@@ -87,11 +84,11 @@ namespace JCSUnity
         public JCS_SwitchSceneType SwitchSceneType { get { return this.mSwitchSceneType; } set { this.mSwitchSceneType = value; } }
         public JCS_DynamicScene GetDynamicScene() { return this.mDynamicScene; }
         public void SetDynamicScene(JCS_DynamicScene ds) { this.mDynamicScene = ds; }
-        public void SetJCSBlackScreen(JCS_BlackScreen bs) { this.mJCSBlackScreen = bs; }
-        public void SetJCSBlackSlideScreen(JCS_BlackSlideScreen bs) { this.mJCSBlackSlideScreen = bs; }
-        public void SetJCSWhiteScreen(JCS_WhiteScreen ws) { this.mJCSWhiteScreen = ws; }
-        public JCS_WhiteScreen GetJCSWhiteScreen() { return this.mJCSWhiteScreen; }
-        private JCS_BlackScreen GetJCSBlackScreen() { return this.mJCSBlackScreen; }
+        public void SetBlackScreen(JCS_BlackScreen bs) { this.mBlackScreen = bs; }
+        public void SetBlackSlideScreen(JCS_BlackSlideScreen bs) { this.mBlackSlideScreen = bs; }
+        public void SetWhiteScreen(JCS_WhiteScreen ws) { this.mWhiteScreen = ws; }
+        public JCS_WhiteScreen GetWhiteScreen() { return this.mWhiteScreen; }
+        private JCS_BlackScreen GetBlackScreen() { return this.mBlackScreen; }
 
         public bool OverrideSetting { get { return this.mOverrideSetting; } }
         public float SceneFadeInTime { get { return this.mSceneFadeInTime; } set { this.mSceneFadeInTime = value; } }
@@ -139,15 +136,15 @@ namespace JCSUnity
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
                         // get the current screen color.
-                        mJCSBlackScreen.LocalColor = JCS_SceneSettings.instance.SCREEN_COLOR;
+                        mBlackScreen.LocalColor = JCS_SceneSettings.instance.SCREEN_COLOR;
 
-                        mJCSBlackScreen.FadeOut(fadeoutTime);
+                        mBlackScreen.FadeOut(fadeoutTime);
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE_SCREEN:
                     {
-                        mJCSBlackSlideScreen.StartSlideOut(mAlign, fadeoutTime);
+                        mBlackSlideScreen.StartSlideOut(mAlign, fadeoutTime);
                     }
                     break;
             }
@@ -320,27 +317,27 @@ namespace JCSUnity
                         // move to the last child in order
                         // to render the black screen in front of 
                         // any UI's GUI
-                        mJCSBlackScreen.MoveToTheLastChild();
+                        mBlackScreen.MoveToTheLastChild();
 
                         // set the screen color.
                         // NOTE(jenchieh): always start with opacity the same 
                         // as previous.
-                        screenColor.a = mJCSBlackScreen.LocalColor.a;
-                        mJCSBlackScreen.LocalColor = screenColor;
+                        screenColor.a = mBlackScreen.LocalColor.a;
+                        mBlackScreen.LocalColor = screenColor;
 
                         // record down the screen color.
                         JCS_SceneSettings.instance.SCREEN_COLOR = screenColor;
 
                         // start fading in (black screen)
-                        mJCSBlackScreen.FadeIn(fadeInTime);
+                        mBlackScreen.FadeIn(fadeInTime);
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE_SCREEN:
                     {
-                        mJCSBlackSlideScreen.MoveToTheLastChild();
+                        mBlackSlideScreen.MoveToTheLastChild();
 
-                        mJCSBlackSlideScreen.StartSlideIn(mAlign, fadeInTime);
+                        mBlackSlideScreen.StartSlideIn(mAlign, fadeInTime);
                     }
                     break;
             }
@@ -396,7 +393,7 @@ namespace JCSUnity
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
-                        if (mJCSBlackScreen.IsFadeIn())
+                        if (mBlackScreen.IsFadeIn())
                         {
                             // No need this anymore, since we have the
                             // to clean up everything before we load the scene.
@@ -413,7 +410,7 @@ namespace JCSUnity
 
                 case JCS_SwitchSceneType.SLIDE_SCREEN:
                     {
-                        if (mJCSBlackSlideScreen.IsDoneSliding())
+                        if (mBlackSlideScreen.IsDoneSliding())
                         {
                             // load the scene if is ready
                             mAsyncOperation.allowSceneActivation = true;

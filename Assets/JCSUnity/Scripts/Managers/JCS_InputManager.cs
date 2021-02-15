@@ -122,7 +122,7 @@ namespace JCSUnity
         /// </summary>
         private void AddInputBaseOnPlatform()
         {
-            switch (JCS_ApplicationManager.instance.PLATFORM_TYPE)
+            switch (JCS_ApplicationManager.instance.PlatformType)
             {
                 case JCS_PlatformType.MOBILE:
                     {

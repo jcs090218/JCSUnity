@@ -7,13 +7,14 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
-    public class JCS_ApplicationManager 
+    public class JCS_ApplicationManager
         : JCS_Managers<JCS_ApplicationManager>
     {
         /* Variables */
@@ -22,22 +23,53 @@ namespace JCSUnity
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
 
+        [Header("** Check Variables (JCS_ApplicationManager) **")]
+
+        [Tooltip("Current systme language.")]
+        [SerializeField]
+        private SystemLanguage mSystemLanguage = SystemLanguage.Unknown;
+
+        [Tooltip("List of language texts in game.")]
+        [SerializeField]
+        private List<JCS_LangText> mLangTexts = null;
+
         [Header("** Runtime Variables (JCS_ApplicationManager) **")]
 
-        [Tooltip("This will override Platform Type.")]
-        public bool SIMULATE_PLATFORM_TYPE = true;
+        [Tooltip("This will override platform Type.")]
+        [SerializeField]
+        private bool mSimulatePlatformType = true;
 
         [Tooltip("Target platform type to simulate.")]
-        public JCS_PlatformType PLATFORM_TYPE = JCS_PlatformType.PC;
+        [SerializeField]
+        private JCS_PlatformType mPlatformType = JCS_PlatformType.PC;
+
+        [Tooltip("If true, override current system language.")]
+        [SerializeField]
+        private bool mSimulateSystemLanguage = false;
+
+        [Tooltip("Target language to simulate.")]
+        [SerializeField]
+        private SystemLanguage mSimulateLanguage = SystemLanguage.Unknown;
 
         /* Setter & Getter */
 
-        private void SetPlatformType(JCS_PlatformType pt)
+        public SystemLanguage systemLanguage
         {
-            if (SIMULATE_PLATFORM_TYPE)
-                return;
-
-            PLATFORM_TYPE = pt;
+            get { return this.mSystemLanguage; }
+            set
+            {
+                this.mSystemLanguage = value;
+                RefreshLangTexts();
+            }
+        }
+        public JCS_PlatformType PlatformType
+        {
+            get { return this.mPlatformType; }
+            set
+            {
+                if (mSimulatePlatformType) return;
+                this.mPlatformType = value;
+            }
         }
 
         /* Functions */
@@ -59,13 +91,15 @@ namespace JCSUnity
         {
             instance = this;
 
-#if (UNITY_STANDALONE || UNITY_EDITOR)
+            mSystemLanguage = (mSimulateSystemLanguage) ? mSimulateLanguage : Application.systemLanguage;
+
+#if (UNITY_EDITOR || UNITY_STANDALONE)
             // set platform type
-            SetPlatformType(JCS_PlatformType.PC);
+            PlatformType = JCS_PlatformType.PC;
 
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             // set platform type
-            SetPlatformType(JCS_PlatformType.MOBILE);
+            PlatformType = JCS_PlatformType.MOBILE;
 
             // set the sleep time to never
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -84,7 +118,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsPC()
         {
-            return (PLATFORM_TYPE == JCS_PlatformType.PC);
+            return (PlatformType == JCS_PlatformType.PC);
         }
 
         /// <summary>
@@ -96,7 +130,7 @@ namespace JCSUnity
         /// </returns>
         public bool IsMobile()
         {
-            return (PLATFORM_TYPE == JCS_PlatformType.MOBILE);
+            return (PlatformType == JCS_PlatformType.MOBILE);
         }
 
         /// <summary>
@@ -114,6 +148,18 @@ namespace JCSUnity
                 // quit the app directly,
                 Application.Quit();
             }
+        }
+
+        public void AddLangText(JCS_LangText txt)
+        {
+            this.mLangTexts.Add(txt);
+        }
+
+        public void RefreshLangTexts()
+        {
+            this.mLangTexts = JCS_Utility.RemoveEmptySlotIncludeMissing(this.mLangTexts);
+            foreach (JCS_LangText txt in mLangTexts)
+                txt.Refresh();
         }
     }
 }
