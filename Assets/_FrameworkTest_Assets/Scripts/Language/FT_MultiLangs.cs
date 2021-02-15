@@ -23,19 +23,19 @@ public class FT_MultiLangs
 {
     /* Variables */
 
-    [Tooltip("")]
+    [Tooltip("Button 1 for language 1.")]
     [SerializeField]
     private Button mBtn1 = null;
 
-    [Tooltip("")]
+    [Tooltip("Language 1 to display after clicking button 1.")]
     [SerializeField]
     private SystemLanguage mLang1 = SystemLanguage.Unknown;
 
-    [Tooltip("")]
+    [Tooltip("Button 2 for language 2.")]
     [SerializeField]
     private Button mBtn2 = null;
 
-    [Tooltip("")]
+    [Tooltip("Language 2 to display after clicking button 2.")]
     [SerializeField]
     private SystemLanguage mLang2 = SystemLanguage.Unknown;
 
