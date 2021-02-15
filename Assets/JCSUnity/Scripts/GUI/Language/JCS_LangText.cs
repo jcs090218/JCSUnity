@@ -24,6 +24,16 @@ namespace JCSUnity
 {
     /// <summary>
     /// Text for multiple languages support.
+    ///
+    /// This component should contains the following functionalities.
+    ///
+    ///   1. Multiple text object support including `Text Mesh Pro`.
+    ///
+    ///   2. A list of language definition for correctly displays the target
+    ///      system lanauge.
+    ///
+    ///   3. Register to `JCS_ApplicationManager`, its' component will take
+    ///      case of the rest.
     /// </summary>
     public class JCS_LangText
         : MonoBehaviour
