@@ -197,7 +197,7 @@ public class RC_Player
             return;
 
         // process cross platform input.
-        switch (JCS_ApplicationManager.instance.PLATFORM_TYPE)
+        switch (JCS_ApplicationManager.instance.PlatformType)
         {
             case JCS_PlatformType.PC:
                 PCInput();
