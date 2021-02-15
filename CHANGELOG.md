@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2021-02-16
+
+* Add support for multiple languages.
+
 ### 2021-02-11
 
 * Add fill slot function for array and list data type.
@@ -227,7 +231,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Revert tween panel active/deactive logic.
 * Added over GUI element check for utility module.
-* Make `slide input` and `mobile mouse event` as optional to 
+* Make `slide input` and `mobile mouse event` as optional to
  prevent multiple same scripts' execution.
 
 ### 2020-04-20
@@ -250,12 +254,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-04-11
 
 * Added the path action for path finding module.
-* Upgraded 3D camera revolution rotate action, is more stable and 
+* Upgraded 3D camera revolution rotate action, is more stable and
  has the improvement of the UX.
 
 ### 2020-04-07
 
-* Implemented `JCS_3DCameraPlayer` for character control relatives 
+* Implemented `JCS_3DCameraPlayer` for character control relatives
  to camera, reference game `Monster Hunter`.
 
 ### 2020-04-06
@@ -295,7 +299,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2020-03-25
 
 * Fixed down compatibility to Unity version `5.3.3`.
-* Changed project structure to have all the 3rd party dependencies on the 
+* Changed project structure to have all the 3rd party dependencies on the
  root of the `Assets` folder.
 
 ### 2020-02-29
@@ -655,13 +659,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2018-09-21
 
 * Implement DestroyImmediateAllTypeObjectInScene util function in JCS_Uility module.
-* Increase the preformance of the removing pause action from the pause manager. 
+* Increase the preformance of the removing pause action from the pause manager.
 The time complexity increase from O(n^2) to O(n).
 
 ### 2018-09-20
 
 * Add test option and null sprite after done playing animation option to JCS_2DAnimation module.
-* Add clear all undo/redo comps and all undo/redo history, in JCS_UndoRedoSystem and 
+* Add clear all undo/redo comps and all undo/redo history, in JCS_UndoRedoSystem and
 JCS_UndoRedoComponent class for undo redo module and easier function API call.
 * Add there is undo redo history check API.
 * Rename undo/redo system's API function call => start/stop recording to start/stop recording all.
@@ -670,7 +674,7 @@ JCS_UndoRedoComponent class for undo redo module and easier function API call.
 ### 2018-09-14
 
 * Update Unity Engine version to 2018.2.8f1.
-* Rename from JCS_AspectScreenPanel to JCS_ResizableScreenPanel, I think this is 
+* Rename from JCS_AspectScreenPanel to JCS_ResizableScreenPanel, I think this is
 the proper naming, using 'resizable' than the word 'aspect'.
 * Remove JCS_AspectScreen and move the functionalities to JCS_ScreenManager.
 
@@ -702,13 +706,13 @@ the proper naming, using 'resizable' than the word 'aspect'.
 ### 2018-09-06
 
 * Fixed and make compatible with new Slide effect component in JCS_SequencePanel.
-* Deprecated Utility function => JCS_MouseOverGUI. This function isn't work well 
+* Deprecated Utility function => JCS_MouseOverGUI. This function isn't work well
 enough with resizable screen/window.
-* Make compatiable with resizable screen/window and add audo add event trigger event 
+* Make compatiable with resizable screen/window and add audo add event trigger event
 to event trigger system.
 * Make tween panel compatible with resizable screen/window.
 * JCS_InputField implemented for better input field handle.
-* Make compatible with resizable screen/window with JCS_ScaleEffect, basically the 
+* Make compatible with resizable screen/window with JCS_ScaleEffect, basically the
 same issue as JCS_SlideEffect. The solution are the same to both of the component.
 * Update project versiont to 1.7.9.
 
@@ -726,7 +730,7 @@ child transform as another Unity defined UI.
 
 * Remove all the weird testing key with test component with key options in there.
 * Instead set resolution and make aspect screen in Update we do it in LateUpdate function call.
-* Add fix text by font size and fix text by scale options in JCS_PanelRoot component 
+* Add fix text by font size and fix text by scale options in JCS_PanelRoot component
 work with JCS_PanelChild component.
 
 ### 2018-09-03
@@ -756,7 +760,7 @@ work with JCS_PanelChild component.
 that developer want to record undo/redo's data manually.
 * Add after game is done initialize callback in JCS_GameManager, manager's module.
 * Make record previous data in JCS_UndoRedoComponent to after game is initialize callback.
-* JCS_KeyWith implemented for key combination data struct, just to hold alt, ctrl, 
+* JCS_KeyWith implemented for key combination data struct, just to hold alt, ctrl,
 shift combination key info.
 * JCS_UIComponentData interface for root of all UI component data.
 * Implemented focus after undo/redo functionalities.
@@ -788,7 +792,7 @@ shift combination key info.
 * Make compatible with button interactable by setting the alph
  the same but keep the rest of the colors to the toggle color.
 * Update Unity Engine version to 2018.2.5f1.
- 
+
 ### 2018-08-22
 
 * JCS_Toggle implemented to better toggle UI/UX.
@@ -840,7 +844,7 @@ shift combination key info.
 ### 2018-08-08
 
 * Add active/play on awake/loop variable to JCS_2DOrderAnimPlayer.
-* Add 'displays' variable in JCS_2DAnimation module for multiple 
+* Add 'displays' variable in JCS_2DAnimation module for multiple
  JCS_UnityObject object displaying the same sprite.
 
 ### 2018-08-07
@@ -1012,7 +1016,7 @@ shift combination key info.
 order layer index.
 * Add local position option to certain 3D action module.
 * Cancel direction linking to duplex linking for button and button selection.
-* Button selection group make compatible with mouse/PC by adding hover functionalities 
+* Button selection group make compatible with mouse/PC by adding hover functionalities
 with Unity's built-in component 'EventTrigger'.
 
 ### 2017-12-05
@@ -1038,7 +1042,7 @@ set object. transform.
 
 ### 2017-11-12
 
-* JCS_PredictCamera implemented, now camera can have total of 3 dimensionals and 27 
+* JCS_PredictCamera implemented, now camera can have total of 3 dimensionals and 27
 directions' prediction.
 
 ### 2017-11-10
@@ -1063,8 +1067,8 @@ directions' prediction.
 
 ### 2017-10-30
 
-* Add 'JCS_OnClickCallback' abstract function for JCS_Button class. Restrict all 
-button sub-class follows this method/standard, in order to reduce system duplicate 
+* Add 'JCS_OnClickCallback' abstract function for JCS_Button class. Restrict all
+button sub-class follows this method/standard, in order to reduce system duplicate
 code.
 
 ### 2017-10-27
@@ -1119,7 +1123,7 @@ code.
 * Loop through the array and index in array range check functions added for utility layer.
 * JCS_ButtonSelection and JCS_ButtonSelectionGroup, make compatible with 'skip' functionality.
 * JCS_ButtonSelectionGroup with proper function naming design, mainly pural issue.
-* Update JCS_ButtonSelection, JCS_ButtonSelectionGroup and JCS_ButtonSelectionGroupController 
+* Update JCS_ButtonSelection, JCS_ButtonSelectionGroup and JCS_ButtonSelectionGroupController
 with full control which is the 4 directions/2 dimensional control.
 * Add self as button for Button selection.
 
@@ -1129,7 +1133,7 @@ with full control which is the 4 directions/2 dimensional control.
 * Change default button selection group controller's active variables to true.
 * JCS_GamePadButtonUIHandler implemented.
 * Add Dialogue system on readme file.
-* Add JCS_GamePadSpriteHandler for all kind of sprite object handle, now the sprite 
+* Add JCS_GamePadSpriteHandler for all kind of sprite object handle, now the sprite
 can be change by the joystick connection.
 * Bug fixed, JCS_ButtonSelection 'mActive' to public variable 'Active'.
 * JCS_Button with separate initialize function call.
@@ -1233,9 +1237,9 @@ can be change by the joystick connection.
 
 * Add fade screen to UI manager, now the game are enable the simple focus and un-focus effect.
 * Add randomize const wave effect.
-* JCS_TransformTweener continue tween provide all three transform type now, so 
+* JCS_TransformTweener continue tween provide all three transform type now, so
 developers can tween between position/rotation/scale for now on.
-* Const wave effect support 3 dimentional, and using Untiy Object as the base class 
+* Const wave effect support 3 dimentional, and using Untiy Object as the base class
 which mean the effect can be use by any Unity object layer.
 * JCS_RandomTweenerAction implemented.
 * Downgrade resources's screen panel object, in order to save a bit of runtime memory
@@ -1248,7 +1252,7 @@ usage and performance.
 
 ### 2017-09-09
 
-* PacketLostPreventer add the timer in order not to send the packet to often and 
+* PacketLostPreventer add the timer in order not to send the packet to often and
 save a bit of performance comparing 60 packets (frame rate) per second.
 
 ### 2017-09-07
@@ -1275,7 +1279,7 @@ save a bit of performance comparing 60 packets (frame rate) per second.
 
 ### 2017-09-02
 
-* JCS_PacketLostPreventer implemented for tracking down and solve the packet lost 
+* JCS_PacketLostPreventer implemented for tracking down and solve the packet lost
 issue by using the UDP for network communicattion.
 
 ### 2017-09-01
@@ -1512,9 +1516,9 @@ issue by using the UDP for network communicattion.
 
 ### 2016-12-13
 
-* Now All damage text pool provide the specific audio clip function call option. 
+* Now All damage text pool provide the specific audio clip function call option.
 Meaning all the skill you are designing can be use in different sound.
-* For coding wise, after the "ApplyDamageText" function had the new variable 
+* For coding wise, after the "ApplyDamageText" function had the new variable
  "AudioClip", pass it in to take the effect.
 * Update JCS_2DParticleSytem with "start" and "stop" function
 
@@ -1598,7 +1602,7 @@ Meaning all the skill you are designing can be use in different sound.
 
 ### 2016-09-05
 
-* Modefied the name of JCS_GameErros into JCS_Debug, so there is no JCS_GameErros 
+* Modefied the name of JCS_GameErros into JCS_Debug, so there is no JCS_GameErros
 anymore. Plz use JCS_Debug instead.
 * Export JCSUnity 1.3.7 package.
 * JCS_2DAIStateSystem implemented.
@@ -1777,7 +1781,7 @@ anymore. Plz use JCS_Debug instead.
 * JCS_GUIStarterScene implemented.
 * JCS_2DWalkAction add the random walk speed function at initilzie time.
 * JCS_2DJumpAction add the random jump force function at initilzie time.
-* JCS_GameErros function update, so no need to enter type the name out anymore, 
+* JCS_GameErros function update, so no need to enter type the name out anymore,
  but the line number isnt update yet.
 * BF_CharacterSpawnHandler implemented, now we can design our own character spawn positions.
 
@@ -2014,7 +2018,7 @@ anymore. Plz use JCS_Debug instead.
 
 ### 2016-05-15
 
-* Season implemented. 
+* Season implemented.
 
 ### 2016-05-14
 
@@ -2039,7 +2043,7 @@ anymore. Plz use JCS_Debug instead.
 
 ### 2016-05-8
 
-* Checkable feature implemented (when have ur mouse over a checkable 
+* Checkable feature implemented (when have ur mouse over a checkable
     object it will appear a small description menu)
 * Clean Code (there was duplicate code)
 
@@ -2047,7 +2051,7 @@ anymore. Plz use JCS_Debug instead.
 
 * Resolution for all platform feature added (Tested! and it work!)
 * Slide Input implemented (for touch pad)
-* Application Manager managing the platform type form now on! 
+* Application Manager managing the platform type form now on!
 
 ### 2016-05-06
 
@@ -2062,7 +2066,7 @@ anymore. Plz use JCS_Debug instead.
 * Pair Key Panel and Button Panel up
 * Scene Manager bug fixed
 
-### 2016-04-30 
+### 2016-04-30
 
 * Multi Track Camera 2D
 * Sound Fade in/out while switching the scene
