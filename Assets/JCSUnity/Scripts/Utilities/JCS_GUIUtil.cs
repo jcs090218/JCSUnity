@@ -3,13 +3,22 @@
  * $Date: 2018-07-16 13:28:22 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
- * $Notice: See LICENSE.txt for modification and distribution information 
- *	                 Copyright © 2018 by Shen, Jen-Chieh $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright © 2018 by Shen, Jen-Chieh $
  */
+
+/* NOTE: If you are using `TextMesh Pro` uncomment this line.
+ */
+#define TMP_PRO
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+#if TMP_PRO
+using TMPro;
+#endif
 
 namespace JCSUnity
 {
@@ -18,13 +27,81 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_GUIUtil
     {
+        #region LANGUAGE
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="txt"></param>
+        public static void SetLangText(JCS_LangDataList data, Text txt)
+        {
+            SystemLanguage lang = JCS_ApplicationManager.instance.systemLanguage;
+
+            foreach (JCS_LangData langData in data.LangData)
+            {
+                if (lang == langData.Language)
+                {
+                    SetText(txt, langData.Data);
+                    break;
+                }
+            }
+        }
+
+#if TMP_PRO
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="txt"></param>
+        public static void SetLangText(JCS_LangDataList data, TextMeshPro txt)
+        {
+            SystemLanguage lang = JCS_ApplicationManager.instance.systemLanguage;
+
+            foreach (JCS_LangData langData in data.LangData)
+            {
+                if (lang == langData.Language)
+                {
+                    SetText(txt, langData.Data);
+                    break;
+                }
+            }
+        }
+#endif
+        #endregion
+
+        #region TEXT
+        /// <summary>
+        /// Set the text with data.
+        /// </summary>
+        /// <param name="txt"> Target text object to be set. </param>
+        /// <param name="data"> Text value to display inside text object. </param>
+        public static void SetText(Text txt, string data)
+        {
+            if (txt == null) return;
+            txt.text = data;
+        }
+
+#if TMP_PRO
+        /// <summary>
+        /// Set the text with data.
+        /// </summary>
+        /// <param name="txt"> Target text mesh to be set. </param>
+        /// <param name="data"> Text value to display inside text mesh. </param>
+        public static void SetText(TextMeshPro txt, string data)
+        {
+            if (txt == null) return;
+            txt.text = data;
+        }
+#endif
+        #endregion
+
         #region DROPDOWN
         /// <summary>
         /// Returns item vlaue by index.
         /// </summary>
         /// <param name="dd"> Dropdown object. </param>
         /// <param name="index"> item name. </param>
-        /// <returns></returns>
+        /// <returns> Current selected text value. </returns>
         public static string Dropdown_GetItemValue(Dropdown dd, int index)
         {
             return dd.options[index].text;
@@ -34,7 +111,7 @@ namespace JCSUnity
         /// Get the current selected value of the Dropdown object.
         /// </summary>
         /// <param name="dd"> drop down object. </param>
-        /// <returns> current selected text value. </returns>
+        /// <returns> Current selected text value. </returns>
         public static string Dropdown_GetSelectedValue(Dropdown dd)
         {
             return Dropdown_GetItemValue(dd, dd.value);
@@ -108,8 +185,8 @@ namespace JCSUnity
             else
             {
                 // We use something else.
-                // 
-                // NOTE(jenchieh): Glady, negative one does not 
+                //
+                // NOTE(jenchieh): Glady, negative one does not
                 // occurs error.
                 Dropdown_SetSelection(dd, -1);
             }
@@ -130,7 +207,6 @@ namespace JCSUnity
             return dd;
         }
 
-
         /*************************************************************************/
         /*   JCSUnity Version                                                    */
         /*************************************************************************/
@@ -143,7 +219,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static string Dropdown_GetItemValue(JCS_Dropdown dd, int index)
         {
-            /* NOTE(jenchieh): this is all the key for JCS_Dropdown 
+            /* NOTE(jenchieh): this is all the key for JCS_Dropdown
              * object. We use 'DropdownRealTexts' as our option values.
              */
             return dd.DropdownRealTexts[index];
@@ -183,7 +259,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Set selection when using JCS_Dropdown instead of 
+        /// Set selection when using JCS_Dropdown instead of
         /// UnityEngine.UI.Dropdown object.
         /// </summary>
         /// <param name="dd"> JCSUnity dropdown object. </param>
