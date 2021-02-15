@@ -150,11 +150,17 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Register a new language text.
+        /// </summary>
         public void AddLangText(JCS_LangText txt)
         {
             this.mLangTexts.Add(txt);
         }
 
+        /// <summary>
+        /// Refresh all languages text in game.
+        /// </summary>
         public void RefreshLangTexts()
         {
             this.mLangTexts = JCS_Utility.RemoveEmptySlotIncludeMissing(this.mLangTexts);
