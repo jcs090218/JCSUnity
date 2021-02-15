@@ -210,10 +210,10 @@ namespace JCSUnity
             {
                 JCS_SceneManager sm = JCS_SceneManager.instance;
 
-                if (sm.GetJCSWhiteScreen() == null)
+                if (sm.GetWhiteScreen() == null)
                     JCS_UtilityFunctions.PopJCSWhiteScreen();
 
-                sm.GetJCSWhiteScreen().FadeIn();
+                sm.GetWhiteScreen().FadeIn();
 
                 // do the snap shot effect
                 mSplashEffectTrigger = true;
@@ -391,7 +391,7 @@ namespace JCSUnity
                 if (mDelayTimer > mDelayTime)
                 {
                     mDelayTimer = 0.0f;
-                    JCS_SceneManager.instance.GetJCSWhiteScreen().FadeOut();
+                    JCS_SceneManager.instance.GetWhiteScreen().FadeOut();
                     mSplashEffectTrigger = false;
                 }
             }
