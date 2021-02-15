@@ -159,7 +159,7 @@ namespace JCSUnity
                 return;
             }
 
-            JCS_SceneManager.instance.SetJCSBlackScreen(bs);
+            JCS_SceneManager.instance.SetBlackScreen(bs);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace JCSUnity
                 return;
             }
 
-            JCS_SceneManager.instance.SetJCSBlackSlideScreen(bs);
+            JCS_SceneManager.instance.SetBlackSlideScreen(bs);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace JCSUnity
                 return;
             }
 
-            JCS_SceneManager.instance.SetJCSWhiteScreen(ws);
+            JCS_SceneManager.instance.SetWhiteScreen(ws);
         }
 
         //** Game UI (Game Layer)
