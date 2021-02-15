@@ -55,7 +55,7 @@ namespace JCSUnity
             {
                 // if the button and the platform are not the same, 
                 // dont load the scene and do nothing.
-                if (mPlatformType != JCS_ApplicationManager.instance.PLATFORM_TYPE)
+                if (mPlatformType != JCS_ApplicationManager.instance.PlatformType)
                     return;
             }
 
