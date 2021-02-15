@@ -29,10 +29,10 @@ namespace JCSUnity
     {
         #region LANGUAGE
         /// <summary>
-        ///
+        /// Set text by system language and language data.
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="txt"></param>
+        /// <param name="data"> Language data list. </param>
+        /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, Text txt)
         {
             SystemLanguage lang = JCS_ApplicationManager.instance.systemLanguage;
@@ -49,10 +49,10 @@ namespace JCSUnity
 
 #if TMP_PRO
         /// <summary>
-        ///
+        /// Set text by system language and language data.
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="txt"></param>
+        /// <param name="data"> Language data list. </param>
+        /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, TextMeshPro txt)
         {
             SystemLanguage lang = JCS_ApplicationManager.instance.systemLanguage;

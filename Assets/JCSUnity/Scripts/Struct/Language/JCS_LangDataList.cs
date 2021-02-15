@@ -13,7 +13,9 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
+    /// List of language data for multiple languages support.
     ///
+    /// You should treat this data structure as a multiple languages database.
     /// </summary>
     [System.Serializable]
     public class JCS_LangDataList
@@ -22,7 +24,7 @@ namespace JCSUnity
 
         [Header("** Initialize (JCS_LangDataList) **")]
 
-        [Tooltip("")]
+        [Tooltip("List of language data.")]
         [SerializeField]
         private List<JCS_LangData> mLangData = null;
 
