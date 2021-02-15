@@ -110,24 +110,16 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check if the platform on PC.
+        /// Return true if current platform is personal computer.
         /// </summary>
-        /// <returns>
-        ///   -> Return true, if it is on PC.
-        ///   -> Return false, if it is NOT on PC.
-        /// </returns>
         public bool IsPC()
         {
             return (PlatformType == JCS_PlatformType.PC);
         }
 
         /// <summary>
-        /// Check if the platform on mobile.
+        /// Return true if current platform is mobile phone.
         /// </summary>
-        /// <returns>
-        ///   -> Return true, if it is on mobile.
-        ///   -> Return false, if it is NOT on mobile.
-        /// </returns>
         public bool IsMobile()
         {
             return (PlatformType == JCS_PlatformType.MOBILE);
