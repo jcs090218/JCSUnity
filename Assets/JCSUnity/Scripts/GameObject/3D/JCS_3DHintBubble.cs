@@ -68,7 +68,9 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool active { get { return this.mActive; } }
+#if TMP_PRO
         public TextMeshPro TextMesh { get { return this.mTextMesh; } }
+#endif
         public JCS_TweenerHandler TweenerHandler { get { return this.mTweenerHandler; } }
         public JCS_FadeObject FadeObject { get { return this.mFadeObject; } }
 
@@ -76,7 +78,9 @@ namespace JCSUnity
 
         private void Awake()
         {
+#if TMP_PRO
             this.mTextMesh = this.GetComponent<TextMeshPro>();
+#endif
             this.mTweenerHandler = this.GetComponent<JCS_TweenerHandler>();
             this.mFadeObject = this.GetComponent<JCS_FadeObject>();
         }
@@ -105,7 +109,9 @@ namespace JCSUnity
         /// <param name="msg"></param>
         public void SendText(string msg)
         {
+#if TMP_PRO
             mTextMesh.text = msg;
+#endif
             Active();
         }
 
