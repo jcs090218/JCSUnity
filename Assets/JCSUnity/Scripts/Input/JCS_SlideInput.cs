@@ -23,7 +23,7 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_SlideInput) **")]
 
-#if (UNITY_STANDALONE || UNITY_EDITOR)
+#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
         [Tooltip("Previous position.")]
         [SerializeField]
         private Vector3 mPrePos = Vector3.zero;
@@ -67,7 +67,7 @@ namespace JCSUnity
         private float mTouchDistanceDelta = 0.0f;
 #endif
 
-#if (UNITY_STANDALONE || UNITY_EDITOR)
+#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
         [Header("** Runtime Variables (JCS_SlideInput) **")]
 
         [Tooltip("Mouse event type of identify the touch event.")]
@@ -107,7 +107,7 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_STANDALONE || UNITY_EDITOR)
+#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
             mTouched = JCS_Input.GetMouseButton(mMouseType);
 
             Vector3 currPos = Input.mousePosition;
@@ -134,7 +134,7 @@ namespace JCSUnity
 #endif
         }
 
-#if (UNITY_STANDALONE || UNITY_EDITOR)
+#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
         private void OnApplicationFocus(bool focus)
         {
             if (focus)
@@ -174,7 +174,7 @@ namespace JCSUnity
                 this.mDragDisplacement.y = mDragDistance.y * JCS_Mathf.GetSign(yDiff);
             }
 
-#if (UNITY_STANDALONE || UNITY_EDITOR)
+#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
             mDeltaPos = currPos - mPrePos;
 #elif (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
             mDeltaPos = Input.GetTouch(0).deltaPosition;
@@ -192,7 +192,7 @@ namespace JCSUnity
 
             mDeltaPos = Vector2.zero;
 
-#if (UNITY_STANDALONE || UNITY_EDITOR)
+#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
             // If focus, ignore one frame.
             mFocus = false;
 #endif
