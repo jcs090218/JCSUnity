@@ -55,6 +55,7 @@
 *.app
 *.exe
 *.*_data
+.vsconfig
 
 # Unity3D generated meta files
 *.pidb.meta
