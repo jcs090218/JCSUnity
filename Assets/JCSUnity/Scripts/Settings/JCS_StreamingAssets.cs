@@ -193,7 +193,12 @@ namespace JCSUnity
 
             bool success = false;
 
+#if UNITY_2021_1_OR_NEWER
+            if (www.result == UnityWebRequest.Result.ConnectionError ||
+                www.result == UnityWebRequest.Result.ProtocolError)
+#else
             if (www.isNetworkError || www.isHttpError)
+#endif
             {
                 if (JCS_GameSettings.instance.DEBUG_MODE)
                     JCS_Debug.LogWarning(www.error);
