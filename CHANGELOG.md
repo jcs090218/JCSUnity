@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2021-04-09
+
+* Update `PackageExporter` to version `1.0.4`.
+
 ### 2021-04-07
 
 * Update Unity Engine version to `2021.1.1f1`.
