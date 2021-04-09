@@ -17,3 +17,6 @@ PackageExporter/unityignore/Hello World.unityignore
 # Ignore the test proejct files.
 Test_Assets
 Test2_Assets
+
+# Ignore files
+Resources
