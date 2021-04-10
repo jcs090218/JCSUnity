@@ -21,7 +21,7 @@ namespace JCSUnity
         private JCS_DefaultPacketProcessor(JCS_ClientMode mode)
             : base(mode)
         {
-
+            // empty..
         }
 
         // singleton
