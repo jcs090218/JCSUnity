@@ -25,11 +25,11 @@ namespace JCSUnity
 
         [Tooltip("Target host name to switch.")]
         [SerializeField]
-        private string mHost = JCS_NetworkConstant.SERVER_HOST;
+        private string mHost = "127.0.0.1";
 
         [Tooltip("Target Port to switch.")]
         [SerializeField]
-        private int mPort = JCS_NetworkConstant.LOGIN_SERVER_PORT;
+        private int mPort = 5656;
 
         [Tooltip("Force to switch server.")]
         [SerializeField]

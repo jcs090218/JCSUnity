@@ -46,23 +46,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Open an url in defualt 
-        /// JCS_NetworkConstant.OFFICIAL_WEBSITE constant.
-        /// </summary>
-        public static void ToOfficailWebpage()
-        {
-            ToOfficailWebpage(JCS_NetworkConstant.OFFICIAL_WEBSITE);
-        }
-
-        /// <summary>
-        /// Open an url.
-        /// </summary>
-        public static void ToOfficailWebpage(string url)
-        {
-            Application.OpenURL(url);
-        }
-
-        /// <summary>
         /// Close the application directly.
         /// </summary>
         public static void QuitApplication()
