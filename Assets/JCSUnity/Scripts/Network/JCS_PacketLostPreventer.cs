@@ -177,9 +177,7 @@ namespace JCSUnity
             /* First check if the packet responded? Remove it if 
              already responded. */
             {
-                for (int index = 0;
-                    index < mWaitingPacketIds.Count;
-                    ++index)
+                for (int index = 0; index < mWaitingPacketIds.Count; ++index)
                 {
                     JCS_Packet packet = mWaitingPackets[index];
                     short packetId = mWaitingPacketIds[index];
@@ -197,9 +195,7 @@ namespace JCSUnity
             mRespondPacketIds.Clear();
 
             /* Resend the packet if necessary. */
-            for (int index = 0;
-                index < mWaitingPackets.Count;
-                ++index)
+            for (int index = 0; index < mWaitingPackets.Count; ++index)
             {
                 JCS_Packet packet = mWaitingPackets[index];
 

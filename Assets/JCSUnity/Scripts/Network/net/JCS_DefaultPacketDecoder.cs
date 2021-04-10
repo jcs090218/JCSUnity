@@ -1,8 +1,10 @@
 ﻿/**
- * $File: JCS_DefaultPacketDecoder.cs$
+ * $File: JCS_DefaultPacketDecoder.cs $
  * $Date: $
  * $Reveision: $
  * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;
@@ -36,23 +38,18 @@ namespace JCSUnity
             }
 
             // decrypt packet and check if damaged / wrong packet
-            for (int index = 0;
-                index < JCS_NetworkConstant.DECODE_BUFFER_LEN;
-                ++index)
+            for (int index = 0; index < JCS_NetworkConstant.DECODE_BUFFER_LEN; ++index)
             {
                 if ((char)undecrypted[index] != (char)JCS_NetworkConstant.DECODE_BUFFER[index])
                 {
-                    JCS_Debug.LogError(
-                        "Wrong Packet Header!!!");
+                    JCS_Debug.LogError("Wrong Packet Header!!!");
                     return null;
                 }
             }
 
             // Get the real message
             byte[] decryptedBuffer = new byte[packetLength];
-            for (int index = 0;
-                index < packetLength;
-                ++index)
+            for (int index = 0; index < packetLength; ++index)
             {
                 decryptedBuffer[index] = undecrypted[index + JCS_NetworkConstant.DECODE_BUFFER_LEN];
             }

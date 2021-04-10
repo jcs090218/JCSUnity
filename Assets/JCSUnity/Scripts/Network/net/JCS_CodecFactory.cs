@@ -1,8 +1,10 @@
 ﻿/**
- * $File: $
+ * $File: JCS_CodecFactory.cs $
  * $Date: $
  * $Reveision: $
  * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 using System.Collections;

@@ -16,8 +16,6 @@ namespace JCSUnity
     /// </summary>
     public class JCS_NetworkConstant
     {
-        public const string OFFICIAL_WEBSITE = "www.jcs-profile.com";
-
         public const int MAX_MESSAGE = 16 * 1024;      // 暂定一个消息最大为, [default: 16k bytes]
         public const int BLOCKSECONDS = 30;            // INIT函数阻塞时间, [default: 30 seconds]
         public const int INBUFSIZE = 64 * 1024;        // 具体尺寸根据剖面报告调整  接收数据的缓存, [default: 64k bytes]
@@ -31,16 +29,6 @@ namespace JCSUnity
         public static byte[] ENCODE_BUFFER = new byte[ENCODE_BUFFER_LEN];
 
         public const int CONNECT_TIME = 5;     // default: 5 seconds
-
-        /**
-         * Server Settings will be store/design here...
-         * 
-         * NOTE: this must be the same as the server's settings.
-         */
-        public const string SERVER_HOST = "127.0.0.1";
-
-        public const int LOGIN_SERVER_PORT = 5656;
-        public const int CHANNEL_SERVER_PORT = 5454;
 
         // Maxinum packet id check for the correct order, prevent
         // 'Long' generic data type data overflow.

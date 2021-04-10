@@ -85,9 +85,7 @@ namespace JCSUnity
         private void ProcessServerRequest()
         {
 
-            for (int index = 0;
-                index < mServerRequest.Count;
-                ++index)
+            for (int index = 0; index < mServerRequest.Count; ++index)
             {
                 if (index >= mServerRequest.Count ||
                     index >= mClient.Count ||
