@@ -8,6 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 2021-04-11
 
 * Create new module `JCS_Path`.
+* Add attribute `TextArea` to `JCS_LangData` component.
 
 ### 2021-04-10
 
