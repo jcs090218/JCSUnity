@@ -12,7 +12,7 @@
 # 
 
 # Ignore this plugin itself.
-UnityPackageExporter
+PackageExporter
 
 # Ignore build info.
 StreamingAssets
