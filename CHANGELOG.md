@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2021-04-19
+
+* Save user settings using `EditorPref` utility class.
+
 ### 2021-04-18
 
 * Fix compile errors from naming `Editors` to `Editor`.
