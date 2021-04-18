@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+### 2021-04-18
+
+* Fix compile errors from naming `Editors` to `Editor`.
+
 ### 2021-04-13
 
 * Add byte array create function for image loader.
