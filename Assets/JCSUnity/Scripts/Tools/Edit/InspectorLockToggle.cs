@@ -22,7 +22,7 @@ public class InspectorLockToggle
 {
     private static EditorWindow _mouseOverWindow;
 
-    [MenuItem("JCSUnity/Hotkeys/Select Inspector under mouse cursor (use hotkey) #&q", false, 15)]
+    [MenuItem("JCSUnity/Hotkeys/Select Inspector under mouse cursor (use hotkey) #&q", false, 50)]
     private static void SelectLockableInspector()
     {
         if (EditorWindow.mouseOverWindow.GetType().Name == "InspectorWindow")
@@ -35,7 +35,7 @@ public class InspectorLockToggle
         }
     }
 
-    [MenuItem("JCSUnity/Hotkeys/Toggle Lock &q", false, 15)]
+    [MenuItem("JCSUnity/Hotkeys/Toggle Lock &q", false, 50)]
     private static void ToggleInspectorLock()
     {
         if (_mouseOverWindow == null)
@@ -59,7 +59,7 @@ public class InspectorLockToggle
         }
     }
 
-    [MenuItem("JCSUnity/Hotkeys/Clear Console #&c", false, 15)]
+    [MenuItem("JCSUnity/Hotkeys/Clear Console #&c", false, 50)]
     private static void ClearConsole()
     {
         Type type = Assembly.GetAssembly(typeof(Editor)).GetType("UnityEditorInternal.LogEntries");
