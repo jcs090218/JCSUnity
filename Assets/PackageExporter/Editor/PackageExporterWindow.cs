@@ -7,12 +7,11 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
+using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System.IO;
-using System;
-
 
 namespace PackageExporter
 {
@@ -23,6 +22,8 @@ namespace PackageExporter
         : EditorWindow
     {
         public static PackageExporterWindow instance = null;
+
+        public const string NAME = "Package Exporter";
 
         private const string PACKAGE_FOLDER = "Assets";
         private const string DEFAULT_PACKAGE_NAME = "Empty Package Name";
@@ -35,9 +36,6 @@ namespace PackageExporter
         private const string IGNORE_FILE_EXT = ".unityignore";
 
         private const string IGNORE_FILE_TEMPLATE_FILE = "template.unityignore";
-
-        private const int TITLE_SPACE_TOP = 3;
-        private const int TITLE_SPACE_BOTTOM = 5;
 
         private const int EXPORT_ALL_PACKAGES_BUTTON_COUNT = 2;
 
@@ -75,11 +73,10 @@ namespace PackageExporter
         /// </summary>
         private void OnEP_Editor()
         {
-            GUILayout.Space(TITLE_SPACE_TOP);
-            GUILayout.Label("** Packages Settings **", EditorStyles.boldLabel);
-            GUILayout.Space(TITLE_SPACE_BOTTOM);
+            GUILayout.Label("Packages Settings", EditorStyles.boldLabel);
 
             /* Export the whole list. */
+            EditorUtil.CreateGroup(() =>
             {
                 ScriptableObject target = this;
                 SerializedObject so = new SerializedObject(target);
@@ -87,63 +84,62 @@ namespace PackageExporter
 
                 EditorGUILayout.PropertyField(stringsProperty, true);
                 so.ApplyModifiedProperties();
-            }
+            });
 
-            GUILayout.Space(TITLE_SPACE_TOP);
-            GUILayout.Label("** Unity Ignore File **", EditorStyles.boldLabel);
-            GUILayout.Space(TITLE_SPACE_BOTTOM);
+            GUILayout.Label("Unity Ignore File", EditorStyles.boldLabel);
 
-            if (GUILayout.Button("Generate Unity Ignore"))
-                GenerateUnityIgnoreFiles();
+            EditorUtil.CreateGroup(() =>
+            {
+                if (GUILayout.Button("Generate Unity Ignore"))
+                    GenerateUnityIgnoreFiles();
+            });
 
-            GUILayout.Space(TITLE_SPACE_TOP);
-            GUILayout.Label("** Export Packages **", EditorStyles.boldLabel);
-            GUILayout.Space(TITLE_SPACE_BOTTOM);
+            GUILayout.Label("Export Packages", EditorStyles.boldLabel);
 
             int buttonShown = 0;
 
-
-            for (int index = 0;
-               index < instance.exportPackagesList.Length;
-               ++index)
+            EditorUtil.CreateGroup(() =>
             {
-                ExportPackageStruct eps = instance.exportPackagesList[index];
+                for (int index = 0; index < instance.exportPackagesList.Length; ++index)
+                {
+                    ExportPackageStruct eps = instance.exportPackagesList[index];
 
-                /* GUI Layout */
-                string packageName = eps.packageName;
-                string versionNo = eps.versionNo;
+                    /* GUI Layout */
+                    string packageName = eps.packageName;
+                    string versionNo = eps.versionNo;
 
-                string finalPackageName = packageName + DELIMITER + VERSION_SYMBOL + versionNo;
+                    string finalPackageName = packageName + DELIMITER + VERSION_SYMBOL + versionNo;
 
-                if (versionNo == "")
-                    finalPackageName = packageName;
+                    if (versionNo == "")
+                        finalPackageName = packageName;
 
-                if (packageName == "")
-                    finalPackageName = DEFAULT_PACKAGE_NAME;
+                    if (packageName == "")
+                        finalPackageName = DEFAULT_PACKAGE_NAME;
 
-                string ignoreFilePath = Application.dataPath + "/" + IGNORE_FILE_PATH + "/";
-                string ignoreFileName = packageName + IGNORE_FILE_EXT;
-                string newIgnoreFullPath = ignoreFilePath + ignoreFileName;
+                    string ignoreFilePath = Application.dataPath + "/" + IGNORE_FILE_PATH + "/";
+                    string ignoreFileName = packageName + IGNORE_FILE_EXT;
+                    string newIgnoreFullPath = ignoreFilePath + ignoreFileName;
 
-                newIgnoreFullPath = newIgnoreFullPath.Replace("\\", "/");
+                    newIgnoreFullPath = newIgnoreFullPath.Replace("\\", "/");
 
-                if (!File.Exists(newIgnoreFullPath))
-                    continue;
+                    if (!File.Exists(newIgnoreFullPath))
+                        continue;
 
-                string[] ignoreList = ReadAllLinesWithoutComment(newIgnoreFullPath);
+                    string[] ignoreList = ReadAllLinesWithoutComment(newIgnoreFullPath);
 
-                ++buttonShown;
+                    ++buttonShown;
 
-                /* Assign export button. */
-                if (GUILayout.Button("Export -> " + finalPackageName))
-                    Export(finalPackageName, ignoreList);
-            }
+                    /* Assign export button. */
+                    if (GUILayout.Button("Export -> " + finalPackageName))
+                        Export(finalPackageName, ignoreList);
+                }
 
-            if (buttonShown >= EXPORT_ALL_PACKAGES_BUTTON_COUNT)
-            {
-                if (GUILayout.Button("Export All Packages"))
-                    ExportAllPackages();
-            }
+                if (buttonShown >= EXPORT_ALL_PACKAGES_BUTTON_COUNT)
+                {
+                    if (GUILayout.Button("Export All Packages"))
+                        ExportAllPackages();
+                }
+            });
         }
 
         private static void Export(string packageName, string[] ignoreList)
@@ -366,7 +362,7 @@ namespace PackageExporter
         [MenuItem("PackageExporter/Window", false, 1)]
         private static void GeneratePackageExporterWindow()
         {
-            PackageExporterWindow window = (PackageExporterWindow)GetWindow(typeof(PackageExporterWindow));
+            PackageExporterWindow window = GetWindow<PackageExporterWindow>(false, NAME, true);
             window.Show();
         }
 
