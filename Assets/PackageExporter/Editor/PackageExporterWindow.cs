@@ -1,4 +1,4 @@
-﻿#if (UNITY_EDITOR)
+﻿#if UNITY_EDITOR
 /**
  * $File: JCS_PE_Window.cs $
  * $Date: 2017-10-23 13:58:47 $
