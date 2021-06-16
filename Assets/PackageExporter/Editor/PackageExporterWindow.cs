@@ -357,10 +357,10 @@ namespace PackageExporter
 
 
         /// <summary>
-        /// About Package Exporter.
+        /// Show package exporter window.
         /// </summary>
-        [MenuItem("PackageExporter/Window", false, 1)]
-        private static void GeneratePackageExporterWindow()
+        [MenuItem("Window/Package Exporter", false, 1500)]
+        private static void ShowWindow()
         {
             PackageExporterWindow window = GetWindow<PackageExporterWindow>(false, NAME, true);
             window.Show();
