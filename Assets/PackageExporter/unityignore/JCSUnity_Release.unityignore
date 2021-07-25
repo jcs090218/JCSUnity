@@ -1,15 +1,15 @@
-# 
-# Thank you for using `Package Exporter`. This is the generated 
+#
+# Thank you for using `Package Exporter`. This is the generated
 # unityignore file.
-# 
+#
 # Package Name: JCSUnity_Release
 # Version: 2.1.2
-# Creation Date: 2019-02-04 20:44:15 
-# 
+# Creation Date: 2019-02-04 20:44:15
+#
 # Package Link: https://github.com/Pixisoft/PackageExporter
 # Author: Shen, Jen-Chieh
 # Email: pixisoft.tw@gmail.com
-# 
+#
 
 # Ignore this plugin itself.
 PackageExporter
