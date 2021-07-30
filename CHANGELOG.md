@@ -10,6 +10,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Fix editor window with incorrect name.
 * Save user settings using `EditorPref` utility class.
+* Remove unused `xml` directory.
+* Fix unused, total gamepad variable in input settings module.
 
 ## 2.1.3
 > Released Apr 18, 2021
