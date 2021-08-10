@@ -3,7 +3,7 @@
 # unityignore file.
 #
 # Package Name: JCSUnity_Release
-# Version: 2.1.2
+# Version: 2.1.4
 # Creation Date: 2019-02-04 20:44:15
 #
 # Package Link: https://github.com/Pixisoft/PackageExporter
@@ -11,27 +11,19 @@
 # Email: pixisoft.tw@gmail.com
 #
 
-# Ignore this plugin itself.
+# Ignore this plugin itself
 PackageExporter
 
-# Ignore build info.
+# Ignore magic folders
+Resources
 StreamingAssets
 
-# Ignore Test file.
-_FrameworkTest_Assets
-Resources/_FrameworkTest_Resources
+# Ignore Test file
+_Test_Assets
 
-# Ignore example projects.
+# Ignore example projects
 _BossFight_Assets
 _RunningCrush_Assets
-
-# Ignore example projects' resources.
-Resources/_BossFight_Resources
-Resources/_RunningCrush_Resources
-
-# Ignore self data
-JCS_GameData
-JCS_ScreenShot
 
 # Ignore Libraries
 GaussianBlur
