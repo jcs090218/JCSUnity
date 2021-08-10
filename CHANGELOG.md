@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## 2.2.0 (Unreleased)
+> Released N/A
+
+* Organize `.unityignore` files for exportation.
+
 ## 2.1.4
 > Released Aug 10, 2021
 
