@@ -5,13 +5,14 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 2.1.4 (Unreleased)
-> Released N/A
+## 2.1.4
+> Released Aug 10, 2021
 
 * Fix editor window with incorrect name.
 * Save user settings using `EditorPref` utility class.
 * Remove unused `xml` directory.
 * Fix unused, total gamepad variable in input settings module.
+* Place `Resources` folders to it's folder.
 
 ## 2.1.3
 > Released Apr 18, 2021
