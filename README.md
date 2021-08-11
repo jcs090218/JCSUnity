@@ -72,14 +72,14 @@ aren't necessary depend on the game your are making.
 ## :video_game: Games
 
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
-  <img src="./games/hemlock_logo.png" width="64" height="64" align="middle"/>
+  <img src="./etc/games/hemlock_logo.png" width="64" height="64" align="middle"/>
 </a>
 <a href="https://www.youtube.com/watch?v=vPapMMxzNGg&feature=youtu.be" target="_blank">
-  <img src="./games/might_&_blade_logo.png" width="180" height="72" align="middle"/>
+  <img src="./etc/games/might_&_blade_logo.png" width="180" height="72" align="middle"/>
 </a>
 <a href="https://mwgamedesign.itch.io/sugar-sleuths" target="_blank">
-  <img src="./games/SugarSleuths_logo.png" width="124" height="65" align="middle"/>
+  <img src="./etc/games/SugarSleuths_logo.png" width="124" height="65" align="middle"/>
 </a>
 <a href="http://www.jcs-profile.com/public/links/Links_PipelineOfEmperorYu/" target="_blank">
-  <img src="./games/pey_logo.png" width="64" height="64" align="middle"/>
+  <img src="./etc/games/pey_logo.png" width="64" height="64" align="middle"/>
 </a>
