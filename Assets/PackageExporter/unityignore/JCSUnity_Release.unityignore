@@ -22,8 +22,8 @@ StreamingAssets
 _Test_Assets
 
 # Ignore example projects
-_BossFight_Assets
-_RunningCrush_Assets
+_BossFight
+_RunningCrush
 
 # Ignore Libraries
 GaussianBlur
