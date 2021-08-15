@@ -16,7 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// About info window.
     /// </summary>
-    public class JCSUnity_About : EditorWindow  // TODO(jenchieh): change to normal window.
+    public class JCSUnity_About : EditorWindow
     {
         /* Variables*/
 
@@ -33,23 +33,44 @@ namespace JCSUnity
 
         /* Functions */
 
+        public JCSUnity_About()
+        {
+            titleContent = new GUIContent("About JCSUnity");
+        }
+
         private void OnGUI()
         {
             ReadINIFile();
 
-            GUILayout.Label("About JCSUnity", EditorStyles.boldLabel);
-
             // Informations
-            GUILayout.Label("Author: " + EDITOR_INI["author"]);
-            GUILayout.Label("Email: " + EDITOR_INI["email"]);
-            GUILayout.Label("Project Version: " + EDITOR_INI["project_version"]);
-
-            // GUI.Button that is drawn in the Label style.
-            if (GUILayout.Button("Source: " + EDITOR_INI["url"], "Label"))
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
             {
-                string url = EDITOR_INI["url"];
-                Application.OpenURL(url);
-            }
+                GUILayout.Label("Author: ", EditorStyles.boldLabel);
+                GUILayout.Label(EDITOR_INI["author"]);
+            });
+
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                GUILayout.Label("Email: ", EditorStyles.boldLabel);
+                GUILayout.Label(EDITOR_INI["email"]);
+            });
+
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                GUILayout.Label("Version: ", EditorStyles.boldLabel);
+                GUILayout.Label(EDITOR_INI["version"]);
+            });
+
+            JCSUnity_EditortUtil.BeginHorizontal(() =>
+            {
+                GUILayout.Label("Source: ", EditorStyles.boldLabel);
+
+                if (GUILayout.Button(EDITOR_INI["url"], "Label"))
+                {
+                    string url = EDITOR_INI["url"];
+                    Application.OpenURL(url);
+                }
+            });
         }
 
         /// <summary>
@@ -68,12 +89,12 @@ namespace JCSUnity
         /// About JCSUnity.
         /// </summary>
         [MenuItem("JCSUnity/About", false, 100)]
-        private static void AboutJCSUnity()
+        public static void AboutJCSUnity()
         {
-            JCSUnity_About window = (JCSUnity_About)GetWindow(typeof(JCSUnity_About));
+            var window = CreateInstance<JCSUnity_About>();
             window.minSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
             window.maxSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-            window.Show();
+            window.ShowUtility();
         }
     }
 }
