@@ -1,4 +1,4 @@
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
 /**
  * $File: JCSUnity_About.cs $
  * $Date: 2017-01-22 05:03:30 $
@@ -8,7 +8,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 
@@ -17,8 +16,7 @@ namespace JCSUnity
     /// <summary>
     /// About info window.
     /// </summary>
-    public class JCSUnity_About
-        : EditorWindow      // TODO(jenchieh): change to normal window.
+    public class JCSUnity_About : EditorWindow  // TODO(jenchieh): change to normal window.
     {
         /* Variables*/
 

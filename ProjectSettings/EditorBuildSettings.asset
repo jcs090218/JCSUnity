@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Test_Assets/Scenes/FT_Resizable.unity
+    path: Assets/_Project/Scenes/FT_Resizable.unity
     guid: be4c2ec23b20bb449b1a0c85bc684b40
   - enabled: 1
     path: Assets/JCSUnity/Scenes/Demo/GUI/JCS_GUI.unity
@@ -24,10 +24,10 @@ EditorBuildSettings:
     path: Assets/_RunningCrush/Scenes/RC_Logo.unity
     guid: 797d927e078735e4b87529c67fe5c573
   - enabled: 1
-    path: Assets/_Test_Assets/Scenes/FT_UITest.unity
+    path: Assets/_Project/Scenes/FT_UITest.unity
     guid: a47747e979ccf19438c03f7da6e61ac9
   - enabled: 1
-    path: Assets/_Test_Assets/Scenes/FT_Lobby.unity
+    path: Assets/_Project/Scenes/FT_Lobby.unity
     guid: dad52fa8b4051814a9f73adbf6d39587
   - enabled: 1
     path: Assets/JCSUnity/Scenes/JCS_ApplicationCloseSimulateSceneOnline.unity

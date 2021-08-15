@@ -19,7 +19,7 @@ Resources
 StreamingAssets
 
 # Ignore Test file
-_Test_Assets
+_Project
 
 # Ignore example projects
 _BossFight
