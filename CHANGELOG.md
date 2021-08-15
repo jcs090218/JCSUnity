@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 2.2.0 (Unreleased)
+## 2.2.1 (Unreleased)
 > Released N/A
+
+* Add more document string.
+
+## 2.2.0
+> Released Aug 16, 2021
 
 * Organize `.unityignore` files for exportation.
 * Update `About JCSUnity` window layout.
+* Add set page for slide camera.
 * Add trimmed version.
 
 ## 2.1.4
