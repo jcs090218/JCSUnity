@@ -10,6 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Organize `.unityignore` files for exportation.
 * Update `About JCSUnity` window layout.
+* Add trimmed version.
 
 ## 2.1.4
 > Released Aug 10, 2021
