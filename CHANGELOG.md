@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 > Released N/A
 
 * Add more document string.
+* Add new component, `JCS_PageIndicators` for mobile dribbles action.
 
 ## 2.2.0
 > Released Aug 16, 2021
