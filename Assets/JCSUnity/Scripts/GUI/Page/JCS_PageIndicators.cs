@@ -13,7 +13,7 @@ using UnityEngine.UI;
 namespace JCSUnity
 {
     /// <summary>
-    /// Display page indicator for the UI/UX (dribbles).
+    /// Display page indicator for the mobile like UI/UX (dribbles).
     /// </summary>
     public class JCS_PageIndicators : MonoBehaviour
     {
@@ -29,7 +29,7 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mActiveSprite = null;
 
-        [Tooltip("Image represnts a deactive indicator.")]
+        [Tooltip("Image represnts a inactive indicator.")]
         [SerializeField]
         private Sprite mInactiveSprite = null;
 
@@ -47,7 +47,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Light the indicator corresponding to the PAGE.
+        /// Light the indicator that corresponds to the PAGE.
         /// </summary>
         /// <param name="page"> Target page we want the indicator to notify the user. </param>
         public void SetPage(int page)
