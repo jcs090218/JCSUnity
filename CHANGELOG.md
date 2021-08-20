@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Add more document string.
 * Add new component, `JCS_PageIndicators` for mobile dribbles action.
+* Add new component, event `JCS_ActiveWithTime.`
+* Add new component, event `JCS_InactiveWithTime.`
+* Support alpha channel for component `JCS_AlphaObject`.
 
 ## 2.2.0
 > Released Aug 16, 2021
