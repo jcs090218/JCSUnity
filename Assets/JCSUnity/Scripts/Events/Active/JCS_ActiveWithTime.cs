@@ -26,18 +26,14 @@ namespace JCSUnity
         [SerializeField]
         private List<GameObject> mGameObjects = null;
 
-        [Tooltip("Take effect for this gameobject.")]
-        [SerializeField]
-        private bool mEffectSelf = true;
-
         [Tooltip("Time before active the gameobject.")]
         [SerializeField]
+        [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;
 
         /* Setter & Getter */
 
         public List<GameObject> GameObjects { get { return this.mGameObjects; } set { this.mGameObjects = value; } }
-        public bool EffectSelf { get { return this.mEffectSelf; } set { this.mEffectSelf = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
 
         /* Functions */
@@ -54,10 +50,6 @@ namespace JCSUnity
                 // active all
                 foreach (var comp in mGameObjects)
                     comp.SetActive(true);
-
-                // active this
-                if (mEffectSelf)
-                    this.gameObject.SetActive(true);
             }
         }
     }

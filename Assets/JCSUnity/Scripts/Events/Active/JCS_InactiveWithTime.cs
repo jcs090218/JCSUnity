@@ -32,6 +32,7 @@ namespace JCSUnity
 
         [Tooltip("Time before inactive the gameobject.")]
         [SerializeField]
+        [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;
 
         /* Setter & Getter */

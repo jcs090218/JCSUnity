@@ -28,6 +28,7 @@ namespace JCSUnity
 
         [Tooltip("Time before enable.")]
         [SerializeField]
+        [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;
 
         /* Setter & Getter */
