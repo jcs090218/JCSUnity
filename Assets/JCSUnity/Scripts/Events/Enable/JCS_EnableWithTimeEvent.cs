@@ -22,7 +22,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_EnableWithTimeEvent) **")]
 
-        [Tooltip("Components that take effect.")]
+        [Tooltip("Behaviours that take effect.")]
         [SerializeField]
         private List<Behaviour> mBehaviours = null;
 
