@@ -101,8 +101,9 @@ public class RC_GameSettings
         GAME_MODE = FindGameMode(PLAYER_IN_GAME);
 
         // set load and save game data
-        JCS_GameSettings.instance.SAVE_GAME_DATA_FUNC = SaveGameData;
-        JCS_GameSettings.instance.LOAD_GAME_DATA_FUNC = LoadGameData;
+        var gs = JCS_GameSettings.instance;
+        gs.SAVE_GAME_DATA_FUNC = SaveGameData;
+        gs.LOAD_GAME_DATA_FUNC = LoadGameData;
     }
 
     /// <summary>

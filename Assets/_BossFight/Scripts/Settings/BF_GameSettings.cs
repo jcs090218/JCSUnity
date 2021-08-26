@@ -81,8 +81,9 @@ public class BF_GameSettings
             LoadGameData();
 
         // set load and save game data
-        JCS_GameSettings.instance.SAVE_GAME_DATA_FUNC = SaveGameData;
-        JCS_GameSettings.instance.LOAD_GAME_DATA_FUNC = LoadGameData;
+        var gs = JCS_GameSettings.instance;
+        gs.SAVE_GAME_DATA_FUNC = SaveGameData;
+        gs.LOAD_GAME_DATA_FUNC = LoadGameData;
     }
 
     /// <summary>
@@ -113,6 +114,7 @@ public class BF_GameSettings
         mFullFilePath = JCS_Path.Combine(Application.persistentDataPath, gs.DATA_PATH, FILE_PATH);
         mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
     }
+
     private void LoadGameData()
     {
         JCS_IO.CreateDirectory(mFullFilePath);
@@ -127,6 +129,7 @@ public class BF_GameSettings
         // else we just load the data commonly.
         GAME_DATA = BF_GameData.LoadFromFile<BF_GameData>(mFullFilePath, mFullFileName);
     }
+
     /// <summary>
     /// Use only when player "First" play this game or 
     /// "Reset" the game.
@@ -143,6 +146,7 @@ public class BF_GameSettings
 
         SaveGameData();
     }
+
     private void SaveGameData()
     {
         if (GAME_DATA == null)
