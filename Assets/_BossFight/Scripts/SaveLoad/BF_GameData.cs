@@ -7,16 +7,13 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System;
-using System.Collections;
-using UnityEngine;
 using JCSUnity;
 
 /// <summary>
 /// Game Data design here.
 /// </summary>
 [Serializable]  // NOTE(jenchieh): we need this for `JCS_BinGameData'.
-public class BF_GameData 
-    : JCS_BinGameData
+public class BF_GameData : JCS_BinGameData
 {
     /* Variables */
 

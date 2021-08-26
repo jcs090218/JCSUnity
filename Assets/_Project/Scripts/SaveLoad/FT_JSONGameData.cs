@@ -6,17 +6,14 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 using JCSUnity;
 
 /// <summary>
 /// Test of the JSON game data.
 /// </summary>
-[System.Serializable]
-public class FT_JSONGameData 
-    : JCS_JSONGameData
+[Serializable]
+public class FT_JSONGameData : JCS_JSONGameData
 {
     /* Variables */
     public string Name = "";        // name of the player

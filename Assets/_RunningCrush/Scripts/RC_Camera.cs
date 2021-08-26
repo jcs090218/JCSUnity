@@ -6,14 +6,12 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using JCSUnity;
 using System.Collections.Generic;
+using UnityEngine;
+using JCSUnity;
 
 [RequireComponent(typeof(JCS_2DCamera))]
-public class RC_Camera 
-    : MonoBehaviour
+public class RC_Camera : MonoBehaviour
 {
     /* Variables */
 

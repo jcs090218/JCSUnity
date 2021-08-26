@@ -7,13 +7,12 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
+using JCSUnity;
 
 /// <summary>
 /// Use this button to select the level.
 /// </summary>
-public class RC_LevelSelectButton 
-    : JCSUnity.JCS_Button 
+public class RC_LevelSelectButton : JCS_Button 
 {
     /* Variables */
 

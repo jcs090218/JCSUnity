@@ -7,14 +7,12 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Item in game that can be picked.
 /// </summary>
-public class BF_PickItem 
-    : JCS_Item 
+public class BF_PickItem : JCS_Item
 {
     /* Variables */
 

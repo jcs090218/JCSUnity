@@ -1,9 +1,15 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿/**
+ * $File: FT_Player.cs $
+ * $Date: $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
 using JCSUnity;
 
-public class FT_Player
-    : JCS_2DSideScrollerPlayer
+public class FT_Player : JCS_2DSideScrollerPlayer
 {
     /* Variables */
 

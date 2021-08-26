@@ -7,11 +7,9 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
-public class BF_InitCharacterInGame 
-    : MonoBehaviour 
+public class BF_InitCharacterInGame : MonoBehaviour
 {
     /* Variables */
 

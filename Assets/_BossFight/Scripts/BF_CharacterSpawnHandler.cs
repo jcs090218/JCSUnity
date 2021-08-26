@@ -7,14 +7,12 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Handler where the character spawn in the level.
 /// </summary>
-public class BF_CharacterSpawnHandler 
-    : MonoBehaviour 
+public class BF_CharacterSpawnHandler : MonoBehaviour
 {
     /* Variables */
     

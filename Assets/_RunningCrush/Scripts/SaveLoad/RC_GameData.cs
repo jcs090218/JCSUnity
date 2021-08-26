@@ -6,17 +6,14 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
+using System;
 using JCSUnity;
-using System.Xml.Serialization;
-using System.IO;
 
 /// <summary>
 /// Game Data design here.
 /// </summary>
-public class RC_GameData
-    : JCS_XMLGameData
+[Serializable]
+public class RC_GameData : JCS_XMLGameData
 {
     /* Variables */
 

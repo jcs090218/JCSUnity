@@ -7,14 +7,12 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// When object collider with the live object, 
 /// effect that live object. (BF_LiveObject)
 /// </summary>
-public class BF_EffectCollider 
-    : MonoBehaviour 
+public class BF_EffectCollider : MonoBehaviour 
 {
     /* Variables */
 

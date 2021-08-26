@@ -7,12 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-using System;
 
-public class RC_PlayButton 
-    :  JCS_Button
+public class RC_PlayButton :  JCS_Button
 {
     /* Variables */
 

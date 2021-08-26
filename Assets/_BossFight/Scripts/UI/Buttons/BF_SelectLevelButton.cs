@@ -7,14 +7,12 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// 
 /// </summary>
-public class BF_SelectLevelButton 
-    : JCS_Button
+public class BF_SelectLevelButton : JCS_Button
 {
     /* Variables */
 

@@ -7,12 +7,10 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class RC_RevivePointer 
-    : MonoBehaviour 
+public class RC_RevivePointer : MonoBehaviour
 {
     /* Variables */
     

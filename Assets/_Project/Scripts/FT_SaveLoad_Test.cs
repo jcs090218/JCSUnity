@@ -6,10 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
-using JCSUnity;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using JCSUnity;
 
 /// <summary>
 /// Test save load module.

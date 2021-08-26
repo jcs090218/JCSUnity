@@ -7,14 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
-/// <summary>
-/// 
-/// </summary>
-public class RC_GameManager 
-    : MonoBehaviour 
+public class RC_GameManager : MonoBehaviour 
 {
     /* Variables */
 

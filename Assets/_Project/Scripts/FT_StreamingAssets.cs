@@ -6,17 +6,14 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using JCSUnity;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
+using JCSUnity;
 
 /// <summary>
 /// Test streaming assets module.
 /// </summary>
-public class FT_StreamingAssets 
-    : MonoBehaviour 
+public class FT_StreamingAssets : MonoBehaviour 
 {
     /* Variables */
 

@@ -7,12 +7,10 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 [RequireComponent(typeof(RC_EffectObject))]
-public class RC_EffectItem 
-    : JCS_Item
+public class RC_EffectItem : JCS_Item
 {
     /* Variables */
 

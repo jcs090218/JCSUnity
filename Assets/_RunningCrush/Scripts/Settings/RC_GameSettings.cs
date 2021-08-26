@@ -6,16 +6,14 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using JCSUnity;
 using System.IO;
+using UnityEngine;
+using JCSUnity;
 
 /// <summary>
 /// Game settings for Running Crush example game.
 /// </summary>
-public class RC_GameSettings
-    : MonoBehaviour
+public class RC_GameSettings : MonoBehaviour
 {
     /* Variables */
 
@@ -156,6 +154,7 @@ public class RC_GameSettings
         mFullFilePath = JCS_Path.Combine(Application.persistentDataPath, gs.DATA_PATH, FILE_PATH);
         mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
     }
+
     private void LoadGameData()
     {
         JCS_IO.CreateDirectory(mFullFilePath);
@@ -170,6 +169,7 @@ public class RC_GameSettings
         // else we just load the data commonly.
         GAME_DATA = JCS_XMLGameData.LoadFromFile<RC_GameData>(mFullFilePath, mFullFileName);
     }
+
     /// <summary>
     /// Use only when player "First" play this game or 
     /// "Reset" the game.
@@ -189,6 +189,7 @@ public class RC_GameSettings
         // save it once
         SaveGameData();
     }
+
     private void SaveGameData()
     {
         if (GAME_DATA == null)

@@ -7,15 +7,9 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-using UnityEngine.SceneManagement;
 
-/// <summary>
-/// 
-/// </summary>
-public class FT_ApplicationQuit_Test
-    : MonoBehaviour 
+public class FT_ApplicationQuit_Test : MonoBehaviour 
 {
     /* Variables */
 

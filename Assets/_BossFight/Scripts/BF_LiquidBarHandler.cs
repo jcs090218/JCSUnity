@@ -6,15 +6,12 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Handle liquid bar bar, etc.
 /// </summary>
-public class BF_LiquidBarHandler 
-    : JCS_LiquidBarHandler 
+public class BF_LiquidBarHandler : JCS_LiquidBarHandler 
 {
     /* Variables */
 

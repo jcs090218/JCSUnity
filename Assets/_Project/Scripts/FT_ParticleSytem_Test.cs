@@ -7,14 +7,9 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
-/// <summary>
-/// 
-/// </summary>
-public class FT_ParticleSytem_Test
-    : MonoBehaviour 
+public class FT_ParticleSytem_Test : MonoBehaviour 
 {
     /* Variables */
 

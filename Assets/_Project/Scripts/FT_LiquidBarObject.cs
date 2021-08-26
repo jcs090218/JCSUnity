@@ -7,13 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-using UnityEngine.UI;
 
-
-public class FT_LiquidBarObject
-    : MonoBehaviour 
+public class FT_LiquidBarObject : MonoBehaviour
 {
     /* Variables */
 

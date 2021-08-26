@@ -6,16 +6,14 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
-using JCSUnity;
 using System.IO;
+using UnityEngine;
+using JCSUnity;
 
 /// <summary>
 /// Game settings for Boss Fight example game.
 /// </summary>
-public class BF_GameSettings
-    : JCS_Settings<BF_GameSettings>
+public class BF_GameSettings : JCS_Settings<BF_GameSettings>
 {
     /* Variables */
 

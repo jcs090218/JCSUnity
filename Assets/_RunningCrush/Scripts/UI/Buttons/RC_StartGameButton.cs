@@ -7,16 +7,11 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using JCSUnity;
 using UnityEngine.UI;
+using JCSUnity;
 
-/// <summary>
-/// 
-/// </summary>
 [RequireComponent(typeof(RectTransform))]
-public class RC_StartGameButton 
-    : MonoBehaviour 
+public class RC_StartGameButton : MonoBehaviour 
 {
     /* Variables */
 

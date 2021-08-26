@@ -7,14 +7,12 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// 
 /// </summary>
 [RequireComponent(typeof(BF_LiveObject))]
-public class BF_HealthTarget 
-    : MonoBehaviour 
+public class BF_HealthTarget : MonoBehaviour
 {
     /* Variables */
 

@@ -6,16 +6,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-/// <summary>
-/// 
-/// </summary>
-public class FT_Raycast_Test
-    : MonoBehaviour 
+public class FT_Raycast_Test : MonoBehaviour 
 {
     /* Variables */
 

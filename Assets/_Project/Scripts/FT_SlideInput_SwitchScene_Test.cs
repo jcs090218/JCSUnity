@@ -1,9 +1,14 @@
-﻿using UnityEngine;
-using System.Collections;
-using JCSUnity;
+﻿/**
+ * $File: FT_SlideInput_SwitchScene_Test.cs $
+ * $Date: 2017-05-25 00:41:28 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
 
-public class FT_SlideInput_SwitchScene_Test
-    : MonoBehaviour 
+public class FT_SlideInput_SwitchScene_Test : MonoBehaviour 
 {
     /* Variables */
 

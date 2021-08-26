@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
@@ -15,8 +14,7 @@ using JCSUnity;
 /// base on the enum list.
 /// </summary>
 [RequireComponent(typeof(BF_PickItem))]
-public class BF_EffectPickItem 
-    : MonoBehaviour 
+public class BF_EffectPickItem : MonoBehaviour
 {
     /* Variables */
 

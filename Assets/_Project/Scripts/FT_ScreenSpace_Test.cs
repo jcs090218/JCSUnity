@@ -7,14 +7,11 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CharacterController))]
-public class FT_ScreenSpace_Test
-    : MonoBehaviour 
+public class FT_ScreenSpace_Test : MonoBehaviour
 {
     /* Variables */
 

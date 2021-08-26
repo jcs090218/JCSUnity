@@ -7,11 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
-public class RC_EffectObject 
-    : MonoBehaviour 
+public class RC_EffectObject : MonoBehaviour 
 {
     /* Variables */
 

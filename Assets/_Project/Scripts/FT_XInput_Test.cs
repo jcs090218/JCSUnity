@@ -7,15 +7,12 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-
 
 /// <summary>
 /// Test the joystick input.
 /// </summary>
-public class FT_XInput_Test
-    : MonoBehaviour
+public class FT_XInput_Test : MonoBehaviour
 {
     /* Variables */
 

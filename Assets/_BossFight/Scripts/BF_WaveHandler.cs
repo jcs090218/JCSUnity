@@ -7,14 +7,12 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// To simulate the wave in the scene.
 /// </summary>
-public class BF_WaveHandler 
-    : MonoBehaviour 
+public class BF_WaveHandler : MonoBehaviour
 {
 
     /* Variables */

@@ -7,14 +7,12 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Live object for example game `Boss Fight`.
 /// </summary>
-public class BF_LiveObject
-    : JCS_2DLiveObject
+public class BF_LiveObject : JCS_2DLiveObject
 {
     /* Variables */
 

@@ -6,15 +6,12 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// 
 /// </summary>
-public class BF_MessageSettings 
-    :  JCS_Settings<BF_MessageSettings>
+public class BF_MessageSettings :  JCS_Settings<BF_MessageSettings>
 {
     /* Variables */
 

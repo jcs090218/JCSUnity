@@ -7,14 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
-/// <summary>
-/// 
-/// </summary>
-public class RC_Ladder 
-    : JCS_2DLadder
+public class RC_Ladder : JCS_2DLadder
 {
     /* Variables */
 

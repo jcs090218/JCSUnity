@@ -7,13 +7,11 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// Gold system.
 /// </summary>
-public class RC_GoldSystem 
-    : MonoBehaviour 
+public class RC_GoldSystem : MonoBehaviour
 {
     /* Variables */
 

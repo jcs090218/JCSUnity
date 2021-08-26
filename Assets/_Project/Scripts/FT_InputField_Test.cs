@@ -6,18 +6,14 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 
 /// <summary>
 /// Test of the input field.
 /// </summary>
 [RequireComponent(typeof(InputField))]
-public class FT_InputField_Test 
-    : MonoBehaviour 
+public class FT_InputField_Test : MonoBehaviour
 {
     /* Variables */
 

@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using JCSUnity;
@@ -18,8 +16,7 @@ using JCSUnity;
 ///   1. At least two buttons for different languages.
 ///   2. Assign callback and call language refresh.
 /// </summary>
-public class FT_MultiLangs 
-    : MonoBehaviour 
+public class FT_MultiLangs : MonoBehaviour 
 {
     /* Variables */
 

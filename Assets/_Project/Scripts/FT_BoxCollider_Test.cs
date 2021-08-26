@@ -7,12 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-
 
 [RequireComponent(typeof(BoxCollider))]
-public class FT_BoxCollider_Test
-    : MonoBehaviour 
+public class FT_BoxCollider_Test : MonoBehaviour
 {
     /* Variables */
 

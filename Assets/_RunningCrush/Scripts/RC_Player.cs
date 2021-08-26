@@ -7,14 +7,12 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Running Crush game's player.
 /// </summary>
-public class RC_Player 
-    : JCS_2DSideScrollerPlayer
+public class RC_Player : JCS_2DSideScrollerPlayer
 {
     /* Variables */
 

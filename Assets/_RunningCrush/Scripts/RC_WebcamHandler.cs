@@ -7,13 +7,10 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
-public class RC_WebcamHandler
-    : MonoBehaviour
+public class RC_WebcamHandler : MonoBehaviour
 {
     /* Variables */
 

@@ -1,10 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+/**
+ * $File: FT_BGM_Tester.cs $
+ * $Date: $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *                   Copyright (c) 2016 by Shen, Jen-Chieh $
+ */
 using UnityEngine;
 using JCSUnity;
 
-public class FT_BGM_Tester
-    : MonoBehaviour
+public class FT_BGM_Tester : MonoBehaviour
 {
     /* Variables */
 

@@ -7,14 +7,12 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Gold object.
 /// </summary>
-public class BF_GoldObject 
-    : JCS_CashObject
+public class BF_GoldObject : JCS_CashObject
 {
 
     /* Variables */

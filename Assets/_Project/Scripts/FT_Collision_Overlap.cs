@@ -7,11 +7,8 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 
-
-public class FT_Collision_Overlap
-    : MonoBehaviour 
+public class FT_Collision_Overlap : MonoBehaviour
 {
     /* Variables */
 

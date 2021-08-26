@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
@@ -15,8 +14,7 @@ using JCSUnity;
 /// they are.
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
-public class RC_PlayerPointer
-    : MonoBehaviour
+public class RC_PlayerPointer : MonoBehaviour
 {
     /* Variables */
 

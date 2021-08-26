@@ -7,12 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-using System;
 
-public class BF_AbilityFormat 
-    : JCS_AbilityFormat 
+public class BF_AbilityFormat : JCS_AbilityFormat 
 {
     /* Variables */
 

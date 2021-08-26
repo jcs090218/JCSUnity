@@ -7,7 +7,6 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
@@ -17,8 +16,7 @@ using JCSUnity;
 [RequireComponent(typeof(JCS_DetectAreaAction))]
 [RequireComponent(typeof(JCS_ShootAction))]
 [RequireComponent(typeof(BF_Player))]
-public class BF_AutoAttacker
-    : MonoBehaviour
+public class BF_AutoAttacker : MonoBehaviour
 {
     /* Variables */
 

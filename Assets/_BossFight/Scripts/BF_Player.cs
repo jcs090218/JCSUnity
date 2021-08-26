@@ -7,14 +7,12 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Main character movement of this game.
 /// </summary>
-public class BF_Player 
-    : JCS_2DSideScrollerPlayer
+public class BF_Player : JCS_2DSideScrollerPlayer
 {
     /* Variables */
     

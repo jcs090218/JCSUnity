@@ -7,14 +7,12 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// If player collect the gold will earn gold
 /// </summary>
-public class RC_GoldObject 
-    : JCS_CashObject
+public class RC_GoldObject : JCS_CashObject
 {
     /* Variables */
 

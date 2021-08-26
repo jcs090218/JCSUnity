@@ -7,12 +7,9 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
-
-public class FT_SetBox_Test
-    : MonoBehaviour 
+public class FT_SetBox_Test : MonoBehaviour
 {
     /* Variables */
 

@@ -7,15 +7,12 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
-
 
 /// <summary>
 /// Cast position to this transform.
 /// </summary>
-public class FT_CastToMePosition
-    : MonoBehaviour 
+public class FT_CastToMePosition : MonoBehaviour 
 {
     /* Variables */
 

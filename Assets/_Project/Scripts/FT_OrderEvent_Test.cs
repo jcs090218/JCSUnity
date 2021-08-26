@@ -6,8 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using JCSUnity;
 
@@ -15,8 +13,7 @@ using JCSUnity;
 /// Test the component `JCS_OrderEvent`.
 /// </summary>
 [RequireComponent(typeof(JCS_OrderEvent))]
-public class FT_OrderEvent_Test 
-    : MonoBehaviour 
+public class FT_OrderEvent_Test : MonoBehaviour
 {
     /* Variables */
 

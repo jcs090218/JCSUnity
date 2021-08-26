@@ -6,16 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using JCSUnity;
 
 /// <summary>
 /// Check if a Unity Object visible in the render field.
 /// </summary>
-public class FT_CheckVisible 
-    : JCSUnity.JCS_UnityObject 
+public class FT_CheckVisible : JCS_UnityObject 
 {
     /* Variables */
 

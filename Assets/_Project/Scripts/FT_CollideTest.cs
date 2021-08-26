@@ -7,14 +7,11 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-
 
 /// <summary>
 /// Test if the two collider collide.
 /// </summary>
-public class FT_CollideTest 
-    : MonoBehaviour 
+public class FT_CollideTest : MonoBehaviour 
 {
     /* Variables */
 

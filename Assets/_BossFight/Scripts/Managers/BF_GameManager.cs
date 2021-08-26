@@ -7,16 +7,14 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using JCSUnity;
 using UnityEngine.UI;
+using JCSUnity;
 
 /// <summary>
 /// Record down all the game information in order 
 /// to have the correct conditional judgment.
 /// </summary>
-public class BF_GameManager 
-    : MonoBehaviour 
+public class BF_GameManager : MonoBehaviour
 {
     /* Variables */
 

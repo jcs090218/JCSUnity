@@ -7,14 +7,12 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 /// <summary>
 /// 
 /// </summary>
-public class BF_CashText 
-    : MonoBehaviour 
+public class BF_CashText : MonoBehaviour 
 {
     /* Variables */
     

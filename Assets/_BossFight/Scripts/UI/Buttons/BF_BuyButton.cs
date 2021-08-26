@@ -7,15 +7,13 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
-using JCSUnity;
 using UnityEngine.UI;
+using JCSUnity;
 
 /// <summary>
 /// Button that buys the item.
 /// </summary>
-public class BF_BuyButton 
-    :  JCS_Button
+public class BF_BuyButton :  JCS_Button
 {
     /* Variables */
 

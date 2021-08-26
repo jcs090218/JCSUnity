@@ -9,9 +9,6 @@
 using UnityEngine;
 using JCSUnity;
 
-/// <summary>
-/// 
-/// </summary>
 public class FT_EnumConver_Test : MonoBehaviour
 {
     /* Variables */

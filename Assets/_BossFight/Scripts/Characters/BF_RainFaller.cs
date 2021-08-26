@@ -7,15 +7,13 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Character shoot rain fall
 /// </summary>
 [RequireComponent(typeof(JCS_ShootAction))]
-public class BF_RainFaller
-    : MonoBehaviour
+public class BF_RainFaller : MonoBehaviour
 {
     /* Variables */
 

@@ -6,16 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
-using System.Collections;
 using JCSUnity;
 
 /// <summary>
 /// Load the scene base on the level selected 
 /// by the player.
 /// </summary>
-public class BF_LoadSelectedSceneButton 
-    : JCS_Button 
+public class BF_LoadSelectedSceneButton : JCS_Button
 {
     /* Variables */
 
