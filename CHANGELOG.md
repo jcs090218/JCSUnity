@@ -13,6 +13,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add new component, event `JCS_ActiveWithTime.`
 * Add new component, event `JCS_InactiveWithTime.`
 * Support alpha channel for component `JCS_AlphaObject`.
+* Respect screen color from scene settings to scene manager.
 
 ## 2.2.0
 > Released Aug 16, 2021
