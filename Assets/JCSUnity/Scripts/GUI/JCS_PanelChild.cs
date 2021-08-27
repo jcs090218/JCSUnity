@@ -50,7 +50,7 @@ namespace JCSUnity
             if (mPanelRoot == null)
                 mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
 
-            this.mIsUnityDefinedUI = IsUnityDefinedUI();
+            this.mIsUnityDefinedUI = JCS_GUIUtil.IsUnityDefinedUI(this);
 
             // Rely on "Script Execution Order"
             {
@@ -142,26 +142,9 @@ namespace JCSUnity
                 if (child.GetComponent<JCS_PanelChild>() != null)
                     continue;
 
-                JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
+                var panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
                 panelChild.PanelRoot = mPanelRoot;
             }
-        }
-
-        /// <summary>
-        /// UI component that we do not want to mess up with.
-        /// </summary>
-        /// <returns></returns>
-        private bool IsUnityDefinedUI()
-        {
-            return (this.GetComponent<RawImage>() ||
-                this.GetComponent<Image>() ||
-                this.GetComponent<Button>() ||
-                this.GetComponent<Dropdown>() ||
-                this.GetComponent<Slider>() ||
-                this.GetComponent<Scrollbar>() ||
-                this.GetComponent<Text>() ||
-                this.GetComponent<Toggle>() ||
-                this.GetComponent<InputField>());
         }
     }
 }
