@@ -64,8 +64,9 @@ namespace JCSUnity
 
                 if (!mIsUnityDefinedUI)
                 {
-                    // since we add this script assuming we are 
-                    // int the fit perfect size mode
+                    // since we add this script assuming we are  int the fit
+                    // perfect size mode
+                    //
                     // see "JCS_PanelRoot" -> mFitScreenSize variables
                     AddPanelChild();
                 }
@@ -93,11 +94,10 @@ namespace JCSUnity
                 List<Transform> childs = null;
                 if (!mIsUnityDefinedUI)
                 {
-                    // NOTE: If not the Unity define UI, we need to 
-                    // dettach all the child transform before we can 
-                    // resize it. If we resize it without dettach all 
-                    // child transforms, the children transform will 
-                    // also be scaled/changed.
+                    // NOTE: If not the Unity define UI, we need to  dettach all
+                    // the child transform before we can resize it. If we resize
+                    // it without dettach all child transforms, the children
+                    // transform will also be scaled/changed.
                     // 
                     // 這個有點暴力解法... 不知道為什麼Unity沒有辦法
                     // 在初始化階段一次清乾淨.

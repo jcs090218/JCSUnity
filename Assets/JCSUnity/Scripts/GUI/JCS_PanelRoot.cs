@@ -65,7 +65,7 @@ namespace JCSUnity
         /// </summary>
         private void FitPerfectSize()
         {
-            JCS_ScreenSettings ss = JCS_ScreenSettings.instance;
+            var ss = JCS_ScreenSettings.instance;
 
             float newWidth = ss.STARTING_SCREEN_SIZE.width;
             float newHeight = ss.STARTING_SCREEN_SIZE.height;
@@ -118,15 +118,13 @@ namespace JCSUnity
         {
             Transform tempTrans = this.transform;
 
-            // loop through the child object and 
-            // add on to it.
+            // loop through the child object and add on to it.
             for (int index = 0; index < transform.childCount; ++index)
             {
                 Transform child = tempTrans.GetChild(index);
 
                 // Only added once.
-                if (child.GetComponent<JCS_PanelChild>() != null ||
-                    child.GetComponent<JCS_PanelRoot>() != null)
+                if (child.GetComponent<JCS_PanelChild>() != null || child.GetComponent<JCS_PanelRoot>() != null)
                     continue;
 
                 JCS_PanelChild panelChild = child.gameObject.AddComponent<JCS_PanelChild>();
