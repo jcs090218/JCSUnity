@@ -67,7 +67,7 @@ aren't necessary depend on the game your are making.
 
 * *Demo* : https://www.youtube.com/playlist?list=PLp13qyXnE6zDioC30eW_-aqr4gsswxJo0
 * *Tutorials* : https://www.youtube.com/playlist?list=PLp13qyXnE6zCmRobHV9uEjv-1_ieCPwjc
-* *Manual/Scripting API* : [Scripting-Manual-JCSUnity](http://www.jcs-profile.com:3001)
+* *Manual/Scripting API* : [Scripting-Manual-JCSUnity](https://jcs090218.github.io/JCSUnity/Manual/index.html)
 
 ## :video_game: Games
 
