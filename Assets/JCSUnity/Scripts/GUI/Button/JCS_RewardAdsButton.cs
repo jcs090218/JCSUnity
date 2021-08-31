@@ -1,4 +1,8 @@
-#if (UNITY_ANDRIOD || UNITY_IOS)
+/* NOTE: If you are using `Unity IAP` uncomment this line.
+ */
+//#define ADS_MODULE
+
+#if (UNITY_ANDRIOD || UNITY_IOS || UNITY_EDITOR) && ADS_MODULE
 /**
  * $File: JCS_RewardAdsButton.cs $
  * $Date: 2017-04-28 21:59:46 $
@@ -55,7 +59,7 @@ namespace JCSUnity
                 mRewardCallback);
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Reward example function. Your function should be 
         /// similar to this.
