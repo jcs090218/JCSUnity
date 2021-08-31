@@ -1,0 +1,32 @@
+# Manual
+manual_name: 'JCSUnity'
+
+# Theme
+header_color: '#222C37'
+arrow_color: '#19E3B1'
+th_show: true
+th_color: '#A2F2DE'
+
+# Version
+version_title_01: 'JCSUnity Version: '
+version_title_02: 'Unity Version: '
+version_title_03: ''
+version_title_04: ''
+version_title_05: ''
+version_title_06: ''
+version_title_07: ''
+
+version_num_01: '2.2.1'
+version_num_02: '2021.1.1f1'
+version_num_03: ''
+version_num_04: ''
+version_num_05: ''
+version_num_06: ''
+version_num_07: ''
+
+# Copyright
+copyright_text: 'Copyright © 2018 JCSUnity Group. Built: 2018-09-28.'
+
+# Link
+homepage_url: 'https://github.com/jcs090218/JCSUnity'
+homepage_text: 'JCSUnity.github'
