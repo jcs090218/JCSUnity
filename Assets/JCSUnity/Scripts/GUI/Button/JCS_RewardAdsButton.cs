@@ -1,8 +1,8 @@
-/* NOTE: If you are using `Unity IAP` uncomment this line.
+/* NOTE: If you are using `Unity Ads` uncomment this line.
  */
-//#define ADS_MODULE
+//#define UNITY_ADS
 
-#if (UNITY_ANDRIOD || UNITY_IOS || UNITY_EDITOR) && ADS_MODULE
+#if (UNITY_ANDRIOD || UNITY_IOS || UNITY_EDITOR) && UNITY_ADS
 /**
  * $File: JCS_RewardAdsButton.cs $
  * $Date: 2017-04-28 21:59:46 $
