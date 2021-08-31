@@ -1,0 +1,5 @@
+<h1 id=jcs_inifilereader>JCS_INIFileReader</h1><p>Initialize file reader, utility will read the <code>.ini</code> or <code>.properties</code> file.<h2 id=functions>Functions</h2><table><thead><tr><th id=name style=text-align:left>Name<th id=description style=text-align:left>Description<tbody><tr><td style=text-align:left>ReadINIFile<td style=text-align:left>Read the .ini file and returns it value.</table><h2 id=example>Example</h2><pre class="cs language-cs"><code class="hljs cs language-cs">  Dictionary&lt;<span class=hljs-built_in>string</span>, <span class=hljs-built_in>string</span>&gt; data = JCS_INIFileReader.ReadINIFile(Application.dataPath + <span class=hljs-string>&quot;/example.ini&quot;</span>);
+
+  Debug.Log(EDITOR_INI[<span class=hljs-string>&quot;author&quot;</span>]);  <span class=hljs-comment>// Output: Author Name</span>
+  Debug.Log(EDITOR_INI[<span class=hljs-string>&quot;email&quot;</span>]);   <span class=hljs-comment>// Output: example@email.com</span></code></pre><p>example.ini<pre class="cs language-cs"><code class="hljs cs language-cs">  author=Author Name
+  email=example@email.com</code></pre>
