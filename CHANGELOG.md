@@ -15,6 +15,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Support alpha channel for component `JCS_AlphaObject`.
 * Respect screen color from scene settings to scene manager.
 * Add fit all option for screen module. (mobile)
+* Replace screens' sprite instead the built-in `Background` UI sprite.
 
 ## 2.2.0
 > Released Aug 16, 2021
