@@ -623,7 +623,7 @@ MonoBehaviour:
   STANDARD_SCREEN_SIZE:
     width: 1920
     height: 1080
-  ENSURE_INSIDE_SAFE_AREA: 0
+  SCREEN_TYPE: 3
 --- !u!114 &685146590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1352,7 +1352,6 @@ MonoBehaviour:
   RESIZE_SCREEN_THIS_SCENE: 0
   ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE: 16
   ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE: 9
-  SCREEN_TYPE_THIS_SCENE: 3
 --- !u!114 &1273917895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2452,4 +2451,3 @@ MonoBehaviour:
   mAsOriginalRotation: 0
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mFitScreenSize: 1
