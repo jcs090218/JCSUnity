@@ -39,6 +39,7 @@ jobs:
       run: mv './gh-pages/.git' './build'
 
     - name: Push to pages
+      continue-on-error: true
       run: |
         cd './build'
         git config user.name github-actions
