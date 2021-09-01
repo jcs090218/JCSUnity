@@ -16,6 +16,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Respect screen color from scene settings to scene manager.
 * Add fit all option for screen module. (mobile)
 * Replace screens' sprite instead the built-in `Background` UI sprite.
+* Reveal timer variables for active and enable events.
 
 ## 2.2.0
 > Released Aug 16, 2021
