@@ -17,6 +17,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add fit all option for screen module. (mobile)
 * Replace screens' sprite instead the built-in `Background` UI sprite.
 * Reveal timer variables for active and enable events.
+* Escape `emailto` request for open URL.
 
 ## 2.2.0
 > Released Aug 16, 2021
