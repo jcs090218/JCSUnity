@@ -17,6 +17,6 @@ Make object hop for a force.
 | StartHop | Start the hopping process. |
 
 
-## ** Demo **
+## Demo
 
 <img src="./_images/JCS_HopEffect.gif"/>
