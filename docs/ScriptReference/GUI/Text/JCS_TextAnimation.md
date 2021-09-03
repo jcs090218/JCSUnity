@@ -20,8 +20,8 @@ Text animation that will display text accordingly.
 
 ## Demo
 
-<img src="./images/GUI/Text/JCS_TextAnimation/demo.gif"/>
+<img src="./_images/JCS_TextAnimation/demo.gif"/>
 
 ## Inpsector View
 
-<img src="./images/GUI/Text/JCS_TextAnimation/inspector.png"/>
+<img src="./_images/JCS_TextAnimation/inspector.png"/>
