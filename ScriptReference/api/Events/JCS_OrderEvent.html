@@ -1,46 +1,46 @@
-<h1 id=jcs_orderevent>JCS_OrderEvent</h1><p>Execute an operation in order with interval of time.<h2 id=variables>Variables</h2><table><thead><tr><th id=name style=text-align:left>Name<th id=description style=text-align:left>Description<tbody><tr><td style=text-align:left>IntervalTime<td style=text-align:left>Time for each execution.<tr><td style=text-align:left>unityExecution<td style=text-align:left>Unity execution event.</table><h2 id=functions>Functions</h2><table><thead><tr><th id=name style=text-align:left>Name<th id=description style=text-align:left>Description<tbody><tr><td style=text-align:left>StartEvent<td style=text-align:left>Start a new event with interval of time.<tr><td style=text-align:left>DoneEvent<td style=text-align:left>Terminate the current event loop.</table><h2 id=example>Example</h2><pre class="cs language-cs"><code class="hljs cs language-cs"><span class=hljs-keyword>using</span> System.Collections;
-<span class=hljs-keyword>using</span> System.Collections.Generic;
-<span class=hljs-keyword>using</span> UnityEngine;
-<span class=hljs-keyword>using</span> JCSUnity;
+<h1 id="jcs_orderevent">JCS_OrderEvent</h1><p>Execute an operation in order with interval of time.<h2 id="variables">Variables</h2><table><thead><tr><th id="name" style="text-align:left">Name<th id="description" style="text-align:left">Description<tbody><tr><td style="text-align:left">IntervalTime<td style="text-align:left">Time for each execution.<tr><td style="text-align:left">unityExecution<td style="text-align:left">Unity execution event.</table><h2 id="functions">Functions</h2><table><thead><tr><th id="name" style="text-align:left">Name<th id="description" style="text-align:left">Description<tbody><tr><td style="text-align:left">StartEvent<td style="text-align:left">Start a new event with interval of time.<tr><td style="text-align:left">DoneEvent<td style="text-align:left">Terminate the current event loop.</table><h2 id="example">Example</h2><pre class="cs language-cs"><code class="hljs cs language-cs"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> JCSUnity;
 
-<span class=hljs-comment><span class=hljs-doctag>///</span> <span class=hljs-doctag>&lt;summary&gt;</span></span>
-<span class=hljs-comment><span class=hljs-doctag>///</span> Test the component `JCS_OrderEvent`.</span>
-<span class=hljs-comment><span class=hljs-doctag>///</span> <span class=hljs-doctag>&lt;/summary&gt;</span></span>
-[<span class=hljs-meta>RequireComponent(typeof(JCS_OrderEvent))</span>]
-<span class=hljs-keyword>public</span> <span class=hljs-keyword>class</span> <span class=hljs-title>FT_OrderEvent_Test</span> 
-    : <span class=hljs-title>MonoBehaviour</span> 
+<span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span>
+<span class="hljs-comment"><span class="hljs-doctag">///</span> Test the component `JCS_OrderEvent`.</span>
+<span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span>
+[<span class="hljs-meta">RequireComponent(typeof(JCS_OrderEvent))</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">FT_OrderEvent_Test</span> 
+    : <span class="hljs-title">MonoBehaviour</span> 
 {
-    <span class=hljs-comment>/* Variables */</span>
+    <span class="hljs-comment">/* Variables */</span>
 
-    <span class=hljs-keyword>private</span> JCS_OrderEvent mOrderEvent = <span class=hljs-literal>null</span>;
+    <span class="hljs-keyword">private</span> JCS_OrderEvent mOrderEvent = <span class="hljs-literal">null</span>;
 
-    [<span class=hljs-meta>Tooltip(<span class=hljs-meta-string>&quot;Text to print for testing.&quot;</span>)</span>]
-    <span class=hljs-keyword>public</span> <span class=hljs-built_in>string</span> word = <span class=hljs-string>&quot;Hello test!!~~&quot;</span>;
+    [<span class="hljs-meta">Tooltip(<span class="hljs-meta-string">&quot;Text to print for testing.&quot;</span>)</span>]
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> word = <span class="hljs-string">&quot;Hello test!!~~&quot;</span>;
 
-    [<span class=hljs-meta>Tooltip(<span class=hljs-meta-string>&quot;Count to print the text.&quot;</span>)</span>]
-    <span class=hljs-keyword>public</span> <span class=hljs-built_in>int</span> printCount = <span class=hljs-number>5</span>;
+    [<span class="hljs-meta">Tooltip(<span class="hljs-meta-string">&quot;Count to print the text.&quot;</span>)</span>]
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> printCount = <span class="hljs-number">5</span>;
 
-    [<span class=hljs-meta>Tooltip(<span class=hljs-meta-string>&quot;Interval time for each print.&quot;</span>)</span>]
-    [<span class=hljs-meta>Range(0.0f, 10.0f)</span>]
-    <span class=hljs-keyword>public</span> <span class=hljs-built_in>float</span> intervalTime = <span class=hljs-number>1.0f</span>;
+    [<span class="hljs-meta">Tooltip(<span class="hljs-meta-string">&quot;Interval time for each print.&quot;</span>)</span>]
+    [<span class="hljs-meta">Range(0.0f, 10.0f)</span>]
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> intervalTime = <span class="hljs-number">1.0f</span>;
 
-    <span class=hljs-keyword>private</span> <span class=hljs-built_in>int</span> mCounter = <span class=hljs-number>0</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> mCounter = <span class="hljs-number">0</span>;
 
-    <span class=hljs-comment>/* Setter &amp; Getter */</span>
+    <span class="hljs-comment">/* Setter &amp; Getter */</span>
 
-    <span class=hljs-comment>/* Functions */</span>
+    <span class="hljs-comment">/* Functions */</span>
 
-    <span class=hljs-function><span class=hljs-keyword>private</span> <span class=hljs-keyword>void</span> <span class=hljs-title>Awake</span>(<span class=hljs-params></span>)</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>(<span class="hljs-params"></span>)</span>
     {
-        mOrderEvent = <span class=hljs-keyword>this</span>.GetComponent&lt;JCS_OrderEvent&gt;();
+        mOrderEvent = <span class="hljs-keyword">this</span>.GetComponent&lt;JCS_OrderEvent&gt;();
 
         mOrderEvent.StartEvent(intervalTime, () =&gt; {
             Debug.Log(word);
 
             ++mCounter;
 
-            <span class=hljs-comment>// Check for termination.</span>
-            <span class=hljs-keyword>if</span> (mCounter == printCount)
+            <span class="hljs-comment">// Check for termination.</span>
+            <span class="hljs-keyword">if</span> (mCounter == printCount)
                 mOrderEvent.DoneEvent();
         });
     }
