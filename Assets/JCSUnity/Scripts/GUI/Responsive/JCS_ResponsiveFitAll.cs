@@ -28,11 +28,7 @@ namespace JCSUnity
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
-            var panelChild = this.GetComponent<JCS_PanelChild>();
-
-            List<RectTransform> childs = null;
-            if (panelChild == null)
-                childs = JCS_Utility.ForceDetachChildren(this.mRectTransform);
+            List<RectTransform> childs = JCS_Utility.ForceDetachChildren(this.mRectTransform);
 
             JCS_Utility.ReattachSelf(this.mRectTransform, (parent) =>
             {
@@ -40,8 +36,7 @@ namespace JCSUnity
                 mRectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
             });
 
-            if (panelChild == null)
-                JCS_Utility.AttachChildren(this.mRectTransform, childs);
+            JCS_Utility.AttachChildren(this.mRectTransform, childs);
 
             mRectTransform.localPosition = Vector3.zero;
         }
