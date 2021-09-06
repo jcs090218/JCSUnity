@@ -20,6 +20,7 @@ Screen related settings.
 | Name                       | Description                                                                      |
 |:---------------------------|:---------------------------------------------------------------------------------|
 | ShouldSpawnResizablePanels | Return true, if we should use resizalbe panels.                                  |
+| IsResponsive               | Return true, if current screen type is responsive.                               |
 | StartingScreenSize         | Return the starting screen size by the current screen type.                      |
 | ScreenRatio                | Return the ratio from expected screen size to actual screen size.                |
 | BlackspaceWidth            | Return width of the blackspace on the screen, if any after resizing the screen.  |
