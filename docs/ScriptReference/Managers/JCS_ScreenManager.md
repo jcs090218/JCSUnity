@@ -12,9 +12,8 @@ Manages screen action.
 
 ## Functions
 
-| Name                       | Description                                     |
-|:---------------------------|:------------------------------------------------|
-| ShouldSpawnResizablePanels | Return true, if we should use resizalbe panels. |
-| ShowResizablePanels        | Show the resizable panels.                      |
-| HideResizablePanels        | Hide the resizable panels.                      |
-| SetResizablePanelsColor    | Set the color to all resizable panels.          |
+| Name                    | Description                            |
+|:------------------------|:---------------------------------------|
+| ShowResizablePanels     | Show the resizable panels.             |
+| HideResizablePanels     | Hide the resizable panels.             |
+| SetResizablePanelsColor | Set the color to all resizable panels. |
