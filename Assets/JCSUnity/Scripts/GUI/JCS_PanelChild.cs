@@ -80,14 +80,7 @@ namespace JCSUnity
         /// <param name="yRatio"></param>
         public void FitPerfectSize(float xRatio, float yRatio)
         {
-            /*
-             * NOTE(jenchieh): 
-             * Cool, `sizeDelta' will actually change the `localPosition'
-             * now since version 2017.4.
-             * 
-             * So we set the `sizeDelta' (width and height) first, then
-             * set the `localPosition'.
-             */
+            var screenS = JCS_ScreenSettings.instance;
 
             /* Do the scale. */
             {
@@ -105,8 +98,19 @@ namespace JCSUnity
                 }
 
                 Vector3 newScale = mRectTransform.localScale;
-                newScale.x /= xRatio;
-                newScale.y /= yRatio;
+
+                if (screenS.SCREEN_TYPE == JCS_ScreenType.MIXED)
+                {
+                    float minRatio = Mathf.Min(xRatio, yRatio);
+                    newScale.x /= minRatio;
+                    newScale.y /= minRatio;
+                }
+                else
+                {
+                    newScale.x /= xRatio;
+                    newScale.y /= yRatio;
+                }
+
                 mRectTransform.localScale = newScale;
 
                 if (!mIsUnityDefinedUI)
