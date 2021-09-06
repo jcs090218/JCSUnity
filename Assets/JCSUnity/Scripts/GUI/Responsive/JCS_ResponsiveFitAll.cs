@@ -36,6 +36,8 @@ namespace JCSUnity
             });
 
             JCS_Utility.AttachChildren(this.mRectTransform, childs);
+
+            mRectTransform.localPosition = Vector3.zero;
         }
     }
 }
