@@ -40,3 +40,4 @@ in order to have JCSUnity work correctly in Unity Engine.
 * JCS_2DAnimator
 * JCS_2DAnimation
 * JCS_GamePadAnimationHandler
+* JCS_ResponsiveFitAll
