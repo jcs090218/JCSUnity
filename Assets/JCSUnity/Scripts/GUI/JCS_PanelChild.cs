@@ -102,13 +102,13 @@ namespace JCSUnity
                 if (screenS.SCREEN_TYPE == JCS_ScreenType.MIXED)
                 {
                     float minRatio = Mathf.Min(xRatio, yRatio);
-                    newScale.x /= minRatio;
-                    newScale.y /= minRatio;
+                    newScale.x *= minRatio;
+                    newScale.y *= minRatio;
                 }
                 else
                 {
-                    newScale.x /= xRatio;
-                    newScale.y /= yRatio;
+                    newScale.x *= xRatio;
+                    newScale.y *= yRatio;
                 }
 
                 mRectTransform.localScale = newScale;
@@ -123,8 +123,8 @@ namespace JCSUnity
             /* Do the position. */
             {
                 Vector3 newPosition = mRectTransform.localPosition;
-                newPosition.x /= xRatio;
-                newPosition.y /= yRatio;
+                newPosition.x *= xRatio;
+                newPosition.y *= yRatio;
 
                 // set to the new position
                 mRectTransform.localPosition = newPosition;
