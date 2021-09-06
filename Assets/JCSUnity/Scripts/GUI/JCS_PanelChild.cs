@@ -99,7 +99,7 @@ namespace JCSUnity
 
                 Vector3 newScale = mRectTransform.localScale;
 
-                if (screenS.SCREEN_TYPE == JCS_ScreenType.MIXED)
+                if (screenS.IsResponsive())
                 {
                     float minRatio = Mathf.Min(xRatio, yRatio);
                     newScale.x *= minRatio;
