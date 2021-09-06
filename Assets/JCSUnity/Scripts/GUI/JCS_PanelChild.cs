@@ -83,7 +83,7 @@ namespace JCSUnity
 
             /* Do the scale. */
             {
-                List<Transform> childs = null;
+                List<RectTransform> childs = null;
                 if (!mIsUnityDefinedUI)
                 {
                     // NOTE: If not the Unity define UI, we need to  dettach all

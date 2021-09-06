@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JCSUnity
@@ -27,15 +28,20 @@ namespace JCSUnity
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
-            var childs = JCS_Utility.ForceDetachChildren(this.mRectTransform);
+            var panelChild = this.GetComponent<JCS_PanelChild>();
 
-            JCS_Utility.ReattachSelf(this.transform, (parent) =>
+            List<RectTransform> childs = null;
+            if (panelChild == null)
+                childs = JCS_Utility.ForceDetachChildren(this.mRectTransform);
+
+            JCS_Utility.ReattachSelf(this.mRectTransform, (parent) =>
             {
                 mRectTransform.localScale = Vector3.one;
                 mRectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
             });
 
-            JCS_Utility.AttachChildren(this.mRectTransform, childs);
+            if (panelChild == null)
+                JCS_Utility.AttachChildren(this.mRectTransform, childs);
 
             mRectTransform.localPosition = Vector3.zero;
         }
