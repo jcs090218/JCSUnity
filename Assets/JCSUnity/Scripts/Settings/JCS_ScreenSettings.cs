@@ -177,6 +177,19 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true, if current screen type is responsive.
+        /// </summary>
+        public bool IsResponsive()
+        {
+            switch (SCREEN_TYPE)
+            {
+                case JCS_ScreenType.MIXED:
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Return the starting screen size by the current screen type.
         /// </summary>
         public JCS_ScreenSizef StartingScreenSize()
