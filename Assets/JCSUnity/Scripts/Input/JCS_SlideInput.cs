@@ -51,6 +51,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mDragging = false;
 
+        [Tooltip("How long the user touches the screen.")]
+        [SerializeField]
+        private float mTouchTime = 0.0f;
+
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         [Tooltip("Flag to check if mult touches.")]
         [SerializeField]
@@ -87,6 +91,7 @@ namespace JCSUnity
         public Vector2 DeltaPos { get { return this.mDeltaPos; } }
         public Vector2 DragDistance { get { return this.mDragDistance; } }
         public Vector2 DragDisplacement { get { return this.mDragDisplacement; } }
+        public float TouchTime { get { return this.mTouchTime; } }
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
         public bool MultiTouches { get { return this.mMultiTouches; } }
         public float TouchDistance { get { return this.mTouchDistance; } }
@@ -151,6 +156,8 @@ namespace JCSUnity
         /// </summary>
         private void WhenTouched()
         {
+            mTouchTime += Time.deltaTime;
+
             Vector3 currPos = Input.mousePosition;
 
             if (mDeltaPos == Vector2.zero && mDragDistance == Vector2.zero)
@@ -189,6 +196,8 @@ namespace JCSUnity
             mDragDisplacement = Vector2.zero;
 
             mDeltaPos = Vector2.zero;
+
+            mTouchTime = 0.0f;
 
 #if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL)
             // If focus, ignore one frame.
