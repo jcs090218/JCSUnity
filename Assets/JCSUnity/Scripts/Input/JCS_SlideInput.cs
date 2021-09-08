@@ -211,7 +211,7 @@ namespace JCSUnity
         /// </summary>
         private void HandleMultiTouches()
         {
-            // Check if multi touches.
+            // Check if multitouch.
             if (Input.touchCount <= 1)
             {
                 this.mMultiTouch = false;
@@ -222,7 +222,7 @@ namespace JCSUnity
 
             float sumTotal = 0.0f;
 
-            for (int index = 1; index < Input.touchCount; ++index)
+            for (int index = 1; index < Input.touches.Length; ++index)
             {
                 var firstTouch = Input.touches[index - 1];
                 var currentTouch = Input.touches[index];
@@ -230,7 +230,7 @@ namespace JCSUnity
                 sumTotal += distance;
             }
 
-            float newTouchDistance = sumTotal / (Input.touchCount - 1);
+            float newTouchDistance = sumTotal / Input.touchCount;
 
             // We start apply `delta` value by after the first multi touches.
             if (this.mMultiTouch)
@@ -240,7 +240,7 @@ namespace JCSUnity
 
             this.mTouchDistance = newTouchDistance;
 
-            // Multi touches starts!
+            // Multi-touch starts!
             this.mMultiTouch = true;
         }
 #endif
