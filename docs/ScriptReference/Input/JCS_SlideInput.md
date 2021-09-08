@@ -7,9 +7,10 @@ Use this to receive the slide input from the device buffer.
 | Name               | Description                                         |
 |:-------------------|:----------------------------------------------------|
 | Touched            | Is the screen touches?                              |
-| Dragging           | Flag to check if drag.                              |
 | DragDistance       | Drag distance.                                      |
 | DragDisplacement   | Drag displacement.                                  |
+| Dragging           | Return the current drag state.                      |
+| TouchTime          | How long the user touches the screen.               |
 | DeltaPos           | Delta value changes on the screen.                  |
 | MultiTouches       | Flag to check if mult touches.                      |
 | TouchDistance      | Multiple touches distance in average.               |
