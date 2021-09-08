@@ -56,9 +56,9 @@ namespace JCSUnity
         private float mTouchTime = 0.0f;
 
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        [Tooltip("Flag to check if mult touches.")]
+        [Tooltip("Flag to check if multitouch.")]
         [SerializeField]
-        private bool mMultiTouches = false;
+        private bool mMultiTouch = false;
 
         [Tooltip("Multiple touches distance in average.")]
         [SerializeField]
@@ -93,7 +93,7 @@ namespace JCSUnity
         public bool Dragging { get { return this.mDragging; } }
         public float TouchTime { get { return this.mTouchTime; } }
 #if (UNITY_ANDROID || UNITY_IPHIONE || UNITY_IOS)
-        public bool MultiTouches { get { return this.mMultiTouches; } }
+        public bool MultiTouch { get { return this.mMultiTouch; } }
         public float TouchDistance { get { return this.mTouchDistance; } }
         public float TouchDistanceDelta { get { return this.mTouchDistanceDelta; } }
         public int DetectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
@@ -214,7 +214,7 @@ namespace JCSUnity
             // Check if multi touches.
             if (Input.touchCount <= 1)
             {
-                this.mMultiTouches = false;
+                this.mMultiTouch = false;
                 this.mTouchDistance = 0.0f;
                 this.mTouchDistanceDelta = 0.0f;
                 return;
@@ -233,7 +233,7 @@ namespace JCSUnity
             float newTouchDistance = sumTotal / (Input.touchCount - 1);
 
             // We start apply `delta` value by after the first multi touches.
-            if (this.mMultiTouches)
+            if (this.mMultiTouch)
             {
                 this.mTouchDistanceDelta = newTouchDistance - this.mTouchDistance;
             }
@@ -241,7 +241,7 @@ namespace JCSUnity
             this.mTouchDistance = newTouchDistance;
 
             // Multi touches starts!
-            this.mMultiTouches = true;
+            this.mMultiTouch = true;
         }
 #endif
     }
