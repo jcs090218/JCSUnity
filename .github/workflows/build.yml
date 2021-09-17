@@ -38,7 +38,7 @@ jobs:
   activation:
     needs: [request_alf]
     name: Activate activation file 🔑
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [14.x]
