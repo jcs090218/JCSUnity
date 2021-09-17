@@ -42,7 +42,7 @@ jobs:
         run: |
           echo ${{ steps.alfFile.outputs.filePath }}
           ls
-          unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ steps.alfFile.outputs.filePath }}"
+          unity-license-activate unity.lice.activation@gmail.com @hell2021A "${{ steps.alfFile.outputs.filePath }}"
 
       - name: Update secret UNITY_LICENSE
         uses: hmanzur/actions-set-secret@v2.0.0
