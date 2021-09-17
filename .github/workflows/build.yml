@@ -66,7 +66,7 @@ jobs:
         run: echo "${{ steps.alfRead.outputs.content }}"
 
       - name: Activate the license
-        run: unity-license-activate unity.lice.activation@gmail.com @hell2021A "${{ needs.request_alf.outputs.alf }}"
+        run: unity-license-activate "unity.lice.activation@gmail.com" "@hell2021A" "${{ needs.request_alf.outputs.alf }}"
 
       - name: Read ulf
         id: ulfRead
