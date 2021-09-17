@@ -39,6 +39,7 @@ jobs:
       - name: Activate the license
         run: |
           echo ${{ steps.getManualLicenseFile.outputs.filePath }}
+          ls
           unity-license-activate ${{ secrets.UNITY_EMAIL }} ${{ secrets.UNITY_PASSWORD }} ${{ steps.getManualLicenseFile.outputs.filePath }}
 
       - name: Update secret UNITY_LICENSE
