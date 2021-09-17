@@ -61,8 +61,8 @@ jobs:
             echo "::set-output name=is_unity_license_set::${{ env.UNITY_LICENSE != '' }}"
 
   test:
-    needs: [activation]
-    if: needs.activation.outputs.is_unity_license_set == 'true'
+    needs: [checklicense]
+    if: needs.checklicense.outputs.is_unity_license_set == 'true'
     name: Test all modes ✨
     runs-on: ubuntu-latest
     steps:
@@ -89,8 +89,8 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   build:
-    needs: [activation]
-    if: needs.activation.outputs.is_unity_license_set == 'true'
+    needs: [checklicense]
+    if: needs.checklicense.outputs.is_unity_license_set == 'true'
     name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
     strategy:
