@@ -33,8 +33,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install license activator
+      - name: Install node package, unity-license-activate
         run: npm install --global unity-license-activate
+
+      - name: Read ulf
+        id: package
+        uses: juliangruber/read-file-action@v1.1.4
+        with:
+          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+
+      - name: Echo .ulf file
+        run: echo ${{ steps.package.outputs.content }}
 
       - name: Activate the license
         run: |
@@ -46,7 +55,7 @@ jobs:
         uses: hmanzur/actions-set-secret@v2.0.0
         with:
           name: 'UNITY_LICENSE'
-          value: ''
+          value: ${{ steps.package.outputs.content }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
   checklicense:
