@@ -38,7 +38,7 @@ jobs:
   activation:
     needs: [request_alf]
     name: Activate activation file 🔑
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Download .alf artifact
         uses: actions/download-artifact@v2
