@@ -13,6 +13,8 @@ jobs:
   request_alf:
     name: Request .alf file 🔑
     runs-on: ubuntu-latest
+    outputs:
+      alf: ${{ steps.output.outputs.alf }}
     steps:
       # Request manual activation file
       - name: Request manual activation file
@@ -28,6 +30,11 @@ jobs:
           name: ${{ steps.alfFile.outputs.filePath }}
           path: ${{ steps.alfFile.outputs.filePath }}
 
+      - name: Output
+        id: output
+        run: |
+          echo "::set-output name=alf::${{ steps.alfFile.outputs.filePath }}"
+
   activation:
     needs: [request_alf]
     name: Activate activation file 🔑
@@ -35,6 +42,8 @@ jobs:
     steps:
       - name: Download .alf artifact
         uses: actions/download-artifact@v2
+        with:
+          name: ${{ needs.request_alf.outputs.alf }}
 
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
