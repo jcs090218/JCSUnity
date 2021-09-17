@@ -10,8 +10,8 @@ env:
   PROJECT_PATH: .
 
 jobs:
-  activation:
-    name: Activate activation file 🔑
+  request_alf:
+    name: Request .alf file 🔑
     runs-on: ubuntu-latest
     steps:
       # Request manual activation file
@@ -20,6 +20,22 @@ jobs:
         uses: game-ci/unity-request-activation-file@main
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
+
+      # Upload artifact (Unity_v20XX.X.XXXX.alf)
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ steps.alfFile.outputs.filePath }}
+          path: ${{ steps.alfFile.outputs.filePath }}
+
+  activation:
+    needs: [request_alf]
+    name: Activate activation file 🔑
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: ${{ steps.alfFile.outputs.filePath }}
 
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -42,7 +58,7 @@ jobs:
         run: |
           echo ${{ steps.alfFile.outputs.filePath }}
           ls
-          unity-license-activate unity.lice.activation@gmail.com @hell2021A "${{ steps.alfFile.outputs.filePath }}"
+          unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ steps.alfFile.outputs.filePath }}"
 
       - name: Update secret UNITY_LICENSE
         uses: hmanzur/actions-set-secret@v2.0.0
