@@ -63,10 +63,7 @@ jobs:
         run: echo "${{ steps.package.outputs.content }}"
 
       - name: Activate the license
-        run: |
-          echo ${{ needs.request_alf.outputs.alf }}
-          dir
-          unity-license-activate "unity.lice.activation@gmail.com" "@hell2021A" "${{ needs.request_alf.outputs.alf }}"
+        run: unity-license-activate "unity.lice.activation@gmail.com" "@hell2021A" "${{ needs.request_alf.outputs.alf }}"
 
       - name: Update secret UNITY_LICENSE
         uses: hmanzur/actions-set-secret@v2.0.0
