@@ -109,10 +109,6 @@ jobs:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ matrix.targetPlatform }}
 
-      - name: Return license
-        uses: game-ci/unity-return-license@v1
-        if: always()
-
       - uses: actions/upload-artifact@v1
         with:
           name: Build
