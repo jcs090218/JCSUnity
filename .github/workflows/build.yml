@@ -49,6 +49,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
   checklicense:
+    needs: [activation]
     name: check if UNITY_LICENSE is set in github secrets
     runs-on: ubuntu-latest
     outputs:
