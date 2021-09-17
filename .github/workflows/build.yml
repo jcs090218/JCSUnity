@@ -56,23 +56,32 @@ jobs:
       - name: Install node package, unity-license-activate
         run: npm install --global unity-license-activate
 
-      - name: Read ulf
-        id: package
+      - name: Read alf
+        id: alfRead
         uses: juliangruber/read-file-action@v1.1.4
         with:
           path: ${{ needs.request_alf.outputs.alf }}
 
       - name: Echo .ulf file
-        run: echo "${{ steps.package.outputs.content }}"
+        run: echo "${{ steps.alfRead.outputs.content }}"
 
       - name: Activate the license
         run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
+
+      - name: Read ulf
+        id: ulfRead
+        uses: juliangruber/read-file-action@v1.1.4
+        with:
+          path: Unity_v2021.x.ulf
+
+      - name: Echo .ulf file
+        run: echo "${{ steps.ulfRead.outputs.content }}"
 
       - name: Update secret UNITY_LICENSE
         uses: hmanzur/actions-set-secret@v2.0.0
         with:
           name: 'UNITY_LICENSE'
-          value: ${{ steps.package.outputs.content }}
+          value: ${{ steps.ulfRead.outputs.content }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
   checklicense:
