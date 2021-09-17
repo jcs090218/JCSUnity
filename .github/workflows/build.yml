@@ -21,13 +21,6 @@ jobs:
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
 
-      # Upload artifact (Unity_v20XX.X.XXXX.alf)
-      - name: Expose as artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
-          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
-
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -43,13 +36,13 @@ jobs:
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
 
       - name: Echo .ulf file
-        run: echo ${{ steps.package.outputs.content }}
+        run: echo "${{ steps.package.outputs.content }}"
 
       - name: Activate the license
         run: |
           echo ${{ steps.getManualLicenseFile.outputs.filePath }}
           ls
-          unity-license-activate ${{ secrets.UNITY_EMAIL }} ${{ secrets.UNITY_PASSWORD }} ${{ steps.getManualLicenseFile.outputs.filePath }}
+          unity-license-activate ${{ secrets.UNITY_EMAIL }} ${{ secrets.UNITY_PASSWORD }} "${{ steps.getManualLicenseFile.outputs.filePath }}"
 
       - name: Update secret UNITY_LICENSE
         uses: hmanzur/actions-set-secret@v2.0.0
