@@ -82,7 +82,7 @@ jobs:
         with:
           name: 'UNITY_LICENSE'
           value: ${{ steps.ulfRead.outputs.content }}
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   checklicense:
     needs: [activation]
