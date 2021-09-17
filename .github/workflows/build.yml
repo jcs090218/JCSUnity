@@ -39,6 +39,9 @@ jobs:
     needs: [request_alf]
     name: Activate activation file 🔑
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
       - name: Download .alf artifact
         uses: actions/download-artifact@v2
