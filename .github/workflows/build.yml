@@ -16,7 +16,7 @@ jobs:
     steps:
       # Request manual activation file
       - name: Request manual activation file
-        id: getManualLicenseFile
+        id: alfFile
         uses: game-ci/unity-request-activation-file@main
         with:
           unityVersion: ${{ env.UNITY_VERSION }}
@@ -33,16 +33,16 @@ jobs:
         id: package
         uses: juliangruber/read-file-action@v1.1.4
         with:
-          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+          path: ${{ steps.alfFile.outputs.filePath }}
 
       - name: Echo .ulf file
         run: echo "${{ steps.package.outputs.content }}"
 
       - name: Activate the license
         run: |
-          echo ${{ steps.getManualLicenseFile.outputs.filePath }}
+          echo ${{ steps.alfFile.outputs.filePath }}
           ls
-          unity-license-activate ${{ secrets.UNITY_EMAIL }} ${{ secrets.UNITY_PASSWORD }} "${{ steps.getManualLicenseFile.outputs.filePath }}"
+          unity-license-activate ${{ secrets.UNITY_EMAIL }} ${{ secrets.UNITY_PASSWORD }} "${{ steps.alfFile.outputs.filePath }}"
 
       - name: Update secret UNITY_LICENSE
         uses: hmanzur/actions-set-secret@v2.0.0
