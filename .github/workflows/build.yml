@@ -72,7 +72,7 @@ jobs:
       - name: TEST Upload screenshot
         uses: actions/upload-artifact@v1
         with:
-          name: screenshot_12
+          name: screenshot_error
           path: error.png
 
       - name: Read ulf
