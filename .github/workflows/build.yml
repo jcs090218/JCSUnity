@@ -73,7 +73,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: screenshot_12
-          path: 1.png
+          path: error.png
 
       - name: Read ulf
         id: ulfRead
