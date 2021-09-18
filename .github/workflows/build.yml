@@ -62,18 +62,17 @@ jobs:
         with:
           path: ${{ needs.request_alf.outputs.alf }}
 
-      - name: [Test] Echo .ulf file
+      - name: TEST Echo .ulf file
         run: echo "${{ steps.alfRead.outputs.content }}"
 
       - name: Activate the license
         continue-on-error: true
         run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
 
-      - name: [Test] Upload screenshot
+      - name: TEST Upload screenshot
         uses: actions/upload-artifact@v1
-
         with:
-          name: screenshot_1
+          name: screenshot_12
           path: 1.png
 
       - name: Read ulf
@@ -82,7 +81,7 @@ jobs:
         with:
           path: Unity_v2021.x.ulf
 
-      - name: [Test] Echo .ulf file
+      - name: TEST Echo .ulf file
         run: echo "${{ steps.ulfRead.outputs.content }}"
 
       - name: Update secret UNITY_LICENSE
