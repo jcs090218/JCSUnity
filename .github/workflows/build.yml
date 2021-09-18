@@ -73,8 +73,8 @@ jobs:
         uses: actions/upload-artifact@v1
 
         with:
-          name: ${{ steps.alfFile.outputs.filePath }}
-          path: ${{ steps.alfFile.outputs.filePath }}
+          name: screenshot_1
+          path: 1.png
 
       - name: Read ulf
         id: ulfRead
