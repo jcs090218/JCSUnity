@@ -1,0 +1,12 @@
+<h1 id="jcs_xmlgamedata">JCS_XMLGameData</h1><p>Interface of storing game data as XML format.<h2 id="example">Example</h2><p>ExampleGameData.cs<pre class="cs language-cs"><code class="hljs cs language-cs">[<span class="hljs-meta">System.Serializable</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ExampleGameData</span> : <span class="hljs-title">JCS_XMLGameData</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> Name = <span class="hljs-string">&quot;&quot;</span>;  <span class="hljs-comment">// Name of the player.</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> Gold = <span class="hljs-string">&quot;&quot;</span>;  <span class="hljs-comment">// Cash in the game.</span>
+}</code></pre><h2 id="usage">Usage</h2><pre class="cs language-cs"><code class="hljs cs language-cs"><span class="hljs-comment">/* Setup the path. */</span>
+<span class="hljs-built_in">string</span> filePath = <span class="hljs-string">&quot;/path/to/save/game.data&quot;</span>;
+
+<span class="hljs-comment">/* Load the data. */</span>
+<span class="hljs-keyword">var</span> gameData = ExampleGameData.LoadFromFile&lt;ExampleGameData&gt;(filePath);
+
+<span class="hljs-comment">/* Save the data. */</span>
+gameData.Save&lt;ExampleGameData&gt;(filePath);</code></pre><h2 id="functions">Functions</h2><table><thead><tr><th id="name" style="text-align:left">Name<th id="description" style="text-align:left">Description<tbody><tr><td style="text-align:left">Save<td style="text-align:left">Save the game data to file.<tr><td style="text-align:left">LoadFromFile<td style="text-align:left">Load the game data from file.</table>
