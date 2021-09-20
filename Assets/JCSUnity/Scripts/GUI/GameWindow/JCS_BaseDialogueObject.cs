@@ -169,7 +169,7 @@ namespace JCSUnity
                 return;
             }
 
-            Transform parentObject = null;
+            Transform parentObject;
 
             // if is Resize UI is enable than add Dialogue under resize ui transform
             if (JCS_UISettings.instance.RESIZE_UI)
