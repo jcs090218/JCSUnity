@@ -48,7 +48,7 @@ namespace JCSUnity
         private void Start()
         {
             // Set the canvas to be our root.
-            this.transform.SetParent(JCS_Canvas.instance.transform);
+            this.transform.SetParent(JCS_Canvas.GuessCanvas(transform).transform);
 
             // Add panel root without losing the original size.
             {

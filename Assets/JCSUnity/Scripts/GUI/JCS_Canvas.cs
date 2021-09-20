@@ -20,8 +20,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static JCS_Canvas instance = null;
-
         private const string RESIZE_UI_PATH = "LevelDesignUI/ResizeUI";
 
         [Header("** Check Variables (JCS_Canvas) **")]
@@ -30,59 +28,69 @@ namespace JCSUnity
         [SerializeField]
         private Canvas mCanvas = null;
 
+        [Tooltip("Resize object.")]
+        [SerializeField]
+        private JCS_ResizeUI mResizeUI = null;
+
         // Application Rect (Window)
         private RectTransform mAppRect = null;
 
-        [Header("** Initialize Variables (JCS_Canvas) **")]
-
-        [Tooltip("Enable this if the canvas is master canvas.")]
-        [SerializeField]
-        private bool mMaster = true;
-
         /* Setter & Getter */
 
-        public bool Master { get { return this.mMaster; } }
         public RectTransform GetAppRect() { return this.mAppRect; }
         public Canvas GetCanvas() { return this.mCanvas; }
+        public JCS_ResizeUI ResizeUI { get { return this.mResizeUI; } }
 
         /* Functions */
 
         private void Awake()
         {
-            if (mMaster)
-            {
-                if (instance == null)
-                    instance = this;
-                else
-                    Debug.LogError("You can't have more than one master Canvas in the scene");
-            }
-
             this.mAppRect = this.GetComponent<RectTransform>();
             this.mCanvas = this.GetComponent<Canvas>();
 
             if (JCS_UISettings.instance.RESIZE_UI)
             {
                 // resizable UI in order to resize the UI correctly
-                JCS_ResizeUI rui = JCS_Utility.SpawnGameObject(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
-                rui.transform.SetParent(this.transform);
+                mResizeUI = JCS_Utility.SpawnGameObject(RESIZE_UI_PATH).GetComponent<JCS_ResizeUI>();
+                mResizeUI.transform.SetParent(this.transform);
             }
+
+            JCS_UIManager.instance.AddCanvas(this);
         }
 
         private void Start()
         {
-            var resizeUI = JCS_ResizeUI.instance;
-
             if (JCS_UISettings.instance.RESIZE_UI)
             {
-                if (resizeUI == null)
+                if (mResizeUI == null)
                     return;
 
                 // get the screen width and height
                 Vector2 actualRect = this.GetAppRect().sizeDelta;
 
                 // set it to the right resolution
-                resizeUI.GetResizeRect().sizeDelta = actualRect;
+                mResizeUI.GetResizeRect().sizeDelta = actualRect;
             }
+        }
+
+        /// <summary>
+        /// Return the `canvas` that is the parent of the `trans` object.
+        /// 
+        /// If `trans` is not relate to any canvas object, we return
+        /// the upmost canvas object by default.
+        /// </summary>
+        public static JCS_Canvas GuessCanvas(Transform trans = null)
+        {
+            if (trans != null)
+            {
+                var canvas = trans.GetComponentInParent<JCS_Canvas>();
+                if (canvas != null)
+                    return canvas;
+            }
+
+            // We return the upperest canvas on the screen.
+            List<JCS_Canvas> canvases = JCS_UIManager.instance.Canvases;
+            return canvases[canvases.Count - 1];
         }
 
         /// <summary>
@@ -91,9 +99,7 @@ namespace JCSUnity
         /// <param name="com"> Component add to canvas. </param>
         public void AddComponentToResizeCanvas(Component com)
         {
-            var resizeUI = JCS_ResizeUI.instance;
-
-            Transform newParent = (resizeUI != null) ? resizeUI.transform : this.mCanvas.transform;
+            Transform newParent = (mResizeUI != null) ? mResizeUI.transform : this.mCanvas.transform;
             if (newParent == null)
                 JCS_Debug.LogError("Attach resize canvas exception: " + com);
             else

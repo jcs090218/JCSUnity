@@ -21,8 +21,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static JCS_ResizeUI instance = null;
-
         private RectTransform mRect = null;
 
 #if (UNITY_EDITOR)
@@ -85,10 +83,6 @@ namespace JCSUnity
 
         private void Awake()
         {
-            // NOTE: The instance itself doesn't matter, as long there
-            // is at least one global instance.
-            instance = this;
-
             this.mRect = this.GetComponent<RectTransform>();
 
             // if this is the root object set this as un destroyable
@@ -98,7 +92,7 @@ namespace JCSUnity
         private void Start()
         {
 #if (UNITY_5_4_OR_NEWER)
-            RectTransform appRect = JCS_Canvas.instance.GetAppRect();
+            RectTransform appRect = JCS_Canvas.GuessCanvas().GetAppRect();
 
             // TODO(jenchieh): unknown reason that something changes this to 
             // somewhere else. (since 5.4.0f3)

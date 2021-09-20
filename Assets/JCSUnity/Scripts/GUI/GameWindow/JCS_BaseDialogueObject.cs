@@ -160,8 +160,8 @@ namespace JCSUnity
         /// </summary>
         protected void SetParentObjectByMode()
         {
-            var canvas = JCS_Canvas.instance;
-            var resizeUI = JCS_ResizeUI.instance;
+            var canvas = JCS_Canvas.GuessCanvas(this.transform);
+            var resizeUI = canvas.ResizeUI;
 
             if (canvas == null)
             {
