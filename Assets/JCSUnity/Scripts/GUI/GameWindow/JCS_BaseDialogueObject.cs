@@ -161,6 +161,7 @@ namespace JCSUnity
         protected void SetParentObjectByMode()
         {
             var canvas = JCS_Canvas.instance;
+            var resizeUI = JCS_ResizeUI.instance;
 
             if (canvas == null)
             {
@@ -172,7 +173,7 @@ namespace JCSUnity
 
             // if is Resize UI is enable than add Dialogue under resize ui transform
             if (JCS_UISettings.instance.RESIZE_UI)
-                parentObject = canvas.GetResizeUI().transform;
+                parentObject = resizeUI.transform;
             // Else we add it directly under the Canvas
             else
                 parentObject = canvas.GetCanvas().transform;
