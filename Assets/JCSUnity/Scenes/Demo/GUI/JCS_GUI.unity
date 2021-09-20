@@ -767,7 +767,6 @@ GameObject:
   - component: {fileID: 119225857}
   - component: {fileID: 119225859}
   - component: {fileID: 119225858}
-  - component: {fileID: 119225860}
   - component: {fileID: 119225861}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -842,18 +841,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119225856}
   m_CullTransparentMesh: 0
---- !u!114 &119225860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119225856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &119225861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,7 +1492,6 @@ GameObject:
   - component: {fileID: 196451054}
   - component: {fileID: 196451056}
   - component: {fileID: 196451055}
-  - component: {fileID: 196451057}
   - component: {fileID: 196451058}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -1575,18 +1561,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196451053}
   m_CullTransparentMesh: 0
---- !u!114 &196451057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196451053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &196451058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2711,7 +2685,6 @@ GameObject:
   - component: {fileID: 379940122}
   - component: {fileID: 379940124}
   - component: {fileID: 379940123}
-  - component: {fileID: 379940125}
   - component: {fileID: 379940126}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -2777,18 +2750,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379940121}
   m_CullTransparentMesh: 0
---- !u!114 &379940125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379940121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &379940126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,7 +3361,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11409308, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fad74cf103280b046bb4a962f3b8fb78, type: 3}
 --- !u!224 &413381865 stripped
 RectTransform:
@@ -3502,7 +3464,6 @@ GameObject:
   - component: {fileID: 445629392}
   - component: {fileID: 445629394}
   - component: {fileID: 445629393}
-  - component: {fileID: 445629395}
   - component: {fileID: 445629396}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -3569,18 +3530,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445629391}
   m_CullTransparentMesh: 0
---- !u!114 &445629395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445629391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &445629396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7210,7 +7159,6 @@ GameObject:
   - component: {fileID: 671072141}
   - component: {fileID: 671072143}
   - component: {fileID: 671072142}
-  - component: {fileID: 671072144}
   - component: {fileID: 671072145}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -7276,18 +7224,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671072140}
   m_CullTransparentMesh: 0
---- !u!114 &671072144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671072140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &671072145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8890,7 +8826,6 @@ GameObject:
   - component: {fileID: 782754179}
   - component: {fileID: 782754181}
   - component: {fileID: 782754180}
-  - component: {fileID: 782754182}
   - component: {fileID: 782754183}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -8957,18 +8892,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782754178}
   m_CullTransparentMesh: 0
---- !u!114 &782754182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782754178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &782754183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9209,7 +9132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
 --- !u!4 &844941550
 Transform:
   m_ObjectHideFlags: 0
@@ -9461,7 +9383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
-  mResizeUI: {fileID: 0}
   mMaster: 1
 --- !u!114 &868245905
 MonoBehaviour:
@@ -10321,7 +10242,6 @@ GameObject:
   - component: {fileID: 968011696}
   - component: {fileID: 968011698}
   - component: {fileID: 968011697}
-  - component: {fileID: 968011699}
   - component: {fileID: 968011700}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -10397,18 +10317,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968011695}
   m_CullTransparentMesh: 0
---- !u!114 &968011699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968011695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &968011700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11373,7 +11281,6 @@ GameObject:
   - component: {fileID: 1078392642}
   - component: {fileID: 1078392644}
   - component: {fileID: 1078392643}
-  - component: {fileID: 1078392645}
   - component: {fileID: 1078392646}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -11451,18 +11358,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078392641}
   m_CullTransparentMesh: 0
---- !u!114 &1078392645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078392641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1078392646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17866,7 +17761,6 @@ GameObject:
   - component: {fileID: 2004400550}
   - component: {fileID: 2004400552}
   - component: {fileID: 2004400551}
-  - component: {fileID: 2004400553}
   - component: {fileID: 2004400554}
   m_Layer: 5
   m_Name: JCS_IgnorePanel
@@ -17932,18 +17826,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004400549}
   m_CullTransparentMesh: 0
---- !u!114 &2004400553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004400549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2004400554
 MonoBehaviour:
   m_ObjectHideFlags: 0

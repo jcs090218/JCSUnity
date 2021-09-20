@@ -325,7 +325,7 @@ namespace JCSUnity
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
-            const string desc_path = "GUI/Describe Panel";
+            const string desc_path = "GUI/JCS Describe Panel";
             GameObject desc_obj = JCS_Utility.SpawnGameObject(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
