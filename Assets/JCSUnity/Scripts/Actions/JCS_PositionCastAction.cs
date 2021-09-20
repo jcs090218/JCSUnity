@@ -118,7 +118,7 @@ namespace JCSUnity
                     {
                         Vector2 worldToCanvasSpace = camera.WorldToCanvasSpace(pos);
 
-                        var canvas = this.GetComponentInParent<JCS_Canvas>();
+                        var canvas = JCS_Canvas.GuessCanvas();
                         var resizeUI = canvas.ResizeUI;
 
                         float targetScale = resizeUI.TargetScale;

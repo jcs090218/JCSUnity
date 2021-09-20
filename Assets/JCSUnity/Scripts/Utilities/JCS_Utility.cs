@@ -975,7 +975,7 @@ namespace JCSUnity
                 JCS_Debug.Log("You trying to merge the List less then two array");
             }
 
-            List<T> newList = new List<T>();
+            var newList = new List<T>();
 
             for (int index = 0; index < lists.Length; ++index)
             {

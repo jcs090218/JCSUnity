@@ -36,6 +36,8 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsUnityDefinedUI = false;
 
+        private bool mApplyToChildren = false;
+
         /* Setter & Getter */
 
         public JCS_PanelRoot PanelRoot { get { return this.mPanelRoot; } set { this.mPanelRoot = value; } }
@@ -51,6 +53,8 @@ namespace JCSUnity
 
             this.mIsUnityDefinedUI = JCS_GUIUtil.IsUnityDefinedUI(this);
 
+            mApplyToChildren = (JCS_GUIUtil.IsAchorPresets(mRectTransform, JCS_AnchorPresetsType.CENTER_MIDDLE));
+
             // Rely on "Script Execution Order"
             {
                 /* Check 'jpr' null for spawn GUI objects. */
@@ -61,7 +65,7 @@ namespace JCSUnity
                         mPanelRoot.PanelDeltaHeightRatio);
                 }
 
-                if (!mIsUnityDefinedUI || IsResponsive())
+                if (mApplyToChildren)
                 {
                     // since we add this script assuming we are  int the fit
                     // perfect size mode
@@ -82,7 +86,7 @@ namespace JCSUnity
             /* Do the scale. */
             {
                 List<RectTransform> childs = null;
-                if (!mIsUnityDefinedUI || IsResponsive())
+                if (mApplyToChildren)
                 {
                     // NOTE: If not the Unity define UI, we need to  dettach all
                     // the child transform before we can resize it. If we resize
@@ -110,7 +114,7 @@ namespace JCSUnity
 
                 mRectTransform.localScale = newScale;
 
-                if (!mIsUnityDefinedUI || IsResponsive())
+                if (mApplyToChildren)
                 {
                     // NOTE: Reattach all the previous child.
                     JCS_Utility.AttachChildren(this.mRectTransform, childs);
