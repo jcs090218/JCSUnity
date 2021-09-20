@@ -92,7 +92,6 @@ namespace JCSUnity
                 DestroyImmediate(instance.gameObject);
             }
 
-
             // attach the new one
             instance = this;
 

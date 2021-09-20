@@ -247,9 +247,9 @@ namespace JCSUnity
                 return;
 
             // Next step: find camera 4 bounds.
-            Camera cam = JCS_Camera.main.GetCamera();
+            Camera cam = main.GetCamera();
 
-            JCS_Canvas jcsCanvas = JCS_Canvas.instance;
+            var canvas = JCS_Canvas.instance;
 
             Vector3 camPos = cam.transform.position;
             // only need to know the depth.
@@ -268,11 +268,11 @@ namespace JCSUnity
             Vector3 gameDepth = new Vector3(0, mGameDepth, 0);
             float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
 
-            Vector2 canvasRect = jcsCanvas.GetAppRect().sizeDelta;
+            Vector2 canvasRect = canvas.GetAppRect().sizeDelta;
             // transfer rect from screen space to world space
             {
-                canvasRect.x *= jcsCanvas.GetAppRect().localScale.x;
-                canvasRect.y *= jcsCanvas.GetAppRect().localScale.y;
+                canvasRect.x *= canvas.GetAppRect().localScale.x;
+                canvasRect.y *= canvas.GetAppRect().localScale.y;
             }
 
             mCamRectSize = new Vector3(
