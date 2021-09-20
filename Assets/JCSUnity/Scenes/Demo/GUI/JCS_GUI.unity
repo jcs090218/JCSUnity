@@ -9462,6 +9462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCanvas: {fileID: 0}
   mResizeUI: {fileID: 0}
+  mMaster: 1
 --- !u!114 &868245905
 MonoBehaviour:
   m_ObjectHideFlags: 0
