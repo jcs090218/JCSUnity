@@ -66,9 +66,6 @@ jobs:
         with:
           path: ${{ needs.request_alf.outputs.alf }}
 
-      - name: TEST Echo .ulf file
-        run: echo "${{ steps.alfRead.outputs.content }}"
-
       - name: Activate the license
         continue-on-error: true
         run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
@@ -78,9 +75,6 @@ jobs:
         uses: juliangruber/read-file-action@v1.1.4
         with:
           path: ${{ env.ULF_FILE }}
-
-      - name: TEST Echo .ulf file
-        run: echo "${{ steps.ulfRead.outputs.content }}"
 
       - name: Update secret UNITY_LICENSE
         uses: hmanzur/actions-set-secret@v2.0.0
