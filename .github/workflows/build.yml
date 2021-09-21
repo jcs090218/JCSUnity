@@ -53,8 +53,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install node package, unity-license-activate
+      - name: Install node package, `unity-license-activate`
         run: npm install --global unity-license-activate
+
+      - name: Install node package, `unity-verify-code`
+        run: npm install --global unity-verify-code
 
       - name: Read alf
         id: alfRead
