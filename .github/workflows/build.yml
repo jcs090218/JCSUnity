@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "::set-output name=alf::${{ steps.alfFile.outputs.filePath }}"
 
-  activation:
+  acquire_ulf:
     needs: [request_alf]
     name: Acquire .ulf file 🔑
     runs-on: ubuntu-latest
@@ -82,7 +82,7 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
 
   checklicense:
-    needs: [activation]
+    needs: [acquire_ulf]
     name: check if UNITY_LICENSE is set in github secrets
     runs-on: ubuntu-latest
     outputs:
