@@ -16,7 +16,6 @@ jobs:
     outputs:
       alf: ${{ steps.output.outputs.alf }}
     steps:
-      # Request manual activation file
       - name: Request manual activation file
         id: alfFile
         uses: game-ci/unity-request-activation-file@main
@@ -37,7 +36,7 @@ jobs:
 
   activation:
     needs: [request_alf]
-    name: Activate activation file 🔑
+    name: Acquire .ulf file 🔑
     runs-on: ubuntu-latest
     strategy:
       matrix:
