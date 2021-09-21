@@ -8,6 +8,7 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   UNITY_VERSION: 2021.1.1f1
   PROJECT_PATH: .
+  ULF_FILE: Unity_v2021.x.ulf
 
 jobs:
   request_alf:
@@ -82,7 +83,7 @@ jobs:
         id: ulfRead
         uses: juliangruber/read-file-action@v1.1.4
         with:
-          path: Unity_v2021.x.ulf
+          path: ${{ env.ULF_FILE }}
 
       - name: TEST Echo .ulf file
         run: echo "${{ steps.ulfRead.outputs.content }}"
