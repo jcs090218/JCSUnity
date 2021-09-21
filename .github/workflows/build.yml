@@ -5,7 +5,6 @@ on:
   push: { branches: [main, master, develop] }
 
 env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   UNITY_VERSION: 2021.1.1f1
   PROJECT_PATH: .
   ULF_FILE: Unity_v2021.x.ulf
@@ -93,8 +92,8 @@ jobs:
       - name: Check whether unity activation requests should be done
         id: checklicense_job
         run: |
-            echo "Skip activation job: ${{ env.UNITY_LICENSE != '' }}"
-            echo "::set-output name=is_unity_license_set::${{ env.UNITY_LICENSE != '' }}"
+            echo "Skip activation job: ${{ secrets.UNITY_LICENSE != '' }}"
+            echo "::set-output name=is_unity_license_set::${{ secrets.UNITY_LICENSE != '' }}"
 
   test:
     needs: [checklicense]
