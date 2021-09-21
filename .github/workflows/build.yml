@@ -39,7 +39,7 @@ jobs:
   activation:
     needs: [request_alf]
     name: Activate activation file 🔑
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [14.x]
@@ -72,12 +72,6 @@ jobs:
       - name: Activate the license
         continue-on-error: true
         run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
-
-      - name: TEST Upload screenshot
-        uses: actions/upload-artifact@v1
-        with:
-          name: screenshot_error
-          path: error.png
 
       - name: Read ulf
         id: ulfRead
