@@ -59,12 +59,6 @@ jobs:
       - name: Install node package, `unity-verify-code`
         run: npm install --global unity-verify-code
 
-      - name: Read alf
-        id: alfRead
-        uses: juliangruber/read-file-action@v1.1.4
-        with:
-          path: ${{ needs.request_alf.outputs.alf }}
-
       - name: Activate the license
         continue-on-error: true
         run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
