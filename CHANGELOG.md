@@ -806,44 +806,21 @@ issue by using the UDP for network communicattion.
 ## 1.3.9
 > Released Jan 1, 2017
 
-### 2017-04-07
-
 * JCS_3DDistanceTileAction implemented.
 * JCS_2DGoStraightAction rename to JCS_3DGoStraightAction.
-
-### 2017-03-24
-
 * JCS_TimePanel implemented.
-
-### 2017-03-13
-
 * JCS_2DAnimation implemented.
 * Change the file name old JCS_2DAnimator to JCS_I2DAnimator.
 * JCS_2DAnimator implemnted.
-
-### 2017-03-10
-
 * JCS_SpriteScore implemented.
 * JCS_HitListEvent update with self-destroy.
 * JCS_SpriteTimer implemented.
 * JCS_Utility implement DestroyAllTypeObjectInScene function.
-
-### 2017-03-06
-
 * JCS_BasicInitSpawner implemented.
-
-### 2017-03-04
-
 * Redefined JCS_DestroyAnimEffect.
 * JCS_BasicWaveSpawner implemented.
-
-### 2017-03-03
-
 * Update JCS_VideoPlayer compatible with Andriod.
 * Set JCS_2DCamera virtual function as default.
-
-### 2017-02-24
-
 * JCS_PauseAction implemented.
 * JCS_PauseManager implemented.
 * Modefied JCS_GameManager's GAME_PAUSE compatible to previous version of JCSUnity.
@@ -852,285 +829,141 @@ issue by using the UDP for network communicattion.
 * JCS_HideDialogueButton implemented.
 * JCS_PauseGameButton implemented.
 * JCS_UnPauseGameButton implemented.
-
-### 2017-01-30
-
 * Organize JCSUnity_EditorWindow class.
-
-### 2017-01-22
-
 * Add JCSUnity_EditorWindow for gui interface implementation.
 * Add menu item serialize to JCSUnity 2d.
 * Add menu item serialize to JCSUnity 3d.
 * Add menu item About.
-
-### 2017-01-06
-
 * Add randomize duration at start time for tweener.
-
-### 2016-12-13
-
 * Now All damage text pool provide the specific audio clip function call option.
 Meaning all the skill you are designing can be use in different sound.
 * For coding wise, after the "ApplyDamageText" function had the new variable
  "AudioClip", pass it in to take the effect.
 * Update JCS_2DParticleSytem with "start" and "stop" function
-
-### 2016-12-22
-
 * JCS_InvincibleTimeAction implemented.
-
-### 2016-12-10
-
 * Add scene portal layer.
 * Setup the indie folder for managers and settings folder.
 * JCS_PortalManager implemented.
 * JCS_PortalSetting implemented.
 * Add black slide screen while switch scene.
-
-### 2016-12-04
-
 * Setup the shader folder.
 * "VertexLit with Z" added.
 * FOW shader added.
-
-### 2016-11-22
-
 * JCS_GUIComponentLayer implemented.
 * JCS_ItemDroppable update with more function.
-
-### 2016-11-13
-
 * JCS_TowardTarget implemented.
 * JCS_DisableWithCertainRangeEvent implemented.
-
-### 2016-11-05
-
 * JCS_PushThrowAction implemented.
 * OnLevelWasLoaded deprecated fixed so now version compatible with Unity 5.4 or higher.
-
-### 2016-10-28
-
 * JCS_SceneSettings implemented.
     ■ Fade in/out time for specific scene option.
 * JCS_SceneManager effect and update cuz of the JCS_SceneSetting script.
 * JCS_3DLookAction asymptotic rotate.
-
-### 2016-10-26
-
 * JCS_3DCamera smooth track function implemented.
 * JCS_GUILiquidBar support depend on the alignment.
 * JCS_3DLiquidBar support depend on the alignment.
-
-### 2016-10-15
-
 * Joystick implemented.
 * JCS_InputSetting updated.
-
-### 2016-10-10
-
 * JCS_3DCamera zoom in/out feature implemented.
 * JCS_FadeObject min/max alpha range implemented.
-
-### 2016-10-03
-
 * Project warnings clean up.
-
-### 2016-09-29
-
 * JCS_3DAnimator working on.
 * JCS_3DBlendTreeAnimator working on.
-
-### 2016-09-26
-
 * JCS_Tweener updated.
-
-### 2016-09-15
-
 * Update item droppable.
 * Multiple script comment.
-
-### 2016-09-14
-
 * Update Pathfinding Request, but there are still some bugs.
-
-### 2016-09-05
-
 * Modefied the name of JCS_GameErros into JCS_Debug, so there is no JCS_GameErros
 anymore. Plz use JCS_Debug instead.
 * Export JCSUnity 1.3.7 package.
 * JCS_2DAIStateSystem implemented.
-
-### 2016-09-03
-
 * Update project to version 5.4.0f3.
 * Few bugs fixed compatiable to version 5.4.0f3.
     1) box colliders does not support negative scale
-
-### 2016-08-31
-
 * JCS_VideoPlayer implemented but only support -list file.
     -list
         .mov
 * Application end scene implemented.
-
-### 2016-08-28
-
 * A star pathfinding implemented.
 * README.txt file updated.
 * Working on JCS_VideoPlayer.
-
-### 2016-08-27
-
 * Add image into dialogue system.
 * Add name tag into dialogue system.
-
-### 2016-08-26
-
 * Dialogue System implemented.
 * Dialogue Script system implemented.
 * Workd on A* Pathfinding algorithm.
-
-### 2016-08-24
-
 * README.txt file updated.
 * Working on Dialogue Scripting system.
 * JCS_ScriptTester scene added.
 * UtilitiesScene category added in scene folder.
 * npc2100.cs test script updated.
-
-### 2016-08-20
-
 * Update damage text system, so now enemy and player can have different damage text set.
 * README.txt file updated.
-
-### 2016-08-19
-
 * In Game Log System implemented.
 * JCS_Settings interface implemented.
 * Log system implemented into Boss Fight Game.
 * JCS_Settings implemented.
 * JCS_Managers implemented.
-
-### 2016-08-18
-
 * Damage Text stackover flow logic bug fixed.
 * XML Save and Load implemented.
 * Get back recover value.
 * Health target cannot be damage while the game is over.
 * BF_CashText implemented.
-
-### 2016-08-11
-
 * Limit the monster in the scene so it won't spawn too many monster.
-
-### 2016-08-10
-
 * JCS_2DBullet huge updated.
 * Character animation fixed.
-
-### 2016-08-06
-
 * Sequence Shoot in Cursor.
 * Push Skill implemented.
 * Multiple attack implemented.
-
-### 2016-08-01
-
 * JCS_3DMouseMovement implemented.
 * BF_HealthTarget implemented.
 * JCS_LiquidBarInfo implemented.
-
-### 2016-07-31
-
 * IAP System using Soomla open source project.
 * randomize the cash value.
 * Item effect object implemented.
-
-### 2016-07-29
-
 * 目前最強的射擊武器.
 * JCS_2DInitLookByTypeAction implemented.
 * JCS_LiveObjectManager, JCS_2DLiveObjectManager implemented.
 * 全圖殺怪.
-
-### 2016-07-28
-
 * JCS_3DLiquidBar implemented.
 * JCS_HueController implemented.
 * Update Level Text.
-
-### 2016-07-27
-
 * Update inspector controll within the GUI function.
     - JCS_SlideEffect
-
-### 2016-07-26
-
 * JCS_2DCamera smooth scroll implemeneted.
 * Mana System game machnice implemented.
 * JCS_LiquidBarText implemented.
 * use JCS_LiquidBarText into game.
-
-### 2016-07-24
-
 * 打幣系統.
 * End Game System implemented.
 * BF_RainFaller impelemented.
 * JCS_Reflect object more functional with position offset.
-
-### 2016-07-23
-
 * Collision Fixed.
 * Cash System implemented.
-
-### 2016-07-22
-
 * Bug Fixed.
 * BF_AutoAttacker implemented.
 * Boss Fight game scene updated.
-
-### 2016-07-20
-
 * Fixed the collision overlapping by using FixedUpdate() function call from Unity Engine.
-
-### 2016-07-19
-
 * JCS_2DFlyActionIgnore.
 * Fly Object ignore all platform in the scene now.
 * Arrow Rain implemented.
-
-### 2016-07-18
-
 * AOE function implemented.
 * JCS_2DReflectBulletAction.
 * JCS_ButtonSoundEffect will have refuse sound when is not interactable.
 * JCS_Button interactable function updated.
 * JCS_2dFlyAction's basic function implemneted.
-
-### 2016-07-17
-
 * Player attack will wait all star hit the object before die.
 * Boss Fight game scene updated.
 * Memory Leak bug fixed.
-
-### 2016-07-16
-
 * Wave handler implmented.
 * Game Level up implemented.
 * JCS_2DDeadAction implmented.
-
-### 2016-07-15
-
 * Update Log Viewer Packages.
 * JCS_3DDragDropObject implemented.
 * Stars can shoot down each other.
 * JCSUnity System updated.
 * Player will attack according to the mouse click.
 * Live Object animation functional.
-
-### 2016-07-14
-
 * Boss Fight wave handler implemented but not finish yet.
 * JCS_GUIStarterScene implemented.
 * JCS_2DWalkAction add the random walk speed function at initilzie time.
@@ -1138,150 +971,77 @@ anymore. Plz use JCS_Debug instead.
 * JCS_GameErros function update, so no need to enter type the name out anymore,
  but the line number isnt update yet.
 * BF_CharacterSpawnHandler implemented, now we can design our own character spawn positions.
-
-
-### 2016-07-11
-
 * Mad effect for JCS_WalkAction implemented.
 * Start the design of the BF.
-
-### 2016-07-10
-
 * LiveObject can now attack player/each other.
 * KnowBack algorithm implemented.
 * Abiltiy Fromat provide attack and defense value.
-
-### 2016-07-09
-
 * JCS_2DWalkAction bug fixed.
 * JCS_VelcotiyInfo more function implemented. MoveSpeed & RecordSpeed.
 * JCS_LiveObject more function implemented.
-
-### 2016-07-08
-
 * JCS_2DCursorShootAction implemented.
 * JCS_3DCursorShootAction implemented.
 * JCS_2DJumpAction implemented.
 * JCS_2DWalkAction implemented.
 * JCS_VelocityInfo implemented.
-
-### 2016-07-07
-
 * JCS_2DLadder complete!
-
-### 2016-07-05
-
 * JCS_2DLadder bug fixed.
 * Player improvement.
 * JCS_Physics upgrade.
 * JCSUnity Bugs fixed.
-
-### 2016-07-03
-
 * JCS_2DLadder big upgrade.
 * JCS_Physics more colliding functions implemented.
 * JCS_2DSideScrolldPlayer more functions implemented.
-
-### 2016-07-01
-
 * JCS_3DCamera updated.
 * JCS_3DDemo scene make changes.
-
-### 2016-06-30
-
 * Complete Running Crush core system.
 * Optimized JCSUnity a bit.
 * Start design the new game Boss Fight.
-
-### 2016-06-29
-
 * Select a level before taking image from webcam.
 * JCS_RollButtonSelector functional.
-
-### 2016-06-28
-
 * Liquid Bar for Running Crush functional.
 * JCS_TweenerPanel new added.
-
-### 2016-06-26
-
 * Liquid Bar for Running Crush.
 * SpriteMash liberaris implemented.
-
-### 2016-06-23
-
 * Update JCS_ButtonSoundEffect, now we does not need to add to trigger event manully.
 * JCS_EnvironmentSoundPlayer added.
 * JCS_Lightning effect.
 * JCS_StaticLightning effect.
-
-### 2016-06-22
-
 * Update Detection area to multiple collider.
 * JCS_Detect Area Action logic errors fixed.
 * JCS_SlideScreenButton can now going direction with counts.
 * JCS_SwitchSceneButton can now load scene limited base on platform type.
 * RC_EffectItem, so the object will be effect by picking up the item!
-
-### 2016-06-20
-
 * JCS_RollBtnSelector implemented.
 * JCS_SequenceSlidePanel implemented.
 * JCS_SlideEffect updated.
-
-### 2016-06-19
-
 * JCS_RollBtnSelector implemented.
 * JCS_RollSelectorButton implemented.
 * JCS_SimpleTrackAction implemented.
-
-### 2016-06-18
-
 * System Updated.
 * JCSUnity's GUI system bug fixed.
 * Shop System small update.
-
-### 2016-06-17
-
 * Lib updated.
 * JCS_SortingObject implemented.
 * Shop and Lobby Scene small update.
-
-### 2016-06-15
-
 * Game System update.
 * Gold Item.
 * Save Load Bug fixed.
 * Shop Scene.
 * RC_Player can pick up, so player can gain gold.
-
-### 2016-06-14
-
 * Player Pointer.
 * Revive Pointer.
 * Save Load Function implemented.
 * Modefied Tween to general.
 * JCS_Item updated.
-
-### 2016-06-13
-
 * Tweener updated with position, rotation, scale.
-
-### 2016-06-09
-
 * RC_EffectObject implemented.
 * RC_Goal implemented.
 * Game System, so now the the game will act with what mode player chose.
 * Save / Load Data implemented.
-
-### 2016-06-08
-
 * Tweener Transition implemented. (Using 3rd party library.)
     - http://gizma.com/easing/#quint1
     - https://github.com/PeterVuorela/Tweener
-
-### 2016-06-07
-
 * JCS_ScaleEffect implemented.
 * JCS_ButtonSoundEffect implemented. (use this for any button, working with Unity's Event Trigger script.)
 * JCS_SlideScreenButton implemented.
@@ -1289,9 +1049,6 @@ anymore. Plz use JCS_Debug instead.
     - Lobby
     - Webcam
 * Part of MO implemented into Running Crush. (Webcam part)
-
-### 2016-06-06
-
 * JCS_Cursor implemented. (Not complete yet.)
 * Work on Example Project.
     - Logo
@@ -1300,44 +1057,20 @@ anymore. Plz use JCS_Debug instead.
     - Game
     - Shop
 * Cross Unity Object's Webcam. (Not sure is cross platform yet.)
-
-### 2016-06-05
-
 * Work on Example Project.
-
-### 2016-06-04
-
 * Perspective Camera detect weather the collider area render on the screen or not. (using Game Depth)
-
-### 2016-05-31
-
 * Full Screen Atk implemented.
-
-### 2016-05-30
-
 * Player had the better movement.
 * After Jump Effect.
-
-### 2016-05-29
-
 * Particle System
 * Weather Particle Interface
 * Snow Flake (Weather Particle)
 * Rain Drop (Weather Particle)
-
-### 2016-05-28
-
 * Fix Player Settings.
-
-### 2016-05-27
-
 * Swing Attack Action
 * Absorb Effect (JCS_ShootAction)
 * Sequence Shoot in order right now. (Logic Error fixed.)
 * Speed Layer.
-
-### 2016-05-26
-
 * Ignore Item Tag
 * Miss Damage Text Code.
 * Sprite Auto Facing
@@ -1345,83 +1078,41 @@ anymore. Plz use JCS_Debug instead.
 * Shoot in sequence
 * Bug Fix
 * Auto Detect and attack.
-
-### 2016-05-25
-
 * Deviation Throw
 * Layer Friction Implemented.
 * Abitilty Format interface.
 * Hit and Damage Text(JCS_ApplyDamageTextAction)
-
-### 2016-05-24
-
 * Throw Action! (support for 3D right now but not tested yet.)
 * Detect Area implemented!
-
-### 2016-05-23
-
 * Drop Item (only with sprite renderer layer.)
 * GUI Button Slide.
 * Pick up Item action
 * Throw Action! (2D only for right now.)
 * Update "JCS_PlayerManager".
-
-### 2016-05-21
-
 * Liquid Container(only on X axis!)
-
-### 2016-05-15
-
 * Season implemented.
-
-### 2016-05-14
-
 * 2D&3D Tracking Action Implemented!
 * Hit Event implemented!
 * Created new category "Event"
 * Shake Effect implemented!
 * Cos-sine wave effect implemented!
-
-### 2016-05-11
-
 * Mix Damage Text Pool implemented!
 * JCS_3DCamera implemented!
-
-### 2016-05-10
-
 * Damage Text Pool implemented!
-
-### 2016-05-09
-
 * Damage Text implemented!
-
-### 2016-05-8
-
 * Checkable feature implemented (when have ur mouse over a checkable
     object it will appear a small description menu)
 * Clean Code (there was duplicate code)
-
-### 2016-05-07
-
 * Resolution for all platform feature added (Tested! and it work!)
 * Slide Input implemented (for touch pad)
 * Application Manager managing the platform type form now on!
-
-### 2016-05-06
-
 * Slide Switch Scene Function Completed
 * Resolution for all platform feature added (Not Tested!)
 * Bug Fix ("JCS_GameWindow" script)
 * Bug Fix (Logog Scene)
-
-### 2016-05-01
-
 * Multi Track Camera 2D feature add
 * Pair Key Panel and Button Panel up
 * Scene Manager bug fixed
-
-### 2016-04-30
-
 * Multi Track Camera 2D
 * Sound Fade in/out while switching the scene
 * Bug Fix (Logo Scene)
