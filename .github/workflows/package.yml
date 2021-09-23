@@ -28,7 +28,7 @@ jobs:
           - JCSUnity_Release
           - JCSUnity_Trimmed
         targetPlatform:
-          - StandaloneLinux64
+          - StandaloneWindows64
     steps:
       - uses: actions/checkout@v2
         with:
