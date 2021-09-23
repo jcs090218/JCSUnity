@@ -51,7 +51,16 @@ jobs:
           customParameters: -nographics --name "${{ matrix.package-name }}" --version "${{ env.PKG_VERSION }}" --savePath "."
 
       - name: Print current directory
-        run: ls -a ${{ env.PROJECT_PATH }}
+        run: |
+          ls -a ${{ env.PROJECT_PATH }}
+          echo ------------------------------------
+          ls -a ../${{ env.PROJECT_PATH }}
+          echo ------------------------------------
+          ls -a ./Assets
+          echo ------------------------------------
+          ls -a ./Packages
+          echo ------------------------------------
+          ls -a ./Library
 
       - name: Upload package as artifact
         uses: actions/upload-artifact@v1
