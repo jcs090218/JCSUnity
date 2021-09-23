@@ -5,7 +5,7 @@
 
 # JCSUnity
 
-[![CI](https://github.com/jcs090218/JCSUnity/actions/workflows/build.yml/badge.svg)](https://github.com/jcs090218/JCSUnity/actions/workflows/build.yml)
+[![Build](https://github.com/jcs090218/JCSUnity/actions/workflows/build.yml/badge.svg)](https://github.com/jcs090218/JCSUnity/actions/workflows/build.yml)
 [![Package](https://github.com/jcs090218/JCSUnity/actions/workflows/package.yml/badge.svg)](https://github.com/jcs090218/JCSUnity/actions/workflows/package.yml)
 [![Docs](https://github.com/jcs090218/JCSUnity/actions/workflows/docs.yml/badge.svg)](https://github.com/jcs090218/JCSUnity/actions/workflows/docs.yml)
 
