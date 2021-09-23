@@ -1,0 +1,57 @@
+name: Package
+
+on:
+  pull_request: {}
+  push: { branches: [main, master, develop] }
+
+env:
+  # License
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  ULF_FILE: Unity_v2021.x.ulf
+  # Project
+  UNITY_VERSION: 2021.1.1f1
+  PROJECT_PATH: .
+  # Packaging
+  PKG_VERSION: 2.2.1
+  BUILD_METHOD: PackageExporter.BatchMode.Export
+
+jobs:
+  package:
+    name: 📦 ${{ matrix.package-name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package-name:
+          - JCSUnity
+          - JCSUnity_ExampleProjects
+          - JCSUnity_Release
+          - JCSUnity_Trimmed
+        targetPlatform:
+          - StandaloneLinux64
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      - uses: actions/cache@v1.1.0
+        with:
+          path: Library
+          key: Library-test-project-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-test-project-
+            Library-
+
+      - uses: game-ci/unity-builder@v2.0-alpha-13
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          buildMethod: ${{ env.BUILD_METHOD }}
+          customParameters: -nographics --name "${{ matrix.package-name }}" --version "${{ env.PKG_VERSION }}" --savePath "."
+
+      - name: Upload package as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ matrix.package-name }}_v${{ env.PKG_VERSION }}.unitypackage
+          path: ${{ env.PROJECT_PATH }}/${{ matrix.package-name }}_v${{ env.PKG_VERSION }}.unitypackage
