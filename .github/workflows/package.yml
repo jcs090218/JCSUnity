@@ -36,7 +36,6 @@ jobs:
       fail-fast: false
       matrix:
         package-name:
-          - JCSUnity
           - JCSUnity_ExampleProjects
           - JCSUnity_Release
           - JCSUnity_Trimmed
