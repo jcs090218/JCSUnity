@@ -3,7 +3,6 @@ name: Activate Free License
 on:
   schedule:
   - cron: "0 0 * * *"
-  push: {branches: "master"}
 
 env:
   # License
