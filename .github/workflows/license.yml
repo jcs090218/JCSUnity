@@ -1,4 +1,4 @@
-name: Activate Free License
+name: License
 
 on:
   schedule:
