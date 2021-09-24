@@ -7,7 +7,6 @@ on:
 env:
   # License
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  ULF_FILE: Unity_v2021.x.ulf
   # Project
   UNITY_VERSION: 2021.1.1f1
   PROJECT_PATH: .
@@ -16,7 +15,20 @@ env:
   BUILD_METHOD: PackageExporter.BatchMode.Export
 
 jobs:
+  checklicense:
+    name: check if UNITY_LICENSE is set in github secrets
+    runs-on: ubuntu-latest
+    outputs:
+      is_unity_license_set: ${{ steps.checklicense_job.outputs.is_unity_license_set }}
+    steps:
+      - name: Check whether unity activation requests should be done
+        id: checklicense_job
+        run: |
+            echo "Skip activation job: ${{ env.UNITY_LICENSE != '' }}"
+            echo "::set-output name=is_unity_license_set::${{ env.UNITY_LICENSE != '' }}"
+
   package:
+    needs: [checklicense]
     name: 📦 ${{ matrix.package-name }}
     runs-on: ubuntu-latest
     strategy:
