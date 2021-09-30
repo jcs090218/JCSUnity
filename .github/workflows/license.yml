@@ -61,7 +61,14 @@ jobs:
         run: npm install --global unity-verify-code
 
       - name: Activate the license
+        continue-on-error: true
         run: unity-license-activate "${{ secrets.UNITY_EMAIL }}" "${{ secrets.UNITY_PASSWORD }}" "${{ needs.request_alf.outputs.alf }}"
+
+      - name: 🩺 Upload error screenshot
+        uses: actions/upload-artifact@v1
+        with:
+          name: screenshot_error
+          path: error.png
 
       - name: Read ulf
         id: ulfRead
