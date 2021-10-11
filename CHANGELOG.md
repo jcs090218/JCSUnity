@@ -22,6 +22,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Remove limitation on multiple canvas objects in the scene.
 * Remove legacy designed component `JCS_IgnoreDialogueObject`.
 * Clean up singleton game object module for better understanding.
+* Add request permission capability to application manager.
 
 ## 2.2.0
 > Released Aug 16, 2021
