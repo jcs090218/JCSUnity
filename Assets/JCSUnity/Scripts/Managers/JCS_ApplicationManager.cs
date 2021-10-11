@@ -208,11 +208,7 @@ namespace JCSUnity
 #elif UNITY_ANDROID
             yield return DoRequestUserPermission(Permission.FineLocation);
 #elif UNITY_IOS
-            bool call = Input.location.isEnabledByUser;
-            if (!call)
-            {
-                // prompt to enable location service
-            }
+            Input.location.Start();
 #endif
             yield break;
         }
