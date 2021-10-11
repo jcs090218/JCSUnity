@@ -183,7 +183,7 @@ namespace JCSUnity
 #elif UNITY_ANDROID
             yield return DoRequestUserPermission(Permission.Camera);
 #elif UNITY_IOS
-            yield return StartCoroutine(DoRequestUserAuthorization(UserAuthorization.WebCam));
+            yield return DoRequestUserAuthorization(UserAuthorization.WebCam);
 #endif
             yield break;
         }
@@ -195,7 +195,7 @@ namespace JCSUnity
 #elif UNITY_ANDROID
             yield return DoRequestUserPermission(Permission.Microphone);
 #elif UNITY_IOS
-            yield return StartCoroutine(DoRequestUserAuthorization(UserAuthorization.Microphone));
+            yield return DoRequestUserAuthorization(UserAuthorization.Microphone);
 #endif
             yield break;
         }
