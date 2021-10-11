@@ -16,13 +16,14 @@ Interface communicate to application layer.
 
 ## Functions
 
-| Name                   | Description                                           |
-|:-----------------------|:------------------------------------------------------|
-| IsPC                   | Return true if current platform is personal computer. |
-| IsMobile               | Return true if current platform is mobile phone.      |
-| Quit                   | Quit the application.                                 |
-| AddLangText            | Register a new language text.                         |
-| RefreshLangTexts       | Refresh all languages text in game.                   |
-| StartRequestCamera     | Start to request permission for camera/webcam.        |
-| StartRequestMicrophone | Start to request permission for microphone.           |
-| StartRequestLocation   | Start to request permission for location service.     |
+| Name                    | Description                                                  |
+|:------------------------|:-------------------------------------------------------------|
+| IsPC                    | Return true if current platform is personal computer.        |
+| IsMobile                | Return true if current platform is mobile phone.             |
+| Quit                    | Quit the application.                                        |
+| AddLangText             | Register a new language text.                                |
+| RefreshLangTexts        | Refresh all languages text in game.                          |
+| StartRequestCamera      | Start to request permission for camera/webcam.               |
+| StartRequestMicrophone  | Start to request permission for microphone.                  |
+| StartRequestLocation    | Start to request permission for location service.            |
+| StartRequestPermissions | Iterate through all the services, and enable it by settings. |
