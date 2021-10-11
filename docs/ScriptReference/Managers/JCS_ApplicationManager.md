@@ -4,17 +4,25 @@ Interface communicate to application layer.
 
 ## Variables
 
-| Name                   | Description                       |
-|:-----------------------|:----------------------------------|
-| SIMULATE_PLATFORM_TYPE | Target platform type to simulate. |
-| PLATFORM_TYPE          | This will override Platform Type. |
+| Name                   | Description                                |
+|:-----------------------|:-------------------------------------------|
+| RequestCamera          | Request permission for camera/webcam.      |
+| RequestMicrophone      | Request permission for microphone.         |
+| RequestLocation        | Request permission for location service.   |
+| SimulatePlatformType   | Target platform type to simulate.          |
+| PlatformType           | This will override Platform Type.          |
+| SimulateSystemLanguage | If true, override current system language. |
+| systemLanguage         | Target language to simulate.               |
 
 ## Functions
 
-| Name             | Description                                           |
-|:-----------------|:------------------------------------------------------|
-| isPC             | Return true if current platform is personal computer. |
-| isMobile         | Return true if current platform is mobile phone.      |
-| Quit             | Quit the application.                                 |
-| AddLangText      | Register a new language text.                         |
-| RefreshLangTexts | Refresh all languages text in game.                   |
+| Name                   | Description                                           |
+|:-----------------------|:------------------------------------------------------|
+| IsPC                   | Return true if current platform is personal computer. |
+| IsMobile               | Return true if current platform is mobile phone.      |
+| Quit                   | Quit the application.                                 |
+| AddLangText            | Register a new language text.                         |
+| RefreshLangTexts       | Refresh all languages text in game.                   |
+| StartRequestCamera     | Start to request permission for camera/webcam.        |
+| StartRequestMicrophone | Start to request permission for microphone.           |
+| StartRequestLocation   | Start to request permission for location service.     |
