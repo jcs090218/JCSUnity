@@ -64,7 +64,7 @@ jobs:
 
       - name: Print info
         run:
-          tree ${{ env.PROJECT_PATH }}/../
+          cd .. && tree ${{ env.PROJECT_PATH }}/../
 
       - name: Upload package as artifact
         uses: actions/upload-artifact@v1
