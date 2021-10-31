@@ -56,6 +56,7 @@
 *.exe
 *.*_data
 .vsconfig
+*.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta

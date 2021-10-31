@@ -264,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
 --- !u!4 &57533395
 Transform:
   m_ObjectHideFlags: 0
@@ -275,6 +274,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -305,6 +305,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1223927543}
   m_RootOrder: 1
@@ -320,6 +321,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1078392642}
   - {fileID: 503959940}
@@ -449,6 +451,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -481,6 +484,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1078392642}
   m_RootOrder: 0
@@ -543,7 +547,6 @@ GameObject:
   - component: {fileID: 503959940}
   - component: {fileID: 503959944}
   - component: {fileID: 503959943}
-  - component: {fileID: 503959942}
   - component: {fileID: 503959941}
   m_Layer: 5
   m_Name: _Portrait
@@ -562,6 +565,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 716442434}
   - {fileID: 528889105}
@@ -591,19 +595,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mFitScreenSize: 1
---- !u!114 &503959942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503959939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &503959943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,6 +661,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 503959940}
   m_RootOrder: 1
@@ -747,6 +739,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1223927543}
   m_RootOrder: 2
@@ -813,6 +806,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -845,6 +839,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 503959940}
   m_RootOrder: 0
@@ -1013,6 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTestWithKey: 0
+  mCanvases: []
   mGlobalUndoRedoSystem: {fileID: 0}
   mGameUI: {fileID: 0}
   mForceDialogue: {fileID: 0}
@@ -1171,12 +1167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSwitchSceneType: 1
-  mPauseGameWhileLoadingScene: 1
-  mJCSBlackScreen: {fileID: 0}
-  mJCSBlackSlideScreen: {fileID: 0}
+  mBlackScreen: {fileID: 0}
+  mBlackSlideScreen: {fileID: 0}
   mAlign: 0
   mPopWhiteScreen: 1
-  mJCSWhiteScreen: {fileID: 0}
+  mWhiteScreen: {fileID: 0}
+  mPauseGameWhileLoadingScene: 1
   mOverrideSetting: 0
   mSceneFadeInTime: 1
   mSceneFadeOutTime: 1
@@ -1248,7 +1244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a84b523d293cda40b73eb03a25ef83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mResizableScreenPanelPath: JCSUnity_Resources/GUI/JCS_ResizableScreenPanel
   mTopASP: {fileID: 0}
   mBottomASP: {fileID: 0}
   mLeftASP: {fileID: 0}
@@ -1256,7 +1251,6 @@ MonoBehaviour:
   RESIZE_SCREEN_THIS_SCENE: 0
   ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE: 16
   ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE: 9
-  SCREEN_TYPE_THIS_SCENE: 3
 --- !u!114 &777759531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,8 +1263,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459ea8803bb23694290d894d24e5c1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SIMULATE_PLATFORM_TYPE: 0
-  PLATFORM_TYPE: 1
+  mSystemLanguage: 42
+  mLangTexts: []
+  mRequestCamera: 0
+  mRequestMicrophone: 0
+  mRequestLocation: 0
+  mSimulatePlatformType: 1
+  mPlatformType: 1
+  mSimulateSystemLanguage: 0
+  mSimulateLanguage: 42
 --- !u!4 &777759532
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,6 +1282,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 951165062}
   - {fileID: 1924940136}
@@ -1364,6 +1366,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &785808176
@@ -1376,6 +1379,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 3.6567898, y: -2.7159493, z: 64.191696}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1408,6 +1412,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1078392642}
   m_RootOrder: 1
@@ -1483,6 +1488,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 503959940}
   m_RootOrder: 2
@@ -1558,6 +1564,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 777759532}
   m_RootOrder: 0
@@ -1619,6 +1626,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1223927543}
   m_RootOrder: 0
@@ -1661,7 +1669,6 @@ GameObject:
   - component: {fileID: 1078392642}
   - component: {fileID: 1078392644}
   - component: {fileID: 1078392643}
-  - component: {fileID: 1078392645}
   - component: {fileID: 1078392646}
   m_Layer: 5
   m_Name: _Landscape
@@ -1680,6 +1687,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 493770894}
   - {fileID: 827443102}
@@ -1729,18 +1737,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078392641}
   m_CullTransparentMesh: 0
---- !u!114 &1078392645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078392641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec10a9bac2135146ace97b721303a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1078392646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1758,7 +1754,6 @@ MonoBehaviour:
   mAsOriginalRotation: 1
   mPanelDeltaWidthRatio: 0
   mPanelDeltaHeightRatio: 0
-  mFitScreenSize: 1
 --- !u!1 &1223927529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2005,7 @@ MonoBehaviour:
   STANDARD_SCREEN_SIZE:
     width: 1080
     height: 1920
-  ENSURE_INSIDE_SAFE_AREA: 0
+  SCREEN_TYPE: 3
 --- !u!114 &1223927541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2036,7 +2031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
 --- !u!4 &1223927543
 Transform:
   m_ObjectHideFlags: 0
@@ -2047,6 +2041,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1005805277}
   - {fileID: 263943610}
@@ -2097,6 +2092,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2145,6 +2141,7 @@ Transform:
   m_LocalRotation: {x: -0.15541157, y: 0.16544248, z: -0.026410513, w: 0.9735392}
   m_LocalPosition: {x: 3.6567898, y: 1.15, z: 110}
   m_LocalScale: {x: 5.4537, y: 5.4537, z: 5.4537}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -2176,6 +2173,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 777759532}
   m_RootOrder: 2
@@ -2222,6 +2220,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 777759532}
   m_RootOrder: 1
@@ -2292,6 +2291,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -82.587326, y: 7.6250725, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2385,6 +2385,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &2051649834
 Canvas:
   m_ObjectHideFlags: 0
