@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 2.2.1 (Unreleased)
+## 2.3.0 (Unreleased)
 > Released N/A
+
+* Apply workaround for SafeArea bug.
+
+## 2.2.1
+> Released Nov 1, 2021
 
 * Add more document string.
 * Add new component, `JCS_PageIndicators` for mobile dribbles action.
