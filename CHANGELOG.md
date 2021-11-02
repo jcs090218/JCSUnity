@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 > Released N/A
 
 * Apply workaround for SafeArea bug.
+* Fixed field of view miscalculation.
 
 ## 2.2.1
 > Released Nov 1, 2021
