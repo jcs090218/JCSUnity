@@ -107,7 +107,8 @@ namespace JCSUnity
             mRecordFieldOfView = mCamera.fieldOfView;
 
             // add to on screen resize callback.
-            JCS_ScreenSettings.instance.onScreenResize += OnResizeGame;
+            JCS_ScreenSettings.instance.onScreenResize += OnScreenResize;
+            JCS_ScreenSettings.instance.onScreenIdle += OnScreenIdle;
         }
 
         protected virtual void Update()
@@ -507,7 +508,7 @@ namespace JCSUnity
             float panelTopBorder = panelPos.y + halfSlotHeight;
             float panelBottomBorder = panelPos.y - halfSlotHeight;
 
-            Camera cam = JCS_Camera.main.GetCamera();
+            Camera cam = main.GetCamera();
             Vector3 camPos = cam.transform.position;
             // Transfer 3D space to 2D space
             Vector2 camPosToScreen = cam.WorldToScreenPoint(camPos);
@@ -639,9 +640,17 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Callback when screen not resizing.
+        /// </summary>
+        protected virtual void OnScreenIdle()
+        {
+
+        }
+
+        /// <summary>
         /// Resize the game if screen size changes.
         /// </summary>
-        protected virtual void OnResizeGame()
+        protected virtual void OnScreenResize()
         {
             if (mCamera.orthographic)
                 OnResizeOrthographic();

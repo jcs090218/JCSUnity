@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace JCSUnity
 {
-    public delegate void OnScreenResize();
+    public delegate void OnScreenEvent();
 
     /// <summary>
     /// Screen related settings.
@@ -19,7 +19,8 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public OnScreenResize onScreenResize = null;
+        public OnScreenEvent onScreenResize = null;
+        public OnScreenEvent onScreenIdle = null;
 
 #if (UNITY_EDITOR)
         [Header("** Helper Variables (JCS_ScreenManager) **")]
@@ -421,7 +422,10 @@ namespace JCSUnity
             float height = JCS_Screen.height;
 
             if (CURRENT_SCREEN_SIZE.width == width && CURRENT_SCREEN_SIZE.height == height)
+            {
+                if (onScreenIdle != null) onScreenIdle.Invoke();
                 return;
+            }
 
             if (PREV_SCREEN_SIZE.width == 0.0f || PREV_SCREEN_SIZE.height == 0.0f)
             {
@@ -441,8 +445,7 @@ namespace JCSUnity
             CURRENT_SCREEN_SIZE.height = height;
 
             // Do callback.
-            if (onScreenResize != null)
-                onScreenResize.Invoke();
+            if (onScreenResize != null) onScreenResize.Invoke();
         }
     }
 }

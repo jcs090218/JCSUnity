@@ -6,7 +6,8 @@ Screen related settings.
 
 | Name                                    | Description                                                                      |
 |:----------------------------------------|:---------------------------------------------------------------------------------|
-| onScreenResize                          | Callback execute when the screen resized.                                        |
+| onScreenResize                          | Callback when the screen resized.                                                |
+| onScreenIdle                            | Callback when the screen is not resizing.                                        |
 | RESIZE_TO_ASPECT_WHEN_APP_STARTS        | Resize the screen/window to certain aspect when the application starts.          |
 | RESIZE_TO_STANDARD_WHEN_APP_STARTS      | Resize the screen/window to standard resoltuion when application starts.         |
 | RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED | Resize the screen/window everytime a scene are loaded.                           |
