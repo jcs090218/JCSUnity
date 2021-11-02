@@ -71,6 +71,9 @@ namespace JCSUnity
         // Record down the camera data, filed of view.
         protected float mRecordFieldOfView = 0.0f;
 
+        // Record last vertical FOV, so the FOV from camera is still adjustable.
+        private float mLastVerticalFOV = 0.0f;
+
         [Tooltip("Flag to check if using smooth track, otherwise hard track.")]
         [SerializeField]
         protected bool mSmoothTrack = true;
@@ -644,7 +647,10 @@ namespace JCSUnity
         /// </summary>
         protected virtual void OnScreenIdle()
         {
-
+            if (mLastVerticalFOV != mCamera.fieldOfView)
+            {
+                mRecordFieldOfView = RevertAngleConversionByRatio(mCamera.fieldOfView, GetAspectRatio());
+            }
         }
 
         /// <summary>
@@ -665,13 +671,9 @@ namespace JCSUnity
         {
             var ss = JCS_ScreenSettings.instance;
 
-            JCS_ScreenSize standard = ss.STANDARD_SCREEN_SIZE;
-
-            float mainAreaAspectRatio = (float)standard.width / (float)standard.height;
-            float aspectDifference = Mathf.Min(1f, ScreenAspect / mainAreaAspectRatio);
-
             float verticalFOV = mRecordFieldOfView;
-            mCamera.fieldOfView = AngleConversionByRatio(verticalFOV, 1 / aspectDifference);
+            mCamera.fieldOfView = AngleConversionByRatio(verticalFOV, GetAspectRatio());
+            mLastVerticalFOV = mCamera.fieldOfView;  // record it
 
             /* Store it to screen settings. */
             {
@@ -742,9 +744,38 @@ namespace JCSUnity
             }
         }
 
-        private float AngleConversionByRatio(float degreeAngle, float ratio)
+        /// <summary>
+        /// Return the aspect ratio from the standard screen size.
+        /// </summary>
+        private float GetAspectRatio()
         {
-            return 2f * (Mathf.Atan(Mathf.Tan(0.5f * degreeAngle * Mathf.Deg2Rad) * ratio)) * Mathf.Rad2Deg;
+            var ss = JCS_ScreenSettings.instance;
+            JCS_ScreenSize standard = ss.STANDARD_SCREEN_SIZE;
+            float mainAreaAspectRatio = (float)standard.width / (float)standard.height;
+            float aspectDifference = Mathf.Min(1f, ScreenAspect / mainAreaAspectRatio);
+            return 1 / aspectDifference;
+        }
+
+        /// <summary>
+        /// Convert DEGREE to largest width FOV.
+        /// </summary>
+        private float AngleConversionByRatio(float degree, float ratio)
+        {
+            float tan = Mathf.Tan(0.5f * degree * Mathf.Deg2Rad);
+            float atan = Mathf.Atan(tan * ratio);
+            float fov = 2f * atan * Mathf.Rad2Deg;
+            return fov;
+        }
+
+        /// <summary>
+        /// Inverse function of function `AngleConversionByRatio`.
+        /// </summary>
+        private float RevertAngleConversionByRatio(float fov, float ratio)
+        {
+            float atan = fov * 0.5f * Mathf.Deg2Rad;
+            float tan = Mathf.Tan(atan) * (1f / ratio);
+            float degree = Mathf.Atan(tan) * Mathf.Rad2Deg * 2f;
+            return degree;
         }
     }
 }
