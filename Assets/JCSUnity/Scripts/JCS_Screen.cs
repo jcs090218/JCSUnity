@@ -20,11 +20,13 @@ namespace JCSUnity
         /// <summary>
         /// Screen's width includes safe area view calculation.
         /// </summary>
-        public static int width 
-        { 
+        public static int width
+        {
             get
             {
-#if UNITY_2017_2_OR_NEWER
+#if UNITY_EDITOR
+                return Screen.width;
+#elif UNITY_IOS || UNITY_ANDROID
                 return (int)Screen.safeArea.width;
 #else
                 return Screen.width;
@@ -39,7 +41,9 @@ namespace JCSUnity
         {
             get
             {
-#if UNITY_2017_2_OR_NEWER
+#if UNITY_EDITOR
+                return Screen.height;
+#elif UNITY_IOS || UNITY_ANDROID
                 return (int)Screen.safeArea.height;
 #else
                 return Screen.height;

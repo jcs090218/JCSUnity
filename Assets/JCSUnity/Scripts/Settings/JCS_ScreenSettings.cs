@@ -204,8 +204,8 @@ namespace JCSUnity
             }
             else
             {
-                newWidth = Screen.width;
-                newHeight = Screen.height;
+                newWidth = JCS_Screen.width;
+                newHeight = JCS_Screen.height;
             }
 
             return new JCS_ScreenSizef(newWidth, newHeight);

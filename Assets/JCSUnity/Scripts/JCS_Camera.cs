@@ -673,26 +673,34 @@ namespace JCSUnity
         /// </summary>
         protected virtual void OnResizeGame()
         {
+            if (mCamera.orthographic)
+                OnResizeOrthographic();
+            else
+                OnResizePerspective();
+        }
+
+        private void OnResizePerspective()
+        {
             var ss = JCS_ScreenSettings.instance;
 
-            JCS_ScreenSizef size = ss.StartingScreenSize();
+            JCS_ScreenSizef starting = ss.StartingScreenSize();
+            JCS_ScreenSizef current = ss.CURRENT_SCREEN_SIZE;
 
-            float currentScreenRatio = ss.CURRENT_SCREEN_SIZE.width / ss.CURRENT_SCREEN_SIZE.height;
-            float startingScreenRatio = (float)size.width / (float)size.height;
+            float currentScreenRatio = current.width / current.height;
+            float startingScreenRatio = starting.width / starting.height;
 
             if (currentScreenRatio > startingScreenRatio)
             {
                 // Set the limit if reach the starting screen ratio.
-                ss.CURRENT_SCREEN_SIZE.width = (float)size.width;
-                ss.CURRENT_SCREEN_SIZE.height = (float)size.height;
+                current.width = starting.width;
+                current.height = starting.height;
             }
 
             float prevRatio = ss.PREV_SCREEN_SIZE.width / ss.PREV_SCREEN_SIZE.height;
-            float newRatio = ss.CURRENT_SCREEN_SIZE.width / ss.CURRENT_SCREEN_SIZE.height;
+            float newRatio = current.width / current.height;
 
             float divRatio = prevRatio / newRatio;
 
-            mCamera.orthographicSize *= divRatio;
             mCamera.fieldOfView *= divRatio;
 
             if (mSceneJustLoad)
@@ -707,21 +715,81 @@ namespace JCSUnity
                 // and `mRecordFieldOfView` variables.
                 if (bw > bh)
                 {
-                    mCamera.orthographicSize = mRecordOrthographicSize;
                     mCamera.fieldOfView = mRecordFieldOfView;
                 }
                 // Calculating the proper hight.
                 else
                 {
                     // Calculate what the height suppose to be!
-                    float supposeHeight = ((float)JCS_Screen.width * (float)ss.STARTING_SCREEN_SIZE.height) / (float)ss.STARTING_SCREEN_SIZE.width;
+                    float supposeHeight = ((float)JCS_Screen.width * starting.height) / starting.width;
+
+                    // Use the 'suppose height' to find the proper 
+                    // height ratio.
+                    float heightRatio = ((float)JCS_Screen.height / supposeHeight);
+
+                    var view = new JCS_ScreenSizef(JCS_Screen.width, supposeHeight);
+
+                    mCamera.fieldOfView = (heightRatio * 17.5f) + mRecordFieldOfView;
+                }
+
+                mSceneJustLoad = false;
+            }
+
+            /* Store it to screen settings. */
+            {
+                ss.FIELD_OF_VIEW = mCamera.fieldOfView;
+            }
+        }
+
+        private void OnResizeOrthographic()
+        {
+            var ss = JCS_ScreenSettings.instance;
+
+            JCS_ScreenSizef starting = ss.StartingScreenSize();
+            JCS_ScreenSizef current = ss.CURRENT_SCREEN_SIZE;
+
+            float currentScreenRatio = current.width / current.height;
+            float startingScreenRatio = starting.width / starting.height;
+
+            if (currentScreenRatio > startingScreenRatio)
+            {
+                // Set the limit if reach the starting screen ratio.
+                current.width = starting.width;
+                current.height = starting.height;
+            }
+
+            float prevRatio = ss.PREV_SCREEN_SIZE.width / ss.PREV_SCREEN_SIZE.height;
+            float newRatio = current.width / current.height;
+
+            float divRatio = prevRatio / newRatio;
+
+            mCamera.orthographicSize *= divRatio;
+
+            if (mSceneJustLoad)
+            {
+                JCS_ScreenSizef bs = ss.BlackspaceSize();
+
+                float bw = bs.width;
+                float bh = bs.height;
+
+                // Width does not need to be calculate, but need to set back
+                // to the original value. Hence, the `mRecordOrthographicSize`
+                // and `mRecordFieldOfView` variables.
+                if (bw > bh)
+                {
+                    mCamera.orthographicSize = mRecordOrthographicSize;
+                }
+                // Calculating the proper hight.
+                else
+                {
+                    // Calculate what the height suppose to be!
+                    float supposeHeight = ((float)JCS_Screen.width * starting.height) / starting.width;
 
                     // Use the 'suppose height' to find the proper 
                     // height ratio.
                     float heightRatio = ((float)JCS_Screen.height / supposeHeight);
 
                     mCamera.orthographicSize = heightRatio * mRecordOrthographicSize;
-                    mCamera.fieldOfView = heightRatio * mRecordFieldOfView;
                 }
 
                 mSceneJustLoad = false;
@@ -730,7 +798,6 @@ namespace JCSUnity
             /* Store it to screen settings. */
             {
                 ss.ORTHOGRAPHIC_SIZE = mCamera.orthographicSize;
-                ss.FIELD_OF_VIEW = mCamera.fieldOfView;
             }
         }
     }
