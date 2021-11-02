@@ -6,7 +6,6 @@ Camera base class for JCSUnity.
 
 | Name                    | Description                                                        |
 |:------------------------|:-------------------------------------------------------------------|
-| mGameDepth              | Distance as game origin depth.                                     |
 | mDisplayGameDepthCamera | Display the camera depth.                                          |
 | mGameCamColor           | The color of the camera depth.                                     |
 | mFollowing              | Flag to check if currently the camera following the target object. |

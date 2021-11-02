@@ -37,10 +37,6 @@ namespace JCSUnity
 
         [Header("** Initialize Variables (JCS_Camera) **")]
 
-        [Tooltip("Distance as game origin depth.")]
-        [SerializeField]
-        protected float mGameDepth = 0;
-
         [Tooltip("Display the camera depth.")]
         [SerializeField]
         protected bool mDisplayGameDepthCamera = false;
@@ -92,6 +88,8 @@ namespace JCSUnity
 
         public abstract void SetFollowTarget(Transform trans);
         public abstract Transform GetFollowTarget();
+
+        public float ScreenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
 
         /* Functions */
 
@@ -235,17 +233,8 @@ namespace JCSUnity
             JCS_Utility.DeleteAllFilesFromDir(SavePath());
         }
 
-#if (UNITY_EDITOR)
-        /// <summary>
-        /// Square inside the game editor screen. Display 
-        /// the screen width and height in current game depth.
-        /// 2D Game probably need this. 3D Game is optional.
-        /// </summary>
-        private void DisplayGameDepthCamera()
+        private Vector3 GameDepthRect(Vector3 depth)
         {
-            if (!mDisplayGameDepthCamera)
-                return;
-
             // Next step: find camera 4 bounds.
             Camera cam = main.GetCamera();
 
@@ -257,7 +246,7 @@ namespace JCSUnity
                 camPos.x = 0.0f;
                 camPos.y = 0.0f;
             }
-            Vector3 canvasPos = JCS_Canvas.GuessCanvas().transform.position;
+            Vector3 canvasPos = canvas.transform.position;
             // only need to know the depth.
             {
                 canvasPos.x = 0.0f;
@@ -265,29 +254,42 @@ namespace JCSUnity
             }
             float camToCanvasDistance = Vector3.Distance(camPos, canvasPos);
 
-            Vector3 gameDepth = new Vector3(0, mGameDepth, 0);
-            float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
+            float camToGameDepthDistance = Vector3.Distance(camPos, depth);
 
-            Vector2 canvasRect = canvas.GetAppRect().sizeDelta;
+            RectTransform appRect = canvas.GetAppRect();
+            Vector2 canvasRect = appRect.sizeDelta;
             // transfer rect from screen space to world space
             {
-                canvasRect.x *= canvas.GetAppRect().localScale.x;
-                canvasRect.y *= canvas.GetAppRect().localScale.y;
+                canvasRect.x *= appRect.localScale.x;
+                canvasRect.y *= appRect.localScale.y;
             }
 
-            mCamRectSize = new Vector3(
+            return new Vector3(
                 camToGameDepthDistance * canvasRect.x / camToCanvasDistance,
                 camToGameDepthDistance * canvasRect.y / camToCanvasDistance,
                 0);
+        }
 
-            // camPos name are named up there.
-            // cannot name the same.
-            Vector3 cCamPos = cam.transform.position;
+#if (UNITY_EDITOR)
+        /// <summary>
+        /// Square inside the game editor screen. Display 
+        /// the screen width and height in current game depth.
+        /// 2D Game probably need this. 3D Game is optional.
+        /// </summary>
+        private void DisplayGameDepthCamera()
+        {
+            if (!mDisplayGameDepthCamera)
+                return;
 
-            float camTopBound = cCamPos.y + mCamRectSize.y / JCS_Mathf.D_HALF;
-            float camBotBound = cCamPos.y - mCamRectSize.y / JCS_Mathf.D_HALF;
-            float camRightBound = cCamPos.x + mCamRectSize.x / JCS_Mathf.D_HALF;
-            float camLeftBound = cCamPos.x - mCamRectSize.x / JCS_Mathf.D_HALF;
+            mCamRectSize = GameDepthRect(Vector3.zero);
+            Camera cam = main.GetCamera();
+
+            Vector3 camPos = cam.transform.position;
+
+            float camTopBound = camPos.y + mCamRectSize.y / JCS_Mathf.D_HALF;
+            float camBotBound = camPos.y - mCamRectSize.y / JCS_Mathf.D_HALF;
+            float camRightBound = camPos.x + mCamRectSize.x / JCS_Mathf.D_HALF;
+            float camLeftBound = camPos.x - mCamRectSize.x / JCS_Mathf.D_HALF;
 
             // top left -> bot right
             mCamRect.x = camLeftBound;
@@ -312,10 +314,10 @@ namespace JCSUnity
             botRight.y -= mCamRectSize.y / JCS_Mathf.D_HALF;
 
             // set depth to the same
-            topLeft.z = mGameDepth;
-            topRight.z = mGameDepth;
-            botLeft.z = mGameDepth;
-            botRight.z = mGameDepth;
+            topLeft.z = 0;
+            topRight.z = 0;
+            botLeft.z = 0;
+            botRight.z = 0;
 
             // Draw the box
             JCS_Debug.DrawRect(topLeft, topRight, botRight, botLeft, mGameCamColor);
@@ -366,48 +368,16 @@ namespace JCSUnity
                 new Vector3(cLeftBound, cOrigin.y, cOrigin.z));
 #endif
 
-            // Next step: find camera 4 bounds.
-            Camera cam = JCS_Camera.main.GetCamera();
-
-            var canvas = JCS_Canvas.GuessCanvas();
+            float depth = cap.transform.position.z;
+            Vector3 gameRect = GameDepthRect(new Vector3(0.0f, depth, 0.0f));
+            Camera cam = main.GetCamera();
 
             Vector3 camPos = cam.transform.position;
-            // only need to know the depth.
-            {
-                camPos.x = 0.0f;
-                camPos.y = 0.0f;
-            }
-            Vector3 canvasPos = canvas.transform.position;
-            // only need to know the depth.
-            {
-                canvasPos.x = 0.0f;
-                canvasPos.y = 0.0f;
-            }
-            float camToCanvasDistance = Vector3.Distance(camPos, canvasPos);
 
-            Vector3 gameDepth = new Vector3(0, cap.transform.position.z, 0.0f);
-            float camToGameDepthDistance = Vector3.Distance(camPos, gameDepth);
-
-            Vector2 canvasRect = canvas.GetAppRect().sizeDelta;
-            // transfer rect from screen space to world space
-            {
-                canvasRect.x *= canvas.GetAppRect().localScale.x;
-                canvasRect.y *= canvas.GetAppRect().localScale.y;
-            }
-
-            Vector3 gameRect = new Vector3(
-                camToGameDepthDistance * canvasRect.x / camToCanvasDistance,
-                camToGameDepthDistance * canvasRect.y / camToCanvasDistance,
-                0);
-
-            // camPos name are named up there.
-            // cannot name the same.
-            Vector3 cCamPos = cam.transform.position;
-
-            float camTopBound = cCamPos.y + gameRect.y / JCS_Mathf.D_HALF;
-            float camBotBound = cCamPos.y - gameRect.y / JCS_Mathf.D_HALF;
-            float camRightBound = cCamPos.x + gameRect.x / JCS_Mathf.D_HALF;
-            float camLeftBound = cCamPos.x - gameRect.x / JCS_Mathf.D_HALF;
+            float camTopBound = camPos.y + gameRect.y / JCS_Mathf.D_HALF;
+            float camBotBound = camPos.y - gameRect.y / JCS_Mathf.D_HALF;
+            float camRightBound = camPos.x + gameRect.x / JCS_Mathf.D_HALF;
+            float camLeftBound = camPos.x - gameRect.x / JCS_Mathf.D_HALF;
 
 #if (UNITY_EDITOR)
             Vector3 topLeft = cam.transform.position;
@@ -427,10 +397,10 @@ namespace JCSUnity
             botRight.y -= gameRect.y / JCS_Mathf.D_HALF;
 
             // set depth to the same
-            topLeft.z = mGameDepth;
-            topRight.z = mGameDepth;
-            botLeft.z = mGameDepth;
-            botRight.z = mGameDepth;
+            topLeft.z = depth;
+            topRight.z = depth;
+            botLeft.z = depth;
+            botRight.z = depth;
 
             // Draw the box
             JCS_Debug.DrawRect(topLeft, topRight, botRight, botLeft);
@@ -461,7 +431,7 @@ namespace JCSUnity
         {
             Vector2 objectRect = JCS_Utility.GetSpriteRendererRect(checkTrans);
 
-            Camera cam = JCS_Camera.main.GetCamera();
+            Camera cam = main.GetCamera();
             Vector2 objPos = cam.WorldToViewportPoint(checkTrans.transform.position);
             Vector2 camPos = cam.WorldToViewportPoint(cam.transform.position);
 
@@ -679,61 +649,20 @@ namespace JCSUnity
                 OnResizePerspective();
         }
 
+        /// <summary>
+        /// Resize for perspective camera.
+        /// </summary>
         private void OnResizePerspective()
         {
             var ss = JCS_ScreenSettings.instance;
 
-            JCS_ScreenSizef starting = ss.StartingScreenSize();
-            JCS_ScreenSizef current = ss.CURRENT_SCREEN_SIZE;
+            JCS_ScreenSize standard = ss.STANDARD_SCREEN_SIZE;
 
-            float currentScreenRatio = current.width / current.height;
-            float startingScreenRatio = starting.width / starting.height;
+            float mainAreaAspectRatio = (float)standard.width / (float)standard.height;
+            float aspectDifference = Mathf.Min(1f, ScreenAspect / mainAreaAspectRatio);
 
-            if (currentScreenRatio > startingScreenRatio)
-            {
-                // Set the limit if reach the starting screen ratio.
-                current.width = starting.width;
-                current.height = starting.height;
-            }
-
-            float prevRatio = ss.PREV_SCREEN_SIZE.width / ss.PREV_SCREEN_SIZE.height;
-            float newRatio = current.width / current.height;
-
-            float divRatio = prevRatio / newRatio;
-
-            mCamera.fieldOfView *= divRatio;
-
-            if (mSceneJustLoad)
-            {
-                JCS_ScreenSizef bs = ss.BlackspaceSize();
-
-                float bw = bs.width;
-                float bh = bs.height;
-
-                // Width does not need to be calculate, but need to set back
-                // to the original value. Hence, the `mRecordOrthographicSize`
-                // and `mRecordFieldOfView` variables.
-                if (bw > bh)
-                {
-                    mCamera.fieldOfView = mRecordFieldOfView;
-                }
-                // Calculating the proper hight.
-                else
-                {
-                    // Calculate what the height suppose to be!
-                    float supposeHeight = ((float)JCS_Screen.width * starting.height) / starting.width;
-
-                    // Use the 'suppose height' to find the proper 
-                    // height ratio.
-                    float heightRatio = ((float)JCS_Screen.height / supposeHeight);
-
-                    var view = new JCS_ScreenSizef(JCS_Screen.width, supposeHeight);
-
-                    mCamera.fieldOfView = (heightRatio * 17.5f) + mRecordFieldOfView;
-                }
-
-                mSceneJustLoad = false;
-            }
+            float verticalFOV = mRecordFieldOfView;
+            mCamera.fieldOfView = AngleConversionByRatio(verticalFOV, 1 / aspectDifference);
 
             /* Store it to screen settings. */
             {
@@ -741,6 +670,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Resize for orthographic camera.
+        /// </summary>
         private void OnResizeOrthographic()
         {
             var ss = JCS_ScreenSettings.instance;
@@ -799,6 +731,11 @@ namespace JCSUnity
             {
                 ss.ORTHOGRAPHIC_SIZE = mCamera.orthographicSize;
             }
+        }
+
+        private float AngleConversionByRatio(float degreeAngle, float ratio)
+        {
+            return 2f * (Mathf.Atan(Mathf.Tan(0.5f * degreeAngle * Mathf.Deg2Rad) * ratio)) * Mathf.Rad2Deg;
         }
     }
 }

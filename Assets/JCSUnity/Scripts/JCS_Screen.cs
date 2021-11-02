@@ -20,14 +20,14 @@ namespace JCSUnity
         /// <summary>
         /// Screen's width includes safe area view calculation.
         /// </summary>
-        public static int width
+        public static float width
         {
             get
             {
 #if UNITY_EDITOR
                 return Screen.width;
 #elif UNITY_IOS || UNITY_ANDROID
-                return (int)Screen.safeArea.width;
+                return Screen.safeArea.width;
 #else
                 return Screen.width;
 #endif
@@ -37,14 +37,14 @@ namespace JCSUnity
         /// <summary>
         /// Screen's height includes safe area view calculation.
         /// </summary>
-        public static int height
+        public static float height
         {
             get
             {
 #if UNITY_EDITOR
                 return Screen.height;
 #elif UNITY_IOS || UNITY_ANDROID
-                return (int)Screen.safeArea.height;
+                return Screen.safeArea.height;
 #else
                 return Screen.height;
 #endif
@@ -54,6 +54,10 @@ namespace JCSUnity
         /// <summary>
         /// Safe way to se screen's resolution base on platforms.
         /// </summary>
+        public static void SetResolution(float width, float height, bool fullscreen, int preferredRefreshRate = 0)
+        {
+            SetResolution((int)width, (int)height, fullscreen, preferredRefreshRate);
+        }
         public static void SetResolution(int width, int height, bool fullscreen, int preferredRefreshRate = 0)
         {
 #if !(UNITY_IOS || UNITY_ANDROID)
