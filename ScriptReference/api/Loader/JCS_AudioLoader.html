@@ -1,16 +1,15 @@
 <h1 id="jcs_audioloader">JCS_AudioLoader</h1><p>Audio loader, load an external audio file.<h2 id="functions">Functions</h2><table><thead><tr><th id="name" style="text-align:left">Name<th id="description" style="text-align:left">Description<tbody><tr><td style="text-align:left">LoadAudio<td style="text-align:left">Load the music from the path in runtime.</table><h2 id="example">Example</h2><pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
   {
-      <span class="hljs-built_in">string</span> filePath = <span class="hljs-string">&quot;path/to/file.ogg&quot;</span>;
-      AudioClip cl;
+      <span class="hljs-built_in">string</span> url = <span class="hljs-string">&quot;file://C:/path/to/file.ogg&quot;</span>;
 
       <span class="hljs-comment">// Start loading the audio file.</span>
-      StartCoroutine(JCS_AudioLoader.LoadAudio(cl, filePath, DoneLoadMusic));
+      StartCoroutine(JCS_AudioLoader.LoadAudio(url, AudioLoaded));
   }
 
   <span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span>
   <span class="hljs-comment"><span class="hljs-doctag">///</span> Callback after the audio is loaded.</span>
   <span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span>
-  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoneLoadMusic</span>(<span class="hljs-params">AudioClip ac</span>)</span>
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AudioLoaded</span>(<span class="hljs-params">AudioClip ac</span>)</span>
   {
       Debug.Log(<span class="hljs-string">&quot;Done loading the audio file!&quot;</span>);
   }</code></pre>
