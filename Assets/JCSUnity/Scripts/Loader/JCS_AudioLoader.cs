@@ -21,7 +21,7 @@ namespace JCSUnity
     public static class JCS_AudioLoader
     {
         /// <summary>
-        /// Load the music from path in runetime.
+        /// Load the audio from path/url in runtime.
         /// </summary>
         /// <param name="path"> Path without file name. </param>
         /// <param name="filename"> Name of the file. </param>
@@ -39,9 +39,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Load the music from path in runtime.
+        /// Load the audio from path/url in runtime.
         /// </summary>
-        /// <param name="url"> Filpath to the target audio file. </param>
+        /// <param name="url"> Url to the target audio file. </param>
         /// <param name="type"> Type of the audio clip. </param>
         /// <param name="callback"> Callback after the audio is loaded. </param>
         /// <returns> Coroutine status. </returns>
