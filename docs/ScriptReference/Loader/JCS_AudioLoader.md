@@ -13,17 +13,16 @@ Audio loader, load an external audio file.
 ```cs
   private void Start()
   {
-      string filePath = "path/to/file.ogg";
-      AudioClip cl;
+      string url = "file://C:/path/to/file.ogg";
   
       // Start loading the audio file.
-      StartCoroutine(JCS_AudioLoader.LoadAudio(cl, filePath, DoneLoadMusic));
+      StartCoroutine(JCS_AudioLoader.LoadAudio(url, AudioLoaded));
   }
 
   /// <summary>
   /// Callback after the audio is loaded.
   /// </summary>
-  private void DoneLoadMusic(AudioClip ac)
+  private void AudioLoaded(AudioClip ac)
   {
       Debug.Log("Done loading the audio file!");
   }
