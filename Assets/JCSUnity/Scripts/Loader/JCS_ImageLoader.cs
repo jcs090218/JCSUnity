@@ -120,11 +120,11 @@ namespace JCSUnity
         /// <param name="pixelPerUnit"> Pixel per unit conversion to world space. </param>
         /// <returns> Sprite object. </returns>
         public static Sprite LoadImage(
-            string filePath, 
-            float x, 
-            float y, 
-            float width, 
-            float height, 
+            string filePath,
+            float x,
+            float y,
+            float width,
+            float height,
             float pixelPerUnit = 100.0f)
         {
             Texture2D tex = LoadTexture(filePath);
@@ -143,10 +143,16 @@ namespace JCSUnity
         /// <returns> Coroutine status. </returns>
         public static IEnumerator LoadImage(string url, ImageLoaded callback)
         {
+#if UNITY_2018_1_OR_NEWER
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
             yield return request.SendWebRequest();
-
             Texture2D tex = ((DownloadHandlerTexture)request.downloadHandler).texture;
+#else
+            WWW request = new WWW(url);
+            yield return request;
+            Texture2D tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+            request.LoadImageIntoTexture(tex);
+#endif
 
             if (callback != null)
                 callback.Invoke(tex);
