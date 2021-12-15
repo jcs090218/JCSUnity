@@ -11,6 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Apply workaround for SafeArea bug.
 * Fixed field of view miscalculation.
 * Fixed incorrect resize UI when not using responsive type screen resize setting.
+* Added functionality to load image through an URL.
 
 ## 2.2.1
 > Released Nov 1, 2021
