@@ -1,4 +1,4 @@
-<h1 id="jcs_imageloader">JCS_ImageLoader</h1><p>Image loader, load an external image file to Unity usable sprite.<h2 id="functions">Functions</h2><table><thead><tr><th id="name" style="text-align:left">Name<th id="description" style="text-align:left">Description<tbody><tr><td style="text-align:left">LoadTexture<td style="text-align:left">Load image file as texture.<tr><td style="text-align:left">Create<td style="text-align:left">Create sprite object.<tr><td style="text-align:left">LoadImage<td style="text-align:left">Load Image by file path.</table><h2 id="example">Example</h2><pre class="cs language-cs"><code class="hljs cs language-cs"><span class="hljs-built_in">string</span> filePath = <span class="hljs-string">&quot;path/to/image.png&quot;</span>;
+<h1 id="jcs_imageloader">JCS_ImageLoader</h1><p>Image loader, load an external image file to Unity usable sprite.<h2 id="functions">Functions</h2><table><thead><tr><th id="name" style="text-align:left">Name<th id="description" style="text-align:left">Description<tbody><tr><td style="text-align:left">LoadTexture<td style="text-align:left">Load image file as texture.<tr><td style="text-align:left">Create<td style="text-align:left">Create sprite object.<tr><td style="text-align:left">LoadImage<td style="text-align:left">Load Image by file path.</table><h2 id="example">Example</h2><p>You can either loaded through local file system,<pre class="cs language-cs"><code class="hljs cs language-cs"><span class="hljs-built_in">string</span> filePath = <span class="hljs-string">&quot;path/to/image.png&quot;</span>;
 
 <span class="hljs-comment">// Get the image as texture.</span>
 Texture2D tex = JCS_ImageLoader.LoadTexture(filePath);
@@ -7,4 +7,18 @@ Texture2D tex = JCS_ImageLoader.LoadTexture(filePath);
 Sprite sp = JCS_ImageLoader.Create(tex);
 
 <span class="hljs-comment">// Combine the two functions just use.</span>
-sp = JCS_ImageLoader.LoadImage(filePath);</code></pre>
+sp = JCS_ImageLoader.LoadImage(filePath);</code></pre><p>Or loaded from an URL using web request!<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
+  {
+      <span class="hljs-built_in">string</span> url = <span class="hljs-string">&quot;file://C:/path/to/image.png&quot;</span>;  <span class="hljs-comment">// you can use HTTP url instead</span>
+
+      <span class="hljs-comment">// Start loading the image file.</span>
+      StartCoroutine(JCS_ImageLoader.LoadImage(url, ImageLoaded));
+  }
+
+  <span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span>
+  <span class="hljs-comment"><span class="hljs-doctag">///</span> Callback after the image is loaded.</span>
+  <span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ImageLoaded</span>(<span class="hljs-params">Texture2D tex</span>)</span>
+  {
+      Debug.Log(<span class="hljs-string">&quot;Done loading the image file!&quot;</span>);
+  }</code></pre>
