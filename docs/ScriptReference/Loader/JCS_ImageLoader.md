@@ -12,6 +12,8 @@ Image loader, load an external image file to Unity usable sprite.
 
 ## Example
 
+You can either loaded through local file system,
+
 ```cs
 string filePath = "path/to/image.png";
 
@@ -23,4 +25,24 @@ Sprite sp = JCS_ImageLoader.Create(tex);
 
 // Combine the two functions just use.
 sp = JCS_ImageLoader.LoadImage(filePath);
+```
+
+Or loaded from an URL using web request!
+
+```cs
+  private void Start()
+  {
+      string url = "file://C:/path/to/image.png";  // you can use HTTP url instead
+  
+      // Start loading the image file.
+      StartCoroutine(JCS_ImageLoader.LoadImage(url, ImageLoaded));
+  }
+
+  /// <summary>
+  /// Callback after the image is loaded.
+  /// </summary>
+  private void ImageLoaded(Texture2D tex)
+  {
+      Debug.Log("Done loading the image file!");
+  }
 ```
