@@ -4,7 +4,14 @@ Button that have two callback can toggle each other. (Gamepad)
 
 ## Functions
 
-| Name            | Description                 |
-|:----------------|:----------------------------|
-| SetActiveFunc   | Set callback when active.   |
-| SetDeactiveFunc | Set callback when deactive. |
+| Name       | Description                                    |
+|:-----------|:-----------------------------------------------|
+| onActive   | Callback when active the toggle button.        |
+| onDeactive | Callback when deactive the toggle button.      |
+| mActive    | Return true if toggle button currently active. |
+
+## Functions
+
+| Name   | Description        |
+|:-------|:-------------------|
+| Toggle | Toggle the button. |

@@ -38,7 +38,7 @@ public class BF_PickItem : JCS_Item
         // set the picking collider
         PickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
 
-        SetPickCallback(PickCallback);
+        pickedCallback = AfterPicked;
 
         // try to get the optional variables.
         if (mEffectPickItem == null)
@@ -49,7 +49,7 @@ public class BF_PickItem : JCS_Item
     /// Call back when item were picked.
     /// </summary>
     /// <param name="other"> collider detection if needed. </param>
-    public void PickCallback(Collider other)
+    public void AfterPicked(Collider other)
     { 
         if (mEffectPickItem != null)
             mEffectPickItem.DoEffect();

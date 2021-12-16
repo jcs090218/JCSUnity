@@ -33,14 +33,14 @@ public class BF_GoldObject : JCS_CashObject
         // set the picking collider
         PickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
 
-        SetPickCallback(PickCallback);
+        pickedCallback = AfterPicked;
     }
 
     /// <summary>
     /// Call back when item were picked.
     /// </summary>
     /// <param name="other"> collider detection if needed. </param>
-    public void PickCallback(Collider other)
+    public void AfterPicked(Collider other)
     {
         BF_GameSettings.GAME_DATA.Cash += mCashValue;
     }
