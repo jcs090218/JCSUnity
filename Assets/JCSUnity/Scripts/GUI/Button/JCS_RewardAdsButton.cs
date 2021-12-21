@@ -45,7 +45,7 @@ namespace JCSUnity
         /// 
         /// * Good for organize code and game data file in Unity.
         /// </summary>
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             if (mRewardCallback == null)
             {

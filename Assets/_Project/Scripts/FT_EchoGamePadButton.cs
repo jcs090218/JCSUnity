@@ -22,7 +22,7 @@ public class FT_EchoGamePadButton :  JCS_GamePadButton
 
     /* Functions */
 
-    public override void JCS_OnClickCallback()
+    public override void OnClick()
     {
         Debug.Log("echo.. Hello World!!");
 

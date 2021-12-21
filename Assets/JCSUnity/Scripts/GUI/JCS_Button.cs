@@ -24,11 +24,12 @@ namespace JCSUnity
         public delegate void CallBackFuncBtn(JCS_Button btn);
         public delegate void CallBackFuncBtnInt(int selection);
 
-        // JCSUnity framework only callback, do not override this callback.
+        // framework only callback, do not override this callback
         public EmptyFunction btnSystemCallBack = null;
         public CallBackFuncBtn btnSystemCallBackBtn = null;
         public CallBackFuncBtnInt btnSystemCallBackBtnInt = null;
-        // for user's callback.
+
+        // user callback
         public EmptyFunction btnCallBack = null;
         public CallBackFuncBtn btnCallBackBtn = null;
 
@@ -91,7 +92,8 @@ namespace JCSUnity
         public Image Image { get { return this.mImage; } }
         public int DialogueIndex { get { return this.mDialogueIndex; } set { this.mDialogueIndex = value; } }
         public bool AutoListener { get { return this.mAutoListener; } set { this.mAutoListener = value; } }
-        public bool Interactable {
+        public bool Interactable
+        {
             get { return this.mInteractable; }
             set
             {
@@ -105,7 +107,7 @@ namespace JCSUnity
         public JCS_ButtonSelection ButtonSelection { get { return this.mButtonSelection; } set { this.mButtonSelection = value; } }
         public bool IsSelectedInGroup { get { return this.mIsSelectedInGroup; } }
 
-        /* Compatible with 1.5.3 version of JCSUnity */
+        /* Compatible with version 1.5.3 */
         public void SetCallback(EmptyFunction func) { this.btnCallBack += func; }
         public void SetCallback(CallBackFuncBtn func) { this.btnCallBackBtn += func; }
         public void SetSystemCallback(EmptyFunction func) { this.btnSystemCallBack += func; }
@@ -122,14 +124,13 @@ namespace JCSUnity
 
         protected virtual void Awake()
         {
-            InitJCSButton();
+            Init();
         }
 
-
         /// <summary>
-        /// Intialize jcs button once.
+        /// Intialize the button once.
         /// </summary>
-        public void InitJCSButton(bool forceInit = false)
+        public void Init(bool forceInit = false)
         {
             if (!forceInit)
             {
@@ -147,15 +148,15 @@ namespace JCSUnity
 
             if (mAutoListener)
             {
-                // add listener itself, but it won't show in the inspector.
-                mButton.onClick.AddListener(JCS_ButtonClick);
+                // add listener itself, but it won't show in the inspector
+                mButton.onClick.AddListener(ButtonClick);
             }
 
             // set the stating interactable.
             SetInteractable();
 
-            // part of the on click callback.
-            SetSystemCallback(JCS_OnClickCallback);
+            // part of the on click callback
+            SetSystemCallback(OnClick);
 
             this.mInitialized = true;
         }
@@ -166,7 +167,7 @@ namespace JCSUnity
         /// 
         /// * Good for organize code and game data file in Unity.
         /// </summary>
-        public virtual void JCS_ButtonClick()
+        public virtual void ButtonClick()
         {
             this.mIsSelectedInGroup = IsSelected();
 
@@ -197,7 +198,7 @@ namespace JCSUnity
         /// <summary>
         /// This is the callback when the button get click.
         /// </summary>
-        public abstract void JCS_OnClickCallback();
+        public abstract void OnClick();
 
         /// <summary>
         /// Use this to enable and disable the button.
@@ -208,10 +209,9 @@ namespace JCSUnity
             mInteractable = act;
 
             /* Make sure no error! */
-            {
-                if (mButton == null)
-                    InitJCSButton();
-            }
+            if (mButton == null)
+                Init();
+
             mButton.enabled = mInteractable;
 
             if (mInteractable)

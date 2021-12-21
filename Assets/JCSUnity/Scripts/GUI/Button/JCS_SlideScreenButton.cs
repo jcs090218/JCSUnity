@@ -99,7 +99,7 @@ namespace JCSUnity
         /// <summary>
         /// Button click function pointer override.
         /// </summary>
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             if (mSlideCameras.Length == 0)
             {

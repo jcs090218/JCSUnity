@@ -40,7 +40,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             JCS_GUIUtil.ActivePanels(mDialogueObjects, mPlaySound);
             JCS_GUIUtil.ActivePanels(mTweenPanels);

@@ -20,7 +20,7 @@ ExampleButton.cs
 
 ```cs
   class ExampleButton : JCS_Button {
-      public override void JCS_OnClickCallback() {
+      public override void OnClick() {
           Debug.Log("On click!"");
       }
   }

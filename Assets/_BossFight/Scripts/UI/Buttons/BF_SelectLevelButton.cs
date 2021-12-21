@@ -24,7 +24,7 @@ public class BF_SelectLevelButton : JCS_Button
 
     /* Functions */
 
-    public override void JCS_OnClickCallback()
+    public override void OnClick()
     {
         BF_GameSettings.instance.LEVEL_SELECTED_NAME = mSceneName;
     }

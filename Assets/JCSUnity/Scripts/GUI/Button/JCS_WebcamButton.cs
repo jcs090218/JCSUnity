@@ -45,7 +45,7 @@ namespace JCSUnity
                 mWebcam = (JCS_Webcam)FindObjectOfType(typeof(JCS_Webcam));
         }
 
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             // Current only one function applied, so just do take snap shot 
             // as defualt action!

@@ -41,7 +41,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             JCS_SoundManager.instance.SwitchBackgroundMusic(
                 mSoundClip,

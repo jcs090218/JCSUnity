@@ -14,7 +14,7 @@ namespace JCSUnity
     /// </summary>
     public class JCS_ExitAppButton : JCS_Button
     {
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             // load exit button scene.
             JCS_SceneManager.instance.LoadScene("JCS_ApplicationCloseSimulate");

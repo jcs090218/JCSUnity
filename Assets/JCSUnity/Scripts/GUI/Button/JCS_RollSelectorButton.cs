@@ -61,7 +61,7 @@ namespace JCSUnity
         /// <summary>
         /// Override
         /// </summary>
-        public override void JCS_ButtonClick()
+        public override void ButtonClick()
         {
             if (mRollBtnSelector == null)
             {
@@ -76,11 +76,11 @@ namespace JCSUnity
             }
             else
             {
-                base.JCS_ButtonClick();
+                base.ButtonClick();
             }
         }
 
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             // empty.
         }
@@ -138,7 +138,7 @@ namespace JCSUnity
             mButton.onClick.RemoveAllListeners();
 
             // only add this listener
-            mButton.onClick.AddListener(JCS_ButtonClick);
+            mButton.onClick.AddListener(ButtonClick);
 
             // get all the buttons on this transform
             btns = this.GetComponents<JCS_Button>();
@@ -164,7 +164,7 @@ namespace JCSUnity
                 if (b == this)
                     continue;
                 
-                b.JCS_ButtonClick();
+                b.ButtonClick();
             }
         }
     }

@@ -42,7 +42,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             // Switch the server.
             JCS_NetworkSettings.instance.SwitchServer(mHost, mPort, mForce);

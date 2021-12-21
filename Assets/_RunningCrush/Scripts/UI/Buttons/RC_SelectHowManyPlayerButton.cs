@@ -21,7 +21,7 @@ public class RC_SelectHowManyPlayerButton : JCS_Button
 
     /* Functions */
 
-    public override void JCS_OnClickCallback()
+    public override void OnClick()
     {
         RC_GameSettings.instance.PLAYER_IN_GAME = mPlayersInGame;
     }

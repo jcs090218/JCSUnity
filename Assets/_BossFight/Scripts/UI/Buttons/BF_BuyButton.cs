@@ -47,7 +47,7 @@ public class BF_BuyButton :  JCS_Button
             this.Interactable = false;
     }
 
-    public override void JCS_OnClickCallback()
+    public override void OnClick()
     {
         BF_GameSettings.GAME_DATA.Cash -= mBuyValue;
     }

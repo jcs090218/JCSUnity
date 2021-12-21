@@ -45,7 +45,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             // none meaning all platform so just load the scene.
             if (mPlatformType != JCS_PlatformType.NONE)

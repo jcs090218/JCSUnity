@@ -46,7 +46,7 @@ namespace JCSUnity
         /// <summary>
         /// On click event.
         /// </summary>
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             Toggle();
         }

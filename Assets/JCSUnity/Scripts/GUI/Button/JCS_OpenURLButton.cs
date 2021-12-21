@@ -29,7 +29,7 @@ namespace JCSUnity
 
         /* Functions */
 
-        public override void JCS_OnClickCallback()
+        public override void OnClick()
         {
             string url = JCS_Utility.EscapeURL(mURL);
             Application.OpenURL(url);
