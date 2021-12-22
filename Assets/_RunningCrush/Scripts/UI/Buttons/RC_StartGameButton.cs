@@ -30,7 +30,7 @@ public class RC_StartGameButton : MonoBehaviour
         mImage = this.GetComponent<Image>();
 
         mImage.enabled = false;
-        JCS_Utility.SetActiveToAllChildren(this.transform, false);
+        JCS_Util.SetActiveToAllChildren(this.transform, false);
     }
 
     private void Update()
@@ -38,7 +38,7 @@ public class RC_StartGameButton : MonoBehaviour
         if (RC_GameSettings.instance.READY_TO_START_GAME)
         {
             mImage.enabled = true;
-            JCS_Utility.SetActiveToAllChildren(this.transform, true);
+            JCS_Util.SetActiveToAllChildren(this.transform, true);
         }
     }
 }

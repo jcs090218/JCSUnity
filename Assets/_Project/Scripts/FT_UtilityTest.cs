@@ -21,6 +21,6 @@ public class FT_UtilityTest : MonoBehaviour
 
     private void Awake()
     {
-        something = JCSUnity.JCS_Utility.RemoveEmptySlot<SpriteRenderer>(something);
+        something = JCSUnity.JCS_Util.RemoveEmptySlot<SpriteRenderer>(something);
     }
 }

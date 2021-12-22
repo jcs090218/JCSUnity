@@ -102,7 +102,7 @@ set to thie scene layer.")]
             // add monster count in scene.
             ++BF_GameManager.instance.MOB_CURRENT_IN_SCENE;
 
-            BF_LiveObject bf_liveObject = (BF_LiveObject)JCS_Utility.SpawnGameObject(
+            BF_LiveObject bf_liveObject = (BF_LiveObject)JCS_Util.SpawnGameObject(
                 this.mLevelEnemy[spawnIndex],
                 this.mSpawnTransform.position);
 
