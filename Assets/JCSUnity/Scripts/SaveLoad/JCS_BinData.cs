@@ -1,5 +1,5 @@
 /**
- * $File: JCS_BinGameData.cs $
+ * $File: JCS_BinData.cs $
  * $Date: 2018-06-27 11:03:19 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $

@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_XMLGameData.cs $
+ * $File: JCS_XMLData.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
