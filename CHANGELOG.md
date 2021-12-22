@@ -14,7 +14,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Added functionality to load image through an URL.
 * Moved all delegate declarations to it's own class.
 * Renamed `GUI` folder to just `UI` instead.
-* Shorten `SaveLoad` related components.
+* Shorten `SaveLoad` related components..
+* Shorten module name from `Utilities` to just `Util`.
+* Shorten class name from `JCS_Utility` to `JCS_Util`.
 
 ## 2.2.1
 > Released Nov 1, 2021
