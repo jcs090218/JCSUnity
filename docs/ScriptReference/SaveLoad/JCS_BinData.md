@@ -1,4 +1,4 @@
-# JCS_BinGameData
+# JCS_BinData
 
 Interface of storing game data as binary format.
 
@@ -8,7 +8,7 @@ ExampleGameData.cs
 
 ```cs
 [System.Serializable]
-public class ExampleGameData : JCS_BinGameData {
+public class ExampleGameData : JCS_BinData {
     public string Name = "";  // Name of the player.
     public string Gold = "";  // Cash in the game.
 }

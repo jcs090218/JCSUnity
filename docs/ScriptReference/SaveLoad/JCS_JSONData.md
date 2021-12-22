@@ -1,4 +1,4 @@
-# JCS_JSONGameData
+# JCS_JSONData
 
 Interface to store game data in JSON format.
 
@@ -8,7 +8,7 @@ ExampleGameData.cs
 
 ```cs
 [System.Serializable]
-public class ExampleGameData : JCS_JSONGameData {
+public class ExampleGameData : JCS_JSONData {
     public string Name = "";  // Name of the player.
     public string Gold = "";  // Cash in the game.
 }

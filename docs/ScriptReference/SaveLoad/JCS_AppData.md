@@ -1,6 +1,6 @@
-# JCS_GameData
+# JCS_AppData
 
-Base game data structure.
+Base application data structure.
 
 ## Functions
 
