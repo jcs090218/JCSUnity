@@ -13,7 +13,7 @@ using JCSUnity;
 /// Game Data design here.
 /// </summary>
 [Serializable]
-public class RC_GameData : JCS_XMLGameData
+public class RC_GameData : JCS_XMLData
 {
     /* Variables */
 

@@ -13,11 +13,11 @@ using JCSUnity;
 /// Test of the JSON game data.
 /// </summary>
 [Serializable]
-public class FT_JSONGameData : JCS_JSONGameData
+public class FT_JSONGameData : JCS_JSONData
 {
     /* Variables */
-    public string Name = "";        // name of the player
-    public int Cash = 0;            // cash in the game
+    public string Name = "";  // name of the player
+    public int Cash = 0;      // cash in the game
 
     /* Setter/Getter */
 

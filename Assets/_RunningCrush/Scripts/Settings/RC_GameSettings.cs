@@ -167,7 +167,7 @@ public class RC_GameSettings : MonoBehaviour
         }
 
         // else we just load the data commonly.
-        GAME_DATA = JCS_XMLGameData.LoadFromFile<RC_GameData>(mFullFilePath, mFullFileName);
+        GAME_DATA = JCS_XMLData.LoadFromFile<RC_GameData>(mFullFilePath, mFullFileName);
     }
 
     /// <summary>

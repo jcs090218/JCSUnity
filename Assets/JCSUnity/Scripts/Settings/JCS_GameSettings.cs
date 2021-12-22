@@ -20,7 +20,7 @@ namespace JCSUnity
         public EmptyFunction SAVE_GAME_DATA_FUNC = null;
         public EmptyFunction LOAD_GAME_DATA_FUNC = null;  // NOT USED
 
-        public static JCS_XMLGameData GAME_DATA = null;  // NOT USED
+        public static JCS_XMLData GAME_DATA = null;  // NOT USED
 
         [Header("** Check Variables (JCS_GameSettings) **")]
 
@@ -134,7 +134,7 @@ namespace JCSUnity
         {
             instance = CheckSingleton(instance, this);
 
-            REAL_DATA_PATH = JCS_GameData.SavePath();
+            REAL_DATA_PATH = JCS_AppData.SavePath();
             REAL_SCREENSHOT_PATH = JCS_Camera.SavePath();
             REAL_WEBCAM_PATH = JCS_Webcam.SavePath();
             REAL_STREAMING_CACHE_PATH = JCS_StreamingAssets.CachePath();
