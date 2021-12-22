@@ -13,6 +13,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Fixed incorrect resize UI when not using responsive type screen resize setting.
 * Added functionality to load image through an URL.
 * Moved all delegate declarations to it's own class.
+* Renamed `GUI` folder to just `UI` instead.
+* Shorten `SaveLoad` related components.
 
 ## 2.2.1
 > Released Nov 1, 2021
