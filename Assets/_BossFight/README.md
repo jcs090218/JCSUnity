@@ -1,7 +1,4 @@
-Name: Jen-Chieh Shen <jcs090218@gmail.com>
-File Name: BF_LevelDesign Doc.txt
-Last Edit Date: 2016-06-30
------------------------------------
+# Boss Fight
 
 Q1) How to make AI going one way?
 A1) JCS_2DWalkAction script will do the trick.

@@ -1,7 +1,4 @@
-Name: Jen-Chieh Shen <jcs090218@gmail.com>
-File Name: RC_LevelDesign Doc.txt
-Last Edit Date: 2016-06-30
------------------------------------
+# Running Crush
 
 1) Create New Scene.
 You can use "RC_Level_01" as the base level.
