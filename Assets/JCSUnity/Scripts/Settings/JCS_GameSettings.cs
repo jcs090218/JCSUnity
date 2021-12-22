@@ -80,12 +80,12 @@ namespace JCSUnity
         public string STREAMING_BASE_URL = "https://wwww.example.com/";
 
         [Tooltip("Cache streaming assets' data path.")]
-        public string STREAMING_CACHE_PATH = "/JCS_GameData/Cache_StreamingAssets/";
+        public string STREAMING_CACHE_PATH = "/Data_jcs/Cache_StreamingAssets/";
 
         [Header("- Save Load")]
 
         [Tooltip("Data folder path.")]
-        public string DATA_PATH = "/JCS_GameData/";
+        public string DATA_PATH = "/Data_jcs/";
 
         [Tooltip("Data file extension.")]
         public string DATA_EXTENSION = ".jcs";
@@ -99,7 +99,7 @@ namespace JCSUnity
         [Header("- Screenshot")]
 
         [Tooltip("Screenshot folder path.")]
-        public string SCREENSHOT_PATH = "/JCS_GameData/Screenshot/";
+        public string SCREENSHOT_PATH = "/Data_jcs/Screenshot/";
 
         [Tooltip("Screenshot file name.")]
         public string SCREENSHOT_FILENAME = "Screenshot_";
@@ -110,7 +110,7 @@ namespace JCSUnity
         [Header("- Webcam")]
 
         [Tooltip("Webcam image save path.")]
-        public string WEBCAM_PATH = "/JCS_GameData/WebcamShot/";
+        public string WEBCAM_PATH = "/Data_jcs/WebcamShot/";
 
         [Tooltip("Webcam file name.")]
         public string WEBCAM_FILENAME = "";
