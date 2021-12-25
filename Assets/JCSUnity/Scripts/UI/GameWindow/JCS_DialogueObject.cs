@@ -70,7 +70,7 @@ namespace JCSUnity
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
 
-            JCS_UIManager uim = JCS_UIManager.instance;
+            var uim = JCS_UIManager.instance;
 
             // Once we load the scene we need to let new object 
             // in the scene know about us!
@@ -94,7 +94,7 @@ namespace JCSUnity
             // function call after version 5.4
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
             {
-                JCS_UIManager uim = JCS_UIManager.instance;
+                var uim = JCS_UIManager.instance;
 
                 // Once we load the scene we need to let new object 
                 // in the scene know about us!
@@ -112,7 +112,7 @@ namespace JCSUnity
 
             base.Awake();
 
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.instance;
 
 
             // Assign Default Audio
@@ -127,7 +127,7 @@ namespace JCSUnity
 
         protected override void Start()
         {
-            JCS_UIManager uim = JCS_UIManager.instance;
+            var uim = JCS_UIManager.instance;
 
             uim.SetJCSDialogue(mDialogueType, this);
 
@@ -155,12 +155,12 @@ namespace JCSUnity
             {
                 case JCS_PanelType.RESET_PANEL:
                     {
-                        DestroyDialogue();
+                        Destroy();
                     }
                     break;
                 case JCS_PanelType.RECORD_PANEL:
                     {
-                        HideDialogue();
+                        Hide();
                     }
                     break;
                 case JCS_PanelType.RECORD_PANEL_TO_DATABASE:
@@ -173,12 +173,10 @@ namespace JCSUnity
 
         /// <summary>
         /// Show the dialogue in the game.
-        /// 
-        /// NOTE(jenchieh): this will play the default sound.
         /// </summary>
-        public void ShowDialogue()
+        public void Show()
         {
-            ShowDialogueWithoutSound();
+            ShowWithoutSound();
 
             // set focus dialogue
             if (DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
@@ -193,21 +191,21 @@ namespace JCSUnity
         /// <summary>
         /// Hide the dialogue without the sound.
         /// </summary>
-        public override void HideDialogueWithoutSound()
+        public override void HideWithoutSound()
         {
-            base.HideDialogueWithoutSound();
+            base.HideWithoutSound();
 
             RemoveFromOpenWindowList();
         }
 
         /// <summary>
         /// Hide the dialogue in the game.
-        /// 
-        /// NOTE(jenchieh): this will play the defualt sound.
         /// </summary>
-        public void HideDialogue()
+        public void Hide()
         {
-            HideDialogueWithoutSound();
+            HideWithoutSound();
+
+
 
             JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mCloseWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
@@ -218,9 +216,9 @@ namespace JCSUnity
         public void ToggleVisibility()
         {
             if (mIsVisible)
-                HideDialogue();
+                Hide();
             else
-                ShowDialogue();
+                Show();
 
             ResetDialogue();
         }

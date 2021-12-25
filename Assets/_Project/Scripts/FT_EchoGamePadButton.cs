@@ -26,6 +26,6 @@ public class FT_EchoGamePadButton :  JCS_GamePadButton
     {
         Debug.Log("echo.. Hello World!!");
 
-        closeDialogue.HideDialogue();
+        closeDialogue.Hide();
     }
 }

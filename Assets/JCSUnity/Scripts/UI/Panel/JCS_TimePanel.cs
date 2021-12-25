@@ -23,7 +23,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DialogueObject[] mDialogueObjects = null;
 
-
         [Header("** Runtime Variables (JCS_TimePanel) **")]
 
         [Tooltip("Active on awake.")]
@@ -47,7 +46,6 @@ namespace JCSUnity
 
         // check if the action active?
         private bool mActionActive = false;
-
 
         /* Setter & Getter */
 
@@ -114,29 +112,25 @@ namespace JCSUnity
         /// <param name="type"> action type </param>
         private void DoActionForeachPanel(JCS_DialogueObject panel, JCS_PanelActionType type)
         {
-            // check null references...
             if (panel == null)
                 return;
-
 
             switch (type)
             {
                 case JCS_PanelActionType.HIDE:
                     {
                         if (mPlayPanelSound)
-                            panel.HideDialogue();
+                            panel.Hide();
                         else
-                            panel.HideDialogueWithoutSound();
-
+                            panel.HideWithoutSound();
                     }
                     break;
                 case JCS_PanelActionType.SHOW:
                     {
                         if (mPlayPanelSound)
-                            panel.ShowDialogue();
+                            panel.Show();
                         else
-                            panel.ShowDialogueWithoutSound();
-
+                            panel.ShowWithoutSound();
                     }
                     break;
             }

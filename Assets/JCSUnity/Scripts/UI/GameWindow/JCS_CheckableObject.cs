@@ -134,7 +134,7 @@ namespace JCSUnity
                 return;
             }
 
-            mDescDialogue.ShowDialogueWithoutSound();
+            mDescDialogue.ShowWithoutSound();
 
 #if (UNITY_STANDALONE || UNITY_EDITOR)
             mShowing = true;
@@ -158,7 +158,7 @@ namespace JCSUnity
                 return;
 #endif
 
-            mDescDialogue.HideDialogueWithoutSound();
+            mDescDialogue.HideWithoutSound();
 
 #if (UNITY_STANDALONE || UNITY_EDITOR)
             mShowing = false;

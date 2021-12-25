@@ -107,7 +107,7 @@ namespace JCSUnity
         /// <summary>
         /// Destroy this dialgoue object.
         /// </summary>
-        public void DestroyDialogue()
+        public void Destroy()
         {
             // start the app
             JCS_ApplicationManager.APP_PAUSE = false;
@@ -119,7 +119,7 @@ namespace JCSUnity
         /// <summary>
         /// Show the dialogue without the sound.
         /// </summary>
-        public void ShowDialogueWithoutSound()
+        public void ShowWithoutSound()
         {
             mIsVisible = true;
 
@@ -137,7 +137,7 @@ namespace JCSUnity
         /// <summary>
         /// Hide the dialogue without the sound.
         /// </summary>
-        public virtual void HideDialogueWithoutSound()
+        public virtual void HideWithoutSound()
         {
             if (mRectTransform == null)
                 return;

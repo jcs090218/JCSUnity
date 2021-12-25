@@ -536,9 +536,9 @@ namespace JCSUnity
                 if (panel != null)
                 {
                     if (sound)
-                        panel.ShowDialogue();
+                        panel.Show();
                     else
-                        panel.ShowDialogueWithoutSound();
+                        panel.ShowWithoutSound();
                 }
             }
         }
@@ -561,9 +561,9 @@ namespace JCSUnity
                 if (panel != null)
                 {
                     if (sound)
-                        panel.HideDialogue();
+                        panel.Hide();
                     else
-                        panel.HideDialogueWithoutSound();
+                        panel.HideWithoutSound();
                 }
             }
         }

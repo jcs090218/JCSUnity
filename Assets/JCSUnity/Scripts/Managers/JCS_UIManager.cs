@@ -224,7 +224,7 @@ namespace JCSUnity
             JCS_DialogueObject jdo = GetOpenWindow().Last.Value;
 
             // once it hide it will remove from the list it self!
-            jdo.HideDialogue();
+            jdo.Hide();
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace JCSUnity
 
             while (GetOpenWindow().Count != 0)
             {
-                GetOpenWindow().First.Value.HideDialogueWithoutSound();
+                GetOpenWindow().First.Value.HideWithoutSound();
             }
         }
 

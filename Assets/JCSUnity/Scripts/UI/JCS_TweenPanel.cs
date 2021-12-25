@@ -129,7 +129,7 @@ namespace JCSUnity
             JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mActiveSound, JCS_SoundMethod.PLAY_SOUND_WHILE_NOT_PLAYING);
 
             if (mPanelRoot != null)
-                mPanelRoot.ShowDialogueWithoutSound();
+                mPanelRoot.ShowWithoutSound();
 
             if (mActiveCallbackFunc != null)
                 mActiveCallbackFunc.Invoke();
