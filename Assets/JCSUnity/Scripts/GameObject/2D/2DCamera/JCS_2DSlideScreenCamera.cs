@@ -363,7 +363,7 @@ namespace JCSUnity
         /// </summary>
         private void DoMobileSwipe()
         {
-            JCS_SlideInput si = JCS_InputManager.instance.GetGlobalSlideInput();
+            var si = JCS_SlideInput.instance;
             if (si == null)
                 return;
 
