@@ -1,3 +1,3 @@
-# JCS_Managers
+# JCS_Manager
 
 Manager interface.
