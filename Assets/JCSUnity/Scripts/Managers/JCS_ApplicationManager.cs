@@ -19,7 +19,7 @@ namespace JCSUnity
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
-    public class JCS_ApplicationManager : JCS_Managers<JCS_ApplicationManager>
+    public class JCS_ApplicationManager : JCS_Manager<JCS_ApplicationManager>
     {
         /* Variables */
 

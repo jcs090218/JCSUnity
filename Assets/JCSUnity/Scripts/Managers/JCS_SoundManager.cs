@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Manage of all the music, sound and sfx in the game.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPlayer))]
-    public class JCS_SoundManager : JCS_Managers<JCS_SoundManager>
+    public class JCS_SoundManager : JCS_Manager<JCS_SoundManager>
     {
         /* Variables */
 

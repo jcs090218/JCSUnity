@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Manages screen action.
     /// </summary>
-    public class JCS_ScreenManager : JCS_Managers<JCS_ScreenManager>
+    public class JCS_ScreenManager : JCS_Manager<JCS_ScreenManager>
     {
         /* Variables */
 

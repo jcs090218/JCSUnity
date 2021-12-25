@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage all the dialogue in the scene.
     /// </summary>
-    public class JCS_UIManager : JCS_Managers<JCS_UIManager>
+    public class JCS_UIManager : JCS_Manager<JCS_UIManager>
     {
         /* Variables */
 

@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Take care of all the player in the scene.
     /// </summary>
-    public class JCS_PlayerManager : JCS_Managers<JCS_PlayerManager>
+    public class JCS_PlayerManager : JCS_Manager<JCS_PlayerManager>
     {
         /* Variables */
 

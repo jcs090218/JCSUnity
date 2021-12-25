@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Manage scenes changes.
     /// </summary>
-    public class JCS_SceneManager : JCS_Managers<JCS_SceneManager>
+    public class JCS_SceneManager : JCS_Manager<JCS_SceneManager>
     {
         /* Variables */
 
