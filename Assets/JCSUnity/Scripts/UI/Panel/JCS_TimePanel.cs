@@ -51,7 +51,6 @@ namespace JCSUnity
 
         public bool ActiveOnAwake { get { return this.mActiveOnAwake; } set { this.mActiveOnAwake = value; } }
 
-
         /* Functions */
 
         private void Start()
