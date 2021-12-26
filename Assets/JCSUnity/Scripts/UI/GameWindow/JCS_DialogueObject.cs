@@ -42,11 +42,11 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Tooltip("Sound when open this dialouge window.")]
+        [Tooltip("Sound when open this window.")]
         [SerializeField]
         private AudioClip mOpenWindowClip = null;
 
-        [Tooltip("Sound when close this dialouge window.")]
+        [Tooltip("Sound when close this window.")]
         [SerializeField]
         private AudioClip mCloseWindowClip = null;
 
@@ -65,7 +65,6 @@ namespace JCSUnity
         /* Functions */
 
 #if !(UNITY_5_4_OR_NEWER)
-        // Called by Unity after a new level was loaded.
         private void OnLevelWasLoaded()
         {
             this.mRectTransform = this.GetComponent<RectTransform>();
@@ -74,7 +73,7 @@ namespace JCSUnity
 
             // Once we load the scene we need to let new object 
             // in the scene know about us!
-            uim.SetJCSDialogue(mDialogueType, this);
+            uim.SetDialogue(mDialogueType, this);
 
             // add to open window list if the window is open!
             AddToOpenWindowList();
@@ -98,7 +97,7 @@ namespace JCSUnity
 
                 // Once we load the scene we need to let new object 
                 // in the scene know about us!
-                uim.SetJCSDialogue(mDialogueType, this);
+                uim.SetDialogue(mDialogueType, this);
 
                 // add to open window list if the window is open!
                 AddToOpenWindowList();
@@ -114,7 +113,6 @@ namespace JCSUnity
 
             var ss = JCS_SoundSettings.instance;
 
-
             // Assign Default Audio
             {
                 if (mOpenWindowClip == null)
@@ -129,7 +127,7 @@ namespace JCSUnity
         {
             var uim = JCS_UIManager.instance;
 
-            uim.SetJCSDialogue(mDialogueType, this);
+            uim.SetDialogue(mDialogueType, this);
 
             base.Start();
 
@@ -180,7 +178,7 @@ namespace JCSUnity
 
             // set focus dialogue
             if (DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
-                JCS_UIManager.instance.SetJCSDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
+                JCS_UIManager.instance.SetDialogue(JCS_DialogueType.PLAYER_DIALOGUE, this);
 
             // let UIManager know the window is opened
             SwapToTheLastOpenWindowList();
@@ -204,8 +202,6 @@ namespace JCSUnity
         public void Hide()
         {
             HideWithoutSound();
-
-
 
             JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mCloseWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
@@ -270,7 +266,7 @@ namespace JCSUnity
         /// </summary>
         private void SwapToTheLastOpenWindowList()
         {
-            // TODO(JenChieh): optimize
+            // TODO(jenchieh): optimize
 
             // remove the list
             RemoveFromOpenWindowList();

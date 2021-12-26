@@ -27,7 +27,7 @@ public class FT_FollowMouse_Test : MonoBehaviour
         //this.transform.position = Input.mousePosition;
 
         Vector2 pos;
-        Canvas myCanvas = JCS_Canvas.GuessCanvas().GetCanvas();
+        Canvas myCanvas = JCS_Canvas.GuessCanvas().canvas;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
         transform.position = JCS_Input.CanvasMousePosition();
 

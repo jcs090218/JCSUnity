@@ -63,7 +63,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public List<JCS_Canvas> Canvases { get { return this.mCanvases; } }
-        public void SetJCSDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
+        public void SetDialogue(JCS_DialogueType type, JCS_DialogueObject jdo)
         {
             switch (type)
             {
@@ -201,7 +201,7 @@ namespace JCSUnity
             {
                 for (int j = i; j > 0; --j)
                 {
-                    if (mCanvases[j].GetCanvas().sortingOrder < mCanvases[j - 1].GetCanvas().sortingOrder)
+                    if (mCanvases[j].canvas.sortingOrder < mCanvases[j - 1].canvas.sortingOrder)
                     {
                         JCS_Canvas temp = mCanvases[j];
                         mCanvases[j] = mCanvases[j - 1];

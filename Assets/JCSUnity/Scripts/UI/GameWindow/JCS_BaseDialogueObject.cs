@@ -176,7 +176,7 @@ namespace JCSUnity
                 parentObject = resizeUI.transform;
             // Else we add it directly under the Canvas
             else
-                parentObject = canvas.GetCanvas().transform;
+                parentObject = canvas.canvas.transform;
 
             // set it to parent
             this.gameObject.transform.SetParent(parentObject);
