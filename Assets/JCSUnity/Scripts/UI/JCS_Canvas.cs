@@ -23,7 +23,7 @@ namespace JCSUnity
         private const string RESIZE_UI_PATH = "UI/ResizeUI";
 
         private Canvas mCanvas = null;
-        
+
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
         [Header("** Check Variables (JCS_Canvas) **")]
@@ -125,19 +125,21 @@ namespace JCSUnity
         /// <summary>
         /// Show the canvas so it's visible.
         /// </summary>
-        public void Show() 
-        { 
+        public void Show(bool mute = false)
+        {
             mCanvas.enabled = true;
-            JCS_SoundPlayer.PlayByAttachment(mDeactiveSound, JCS_SoundMethod.PLAY_SOUND);
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mDeactiveSound, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>
         /// Hide the canvas so it's invisible.
         /// </summary>
-        public void Hide() 
-        { 
+        public void Hide(bool mute = false)
+        {
             mCanvas.enabled = false;
-            JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>

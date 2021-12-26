@@ -172,9 +172,9 @@ namespace JCSUnity
         /// <summary>
         /// Show the dialogue in the game.
         /// </summary>
-        public void Show()
+        public override void Show(bool mute = false)
         {
-            ShowWithoutSound();
+            base.Show(mute);
 
             // set focus dialogue
             if (DialogueType == JCS_DialogueType.PLAYER_DIALOGUE)
@@ -183,27 +183,21 @@ namespace JCSUnity
             // let UIManager know the window is opened
             SwapToTheLastOpenWindowList();
 
-            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mOpenWindowClip, JCS_SoundMethod.PLAY_SOUND);
-        }
-
-        /// <summary>
-        /// Hide the dialogue without the sound.
-        /// </summary>
-        public override void HideWithoutSound()
-        {
-            base.HideWithoutSound();
-
-            RemoveFromOpenWindowList();
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mOpenWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>
         /// Hide the dialogue in the game.
         /// </summary>
-        public void Hide()
+        public override void Hide(bool mute = false)
         {
-            HideWithoutSound();
+            base.Hide(mute);
 
-            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mCloseWindowClip, JCS_SoundMethod.PLAY_SOUND);
+            RemoveFromOpenWindowList();
+
+            if (!mute)
+                JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mCloseWindowClip, JCS_SoundMethod.PLAY_SOUND);
         }
 
         /// <summary>

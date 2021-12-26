@@ -238,7 +238,7 @@ namespace JCSUnity
 
             while (GetOpenWindow().Count != 0)
             {
-                GetOpenWindow().First.Value.HideWithoutSound();
+                GetOpenWindow().First.Value.Hide(true);
             }
         }
 

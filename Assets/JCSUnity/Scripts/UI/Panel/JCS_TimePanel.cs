@@ -118,18 +118,12 @@ namespace JCSUnity
             {
                 case JCS_PanelActionType.HIDE:
                     {
-                        if (mPlayPanelSound)
-                            panel.Hide();
-                        else
-                            panel.HideWithoutSound();
+                        panel.Hide(!mPlayPanelSound);
                     }
                     break;
                 case JCS_PanelActionType.SHOW:
                     {
-                        if (mPlayPanelSound)
-                            panel.Show();
-                        else
-                            panel.ShowWithoutSound();
+                        panel.Show(!mPlayPanelSound);
                     }
                     break;
             }

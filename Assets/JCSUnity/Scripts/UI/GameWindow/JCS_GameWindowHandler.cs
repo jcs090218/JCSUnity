@@ -76,7 +76,7 @@ namespace JCSUnity
                 return;
             }
 
-            mGameUI.ShowWithoutSound();
+            mGameUI.Show(true);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace JCSUnity
                 return;
             }
 
-            mGameUI.HideWithoutSound();
+            mGameUI.Hide(true);
         }
 
         /// <summary>

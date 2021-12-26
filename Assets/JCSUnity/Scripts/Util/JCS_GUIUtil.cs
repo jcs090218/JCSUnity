@@ -535,10 +535,7 @@ namespace JCSUnity
             {
                 if (panel != null)
                 {
-                    if (sound)
-                        panel.Show();
-                    else
-                        panel.ShowWithoutSound();
+                    panel.Show(!sound);
                 }
             }
         }
@@ -560,10 +557,7 @@ namespace JCSUnity
             {
                 if (panel != null)
                 {
-                    if (sound)
-                        panel.Hide();
-                    else
-                        panel.HideWithoutSound();
+                    panel.Hide(!sound);
                 }
             }
         }

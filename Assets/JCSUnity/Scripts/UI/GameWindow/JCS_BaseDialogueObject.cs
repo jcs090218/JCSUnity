@@ -119,11 +119,9 @@ namespace JCSUnity
         /// <summary>
         /// Show the dialogue without the sound.
         /// </summary>
-        public void ShowWithoutSound()
+        public virtual void Show(bool mute = false)
         {
             mIsVisible = true;
-
-            //this.gameObject.SetActive(true);
 
             // active all the child object
             for (int index = 0; index < this.transform.childCount; ++index)
@@ -137,15 +135,12 @@ namespace JCSUnity
         /// <summary>
         /// Hide the dialogue without the sound.
         /// </summary>
-        public virtual void HideWithoutSound()
+        public virtual void Hide(bool mute = false)
         {
             if (mRectTransform == null)
                 return;
 
             mIsVisible = false;
-
-            // Instead of disable the object it self, we deactive all the child object.
-            //this.gameObject.SetActive(false);
 
             // deactive all the child object
             for (int index = 0; index < this.transform.childCount; ++index)
