@@ -324,7 +324,7 @@ namespace JCSUnity
             // create canvas
             GameObject canvasObj = CreateJCSCanvas();
 
-            const string desc_path = "GUI/JCS Describe Panel";
+            const string desc_path = "UI/JCS Describe Panel";
             GameObject desc_obj = JCS_Util.SpawnGameObject(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
@@ -431,13 +431,13 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateJCSCanvas()
         {
-            const string canvas_path = "LevelDesignUI/JCS_Canvas";
+            const string canvas_path = "UI/JCS_Canvas";
             GameObject canvasObj = CreateHierarchyObject(canvas_path);
 
             Undo.RegisterCreatedObjectUndo(canvasObj, "Create JCS Canvas");
 
 
-            const string eventSystem_path = "LevelDesignUI/EventSystem";
+            const string eventSystem_path = "UI/EventSystem";
             GameObject evtSystemObj = CreateHierarchyObject(eventSystem_path);
 
             Undo.RegisterCreatedObjectUndo(evtSystemObj, "Create Event System");
@@ -509,7 +509,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject Create2DCurosr()
         {
-            const string setting_path = "GUI/JCS_2DCursor";
+            const string setting_path = "UI/JCS_2DCursor";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
@@ -524,7 +524,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject Create3DCurosr()
         {
-            const string setting_path = "GUI/JCS_3DCursor";
+            const string setting_path = "UI/JCS_3DCursor";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create 3D Cursor");
@@ -551,7 +551,7 @@ namespace JCSUnity
                 return null;
             }
 
-            const string setting_path = "GUI/JCS_BasePanel";
+            const string setting_path = "UI/JCS_BasePanel";
             GameObject basePanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(basePanel, "Create Base Panel");
@@ -579,7 +579,7 @@ namespace JCSUnity
                 return null;
             }
 
-            const string setting_path = "GUI/JCS_DialoguePanel";
+            const string setting_path = "UI/JCS_DialoguePanel";
             GameObject dialoguePanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(dialoguePanel, "Create Dialogue Panel");
@@ -688,7 +688,7 @@ namespace JCSUnity
                 return null;
             }
 
-            const string setting_path = "GUI/JCS_TweenPanel";
+            const string setting_path = "UI/JCS_TweenPanel";
             GameObject tweenPanel = CreateHierarchyObjectUnderCanvas(setting_path);
 
             Undo.RegisterCreatedObjectUndo(tweenPanel, "Create Tween Panel");
@@ -705,7 +705,7 @@ namespace JCSUnity
         /// <returns></returns>
         private static GameObject CreateUndoRedoSystem()
         {
-            const string setting_path = "GUI/JCS_UndoRedoSystem";
+            const string setting_path = "UI/JCS_UndoRedoSystem";
             GameObject undoRedoSystem = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(undoRedoSystem, "Create Undo Redo System");
@@ -739,7 +739,7 @@ namespace JCSUnity
         /// </summary>
         private static void CreateMixDamageTextPool()
         {
-            const string setting_path = "GUI/DamageText/JCS_MixDamageTextPool";
+            const string setting_path = "UI/DamageText/JCS_MixDamageTextPool";
             GameObject gameObj = CreateHierarchyObject(setting_path);
 
             Undo.RegisterCreatedObjectUndo(gameObj, "Create Min Damage Text Pool");

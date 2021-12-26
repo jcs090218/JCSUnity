@@ -17,7 +17,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private const string mResizableScreenPanelPath = "GUI/JCS_ResizableScreenPanel";
+        private const string mResizableScreenPanelPath = "UI/JCS_ResizableScreenPanel";
 
         [Header("** Check Variables (JCS_ScreenManager) **")]
 

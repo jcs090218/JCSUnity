@@ -45,7 +45,7 @@ namespace JCSUnity
 #endif
 
         // Path that points to the panel.
-        private string mPanelHolderPath = "JCSUnity_Framework_Resources/LevelDesignUI/JCS_SlideScreenPanelHolder";
+        private string mPanelHolderPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
 
         [Header("** Check Variables (JCS_2DSlideScreenCamera) **")]
 

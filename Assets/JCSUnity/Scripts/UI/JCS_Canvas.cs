@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private const string RESIZE_UI_PATH = "LevelDesignUI/ResizeUI";
+        private const string RESIZE_UI_PATH = "UI/ResizeUI";
 
         private Canvas mCanvas = null;
         
