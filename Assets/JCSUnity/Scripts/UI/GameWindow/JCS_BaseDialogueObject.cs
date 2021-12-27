@@ -87,7 +87,7 @@ namespace JCSUnity
             if (mRectTransform == null)
                 return;
 
-            // IMPORTANT(JenChieh): override the resize UI part
+            // IMPORTANT(jenchieh): override the resize UI part
             if (mAsOriginalSize)
                 mRectTransform.localScale = mOriginalScale;
             else
@@ -150,8 +150,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Set the parent object base on the 
-        /// fit screen setting.
+        /// Set the parent object base on the fit screen setting.
         /// </summary>
         protected void SetParentObjectByMode()
         {
