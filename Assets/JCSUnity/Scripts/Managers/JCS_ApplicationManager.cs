@@ -146,7 +146,7 @@ namespace JCSUnity
             {
                 // load the quit scene.
                 var scenem = JCS_SceneManager.instance;
-                scenem.LoadScene("JCS_ApplicationCloseSimulate");
+                scenem.LoadScene("JCS_AppCloseSimulate");
             }
             else
             {
