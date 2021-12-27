@@ -30,10 +30,10 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/UI/FT_Lobby.unity
     guid: dad52fa8b4051814a9f73adbf6d39587
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/JCS_AppCloseSimulateOnline.unity
+    path: Assets/JCSUnity/Scenes/System/JCS_AppCloseSimulateOnline.unity
     guid: 8f14fd39503fc6b46b80dbb178229d61
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/JCS_AppCloseSimulate.unity
+    path: Assets/JCSUnity/Scenes/System/JCS_AppCloseSimulate.unity
     guid: 04f6db7d2bf5e974bbf699294c1f33f6
   - enabled: 1
     path: Assets/_BossFight/Scenes/BF_Lobby.unity
