@@ -84,8 +84,8 @@ public class RC_Camera : MonoBehaviour
     {
         JCS_PlayerManager pm = JCS_PlayerManager.instance;
 
-        List<JCS_Player> players = pm.GetJCSPlayerList();
-        List<JCS_Player> activePlayers = new List<JCS_Player>();
+        List<JCS_Player> players = pm.GetPlayerList();
+        var activePlayers = new List<JCS_Player>();
 
         for (int index= 0; index < players.Count; ++index)
         {

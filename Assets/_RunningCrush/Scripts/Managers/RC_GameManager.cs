@@ -42,7 +42,7 @@ public class RC_GameManager : MonoBehaviour
 
         if (!mDoIgnoreOnce)
         {
-            if (JCS_PlayerManager.instance.GetJCSPlayerList().Count == RC_GameSettings.instance.PLAYER_IN_GAME)
+            if (JCS_PlayerManager.instance.GetPlayerList().Count == RC_GameSettings.instance.PLAYER_IN_GAME)
             {
                 // ignore player once.
                 JCS_PlayerManager.instance.DoIgnorePlayersToEachOthers();
