@@ -1,4 +1,4 @@
-# JCS_ToggleCanvasButton.md
+# JCS_ToggleCanvasButton
 
 Button that toggles canvas' visibility.
 
