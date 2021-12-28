@@ -10,19 +10,21 @@ User interface related utilities functions.
 | SetLangText               | Set text by system language and language data.             |
 | SetText                   | Set the text with data.                                    |
 | Dropdown_GetItemValue     | Returns item value by index.                               |
-| Dropdown_GetSelectedValue | Get the current selected value of the Dropdown object.     |
-| Dropdown_GetItemIndex     | Return the index of item in the dropdown's item.           |
+| Dropdown_GetSelectedValue | Get the selected value of the Dropdown object.             |
+| Dropdown_GetItemIndex     | Return the index of the item in the dropdown's item.           |
 | Dropdown_SetSelection     | Set the value to the target item.                          |
 | Dropdown_RefreshSelection | Refresh the current selection.                             |
 | Dropdown_AddOption        | Add an option to dropdown.                                 |
 | IsAchorPresets            | Check the anchor presets type.                             |
-| IsAnchorLeft              | Check if the anchor point currently at the left.           |
-| IsAnchorCenter            | Check if the anchor point currently at the center.         |
-| IsAnchorRight             | Check if the anchor point currently at the right.          |
-| IsAnchorStretchX          | Check if the anchor point currently at the stretch x.      |
-| IsAnchorTop               | Check if the anchor point currently at the top.            |
-| IsAnchorMiddle            | Check if the anchor point currently at the middle.         |
-| IsAnchorBottom            | Check if the anchor point currently at the bottom.         |
-| IsAnchorStretchY          | Check if the anchor point currently at the stretch.        |
-| ActivePanels              | Active panels in array.                                    |
-| DeactivePanels            | Deactive panels in array.                                  |
+| IsAnchorLeft              | Return true if anchor point is left.                       |
+| IsAnchorCenter            | Return true if anchor point is center.                     |
+| IsAnchorRight             | Return true if anchor point is right.                      |
+| IsAnchorStretchX          | Return true if anchor point is stretch x.                  |
+| IsAnchorTop               | Return true if anchor point is top.                        |
+| IsAnchorMiddle            | Return true if anchor point is middle.                     |
+| IsAnchorBottom            | Return true if anchor point is bottom.                     |
+| IsAnchorStretchY          | Return true if anchor point is stretch.                    |
+| ShowCanvas                | Show the canvas, so it's visible on the screen.            |
+| HideCanvas                | Hide the canvas, so it's invisible on the screen.          |
+| ActivePanels              | Active panels in the array.                                |
+| DeactivePanels            | Deactive panels in the array.                              |

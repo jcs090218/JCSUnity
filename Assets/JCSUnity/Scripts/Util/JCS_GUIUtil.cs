@@ -525,7 +525,6 @@ namespace JCSUnity
         }
         #endregion
 
-
         #region CANVAS
         /// <summary>
         /// Show the canvas so it's visible on the screen.
