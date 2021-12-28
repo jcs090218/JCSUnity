@@ -11,8 +11,6 @@ namespace JCSUnity
 {
     /// <summary>
     /// Pause the game with button. (Game Pad)
-    /// 
-    /// ATTENTION: this should have at least one "JCS_GamePadButton" with this.
     /// </summary>
     public class JCS_PauseGameGamePadButton : JCS_GamePadButton
     {

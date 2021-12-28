@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 
 namespace JCSUnity
 {
@@ -15,6 +14,12 @@ namespace JCSUnity
     /// </summary>
     public class JCS_UnpauseGameGamePadButton : JCS_GamePadButton
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         public override void OnClick()
         {
             UnpauseGame();
