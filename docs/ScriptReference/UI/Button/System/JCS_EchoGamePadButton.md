@@ -1,9 +1,3 @@
 # JCS_EchoGamePadButton
 
-Echo out a string on the console window when this button triggered. (Gamepad)
-
-## Variables
-
-| Name       | Description                               |
-|:-----------|:------------------------------------------|
-| echoString | String to echo out on the console window. |
+Please see [JCS_EchoButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_System_sl_JCS_EchoButton)

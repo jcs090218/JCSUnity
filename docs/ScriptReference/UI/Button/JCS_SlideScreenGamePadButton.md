@@ -1,12 +1,3 @@
 # JCS_SlideScreenGamePadButton
 
-Button will trigger the slide screen effect. (Gamepad)
-
-## Variables
-
-| Name              | Description                                    |
-|:------------------|:-----------------------------------------------|
-| mDirection        | Direction you want to move.                    |
-| mCount            | How many screen count you want to move.        |
-| mSlideScreenSound | Audio clip when doing the slide screen effect. |
-| mDelayTime        | Time delay when slide screen.                  |
+Please see [JCS_SlideScreenButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_JCS_SlideScreenButton)

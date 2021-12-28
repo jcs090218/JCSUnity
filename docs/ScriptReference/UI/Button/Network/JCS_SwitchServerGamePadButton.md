@@ -1,11 +1,3 @@
 # JCS_SwitchServerGamePadButton
 
- Button provide the ability to change from one server to the other server.
-
-## Variables
-
-| Name   | Description                |
-|:-------|:---------------------------|
-| mHost  | Target hostname to switch. |
-| mPort  | Target Port to switch.     |
-| mForce | Force to switch server.    |
+Please see [JCS_SwitchServerButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_Network_sl_JCS_SwitchServerButton)

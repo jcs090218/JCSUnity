@@ -1,4 +1,3 @@
 # JCS_ExitAppOnlineGamePadButton
 
-Exit to the online exit application scene, to ensure we are disconnected to
-the server. (Gamepad)
+Please see [JCS_ExitAppOnlineButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_Network_sl_JCS_ExitAppOnlineButton)

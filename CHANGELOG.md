@@ -17,6 +17,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Shorten `SaveLoad` related components..
 * Shorten module name from `Utilities` to just `Util`.
 * Shorten class name from `JCS_Utility` to `JCS_Util`.
+* Add new component `JCS_ToggleCanvasButton`
+* Add new component `JCS_ShowCanvasButton`
+* Add new component `JCS_CanvasCanvasButton`
 
 ## 2.2.1
 > Released Nov 1, 2021

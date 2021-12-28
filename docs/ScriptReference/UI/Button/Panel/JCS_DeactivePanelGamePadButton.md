@@ -1,11 +1,3 @@
 # JCS_DeactivePanelGamePadButton
 
-Button that deactive the panel. (Gamepad)
-
-## Variables
-
-| Name             | Description                   |
-|:-----------------|:------------------------------|
-| mDialogueObjects | Panels to be deactive.        |
-| mTweenPanels     | Tween Panels to be deactive." |
-| PlaySound        | Play dialogue sound.          |
+Please see [JCS_ActivePanelButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_Panel_sl_JCS_DeactivePanelButton)

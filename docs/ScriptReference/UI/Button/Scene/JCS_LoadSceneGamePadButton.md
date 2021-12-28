@@ -1,12 +1,3 @@
 # JCS_LoadSceneGamePadButton
 
-Button will load the target scene. (Gamepad)
-
-## Variables
-
-| Name          | Description                                                                |
-|:--------------|:---------------------------------------------------------------------------|
-| mPlatformType | Limit to this platform only. NONE, will just load the scene without limit. |
-| mSceneName    | Scene name you want to load the scene.                                     |
-| mScreenColor  | Screen color when load the scene.                                          |
-| mKeppBGM      | Keep BGM playing when load scene.                                          |
+Please see [JCS_LoadSceneGamePadButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_Scene_sl_JCS_LoadSceneButton)

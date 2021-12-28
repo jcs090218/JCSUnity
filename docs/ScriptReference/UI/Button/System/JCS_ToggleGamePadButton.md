@@ -1,17 +1,3 @@
 # JCS_ToggleGamePadButton
 
-Button that have two callback can toggle each other. (Gamepad)
-
-## Functions
-
-| Name       | Description                                    |
-|:-----------|:-----------------------------------------------|
-| onActive   | Callback when active the toggle button.        |
-| onDeactive | Callback when deactive the toggle button.      |
-| mActive    | Return true if toggle button currently active. |
-
-## Functions
-
-| Name   | Description        |
-|:-------|:-------------------|
-| Toggle | Toggle the button. |
+Please see [JCS_ToggleButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_System_sl_JCS_ToggleButton)
