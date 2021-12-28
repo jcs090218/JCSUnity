@@ -1,6 +1,6 @@
-# JCS_GUIUtil
+# JCS_UIUtil
 
-GUI related utilities functions.s
+User interface related utilities functions.
 
 ## Functions
 
