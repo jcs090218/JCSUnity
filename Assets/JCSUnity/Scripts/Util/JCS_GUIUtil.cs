@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GUIUtil.cs $
+ * $File: JCS_UIUtil.cs $
  * $Date: 2018-07-16 13:28:22 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -21,9 +21,9 @@ using TMPro;
 namespace JCSUnity
 {
     /// <summary>
-    /// Store all the GUI related utilities function here.
+    /// User interface related utilities functions.
     /// </summary>
-    public static class JCS_GUIUtil
+    public static class JCS_UIUtil
     {
         /// <summary>
         /// Return true if GameObject contains built-in UI components.
@@ -525,6 +525,33 @@ namespace JCSUnity
         }
         #endregion
 
+
+        #region CANVAS
+        /// <summary>
+        /// Show the canvas so it's visible on the screen.
+        /// </summary>
+        public static void ShowCanvas(JCS_Canvas[] canvas)
+        {
+            foreach (var cvs in canvas)
+            {
+                if (cvs != null)
+                    cvs.Show();
+            }
+        }
+
+        /// <summary>
+        /// Hide the canvas so it's invisible on the screen.
+        /// </summary>
+        public static void HideCanvas(JCS_Canvas[] canvas)
+        {
+            foreach (var cvs in canvas)
+            {
+                if (cvs != null)
+                    cvs.Hide();
+            }
+        }
+        #endregion
+
         #region PANELS
         /// <summary>
         /// Active panels in array.
@@ -547,6 +574,7 @@ namespace JCSUnity
                     panel.Active();
             }
         }
+
 
         /// <summary>
         /// Deactive panels in array.
