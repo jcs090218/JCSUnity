@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button to hide canvas so it's invisibile on the screen.
+    /// Button to show canvas, so it's invisible on the screen.
     /// </summary>
     public class JCS_HideCanvasButton : JCS_Button
     {
@@ -19,7 +19,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_HideCanvasButton) **")]
 
-        [Tooltip("Target canvas to hide.")]
+        [Tooltip("Array of canvas to hide.")]
         public JCS_Canvas[] canvas = null;
 
         /* Setter & Getter */

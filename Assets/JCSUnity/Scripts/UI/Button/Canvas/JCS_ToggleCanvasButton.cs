@@ -19,7 +19,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_HideCanvasButton) **")]
 
-        [Tooltip("Target canvas to hide.")]
+        [Tooltip("Array of canvas to toggle its visibility.")]
         public JCS_Canvas[] canvas = null;
 
         /* Setter & Getter */

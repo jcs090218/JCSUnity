@@ -11,7 +11,7 @@ User interface related utilities functions.
 | SetText                   | Set the text with data.                                    |
 | Dropdown_GetItemValue     | Returns item value by index.                               |
 | Dropdown_GetSelectedValue | Get the selected value of the Dropdown object.             |
-| Dropdown_GetItemIndex     | Return the index of the item in the dropdown's item.           |
+| Dropdown_GetItemIndex     | Return the index of the item in the dropdown's item.       |
 | Dropdown_SetSelection     | Set the value to the target item.                          |
 | Dropdown_RefreshSelection | Refresh the current selection.                             |
 | Dropdown_AddOption        | Add an option to dropdown.                                 |

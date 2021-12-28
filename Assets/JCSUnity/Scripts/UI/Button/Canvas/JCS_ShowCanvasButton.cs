@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button to show canvas so it's visibile on the screen.
+    /// Button to show canvas, so it's visible on the screen.
     /// </summary>
     public class JCS_ShowCanvasButton : JCS_Button
     {
@@ -19,7 +19,7 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ShowCanvasButton) **")]
 
-        [Tooltip("Target canvas to show.")]
+        [Tooltip("Array of canvas to show.")]
         public JCS_Canvas[] canvas = null;
 
         /* Setter & Getter */
