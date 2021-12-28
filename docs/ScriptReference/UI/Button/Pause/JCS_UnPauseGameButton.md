@@ -1,12 +1,6 @@
-# JCS_UnPauseGameButton
+# JCS_UnpauseGameButton
 
 Button that unpause the game.
-
-## Variables
-
-| Name       | Description                                  |
-|:-----------|:---------------------------------------------|
-| mJCSButton | Button that will call to unpause the button. |
 
 ## Function
 

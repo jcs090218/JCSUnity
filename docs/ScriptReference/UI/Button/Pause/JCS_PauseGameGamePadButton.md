@@ -1,15 +1,3 @@
 # JCS_PauseGameGamePadButton
 
-Button that pause the game. (Gamepad)
-
-## Variables
-
-| Name       | Description                                |
-|:-----------|:-------------------------------------------|
-| mJCSButton | Button that will call to pause the button. |
-
-## Functions
-
-| Name      | Description     |
-|:----------|:----------------|
-| PauseGame | Pause the game. |
+Please see [JCS_PauseGameButton](https://jcs090218.github.io/JCSUnity/ScriptReference/index.html?page=UI_sl_Button_sl_Pause_sl_JCS_PauseGameButton)
