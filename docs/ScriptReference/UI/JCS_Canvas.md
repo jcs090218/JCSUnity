@@ -4,11 +4,11 @@ Control of the canvas component.
 
 ## Variables
 
-| Name           | Description                           |
-|:---------------|:--------------------------------------|
-| mActiveSound   | Play sound when active the canvas.    |
-| mDeactiveSound | "Play sound when deactive the canvas. |
-
+| Name            | Description                                      |
+|:----------------|:-------------------------------------------------|
+| mDisplayOnAwake | If true, show on awake time; otherwise, hide it. |
+| mActiveSound    | Play sound when active the canvas.               |
+| mDeactiveSound  | Play sound when deactive the canvas.             |
 
 ## Functions
 
