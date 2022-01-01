@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_SlideInput_SwitchScene_Test.cs $
+ * $File: FT_SlideInput_SwitchScene.cs $
  * $Date: 2017-05-25 00:41:28 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -8,7 +8,7 @@
  */
 using UnityEngine;
 
-public class FT_SlideInput_SwitchScene_Test : MonoBehaviour 
+public class FT_SlideInput_SwitchScene : MonoBehaviour 
 {
     /* Variables */
 

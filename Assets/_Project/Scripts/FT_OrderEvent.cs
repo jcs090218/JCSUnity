@@ -1,5 +1,5 @@
 /**
- * $File: FT_OrderEvent_Test.cs $
+ * $File: FT_OrderEvent.cs $
  * $Date: 2020-06-20 21:34:02 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ using JCSUnity;
 /// Test the component `JCS_OrderEvent`.
 /// </summary>
 [RequireComponent(typeof(JCS_OrderEvent))]
-public class FT_OrderEvent_Test : MonoBehaviour
+public class FT_OrderEvent : MonoBehaviour
 {
     /* Variables */
 

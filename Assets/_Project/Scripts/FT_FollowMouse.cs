@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_FollowMouse_Test.cs $
+ * $File: FT_FollowMouse.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using UnityEngine;
 using JCSUnity;
 
-public class FT_FollowMouse_Test : MonoBehaviour 
+public class FT_FollowMouse : MonoBehaviour 
 {
     /* Variables */
 

@@ -1,5 +1,5 @@
 /**
- * $File: FT_SlopeTest.cs $
+ * $File: FT_Slope.cs $
  * $Date: 2017-05-25 00:41:28 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -7,8 +7,9 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using JCSUnity;
 
-public class FT_SlopeTest : MonoBehaviour 
+public class FT_Slope : MonoBehaviour 
 {
 
     /* Variables */
@@ -28,7 +29,7 @@ public class FT_SlopeTest : MonoBehaviour
 
     private void Update()
     {
-        //print(JCSUnity.JCS_Physics.SetOnTopOfBoxWithSlope(mCharacterController, mBoxCollider));
-        print(JCSUnity.JCS_Physics.SetOnTopOfBoxWithSlope(mTopBoxCollider, mBotBoxCollider));
+        //print(JCS_Physics.SetOnTopOfBoxWithSlope(mCharacterController, mBoxCollider));
+        print(JCS_Physics.SetOnTopOfBoxWithSlope(mTopBoxCollider, mBotBoxCollider));
     }
 }

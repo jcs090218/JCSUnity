@@ -1,5 +1,5 @@
 /**
- * $File: FT_Raycast_Test.cs $
+ * $File: FT_Raycast.cs $
  * $Date: 2017-04-27 21:54:48 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -8,7 +8,7 @@
  */
 using UnityEngine;
 
-public class FT_Raycast_Test : MonoBehaviour 
+public class FT_Raycast : MonoBehaviour 
 {
     /* Variables */
 

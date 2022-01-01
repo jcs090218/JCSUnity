@@ -1,5 +1,5 @@
 /**
- * $File: FT_XInput_Test.cs $
+ * $File: FT_XInput.cs $
  * $Date: 2016-10-15 19:29:00 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,7 +12,7 @@ using JCSUnity;
 /// <summary>
 /// Test the joystick input.
 /// </summary>
-public class FT_XInput_Test : MonoBehaviour
+public class FT_XInput : MonoBehaviour
 {
     /* Variables */
 

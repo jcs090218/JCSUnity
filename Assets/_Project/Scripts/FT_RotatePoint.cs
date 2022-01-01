@@ -1,5 +1,5 @@
 /**
- * $File: FT_RotatePointTest.cs $
+ * $File: FT_RotatePoint.cs $
  * $Date: 2017-09-11 19:00:53 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using UnityEngine;
 using JCSUnity;
 
-public class FT_RotatePointTest : MonoBehaviour 
+public class FT_RotatePoint : MonoBehaviour 
 {
     /* Variables */
 

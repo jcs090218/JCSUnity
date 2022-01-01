@@ -1,5 +1,5 @@
 /**
- * $File: FT_EnumConver_Test.cs $
+ * $File: FT_EnumConver.cs $
  * $Date: 2021-08-16 00:31:39 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using UnityEngine;
 using JCSUnity;
 
-public class FT_EnumConver_Test : MonoBehaviour
+public class FT_EnumConver : MonoBehaviour
 {
     /* Variables */
 

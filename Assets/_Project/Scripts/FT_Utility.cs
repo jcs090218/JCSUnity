@@ -1,5 +1,5 @@
 /**
- * $File: FT_UtilityTest.cs $
+ * $File: FT_Utility.cs $
  * $Date: 2017-05-16 22:14:17 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FT_UtilityTest : MonoBehaviour
+public class FT_Utility : MonoBehaviour
 {
     /* Variables */
 

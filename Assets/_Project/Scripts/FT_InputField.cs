@@ -1,5 +1,5 @@
 /**
- * $File: FT_InputField_Test.cs $
+ * $File: FT_InputField.cs $
  * $Date: 2018-08-28 01:49:02 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ using UnityEngine.UI;
 /// Test of the input field.
 /// </summary>
 [RequireComponent(typeof(InputField))]
-public class FT_InputField_Test : MonoBehaviour
+public class FT_InputField : MonoBehaviour
 {
     /* Variables */
 

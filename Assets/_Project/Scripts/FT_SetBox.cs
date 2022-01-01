@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_CollideTest.cs $
+ * $File: FT_SetBox.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -7,28 +7,27 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using JCSUnity;
 
-/// <summary>
-/// Test if the two collider collide.
-/// </summary>
-public class FT_CollideTest : MonoBehaviour 
+public class FT_SetBox : MonoBehaviour
 {
     /* Variables */
 
     public BoxCollider mBoxCollider = null;
     public CharacterController mCharacterController = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 
-    private void Awake() 
+    private void Awake()
     {
-        
+
     }
-    
-    private void Update() 
+
+    private void Update()
     {
-        print(JCSUnity.JCS_Physics.JcsOnTriggerCheck(mCharacterController, mBoxCollider));
+        JCS_Physics.SetOnTopOfBox(mCharacterController, mBoxCollider);
+        //print(JCS_Physics.TopOfBox(mCharacterController, mBoxCollider));
     }
 }

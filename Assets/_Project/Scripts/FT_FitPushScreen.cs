@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_FitPushScreen_Test.cs $
+ * $File: FT_FitPushScreen.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using UnityEngine;
 using JCSUnity;
 
-public class FT_FitPushScreen_Test : MonoBehaviour 
+public class FT_FitPushScreen : MonoBehaviour 
 {
     /* Variables */
 

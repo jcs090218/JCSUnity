@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_SaveLoad_Test.cs $
+ * $File: FT_SaveLoad.cs $
  * $Date: 2019-10-16 15:16:31 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,7 +12,7 @@ using JCSUnity;
 /// <summary>
 /// Test save load module.
 /// </summary>
-public class FT_SaveLoad_Test : MonoBehaviour
+public class FT_SaveLoad : MonoBehaviour
 {
     /* Variables */
 

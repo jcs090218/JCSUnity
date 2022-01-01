@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_CamInScreenSpace_Test.cs $
+ * $File: FT_Random.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,12 +9,9 @@
 using UnityEngine;
 using JCSUnity;
 
-[RequireComponent(typeof(RectTransform))]
-public class FT_CamInScreenSpace_Test : MonoBehaviour 
+public class FT_Random : MonoBehaviour 
 {
     /* Variables */
-
-    private RectTransform mRectTransform = null;
 
     /* Setter/Getter */
 
@@ -22,12 +19,15 @@ public class FT_CamInScreenSpace_Test : MonoBehaviour
 
     private void Awake() 
     {
-        mRectTransform = this.GetComponent<RectTransform>();
-
+        
     }
     
     private void Update() 
     {
-        print(JCS_Camera.main.CheckInScreenSpace(mRectTransform));
+        if (JCS_Input.GetKeyDown(KeyCode.T))
+        {
+            print(JCS_TimeManager.GetCurrentTime());
+            print(JCS_TimeManager.isAfternoon());
+        }
     }
 }

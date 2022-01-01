@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_ScreenSpace_Test.cs $
+ * $File: FT_ScreenSpace.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -11,7 +11,7 @@ using JCSUnity;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CharacterController))]
-public class FT_ScreenSpace_Test : MonoBehaviour
+public class FT_ScreenSpace : MonoBehaviour
 {
     /* Variables */
 

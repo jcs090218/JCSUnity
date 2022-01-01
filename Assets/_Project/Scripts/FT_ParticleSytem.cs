@@ -1,5 +1,5 @@
 /**
- * $File: FT_ParticleSytem_Test.cs $
+ * $File: FT_ParticleSytem.cs $
  * $Date: 2016-11-13 00:14:51 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using UnityEngine;
 using JCSUnity;
 
-public class FT_ParticleSytem_Test : MonoBehaviour 
+public class FT_ParticleSytem : MonoBehaviour 
 {
     /* Variables */
 

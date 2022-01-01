@@ -1,5 +1,5 @@
 /**
- * $File: FT_BGM_Tester.cs $
+ * $File: FT_BGM.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using UnityEngine;
 using JCSUnity;
 
-public class FT_BGM_Tester : MonoBehaviour
+public class FT_BGM : MonoBehaviour
 {
     /* Variables */
 
