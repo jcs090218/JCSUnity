@@ -62,7 +62,7 @@ directory at the root of the project directory.
 These are libraries `JCSUnity` uses. Consider the usage, some plugins
 aren't necessary depend on the game your are making.
 
-* [Log Viewer](https://assetstore.unity.com/packages/tools/integration/log-viewer-12047) - Easier debugging after built.
+* [In-game Debug Console](https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068) - Easier debugging after built.
 * [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) - File browser for UI/tool base application.
 * [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
 * [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
