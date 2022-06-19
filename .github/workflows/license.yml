@@ -10,10 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # License
+  UNITY_VER: 2021.2.14f1
   ULF_FILE: Unity_v2021.x.ulf
-  # Project
-  UNITY_VERSION: 2021.2.14f1
 
 jobs:
   request_alf:
@@ -26,7 +24,7 @@ jobs:
         id: alfFile
         uses: game-ci/unity-request-activation-file@main
         with:
-          unityVersion: ${{ env.UNITY_VERSION }}
+          unityVersion: ${{ env.UNITY_VER }}
 
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
       - name: Expose as artifact
@@ -79,4 +77,4 @@ jobs:
         with:
           name: 'UNITY_LICENSE'
           value: '${{ steps.ulfRead.outputs.content }}'
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.PAT }}
