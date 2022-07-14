@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Unity Engine](https://img.shields.io/badge/unity-2021.2.14f1-black.svg?style=flat&logo=unity&cacheSeconds=2592000)](https://unity3d.com/get-unity/download/archive)
+[![Unity Engine](https://img.shields.io/badge/unity-2022.1.9f1-black.svg?style=flat&logo=unity&cacheSeconds=2592000)](https://unity3d.com/get-unity/download/archive)
 [![Release](https://img.shields.io/github/tag/jcs090218/JCSUnity.svg?label=release&logo=github)](https://github.com/jcs090218/JCSUnity/releases/latest)
 [![.NET 4.x Scripting Runtime](https://img.shields.io/badge/.NET-4.x-blueviolet.svg?style=flat&cacheSeconds=2592000)](https://docs.unity3d.com/2018.3/Documentation/Manual/ScriptingRuntimeUpgrade.html)
 
@@ -17,7 +17,7 @@ for a faster initial development. Most components work individually
 while other components must be used in tandem with others.
 Individually components can be combined to create new behaviors.
 
-## :boom: Important Notice
+## 💥 Important Notice
 
 All media assets inside JCSUnity do not fall under its license.
 These assets are placeholders only, and should only be used for
@@ -27,7 +27,7 @@ terms, and understand that you are solely responsible for any
 legal action taken against you for using, or attempting to use
 any placeholder assets commercially.
 
-## :newspaper: News
+## 📰 News
 
 Here is the list of few important and recent changes to this framework.
 
@@ -42,7 +42,7 @@ Here is the list of few important and recent changes to this framework.
 * `2.0.5` - Supplied full version of `webcam` module.
 * `2.0.4` - Renamed all framework's scenes without useless postfix like `Demo`, `Scene`, etc.
 
-## :hammer: How to use it?
+## 🔨 How to use it?
 
 JCSUnity is like other Unity plugins. You can download the latest
 release from the above tab, or from the link
@@ -51,13 +51,13 @@ release from the above tab, or from the link
 the assets into that project. Then you can start all of the tools
 in the JCSUnity framework. <br/>
 
-## :trophy: Features
+## 🏆 Features
 
 So, what does this framework does? Check out the
 [features](https://github.com/jcs090218/JCSUnity/tree/master/features)
 directory at the root of the project directory.
 
-## :pushpin: Dependencies
+## 📌 Dependencies
 
 These are libraries `JCSUnity` uses. Consider the usage, some plugins
 aren't necessary depend on the game your are making.
@@ -67,13 +67,13 @@ aren't necessary depend on the game your are making.
 * [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
 * [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
 
-## :link: Links
+## 🔗 Links
 
 * *Demo* : https://www.youtube.com/playlist?list=PLp13qyXnE6zDioC30eW_-aqr4gsswxJo0
 * *Tutorials* : https://www.youtube.com/playlist?list=PLp13qyXnE6zCmRobHV9uEjv-1_ieCPwjc
 * *Manual/Scripting API* : [Scripting-Manual-JCSUnity](https://jcs090218.github.io/JCSUnity/Manual/index.html)
 
-## :video_game: Games
+## 🎮 Games
 
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
   <img src="./etc/games/hemlock_logo.png" width="64" height="64" align="middle"/>
