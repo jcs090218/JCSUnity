@@ -20,6 +20,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add new component `JCS_ToggleCanvasButton`
 * Add new component `JCS_ShowCanvasButton`
 * Add new component `JCS_CanvasCanvasButton`
+* Fix unmatched file name `JCS_Manager` (1223fb41d90fe39bbfe3bcac76e8c59d112a616a)
 
 ## 2.2.1
 > Released Nov 1, 2021
