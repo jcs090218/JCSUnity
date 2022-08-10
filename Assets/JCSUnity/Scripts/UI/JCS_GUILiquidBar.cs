@@ -119,7 +119,7 @@ namespace JCSUnity
             GetContainerData();
 
             // do recover
-            //DoRecover();
+            DoRecover();
 
             // do gui movement
             TowardToTargetValue();
@@ -420,6 +420,12 @@ namespace JCSUnity
             Vector3 speed = (mMaskTargetPosition - mMaskRectTransform.localPosition) / mDeltaFriction * Time.deltaTime;
             Vector3 tmpSpeed = speed;
 
+            // TODO(jenchieh): It's weird that these seem to fix the issue
+            // when resolution isn't the full targeted resoltuion (generally
+            // 1920 x 1080).
+            //
+            // But the speed `mDeltaFriction` doesn't apply; meaning it doesn't
+            // grow in a proportional way with the resolution ratio/scale.
             if (mPanelRoot != null)
             {
                 switch (GetAlign())
