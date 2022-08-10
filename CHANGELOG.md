@@ -22,6 +22,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add new component `JCS_CanvasCanvasButton`
 * Fix unmatched file name `JCS_Manager` (1223fb41d90fe39bbfe3bcac76e8c59d112a616a)
 * Reset damage text's transform for each display (70c0e0c9512544ac4106fbc66a9fef1f75bdbc74)
+* Fix miscalculation around resolution for `JCS_GUILiquidBar` (c441c5668acf8da00d4ee8f43f3653f372588dc8)
 
 ## 2.2.1
 > Released Nov 1, 2021
