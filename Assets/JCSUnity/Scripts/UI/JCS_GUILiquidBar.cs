@@ -119,7 +119,7 @@ namespace JCSUnity
             GetContainerData();
 
             // do recover
-            DoRecover();
+            //DoRecover();
 
             // do gui movement
             TowardToTargetValue();
@@ -336,8 +336,7 @@ namespace JCSUnity
 
             mMaskTargetPosition = this.mRectTransform.localPosition;
 
-            // find min max position, 
-            // base on the algin side.
+            // find min max position, base on the algin side.
             switch (GetAlign())
             {
                 case JCS_Align.ALIGN_LEFT:
@@ -401,16 +400,12 @@ namespace JCSUnity
                 case JCS_Align.ALIGN_LEFT:
                 case JCS_Align.ALIGN_RIGHT:
                     {
-                        if (mPanelRoot != null)
-                            realDistance *= mPanelRoot.PanelDeltaWidthRatio;
                         mMaskTargetPosition.x = mMinPos + realDistance;
                     }
                     break;
                 case JCS_Align.ALIGN_BOTTOM:
                 case JCS_Align.ALIGN_TOP:
                     {
-                        if (mPanelRoot != null)
-                            realDistance *= mPanelRoot.PanelDeltaHeightRatio;
                         mMaskTargetPosition.y = mMinPos + realDistance;
                     }
                     break;
@@ -423,7 +418,28 @@ namespace JCSUnity
         private void TowardToTargetValue()
         {
             Vector3 speed = (mMaskTargetPosition - mMaskRectTransform.localPosition) / mDeltaFriction * Time.deltaTime;
-            mMaskRectTransform.localPosition += speed;
+            Vector3 tmpSpeed = speed;
+
+            if (mPanelRoot != null)
+            {
+                switch (GetAlign())
+                {
+                    case JCS_Align.ALIGN_LEFT:
+                    case JCS_Align.ALIGN_RIGHT:
+                        {
+                            tmpSpeed *= mPanelRoot.PanelDeltaWidthRatio;
+                        }
+                        break;
+                    case JCS_Align.ALIGN_BOTTOM:
+                    case JCS_Align.ALIGN_TOP:
+                        {
+                            tmpSpeed *= mPanelRoot.PanelDeltaHeightRatio;
+                        }
+                        break;
+                }
+            }
+
+            mMaskRectTransform.localPosition += tmpSpeed;
             mRectTransform.localPosition -= speed;
         }
 

@@ -29,6 +29,12 @@ namespace JCSUnity
         [Header("** Check Variables (JCS_LiquidBar) **")]
 
         [SerializeField]
+        protected float mMinPos = 0.0f;
+
+        [SerializeField]
+        protected float mMaxPos = 0.0f;
+
+        [SerializeField]
         protected bool mReachMin = false;
 
         [SerializeField]
@@ -66,9 +72,6 @@ namespace JCSUnity
         [Tooltip("Current liquid bar value.")]
         [SerializeField]
         protected float mCurrentValue = 50.0f;
-
-        protected float mMinPos = 0.0f;
-        protected float mMaxPos = 0.0f;
 
         [Header("** Optional Variables (JCS_LiquidBar) **")]
 
