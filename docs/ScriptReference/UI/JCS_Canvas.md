@@ -7,6 +7,7 @@ Control of the canvas component.
 | Name            | Description                                      |
 |:----------------|:-------------------------------------------------|
 | mDisplayOnAwake | If true, show on awake time; otherwise, hide it. |
+| mMainCanvas     | Resizable screen will be attach to this canvas.  |
 | mActiveSound    | Play sound when active the canvas.               |
 | mDeactiveSound  | Play sound when deactive the canvas.             |
 
