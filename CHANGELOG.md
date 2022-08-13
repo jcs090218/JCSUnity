@@ -24,6 +24,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Reset damage text's transform for each display (70c0e0c9512544ac4106fbc66a9fef1f75bdbc74)
 * Fix miscalculation around resolution for `JCS_GUILiquidBar` (c441c5668acf8da00d4ee8f43f3653f372588dc8)
 * Add reload scene option for load scene module (0da7d0546de58d05ac25b39212026684361719f5)
+* Add main canvas option in `Canvas` module (834fe2e4ae21cc5704675c56d30a17a41c37f28a)
 
 ## 2.2.1
 > Released Nov 1, 2021
