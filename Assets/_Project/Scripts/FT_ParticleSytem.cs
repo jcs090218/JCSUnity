@@ -39,9 +39,7 @@ public class FT_ParticleSytem : MonoBehaviour
             JCS_TransformTweener masterTweener = mParticle.GetComponent<JCS_TransformTweener>();
             JCS_TowardTarget masterTt = mParticle.GetComponent<JCS_TowardTarget>();
 
-            for (int index = 0;
-                index < mParticles.length;
-                ++index)
+            for (int index = 0; index < mParticles.length; ++index)
             {
                 JCS_TransformTweener tweener = mParticles.at(index).GetComponent<JCS_TransformTweener>();
 

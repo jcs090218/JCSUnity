@@ -88,9 +88,7 @@ set to thie scene layer.")]
         }
 
 
-        for (int count = 0;
-            count < mEnemyPerWave;
-            ++count)
+        for (int count = 0; count < mEnemyPerWave; ++count)
         {
             if (BF_GameManager.instance.MOB_CURRENT_IN_SCENE >= BF_GameSettings.instance.TOTAL_MOB_IN_SCENE)
             {

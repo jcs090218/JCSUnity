@@ -118,13 +118,9 @@ namespace JCSUnity
         {
             List<JCS_PfNode> neighbours = new List<JCS_PfNode>();
 
-            for (int x = -1;
-                x <= 1;
-                ++x)
+            for (int x = -1; x <= 1; ++x)
             {
-                for (int y = -1;
-                    y <= 1;
-                    ++y)
+                for (int y = -1; y <= 1; ++y)
                 {
                     if (x == 0 && y == 0)
                         continue;
@@ -176,13 +172,9 @@ namespace JCSUnity
                 JCS_Util.VectorDirection(mDirection) *
                 mGridiWorldSize.y / 2;
 
-            for (int x = 0;
-                x < mGridSizeX;
-                ++x)
+            for (int x = 0; x < mGridSizeX; ++x)
             {
-                for (int y = 0;
-                y < mGridSizeY;
-                ++y)
+                for (int y = 0; y < mGridSizeY; ++y)
                 {
                     Vector3 worldPoint =
                         worldBottomLeft +

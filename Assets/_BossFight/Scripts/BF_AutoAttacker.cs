@@ -89,9 +89,7 @@ public class BF_AutoAttacker : MonoBehaviour
         if (mRealTimeZone < mTimer)
         {
 
-            for (int count = 0;
-                count < mShootAction.ShootCount;
-                ++count)
+            for (int count = 0; count < mShootAction.ShootCount; ++count)
             {
                 LockShoot();
             }

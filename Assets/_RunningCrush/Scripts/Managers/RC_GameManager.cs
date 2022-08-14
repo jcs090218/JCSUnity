@@ -82,9 +82,7 @@ public class RC_GameManager : MonoBehaviour
     {
         RC_GameSettings gs = RC_GameSettings.instance;
 
-        for (int index = 0;
-            index < RC_GameSettings.instance.PLAYER_IN_GAME;
-            ++index)
+        for (int index = 0; index < RC_GameSettings.instance.PLAYER_IN_GAME; ++index)
         {
             if (gs.PLAYERS[index] == null)
             {

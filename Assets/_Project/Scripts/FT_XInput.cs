@@ -154,9 +154,7 @@ public class FT_XInput : MonoBehaviour
         if (!fullInfo)
             return;
 
-        for (int index = 0;
-            index < Input.GetJoystickNames().Length;
-            ++index)
+        for (int index = 0; index < Input.GetJoystickNames().Length; ++index)
         {
             print("Index[" + index + "] => [" + Input.GetJoystickNames()[index] + "]");
         }

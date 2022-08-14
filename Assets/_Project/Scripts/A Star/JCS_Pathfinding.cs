@@ -136,9 +136,7 @@ namespace JCSUnity
             List<Vector3> waypoints = new List<Vector3>();
             Vector2 directionOld = Vector2.zero;
 
-            for (int index = 1;
-                index < path.Count; 
-                ++index)
+            for (int index = 1; index < path.Count; ++index)
             {
                 Vector2 directionNew = new Vector2(path[index - 1].GridX - path[index].GridX, path[index - 1].GridY - path[index].GridY);
 
