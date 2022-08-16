@@ -50,9 +50,6 @@ namespace JCSUnity
         private RaycastHit mRaycastHit;
         private Collider mFixCollider = null;
 
-        // trigger once then disable to save performance.
-        private bool mHitTheWall = false;
-
         [Tooltip(@"Do the item bounce back from the wall after hit the wall or 
 just stop there.")]
         [SerializeField]
@@ -77,8 +74,8 @@ just stop there.")]
         }
         private void Start()
         {
-            JCS_PlayerManager pm = JCS_PlayerManager.instance;
-            JCS_2DGameManager gm2d = JCS_2DGameManager.instance;
+            var pm = JCS_PlayerManager.instance;
+            var gm2d = JCS_2DGameManager.instance;
 
             if (pm != null)
                 pm.IgnorePhysicsToAllPlayer(mBoxCollider);
@@ -98,21 +95,25 @@ just stop there.")]
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!mHitTheWall)
+            var jcsiw = other.GetComponent<JCS_ItemWall>();
+            if (jcsiw != null)
             {
-                JCS_ItemWall jcsiw = other.GetComponent<JCS_ItemWall>();
-                if (jcsiw != null)
+                // no longer moving along x-axis or z-axis.
                 {
-                    // no longer moving along x-axis.
+                    // bounce it back!
+                    if (mBounceBackfromWall)
                     {
-                        // bounce it back!
-                        if (mBounceBackfromWall)
-                            mVelocity.x = -mVelocity.x;
-                        else
-                            mVelocity.x = 0;
+                        mVelocity.x = -mVelocity.x;
+                        mVelocity.z = -mVelocity.z;
                     }
-                    mHitTheWall = true;
+                    else
+                    {
+                        mVelocity.x = 0;
+                        mVelocity.z = 0;
+                    }
                 }
+
+                return;
             }
 
             /* Only check when the item start dropping. */
@@ -164,11 +165,11 @@ just stop there.")]
                 return;
 
             // meet ignore object
-            JCS_ItemIgnore jcsii = other.GetComponent<JCS_ItemIgnore>();
+            var jcsii = other.GetComponent<JCS_ItemIgnore>();
             if (jcsii != null)
                 return;
 
-            JCS_Item otherItem = this.GetComponent<JCS_Item>();
+            var otherItem = this.GetComponent<JCS_Item>();
             // if itself is a item, we check other is a item or not.
             if (otherItem != null)
             {
@@ -193,9 +194,8 @@ just stop there.")]
 
             mFixCollider = other;
 
-            // TODO(jenchieh): not all the object we get set are 
-            //                 box collider only.
-            BoxCollider beSetBox = other.GetComponent<BoxCollider>();
+            // TODO(jenchieh): not all the object we get set are box collider only.
+            var beSetBox = other.GetComponent<BoxCollider>();
 
             // set this ontop of the other box(ground)
             if (beSetBox != null)
