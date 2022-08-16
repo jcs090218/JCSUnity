@@ -243,6 +243,7 @@ object that we target.")]
                 {
                     // default settings
                     mTweener = this.gameObject.AddComponent<JCS_TransformTweener>();
+                    mTweener.SetObjectType(this.mObjectType);
 
                     mTweener.EasingY = JCS_TweenType.EASE_OUT_BACK;
                     mTweener.DurationX = 2.0f;
@@ -258,6 +259,8 @@ object that we target.")]
             {
                 // default settings
                 mDestinationDestroy = this.gameObject.AddComponent<JCS_DestinationDestroy>();
+                mDestinationDestroy.SetObjectType(this.mObjectType);
+
                 mDestinationDestroy.DestroyDistance = 0.5f;
             }
             mDestinationDestroy.SetTargetTransform(other.transform);

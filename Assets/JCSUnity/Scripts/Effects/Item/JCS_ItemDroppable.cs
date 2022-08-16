@@ -448,7 +448,6 @@ just stop there.")]
 
                     // set the object type the same.
                     fo.SetObjectType(item.GetObjectType());
-                    fo.UpdateUnityData();
                 }
             }
         }
