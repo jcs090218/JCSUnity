@@ -10,7 +10,8 @@ Effect makes the item jumps and spreads.
 | mMoveForce          | How fast this item moves?                                                    |
 | mItemGravity        | Item gravity.                                                                |
 | mBounceBackfromWall | Do the item bounce back from the wall after hit the wall or just stop there. |
- 
+| mBounceFriction     | Deacceleration after bouncing from the wall.                                 |
+
 ## Functions
 
 | Name    | Description                            |

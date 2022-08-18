@@ -55,6 +55,10 @@ just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
+        [Tooltip("Deacceleration after bouncing from the wall.")]
+        [SerializeField]
+        private float mBounceFriction = 0.2f;
+
         /* Setter & Getter */
 
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
@@ -64,6 +68,7 @@ just stop there.")]
         public Collider GetFixCollider() { return this.mFixCollider; }
 
         public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
+        public float BounceFriction { get { return this.mBounceFriction; } set { this.mBounceFriction = value; } }
 
         /* Functions */
 
@@ -103,8 +108,8 @@ just stop there.")]
                     // bounce it back!
                     if (mBounceBackfromWall)
                     {
-                        mVelocity.x = -mVelocity.x;
-                        mVelocity.z = -mVelocity.z;
+                        mVelocity.x = -mVelocity.x * mBounceFriction;
+                        mVelocity.z = -mVelocity.z * mBounceFriction;
                     }
                     else
                     {
