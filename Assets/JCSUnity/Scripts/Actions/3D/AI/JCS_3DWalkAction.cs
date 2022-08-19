@@ -19,7 +19,7 @@ namespace JCSUnity
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(NavMeshObstacle))]
     [RequireComponent(typeof(JCS_AdjustTimeTrigger))]
-    public class JCS_3DWalkAction : MonoBehaviour , JCS_IAction
+    public class JCS_3DWalkAction : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
@@ -241,14 +241,21 @@ namespace JCSUnity
             // position agent are approach to.
             Vector3 targetPos = GetPosByWalkType(target);
 
-            JCS_3DWalkAction overlapped = null;
-            if (!mAllowOverlapDestination)
-                overlapped = wam.OverlapWithOthers(this, targetPos, mOverlapDistance);
+            // try avoid invalid AABB error
+            bool validPos = !JCS_Mathf.IsNaN(targetPos);
 
-            // set to the destination.
+            JCS_3DWalkAction overlapped = null;
             bool found = false;
-            if (!overlapped)
-                found = mNavMeshAgent.SetDestination(targetPos);
+
+            if (validPos)
+            {
+                if (!mAllowOverlapDestination)
+                    overlapped = wam.OverlapWithOthers(this, targetPos, mOverlapDistance);
+
+                // set to the destination.
+                if (!overlapped)
+                    found = mNavMeshAgent.SetDestination(targetPos);
+            }
 
             ++mSearchCounter;
 
@@ -378,32 +385,26 @@ namespace JCSUnity
 
             vec = vec.normalized;
 
-            float hyp = JCS_Mathf.PythagoreanTheorem(vec.x, vec.z, JCS_Mathf.TriSides.hyp);
-
-            float ratio = distance / hyp;
-
-            newTargetPos.x += vec.x * ratio;
-            newTargetPos.z += vec.z * ratio;
+            newTargetPos.x += vec.x * distance;
+            newTargetPos.z += vec.z * distance;
             newTargetPos.y = this.transform.position.y;
 
             return newTargetPos;
         }
 
         /// <summary>
-        /// Calculate the range and position relationship
-        /// in order to find the best destination in the
-        /// navigation map.
+        /// Calculate the range and position relationship in order to find
+        /// the best destination in the navigation map.
         ///
-        /// IMPORTANT(JenChieh): if the vector does not in the range,
-        /// enemy will stay at the place they are, which mean enemy
-        /// will do nothing...
+        /// IMPORTANT(jenchieh): if the vector does not in the range, enemy
+        /// will stay at the place they are, which mean enemy will do nothing...
         /// </summary>
         /// <returns> result destination </returns>
         private Vector3 CalculateRange(Vector3 targetPos, float distance)
         {
             Vector3 newTargetPos = targetPos;
 
-            Vector3 randVec = GetRandomVec();
+            Vector3 randVec = GetRandomVec();  // this mean, random degree
 
             float magnitude = distance;
 
