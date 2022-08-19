@@ -165,7 +165,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            JCS_3DWalkActionManager wam = JCS_3DWalkActionManager.instance;
+            var wam = JCS_3DWalkActionManager.instance;
             wam.AddWalkAction(this);
         }
 
@@ -221,12 +221,9 @@ namespace JCSUnity
 
             // if target is does not exist, end function call.
             if (target == null)
-            {
-                JCS_Debug.LogError("The transform you are targeting is null");
                 return;
-            }
 
-            JCS_3DWalkActionManager wam = JCS_3DWalkActionManager.instance;
+            var wam = JCS_3DWalkActionManager.instance;
 
             if (mSearchCounter == mSearchCount)
             {
