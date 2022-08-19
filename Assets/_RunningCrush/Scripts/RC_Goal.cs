@@ -18,7 +18,7 @@ public class RC_Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        RC_Player p = other.GetComponent<RC_Player>();
+        var p = other.GetComponent<RC_Player>();
         if (p != null)
         {
             // reach the goal! game is over.

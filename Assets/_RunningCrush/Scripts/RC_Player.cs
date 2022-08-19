@@ -268,7 +268,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         if (RC_GameSettings.instance.GAME_OVER)
             return;
 
-
         if (!mIsDead)
         {
             // if out of screen space
@@ -325,7 +324,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
                 this.transform.position = newPos;
 
                 VelX = MoveSpeed;
-
 
                 // check if the player in the scene or not.
                 if (JCS_Camera.main.CheckInScreenSpace(GetCharacterController()))

@@ -15,9 +15,12 @@ using JCSUnity;
 public class BF_CharacterSpawnHandler : MonoBehaviour
 {
     /* Variables */
-    
-    [SerializeField] private BF_InitCharacterInGame[] mSpawnPos = null;
-    [SerializeField] private int mOrderLayer = 16;
+
+    [SerializeField] 
+    private BF_InitCharacterInGame[] mSpawnPos = null;
+
+    [SerializeField] 
+    private int mOrderLayer = 16;
 
     /* Setter & Getter */
 
@@ -41,7 +44,7 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
     /// </summary>
     private void SpawnPlayers()
     {
-        BF_GameSettings bfgs = BF_GameSettings.instance;
+        var bfgs = BF_GameSettings.instance;
 
         BF_Player[] bfPlayers = bfgs.CHARACTERS_IN_GAME;
 
@@ -63,7 +66,7 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
             // player we just spawned, in order 
             // to set facing.
             BF_Player bfp = (BF_Player)JCS_Util.SpawnGameObject(
-                bfPlayers[index], 
+                bfPlayers[index],
                 mSpawnPos[index].transform.position);
 
             // set the starting faceing

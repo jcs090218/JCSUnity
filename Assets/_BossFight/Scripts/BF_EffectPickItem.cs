@@ -59,7 +59,7 @@ public class BF_EffectPickItem : MonoBehaviour
     /// <param name="effectType"> effect type. </param>
     public void DoEffect(BF_PickItemEffectType effectType)
     {
-        BF_GameManager bfGm = BF_GameManager.instance;
+        var bfGm = BF_GameManager.instance;
 
         switch (effectType)
         {
@@ -105,7 +105,7 @@ public class BF_EffectPickItem : MonoBehaviour
     /// </summary>
     public void SetPickColliderByObject(BF_PickItemEffectType effectType)
     {
-        BF_GameManager bfGm = BF_GameManager.instance;
+        var bfGm = BF_GameManager.instance;
 
         switch (effectType)
         {

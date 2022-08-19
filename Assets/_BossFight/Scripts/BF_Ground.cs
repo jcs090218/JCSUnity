@@ -18,7 +18,7 @@ public class BF_Ground : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        BF_LiveObject bfLivObject = other.GetComponent<BF_LiveObject>();
+        var bfLivObject = other.GetComponent<BF_LiveObject>();
         if (bfLivObject == null)
             return;
 

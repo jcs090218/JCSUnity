@@ -38,7 +38,7 @@ public class RC_EffectItem : JCS_Item
     private void AfterPicked(Collider other)
     {
         // apply effect to player
-        RC_Player p = other.GetComponent<RC_Player>();
+        var p = other.GetComponent<RC_Player>();
         if (p == null)
         {
             JCS_Debug.LogError("You are using RC game object but the player isn't RC gameobject...");

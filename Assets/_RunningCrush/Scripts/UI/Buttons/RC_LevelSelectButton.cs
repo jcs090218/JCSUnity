@@ -24,7 +24,9 @@ public class RC_LevelSelectButton : JCS_Button
 
     public override void OnClick()
     {
-        RC_GameSettings.instance.LEVEL_SELECTED_NAME = mLevelName;
-        RC_GameSettings.instance.SetCorrectSceneNameToAllButtonInScene();
+        var gs = RC_GameSettings.instance;
+
+        gs.LEVEL_SELECTED_NAME = mLevelName;
+        gs.SetCorrectSceneNameToAllButtonInScene();
     }
 }

@@ -173,5 +173,4 @@ public class BF_GameManager : MonoBehaviour
 
         EndGame();
     }
-
 }

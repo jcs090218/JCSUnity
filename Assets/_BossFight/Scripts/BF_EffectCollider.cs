@@ -39,7 +39,7 @@ public class BF_EffectCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        BF_LiveObject liveObject = other.GetComponent<BF_LiveObject>();
+        var liveObject = other.GetComponent<BF_LiveObject>();
         if (liveObject == null)
             return;
 

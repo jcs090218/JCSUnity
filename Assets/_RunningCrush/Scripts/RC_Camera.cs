@@ -82,14 +82,14 @@ public class RC_Camera : MonoBehaviour
 
     private RC_Player FindActivePlayer()
     {
-        JCS_PlayerManager pm = JCS_PlayerManager.instance;
+        var pm = JCS_PlayerManager.instance;
 
         List<JCS_Player> players = pm.GetPlayerList();
         var activePlayers = new List<JCS_Player>();
 
         for (int index= 0; index < players.Count; ++index)
         {
-            RC_Player rcPlayer = ((RC_Player)players[index]);
+            var rcPlayer = ((RC_Player)players[index]);
 
             // only player that are not dead.
             if (!rcPlayer.IsDead)

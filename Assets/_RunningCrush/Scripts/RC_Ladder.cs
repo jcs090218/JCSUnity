@@ -23,7 +23,7 @@ public class RC_Ladder : JCS_2DLadder
 
     private void OnTriggerStay(Collider other)
     {
-        JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
+        var p = other.GetComponent<JCS_2DSideScrollerPlayer>();
         if (p == null)
             return;
 
@@ -57,7 +57,7 @@ public class RC_Ladder : JCS_2DLadder
     {
         base.OnTriggerExit(other);
 
-        JCS_2DSideScrollerPlayer p = other.GetComponent<JCS_2DSideScrollerPlayer>();
+        var p = other.GetComponent<JCS_2DSideScrollerPlayer>();
         if (p == null)
             return;
 

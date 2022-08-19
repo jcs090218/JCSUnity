@@ -42,7 +42,7 @@ public class RC_EffectObject : MonoBehaviour
         if (!mAutoEffect)
             return;
 
-        RC_Player p = other.GetComponent<RC_Player>();
+        var p = other.GetComponent<RC_Player>();
         if (p == null)
             return;
 
