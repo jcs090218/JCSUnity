@@ -27,6 +27,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add main canvas option in `Canvas` module (834fe2e4ae21cc5704675c56d30a17a41c37f28a)
 * Fix effects on `JCS_Item` don't apply to Unity Object type (2dd9e97674e78f7a2587a3b1520952faa7cf718c)
 * Add bounce friction to `JCS_OneJump` item effect (124726c736c7fbee352ec12315002f08210bb3cd)
+* Remove annoying missing target message from `JCS_3DWalkAction` (feac70e8eaf1d7c100c33dfcf79a1bd75fe94897)
 
 ## 2.2.1
 > Released Nov 1, 2021
