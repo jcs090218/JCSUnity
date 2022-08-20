@@ -28,6 +28,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Fix effects on `JCS_Item` don't apply to Unity Object type (2dd9e97674e78f7a2587a3b1520952faa7cf718c)
 * Add bounce friction to `JCS_OneJump` item effect (124726c736c7fbee352ec12315002f08210bb3cd)
 * Remove annoying missing target message from `JCS_3DWalkAction` (feac70e8eaf1d7c100c33dfcf79a1bd75fe94897)
+* Expand range limit on basic wave spawner (38a7c0c5571c66c94e18b24171340a283426e0bd)
+* Expand range limit on basic init  spawner (87699dac6e5ec939d590f46a64798b7b83f5c4ac)
 
 ## 2.2.1
 > Released Nov 1, 2021
