@@ -30,6 +30,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Remove annoying missing target message from `JCS_3DWalkAction` (feac70e8eaf1d7c100c33dfcf79a1bd75fe94897)
 * Expand range limit on basic wave spawner (38a7c0c5571c66c94e18b24171340a283426e0bd)
 * Expand range limit on basic init  spawner (87699dac6e5ec939d590f46a64798b7b83f5c4ac)
+* Add new component `JCS_SoundSlider` (db619483ad014e57535bbbec1c6efce86c0cec7b)
 
 ## 2.2.1
 > Released Nov 1, 2021
