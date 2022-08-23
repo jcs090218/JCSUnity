@@ -170,8 +170,8 @@ just stop there.")]
                 return;
 
             // meet ignore object
-            var jcsii = other.GetComponent<JCS_ItemIgnore>();
-            if (jcsii != null)
+            var ignore = other.GetComponent<JCS_ItemIgnore>();
+            if (ignore != null)
                 return;
 
             var otherItem = this.GetComponent<JCS_Item>();

@@ -76,6 +76,19 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public void SetSoudnVolume(JCS_SoundSettingType type, float volume)
+        {
+            switch (type)
+            {
+                case JCS_SoundSettingType.NONE: return;
+                case JCS_SoundSettingType.BGM_SOUND: BGM_SOUND = volume; break;
+                case JCS_SoundSettingType.SFX_SOUND: SFX_SOUND = volume; break;
+                case JCS_SoundSettingType.SKILLS_SOUND: SKILLS_SOUND = volume; break;
+            }
+
+            JCS_SoundManager.instance.SetSoundVolume(type, volume);
+        }
+
         public float GetBGM_Volume() { return BGM_SOUND; }
         public void SetBGM_Volume(float volume)
         {
@@ -94,7 +107,7 @@ namespace JCSUnity
             JCS_SoundManager.instance.SetSoundVolume(JCS_SoundSettingType.SKILLS_SOUND, volume);
         }
         public float GetSkillsSound_Volume() { return SKILLS_SOUND; }
-        public float GetSoundBaseOnType(JCS_SoundSettingType type)
+        public float GetSoundVolume(JCS_SoundSettingType type)
         {
             switch (type)
             {
