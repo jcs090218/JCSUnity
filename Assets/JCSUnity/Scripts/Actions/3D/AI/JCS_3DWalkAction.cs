@@ -322,6 +322,9 @@ namespace JCSUnity
         /// </returns>
         public bool InRangeDistance()
         {
+            if (mTargetTransform == null)
+                return false;
+
             Vector3 targetPos = mTargetTransform.position;
             Vector3 selfPos = this.transform.position;
             float distance = Vector3.Distance(targetPos, selfPos);
