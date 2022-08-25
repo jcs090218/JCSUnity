@@ -116,7 +116,7 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private JCS_TextAlign mTextAlign = JCS_TextAlign.RIGHT;
 
-        [Header("- Min/Max Settings (JCS_DeltaNumber)")]
+        [Header("- Min/Max (JCS_DeltaNumber)")]
 
         [Tooltip("Maxinum number.")]
         [SerializeField]
@@ -126,13 +126,13 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private int mMinNumber = 0;
 
-        [Header("- Delta Animation Settings (JCS_DeltaNumber)")]
+        [Header("- Animation (JCS_DeltaNumber)")]
 
         [Tooltip(@"This will make the number have the transition 
 between, setting to a new number. If you want the number set directly, you 
 should disable this effect for best purpose.")]
         [SerializeField]
-        private bool mDeltaToCurrentNumber = false;
+        private bool mDeltaToCurrentNumber = true;
 
         [Tooltip("Toward to this number, if mDeltaToCurrentScore active.")]
         [SerializeField]
@@ -147,7 +147,8 @@ should disable this effect for best purpose.")]
         private float mAnimNumberTimer = 0;
 
         [Tooltip("How much the delta value add up.")]
-        [SerializeField] [Range(1, 1000)]
+        [SerializeField]
+        [Range(1, 1000)]
         private int mDeltaProduct = 1;
 
         /* Setter & Getter */
@@ -192,14 +193,14 @@ should disable this effect for best purpose.")]
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             DoDeltaCurrentNumber();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
