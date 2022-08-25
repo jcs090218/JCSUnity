@@ -32,6 +32,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Expand range limit on basic init  spawner (87699dac6e5ec939d590f46a64798b7b83f5c4ac)
 * Add new component `JCS_SoundSlider` (db619483ad014e57535bbbec1c6efce86c0cec7b)
 * Remove ambiguous keyword `Score`, in `JCS_DeltaNumber`(d4056d56ed40e7ed3f08aea1d04e481cd23d0c95)
+* Make `JCS_TextDeltaNumber` closer to `JCS_DeltaNumber` (5a6c38d44d9229531b6823c3d5924c0fb3d84ceb)
 
 ## 2.2.1
 > Released Nov 1, 2021
