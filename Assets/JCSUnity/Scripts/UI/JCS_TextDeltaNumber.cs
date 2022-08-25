@@ -137,7 +137,7 @@ namespace JCSUnity
             TestInput();
 #endif
 
-            DoDeltaCurrentScore();
+            DoDeltaCurrentNumber();
         }
 
 #if UNITY_EDITOR
@@ -172,9 +172,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Main algorithm to approach to targe score.
+        /// Main algorithm to approach to targe number.
         /// </summary>
-        private void DoDeltaCurrentScore()
+        private void DoDeltaCurrentNumber()
         {
             if (!mActive)
                 return;

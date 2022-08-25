@@ -4,36 +4,36 @@ System that control 0-9 number sprites and create a counter effect.
 
 ## Variables
 
-| Name                 | Description                                  |
-|:---------------------|:---------------------------------------------|
-| mCurrentScore        | Current score rendering.                     |
-| mScoreNull           | <Default null slot.                          |
-| mScoreText0          | Score text 0.                                |
-| mScoreText1          | Score text 1.                                |
-| mScoreText2          | Score text 2.                                |
-| mScoreText3          | Score text 3.                                |
-| mScoreText4          | Score text 4.                                |
-| mScoreText5          | Score text 5.                                |
-| mScoreText6          | Score text 6.                                |
-| mScoreText7          | Score text 7.                                |
-| mScoreText           | Score text 8.                                |
-| mScoreText9          | Score text 9.                                |
-| mDigitsRendererSlot  | Each digit, the more length the more digit.  |
-| mDigitInterval       | Interval between each digit.                 |
-| mClearEmptyLeftZero  | Clear all the empty zero from the left.      |
-| mVisibleOnZero       | Is visible when is zero?                     |
-| mTextAlign           | Align side.                                  |
-| mMaxScore            | Maxinum score.                               |
-| mMinScore            | Mininum score.                               |
-| mDeltaToCurrentScore | Show each digit between the score animation. |
-| mTargetScore         | Current targeting score.                     |
-| mAnimScoreTime       | How fast the score animate.                  |
-| mDeltaProduct        | How much the delta value add up.             |
+| Name                  | Description                                   |
+|:----------------------|:----------------------------------------------|
+| mCurrentNumber        | Current number rendering.                     |
+| mNumberNull           | <Default null slot.                           |
+| mNumberText0          | Number image 0.                               |
+| mNumberText1          | Number image 1.                               |
+| mNumberText2          | Number image 2.                               |
+| mNumberText3          | Number image 3.                               |
+| mNumberText4          | Number image 4.                               |
+| mNumberText5          | Number image 5.                               |
+| mNumberText6          | Number image 6.                               |
+| mNumberText7          | Number image 7.                               |
+| mNumberText8          | Number image 8.                               |
+| mNumberText9          | Number image 9.                               |
+| mDigitsRendererSlot   | Each digit, the more length the more digit.   |
+| mDigitInterval        | Interval between each digit.                  |
+| mClearEmptyLeftZero   | Clear all the empty zero from the left.       |
+| mVisibleOnZero        | Is visible when is zero?                      |
+| mTextAlign            | Align side.                                   |
+| mMaxNumber            | Maxinum number.                               |
+| mMinNumber            | Mininum number.                               |
+| mDeltaToCurrentNumber | Show each digit between the number animation. |
+| mTargetNumber         | Current targeting number.                     |
+| mAnimNumberTime       | How fast the number animate.                  |
+| mDeltaProduct         | How much the delta value add up.              |
 
 ## Functions
 
 | Name                       | Description                               |
 |:---------------------------|:------------------------------------------|
 | EnableDigitsRendererSlot   | Set enable/disable all digit render slot. |
-| UpdateScore                | Update the score GUI.                     |
+| UpdateNumber               | Update the number GUI.                     |
 | UpdateIntervalForEachDigit | Update the space to each digit.           |
