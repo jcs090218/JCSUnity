@@ -20,6 +20,12 @@ namespace JCSUnity
 
         private float mTimer = 0.0f;
 
+        [Header("** Check Variables (JCS_EnableWithTimeEvent) **")]
+
+        [Tooltip("Turn it to true when the task is completed.")]
+        [SerializeField]
+        private bool mDone = false;
+
         [Header("** Runtime Variables (JCS_EnableWithTimeEvent) **")]
 
         [Tooltip("Components that take effect.")]
@@ -33,6 +39,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool Done { get { return this.mDone; } }
         public List<Component> Components { get { return this.mComponents; } set { this.mComponents = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
         public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
@@ -41,6 +48,9 @@ namespace JCSUnity
 
         private void Update()
         {
+            if (mDone)
+                return;
+
             mTimer += Time.deltaTime;
 
             if (mTime < mTimer)
@@ -51,6 +61,8 @@ namespace JCSUnity
                 // enable all components
                 foreach (var comp in mComponents)
                     JCS_Util.EnableComponent(comp, true);
+
+                mDone = true;
             }
         }
     }
