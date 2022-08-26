@@ -208,6 +208,22 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true if current action is agent.
+        /// </summary>
+        public bool IsAgent()
+        {
+            return navMeshAgent.enabled && !navMeshObstacle.enabled;
+        }
+
+        /// <summary>
+        /// Return true if current action is obstacle.
+        /// </summary>
+        public bool IsObstacle()
+        {
+            return !navMeshAgent.enabled && navMeshObstacle.enabled;
+        }
+
+        /// <summary>
         /// Target one player and do in target action.
         /// </summary>
         /// <param name="target"> Target we are following. </param>
