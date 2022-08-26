@@ -22,6 +22,10 @@ Simulate the walk action in 3D space.
 
 | Name            | Description                                          |
 |:----------------|:-----------------------------------------------------|
+| AgentNow        | Turn the current nav mesh to agent.                  |
+| ObstacleNow     | Turn the current nav mesh to obstacle.               |
+| IsAgent         | Return true if current action is agent.              |
+| IsObstacle      | Return true if current action is obstacle.           |
 | TargetOne       | Target one player and do in taget action.            |
 | NavMeshArrive   | Check if the nav mesh agent arrive the destination.  |
 | IsArrived       | Check if nav mesh agent path completed.              |
