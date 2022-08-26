@@ -63,5 +63,7 @@ namespace JCSUnity
 
         /* Functions */
 
+        public bool IsEmpty() { return this.mCurrentValue == this.mMinValue; }
+        public bool IsFull() { return this.mCurrentValue == this.mMaxValue; }
     }
 }
