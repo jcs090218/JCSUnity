@@ -6,6 +6,7 @@ All code utility is stored here.
 
 | Name                                 | Description                                                                                       |
 |:-------------------------------------|:--------------------------------------------------------------------------------------------------|
+| EnableComponent                      | Do enable/distance component.                                                                     |
 | SpawnGameObject                      | Spawn a game object.                                                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |
 | WithInArrayRange                     | Check if the index valid within the array length.&nbsp&nbsp(0 ~ (length - 1))                     |

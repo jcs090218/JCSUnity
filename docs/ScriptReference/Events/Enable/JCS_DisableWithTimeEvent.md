@@ -1,10 +1,10 @@
 # JCS_DisableWithTimeEvent
 
-Disable behaviours after a certain time.
+Disable components after a certain time.
 
 ## Variables
 
 | Name       | Description                          |
 |:-----------|:-------------------------------------|
-| Behaviours | Behaviours that take effect.         |
+| Components | Components that take effect.         |
 | time       | Time before inactive the gameobject. |

@@ -1,10 +1,10 @@
 # JCS_EnableWithTimeEvent
 
-Enable behaviours after a certain time.
+Enable components after a certain time.
 
 ## Variables
 
 | Name       | Description                          |
 |:-----------|:-------------------------------------|
-| Behaviours | Behaviours that take effect.         |
+| Components | Components that take effect.         |
 | time       | Time before inactive the gameobject. |

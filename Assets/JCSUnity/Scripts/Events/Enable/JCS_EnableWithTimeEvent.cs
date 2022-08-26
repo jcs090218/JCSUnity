@@ -12,7 +12,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Enable behaviours after a certain time.
+    /// Enable components after a certain time.
     /// </summary>
     public class JCS_EnableWithTimeEvent : MonoBehaviour
     {
@@ -22,9 +22,9 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_EnableWithTimeEvent) **")]
 
-        [Tooltip("Behaviours that take effect.")]
+        [Tooltip("Components that take effect.")]
         [SerializeField]
-        private List<Behaviour> mBehaviours = null;
+        private List<Component> mComponents = null;
 
         [Tooltip("Time before enable.")]
         [SerializeField]
@@ -33,7 +33,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public List<Behaviour> Behaviours { get { return this.mBehaviours; } set { this.mBehaviours = value; } }
+        public List<Component> Components { get { return this.mComponents; } set { this.mComponents = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
         public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
 
@@ -49,8 +49,8 @@ namespace JCSUnity
                 mTimer = 0.0f;
 
                 // enable all components
-                foreach (var comp in mBehaviours)
-                    comp.enabled = true;
+                foreach (var comp in mComponents)
+                    JCS_Util.EnableComponent(comp, true);
             }
         }
     }
