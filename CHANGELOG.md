@@ -34,6 +34,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Remove ambiguous keyword `Score`, in `JCS_DeltaNumber`(d4056d56ed40e7ed3f08aea1d04e481cd23d0c95)
 * Make `JCS_TextDeltaNumber` closer to `JCS_DeltaNumber` (5a6c38d44d9229531b6823c3d5924c0fb3d84ceb)
 * Improve enable/disable component with time events, no longer just the behaviours (0314b03ea5862f9b1b4903f2a16025cf93859430)
+* Add agent and obstacle check for `JCS_3DWalkAction` component (4973663dd0ca9c6a7ed2fd64ec395c64c1e122f7)
+* Add `done` flag for enable/disable component with time events (33a27f21e0f7b7ad5709c05d24ec0cc13b488e90)
 
 ## 2.2.1
 > Released Nov 1, 2021
