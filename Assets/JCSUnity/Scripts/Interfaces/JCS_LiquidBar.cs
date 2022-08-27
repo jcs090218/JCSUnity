@@ -66,6 +66,7 @@ namespace JCSUnity
         protected float mDeltaFriction = 0.2f;
 
         [Tooltip("Distance threshold to do visualize callback.")]
+        [SerializeField]
         [Range(0.0001f, 10.0f)]
         protected float mDistanceThreshold = 0.1f;
 
