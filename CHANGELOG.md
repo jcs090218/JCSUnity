@@ -36,6 +36,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Improve enable/disable component with time events, no longer just the behaviours (0314b03ea5862f9b1b4903f2a16025cf93859430)
 * Add agent and obstacle check for `JCS_3DWalkAction` component (4973663dd0ca9c6a7ed2fd64ec395c64c1e122f7)
 * Add `done` flag for enable/disable component with time events (33a27f21e0f7b7ad5709c05d24ec0cc13b488e90)
+* Add callback options for visually full/empty liquid bars (8d56205721b4c669e73ce610da9e316de50b5569)
 
 ## 2.2.1
 > Released Nov 1, 2021
