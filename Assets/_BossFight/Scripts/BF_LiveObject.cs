@@ -58,7 +58,7 @@ public class BF_LiveObject : JCS_2DLiveObject
 
     private void Update()
     {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         Test();
 #endif
 
@@ -66,7 +66,7 @@ public class BF_LiveObject : JCS_2DLiveObject
         DoFreeze();
     }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
     private void Test()
     {
         if (JCS_Input.GetKeyDown(KeyCode.V))

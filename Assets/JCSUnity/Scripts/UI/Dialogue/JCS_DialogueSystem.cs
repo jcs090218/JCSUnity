@@ -535,7 +535,7 @@ namespace JCSUnity
         /// <param name="name"> name tag's name. </param>
         public void SendNameTag(string name)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (mNameTag == null)
             {
                 JCS_Debug.LogError("Name tag is not assign but u still trying to access?");
@@ -554,7 +554,7 @@ namespace JCSUnity
         /// <param name="sprite"></param>
         public void SendCenterImage(Sprite sprite)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (mCenterImage == null)
             {
                 JCS_Debug.LogError("Center image call with image component attached...");
@@ -572,7 +572,7 @@ namespace JCSUnity
         /// <param name="sprite"></param>
         public void SendLeftImage(Sprite sprite)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (mLeftImage == null)
             {
                 JCS_Debug.LogError(
@@ -591,7 +591,7 @@ namespace JCSUnity
         /// <param name="sprite"></param>
         public void SendRightImage(Sprite sprite)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (mRightImage == null)
             {
                 JCS_Debug.LogError(

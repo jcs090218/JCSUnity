@@ -113,7 +113,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             }
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         Test();
 #endif
 
@@ -132,7 +132,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         DoIsDead();
     }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
     private void Test()
     {
         if (JCS_Input.GetKey(KeyCode.V))

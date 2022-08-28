@@ -47,7 +47,7 @@ namespace JCSUnity
             this.mRectTransform = this.GetComponent<RectTransform>();
 
             if (mPanelRoot == null)
-                mPanelRoot = this.GetComponentInParent<JCS_PanelRoot>();
+                mPanelRoot = JCS_PanelRoot.GetFromParent(this.transform);
 
             if (IsResponsive())
             {

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_PfUnit) **")]
 
         [Tooltip("Test this component with key.")]
@@ -71,7 +71,7 @@ namespace JCSUnity
 
         /* Functions */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Update()
         {
             if (!mTestWithKey)

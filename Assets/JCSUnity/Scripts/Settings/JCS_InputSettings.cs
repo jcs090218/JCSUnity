@@ -168,7 +168,7 @@ namespace JCSUnity
         };
 
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Varaibles (JCS_InputSettings) **")]
 
         [Tooltip("All joystick's name.")]
@@ -211,7 +211,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             // Just assign to it, in order to update the joystick 
             // names array.
             this.joystickNames = Input.GetJoystickNames();
@@ -325,7 +325,7 @@ namespace JCSUnity
         /// the right device driver id. </returns>
         public static string GetPositiveNameByLabel(JCS_JoystickButton label)
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             if (instance == null)
             {
                 switch (JCS_InputController.SelectGamepadType)
@@ -378,14 +378,14 @@ namespace JCSUnity
                     case JCS_GamePadType.XBOX_ONE:
                         return "";
                 }
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             }
 #endif
 
             return "";
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Check if any specific button's buffer need to be invert.
         /// </summary>
@@ -433,7 +433,7 @@ namespace JCSUnity
         }
 #endif
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Get axis channel for Unity's built-in InputManager.
         /// </summary>
@@ -515,7 +515,7 @@ namespace JCSUnity
         }
 #endif
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         /// <summary>
         /// Get the axis type depends on the joystick button label.
         /// </summary>

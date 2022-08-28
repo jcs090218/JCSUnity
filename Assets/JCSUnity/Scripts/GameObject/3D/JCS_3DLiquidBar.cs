@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_3DLiquidBar) **")]
 
         [Tooltip("Test functionalities works?")]
@@ -68,7 +68,7 @@ namespace JCSUnity
 
         protected void LateUpdate()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
@@ -90,7 +90,7 @@ namespace JCSUnity
             TowardToTargetValue();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_PfGrid) **")]
 
         [SerializeField]
@@ -64,7 +64,7 @@ namespace JCSUnity
             CreateGrid();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
 
         public List<JCS_PfNode> path;
         private void OnDrawGizmos()

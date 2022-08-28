@@ -36,7 +36,7 @@ public class RC_GameManager : MonoBehaviour
 
     private void Update()
     {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         Test();
 #endif
 
@@ -54,7 +54,7 @@ public class RC_GameManager : MonoBehaviour
         }
     }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
     private void Test()
     {
         

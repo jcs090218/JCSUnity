@@ -31,7 +31,7 @@ namespace JCSUnity
             HEAL
         };
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_MixDamageTextPool) **")]
 
         [Tooltip("Test this component with key event.")]
@@ -129,14 +129,14 @@ namespace JCSUnity
 
         private void Update()
         {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             Test();
 #endif
 
             ProccessSequences();
         }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)

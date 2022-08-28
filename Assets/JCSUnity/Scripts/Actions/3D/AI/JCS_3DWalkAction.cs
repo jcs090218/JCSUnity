@@ -30,7 +30,7 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         [Header("** Helper Variables (JCS_3DWalkAction) **")]
 
         [Tooltip("Found the path now.")]
@@ -275,7 +275,7 @@ namespace JCSUnity
 
             ++mSearchCounter;
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             this.mFoundPath = found;
 #endif
 
@@ -303,7 +303,7 @@ namespace JCSUnity
         {
             float remDist = Vector3.Distance(agent.destination, agent.transform.position);
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
             this.mRemainingDistance = remDist;
 #endif
 

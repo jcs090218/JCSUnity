@@ -60,7 +60,7 @@ public class BF_Player : JCS_2DSideScrollerPlayer
 
     }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
     protected override void Update()
     {
         base.Update();

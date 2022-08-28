@@ -24,7 +24,7 @@ public class FT_CheckVisible : JCS_UnityObject
     {
         base.Awake();
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         // 試著關閉場景的camera.
         Camera.current.enabled = false;
 #endif

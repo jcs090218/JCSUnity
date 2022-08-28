@@ -61,14 +61,14 @@ public class BF_AutoAttacker : MonoBehaviour
 
     private void Update()
     {
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
         Test();
 #endif
 
         DoLockShoot();
     }
 
-#if (UNITY_EDITOR)
+#if UNITY_EDITOR
     private void Test()
     {
         if (JCS_Input.GetKeyDown(KeyCode.H))
