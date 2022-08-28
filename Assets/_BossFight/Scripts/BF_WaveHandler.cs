@@ -88,9 +88,12 @@ set to thie scene layer.")]
         }
 
 
+        var gm = BF_GameManager.instance;
+        var gs = BF_GameSettings.instance;
+
         for (int count = 0; count < mEnemyPerWave; ++count)
         {
-            if (BF_GameManager.instance.MOB_CURRENT_IN_SCENE >= BF_GameSettings.instance.TOTAL_MOB_IN_SCENE)
+            if (gm.MOB_CURRENT_IN_SCENE >= gs.TOTAL_MOB_IN_SCENE)
             {
                 // don't spawn any more monster if there are too many monster in the scene.
                 break;
@@ -98,7 +101,7 @@ set to thie scene layer.")]
 
             // Spawn a monster.
             // add monster count in scene.
-            ++BF_GameManager.instance.MOB_CURRENT_IN_SCENE;
+            ++gm.MOB_CURRENT_IN_SCENE;
 
             BF_LiveObject bf_liveObject = (BF_LiveObject)JCS_Util.SpawnGameObject(
                 this.mLevelEnemy[spawnIndex],

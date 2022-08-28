@@ -51,7 +51,7 @@ public class BF_LiveObject : JCS_2DLiveObject
     protected void Start()
     {
         /* This will make the object follow the mad target. */
-        JCS_AttackerRecorder ar = this.GetComponent<JCS_AttackerRecorder>();
+        var ar = this.GetComponent<JCS_AttackerRecorder>();
         if (ar != null)
             ar.LastAttacker = BF_GameManager.instance.PROTECT_OBJECT.transform;
     }
@@ -81,18 +81,20 @@ public class BF_LiveObject : JCS_2DLiveObject
     /// </summary>
     public override void Die()
     {
+        var bggm = BF_GameManager.instance;
+
         // add experience to the current level.
-        BF_GameManager.instance.DeltaCurrentExp(EXP);
+        bggm.DeltaCurrentExp(EXP);
 
         // minus monster count.
-        --BF_GameManager.instance.MOB_CURRENT_IN_SCENE;
+        --bggm.MOB_CURRENT_IN_SCENE;
 
-        JCS_UtilitiesManager jcsUm = JCS_UtilitiesManager.instance;
-        if (jcsUm.GetIGLogSystem() != null)
+        var utilm = JCS_UtilitiesManager.instance;
+        if (utilm.GetIGLogSystem() != null)
         {
             string expMsg = BF_MessageSettings.instance.EXP_BASE + EXP.ToString();
 
-            jcsUm.GetIGLogSystem().SendLogMessage(expMsg);
+            utilm.GetIGLogSystem().SendLogMessage(expMsg);
         }
 
         base.Die();
