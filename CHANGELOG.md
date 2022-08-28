@@ -37,6 +37,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add agent and obstacle check for `JCS_3DWalkAction` component (4973663dd0ca9c6a7ed2fd64ec395c64c1e122f7)
 * Add `done` flag for enable/disable component with time events (33a27f21e0f7b7ad5709c05d24ec0cc13b488e90)
 * Add callback options for visually full/empty liquid bars (8d56205721b4c669e73ce610da9e316de50b5569)
+* Fix panel root from getting in parent, should restrain it from just one level parent (95529f449f04f071d84aa21259e140b50739476b)
 
 ## 2.2.1
 > Released Nov 1, 2021
