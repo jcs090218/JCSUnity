@@ -31,12 +31,12 @@ namespace JCSUnity
 
         [Tooltip("Target text renderer.")]
         [SerializeField]
-        private Text mTextContainer = null;
+        protected Text mTextContainer = null;
 
 #if TMP_PRO
         [Tooltip("Target text renderer. (TMP)")]
         [SerializeField]
-        private TextMeshPro mTextMesh = null;
+        protected TextMeshPro mTextMesh = null;
 #endif
 
         /* Setter & Getter */
@@ -54,7 +54,9 @@ namespace JCSUnity
             set
             {
                 if (this.mTextContainer) this.mTextContainer.text = value;
+#if TMP_PRO
                 if (this.mTextMesh) this.mTextMesh.text = value;
+#endif
             }
         }
     }

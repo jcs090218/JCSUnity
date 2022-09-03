@@ -1572,7 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9d6914fa00fbb4cb4c7c2e078491e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mText: {fileID: 0}
+  mTextContainer: {fileID: 0}
   mTextMesh: {fileID: 1593543890}
   mLangData:
     mLangData:
@@ -2009,7 +2009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9d6914fa00fbb4cb4c7c2e078491e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mText: {fileID: 1825750605}
+  mTextContainer: {fileID: 1825750605}
   mTextMesh: {fileID: 0}
   mLangData:
     mLangData:
