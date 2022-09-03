@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button to show canvas, so it's visible on the screen. (Game Pad)
+    /// Button to show canvas, so it's visible on the screen. (Gamepad)
     /// </summary>
     public class JCS_ShowCanvasGamepadButton : JCS_GamepadButton
     {

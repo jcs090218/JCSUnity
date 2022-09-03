@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button to show canvas, so it's invisible on the screen. (Game Pad)
+    /// Button to show canvas, so it's invisible on the screen. (Gamepad)
     /// </summary>
     public class JCS_HideCanvasGamepadButton : JCS_GamepadButton
     {

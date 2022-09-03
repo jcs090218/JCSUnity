@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button that toggle one panel. (Game Pad)
+    /// Button that toggle one panel. (Gamepad)
     /// </summary>
     public class JCS_TogglePanelGamepadButton : JCS_ToggleGamepadButton
     {

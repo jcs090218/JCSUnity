@@ -47,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mKDisabledSprite = null;
 
-        [Header("- Game Pad Settings (JCS_GamepadButtonUIHandler)")]
+        [Header("- Gamepad Settings (JCS_GamepadButtonUIHandler)")]
 
         [Tooltip("Sprite when button is normal. (Joystick)")]
         [SerializeField]
@@ -65,7 +65,6 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mJDisabledSprite = null;
 
-
         /* Setter & Getter */
 
         public bool ActiveSpriteSwapAtAwake { get { return this.mActiveSpriteSwapAtAwake; } set { this.mActiveSpriteSwapAtAwake = value; } }
@@ -79,7 +78,6 @@ namespace JCSUnity
         public Sprite JHighlightedSprite { get { return this.mJHighlightedSprite; } set { this.mJHighlightedSprite = value; } }
         public Sprite JPressedSprite { get { return this.mJPressedSprite; } set { this.mJPressedSprite = value; } }
         public Sprite JDisabledSprite { get { return this.mJDisabledSprite; } set { this.mJDisabledSprite = value; } }
-
 
         /* Functions */
 

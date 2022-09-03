@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Open a URL in the default browser. (Game Pad)
+    /// Open a URL in the default browser. (Gamepad)
     /// </summary>
     public class JCS_OpenURLGamepadButton : JCS_GamepadButton
     {

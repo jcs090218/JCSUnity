@@ -37,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         protected KeyCode mKKeyToListen = KeyCode.None;
 
-        [Header("- Game Pad")]
+        [Header("- Gamepad")]
 
         [Tooltip("Key to trigger this button.")]
         [SerializeField]

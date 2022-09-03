@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button that have two callback can toggle each other. (Game Pad)
+    /// Button that have two callback can toggle each other. (Gamepad)
     /// </summary>
     public class JCS_ToggleGamepadButton : JCS_GamepadButton
     {

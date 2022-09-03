@@ -10,7 +10,7 @@
 namespace JCSUnity
 {
     /// <summary>
-    /// Unpause the game with button. (Game Pad)
+    /// Unpause the game with button. (Gamepad)
     /// </summary>
     public class JCS_UnpauseGameGamepadButton : JCS_GamepadButton
     {

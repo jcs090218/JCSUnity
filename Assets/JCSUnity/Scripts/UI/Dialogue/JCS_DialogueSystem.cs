@@ -425,7 +425,7 @@ namespace JCSUnity
         /// <summary>
         /// Send Empty option, expect selections take over it.
         /// 
-        /// NOTE(jenchieh): Will better if use Game Pad/Controller/Joystick.
+        /// NOTE(jenchieh): Will better if use Gamepad/Controller/Joystick.
         /// </summary>
         /// <param name="msg"></param>
         public void SendEmpty(string msg)

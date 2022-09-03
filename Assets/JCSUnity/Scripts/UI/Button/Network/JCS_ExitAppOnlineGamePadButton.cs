@@ -10,7 +10,7 @@
 namespace JCSUnity
 {
     /// <summary>
-    /// Exit button with change scene effect. (Game Pad)
+    /// Exit button with change scene effect. (Gamepad)
     /// Multiplayer Version. 
     /// </summary>
     public class JCS_ExitAppOnlineGamepadButton : JCS_GamepadButton

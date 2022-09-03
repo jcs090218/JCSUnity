@@ -11,8 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button when switching the server. For example, switch 
-    /// channel server. (Game Pad)
+    /// Button when switching the server. For example, switch channel server. (Gamepad)
     /// </summary>
     public class JCS_SwitchServerGamepadButton : JCS_GamepadButton
     {
