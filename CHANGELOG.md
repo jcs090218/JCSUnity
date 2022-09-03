@@ -38,6 +38,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add `done` flag for enable/disable component with time events (33a27f21e0f7b7ad5709c05d24ec0cc13b488e90)
 * Add callback options for visually full/empty liquid bars (8d56205721b4c669e73ce610da9e316de50b5569)
 * Fix panel root from getting in parent, should restrain it from just one level parent (95529f449f04f071d84aa21259e140b50739476b)
+* Add UI components to update slider value, `JCS_UpdateSliderButton` (ac5de4b0a387831c72df715184515a839211f3b4)
+* Rename keyword `Game Pad` to `Gamepad` (adfc7d8eec2b0362ac3bba95089d7dd4bd123237)
 
 ## 2.2.1
 > Released Nov 1, 2021
