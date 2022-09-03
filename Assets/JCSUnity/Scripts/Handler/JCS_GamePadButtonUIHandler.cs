@@ -1,5 +1,5 @@
 /**
- * $File: JCS_GamePadButtonUIHandler.cs $
+ * $File: JCS_GamepadButtonUIHandler.cs $
  * $Date: 2017-10-18 12:19:55 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -16,22 +16,20 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(Button))]
-    public class JCS_GamePadButtonUIHandler : MonoBehaviour
+    public class JCS_GamepadButtonUIHandler : MonoBehaviour
     {
         /* Variables */
 
         private Image mNormalImage = null;
         private Button mButton = null;
 
-
-        [Header("** Initialize Variables (JCS_GamePadButtonUIHandler) **")]
+        [Header("** Initialize Variables (JCS_GamepadButtonUIHandler) **")]
 
         [Tooltip("Change the selection to sprite swap at awake?")]
         [SerializeField]
         private bool mActiveSpriteSwapAtAwake = true;
 
-
-        [Header("- Keyboard Settings (JCS_GamePadButtonUIHandler)")]
+        [Header("- Keyboard Settings (JCS_GamepadButtonUIHandler)")]
 
         [Tooltip("Sprite when button is normal. (Keyboard)")]
         [SerializeField]
@@ -49,8 +47,7 @@ namespace JCSUnity
         [SerializeField]
         private Sprite mKDisabledSprite = null;
 
-
-        [Header("- Game Pad Settings (JCS_GamePadButtonUIHandler)")]
+        [Header("- Game Pad Settings (JCS_GamepadButtonUIHandler)")]
 
         [Tooltip("Sprite when button is normal. (Joystick)")]
         [SerializeField]

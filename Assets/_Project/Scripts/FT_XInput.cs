@@ -28,7 +28,7 @@ public class FT_XInput : MonoBehaviour
 
         switch (JCS_InputSettings.instance.TargetGamePad)
         {
-            case JCS_GamePadType.PS4:
+            case JCS_GamepadType.PS4:
                 {
                     /* Stick test. */
                     if (valueKeyTest)
@@ -81,7 +81,7 @@ public class FT_XInput : MonoBehaviour
                 }
                 break;
 
-            case JCS_GamePadType.XBOX_360:
+            case JCS_GamepadType.XBOX_360:
                 {
                     /* Stick test. */
                     if (valueKeyTest)

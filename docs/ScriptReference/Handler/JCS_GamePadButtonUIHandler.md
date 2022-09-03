@@ -1,4 +1,4 @@
-# JCS_GamePadButtonUIHandler
+# JCS_GamepadButtonUIHandler
 
 Switch the button UI depends on if the gamepad connection.
 

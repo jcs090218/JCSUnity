@@ -1,5 +1,5 @@
 /**
- * $File: FT_EchoGamePadButton.cs $
+ * $File: FT_EchoGamepadButton.cs $
  * $Date: 2017-10-07 05:10:36 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,7 +12,7 @@ using JCSUnity;
 /// <summary>
 /// Test game pad button.
 /// </summary>
-public class FT_EchoGamePadButton :  JCS_GamePadButton
+public class FT_EchoGamepadButton : JCS_GamepadButton
 {
     /* Variables */
 

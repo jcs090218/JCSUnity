@@ -1,4 +1,4 @@
-# JCS_GamePadAnimationHandler
+# JCS_GamepadAnimationHandler
 
 Handle the animation between weather the gamepad is plugged/unplugged.
 

@@ -1,4 +1,4 @@
-# JCS_GamePadButton
+# JCS_GamepadButton
 
 Button will listen to the gamepad.
 
@@ -18,10 +18,10 @@ Button will listen to the gamepad.
 
 ## Example
 
-ExampleGamePadButton.cs
+ExampleGamepadButton.cs
 
 ```cs
-  public class ExampleGamePadButton : JCS_GamePadButton {
+  public class ExampleGamepadButton : JCS_GamepadButton {
       public override JCS_OnClickCallback() {
           Debug.Log("Gamepad button click!");
       }

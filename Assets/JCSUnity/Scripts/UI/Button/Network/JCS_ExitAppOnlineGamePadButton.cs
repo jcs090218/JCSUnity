@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ExitAppOnlineGamePadButton.cs $
+ * $File: JCS_ExitAppOnlineGamepadButton.cs $
  * $Date: 2017-10-27 12:17:14 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ namespace JCSUnity
     /// Exit button with change scene effect. (Game Pad)
     /// Multiplayer Version. 
     /// </summary>
-    public class JCS_ExitAppOnlineGamePadButton : JCS_GamePadButton
+    public class JCS_ExitAppOnlineGamepadButton : JCS_GamepadButton
     {
         public override void OnClick()
         {

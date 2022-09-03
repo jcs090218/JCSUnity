@@ -15,7 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Update the slider value. (Gamepad)
     /// </summary>
-    public class JCS_UpdateSliderGamepadButton : JCS_GamePadButton
+    public class JCS_UpdateSliderGamepadButton : JCS_GamepadButton
     {
         /* Variables */
 

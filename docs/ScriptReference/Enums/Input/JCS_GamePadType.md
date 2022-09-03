@@ -1,4 +1,4 @@
-# JCS_GamePadType
+# JCS_GamepadType
 
 List of gamepad type.
 

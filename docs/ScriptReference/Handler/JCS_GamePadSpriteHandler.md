@@ -1,4 +1,4 @@
-# JCS_GamePadSpriteHandler
+# JCS_GamepadSpriteHandler
 
 Handle the sprite between the weather gamepad is plugged/unplugged.
 
