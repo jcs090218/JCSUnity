@@ -34,7 +34,6 @@ namespace JCSUnity
         [SerializeField]
         private int mCurrentFrame = 0;
 
-
         [Header("** Initialize Variables (JCS_TextAnimation) **")]
 
         [Tooltip("Target text renderer.")]
