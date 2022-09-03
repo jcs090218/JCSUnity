@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright © 2022 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,9 +25,15 @@ namespace JCSUnity
         [SerializeField]
         private Slider mSlider = null;
 
+        [Tooltip("Place you want to round the decimal.")]
+        [SerializeField]
+        [Range(0, 15)]
+        private int mRoundPlace = 2;
+
         /* Setter & Getter */
 
         public Slider slider { get { return this.mSlider; } set { this.mSlider = value; } }
+        public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
 
         /* Functions */
 
@@ -35,7 +42,9 @@ namespace JCSUnity
             if (mSlider == null)
                 return;
 
-            this.text = mSlider.value.ToString();
+            double val = Math.Round(mSlider.value, mRoundPlace);
+
+            this.text = val.ToString();
         }
     }
 }

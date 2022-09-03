@@ -723,6 +723,7 @@ MonoBehaviour:
   mTextContainer: {fileID: 1842546916}
   mTextMesh: {fileID: 0}
   mSlider: {fileID: 1408916069}
+  mRoundPlace: 2
 --- !u!1 &2002942730
 GameObject:
   m_ObjectHideFlags: 0
