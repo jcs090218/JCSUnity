@@ -6,8 +6,6 @@ Like `JCS_DeltaNumber`, but instead of altering the sprite we alter text instead
 
 | Name                  | Description                                      |
 |:----------------------|:-------------------------------------------------|
-| mTextContainer        | Target text renderer.                            |
-| mTextMesh             | Target text renderer.                            |
 | mCurrentNumber        | Current number that will turn into string.       |
 | mPlusSignWhenPositive | Ensure add a plus sign if the numer is positive. |
 | mPreString            | String added before rendering the number."       |

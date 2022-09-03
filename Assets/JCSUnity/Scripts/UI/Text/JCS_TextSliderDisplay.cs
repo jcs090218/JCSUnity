@@ -26,6 +26,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public Slider slider { get { return this.mSlider; } set { this.mSlider = value; } }
+
         /* Functions */
 
         private void Update()
