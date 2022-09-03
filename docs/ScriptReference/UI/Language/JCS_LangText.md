@@ -6,8 +6,6 @@ Text for multiple languages support.
 
 | Name     | Description                              |
 |:---------|:-----------------------------------------|
-| text     | Text to display lang data.               |
-| TextMesh | Text to display lang data.               |
 | LangData | List of languages with translation data. |
 
 ## Functions

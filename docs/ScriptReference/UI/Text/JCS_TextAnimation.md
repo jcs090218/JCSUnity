@@ -6,8 +6,6 @@ Text animation that will display text accordingly.
 
 | Name           | Description                      |
 |:---------------|:---------------------------------|
-| mTextContainer | Target text renderer.            |
-| mTextMesh      | Target text renderer.            |
 | mActive        | Animation active or not active.  |
 | textFrame      | Hold all text animation's frame. |
 | mSPF           | Seconds per frame.               |

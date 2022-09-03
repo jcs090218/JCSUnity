@@ -6,8 +6,6 @@ Render timer in the text.
 
 | Name            | Description                            |
 |:----------------|:---------------------------------------|
-| mTextContainer  | Target text renderer.                  |
-| mTextMesh       | Target text renderer.                  |
 | mActive         | Timer active or not active.            |
 | mCurrentHours   | Current hours in the game.             |
 | mCurrentMinutes | Current minutes in the game.           |
