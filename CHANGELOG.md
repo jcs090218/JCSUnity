@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 2.3.0 (Unreleased)
+## 2.3.1 (Unreleased)
 > Released N/A
+
+* N/A
+
+## 2.3.0
+> Released Sep 12, 2022
 
 * Apply workaround for SafeArea bug.
 * Fixed field of view miscalculation.
