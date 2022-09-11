@@ -19,4 +19,4 @@ Make object hop for a force.
 
 ## Demo
 
-<img src="./_images/JCS_HopEffect.gif"/>
+<img src="./images/JCS_HopEffect.gif"/>
