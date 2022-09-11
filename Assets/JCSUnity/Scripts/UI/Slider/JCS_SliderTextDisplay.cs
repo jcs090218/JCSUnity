@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_TextSliderDisplay) **")]
+        [Header("** Runtime Variables (JCS_TextSliderDisplay) **")]
 
         [Tooltip("To update the text along with this slider's value.")]
         [SerializeField]
