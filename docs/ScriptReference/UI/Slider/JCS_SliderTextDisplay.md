@@ -1,4 +1,4 @@
-# JCS_TextSliderDisplay
+# JCS_SliderTextDisplay
 
 Text that display slider's value.
 
