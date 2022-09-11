@@ -42,6 +42,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Rename keyword `Game Pad` to `Gamepad` (adfc7d8eec2b0362ac3bba95089d7dd4bd123237)
 * Add new component `JCS_SliderTextDisplay` to display slider's value (eb3ab41bbeaf828984d3627c9c115f4ed4bee3c7)
 * Use text object interface to reduce duplicate code (760c6ac8c3b9a05623e64504614fb17f537a8837)
+* Add new `UI/Slider` component `JCS_SliderInputField` (cd15404eff785615e7420f8642f338d329384ebe)
 
 ## 2.2.1
 > Released Nov 1, 2021
