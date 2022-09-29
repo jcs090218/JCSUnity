@@ -108,6 +108,5 @@ namespace JCSUnity
                 return (T)xml.Deserialize(stream);
             }
         }
-
     }
 }
