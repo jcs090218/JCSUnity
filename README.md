@@ -73,7 +73,9 @@ aren't necessary depend on the game your are making.
 * *Tutorials* : https://www.youtube.com/playlist?list=PLp13qyXnE6zCmRobHV9uEjv-1_ieCPwjc
 * *Manual/Scripting API* : [Scripting-Manual-JCSUnity](https://jcs090218.github.io/JCSUnity/Manual/index.html)
 
-## 🎮 Made with JCSUnity
+## 🎮 Showcase
+
+Here is a list of applications that are made with JCSUnity.
 
 <a href="https://play.google.com/store/apps/details?id=com.aau.jcs" target="_blank">
   <img src="./etc/games/Hemlock.png" width="64" height="64" align="middle"/>
