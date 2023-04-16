@@ -92,6 +92,12 @@ Here is a list of applications that are made with JCSUnity.
 <a href="https://meteo.com.tw/" target="_blank">
   <img src="./etc/app/Meteo.png" width="64" height="64" align="middle"/>
 </a>
+<a href="https://apps.apple.com/us/app/lights-delights/id1541283833" target="_blank">
+  <img src="./etc/app/LnD.png" width="64" height="64" align="middle"/>
+</a>
+<a href="https://apps.apple.com/us/app/monumental-conversations/id1585909435" target="_blank">
+  <img src="./etc/app/MonCon.png" width="64" height="64" align="middle"/>
+</a>
 <a href="https://kuhhenry.itch.io/alice-in-surprise" target="_blank">
   <img src="./etc/games/AIS.png" width="64" height="64" align="middle"/>
 </a>
