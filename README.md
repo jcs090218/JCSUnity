@@ -89,7 +89,7 @@ Here is a list of applications that are made with JCSUnity.
 <a href="http://www.jcs-profile.com/public/links/Links_PipelineOfEmperorYu/" target="_blank">
   <img src="./etc/games/PEY.png" width="64" height="64" align="middle"/>
 </a>
-<a href="https://meteo.com.tw/" target="_blank">
+<a href="https://meteo.com.tw/app-download.html" target="_blank">
   <img src="./etc/app/Meteo.png" width="64" height="64" align="middle"/>
 </a>
 <a href="https://apps.apple.com/us/app/lights-delights/id1541283833" target="_blank">
