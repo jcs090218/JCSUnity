@@ -267,7 +267,7 @@ namespace JCSUnity
             {
                 // update the height
                 float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
-                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false);
 
                 if (starting)
                 {
@@ -279,7 +279,7 @@ namespace JCSUnity
             {
                 // update the width
                 float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
-                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false);
 
                 if (starting)
                 {
@@ -295,7 +295,7 @@ namespace JCSUnity
         /// <param name="starting"> Change the starting screen as well? </param>
         public void ForceStandardScreenOnce(bool starting = false)
         {
-            JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false, 0);
+            JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false);
 
             if (starting)
             {
@@ -369,7 +369,7 @@ namespace JCSUnity
 
             if (width != STANDARD_SCREEN_SIZE.width || height != STANDARD_SCREEN_SIZE.height)
             {
-                JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false, 0);
+                JCS_Screen.SetResolution(STANDARD_SCREEN_SIZE.width, STANDARD_SCREEN_SIZE.height, false);
             }
 
             this.PREV_SCREEN_SIZE.width = width;
@@ -396,7 +396,7 @@ namespace JCSUnity
             {
                 // update the height
                 float heightAccordingToWidth = width / ASPECT_RATIO_SCREEN_SIZE.width * ASPECT_RATIO_SCREEN_SIZE.height;
-                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false, 0);
+                JCS_Screen.SetResolution(width, (int)Mathf.Round(heightAccordingToWidth), false);
             }
 
             // if the user is changing the height
@@ -404,7 +404,7 @@ namespace JCSUnity
             {
                 // update the width
                 float widthAccordingToHeight = height / ASPECT_RATIO_SCREEN_SIZE.height * ASPECT_RATIO_SCREEN_SIZE.width;
-                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false, 0);
+                JCS_Screen.SetResolution((int)Mathf.Round(widthAccordingToHeight), height, false);
             }
 
             this.PREV_SCREEN_SIZE.width = width;
