@@ -13,7 +13,7 @@ public class RC_PlayButton :  JCS_Button
 {
     /* Variables */
 
-    private JCS_2DSlideScreenCamera mSlideCamera = null;
+    private JCS_SlideScreenCamera mSlideCamera = null;
 
     /* Setter & Getter */
 
@@ -25,14 +25,14 @@ public class RC_PlayButton :  JCS_Button
 
         // OPTIMIZE(JenChieh): if the game is too slow.
         //                  this can be one thing we need to optimize.
-        mSlideCamera = GameObject.Find("JCS_2DSlideScreenCamera").GetComponent<JCS_2DSlideScreenCamera>();
+        mSlideCamera = GameObject.Find("JCS_SlideScreenCamera").GetComponent<JCS_SlideScreenCamera>();
     }
 
     public override void OnClick()
     {
         if (mSlideCamera == null)
         {
-            JCS_Debug.LogError("No JCS_2DSlideScreenCamera in the scene");
+            JCS_Debug.LogError("No JCS_SlideScreenCamera in the scene");
             return;
         }
 

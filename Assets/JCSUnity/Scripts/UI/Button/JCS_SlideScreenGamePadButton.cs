@@ -19,9 +19,9 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_SlideScreenGamepadButton) **")]
 
-        [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
+        [Tooltip("This action are using `JCS_SlideScreenGamepadButton`.")]
         [SerializeField]
-        private JCS_2DSlideScreenCamera[] mSlideCameras = null;
+        private JCS_SlideScreenCamera[] mSlideCameras = null;
 
         [Header("** Runtime Variables (JCS_SlideScreenGamepadButton) **")]
 
@@ -63,7 +63,7 @@ namespace JCSUnity
             mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            this.mSlideCameras = (JCS_2DSlideScreenCamera[])FindObjectsOfType(typeof(JCS_2DSlideScreenCamera));
+            this.mSlideCameras = (JCS_SlideScreenCamera[])FindObjectsOfType(typeof(JCS_SlideScreenCamera));
         }
 
         protected override void Update()
@@ -111,7 +111,7 @@ namespace JCSUnity
         /// </summary>
         private void SwitchScene()
         {
-            JCS_2DSlideScreenCamera slideCamera = null;
+            JCS_SlideScreenCamera slideCamera = null;
 
             for (int slideCount = 0; slideCount < mCount; ++slideCount)
             {

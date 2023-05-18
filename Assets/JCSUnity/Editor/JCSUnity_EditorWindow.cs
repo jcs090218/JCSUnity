@@ -133,7 +133,7 @@ namespace JCSUnity
                 if (GUILayout.Button("Convert to 2D scene"))
                     ConvertTo2D();
 
-                if(GUILayout.Button("Convert to 3D scene"))
+                if (GUILayout.Button("Convert to 3D scene"))
                     ConvertTo3D();
             });
         }
@@ -607,14 +607,6 @@ namespace JCSUnity
                 return;
             }
 
-            // find the camera in the scene.
-            var cam = (JCS_2DCamera)FindObjectOfType(typeof(JCS_Camera));
-            if (cam == null)
-            {
-                JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
-                return;
-            }
-
             const string settingPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
 
             // spawn the pane holder.
@@ -636,7 +628,7 @@ namespace JCSUnity
                 for (int column = 0; column < 3; ++column)
                 {
                     // get the rect transform from the slide panel object.
-                    RectTransform slidePanel = CreateHierarchyObjectUnderCanvas(slidePanelPath, canvas).GetComponent<RectTransform>();
+                    var slidePanel = CreateHierarchyObjectUnderCanvas(slidePanelPath, canvas).GetComponent<RectTransform>();
 
                     // set the position into 9x9.
                     Vector3 slidePanelNewPos = slidePanel.localPosition;
@@ -656,21 +648,21 @@ namespace JCSUnity
                     // assign to slide panel holder.
                     panelHolder9x9.slidePanels[index] = slidePanel;
 
+                    slidePanel.name = "_SlidePanel_" + index + " (Created) ";
+
                     ++index;
                 }
             }
 
-            const string slideScreenCameraPath = "Camera/JCS_2DSlideScreenCamera";
-            JCS_2DSlideScreenCamera slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
+            const string slideScreenCameraPath = "Camera/JCS_SlideScreenCamera";
+            var slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_SlideScreenCamera>();
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
 
-            slideScreenCamera.name = "_2DSlideScreenCamera (Created)";
+            slideScreenCamera.name = "_SlideScreenCamera (Created)";
 
             // set the panel holder.
             slideScreenCamera.PanelHolder = panelHolder9x9;
-
-            slideScreenCamera.SetJCS2DCamera(cam);
 
             // set to default 2d.
             slideScreenCamera.UnityGUIType = JCS_UnityGUIType.uGUI_2D;
