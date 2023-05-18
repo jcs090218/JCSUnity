@@ -512,7 +512,7 @@ namespace JCSUnity
         {
             if (m2DCamera == null)
             {
-                JCS_Debug.LogError("There is not JCS_2DCamera attach to, spawn a default one!");
+                JCS_Debug.LogError("There is no JCS_2DCamera attach to, spawn a default one!");
 
                 // Spawn a Default one!
                 this.m2DCamera = JCS_Util.SpawnGameObject(
