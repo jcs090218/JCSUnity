@@ -61,10 +61,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_UnityGUIType mUnityGUIType = JCS_UnityGUIType.nGUI_3D;
 
-        [Tooltip("Camera itself.")]
-        [SerializeField]
-        private JCS_2DCamera m2DCamera = null;
-
         [Tooltip("Slide screen panel holder for this camera.")]
         [SerializeField]
         private JCS_SlideScreenPanelHolder mPanelHolder = null;
@@ -128,7 +124,6 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public JCS_SlideScreenPanelHolder PanelHolder { get { return this.mPanelHolder; } set { this.mPanelHolder = value; } }
-        public void SetJCS2DCamera(JCS_2DCamera cam) { this.m2DCamera = cam; }
         public JCS_UnityGUIType UnityGUIType { get { return this.mUnityGUIType; } set { this.mUnityGUIType = value; } }
         public bool InteractableSwipe { get { return this.mInteractableSwipe; } set { this.mInteractableSwipe = value; } }
         public Vector2 SwipeArea { get { return this.mSwipeArea; } set { this.mSwipeArea = value; } }
@@ -147,9 +142,6 @@ namespace JCSUnity
 
         private void Awake()
         {
-            InitCamera();
-
-            //
             if (mPanelHolder == null)
             {
                 // spawn a default one!
@@ -504,33 +496,6 @@ namespace JCSUnity
         }
 
         //////////// 2D //////////////////////////
-
-        /// <summary>
-        /// Iniialize the camera.
-        /// </summary>
-        private void InitCamera()
-        {
-            if (m2DCamera == null)
-            {
-                JCS_Debug.LogError("There is no JCS_2DCamera attach to, spawn a default one!");
-
-                // Spawn a Default one!
-                this.m2DCamera = JCS_Util.SpawnGameObject(
-                    JCS_2DCamera.JCS_2DCAMERA_PATH,
-                    transform.position,
-                    transform.rotation).GetComponent<JCS_2DCamera>();
-            }
-
-            // if still null, setting error!!
-            if (m2DCamera == null)
-            {
-                JCS_Debug.LogError("The object spawn does not have the `JCS_2DCamera` component");
-                return;
-            }
-
-            // set target to follow!
-            m2DCamera.SetFollowTarget(this.transform);
-        }
 
         /// <summary>
         /// UGUI method switch the panel.
