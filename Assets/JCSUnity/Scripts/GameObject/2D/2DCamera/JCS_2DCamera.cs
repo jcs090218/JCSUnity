@@ -17,8 +17,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public static string JCS_2DCAMERA_PATH = "Camera/JCS_2DCamera";
-
         [Header("** Check Varialbes (JCS_2DCamera) **")]
 
         [SerializeField]

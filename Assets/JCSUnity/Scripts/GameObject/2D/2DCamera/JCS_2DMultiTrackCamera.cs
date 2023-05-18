@@ -30,7 +30,7 @@ namespace JCSUnity
 
         [Tooltip("Camera use to do the action.")]
         [SerializeField]
-        private JCS_2DCamera mJCS_2DCamera = null;
+        private JCS_2DCamera mCamera = null;
         
         private float mLastDiffDistanceX = 0;
         private float mLastDiffDistanceY = 0;
@@ -75,30 +75,20 @@ namespace JCSUnity
 
         protected void Awake()
         {
-
             mTargetList = new JCS_Vector<JCS_Player>();
 
             mAudioListener = this.GetComponent<AudioListener>();
 
             // find the camera in the scene first
-            mJCS_2DCamera = (JCS_2DCamera)FindObjectOfType(typeof(JCS_2DCamera));
+            mCamera = (JCS_2DCamera)FindObjectOfType(typeof(JCS_2DCamera));
 
-            // if still null spawn a default one!
-            if (mJCS_2DCamera == null)
-            {
-                JCS_Debug.LogError("There is no JCS_2DCamera attach to, spawn a default one!");
+            if (mCamera == null)
+                return;
 
-                // Spawn a Default one!
-                this.mJCS_2DCamera = JCS_Util.SpawnGameObject(
-                    JCS_2DCamera.JCS_2DCAMERA_PATH,
-                    transform.position,
-                    transform.rotation).GetComponent<JCS_2DCamera>();
-            }
-
-            mJCS_2DCamera.SetFollowTarget(this.transform);
+            mCamera.SetFollowTarget(this.transform);
 
             // record down the fild of view
-            mTargetFieldOfView = mJCS_2DCamera.fieldOfView;
+            mTargetFieldOfView = mCamera.fieldOfView;
         }
 
         private void Start()
@@ -108,14 +98,17 @@ namespace JCSUnity
 
         private void Update()
         {
+            if (mCamera == null)
+                return;
+
             this.transform.position = CalculateTheCameraPosition();
 
-            mJCS_2DCamera.fieldOfView += (mTargetFieldOfView - mJCS_2DCamera.fieldOfView) / mCameraFriction * Time.deltaTime;
+            mCamera.fieldOfView += (mTargetFieldOfView - mCamera.fieldOfView) / mCameraFriction * Time.deltaTime;
 
-            if (mJCS_2DCamera.fieldOfView < mMinFieldOfView)
-                mJCS_2DCamera.fieldOfView = mMinFieldOfView;
-            else if (mJCS_2DCamera.fieldOfView > mMaxFieldOfView)
-                mJCS_2DCamera.fieldOfView = mMaxFieldOfView;
+            if (mCamera.fieldOfView < mMinFieldOfView)
+                mCamera.fieldOfView = mMinFieldOfView;
+            else if (mCamera.fieldOfView > mMaxFieldOfView)
+                mCamera.fieldOfView = mMaxFieldOfView;
         }
 
         /// <summary>
