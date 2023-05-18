@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_SlideScreenCamera.cs $
+ * $File: JCS_2DSlideScreenCamera.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -15,7 +15,7 @@ namespace JCSUnity
     ///
     /// use for switching scene panel.
     /// </summary>
-    public class JCS_SlideScreenCamera : MonoBehaviour
+    public class JCS_2DSlideScreenCamera : MonoBehaviour
     {
         public delegate void AfterSceneSwitchedCallback(Vector2 page);
         public delegate void AfterSwipeCallback(Vector2 page);
@@ -29,7 +29,7 @@ namespace JCSUnity
         public AfterSwipeCallback afterSwiped = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_SlideScreenCamera) **")]
+        [Header("** Helper Variables (JCS_2DSlideScreenCamera) **")]
 
         public bool testWithKey = false;
 
@@ -47,13 +47,13 @@ namespace JCSUnity
         // Path that points to the panel.
         private string mPanelHolderPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
 
-        [Header("** Check Variables (JCS_SlideScreenCamera) **")]
+        [Header("** Check Variables (JCS_2DSlideScreenCamera) **")]
 
         [Tooltip("Page start from center.")]
         [SerializeField]
         private Vector2 mCurrentPage = Vector2.zero;
 
-        [Header("** Runtime Variables (JCS_SlideScreenCamera) **")]
+        [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
 
         // Notice important that Designer should know what Unity GUI type they
         // are going to use!

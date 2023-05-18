@@ -19,9 +19,9 @@ namespace JCSUnity
 
         [Header("** Check Variables (JCS_SlideScreenButton) **")]
 
-        [Tooltip("This action are using `JCS_SlideScreenCamera`.")]
+        [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
         [SerializeField]
-        private JCS_SlideScreenCamera[] mSlideCameras = null;
+        private JCS_2DSlideScreenCamera[] mSlideCameras = null;
 
         [Header("** Runtime Variables (JCS_SlideScreenButton) **")]
 
@@ -70,7 +70,7 @@ namespace JCSUnity
                 mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            this.mSlideCameras = (JCS_SlideScreenCamera[])FindObjectsOfType(typeof(JCS_SlideScreenCamera));
+            this.mSlideCameras = (JCS_2DSlideScreenCamera[])FindObjectsOfType(typeof(JCS_2DSlideScreenCamera));
         }
 
         private void Update()
@@ -116,7 +116,7 @@ namespace JCSUnity
         /// </summary>
         private void SwitchScene()
         {
-            JCS_SlideScreenCamera slideCamera = null;
+            JCS_2DSlideScreenCamera slideCamera = null;
 
             for (int slideCount = 0; slideCount < mCount; ++slideCount)
             {

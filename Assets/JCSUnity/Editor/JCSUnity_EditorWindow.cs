@@ -654,8 +654,8 @@ namespace JCSUnity
                 }
             }
 
-            const string slideScreenCameraPath = "Camera/JCS_SlideScreenCamera";
-            var slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_SlideScreenCamera>();
+            const string slideScreenCameraPath = "Camera/JCS_2DSlideScreenCamera";
+            var slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
 
