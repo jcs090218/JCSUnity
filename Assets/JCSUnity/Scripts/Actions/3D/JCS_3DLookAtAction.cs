@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Look at a transform in 3D space.
     /// </summary>
-    public class JCS_3DLookAtAction : MonoBehaviour , JCS_IAction
+    public class JCS_3DLookAtAction : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
@@ -74,12 +74,6 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mLookFriction = 0.4f;
 
-        // record down the last euler angles.
-        private Vector3 mLastEulerAngles = Vector3.zero;
-
-        // the target eular angles we are targeting to approach.
-        private Vector3 mTargetEulerAngles = Vector3.zero;
-
         // record the current rotation every frame, in order to set it back
         // to original rotation which is the freezing effect.
         private Vector3 mCurrentEulerAngles = Vector3.zero;
@@ -116,21 +110,16 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the look at algorithm here...
+        /// Do the look at algorithm here.
         /// </summary>
         private void DoLookAt()
         {
-            // record down the euler angle before we changes.
-            if (mLocalEulerAngles)
-                mLastEulerAngles = this.transform.localEulerAngles;
-            else
-                mLastEulerAngles = this.transform.eulerAngles;
+            if (mAsympLook)
+                return;
 
             Vector3 lookPoint = mTargetTransform.position;
-            Vector3 direction = Vector3.up;
-
             // get direction according to the type.
-            direction = JCS_Util.VectorDirection(mLookDirection);
+            Vector3 direction = JCS_Util.VectorDirection(mLookDirection);
 
             transform.LookAt(lookPoint, direction * (int)mState);
 
@@ -149,8 +138,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Do the asymptotic look algorithm
-        /// here...
+        /// Do the asymptotic look algorithm here.
         /// </summary>
         private void DoAsympLook()
         {
@@ -158,56 +146,14 @@ namespace JCSUnity
             if (!mAsympLook)
                 return;
 
-            // NOTE(jenchieh): once we get here, mean that we already look at
-            // the target cuz of the last function call is "DoLookAt()".
+            Vector3 lookPoint = mTargetTransform.position - transform.position;
+            Vector3 direction = JCS_Util.VectorDirection(mLookDirection);
 
+            Quaternion dir = Quaternion.LookRotation(lookPoint, direction * (int)mState);
 
-            // set the target eular angles.
-            mTargetEulerAngles = this.transform.localEulerAngles;
+            dir.eulerAngles += mAngleOffset;
 
-            // set the angle to the angle before
-            // we do the "DoLookAt action".
-            this.transform.localEulerAngles = mLastEulerAngles;
-
-            // precalculate the angle in order to have negative effect.
-            Vector3 deltaAngles = this.transform.localEulerAngles;
-            deltaAngles = (this.mTargetEulerAngles - this.transform.localEulerAngles) / mLookFriction * Time.deltaTime;
-
-            // IMPORTANT(jenchieh): here is how u deal with the
-            // Unity Engine 0 ~ 360 degree range euler angle.
-            {
-                // find the diff of the two rotation.
-                Vector3 difVec = JCS_Mathf.ToPositive(this.mTargetEulerAngles - mLastEulerAngles);
-
-                if (difVec.x > 180)
-                {
-                    if (mTargetEulerAngles.x < mLastEulerAngles.x)
-                        deltaAngles.x = ((360 + mTargetEulerAngles.x) - mLastEulerAngles.x) / mLookFriction * Time.deltaTime;
-                    else
-                        deltaAngles.x = -((360 - mTargetEulerAngles.x) + mLastEulerAngles.x) / mLookFriction * Time.deltaTime;
-                }
-
-                if (difVec.y >= 180)
-                {
-                    // Current euler angle y 在左邊.
-                    if (mTargetEulerAngles.y < mLastEulerAngles.y)
-                        deltaAngles.y = ((360 + mTargetEulerAngles.y) - mLastEulerAngles.y) / mLookFriction * Time.deltaTime;
-                    // Current euler angle y 在右邊.
-                    else
-                        deltaAngles.y = -((360 - mTargetEulerAngles.y) + mLastEulerAngles.y) / mLookFriction * Time.deltaTime;
-                }
-
-                if (difVec.z > 180)
-                {
-                    if (mTargetEulerAngles.z < mLastEulerAngles.z)
-                        deltaAngles.z = ((360 + mTargetEulerAngles.z) - mLastEulerAngles.z) / mLookFriction * Time.deltaTime;
-                    else
-                        deltaAngles.z = -((360 - mTargetEulerAngles.z) + mLastEulerAngles.z) / mLookFriction * Time.deltaTime;
-                }
-            }
-
-            // apply precalculate angle.
-            this.transform.localEulerAngles += deltaAngles;
+            transform.rotation = Quaternion.Slerp(transform.rotation, dir, 1.0f / mLookFriction * Time.deltaTime);
         }
 
         /// <summary>
