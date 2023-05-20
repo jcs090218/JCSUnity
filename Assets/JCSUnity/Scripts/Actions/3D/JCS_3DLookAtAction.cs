@@ -146,10 +146,14 @@ namespace JCSUnity
             if (!mAsympLook)
                 return;
 
-            Vector3 lookPoint = mTargetTransform.position - transform.position;
+            Vector3 forward = mTargetTransform.position - transform.position;
+
+            if (forward == Vector3.zero)
+                return;
+
             Vector3 direction = JCS_Util.VectorDirection(mLookDirection);
 
-            Quaternion dir = Quaternion.LookRotation(lookPoint, direction * (int)mState);
+            Quaternion dir = Quaternion.LookRotation(forward, direction * (int)mState);
 
             dir.eulerAngles += mAngleOffset;
 
