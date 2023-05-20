@@ -20,7 +20,6 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-
         [Header("** Runtime Variables (JCS_SequenceShootAction) **")]
 
         [Tooltip("How many shoot in sequence?")]
@@ -39,13 +38,11 @@ namespace JCSUnity
         [SerializeField]
         private bool mSequenceStay = true;
 
-
         [Header("** Optional Variables (JCS_SequenceShootAction) **")]
 
         [Tooltip("Ability format to use.")]
         [SerializeField]
         private JCS_AbilityFormat mAbilityFormat = null;
-
 
         [Header("** Action Settings (JCS_SequenceShootAction) **")]
 
@@ -78,16 +75,14 @@ namespace JCSUnity
 
         private JCS_DetectAreaObject mDetectedObject = null;
 
-
         //** Sequence Data **
-        private JCS_Vector<int> mThread = null;        // main thread
-        private JCS_Vector<float> mTimers = null;           // timer per thread
-        private JCS_Vector<int> mShootCount = null;         // how many shoot should process per thread
-        private JCS_Vector<int> mShootCounter = null;         // counter per thread
+        private JCS_Vector<int> mThread = null;                    // main thread
+        private JCS_Vector<float> mTimers = null;                  // timer per thread
+        private JCS_Vector<int> mShootCount = null;                // how many shoot should process per thread
+        private JCS_Vector<int> mShootCounter = null;              // counter per thread
         private JCS_Vector<Vector3> mShootPos = null;
         private JCS_Vector<Transform> mTargetsPerSequence = null;
         private JCS_Vector<bool> mShootDirection = null;
-
 
         /* Setter & Getter */
 
@@ -101,7 +96,6 @@ namespace JCSUnity
         public float TimeDelayAfterShoot { get { return this.mTimeDelayAfterShoot; } set { this.mTimeDelayAfterShoot = value; } }
         public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
         public float ShootGap { get { return this.mShootGap; } set { this.mShootGap = value; } }
-
 
         /* Functions */
 
@@ -207,7 +201,6 @@ namespace JCSUnity
                 }
             }
 
-
             // thread itself
             mThread.push(mThread.length);
 
@@ -301,7 +294,6 @@ namespace JCSUnity
                 }
                 else
                     mShootAction.Shoot(spawnPos, direction, 1, currentShootCount, false);
-
 
                 ++currentShootCount;
 
@@ -426,7 +418,6 @@ namespace JCSUnity
                 return null;
             }
 
-
             // get the game setting first
             JCS_GameSettings jcsGm = JCS_GameSettings.instance;
 
@@ -450,7 +441,6 @@ namespace JCSUnity
                         damages[index] = jcsGm.MAX_DAMAGE;
                 }
             }
-
 
             // return the damages we just create!
             return damages;

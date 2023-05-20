@@ -84,7 +84,7 @@ namespace JCSUnity
                     {
                         // try to get the component on this transform.
                         JCS_2DWalkAction wa = this.GetComponent<JCS_2DWalkAction>();
-                        if (wa == null)     // if nothing here.
+                        if (wa == null)  // if nothing here.
                         {
                             // add it on to it
                             wa = this.gameObject.AddComponent<JCS_2DWalkAction>();

@@ -31,7 +31,6 @@ namespace JCSUnity
 
         private JCS_VelocityInfo mVelocityInfo = null;
 
-
         [Header("** Runtime Varaibles (JCS_2DWalkAction) **")]
 
         [Tooltip("Speed of the action.")]
@@ -54,7 +53,6 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 100.0f)]
         private float mPossibility = 80.0f;
 
-
         [Header("** Time Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Time to do one walk.")]
@@ -75,7 +73,6 @@ namespace JCSUnity
         // check to see if we can reset our time zone.
         private bool mWalked = false;
 
-
         [Header("** Action Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Generate a random walk speed at the initilaize time.")]
@@ -87,7 +84,6 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         [SerializeField] [Range(1, 10)]
         private float mRandomWalkSpeedRange = 5;
 
-
         [Header("** Track Effect (JCS_2DWalkAction) **")]
 
         [Tooltip("If get mad will start tracking the object that make this object mad.")]
@@ -98,13 +94,11 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         [SerializeField]
         private JCS_AttackerRecorder mAttackRecorder = null;
 
-
         [Header("** Optional Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Live object animation.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
-
 
         /* Setter & Getter */
 
@@ -122,7 +116,6 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
 
         // Track Effects
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
-
 
         /* Functions */
 
@@ -162,8 +155,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             if (possibility > mPossibility)
                 return;
 
-            // start the algorithm to see if we
-            // find the direction to do,
+            // start the algorithm to see if we find the direction to do,
             // if not it will just go randomly.
             WalkDirectionPossibility();
         }
@@ -183,12 +175,10 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             {
                 Transform lastAttacker = mAttackRecorder.LastAttacker;
 
-                // if the last attacker does not exist,
-                // do nothing.
+                // if the last attacker does not exist, do nothing.
                 if (lastAttacker != null)
                 {
-                    // if does exist, start following
-                    // the attacker.
+                    // if does exist, start following the attacker.
                     if (lastAttacker.position.x < this.transform.position.x)
                         direction = Status.LEFT;
                     else
@@ -231,8 +221,8 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             // if there are multiple result do randomly
             if (resultCounter >= 2)
                 WalkRandomly();
-            // else if we successfully find the direction,
-            // use the direction algorithm found.
+            // else if we successfully find the direction, use the direction
+            // algorithm found.
             else
                 WalkByStatus(direction);
         }
@@ -339,8 +329,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do
-        /// walk action include direction.
+        /// Algorithm to calculate the time to do walk action include direction.
         /// </summary>
         private void ResetTimeZone()
         {

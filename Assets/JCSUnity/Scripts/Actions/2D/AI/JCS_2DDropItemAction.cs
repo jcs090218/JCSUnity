@@ -20,7 +20,6 @@ namespace JCSUnity
 
         private JCS_ItemDroppable mItemDroppable = null;
 
-
         [Header("** Runtime Variables (JCS_2DDropItemAction) **")]
 
         [Tooltip("Drop once when the object is dead.")]
@@ -47,7 +46,6 @@ namespace JCSUnity
 
         // trigger to re-calculate the drop time
         private bool mDroped = false;
-
 
         /* Setter & Getter */
 
@@ -113,8 +111,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Once we do the drop item action,
-        /// re-calculate the next drop time.
+        /// Once we do the drop item action, re-calculate the next drop time.
         /// so every time it drop is random.
         /// </summary>
         private void ResetTime()

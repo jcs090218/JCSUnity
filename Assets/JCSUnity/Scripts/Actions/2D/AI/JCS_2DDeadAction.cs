@@ -20,7 +20,6 @@ namespace JCSUnity
 
         private JCS_2DLiveObject mLiveObject = null;
 
-
         [Header("** Optional Settings (JCS_2DDeadAction) **")]
 
         [Tooltip("Live object animation.")]
@@ -37,7 +36,6 @@ namespace JCSUnity
         // check to play the die sound.
         private bool mSoundPlayed = false;
 
-
         [Header("** Effect Setting (JCS_2DDeadAction) **")]
 
         [Tooltip("Disable unnecessary componenet when died.")]
@@ -52,7 +50,6 @@ namespace JCSUnity
         [SerializeField]
         private MonoBehaviour[] mDisableComponents = null;
 
-        
         /* Setter & Getter */
 
         /* Functions */
@@ -67,8 +64,8 @@ namespace JCSUnity
 
         private void Update()
         {
-            // if still could damage this live object,
-            // mean this object isn't dead yet.
+            // if still could damage this live object, mean this object isn't
+            // dead yet.
             if (0 < mLiveObject.HP)
                 return;
 
@@ -105,8 +102,7 @@ namespace JCSUnity
                 mDisableOtherComponentWhileDie = false;
             }
 
-            // if the animation starts,
-            // start timer and check the
+            // if the animation starts, start timer and check the
             // dead animation is end or not.
             if (mLiveObjectAnimator.IsInState(JCS_LiveObjectState.DIE))
             {

@@ -43,8 +43,8 @@ namespace JCSUnity
         [SerializeField] [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
-        // time to record down the real time to do one jump
-        // after we calculate the real time.
+        // time to record down the real time to do one jump after we calculate
+        // the real time.
         private float mRealTimeZone = 0;
 
         // timer to do jump.
@@ -74,16 +74,14 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
-        // When the we jump, we start check to see if
-        // this object is grounded or not, in order to
-        // go back and do the animation before we do jump
+        // When the we jump, we start check to see if this object is grounded
+        // or not, in order to go back and do the animation before we do jump
         // animation.
         private bool mCheckEndJumpAnimation = false;
 
-        // record down the animation before jump,
-        // so we can keep on the same animation after jump!
+        // record down the animation before jump, so we can keep on the same
+        // animation after jump!
         private JCS_LiveObjectState mAnimStateBeforeJump = JCS_LiveObjectState.STAND;
-
 
         /* Setter & Getter */
 
@@ -100,7 +98,6 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float Possibility { get { return this.mPossibility; } set { this.mPossibility = value; } }
-
 
         /* Functions */
 
@@ -159,8 +156,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         }
         public void Jump(float force)
         {
-            // cannot double jump, to design
-            // a double jump plz create another
+            // cannot double jump, to design a double jump plz create another
             // action class to handle the effect.
             if (!isGrounded)
                 return;

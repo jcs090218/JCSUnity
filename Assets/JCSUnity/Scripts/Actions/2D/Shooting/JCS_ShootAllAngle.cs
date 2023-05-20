@@ -20,13 +20,11 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-
         [Header("** Check Variables (JCS_ShootAllAngle) **")]
 
         [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
         [SerializeField]
         private bool mCanShoot = true;
-
 
         [Header("** Runtime Variables (JCS_ShootAllAngle) **")]
 
@@ -62,7 +60,6 @@ namespace JCSUnity
 
         private float mCount = 0.0f;
 
-
         /* Setter & Getter */
 
         public bool CanShoot { get { return this.mCanShoot; } set { this.mCanShoot = value; } }
@@ -72,7 +69,6 @@ namespace JCSUnity
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public JCS_Axis ShootAxis { get { return this.mShootAxis; } set { this.mShootAxis = value; } }
-
 
         /* Functions */
 

@@ -26,7 +26,6 @@ namespace JCSUnity
         // if this is true, meaning there are other shoot action going on.
         private bool mOverrideShoot = false;
 
-
         /* Setter & Getter */
 
         public bool OverrideShoot { get { return this.mOverrideShoot; } set { this.mOverrideShoot = value; } }
@@ -48,7 +47,6 @@ namespace JCSUnity
         {
             this.mShootAction.SetCheckAbleToShootFunction(func);
         }
-
 
         /* Functions */
 

@@ -27,7 +27,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DCursorShootAction mCursorShootAction = null;
 
-
         [Header("** Runtime Variables (JCS_2DCursorShootAction) **")]
 
         [Tooltip("How many shots in sequence?")]
@@ -48,7 +47,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mKeepShootAngle = true;
 
-
         [Header("** Shoot Gap Effect (JCS_2DCursorShootAction) **")]
 
         [Tooltip("Shoot with gap?")]
@@ -59,12 +57,11 @@ namespace JCSUnity
         [SerializeField]
         private float mShootGap = 0.1f;
 
-
         //** Sequence Data **
-        private JCS_Vector<int> mThread = null;        // main thread
-        private JCS_Vector<float> mTimers = null;           // timer per thread
-        private JCS_Vector<int> mShootCount = null;         // how many shoot should process per thread
-        private JCS_Vector<int> mShootCounter = null;         // counter per thread
+        private JCS_Vector<int> mThread = null;           // main thread
+        private JCS_Vector<float> mTimers = null;         // timer per thread
+        private JCS_Vector<int> mShootCount = null;       // how many shoot should process per thread
+        private JCS_Vector<int> mShootCounter = null;     // counter per thread
         private JCS_Vector<Vector3> mShootPos = null;
         private JCS_Vector<Vector3> mShootAngles = null;
 
@@ -90,7 +87,6 @@ namespace JCSUnity
         {
             this.mShootAction.SetCheckAbleToShootFunction(func);
         }
-
 
         /* Functions */
 

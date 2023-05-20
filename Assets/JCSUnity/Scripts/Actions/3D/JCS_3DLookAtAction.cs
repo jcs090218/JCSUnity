@@ -158,9 +158,8 @@ namespace JCSUnity
             if (!mAsympLook)
                 return;
 
-            // NOTE(jenchieh): once we get here, mean that
-            // we already look at the target cuz of the last
-            // function call is "DoLookAt()".
+            // NOTE(jenchieh): once we get here, mean that we already look at
+            // the target cuz of the last function call is "DoLookAt()".
 
 
             // set the target eular angles.

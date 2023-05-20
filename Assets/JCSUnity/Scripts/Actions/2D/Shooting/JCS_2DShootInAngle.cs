@@ -20,7 +20,6 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-
         [Header("** Runtime Variables (JCS_2DShootInAngle) **")]
 
         [Tooltip("Degree per bullet shoot.")]
@@ -35,14 +34,12 @@ namespace JCSUnity
         [SerializeField]
         private float mMaxDegree = 240.0f;
 
-
         /* Setter & Getter */
 
         public JCS_ShootAction GetShootAction() { return this.mShootAction; }
         public float DegreePerShoot { get { return this.mDegreePerShoot; } }
         public float MinDegree { get { return this.mMinDegree; } }
         public float MaxDegree { get { return this.mMaxDegree; } }
-
         
         /* Functions */
 

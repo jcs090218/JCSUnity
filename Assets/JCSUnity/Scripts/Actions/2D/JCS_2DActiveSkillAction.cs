@@ -89,7 +89,6 @@ namespace JCSUnity
             if (mStayWithActiveTarget)
                 obj.transform.SetParent(this.transform);
 
-
             // add anim death event,
             // so when animation ends destroy itself.
             obj.AddComponent<JCS_DestroyAnimEndEvent>();

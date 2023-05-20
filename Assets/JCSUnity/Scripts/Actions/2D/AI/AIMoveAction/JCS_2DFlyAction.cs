@@ -97,8 +97,8 @@ namespace JCSUnity
         [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
-        // time to record down the real time to do one fly
-        // action after we calculate the real time.
+        // time to record down the real time to do one fly action after we
+        // calculate the real time.
         private float mRealTimeZone = 0.0f;
 
         // timer to do fly.
@@ -217,8 +217,7 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
-            // check after limit,
-            // so before rendering will fix the position.
+            // check after limit, so before rendering will fix the position.
             SpaceLimitCheck();
         }
 
@@ -253,12 +252,10 @@ namespace JCSUnity
             {
                 Transform lastAttacker = mAttackRecorder.LastAttacker;
 
-                // if the last attacker does not exist,
-                // do nothing.
+                // if the last attacker does not exist, do nothing.
                 if (lastAttacker != null)
                 {
-                    // NOTE(JenChieh): if does exist, start
-                    // following the attacker.
+                    // NOTE(JenChieh): if does exist, start following the attacker.
 
                     // X-axis
                     if (lastAttacker.position.x < this.transform.position.x)
@@ -337,8 +334,8 @@ namespace JCSUnity
             if (resultCounterX >= 2 &&
                 resultCounterY >= 2)
                 FlyRandomly();
-            // else if we successfully find the direction,
-            // use the direction algorithm found.
+            // else if we successfully find the direction, use the direction
+            // algorithm found.
             else
                 FlyByStatus(directionX, directionY);
         }
@@ -360,8 +357,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Process velocity and animation by
-        /// passing the status. (Integer)
+        /// Process velocity and animation by passing the status. (Integer)
         /// </summary>
         /// <param name="statusX"> status in x axis </param>
         /// <param name="statusY"> status in y axis </param>
@@ -370,8 +366,7 @@ namespace JCSUnity
             FlyByStatus((StatusX)statusX, (StatusY)statusY);
         }
         /// <summary>
-        /// Process velocity and animation by
-        /// passing the status. (Enum)
+        /// Process velocity and animation by passing the status. (Enum)
         /// </summary>
         /// <param name="statusX"> status in x axis </param>
         /// <param name="statusY"> status in y axis </param>
@@ -460,8 +455,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do
-        /// fly action include direction.
+        /// Algorithm to calculate the time to do fly action include direction.
         /// </summary>
         private void ResetTimeZone()
         {
@@ -473,8 +467,8 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// If the object out of space we set,
-        /// limit it. (Let the object not go anywhere.)
+        /// If the object out of space we set, limit it. (Let the object not 
+        /// go anywhere.)
         /// </summary>
         private void SpaceLimitCheck()
         {
@@ -490,7 +484,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Sound Settings stuff,
         /// Play the flying sound and loop the sound.
         /// </summary>
         private void PlayFlySound()

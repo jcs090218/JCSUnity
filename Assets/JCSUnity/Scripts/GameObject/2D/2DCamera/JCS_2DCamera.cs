@@ -159,8 +159,7 @@ namespace JCSUnity
 
             if (mTargetTransform != null)
             {
-                // first assign the target transform's position
-                // to target position.
+                // first assign the target transform's position to target position.
                 mTargetPosition = this.mTargetTransform.position;
 
                 // record the target position
@@ -286,8 +285,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 4 boundaries (top, bottom, right, left) that camera
-        /// should not go through.
+        /// 4 boundaries (top, bottom, right, left) that camera should not 
+        /// go through.
+        /// 
         /// check the boundries and do the trick!
         /// </summary>
         private void CameraBoundaries()
