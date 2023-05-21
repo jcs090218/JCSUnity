@@ -468,29 +468,19 @@ namespace JCSUnity
         /// <summary>
         /// Return direction of Unity's Vector system.
         /// </summary>
-        /// <param name="direction"> direction u wants. </param>
-        /// <returns> vector value. </returns>
+        /// <param name="direction"> Target direction. </param>
+        /// <returns> Direction vector. </returns>
         public static Vector3 VectorDirection(JCS_Vector3Direction direction)
         {
             switch (direction)
             {
-                case JCS_Vector3Direction.CENTER:
-                    return Vector3.zero;
-
-                case JCS_Vector3Direction.UP:
-                    return Vector3.up;
-                case JCS_Vector3Direction.DOWN:
-                    return Vector3.down;
-
-                case JCS_Vector3Direction.FORWARD:
-                    return Vector3.forward;
-                case JCS_Vector3Direction.BACK:
-                    return Vector3.back;
-
-                case JCS_Vector3Direction.RIGHT:
-                    return Vector3.right;
-                case JCS_Vector3Direction.LEFT:
-                    return Vector3.left;
+                case JCS_Vector3Direction.CENTER: return Vector3.zero;
+                case JCS_Vector3Direction.UP: return Vector3.up;
+                case JCS_Vector3Direction.DOWN: return Vector3.down;
+                case JCS_Vector3Direction.FORWARD: return Vector3.forward;
+                case JCS_Vector3Direction.BACK: return Vector3.back;
+                case JCS_Vector3Direction.RIGHT: return Vector3.right;
+                case JCS_Vector3Direction.LEFT: return Vector3.left;
 
                 case JCS_Vector3Direction.FORWARD_LEFT:
                     return new Vector3(-1, 0, 1);
@@ -543,7 +533,112 @@ namespace JCSUnity
                     return new Vector3(1, -1, -1);
             }
 
-            JCS_Debug.LogError("This can't happens.");
+            // this cannot happens
+            return Vector3.zero;
+        }
+
+        /// <summary>
+        /// Get the vector base on the transform's rotation.
+        /// </summary>
+        /// <param name="direction"> Target direction. </param>
+        /// <param name="trans"> 
+        /// Target transform use to calculate the vector, and where we get the 
+        /// rotation from. 
+        /// </param>
+        /// <returns> Direction vector. </returns>
+        public static Vector3 VectorDirection(JCS_Vector3Direction direction, Transform trans)
+        {
+            switch (direction)
+            {
+                case JCS_Vector3Direction.CENTER: return trans.position;
+
+                case JCS_Vector3Direction.UP: return trans.up;
+                case JCS_Vector3Direction.DOWN: return -trans.up;
+
+                case JCS_Vector3Direction.FORWARD: return trans.forward;
+                case JCS_Vector3Direction.BACK: return -trans.forward;
+
+                case JCS_Vector3Direction.RIGHT: return trans.right;
+                case JCS_Vector3Direction.LEFT: return -trans.right;
+
+                case JCS_Vector3Direction.FORWARD_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.FORWARD_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+
+                case JCS_Vector3Direction.BACK_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                        + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.BACK_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                        + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+
+                case JCS_Vector3Direction.UP_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.UP, trans)
+                        + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.UP_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.UP, trans)
+                        + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+
+                case JCS_Vector3Direction.FORWARD_UP:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.UP, trans);
+                case JCS_Vector3Direction.FORWARD_DOWN:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.DOWN, trans);
+
+                case JCS_Vector3Direction.BACK_UP:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                       + VectorDirection(JCS_Vector3Direction.UP, trans);
+                case JCS_Vector3Direction.BACK_DOWN:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                       + VectorDirection(JCS_Vector3Direction.DOWN, trans);
+
+                case JCS_Vector3Direction.DOWN_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.DOWN, trans)
+                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.DOWN_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.DOWN, trans)
+                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+
+                case JCS_Vector3Direction.FORWARD_UP_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.UP, trans)
+                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.FORWARD_UP_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.UP, trans)
+                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+
+                case JCS_Vector3Direction.FORWARD_DOWN_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
+                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.FORWARD_DOWN_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.FORWARD, trans)
+                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
+                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+
+                case JCS_Vector3Direction.BACK_UP_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                        + VectorDirection(JCS_Vector3Direction.UP, trans)
+                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.BACK_UP_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                        + VectorDirection(JCS_Vector3Direction.UP, trans)
+                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+
+                case JCS_Vector3Direction.BACK_DOWN_LEFT:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
+                       + VectorDirection(JCS_Vector3Direction.LEFT, trans);
+                case JCS_Vector3Direction.BACK_DOWN_RIGHT:
+                    return VectorDirection(JCS_Vector3Direction.BACK, trans)
+                        + VectorDirection(JCS_Vector3Direction.DOWN, trans)
+                       + VectorDirection(JCS_Vector3Direction.RIGHT, trans);
+            }
 
             // this cannot happens
             return Vector3.zero;
