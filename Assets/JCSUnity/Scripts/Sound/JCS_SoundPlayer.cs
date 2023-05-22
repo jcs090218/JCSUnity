@@ -72,7 +72,7 @@ namespace JCSUnity
         /// <param name="type"></param>
         public void PlayOneShot(AudioClip clip, JCS_SoundSettingType type)
         {
-            JCS_SoundSettings ss = JCS_SoundSettings.instance;
+            var ss = JCS_SoundSettings.instance;
 
             float volume = 0;
             switch (type)

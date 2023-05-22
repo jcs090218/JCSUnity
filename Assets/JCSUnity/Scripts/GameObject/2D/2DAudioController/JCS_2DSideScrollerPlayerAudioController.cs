@@ -54,7 +54,8 @@ namespace JCSUnity
                 JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mSoundPlayer.PlayOneShot(mJumpSound[0], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            var ss = JCS_SoundSettings.instance;
+            mSoundPlayer.PlayOneShot(mJumpSound[0], ss.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -69,7 +70,8 @@ namespace JCSUnity
                 JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mSoundPlayer.PlayOneShot(mJumpSound[1], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            var ss = JCS_SoundSettings.instance;
+            mSoundPlayer.PlayOneShot(mJumpSound[1], ss.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -84,7 +86,8 @@ namespace JCSUnity
                 JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mSoundPlayer.PlayOneShot(mJumpSound[2], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            var ss = JCS_SoundSettings.instance;
+            mSoundPlayer.PlayOneShot(mJumpSound[2], ss.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -105,7 +108,8 @@ namespace JCSUnity
                 JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mSoundPlayer.PlayOneShot(mAttackSounds[rand], JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            var ss = JCS_SoundSettings.instance;
+            mSoundPlayer.PlayOneShot(mAttackSounds[rand], ss.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 
@@ -117,7 +121,8 @@ namespace JCSUnity
                 JCS_Debug.LogError("Play sound with null references...");
                 return;
             }
-            mSoundPlayer.PlayOneShot(mWalkSound, JCS_SoundSettings.instance.GetSkillsSound_Volume());
+            var ss = JCS_SoundSettings.instance;
+            mSoundPlayer.PlayOneShot(mWalkSound, ss.GetSkillsSound_Volume());
         }
         /// <summary>
         /// 

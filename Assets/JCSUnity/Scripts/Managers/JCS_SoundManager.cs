@@ -295,8 +295,11 @@ namespace JCSUnity
         public void PlayOneShotSFXSound(int index)
         {
             AudioSource aud = mSFXSounds.at(index);
+
+            var ss = JCS_SoundSettings.instance;
+
             if (aud.clip != null)
-                aud.PlayOneShot(aud.clip, JCS_SoundSettings.instance.GetSFXSound_Volume());
+                aud.PlayOneShot(aud.clip, ss.GetSFXSound_Volume());
         }
 
         /// <summary>

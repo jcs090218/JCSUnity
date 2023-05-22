@@ -412,17 +412,19 @@ namespace JCSUnity
         /// </summary>
         private void PlayHitSound(AudioClip hitSound)
         {
+            var ss = JCS_SoundSettings.instance;
+
             if (hitSound != null)
             {
                 // play the hit sound provide by passing in.
-                mSoundPlayer.PlayOneShot(hitSound, JCS_SoundSettings.instance.GetSFXSound_Volume());
+                mSoundPlayer.PlayOneShot(hitSound, ss.GetSFXSound_Volume());
             }
             else
             {
                 if (mHitSound != null)
                 {
                     // play the regular assigned by variable's hit sound.
-                    mSoundPlayer.PlayOneShot(mHitSound, JCS_SoundSettings.instance.GetSFXSound_Volume());
+                    mSoundPlayer.PlayOneShot(mHitSound, ss.GetSFXSound_Volume());
                 }
             }
         }

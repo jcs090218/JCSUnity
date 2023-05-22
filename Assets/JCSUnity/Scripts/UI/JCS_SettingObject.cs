@@ -93,19 +93,21 @@ namespace JCSUnity
         /// </summary>
         private void InitValue()
         {
+            var ss = JCS_SoundSettings.instance;
+
             switch (mSettingType)
             {
                 case JCS_SoundSettingType.NONE:
                     JCS_Debug.LogError("Setting with no meaning...");
                     return;
                 case JCS_SoundSettingType.BGM_SOUND:
-                    this.mSettingValue = JCS_SoundSettings.instance.GetBGM_Volume();
+                    this.mSettingValue = ss.GetBGM_Volume();
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
-                    this.mSettingValue = JCS_SoundSettings.instance.GetSFXSound_Volume();
+                    this.mSettingValue = ss.GetSFXSound_Volume();
                     break;
                 case JCS_SoundSettingType.SKILLS_SOUND:
-                    this.mSettingValue = JCS_SoundSettings.instance.GetSkillsSound_Volume();
+                    this.mSettingValue = ss.GetSkillsSound_Volume();
                     break;
             }
         }
@@ -180,16 +182,18 @@ namespace JCSUnity
         /// </summary>
         private void SliderSettingUpdate()
         {
+            var ss = JCS_SoundSettings.instance;
+
             switch (mSettingType)
             {
                 case JCS_SoundSettingType.BGM_SOUND:
-                    JCS_SoundSettings.instance.SetBGM_Volume(this.mSlider.value);
+                    ss.SetBGM_Volume(this.mSlider.value);
                     break;
                 case JCS_SoundSettingType.SFX_SOUND:
-                    JCS_SoundSettings.instance.SetSFXSound_Volume(this.mSlider.value);
+                    ss.SetSFXSound_Volume(this.mSlider.value);
                     break;
                 case JCS_SoundSettingType.SKILLS_SOUND:
-                    JCS_SoundSettings.instance.SetSkillsSound_Volume(this.mSlider.value);
+                    ss.SetSkillsSound_Volume(this.mSlider.value);
                     break;
             }
         }
