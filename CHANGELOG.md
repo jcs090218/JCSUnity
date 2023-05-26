@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 2.3.1 (Unreleased)
 > Released N/A
 
-* N/A
+* Allow 0 length sprite in 2D animation (f220b5713c37239cd8ab6253dd2d07d613f28af3)
 
 ## 2.3.0
 > Released Sep 12, 2022
