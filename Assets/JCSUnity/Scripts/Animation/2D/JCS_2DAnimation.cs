@@ -25,7 +25,7 @@ namespace JCSUnity
         private JCS_2DAnimator mJCS2DAnimator = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables Variables (JCS_I2DAnimator) **")]
+        [Header("** Helper Variables Variables (JCS_2DAnimation) **")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -99,14 +99,16 @@ namespace JCSUnity
         private Sprite[] mAnimFrames = null;
 
         [Tooltip("How fast the animation plays.")]
-        [SerializeField] [Range(0.0f, 5.0f)]
+        [SerializeField]
+        [Range(0.0f, 5.0f)]
         private float mAnimationTimeProduction = 1.0f;
 
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool PlayOnAwake { get { return this.mPlayOnAwake; } set { this.mPlayOnAwake = value; } }
-        public int CurrentPlayingFrame {
+        public int CurrentPlayingFrame
+        {
             get { return this.mCurrentPlayingFrame; }
             set
             {
@@ -288,6 +290,9 @@ namespace JCSUnity
         /// </param>
         public void PlayFrame(int frame)
         {
+            if (mAnimFrames.Length == 0)
+                return;
+
             this.mCurrentPlayingFrame = frame;
 
             PutAnimInFrame();
