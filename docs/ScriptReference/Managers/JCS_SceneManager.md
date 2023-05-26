@@ -15,7 +15,8 @@ Better version of scene manager.
 
 ## Functions
 
-| Name             | Description                                        |
-|:-----------------|:---------------------------------------------------|
-| LoadScene        | Load the scene with the default switch scene type. |
-| IsSwitchingScene | Is currently switching the scene?                  |
+| Name             | Description                        |
+|:-----------------|:-----------------------------------|
+| LoadScene        | Load the target scene.             |
+| ReloadScene      | Reload the current scene.          |
+| IsSwitchingScene | Check is loading the scene or not. |

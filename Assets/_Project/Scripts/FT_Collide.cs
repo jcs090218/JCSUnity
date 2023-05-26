@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using JCSUnity;
 
 /// <summary>
 /// Test if the two collider collide.
@@ -29,6 +30,6 @@ public class FT_Collide : MonoBehaviour
     
     private void Update() 
     {
-        print(JCSUnity.JCS_Physics.JcsOnTriggerCheck(mCharacterController, mBoxCollider));
+        print(JCS_Physics.JcsOnTriggerCheck(mCharacterController, mBoxCollider));
     }
 }
