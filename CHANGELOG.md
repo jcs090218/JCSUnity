@@ -10,6 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Add reload scene (0a4bbb742086737ab5316fd0e2c113e3b38d49f1)
 * Allow 0 length sprite in 2D animation (f220b5713c37239cd8ab6253dd2d07d613f28af3)
+* Fix 2D Animation SPF instead of FPS (3c2e44b96c7d7aba02fafb931063a182a1833dac)
 
 ## 2.3.0
 > Released Sep 12, 2022
