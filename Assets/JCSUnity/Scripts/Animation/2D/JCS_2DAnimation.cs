@@ -22,7 +22,7 @@ namespace JCSUnity
         public EmptyFunction playFrameCallback = null;
 
         // animator using this animation?
-        private JCS_2DAnimator mJCS2DAnimator = null;
+        private JCS_2DAnimator mAnimator = null;
 
 #if UNITY_EDITOR
         [Header("** Helper Variables Variables (JCS_2DAnimation) **")]
@@ -87,9 +87,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mNullSpriteAfterDonePlayingAnim = false;
 
-        [Tooltip("FPS for the animation to play.")]
+        [Tooltip("SPF for the animation to play.")]
         [SerializeField]
-        private float mFramePerSec = 0.1f;
+        [Range(0.0f, 30.0f)]
+        private float mSecPerFrame = 0.1f;
 
         // timer to decide next frame.
         private float mFrameTimer = 0;
@@ -121,7 +122,7 @@ namespace JCSUnity
         public bool Loop { get { return this.mLoop; } set { this.mLoop = value; } }
         // Is the animation done playing?
         public bool IsDonePlaying { get { return this.mIsDonePlaying; } }
-        public void SetJCS2DAnimator(JCS_2DAnimator jcs2dAnimator) { this.mJCS2DAnimator = jcs2dAnimator; }
+        public void SetAnimator(JCS_2DAnimator animator) { this.mAnimator = animator; }
         public float AnimationTimeProduction { get { return this.mAnimationTimeProduction; } }
         public Sprite CurrentSprite { get { return this.mAnimFrames[mCurrentPlayingFrame]; } }
         public Sprite NullSprite { get { return this.mNullSprite; } set { this.mNullSprite = value; } }
@@ -134,7 +135,7 @@ namespace JCSUnity
             Awake();
         }
         public Sprite[] GetAnimationFrame() { return this.mAnimFrames; }
-        public float FramePerSec { get { return this.mFramePerSec; } set { this.mFramePerSec = value; } }
+        public float SecPerFrame { get { return this.mSecPerFrame; } set { this.mSecPerFrame = value; } }
 
         /* Functions */
 
@@ -341,12 +342,12 @@ namespace JCSUnity
 
             // get the time per seconds.
             // NOTE(jenchieh): multiple you own animate production first.
-            float timePerSec = mFramePerSec * mAnimationTimeProduction;
+            float timePerSec = mSecPerFrame * mAnimationTimeProduction;
 
             // if there is animator taking over this animation.
             // times the production time!
-            if (mJCS2DAnimator != null)
-                timePerSec = mFramePerSec * mJCS2DAnimator.AnimationTimeProduction;
+            if (mAnimator != null)
+                timePerSec = mSecPerFrame * mAnimator.AnimationTimeProduction;
 
             // check timer reach the next frame time.
             if (mFrameTimer < timePerSec)

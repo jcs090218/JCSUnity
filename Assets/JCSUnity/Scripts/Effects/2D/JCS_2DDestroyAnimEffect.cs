@@ -186,7 +186,7 @@ namespace JCSUnity
             newAnim.Active = randAnim.Active;
             newAnim.Loop = randAnim.Loop;
             newAnim.PlayOnAwake = randAnim.PlayOnAwake;
-            newAnim.FramePerSec = randAnim.FramePerSec;
+            newAnim.SecPerFrame = randAnim.SecPerFrame;
 
             // set the animation to just spawn animation.
             newAnim.SetAnimationFrame(randAnim.GetAnimationFrame());

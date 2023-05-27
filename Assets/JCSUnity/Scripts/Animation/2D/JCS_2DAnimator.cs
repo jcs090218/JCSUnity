@@ -117,7 +117,7 @@ namespace JCSUnity
 
                 // let the animation know there are animator controlling 
                 // the animation.
-                anim.SetJCS2DAnimator(this);
+                anim.SetAnimator(this);
 
                 anim.PlayOnAwake = false;
             }
