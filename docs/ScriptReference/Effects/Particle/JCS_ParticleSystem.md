@@ -1,6 +1,6 @@
 # JCS_ParticleSystem
 
-Particle System thats spawns `JCS_Particle` object.
+Particle System that spawns `JCS_Particle` object.
 
 ## Variables
 
@@ -13,6 +13,7 @@ Particle System thats spawns `JCS_Particle` object.
 | mOrderLayer                  | What layer should this be render?                                          |
 | mDensity                     | How much do it range?                                                      |
 | mWindSpeed                   | How much to tilt the particle?                                             |
+| mDeltaTimeType               | Type of the delta time.                                                    |
 | mRandPosX                    | Randomize the X position.                                                  |
 | mRandPosY                    | Randomize the Y position.                                                  |
 | mRandPosZ                    | Randomize the Z position.                                                  |

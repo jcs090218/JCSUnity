@@ -1,6 +1,6 @@
 # JCS_3DCameraPlayer
 
-Player control that works with camera relatively.
+Player control that works with the camera relatively.
 
 ## Variables
 

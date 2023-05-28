@@ -11,6 +11,7 @@ Transform tweener.
 | mDurationX                | How fast it moves on x axis.                              |
 | mDurationY                | How fast it moves on y axis.                              |
 | mDurationZ                | How fast it moves on z axis.                              |
+| mDeltaTimeType            | Type of the delta time.                                   |
 | mDestroyWhenDoneTweening  | Destroy this object when done tweening?"                  |
 | mDestroyDoneTweeningCount | How many times of done tweening destroy will active?      |
 | mRandomizeDuration        | Randomize the durations with all axis at start. (x, y, z) |

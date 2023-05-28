@@ -10,6 +10,7 @@ Fade object to a particular alpha channel.
 | mOverrideFade  | Override the action before it complete the action. |
 | mFadeInAmount  | Maxinum of fade value.                             |
 | mFadeOutAmount | Mininum of fade value.                             |
+| mDeltaTimeType | Type of the delta time.                            |
 
 ## Functions
 

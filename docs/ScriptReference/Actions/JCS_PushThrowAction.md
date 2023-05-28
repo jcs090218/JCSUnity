@@ -1,14 +1,15 @@
 # JCS_PushThrowAction
 
-Action that throw the object to a position.
+Action that throws the object to a position.
 
 ## Variables
 
-| Name    | Description                |
-|:--------|:---------------------------|
-| mEffect | Do effect?                 |
-| mAngle  | Angle you want to throw to |
-| mG      | Speed of this projectile.  |
+| Name           | Description                |
+|:---------------|:---------------------------|
+| mEffect        | Do effect?                 |
+| mAngle         | Angle you want to throw to |
+| mG             | Speed of this projectile.  |
+| mDeltaTimeType | Type of the delta time.    |
 
 ## Functions
 

@@ -1,12 +1,13 @@
 # JCS_OrderEvent
 
-Execute an operation in order with interval of time.
+Execute an operation in order with the interval of time.
 
 ## Variables
 
 | Name           | Description              |
 |:---------------|:-------------------------|
 | IntervalTime   | Time for each execution. |
+| mDeltaTimeType | Type of the delta time.  |
 | unityExecution | Unity execution event.   |
 
 ## Functions

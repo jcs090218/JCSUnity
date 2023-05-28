@@ -1,6 +1,6 @@
 # JCS_2DJumpAction
 
-Action does the AI jump action in 2D.
+An action does the AI jump action in 2D.
 
 ## Variables
 
@@ -10,6 +10,7 @@ Action does the AI jump action in 2D.
 | mPossibility          | Possiblity to active this action.                    |
 | mTimeZone             | Time to do one jump.                                 |
 | mAdjustTimeZone       | Time that will randomize the Time Zone value.        |
+| mDeltaTimeType        | Type of the delta time.                              |
 | mStartRandomJumpForce | Generate a random jump force at the initilaize time. |
 | mRandomJumpForceRange | Addition value to the jump force.                    |
 | mLiveObjectAnimator   | Live object animation.                               |

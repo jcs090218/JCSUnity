@@ -11,6 +11,7 @@ Timer system using sprite 0 to 9.
 | mCurrentMinutes    | Current minutes in the game.           |
 | mCurrentSeconds    | Current seconds in the game.           |
 | mRoundUp           | Do round up instead of round down.     |
+| mDeltaTimeType     | Type of the delta time.                |
 | mTimeText0         | Time text sprite 0.                    |
 | mTimeText1         | Time text sprite 1.                    |
 | mTimeText2         | Time text sprite 2.                    |

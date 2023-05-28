@@ -33,14 +33,9 @@ namespace JCSUnity
         // timer for connection.
         private float mConnectTimer = 0;
 
-        [Tooltip("Type of the delta time.")]
-        [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
-
         /* Setter & Getter */
 
         public string NextLevel() { return this.mNextLevel; }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -90,7 +85,7 @@ namespace JCSUnity
         private void DoTimeOut()
         {
             // add up timer.
-            mConnectTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mConnectTimer += Time.unscaledDeltaTime;
 
             // check if connection time out?
             if (mConnectTimer < mConnectTimeOut)

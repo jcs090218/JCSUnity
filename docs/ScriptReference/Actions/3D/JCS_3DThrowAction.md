@@ -1,6 +1,6 @@
 # JCS_3DThrowAction
 
-Thorws a gameobject toward another gameobject.
+Throws a game object toward another game object.
 
 ## Variables
 
@@ -8,6 +8,7 @@ Thorws a gameobject toward another gameobject.
 |:----------------|:--------------------------|
 | mActive         | Is this component active? |
 | mGravityProduct | Mulitply the gravity.     |
+| mDeltaTimeType  | Type of the delta time.   |
 
 ## Functions
 

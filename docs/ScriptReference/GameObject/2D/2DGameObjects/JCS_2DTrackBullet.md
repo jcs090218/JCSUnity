@@ -1,6 +1,6 @@
 # JCS_2DTrackBullet
 
-Bullet that will track the object.
+The bullet tracks the object.
 
 ## Variables
 

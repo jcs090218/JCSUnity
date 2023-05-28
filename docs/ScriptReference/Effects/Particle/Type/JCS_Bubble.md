@@ -4,8 +4,9 @@ The component make the bubble movement.
 
 ## Variables
 
-| Name         | Description            |
-|:-------------|:-----------------------|
-| mDoAction    | Do the effect?         |
-| mShakeMargin | How intense it shakes? |
-| mShakeSpeed  | How fast it moves?     |
+| Name           | Description             |
+|:---------------|:------------------------|
+| mDoAction      | Do the effect?          |
+| mShakeMargin   | How intense it shakes?  |
+| mShakeSpeed    | How fast it moves?      |
+| mDeltaTimeType | Type of the delta time. |

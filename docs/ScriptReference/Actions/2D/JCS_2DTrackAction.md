@@ -11,6 +11,7 @@ Track a gameobject on 2D.
 | mMoveFriction    | Invers of speed, if smooth track is enable use this. |
 | mMoveSpeed       | If smooth track is disable use this.                 |
 | mAccpetRange     | Accept range on hard track.                          |
+| mDeltaTimeType   | Type of the delta time.                              |
 | mHardOnX         | Hard track on x-axis.                                |
 | mHardOnY         | Hard track on y-axis.                                |
 | mHardOnZ         | Hard track on z-axis.                                |

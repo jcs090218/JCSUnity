@@ -13,6 +13,7 @@ Action does the AI walk action in 2D.
 | mPossibility          | Possiblity to active this action.                                    |
 | mTimeZone             | Time to do one walk.                                                 |
 | mAdjustTimeZone       | Time that will randomize the Time Zone value.                        |
+| mDeltaTimeType        | Type of the delta time.                                              |
 | mStartRandomWalkSpeed | Generate a random walk speed at the initilaize time.                 |
 | mRandomWalkSpeedRange | Addition value to the walk speed.                                    |
 | mMadEffect            | If get mad will start tracking the object that make this object mad. |

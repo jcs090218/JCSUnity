@@ -1,6 +1,6 @@
 # JCS_DeltaNumber
 
-System that control 0-9 number sprites and create a counter effect.
+System that controls 0-9 number sprites and creates a counter effect.
 
 ## Variables
 
@@ -23,6 +23,7 @@ System that control 0-9 number sprites and create a counter effect.
 | mClearEmptyLeftZero   | Clear all the empty zero from the left.       |
 | mVisibleOnZero        | Is visible when is zero?                      |
 | mTextAlign            | Align side.                                   |
+| mDeltaTimeType        | Type of the delta time.                       |
 | mMaxNumber            | Maxinum number.                               |
 | mMinNumber            | Mininum number.                               |
 | mDeltaToCurrentNumber | Show each digit between the number animation. |

@@ -1,6 +1,6 @@
 # JCS_MixDamageTextPool
 
-Mixed dmaage text pool object.
+Mixed damage text pool object.
 
 ## Variables
 
@@ -8,6 +8,7 @@ Mixed dmaage text pool object.
 |:----------------|:-------------------------|
 | mSpacingPerText | Spacing per damage text. |
 | mTimePerSpawn   | Time per spawns.         |
+| mDeltaTimeType  | Type of the delta time.  |
 | mHitSound       | Sound when spawns.       |
 | mZiggeEffect    | Do the zigge effect?     |
 | mRightAlign     | Right align value.       |

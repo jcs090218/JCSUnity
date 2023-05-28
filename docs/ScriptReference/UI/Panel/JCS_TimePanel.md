@@ -1,6 +1,6 @@
 # JCS_TimePanel
 
-In certain time will do certain panel action.
+In a period of time; will do certain panel's action.
 
 ## Variables
 
@@ -10,6 +10,7 @@ In certain time will do certain panel action.
 | mActiveOnAwake   | Active on awake.                          |
 | mPanelActionType | Action this panel will do. default : hide |
 | mDoActionTime    | How long does the panel do the action.    |
+| mDeltaTimeType   | Type of the delta time.                   |
 | mPlayPanelSound  | Play panel sound?                         |
 
 ## Functions

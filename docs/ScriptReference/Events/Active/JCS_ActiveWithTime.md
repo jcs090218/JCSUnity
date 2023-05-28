@@ -1,10 +1,11 @@
 # JCS_ActiveWithTime
 
-Active the gameobject after a certain time.
+Active the game object after a certain time.
 
 ## Variables
 
-| Name        | Description                          |
-|:------------|:-------------------------------------|
-| GameObjects | GameObjects that take effect.        |
-| time        | Time before inactive the gameobject. |
+| Name           | Description                          |
+|:---------------|:-------------------------------------|
+| GameObjects    | GameObjects that take effect.        |
+| time           | Time before inactive the gameobject. |
+| mDeltaTimeType | Type of the delta time.              |

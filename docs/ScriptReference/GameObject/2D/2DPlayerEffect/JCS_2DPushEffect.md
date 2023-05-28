@@ -4,7 +4,8 @@ Push effect that pushes the player.
 
 ## Variables
 
-| Name       | Description                               |
-|:-----------|:------------------------------------------|
-| mDirection | Direction this effect pushes the player." |
-| mPushSpeed | How many force to push.                   |
+| Name           | Description                               |
+|:---------------|:------------------------------------------|
+| mDirection     | Direction this effect pushes the player." |
+| mPushSpeed     | How many force to push.                   |
+| mDeltaTimeType | Type of the delta time.                   |

@@ -12,6 +12,7 @@ Handle frame by frame animation in the simple way.
 | Active                         | Current animaion playing?                                |
 | PlayOnAwake                    | Play the animation on awake time?                        |
 | Loop                           | Does the animation loop?                                 |
+| mDeltaTimeType                 | Type of the delta time.                                  |
 | NullSprite                     | Sprite displayed when the animation stopped.             |
 | NullSpriteAfterDonePlayingAnim | Set the sprite to null after done playing the animation. |
 | FramePerSec                    | FPS for the animation to play.                           |

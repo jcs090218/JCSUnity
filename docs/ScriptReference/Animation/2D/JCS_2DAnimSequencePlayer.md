@@ -4,12 +4,13 @@ Play a sequence of animation by time.
 
 ## Variables
 
-| Name         | Description                         |
-|:-------------|:------------------------------------|
-| mActive      | Active this component?              |
-| mLoop        | Loop the sequence?                  |
-| mTimePerAnim | How many time to play an animation. |
-| mAnimations  | Sequence of animations that played. |
+| Name           | Description                         |
+|:---------------|:------------------------------------|
+| mActive        | Active this component?              |
+| mLoop          | Loop the sequence?                  |
+| mTimePerAnim   | How many time to play an animation. |
+| mDeltaTimeType | Type of the delta time.             |
+| mAnimations    | Sequence of animations that played. |
 
 ## Functions
 

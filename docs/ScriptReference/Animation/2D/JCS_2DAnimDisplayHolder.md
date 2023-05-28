@@ -4,9 +4,10 @@ Hold an animation state for few seconds.
 
 ## Variables
 
-| Name      | Description                      |
-|:----------|:---------------------------------|
-| mHoldTime | How long to hold this animation. |
+| Name           | Description                      |
+|:---------------|:---------------------------------|
+| mHoldTime      | How long to hold this animation. |
+| mDeltaTimeType | Type of the delta time.          |
 
 ## Functions
 

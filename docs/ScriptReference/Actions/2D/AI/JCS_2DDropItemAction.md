@@ -1,6 +1,6 @@
 # JCS_2DDropItemAction
 
-Action makes the gameobject drops item.
+Action makes the game object drops items.
 
 ## Variables
 
@@ -10,3 +10,4 @@ Action makes the gameobject drops item.
 | mDropByTime      | Drop by time.                        |
 | mTimePerDrop     | Time to drop one time.               |
 | mRandomTimeRange | Effect the time every time it drops. |
+| mDeltaTimeType   | Type of the delta time.              |

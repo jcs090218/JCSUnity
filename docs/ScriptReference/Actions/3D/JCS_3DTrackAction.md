@@ -1,6 +1,6 @@
 # JCS_3DTrackAction
 
-Track a gameobject in 3D space.
+Track a game object in 3D space.
 
 ## Variables
 
@@ -8,3 +8,4 @@ Track a gameobject in 3D space.
 |:-----------------|:-----------------------------|
 | mTargetTransform | Transform we want to target. |
 | mMoveFriction    | Invers of speed.             |
+| mDeltaTimeType   | Type of the delta time.      |

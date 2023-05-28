@@ -1,6 +1,6 @@
 # JCS_3DLiquidBar
 
-3D liquid bar, do thing like health bar, mana ber, etc.
+3D liquid bar; does like the health bar, mana bar, etc.
 
 ## Variables
 

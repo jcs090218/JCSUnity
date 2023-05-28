@@ -1,12 +1,13 @@
 # JCS_DestroyAnimBackForthEvent
 
-Destroy the gameobject after plays the animation back and forth once.
+Destroy the game object after playing the animation back and forth once.
 
 ## Variables
 
-| Name       | Description                                               |
-|:-----------|:----------------------------------------------------------|
-| mPlayTimes | How many times to plays back and forth before destorying. |
+| Name           | Description                                               |
+|:---------------|:----------------------------------------------------------|
+| mPlayTimes     | How many times to plays back and forth before destorying. |
+| mDeltaTimeType | Type of the delta time.                                   |
 
 ## Functions
 

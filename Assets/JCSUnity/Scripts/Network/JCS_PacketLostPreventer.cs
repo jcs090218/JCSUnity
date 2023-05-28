@@ -39,16 +39,11 @@ namespace JCSUnity
 
         private HashSet<short> mRespondPacketIds = new HashSet<short>();
 
-        [Tooltip("Type of the delta time.")]
-        [SerializeField]
-        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
-
         /* Setter & Getter */
 
         public List<JCS_Packet> Packets { get { return this.mWaitingPackets; } set { this.mWaitingPackets = value; } }
         public List<short> PacketIds { get { return this.mWaitingPacketIds; } set { this.mWaitingPacketIds = value; } }
         public HashSet<short> RespondPacketIds { get { return this.mRespondPacketIds; } set { this.mRespondPacketIds = value; } }
-        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -169,7 +164,7 @@ namespace JCSUnity
                 !JCS_NetworkSettings.GetGameSocket().IsConnected())
                 return;
 
-            mResendTimer += JCS_Time.DeltaTime(mDeltaTimeType);
+            mResendTimer += Time.unscaledDeltaTime;
 
             if (mResendTimer < mResendTime)
                 return;

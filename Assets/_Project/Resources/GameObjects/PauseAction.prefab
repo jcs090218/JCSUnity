@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDestroyTime: 10
+  mDeltaTimeType: 0
   mDestroyWithAlphaEffect: 1
   mFadeObjects: []
   mFadeTime: 1

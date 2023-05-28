@@ -11,6 +11,7 @@ Scale the object to a specific value.
 | mScaleZ                   | Do the scale on z axis.                              |
 | mScaleValue               | How much it scales on each axis.                     |
 | mScaleFriction            | How fast it scales on each axis.                     |
+| mDeltaTimeType            | Type of the delta time.                              |
 | mAutoAddEvent             | Add event to event trigger system.                   |
 | mActiveEventTriggerType   | Event trigger type to active the the slide effect.   |
 | mDeactiveEventTriggerType | Event trigger type to deactive the the slide effect. |

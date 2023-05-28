@@ -4,7 +4,8 @@ Moving tile usually as a background.
 
 ## Variables
 
-| Name       | Description               |
-|:-----------|:--------------------------|
-| mMoveSpeed | How fast this tile moves? |
-| mIsYAxis   | Move in y axis.           |
+| Name           | Description               |
+|:---------------|:--------------------------|
+| mMoveSpeed     | How fast this tile moves? |
+| mIsYAxis       | Move in y axis.           |
+| mDeltaTimeType | Type of the delta time.   |

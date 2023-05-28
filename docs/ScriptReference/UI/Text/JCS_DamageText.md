@@ -11,6 +11,7 @@ Damage text on the mob.
 | mSpacing               | Spacing between each digit.                                                  |
 | mFadeSpeed             | Fade How fast the damage text fade out.                                      |
 | mBaseOrderLayer        | Scene Layer in the render queue.                                             |
+| mDeltaTimeType         | Type of the delta time.                                                      |
 | mCapitalizeLetter      | The first letter will be bigger then other base on the scale variable below. |
 | mCapitalLetterScale    | Scale of the first digit.                                                    |
 | mWaveZiggeEffect       | Each digit will go up and down in order.                                     |

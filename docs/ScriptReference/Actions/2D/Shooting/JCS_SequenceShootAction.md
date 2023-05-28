@@ -15,6 +15,7 @@ Shoot in Sequence act like damage text. (sequence)
 | mTimeDelayAfterShoot | Time delay after a shoot.                           |
 | mShootGapEffect      | Shoot with gap?                                     |
 | mShootGap            | Gap distance.                                       |
+| mDeltaTimeType       | Type of the delta time.                             |
 
 ## Functionsq
 

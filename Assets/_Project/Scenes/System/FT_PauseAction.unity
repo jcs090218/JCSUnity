@@ -403,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mResendTime: 0.001
   mWaitingPacketIds: 
+  mDeltaTimeType: 0
 --- !u!114 &668007225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,6 +530,7 @@ MonoBehaviour:
   mGameCamColor: {r: 1, g: 0, b: 0, a: 1}
   mFollowing: 1
   mPositionOffset: {x: 0, y: 2, z: -10}
+  mDeltaTimeType: 0
   mSmoothTrack: 1
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
@@ -835,6 +837,7 @@ MonoBehaviour:
   - {fileID: 4763017317608576, guid: 288d379744df805498d5300ee9ac3835, type: 3}
   mSpawnTime: 1
   mRandomizeSpawnTime: 0.7
+  mDeltaTimeType: 0
   mRandPosX: 0
   mRandPosRangeX: 1
   mRandPosY: 0
@@ -1021,8 +1024,8 @@ MonoBehaviour:
   mTestWithKey: 1
   mToggleGamePause: 112
   mPauseActions: []
-  mResizePauseActionListTime: 20
   mDefaultTimeScale: 1
+  mResizePauseActionListTime: 20
   mAsymp: 0
   mFriction: 0.2
 --- !u!114 &1829456409

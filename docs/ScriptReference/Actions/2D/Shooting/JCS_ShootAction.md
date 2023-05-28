@@ -11,6 +11,7 @@ Action that shoot bullets.
 | mSpanwPointOffset       | Offset position to spawn point.                                                                  |
 | mDefaultHit             | Default hit active to live object.                                                               |
 | mShootCount             | How many bullet everytime active shoot event.                                                    |
+| mDeltaTimeType          | Type of the delta time.                                                                          |
 | mShootKeyCode           | Shoot keycode.                                                                                   |
 | mMouseButton            | Mouse button to shoot.                                                                           |
 | mKeyAct                 | Key action type.                                                                                 |

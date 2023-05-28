@@ -10,6 +10,7 @@ Sequently toggle the panels action.
 | mSlideButtons       | Sequence of buttons with slide effect component with in the tranform.                                            |
 | mAreaEffects        | Area that also control with this, please do it manully. (only in children)                                       |
 | mSpaceTime          | Time to active one button animation.                                                                             |
+| mDeltaTimeType      | Type of the delta time.                                                                                          |
 | mExitByNoOverGUI    | Exit when mouse is not on this panel.                                                                            |
 | mActiveClip         | Audio when active the animation the outer panel.                                                                 |
 | mDeactiveClip       | Audio when exit the animation the outer panel.                                                                   |

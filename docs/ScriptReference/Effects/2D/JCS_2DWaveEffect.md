@@ -11,6 +11,7 @@ Effect that make wave effect on the gameobject.
 | mFrequency        | How fast per period in wave. |
 | mEffectAxis       | Axis the wave move on.       |
 | mEffectTime       | How long the effect takes.   |
+| mDeltaTimeType    | Type of the delta time.      |
 
 ## Functions
 

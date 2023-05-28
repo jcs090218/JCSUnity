@@ -30,6 +30,6 @@ public class FT_Collide : MonoBehaviour
     
     private void Update() 
     {
-        print(JCS_Physics.JcsOnTriggerCheck(mCharacterController, mBoxCollider));
+        print(JCS_Physics.OnTriggerCheck(mCharacterController, mBoxCollider));
     }
 }

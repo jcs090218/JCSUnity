@@ -40,6 +40,12 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_PauseManager) **")]
 
+        [Tooltip("The default time scale.")]
+        [SerializeField]
+        private float mDefaultTimeScale = 1.0f;
+
+        private float mTargetTimeScale = 1.0f;
+
         [Tooltip(@"Time to resize the pause action list, in seconds.
 ATTENTION: this will take certain of performance depends on the pause 
 object you have in the list.")]
@@ -49,14 +55,6 @@ object you have in the list.")]
 
         // resize timer.
         private float mResizePauseActionListTimer = 0;
-
-        [Header("** Runtime Variables (JCS_PauseManager) **")]
-
-        [Tooltip("The default time scale.")]
-        [SerializeField]
-        private float mDefaultTimeScale = 1.0f;
-
-        private float mTargetTimeScale = 1.0f;
 
         [Header("- Asymptotic (JCS_PauseManager)")]
 

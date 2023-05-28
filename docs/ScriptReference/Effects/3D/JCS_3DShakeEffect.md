@@ -10,6 +10,7 @@ Effect that shake the transform in 3D.
 | RepeatOverride | Override the effect even when the effect is already taken. |
 | ShakeTime      | How long it shakes.                                        |
 | ShakeMargin    | How intense it shakes.                                     |
+| mDeltaTimeType | Type of the delta time.                                    |
 | ShakeOnX       | Do shake on x axis.                                        |
 | ShakeOnY       | Do shake on y axis.                                        |
 | ShakeOnZ       | Do shake on z axis.                                        |

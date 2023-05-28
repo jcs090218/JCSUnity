@@ -4,10 +4,11 @@ Effect that fade the sound.
 
 ## Variables
 
-| Name         | Description    |
-|:-------------|:---------------|
-| mFadeOutTime | Fade out time. |
-| mFadeInTime  | Fade in time.  |
+| Name           | Description             |
+|:---------------|:------------------------|
+| mFadeOutTime   | Fade out time.          |
+| mFadeInTime    | Fade in time.           |
+| mDeltaTimeType | Type of the delta time. |
 
 ## Functions
 

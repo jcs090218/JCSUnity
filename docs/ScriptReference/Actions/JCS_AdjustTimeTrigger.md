@@ -1,6 +1,6 @@
 # JCS_AdjustTimeTrigger
 
-Trigger a event while the time is reached.
+Trigger an event while the time is reached.
 
 ## Variables
 
@@ -9,6 +9,7 @@ Trigger a event while the time is reached.
 | mActive         | Is this component active?"               |
 | mTimeZone       | Time to trigger the event.               |
 | mAdjustTimeZone | Time that will randomly affect the time. |
+| mDeltaTimeType  | Type of the delta time.                  |
 | mUnityEvents    | Event that will be triggered.            |
 
 ## Functions

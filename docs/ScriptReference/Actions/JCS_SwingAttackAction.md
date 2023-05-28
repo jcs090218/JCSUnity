@@ -12,6 +12,7 @@ Action to do swing attack.
 | mAtkAnimSpawnTrans     | Transform attack animation will spawn, default will be the collider attah above. |
 | mOrderLayer            | What sorting layer you want the skill to be render?                              |
 | mLoopTimes             | How many time you want the animation to loops?                                   |
+| mDeltaTimeType         | Type of the delta time.                                                          |
 | mAsSamePosition        | The same position as the spawn transform's position.                             |
 | mAsSameRotation        | The same rotation as the spawn transform's rotation.                             |
 | mAsSameScale           | The same scale as the spawn transform's scale.                                   |

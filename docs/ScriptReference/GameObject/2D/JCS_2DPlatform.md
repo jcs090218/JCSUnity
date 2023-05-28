@@ -8,3 +8,4 @@ Platfrom that player could stand on.
 |:------------------|:----------------------------------------------------------------------|
 | mPlatformCollider | Platform's collider that player stand on."                            |
 | mPlatformTrigger  | Platform's trigger decide weather or not to active platform collider. |
+| mDeltaTimeType    | Type of the delta time.                                               |

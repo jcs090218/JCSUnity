@@ -13,3 +13,4 @@ Do the circle action.
 | mMoveSpeed       | How fast the force apply. |
 | mTurnSpeed       | How fast it rotate.       |
 | mRotateDirection | Rotate direction.         |
+| mDeltaTimeType   | Type of the delta time.   |

@@ -17,6 +17,7 @@ Action does the AI fly action on 2D.
 | mPossibility        | Possiblity to active this action.                                         |
 | mTimeZone           | Time to do one Fly.                                                       |
 | mAdjustTimeZone     | Time that will randomize the Time Zone value.                             |
+| mDeltaTimeType      | Type of the delta time.                                                   |
 | mMinHeight          | Lowest height the object can go.                                          |
 | mMaxHeight          | Highest height the object can go.                                         |
 | mMadEffect          | If get mad will start tracking the object that make this object mad.      |

@@ -1,11 +1,12 @@
 # JCS_OneJump
 
-Effect makes the item jumps and spreads.
+The effect makes the item jumps and spreads.
 
 ## Variables
 
 | Name                | Description                                                                  |
 |:--------------------|:-----------------------------------------------------------------------------|
+| mDeltaTimeType      | Type of the delta time.                                                      |
 | mJumpForce          | How many force to apply on jump?                                             |
 | mMoveForce          | How fast this item moves?                                                    |
 | mItemGravity        | Item gravity.                                                                |
