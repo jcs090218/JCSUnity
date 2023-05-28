@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_ShootAction.cs $
  * $Date: $
  * $Revision: $

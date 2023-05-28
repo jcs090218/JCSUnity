@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DLadder.cs $
  * $Date: $
  * $Revision: $

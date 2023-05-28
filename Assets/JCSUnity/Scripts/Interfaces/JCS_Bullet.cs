@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_Bullet.cs $
  * $Date: $
  * $Revision: $

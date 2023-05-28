@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_2DInitLookByTypeAction.cs $
  * $Date: $
  * $Revision: $

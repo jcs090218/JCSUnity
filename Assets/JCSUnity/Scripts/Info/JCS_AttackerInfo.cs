@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_AttackerInfo.cs $
  * $Date: $
  * $Revision: $
