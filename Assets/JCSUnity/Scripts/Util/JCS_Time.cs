@@ -24,10 +24,20 @@ namespace JCSUnity
             {
                 case JCS_DeltaTimeType.DELTA_TIME:
                     return Time.deltaTime;
-                case JCS_DeltaTimeType.UNSCALED_DELTA_TIME:
-                    return Time.unscaledDeltaTime;
+                case JCS_DeltaTimeType.CAPTURE_DELTA_TIME:
+                    return Time.captureDeltaTime;
                 case JCS_DeltaTimeType.FIXED_DELTA_TIME:
                     return Time.fixedDeltaTime;
+                case JCS_DeltaTimeType.FIXED_UNSCALED_DELTA_TIME:
+                    return Time.fixedUnscaledTime;
+                case JCS_DeltaTimeType.MAXIMUM_DELTA_TIME:
+                    return Time.maximumDeltaTime;
+                case JCS_DeltaTimeType.MAXIMUM_PARTICLE_DELTA_TIME:
+                    return Time.maximumParticleDeltaTime;
+                case JCS_DeltaTimeType.SMOOTH_DELTA_TIME:
+                    return Time.smoothDeltaTime;
+                case JCS_DeltaTimeType.UNSCALED_DELTA_TIME:
+                    return Time.unscaledDeltaTime;
             }
 
             return 0.0f;
