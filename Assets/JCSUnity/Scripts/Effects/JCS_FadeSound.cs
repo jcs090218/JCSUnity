@@ -33,6 +33,10 @@ namespace JCSUnity
         [SerializeField]
         private float mFadeOutTime = 1.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.UNSCALED_DELTA_TIME;
+
         [Tooltip("Fade in time.")]
         [SerializeField]
         private float mFadeInTime = 1.0f;
@@ -44,6 +48,7 @@ namespace JCSUnity
 
         public void SetFadeOutTime(float t) { this.mFadeOutTime = t; }
         public void SetFadeInTime(float t) { this.mFadeInTime = t; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public AudioSource GetAudioSource() { return this.mAudioSource; }
 
@@ -179,7 +184,7 @@ namespace JCSUnity
             {
                 case JCS_FadeType.FADE_OUT:
                     {
-                        mAudioSource.volume -= mRecordVolume / mFadeOutTime * Time.deltaTime;
+                        mAudioSource.volume -= mRecordVolume / mFadeOutTime * JCS_Time.DeltaTime(mDeltaTimeType);
 
                         if (mAudioSource.volume <= mTargetVolume)
                         {
@@ -190,7 +195,7 @@ namespace JCSUnity
                     break;
                 case JCS_FadeType.FADE_IN:
                     {
-                        mAudioSource.volume += mRecordVolume / mFadeInTime * Time.deltaTime;
+                        mAudioSource.volume += mRecordVolume / mFadeInTime * JCS_Time.DeltaTime(mDeltaTimeType);
 
                         if (mAudioSource.volume >= mTargetVolume)
                         {

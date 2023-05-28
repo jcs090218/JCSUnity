@@ -29,7 +29,8 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_SplitSpawnEvent) **")]
 
         [Tooltip("How many object to spawn?")]
-        [SerializeField] [Range(1, 50)]
+        [SerializeField]
+        [Range(1, 50)]
         private int mObjectsToSpawn = 1;
 
         [Header("- Trigger Conditions")]
@@ -42,11 +43,12 @@ built-in Unity Engine.")]
         [Tooltip("Spawn once after delay time.")]
         [SerializeField]
         private bool mSpawnWhileDelay = false;
-        
+
         [Tooltip("Delay time.")]
-        [SerializeField] [Range(0.1f, 10.0f)]
+        [SerializeField]
+        [Range(0.1f, 10.0f)]
         private float mDelayTime = 2.0f;
-        
+
         [Tooltip("Spawn periodically be delay time.")]
         [SerializeField]
         private bool mDelayContinuous = false;
@@ -57,6 +59,10 @@ built-in Unity Engine.")]
         // timer to time the delay time.
         private float mTimer = 0;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Random Spawn Offset")]
 
         [Tooltip("Enable random spawn position offset effect on x axis?")]
@@ -64,7 +70,8 @@ built-in Unity Engine.")]
         private bool mRandPosX = false;
 
         [Tooltip("Randomize position on x axis.")]
-        [SerializeField] [Range(0, 10)]
+        [SerializeField]
+        [Range(0, 10)]
         private float mRandPosRangeX = 1f;
 
         [Tooltip("Enable random spawn position offset effect on y axis?")]
@@ -72,7 +79,8 @@ built-in Unity Engine.")]
         private bool mRandPosY = false;
 
         [Tooltip("Randomize position on y axis.")]
-        [SerializeField] [Range(0, 10)]
+        [SerializeField]
+        [Range(0, 10)]
         private float mRandPosRangeY = 1f;
 
         [Tooltip("Enable random spawn position offset effect on z axis?")]
@@ -80,7 +88,8 @@ built-in Unity Engine.")]
         private bool mRandPosZ = false;
 
         [Tooltip("Randomize position on z axis.")]
-        [SerializeField] [Range(0, 10)]
+        [SerializeField]
+        [Range(0, 10)]
         private float mRandPosRangeZ = 1f;
 
         [Header("- Random Degree Effects")]
@@ -90,7 +99,8 @@ built-in Unity Engine.")]
         private bool mRandDegreeX = false;
 
         [Tooltip("Randomize rotation on x axis.")]
-        [SerializeField] [Range(0, 360)]
+        [SerializeField]
+        [Range(0, 360)]
         private float mDegreeValueX = 0;
 
         [Tooltip("Enable random degree effect on y axis?")]
@@ -98,7 +108,8 @@ built-in Unity Engine.")]
         private bool mRandDegreeY = false;
 
         [Tooltip("Randomize rotation on y axis.")]
-        [SerializeField] [Range(0, 360)]
+        [SerializeField]
+        [Range(0, 360)]
         private float mDegreeValueY = 0;
 
         [Tooltip("Enable random degree effect on z axis?")]
@@ -106,10 +117,13 @@ built-in Unity Engine.")]
         private bool mRandDegreeZ = false;
 
         [Tooltip("Randomize rotation on z axis.")]
-        [SerializeField] [Range(0, 360)]
+        [SerializeField]
+        [Range(0, 360)]
         private float mDegreeValueZ = 0;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -246,8 +260,8 @@ built-in Unity Engine.")]
                 // apply random rotation
                 spawnTrans.transform.eulerAngles = RandDegree(spawnTrans.eulerAngles);
 
-                JCS_ApplyDamageTextToLiveObjectAction adtaThis = this.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
-                JCS_ApplyDamageTextToLiveObjectAction adtaSpawned = spawnTrans.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
+                var adtaThis = this.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
+                var adtaSpawned = spawnTrans.GetComponent<JCS_ApplyDamageTextToLiveObjectAction>();
                 if (adtaThis != null && adtaSpawned != null)
                 {
                     // copy the apply damage text information to spawned object!
@@ -273,7 +287,7 @@ built-in Unity Engine.")]
                     return;
             }
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTimer < mDelayTime)
                 return;

@@ -42,6 +42,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SlideEffect[] mAreaEffects = null;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Spacing")]
 
         [Tooltip("Time to active one button animation.")]
@@ -77,6 +81,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public float SpaceTime { get { return this.mSpaceTime; } set { this.mSpaceTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
         public AudioClip DeactiveClip { get { return this.mDeactiveClip; } set { this.mDeactiveClip = value; } }
@@ -190,7 +195,7 @@ namespace JCSUnity
             {
                 mSoundPlayer.PlayOneShot(mActiveClip);
 
-                mSpaceTimer += Time.deltaTime;
+                mSpaceTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                 if (mSpaceTime < mSpaceTimer)
                 {

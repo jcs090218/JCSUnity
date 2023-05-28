@@ -56,12 +56,18 @@ namespace JCSUnity
 
         private float mTime = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("NOTE: If the effect object is camera, plz fill the camera in here.")]
 
         [SerializeField]
         private JCS_2DCamera mJCS_2DCamera = null;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -124,7 +130,7 @@ namespace JCSUnity
                 this.mOrigin.y = mJCS_2DCamera.GetTargetTransform().position.y;
             }
 
-            mTime += Time.deltaTime;
+            mTime += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mEffectTime > mTime)
             {

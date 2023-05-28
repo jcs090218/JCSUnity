@@ -20,6 +20,18 @@ namespace JCSUnity
     {
         /* Variables */
 
+#if UNITY_EDITOR
+        [Header("** Helper Variables (JCS_PauseManager) **")]
+
+        [Tooltip("Test this module?")]
+        [SerializeField]
+        private bool mTestWithKey = false;
+
+        [Tooltip("Key to toggle game pause/unpause.")]
+        [SerializeField]
+        private KeyCode mToggleGamePause = KeyCode.P;
+#endif
+
         [Header("** Check Variables (JCS_PauseManager) **")]
 
         [Tooltip("List of pause action in the scene.")]
@@ -38,10 +50,32 @@ object you have in the list.")]
         // resize timer.
         private float mResizePauseActionListTimer = 0;
 
+        [Header("** Runtime Variables (JCS_PauseManager) **")]
+
+        [Tooltip("The default time scale.")]
+        [SerializeField]
+        private float mDefaultTimeScale = 1.0f;
+
+        private float mTargetTimeScale = 1.0f;
+
+        [Header("- Asymptotic (JCS_PauseManager)")]
+
+        [Tooltip("Pause and unpause with asymptotic transition.")]
+        [SerializeField]
+        private bool mAsymp = false;
+
+        [Tooltip("How fast the asymptotic transition?")]
+        [SerializeField]
+        [Range(0.001f, 30.0f)]
+        private float mFriction = 0.2f;
+
         /* Setter & Getter */
 
         public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
         public float ResizePauseActionListTime { get { return this.mResizePauseActionListTime; } set { this.mResizePauseActionListTime = value; } }
+        public float DefaultTimeScale { get { return this.mDefaultTimeScale; } set { this.mDefaultTimeScale = value; } }
+        public bool Asymp { get { return this.mAsymp; } set { this.mAsymp = value; } }
+        public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
 
         /* Functions */
 
@@ -52,8 +86,28 @@ object you have in the list.")]
 
         private void Update()
         {
+#if UNITY_EDITOR
+            TestPauseGame();
+#endif
+
             ResizePauseActionListPeriodically();
+            DoAsymp();
         }
+
+#if UNITY_EDITOR
+        private void TestPauseGame()
+        {
+            if (!mTestWithKey)
+                return;
+
+            if (Input.GetKeyDown(mToggleGamePause))
+            {
+                var gm = JCS_GameManager.instance;
+
+                gm.GAME_PAUSE = !gm.GAME_PAUSE;
+            }
+        }
+#endif
 
         /// <summary>
         /// Add the pause action to the list of pause action list, 
@@ -62,6 +116,32 @@ object you have in the list.")]
         public void AddActionToList(JCS_PauseAction pa)
         {
             mPauseActions.Add(pa);
+        }
+
+        /// <summary>
+        /// Pause the game.
+        /// </summary>
+        public void Pause()
+        {
+            if (mAsymp)
+                mTargetTimeScale = 0.0f;
+            else
+                Time.timeScale = 0.0f;
+
+            PauseTheWholeGame(true);
+        }
+
+        /// <summary>
+        /// Unpause the game.
+        /// </summary>
+        public void Unpause()
+        {
+            if (mAsymp)
+                mTargetTimeScale = mDefaultTimeScale;
+            else
+                Time.timeScale = mDefaultTimeScale;
+
+            PauseTheWholeGame(false);
         }
 
         /// <summary>
@@ -110,6 +190,17 @@ object you have in the list.")]
 
             // reset timer.
             mResizePauseActionListTimer = 0;
+        }
+
+        /// <summary>
+        /// Do asymptotic pause/unpase transition.
+        /// </summary>
+        private void DoAsymp()
+        {
+            if (!mAsymp)
+                return;
+
+            Time.timeScale += (mTargetTimeScale - Time.timeScale) / mFriction * Time.unscaledDeltaTime;
         }
     }
 }

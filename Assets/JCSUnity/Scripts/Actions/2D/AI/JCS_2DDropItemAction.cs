@@ -31,11 +31,13 @@ namespace JCSUnity
         private bool mDropByTime = false;
 
         [Tooltip("Time to drop one time.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mTimePerDrop = 0.0f;
 
         [Tooltip("Effect the time every time it drops.")]
-        [SerializeField] [Range(0.0f, 5.0f)]
+        [SerializeField]
+        [Range(0.0f, 5.0f)]
         private float mRandomTimeRange = 0.0f;
 
         // a time combine random + timer per drop value.
@@ -47,13 +49,17 @@ namespace JCSUnity
         // trigger to re-calculate the drop time
         private bool mDroped = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
-        public bool DropWhenDies { get { return this.mDropWhenDies; } set {this.mDropWhenDies = value; } }
-        public bool DropByTime { get { return this.mDropByTime; } set {this.mDropByTime = value; } }
-        public float TimePerDrop { get { return this.mTimePerDrop; } set {this.mTimePerDrop = value; } }
-        public float RandomTimeRange { get { return this.mRandomTimeRange; } set {this.mRandomTimeRange = value; } }
-
+        public bool DropWhenDies { get { return this.mDropWhenDies; } set { this.mDropWhenDies = value; } }
+        public bool DropByTime { get { return this.mDropByTime; } set { this.mDropByTime = value; } }
+        public float TimePerDrop { get { return this.mTimePerDrop; } set { this.mTimePerDrop = value; } }
+        public float RandomTimeRange { get { return this.mRandomTimeRange; } set { this.mRandomTimeRange = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -97,7 +103,7 @@ namespace JCSUnity
 
             ResetTime();
 
-            mDropTimer += Time.deltaTime;
+            mDropTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDropRealTime < mDropTimer)
             {

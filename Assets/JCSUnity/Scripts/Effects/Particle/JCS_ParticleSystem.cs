@@ -76,6 +76,10 @@ namespace JCSUnity
         [Range(-180, 179)]
         private float mWindSpeed = 0;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Position")]
 
         [Tooltip("Randomize the X position. (Default : 0)")]
@@ -188,6 +192,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         public JCS_Particle Particle { get { return this.mParticle; } set { this.mParticle = value; } }
         public int Density { get { return this.mDensity; } set { this.mDensity = value; } }
         public float WindSpeed { get { return this.mWindSpeed; } set { this.mWindSpeed = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool AlwaysTheSameScale { get { return this.mAlwaysTheSameScale; } set { this.mAlwaysTheSameScale = value; } }
         public bool SetChild { get { return this.mSetChild; } set { this.mSetChild = value; } }
         public bool SetToSamePositionWhenActive { get { return this.mSetToSamePositionWhenActive; } set { this.mSetToSamePositionWhenActive = value; } }
@@ -385,7 +390,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             if (mParticle == null)
                 return;
 
-            mSequenceTimer += Time.deltaTime;
+            mSequenceTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // NOTE(jenchieh): magic number...
             float time = JCS_Random.Range(0.5f, 1.0f);
@@ -479,7 +484,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             float newTimer = mTimers.at(processIndex);
 
             // add time to timer
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if we can do the particle or not
             if (mTimeAParticle < newTimer)

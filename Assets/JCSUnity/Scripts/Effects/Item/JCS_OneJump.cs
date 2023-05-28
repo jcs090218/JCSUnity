@@ -31,6 +31,10 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_OneJump) **")]
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("How many force to apply on jump?")]
         [SerializeField]
         private float mJumpForce = 10.0f;
@@ -67,6 +71,8 @@ just stop there.")]
         public Rigidbody GetRigidbody() { return this.mRigidbody; }
         public Collider GetFixCollider() { return this.mFixCollider; }
 
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
+
         public bool BounceBackfromWall { get { return this.mBounceBackfromWall; } set { this.mBounceBackfromWall = value; } }
         public float BounceFriction { get { return this.mBounceFriction; } set { this.mBounceFriction = value; } }
 
@@ -94,8 +100,10 @@ just stop there.")]
             if (!mEffect)
                 return;
 
-            this.transform.position += mVelocity * Time.deltaTime;
-            mVelocity.y += -JCS_GameConstant.GRAVITY * Time.deltaTime * mItemGravity;
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
+            this.transform.position += mVelocity * dt;
+            mVelocity.y += -JCS_GameConstant.GRAVITY * dt * mItemGravity;
         }
 
         private void OnTriggerEnter(Collider other)

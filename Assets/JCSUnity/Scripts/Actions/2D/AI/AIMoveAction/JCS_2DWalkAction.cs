@@ -38,29 +38,35 @@ namespace JCSUnity
         private float mWalkSpeed = 10.0f;
 
         [Tooltip("Possibility to walk LEFT way.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToLeft = 50.0f;
 
         [Tooltip("Possibility to walk RIGHT way.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToRight = 50.0f;
 
         [Tooltip("Possibility to IDLE.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mToIdle = 50.0f;
 
         [Tooltip("Possiblity to active this action.")]
-        [SerializeField] [Range(0.0f, 100.0f)]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
         private float mPossibility = 80.0f;
 
         [Header("** Time Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Time to do one walk.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mTimeZone = 2.0f;
 
         [Tooltip("Time that will randomly affect the Time Zone.")]
-        [SerializeField] [Range(0.0f, 3.0f)]
+        [SerializeField]
+        [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
         // time to record down the real time to do one walk
@@ -73,6 +79,10 @@ namespace JCSUnity
         // check to see if we can reset our time zone.
         private bool mWalked = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("** Action Settings (JCS_2DWalkAction) **")]
 
         [Tooltip("Generate a random walk speed at the initilaize time.")]
@@ -81,7 +91,8 @@ namespace JCSUnity
 
         [Tooltip(@"Addition value to the walk speed. For
 instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
-        [SerializeField] [Range(1, 10)]
+        [SerializeField]
+        [Range(1, 10)]
         private float mRandomWalkSpeedRange = 5;
 
         [Header("** Track Effect (JCS_2DWalkAction) **")]
@@ -113,6 +124,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         public float RecordSpeedX { get { return this.mVelocityInfo.RecordSpeed.x; } set { this.mVelocityInfo.RecordSpeedX = value; } }
         public float RecordSpeedY { get { return this.mVelocityInfo.RecordSpeed.y; } set { this.mVelocityInfo.RecordSpeedY = value; } }
         public float RecordSpeedZ { get { return this.mVelocityInfo.RecordSpeed.z; } set { this.mVelocityInfo.RecordSpeedZ = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         // Track Effects
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
@@ -320,7 +332,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
             if (mWalked)
                 ResetTimeZone();
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTimer < mRealTimeZone)
                 return;

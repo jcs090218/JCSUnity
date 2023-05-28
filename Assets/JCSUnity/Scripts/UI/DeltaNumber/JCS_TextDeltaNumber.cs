@@ -77,6 +77,10 @@ namespace JCSUnity
         [Range(0, 15)]
         private int mRoundPlace = 0;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Min/Max (JCS_TextDeltaNumber)")]
 
         [Tooltip("Maxinum number.")]
@@ -129,6 +133,7 @@ should disable this effect for best purpose.")]
         public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
         public string FullString { get { return this.mFullString; } }
         public int RoundPlace { get { return this.mRoundPlace; } set { this.mRoundPlace = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public string PreString { get { return this.mPreString; } set { this.mPreString = value; } }
         public string PostString { get { return this.mPostString; } set { this.mPostString = value; } }
         public float AnimNumberTime { get { return this.mAnimNumberTime; } set { this.mAnimNumberTime = value; } }
@@ -203,7 +208,7 @@ should disable this effect for best purpose.")]
             if (Math.Round(mTargetNumber, mRoundPlace) == Math.Round(mCurrentNumber, mRoundPlace))
                 return;
 
-            mAnimNumberTimer += Time.deltaTime;
+            mAnimNumberTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mAnimNumberTimer < mAnimNumberTime)
                 return;

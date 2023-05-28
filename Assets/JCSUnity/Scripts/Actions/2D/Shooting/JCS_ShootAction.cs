@@ -19,7 +19,7 @@ namespace JCSUnity
     /// Action that shoot bullets.
     /// </summary>
     [RequireComponent(typeof(JCS_SoundPoolAction))]
-    public class JCS_ShootAction : MonoBehaviour , JCS_IAction
+    public class JCS_ShootAction : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
@@ -47,12 +47,18 @@ namespace JCSUnity
         private bool mOverrideShoot = false;
 
         [Tooltip("Default hit active to live object.")]
-        [SerializeField] [Range(1, 30)]
+        [SerializeField]
+        [Range(1, 30)]
         private int mDefaultHit = 1;
 
         [Tooltip("How many bullet everytime active shoot event.")]
-        [SerializeField] [Range(1, 50)]
+        [SerializeField]
+        [Range(1, 50)]
         private int mShootCount = 1;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("** Key Variables (JCS_ShootAction) **")]
 
@@ -113,7 +119,8 @@ namespace JCSUnity
         private bool mDeviationEffectX = false;
 
         [Tooltip("Deviate range on x-axis.")]
-        [SerializeField] [Range(0.0f, 359.0f)]
+        [SerializeField]
+        [Range(0.0f, 359.0f)]
         private float mDeviationRangeX = 1.0f;
 
         [Tooltip("Deviate the angle on y-axis.")]
@@ -121,7 +128,8 @@ namespace JCSUnity
         private bool mDeviationEffectY = false;
 
         [Tooltip("Deviate range on y-axis.")]
-        [SerializeField] [Range(0.0f, 359.0f)]
+        [SerializeField]
+        [Range(0.0f, 359.0f)]
         private float mDeviationRangeY = 1f;
 
         [Tooltip("Deviate the angle on z-axis.")]
@@ -129,7 +137,8 @@ namespace JCSUnity
         private bool mDeviationEffectZ = false;
 
         [Tooltip("Deviate range on z-axis.")]
-        [SerializeField] [Range(0.0f, 359.0f)]
+        [SerializeField]
+        [Range(0.0f, 359.0f)]
         private float mDeviationRangeZ = 1.0f;
 
         [Header("** Random Spawn Effect (JCS_ShootAction) **")]
@@ -139,7 +148,8 @@ namespace JCSUnity
         private bool mRandPosX = false;
 
         [Tooltip("Random position apply on x-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandPosRangeX = 1.0f;
 
         [Tooltip("Spawn bullet at random position on y-axis.")]
@@ -147,7 +157,8 @@ namespace JCSUnity
         private bool mRandPosY = false;
 
         [Tooltip("Random position apply on y-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandPosRangeY = 1.0f;
 
         [Tooltip("Spawn bullet at random position on z-axis.")]
@@ -155,7 +166,8 @@ namespace JCSUnity
         private bool mRandPosZ = false;
 
         [Tooltip("Random position apply on z-axis.")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
 
         [Header("** Audio Settings (plz use \"JCS_SoundPoolAction\") **")]
@@ -208,6 +220,8 @@ namespace JCSUnity
         public Transform SpawnPoint { get { return this.mSpawnPoint; } }
 
         public int ShootCount { get { return this.mShootCount; } }
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public KeyCode ShootKeyCode { get { return this.mShootKeyCode; } set { this.mShootKeyCode = value; } }
         public JCS_MouseButton MouseButton { get { return this.mMouseButton; } set { this.mMouseButton = value; } }
@@ -541,7 +555,7 @@ namespace JCSUnity
             if (!CanShoot)
                 return;
 
-            mDelayTimer += Time.deltaTime;
+            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTime < mDelayTimer)
             {
@@ -629,7 +643,7 @@ namespace JCSUnity
 
             if (mAfterDelay)
             {
-                mActionTimer += Time.deltaTime;
+                mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                 if (mTimeDelayAfterShoot < mActionTimer)
                 {
@@ -646,7 +660,7 @@ namespace JCSUnity
 
             if (mAction && !mAfterDelay)
             {
-                mActionTimer += Time.deltaTime;
+                mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                 if (mTimeBeforeShoot < mActionTimer)
                 {

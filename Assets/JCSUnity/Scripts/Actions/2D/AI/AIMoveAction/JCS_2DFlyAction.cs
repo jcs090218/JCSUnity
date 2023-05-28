@@ -107,6 +107,10 @@ namespace JCSUnity
         // check to see if we can reset our time zone.
         private bool mFlyed = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Space Limitation")]
 
         [Tooltip("Lowest height the object can go.")]
@@ -161,6 +165,8 @@ namespace JCSUnity
         public Vector3 RecordSpeed { get { return mVelocityInfo.RecordSpeed; } set { mVelocityInfo.RecordSpeed = value; } }
 
         public bool MadEffect { get { return this.mMadEffect; } set { this.mMadEffect = value; } }
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -446,7 +452,7 @@ namespace JCSUnity
             if (mFlyed)
                 ResetTimeZone();
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTimer < mRealTimeZone)
                 return;

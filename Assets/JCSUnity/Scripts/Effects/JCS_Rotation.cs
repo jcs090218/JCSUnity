@@ -32,6 +32,10 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_Vector3Direction mRotateDirection = JCS_Vector3Direction.FORWARD;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Random Effect (JCS_Rotation)")]
 
         [Tooltip("Randomize the rotation speed a bit at start.")]
@@ -52,6 +56,7 @@ namespace JCSUnity
         public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
         public float RotateSpeed { get { return this.mRotateSpeed; } set { this.mRotateSpeed = value; } }
         public JCS_Vector3Direction RotateDirection { get { return this.mRotateDirection; } set { this.mRotateDirection = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -115,7 +120,7 @@ namespace JCSUnity
                     break;
             }
 
-            transform.Rotate(rotateDirection * mRotateSpeed * Time.deltaTime);
+            transform.Rotate(rotateDirection * mRotateSpeed * JCS_Time.DeltaTime(mDeltaTimeType));
         }
 
         /// <summary>

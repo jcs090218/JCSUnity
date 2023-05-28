@@ -234,7 +234,7 @@ namespace JCSUnity
                 ZoomCamera(mWheelDegree);
             }
 
-            Vector3 newPos = Vector3.forward * mTargetScrollSpeed * Time.deltaTime;
+            Vector3 newPos = Vector3.forward * mTargetScrollSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
 
             // if is valid, do action.
             if (!JCS_Mathf.IsNaN(newPos))
@@ -257,12 +257,14 @@ namespace JCSUnity
             // Fix the speed if reach the distance!
             FixedMinMaxDistance();
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             // asymptotic back to zero
-            mTargetScrollSpeed += (0.0f - mTargetScrollSpeed) / mScrollSpeedFriction * Time.deltaTime;
+            mTargetScrollSpeed += (0.0f - mTargetScrollSpeed) / mScrollSpeedFriction * dt;
 
             // asymptotic revolution
             {
-                float revoDelta = (mTargetRevolution - mCurrentRevolution) / mRotateFriction * Time.deltaTime;
+                float revoDelta = (mTargetRevolution - mCurrentRevolution) / mRotateFriction * dt;
 
                 mCurrentRevolution += revoDelta;
 
@@ -355,7 +357,7 @@ namespace JCSUnity
                 mLastFramePos = currentFramePos;
 
                 // update the transform position
-                this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * Time.deltaTime;
+                this.transform.position += (this.mTrackPosition - this.transform.position) / mSmoothTrackFriction * JCS_Time.DeltaTime(mDeltaTimeType);
             }
             // Hard track
             else
@@ -404,7 +406,7 @@ namespace JCSUnity
 
             {
                 // do the delta position formula
-                float deltaHeight = (mTargetHeight - newPos.y) / mUpDownFriction * Time.deltaTime;
+                float deltaHeight = (mTargetHeight - newPos.y) / mUpDownFriction * JCS_Time.DeltaTime(mDeltaTimeType);
 
                 // apply to new position, so get ready to 
                 // apply on the current position.

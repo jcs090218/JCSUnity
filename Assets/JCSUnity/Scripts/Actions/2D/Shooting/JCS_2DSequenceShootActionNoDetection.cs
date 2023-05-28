@@ -39,6 +39,10 @@ namespace JCSUnity
         [Range(0.01f, 0.5f)]
         private float mTimePerShoot = 0.1f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Make the bullet shoots at the position that starts.")]
         [SerializeField]
         private bool mSequenceStay = true;
@@ -69,6 +73,7 @@ namespace JCSUnity
 
         public int Hit { get { return this.mHit; } set { this.mHit = value; } }
         public float TimePerShoot { get { return this.mTimePerShoot; } set { this.mTimePerShoot = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool SequenceStay { get { return this.mSequenceStay; } set { this.mSequenceStay = value; } }
         public bool KeepShootAngle { get { return this.mKeepShootAngle; } set { this.mKeepShootAngle = value; } }
         public bool ShootGapEffect { get { return this.mShootGapEffect; } set { this.mShootGapEffect = value; } }
@@ -131,17 +136,13 @@ namespace JCSUnity
         {
             if (mShootAction.Bullet == null)
             {
-                JCS_Debug.LogReminder(
-                    "There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
-
+                JCS_Debug.LogReminder("There is no bullet assign to \"JCS_ShootAction\", so we cannot shoot a sequence...");
                 return;
             }
 
             if (hit <= 0)
             {
-                JCS_Debug.LogReminder(
-                    "Cannot shoot sequence of bullet with lower than 0 hit...");
-
+                JCS_Debug.LogReminder("Can't shoot sequence of bullet with lower than 0 hit...");
                 return;
             }
 
@@ -199,7 +200,7 @@ namespace JCSUnity
             float newTimer = mTimers.at(processIndex);
 
             // add time to timer
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)

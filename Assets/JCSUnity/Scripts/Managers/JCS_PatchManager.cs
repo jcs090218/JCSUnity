@@ -26,15 +26,21 @@ namespace JCSUnity
         private string mNextLevel = "JCS_LogoScene";
 
         [Tooltip("What do the server time out?")]
-        [SerializeField] [Range(0, 600)]        // 0 sec ~ 600 sec
+        [SerializeField]
+        [Range(0, 600)]        // 0 sec ~ 600 sec
         private float mConnectTimeOut = 30;
 
         // timer for connection.
         private float mConnectTimer = 0;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public string NextLevel() { return this.mNextLevel; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -84,7 +90,7 @@ namespace JCSUnity
         private void DoTimeOut()
         {
             // add up timer.
-            mConnectTimer += Time.deltaTime;
+            mConnectTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if connection time out?
             if (mConnectTimer < mConnectTimeOut)

@@ -450,7 +450,7 @@ namespace JCSUnity
         /// </summary>
         private void TowardToTargetValue()
         {
-            Vector3 speed = (mMaskTargetPosition - mMaskRectTransform.localPosition) / mDeltaFriction * Time.deltaTime;
+            Vector3 speed = (mMaskTargetPosition - mMaskRectTransform.localPosition) / mDeltaFriction * JCS_Time.DeltaTime(mDeltaTimeType);
             Vector3 tmpSpeed = speed;
 
             // TODO(jenchieh): It's weird that these seem to fix the issue
@@ -492,7 +492,7 @@ namespace JCSUnity
             if (!mRecoverEffect)
                 return;
 
-            mRecoverTimer += Time.deltaTime;
+            mRecoverTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mRecoverTimer < mTimeToRecover)
                 return;

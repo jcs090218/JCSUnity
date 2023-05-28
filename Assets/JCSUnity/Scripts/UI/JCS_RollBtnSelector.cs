@@ -43,6 +43,12 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DDimensions mDimension = JCS_2DDimensions.VERTICAL;
 
+        [Header("** Runtime Variables (JCS_RollBtnSelector) **")]
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.UNSCALED_DELTA_TIME;
+
         [Header("- Asymptotic Order")]
 
         [Tooltip("Enable the asymptotic order effect?")]
@@ -76,6 +82,8 @@ namespace JCSUnity
         private int mScrollIndexCounter = 0;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -156,7 +164,7 @@ namespace JCSUnity
             JCS_RollSelectorButton currentBtn = null;
             int indexCounter = 0;
 
-            JCS_RollSelectorButton[] buttons = new JCS_RollSelectorButton[mButtons.Length];
+            var buttons = new JCS_RollSelectorButton[mButtons.Length];
 
             for (int index = 0; index < mButtons.Length; ++index)
             {
@@ -343,7 +351,7 @@ namespace JCSUnity
             // don't block the first time.
             if (mScrollIndexCounter != 0)
             {
-                mScrollSpacingTimer += Time.deltaTime;
+                mScrollSpacingTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                 if (mScrollSpacingTimer < mScrollSpacingTime)
                     return;

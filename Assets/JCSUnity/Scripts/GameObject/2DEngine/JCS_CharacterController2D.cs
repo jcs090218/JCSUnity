@@ -82,7 +82,6 @@ namespace JCSUnity
         // 
         private Vector3 mCurrentFrame = Vector3.zero;
 
-
         [Header("** Runtime Variables Variables (JCS_CharacterController2D) **")]
 
         [Tooltip("Apply gravity?")]
@@ -108,6 +107,9 @@ namespace JCSUnity
         // record down the last frame position.
         private Vector2 mLastFramePosition = Vector2.zero;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("** Freeze Settings (JCS_CharacterController2D) **")]
 
@@ -126,7 +128,6 @@ namespace JCSUnity
         [SerializeField]
         private bool mZeroRotationWhenIsTrigger = true;
 
-
         /* Setter & Getter */
 
         public Vector2 BoxInfo { get { return this.mBoxInfo; } }
@@ -138,6 +139,8 @@ namespace JCSUnity
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
         public BoxCollider2D GetBoxCollider2D() { return this.mBoxCollider2d; }
         public Rigidbody2D GetRigidbody2D() { return this.mRigidbody2d; }
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public bool HitTop { get { return this.mHitTop; } }
         public bool HitBottom { get { return this.mHitBottom; } }
@@ -216,7 +219,7 @@ namespace JCSUnity
             ApplyGravity();
 
             // apply force base on the velocity.
-            this.transform.position += mVelocity * Time.deltaTime;
+            this.transform.position += mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
 
             // lastly check the freezing.
             DoFreeze();
@@ -688,7 +691,7 @@ namespace JCSUnity
             if (!isGrounded())
             {
                 // apply gravity
-                mVelocity.y += -JCS_GameConstant.GRAVITY * Time.deltaTime;
+                mVelocity.y += -JCS_GameConstant.GRAVITY * JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {

@@ -129,7 +129,7 @@ namespace JCSUnity
             #region DOUBLE_CLICK
             if (CLICK)
             {
-                CLICK_TIMER += Time.deltaTime;
+                CLICK_TIMER += Time.unscaledDeltaTime;
 
                 if (CLICK_TIME < CLICK_TIMER)
                 {

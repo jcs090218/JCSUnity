@@ -70,6 +70,12 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mFriction = 0.2f;
 
+        [Header("** Runtime Variables (JCS_SlideEffect) **")]
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- UI")]
 
         [Tooltip("Add event to event trigger system!")]
@@ -147,6 +153,7 @@ namespace JCSUnity
                 this.mTowardPosition = newPos;
             }
         }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool AutoAddEvent { get { return this.mAutoAddEvent; } set { this.mAutoAddEvent = value; } }
 
         public AudioClip ActiveClip { get { return this.mActiveClip; } set { this.mActiveClip = value; } }
@@ -371,7 +378,7 @@ namespace JCSUnity
             if (mIgnoreZ)
                 tempTargetPost.z = this.LocalPosition.z;
 
-            LocalPosition += (tempTargetPost - LocalPosition) / mFriction * Time.deltaTime;
+            LocalPosition += (tempTargetPost - LocalPosition) / mFriction * JCS_Time.DeltaTime(mDeltaTimeType);
         }
     }
 }

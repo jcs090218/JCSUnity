@@ -99,6 +99,10 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mScrollTime = 0.1f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         // timer to calculate the scroll time
         private float mScrollTimer = 0.0f;
 
@@ -166,6 +170,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
         public string SelectStringBack { get { return this.mSelectStringBack; } }
@@ -557,7 +562,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mCenterImage == null)
             {
-                JCS_Debug.LogError("Center image call with image component attached...");
+                JCS_Debug.LogError("Center image call with image component attached");
                 return;
             }
 #endif
@@ -575,8 +580,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mLeftImage == null)
             {
-                JCS_Debug.LogError(
-                    "Left image call with image component attached...");
+                JCS_Debug.LogError("Left image call with image component attached");
                 return;
             }
 #endif
@@ -594,8 +598,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mRightImage == null)
             {
-                JCS_Debug.LogError(
-                    "Right image call with image component attached...");
+                JCS_Debug.LogError("Right image call with image component attached");
                 return;
             }
 #endif
@@ -629,7 +632,7 @@ namespace JCSUnity
                 return;
 
             // do timer.
-            mScrollTimer += Time.deltaTime;
+            mScrollTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if each index of character in message 
             // is good to display in the text box render queue.
@@ -686,7 +689,7 @@ namespace JCSUnity
                 return;
 
             // do timer.
-            mScrollTimer += Time.deltaTime;
+            mScrollTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // they will use the same time system.
             if (mScrollTimer < mScrollTime)

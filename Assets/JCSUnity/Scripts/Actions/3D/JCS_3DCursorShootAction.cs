@@ -33,10 +33,15 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Vector3Direction mDirection = JCS_Vector3Direction.UP;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public KeyCode ShooKeyCode { get { return this.mShootKeyCode; } }
         public JCS_Vector3Direction Direction { get { return this.mDirection; } set { this.mDirection = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -84,7 +89,7 @@ namespace JCSUnity
                 Quaternion targetRotation = Quaternion.LookRotation(targetPoint - mShootAction.SpawnPoint.position);
 
                 // Smoothly rotate towards the target point.
-                mShootAction.SpawnPoint.rotation = Quaternion.Slerp(mShootAction.SpawnPoint.rotation, targetRotation, speed * Time.deltaTime);
+                mShootAction.SpawnPoint.rotation = Quaternion.Slerp(mShootAction.SpawnPoint.rotation, targetRotation, speed * JCS_Time.DeltaTime(mDeltaTimeType));
             }
         }
     }

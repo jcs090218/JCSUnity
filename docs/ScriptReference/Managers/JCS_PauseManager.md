@@ -1,8 +1,7 @@
 # JCS_PauseManager
 
-If you are working some kind of game that need the pause screen, you
-definitly need the pause manager to add it onto "JCS_Managers" transform
-in the Hierarchy.
+If you are some kind of game that needs the pause screen, you definitely
+need the pause manager to add it to `JCS_Managers` transform in the Hierarchy.
 
 ## Variables
 
@@ -15,4 +14,6 @@ in the Hierarchy.
 | Name              | Description                                                                                            |
 |:------------------|:-------------------------------------------------------------------------------------------------------|
 | AddActionToList   | Add the pause action to the list of pause action list, in order to get manage by this "pause manager". |
+| Pause             | Pause the game.                                                                                        |
+| Unpase            | Unpause the game.                                                                                      |
 | PauseTheWholeGame | ause/Unpause the whole game.                                                                           |

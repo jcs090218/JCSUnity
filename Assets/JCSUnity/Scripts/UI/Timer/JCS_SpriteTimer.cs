@@ -57,6 +57,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mRoundUp = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Sprite Slots")]
 
         [Tooltip("Time text sprite 0.")]
@@ -157,6 +161,7 @@ namespace JCSUnity
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public bool RoundUp { get { return this.mRoundUp; } set { this.mRoundUp = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public AudioClip HourSound { get { return this.mHourSound; } set { this.mHourSound = value; } }
         public AudioClip MinuteSound { get { return this.mMinuteSound; } set { this.mMinuteSound = value; } }
@@ -458,7 +463,7 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            mCurrentSeconds -= Time.deltaTime;
+            mCurrentSeconds -= JCS_Time.DeltaTime(mDeltaTimeType);
 
             int currentSecond = (int)mCurrentSeconds;
             if (mTrackSecond != currentSecond)

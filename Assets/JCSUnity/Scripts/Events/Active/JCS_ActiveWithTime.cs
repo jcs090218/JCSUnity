@@ -31,17 +31,22 @@ namespace JCSUnity
         [Range(0.0f, 3600.0f)]
         private float mTime = 2.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public List<GameObject> GameObjects { get { return this.mGameObjects; } set { this.mGameObjects = value; } }
         public float time { get { return this.mTime; } set { this.mTime = value; } }
         public float timer { get { return this.mTimer; } set { this.mTimer = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
         private void Update()
         {
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTime < mTimer)
             {

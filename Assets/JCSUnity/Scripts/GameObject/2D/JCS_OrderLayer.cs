@@ -27,11 +27,14 @@ namespace JCSUnity
         [SerializeField]
         private float mLayerFriction = 0;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public int OrderLayer { get { return this.mOrderLayer; } }
-
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -40,13 +43,15 @@ namespace JCSUnity
             if (mLayerFriction == 0)
                 return;
 
-            JCS_Camera cam = JCS_Camera.main;
+            var cam = JCS_Camera.main;
             if (cam == null)
                 return;
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             Vector3 newPos = this.transform.position;
-            newPos.x += cam.Velocity.x / mLayerFriction * Time.deltaTime;
-            newPos.y += cam.Velocity.y / mLayerFriction * Time.deltaTime;
+            newPos.x += cam.Velocity.x / mLayerFriction * dt;
+            newPos.y += cam.Velocity.y / mLayerFriction * dt;
             this.transform.position = newPos;
         }
     }

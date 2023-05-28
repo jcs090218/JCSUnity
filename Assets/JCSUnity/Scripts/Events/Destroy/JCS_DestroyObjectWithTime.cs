@@ -28,6 +28,10 @@ namespace JCSUnity
         [Range(0.0f, 3600.0f)]
         private float mDestroyTime = 10.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("** Optional Variables (JCS_DestroyObjectWithTime) **")]
 
         [Tooltip("While destroying, fade out the gameobject.")]
@@ -47,6 +51,7 @@ namespace JCSUnity
         
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
         public bool TimesUp { get { return this.mTimesUp; } set { this.mTimesUp = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public List<JCS_FadeObject> FadeObjects { get { return this.mFadeObjects; } set { this.mFadeObjects = value; } }
@@ -55,7 +60,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDestroyWithAlphaEffect)
             {

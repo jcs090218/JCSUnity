@@ -118,7 +118,7 @@ namespace JCSUnity
             if (!JCS_NetworkSettings.instance.ONLINE_MODE)
                 return;
 
-            mConnectionCounter += Time.deltaTime;
+            mConnectionCounter += Time.unscaledDeltaTime;
 
             if (mConnectionCounter < JCS_NetworkConstant.CONNECT_TIME)
                 return;

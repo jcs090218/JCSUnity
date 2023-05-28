@@ -152,7 +152,7 @@ namespace JCSUnity
             // Use player from "JCS_GameManager" as default
             if (this.mTargetTransform == null)
             {
-                JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+                JCS_Player player = JCS_GameManager.instance.Player;
                 if (player != null)
                     SetFollowTarget(player.transform);
             }
@@ -225,7 +225,7 @@ namespace JCSUnity
                     this.transform.position.z) / mScrollFriction;
 
                 // Update self position
-                this.transform.position += this.mVelocity * Time.deltaTime;
+                this.transform.position += this.mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
             }
             // Hard track
             else

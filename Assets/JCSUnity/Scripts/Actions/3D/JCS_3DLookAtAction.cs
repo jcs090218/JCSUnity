@@ -63,6 +63,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mLocalEulerAngles = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Asymptotic Look (JCS_3DLookAtAction)")]
 
         [Tooltip("Did the object gradually look at the target?")]
@@ -86,6 +90,7 @@ namespace JCSUnity
 
         public bool LookAction { get { return this.mLookAction; } set { this.mLookAction = value; } }
         public bool LocalEulerAngles { get { return this.mLocalEulerAngles; } set { this.mLocalEulerAngles = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public bool AsympLook { get { return this.mAsympLook; } set { this.mAsympLook = value; } }
         public float LookFriction { get { return this.mLookFriction; } set { this.mLookFriction = value; } }
@@ -157,7 +162,7 @@ namespace JCSUnity
 
             dir.eulerAngles += mAngleOffset;
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, dir, 1.0f / mLookFriction * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, dir, 1.0f / mLookFriction * JCS_Time.DeltaTime(mDeltaTimeType));
         }
 
         /// <summary>

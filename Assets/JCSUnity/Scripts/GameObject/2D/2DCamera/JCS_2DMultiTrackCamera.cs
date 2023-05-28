@@ -31,7 +31,7 @@ namespace JCSUnity
         [Tooltip("Camera use to do the action.")]
         [SerializeField]
         private JCS_2DCamera mCamera = null;
-        
+
         private float mLastDiffDistanceX = 0;
         private float mLastDiffDistanceY = 0;
 
@@ -44,6 +44,10 @@ namespace JCSUnity
         [Tooltip("How fast the caemra zoom in/out.")]
         [SerializeField]
         private float mCameraFriction = 0.7f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         // Range under this will not do the scale effect,
         // otherwise do the scale effect
@@ -63,13 +67,12 @@ namespace JCSUnity
         [SerializeField]
         private float mMaxFieldOfView = 100;
 
-
         /* Setter & Getter */
 
         public AudioListener GetAudioListener() { return this.mAudioListener; }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public float MinFieldOfView { get { return this.mMinFieldOfView; } set { this.mMinFieldOfView = value; } }
         public float MaxFieldOfView { get { return this.mMaxFieldOfView; } set { this.mMaxFieldOfView = value; } }
-
 
         /* Functions */
 
@@ -103,7 +106,7 @@ namespace JCSUnity
 
             this.transform.position = CalculateTheCameraPosition();
 
-            mCamera.fieldOfView += (mTargetFieldOfView - mCamera.fieldOfView) / mCameraFriction * Time.deltaTime;
+            mCamera.fieldOfView += (mTargetFieldOfView - mCamera.fieldOfView) / mCameraFriction * JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mCamera.fieldOfView < mMinFieldOfView)
                 mCamera.fieldOfView = mMinFieldOfView;
@@ -140,9 +143,9 @@ namespace JCSUnity
             if (mTargetList.length == 0)
                 return transform.position;
 
-            float minHeight = 0, 
-                maxHeight = 0, 
-                minWidth = 0, 
+            float minHeight = 0,
+                maxHeight = 0,
+                minWidth = 0,
                 maxWidth = 0;
 
             bool firstAssign = false;

@@ -25,18 +25,25 @@ namespace JCSUnity
         private bool mDoAction = true;
 
         [Tooltip("How intense it shakes?")]
-        [SerializeField] [Range(0.0f, 10.0f)]
+        [SerializeField]
+        [Range(0.0f, 10.0f)]
         private float mShakeMargin = 2.0f;
 
         [Tooltip("How fast it moves?")]
-        [SerializeField] [Range(0.1f, 1000.0f)]
+        [SerializeField]
+        [Range(0.1f, 1000.0f)]
         private float mShakeSpeed = 1.0f;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         /* Setter & Getter */
 
         public bool DoAction { get { return this.mDoAction; } set { this.mDoAction = value; } }
         public float ShakeSpeed { get { return this.mShakeSpeed; } set { this.mShakeSpeed = value; } }
         public float ShakeMargin { get { return this.mShakeMargin; } set { this.mShakeMargin = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -46,7 +53,7 @@ namespace JCSUnity
                 return;
 
             Vector3 newPos = this.transform.position;
-            newPos.x += JCS_Random.Range(-mShakeMargin, mShakeMargin) * ShakeSpeed * Time.deltaTime;
+            newPos.x += JCS_Random.Range(-mShakeMargin, mShakeMargin) * ShakeSpeed * JCS_Time.DeltaTime(mDeltaTimeType);
             this.transform.position = newPos;
         }
     }

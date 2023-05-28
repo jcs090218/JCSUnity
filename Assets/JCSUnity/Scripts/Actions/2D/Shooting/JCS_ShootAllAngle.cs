@@ -14,7 +14,7 @@ namespace JCSUnity
     /// Action that shoot in all angle.
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
-    public class JCS_ShootAllAngle : MonoBehaviour , JCS_IAction
+    public class JCS_ShootAllAngle : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
@@ -37,15 +37,18 @@ namespace JCSUnity
         private bool mAutoShootByOrder = false;
 
         [Tooltip("Degree per bullet shoot.")]
-        [SerializeField] [Range(1.0f, 360.0f)]
+        [SerializeField]
+        [Range(1.0f, 360.0f)]
         private float mDegreePerShoot = 10.0f;
 
         [Tooltip("How long it takes to shoot a bullet.")]
-        [SerializeField] [Range(0.01f, 15.0f)]
+        [SerializeField]
+        [Range(0.01f, 15.0f)]
         private float mDelayTime = 1.0f;
 
         [Tooltip("Time that will randomly affect the time zone.")]
-        [SerializeField] [Range(0.0f, 3.0f)]
+        [SerializeField]
+        [Range(0.0f, 3.0f)]
         private float mAdjustTimeZone = 1.5f;
 
         [Tooltip("Axis the bullet shoots.")]
@@ -60,6 +63,10 @@ namespace JCSUnity
 
         private float mCount = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public bool CanShoot { get { return this.mCanShoot; } set { this.mCanShoot = value; } }
@@ -69,6 +76,7 @@ namespace JCSUnity
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public JCS_Axis ShootAxis { get { return this.mShootAxis; } set { this.mShootAxis = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -170,7 +178,7 @@ namespace JCSUnity
             if (mShooted)
                 ResetTimeZone();
 
-            mDelayTimer += Time.deltaTime;
+            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mRealTimeZone < mDelayTimer)
             {
@@ -192,7 +200,7 @@ namespace JCSUnity
             if (mShooted)
                 ResetTimeZone();
 
-            mDelayTimer += Time.deltaTime;
+            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mRealTimeZone < mDelayTimer)
             {

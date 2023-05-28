@@ -49,7 +49,7 @@ namespace JCSUnity
             // if the game only allow one play do the function
             // in order to take the effect.
             if (JCS_GameSettings.instance.ACTIVE_ONE_PLAYER)
-                ActiveOnePlayer(JCS_GameManager.instance.GetJCSPlayer());
+                ActiveOnePlayer(JCS_GameManager.instance.Player);
         }
 
 #if UNITY_EDITOR

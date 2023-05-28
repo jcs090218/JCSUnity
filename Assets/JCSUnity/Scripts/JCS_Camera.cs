@@ -74,9 +74,14 @@ namespace JCSUnity
         // Record last vertical FOV, so the FOV from camera is still adjustable.
         private float mLastVerticalFOV = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        protected JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Flag to check if using smooth track, otherwise hard track.")]
         [SerializeField]
         protected bool mSmoothTrack = true;
+
 
         /* Setter & Getter */
 
@@ -93,6 +98,8 @@ namespace JCSUnity
         public abstract Transform GetFollowTarget();
 
         public float ScreenAspect { get { return (float)mCamera.pixelWidth / (float)mCamera.pixelHeight; } }
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 

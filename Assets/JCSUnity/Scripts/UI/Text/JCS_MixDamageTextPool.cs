@@ -72,6 +72,10 @@ namespace JCSUnity
         [Range(0.0f, 5.0f)]
         private float mTimePerSpawn = 0.1f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("** Zigge Right Left Effect (In Sequence)**")]
 
         [Tooltip("Do the zigge effect?")]
@@ -102,6 +106,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_DamageTextPool CriticalDamageTextPool { get { return this.mCritDamageTextPool; } }
         public JCS_DamageTextPool NormralDamageTextPool { get { return this.mNormalDamageTextPool; } }
         public JCS_DamageTextPool GetDamageDamageTextPool { get { return this.mGetDamageDamageTextPool; } }
@@ -480,7 +485,7 @@ namespace JCSUnity
         {
             float newTimer = timer;
 
-            newTimer += Time.deltaTime;
+            newTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mTimePerSpawn < newTimer)
             {

@@ -52,6 +52,10 @@ we calculate the real time.")]
         [Range(0.0f, 20.0f)]
         private float mAdjustTimeZone = 1.5f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Event that will be triggered.")]
         [SerializeField]
         private UnityEvent mUnityEvents = null;
@@ -61,6 +65,7 @@ we calculate the real time.")]
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public UnityEvent UnityEvents { get { return this.mUnityEvents; } set { this.mUnityEvents = value; } }
 
         /* Functions */
@@ -94,7 +99,7 @@ we calculate the real time.")]
             if (mDidAction)
                 ResetTimeZone();
 
-            mTimer += Time.deltaTime;
+            mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mRealTimeZone > mTimer)
                 return;

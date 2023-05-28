@@ -68,13 +68,18 @@ namespace JCSUnity
         [Range(0.0f, 1.0f)]
         private float mFadeOutAmount = 0.0f;
 
-        /* Setter & Getter */
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
+        /* Setter & Getter */
+        
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public bool OverrideFade { get { return this.mOverrideFade; } set { this.mOverrideFade = value; } }
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
         public float FadeInAmount { get { return this.mFadeInAmount; } set { this.mFadeInAmount = value; } }
         public float FadeOutAmount { get { return this.mFadeOutAmount; } set { this.mFadeOutAmount = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -267,7 +272,7 @@ namespace JCSUnity
                             return;
                         }
 
-                        mAlpha -= Time.deltaTime / mFadeTime;
+                        mAlpha -= JCS_Time.DeltaTime(mDeltaTimeType) / mFadeTime;
                     }
                     break;
 
@@ -285,7 +290,7 @@ namespace JCSUnity
                             return;
                         }
 
-                        mAlpha += Time.deltaTime / mFadeTime;
+                        mAlpha += JCS_Time.DeltaTime(mDeltaTimeType) / mFadeTime;
                     }
                     break;
             }

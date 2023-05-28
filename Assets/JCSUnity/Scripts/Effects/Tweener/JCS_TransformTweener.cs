@@ -107,6 +107,10 @@ namespace JCSUnity
         [Range(0.01f, 1000.0f)]
         private float mDurationZ = 1.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Destroy")]
 
         [Tooltip("Destroy this object when done tweening?")]
@@ -175,6 +179,8 @@ namespace JCSUnity
         public float DurationX { get { return this.mDurationX; } set { this.mDurationX = value; } }
         public float DurationY { get { return this.mDurationY; } set { this.mDurationY = value; } }
         public float DurationZ { get { return this.mDurationZ; } set { this.mDurationZ = value; } }
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         public JCS_TweenType EasingX { get { return this.mEasingX; } set { this.mEasingX = value; } }
         public JCS_TweenType EasingY { get { return this.mEasingY; } set { this.mEasingY = value; } }
@@ -580,7 +586,8 @@ namespace JCSUnity
                 resetElapsedTime,
                 durationX,
                 easingX,
-                DoneTweeningX);
+                DoneTweeningX,
+                mDeltaTimeType);
 
             // Sets The Position From -> To
             mTweenerY.easeFromTo(
@@ -589,7 +596,8 @@ namespace JCSUnity
                 resetElapsedTime,
                 durationY,
                 easingY,
-                DoneTweeningY);
+                DoneTweeningY, 
+                mDeltaTimeType);
 
             // Sets The Position From -> To
             mTweenerZ.easeFromTo(
@@ -598,7 +606,8 @@ namespace JCSUnity
                 resetElapsedTime,
                 durationZ,
                 easingZ,
-                DoneTweeningZ);
+                DoneTweeningZ,
+                mDeltaTimeType);
         }
 
         /// <summary>

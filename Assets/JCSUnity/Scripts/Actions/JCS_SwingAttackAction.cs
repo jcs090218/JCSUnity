@@ -50,6 +50,10 @@ namespace JCSUnity
         [Range(1, 15)]
         private int mLoopTimes = 1;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("The same position as the spawn transform's position.")]
         [SerializeField]
         private bool mAsSamePosition = true;
@@ -126,6 +130,7 @@ namespace JCSUnity
             // update speed of this action.
             ProcessSpeedLayer();
         }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool AsSamePosition { get { return this.mAsSamePosition; } set { this.mAsSamePosition = value; } }
         public bool AsSameRotation { get { return this.mAsSameRotation; } set { this.mAsSameRotation = value; } }
         public bool AsSameScale { get { return this.mAsSameScale; } set { this.mAsSameScale = value; } }
@@ -221,8 +226,7 @@ namespace JCSUnity
             if (!mOverrideAction)
             {
 
-                if (!mAction && 
-                    JCS_Input.GetKey(mKeyCode))
+                if (!mAction && JCS_Input.GetKey(mKeyCode))
                 {
                     // display animation
                     SpawnAttackAnimation();
@@ -235,7 +239,7 @@ namespace JCSUnity
 
                 if (mAfterDelay)
                 {
-                    mActionTimer += Time.deltaTime;
+                    mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                     if (mActTime < mActionTimer)
                     {
@@ -255,7 +259,7 @@ namespace JCSUnity
 
                 if (mAction && !mAfterDelay)
                 {
-                    mActionTimer += Time.deltaTime;
+                    mActionTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
                     if (mTimeToActTime < mActionTimer)
                     {

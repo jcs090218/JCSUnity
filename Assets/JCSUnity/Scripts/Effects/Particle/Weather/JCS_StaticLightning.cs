@@ -26,11 +26,13 @@ namespace JCSUnity
         private JCS_WhiteScreen mLightning = null;
 
         [Tooltip("Possibility to occurs lightning effect.")]
-        [SerializeField] [Range(0, 100)]
+        [SerializeField]
+        [Range(0, 100)]
         private int mPossiblity = 50;
 
         [Tooltip("Random time to do the lightning effect.")]
-        [SerializeField] [Range(1.0f, 5.0f)]
+        [SerializeField]
+        [Range(1.0f, 5.0f)]
         private float mRandomTime = 2.5f;
 
         [Tooltip("This amount of time do chance lightning.")]
@@ -41,11 +43,17 @@ namespace JCSUnity
 
         private float mRecordTime = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         // Sound settings
         private JCS_SoundPool mSoundPool = null;
         private JCS_SoundPlayer mSoundPlayer = null;
 
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -78,7 +86,7 @@ namespace JCSUnity
         /// </summary>
         private void DoEffect()
         {
-            mLimitTimer += Time.deltaTime;
+            mLimitTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mLimitTime > mLimitTimer)
                 return;

@@ -84,6 +84,10 @@ namespace JCSUnity
         private int mDetectTouchCount = 1;
 #endif
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public bool Touched { get { return this.mTouched; } }
@@ -100,6 +104,7 @@ namespace JCSUnity
 #else
         public JCS_MouseButton MouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
 #endif
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -156,7 +161,7 @@ namespace JCSUnity
         /// </summary>
         private void WhenTouched()
         {
-            mTouchTime += Time.deltaTime;
+            mTouchTime += JCS_Time.DeltaTime(mDeltaTimeType);
 
             Vector3 currPos = Input.mousePosition;
 

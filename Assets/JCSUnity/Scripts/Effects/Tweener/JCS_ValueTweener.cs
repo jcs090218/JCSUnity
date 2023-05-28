@@ -89,6 +89,10 @@ namespace JCSUnity
         [Range(0.01f, 1000.0f)]
         private float mDuration = 1.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Tweener Formula Type")]
 
         [Tooltip("Tweener formula on value.")]
@@ -107,6 +111,7 @@ namespace JCSUnity
         public bool Tween { get { return this.mTween; } set { this.mTween = value; } }
         public float ValueOffset { get { return this.mValueOffset; } set { this.mValueOffset = value; } }
         public float Duration { get { return this.mDuration; } set { this.mDuration = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_TweenType Easing
         {
             get { return this.mEasing; }
@@ -215,7 +220,7 @@ namespace JCSUnity
 
                 this.set_float.Invoke(this.mProgression);
 
-                this.mTimeElapsed += Time.deltaTime;
+                this.mTimeElapsed += JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {

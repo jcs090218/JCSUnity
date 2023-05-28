@@ -413,7 +413,7 @@ namespace JCSUnity
         /// </summary>
         private void TowardToTargetValue()
         {
-            Vector3 speed = (mMaskTargetPosition - mSpriteMask.transform.localPosition) / mDeltaFriction * Time.deltaTime;
+            Vector3 speed = (mMaskTargetPosition - mSpriteMask.transform.localPosition) / mDeltaFriction * JCS_Time.DeltaTime(mDeltaTimeType);
             mSpriteMask.transform.localPosition += speed;
 
             DoVisuallyCallback();
@@ -427,7 +427,7 @@ namespace JCSUnity
             if (!mRecoverEffect)
                 return;
 
-            mRecoverTimer += Time.deltaTime;
+            mRecoverTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mRecoverTimer < mTimeToRecover)
                 return;

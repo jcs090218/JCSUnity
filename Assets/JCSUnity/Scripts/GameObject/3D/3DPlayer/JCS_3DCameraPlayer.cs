@@ -89,7 +89,7 @@ namespace JCSUnity
             if (mCharacterController.enabled)
             {
                 // apply force
-                mCharacterController.Move(transform.forward * mVelocity.z * Time.deltaTime);
+                mCharacterController.Move(transform.forward * mVelocity.z * JCS_Time.DeltaTime(mDeltaTimeType));
             }
         }
 
@@ -114,7 +114,7 @@ namespace JCSUnity
             if (mLookPoint == null)
                 return;
 
-            JCS_Camera cam = JCS_Camera.main;
+            var cam = JCS_Camera.main;
 
             Vector3 newPos = this.transform.localPosition;
             Vector3 direction = Vector3.zero;

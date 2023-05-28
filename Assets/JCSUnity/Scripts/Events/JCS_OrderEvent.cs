@@ -36,6 +36,10 @@ namespace JCSUnity
         [SerializeField]
         private float mIntervalTime = 0.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Unity execution event.")]
         [SerializeField]
         private UnityEvent mUnityExecution = null;
@@ -44,6 +48,7 @@ namespace JCSUnity
 
         public bool Active { get { return this.mActive; } }
         public float IntervalTime { get { return this.mIntervalTime; } set { this.mIntervalTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public UnityEvent unityExecution { get { return this.mUnityExecution; } set { this.mUnityExecution = value; } }
 
         /* Functions */
@@ -82,7 +87,7 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
-            this.mTimer += Time.deltaTime;
+            this.mTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (this.mTimer < this.mIntervalTime)
                 return;

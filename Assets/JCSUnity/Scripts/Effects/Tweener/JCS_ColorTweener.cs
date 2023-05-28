@@ -92,6 +92,10 @@ namespace JCSUnity
 
         [Header("** Runtime Variables (JCS_ColorTweener) **")]
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Tween type for red channel.")]
         [SerializeField]
         private JCS_TweenType mEaseTypeR = JCS_TweenType.LINEAR;
@@ -153,6 +157,7 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public bool Animating { get { return (mEasingR || mEasingG || mEasingB || mEasingA); } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_TweenType EaseTypeR
         {
             get { return this.mEaseTypeR; }
@@ -373,7 +378,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.r = mTimeElapsed.x / mRealDurationRed;
 
-                this.mTimeElapsed.x += Time.deltaTime;
+                this.mTimeElapsed.x += JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {
@@ -408,7 +413,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.g = mTimeElapsed.y / mRealDurationGreen;
 
-                this.mTimeElapsed.y += Time.deltaTime;
+                this.mTimeElapsed.y += JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {
@@ -443,7 +448,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.b = mTimeElapsed.z / mRealDurationBlue;
 
-                this.mTimeElapsed.z += Time.deltaTime;
+                this.mTimeElapsed.z += JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {
@@ -478,7 +483,7 @@ namespace JCSUnity
 
                 this.mProgressPctColor.a = mTimeElapsed.w / mRealDurationAlpha;
 
-                this.mTimeElapsed.w += Time.deltaTime;
+                this.mTimeElapsed.w += JCS_Time.DeltaTime(mDeltaTimeType);
             }
             else
             {

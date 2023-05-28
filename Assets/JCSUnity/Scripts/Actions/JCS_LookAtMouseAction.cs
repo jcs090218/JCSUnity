@@ -25,9 +25,14 @@ namespace JCSUnity
         [SerializeField]
         private float mSpeed = 10.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
 
         public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -55,7 +60,7 @@ namespace JCSUnity
                 Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
 
                 // Smoothly rotate towards the target point.
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, mSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, mSpeed * JCS_Time.DeltaTime(mDeltaTimeType));
             }
         }
     }

@@ -29,7 +29,8 @@ namespace JCSUnity
         private KeyCode mTestWithVelKey = KeyCode.None;
 
         [Tooltip("Force to hit the target.")]
-        [SerializeField] [Range(0.1f, 300.0f)]
+        [SerializeField]
+        [Range(0.1f, 300.0f)]
         private float mForce = 20.0f;
 
         [Tooltip("Key to use to test using the time function.")]
@@ -37,7 +38,8 @@ namespace JCSUnity
         private KeyCode mTestWithTimeKey = KeyCode.None;
 
         [Tooltip("Target time to hit the target.")]
-        [SerializeField] [Range(1.0f, 10.0f)]
+        [SerializeField]
+        [Range(1.0f, 10.0f)]
         private float mTime = 1.0f;
 #endif
 
@@ -52,12 +54,17 @@ namespace JCSUnity
         [Range(0.1f, 30.0f)]
         private float mGravityProduct = 1.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         private Vector3 mVelocity = Vector3.zero;
 
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -70,11 +77,13 @@ namespace JCSUnity
             if (!mActive)
                 return;
 
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             // make it effect by gravity.
-            this.mVelocity.y += -JCS_GameConstant.GRAVITY * mGravityProduct * Time.deltaTime;
+            this.mVelocity.y += -JCS_GameConstant.GRAVITY * mGravityProduct * dt;
 
             // add up velocity.
-            this.transform.position += mVelocity * Time.deltaTime;
+            this.transform.position += mVelocity * dt;
         }
 
 #if UNITY_EDITOR

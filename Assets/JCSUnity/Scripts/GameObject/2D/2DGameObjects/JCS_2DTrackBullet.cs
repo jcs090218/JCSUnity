@@ -25,7 +25,6 @@ namespace JCSUnity
         private JCS_2DTrackAction mTrackAction = null;
         private JCS_3DGoStraightAction mGoStraightAction = null;
 
-
         [Header("** Initialize Varialbes (JCS_2DTrackBullet) **")]
 
         [SerializeField]
@@ -33,13 +32,11 @@ namespace JCSUnity
 
         private float mDelayTimeToFollowTimer = 0;
 
-
         [Header("** Runtime Variables (JCS_2DTrackBullet) **")]
 
         [Tooltip("Do the action?")]
         [SerializeField]
         private bool mLookAtTarget = true;
-
 
         /* Setter & Getter */
 
@@ -88,7 +85,7 @@ namespace JCSUnity
             if (mTrackAction.TargetTransform == null)
                 return;
 
-            mDelayTimeToFollowTimer += Time.deltaTime;
+            mDelayTimeToFollowTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTimeToFollow < mDelayTimeToFollowTimer)
             {

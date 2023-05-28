@@ -29,11 +29,19 @@ namespace JCSUnity
         [Range(0.0f, 3600.0f)]
         private float mDelayTime = 1.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         private float mDelayTimer = 0.0f;
 
         private bool mCycleThrough = false;
 
         /* Setter & Getter */
+
+        public string NextLevel { get { return this.mNextLevel; } set { this.mNextLevel = value; } }
+        public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -52,7 +60,7 @@ namespace JCSUnity
 
             gm.GAME_PAUSE = true;
 
-            mDelayTimer += Time.deltaTime;
+            mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTime < mDelayTimer)
             {

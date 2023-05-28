@@ -20,7 +20,8 @@ namespace JCSUnity
         [Header("** Runtime Variables (JCS_SimpleInvincibleTimeAction) **")]
 
         [Tooltip("Time to do the invincible effect.")]
-        [SerializeField] [Range(0.001f, 5.0f)]
+        [SerializeField]
+        [Range(0.001f, 5.0f)]
         private float mInvicibleTime = 1.0f;
 
         // timer.
@@ -32,6 +33,10 @@ namespace JCSUnity
         [Tooltip("Render target we are going to render.")]
         [SerializeField]
         private JCS_UnityObject[] mUnityObjects = null;
+
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         [Header("- Flash Effect (JCS_SimpleInvincibleTimeAction) ")]
 
@@ -65,6 +70,7 @@ namespace JCSUnity
         public float InvicibleTime { get { return this.mInvicibleTime; } set { this.mInvicibleTime = value; } }
         // Use to check if this effect is active?
         public bool IsInvincible { get { return this.mTriggerAction; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -84,7 +90,7 @@ namespace JCSUnity
                 return;
 
 
-            mInvicibleTimer += Time.deltaTime;
+            mInvicibleTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // do flash algorithm.
             DoFlash();

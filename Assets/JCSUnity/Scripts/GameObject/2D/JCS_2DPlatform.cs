@@ -44,7 +44,7 @@ namespace JCSUnity
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+            JCS_Player player = JCS_GameManager.instance.Player;
             if (player == null)
                 return;
 
@@ -58,7 +58,7 @@ namespace JCSUnity
 
         protected virtual void OnTriggerExit(Collider other)
         {
-            JCS_Player player = JCS_GameManager.instance.GetJCSPlayer();
+            JCS_Player player = JCS_GameManager.instance.Player;
             if (player == null)
                 return;
 

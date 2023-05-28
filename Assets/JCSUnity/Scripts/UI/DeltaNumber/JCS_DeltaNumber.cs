@@ -116,6 +116,10 @@ check value. Because this will always be animate.")]
         [SerializeField]
         private JCS_TextAlign mTextAlign = JCS_TextAlign.RIGHT;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Min/Max (JCS_DeltaNumber)")]
 
         [Tooltip("Maxinum number.")]
@@ -171,6 +175,7 @@ should disable this effect for best purpose.")]
         public bool DeltaToCurrentNumber { get { return this.mDeltaToCurrentNumber; } set { this.mDeltaToCurrentNumber = value; } }
         public bool VisibleOnZero { get { return this.mVisibleOnZero; } set { this.mVisibleOnZero = value; } }
         public JCS_TextAlign TextAlign { get { return this.mTextAlign; } set { this.mTextAlign = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
@@ -352,7 +357,7 @@ should disable this effect for best purpose.")]
             if (mCurrentNumber == mTargetNumber)
                 return;
 
-            mAnimNumberTimer += Time.deltaTime;
+            mAnimNumberTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             // check if timer reach the time.
             if (mAnimNumberTimer < mAnimNumberTime)

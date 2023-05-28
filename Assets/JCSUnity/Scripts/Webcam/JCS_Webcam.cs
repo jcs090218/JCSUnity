@@ -49,6 +49,10 @@ namespace JCSUnity
         [Range(0.001f, 5.0f)]
         private float mResumeTime = 3.0f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Header("- Effect")]
 
         [Tooltip("Do the splash effect?")]
@@ -86,6 +90,7 @@ namespace JCSUnity
         public int FPS { get { return this.mFPS; } set { this.mFPS = value; } }
         public float ResumeTime { get { return this.mResumeTime; } set { this.mResumeTime = value; } }
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 #if (UNITY_STANDALONE || UNITY_EDITOR)
         public KeyCode TakePicKey { get { return this.mTakePicKey; } set { this.mTakePicKey = value; } }
 #endif
@@ -191,7 +196,7 @@ namespace JCSUnity
 
             JCS_IO.CreateDirectory(savePath);
 
-            Texture2D snap = new Texture2D(mWebCamTexture.width, mWebCamTexture.height);
+            var snap = new Texture2D(mWebCamTexture.width, mWebCamTexture.height);
             snap.SetPixels(mWebCamTexture.GetPixels());
             snap.Apply();
 
@@ -365,9 +370,11 @@ namespace JCSUnity
         /// </summary>
         private void DoSplash()
         {
+            float dt = JCS_Time.DeltaTime(mDeltaTimeType);
+
             if (mResumeTrigger)
             {
-                mResumeTimer += Time.deltaTime;
+                mResumeTimer += dt;
 
                 if (mResumeTime < mResumeTimer)
                 {
@@ -383,7 +390,7 @@ namespace JCSUnity
 
             if (mSplashEffectTrigger)
             {
-                mDelayTimer += Time.deltaTime;
+                mDelayTimer += dt;
 
                 if (mDelayTimer > mDelayTime)
                 {

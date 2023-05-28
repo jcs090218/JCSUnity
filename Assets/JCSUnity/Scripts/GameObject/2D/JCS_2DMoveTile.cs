@@ -26,7 +26,7 @@ namespace JCSUnity
         private float mHeight = 0.0f;
 
         [Header("** Runtime Variables (JCS_2DMoveTile) **")]
-        
+
         [Tooltip("How fast this tile moves?")]
         [SerializeField]
         private float mMoveSpeed = 10.0f;
@@ -40,13 +40,19 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsYAxis = false;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         /* Setter & Getter */
+
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
         /* Functions */
 
         private void Awake()
         {
-            SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
+            var sp = this.GetComponent<SpriteRenderer>();
 
             Vector2 spriteRect = JCS_Util.GetSpriteRendererRectWithNoScale(sp);
 
@@ -77,7 +83,7 @@ namespace JCSUnity
                     this.transform.position = mOriginPosition;
             }
 
-            this.transform.position += mVelocity * Time.deltaTime;
+            this.transform.position += mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
         }
     }
 }

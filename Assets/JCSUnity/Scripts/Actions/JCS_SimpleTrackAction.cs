@@ -28,6 +28,10 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mFriction = 0.2f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Don't track on x-axis?")]
         [SerializeField]
         private bool mIgnoreX = false;
@@ -44,6 +48,7 @@ namespace JCSUnity
 
         public Vector3 TargetPosition { get { return this.mTargetPos; } set { this.mTargetPos = value; } }
         public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool IgnoreX { get { return this.mIgnoreX; } set { this.mIgnoreX = value; } }
         public bool IgnoreY { get { return this.mIgnoreY; } set { this.mIgnoreY = value; } }
         public bool IgnoreZ { get { return this.mIgnoreZ; } set { this.mIgnoreZ = value; } }
@@ -61,7 +66,7 @@ namespace JCSUnity
             if (mIgnoreZ)
                 tempTargetPost.z = this.LocalPosition.z;
 
-            this.LocalPosition += (tempTargetPost - LocalPosition) / mFriction * Time.deltaTime;
+            this.LocalPosition += (tempTargetPost - LocalPosition) / mFriction * JCS_Time.DeltaTime(mDeltaTimeType);
         }
 
         /// <summary>

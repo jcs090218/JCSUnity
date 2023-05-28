@@ -54,6 +54,10 @@ namespace JCSUnity
         [SerializeField]
         private float mAccpetRange = 0.8f;
 
+        [Tooltip("Type of the delta time.")]
+        [SerializeField]
+        private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
+
         [Tooltip("Hard track on x-axis.")]
         [SerializeField]
         private bool mHardOnX = false;
@@ -83,6 +87,7 @@ namespace JCSUnity
         public float MoveSpeed { get { return this.mMoveSpeed; } set { this.mMoveSpeed = value; } }
         public float Index { get { return this.mIndex; } set { this.mIndex = value; } }
         public int OrderIndex { get { return this.mOrderIndex; } set { this.mOrderIndex = value; } }
+        public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public bool Following { get { return this.mFollowing; } set { this.mFollowing = value; } }
         public bool HardOnX { get { return this.mHardOnX; } set { this.mHardOnX = value; } }
         public bool HardOnY { get { return this.mHardOnY; } set { this.mHardOnY = value; } }
@@ -120,7 +125,7 @@ namespace JCSUnity
 
 
            // apply force
-            newPos += mVelocity * Time.deltaTime;
+            newPos += mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
 
             this.transform.position = newPos;
         }
@@ -130,7 +135,7 @@ namespace JCSUnity
         /// </summary>
         private void KeepOnSameDirection()
         {
-            this.transform.position += mVelocity * Time.deltaTime;
+            this.transform.position += mVelocity * JCS_Time.DeltaTime(mDeltaTimeType);
         }
 
         /// <summary>
