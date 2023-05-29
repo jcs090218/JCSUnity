@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 668007220}
   - component: {fileID: 668007219}
   - component: {fileID: 668007218}
+  - component: {fileID: 668007230}
   - component: {fileID: 668007217}
   m_Layer: 0
   m_Name: JCS_Settings
@@ -403,7 +404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mResendTime: 0.001
   mWaitingPacketIds: 
-  mDeltaTimeType: 0
 --- !u!114 &668007225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +493,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668007230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668007216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25fce8af46392048949240ce017a69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ASYMPTOTIC: 0
+  FRICTION: 0.2
 --- !u!1 &1000572018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1040,8 @@ MonoBehaviour:
   mPauseActions: []
   mDefaultTimeScale: 1
   mResizePauseActionListTime: 20
-  mAsymp: 0
+  mOverrideSetting: 0
+  mAsymptotic: 0
   mFriction: 0.2
 --- !u!114 &1829456409
 MonoBehaviour:
