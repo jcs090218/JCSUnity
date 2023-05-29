@@ -420,6 +420,7 @@ MonoBehaviour:
   mObjectType: 2
   mTargetAlpha: 1
   mFadeFriction: 1
+  mDeltaTimeType: 0
 --- !u!212 &65222734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -490,6 +491,7 @@ MonoBehaviour:
   mActive: 1
   mTimeZone: 2
   mAdjustTimeZone: 1.5
+  mDeltaTimeType: 0
   mUnityEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -559,6 +561,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -1182,6 +1185,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -1605,9 +1609,10 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
+  mDeltaTimeType: 0
   mNullSprite: {fileID: 0}
   mNullSpriteAfterDonePlayingAnim: 0
-  mFramePerSec: 0.3
+  mSecPerFrame: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 358a4eafc42316745a91f8feff99694a, type: 3}
   - {fileID: 21300000, guid: b50acb8549f5a5741a3c9f65e9c8cbbe, type: 3}
@@ -2375,6 +2380,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -2753,6 +2759,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -3347,6 +3354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mInvicibleTime: 1
+  mDeltaTimeType: 0
   mInvincibleColor: {r: 1, g: 1, b: 1, a: 1}
   mFlashTime: 0.2
   mTriggerSound: {fileID: 0}
@@ -3400,6 +3408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mOrderLayer: 6
   mLayerFriction: 0
+  mDeltaTimeType: 0
 --- !u!1 &197333511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,9 +3534,10 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
+  mDeltaTimeType: 0
   mNullSprite: {fileID: 0}
   mNullSpriteAfterDonePlayingAnim: 0
-  mFramePerSec: 0.3
+  mSecPerFrame: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: d4e2caca624b2d747a1a5746bf92065f, type: 3}
   - {fileID: 21300000, guid: 3aace6b2860c5544b97d27d9b9b5eda9, type: 3}
@@ -3757,6 +3767,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -4188,6 +4199,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -4503,6 +4515,7 @@ GameObject:
   - component: {fileID: 223429073}
   - component: {fileID: 223429072}
   - component: {fileID: 223429071}
+  - component: {fileID: 223429084}
   m_Layer: 0
   m_Name: JCS_Settings
   m_TagString: Untagged
@@ -4757,6 +4770,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &223429084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223429070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25fce8af46392048949240ce017a69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ASYMPTOTIC: 0
+  FRICTION: 0.2
 --- !u!1 &247078077
 GameObject:
   m_ObjectHideFlags: 0
@@ -4918,6 +4945,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -5278,6 +5306,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -5538,6 +5567,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -5779,6 +5809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mDirection: -1
   mPushSpeed: 7
+  mDeltaTimeType: 0
 --- !u!65 &297281054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6185,9 +6216,10 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
+  mDeltaTimeType: 0
   mNullSprite: {fileID: 0}
   mNullSpriteAfterDonePlayingAnim: 0
-  mFramePerSec: 0.3
+  mSecPerFrame: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: d4e2caca624b2d747a1a5746bf92065f, type: 3}
   - {fileID: 21300000, guid: 3aace6b2860c5544b97d27d9b9b5eda9, type: 3}
@@ -7311,6 +7343,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -7784,6 +7817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184f0fd7c2a158b4292260f2962aed68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mRecordEnabled: 
   mActionList:
   - {fileID: 536958072}
   - {fileID: 536958073}
@@ -7854,6 +7888,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -8675,6 +8710,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -9192,6 +9228,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -9452,6 +9489,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -9691,8 +9729,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa49b5ee139699040b4a44e97ef334aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTestWithKey: 0
+  mToggleGamePause: 112
   mPauseActions: []
+  mDefaultTimeScale: 1
   mResizePauseActionListTime: 20
+  mOverrideSetting: 0
+  mAsymptotic: 0
+  mFriction: 0.2
 --- !u!114 &702065684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9945,9 +9989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbeb25e792087645b19e4cf30c3218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTestWithKey: 0
-  mToggleGamePause: 112
-  TIME_SCALE: 1
   mGamePause: 0
   mGameDoneInitialize: 0
 --- !u!114 &702065695
@@ -10247,6 +10288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mOrderLayer: 9
   mLayerFriction: 0
+  mDeltaTimeType: 0
 --- !u!1 &771517348
 GameObject:
   m_ObjectHideFlags: 0
@@ -11003,6 +11045,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -11298,6 +11341,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -11861,6 +11905,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -12355,6 +12400,7 @@ MonoBehaviour:
   mObjectType: 2
   mTargetAlpha: 1
   mFadeFriction: 1
+  mDeltaTimeType: 0
 --- !u!212 &968847457
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12425,6 +12471,7 @@ MonoBehaviour:
   mActive: 1
   mTimeZone: 2
   mAdjustTimeZone: 1.5
+  mDeltaTimeType: 0
   mUnityEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -12692,6 +12739,7 @@ MonoBehaviour:
   mObjectType: 2
   mTargetAlpha: 1
   mFadeFriction: 1
+  mDeltaTimeType: 0
 --- !u!212 &993704334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12762,6 +12810,7 @@ MonoBehaviour:
   mActive: 1
   mTimeZone: 2
   mAdjustTimeZone: 1.5
+  mDeltaTimeType: 0
   mUnityEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -12831,6 +12880,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -13091,6 +13141,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -13627,6 +13678,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -14008,9 +14060,10 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
+  mDeltaTimeType: 0
   mNullSprite: {fileID: 0}
   mNullSpriteAfterDonePlayingAnim: 0
-  mFramePerSec: 0.2
+  mSecPerFrame: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 151fcf20dd1b4064f96b921337146776, type: 3}
   - {fileID: 21300000, guid: b2db1ee4d31b2704bb524205276e983b, type: 3}
@@ -14672,6 +14725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMoveSpeed: 2
   mAxis: 0
+  mDeltaTimeType: 0
   mRandomizeSpeedAtStart: 0
   mRandomSpeedValue: 5
 --- !u!114 &1068026673
@@ -14820,6 +14874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mInvicibleTime: 1
+  mDeltaTimeType: 0
   mInvincibleColor: {r: 1, g: 1, b: 1, a: 1}
   mFlashTime: 0.2
   mTriggerSound: {fileID: 0}
@@ -15165,7 +15220,6 @@ MonoBehaviour:
   downRightKey: 99
   mCurrentPage: {x: 0, y: 0}
   mUnityGUIType: 1
-  m2DCamera: {fileID: 1421476510}
   mPanelHolder: {fileID: 468350879}
   mInteractableSwipe: 1
   mSwipeArea: {x: 0.5, y: 0.5}
@@ -15201,7 +15255,6 @@ MonoBehaviour:
   downRightKey: 99
   mCurrentPage: {x: 0, y: 0}
   mUnityGUIType: 0
-  m2DCamera: {fileID: 1421476510}
   mPanelHolder: {fileID: 468350879}
   mInteractableSwipe: 1
   mSwipeArea: {x: 0.5, y: 0.5}
@@ -15348,6 +15401,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -15714,6 +15768,7 @@ MonoBehaviour:
   mTime: 1
   mActive: 0
   mGravityProduct: 1
+  mDeltaTimeType: 0
 --- !u!1 &1217867801
 GameObject:
   m_ObjectHideFlags: 0
@@ -15883,6 +15938,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -16174,6 +16230,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -16618,6 +16675,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -17139,6 +17197,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -17399,6 +17458,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -17738,6 +17798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mOrderLayer: 0
   mLayerFriction: 14
+  mDeltaTimeType: 0
 --- !u!1 &1352518854
 GameObject:
   m_ObjectHideFlags: 0
@@ -18078,6 +18139,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -18509,6 +18571,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -18840,6 +18903,7 @@ MonoBehaviour:
   mGameCamColor: {r: 1, g: 0, b: 0, a: 1}
   mFollowing: 1
   mPositionOffset: {x: 0, y: 0, z: -10}
+  mDeltaTimeType: 0
   mSmoothTrack: 1
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
@@ -19101,6 +19165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMoveSpeed: 2
   mAxis: 0
+  mDeltaTimeType: 0
   mRandomizeSpeedAtStart: 0
   mRandomSpeedValue: 5
 --- !u!212 &1425020024
@@ -19256,6 +19321,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -20224,6 +20290,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -20816,6 +20883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184f0fd7c2a158b4292260f2962aed68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mRecordEnabled: 
   mActionList:
   - {fileID: 1550627001}
   - {fileID: 1550627002}
@@ -20886,6 +20954,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -21692,6 +21761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mOrderLayer: 8
   mLayerFriction: 0
+  mDeltaTimeType: 0
 --- !u!1 &1662452557
 GameObject:
   m_ObjectHideFlags: 0
@@ -21953,6 +22023,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -22577,6 +22648,7 @@ MonoBehaviour:
   mObjectType: 2
   mTargetAlpha: 1
   mFadeFriction: 1
+  mDeltaTimeType: 0
 --- !u!212 &1729820365
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22647,6 +22719,7 @@ MonoBehaviour:
   mActive: 1
   mTimeZone: 2
   mAdjustTimeZone: 1.5
+  mDeltaTimeType: 0
   mUnityEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -24062,6 +24135,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -24990,6 +25064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObjectType: 2
   mInvicibleTime: 1
+  mDeltaTimeType: 0
   mInvincibleColor: {r: 1, g: 1, b: 1, a: 1}
   mFlashTime: 0.2
   mTriggerSound: {fileID: 0}
@@ -25242,6 +25317,7 @@ MonoBehaviour:
   mObjectType: 2
   mTargetAlpha: 1
   mFadeFriction: 1
+  mDeltaTimeType: 0
 --- !u!114 &1987181936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25275,6 +25351,7 @@ MonoBehaviour:
   mActive: 1
   mTimeZone: 2
   mAdjustTimeZone: 1.5
+  mDeltaTimeType: 0
   mUnityEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -25426,6 +25503,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -25704,6 +25782,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -26651,9 +26730,10 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
+  mDeltaTimeType: 0
   mNullSprite: {fileID: 0}
   mNullSpriteAfterDonePlayingAnim: 0
-  mFramePerSec: 0.3
+  mSecPerFrame: 0.1
   mAnimFrames:
   - {fileID: 21300000, guid: 358a4eafc42316745a91f8feff99694a, type: 3}
   - {fileID: 21300000, guid: b50acb8549f5a5741a3c9f65e9c8cbbe, type: 3}
@@ -26908,6 +26988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mOrderLayer: 7
   mLayerFriction: 0
+  mDeltaTimeType: 0
 --- !u!1 &2094132389
 GameObject:
   m_ObjectHideFlags: 0
@@ -27355,6 +27436,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
+  mDeltaTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
