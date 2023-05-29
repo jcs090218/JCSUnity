@@ -61,12 +61,12 @@ namespace JCSUnity
 
         [Tooltip("Fade in time. (For this scene)")]
         [SerializeField]
-        [Range(JCS_SceneSettings.MIN_SCENE_FADEIN_TIME, JCS_SceneSettings.MAX_SCENE_FADEIN_TIME)]
+        [Range(0.0f, 5.0f)]
         private float mSceneFadeInTime = 1.0f;
 
         [Tooltip("Fade out time. (For this scene)")]
         [SerializeField]
-        [Range(JCS_SceneSettings.MIN_SCENE_FADEIN_TIME, JCS_SceneSettings.MAX_SCENE_FADEIN_TIME)]
+        [Range(0.0f, 5.0f)]
         private float mSceneFadeOutTime = 1.0f;
 
         // fade the sound while switching the scene.
@@ -125,18 +125,18 @@ namespace JCSUnity
 
         private void Start()
         {
-            var sceneS = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // NOTE(jenchieh): get the fade out time base on  the scene setting
             // and scene manager specific.
-            float fadeoutTime = sceneS.GetSceneFadeInTimeBaseOnSetting();
+            float fadeoutTime = ss.SceneFadeInTimeBaseOnSetting();
 
             switch (mSwitchSceneType)
             {
                 case JCS_SwitchSceneType.BLACK_SCREEN:
                     {
                         // get the current screen color.
-                        mBlackScreen.LocalColor = sceneS.SCREEN_COLOR;
+                        mBlackScreen.LocalColor = ss.SCREEN_COLOR;
 
                         mBlackScreen.FadeOut(fadeoutTime);
                     }
@@ -197,9 +197,9 @@ namespace JCSUnity
         /// <param name="sceneName"> Scene name to load. </param>
         public void LoadScene(string sceneName)
         {
-            // NOTE(jenchieh): get the fade in time base on 
-            // the scene setting and scene manager specific.
-            float fadeInTime = JCS_SceneSettings.instance.GetSceneFadeInTimeBaseOnSetting();
+            // NOTE(jenchieh): get the fade in time base on  the scene setting
+            // and scene manager specific.
+            float fadeInTime = JCS_SceneSettings.instance.SceneFadeInTimeBaseOnSetting();
 
             // load scene and pass the value in.
             LoadScene(sceneName, fadeInTime);
@@ -222,11 +222,11 @@ namespace JCSUnity
         /// <param name="screenColor"> Screen color to fade in/out. </param>
         public void LoadScene(string sceneName, Color screenColor)
         {
-            var sceneS = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // NOTE(jenchieh): get the fade in time base on  the scene setting
             // and scene manager specific.
-            float fadeInTime = sceneS.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
 
             LoadScene(sceneName, fadeInTime, screenColor, false);
         }
@@ -238,13 +238,13 @@ namespace JCSUnity
         /// <param name="keepBGM"> Set to true if keep background music playing. </param>
         public void LoadScene(string sceneName, bool keepBGM)
         {
-            var sceneS = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // NOTE(jenchieh): get the fade in time base on  the scene setting
             // and scene manager specific.
-            float fadeInTime = sceneS.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
 
-            LoadScene(sceneName, fadeInTime, sceneS.SCREEN_COLOR, keepBGM);
+            LoadScene(sceneName, fadeInTime, ss.SCREEN_COLOR, keepBGM);
         }
 
         /// <summary>
@@ -268,11 +268,11 @@ namespace JCSUnity
         /// <param name="keepBGM"> Set to true if keep background music playing. </param>
         public void LoadScene(string sceneName, Color screenColor, bool keepBGM)
         {
-            var sceneS = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // NOTE(jenchieh): get the fade in time base on  the scene setting
             // and scene manager specific.
-            float fadeInTime = sceneS.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
 
             LoadScene(sceneName, fadeInTime, screenColor, keepBGM);
         }
@@ -381,7 +381,7 @@ namespace JCSUnity
         {
             // NOTE(jenchieh): get the fade in time base on 
             // the scene setting and scene manager specific.
-            float fadeInTime = JCS_SceneSettings.instance.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = JCS_SceneSettings.instance.SceneFadeInTimeBaseOnSetting();
 
             // load scene and pass the value in.
             ReloadScene(fadeInTime);
@@ -402,11 +402,11 @@ namespace JCSUnity
         /// <param name="screenColor"> Screen color to fade in/out. </param>
         public void ReloadScene(Color screenColor)
         {
-            var sceneS = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // NOTE(jenchieh): get the fade in time base on  the scene setting
             // and scene manager specific.
-            float fadeInTime = sceneS.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
 
             ReloadScene(fadeInTime, screenColor, false);
         }
@@ -417,13 +417,13 @@ namespace JCSUnity
         /// <param name="keepBGM"> Set to true if keep background music playing. </param>
         public void ReloadScene(bool keepBGM)
         {
-            var sceneS = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // NOTE(jenchieh): get the fade in time base on  the scene setting
             // and scene manager specific.
-            float fadeInTime = sceneS.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
 
-            ReloadScene(fadeInTime, sceneS.SCREEN_COLOR, keepBGM);
+            ReloadScene(fadeInTime, ss.SCREEN_COLOR, keepBGM);
         }
 
         /// <summary>
@@ -445,11 +445,11 @@ namespace JCSUnity
         /// <param name="keepBGM"> Set to true if keep background music playing. </param>
         public void ReloadScene(Color screenColor, bool keepBGM)
         {
-            var sceneS = JCS_SceneSettings.instance;
+            var ss = JCS_SceneSettings.instance;
 
             // NOTE(jenchieh): get the fade in time base on  the scene setting
             // and scene manager specific.
-            float fadeInTime = sceneS.GetSceneFadeInTimeBaseOnSetting();
+            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
 
             ReloadScene(fadeInTime, screenColor, keepBGM);
         }

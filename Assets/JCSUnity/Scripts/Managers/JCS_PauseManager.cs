@@ -58,9 +58,13 @@ object you have in the list.")]
 
         [Header("- Asymptotic (JCS_PauseManager)")]
 
+        [Tooltip("Do this scene using the specific setting.")]
+        [SerializeField]
+        private bool mOverrideSetting = false;
+
         [Tooltip("Pause and unpause with asymptotic transition.")]
         [SerializeField]
-        private bool mAsymp = false;
+        private bool mAsymptotic = false;
 
         [Tooltip("How fast the asymptotic transition?")]
         [SerializeField]
@@ -72,7 +76,9 @@ object you have in the list.")]
         public List<JCS_PauseAction> PausesActions { get { return this.mPauseActions; } }
         public float ResizePauseActionListTime { get { return this.mResizePauseActionListTime; } set { this.mResizePauseActionListTime = value; } }
         public float DefaultTimeScale { get { return this.mDefaultTimeScale; } set { this.mDefaultTimeScale = value; } }
-        public bool Asymp { get { return this.mAsymp; } set { this.mAsymp = value; } }
+
+        public bool OverrideSetting { get { return this.mOverrideSetting; } }
+        public bool Asymptotic { get { return this.mAsymptotic; } set { this.mAsymptotic = value; } }
         public float Friction { get { return this.mFriction; } set { this.mFriction = value; } }
 
         /* Functions */
@@ -121,7 +127,9 @@ object you have in the list.")]
         /// </summary>
         public void Pause()
         {
-            if (mAsymp)
+            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+
+            if (asymp)
                 mTargetTimeScale = 0.0f;
             else
                 Time.timeScale = 0.0f;
@@ -134,7 +142,9 @@ object you have in the list.")]
         /// </summary>
         public void Unpause()
         {
-            if (mAsymp)
+            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+
+            if (asymp)
                 mTargetTimeScale = mDefaultTimeScale;
             else
                 Time.timeScale = mDefaultTimeScale;
@@ -195,7 +205,9 @@ object you have in the list.")]
         /// </summary>
         private void DoAsymp()
         {
-            if (!mAsymp)
+            bool asymp = JCS_PauseSettings.instance.AsymptoticBaseOnSetting();
+
+            if (!asymp)
                 return;
 
             Time.timeScale += (mTargetTimeScale - Time.timeScale) / mFriction * Time.unscaledDeltaTime;

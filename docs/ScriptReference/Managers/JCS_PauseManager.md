@@ -9,7 +9,7 @@ need the pause manager to add it to `JCS_Managers` transform in the Hierarchy.
 |:---------------------------|:--------------------------------------------------|
 | mDefaultTimeScale          | The default time scale.                           |
 | mResizePauseActionListTime | Time to resize the pause action list, in seconds. |
-| mAsymp                     | Pause and unpause with asymptotic transition.     |
+| mAsymptotic                | Pause and unpause with asymptotic transition.     |
 | mFriction                  | How fast the asymptotic transition?               |
 
 ## Functions
