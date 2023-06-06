@@ -210,10 +210,12 @@ object you have in the list.")]
             if (!asymp)
                 return;
 
-            Time.timeScale += (mTargetTimeScale - Time.timeScale) / mFriction * Time.unscaledDeltaTime;
+            float newTS = Time.timeScale;
+
+            newTS += (mTargetTimeScale - Time.timeScale) / mFriction * Time.unscaledDeltaTime;
 
             // Prevent lower than 0!
-            Time.timeScale = Mathf.Max(0.0f, Time.timeScale);
+            Time.timeScale = Mathf.Max(0.0f, newTS);
         }
     }
 }
