@@ -101,7 +101,7 @@ MonoBehaviour:
   mOverrideFade: 1
   mFadeInAmount: 1
   mFadeOutAmount: 0
-  mDeltaTimeType: 0
+  mDeltaTimeType: 7
 --- !u!114 &11461196
 MonoBehaviour:
   m_ObjectHideFlags: 0
