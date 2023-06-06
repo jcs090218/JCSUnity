@@ -211,6 +211,9 @@ object you have in the list.")]
                 return;
 
             Time.timeScale += (mTargetTimeScale - Time.timeScale) / mFriction * Time.unscaledDeltaTime;
+
+            // Prevent lower than 0!
+            Time.timeScale = Mathf.Max(0.0f, Time.timeScale);
         }
     }
 }
