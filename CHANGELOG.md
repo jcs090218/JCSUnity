@@ -12,6 +12,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Allow 0 length sprite in 2D animation (f220b5713c37239cd8ab6253dd2d07d613f28af3)
 * Fix 2D Animation SPF instead of FPS (3c2e44b96c7d7aba02fafb931063a182a1833dac)
 * Add pause settings (742635f9176e55225e44b89bd5f76e682424b542)
+* Fix black screen is stucked when pausing the game (c03e2a28ad1aca33e5824b60a4b39e953eff4a52)
+* Fix scale time goes below 0 (70a1d394796c2f9de9b6fc8001563bb4a09bd872)
 
 ## 2.3.0
 > Released Sep 12, 2022
