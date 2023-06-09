@@ -6,11 +6,13 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using MyBox;
 using UnityEngine;
+
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.AI;
 #endif
+
+using MyBox;
 
 namespace JCSUnity
 {

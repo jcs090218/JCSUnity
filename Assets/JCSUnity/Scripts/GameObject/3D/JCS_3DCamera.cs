@@ -6,8 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using MyBox;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
