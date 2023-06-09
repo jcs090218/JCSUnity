@@ -6,6 +6,7 @@
  * $Notice: $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -16,10 +17,12 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DSideScrollerPlayerAudioController) **")]
+        [Separator("Runtime Variables (JCS_2DSideScrollerPlayerAudioController)")]
+
         [SerializeField] private bool mOverrideSound = true;
 
-        [Header("** Sound Settings (JCS_2DSideScrollerPlayerAudioController) **")]
+        [Separator("Sound Settings (JCS_2DSideScrollerPlayerAudioController)")]
+
         [SerializeField] private AudioClip mStandSound = null;
         [SerializeField] private AudioClip mWalkSound = null;
         // only attack could have multiple sound

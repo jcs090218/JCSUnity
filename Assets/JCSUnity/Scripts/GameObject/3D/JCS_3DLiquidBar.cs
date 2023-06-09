@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DLiquidBar) **")]
+        [Separator("Helper Variables (JCS_3DLiquidBar)")]
 
         [Tooltip("Test functionalities works?")]
         [SerializeField]
@@ -42,12 +43,13 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-        [Header("** Check Variables (JCS_3DLiquidBar) **")]
+        [Separator("Check Variables (JCS_3DLiquidBar)")]
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
-        [Header("** Initilaize Variables (JCS_3DLiquidBar) **")]
+        [Separator("Initilaize Variables (JCS_3DLiquidBar)")]
 
         [Tooltip("Sprite mask that mask out the inner bar sprite.")]
         [SerializeField]

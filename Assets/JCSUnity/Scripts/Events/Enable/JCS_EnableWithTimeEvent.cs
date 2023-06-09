@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,13 +21,14 @@ namespace JCSUnity
 
         private float mTimer = 0.0f;
 
-        [Header("** Check Variables (JCS_EnableWithTimeEvent) **")]
+        [Separator("Check Variables (JCS_EnableWithTimeEvent)")]
 
         [Tooltip("Turn it to true when the task is completed.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDone = false;
 
-        [Header("** Runtime Variables (JCS_EnableWithTimeEvent) **")]
+        [Separator("Runtime Variables (JCS_EnableWithTimeEvent)")]
 
         [Tooltip("Components that take effect.")]
         [SerializeField]

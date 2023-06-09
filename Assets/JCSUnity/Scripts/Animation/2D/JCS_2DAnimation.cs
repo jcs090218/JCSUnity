@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,7 +26,7 @@ namespace JCSUnity
         private JCS_2DAnimator mAnimator = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables Variables (JCS_2DAnimation) **")]
+        [Separator("Helper Variables Variables (JCS_2DAnimation)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -44,14 +45,16 @@ namespace JCSUnity
         private KeyCode mPauseKey = KeyCode.E;
 #endif
 
-        [Header("** Check Variables (JCS_Animation) **")]
+        [Separator("Check Variables (JCS_Animation)")]
 
         [Tooltip("Frame this animation current playing.")]
         [SerializeField]
+        [ReadOnly]
         private int mCurrentPlayingFrame = 0;
 
         [Tooltip("Maxinum frame in the animation.")]
         [SerializeField]
+        [ReadOnly]
         private int mMaxFrame = 0;
 
         // flag to know if the animation is done.
@@ -59,13 +62,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mIsDonePlaying = false;
 
-        [Header("** Initialize Variables (JCS_Animation) **")]
+        [Separator("Initialize Variables (JCS_Animation)")]
 
         [Tooltip("Starting frame index.")]
         [SerializeField]
         private int mStartingFrame = 0;
 
-        [Header("** Runtime Variables (JCS_Animation) **")]
+        [Separator("Runtime Variables (JCS_Animation)")]
 
         [Tooltip("Do play the animation?")]
         [SerializeField]

@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.Events;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,22 +22,25 @@ namespace JCSUnity
         // action to trigger if the time is reached.
         public EmptyFunction actions = null;
 
-        [Header("** Check Variables (JCS_AdjustTimeTrigger) **")]
+        [Separator("Check Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip(@"Time to record down the real time to do one action after 
 we calculate the real time.")]
         [SerializeField]
+        [ReadOnly]
         private float mRealTimeZone = 0.0f;
 
         [Tooltip("Timer to check if reach the real time zone.")]
         [SerializeField]
+        [ReadOnly]
         private float mTimer = 0.0f;
 
         [Tooltip("check if the action trigger.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDidAction = false;
 
-        [Header("** Runtime Variables (JCS_AdjustTimeTrigger) **")]
+        [Separator("Runtime Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]

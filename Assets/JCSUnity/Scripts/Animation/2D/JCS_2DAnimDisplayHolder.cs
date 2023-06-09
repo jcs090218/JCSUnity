@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,11 +21,12 @@ namespace JCSUnity
 
         private JCS_2DAnimator m2DAnimator = null;
 
-        [Header("** Check Variables (JCS_2DAnimDisplayHolder) **")]
+        [Separator("Check Variables (JCS_2DAnimDisplayHolder)")]
 
         [Tooltip(@"Record down what is the current animation playing, so after 
 holding we could play the animation back in time.")]
         [SerializeField]
+        [ReadOnly]
         private int mStoreAnimIndex = 0;
 
         private int mHoldAnimIndex = 0;
@@ -32,7 +34,7 @@ holding we could play the animation back in time.")]
         // trigger holding?
         private bool mHolding = false;
 
-        [Header("** Runtime Variables (JCS_2DAnimDisplayHolder) **")]
+        [Separator("Runtime Variables (JCS_2DAnimDisplayHolder)")]
 
         [Tooltip("How long to hold this animation.")]
         [SerializeField] [Range(0.0f, 10.0f)]

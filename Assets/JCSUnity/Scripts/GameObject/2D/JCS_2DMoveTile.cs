@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,15 +18,17 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_2DMoveTile) **")]
+        [Separator("Check Variables (JCS_2DMoveTile)")]
 
         [SerializeField]
+        [ReadOnly]
         private float mWidth = 0.0f;
 
         [SerializeField]
+        [ReadOnly]
         private float mHeight = 0.0f;
 
-        [Header("** Runtime Variables (JCS_2DMoveTile) **")]
+        [Separator("Runtime Variables (JCS_2DMoveTile)")]
 
         [Tooltip("How fast this tile moves?")]
         [SerializeField]

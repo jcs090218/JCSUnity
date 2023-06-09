@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,7 +26,7 @@ namespace JCSUnity
         private float mAlpha = 1.0f;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_FadeObject) **")]
+        [Separator("Helper Variables (JCS_FadeObject)")]
 
         [Tooltip("Test Fade in/out with key.")]
         [SerializeField]
@@ -37,17 +38,19 @@ namespace JCSUnity
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
 
-        [Header("** Check Variables (JCS_FadeObject) **")]
+        [Separator("Check Variables (JCS_FadeObject)")]
 
         [Tooltip("Is current fade object doing the effect? (fade in/out)")]
         [SerializeField]
+        [ReadOnly]
         private bool mEffect = false;
 
         [Tooltip("Is current fade object visible?")]
         [SerializeField]
+        [ReadOnly]
         private bool mVisible = true;
 
-        [Header("** Runtime Variables (JCS_FadeObject) **")]
+        [Separator("Runtime Variables (JCS_FadeObject)")]
 
         [Tooltip("How long it fades.")]
         [SerializeField]

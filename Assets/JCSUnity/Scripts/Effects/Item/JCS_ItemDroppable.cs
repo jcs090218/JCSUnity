@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -30,7 +31,7 @@ namespace JCSUnity
         };
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_ItemDroppable) **")]
+        [Separator("Helper Variables (JCS_ItemDroppable)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -41,7 +42,7 @@ namespace JCSUnity
         private KeyCode mDropItemKey = KeyCode.B;
 #endif
 
-        [Header("** Runtime Variables (JCS_ItemDroppable) **")]
+        [Separator("Runtime Variables (JCS_ItemDroppable)")]
 
         [Tooltip(@"Weather or drop will depends on 
 this variables first, before to do the actually 

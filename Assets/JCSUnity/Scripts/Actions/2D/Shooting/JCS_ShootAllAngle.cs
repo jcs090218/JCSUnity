@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,13 +21,14 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-        [Header("** Check Variables (JCS_ShootAllAngle) **")]
+        [Separator("Check Variables (JCS_ShootAllAngle)")]
 
         [Tooltip("Check if the enemy can shoot or not depends on the delay time!")]
         [SerializeField]
+        [ReadOnly]
         private bool mCanShoot = true;
 
-        [Header("** Runtime Variables (JCS_ShootAllAngle) **")]
+        [Separator("Runtime Variables (JCS_ShootAllAngle)")]
 
         [Tooltip("Automatically shoot bullets itself in frame.")]
         [SerializeField]

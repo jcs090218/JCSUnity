@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,14 +26,14 @@ namespace JCSUnity
         private JCS_SoundPlayer mSoundPlayer = null;
         private RectTransform mRectTransform = null;
 
-        [Header("** Initialize Variables (JCS_SequenceSlidePanel) **")]
+        [Separator("Initialize Variables (JCS_SequenceSlidePanel)")]
 
         [Tooltip(@"Optional choice, instead of using the auto detection. 
 (JCS_EmptyButton are the recommaned default class to use.)")]
         [SerializeField]
         private JCS_Button mToggleOrExitButton = null;
 
-        [Header("** Runtime Variables (JCS_SequenceSlidePanel) **")]
+        [Separator("Runtime Variables (JCS_SequenceSlidePanel)")]
 
         [Tooltip("Sequence of buttons with slide effect component with in the tranform.")]
         [SerializeField]

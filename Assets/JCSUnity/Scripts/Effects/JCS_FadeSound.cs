@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,13 +22,14 @@ namespace JCSUnity
 
         private JCS_FadeType mType = JCS_FadeType.NONE;
 
-        [Header("** Check Variables (JCS_FadeSound) **")]
+        [Separator("Check Variables (JCS_FadeSound)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]
+        [ReadOnly]
         private bool mEffect = false;
 
-        [Header("** Runtime Variables (JCS_FadeSound) **")]
+        [Separator("Runtime Variables (JCS_FadeSound)")]
 
         [Tooltip("Fade out time.")]
         [SerializeField]

@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
 
         private JCS_ItemDroppable mItemDroppable = null;
 
-        [Header("** Runtime Variables (JCS_2DDropItemAction) **")]
+        [Separator("Runtime Variables (JCS_2DDropItemAction)")]
 
         [Tooltip("Drop once when the object is dead.")]
         [SerializeField]

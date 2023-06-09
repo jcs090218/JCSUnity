@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,13 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_TimePanel) **")]
+        [Separator("Check Variables (JCS_TimePanel)")]
 
         [Tooltip("Panels going to do the action.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_DialogueObject[] mDialogueObjects = null;
 
-        [Header("** Runtime Variables (JCS_TimePanel) **")]
+        [Separator("Runtime Variables (JCS_TimePanel)")]
 
         [Tooltip("Active on awake.")]
         [SerializeField]

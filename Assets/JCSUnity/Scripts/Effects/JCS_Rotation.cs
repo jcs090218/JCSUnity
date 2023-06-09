@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_Rotation) **")]
+        [Separator("Runtime Variables (JCS_Rotation)")]
 
         [Tooltip("Do the effect?")]
         [SerializeField]
@@ -36,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("- Random Effect (JCS_Rotation)")]
+        [Header("- Random Effect")]
 
         [Tooltip("Randomize the rotation speed a bit at start.")]
         [SerializeField]

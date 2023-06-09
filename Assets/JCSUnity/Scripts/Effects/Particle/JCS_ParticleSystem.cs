@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Variables Variables (JCS_ParticleSystem) **")]
+        [Separator("Variables Variables (JCS_ParticleSystem)")]
 
         [Tooltip("Flag for component testing.")]
         public bool testWithKey = false;
@@ -38,7 +39,7 @@ namespace JCSUnity
         public int oneShotParticleCount = 10;
 #endif
 
-        [Header("** Initialize Variables (JCS_ParticleSystem) **")]
+        [Separator("Initialize Variables (JCS_ParticleSystem)")]
 
         [Tooltip("Number of particle this particle system hold.")]
         [SerializeField]
@@ -48,7 +49,7 @@ namespace JCSUnity
         private JCS_Vector<JCS_Particle> mParticles = null;
         private int mLastAvaliableIndex = 0;
 
-        [Header("** Runtime Variables (JCS_ParticleSystem) **")]
+        [Separator("Runtime Variables (JCS_ParticleSystem)")]
 
         [Tooltip("Particle you want to spawn.")]
         [SerializeField]

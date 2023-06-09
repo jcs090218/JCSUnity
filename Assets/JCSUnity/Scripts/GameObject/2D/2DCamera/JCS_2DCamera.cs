@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,18 +18,19 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Varialbes (JCS_2DCamera) **")]
+        [Separator("Check Varialbes (JCS_2DCamera)")]
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 mTargetPosition = Vector3.zero;
 
-        [Header("** Initialize Variables (JCS_2DCamera) **")]
+        [Separator("Initialize Variables (JCS_2DCamera)")]
 
         [Tooltip("Set the camera's position to the player when the game starts?")]
         [SerializeField]
         private bool mSetToPlayerPositionAtStart = true;
 
-        [Header("** Runtime Variables (JCS_2DCamera) **")]
+        [Separator("Runtime Variables (JCS_2DCamera)")]
 
         //-- Target information
         [Tooltip("Target transform information.")]

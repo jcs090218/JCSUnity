@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,13 +18,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_SlideScreenButton) **")]
+        [Separator("Check Variables (JCS_SlideScreenButton)")]
 
         [Tooltip("This action are using `JCS_2DSlideScreenCamera`.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_2DSlideScreenCamera[] mSlideCameras = null;
 
-        [Header("** Runtime Variables (JCS_SlideScreenButton) **")]
+        [Separator("Runtime Variables (JCS_SlideScreenButton)")]
 
         [Tooltip("Direction you want to move.")]
         [SerializeField] private JCS_2D8Direction mDirection = JCS_2D8Direction.TOP;

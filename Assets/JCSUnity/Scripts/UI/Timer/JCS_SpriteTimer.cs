@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -27,12 +28,13 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-        [Header("** Check Variables (JCS_SpriteTimer) **")]
+        [Separator("Check Variables (JCS_SpriteTimer)")]
 
         [SerializeField]
+        [ReadOnly]
         private bool mDoTimeIsUpCallback = false;
 
-        [Header("** Runtime Variables (JCS_SpriteTimer) **")]
+        [Separator("Runtime Variables (JCS_SpriteTimer)")]
 
         [Tooltip("Timer active or not active.")]
         [SerializeField]

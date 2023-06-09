@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,7 +26,7 @@ namespace JCSUnity
         private Vector3 mTowardPosition = Vector3.zero;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_SlideEffect) **")]
+        [Separator("Helper Variables (JCS_SlideEffect)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
@@ -40,21 +41,24 @@ namespace JCSUnity
         private KeyCode mDeactiveKey = KeyCode.S;
 #endif
 
-        [Header("** Check Variables (JCS_SlideEffect) **")]
+        [Separator("Check Variables (JCS_SlideEffect)")]
 
         [Tooltip("Is this effect active?")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsActive = false;
 
         [Tooltip("The panel root object.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
         [Tooltip("Event trigger system.")]
         [SerializeField]
+        [ReadOnly]
         private EventTrigger mEventTrigger = null;
 
-        [Header("** Initialize Variables (JCS_SlideEffect) **")]
+        [Separator("Initialize Variables (JCS_SlideEffect)")]
 
         [Tooltip("Direction object slides.")]
         [SerializeField]
@@ -70,7 +74,7 @@ namespace JCSUnity
         [Range(0.01f, 10.0f)]
         private float mFriction = 0.2f;
 
-        [Header("** Runtime Variables (JCS_SlideEffect) **")]
+        [Separator("Runtime Variables (JCS_SlideEffect)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]

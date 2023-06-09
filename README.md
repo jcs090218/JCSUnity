@@ -31,16 +31,16 @@ any placeholder assets commercially.
 
 Here is the list of few important and recent changes to this framework.
 
-* `2.3.0` - Fixed resizable screen's calculation in perspective mode.
-* `2.2.1` - Implement new screen type, `MIXED` for responsive UI.
-* `2.2.0` - Add `trimmed` version to release.
-* `2.1.2` - Add support for multiple languages.
-* `2.1.1` - Add support for safe area view for iPhone X or above.
-* `2.1.0` - Multiple minor fix for screen module for resizable screen feature.
-* `2.0.7` - Support consistent streaming assets loading with web request.
-* `2.0.6` - Updated project to Unity version `2020.1.0f1`.
-* `2.0.5` - Supplied full version of `webcam` module.
-* `2.0.4` - Renamed all framework's scenes without useless postfix like `Demo`, `Scene`, etc.
+- `2.3.0` - Fixed resizable screen's calculation in perspective mode.
+- `2.2.1` - Implement new screen type, `MIXED` for responsive UI.
+- `2.2.0` - Add `trimmed` version to release.
+- `2.1.2` - Add support for multiple languages.
+- `2.1.1` - Add support for safe area view for iPhone X or above.
+- `2.1.0` - Multiple minor fix for screen module for resizable screen feature.
+- `2.0.7` - Support consistent streaming assets loading with web request.
+- `2.0.6` - Updated project to Unity version `2020.1.0f1`.
+- `2.0.5` - Supplied full version of `webcam` module.
+- `2.0.4` - Renamed all framework's scenes without useless postfix like `Demo`, `Scene`, etc.
 
 ## 🔨 How to use it?
 
@@ -62,16 +62,17 @@ directory at the root of the project directory.
 These are libraries `JCSUnity` uses. Consider the usage, some plugins
 aren't necessary depend on the game your are making.
 
-* [In-game Debug Console](https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068) - Easier debugging after built.
-* [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) - File browser for UI/tool base application.
-* [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
-* [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
+- [MyBox](https://github.com/Deadcows/MyBox) - is a set of attributes, tools and extensions for Unity
+- [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
+- [In-game Debug Console](https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068) - Easier debugging after built.
+- [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) - File browser for UI/tool base application.
+- [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
 
 ## 🔗 Links
 
-* *Demo* : https://www.youtube.com/playlist?list=PLp13qyXnE6zDioC30eW_-aqr4gsswxJo0
-* *Tutorials* : https://www.youtube.com/playlist?list=PLp13qyXnE6zCmRobHV9uEjv-1_ieCPwjc
-* *Manual/Scripting API* : [Scripting-Manual-JCSUnity](https://jcs090218.github.io/JCSUnity/Manual/index.html)
+- *Demo* : https://www.youtube.com/playlist?list=PLp13qyXnE6zDioC30eW_-aqr4gsswxJo0
+- *Tutorials* : https://www.youtube.com/playlist?list=PLp13qyXnE6zCmRobHV9uEjv-1_ieCPwjc
+- *Manual/Scripting API* : [Scripting-Manual-JCSUnity](https://jcs090218.github.io/JCSUnity/Manual/index.html)
 
 ## 🎮 Showcase
 

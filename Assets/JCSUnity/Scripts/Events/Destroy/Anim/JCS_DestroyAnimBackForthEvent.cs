@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -28,7 +29,7 @@ namespace JCSUnity
         private bool mPlayForth = false;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_DestroyAnimBackForthEvent) **")]
+        [Separator("Helper Variables (JCS_DestroyAnimBackForthEvent)")]
 
         [SerializeField]
         private bool mTestWithKey = false;
@@ -40,7 +41,7 @@ namespace JCSUnity
         private KeyCode mPlayBackKey = KeyCode.O;
 #endif
 
-        [Header("** Runtime Variables (JCS_DestroyAnimBackForthEvent) **")]
+        [Separator("Runtime Variables (JCS_DestroyAnimBackForthEvent)")]
 
         [Tooltip("How many times to plays back and forth before destorying.")]
         [SerializeField] [Range(1, 30)]

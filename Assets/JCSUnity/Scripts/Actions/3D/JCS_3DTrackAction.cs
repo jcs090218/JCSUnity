@@ -7,17 +7,18 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
     /// <summary>
     /// Track a gameobject in 3D space.
     /// </summary>
-    public class JCS_3DTrackAction : MonoBehaviour , JCS_IAction
+    public class JCS_3DTrackAction : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_3DTrackAction) **")]
+        [Separator("Runtime Variables (JCS_3DTrackAction)")]
 
         [Tooltip("Transform we want to target.")]
         [SerializeField]

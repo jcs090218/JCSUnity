@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
 
         private float mAnimationTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_DisableWithAnimEndEvent) **")]
+        [Separator("Runtime Variables (JCS_DisableWithAnimEndEvent)")]
 
         [Tooltip("Times the animation need to loops to trigger this event.")]
         [SerializeField]

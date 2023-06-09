@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +27,7 @@ namespace JCSUnity
 
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Header("** Runtime Variables (JCS_SplitSpawnEvent) **")]
+        [Separator("Runtime Variables (JCS_SplitSpawnEvent)")]
 
         [Tooltip("How many object to spawn?")]
         [SerializeField]

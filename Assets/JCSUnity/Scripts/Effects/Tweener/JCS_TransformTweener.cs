@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using PeterVuorela.Tweener;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         private EmptyFunction mDestinationCallback = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_TransformTweener) **")]
+        [Separator("Helper Variables (JCS_TransformTweener)")]
 
         [Tooltip("Test component with key?")]
         [SerializeField]
@@ -52,13 +53,15 @@ namespace JCSUnity
         private Tweener mTweenerY = new Tweener();
         private Tweener mTweenerZ = new Tweener();
 
-        [Header("** Check Variables (JCS_TransformTweener) **")]
+        [Separator("Check Variables (JCS_TransformTweener)")]
 
         [SerializeField]
+        [ReadOnly]
         private bool mContinueTween = false;
 
         [Tooltip("Whats the target we tween to?")]
         [SerializeField]
+        [ReadOnly]
         private Transform mTargetTransform = null;
 
         // use to check if the target transform move or not.
@@ -68,21 +71,25 @@ namespace JCSUnity
 
         [Tooltip("Flag to check if done tweening on x-axis.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDoneTweenX = true;
 
         [Tooltip("Flag to check if done tweening on y-axis.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDoneTweenY = true;
 
         [Tooltip("Flag to check if done tweening on z-axis.")]
         [SerializeField]
+        [ReadOnly]
         private bool mDoneTweenZ = true;
 
         [Tooltip("Is done tweening/animating?")]
         [SerializeField]
+        [ReadOnly]
         private bool mIsDoneTweening = true;
 
-        [Header("** Runtime Variables (JCS_TransformTweener) **")]
+        [Separator("Runtime Variables (JCS_TransformTweener)")]
 
         [Tooltip("Do the tween effect?")]
         [SerializeField]

@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -32,7 +33,7 @@ namespace JCSUnity
         };
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_MixDamageTextPool) **")]
+        [Separator("Helper Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Test this component with key event.")]
         [SerializeField]
@@ -43,7 +44,7 @@ namespace JCSUnity
         private KeyCode mTestKey = KeyCode.N;
 #endif
 
-        [Header("** Initialize Variables (JCS_MixDamageTextPool) **")]
+        [Separator("Initialize Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Critical damage text pool.")]
         [SerializeField]
@@ -61,7 +62,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DamageTextPool mHealDamageTextPool = null;
 
-        [Header("** Runtime Variables (JCS_MixDamageTextPool) **")]
+        [Separator("Runtime Variables (JCS_MixDamageTextPool)")]
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]

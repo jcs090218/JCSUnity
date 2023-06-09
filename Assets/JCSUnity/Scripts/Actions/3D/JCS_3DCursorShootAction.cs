@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,12 +19,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_3DCursorShootAction) **")]
+        [Separator("Check Variables (JCS_3DCursorShootAction)")]
 
         [SerializeField]
+        [ReadOnly]
         private JCS_ShootAction mShootAction = null;
 
-        [Header("** Runtime Variables (JCS_3DCursorShootAction) **")]
+        [Separator("Runtime Variables (JCS_3DCursorShootAction)")]
 
         [Tooltip("Key code to active this action.")]
         [SerializeField]

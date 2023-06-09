@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_PlayerManager) **")]
+        [Separator("Check Variables (JCS_PlayerManager)")]
 
         [Tooltip("current player that are active")]
         [SerializeField]

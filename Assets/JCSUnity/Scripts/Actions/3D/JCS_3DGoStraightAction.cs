@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_3DGoStraightAction) **")]
+        [Separator("Runtime Variables (JCS_3DGoStraightAction)")]
 
         [Tooltip("How fast it moves.")]
         [SerializeField]
@@ -32,7 +33,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("- Randomize Settings (JCS_3DGoStraightAction)")]
+        [Header("- Randomize")]
 
         [Tooltip(@"Randomize the speed depends on positive
 move speed to negative move speed.")]

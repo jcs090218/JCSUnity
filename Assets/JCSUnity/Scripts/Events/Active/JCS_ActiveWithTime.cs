@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
 
         private float mTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_ActiveWithTime) **")]
+        [Separator("Runtime Variables (JCS_ActiveWithTime)")]
 
         [Tooltip("GameObjects that take effect.")]
         [SerializeField]

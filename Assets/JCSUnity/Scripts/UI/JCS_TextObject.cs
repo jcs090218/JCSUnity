@@ -13,6 +13,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 #if TMP_PRO
 using TMPro;
@@ -27,7 +28,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_TextObject) **")]
+        [Separator("Initialize Variables (JCS_TextObject)")]
 
         [Tooltip("Target text renderer.")]
         [SerializeField]

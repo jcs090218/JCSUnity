@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
         public EmptyFunction onActive = null;
         public EmptyFunction onDeactive = null;
 
-        [Header("** Runtime Variables (JCS_ToggleButton) **")]
+        [Separator("Runtime Variables (JCS_ToggleButton)")]
 
         [Tooltip("Return true if toggle button currently active.")]
         [SerializeField]

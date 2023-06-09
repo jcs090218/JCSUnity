@@ -6,9 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright ?2020 by Shen, Jen-Chieh $
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +19,7 @@ namespace JCSUnity
         /* Variables*/
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DShakeEffect) **")]
+        [Separator("Helper Variables (JCS_3DShakeEffect)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -31,17 +30,19 @@ namespace JCSUnity
         private KeyCode mDoShakeEffectKey = KeyCode.Y;
 #endif
 
-        [Header("** Check Variables (JCS_3DShakeEffect) **")]
+        [Separator("Check Variables (JCS_3DShakeEffect)")]
 
         [Tooltip("Flag to check if currently the effect active.")]
         [SerializeField]
+        [ReadOnly]
         private bool mEffect = false;
 
         [Tooltip("Shake delta changes on transform properties.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mShakeDelta = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_3DShakeEffect) **")]
+        [Separator("Runtime Variables (JCS_3DShakeEffect)")]
 
         [Tooltip("Shake on this transform properties.")]
         [SerializeField]

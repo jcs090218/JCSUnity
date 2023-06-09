@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.Events;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,17 +21,19 @@ namespace JCSUnity
 
         private EmptyFunction mExecution = null;
 
-        [Header("** Check Variables (JCS_OrderEvent) **")]
+        [Separator("Check Variables (JCS_OrderEvent)")]
 
         [Tooltip("Flag represent the activation of the event.")]
         [SerializeField]
+        [ReadOnly]
         private bool mActive = false;
 
         [Tooltip("Timer to run through all executions.")]
         [SerializeField]
+        [ReadOnly]
         private float mTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_OrderEvent) **")]
+        [Separator("Runtime Variables (JCS_OrderEvent)")]
 
         [Tooltip("Time for each execution.")]
         [SerializeField]

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -37,14 +38,16 @@ namespace JCSUnity
         private float mOnStackFadeInTime = 0;
         private float mOnStackFadeOutTime = 0;
 
-        [Header("** Check Variables (JCS_SoundManager) **")]
+        [Separator("Check Variables (JCS_SoundManager)")]
 
         [Tooltip("Current background music audio source.")]
         [SerializeField]
+        [ReadOnly]
         private AudioSource mBGM = null;
 
         [Tooltip("Current background music is playing.")]
         [SerializeField]
+        [ReadOnly]
         private AudioClip mCurrentBGM = null;
 
         // boolean check if the background music switching.

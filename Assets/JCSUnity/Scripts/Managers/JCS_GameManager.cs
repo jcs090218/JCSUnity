@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
         // Callback after the game is done initialize.
         public EmptyFunction afterGameInitializeCallback = null;
 
-        [Header("** Check Variable (JCS_GameManager) **")]
+        [Separator("Check Variable (JCS_GameManager)")]
 
         [Tooltip("Is the game pasue?")]
         [SerializeField]

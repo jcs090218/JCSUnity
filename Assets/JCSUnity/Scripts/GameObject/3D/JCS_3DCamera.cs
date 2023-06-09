@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using MyBox;
 using UnityEngine;
 
 namespace JCSUnity
@@ -19,24 +20,26 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DCamera) **")]
+        [Separator("Helper Variables (JCS_3DCamera)")]
 
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
 #endif
 
-        [Header("** Check Variables (JCS_3DCamera) **")]
+        [Separator("Check Variables (JCS_3DCamera)")]
 
         [Tooltip("Current tracking position.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mTrackPosition = Vector3.zero;
 
         [Tooltip("Current revolution that do the revolution.")]
         [SerializeField]
+        [ReadOnly]
         private float mCurrentRevolution = 0.0f;
 
-        [Header("** Runtime Variables (JCS_3DCamera) **")]
+        [Separator("Runtime Variables (JCS_3DCamera)")]
 
         [Tooltip("Target we want to look at.")]
         [SerializeField]
@@ -74,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mRotateAroundRight = KeyCode.None;
 
-        [Header("** Reset Camera Settings (JCS_3DCamera) **")]
+        [Separator("Reset Camera Settings (JCS_3DCamera)")]
 
         [Tooltip("Key to reset the camera.")]
         [SerializeField]

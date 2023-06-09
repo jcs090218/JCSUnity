@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
 
         private Vector3 mVelocity = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_PushThrowAction) **")]
+        [Separator("Runtime Variables (JCS_PushThrowAction)")]
 
         [Tooltip("Do effect?")]
         [SerializeField]

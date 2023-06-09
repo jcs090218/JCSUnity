@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,7 +24,7 @@ namespace JCSUnity
             NEGATIVE = -1
         };
 
-        [Header("** Runtime Variables (JCS_3DLookAtAction) **")]
+        [Separator("Runtime Variables (JCS_3DLookAtAction)")]
 
         [Tooltip("Do the action?")]
         [SerializeField]
@@ -67,7 +68,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("- Asymptotic Look (JCS_3DLookAtAction)")]
+        [Header("- Asymptotic Look")]
 
         [Tooltip("Did the object gradually look at the target?")]
         [SerializeField]

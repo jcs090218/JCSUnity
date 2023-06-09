@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using MyBox;
 using UnityEngine;
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.AI;
@@ -31,7 +32,7 @@ namespace JCSUnity
         private JCS_AdjustTimeTrigger mAdjustTimeTrigger = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DWalkAction) **")]
+        [Separator("Helper Variables (JCS_3DWalkAction)")]
 
         [Tooltip("Found the path now.")]
         [SerializeField]
@@ -42,26 +43,30 @@ namespace JCSUnity
         private float mRemainingDistance = 0.0f;
 #endif
 
-        [Header("** Check Variables (JCS_3DWalkAction) **")]
+        [Separator("Check Variables (JCS_3DWalkAction)")]
 
         [Tooltip("Current target destination.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mTargetDestination = Vector3.negativeInfinity;
 
         [Tooltip("Target transform that we are going to follow.")]
         [SerializeField]
+        [ReadOnly]
         private Transform mTargetTransform = null;
 
         [Tooltip("Record down the starting position.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mStartingPosition = Vector3.zero;
 
         // try to avoid stack overflow function call...
         [Tooltip("Counter for how many search per frame.")]
         [SerializeField]
+        [ReadOnly]
         private int mSearchCounter = 0;
 
-        [Header("** Runtime Variables (JCS_3DWalkAction) **")]
+        [Separator("Runtime Variables (JCS_3DWalkAction)")]
 
         [Tooltip("Check weather you want do this action.")]
         [SerializeField]

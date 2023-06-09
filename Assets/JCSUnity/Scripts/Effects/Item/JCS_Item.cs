@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +27,7 @@ namespace JCSUnity
         protected bool mCanPick = true;
         protected BoxCollider mBoxCollider = null;
 
-        [Header("** Check Variables (JCS_Item) **")]
+        [Separator("Check Variables (JCS_Item)")]
 
         [Tooltip(@"Collider detect can be picked.
 You can set this directly in order to get the pick effect too. Once you set this, 
@@ -34,7 +35,7 @@ the object will do tween effect to this transform.")]
         [SerializeField]
         protected Collider mPickCollider = null;
 
-        [Header("** Runtime Settings (JCS_Item) **")]
+        [Separator("Runtime Settings (JCS_Item)")]
 
         [Tooltip("Is the auto pick collider must be player?")]
         [SerializeField]

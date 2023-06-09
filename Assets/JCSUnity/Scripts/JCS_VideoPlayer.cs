@@ -9,6 +9,7 @@
  */
 using System.Collections;
 using UnityEngine;
+using MyBox;
 
 /*
  * JCSUnity.JCS_VideoPlayer's MovieTexture is deprecated and no 
@@ -32,10 +33,11 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_VideoPlayer) **")]
+        [Separator("Runtime Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Moive playback.")]
         [SerializeField]
+        [ReadOnly]
         private MovieTexture mMovieTexture = null;
 
         [Tooltip("")]
@@ -224,17 +226,19 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_VideoPlayer) **")]
+        [Separator("Check Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Full path of the clip")]
         [SerializeField]
+        [ReadOnly]
         private string mFullPath = "";
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private AudioSource mAudioSource = null;
 
-        [Header("** Runtime Variables (JCS_VideoPlayer) **")]
+        [Separator("Runtime Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Moive playback.")]
         [SerializeField]

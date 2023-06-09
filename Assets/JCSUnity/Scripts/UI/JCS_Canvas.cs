@@ -6,8 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -28,13 +28,14 @@ namespace JCSUnity
 
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
-        [Header("** Check Variables (JCS_Canvas) **")]
+        [Separator("Check Variables (JCS_Canvas)")]
 
         [Tooltip("Resize object.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_ResizeUI mResizeUI = null;
 
-        [Header("** Initialize Variables (JCS_Canvas) **")]
+        [Separator("Initialize Variables (JCS_Canvas)")]
 
         [Tooltip("If true, show on awake time; otherwise, hide it.")]
         [SerializeField]
@@ -44,7 +45,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mMainCanvas = true;
 
-        [Header("** Runtime Variables (JCS_Canvas) **")]
+        [Separator("Runtime Variables (JCS_Canvas)")]
 
         [Tooltip("Play sound when active the canvas.")]
         [SerializeField]

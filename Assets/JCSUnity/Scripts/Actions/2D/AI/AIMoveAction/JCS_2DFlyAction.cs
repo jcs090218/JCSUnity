@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -38,7 +39,7 @@ namespace JCSUnity
         private JCS_VelocityInfo mVelocityInfo = null;
         private JCS_CharacterControllerInfo mCharacterControllerInfo = null;
 
-        [Header("** Runtime Varaibles (JCS_2DFlyAction) **")]
+        [Separator("Runtime Varaibles (JCS_2DFlyAction)")]
 
         [Tooltip("Speed of flying on x-axis.")]
         [SerializeField]

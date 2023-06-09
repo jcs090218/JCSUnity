@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,13 +22,14 @@ namespace JCSUnity
 
         private CharacterController mCharacterController = null;
 
-        [Header("** Check Variables (JCS_VelocityInfo) **")]
+        [Separator("Check Variables (JCS_VelocityInfo)")]
 
         [Tooltip("Velocity for this character controller.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mVelocity = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_VelocityInfo) **")]
+        [Separator("Runtime Variables (JCS_VelocityInfo)")]
 
         [Tooltip("Do this character controll applies gravity.")]
         [SerializeField]

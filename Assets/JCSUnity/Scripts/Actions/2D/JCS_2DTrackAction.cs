@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,18 +18,21 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_2DTrackAction) **")]
+        [Separator("Check Variables (JCS_2DTrackAction)")]
 
         [SerializeField]
+        [ReadOnly]
         private float mIndex = 0;
 
         [SerializeField]
+        [ReadOnly]
         private int mOrderIndex = 0;
 
         [SerializeField]
+        [ReadOnly]
         private bool mFollowing = true;
 
-        [Header("** Runtime Variables (JCS_2DTrackAction) **")]
+        [Separator("Runtime Variables (JCS_2DTrackAction)")]
 
         [Tooltip("Transform we want to target.")]
         [SerializeField]

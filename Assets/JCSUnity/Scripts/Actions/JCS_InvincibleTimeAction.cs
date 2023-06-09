@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         private JCS_LiveObject mLiveObject = null;
         private JCS_OrderLayerObject mOrderLayerObject = null;
 
-        [Header("** Runtime Variables (JCS_InvincibleTimeAction) **")]
+        [Separator("Runtime Variables (JCS_InvincibleTimeAction)")]
 
         [Tooltip("How long the invincible time are?")]
         [SerializeField]
@@ -38,7 +39,7 @@ namespace JCSUnity
         // trigger the invincible time action?
         private bool mTriggerAction = false;
 
-        [Header("- Flash Effect (JCS_InvincibleTimeAction) ")]
+        [Header("- Flash")]
 
         [Tooltip("Color when is invincible.")]
         [SerializeField]
@@ -149,8 +150,8 @@ namespace JCSUnity
 
             // record down the current color.
             if (mOrderLayerObject.GetSpriteRenderer() != null)
-                mRecordColor  = mOrderLayerObject.GetSpriteRenderer().color;
-            else 
+                mRecordColor = mOrderLayerObject.GetSpriteRenderer().color;
+            else
                 mRecordColor = Color.white;
 
             // reset the flash toggle.

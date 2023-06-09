@@ -9,6 +9,7 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,13 +30,14 @@ namespace JCSUnity
         // to add the difference between the two frame.
         protected Vector3 mLastFramePos = Vector3.zero;
 
-        [Header("** Check Variables (JCS_Camera) **")]
+        [Separator("Check Variables (JCS_Camera)")]
 
         [Tooltip("Current camera's velocity.")]
         [SerializeField]
+        [ReadOnly]
         protected Vector3 mVelocity = Vector3.zero;
 
-        [Header("** Initialize Variables (JCS_Camera) **")]
+        [Separator("Initialize Variables (JCS_Camera)")]
 
         [Tooltip("Display the camera depth.")]
         [SerializeField]
@@ -45,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         protected Color mGameCamColor = Color.white;
 
-        [Header("** Runtime Variables (JCS_Camera) **")]
+        [Separator("Runtime Variables (JCS_Camera)")]
 
         [Tooltip("Flag to check if currently the camera following the target object.")]
         [SerializeField]
@@ -81,7 +83,6 @@ namespace JCSUnity
         [Tooltip("Flag to check if using smooth track, otherwise hard track.")]
         [SerializeField]
         protected bool mSmoothTrack = true;
-
 
         /* Setter & Getter */
 

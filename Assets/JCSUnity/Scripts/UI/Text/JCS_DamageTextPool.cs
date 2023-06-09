@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
 
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_DamageTextPool) **")]
+        [Separator("Initialize Variables (JCS_DamageTextPool)")]
 
         [Tooltip("Number to handle and spawn at the initialize time.")]
         [SerializeField]
@@ -40,7 +41,7 @@ namespace JCSUnity
 
         private JCS_Vector<JCS_DamageText> mDamageTexts = null;
 
-        [Header("** Runtime Variables (JCS_DamageTextPool) **")]
+        [Separator("Runtime Variables (JCS_DamageTextPool)")]
 
         [Tooltip("Spacing per damage text.")]
         [SerializeField]

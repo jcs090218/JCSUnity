@@ -12,6 +12,7 @@
 #define TMP_PRO
 
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +27,7 @@ namespace JCSUnity
 
         private float mAlpha = 1;
 
-        [Header("** Runtime Variables (JCS_AlphaObject) **")]
+        [Separator("Runtime Variables (JCS_AlphaObject)")]
 
         [Tooltip("Alpha value trying to approach. (0 ~ 1)")]
         [SerializeField]

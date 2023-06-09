@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         private float mTimer = 0;
         private bool mTimesUp = false;
 
-        [Header("** Runtime Variables (JCS_DestroyObjectWithTime) **")]
+        [Separator("Runtime Variables (JCS_DestroyObjectWithTime)")]
 
         [Tooltip("Target time to destroy.")]
         [SerializeField]
@@ -32,7 +33,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("** Optional Variables (JCS_DestroyObjectWithTime) **")]
+        [Header("- Optional")]
 
         [Tooltip("While destroying, fade out the gameobject.")]
         [SerializeField]
@@ -48,7 +49,7 @@ namespace JCSUnity
         private float mFadeTime = 1.0f;
 
         /* Setter & Getter */
-        
+
         public float DestroyTime { get { return this.mDestroyTime; } set { this.mDestroyTime = value; } }
         public bool TimesUp { get { return this.mTimesUp; } set { this.mTimesUp = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }

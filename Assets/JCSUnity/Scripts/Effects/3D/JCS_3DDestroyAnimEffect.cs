@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,7 +24,7 @@ namespace JCSUnity
         private JCS_HitListEvent mHitList = null;
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Header("** Runtime Variables (JCS_3DDestroyAnimEffect) **")]
+        [Separator("Runtime Variables (JCS_3DDestroyAnimEffect)")]
 
         [Tooltip("Sorting layer this effect going to render.")]
         [SerializeField]

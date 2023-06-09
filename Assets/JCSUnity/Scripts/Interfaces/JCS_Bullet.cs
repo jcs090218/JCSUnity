@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,13 +19,13 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_Bullet) **")]
+        [Separator("Runtime Variables (JCS_Bullet)")]
 
         [Tooltip("How Fast the bullet moves.")]
         [SerializeField] 
         protected float mMoveSpeed = 10.0f;
 
-        [Tooltip("Is this object reflectable? (JCS_2DReflectBulletAction)")]
+        [Tooltip("Is this object reflectable?")]
         [SerializeField] 
         protected bool mReflectable = false;
 

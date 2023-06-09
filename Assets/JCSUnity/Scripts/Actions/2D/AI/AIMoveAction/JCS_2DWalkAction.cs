@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -31,7 +32,7 @@ namespace JCSUnity
 
         private JCS_VelocityInfo mVelocityInfo = null;
 
-        [Header("** Runtime Varaibles (JCS_2DWalkAction) **")]
+        [Separator("Runtime Varaibles (JCS_2DWalkAction)")]
 
         [Tooltip("Speed of the action.")]
         [SerializeField]
@@ -57,7 +58,7 @@ namespace JCSUnity
         [Range(0.0f, 100.0f)]
         private float mPossibility = 80.0f;
 
-        [Header("** Time Settings (JCS_2DWalkAction) **")]
+        [Header("- Time")]
 
         [Tooltip("Time to do one walk.")]
         [SerializeField]
@@ -83,7 +84,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("** Action Settings (JCS_2DWalkAction) **")]
+        [Header("- Action")]
 
         [Tooltip("Generate a random walk speed at the initilaize time.")]
         [SerializeField]
@@ -95,7 +96,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         [Range(1, 10)]
         private float mRandomWalkSpeedRange = 5;
 
-        [Header("** Track Effect (JCS_2DWalkAction) **")]
+        [Header("- Track Effect")]
 
         [Tooltip("If get mad will start tracking the object that make this object mad.")]
         [SerializeField]
@@ -105,7 +106,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         [SerializeField]
         private JCS_AttackerRecorder mAttackRecorder = null;
 
-        [Header("** Optional Settings (JCS_2DWalkAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Live object animation.")]
         [SerializeField]

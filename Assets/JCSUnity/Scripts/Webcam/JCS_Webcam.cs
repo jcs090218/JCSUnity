@@ -9,6 +9,7 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,7 +30,7 @@ namespace JCSUnity
 
         private bool mResumeTrigger = false;
 
-        [Header("** Runtime Variables (JCS_Webcam) **")]
+        [Separator("Runtime Variables (JCS_Webcam)")]
 
         [Tooltip("Manually preserve the size in scene.")]
         [SerializeField]

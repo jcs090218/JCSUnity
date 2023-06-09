@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_SettingObject) **")]
+        [Separator("Initialize Variables (JCS_SettingObject)")]
 
         [Tooltip("Type of the settings.")]
         [SerializeField]

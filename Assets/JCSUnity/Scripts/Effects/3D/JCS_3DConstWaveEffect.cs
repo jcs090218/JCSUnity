@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Varialbes (JCS_3DConstWaveEffect) **")]
+        [Separator("Runtime Varialbes (JCS_3DConstWaveEffect)")]
 
         [Tooltip("Transform type to apply effect with.")]
         [SerializeField]

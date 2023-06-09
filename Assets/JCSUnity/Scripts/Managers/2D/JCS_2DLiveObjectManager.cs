@@ -8,6 +8,7 @@
  */
 using System.Collections;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_2DLiveObjectManager) **")]
+        [Separator("Runtime Variables (JCS_2DLiveObjectManager)")]
 
         [Tooltip("All the live object in the scene.")]
         public JCS_2DLiveObject[] LIVE_OBJECT_LIST = null;

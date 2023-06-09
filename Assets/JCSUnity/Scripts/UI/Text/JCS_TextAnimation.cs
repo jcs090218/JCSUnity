@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,13 +19,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Chec Variables (JCS_TextAnimation) **")]
+        [Separator("Check Variables (JCS_TextAnimation)")]
 
         [Tooltip("Frame this animation is currently displayed.")]
         [SerializeField]
+        [ReadOnly]
         private int mCurrentFrame = 0;
 
-        [Header("** Runtime Variables (JCS_TextAnimation) **")]
+        [Separator("Runtime Variables (JCS_TextAnimation)")]
 
         [Tooltip("Animation active or not active.")]
         [SerializeField]

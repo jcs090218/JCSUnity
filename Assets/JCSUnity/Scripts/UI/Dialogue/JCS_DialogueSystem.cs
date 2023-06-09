@@ -9,6 +9,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,34 +23,41 @@ namespace JCSUnity
         // Callback when successfully dispose the dialogue.
         public EmptyFunction callback_dispose = null;
 
-        [Header("** Check Variables (JCS_DialogueSystem) **")]
+        [Separator("Check Variables (JCS_DialogueSystem)")]
 
         [Tooltip("Script to run the current text box.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_DialogueScript mDialogueScript = null;
 
         [Tooltip("Message in the text box.")]
         [SerializeField]
+        [ReadOnly]
         private string mMessage = "";
 
         [Tooltip("Skip to the end of the message.")]
         [SerializeField]
+        [ReadOnly]
         private bool mSkip = false;
 
         [Tooltip("Trigger of checking the scrolling effect is running?")]
         [SerializeField]
+        [ReadOnly]
         private bool mScrolling = false;
 
         [Tooltip("Scrolling the select button text?")]
         [SerializeField]
+        [ReadOnly]
         private bool mScrollingSelectBtnText = false;
 
         [Tooltip("Check if the dialogue is active or not...")]
         [SerializeField]
+        [ReadOnly]
         private bool mActive = false;
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private string[] mSelectMessage = null;
 
         public int Mode = 0;
@@ -58,17 +66,20 @@ namespace JCSUnity
 
         // checking
         [SerializeField]
+        [ReadOnly]
         private int mSelectTextIndex = 0;
+
         [SerializeField]
+        [ReadOnly]
         private int mRenderSelectTextIndex = 0;
 
-        [Header("** Initialize Variables (JCS_DialogueSystem) **")]
+        [Separator("Initialize Variables (JCS_DialogueSystem)")]
 
         [Tooltip("If the mouse hover then select the selection.")]
         [SerializeField]
         private bool mMakeHoverSelect = true;
 
-        [Header("** Runtime Variables (JCS_DialogueSystem) **")]
+        [Separator("Runtime Variables (JCS_DialogueSystem)")]
 
         [Tooltip("Default character image sprite.")]
         [SerializeField]

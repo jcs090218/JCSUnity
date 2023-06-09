@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -31,10 +32,11 @@ namespace JCSUnity
             SWIM
         };
 
-        [Header("** Check Variables (JCS_AIStateSystem) **")]
+        [Separator("Check Variables (JCS_AIStateSystem)")]
 
         [Tooltip("State of the AI move action.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_AIMoveActionType mAIMoveActionType = JCS_AIMoveActionType.NONE;
 
         private JCS_Vector<JCS_AIAction> mAIActions = null;

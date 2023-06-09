@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         private Animator mAnimator = null;
         private float mAnimationTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_DestroyAnimEndEvent) **")]
+        [Separator("Runtime Variables (JCS_DestroyAnimEndEvent)")]
 
         [Tooltip("How many times the animation plays before destorying.")]
         [SerializeField]

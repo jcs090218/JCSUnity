@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_2DCircleAction) **")]
+        [Separator("Initialize Variables (JCS_2DCircleAction)")]
 
         [Tooltip("Starting rotation degree.")]
         [SerializeField]
@@ -29,7 +30,7 @@ namespace JCSUnity
 
         private float mRotateDegreeTimer = 0.0f;
 
-        [Header("** Runtime Variables (JCS_2DCircleAction) **")]
+        [Separator("Runtime Variables (JCS_2DCircleAction)")]
 
         [Tooltip("Do the movement.")]
         [SerializeField]

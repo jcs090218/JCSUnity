@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +27,7 @@ namespace JCSUnity
         private RectTransform mRectTransform = null;
         private EventTrigger mEventTrigger = null;
 
-        [Header("** Optional Variables (JCS_ButtonSoundEffect) **")]
+        [Separator("Optional Variables (JCS_ButtonSoundEffect)")]
 
         [Tooltip(@"Sound Player for this button, if this transform dose not 
 have the 'JCS_Soundplayer' then it will grab the global sound player.")]

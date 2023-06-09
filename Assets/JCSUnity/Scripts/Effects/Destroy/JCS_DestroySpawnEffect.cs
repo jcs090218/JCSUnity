@@ -7,6 +7,7 @@
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         private JCS_HitListEvent mHitList = null;
         private JCS_DestroyObjectWithTime mDestroyObjectWithTime = null;
 
-        [Header("** Runtime Variables (JCS_TransformPool) **")]
+        [Separator("Runtime Variables (JCS_TransformPool)")]
 
         [Tooltip("How many transform spawn?")]
         [SerializeField]

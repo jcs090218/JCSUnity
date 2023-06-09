@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,21 +23,24 @@ namespace JCSUnity
         private Vector3 mRecordScale = Vector3.zero;
         private Vector3 mTargetScale = Vector3.zero;
 
-        [Header("** Check Variables (JCS_ScaleEffect) **")]
+        [Separator("Check Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Is the current component doing the effect now?")]
         [SerializeField]
+        [ReadOnly]
         private bool mEffect = false;
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private EventTrigger mEventTrigger = null;
 
-        [Header("** Initialize Variables (JCS_ScaleEffect) **")]
+        [Separator("Initialize Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Do scale in x axis.")]
         [SerializeField]

@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
 
         private Slider mSlider = null;
 
-        [Header("** Initialize Variables (JCS_SoundSlider) **")]
+        [Separator("Initialize Variables (JCS_SoundSlider)")]
 
         [Tooltip("Sound type you would like the slider to control.")]
         [SerializeField]

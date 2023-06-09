@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -26,7 +27,7 @@ namespace JCSUnity
 
         private AudioListener mAudioListener = null;
 
-        [Header("** Runtime Variables (JCS_2DMultiTrackCamera) **")]
+        [Separator("Runtime Variables (JCS_2DMultiTrackCamera)")]
 
         [Tooltip("Camera use to do the action.")]
         [SerializeField]

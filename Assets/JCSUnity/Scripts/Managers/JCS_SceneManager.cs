@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -28,7 +29,7 @@ namespace JCSUnity
         // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;
 
-        [Header("** Check Variables (JCS_SceneManager) **")]
+        [Separator("Check Variables (JCS_SceneManager)")]
 
         [SerializeField]
         private JCS_BlackScreen mBlackScreen = null;
@@ -47,7 +48,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_WhiteScreen mWhiteScreen = null;
 
-        [Header("** Game Settings (JCS_SceneManager) **")]
+        [Separator("Game Settings (JCS_SceneManager)")]
 
         [Tooltip("Pause the game while the scene start to load.")]
         [SerializeField]

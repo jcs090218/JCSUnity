@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,7 +25,7 @@ namespace JCSUnity
 
         private Vector3 mOriginPos = Vector3.zero;
 
-        [Header("** Runtime Variables (JCS_3DDistanceTileAction) **")]
+        [Separator("Runtime Variables (JCS_3DDistanceTileAction)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]

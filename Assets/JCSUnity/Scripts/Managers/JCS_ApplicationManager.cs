@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 #if UNITY_ANDROID
 using UnityEngine.Android;
@@ -27,17 +28,19 @@ namespace JCSUnity
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
 
-        [Header("** Check Variables (JCS_ApplicationManager) **")]
+        [Separator("Check Variables (JCS_ApplicationManager)")]
 
         [Tooltip("Current systme language.")]
         [SerializeField]
+        [ReadOnly]
         private SystemLanguage mSystemLanguage = SystemLanguage.Unknown;
 
         [Tooltip("List of language texts in game.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_LangText> mLangTexts = null;
 
-        [Header("** Initialize Variables (JCS_ApplicationManager) **")]
+        [Separator("Initialize Variables (JCS_ApplicationManager)")]
 
         [Tooltip("Request permission for camera/webcam.")]
         [SerializeField]
@@ -51,7 +54,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mRequestLocation = false;
 
-        [Header("** Runtime Variables (JCS_ApplicationManager) **")]
+        [Separator("Runtime Variables (JCS_ApplicationManager)")]
 
         [Tooltip("This will override platform Type.")]
         [SerializeField]

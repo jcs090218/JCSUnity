@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -28,7 +29,7 @@ namespace JCSUnity
         private JCS_SimpleTrackAction mSimpleTrackAction = null;
         private JCS_SlideEffect mSlideEffect = null;
 
-        [Header("** Check Variables (JCS_LogText) **")]
+        [Separator("Check Variables (JCS_LogText)")]
 
         [Tooltip("Which exactly the IGL controls this.")]
         [SerializeField]

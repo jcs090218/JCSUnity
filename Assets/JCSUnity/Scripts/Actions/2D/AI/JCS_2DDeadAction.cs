@@ -20,14 +20,13 @@ namespace JCSUnity
 
         private JCS_2DLiveObject mLiveObject = null;
 
-        [Header("** Optional Settings (JCS_2DDeadAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Live object animation.")]
         [SerializeField]
         private JCS_2DLiveObjectAnimator mLiveObjectAnimator = null;
 
-
-        [Header("** Sound Settings (JCS_2DDeadAction) **")]
+        [Header("- Sound")]
 
         [Tooltip("Play one shot when this action active.")]
         [SerializeField]
@@ -36,7 +35,7 @@ namespace JCSUnity
         // check to play the die sound.
         private bool mSoundPlayed = false;
 
-        [Header("** Effect Setting (JCS_2DDeadAction) **")]
+        [Header("- Effect")]
 
         [Tooltip("Disable unnecessary componenet when died.")]
         [SerializeField]

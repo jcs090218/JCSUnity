@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_SimpleInvincibleTimeAction) **")]
+        [Separator("Runtime Variables (JCS_SimpleInvincibleTimeAction)")]
 
         [Tooltip("Time to do the invincible effect.")]
         [SerializeField]
@@ -59,7 +60,7 @@ namespace JCSUnity
         // current color is.
         private bool mFlashToggle = false;
 
-        [Header("- Sound Effect (JCS_SimpleInvincibleTimeAction) ")]
+        [Header("- Sound")]
 
         [Tooltip("Play once while triggered.")]
         [SerializeField]

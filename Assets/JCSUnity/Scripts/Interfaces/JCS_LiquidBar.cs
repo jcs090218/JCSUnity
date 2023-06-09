@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,7 +30,7 @@ namespace JCSUnity
         public EmptyFunction callback_min_vis = null;
         public EmptyFunction callback_max_vis = null;
 
-        [Header("** Check Variables (JCS_LiquidBar) **")]
+        [Separator("Check Variables (JCS_LiquidBar)")]
 
         [SerializeField]
         protected float mMinPos = 0.0f;
@@ -46,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mReachMaxVis = false;
 
-        [Header("** Initialize Variables (JCS_LiquidBar) **")]
+        [Separator("Initialize Variables (JCS_LiquidBar)")]
 
         [Tooltip("Once it set to zero, but still override this.")]
         [SerializeField]
@@ -56,7 +57,7 @@ namespace JCSUnity
         [SerializeField]
         protected JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
 
-        [Header("** Runtime Variables (JCS_LiquidBar) **")]
+        [Separator("Runtime Variables (JCS_LiquidBar)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
@@ -86,7 +87,7 @@ namespace JCSUnity
         [SerializeField]
         protected float mCurrentValue = 50.0f;
 
-        [Header("** Optional Variables (JCS_LiquidBar) **")]
+        [Separator("Optional Variables (JCS_LiquidBar)")]
 
         [Tooltip("Liquid bar info that will be use for this liquid bar.")]
         [SerializeField]
@@ -96,7 +97,7 @@ namespace JCSUnity
         [SerializeField]
         protected Image mInfoImage = null;
 
-        [Header("** Asmptotic Recover Effect (JCS_LiquidBar) **")]
+        [Header("- Asmptotic Recover")]
 
         [Tooltip("Enable the recover effect?")]
         [SerializeField]

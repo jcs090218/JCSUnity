@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_LookAtMouseAction) **")]
+        [Separator("Runtime Variables (JCS_LookAtMouseAction)")]
 
         [Tooltip("How fast to look at the mouse.")]
         [SerializeField]

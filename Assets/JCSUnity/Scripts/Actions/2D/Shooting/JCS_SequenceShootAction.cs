@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -20,7 +21,7 @@ namespace JCSUnity
 
         private JCS_ShootAction mShootAction = null;
 
-        [Header("** Runtime Variables (JCS_SequenceShootAction) **")]
+        [Separator("Runtime Variables (JCS_SequenceShootAction)")]
 
         [Tooltip("How many shoot in sequence?")]
         [SerializeField]
@@ -44,13 +45,13 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("** Optional Variables (JCS_SequenceShootAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Ability format to use.")]
         [SerializeField]
         private JCS_AbilityFormat mAbilityFormat = null;
 
-        [Header("** Action Settings (JCS_SequenceShootAction) **")]
+        [Header("- Action")]
 
         [Tooltip("Time delay before shoot.")]
         [SerializeField]
@@ -66,7 +67,7 @@ namespace JCSUnity
 
         private float mActionTimer = 0.0f;
 
-        [Header("** Shoot Gap Effect (JCS_SequenceShootAction) **")]
+        [Header("- Shoot Gap Effect")]
 
         [Tooltip("Shoot with gap?")]
         [SerializeField]

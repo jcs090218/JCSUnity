@@ -7,6 +7,7 @@
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,33 +22,39 @@ namespace JCSUnity
         public EmptyFunction onScreenIdle = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_ScreenManager) **")]
+        [Separator("Helper Variables (JCS_ScreenManager)")]
 
         [Tooltip("Show the resizable screen panel in game?")]
         public bool SHOW_RESIZABLE_PANELS = true;
 #endif
 
-        [Header("** Check Variables (JCS_ScreenSettings) **")]
+        [Separator("Check Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Screen size when the application starts.")]
+        [ReadOnly]
         public JCS_ScreenSizef STARTING_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
         [Tooltip("Store the camera orthographic size value over scene.")]
+        [ReadOnly]
         public float ORTHOGRAPHIC_SIZE = 0.0f;
 
         [Tooltip("Store the camera filed of view value over scene.")]
+        [ReadOnly]
         public float FIELD_OF_VIEW = 0.0f;
 
         [Tooltip("Previous screen size.")]
+        [ReadOnly]
         public JCS_ScreenSizef PREV_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
         [Tooltip("Current screen size.")]
+        [ReadOnly]
         public JCS_ScreenSizef CURRENT_SCREEN_SIZE = JCS_ScreenSizef.zero;
 
         [Tooltip("Target aspect ratio screen size.")]
+        [ReadOnly]
         public JCS_ScreenSize ASPECT_RATIO_SCREEN_SIZE = JCS_ScreenSize.zero;
 
-        [Header("** Initialize Variables (JCS_ScreenSettings) **")]
+        [Separator("Initialize Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Resize the screen/window to certain aspect when " +
             "the application starts. Aspect ratio can be set at 'JCS_ScreenManager'.")]
@@ -66,7 +73,7 @@ namespace JCSUnity
         [SerializeField]
         private Color mResizablePanelsColor = Color.black;
 
-        [Header("** Runtime Variables (JCS_ScreenSettings) **")]
+        [Separator("Runtime Variables (JCS_ScreenSettings)")]
 
         [Tooltip("Standard screen size to calculate the worldspace obejct's camera view.")]
         public JCS_ScreenSize STANDARD_SCREEN_SIZE = new JCS_ScreenSize(1920, 1080);

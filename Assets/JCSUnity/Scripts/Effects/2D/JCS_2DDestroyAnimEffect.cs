@@ -7,6 +7,7 @@
  *                   Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -25,7 +26,7 @@ namespace JCSUnity
         // pool to grab animation to play.
         private JCS_2DAnimPool m2DAnimPool = null;
 
-        [Header("** Runtime Variables (JCS_2DDestroyAnimEffect) **")]
+        [Separator("Runtime Variables (JCS_2DDestroyAnimEffect)")]
 
         [Tooltip("Sorting layer this effect going to render.")]
         [SerializeField]

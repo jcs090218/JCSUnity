@@ -7,6 +7,7 @@
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         // per application is starts.
         public EmptyFunction onApplicationStarts = null;
 
-        [Header("** Check Variables (JCS_ApplicationSettings) **")]
+        [Separator("Check Variables (JCS_ApplicationSettings)")]
 
         [Tooltip("Is the application start?")]
         public bool APPLICATION_STARTS = false;

@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_PauseManager) **")]
+        [Separator("Helper Variables (JCS_PauseManager)")]
 
         [Tooltip("Test this module?")]
         [SerializeField]
@@ -32,13 +33,14 @@ namespace JCSUnity
         private KeyCode mToggleGamePause = KeyCode.P;
 #endif
 
-        [Header("** Check Variables (JCS_PauseManager) **")]
+        [Separator("Check Variables (JCS_PauseManager)")]
 
         [Tooltip("List of pause action in the scene.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_PauseAction> mPauseActions = null;
 
-        [Header("** Runtime Variables (JCS_PauseManager) **")]
+        [Separator("Runtime Variables (JCS_PauseManager)")]
 
         [Tooltip("The default time scale.")]
         [SerializeField]
@@ -56,7 +58,7 @@ object you have in the list.")]
         // resize timer.
         private float mResizePauseActionListTimer = 0;
 
-        [Header("- Asymptotic (JCS_PauseManager)")]
+        [Header("- Asymptotic")]
 
         [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]

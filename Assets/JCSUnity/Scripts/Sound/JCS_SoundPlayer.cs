@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
 
         private AudioSource mAudioSource = null;
 
-        [Header("** Runtime Variables (JCS_SoundPlayer) **")]
+        [Separator("Runtime Variables (JCS_SoundPlayer)")]
 
         [Tooltip("Sound setting type for this sound player.")]
         [SerializeField]

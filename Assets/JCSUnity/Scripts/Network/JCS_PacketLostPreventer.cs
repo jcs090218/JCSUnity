@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_PacketLostPreventer) **")]
+        [Separator("Runtime Variables (JCS_PacketLostPreventer)")]
 
         [Tooltip("How fast the packet resend?")]
         [SerializeField] 

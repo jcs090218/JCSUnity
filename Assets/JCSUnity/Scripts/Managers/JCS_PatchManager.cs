@@ -6,6 +6,7 @@
  * $Notice: $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_PatchManager) **")]
+        [Separator("Runtime Variables (JCS_PatchManager)")]
 
         [Tooltip("Next level load after the patch checked.")]
         [SerializeField]

@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
         protected CharacterController mCharacterController = null;
         protected JCS_CharacterControllerInfo mCharacterControllerInfo = null;
 
-        [Header("** Runtime Variables (JCS_Player) **")]
+        [Separator("Runtime Variables (JCS_Player)")]
 
         [Tooltip("How fast this player moves.")]
         [SerializeField]

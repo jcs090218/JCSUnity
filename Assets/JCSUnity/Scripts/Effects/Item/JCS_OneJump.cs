@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,14 +23,14 @@ namespace JCSUnity
         private bool mEffect = false;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_OneJump) **")]
+        [Separator("Helper Variables (JCS_OneJump)")]
 
         [Tooltip("Name of the collider that blocks the jump.")]
         [SerializeField]
         private string mColliderName = null;
 #endif
 
-        [Header("** Runtime Variables (JCS_OneJump) **")]
+        [Separator("Runtime Variables (JCS_OneJump)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]

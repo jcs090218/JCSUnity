@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,24 +20,26 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_UIManager) **")]
+        [Separator("Helper Variables (JCS_UIManager)")]
         
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
 #endif
 
-        [Header("** Check Variables (JCS_UIManager) **")]
+        [Separator("Check Variables (JCS_UIManager)")]
 
         [Tooltip("List of canvas.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_Canvas> mCanvases = null;
 
         [Tooltip("Global undo redo system.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_UndoRedoSystem mGlobalUndoRedoSystem = null;
 
-        [Header("** Initialize Variables (JCS_UIManager) **")]
+        [Separator("Initialize Variables (JCS_UIManager)")]
 
         [Tooltip("Game Play UI (Game Layer - Only One)")]
         [SerializeField]

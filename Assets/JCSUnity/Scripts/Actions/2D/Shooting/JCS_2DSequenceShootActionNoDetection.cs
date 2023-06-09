@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -15,19 +16,21 @@ namespace JCSUnity
     /// </summary>
     [RequireComponent(typeof(JCS_ShootAction))]
     [RequireComponent(typeof(JCS_2DCursorShootAction))]
-    public class JCS_2DSequenceShootActionNoDetection : MonoBehaviour , JCS_IAction
+    public class JCS_2DSequenceShootActionNoDetection : MonoBehaviour, JCS_IAction
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_2DCursorShootAction) **")]
+        [Separator("Check Variables (JCS_2DCursorShootAction)")]
 
         [SerializeField]
+        [ReadOnly]
         private JCS_ShootAction mShootAction = null;
 
         [SerializeField]
+        [ReadOnly]
         private JCS_2DCursorShootAction mCursorShootAction = null;
 
-        [Header("** Runtime Variables (JCS_2DCursorShootAction) **")]
+        [Separator("Runtime Variables (JCS_2DCursorShootAction)")]
 
         [Tooltip("How many shots in sequence?")]
         [SerializeField]

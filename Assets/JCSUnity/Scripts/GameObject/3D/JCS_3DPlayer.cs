@@ -8,6 +8,7 @@
  */
 using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_3DPlayer) **")]
+        [Separator("Runtime Variables (JCS_3DPlayer)")]
 
         [Tooltip("How fast it rotates.")]
         [SerializeField]

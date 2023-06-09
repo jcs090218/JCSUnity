@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
 
         public static JCS_XMLData GAME_DATA = null;  // NOT USED
 
-        [Header("** Check Variables (JCS_GameSettings) **")]
+        [Separator("Check Variables (JCS_GameSettings)")]
 
         [SerializeField]
         private string REAL_DATA_PATH = "";
@@ -36,7 +37,7 @@ namespace JCSUnity
         [SerializeField]
         private string REAL_STREAMING_CACHE_PATH = "";
 
-        [Header("** Game Settings (JCS_GameSettings) **")]
+        [Separator("Game Settings (JCS_GameSettings)")]
 
         [Tooltip("Debug mode flag.")]
         public bool DEBUG_MODE = true;

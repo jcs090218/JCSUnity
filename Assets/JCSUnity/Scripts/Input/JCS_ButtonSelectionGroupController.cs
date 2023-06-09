@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2017 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -21,7 +22,7 @@ namespace JCSUnity
 
         private JCS_ButtonSelectionGroup mButtonSelectionGroup = null;
 
-        [Header("** Runtime Variables (JCS_ButtonSelectionGroupController) **")]
+        [Separator("Runtime Variables (JCS_ButtonSelectionGroupController)")]
 
         [Tooltip("Active key listener?")]
         [SerializeField]

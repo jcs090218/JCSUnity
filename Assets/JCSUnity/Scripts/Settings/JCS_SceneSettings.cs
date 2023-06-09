@@ -7,6 +7,7 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_SceneSettings) **")]
+        [Separator("Runtime Variables (JCS_SceneSettings)")]
 
         [Tooltip("General Scene fadout time. (For all scene)")]
         [Range(0.0f, 5.0f)]

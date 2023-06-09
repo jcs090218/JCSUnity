@@ -7,6 +7,7 @@
  *	                    Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -38,7 +39,7 @@ namespace JCSUnity
 
         private JCS_AttackerInfo mAttackerInfo = null;
 
-        [Header("** Runtime Variables (JCS_2DInitLookByTypeAction) **")]
+        [Separator("Runtime Variables (JCS_2DInitLookByTypeAction)")]
 
         [Tooltip("Direction the target looking at.")]
         [SerializeField]

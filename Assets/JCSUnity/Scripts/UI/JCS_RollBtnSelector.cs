@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,13 +24,14 @@ namespace JCSUnity
         // the button has been focusing on.
         private JCS_RollSelectorButton mFocusBtn = null;
 
-        [Header("** Check Variables (JCS_RollBtnSelector) **")]
+        [Separator("Check Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
-        [Header("** Initialize Variables (JCS_RollBtnSelector) **")]
+        [Separator("Initialize Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("Array of buttons you want to do in sequence.")]
         [SerializeField]
@@ -43,7 +45,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_2DDimensions mDimension = JCS_2DDimensions.VERTICAL;
 
-        [Header("** Runtime Variables (JCS_RollBtnSelector) **")]
+        [Separator("Runtime Variables (JCS_RollBtnSelector)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]

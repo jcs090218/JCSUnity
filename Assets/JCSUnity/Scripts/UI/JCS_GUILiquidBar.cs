@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -24,7 +25,7 @@ namespace JCSUnity
         private RectTransform mMaskRectTransform = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_GUILiquidBar) **")]
+        [Separator("Helper Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("Test functionalities works?")]
         [SerializeField]
@@ -47,16 +48,18 @@ namespace JCSUnity
         private KeyCode mFixedKey = KeyCode.X;
 #endif
 
-        [Header("** Check Variables (JCS_GUILiquidBar) **")]
+        [Separator("Check Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("The panel root object.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_PanelRoot mPanelRoot = null;
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 mMaskTargetPosition = Vector3.zero;
 
-        [Header("** Initialize Variables (JCS_GUILiquidBar) **")]
+        [Separator("Initialize Variables (JCS_GUILiquidBar)")]
 
         [Tooltip("please set this ")]
         [SerializeField]

@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -23,13 +24,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_PauseAction) **")]
+        [Separator("Check Variables (JCS_PauseAction)")]
 
         [Tooltip("Record enabled state; make disabled behaviours reamin disabled.")]
         [SerializeField]
+        [ReadOnly]
         private List<bool> mRecordEnabled = null;
 
-        [Header("** Runtime Variables (JCS_PauseAction) **")]
+        [Separator("Runtime Variables (JCS_PauseAction)")]
 
         [Tooltip(@"Select the behaviour component and drag it into the list so the 
 pause manager will take care of the pause object. If you are working on game that 

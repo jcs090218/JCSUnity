@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Runtime Variables (JCS_BasicWaveSpawner) **")]
+        [Separator("Runtime Variables (JCS_BasicWaveSpawner)")]
 
         [Tooltip("Active this component?")]
         [SerializeField]

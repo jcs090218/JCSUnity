@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_LoadSceneGamepadButton) **")]
+        [Separator("Initialize Variables (JCS_LoadSceneGamepadButton)")]
 
         [Tooltip("Platform you want to target. NONE means all platform, so it will just load the scene")]
         [SerializeField]

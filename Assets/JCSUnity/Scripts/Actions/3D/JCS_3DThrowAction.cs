@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_3DThrowAction) **")]
+        [Separator("Helper Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Target to test to throw to.")]
         [SerializeField]
@@ -43,7 +44,7 @@ namespace JCSUnity
         private float mTime = 1.0f;
 #endif
 
-        [Header("** Runtime Variables (JCS_3DThrowAction) **")]
+        [Separator("Runtime Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Is this component active?")]
         [SerializeField]

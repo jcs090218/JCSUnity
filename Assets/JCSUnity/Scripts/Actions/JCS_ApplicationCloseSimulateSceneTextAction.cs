@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -22,7 +23,7 @@ namespace JCSUnity
         private Text mText = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_ApplicationCloseSimulateSceneTextAction) **")]
+        [Separator("Helper Variables (JCS_ApplicationCloseSimulateSceneTextAction)")]
 
         [SerializeField]
         private string mTextShowInEditMode = "";

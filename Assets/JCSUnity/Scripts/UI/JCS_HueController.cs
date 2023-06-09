@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using UnityEngine.UI;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,20 +19,23 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Check Variables (JCS_HueController) **")]
+        [Separator("Check Variables (JCS_HueController)")]
 
         // record down the highest r/g/b color.
         [SerializeField]
         [Range(0, 1)]
+        [ReadOnly]
         private float mHighestRGB = 0;
 
         [SerializeField]
+        [ReadOnly]
         private Color mTargetColor = Color.white;
 
         [SerializeField]
+        [ReadOnly]
         private Color[] mListColor = null;
 
-        [Header("** Runtime Variables (JCS_HueController) **")]
+        [Separator("Runtime Variables (JCS_HueController)")]
 
         [Tooltip("Any Graphic with color component.")]
         [SerializeField]

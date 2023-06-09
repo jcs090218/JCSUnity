@@ -7,6 +7,7 @@
  *                   Copyright © 2019 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_HopEffect) **")]
+        [Separator("Helper Variables (JCS_HopEffect)")]
 
         [Tooltip("Test the module with key.")]
         [SerializeField]
@@ -33,19 +34,21 @@ namespace JCSUnity
         private KeyCode mHopKey = KeyCode.A;
 #endif
 
-        [Header("** Check Variables (JCS_HopEffect) **")]
+        [Separator("Check Variables (JCS_HopEffect)")]
 
         [Tooltip("Flag for the effect activation.")]
         [SerializeField]
+        [ReadOnly]
         private bool mActive = false;
 
         [Tooltip("Position before hopping.")]
         [SerializeField]
+        [ReadOnly]
         private Vector3 mStartingPosition = Vector3.zero;
 
         private float mRealGravity = 0.0f;
 
-        [Header("** Runtime Variables (JCS_HopEffect) **")]
+        [Separator("Runtime Variables (JCS_HopEffect)")]
 
         [Tooltip("How much force to jump away from current position.")]
         [SerializeField]

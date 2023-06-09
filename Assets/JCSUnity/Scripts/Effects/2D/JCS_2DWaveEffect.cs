@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_2DWaveEffect) **")]
+        [Separator("Helper Variables (JCS_2DWaveEffect)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -29,7 +30,7 @@ namespace JCSUnity
         private KeyCode mDoWaveEffectKey = KeyCode.T;
 #endif
 
-        [Header("** Runtime Variables (JCS_2DWaveEffect) **")]
+        [Separator("Runtime Variables (JCS_2DWaveEffect)")]
 
         [Tooltip("Height offset.")]
         [SerializeField]

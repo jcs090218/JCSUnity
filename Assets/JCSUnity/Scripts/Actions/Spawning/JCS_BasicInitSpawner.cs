@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -18,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Initialize Variables (JCS_BasicInitSpawner) **")]
+        [Separator("Initialize Variables (JCS_BasicInitSpawner)")]
 
         [Tooltip("List of transform you want to spawn.")]
         [SerializeField]

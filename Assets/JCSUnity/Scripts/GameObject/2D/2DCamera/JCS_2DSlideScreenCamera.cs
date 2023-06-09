@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -29,7 +30,7 @@ namespace JCSUnity
         public AfterSwipeCallback afterSwiped = null;
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_2DSlideScreenCamera) **")]
+        [Separator("Helper Variables (JCS_2DSlideScreenCamera)")]
 
         public bool testWithKey = false;
 
@@ -47,13 +48,14 @@ namespace JCSUnity
         // Path that points to the panel.
         private string mPanelHolderPath = "LevelDesignUI/JCS_SlideScreenPanelHolder";
 
-        [Header("** Check Variables (JCS_2DSlideScreenCamera) **")]
+        [Separator("Check Variables (JCS_2DSlideScreenCamera)")]
 
         [Tooltip("Page start from center.")]
         [SerializeField]
+        [ReadOnly]
         private Vector2 mCurrentPage = Vector2.zero;
 
-        [Header("** Runtime Variables (JCS_2DSlideScreenCamera) **")]
+        [Separator("Runtime Variables (JCS_2DSlideScreenCamera)")]
 
         // Notice important that Designer should know what Unity GUI type they
         // are going to use!
@@ -65,7 +67,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SlideScreenPanelHolder mPanelHolder = null;
 
-        [Header("## Mobile")]
+        [Header("- Mobile")]
 
         [Tooltip("If true, allow the mobile swipe action.")]
         [SerializeField]
@@ -93,13 +95,13 @@ namespace JCSUnity
         [SerializeField]
         private bool mFreezeY = false;
 
-        [Header("## Sound")]
+        [Header("- Sound")]
 
         [Tooltip("Sound when trigger switch scene.")]
         [SerializeField]
         private AudioClip mSwitchSceneSound = null;
 
-        [Header("## Boundary")]
+        [Header("- Boundary")]
 
         [Tooltip("Minimum page on x-axis.")]
         [SerializeField]
