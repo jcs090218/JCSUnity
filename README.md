@@ -31,7 +31,7 @@ any placeholder assets commercially.
 
 Here is the list of few important and recent changes to this framework.
 
-- `2.3.1` - Use [MyBox][https://github.com/Deadcows/MyBox] to organize variables.
+- `2.3.1` - Use [MyBox](https://github.com/Deadcows/MyBox) to organize variables.
 - `2.3.0` - Fixed resizable screen's calculation in perspective mode.
 - `2.2.1` - Implement new screen type, `MIXED` for responsive UI.
 - `2.2.0` - Add `trimmed` version to release.
