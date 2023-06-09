@@ -25,10 +25,12 @@ namespace JCSUnity
 
         [Tooltip("Is the game pasue?")]
         [SerializeField]
+        [ReadOnly]
         private bool mGamePause = false;
 
         [Tooltip("Is game done initialize?")]
         [SerializeField]
+        [ReadOnly]
         private bool mGameDoneInitialize = false;
 
         private JCS_Player mPlayer = null;

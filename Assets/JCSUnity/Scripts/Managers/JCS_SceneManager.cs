@@ -19,10 +19,6 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Tooltip("Type/Method to switch the scene.")]
-        [SerializeField]
-        private JCS_SwitchSceneType mSwitchSceneType = JCS_SwitchSceneType.BLACK_SCREEN;
-
         private bool mSwitchSceneEffect = false;
         private string mNextSceneName = "";
 
@@ -32,23 +28,34 @@ namespace JCSUnity
         [Separator("Check Variables (JCS_SceneManager)")]
 
         [SerializeField]
+        [ReadOnly]
         private JCS_BlackScreen mBlackScreen = null;
 
         [SerializeField]
+        [ReadOnly]
         private JCS_BlackSlideScreen mBlackSlideScreen = null;
 
         [Tooltip("Which direction to fade slide.")]
         [SerializeField]
+        [ReadOnly]
         private JCS_Align mAlign = JCS_Align.ALIGN_LEFT;
 
         [Tooltip("Do u need the white screen in ur game?")]
         [SerializeField]
+        [ReadOnly]
         private bool mPopWhiteScreen = false;
 
         [SerializeField]
+        [ReadOnly]
         private JCS_WhiteScreen mWhiteScreen = null;
 
-        [Separator("Game Settings (JCS_SceneManager)")]
+        [Separator("Initialize Variables (JCS_SceneManager)")]
+
+        [Tooltip("Type/Method to switch the scene.")]
+        [SerializeField]
+        private JCS_SwitchSceneType mSwitchSceneType = JCS_SwitchSceneType.BLACK_SCREEN;
+
+        [Separator("Runtime Variables (JCS_SceneManager)")]
 
         [Tooltip("Pause the game while the scene start to load.")]
         [SerializeField]

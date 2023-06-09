@@ -26,18 +26,22 @@ namespace JCSUnity
         [Separator("Check Variables (JCS_GameSettings)")]
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_DATA_PATH = "";
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_SCREENSHOT_PATH = "";
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_WEBCAM_PATH = "";
 
         [SerializeField]
+        [ReadOnly]
         private string REAL_STREAMING_CACHE_PATH = "";
 
-        [Separator("Game Settings (JCS_GameSettings)")]
+        [Separator("Runtime Variables (JCS_GameSettings)")]
 
         [Tooltip("Debug mode flag.")]
         public bool DEBUG_MODE = true;

@@ -23,10 +23,12 @@ namespace JCSUnity
 
         [Tooltip("current player that are active")]
         [SerializeField]
+        [ReadOnly]
         private JCS_Player mActivePlayer = null;
 
         [Tooltip("List of all the player in the game.")]
         [SerializeField]
+        [ReadOnly]
         private List<JCS_Player> mPlayers = null;
 
         /* Setter & Getter */

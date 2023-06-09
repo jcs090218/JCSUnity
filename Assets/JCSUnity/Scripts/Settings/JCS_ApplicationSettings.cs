@@ -25,6 +25,7 @@ namespace JCSUnity
         [Separator("Check Variables (JCS_ApplicationSettings)")]
 
         [Tooltip("Is the application start?")]
+        [ReadOnly]
         public bool APPLICATION_STARTS = false;
 
         /* Setter & Getter */

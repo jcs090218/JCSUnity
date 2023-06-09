@@ -52,9 +52,10 @@ namespace JCSUnity
 
         // boolean check if the background music switching.
         [SerializeField]
+        [ReadOnly]
         private bool mSwitchingBGM = false;
 
-        [Header("- General")]
+        [Separator("Runtime Variables (JCS_SoundManager)")]
 
         [Tooltip("Do this scene using the specific setting?")]
         [SerializeField]
