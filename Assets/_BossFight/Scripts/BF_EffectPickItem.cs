@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Item when the player will do some effect
@@ -20,16 +21,17 @@ public class BF_EffectPickItem : MonoBehaviour
 
     private BF_PickItem mPickItem = null;
 
-    [Header("** Runtime Variables (BF_EffectPickItem) **")]
+    [Separator("Runtime Variables (BF_EffectPickItem)")]
 
     [Tooltip("What happed after pick up this item?")]
     [SerializeField]
     private BF_PickItemEffectType mEffectType = BF_PickItemEffectType.NONE;
 
-    [Header("** Liquid Variables (BF_EffectPickItem) **")]
+    [Header("- Liquid Variables")]
 
     [Tooltip("Any value with liquid.")]
-    [SerializeField] [Range(0, 30000)]
+    [SerializeField]
+    [Range(0, 30000)]
     private int mEffectValue = 0;
 
     /* Setter & Getter */

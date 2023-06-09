@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Live object for example game `Boss Fight`.
@@ -16,21 +17,25 @@ public class BF_LiveObject : JCS_2DLiveObject
 {
     /* Variables */
 
-    [Header("** Check Variables (BF_LiveObject) **")]
+    [Separator("Check Variables (BF_LiveObject)")]
 
     [SerializeField]
+    [ReadOnly]
     private float mFreezeTime = 0;
 
     [SerializeField]
+    [ReadOnly]
     private float mFreezeTimer = 0;
 
     [SerializeField]
+    [ReadOnly]
     private float mBurnTime = 0;
 
     [SerializeField]
+    [ReadOnly]
     private float mBurnTimer = 0;
 
-    [Header("** Game Feature Settings (BF_LiveObject) **")]
+    [Separator("- Game Feature")]
 
     [Tooltip("Can this live object be freeze?")]
     [SerializeField]

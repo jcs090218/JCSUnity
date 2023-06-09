@@ -17,11 +17,14 @@ public class RC_RevivePointer : MonoBehaviour
     private SpriteRenderer mSpriteRenderer = null;
 
     private RC_Player mRCPlayer = null;
+
     [Tooltip("This should be lower than player? (Up to u)")]
-    [SerializeField] private int mOrderLayer = 14;
+    [SerializeField] 
+    private int mOrderLayer = 14;
 
     [Tooltip("How low below the top boundary.")]
-    [SerializeField] private float mOffsetY = -1;
+    [SerializeField] 
+    private float mOffsetY = -1;
 
     /* Setter & Getter */
     

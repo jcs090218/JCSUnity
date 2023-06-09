@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Item in game that can be picked.
@@ -16,7 +17,7 @@ public class BF_PickItem : JCS_Item
 {
     /* Variables */
 
-    [Header("** Optional Variables (BF_PickItem) **")]
+    [Separator("** Optional Variables (BF_PickItem) **")]
 
     [Tooltip("")]
     [SerializeField]

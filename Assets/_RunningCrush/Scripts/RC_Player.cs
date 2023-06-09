@@ -17,7 +17,9 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     /* Variables */
 
     [Header("** RC_Player Settings (RC_Player) **")]
-    [SerializeField] private int mControlIndex = 0;
+
+    [SerializeField] 
+    private int mControlIndex = 0;
 
     // Original speed starting of the game.
     private float mRecordSpeed = 0;
@@ -27,17 +29,26 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     private RC_RevivePointer mRCRevivePointer = null;
 
     [Tooltip("How fast the speed goes back to original speed.")]
-    [SerializeField] private float mSpeedFriction = 0.5f;
+    [SerializeField] 
+    private float mSpeedFriction = 0.5f;
+
     [Tooltip("How fast the speed goes back to original jump force.")]
-    [SerializeField] private float mJumpFriction = 0.5f;
+    [SerializeField] 
+    private float mJumpFriction = 0.5f;
 
     private bool mIsDead = false;
-    [SerializeField] private int mLife = 3;
+
+    [SerializeField] 
+    private int mLife = 3;
 
     [Tooltip("How high the player should revive.")]
-    [SerializeField] private float mReviveHeight = 50;
+    [SerializeField] 
+    private float mReviveHeight = 50;
+
     [Tooltip("How many time player need to join the next game.")]
-    [SerializeField] private float mReviveTime = 3.0f;
+    [SerializeField] 
+    private float mReviveTime = 3.0f;
+
     private float mReviveTimer = 0;
 
     // every player have a liquid bar.
@@ -96,7 +107,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         mCurrentGold = RC_GameSettings.GAME_DATA.Gold;
     }
 
-    protected override void Update() 
+    protected override void Update()
     {
         // this should always be on top of update function.
         base.Update();

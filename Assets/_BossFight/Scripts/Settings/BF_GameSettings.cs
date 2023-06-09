@@ -9,6 +9,7 @@
 using System.IO;
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Game settings for Boss Fight example game.
@@ -17,12 +18,14 @@ public class BF_GameSettings : JCS_Settings<BF_GameSettings>
 {
     /* Variables */
 
-    [Header("** Check Variables (BF_GameSettings) **")]
+    [Separator("Check Variables (BF_GameSettings)")]
 
     [SerializeField]
+    [ReadOnly]
     private string mFullFilePath = "";
 
     [SerializeField]
+    [ReadOnly]
     private string mFullFileName = "";
 
     [Header("- Player")]

@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Character shoot rain fall
@@ -22,12 +23,12 @@ public class BF_RainFaller : MonoBehaviour
 
     private float mShootAngle = 0;
 
-    [Header("** Runtime Variables (BF_RainFaller) **")]
+    [Separator("Runtime Variables (BF_RainFaller)")]
 
-    [SerializeField] 
+    [SerializeField]
     private bool mCanShoot = true;
 
-    [Header("** Time Settings (BF_RainFaller) **")]
+    [Header("- Time")]
 
     [Tooltip("Time to do one walk.")]
     [SerializeField]

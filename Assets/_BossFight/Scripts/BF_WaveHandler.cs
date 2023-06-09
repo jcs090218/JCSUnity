@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// To simulate the wave in the scene.
@@ -17,32 +18,40 @@ public class BF_WaveHandler : MonoBehaviour
 
     /* Variables */
 
-    [Header("** Check Variables **")]
-    [SerializeField] private int mCurrentSpawnIndex = 0;
+    [Separator("Check Variables (BF_WaveHandler)")]
 
-    [Header("** Initialize Variables **")]
+    [SerializeField]
+    [ReadOnly]
+    private int mCurrentSpawnIndex = 0;
+
+    [Separator("Initialize Variables (BF_WaveHandler)")]
 
     [Tooltip(@"All the object spawn form this gameobject, will be 
 set to thie scene layer.")]
-    [SerializeField] private int mOrderLayer = 7;
+    [SerializeField]
+    private int mOrderLayer = 7;
 
     // Transform that spawns enemy.
     [Tooltip("Position that spawns enemies. Defualt itself transform.")]
-    [SerializeField] private Transform mSpawnTransform = null;
+    [SerializeField]
+    private Transform mSpawnTransform = null;
 
     [Tooltip("Wave start spawning the enmey.")]
-    [SerializeField] private int mStartingWave = 1;
+    [SerializeField]
+    private int mStartingWave = 1;
 
     [Tooltip("Plz enter the size same as the M Wave In Level.")]
     [SerializeField]
     private BF_LiveObject[] mLevelEnemy = null;
 
     [Tooltip("Time per wave. 1 sec ~ 600 sec (10 min)")]
-    [SerializeField] [Range(1.0f, 600.0f)]
+    [SerializeField]
+    [Range(1.0f, 600.0f)]
     private float mTimePerWave = 30;
 
     [Tooltip("How many enemy per wave.")]
-    [SerializeField] [Range(1, 100)]
+    [SerializeField]
+    [Range(1, 100)]
     private int mEnemyPerWave = 5;
 
     // Timer for per wave. Once it get to the wave time.
@@ -138,7 +147,7 @@ set to thie scene layer.")]
         // check the length of the enemy array prevent errors.
         if (mLevelEnemy.Length == 0)
         {
-            JCS_Debug.LogReminder( "Could not spawn the enemy without enemy object assign");
+            JCS_Debug.LogReminder("Could not spawn the enemy without enemy object assign");
             return;
         }
 

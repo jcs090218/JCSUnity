@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Player that will keep attacking the closest enmey, 
@@ -20,18 +21,21 @@ public class BF_AutoAttacker : MonoBehaviour
 {
     /* Variables */
 
-    [Header("** Check Variables (BF_AutoAttacker) **")]
+    [Separator("Check Variables (BF_AutoAttacker)")]
 
-    [SerializeField] 
+    [SerializeField]
+    [ReadOnly]
     private JCS_DetectAreaAction mDetectAreaAction = null;
 
-    [SerializeField] 
+    [SerializeField]
+    [ReadOnly]
     private JCS_ShootAction mShootAction = null;
 
-    [SerializeField] 
+    [SerializeField]
+    [ReadOnly]
     private BF_Player mBFPlayer = null;
 
-    [Header("** Runtime Variables (BF_AutoAttacker) **")]
+    [Separator("Runtime Variables (BF_AutoAttacker)")]
 
     [Tooltip("How much time per shoot?")]
     [SerializeField]

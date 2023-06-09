@@ -9,6 +9,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Record down all the game information in order 
@@ -20,18 +21,22 @@ public class BF_GameManager : MonoBehaviour
 
     public static BF_GameManager instance = null;
 
-    [Header("** Check Varaibles (BF_GameManager) **")]
+    [Separator("Check Varaibles (BF_GameManager)")]
 
     [Tooltip("Is the game over?")]
+    [ReadOnly]
     public bool GAME_IS_OVER = false;
 
     [Tooltip("Current Level in the scene right now.")]
+    [ReadOnly]
     public int CURRENT_LEVEL = 1;
 
     [Tooltip("Current exp in game scene.")]
-    [SerializeField] private int mCurrentExp = 0;
+    [SerializeField]
+    [ReadOnly]
+    private int mCurrentExp = 0;
 
-    [Header("** Initialize Varaibles (BF_GameManager) **")]
+    [Separator("Initialize Varaibles (BF_GameManager)")]
 
     [Tooltip("How many level in this scene.")]
     public int TOTAL_LEVEL = 30;

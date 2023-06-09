@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Main character movement of this game.
@@ -16,8 +17,10 @@ public class BF_Player : JCS_2DSideScrollerPlayer
 {
     /* Variables */
     
-    [Header("** Optional Variables (BF_Player) **")]
-    [SerializeField] private JCS_2DCursorShootAction mCursorShootAction = null;
+    [Separator("** Optional Variables (BF_Player) **")]
+
+    [SerializeField] 
+    private JCS_2DCursorShootAction mCursorShootAction = null;
 
     private JCS_SequenceShootAction mSequenceShootAction = null;
 

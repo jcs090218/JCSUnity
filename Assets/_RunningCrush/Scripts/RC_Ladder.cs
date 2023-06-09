@@ -8,12 +8,13 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 public class RC_Ladder : JCS_2DLadder
 {
     /* Variables */
 
-    [Header("** Runtime Variables (RC_Ladder) **")]
+    [Separator("Runtime Variables (RC_Ladder)")]
     [SerializeField]
     private JCS_ClimbMoveType mAutoClimbDirection = JCS_ClimbMoveType.MOVE_UP;
 

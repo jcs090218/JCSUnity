@@ -9,6 +9,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Button that buys the item.
@@ -17,7 +18,7 @@ public class BF_BuyButton :  JCS_Button
 {
     /* Variables */
 
-    [Header("** Initialize Variables (BF_BuyButton) **")]
+    [Separator("Initialize Variables (BF_BuyButton)")]
 
     [Tooltip("")]
     [SerializeField] [Range(0, 99999999)]

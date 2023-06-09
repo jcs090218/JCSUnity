@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Hold all the UI that will interact with player.
@@ -18,8 +19,7 @@ public class RC_UIManager : MonoBehaviour
 
     public static RC_UIManager instance = null;
 
-
-    [Header("** Runtime Variables (RC_UIManager) **")]
+    [Separator("Runtime Variables (RC_UIManager)")]
 
     [Tooltip("Panel when one player reach the goal.")]
     public JCS_TweenPanel EXIT_PANEL = null;

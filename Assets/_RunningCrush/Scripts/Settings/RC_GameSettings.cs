@@ -9,6 +9,7 @@
 using System.IO;
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Game settings for Running Crush example game.
@@ -19,15 +20,17 @@ public class RC_GameSettings : MonoBehaviour
 
     public static RC_GameSettings instance = null;
 
-    [Header("** Check Variables (RC_GameSettings) **")]
+    [Separator("Check Variables (RC_GameSettings)")]
 
     [SerializeField]
+    [ReadOnly]
     private string mFullFilePath = "";
 
     [SerializeField]
+    [ReadOnly]
     private string mFullFileName = "";
 
-    [Header("** Runtime Variables (RC_GameSettings) **")]
+    [Separator("Runtime Variables (RC_GameSettings)")]
 
     // at least 1 player in game.
     [Tooltip("How many player in the game. (Default: at least one player in game.)")]
@@ -177,7 +180,7 @@ public class RC_GameSettings : MonoBehaviour
     private void CreateDefaultGameData()
     {
         GAME_DATA = new RC_GameData();
-        
+
         // Set game data's default values
         {
             GAME_DATA.Name = "";
