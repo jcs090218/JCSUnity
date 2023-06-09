@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add pause settings (742635f9176e55225e44b89bd5f76e682424b542)
 * Fix black screen is stucked when pausing the game (c03e2a28ad1aca33e5824b60a4b39e953eff4a52)
 * Fix scale time goes below 0 (70a1d394796c2f9de9b6fc8001563bb4a09bd872)
+* Rely on [MyBox](https://github.com/Deadcows/MyBox) (dfebbb0910d52e5199cd9abda5ce6e97968afe74)
 
 ## 2.3.0
 > Released Sep 12, 2022
