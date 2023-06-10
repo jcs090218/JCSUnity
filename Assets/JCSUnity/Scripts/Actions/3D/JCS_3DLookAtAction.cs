@@ -87,6 +87,8 @@ namespace JCSUnity
 
         public Transform GetTargetTransform() { return this.mTargetTransform; }
         public void SetTargetTransform(Transform t) { this.mTargetTransform = t; }
+        public JCS_Vector3Direction LookDirection { get { return this.mLookDirection; } set { this.mLookDirection = value; } }
+        public State state { get { return this.mState; } set { this.mState = value; } }
         public bool RotateBack90 { get { return this.mRotateBack90; } set { this.mRotateBack90 = value; } }
 
         public bool LookAction { get { return this.mLookAction; } set { this.mLookAction = value; } }
