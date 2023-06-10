@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Running Crush game's player.
@@ -16,7 +17,15 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 {
     /* Variables */
 
-    [Header("** RC_Player Settings (RC_Player) **")]
+        // golds
+    [Separator("Check Variables (RC_Player)")]
+
+    // player hold his own gold. (for multi-player system.)
+    // if is multi-player mode then we threat this as a point.
+    [SerializeField] 
+    private int mCurrentGold = -1;
+
+    [Separator("Runtime Variables (RC_Player)")]
 
     [SerializeField] 
     private int mControlIndex = 0;
@@ -57,12 +66,6 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     // actions
     private bool mReviving = false;
     private bool mWait = false;
-
-    // golds
-    [Header("** Check Variables (RC_Player) **")]
-    // player hold his own gold. (for multi-player system.)
-    // if is multi-player mode then we threat this as a point.
-    [SerializeField] private int mCurrentGold = -1;
 
     /* Setter & Getter */
 

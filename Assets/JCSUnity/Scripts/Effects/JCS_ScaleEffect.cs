@@ -62,13 +62,13 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
 
-        [Header("** Runtime Variables (JCS_ScaleEffect) **")]
+        [Separator("Runtime Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("- UI (JCS_ScaleEffect)")]
+        [Header("- UI")]
 
         [Tooltip("Add event to event trigger system.")]
         [SerializeField]

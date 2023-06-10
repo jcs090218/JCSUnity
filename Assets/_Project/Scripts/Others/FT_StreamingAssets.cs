@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// Test streaming assets module.
@@ -17,7 +18,7 @@ public class FT_StreamingAssets : MonoBehaviour
 {
     /* Variables */
 
-    [Header("** Runtime Variables (FT_StreamingAssets) **")]
+    [Separator("Runtime Variables (FT_StreamingAssets)")]
 
     [Tooltip("")]
     public List<string> dataPath = null;

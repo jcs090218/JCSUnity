@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -17,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Header("** Note: Fade Time can be set at JCS_SceneSettings. **")]
+        [Separator("Runtime Variables (JCS_Logo)")]
 
         [Tooltip("Next scene to load.")]
         [SerializeField]

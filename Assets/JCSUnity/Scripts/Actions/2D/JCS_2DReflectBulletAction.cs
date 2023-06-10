@@ -40,7 +40,7 @@ degree lower than 90.")]
         [Range(0, 180)]
         private float mRandomReflectDegree = 0;
 
-        [Header("** Random Teleport Effect (JCS_2DReflectBulletAction) **")]
+        [Header("- Random Teleport Effect")]
 
         [Tooltip("Position offset.")]
         [SerializeField] private Vector3 mPosOffset = Vector3.zero;

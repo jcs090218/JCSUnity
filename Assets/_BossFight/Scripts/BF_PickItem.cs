@@ -17,7 +17,7 @@ public class BF_PickItem : JCS_Item
 {
     /* Variables */
 
-    [Separator("** Optional Variables (BF_PickItem) **")]
+    [Separator("Optional Variables (BF_PickItem)")]
 
     [Tooltip("")]
     [SerializeField]

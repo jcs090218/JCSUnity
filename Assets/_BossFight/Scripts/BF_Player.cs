@@ -17,7 +17,7 @@ public class BF_Player : JCS_2DSideScrollerPlayer
 {
     /* Variables */
     
-    [Separator("** Optional Variables (BF_Player) **")]
+    [Separator("Optional Variables (BF_Player)")]
 
     [SerializeField] 
     private JCS_2DCursorShootAction mCursorShootAction = null;

@@ -12,6 +12,7 @@
 #define TMP_PRO
 
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -32,7 +33,7 @@ namespace JCSUnity
         private const float MIN_MINUTE_TIME = 0.0f;
         private const float MIN_SECOND_TIME = 0.0f;
 
-        [Header("** Check Variables (JCS_TextTimer) **")]
+        [Separator("Check Variables (JCS_TextTimer)")]
 
         [SerializeField]
         private bool mDoTimeIsUpCallback = false;
@@ -46,7 +47,7 @@ namespace JCSUnity
         [SerializeField]
         private string mSecondsText = "";
 
-        [Header("** Runtime Variables (JCS_TextTimer) **")]
+        [Separator("Runtime Variables (JCS_TextTimer)")]
 
         [Tooltip("Timer active or not active.")]
         [SerializeField]

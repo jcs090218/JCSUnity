@@ -8,6 +8,7 @@
  */
 using System.Collections;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_PfUnit) **")]
+        [Separator("Helper Variables (JCS_PfUnit)")]
 
         [Tooltip("Test this component with key.")]
         [SerializeField]
@@ -46,7 +47,7 @@ namespace JCSUnity
         private Transform mParamTargetTransform = null;
 #endif
 
-        [Header("** Check Variables (JCS_PfUnit) **")]
+        [Separator("Check Variables (JCS_PfUnit)")]
 
         [Tooltip("Target we want to track.")]
         [SerializeField]
@@ -58,7 +59,7 @@ namespace JCSUnity
         [SerializeField]
         private int mTargetIndex = 0;
 
-        [Header("** Runtime Variables (JCS_PfUnit) **")]
+        [Separator("Runtime Variables (JCS_PfUnit)")]
 
         [Tooltip("Move speed.")]
         [SerializeField]

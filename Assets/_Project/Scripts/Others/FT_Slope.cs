@@ -8,13 +8,14 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 public class FT_Slope : MonoBehaviour 
 {
 
     /* Variables */
 
-    [Header("** Check Variables (FT_SlopeTest) **")]
+    [Separator("Check Variables (FT_SlopeTest)")]
 
     public CharacterController mCharacterController = null;
 

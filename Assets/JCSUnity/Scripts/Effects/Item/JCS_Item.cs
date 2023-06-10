@@ -78,7 +78,7 @@ object that we target.")]
         [SerializeField]
         protected AudioClip mEffectSound = null;
 
-        [Header("** Optional Variables (JCS_UnityObject) **")]
+        [Header("- Optional")]
 
         [Tooltip("Make item tween to the destination.")]
         [SerializeField]

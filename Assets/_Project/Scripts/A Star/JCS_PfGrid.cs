@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,13 +20,13 @@ namespace JCSUnity
         /* Variables */
 
 #if UNITY_EDITOR
-        [Header("** Helper Variables (JCS_PfGrid) **")]
+        [Separator("Helper Variables (JCS_PfGrid)")]
 
         [SerializeField]
         private bool mDisplayPathGizmos = false;
 #endif
 
-        [Header("** Runtime Variables (JCS_PfGrid) **")]
+        [Separator("Runtime Variables (JCS_PfGrid)")]
 
         [Tooltip("Mask to detect the unwalkable object.")]
         [SerializeField]
@@ -42,7 +43,6 @@ namespace JCSUnity
         [Tooltip("Direction the grid approach to.")]
         [SerializeField]
         private JCS_Vector3Direction mDirection = JCS_Vector3Direction.FORWARD;
-
 
         private JCS_PfNode[,] mGrid = null;
 

@@ -204,7 +204,7 @@ namespace JCSUnity
         [SerializeField]
         private TrackType mTrackType = TrackType.CLOSEST;
 
-        [Header("** Optional Variables (JCS_ShootAction) **")]
+        [Header("- Optional")]
 
         [Tooltip("Player uses the shoot action.")]
         [SerializeField]

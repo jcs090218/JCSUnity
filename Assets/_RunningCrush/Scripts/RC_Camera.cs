@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 [RequireComponent(typeof(JCS_2DCamera))]
 public class RC_Camera : MonoBehaviour
@@ -27,7 +28,7 @@ public class RC_Camera : MonoBehaviour
 
     private JCS_2DCamera mJCSCamera = null;
 
-    [Header("** RC_Camera Settings **")]
+    [Separator("Runtime Variables (RC_Camera)")]
 
     [Tooltip("Depend on which direction should the camera track.")]
     [SerializeField]

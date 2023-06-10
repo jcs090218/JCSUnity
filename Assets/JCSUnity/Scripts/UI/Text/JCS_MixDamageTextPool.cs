@@ -77,7 +77,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        [Header("** Zigge Right Left Effect (In Sequence)**")]
+        [Header("- Zigge Right Left")]
 
         [Tooltip("Do the zigge effect?")]
         [SerializeField]

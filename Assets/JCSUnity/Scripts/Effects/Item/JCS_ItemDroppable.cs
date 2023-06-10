@@ -143,7 +143,7 @@ just stop there.")]
         [SerializeField]
         private bool mBounceBackfromWall = true;
 
-        [Header("** Audio (JCS_ItemDroppable) **")]
+        [Header("- Audio")]
 
         [Tooltip("Drop Sound.")]
         [SerializeField]

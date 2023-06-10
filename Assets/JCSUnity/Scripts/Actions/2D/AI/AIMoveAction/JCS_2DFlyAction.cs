@@ -86,7 +86,7 @@ namespace JCSUnity
         [Range(0.0f, 100.0f)]
         private float mPossibility = 80.0f;
 
-        [Header("** Time Settings (JCS_2DFlyAction) **")]
+        [Header("- Time")]
 
         [Tooltip("Time to do one Fly.")]
         [SerializeField]

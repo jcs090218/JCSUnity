@@ -54,7 +54,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mKeepShootAngle = true;
 
-        [Header("** Shoot Gap Effect (JCS_2DCursorShootAction) **")]
+        [Header("- Shoot Gap")]
 
         [Tooltip("Shoot with gap?")]
         [SerializeField]

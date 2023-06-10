@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using UnityEngine;
+using MyBox;
 
 [RequireComponent(typeof(BoxCollider))]
 public class FT_BoxCollider : MonoBehaviour
@@ -14,9 +15,13 @@ public class FT_BoxCollider : MonoBehaviour
     /* Variables */
 
     private BoxCollider mBoxCollider = null;
-    [Header("** Check Variables **")]
-    [SerializeField] private float mWidth = 0;
-    [SerializeField] private float mHeight = 0;
+    [Separator("Check Variables")]
+
+    [SerializeField] 
+    private float mWidth = 0;
+
+    [SerializeField] 
+    private float mHeight = 0;
 
     /* Setter/Getter */
 
