@@ -116,25 +116,11 @@ namespace JCSUnity
         /// <param name="time"> Time. </param>
         public void ThrowByTime(Vector3 targetPos, float time)
         {
-            float displacementX = Mathf.Abs(targetPos.x - this.transform.position.x);
-            float displacementY = Mathf.Abs(targetPos.y - this.transform.position.y);
-            float displacementZ = Mathf.Abs(targetPos.z - this.transform.position.z);
+            Vector3 displacement = targetPos - this.transform.position;
 
-            /* Displacement include direction, is a vector quantity. */
-            {
-                if (targetPos.x < this.transform.position.x)
-                    displacementX = -displacementX;
-
-                if (targetPos.z < this.transform.position.z)
-                    displacementZ = -displacementZ;
-
-                if (targetPos.y < this.transform.position.y)
-                    displacementY = -displacementY;
-            }
-
-            mVelocity.x = displacementX / time;
-            mVelocity.z = displacementZ / time;
-            mVelocity.y = (displacementY - (-JCS_GameConstant.GRAVITY * mGravityProduct * time * time / 2)) / time;
+            mVelocity.x = displacement.x / time;
+            mVelocity.z = displacement.z / time;
+            mVelocity.y = (displacement.y - (-JCS_GameConstant.GRAVITY * mGravityProduct * time * time / 2)) / time;
 
             // start dropping.
             this.mActive = true;
@@ -159,8 +145,8 @@ namespace JCSUnity
         /// <param name="vel"> velocity to hit the point. </param>
         public void ThrowByForce(Vector3 targetPos, float vel)
         {
-            float distanceX = Mathf.Abs(targetPos.x - this.transform.position.x);
-            float time = distanceX / vel;
+            float distance = Vector3.Distance(targetPos, this.transform.position);
+            float time = distance / vel;
 
             ThrowByTime(targetPos, time);
         }

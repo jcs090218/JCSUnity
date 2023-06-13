@@ -100,7 +100,6 @@ namespace JCSUnity
             float h = Mathf.Abs(start.y - target.y);
             float w = Mathf.Abs(target.x - start.x);
 
-
             float vX = Mathf.Sqrt((force * w * w) / (2 * (h + w * tan)));
             float vY = tan * vX;
 
