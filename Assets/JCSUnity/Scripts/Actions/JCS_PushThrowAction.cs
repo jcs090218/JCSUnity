@@ -95,7 +95,7 @@ namespace JCSUnity
             // get the force.
             this.mG = force;
 
-            //calculate start velocity
+            // calculate start velocity
             float tan = Mathf.Tan(angle * Mathf.Deg2Rad);
             float h = Mathf.Abs(start.y - target.y);
             float w = Mathf.Abs(target.x - start.x);
