@@ -550,7 +550,7 @@ namespace JCSUnity
         {
             switch (direction)
             {
-                case JCS_Vector3Direction.CENTER: return trans.position;
+                case JCS_Vector3Direction.CENTER: return Vector3.zero;
 
                 case JCS_Vector3Direction.UP: return trans.up;
                 case JCS_Vector3Direction.DOWN: return -trans.up;
