@@ -489,7 +489,7 @@ namespace JCSUnity
                         this.mSpriteRenderer.enabled = value;
                         return;
                     case JCS_UnityObjectType.TEXT:
-                        this.mSpriteRenderer.enabled = value;
+                        this.mText.enabled = value;
                         return;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:

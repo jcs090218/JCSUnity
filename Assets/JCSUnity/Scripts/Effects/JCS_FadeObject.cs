@@ -76,7 +76,7 @@ namespace JCSUnity
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
         /* Setter & Getter */
-        
+
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public bool OverrideFade { get { return this.mOverrideFade; } set { this.mOverrideFade = value; } }
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
@@ -170,34 +170,7 @@ namespace JCSUnity
             }
 
             // enable the effect component
-            switch (GetObjectType())
-            {
-                // enable the shader
-                case JCS_UnityObjectType.GAME_OBJECT:
-                    {
-                        //this.gameObject.SetActive(true);
-                    }
-                    break;
-                // enable "Image" component
-                case JCS_UnityObjectType.UI:
-                    {
-                        if (mImage != null)
-                            mImage.enabled = true;
-                    }
-                    break;
-                case JCS_UnityObjectType.SPRITE:
-                    {
-                        if (mSpriteRenderer != null)
-                            mSpriteRenderer.enabled = true;
-                    }
-                    break;
-                case JCS_UnityObjectType.TEXT:
-                    {
-                        if (mText != null)
-                            mText.enabled = true;
-                    }
-                    break;
-            }
+            this.LocalEnabled = true;
 
             switch (type)
             {
@@ -239,32 +212,7 @@ namespace JCSUnity
                         // Fade out effect complete
                         if (mAlpha < mFadeOutAmount)
                         {
-                            switch (GetObjectType())
-                            {
-                                case JCS_UnityObjectType.GAME_OBJECT:
-                                    {
-                                        //this.gameObject.SetActive(false);
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.UI:
-                                    {
-                                        if (mImage != null)
-                                            mImage.enabled = false;
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.SPRITE:
-                                    {
-                                        if (mSpriteRenderer != null)
-                                            mSpriteRenderer.enabled = false;
-                                    }
-                                    break;
-                                case JCS_UnityObjectType.TEXT:
-                                    {
-                                        if (mText != null)
-                                            mText.enabled = false;
-                                    }
-                                    break;
-                            }
+                            this.LocalEnabled = false;
 
                             mEffect = false;
 
