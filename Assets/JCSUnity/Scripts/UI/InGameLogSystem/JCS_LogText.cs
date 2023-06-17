@@ -15,7 +15,7 @@ namespace JCSUnity
     /// <summary>
     /// Log text for JCS_IGLogSystem to handle.
     /// </summary>
-    [RequireComponent(typeof(UnityEngine.UI.Text))]
+    [RequireComponent(typeof(Text))]
     [RequireComponent(typeof(JCS_FadeObject))]
     [RequireComponent(typeof(JCS_SimpleTrackAction))]
     [RequireComponent(typeof(JCS_SlideEffect))]
@@ -65,7 +65,7 @@ namespace JCSUnity
             // set the fade out call back,  so we active from pool, and check
             // to see if the object is fade out complete. if is complete set
             // the active to false (return to pool).
-            mFadeObject.fadeOutCallback = FadeOutCompleteCallback;
+            mFadeObject.onFadeOut = FadeOutCompleteCallback;
         }
 
         /// <summary>

@@ -11,6 +11,8 @@ using MyBox;
 
 namespace JCSUnity
 {
+    public delegate void Fading(float alpha);
+
     /// <summary>
     /// Fade object to a particular alpha channel.
     /// </summary>
@@ -18,8 +20,10 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction fadeOutCallback = DefaultFadeCallback;
-        public EmptyFunction fadeInCallback = DefaultFadeCallback;
+        public EmptyFunction onFadeOut = null;
+        public EmptyFunction onFadeIn = null;
+
+        public Fading onFading = null;
 
         private JCS_FadeType mFadeType = JCS_FadeType.FADE_IN;  // defaul as visible
 
@@ -77,6 +81,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool Effect { get { return this.mEffect; } set { this.mEffect = value; } }
+        public bool Visible { get { return this.mVisible; } set { this.mVisible = value; } }
         public float FadeTime { get { return this.mFadeTime; } set { this.mFadeTime = value; } }
         public bool OverrideFade { get { return this.mOverrideFade; } set { this.mOverrideFade = value; } }
         public float Alpha { get { return this.mAlpha; } set { this.mAlpha = value; } }
@@ -217,8 +223,8 @@ namespace JCSUnity
                             mEffect = false;
 
                             // do fade out callback
-                            if (fadeOutCallback != null)
-                                fadeOutCallback.Invoke();
+                            if (onFadeOut != null)
+                                onFadeOut.Invoke();
 
                             return;
                         }
@@ -235,8 +241,8 @@ namespace JCSUnity
                             mEffect = false;
 
                             // do fade in callback
-                            if (fadeInCallback != null)
-                                fadeInCallback.Invoke();
+                            if (onFadeIn != null)
+                                onFadeIn.Invoke();
 
                             return;
                         }
@@ -249,6 +255,9 @@ namespace JCSUnity
             Color screenColor = this.LocalColor;
             screenColor.a = mAlpha;
             this.LocalColor = screenColor;
+
+            if (onFading != null)
+                onFading.Invoke(mAlpha);
         }
     }
 }
