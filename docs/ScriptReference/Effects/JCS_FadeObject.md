@@ -6,6 +6,11 @@ Fade object to a particular alpha channel.
 
 | Name           | Description                                        |
 |:---------------|:---------------------------------------------------|
+| onFadeOut      | The callback executes after fade out.              |
+| onFadeIn       | The callback executes after fade-in.               |
+| onFading       | The callback executes when fading in/out.          |
+| mEffect        | Is current fade object doing the effect?           |
+| mVisible       | Is current fade object visible?                    |
 | mFadeTime      | How long it fades.                                 |
 | mOverrideFade  | Override the action before it complete the action. |
 | mFadeInAmount  | Maxinum of fade value.                             |
