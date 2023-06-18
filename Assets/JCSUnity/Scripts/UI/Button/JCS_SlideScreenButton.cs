@@ -77,7 +77,7 @@ namespace JCSUnity
                 mSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            this.mSlideCameras = (JCS_2DSlideScreenCamera[])FindObjectsOfType(typeof(JCS_2DSlideScreenCamera));
+            this.mSlideCameras = JCS_Util.FindObjectsByType(typeof(JCS_2DSlideScreenCamera)) as JCS_2DSlideScreenCamera[];
         }
 
         private void Update()

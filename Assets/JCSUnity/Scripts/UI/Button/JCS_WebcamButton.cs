@@ -38,15 +38,6 @@ namespace JCSUnity
 
         /* Functions */
 
-        protected override void Awake()
-        {
-            base.Awake();
-
-            // try to get the webcam from the scene.
-            if (mWebcam == null)
-                mWebcam = (JCS_Webcam)FindObjectOfType(typeof(JCS_Webcam));
-        }
-
         public override void OnClick()
         {
             // Current only one function applied, so just do take snap shot 

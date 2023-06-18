@@ -411,11 +411,11 @@ namespace JCSUnity
         public void AddAllPlayerToMultiTrack()
         {
             // find the object in the scene.
-            JCS_2DMultiTrackCamera jcs2dmtc = (JCS_2DMultiTrackCamera)FindObjectOfType(typeof(JCS_2DMultiTrackCamera));
+            var mtc = JCS_Util.FindObjectByType(typeof(JCS_2DMultiTrackCamera)) as JCS_2DMultiTrackCamera;
 
             foreach (JCS_Player p in mPlayers)
             {
-                jcs2dmtc.AddTargetToTrackList(p);
+                mtc.AddTargetToTrackList(p);
             }
         }
 
@@ -425,11 +425,11 @@ namespace JCSUnity
         public void RemoveAllPlayerFromMultiTrack()
         {
             // find the object in the scene.
-            JCS_2DMultiTrackCamera jcs2dmtc = (JCS_2DMultiTrackCamera)FindObjectOfType(typeof(JCS_2DMultiTrackCamera));
+            var mtc = JCS_Util.FindObjectByType(typeof(JCS_2DMultiTrackCamera)) as JCS_2DMultiTrackCamera;
 
             foreach (JCS_Player p in mPlayers)
             {
-                jcs2dmtc.RemoveTargetFromTrackList(p);
+                mtc.RemoveTargetFromTrackList(p);
             }
         }
     }

@@ -544,7 +544,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateBasePanel()
         {
-            JCS_Canvas canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -572,7 +572,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateDialoguePanel()
         {
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -600,7 +600,7 @@ namespace JCSUnity
         /// </summary>
         private static void CreateSlidePanel()
         {
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -673,7 +673,7 @@ namespace JCSUnity
         /// </summary>
         private static GameObject CreateTweenPanel()
         {
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
             if (canvas == null)
             {
                 JCS_Debug.Log("Can't find JCS_Canvas in hierarchy. Plz create canvas before creating new panel.");
@@ -782,7 +782,7 @@ namespace JCSUnity
         {
             // since this will be in the editing time.
             // so we don't worry to much about the performance.
-            var canvas = (JCS_Canvas)FindObjectOfType(typeof(JCS_Canvas));
+            var canvas = JCS_Util.FindObjectByType(typeof(JCS_Canvas)) as JCS_Canvas;
 
             return CreateHierarchyObjectUnderCanvas(settingPath, canvas);
         }

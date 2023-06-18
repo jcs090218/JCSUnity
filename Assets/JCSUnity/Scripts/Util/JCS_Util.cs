@@ -94,6 +94,30 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Retrieves the first active loaded object of Type type.
+        /// </summary>
+        public static Object FindObjectByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindFirstObjectByType(type);
+#else
+            return UnityEngine.Object.FindObjectOfType(type);
+#endif
+        }
+
+        /// <summary>
+        /// Retrieves a list of all loaded objects of Type type.
+        /// </summary>
+        public static Object[] FindObjectsByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
+#else
+            return UnityEngine.Object.FindObjectsOfType(type);
+#endif
+        }
+
+        /// <summary>
         /// Check the value within the range plus acceptable range.
         /// </summary>
         /// <param name="range"></param>

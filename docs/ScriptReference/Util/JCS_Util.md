@@ -8,6 +8,8 @@ All code utility is stored here.
 |:-------------------------------------|:--------------------------------------------------------------------------------------------------|
 | EnableComponent                      | Do enable/distance component.                                                                     |
 | SpawnGameObject                      | Spawn a game object.                                                                              |
+| FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
+| FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |
 | WithInArrayRange                     | Check if the index valid within the array length.&nbsp&nbsp(0 ~ (length - 1))                     |
 | LoopInArray                          | Make the index is within the array length by setting the maxinum of (legnth - 1) or mininum of 0. |

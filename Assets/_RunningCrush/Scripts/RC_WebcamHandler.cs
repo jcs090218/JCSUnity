@@ -42,7 +42,7 @@ public class RC_WebcamHandler : MonoBehaviour
 
         // try to get the object
         if (mWebcam == null)
-            mWebcam = (JCS_Webcam)FindObjectOfType(typeof(JCS_Webcam));
+            mWebcam = JCS_Util.FindObjectByType(typeof(JCS_Webcam)) as JCS_Webcam;
     }
 
     private void Update()

@@ -65,7 +65,7 @@ namespace JCSUnity
         {
             while (true)
             {
-                LIVE_OBJECT_LIST = Object.FindObjectsOfType<JCS_2DLiveObject>();
+                LIVE_OBJECT_LIST = JCS_Util.FindObjectsByType(typeof(JCS_2DLiveObject)) as JCS_2DLiveObject[];
                 yield return new WaitForSeconds(time);
             }
         }

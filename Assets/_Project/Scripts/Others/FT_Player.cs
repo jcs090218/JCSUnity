@@ -42,6 +42,5 @@ public class FT_Player : JCS_2DSideScrollerPlayer
         {
             Hit();
         }
-
     }
 }
