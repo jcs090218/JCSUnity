@@ -30,10 +30,10 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_ApplicationSettings)")]
 
-        [Tooltip("Control frame rate yourself.")]
+        [Tooltip("Enable to overwrite the default frame rate.")]
         public bool SET_FRAME_RATE = false;
 
-        [Tooltip("Set the game frame rate.")]
+        [Tooltip("Target frame rate.")]
         [Range(30, 120)]
         public int FRAME_RATE = 120;
 
