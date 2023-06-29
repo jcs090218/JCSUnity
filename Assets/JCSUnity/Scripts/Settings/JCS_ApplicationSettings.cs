@@ -28,6 +28,15 @@ namespace JCSUnity
         [ReadOnly]
         public bool APPLICATION_STARTS = false;
 
+        [Separator("Initialize Variables (JCS_ApplicationSettings)")]
+
+        [Tooltip("Control frame rate yourself.")]
+        public bool SET_FRAME_RATE = false;
+
+        [Tooltip("Set the game frame rate.")]
+        [Range(30, 120)]
+        public int FRAME_RATE = 120;
+
         /* Setter & Getter */
 
         /* Functions */
@@ -35,6 +44,9 @@ namespace JCSUnity
         private void Awake()
         {
             instance = CheckSingleton(instance, this);
+
+            if (SET_FRAME_RATE)
+                Application.targetFrameRate = FRAME_RATE;
         }
 
         private void Start()
@@ -57,6 +69,8 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_ApplicationSettings _old, JCS_ApplicationSettings _new)
         {
+            _new.SET_FRAME_RATE = _old.SET_FRAME_RATE;
+            _new.FRAME_RATE = _old.FRAME_RATE;
             _new.APPLICATION_STARTS = _old.APPLICATION_STARTS;
         }
 
