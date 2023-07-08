@@ -95,5 +95,10 @@ namespace JCSUnity
             int index = Range(0, inList.Count);
             return inList[index];
         }
+        public static T ChooseOneE<T>(params T[] args)  // Ellipsis
+        {
+            int index = Range(0, args.Length);
+            return args[index];
+        }
     }
 }
