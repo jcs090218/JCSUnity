@@ -21,9 +21,19 @@ namespace JCSUnity
     /// </summary>
     public class JCSUnity_Hotkeys
     {
+        /* Variables*/
+
+        private const string MI_BaseName = JCSUnity_EditorWindow.MI_BaseName + "/Hotkeys";
+
+        public const int MI_BasePriority = JCSUnity_EditorWindow.MI_BasePriority;
+
         private static EditorWindow _mouseOverWindow;
 
-        [MenuItem("JCSUnity/Hotkeys/Select Inspector under mouse cursor (use hotkey) #&q", false, 50)]
+        /* Setter & Getter */
+
+        /* Functions */
+
+        [MenuItem(MI_BaseName + "/Select Inspector under mouse cursor (use hotkey) #&q", false, MI_BasePriority + 50)]
         private static void SelectLockableInspector()
         {
             if (EditorWindow.mouseOverWindow.GetType().Name == "InspectorWindow")
@@ -36,7 +46,7 @@ namespace JCSUnity
             }
         }
 
-        [MenuItem("JCSUnity/Hotkeys/Toggle Lock &q", false, 50)]
+        [MenuItem(MI_BaseName + "/Toggle Lock &q", false, MI_BasePriority + 50)]
         private static void ToggleInspectorLock()
         {
             if (_mouseOverWindow == null)
@@ -60,7 +70,7 @@ namespace JCSUnity
             }
         }
 
-        [MenuItem("JCSUnity/Hotkeys/Clear Console #&c", false, 50)]
+        [MenuItem(MI_BaseName + "/Clear Console #&c", false, MI_BasePriority + 50)]
         private static void ClearConsole()
         {
             Type type = Assembly.GetAssembly(typeof(Editor)).GetType("UnityEditorInternal.LogEntries");

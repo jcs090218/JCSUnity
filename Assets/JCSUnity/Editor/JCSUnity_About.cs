@@ -20,6 +20,10 @@ namespace JCSUnity
     {
         /* Variables*/
 
+        private const string MI_BaseName = JCSUnity_EditorWindow.MI_BaseName;
+
+        public const int MI_BasePriority = JCSUnity_EditorWindow.MI_BasePriority;
+
         /* all the .ini file located here. */
         public static Dictionary<string, string> EDITOR_INI = new Dictionary<string, string>();
 
@@ -88,7 +92,7 @@ namespace JCSUnity
         /// <summary>
         /// About JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/About", false, 100)]
+        [MenuItem(MI_BaseName + "/About", false, MI_BasePriority + 100)]
         public static void AboutJCSUnity()
         {
             var window = CreateInstance<JCSUnity_About>();

@@ -21,6 +21,10 @@ namespace JCSUnity
     {
         /* Variables*/
 
+        public const string MI_BaseName = "Tools/JCSUnity";
+
+        public const int MI_BasePriority = -24;
+
         public static JCSUnity_EditorWindow instance = null;
 
         public static string NAME
@@ -42,8 +46,8 @@ namespace JCSUnity
         private bool mFO_Input = false;
         private bool mFO_Tool = false;
 
-        public string PROJECT_NAME = "";
-        public const string PROJECT_NAME_LASTING = "_Assets";
+        public string PROJECT_NAME = "_Project";
+        public const string PROJECT_NAME_SUFFIX = "";
         public string[] ProjectSubFolders = {
             "Animations",
             "Editor",
@@ -297,7 +301,7 @@ namespace JCSUnity
         /// <summary>
         /// Main editor window initialize function.
         /// </summary>
-        [MenuItem("JCSUnity/Window", false, 1)]
+        [MenuItem(MI_BaseName + "/Window", false, MI_BasePriority + 1)]
         private static void JCSUnityEditor()
         {
             JCSUnity_EditorWindow window = GetWindow<JCSUnity_EditorWindow>(false, NAME, true);
@@ -307,7 +311,7 @@ namespace JCSUnity
         /// <summary>
         /// Serialize the current scene into 2D style.
         /// </summary>
-        [MenuItem("JCSUnity/Scene/Convert to 2D scene", false, 2)]
+        [MenuItem(MI_BaseName + "/Scene/Convert to 2D scene", false, MI_BasePriority + 2)]
         private static void ConvertTo2D()
         {
             // create settings
@@ -334,7 +338,7 @@ namespace JCSUnity
         /// <summary>
         /// Serialize the current scene into 3D style.
         /// </summary>
-        [MenuItem("JCSUnity/Scene/Convert to 3D scene", false, 2)]
+        [MenuItem(MI_BaseName + "/Scene/Convert to 3D scene", false, MI_BasePriority + 2)]
         private static void ConvertTo3D()
         {
             // create settings
@@ -356,7 +360,7 @@ namespace JCSUnity
         /// <summary>
         /// Create managers for 3d game combine with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create Managers", false, 10)]
+        [MenuItem(MI_BaseName + "/Basic/Create Managers", false, MI_BasePriority + 10)]
         private static GameObject CreateManagers()
         {
             const string manager_path = "JCS_Managers";
@@ -370,7 +374,7 @@ namespace JCSUnity
         /// <summary>
         /// Create settings for 3d game combine with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create Settings", false, 10)]
+        [MenuItem(MI_BaseName + "/Basic/Create Settings", false, MI_BasePriority + 10)]
         private static GameObject CreateSettings()
         {
             const string setting_path = "JCS_Settings";
@@ -384,7 +388,7 @@ namespace JCSUnity
         /// <summary>
         /// BGM player for game.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create BGM Player", false, 11)]
+        [MenuItem(MI_BaseName + "/Basic/Create BGM Player", false, MI_BasePriority + 11)]
         private static void CreateBGMPlayer()
         {
             const string player_path = "Sound/JCS_BGMPlayer";
@@ -396,7 +400,7 @@ namespace JCSUnity
         /// <summary>
         /// Debug tool using in JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Basic/Create Debug Tools", false, 12)]
+        [MenuItem(MI_BaseName + "/Basic/Create Debug Tools", false, MI_BasePriority + 12)]
         private static void CreateDebugTools()
         {
             const string tools_path = "Tools/JCS_Tools";
@@ -408,19 +412,19 @@ namespace JCSUnity
         /// <summary>
         /// Create settings for 3d game combine with JCSUnity.
         /// </summary>
-        [MenuItem("JCSUnity/Input/Update", false, 15)]
+        [MenuItem(MI_BaseName + "/Input/Update", false, MI_BasePriority + 15)]
         private static void UpdateInputManager()
         {
             JCS_InputController.SetupInputManager();
         }
 
-        [MenuItem("JCSUnity/Input/Clear", false, 15)]
+        [MenuItem(MI_BaseName + "/Input/Clear", false, MI_BasePriority + 15)]
         private static void ClearInputManager()
         {
             JCS_InputController.ClearInputManagerSettings();
         }
 
-        [MenuItem("JCSUnity/Input/Revert", false, 15)]
+        [MenuItem(MI_BaseName + "/Input/Revert", false, MI_BasePriority + 15)]
         private static void RevertDefaultInputManager()
         {
             JCS_InputController.DefaultInputManagerSettings();
@@ -448,11 +452,11 @@ namespace JCSUnity
         /// <summary>
         /// Create a new project.
         /// </summary>
-        [MenuItem("JCSUnity/Tool/Create project assets folder", false, 20)]
+        [MenuItem(MI_BaseName + "/Tool/Create project assets folder", false, MI_BasePriority + 20)]
         private static void CreateProjectAssetsFolder()
         {
             string parentFolder = "Assets";
-            string newFolderName = instance.PROJECT_NAME + PROJECT_NAME_LASTING;
+            string newFolderName = instance.PROJECT_NAME + PROJECT_NAME_SUFFIX;
 
             string assetsPath = Application.dataPath + "/";
             string newProjectPath = assetsPath + newFolderName + "/";
@@ -473,7 +477,7 @@ namespace JCSUnity
         /// <summary>
         /// Update JCSUnity
         /// </summary>
-        [MenuItem("JCSUnity/Check for Update", false, 75)]
+        [MenuItem(MI_BaseName + "/Check for Update", false, MI_BasePriority + 75)]
         private static void UpdateJCSUnity()
         {
             // TODO(jenchieh): check framework need to update or not?
