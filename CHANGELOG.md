@@ -18,6 +18,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add by self option for rotate action (2e239b8a269e57ed0bca94557630224d34dcc668)
 * Specify way to control frame rate in the editor (877351a8fb375c814867c30b49eb9ce01526abae)
 * Add utility functions to choose one object from `list` or `array`. (089ea6f1f82b86d47a3579f5a169bc577492c8d8)
+* Place menu item under category `Tools` (12c0220d20c797ef19b629c09a82e71ba20fb8ee)
 
 ## 2.3.0
 > Released Sep 12, 2022
