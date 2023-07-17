@@ -17,6 +17,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCSUnity_EditortUtil
     {
+        /* Variables */
+
+        /* Setter/Getter */
+
+        /* Functions */
+
         public static string FormKey(string name)
         {
             return JCSUnity_EditorWindow.NAME + "." + name;
