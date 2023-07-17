@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 2.3.1 (Unreleased)
+## 2.3.2 (Unreleased)
 > Released N/A
+
+- N/A
+
+## 2.3.1
+> Released Jul 16, 2023
 
 * Add reload scene (0a4bbb742086737ab5316fd0e2c113e3b38d49f1)
 * Allow 0 length sprite in 2D animation (f220b5713c37239cd8ab6253dd2d07d613f28af3)
