@@ -6,8 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -84,7 +84,7 @@ namespace JCSUnity
     /// <summary>
     /// Unity's Input class re-wrapper.
     /// </summary>
-    public class JCS_Input 
+    public class JCS_Input
     {
         #region DOUBLE_CLICK
         // Boolean to indentify the first click.
@@ -142,6 +142,34 @@ namespace JCSUnity
             DoJoystickCallback();
 
             ClearJoystickKeymapBuffer();
+        }
+
+        /// <summary>
+        /// Execute operations with key state pressed/up/down.
+        /// </summary>
+        /// <param name="key"> Key to press. </param>
+        /// <param name="callback"> Callback after key being pressed. </param>
+        /// <returns> Result key state. </returns>
+        public static bool WithKey(KeyCode key, EmptyFunction callback)
+        {
+            return WithKeyAction(JCS_KeyActionType.KEY, key, callback);
+        }
+        public static bool WithKeyUp(KeyCode key, EmptyFunction callback)
+        {
+            return WithKeyAction(JCS_KeyActionType.KEY_UP, key, callback);
+        }
+        public static bool WithKeyDown(KeyCode key, EmptyFunction callback)
+        {
+            return WithKeyAction(JCS_KeyActionType.KEY_DOWN, key, callback);
+        }
+        private static bool WithKeyAction(JCS_KeyActionType action, KeyCode key, EmptyFunction callback)
+        {
+            if (GetKeyByAction(action, key))
+            {
+                callback.Invoke();
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -323,9 +351,9 @@ namespace JCSUnity
             Canvas myCanvas = JCS_Canvas.GuessCanvas().canvas;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                myCanvas.transform as RectTransform, 
-                Input.mousePosition, 
-                myCanvas.worldCamera, 
+                myCanvas.transform as RectTransform,
+                Input.mousePosition,
+                myCanvas.worldCamera,
                 out pos);
 
             return myCanvas.transform.TransformPoint(pos);
@@ -398,8 +426,7 @@ namespace JCSUnity
                     return GetMouseButtonUp(button, ignorePause);
             }
 
-            JCS_Debug.LogError("This cannot happed");
-            return false;
+            return false;  // This cannot happed
         }
         /// <summary>
         /// Check if the mouse button is down.
@@ -537,8 +564,7 @@ namespace JCSUnity
                     return GetKeyUp(key, ignorePause);
             }
 
-            JCS_Debug.LogError("This cannot happed, because all states applied.");
-            return false;
+            return false;  // This cannot happens!
         }
         /// <summary>
         /// Is the key down?
@@ -615,11 +641,7 @@ namespace JCSUnity
                     return GetButtonUp(buttonName, ignorePause);
             }
 
-
-            JCS_Debug.LogError("This cannot happed.");
-
-            // this cannot happens
-            return false;
+            return false;  // this cannot happens
         }
         /// <summary>
         /// Is the button pressed?
@@ -1013,9 +1035,9 @@ namespace JCSUnity
         /// <param name="ignorePause"></param>
         /// <returns></returns>
         public static bool GetJoystickKeyByAction(
-            JCS_KeyActionType act, 
+            JCS_KeyActionType act,
             JCS_JoystickIndex id,
-            JCS_JoystickButton key, 
+            JCS_JoystickButton key,
             bool ignorePause = false)
         {
             switch (act)
@@ -1083,13 +1105,13 @@ namespace JCSUnity
         /// false, none of these keys are pressed.
         /// </returns>
         public static bool OneKeys(
-            List<KeyCode> keys, 
+            List<KeyCode> keys,
             bool ignorePause = false)
         {
             return OneKeys(keys.ToArray(), ignorePause);
         }
         public static bool OneKeys(
-            KeyCode[] keys, 
+            KeyCode[] keys,
             bool ignorePause = false)
         {
             for (int index = 0; index < keys.Length; ++index)
@@ -1114,13 +1136,13 @@ namespace JCSUnity
         /// false, none of these keys are down.
         /// </returns>
         public static bool OneKeysDown(
-            List<KeyCode> keys, 
+            List<KeyCode> keys,
             bool ignorePause = false)
         {
             return OneKeysDown(keys.ToArray(), ignorePause);
         }
         public static bool OneKeysDown(
-            KeyCode[] keys, 
+            KeyCode[] keys,
             bool ignorePause = false)
         {
             for (int index = 0; index < keys.Length; ++index)
@@ -1146,13 +1168,13 @@ namespace JCSUnity
         /// false, none of these keys are up.
         /// </returns>
         public static bool OneKeysUp(
-            List<KeyCode> keys, 
+            List<KeyCode> keys,
             bool ignorePause = false)
         {
             return OneKeysUp(keys.ToArray(), ignorePause);
         }
         public static bool OneKeysUp(
-            KeyCode[] keys, 
+            KeyCode[] keys,
             bool ignorePause = false)
         {
             for (int index = 0; index < keys.Length; ++index)
@@ -1184,7 +1206,7 @@ namespace JCSUnity
             return AllKeys(keys.ToArray(), ignorePause);
         }
         public static bool AllKeys(
-            KeyCode[] keys, 
+            KeyCode[] keys,
             bool ignorePause = false)
         {
             for (int index = 0; index < keys.Length; ++index)
@@ -1279,7 +1301,7 @@ namespace JCSUnity
             return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys.ToArray(), ignorePause);
         }
         public static bool OneJoystickButtons(
-            JCS_JoystickIndex joystickIndex, 
+            JCS_JoystickIndex joystickIndex,
             List<JCS_JoystickButton> keys,
             bool ignorePause = false)
         {
@@ -1293,7 +1315,7 @@ namespace JCSUnity
             return OneJoystickButtons((JCS_JoystickIndex)joystickIndex, keys, ignorePause);
         }
         public static bool OneJoystickButtons(
-            JCS_JoystickIndex joystickIndex, 
+            JCS_JoystickIndex joystickIndex,
             JCS_JoystickButton[] keys,
             bool ignorePause = false)
         {
@@ -1544,7 +1566,7 @@ namespace JCSUnity
         }
 
 
-#region CTRL
+        #region CTRL
 
         /// <summary>
         /// Is one the ctrl key pressed?
@@ -1619,9 +1641,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT
+        #region ALT
 
         /// <summary>
         /// Is one the alt key pressed?
@@ -1694,9 +1716,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region SHIFT
+        #region SHIFT
 
         /// <summary>
         /// Is one the shift key pressed?
@@ -1769,9 +1791,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region CTRL_SHIFT
+        #region CTRL_SHIFT
         /// <summary>
         /// Check if the 'key' and the ctrl and shift key is pressed.
         /// </summary>
@@ -1819,9 +1841,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT_CTRL
+        #region ALT_CTRL
         /// <summary>
         /// Check if the 'key' and the ctrl and alt key is pressed.
         /// </summary>
@@ -1869,9 +1891,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT_SHIFT
+        #region ALT_SHIFT
         /// <summary>
         /// Check if the 'key' and the alt and shift key is pressed.
         /// </summary>
@@ -1919,9 +1941,9 @@ namespace JCSUnity
 
             return GetKeyUp(key);
         }
-#endregion
+        #endregion
 
-#region ALT_CTRL_SHIFT
+        #region ALT_CTRL_SHIFT
 
         /// <summary>
         /// Check if the 'key', alt, shift and ctrl key is pressed.
@@ -1971,7 +1993,7 @@ namespace JCSUnity
             return GetKeyUp(key);
         }
 
-#endregion
+        #endregion
 
         /// <summary>
         /// Get key with certain combination.
