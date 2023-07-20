@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 2.3.2 (Unreleased)
 > Released N/A
 
-- N/A
+- Add with key functions in the input module (20b12f996d4eff458555e3dcf58095130f76f98e)
 
 ## 2.3.1
 > Released Jul 16, 2023
