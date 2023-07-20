@@ -6,6 +6,9 @@ Rewrap Input from Unity Engine and add more functionalities.
 
 | Name                       | Description                                                           |
 |:---------------------------|:----------------------------------------------------------------------|
+| WithKey                    | Execute operations with key state pressed.                            |
+| WithKeyUp                  | Execute operations with key state up.                                 |
+| WithKeyDown                | Execute operations with key state down.                               |
 | OnMouseDoubleClick         | Check if the user double clicking?                                    |
 | OnMouseDrag                | s the mouse dragging right now?                                       |
 | MouseDeltaPosition         | Return mouse delta position between frame to frame.                   |

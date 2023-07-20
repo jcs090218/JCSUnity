@@ -1050,8 +1050,7 @@ namespace JCSUnity
                     return GetJoystickKeyUp(id, key, ignorePause);
             }
 
-            JCS_Debug.LogError("This cannot happens...");
-            return false;
+            return false;  // This can't happen!
         }
 
         /// <summary>
