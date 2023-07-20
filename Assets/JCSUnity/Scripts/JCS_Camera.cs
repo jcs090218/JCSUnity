@@ -86,7 +86,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Vector3 PositionOffset { get { return this.mPositionOffset; } }
+        public Vector3 PositionOffset { get { return this.mPositionOffset; } set { this.mPositionOffset = value; } }
         public Vector3 CamRectSize { get { return this.mCamRectSize; } set { this.mCamRectSize = value; } }
         public Rect CamRect { get { return this.mCamRect; } }
         public Camera GetCamera() { return this.mCamera; }
