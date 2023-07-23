@@ -24,6 +24,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Specify way to control frame rate in the editor (877351a8fb375c814867c30b49eb9ce01526abae)
 * Add utility functions to choose one object from `list` or `array`. (089ea6f1f82b86d47a3579f5a169bc577492c8d8)
 * Place menu item under category `Tools` (12c0220d20c797ef19b629c09a82e71ba20fb8ee)
+* Add reset position for 3D distance tile action (02bc20b640c4fbb242185dbdea775f16db4e897e)
+* Add feature to control time by keys (2f8c6a1c98b87baa61e3adb05371cd484622db9b)
 
 ## 2.3.0
 > Released Sep 12, 2022
