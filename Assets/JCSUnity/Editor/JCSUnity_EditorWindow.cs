@@ -304,7 +304,7 @@ namespace JCSUnity
         [MenuItem(MI_BaseName + "/Window", false, MI_BasePriority + 1)]
         private static void JCSUnityEditor()
         {
-            JCSUnity_EditorWindow window = GetWindow<JCSUnity_EditorWindow>(false, NAME, true);
+            var window = GetWindow<JCSUnity_EditorWindow>(false, NAME, true);
             window.Show();
         }
 
