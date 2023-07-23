@@ -32,7 +32,7 @@ namespace JCSUnity
         [SerializeField]
         private KeyCode mToggleGamePause = KeyCode.P;
 
-        [Header("Increment/Decrement Time")]
+        [Header("- Increment/Decrement Time")]
 
         [Tooltip("Key that increment the time.")]
         [SerializeField]
