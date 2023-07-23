@@ -104,13 +104,13 @@ namespace JCSUnity
             {
                 mDistanceTileAction.afterResetCallback = () =>
                 {
-                    mDistanceTileAction.Active = false;
+                    mDistanceTileAction.enabled = false;
                 };
             }
             else
             {
                 mDistanceTileAction.afterResetCallback = null;
-                mDistanceTileAction.Active = true;
+                mDistanceTileAction.enabled = true;
             }
 
             mDistanceTileAction.ResetPosition();
