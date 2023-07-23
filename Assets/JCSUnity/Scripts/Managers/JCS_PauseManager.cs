@@ -31,9 +31,29 @@ namespace JCSUnity
         [Tooltip("Key to toggle game pause/unpause.")]
         [SerializeField]
         private KeyCode mToggleGamePause = KeyCode.P;
+
+        [Header("Increment/Decrement Time")]
+
+        [Tooltip("Key that increment the time.")]
+        [SerializeField]
+        private KeyCode mIncTime = KeyCode.N;
+
+        [Tooltip("Key that decrement the time.")]
+        [SerializeField]
+        private KeyCode mDecTime = KeyCode.M;
+
+        [Tooltip("Delta value to add to the time.")]
+        [SerializeField]
+        [Range(0.0f, 100.0f)]
+        private float mTimeDelta = 5.0f;
 #endif
 
         [Separator("Check Variables (JCS_PauseManager)")]
+
+        [Tooltip("Target time scale.")]
+        [SerializeField]
+        [ReadOnly]
+        private float mTargetTimeScale = 1.0f;
 
         [Tooltip("List of pause action in the scene.")]
         [SerializeField]
@@ -45,8 +65,6 @@ namespace JCSUnity
         [Tooltip("The default time scale.")]
         [SerializeField]
         private float mDefaultTimeScale = 1.0f;
-
-        private float mTargetTimeScale = 1.0f;
 
         [Tooltip(@"Time to resize the pause action list, in seconds.
 ATTENTION: this will take certain of performance depends on the pause 
@@ -111,6 +129,19 @@ object you have in the list.")]
                 var gm = JCS_GameManager.instance;
 
                 gm.GAME_PAUSE = !gm.GAME_PAUSE;
+            }
+
+            if (Input.GetKeyDown(mIncTime))
+            {
+                Time.timeScale += mTimeDelta;
+
+                mTargetTimeScale = Time.timeScale;
+            }
+            else if (Input.GetKeyDown(mDecTime))
+            {
+                Time.timeScale -= mTimeDelta;
+
+                mTargetTimeScale = Time.timeScale;
             }
         }
 #endif
