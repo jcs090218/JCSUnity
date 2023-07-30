@@ -273,7 +273,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTextContainer: {fileID: 1842546916}
-  mTextMesh: {fileID: 0}
+  mTMP_Text: {fileID: 0}
   mSlider: {fileID: 1408916069}
   mRoundPlace: 2
 --- !u!1 &2002942730

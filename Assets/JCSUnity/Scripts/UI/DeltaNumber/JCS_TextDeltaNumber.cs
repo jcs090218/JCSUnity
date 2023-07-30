@@ -241,7 +241,7 @@ should disable this effect for best purpose.")]
         private void UpdateTextRender()
         {
 #if TMP_PRO
-            if (mTextContainer == null && mTextMesh == null)
+            if (mTextContainer == null && mTMP_Text == null)
 #else
             if (mTextContainer == null)
 #endif
@@ -263,8 +263,8 @@ should disable this effect for best purpose.")]
             if (mTextContainer)
                 mTextContainer.text = mFullString;
 #if TMP_PRO
-            if (mTextMesh)
-                mTextMesh.text = mFullString;
+            if (mTMP_Text)
+                mTMP_Text.text = mFullString;
 #endif
         }
     }

@@ -68,7 +68,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="data"> Language data list. </param>
         /// <param name="txt"> Text container to display language data. </param>
-        public static void SetLangText(JCS_LangDataList data, TextMeshPro txt)
+        public static void SetLangText(JCS_LangDataList data, TMP_Text txt)
         {
             SystemLanguage lang = JCS_ApplicationManager.instance.systemLanguage;
 
@@ -102,7 +102,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="txt"> Target text mesh to be set. </param>
         /// <param name="data"> Text value to display inside text mesh. </param>
-        public static void SetText(TextMeshPro txt, string data)
+        public static void SetText(TMP_Text txt, string data)
         {
             if (txt == null) return;
             txt.text = data;

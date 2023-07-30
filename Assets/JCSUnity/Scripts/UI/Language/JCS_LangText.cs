@@ -55,7 +55,7 @@ namespace JCSUnity
         {
             JCS_UIUtil.SetLangText(this.mLangData, this.mTextContainer);
 #if TMP_PRO
-            JCS_UIUtil.SetLangText(this.mLangData, this.mTextMesh);
+            JCS_UIUtil.SetLangText(this.mLangData, this.mTMP_Text);
 #endif
         }
     }
