@@ -35,8 +35,6 @@ namespace JCSUnity
 
         private float mDelayTimer = 0.0f;
 
-        private bool mCycleThrough = false;
-
         /* Setter & Getter */
 
         public string NextLevel { get { return this.mNextLevel; } set { this.mNextLevel = value; } }
@@ -56,22 +54,10 @@ namespace JCSUnity
 
         private void Update()
         {
-            var gm = JCS_GameManager.instance;
-
-            gm.GAME_PAUSE = true;
-
             mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTime < mDelayTimer)
-            {
-                mCycleThrough = true;
-            }
-
-            if (mCycleThrough)
-            {
-                gm.GAME_PAUSE = false;
                 JCS_SceneManager.instance.LoadScene(mNextLevel);
-            }
         }
     }
 }

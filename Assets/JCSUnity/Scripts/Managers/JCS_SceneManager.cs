@@ -57,10 +57,6 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_SceneManager)")]
 
-        [Tooltip("Pause the game while the scene start to load.")]
-        [SerializeField]
-        private bool mPauseGameWhileLoadingScene = true;
-
         [Header("- Screen")]
 
         [Tooltip("Do this scene using the specific setting.")]
@@ -377,9 +373,6 @@ namespace JCSUnity
 
             // start check to switch scene or not
             mSwitchSceneEffect = true;
-
-            // Pause the game depends on setting...
-            JCS_GameManager.instance.GAME_PAUSE = mPauseGameWhileLoadingScene;
         }
 
         /// <summary>

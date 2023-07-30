@@ -24,6 +24,11 @@ namespace JCSUnity
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_PauseManager)")]
 
+        [Tooltip("See curren time scale.")]
+        [SerializeField]
+        [ReadOnly]
+        private float mTimeScale = 1.0f;
+
         [Tooltip("Test this module?")]
         [SerializeField]
         private bool mTestWithKey = false;
@@ -111,6 +116,8 @@ object you have in the list.")]
         private void Update()
         {
 #if UNITY_EDITOR
+            mTimeScale = Time.timeScale;
+
             TestPauseGame();
 #endif
 
