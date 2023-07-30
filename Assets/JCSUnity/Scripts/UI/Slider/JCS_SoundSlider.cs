@@ -39,7 +39,7 @@ namespace JCSUnity
             this.mSlider = this.GetComponent<Slider>();
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             float total = mSlider.maxValue - mSlider.minValue;  // Find total.
             float val = mSlider.value / total;                  // Convert to 0 to 1 scale.
