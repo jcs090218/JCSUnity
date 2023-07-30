@@ -1,0 +1,54 @@
+/**
+ * $File: JCS_ActionGamePadButton.cs $
+ * $Date: 2023-07-29 12:05:00 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information 
+ *	                 Copyright (c) 2023 by Shen, Jen-Chieh $
+ */
+using UnityEngine;
+using UnityEngine.Events;
+using MyBox;
+
+namespace JCSUnity
+{
+    /// <summary>
+    /// Button that accept any event. (Gamepad)
+    /// </summary>
+    public class JCS_ActionGamePadButton : JCS_GamepadButton
+    {
+        /* Variables */
+
+        protected EmptyFunction onAction = null;
+
+        [Separator("Runtime Variables (JCS_ActionGamePadButton)")]
+
+        [Tooltip("Execute this when it's triggered.")]
+        [SerializeField]
+        protected UnityEvent mOnAction = null;
+
+        /* Setter & Getter */
+
+        /* Functions */
+
+        /// <summary>
+        /// On click event.
+        /// </summary>
+        public override void OnClick()
+        {
+            Execute();
+        }
+
+        /// <summary>
+        /// Execute the action.
+        /// </summary>
+        public void Execute()
+        {
+            if (onAction != null)
+                onAction.Invoke();
+
+            if (mOnAction != null)
+                mOnAction.Invoke();
+        }
+    }
+}
