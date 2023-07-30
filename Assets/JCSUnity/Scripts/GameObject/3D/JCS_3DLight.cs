@@ -61,7 +61,7 @@ namespace JCSUnity
             this.mValueTweener.set_float = SetLight_Range;
             this.mValueTweener.get_float = GetLight_Range;
 
-            this.mAdjustTimerTrigger.actions = DoRange;
+            this.mAdjustTimerTrigger.onAction = DoRange;
         }
 
         private void SetLight_Range(float newVal) { this.mLight.range = newVal; }

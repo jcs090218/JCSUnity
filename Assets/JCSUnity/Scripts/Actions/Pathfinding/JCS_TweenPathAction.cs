@@ -62,7 +62,7 @@ namespace JCSUnity
                 JCS_Debug.LogWarning("Path action with 0 path point is not valid");
 #endif
 
-            mAdjustTimerTrigger.actions = DoPath;
+            mAdjustTimerTrigger.onAction = DoPath;
         }
 
         /// <summary>

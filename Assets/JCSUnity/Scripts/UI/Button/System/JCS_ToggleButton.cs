@@ -50,6 +50,8 @@ namespace JCSUnity
                 }
             }
         }
+        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
+        public UnityEvent OffAction { get { return this.mOffAction; } set { this.mOffAction = value; } }
 
         /* Functions */
 

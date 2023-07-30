@@ -55,7 +55,7 @@ namespace JCSUnity
             this.mAlphaObject = this.GetComponent<JCS_AlphaObject>();
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimeTrigger.actions = DoFade;
+            this.mAdjustTimeTrigger.onAction = DoFade;
         }
 
         /// <summary>

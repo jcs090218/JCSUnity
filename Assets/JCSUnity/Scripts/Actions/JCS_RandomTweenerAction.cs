@@ -53,7 +53,7 @@ namespace JCSUnity
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
             // set effect function pointer.
-            this.mAdjustTimeTrigger.actions = TargetNewVectorValue;
+            this.mAdjustTimeTrigger.onAction = TargetNewVectorValue;
         }
 
         /// <summary>

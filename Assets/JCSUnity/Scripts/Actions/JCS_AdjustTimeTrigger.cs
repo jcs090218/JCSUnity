@@ -20,7 +20,7 @@ namespace JCSUnity
         /* Variables */
 
         // action to trigger if the time is reached.
-        public EmptyFunction actions = null;
+        public EmptyFunction onAction = null;
 
         [Separator("Check Variables (JCS_AdjustTimeTrigger)")]
 
@@ -62,7 +62,7 @@ we calculate the real time.")]
 
         [Tooltip("Event that will be triggered.")]
         [SerializeField]
-        private UnityEvent mUnityEvents = null;
+        private UnityEvent mOnAction = null;
 
         /* Setter & Getter */
 
@@ -70,7 +70,7 @@ we calculate the real time.")]
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
-        public UnityEvent UnityEvents { get { return this.mUnityEvents; } set { this.mUnityEvents = value; } }
+        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
 
         /* Functions */
 
@@ -109,11 +109,11 @@ we calculate the real time.")]
                 return;
 
             // active actions.
-            if (actions != null)
-                actions.Invoke();
+            if (onAction != null)
+                onAction.Invoke();
 
-            if (mUnityEvents != null)
-                mUnityEvents.Invoke();
+            if (mOnAction != null)
+                mOnAction.Invoke();
 
             mDidAction = true;
         }

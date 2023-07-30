@@ -62,7 +62,7 @@ namespace JCSUnity
             this.mLookAtAction = this.GetComponent<JCS_3DLookAtAction>();
             this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-            this.mAdjustTimerTrigger.actions = DoPath;
+            this.mAdjustTimerTrigger.onAction = DoPath;
 
 #if UNITY_EDITOR
             if (mPoints.Count == 0)

@@ -165,7 +165,7 @@ namespace JCSUnity
 
             this.mAdjustTimeTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
 
-            mAdjustTimeTrigger.actions = DoAI;
+            mAdjustTimeTrigger.onAction = DoAI;
 
             this.mStartingPosition = this.transform.position;
         }

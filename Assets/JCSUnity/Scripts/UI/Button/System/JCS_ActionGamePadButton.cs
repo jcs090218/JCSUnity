@@ -29,6 +29,8 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
+
         /* Functions */
 
         /// <summary>
