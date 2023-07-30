@@ -10,6 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * Add with key functions in the input module (20b12f996d4eff458555e3dcf58095130f76f98e)
 * Use `UnityEvent` for toggle button (459466aa1d1be1a2909d82c28e90561df60acf8b)
+* Add action button to accept any events (c2c463f34b55c91fcd51c26d55431139484c1b40)
 
 ## 2.3.1
 > Released Jul 16, 2023
