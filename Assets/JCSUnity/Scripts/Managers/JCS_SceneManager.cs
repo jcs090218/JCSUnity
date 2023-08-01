@@ -19,13 +19,15 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private bool mSwitchSceneEffect = false;
-        private string mNextSceneName = "";
-
         // Async loading scene operation. (thread)
         private AsyncOperation mAsyncOperation = null;
 
         [Separator("Check Variables (JCS_SceneManager)")]
+
+        [Tooltip("Next scene name to load.")]
+        [SerializeField]
+        [ReadOnly]
+        private string mNextSceneName = "";
 
         [Tooltip("Black screen object to be assigned by the system.")]
         [SerializeField]
@@ -76,7 +78,7 @@ namespace JCSUnity
         private float mSceneFadeOutTime = 1.0f;
 
         // fade the sound while switching the scene.
-        private JCS_FadeSound mJCSFadeSound = null;
+        private JCS_FadeSound mFadeSound = null;
 
         // Scene in the game so is dynamic instead of Unity's scene system's scene
         // Unity 自帶就有Scene這個物件. 在這個Unity Scene裡面自己宣告Scene
@@ -164,15 +166,15 @@ namespace JCSUnity
                 if (soundS.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
                 {
                     // get the component.
-                    if (mJCSFadeSound == null)
-                        mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+                    if (mFadeSound == null)
+                        mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
                     // set the background audio source.
-                    mJCSFadeSound.SetAudioSource(
+                    mFadeSound.SetAudioSource(
                         soundM.GetBGMAudioSource());
 
                     // active the fade sound in effect.
-                    mJCSFadeSound.FadeIn(
+                    mFadeSound.FadeIn(
                         soundS.GetBGM_Volume(),
                         /* Fade in the sound base on the setting. */
                         soundS.GetSoundFadeInTimeBaseOnSetting());
@@ -302,8 +304,10 @@ namespace JCSUnity
             }
 #endif
 
+            var scenes = JCS_SceneSettings.instance;
+
             // if is loading already, dont load it agian
-            if (mSwitchSceneEffect)
+            if (scenes.SWITCHING_SCENE)
                 return;
 
             // set the next scene name
@@ -363,18 +367,18 @@ namespace JCSUnity
                 if (ss.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
                 {
                     // get the component.
-                    if (mJCSFadeSound == null)
-                        mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+                    if (mFadeSound == null)
+                        mFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
 
-                    mJCSFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBGMAudioSource());
+                    mFadeSound.SetAudioSource(JCS_SoundManager.instance.GetBGMAudioSource());
 
                     // fade out sound to zero
-                    mJCSFadeSound.FadeOut(0, fadeInTime);
+                    mFadeSound.FadeOut(0, fadeInTime);
                 }
             }
 
             // start check to switch scene or not
-            mSwitchSceneEffect = true;
+            scenes.SWITCHING_SCENE = true;
         }
 
         /// <summary>
@@ -476,7 +480,7 @@ namespace JCSUnity
         /// <returns> return result. </returns>
         public bool IsSwitchingScene()
         {
-            return this.mSwitchSceneEffect;
+            return JCS_SceneSettings.instance.SWITCHING_SCENE;
         }
 
         /// <summary>
@@ -484,8 +488,10 @@ namespace JCSUnity
         /// </summary>
         private void DoSwitchScene()
         {
+            var scenes = JCS_SceneSettings.instance;
+
             // check if during the switch scene?
-            if (!mSwitchSceneEffect)
+            if (!scenes.SWITCHING_SCENE)
                 return;
 
             switch (mSwitchSceneType)
@@ -494,15 +500,15 @@ namespace JCSUnity
                     {
                         if (mBlackScreen.IsFadeIn())
                         {
-                            // No need this anymore, since we have the
-                            // to clean up everything before we load the scene.
-                            // we need this boolean to check weather the event can
-                            // spawn new "GameObject" when "OnDestroy" function was 
-                            // called in Unity.
-                            //mSwitchSceneEffect = false;
-
                             // load the scene if is ready
                             mAsyncOperation.allowSceneActivation = true;
+                        }
+
+                        bool inNewScene = (mNextSceneName == "");
+
+                        if (inNewScene && mBlackScreen.IsFadeOut())
+                        {
+                            scenes.SWITCHING_SCENE = false;
                         }
                     }
                     break;

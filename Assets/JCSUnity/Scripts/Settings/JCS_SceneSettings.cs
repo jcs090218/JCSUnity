@@ -18,6 +18,12 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Separator("Check Variables (JCS_SceneSettings)")]
+
+        [Tooltip("True when is switching scene.")]
+        [ReadOnly]
+        public bool SWITCHING_SCENE = false;
+
         [Separator("Runtime Variables (JCS_SceneSettings)")]
 
         [Tooltip("General Scene fadout time. (For all scene)")]
@@ -91,6 +97,8 @@ namespace JCSUnity
         /// <param name="_new"> new instance </param>
         protected override void TransferData(JCS_SceneSettings _old, JCS_SceneSettings _new)
         {
+            _new.SWITCHING_SCENE = _old.SWITCHING_SCENE;
+
             _new.SCENE_FADEIN_TIME = _old.SCENE_FADEIN_TIME;
             _new.SCENE_FADEOUT_TIME = _old.SCENE_FADEOUT_TIME;
             _new.SCREEN_COLOR = _old.SCREEN_COLOR;
