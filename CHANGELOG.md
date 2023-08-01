@@ -13,6 +13,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add action button to accept any events (c2c463f34b55c91fcd51c26d55431139484c1b40)
 * Move game data to app data instead (751a608a3a77e64011187cb84971d2b2c06d2978)
 * Remove game pause options from input module (e4d6b1dc1b0e1745c6899d08261aa67954f297d1)
+* Fix switch scene flag (b8f35d66dc776687a8a60e5b6eff5a27211168b6)
 
 ## 2.3.1
 > Released Jul 16, 2023
