@@ -21,8 +21,8 @@ namespace JCSUnity
         /// </summary>
         public static string SavePath()
         {
-            var gs = JCS_GameSettings.instance;
-            string path = JCS_Path.Combine(Application.persistentDataPath, gs.DATA_PATH);
+            var apps = JCS_ApplicationSettings.instance;
+            string path = JCS_Path.Combine(Application.persistentDataPath, apps.DATA_PATH);
             return path;
         }
     }

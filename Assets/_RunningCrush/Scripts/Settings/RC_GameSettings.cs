@@ -102,9 +102,9 @@ public class RC_GameSettings : MonoBehaviour
         GAME_MODE = FindGameMode(PLAYER_IN_GAME);
 
         // set load and save game data
-        var gs = JCS_GameSettings.instance;
-        gs.SAVE_GAME_DATA_FUNC = SaveGameData;
-        gs.LOAD_GAME_DATA_FUNC = LoadGameData;
+        var apps = JCS_ApplicationSettings.instance;
+        apps.SAVE_APP_DATA_FUNC = SaveGameData;
+        apps.LOAD_APP_DATA_FUNC = LoadGameData;
     }
 
     /// <summary>
@@ -152,10 +152,10 @@ public class RC_GameSettings : MonoBehaviour
     /// </summary>
     private void InitPath()
     {
-        var gs = JCS_GameSettings.instance;
+        var apps = JCS_ApplicationSettings.instance;
 
-        mFullFilePath = JCS_Path.Combine(Application.persistentDataPath, gs.DATA_PATH, FILE_PATH);
-        mFullFileName = FILE_NAME + gs.DATA_EXTENSION;
+        mFullFilePath = JCS_Path.Combine(Application.persistentDataPath, apps.DATA_PATH, FILE_PATH);
+        mFullFileName = FILE_NAME + apps.DATA_EXTENSION;
     }
 
     private void LoadGameData()

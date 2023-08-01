@@ -18,6 +18,9 @@ namespace JCSUnity
     {
         /* Variables */
 
+        public EmptyFunction SAVE_APP_DATA_FUNC = null;
+        public EmptyFunction LOAD_APP_DATA_FUNC = null;  // NOT USED
+
         // Callback when application starts. This should only run once
         // per application is starts.
         public EmptyFunction onApplicationStarts = null;
@@ -36,6 +39,22 @@ namespace JCSUnity
         [Tooltip("Target frame rate.")]
         [Range(30, 120)]
         public int FRAME_RATE = 120;
+
+        [Separator("Runtime Variables (JCS_ApplicationSettings)")]
+
+        [Header("- Save Load")]
+
+        [Tooltip("Data folder path.")]
+        public string DATA_PATH = "/Data_jcs/";
+
+        [Tooltip("Data file extension.")]
+        public string DATA_EXTENSION = ".jcs";
+
+        [Tooltip("Save when switching the scene.")]
+        public bool SAVE_ON_SWITCH_SCENE = true;
+
+        [Tooltip("Save when app exit.")]
+        public bool SAVE_ON_EXIT_APP = true;
 
         /* Setter & Getter */
 
@@ -72,6 +91,11 @@ namespace JCSUnity
             _new.SET_FRAME_RATE = _old.SET_FRAME_RATE;
             _new.FRAME_RATE = _old.FRAME_RATE;
             _new.APPLICATION_STARTS = _old.APPLICATION_STARTS;
+
+            _new.DATA_PATH = _old.DATA_PATH;
+            _new.DATA_EXTENSION = _old.DATA_EXTENSION;
+            _new.SAVE_ON_EXIT_APP = _old.SAVE_ON_EXIT_APP;
+            _new.SAVE_ON_SWITCH_SCENE = _old.SAVE_ON_SWITCH_SCENE;
         }
 
         /// <summary>

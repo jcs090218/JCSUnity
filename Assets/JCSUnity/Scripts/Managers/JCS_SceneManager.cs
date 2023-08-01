@@ -27,10 +27,12 @@ namespace JCSUnity
 
         [Separator("Check Variables (JCS_SceneManager)")]
 
+        [Tooltip("Black screen object to be assigned by the system.")]
         [SerializeField]
         [ReadOnly]
         private JCS_BlackScreen mBlackScreen = null;
 
+        [Tooltip("Black slide screen object to be assigned by the system.")]
         [SerializeField]
         [ReadOnly]
         private JCS_BlackSlideScreen mBlackSlideScreen = null;
@@ -307,12 +309,12 @@ namespace JCSUnity
             // set the next scene name
             this.mNextSceneName = sceneName;
 
-            var gs = JCS_GameSettings.instance;
+            var apps = JCS_ApplicationSettings.instance;
 
-            if (gs.SAVE_ON_SWITCH_SCENE && gs.SAVE_GAME_DATA_FUNC != null)
+            if (apps.SAVE_ON_SWITCH_SCENE && apps.SAVE_APP_DATA_FUNC != null)
             {
                 // do the saving.
-                gs.SAVE_GAME_DATA_FUNC.Invoke();
+                apps.SAVE_APP_DATA_FUNC.Invoke();
             }
 
             // preload the scene

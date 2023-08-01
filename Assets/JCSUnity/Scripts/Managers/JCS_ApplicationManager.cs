@@ -104,12 +104,12 @@ namespace JCSUnity
         {
             APP_QUITTING = true;
 
-            var gs = JCS_GameSettings.instance;
-            if (gs.SAVE_ON_EXIT_APP &&
-                gs.SAVE_GAME_DATA_FUNC != null)
+            var apps = JCS_ApplicationSettings.instance;
+
+            if (apps.SAVE_ON_EXIT_APP && apps.SAVE_APP_DATA_FUNC != null)
             {
                 // save when exit app
-                gs.SAVE_GAME_DATA_FUNC.Invoke();
+                apps.SAVE_APP_DATA_FUNC.Invoke();
             }
         }
 
