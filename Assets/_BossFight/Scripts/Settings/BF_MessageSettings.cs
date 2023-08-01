@@ -11,7 +11,7 @@ using JCSUnity;
 /// <summary>
 /// 
 /// </summary>
-public class BF_MessageSettings :  JCS_Settings<BF_MessageSettings>
+public class BF_MessageSettings : JCS_Settings<BF_MessageSettings>
 {
     /* Variables */
 

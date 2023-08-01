@@ -13,11 +13,9 @@ using MyBox;
 /// <summary>
 /// Hold all the UI that will interact with player.
 /// </summary>
-public class RC_UIManager : MonoBehaviour 
+public class RC_UIManager : JCS_Manager<RC_UIManager>
 {
     /* Variables */
-
-    public static RC_UIManager instance = null;
 
     [Separator("Runtime Variables (RC_UIManager)")]
 

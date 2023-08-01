@@ -6,14 +6,11 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using JCSUnity;
 
-public class RC_GameManager : MonoBehaviour 
+public class RC_GameManager : JCS_Manager<RC_GameManager> 
 {
     /* Variables */
-
-    public static RC_GameManager instance = null;
 
     public int ORDER_LAYER_FOR_ALL_PLAYER = 4;
 
