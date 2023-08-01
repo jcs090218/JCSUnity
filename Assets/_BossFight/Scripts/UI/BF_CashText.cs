@@ -38,7 +38,7 @@ public class BF_CashText : MonoBehaviour
 
     public void UpdateText()
     {
-        UpdateText(BF_GameSettings.GAME_DATA.Cash);
+        UpdateText(BF_AppSettings.instance.APP_DATA.Cash);
     }
     public void UpdateText(int val)
     {

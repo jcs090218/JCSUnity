@@ -1,5 +1,5 @@
 ﻿/**
- * $File: BF_GameData.cs $
+ * $File: BF_AppData.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ using JCSUnity;
 /// Game Data design here.
 /// </summary>
 [Serializable]  // NOTE(jenchieh): we need this for `JCS_BinGameData'.
-public class BF_GameData : JCS_BinData
+public class BF_AppData : JCS_BinData
 {
     /* Variables */
 
@@ -47,7 +47,7 @@ public class BF_GameData : JCS_BinData
 
     /* Functions */
 
-    public BF_GameData()
+    public BF_AppData()
     {
 
         // get the length of the enum.

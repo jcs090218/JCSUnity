@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.IO;
 using UnityEngine;
 using JCSUnity;
 using MyBox;
@@ -14,21 +13,9 @@ using MyBox;
 /// <summary>
 /// Game settings for Running Crush example game.
 /// </summary>
-public class RC_GameSettings : MonoBehaviour
+public class RC_GameSettings : JCS_Settings<RC_GameSettings>
 {
     /* Variables */
-
-    public static RC_GameSettings instance = null;
-
-    [Separator("Check Variables (RC_GameSettings)")]
-
-    [SerializeField]
-    [ReadOnly]
-    private string mFullFilePath = "";
-
-    [SerializeField]
-    [ReadOnly]
-    private string mFullFileName = "";
 
     [Separator("Runtime Variables (RC_GameSettings)")]
 
@@ -53,14 +40,6 @@ public class RC_GameSettings : MonoBehaviour
     [Tooltip("Any button u need to load the correct level.")]
     public JCS_LoadSceneButton[] SCENE_BUTTONS = null;
 
-    [Header("- Save Load")]
-
-    public string FILE_PATH = "SavedData/";
-
-    public string FILE_NAME = "RC_GameData";
-
-    public static RC_GameData GAME_DATA = null;
-
     [Header("- Player")]
 
     public JCS_3DLiquidBar GLOBAL_LIQUIDBAR = null;
@@ -79,32 +58,12 @@ public class RC_GameSettings : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-        {
-            TransferData(instance, this);
-
-            // Delete the old one
-            DestroyImmediate(instance.gameObject);
-        }
-
-        instance = this;
+        instance = CheckSingleton(instance, this);
     }
 
     private void Start()
     {
-        // IMPORTANT: initial the path before save and load!
-        InitPath();
-
-        // only load once
-        if (GAME_DATA == null)
-            LoadGameData();
-
         GAME_MODE = FindGameMode(PLAYER_IN_GAME);
-
-        // set load and save game data
-        var apps = JCS_ApplicationSettings.instance;
-        apps.SAVE_APP_DATA_FUNC = SaveGameData;
-        apps.LOAD_APP_DATA_FUNC = LoadGameData;
     }
 
     /// <summary>
@@ -140,68 +99,10 @@ public class RC_GameSettings : MonoBehaviour
     /// </summary>
     /// <param name="_old"> old instance </param>
     /// <param name="_new"> new instance </param>
-    private void TransferData(RC_GameSettings _old, RC_GameSettings _new)
+    protected override void TransferData(RC_GameSettings _old, RC_GameSettings _new)
     {
         _new.PLAYER_IN_GAME = _old.PLAYER_IN_GAME;
         _new.WEBCAM_MODE = _old.WEBCAM_MODE;
-    }
-
-    /// <summary>
-    /// Initialize the path base on the JCSUnity Framework's 
-    /// format.
-    /// </summary>
-    private void InitPath()
-    {
-        var apps = JCS_ApplicationSettings.instance;
-
-        mFullFilePath = JCS_Path.Combine(Application.persistentDataPath, apps.DATA_PATH, FILE_PATH);
-        mFullFileName = FILE_NAME + apps.DATA_EXTENSION;
-    }
-
-    private void LoadGameData()
-    {
-        JCS_IO.CreateDirectory(mFullFilePath);
-
-        // if file does not exist, create the default value file!
-        if (!File.Exists(mFullFilePath + mFullFileName))
-        {
-            CreateDefaultGameData();
-            return;
-        }
-
-        // else we just load the data commonly.
-        GAME_DATA = JCS_XMLData.LoadFromFile<RC_GameData>(mFullFilePath, mFullFileName);
-    }
-
-    /// <summary>
-    /// Use only when player "First" play this game or 
-    /// "Reset" the game.
-    /// </summary>
-    private void CreateDefaultGameData()
-    {
-        GAME_DATA = new RC_GameData();
-
-        // Set game data's default values
-        {
-            GAME_DATA.Name = "";
-            GAME_DATA.Gold = 1500;       // [default: 1500]
-
-            GAME_DATA.ItemNo = null;
-        }
-
-        // save it once
-        SaveGameData();
-    }
-
-    private void SaveGameData()
-    {
-        if (GAME_DATA == null)
-        {
-            JCS_Debug.LogError("Save Data without data");
-            return;
-        }
-
-        GAME_DATA.Save<RC_GameData>(mFullFilePath, mFullFileName);
     }
 
     private RC_GameMode FindGameMode(int players)

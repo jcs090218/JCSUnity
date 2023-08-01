@@ -107,7 +107,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         base.Start();
 
         // load the gold information from game data.
-        mCurrentGold = RC_GameSettings.GAME_DATA.Gold;
+        mCurrentGold = RC_AppSettings.instance.APP_DATA.Gold;
     }
 
     protected override void Update()

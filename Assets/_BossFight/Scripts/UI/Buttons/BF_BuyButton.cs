@@ -44,12 +44,12 @@ public class BF_BuyButton :  JCS_Button
 
     private void Update()
     {
-        if (BF_GameSettings.GAME_DATA.Cash < mBuyValue)
+        if (BF_AppSettings.instance.APP_DATA.Cash < mBuyValue)
             this.Interactable = false;
     }
 
     public override void OnClick()
     {
-        BF_GameSettings.GAME_DATA.Cash -= mBuyValue;
+        BF_AppSettings.instance.APP_DATA.Cash -= mBuyValue;
     }
 }

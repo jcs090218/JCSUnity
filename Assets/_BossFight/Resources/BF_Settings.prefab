@@ -3,12 +3,14 @@
 --- !u!1 &165316
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 427038}
   - component: {fileID: 11423690}
+  - component: {fileID: 2040626121319543717}
   - component: {fileID: 11476276}
   - component: {fileID: 11477830}
   m_Layer: 0
@@ -20,46 +22,63 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &427038
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11423690
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165316}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44537bddf53394d4ba5246f002f0fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mType: 0
+--- !u!114 &2040626121319543717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15937d15e61fb34cbf14c466ec06293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11476276
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165316}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9764ce3382cb2f94a9fe5100d919e8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mFullFilePath: 
+  mFullFileName: 
   CHARACTERS_IN_TEAM: 2
   CHARACTERS_IN_GAME:
-  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
-  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
-  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
-  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 2}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 3}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 3}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 3}
+  - {fileID: 11474578, guid: 73ce54cd4bf0c4247a77c697d93cd090, type: 3}
   FILE_PATH: SavedData/
   FILE_NAME: BF_GameData
   TOTAL_MOB_IN_SCENE: 15
@@ -68,9 +87,10 @@ MonoBehaviour:
   LEVEL_SELECTED_NAME: 
 --- !u!114 &11477830
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165316}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -78,14 +98,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EXP_BASE: 'Get exp '
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 165316}
-  m_IsPrefabParent: 1

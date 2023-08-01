@@ -1,5 +1,5 @@
 ﻿/**
- * $File: RC_GameData.cs $
+ * $File: RC_AppData.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ using JCSUnity;
 /// Game Data design here.
 /// </summary>
 [Serializable]
-public class RC_GameData : JCS_XMLData
+public class RC_AppData : JCS_XMLData
 {
     /* Variables */
 
