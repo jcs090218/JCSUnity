@@ -6,7 +6,6 @@ Button will listen to the gamepad.
 
 | Name                       | Description                                                              |
 |:---------------------------|:-------------------------------------------------------------------------|
-| mIgnorePauseCheck          | Still check input when the game is pause?                                |
 | mListenToAnyKey            | Ignore the top two variables, listen to any key on the keyboard/gamepad. |
 | mKeyActionType             | Key action type.                                                         |
 | mKKeyToListen              | Key to trigger this button.                                              |

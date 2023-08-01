@@ -8,7 +8,6 @@ without that class this class is meaningless.
 | Name              | Description                                 |
 |:------------------|:--------------------------------------------|
 | mActive           | Active key listener?"                       |
-| mIgnoreGamePause  | Make this controller ignore the game pause. |
 | mKeyActionType    | Key type of this controller.                |
 | mMNext            | Key for next selection. (Keyboard)          |
 | mMPrev            | Key for previous selection. (Keyboard)      |
