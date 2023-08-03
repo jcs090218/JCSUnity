@@ -38,13 +38,13 @@ namespace JCSUnity
 
         private static bool prefsLoaded = false;
 
-        private bool mFO_Scene = false;
+        private bool mFO_Project = false;
         private bool mFO_Basic = false;
-        private bool mFO_GUI = false;
+        private bool mFO_Scene = false;
+        private bool mFO_UI = false;
+        private bool mFO_Input = false;
         private bool mFO_Effect = false;
         private bool mFO_ARVR = false;
-        private bool mFO_Input = false;
-        private bool mFO_Tool = false;
 
         public string PROJECT_NAME = "_Project";
         public const string PROJECT_NAME_SUFFIX = "";
@@ -92,33 +92,13 @@ namespace JCSUnity
 
         private void Draw()
         {
-            mFO_Scene = EditorGUILayout.Foldout(mFO_Scene, "Scene");
-            if (mFO_Scene)
-                JCSUnity_EditortUtil.CreateGroup(Part_Scene);
-
-            mFO_Basic = EditorGUILayout.Foldout(mFO_Basic, "Basic");
-            if (mFO_Basic)
-                JCSUnity_EditortUtil.CreateGroup(Part_Basic);
-
-            mFO_GUI = EditorGUILayout.Foldout(mFO_GUI, "GUI");
-            if (mFO_GUI)
-                JCSUnity_EditortUtil.CreateGroup(Part_GUI);
-
-            mFO_Effect = EditorGUILayout.Foldout(mFO_Effect, "Effect");
-            if (mFO_Effect)
-                JCSUnity_EditortUtil.CreateGroup(Part_Effect);
-
-            mFO_ARVR = EditorGUILayout.Foldout(mFO_ARVR, "AR / VR");
-            if (mFO_ARVR)
-                JCSUnity_EditortUtil.CreateGroup(Part_ARVR);
-
-            mFO_Input = EditorGUILayout.Foldout(mFO_Input, "Input");
-            if (mFO_Input)
-                JCSUnity_EditortUtil.CreateGroup(Part_Input);
-
-            mFO_Tool = EditorGUILayout.Foldout(mFO_Tool, "Tool");
-            if (mFO_Tool)
-                JCSUnity_EditortUtil.CreateGroup(Part_Tool);
+            mFO_Project = JCSUnity_EditortUtil.Foldout(mFO_Project, "Project", Part_Project, "d_Folder Icon");
+            mFO_Basic = JCSUnity_EditortUtil.Foldout(mFO_Basic, "Basic", Part_Basic, "_Popup");
+            mFO_Scene = JCSUnity_EditortUtil.Foldout(mFO_Scene, "Scene", Part_Scene, "d_ToggleUVOverlay");
+            mFO_UI = JCSUnity_EditortUtil.Foldout(mFO_UI, "UI", Part_UI, "d_UnityEditor.SceneHierarchyWindow");
+            mFO_Input = JCSUnity_EditortUtil.Foldout(mFO_Input, "Input", Part_Input, "d_UnityEditor.GameView");
+            mFO_Effect = JCSUnity_EditortUtil.Foldout(mFO_Effect, "Effect", Part_Effect, "ParticleSystem Gizmo");
+            mFO_ARVR = JCSUnity_EditortUtil.Foldout(mFO_ARVR, "AR / VR", Part_ARVR, "animationvisibilitytoggleon");
         }
 
         private void SavePref()
@@ -188,7 +168,7 @@ namespace JCSUnity
         /// <summary>
         /// Compile the GUI part to Unity's GUI inspector.
         /// </summary>
-        private void Part_GUI()
+        private void Part_UI()
         {
             GUILayout.Label("Cursor", EditorStyles.boldLabel);
 
@@ -269,10 +249,8 @@ namespace JCSUnity
         /// <summary>
         /// Compile the Tool part to Tool inspector.
         /// </summary>
-        private void Part_Tool()
+        private void Part_Project()
         {
-            GUILayout.Label("Project", EditorStyles.boldLabel);
-
             /* Project Name */
             {
                 // Provide default project name.

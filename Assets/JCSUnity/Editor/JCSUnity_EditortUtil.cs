@@ -7,6 +7,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
+using System.Xml.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -60,6 +61,29 @@ namespace JCSUnity
             EditorGUI.indentLevel++;
             func.Invoke();
             EditorGUI.indentLevel--;
+        }
+
+        public static bool Foldout(bool foldout, string content, EmptyFunction func, string texName = "")
+        {
+            Texture tex = FindTexture(texName);
+
+            GUIContent guic = (tex) ? new GUIContent(" " + content, tex) : new GUIContent(content);
+
+            foldout = EditorGUILayout.Foldout(foldout, guic);
+
+            if (foldout)
+                CreateGroup(func);
+
+            return foldout;
+        }
+
+        /// <summary>
+        /// Get a texture from its source filename.
+        /// </summary>
+        public static Texture FindTexture(string texName)
+        {
+            Texture tex = (texName == "") ? null : EditorGUIUtility.FindTexture(texName);
+            return tex;
         }
     }
 }
