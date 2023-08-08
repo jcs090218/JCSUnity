@@ -7,9 +7,9 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEngine;
 
 namespace JCSUnity
 {

@@ -7,7 +7,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
-using System.Xml.Linq;
 using UnityEditor;
 using UnityEngine;
 
