@@ -12,7 +12,7 @@ env:
   # License
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   # Project
-  UNITY_VERSION: 2022.1.9f1
+  UNITY_VERSION: 2023.1.0f1
   PROJECT_PATH: .
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
     name: Test all modes ✨
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
       - uses: actions/cache@v1.1.0
