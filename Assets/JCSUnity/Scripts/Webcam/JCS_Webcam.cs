@@ -80,6 +80,10 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
+        [Tooltip("Sound player for this component.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
+
         [Tooltip("Sound when taking the screenshot.")]
         [SerializeField]
         private AudioClip mTakePhotoSound = null;
@@ -231,7 +235,7 @@ namespace JCSUnity
             // play sound.
             {
                 var soundm = JCS_SoundManager.instance;
-                JCS_SoundPlayer sp = soundm.GetGlobalSoundPlayer();
+                JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : soundm.GlobalSoundPlayer();
                 sp.PlayOneShot(mTakePhotoSound);
             }
 
