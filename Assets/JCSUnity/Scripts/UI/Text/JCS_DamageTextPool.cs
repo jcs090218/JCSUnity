@@ -15,7 +15,6 @@ namespace JCSUnity
     /// <summary>
     /// Reusable damage text pool.
     /// </summary>
-    [RequireComponent(typeof(JCS_SoundPlayer))]
     public class JCS_DamageTextPool : MonoBehaviour
     {
         public delegate void SpawnSequenceAction(int[] damage, Vector3[] pos, float timePerSpawn, int totalSpawn);
@@ -63,11 +62,13 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
+        [Tooltip("Sound player for this component.")]
+        [SerializeField]
+        private JCS_SoundPlayer mSoundPlayer = null;
+
         [Tooltip("Sound when spawns.")]
         [SerializeField]
         private AudioClip mHitSound = null;
-
-        private JCS_SoundPlayer mSoundPlayer = null;
 
         [Header("- Zigge Right Left (In Sequence)")]
 
@@ -419,18 +420,21 @@ namespace JCSUnity
         private void PlayHitSound(AudioClip hitSound)
         {
             var ss = JCS_SoundSettings.instance;
+            var sm = JCS_SoundManager.instance;
+
+            JCS_SoundPlayer sp = (mSoundPlayer) ? mSoundPlayer : sm.GlobalSoundPlayer();
 
             if (hitSound != null)
             {
                 // play the hit sound provide by passing in.
-                mSoundPlayer.PlayOneShot(hitSound, ss.GetSFXSound_Volume());
+                sp.PlayOneShot(hitSound, ss.GetSFXSound_Volume());
             }
             else
             {
                 if (mHitSound != null)
                 {
                     // play the regular assigned by variable's hit sound.
-                    mSoundPlayer.PlayOneShot(mHitSound, ss.GetSFXSound_Volume());
+                    sp.PlayOneShot(mHitSound, ss.GetSFXSound_Volume());
                 }
             }
         }

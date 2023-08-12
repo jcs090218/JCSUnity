@@ -57,7 +57,7 @@ namespace JCSUnity
 
         [Header("- Sound")]
 
-        [Tooltip("Sound player for 3D sounds calculation.")]
+        [Tooltip("Sound player for this component.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
