@@ -101,7 +101,7 @@ namespace JCSUnity
             this.mBGM.mute = ss.BGM_MUTE;
         }
         public JCS_Vector<AudioSource> GetEffectSounds() { return this.mSFXSounds; }
-        public JCS_SoundPlayer GetGlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
+        public JCS_SoundPlayer GlobalSoundPlayer() { return this.mGlobalSoundPlayer; }
 
         public bool OverrideSetting { get { return this.mOverrideSetting; } }
         public float SoundFadeInTime { get { return this.mSoundFadeInTime; } set { this.mSoundFadeInTime = value; } }

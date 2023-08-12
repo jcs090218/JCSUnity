@@ -205,7 +205,7 @@ object that we target.")]
         {
             DropEffect(other);
 
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
 
             /* Play Pick Sound */
             if (mPlayOneShotWhileNotPlayingForPickSound)

@@ -525,7 +525,7 @@ just stop there.")]
             if (mDropSound == null)
                 return;
 
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDropSound);
+            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDropSound);
         }
     }
 }

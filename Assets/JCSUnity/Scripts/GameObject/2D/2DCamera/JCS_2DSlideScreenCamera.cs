@@ -444,7 +444,7 @@ namespace JCSUnity
         /// </summary>
         private void PlaySwitchSceneSound()
         {
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GetGlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
             sp.PlayOneShot(this.mSwitchSceneSound);
         }
 

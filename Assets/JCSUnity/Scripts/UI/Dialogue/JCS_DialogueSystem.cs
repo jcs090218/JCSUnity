@@ -261,7 +261,7 @@ namespace JCSUnity
             RunAction();
 
             // Play the active dialogue sound.
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mActiveSound);
+            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mActiveSound);
         }
 
         /// <summary>
@@ -500,7 +500,7 @@ namespace JCSUnity
                 callback_dispose.Invoke();
 
             // Play the dispose dialogue sound.
-            JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDisposeSound);
+            JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDisposeSound);
         }
 
         /// <summary>

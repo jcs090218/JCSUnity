@@ -72,7 +72,7 @@ namespace JCSUnity
             if (!mSoundPlayed)
             {
                 // just play one time.
-                JCS_SoundManager.instance.GetGlobalSoundPlayer().PlayOneShot(mDieSound);
+                JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDieSound);
                 mSoundPlayed = true;
             }
 

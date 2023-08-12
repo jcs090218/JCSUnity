@@ -564,7 +564,7 @@ namespace JCSUnity
                 return;
 
             JCS_SoundManager sm = JCS_SoundManager.instance;
-            sm.GetGlobalSoundPlayer().PlayOneShot(clip);
+            sm.GlobalSoundPlayer().PlayOneShot(clip);
         }
     }
 }

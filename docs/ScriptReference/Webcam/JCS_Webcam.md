@@ -13,6 +13,7 @@ Basic webcam class usage.
 | mDeltaTimeType   | Type of the delta time.                                       |
 | DelayTime        | Delay time to fade out the splash screen.                     |
 | TakePicKey       | Key to take webcam image.                                     |
+| mSoundPlayer     | Sound player for this component.                              |
 | TakePhotoSound   | Sound when taking the screenshot.                             |
 | isPlaying        | Flag to check if current webcam active.                       |
 
