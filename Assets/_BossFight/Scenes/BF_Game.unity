@@ -3918,7 +3918,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11499510, guid: fd014257f4a5ff04c833f8ea4b853d49, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4457,7 +4458,9 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11457680, guid: 966db4fa8ee567c47b20f786b736efe6, type: 3}
+    - {fileID: 11400880, guid: 966db4fa8ee567c47b20f786b736efe6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6152,7 +6155,9 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11459992, guid: 3c6eb08978f2f2842a311ad98a539c14, type: 3}
+    - {fileID: 11456624, guid: 3c6eb08978f2f2842a311ad98a539c14, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
