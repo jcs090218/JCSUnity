@@ -28,6 +28,8 @@ _RunningCrush
 # Ignore Libraries
 GaussianBlur
 Infinity Code
+StandaloneFileBrowser
+UI-Polygon
 
 # Ignore Plugins
 Plugins
