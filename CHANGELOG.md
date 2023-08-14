@@ -16,6 +16,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Fix switch scene flag (b8f35d66dc776687a8a60e5b6eff5a27211168b6)
 * Fix sound slider influencing the BGM sound player (b8f35d66dc776687a8a60e5b6eff5a27211168b6)
 * Add version text (37080587359cbc1e0b2107f480a22bfad6d88415)
+* Add scene existence check (a0f333de8a272a277182ff8f0fa9e7208f7359b3)
 
 ## 2.3.1
 > Released Jul 16, 2023
