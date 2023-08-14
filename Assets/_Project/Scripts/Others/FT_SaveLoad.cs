@@ -23,13 +23,13 @@ public class FT_SaveLoad : MonoBehaviour
     {
         string path = JCS_Path.Combine(Application.persistentDataPath, "/Data_jcs/SavedData/FT_GameData.jcs");
 
-        FT_JSONGameData data = new FT_JSONGameData();
-        data.Save<FT_JSONGameData>(path);
+        var data = new FT_JSONAppData();
+        data.Save<FT_JSONAppData>(path);
 
         data.Cash = 10;
 
         print(data.Cash);
-        data = FT_JSONGameData.LoadFromFile<FT_JSONGameData>(path);
+        data = FT_JSONAppData.LoadFromFile<FT_JSONAppData>(path);
         print(data.Cash);
     }
 }

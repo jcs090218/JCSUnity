@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_JSONGameData.cs $
+ * $File: FT_JSONAppData.cs $
  * $Date: 2019-10-16 14:57:50 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -10,10 +10,10 @@ using System;
 using JCSUnity;
 
 /// <summary>
-/// Test of the JSON game data.
+/// Test of the JSON application data.
 /// </summary>
 [Serializable]
-public class FT_JSONGameData : JCS_JSONData
+public class FT_JSONAppData : JCS_JSONData
 {
     /* Variables */
     public string Name = "";  // name of the player
