@@ -8,14 +8,13 @@
  */
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
 using PeterVuorela.Tweener;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JCSUnity
 {
@@ -1463,6 +1462,28 @@ namespace JCSUnity
         public static bool IsScene(string name)
         {
             return SceneManager.GetActiveScene().name == name;
+        }
+
+        /// <summary>
+        /// Returns true if the scene 'name' exists and is in your Build settings, 
+        /// false otherwise.
+        /// </summary>
+        public static bool IsSceneExists(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return false;
+
+            for (int index = 0; index < SceneManager.sceneCountInBuildSettings; ++index)
+            {
+                var scenePath = SceneUtility.GetScenePathByBuildIndex(index);
+                var lastSlash = scenePath.LastIndexOf("/");
+                var sceneName = scenePath.Substring(lastSlash + 1, scenePath.LastIndexOf(".") - lastSlash - 1);
+
+                if (string.Compare(name, sceneName, true) == 0)
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>

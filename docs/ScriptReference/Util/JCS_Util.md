@@ -54,6 +54,7 @@ All code utility is stored here.
 | ForceGetComponent                    | Force to get a compoennt, if not found add one new then.                                          |
 | ToJson                               | Serialize object to JSON string.                                                                  |
 | IsScene                              | Check current scene's with NAME.                                                                  |
+| IsSceneExists                        | Returns true if the scene 'name' exists and is in your Build settings, false otherwise.           |
 | LastFileIndex                        | Method to do search directory and get the last file index.                                        |
 | DeleteAllFilesFromDir                | Delete all files in directory.                                                                    |
 | BytesToString                        | Convert byte array to string by charset type.                                                     |
