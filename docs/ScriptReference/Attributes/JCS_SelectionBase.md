@@ -2,8 +2,6 @@
 
 Built-in component for user to select the right parent object.
 
-## Usage
-
 See [SelectionBaseAttribute](https://docs.unity3d.com/ScriptReference/SelectionBaseAttribute.html)
 from Unity Scripting API for more information.
 
