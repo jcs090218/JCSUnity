@@ -86,7 +86,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// 
+        /// Spawn prefab object by file path.
         /// </summary>
         public static GameObject Instantiate(string path)
         {
