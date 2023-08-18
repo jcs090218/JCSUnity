@@ -73,7 +73,7 @@ namespace JCSUnity
         /// <param name="position"> position of the game object spawn </param>
         /// <param name="rotation"> rotation of the game object spawn </param>
         /// <returns></returns>
-        public static GameObject SpawnGameObject(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             return MonoBehaviour.Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
         }
@@ -85,10 +85,9 @@ namespace JCSUnity
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static UnityEngine.Object SpawnGameObject(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        public static UnityEngine.Object Instantiate(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
-            if (trans == null)
-                return null;
+            if (trans == null) return null;
             return MonoBehaviour.Instantiate(trans, position, rotation);
         }
 

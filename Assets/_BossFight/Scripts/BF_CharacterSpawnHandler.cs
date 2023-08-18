@@ -65,7 +65,7 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
             // Spawn the player, and get the 
             // player we just spawned, in order 
             // to set facing.
-            BF_Player bfp = (BF_Player)JCS_Util.SpawnGameObject(
+            BF_Player bfp = (BF_Player)JCS_Util.Instantiate(
                 bfPlayers[index],
                 mSpawnPos[index].transform.position);
 

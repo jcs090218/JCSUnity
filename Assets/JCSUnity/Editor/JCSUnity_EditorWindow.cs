@@ -307,7 +307,7 @@ namespace JCSUnity
             GameObject canvasObj = CreateJCSCanvas();
 
             const string desc_path = "UI/JCS Describe Panel";
-            GameObject desc_obj = JCS_Util.SpawnGameObject(desc_path);
+            GameObject desc_obj = JCS_Util.Instantiate(desc_path);
             desc_obj.name = desc_obj.name.Replace("(Clone)", "");
             desc_obj.transform.SetParent(canvasObj.transform);
             desc_obj.transform.localPosition = Vector3.zero;
@@ -746,7 +746,7 @@ namespace JCSUnity
         private static GameObject CreateHierarchyObject(string settingPath)
         {
             // spawn the game object.
-            GameObject hierarchyObj = JCS_Util.SpawnGameObject(settingPath);
+            GameObject hierarchyObj = JCS_Util.Instantiate(settingPath);
 
             // take away clone sign.
             hierarchyObj.name = hierarchyObj.name.Replace("(Clone)", "");

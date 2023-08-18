@@ -141,7 +141,7 @@ namespace JCSUnity
         {
             // pop the fade screen.
             string path = JCS_UISettings.FADE_SCREEN_PATH;
-            this.mFadeScreen = JCS_Util.SpawnGameObject(path).GetComponent<JCS_FadeScreen>();
+            this.mFadeScreen = JCS_Util.Instantiate(path).GetComponent<JCS_FadeScreen>();
         }
 
         private void Update()

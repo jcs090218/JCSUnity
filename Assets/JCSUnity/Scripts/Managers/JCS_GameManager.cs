@@ -34,7 +34,6 @@ namespace JCSUnity
         private bool mGameDoneInitialize = false;
 
         private JCS_Player mPlayer = null;
-        private JCS_GameSettings mJCSGameSettings = null;
 
         /* Setter & Getter */
 
@@ -61,8 +60,6 @@ namespace JCSUnity
             }
         }
         public JCS_Player Player { get { return this.mPlayer; } set { this.mPlayer = value; } }
-        public void SetJCSGameSettings(JCS_GameSettings gs) { this.mJCSGameSettings = gs; }
-        public JCS_GameSettings GetJCSGameSettings() { return this.mJCSGameSettings; }
 
         /* Functions */
 

@@ -118,7 +118,7 @@ namespace JCSUnity
             for (int count = 0; count < mNumberOfHandle; ++count)
             {
                 // spawn a new game object, and get the component
-                JCS_LogText logText = (JCS_LogText)JCS_Util.SpawnGameObject(mLogText);
+                var logText = JCS_Util.Instantiate(mLogText) as JCS_LogText;
 
                 // add to array
                 mLogTexts.set(count, logText);

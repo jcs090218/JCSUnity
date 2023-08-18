@@ -125,7 +125,7 @@ namespace JCSUnity
 
             for (int index = startIndex; index < maxIndex; ++index)
             {
-                var newNode = JCS_Util.SpawnGameObject(mClone) as JCS_TransformLinkedObject;
+                var newNode = JCS_Util.Instantiate(mClone) as JCS_TransformLinkedObject;
 
                 // Set to it centers.
                 {

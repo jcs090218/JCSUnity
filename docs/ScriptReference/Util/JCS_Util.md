@@ -7,7 +7,7 @@ All code utility is stored here.
 | Name                                 | Description                                                                                       |
 |:-------------------------------------|:--------------------------------------------------------------------------------------------------|
 | EnableComponent                      | Do enable/distance component.                                                                     |
-| SpawnGameObject                      | Spawn a game object.                                                                              |
+| Instantiate                          | Spawn a game object.                                                                              |
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |

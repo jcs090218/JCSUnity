@@ -347,10 +347,10 @@ just stop there.")]
             bool waveEffect,
             bool destroyFade)
         {
-            JCS_Item newItem = (JCS_Item)JCS_Util.SpawnGameObject(
+            var newItem = JCS_Util.Instantiate(
                item,
                this.transform.position,
-               this.transform.rotation);
+               this.transform.rotation) as JCS_Item;
 
             bool isEvenIndex = ((index % 2) == 0) ? true : false;
 

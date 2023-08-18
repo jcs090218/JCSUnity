@@ -169,7 +169,7 @@ namespace JCSUnity
             }
 
             // spawn a object
-            Transform objSpawned = (Transform)JCS_Util.SpawnGameObject(
+            Transform objSpawned = (Transform)JCS_Util.Instantiate(
                 mSpawnList[spawnIndex],
                 this.transform.position);
 

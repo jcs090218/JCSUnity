@@ -170,7 +170,7 @@ namespace JCSUnity
         {
             for (int index = 0; index < mSpawnCount; ++index)
             {
-                Transform newTrans = (Transform)JCS_Util.SpawnGameObject(mTransformPool.GetRandomObject());
+                Transform newTrans = (Transform)JCS_Util.Instantiate(mTransformPool.GetRandomObject());
 
                 if (mSamePosition)
                     newTrans.position = this.transform.position;

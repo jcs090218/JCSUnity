@@ -84,6 +84,16 @@ namespace JCSUnity
             Texture tex = (texName == "") ? null : EditorGUIUtility.FindTexture(texName);
             return tex;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GameObject Instantiate(string path)
+        {
+            var asset = AssetDatabase.LoadAssetAtPath(path, typeof(Object)) as GameObject;
+            var currentPrefab = GameObject.Instantiate(asset);
+            return currentPrefab;
+        }
     }
 }
 #endif

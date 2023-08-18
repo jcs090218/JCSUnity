@@ -332,7 +332,7 @@ namespace JCSUnity
             Vector3 spawnPos = pos + mSpanwPointOffset;
             spawnPos = RandTransform(spawnPos);
 
-            JCS_Bullet bullet = (JCS_Bullet)JCS_Util.SpawnGameObject(mBullet, spawnPos, mSpawnPoint.rotation);
+            var bullet = (JCS_Bullet)JCS_Util.Instantiate(mBullet, spawnPos, mSpawnPoint.rotation);
 
             // no object spawns
             if (bullet == null)
@@ -438,7 +438,7 @@ namespace JCSUnity
             Vector3 spawnPos = pos + mSpanwPointOffset;
             spawnPos = RandTransform(spawnPos);
 
-            JCS_Bullet bullet = (JCS_Bullet)JCS_Util.SpawnGameObject(mBullet, spawnPos, mSpawnPoint.rotation);
+            JCS_Bullet bullet = JCS_Util.Instantiate(mBullet, spawnPos, mSpawnPoint.rotation) as JCS_Bullet;
 
             // no object spawns
             if (bullet == null)

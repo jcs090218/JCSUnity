@@ -147,7 +147,7 @@ namespace JCSUnity
             if (mPanelHolder == null)
             {
                 // spawn a default one!
-                this.mPanelHolder = JCS_Util.SpawnGameObject(
+                this.mPanelHolder = JCS_Util.Instantiate(
                     mPanelHolderPath,
                     transform.position,
                     transform.rotation).GetComponent<JCS_SlideScreenPanelHolder>();

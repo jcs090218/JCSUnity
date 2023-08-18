@@ -89,7 +89,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
                 return;
             }
 
-            var rcp = (RC_Player)JCS_Util.SpawnGameObject(gs.PLAYERS[index]);
+            var rcp = (RC_Player)JCS_Util.Instantiate(gs.PLAYERS[index]);
 
             // set control index
             rcp.ControlIndex = index;
@@ -108,7 +108,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
                 if (gs.GLOBAL_LIQUIDBAR != null)
                 {
                     // spawn a 3d liquid bar
-                    var lb = (JCS_3DLiquidBar)JCS_Util.SpawnGameObject(gs.GLOBAL_LIQUIDBAR);
+                    var lb = (JCS_3DLiquidBar)JCS_Util.Instantiate(gs.GLOBAL_LIQUIDBAR);
                     rcp.SetLiquidBar(lb);
                 }
                 else {
@@ -119,7 +119,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
             // only webcam mode need the pointer.
             if (gs.WEBCAM_MODE)
             {
-                var rcpp = (RC_PlayerPointer)JCS_Util.SpawnGameObject(gs.PLAYER_POINTERS[index]);
+                var rcpp = (RC_PlayerPointer)JCS_Util.Instantiate(gs.PLAYER_POINTERS[index]);
 
                 // let rc pp knows the rc player.
                 rcpp.SetRCPlayer(rcp);
@@ -134,7 +134,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 
             // create Revive Pointer
             {
-                var rcrp = (RC_RevivePointer)JCS_Util.SpawnGameObject(gs.PLAYER_REVIVE_POINTERS[index]);
+                var rcrp = (RC_RevivePointer)JCS_Util.Instantiate(gs.PLAYER_REVIVE_POINTERS[index]);
                 rcrp.SetRCPlayer(rcp);
                 rcp.SetRCRevivePointer(rcrp);
 

@@ -327,7 +327,7 @@ namespace JCSUnity
             {
                 // spawn a new game object, 
                 // and get the component
-                JCS_DamageText dt = JCS_Util.SpawnGameObject(
+                var dt = JCS_Util.Instantiate(
                     mDamageText,
                     mDamageText.transform.position,
                     mDamageText.transform.rotation) as JCS_DamageText;
