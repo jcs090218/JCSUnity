@@ -46,7 +46,7 @@ namespace JCSUnity
             }
         }
 
-        [MenuItem(MI_BaseName + "/Toggle Lock &q", false, MI_BasePriority + 50)]
+        [MenuItem(MI_BaseName + "/Toggle Inspector Lock &w", false, MI_BasePriority + 50)]
         private static void ToggleInspectorLock()
         {
             if (_mouseOverWindow == null)
