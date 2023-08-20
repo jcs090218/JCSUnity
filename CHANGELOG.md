@@ -18,6 +18,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add version text (37080587359cbc1e0b2107f480a22bfad6d88415)
 * Add scene existence check (a0f333de8a272a277182ff8f0fa9e7208f7359b3)
 * Add attribute, selection base (f8d7fe6cc662ed50d366eb03d2090a83ea82892e)
+* Add random texture action (5988e6b486d75dda5ecf37b9be480d86077247d5)
 
 ## 2.3.1
 > Released Jul 16, 2023
