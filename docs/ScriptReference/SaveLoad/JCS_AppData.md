@@ -4,6 +4,7 @@ Base application data structure.
 
 ## Functions
 
-| Name     | Description                  |
-|:---------|:-----------------------------|
-| SavePath | Get complete save data path. |
+| Name        | Description                         |
+|:------------|:------------------------------------|
+| Initialized | Return true if data is initialized. |
+| SavePath    | Get complete save data path.        |

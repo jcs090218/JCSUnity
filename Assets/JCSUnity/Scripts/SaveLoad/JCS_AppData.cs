@@ -4,7 +4,7 @@
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
  * $Notice: See LICENSE.txt for modification and distribution information
- *                   Copyright ?2020 by Shen, Jen-Chieh $
+ *                   Copyright (c) 2020 by Shen, Jen-Chieh $
  */
 using UnityEngine;
 
@@ -16,6 +16,42 @@ namespace JCSUnity
     [System.Serializable]
     public abstract class JCS_AppData
     {
+        /* Variables */
+
+        private bool mInitialized = false;
+
+        public string Copyright = "";
+        public string Version = "";
+        
+        /* Setter & Getter */
+
+        /* Functions */
+
+        protected void InitJCSFile()
+        {
+            if (JCS_PackageDataSettings.instance == null)
+            {
+                JCS_Debug.LogError("Failed to load the copyright and version text");
+                return;
+            }
+
+            Copyright = JCS_PackageDataSettings.instance.CopyrightString;
+            Version = JCS_PackageDataSettings.instance.VersionString;
+
+            this.mInitialized = true;
+        }
+
+        /// <summary>
+        /// Return true if data is initialized.
+        /// </summary>
+        public bool Initialized() 
+        { 
+            return this.mInitialized; 
+        }
+
+        public abstract void Save<T>(string filePath, string fileName);
+        public abstract void Save<T>(string fullFilePath);
+
         /// <summary>
         /// Get complete save data path.
         /// </summary>

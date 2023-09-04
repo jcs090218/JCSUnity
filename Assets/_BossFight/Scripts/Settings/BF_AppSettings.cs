@@ -50,7 +50,7 @@ public class BF_AppSettings : JCS_Settings<BF_AppSettings>
         InitPath();
 
         // only load once
-        if (APP_DATA == null)
+        if (!APP_DATA.Initialized())
             LoadAppData();
 
         // set load and save game data

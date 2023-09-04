@@ -50,7 +50,7 @@ public class RC_AppSettings : JCS_Settings<RC_AppSettings>
         InitPath();
 
         // only load once
-        if (APP_DATA == null)
+        if (!APP_DATA.Initialized())
             LoadAppData();
 
         // set load and save game data
