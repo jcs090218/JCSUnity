@@ -19,6 +19,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add scene existence check (a0f333de8a272a277182ff8f0fa9e7208f7359b3)
 * Add attribute, selection base (f8d7fe6cc662ed50d366eb03d2090a83ea82892e)
 * Add random texture action (5988e6b486d75dda5ecf37b9be480d86077247d5)
+* Add time scale slider (a17e6183e344e66b8cefa9f606f2d45d4e699cc3)
 
 ## 2.3.1
 > Released Jul 16, 2023
