@@ -28,7 +28,7 @@ namespace JCSUnity
         [SerializeField]
         private JCS_SoundSettingType mSoundType = JCS_SoundSettingType.NONE;
 
-        /* Setter/Getter */
+        /* Setter & Getter */
 
         public Slider slider { get { return this.mSlider; } }
         public JCS_SoundSettingType SoundType { get { return this.mSoundType; } }
