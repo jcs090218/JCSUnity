@@ -44,6 +44,13 @@ namespace JCSUnity
         private float mTime = 1.0f;
 #endif
 
+        [Separator("Check Variables (JCS_3DThrowAction)")]
+
+        [Tooltip("Velocity of the object.")]
+        [SerializeField]
+        [ReadOnly]
+        private Vector3 mVelocity = Vector3.zero;
+
         [Separator("Runtime Variables (JCS_3DThrowAction)")]
 
         [Tooltip("Is this component active?")]
@@ -59,11 +66,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_DeltaTimeType mDeltaTimeType = JCS_DeltaTimeType.DELTA_TIME;
 
-        private Vector3 mVelocity = Vector3.zero;
-
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
+        public Vector3 Velocity { get { return this.mVelocity; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
 
