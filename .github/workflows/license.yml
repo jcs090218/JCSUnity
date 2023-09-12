@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  UNITY_VERSION: 2023.1.0f1
+  UNITY_VERSION: 2023.1.11f1
   ULF_FILE: Unity_v2023.x.ulf
 
 jobs:
