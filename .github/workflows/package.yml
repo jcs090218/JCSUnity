@@ -59,7 +59,7 @@ jobs:
             Library-test-project-
             Library-
 
-      - uses: game-ci/unity-builder@v2.2.0
+      - uses: game-ci/unity-builder@main
         with:
           projectPath: ${{ env.PROJECT_PATH }}
           unityVersion: ${{ env.UNITY_VERSION }}
