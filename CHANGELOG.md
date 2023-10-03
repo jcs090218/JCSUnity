@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 2.3.2 (Unreleased)
+## 2.4.1 (Unreleased)
 > Released N/A
+
+* N/A
+
+## 2.4.0
+> Released Oct 02, 2023
 
 * Add with key functions in the input module (20b12f996d4eff458555e3dcf58095130f76f98e)
 * Use `UnityEvent` for toggle button (459466aa1d1be1a2909d82c28e90561df60acf8b)
