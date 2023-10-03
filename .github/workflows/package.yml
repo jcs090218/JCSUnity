@@ -16,7 +16,7 @@ env:
   UNITY_VERSION: 2023.1.11f1
   PROJECT_PATH: .
   # Packaging
-  PKG_VERSION: 2.4.0
+  PKG_VERSION: 2.4.1
   BUILD_METHOD: PackageExporter.BatchMode.Export
 
 jobs:
