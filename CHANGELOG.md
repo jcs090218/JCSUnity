@@ -21,6 +21,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Add random texture action (5988e6b486d75dda5ecf37b9be480d86077247d5)
 * Add time scale slider (a17e6183e344e66b8cefa9f606f2d45d4e699cc3)
 * Improve save load data's API (d3cf03ff7b33045bc142b0c96509e025a134aea8)
+* Remove unused `UNITY_EDITOR` guard (9297ead08343d75aa9e2e245499f4e69e0c2c1f1)
 
 ## 2.3.1
 > Released Jul 16, 2023
