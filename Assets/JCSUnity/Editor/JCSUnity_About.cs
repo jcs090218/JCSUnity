@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 /**
  * $File: JCSUnity_About.cs $
  * $Date: 2017-01-22 05:03:30 $
@@ -102,5 +101,3 @@ namespace JCSUnity
         }
     }
 }
-
-#endif

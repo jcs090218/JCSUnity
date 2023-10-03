@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 /**
  * $File: JCSUnity_HotKeys.cs $
  * $Date: 2017-06-04 01:38:14 $
@@ -54,4 +53,3 @@ namespace JCSUnity
         }
     }
 }
-#endif
