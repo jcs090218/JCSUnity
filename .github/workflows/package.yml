@@ -17,7 +17,7 @@ env:
   PROJECT_PATH: .
   # Packaging
   PKG_VERSION: 2.4.1
-  BUILD_METHOD: PackageExporter.BatchMode.Export
+  BUILD_METHOD: jcs090218.PackageExporter.BatchMode.Export
 
 jobs:
   checklicense:
