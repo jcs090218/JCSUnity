@@ -23,11 +23,11 @@ _Project/
 
 # Ignore example projects
 _BossFight/
-_RunningCrush//
+_RunningCrush/
 
 # Ignore Libraries
 GaussianBlur/
-Infinity Code//
+Infinity Code/
 
 # Ignore Plugins
 Plugins/
