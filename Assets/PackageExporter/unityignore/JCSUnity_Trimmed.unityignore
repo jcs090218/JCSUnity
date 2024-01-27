@@ -15,7 +15,6 @@
 PackageExporter/
 
 # Ignore magic folders
-Resources/
 StreamingAssets/
 
 # Ignore Test file
