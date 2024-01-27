@@ -12,22 +12,22 @@
 #
 
 # Ignore this plugin itself
-PackageExporter
+PackageExporter/
 
 # Ignore magic folders
-Resources
-StreamingAssets
+Resources/
+StreamingAssets/
 
 # Ignore Test file
-_Project
+_Project/
 
 # Ignore example projects
-_BossFight
-_RunningCrush
+_BossFight/
+_RunningCrush//
 
 # Ignore Libraries
-GaussianBlur
-Infinity Code
+GaussianBlur/
+Infinity Code//
 
 # Ignore Plugins
-Plugins
+Plugins/

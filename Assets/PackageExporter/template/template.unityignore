@@ -12,4 +12,4 @@
 #
 
 # Ignore this plugin itself.
-PackageExporter
+PackageExporter/

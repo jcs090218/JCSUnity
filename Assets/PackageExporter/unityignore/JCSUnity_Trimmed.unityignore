@@ -12,33 +12,33 @@
 #
 
 # Ignore this plugin itself
-PackageExporter
+PackageExporter/
 
 # Ignore magic folders
-Resources
-StreamingAssets
+Resources/
+StreamingAssets/
 
 # Ignore Test file
-_Project
+_Project/
 
 # Ignore example projects
-_BossFight
-_RunningCrush
+_BossFight/
+_RunningCrush/
 
 # Ignore Libraries
-GaussianBlur
-Infinity Code
-StandaloneFileBrowser
-UI-Polygon
+GaussianBlur/
+Infinity Code/
+StandaloneFileBrowser/
+UI-Polygon/
 
 # Ignore Plugins
-Plugins
+Plugins/
 
 # Trimmed
-JCSUnity/Animations
-JCSUnity/Materials
-JCSUnity/Models
-JCSUnity/Movies
-JCSUnity/Shaders
-JCSUnity/Sounds
-JCSUnity/Sprites
+JCSUnity/Animations/
+JCSUnity/Materials/
+JCSUnity/Models/
+JCSUnity/Movies/
+JCSUnity/Shaders/
+JCSUnity/Sounds/
+JCSUnity/Sprites/
