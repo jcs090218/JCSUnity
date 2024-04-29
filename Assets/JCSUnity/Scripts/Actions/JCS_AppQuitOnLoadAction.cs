@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_ApplicationQuitOnLoadAction.cs $
+ * $File: JCS_AppQuitOnLoadAction.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Close the application when the level is loaded.
     /// </summary>
-    public class JCS_ApplicationQuitOnLoadAction : MonoBehaviour
+    public class JCS_AppQuitOnLoadAction : MonoBehaviour
     {
         /* Variables */
 
