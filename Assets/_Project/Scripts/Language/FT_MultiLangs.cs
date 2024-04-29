@@ -48,11 +48,11 @@ public class FT_MultiLangs : MonoBehaviour
 
     private void Btn1_Click()
     {
-        JCS_ApplicationManager.instance.systemLanguage = mLang1;
+        JCS_AppManager.instance.systemLanguage = mLang1;
     }
 
     private void Btn2_Click()
     {
-        JCS_ApplicationManager.instance.systemLanguage = mLang2;
+        JCS_AppManager.instance.systemLanguage = mLang2;
     }
 }

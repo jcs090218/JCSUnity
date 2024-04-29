@@ -1,4 +1,4 @@
-# JCS_ApplicationManager
+# JCS_AppManager
 
 Interface communicate to application layer.
 

@@ -313,7 +313,7 @@ namespace JCSUnity
             // set the next scene name
             this.mNextSceneName = sceneName;
 
-            var apps = JCS_ApplicationSettings.instance;
+            var apps = JCS_AppSettings.instance;
 
             if (apps.SAVE_ON_SWITCH_SCENE && apps.SAVE_APP_DATA_FUNC != null)
             {

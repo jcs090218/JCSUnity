@@ -1,4 +1,4 @@
-# JCS_ApplicationSettings
+# JCS_AppSettings
 
 Application related settings will be put here.
 

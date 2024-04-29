@@ -209,7 +209,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             return;
 
         // process cross platform input.
-        switch (JCS_ApplicationManager.instance.PlatformType)
+        switch (JCS_AppManager.instance.PlatformType)
         {
             case JCS_PlatformType.PC:
                 PCInput();

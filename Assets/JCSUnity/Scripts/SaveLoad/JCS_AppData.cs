@@ -57,7 +57,7 @@ namespace JCSUnity
         /// </summary>
         public static string SavePath()
         {
-            var apps = JCS_ApplicationSettings.instance;
+            var apps = JCS_AppSettings.instance;
             string path = JCS_Path.Combine(Application.persistentDataPath, apps.DATA_PATH);
             return path;
         }

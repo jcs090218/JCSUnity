@@ -133,7 +133,7 @@ namespace JCSUnity
             base.Start();
 
             // pause the app
-            JCS_ApplicationManager.APP_PAUSE = true;
+            JCS_AppManager.APP_PAUSE = true;
         }
 
         protected void Update()

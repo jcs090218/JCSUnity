@@ -1,5 +1,5 @@
 /**
- * $File: JCS_ApplicationSettings.cs $
+ * $File: JCS_AppSettings.cs $
  * $Date: 2018-09-08 16:51:42 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -14,7 +14,7 @@ namespace JCSUnity
     /// <summary>
     /// Application settings.
     /// </summary>
-    public class JCS_ApplicationSettings : JCS_Settings<JCS_ApplicationSettings>
+    public class JCS_AppSettings : JCS_Settings<JCS_AppSettings>
     {
         /* Variables */
 
@@ -25,13 +25,13 @@ namespace JCSUnity
         // per application is starts.
         public EmptyFunction onApplicationStarts = null;
 
-        [Separator("Check Variables (JCS_ApplicationSettings)")]
+        [Separator("Check Variables (JCS_AppSettings)")]
 
         [Tooltip("Is the application start?")]
         [ReadOnly]
         public bool APPLICATION_STARTS = false;
 
-        [Separator("Initialize Variables (JCS_ApplicationSettings)")]
+        [Separator("Initialize Variables (JCS_AppSettings)")]
 
         [Tooltip("Enable to overwrite the default frame rate.")]
         public bool SET_FRAME_RATE = false;
@@ -40,7 +40,7 @@ namespace JCSUnity
         [Range(30, 120)]
         public int FRAME_RATE = 120;
 
-        [Separator("Runtime Variables (JCS_ApplicationSettings)")]
+        [Separator("Runtime Variables (JCS_AppSettings)")]
 
         [Header("- Save Load")]
 
@@ -86,7 +86,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="_old"> old instance </param>
         /// <param name="_new"> new instance </param>
-        protected override void TransferData(JCS_ApplicationSettings _old, JCS_ApplicationSettings _new)
+        protected override void TransferData(JCS_AppSettings _old, JCS_AppSettings _new)
         {
             _new.SET_FRAME_RATE = _old.SET_FRAME_RATE;
             _new.FRAME_RATE = _old.FRAME_RATE;

@@ -1,5 +1,5 @@
 ﻿/**
- * $File: FT_ApplicationQuit.cs $
+ * $File: FT_AppQuit.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -9,7 +9,7 @@
 using UnityEngine;
 using JCSUnity;
 
-public class FT_ApplicationQuit: MonoBehaviour 
+public class FT_AppQuit: MonoBehaviour 
 {
     /* Variables */
 

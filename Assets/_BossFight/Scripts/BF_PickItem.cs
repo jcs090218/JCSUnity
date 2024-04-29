@@ -63,7 +63,7 @@ public class BF_PickItem : JCS_Item
     /// <param name="jcsItem"> item to do the effect. </param>
     public static void SetPickMode(JCS_Item jcsItem)
     {
-        var am = JCS_ApplicationManager.instance;
+        var am = JCS_AppManager.instance;
 
         if (am.IsPC())
         {

@@ -46,7 +46,7 @@ namespace JCSUnity
             Test();
 #endif
 
-            if (JCS_ApplicationManager.APP_PAUSE)
+            if (JCS_AppManager.APP_PAUSE)
                 return;
 
             CheckConnectionWithTime();

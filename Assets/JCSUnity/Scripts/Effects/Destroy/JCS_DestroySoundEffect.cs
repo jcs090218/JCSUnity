@@ -59,7 +59,7 @@ namespace JCSUnity
         {
             // if is quitting the application don't spawn object,
             // or else will cause memory leak!
-            if (JCS_ApplicationManager.APP_QUITTING)
+            if (JCS_AppManager.APP_QUITTING)
                 return;
 
             // if switching the scene, don't spawn new gameObject.

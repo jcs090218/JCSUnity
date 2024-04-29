@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_ApplicationManager.cs $
+ * $File: JCS_AppManager.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -20,7 +20,7 @@ namespace JCSUnity
     /// <summary>
     /// Manager manage application layer.
     /// </summary>
-    public class JCS_ApplicationManager : JCS_Manager<JCS_ApplicationManager>
+    public class JCS_AppManager : JCS_Manager<JCS_AppManager>
     {
         /* Variables */
 
@@ -28,7 +28,7 @@ namespace JCSUnity
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
 
-        [Separator("Check Variables (JCS_ApplicationManager)")]
+        [Separator("Check Variables (JCS_AppManager)")]
 
         [Tooltip("Current systme language.")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
         [ReadOnly]
         private List<JCS_LangText> mLangTexts = null;
 
-        [Separator("Initialize Variables (JCS_ApplicationManager)")]
+        [Separator("Initialize Variables (JCS_AppManager)")]
 
         [Tooltip("Request permission for camera/webcam.")]
         [SerializeField]
@@ -54,7 +54,7 @@ namespace JCSUnity
         [SerializeField]
         private bool mRequestLocation = false;
 
-        [Separator("Runtime Variables (JCS_ApplicationManager)")]
+        [Separator("Runtime Variables (JCS_AppManager)")]
 
         [Tooltip("This will override platform Type.")]
         [SerializeField]
@@ -104,7 +104,7 @@ namespace JCSUnity
         {
             APP_QUITTING = true;
 
-            var apps = JCS_ApplicationSettings.instance;
+            var apps = JCS_AppSettings.instance;
 
             if (apps.SAVE_ON_EXIT_APP && apps.SAVE_APP_DATA_FUNC != null)
             {

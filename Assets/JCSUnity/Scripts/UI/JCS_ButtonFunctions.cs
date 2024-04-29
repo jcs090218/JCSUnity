@@ -40,7 +40,7 @@ namespace JCSUnity
         /// <param name="act"></param>
         public static void PasueApplication(bool act = true)
         {
-            JCS_ApplicationManager.APP_PAUSE = act;
+            JCS_AppManager.APP_PAUSE = act;
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace JCSUnity
         {
 #if UNITY_EDITOR
             SceneManager.LoadScene("JCS_AppCloseSimulate");
-            JCS_ApplicationManager.APP_PAUSE = true;
+            JCS_AppManager.APP_PAUSE = true;
 #endif
 
             Application.Quit();

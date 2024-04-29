@@ -98,7 +98,7 @@ namespace JCSUnity
             Debug.Log("Server Connection Time Out, Quit Application.");
 
             // quit the application smoothly.
-            JCS_ApplicationManager.instance.Quit(true);
+            JCS_AppManager.instance.Quit(true);
         }
     }
 }

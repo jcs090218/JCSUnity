@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_QuitApplicationOnLoadEvent.cs $
+ * $File: JCS_QuitAppOnLoadEvent.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Event that will quit the application.
     /// </summary>
-    public class JCS_QuitApplicationOnLoadEvent : MonoBehaviour
+    public class JCS_QuitAppOnLoadEvent : MonoBehaviour
     {
         /* Variables */
 

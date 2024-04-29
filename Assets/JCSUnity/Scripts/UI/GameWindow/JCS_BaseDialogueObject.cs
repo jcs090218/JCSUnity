@@ -111,7 +111,7 @@ namespace JCSUnity
         public void Destroy()
         {
             // start the app
-            JCS_ApplicationManager.APP_PAUSE = false;
+            JCS_AppManager.APP_PAUSE = false;
 
             // destroy this dialogue
             Destroy(this.gameObject);

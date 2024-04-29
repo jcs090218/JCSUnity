@@ -50,7 +50,7 @@ namespace JCSUnity
         /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, Text txt)
         {
-            SystemLanguage lang = JCS_ApplicationManager.instance.systemLanguage;
+            SystemLanguage lang = JCS_AppManager.instance.systemLanguage;
 
             foreach (JCS_LangData langData in data.LangData)
             {
@@ -70,7 +70,7 @@ namespace JCSUnity
         /// <param name="txt"> Text container to display language data. </param>
         public static void SetLangText(JCS_LangDataList data, TMP_Text txt)
         {
-            SystemLanguage lang = JCS_ApplicationManager.instance.systemLanguage;
+            SystemLanguage lang = JCS_AppManager.instance.systemLanguage;
 
             foreach (JCS_LangData langData in data.LangData)
             {

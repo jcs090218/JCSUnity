@@ -102,7 +102,7 @@ namespace JCSUnity
 
             // This will only run once at the time when 
             // the application is starts.
-            if (!JCS_ApplicationSettings.instance.APPLICATION_STARTS)
+            if (!JCS_AppSettings.instance.APPLICATION_STARTS)
             {
                 // Calculate standard screen width and screen height.
                 {
@@ -153,7 +153,7 @@ namespace JCSUnity
         private void Start()
         {
             // When first run in the application...
-            if (!JCS_ApplicationSettings.instance.APPLICATION_STARTS)
+            if (!JCS_AppSettings.instance.APPLICATION_STARTS)
             {
                 Camera cam = JCS_Camera.main.GetCamera();
 
