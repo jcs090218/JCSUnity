@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 2.4.1 (Unreleased)
 > Released N/A
 
-* N/A
+* feat(Events): Add new component `JCS_AppSkip` (e5423f99a318af0c8567a8743c1e95d9beee37b9)
 
 ## 2.4.0
 > Released Oct 02, 2023
