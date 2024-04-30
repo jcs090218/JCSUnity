@@ -46,7 +46,7 @@ namespace JCSUnity
                     //ds.SendEmpty("Make a selection...");
                 }
 
-                //ds.DialogueSystemSendChoice(0, "Selection 01");
+                //ds.SendChoice(0, "Selection 01");
                 ds.SendChoice(1, "Selection 02");
                 ds.SendChoice(2, "Selection 03");
                 ds.SendChoice(3, "Selection 04");
