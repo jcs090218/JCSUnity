@@ -117,8 +117,8 @@ set to thie scene layer.")]
                 this.mSpawnTransform.position);
 
             // Set live object in the scene layer.
-            JCS_OrderLayerObject jcsolo = bf_liveObject.GetComponent<JCS_OrderLayerObject>();
-            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref jcsolo, mOrderLayer);
+            var solo = bf_liveObject.GetComponent<JCS_OrderLayerObject>();
+            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
         }
     }
 

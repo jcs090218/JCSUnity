@@ -23,7 +23,7 @@ public class FT_ScreenSpace : MonoBehaviour
     private CharacterController mCharacterController = null;
     private SpriteRenderer mSpriteRenderer = null;
 
-    private JCS_Camera jcsCam = null;
+    private JCS_Camera mCamera = null;
 
     /* Setter & Getter */
 
@@ -41,11 +41,11 @@ public class FT_ScreenSpace : MonoBehaviour
 
     private void Start()
     {
-        jcsCam = JCS_Camera.main;
+        mCamera = JCS_Camera.main;
     }
 
     private void LateUpdate()
     {
-        print(jcsCam.CheckInScreenSpace(mCharacterController));
+        print(mCamera.CheckInScreenSpace(mCharacterController));
     }
 }

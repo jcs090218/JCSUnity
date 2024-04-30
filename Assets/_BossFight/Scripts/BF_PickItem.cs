@@ -60,22 +60,22 @@ public class BF_PickItem : JCS_Item
     /// Design pick method base on the platform game 
     /// we are building.
     /// </summary>
-    /// <param name="jcsItem"> item to do the effect. </param>
-    public static void SetPickMode(JCS_Item jcsItem)
+    /// <param name="item"> item to do the effect. </param>
+    public static void SetPickMode(JCS_Item item)
     {
         var am = JCS_AppManager.instance;
 
         if (am.IsPC())
         {
             // pc version will have to pick by mouse
-            jcsItem.PickByMouseDown = true;
+            item.PickByMouseDown = true;
         }
 
         if (am.IsMobile())
         {
             // set to true so when the item hit the ground, 
             // pick event will be activate.
-            jcsItem.AutoPickWhileCan = true;
+            item.AutoPickWhileCan = true;
         }
     }
 }

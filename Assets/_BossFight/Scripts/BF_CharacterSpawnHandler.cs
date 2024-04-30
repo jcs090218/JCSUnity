@@ -73,8 +73,8 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
             bfp.TurnFace(mSpawnPos[index].Facing);
 
             // Set player in the order layer (scene layer).
-            JCS_OrderLayerObject jcsolo = bfp.GetComponent<JCS_OrderLayerObject>();
-            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref jcsolo, mOrderLayer);
+            var solo = bfp.GetComponent<JCS_OrderLayerObject>();
+            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
         }
     }
 }

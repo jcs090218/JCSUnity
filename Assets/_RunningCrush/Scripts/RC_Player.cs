@@ -292,12 +292,12 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
                 Die();
 
-                JCS_DynamicScene jcsds = JCS_SceneManager.instance.GetDynamicScene();
-                JCS_3DShakeEffect jcsse = jcsds.GetComponent<JCS_3DShakeEffect>();
+                JCS_DynamicScene ds = JCS_SceneManager.instance.GetDynamicScene();
+                JCS_3DShakeEffect se = ds.GetComponent<JCS_3DShakeEffect>();
 
                 // shake once! if player is dead
-                if (jcsse != null)
-                    jcsse.DoShake();
+                if (se != null)
+                    se.DoShake();
 
                 // when player is dead must be behind, 
                 // so auto set to run if the player were being stupid

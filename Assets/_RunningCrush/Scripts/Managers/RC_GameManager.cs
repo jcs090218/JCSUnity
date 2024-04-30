@@ -8,7 +8,7 @@
  */
 using JCSUnity;
 
-public class RC_GameManager : JCS_Manager<RC_GameManager> 
+public class RC_GameManager : JCS_Manager<RC_GameManager>
 {
     /* Variables */
 
@@ -54,7 +54,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 #if UNITY_EDITOR
     private void Test()
     {
-        
+
     }
 #endif
 
@@ -94,12 +94,12 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
             // set control index
             rcp.ControlIndex = index;
 
-            var jcsOlo = rcp.GetComponent<JCS_OrderLayerObject>();
-            if (jcsOlo != null)
+            var olo = rcp.GetComponent<JCS_OrderLayerObject>();
+            if (olo != null)
             {
-                var jcs2ddsm = JCS_2DDynamicSceneManager.instance;
-                jcs2ddsm.SetObjectParentToOrderLayerByOrderLayerIndex(
-                    ref jcsOlo, 
+                var dsm = JCS_2DDynamicSceneManager.instance;
+                dsm.SetObjectParentToOrderLayerByOrderLayerIndex(
+                    ref olo,
                     ORDER_LAYER_FOR_ALL_PLAYER);
             }
 
@@ -111,7 +111,8 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
                     var lb = (JCS_3DLiquidBar)JCS_Util.Instantiate(gs.GLOBAL_LIQUIDBAR);
                     rcp.SetLiquidBar(lb);
                 }
-                else {
+                else
+                {
                     JCS_Debug.LogError("No liquid bar attach to `RC_GameSetting` and u still want to access it");
                 }
             }

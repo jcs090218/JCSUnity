@@ -1087,12 +1087,12 @@ because button selection is not attach to all selections in the list...");
         {
             for (int index = 0; index < mSelectBtn.Length; ++index)
             {
-                JCS_Button jcsbtn = mSelectBtn[index];
+                JCS_Button btn = mSelectBtn[index];
 
-                if (jcsbtn == null || jcsbtn.ButtonSelection == null)
+                if (btn == null || btn.ButtonSelection == null)
                     continue;
 
-                if (jcsbtn.ButtonSelection.Active)
+                if (btn.ButtonSelection.Active)
                     return index;
             }
 
