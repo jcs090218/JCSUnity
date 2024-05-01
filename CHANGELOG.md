@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 > Released N/A
 
 * feat(Events): Add new component `JCS_AppSkip` (e5423f99a318af0c8567a8743c1e95d9beee37b9)
+* feat(UI): Add next or continue to dialogue system (712163419eb8d2fbb6262a1047c0318698bf7241)
 
 ## 2.4.0
 > Released Oct 02, 2023
