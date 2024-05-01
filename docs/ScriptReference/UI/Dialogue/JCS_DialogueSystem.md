@@ -39,3 +39,4 @@ Dialogue system core implementation.
 | SendRightImage    | Set the sprite to the image component. (Right)                  |
 | IncPage           | Increament one from page.                                       |
 | DecPage           | Decreament one from page.                                       |
+| NextOrDispose     | Continue with default condition.                                |

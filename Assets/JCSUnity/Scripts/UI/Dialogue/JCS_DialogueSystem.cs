@@ -153,7 +153,6 @@ namespace JCSUnity
         [SerializeField]
         private JCS_Button[] mSelectBtn = null;
 
-
         // Text index to make sure 
         // each character in the textbox.
         private int mTextIndex = 0;
@@ -631,6 +630,17 @@ namespace JCSUnity
         public void DecPage()
         {
             --mDialogueScript.Status;
+        }
+
+        /// <summary>
+        /// Continue with default condition.
+        /// </summary>
+        public void NextOrDispose()
+        {
+            NextBtnCallback();
+
+            if (mMessage == "")
+                Dispose();
         }
 
         /// <summary>
