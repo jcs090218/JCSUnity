@@ -193,8 +193,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            // try to get transfrom by 
-            // it own current transfrom.
+            // try to get transfrom by it own current transfrom.
             if (mPanelTrans == null)
                 mPanelTrans = this.GetComponent<RectTransform>();
 
@@ -204,9 +203,7 @@ namespace JCSUnity
 
         private void Start()
         {
-            InitTextBox();
             InitBtnsSet();
-            InitImageSet();
 
             // create the array with the same length with the button call.
             mSelectMessage = new string[mSelectBtn.Length];
@@ -1007,36 +1004,6 @@ because button selection is not attach to all selections in the list...");
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Intialize the images.
-        /// </summary>
-        private void InitImageSet()
-        {
-            if (mCenterImage != null)
-                mCenterImage.transform.SetParent(this.transform);
-
-            if (mLeftImage != null)
-                mLeftImage.transform.SetParent(this.transform);
-
-            if (mRightImage != null)
-                mRightImage.transform.SetParent(this.transform);
-        }
-
-        /// <summary>
-        /// Initialize the text box.
-        /// </summary>
-        private void InitTextBox()
-        {
-            // check if text box null references...
-            if (mTextBox == null)
-            {
-                JCS_Debug.LogWarning("You have the dialogue system in the scene, but u did not assign a text box... Try to delete it?");
-                return;
-            }
-
-            mTextBox.transform.SetParent(this.transform);
         }
 
         /// <summary>
