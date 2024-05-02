@@ -274,7 +274,6 @@ GameObject:
   - component: {fileID: 149194856974795269}
   - component: {fileID: 1346371961962346081}
   - component: {fileID: 1301699710301156560}
-  - component: {fileID: 764007139224113498}
   m_Layer: 5
   m_Name: Text (body)
   m_TagString: Untagged
@@ -343,19 +342,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Some Text... '
---- !u!114 &764007139224113498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764007139224113497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5d686bb15ff9e4782b0b00dbdc6526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mOrderIndex: 1
 --- !u!1 &764007139224113499
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +389,7 @@ RectTransform:
   - {fileID: 2429014099853702686}
   - {fileID: 4844742370279240752}
   - {fileID: 4638153221572768426}
+  - {fileID: 2882677113535274055}
   m_Father: {fileID: 764007139224113502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2254,17 +2241,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5089097222165818855}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0809019, y: 3.0746202, z: 6.4494963}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5341717972486089279}
-  m_Father: {fileID: 764007139224113502}
+  m_Father: {fileID: 5128195222572262980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 185, y: -438}
+  m_AnchoredPosition: {x: 384.96683, y: -353.58136}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &926264110877173220
@@ -3847,7 +3834,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5128195222572262980}
-  - {fileID: 2882677113535274055}
   - {fileID: 4448772029176787261}
   - {fileID: 7628693901759934120}
   - {fileID: 5261650664665306312}
