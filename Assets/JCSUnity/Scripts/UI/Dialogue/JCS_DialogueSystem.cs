@@ -634,6 +634,9 @@ namespace JCSUnity
         /// </summary>
         public void NextOrDispose()
         {
+            if (!mActive)
+                return;
+
             NextBtnCallback();
 
             if (mMessage == "")
