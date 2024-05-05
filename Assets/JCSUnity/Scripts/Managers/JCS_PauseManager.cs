@@ -118,6 +118,12 @@ object you have in the list.")]
             instance = this;
         }
 
+        private void Start()
+        {
+            // Make sure the time scale is reset every new scene.
+            Unpause();
+        }
+
         private void Update()
         {
 #if UNITY_EDITOR
