@@ -29,13 +29,11 @@ namespace JCSUnity
         private bool mTestWithKey = false;
 #endif
 
-        [Separator("Initialize Variables (JCS_2DCursor)")]
+        [Separator("Runtime Variables (JCS_2DCursor)")]
 
         [Tooltip("Show the cursor or not.")]
         [SerializeField]
         private bool mShowCursor = false;
-
-        [Separator("Runtime Variables (JCS_2DCursor)")]
 
         [Tooltip("Add on offset to the cursor.")]
         [SerializeField]
@@ -91,6 +89,8 @@ namespace JCSUnity
 
 #if UNITY_EDITOR
             mShowCursor = true;
+#else
+            Cursor.visible = mShowCursor;
 #endif
         }
 

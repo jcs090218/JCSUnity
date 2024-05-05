@@ -92,6 +92,8 @@ namespace JCSUnity
 
 #if UNITY_EDITOR
             mShowCursor = true;
+#else
+            Cursor.visible = mShowCursor;
 #endif
         }
 
