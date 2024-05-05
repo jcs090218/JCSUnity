@@ -16,7 +16,7 @@ namespace JCSUnity
     /// 2D animate cursor.
     /// </summary>
     [RequireComponent(typeof(JCS_2DAnimator))]
-    public class JCS_2DCursor : MonoBehaviour
+    public class JCS_2DCursor : JCS_Cursor
     {
         /* Variables */
 
@@ -30,10 +30,6 @@ namespace JCSUnity
 #endif
 
         [Separator("Runtime Variables (JCS_2DCursor)")]
-
-        [Tooltip("Show the cursor or not.")]
-        [SerializeField]
-        private bool mShowCursor = false;
 
         [Tooltip("Add on offset to the cursor.")]
         [SerializeField]
@@ -61,14 +57,15 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public bool ShowCursor { get { return this.mShowCursor; } set { this.mShowCursor = value; } }
         public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
         public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
 
         /* Functions */
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             this.m2DAnimator = this.GetComponent<JCS_2DAnimator>();
 
             m2DAnimator.Animations.Add(mNormalSelect);
@@ -86,12 +83,6 @@ namespace JCSUnity
             m2DAnimator.Animations.Add(mMove);
             m2DAnimator.Animations.Add(mAlternateSelect);
             m2DAnimator.Animations.Add(mLinkSelect);
-
-#if UNITY_EDITOR
-            mShowCursor = true;
-#else
-            Cursor.visible = mShowCursor;
-#endif
         }
 
         private void LateUpdate()
@@ -101,15 +92,6 @@ namespace JCSUnity
 #endif
 
             FollowMouse();
-        }
-
-        private void OnApplicationFocus(bool focusStatus)
-        {
-            // when get focus do check to not show the cursor
-            if (focusStatus)
-            {
-                Cursor.visible = mShowCursor;
-            }
         }
 
 #if UNITY_EDITOR
