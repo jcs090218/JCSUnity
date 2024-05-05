@@ -27,7 +27,8 @@ namespace JCSUnity
         [Separator("Runtime Variables (JCS_3DCursor)")]
 
         [Tooltip("Show the cursor or not.")]
-        [SerializeField] private bool mShowCursor = false;
+        [SerializeField]
+        private bool mShowCursor = false;
 
         [Tooltip("Add on offset to the cursor.")]
         [SerializeField]
@@ -72,6 +73,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool ShowCursor { get { return this.mShowCursor; } set { this.mShowCursor = value; } }
         public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
         public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
 
@@ -281,5 +283,4 @@ namespace JCSUnity
         }
     }
 }
-
 #endif

@@ -29,6 +29,12 @@ namespace JCSUnity
         private bool mTestWithKey = false;
 #endif
 
+        [Separator("Initialize Variables (JCS_2DCursor)")]
+
+        [Tooltip("Show the cursor or not.")]
+        [SerializeField]
+        private bool mShowCursor = false;
+
         [Separator("Runtime Variables (JCS_2DCursor)")]
 
         [Tooltip("Add on offset to the cursor.")]
@@ -57,6 +63,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool ShowCursor { get { return this.mShowCursor; } set { this.mShowCursor = value; } }
         public JCS_CursorCustomizeType CursorCustomizeType { get { return this.mCursorCustomizeType; } }
         public Vector3 CursorOffset { get { return this.mCursorOffset; } set { this.mCursorOffset = value; } }
 
@@ -81,6 +88,10 @@ namespace JCSUnity
             m2DAnimator.Animations.Add(mMove);
             m2DAnimator.Animations.Add(mAlternateSelect);
             m2DAnimator.Animations.Add(mLinkSelect);
+
+#if UNITY_EDITOR
+            mShowCursor = true;
+#endif
         }
 
         private void LateUpdate()
@@ -90,6 +101,15 @@ namespace JCSUnity
 #endif
 
             FollowMouse();
+        }
+
+        private void OnApplicationFocus(bool focusStatus)
+        {
+            // when get focus do check to not show the cursor
+            if (focusStatus)
+            {
+                Cursor.visible = mShowCursor;
+            }
         }
 
 #if UNITY_EDITOR
@@ -160,5 +180,4 @@ namespace JCSUnity
         }
     }
 }
-
 #endif
