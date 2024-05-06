@@ -121,7 +121,7 @@ object you have in the list.")]
         private void Start()
         {
             // Make sure the time scale is reset every new scene.
-            Unpause();
+            ResetState();
         }
 
         private void Update()
@@ -171,6 +171,17 @@ object you have in the list.")]
         public void AddActionToList(JCS_PauseAction pa)
         {
             mPauseActions.Add(pa);
+        }
+
+        /// <summary>
+        /// Reset pause state.
+        /// </summary>
+        public void ResetState()
+        {
+            mTargetTimeScale = mDefaultTimeScale;
+            Time.timeScale = mDefaultTimeScale;
+
+            PauseTheWholeGame(false);
         }
 
         /// <summary>
