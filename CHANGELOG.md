@@ -11,6 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Events): Add new component `JCS_AppSkip` (e5423f99a318af0c8567a8743c1e95d9beee37b9)
 * feat(UI): Add next or continue to dialogue system (712163419eb8d2fbb6262a1047c0318698bf7241)
 * fix(Managers): Sync paused variable (ef17a3d2a7882a7501e09aa0cb763af586d360b9)
+* fix(Managers): Ensure reset pause state on new scene (b3a9dfa1696514ac1fcfb6eedfbe54784d41443b)
 
 ## 2.4.0
 > Released Oct 02, 2023
