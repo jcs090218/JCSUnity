@@ -55,7 +55,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mActive = false;
 
-        [Tooltip("")]
+        [Tooltip("List of select messages.")]
         [SerializeField]
         [ReadOnly]
         private string[] mSelectMessage = null;
@@ -72,6 +72,8 @@ namespace JCSUnity
         [SerializeField]
         [ReadOnly]
         private int mRenderSelectTextIndex = 0;
+
+        private bool mActiveThisFrame = false;
 
         [Separator("Initialize Variables (JCS_DialogueSystem)")]
 
@@ -218,6 +220,8 @@ namespace JCSUnity
             ScrollText();
 
             ScrollSelectBtnText();
+
+            mActiveThisFrame = false;
         }
 
         /// <summary>
@@ -252,6 +256,7 @@ namespace JCSUnity
 
             // otherwise active the dialogue
             mActive = true;
+            mActiveThisFrame = true;
 
             // run the first action.
             RunAction();
@@ -490,6 +495,7 @@ namespace JCSUnity
 
             // de-active dialogue system.
             mActive = false;
+            mActiveThisFrame = false;
 
             // Check initialize to ignore dispose called at the very beginning!
             if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && callback_dispose != null)
@@ -634,7 +640,7 @@ namespace JCSUnity
         /// </summary>
         public void NextOrDispose()
         {
-            if (!mActive)
+            if (!mActive || mActiveThisFrame)
                 return;
 
             NextBtnCallback();
