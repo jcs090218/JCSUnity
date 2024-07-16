@@ -12,6 +12,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(UI): Add next or continue to dialogue system (712163419eb8d2fbb6262a1047c0318698bf7241)
 * fix(Managers): Sync paused variable (ef17a3d2a7882a7501e09aa0cb763af586d360b9)
 * fix(Managers): Ensure reset pause state on new scene (b3a9dfa1696514ac1fcfb6eedfbe54784d41443b)
+* fix(Screen): Leave UI settings when the screen settings is none (817e6fc7f30607145fd695f1f6c7c7e00e889a24)
 
 ## 2.4.0
 > Released Oct 02, 2023
