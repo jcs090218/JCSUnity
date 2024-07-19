@@ -1,4 +1,4 @@
-# JCS_AdvertisementManager
+# JCS_AdsManager
 
 Handle Advertisment provide by Unity Technologies company.
 
