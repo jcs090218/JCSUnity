@@ -21,6 +21,9 @@ using TMPro;
 
 namespace JCSUnity
 {
+    public delegate void EventTriggerEvent(PointerEventData data);
+    public delegate void EventTriggerEventButtonSelection(PointerEventData data, JCS_ButtonSelection selection);
+
     /// <summary>
     /// User interface related utilities functions.
     /// </summary>
@@ -42,6 +45,36 @@ namespace JCSUnity
                 comp.GetComponent<Toggle>() ||
                 comp.GetComponent<InputField>());
         }
+
+        #region EVENT
+        /// <summary>
+        /// Add Event to Unity's Event Trigger(Script)
+        /// </summary>
+        /// <param name="te"></param>
+        /// <param name="type"></param>
+        /// <param name="func"></param>
+        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, EventTriggerEvent func)
+        {
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = type;
+            entry.callback.AddListener((data) => { func((PointerEventData)data); });
+            te.triggers.Add(entry);
+        }
+
+        /// <summary>
+        /// Add Event to Unity's Event Trigger(Script)
+        /// </summary>
+        /// <param name="te"></param>
+        /// <param name="type"></param>
+        /// <param name="func"></param>
+        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, EventTriggerEventButtonSelection func, JCS_ButtonSelection selection)
+        {
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = type;
+            entry.callback.AddListener((data) => { func((PointerEventData)data, selection); });
+            te.triggers.Add(entry);
+        }
+        #endregion
 
         #region LANGUAGE
         /// <summary>
@@ -658,8 +691,7 @@ namespace JCSUnity
         /// 
         /// Check if the mouse still on top of the image!
         /// 
-        /// ATTENTIOIN(jenchieh): this will not work on the 
-        /// resizable window.
+        /// ATTENTIOIN(jenchieh): this will not work on the resizable window.
         /// </summary>
         /// <returns></returns>
         public static bool MouseOverGUI(RectTransform imageRect, RectTransform rootPanel = null)

@@ -25,7 +25,6 @@ public class FT_Player : JCS_2DSideScrollerPlayer
             JCS_Input.GetKeyDown(KeyCode.RightAlt))
             Jump();
 
-
         if (JCS_Input.GetKey(KeyCode.UpArrow))
             ClimbOrTeleport();
 

@@ -13,17 +13,11 @@ All code utility is stored here.
 | WithInRange                          | Check if the value is within the range.                                                           |
 | WithInArrayRange                     | Check if the index valid within the array length.&nbsp&nbsp(0 ~ (length - 1))                     |
 | LoopInArray                          | Make the index is within the array length by setting the maxinum of (legnth - 1) or mininum of 0. |
-| GetImageRect                         | Returns the size of the image.                                                                    |
-| GetSpriteRendererRectWithNoScale     | Returns the size of the sprite renderer without the scale value multiply.                         |
-| GetSpriteRendererRect                | Returns the size of the sprite renderer.                                                          |
-| MouseOverGUI                         | Check if the mouse is on top of a recttransform.                                                  |
-| IsOverGUI                            | Check if mosue is over any UI element.                                                            |
 | SpawnAnimateObject                   | Spawn a gameobject with animation attached.                                                       |
 | SpawnAnimateObjectDeathEvent         | Spawn a gameobject with the animator and death event on it.                                       |
 | SetActiveToAllChildren               | Active all the child in a transform.                                                              |
 | MoveToTheLastChild                   | Make the transform to the last transform of the current parent transform.                         |
 | SetParentWithoutLosingInfo           | Set the transform to another transform without losing it's info. (position, rotation, scale)      |
-| AddEventTriggerEvent                 | Add an event to EventTrigger component from Unity API.                                            |
 | VectorDirection                      | Returns vector direction by passing the vector direction enum.                                    |
 | ApplyRandVector3                     | Add random value to a vector.                                                                     |
 | IsSameTribe                          | Check if the live object is the same tribe.                                                       |
