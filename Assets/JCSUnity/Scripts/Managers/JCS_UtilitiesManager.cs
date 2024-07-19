@@ -35,6 +35,12 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_DialogueSystem mDialogueSystem = null;
 
+        [Separator("Initialize Variables (JCS_UtilitiesManager)")]
+
+        [Tooltip("Trasnparent sprite.")]
+        [SerializeField]
+        private Sprite mSpriteTransparent = null;
+
         /* Setter & Getter */
 
         public void SetMixDamageTextPool(JCS_MixDamageTextPool tp) { this.mMixDamageTextPool = tp; }
@@ -45,6 +51,8 @@ namespace JCSUnity
 
         public void SetDiaglogueSystem(JCS_DialogueSystem ds) { this.mDialogueSystem = ds; }
         public JCS_DialogueSystem GetDialogueSystem() { return this.mDialogueSystem; }
+
+        public Sprite SpriteTransparent { get { return this.mSpriteTransparent; } }
 
         /* Functions */
 
