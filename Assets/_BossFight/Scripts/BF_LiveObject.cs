@@ -94,7 +94,7 @@ public class BF_LiveObject : JCS_2DLiveObject
         // minus monster count.
         --bggm.MOB_CURRENT_IN_SCENE;
 
-        var utilm = JCS_UtilitiesManager.instance;
+        var utilm = JCS_UtilManager.instance;
         if (utilm.GetIGLogSystem() != null)
         {
             string expMsg = BF_MessageSettings.instance.EXP_BASE + EXP.ToString();

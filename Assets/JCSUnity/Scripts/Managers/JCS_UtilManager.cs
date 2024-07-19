@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_UtilitiesManager.cs $
+ * $File: JCS_UtilManager.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -14,11 +14,11 @@ namespace JCSUnity
     /// <summary>
     /// Manager manage all the utilities in the game.
     /// </summary>
-    public class JCS_UtilitiesManager : JCS_Manager<JCS_UtilitiesManager>
+    public class JCS_UtilManager : JCS_Manager<JCS_UtilManager>
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_UtilitiesManager)")]
+        [Separator("Check Variables (JCS_UtilManager)")]
 
         [Tooltip("Damage text util.")]
         [SerializeField]
@@ -35,7 +35,7 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_DialogueSystem mDialogueSystem = null;
 
-        [Separator("Initialize Variables (JCS_UtilitiesManager)")]
+        [Separator("Initialize Variables (JCS_UtilManager)")]
 
         [Tooltip("Trasnparent sprite.")]
         [SerializeField]
