@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using PeterVuorela.Tweener;
 
@@ -194,103 +193,6 @@ namespace JCSUnity
                 index = 0;
 
             return index;
-        }
-
-        /// <summary>
-        /// Returns the size of the image.
-        /// </summary>
-        /// <param name="img"></param>
-        /// <returns></returns>
-        public static Vector2 GetImageRect(Image img)
-        {
-            RectTransform rt = img.transform.GetComponent<RectTransform>();
-            if (rt == null)
-            {
-                JCS_Debug.LogError("No RectTransform on ur image!");
-                return Vector2.one;
-            }
-
-            float width = rt.sizeDelta.x * rt.localPosition.x;
-            float height = rt.sizeDelta.y * rt.localPosition.y;
-
-            return new Vector2(width, height);
-        }
-
-        /// <summary>
-        /// Returns the size of the sprite renderer without the scale value multiply.
-        /// </summary>
-        /// <param name="sr"></param>
-        /// <returns></returns>
-        public static Vector2 GetSpriteRendererRectWithNoScale(SpriteRenderer sr)
-        {
-            float width = sr.bounds.extents[0] * 2;
-            float height = sr.bounds.extents[1] * 2;
-
-            return new Vector2(width, height);
-        }
-        /// <summary>
-        /// Returns the size of the sprite renderer.
-        /// </summary>
-        /// <param name="sr"></param>
-        /// <returns></returns>
-        public static Vector2 GetSpriteRendererRect(SpriteRenderer sr)
-        {
-            float width = sr.bounds.extents[0] * 2 * sr.transform.localScale.x;
-            float height = sr.bounds.extents[1] * 2 * sr.transform.localScale.y;
-
-            return new Vector2(width, height);
-        }
-
-        /// <summary>
-        /// Solve the flash problem! (JCS_CheckableObject)
-        /// 
-        /// Check if the mouse still on top of the image!
-        /// 
-        /// ATTENTIOIN(jenchieh): this will not work on the 
-        /// resizable window.
-        /// </summary>
-        /// <returns></returns>
-        public static bool MouseOverGUI(RectTransform imageRect, RectTransform rootPanel = null)
-        {
-            Vector2 mousePos = JCS_Input.MousePositionOnGUILayer();
-            Vector2 checkPos = imageRect.localPosition;
-
-            if (rootPanel != null)
-                checkPos += new Vector2(rootPanel.localPosition.x, rootPanel.localPosition.y);
-
-            // this item image size
-            Vector2 slotRect = imageRect.sizeDelta;
-
-            float halfSlotWidth = slotRect.x / 2 * imageRect.localScale.x;
-            float halfSlotHeight = slotRect.y / 2 * imageRect.localScale.y;
-
-            float leftBorder = checkPos.x - halfSlotWidth;
-            float rightBorder = checkPos.x + halfSlotWidth;
-            float topBorder = checkPos.y + halfSlotHeight;
-            float bottomBorder = checkPos.y - halfSlotHeight;
-
-            // Basic AABB collide math
-            if (mousePos.x <= rightBorder &&
-                mousePos.x >= leftBorder &&
-                mousePos.y <= topBorder &&
-                mousePos.y >= bottomBorder)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Check if mosue is over any UI element.
-        /// </summary>
-        /// <returns>
-        /// Return true, if there are UI element infront.
-        /// Return false, if there are NO UI element infront.
-        /// </returns>
-        public static bool IsOverGUI()
-        {
-            return EventSystem.current.IsPointerOverGameObject();
         }
 
         /// <summary>

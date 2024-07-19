@@ -346,7 +346,7 @@ namespace JCSUnity
         {
             if (GetObjectType() == JCS_UnityObjectType.UI)
             {
-                if (JCS_Util.MouseOverGUI(this.mRectTransform))
+                if (JCS_UIUtil.MouseOverGUI(this.mRectTransform))
                     return true;
             }
 
@@ -361,7 +361,7 @@ namespace JCSUnity
         {
             if (GetObjectType() == JCS_UnityObjectType.UI)
             {
-                if (JCS_Util.MouseOverGUI(this.mRectTransform, rootPanel))
+                if (JCS_UIUtil.MouseOverGUI(this.mRectTransform, rootPanel))
                     return true;
             }
 

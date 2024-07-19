@@ -201,7 +201,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
                 }
 
                 // check if the mouse still over or not
-                if (!JCS_Util.MouseOverGUI(this.mRectTransform))
+                if (!JCS_UIUtil.MouseOverGUI(this.mRectTransform))
                     mIsOver = false;
             }
         }
