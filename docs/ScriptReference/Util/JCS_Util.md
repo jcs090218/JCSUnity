@@ -7,6 +7,7 @@ All code utility is stored here.
 | Name                                 | Description                                                                                       |
 |:-------------------------------------|:--------------------------------------------------------------------------------------------------|
 | EnableComponent                      | Do enable/distance component.                                                                     |
+| ForceGetComponent                    | Force to get a component, if not found add one new then.                                          |
 | Instantiate                          | Spawn a game object.                                                                              |
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
@@ -45,7 +46,6 @@ All code utility is stored here.
 | DetachChildren                       | Detach all the child from a transform.                                                            |
 | ForceDetachChildren                  | Force detach all the child from a transform.                                                      |
 | AttachChildren                       | Attach all the childs to this transform.                                                          |
-| ForceGetComponent                    | Force to get a compoennt, if not found add one new then.                                          |
 | ToJson                               | Serialize object to JSON string.                                                                  |
 | IsScene                              | Check current scene's with NAME.                                                                  |
 | IsSceneExists                        | Returns true if the scene 'name' exists and is in your Build settings, false otherwise.           |
