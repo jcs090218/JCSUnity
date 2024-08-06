@@ -101,11 +101,11 @@ namespace JCSUnity
 
         [Tooltip("Name tag.")]
         [SerializeField]
-        private Text mNameTag = null;
+        private JCS_TextObject mNameTag = null;
 
         [Tooltip("Main text GUI component to scroll.")]
         [SerializeField]
-        private Text mTextBox = null;
+        private JCS_TextObject mTextBox = null;
 
         [Tooltip("Speed of scrolling the text.")]
         [SerializeField]
