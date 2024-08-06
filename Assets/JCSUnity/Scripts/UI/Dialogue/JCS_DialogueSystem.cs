@@ -181,6 +181,11 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public bool Active { get { return this.mActive; } }
+        public bool Scrolling { get { return this.mScrolling; } }
+        public bool ScrollingSelectBtnText { get { return this.mScrollingSelectBtnText; } }
+        public bool Skip { get { return this.mSkip; } }
+
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
@@ -236,7 +241,7 @@ namespace JCSUnity
 
             if (mActive)
             {
-                JCS_Debug.LogError("Dialogue System is already active... Failed to active another one.");
+                JCS_Debug.LogError("Dialogue System is already active!");
                 return;
             }
 
@@ -484,7 +489,6 @@ namespace JCSUnity
             // disable the exit button!
             ExitBtnActive(false);
 
-
             // dis-attach the script.
             mDialogueScript = null;
 
@@ -556,7 +560,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mNameTag == null)
             {
-                JCS_Debug.LogError("Name tag is not assign but u still trying to access?");
+                JCS_Debug.LogError("Name tag doesn't exist!");
                 return;
             }
 #endif
@@ -575,7 +579,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mCenterImage == null)
             {
-                JCS_Debug.LogError("Center image call with image component attached");
+                JCS_Debug.LogError("Image (center) doesn't exist");
                 return;
             }
 #endif
@@ -593,7 +597,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mLeftImage == null)
             {
-                JCS_Debug.LogError("Left image call with image component attached");
+                JCS_Debug.LogError("Image (left) doesn't exist");
                 return;
             }
 #endif
@@ -611,7 +615,7 @@ namespace JCSUnity
 #if UNITY_EDITOR
             if (mRightImage == null)
             {
-                JCS_Debug.LogError("Right image call with image component attached");
+                JCS_Debug.LogError("Image (right) doesn't exist");
                 return;
             }
 #endif
@@ -650,6 +654,29 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true if the dialogue system is still animating the text.
+        /// </summary>
+        public bool IsScrolling()
+        {
+            return this.mScrolling || this.mScrollingSelectBtnText;
+        }
+
+        /// <summary>
+        /// Skip the current text scroll.
+        /// </summary>
+        public bool SkipToEnd()
+        {
+            if (IsScrolling())
+            {
+                mSkip = true;
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Do scroll text action.
         /// </summary>
         private void ScrollText()
@@ -667,7 +694,7 @@ namespace JCSUnity
                 return;
 
             // reset timer
-            mScrollTimer = 0;
+            mScrollTimer = 0.0f;
 
             if (mMessage == mTextBox.text)
             {
@@ -684,6 +711,7 @@ namespace JCSUnity
 
                 // reset text index counter
                 mTextIndex = 0;
+
                 return;
             }
 
@@ -691,6 +719,9 @@ namespace JCSUnity
             {
                 // set directly to the text box.
                 mTextBox.text = mMessage;
+
+                // set the rest to the selections.
+                CompleteSelectionsScroll();
 
                 mSkip = false;
 
@@ -723,7 +754,7 @@ namespace JCSUnity
                 return;
 
             // reset timer
-            mScrollTimer = 0;
+            mScrollTimer = 0.0f;
 
             if (mSelectBtn.Length <= mRenderSelectTextIndex)
             {
@@ -735,7 +766,6 @@ namespace JCSUnity
 
                 return;
             }
-
 
             if (// if the text in not active skip it, and render the 
                 // next possible active selection.
@@ -760,9 +790,8 @@ namespace JCSUnity
 
             if (mSkip)
             {
-                // set directly to the text box.
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
-                   = mSelectMessage[mRenderSelectTextIndex];
+                // set the rest to the selections.
+                CompleteSelectionsScroll();
 
                 mSkip = false;
 
@@ -778,6 +807,17 @@ namespace JCSUnity
 
             // increament the index
             ++mSelectTextIndex;
+        }
+
+        /// <summary>
+        /// Complete the selection scroll text immediately.
+        /// </summary>
+        private void CompleteSelectionsScroll()
+        {
+            for (int index = mRenderSelectTextIndex; index < mSelectBtn.Length; ++index)
+            {
+                mSelectBtn[index].ButtonText.text = mSelectMessage[index];
+            }
         }
 
         /// <summary>
@@ -1088,7 +1128,6 @@ because button selection is not attach to all selections in the list...");
             // NOTE(jenchieh): We are appoarching to new status right now.
             return -1;
         }
-
 
         /// <summary>
         /// What if "Next Button" clicked?

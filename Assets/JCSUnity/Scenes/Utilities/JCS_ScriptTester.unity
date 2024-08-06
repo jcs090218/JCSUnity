@@ -894,6 +894,7 @@ MonoBehaviour:
   mTestDialogueScript: {fileID: 1098634727}
   DisposeKey: 113
   RunScriptKey: 119
+  SkipKey: 101
 --- !u!4 &1098634726
 Transform:
   m_ObjectHideFlags: 0
