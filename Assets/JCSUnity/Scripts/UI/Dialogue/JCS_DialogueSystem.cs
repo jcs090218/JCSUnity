@@ -20,6 +20,10 @@ namespace JCSUnity
     {
         /* Variables */
 
+        private bool mInitialized = false;
+
+        private JCS_DialogueScript mPreselectingScript = null;
+
         // Callback when successfully dispose the dialogue.
         public EmptyFunction onDispose = null;
 
@@ -107,6 +111,14 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TextObject mTextBox = null;
 
+        [Tooltip("Complete text before run action.")]
+        [SerializeField]
+        private bool mCompleteTextBeforeAction = false;
+
+        [Tooltip("Complete text before run action on button's event.")]
+        [SerializeField]
+        private bool mCompleteTextBeforeActionOnButton = false;
+
         [Tooltip("Speed of scrolling the text.")]
         [SerializeField]
         [Range(0.01f, 10.0f)]
@@ -187,6 +199,8 @@ namespace JCSUnity
         public bool Skip { get { return this.mSkip; } }
 
         public bool MakeHoverSelect { get { return this.mMakeHoverSelect; } set { this.mMakeHoverSelect = value; } }
+        public bool CompleteTextBeforeAction { get { return this.mCompleteTextBeforeAction; } set { this.mCompleteTextBeforeAction = value; } }
+        public bool CompleteTextBeforeActionOnButton { get { return this.mCompleteTextBeforeActionOnButton; } set { this.mCompleteTextBeforeActionOnButton = value; } }
         public JCS_DeltaTimeType DeltaTimeType { get { return this.mDeltaTimeType; } set { this.mDeltaTimeType = value; } }
         public JCS_DialogueScript DialogueScript { get { return this.mDialogueScript; } set { this.mDialogueScript = value; } }
         public string SelectStringFront { get { return this.mSelectStringFront; } }
@@ -217,6 +231,19 @@ namespace JCSUnity
 
             // dispose at the beginning of the game.
             Dispose();
+
+            mInitialized = true;
+
+            // When initialize and we already have preselected script; meaning
+            // we tried to activate the script last frame but weren't able to do so.
+            //
+            // Activate it now!
+            if (mPreselectingScript != null)
+            {
+                ActiveDialogue(mPreselectingScript);
+
+                mPreselectingScript = null;  // clear it.
+            }
         }
 
         private void LateUpdate()
@@ -232,11 +259,20 @@ namespace JCSUnity
         /// <summary>
         /// Start the dialogue, in other word same as start a conversation.
         /// </summary>
-        /// <param name="script">
-        /// Script to use to run the dialogue.
-        /// </param>
+        /// <param name="script"> Script to use to run the dialogue. </param>
         public void ActiveDialogue(JCS_DialogueScript script)
         {
+            if (!mInitialized)
+            {
+                // Assign to prepare to use it in the next frame's activation.
+                mPreselectingScript = script;
+
+                // Activate it on the next frame!
+                this.gameObject.SetActive(true);
+
+                return;
+            }
+
             mDialogueScript = script;
 
             if (mActive)
@@ -648,6 +684,9 @@ namespace JCSUnity
             if (!mActive || mActiveThisFrame)
                 return false;
 
+            if (SkipToEnd(mCompleteTextBeforeAction))
+                return false;
+
             NextBtnCallback();
 
             if (mMessage == "")
@@ -676,6 +715,16 @@ namespace JCSUnity
             {
                 mSkip = true;
 
+                return true;
+            }
+
+            return false;
+        }
+        public bool SkipToEnd(bool flag)
+        {
+            if (flag && IsScrolling())
+            {
+                SkipToEnd();
                 return true;
             }
 
@@ -1042,8 +1091,8 @@ namespace JCSUnity
                 {
                     if (btn.ButtonSelection == null)
                     {
-                        JCS_Debug.LogWarning(@"Cannot make hover select 
-because button selection is not attach to all selections in the list...");
+                        JCS_Debug.LogWarning(@"Cannot make hover select  because 
+button selection is not attach to all selections in the list!");
                     }
                     else
                     {
@@ -1136,45 +1185,57 @@ because button selection is not attach to all selections in the list...");
         }
 
         /// <summary>
-        /// What if "Next Button" clicked?
+        /// Callback for button `Next`.
         /// </summary>
         private void NextBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
 
             RunAction();
         }
         /// <summary>
-        /// What if "Previous Button" clicked?
+        /// Callback for button `Previous`.
         /// </summary>
         private void PreviousBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             DecPage();
 
             RunAction();
         }
         /// <summary>
-        /// What if "Yes Button" clicked?
+        /// Callback for button `Yes`.
         /// </summary>
         private void YesBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 1;
 
             RunAction();
         }
         /// <summary>
-        /// What if "No Button" clicked?
+        /// Callback for button `No`.
         /// </summary>
         private void NoBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 0;
 
             RunAction();
         }
         /// <summary>
-        /// What if "Ok Button" clicked?
+        /// Callback for button `Ok`.
         /// </summary>
         private void OkBtnCallback()
         {
@@ -1182,7 +1243,7 @@ because button selection is not attach to all selections in the list...");
             Dispose();
         }
         /// <summary>
-        /// What if "Exit Button" clicked?
+        /// Callback for button `Exit`.
         /// </summary>
         private void ExitBtnCallback()
         {
@@ -1190,32 +1251,40 @@ because button selection is not attach to all selections in the list...");
             Dispose();
         }
         /// <summary>
-        /// What if "Accept Button" clicked?
+        /// Callback for button `Accept`.
         /// </summary>
         private void AcceptBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 1;
 
             RunAction();
         }
         /// <summary>
-        /// What if "Decline Button" clicked?
+        /// Callback for button `Decline`.
         /// </summary>
         private void DeclineBtnCallback()
         {
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
             IncPage();
             Selection = 0;
 
             RunAction();
         }
         /// <summary>
-        /// What if "Selection Button" clicked?
+        /// Callback for button `Select`.
         /// </summary>
         private void SelectBtnCallback()
         {
-            // inc a page.
-            ++mDialogueScript.Status;
+            if (SkipToEnd(mCompleteTextBeforeActionOnButton))
+                return;
+
+            IncPage();
 
             RunAction();
         }

@@ -4,18 +4,20 @@ Dialogue system core implementation.
 
 ## Variables
 
-| Name                  | Description                                      |
-|:----------------------|:-------------------------------------------------|
-| callback_dispose      | Callback when successfully dispose the dialogue. |
-| mMakeHoverSelect      | If the mouse hover then select the selection.    |
-| mCenterImage          | Image displayed at the center.                   |
-| mLeftImage            | Image displayed at the left.                     |
-| mRightImage           | Image displayed at the right.                    |
-| mNameTag              | Current name tag.                                |
-| mScrollTime           | Speed of scrolling the text.                     |
-| mButtonSelectionGroup | Make control from the gamepad.                   |
-| mActiveSound          | Sound plays when active dialogue.                |
-| mDisposeSound         | Sound plays when dispose dialogue.               |
+| Name                              | Description                                        |
+|:----------------------------------|:---------------------------------------------------|
+| onDispose                         | Callback when successfully dispose the dialogue.   |
+| mMakeHoverSelect                  | If the mouse hover then select the selection.      |
+| mCompleteTextBeforeAction         | Complete text before run action.                   |
+| mCompleteTextBeforeActionOnButton | Complete text before run action on button's event. |
+| mCenterImage                      | Image displayed at the center.                     |
+| mLeftImage                        | Image displayed at the left.                       |
+| mRightImage                       | Image displayed at the right.                      |
+| mNameTag                          | Current name tag.                                  |
+| mScrollTime                       | Speed of scrolling the text.                       |
+| mButtonSelectionGroup             | Make control from the gamepad.                     |
+| mActiveSound                      | Sound plays when active dialogue.                  |
+| mDisposeSound                     | Sound plays when dispose dialogue.                 |
 
 ## Functions
 

@@ -61,6 +61,14 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Manually set the dialogue system.
+        /// </summary>
+        public void SetDialogueSystem(JCS_DialogueSystem ds)
+        {
+            this.mDialogueSystem = ds;
+        }
+
+        /// <summary>
         /// Starting point of the dialogue.
         /// </summary>
         /// <param name="mode"> 
