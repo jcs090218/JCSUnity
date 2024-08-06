@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix(Managers): Ensure reset pause state on new scene (b3a9dfa1696514ac1fcfb6eedfbe54784d41443b)
 * fix(Screen): Leave UI settings when the screen settings is none (817e6fc7f30607145fd695f1f6c7c7e00e889a24)
 * feat(UI): Add scroll text action for dialogue system (73b8f35e38ec129dc97275b23338730874aa0126)
+* feat(UI): Add auto progress for dialogue system (f654d7f93cfece172ccc6ec187dd6cee9a6b46b0)
 
 ## 2.4.0
 > Released Oct 02, 2023
