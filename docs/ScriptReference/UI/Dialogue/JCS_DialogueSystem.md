@@ -40,3 +40,5 @@ Dialogue system core implementation.
 | IncPage           | Increament one from page.                                       |
 | DecPage           | Decreament one from page.                                       |
 | NextOrDispose     | Continue with default condition.                                |
+| IsScrolling       | Return true if the dialogue system is still animating the text. |
+| SkipToEnd         | Skip the current text scroll.                                   |

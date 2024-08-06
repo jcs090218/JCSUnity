@@ -21,7 +21,7 @@ namespace JCSUnity
         /* Variables */
 
         // Callback when successfully dispose the dialogue.
-        public EmptyFunction callback_dispose = null;
+        public EmptyFunction onDispose = null;
 
         [Separator("Check Variables (JCS_DialogueSystem)")]
 
@@ -502,8 +502,8 @@ namespace JCSUnity
             mActiveThisFrame = false;
 
             // Check initialize to ignore dispose called at the very beginning!
-            if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && callback_dispose != null)
-                callback_dispose.Invoke();
+            if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && onDispose != null)
+                onDispose.Invoke();
 
             // Play the dispose dialogue sound.
             JCS_SoundManager.instance.GlobalSoundPlayer().PlayOneShot(mDisposeSound);
@@ -642,15 +642,21 @@ namespace JCSUnity
         /// <summary>
         /// Continue with default condition.
         /// </summary>
-        public void NextOrDispose()
+        /// <returns> Return true if successful continue the dialogue. </returns>
+        public bool NextOrDispose()
         {
             if (!mActive || mActiveThisFrame)
-                return;
+                return false;
 
             NextBtnCallback();
 
             if (mMessage == "")
+            {
                 Dispose();
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
