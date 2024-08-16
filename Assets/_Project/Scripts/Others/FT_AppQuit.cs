@@ -26,7 +26,7 @@ public class FT_AppQuit: MonoBehaviour
     {
         if (JCS_Input.GetKeyDown(KeyCode.R))
         {
-            JCS_UtilityFunctions.QuitApplicationWithSwithScene();
+            JCS_UtilFunctions.QuitApplicationWithSwithScene();
         }
     }
 }
