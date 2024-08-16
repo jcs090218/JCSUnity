@@ -25,6 +25,10 @@ Dialogue system core implementation.
 
 | Name              | Description                                                     |
 |:------------------|:----------------------------------------------------------------|
+| IsVisible         | Return true if the dialgoue system is visible.                  |
+| Show              | Show the dialogue.                                              |
+| Hide              | Hide the dialogue.                                              |
+| ToggleVisiblity   | Toggle between show and hide.                                   |
 | ActiveDialogue    | Start the dialogue, in other word same as start a conversation. |
 | SendChoice        | Send a choice to current status.                                |
 | SendNext          | Next button is the only option for current status.              |
