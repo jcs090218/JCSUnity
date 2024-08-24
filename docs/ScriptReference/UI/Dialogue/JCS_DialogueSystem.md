@@ -25,11 +25,8 @@ Dialogue system core implementation.
 
 | Name              | Description                                                     |
 |:------------------|:----------------------------------------------------------------|
-| IsVisible         | Return true if the dialgoue system is visible.                  |
-| Show              | Show the dialogue.                                              |
-| Hide              | Hide the dialogue.                                              |
-| ToggleVisiblity   | Toggle between show and hide.                                   |
 | ActiveDialogue    | Start the dialogue, in other word same as start a conversation. |
+| RunAction         | Run the script once.                                            |
 | SendChoice        | Send a choice to current status.                                |
 | SendNext          | Next button is the only option for current status.              |
 | SendNextPrev      | Current status will be next and prev control/options.           |
@@ -50,3 +47,7 @@ Dialogue system core implementation.
 | NextOrDispose     | Continue with default condition.                                |
 | IsScrolling       | Return true if the dialogue system is still animating the text. |
 | SkipToEnd         | Skip the current text scroll.                                   |
+| IsVisible         | Return true if the dialgoue system is visible.                  |
+| Show              | Show the dialogue.                                              |
+| Hide              | Hide the dialogue.                                              |
+| ToggleVisiblity   | Toggle between show and hide.                                   |
