@@ -508,6 +508,9 @@ namespace JCSUnity
             }
         }
 
+        /// <summary>
+        /// Return the possible material color.
+        /// </summary>
         private Color GetColor()
         {
             foreach (string prop in mColorProps)
@@ -527,6 +530,9 @@ namespace JCSUnity
             return Color.white;
         }
 
+        /// <summary>
+        /// Update the material color.
+        /// </summary>
         private void SetColor(Color val)
         {
             foreach (string prop in mColorProps)
