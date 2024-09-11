@@ -924,10 +924,10 @@ namespace JCSUnity
                 ||
                 // if the text are the same skip it too.
                 (mSelectMessage[mRenderSelectTextIndex] ==
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text))
+                mSelectBtn[mRenderSelectTextIndex].ItText.text))
             {
                 // set directly to the text box.
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
+                mSelectBtn[mRenderSelectTextIndex].ItText.text
                     = mSelectMessage[mRenderSelectTextIndex];
 
                 // increament one, start render next selection!
@@ -952,7 +952,7 @@ namespace JCSUnity
             else
             {
                 // do the scrolling
-                mSelectBtn[mRenderSelectTextIndex].ButtonText.text
+                mSelectBtn[mRenderSelectTextIndex].ItText.text
                     = mSelectMessage[mRenderSelectTextIndex].Substring(0, mSelectTextIndex);
             }
 
@@ -967,7 +967,7 @@ namespace JCSUnity
         {
             for (int index = mRenderSelectTextIndex; index < mSelectBtn.Length; ++index)
             {
-                mSelectBtn[index].ButtonText.text = mSelectMessage[index];
+                mSelectBtn[index].ItText.text = mSelectMessage[index];
             }
         }
 
@@ -1163,7 +1163,7 @@ namespace JCSUnity
             for (int index = 0; index < mSelectMessage.Length; ++index)
             {
                 mSelectMessage[index] = "";
-                mSelectBtn[index].ButtonText.text = "";
+                mSelectBtn[index].ItText.text = "";
             }
         }
 
