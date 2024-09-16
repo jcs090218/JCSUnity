@@ -19,7 +19,7 @@ public class FT_CastToMePosition : MonoBehaviour
     public JCS_PositionCastAction castAction = null;
 
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

@@ -12,7 +12,7 @@ public class FT_Collision_Overlap : MonoBehaviour
 {
     /* Variables */
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

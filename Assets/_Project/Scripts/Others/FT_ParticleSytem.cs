@@ -21,7 +21,7 @@ public class FT_ParticleSytem : MonoBehaviour
 
     private JCS_Vector<JCS_Particle> mParticles = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

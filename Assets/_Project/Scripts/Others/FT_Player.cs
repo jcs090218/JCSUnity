@@ -13,7 +13,7 @@ public class FT_Player : JCS_2DSideScrollerPlayer
 {
     /* Variables */
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

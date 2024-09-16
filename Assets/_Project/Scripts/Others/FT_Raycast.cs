@@ -14,7 +14,7 @@ public class FT_Raycast : MonoBehaviour
 
     private CharacterController mCharacterController = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     public CharacterController GetCC() { return this.mCharacterController; }
 

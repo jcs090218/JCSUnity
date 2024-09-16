@@ -29,6 +29,8 @@ namespace JCSUnity
     {
         /* Variables */
 
+        private Material mMaterial = null;
+
         [Separator("Initialize Variables (JCS_Unityobject)")]
 
         [Tooltip("Type of the Unity game object.")]
@@ -51,6 +53,10 @@ namespace JCSUnity
 
         [Header("Material")]
 
+        [Tooltip("Make material clone.")]
+        [SerializeField]
+        private bool mMakeUnique = false;
+
         [Tooltip("Shader's color properties.")]
         [SerializeField]
         private List<string> mColorProps = null;
@@ -63,6 +69,7 @@ namespace JCSUnity
             UpdateUnityData();
         }
         public JCS_UnityObjectType GetObjectType() { return this.mObjectType; }
+        public Material GetMaterial() { return this.mMaterial; }
         public Image GetImage() { return this.mImage; }
         public Renderer GetRenderer() { return this.mRenderer; }
         public SpriteRenderer GetSpriteRenderer() { return this.mSpriteRenderer; }
@@ -71,6 +78,7 @@ namespace JCSUnity
 #if TMP_PRO
         public TextMeshPro GetTextMesh() { return this.mTextMesh; }
 #endif
+        public bool MakeUnique { get { return this.mMakeUnique; } set { this.mMakeUnique = value; } }
         public List<string> ColorProps { get { return this.mColorProps; } set { this.mColorProps = value; } }
 
         /* Functions */
@@ -104,6 +112,56 @@ namespace JCSUnity
 #if TMP_PRO
                 case JCS_UnityObjectType.TMP:
                     this.mTextMesh = this.GetComponent<TextMeshPro>();
+                    break;
+#endif
+            }
+
+            UpdateMaterial();
+        }
+
+        /// <summary>
+        /// Make unique material.
+        /// </summary>
+        public virtual void UpdateMaterial(bool force = false)
+        {
+            if (!mMakeUnique && !force)
+                return;
+
+            switch (GetObjectType())
+            {
+                case JCS_UnityObjectType.GAME_OBJECT:
+                    {
+                        mMaterial = Instantiate(mRenderer.material);
+                        mRenderer.material = mMaterial;
+                    }
+                    break;
+                case JCS_UnityObjectType.UI:
+                    {
+                        if (mImage != null)
+                        {
+                            mMaterial = Instantiate(mImage.material);
+                            mImage.material = mMaterial;
+                        }
+                    }
+                    break;
+                case JCS_UnityObjectType.SPRITE:
+                    {
+                        mMaterial = Instantiate(mSpriteRenderer.material);
+                        mSpriteRenderer.material = mMaterial;
+                    }
+                    break;
+                case JCS_UnityObjectType.TEXT:
+                    {
+                        mMaterial = Instantiate(mText.material);
+                        mText.material = mMaterial;
+                    }
+                    break;
+#if TMP_PRO
+                case JCS_UnityObjectType.TMP:
+                    {
+                        mMaterial = Instantiate(mTextMesh.material);
+                        mTextMesh.material = mMaterial;
+                    }
                     break;
 #endif
             }
@@ -506,6 +564,21 @@ namespace JCSUnity
 #endif
                 }
             }
+        }
+
+        /// <summary>
+        /// Return the possible material.
+        /// </summary>
+        public Material LocalMaterial
+        {
+            get 
+            {
+                if (mMaterial == null)
+                    UpdateMaterial();
+
+                return this.mMaterial; 
+            }
+            set { this.mMaterial = value; }
         }
 
         /// <summary>

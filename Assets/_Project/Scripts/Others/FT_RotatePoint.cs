@@ -20,7 +20,7 @@ public class FT_RotatePoint : MonoBehaviour
 
     public float radius = 10;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

@@ -15,7 +15,7 @@ public class FT_TimeScale : MonoBehaviour
 {
     /* Variables */
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

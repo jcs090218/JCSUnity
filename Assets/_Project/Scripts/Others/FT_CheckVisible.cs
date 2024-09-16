@@ -16,7 +16,7 @@ public class FT_CheckVisible : JCS_UnityObject
 {
     /* Variables */
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

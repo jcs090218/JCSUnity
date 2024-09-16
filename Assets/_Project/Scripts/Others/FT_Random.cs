@@ -13,7 +13,7 @@ public class FT_Random : MonoBehaviour
 {
     /* Variables */
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

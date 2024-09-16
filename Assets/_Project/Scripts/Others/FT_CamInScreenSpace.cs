@@ -16,7 +16,7 @@ public class FT_CamInScreenSpace : MonoBehaviour
 
     private RectTransform mRectTransform = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

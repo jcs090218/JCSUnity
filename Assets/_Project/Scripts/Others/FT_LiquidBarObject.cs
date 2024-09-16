@@ -16,7 +16,7 @@ public class FT_LiquidBarObject : MonoBehaviour
     public JCS_GUILiquidBar mBar = null;
     public Vector3 mOffset = Vector3.zero;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

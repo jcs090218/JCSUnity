@@ -19,7 +19,7 @@ public class FT_InputField : MonoBehaviour
 
     public InputField inputField = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

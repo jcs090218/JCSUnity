@@ -13,7 +13,7 @@ public class FT_AppQuit: MonoBehaviour
 {
     /* Variables */
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

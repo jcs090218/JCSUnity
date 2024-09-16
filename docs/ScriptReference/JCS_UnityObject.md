@@ -13,6 +13,8 @@ from its component.
 
 | Name             | Description                                                 |
 |:-----------------|:------------------------------------------------------------|
+| mMakeUnique      | Make material clone.                                        |
+| mColorProps      | Shader's color properties.                                  |
 | LocalType        | Component of this current type.                             |
 | LocalTransform   | Either regular transform or recttransform base on the type. |
 | Position         | Position of this gameobject.                                |
@@ -21,6 +23,7 @@ from its component.
 | LocalEulerAngles | Local euler angles of this gameobject.                      |
 | LocalScale       | Local scale of this gameobject.                             |
 | LocalEnabled     | Enabled/disable this gameobject.                            |
+| LocalMaterial    | Local material of this gameobject.                          |
 | LocalColor       | Color of this gameobject.                                   |
 | LocalAlpha       | Alpha channel of this gameobject.                           |
 | LocalRed         | Red channel of this gameobject.                             |
@@ -37,5 +40,6 @@ from its component.
 | Name            | Description                                                                               |
 |:----------------|:------------------------------------------------------------------------------------------|
 | UpdateUnityData | Identify the object itself. See [JCS_UnityObjectType](?page=Enums_sl_JCS_UnityObjectType) |
+| UpdateMaterial  | Make unique material.                                                                     |
 | GetObjectType   | Returns the type of this unity object.                                                    |
 | IsObjectType    | Check if TYPE is current object type.                                                     |

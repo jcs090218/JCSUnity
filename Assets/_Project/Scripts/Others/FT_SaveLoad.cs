@@ -16,7 +16,7 @@ public class FT_SaveLoad : MonoBehaviour
 {
     /* Variables */
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
     private void Awake()

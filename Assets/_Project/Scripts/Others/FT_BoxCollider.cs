@@ -23,7 +23,7 @@ public class FT_BoxCollider : MonoBehaviour
     [SerializeField] 
     private float mHeight = 0;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     public float Width { get { return this.mWidth; } }
     public float Height { get { return this.mHeight; } }

@@ -18,7 +18,7 @@ public class FT_EchoGamepadButton : JCS_GamepadButton
 
     public JCS_DialogueObject closeDialogue = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

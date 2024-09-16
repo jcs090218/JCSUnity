@@ -17,7 +17,7 @@ public class FT_FitPushScreen : MonoBehaviour
     private RectTransform mPanelRectTransform = null;
 
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

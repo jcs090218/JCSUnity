@@ -19,7 +19,7 @@ public class FT_Collide : MonoBehaviour
     public BoxCollider mBoxCollider = null;
     public CharacterController mCharacterController = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

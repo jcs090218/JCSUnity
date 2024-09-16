@@ -19,7 +19,7 @@ public class FT_BGM : MonoBehaviour
     public AudioClip mOneShotBGM = null;
     public AudioClip mOnStackBGM = null;
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 

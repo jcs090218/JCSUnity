@@ -19,7 +19,7 @@ public class FT_JSONAppData : JCS_JSONData
     public string Name = "";  // name of the player
     public int Cash = 0;      // cash in the game
 
-    /* Setter/Getter */
+    /* Setter & Getter */
 
     /* Functions */
 
