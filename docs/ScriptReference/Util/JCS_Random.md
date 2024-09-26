@@ -8,6 +8,7 @@ Random library class.
 |:-------------|:--------------------------------------------|
 | Range        | Default random range wrapper.               |
 | RaneeInclude | Include the maxinum number.                 |
-| RandomColor  | Returns a random color.                     |
+| PickColor    | Returns a random color.                     |
 | ChooseOne    | Choose one object from the list.            |
 | ChooseOneE   | Choose one object from the list. (Ellipsis) |
+| EnumValue    | Return a random enum value.                 |
