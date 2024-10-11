@@ -154,6 +154,9 @@ namespace JCSUnity
             this.mImage = this.GetComponent<Image>();
 
             // try to get the text from the child.
+            if (mItText == null)
+                mItText = this.GetComponent<JCS_TextObject>();
+
             if (mItText != null)
             {
                 if (mItText.TextContainer == null)
