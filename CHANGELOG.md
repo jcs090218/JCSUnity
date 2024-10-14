@@ -8,6 +8,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 3.0.1 (Unreleased)
 > Released N/A
 
+* N/A
+
 ## 3.0.0
 > Released Oct 15, 2024
 
