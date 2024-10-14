@@ -52,7 +52,7 @@ public class BF_GameSettings : JCS_Settings<BF_GameSettings>
 
     private void Awake()
     {
-        instance = CheckSingleton(instance, this);
+        instance = CheckInstance(instance, this);
     }
 
     /// <summary>

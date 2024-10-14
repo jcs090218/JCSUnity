@@ -12,7 +12,7 @@ Interface of all setting class.
 
 | Name           | Description                                        |
 |:---------------|:---------------------------------------------------|
-| CheckSingleton | Force the setting object singleton.                |
+| CheckInstance  | Force the setting object singleton.                |
 | TransferData   | Transfter data through one scene to another scene. |
 
 ## Example
@@ -25,7 +25,7 @@ ExampleSetting.cs
       private void Awake ()
       {
           // Make the instance singleton.
-          instance = CheckSingleton(instance, this);
+          instance = CheckInstance(instance, this);
       }
   }
 ```

@@ -41,7 +41,7 @@ public class RC_AppSettings : JCS_Settings<RC_AppSettings>
 
     private void Awake()
     {
-        instance = CheckSingleton(instance, this);
+        instance = CheckInstance(instance, this);
     }
 
     private void Start()
