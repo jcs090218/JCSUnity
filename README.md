@@ -31,6 +31,7 @@ any placeholder assets commercially.
 
 Here is the list of few important and recent changes to this framework.
 
+- `3.0.0` - Rename setting function from `CheckSingleton` to `CheckInstance`.
 - `2.3.1` - Use [MyBox](https://github.com/Deadcows/MyBox) to organize variables.
 - `2.3.0` - Fixed resizable screen's calculation in perspective mode.
 - `2.2.1` - Implement new screen type, `MIXED` for responsive UI.
@@ -40,7 +41,6 @@ Here is the list of few important and recent changes to this framework.
 - `2.1.0` - Multiple minor fix for screen module for resizable screen feature.
 - `2.0.7` - Support consistent streaming assets loading with web request.
 - `2.0.6` - Updated project to Unity version `2020.1.0f1`.
-- `2.0.5` - Supplied full version of `webcam` module.
 
 ## 🔨 How to use it?
 
