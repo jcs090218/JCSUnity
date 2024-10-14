@@ -17,10 +17,10 @@ Interface of all setting class.
 
 ## Example
 
-ExampleSetting.cs
+Example.cs
 
 ```cs
-  public class ExampleSetting : MonoBehaviour
+  public class Example : JCS_Settings<Example>
   {
       private void Awake ()
       {
