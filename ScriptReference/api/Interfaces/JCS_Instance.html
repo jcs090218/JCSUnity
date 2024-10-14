@@ -1,16 +1,16 @@
-<h1 id="jcs_instance">JCS_Instance</h1><p>Singleton instance interface.<p>This file contain three classes.<h3 id="1-jcs_instance">1) JCS_Instance</h3><p>See <code>Example.cs</code>:<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> : <span class="hljs-title">JCS_Instance</span>&lt;<span class="hljs-title">Example</span>&gt;
+<h1 id="jcs_instance">JCS_Instance</h1><p>Singleton instance interface.<p>This file contain three classes.<h3 id="🏛️-jcs_instance">🏛️ JCS_Instance</h3><p>See <code>Example.cs</code>:<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> : <span class="hljs-title">JCS_Instance</span>&lt;<span class="hljs-title">Example</span>&gt;
   {
       <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span> (<span class="hljs-params"></span>)</span>
       {
           instance = <span class="hljs-keyword">this</span>;
       }
-  }</code></pre><h3 id="2-jcs_instanceold">2) JCS_InstanceOld</h3><p>Singleton instance interface to keep the old instance.<p>See <code>ExampleOld.cs</code>:<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ExampleOld</span> : <span class="hljs-title">JCS_InstanceOld</span>&lt;<span class="hljs-title">Example</span>&gt;
+  }</code></pre><h3 id="🏛️-jcs_instanceold">🏛️ JCS_InstanceOld</h3><p>Singleton instance interface to keep the old instance.<p>See <code>ExampleOld.cs</code>:<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ExampleOld</span> : <span class="hljs-title">JCS_InstanceOld</span>&lt;<span class="hljs-title">Example</span>&gt;
   {
       <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span> (<span class="hljs-params"></span>)</span>
       {
           CheckInstance(<span class="hljs-keyword">this</span>);
       }
-  }</code></pre><h3 id="3-jcs_instancenew">3) JCS_InstanceNew</h3><p>Check singleton for keep the old one.<p>See <code>ExampleNew.cs</code>:<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ExampleNew</span> : <span class="hljs-title">JCS_InstanceNew</span>&lt;<span class="hljs-title">Example</span>&gt;
+  }</code></pre><h3 id="🏛️-jcs_instancenew">🏛️ JCS_InstanceNew</h3><p>Check singleton for keep the old one.<p>See <code>ExampleNew.cs</code>:<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ExampleNew</span> : <span class="hljs-title">JCS_InstanceNew</span>&lt;<span class="hljs-title">Example</span>&gt;
   {
       <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span> (<span class="hljs-params"></span>)</span>
       {
