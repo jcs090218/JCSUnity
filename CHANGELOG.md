@@ -5,8 +5,11 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 2.4.1 (Unreleased)
+## 3.0.1 (Unreleased)
 > Released N/A
+
+## 3.0.0
+> Released Oct 15, 2024
 
 * feat(Events): Add new component `JCS_AppSkip` (e5423f99a318af0c8567a8743c1e95d9beee37b9)
 * feat(UI): Add next or continue to dialogue system (712163419eb8d2fbb6262a1047c0318698bf7241)
@@ -16,6 +19,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(UI): Add scroll text action for dialogue system (73b8f35e38ec129dc97275b23338730874aa0126)
 * feat(UI): Add auto progress for dialogue system (f654d7f93cfece172ccc6ec187dd6cee9a6b46b0)
 * feat(Util): Add random enum value (b787172c4b293fc857ee1a4c42047dc8a228ec61)
+* feat(Interface): Add instance interface `new` and `old` (3ba02c4f34d5bd2119f73e19e50a3ed5b07cf5f3)
 
 ## 2.4.0
 > Released Oct 02, 2023
