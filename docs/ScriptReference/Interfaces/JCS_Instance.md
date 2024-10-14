@@ -4,7 +4,7 @@ Singleton instance interface.
 
 This file contain three classes.
 
-### 1) JCS_Instance
+### 🏛️ JCS_Instance
 
 See `Example.cs`:
 
@@ -18,7 +18,7 @@ See `Example.cs`:
   }
 ```
 
-### 2) JCS_InstanceOld
+### 🏛️ JCS_InstanceOld
 
 Singleton instance interface to keep the old instance.
 
@@ -34,7 +34,7 @@ See `ExampleOld.cs`:
   }
 ```
 
-### 3) JCS_InstanceNew
+### 🏛️ JCS_InstanceNew
 
 Check singleton for keep the old one.
 
