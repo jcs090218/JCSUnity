@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 3.0.1 (Unreleased)
 > Released N/A
 
-* N/A
+* feat(Effects): Add Shader Tweener (a82baff87c87c18839b60a6a36363dbf4524ff3b)
 
 ## 3.0.0
 > Released Oct 15, 2024
