@@ -30,6 +30,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public JCS_ValueTweener ValueTweener { get { return this.mValueTweener; } }
         public List<string> ShaderProps { get { return mShaderProps; } set { this.mShaderProps = value; } }
 
         /* Functions */

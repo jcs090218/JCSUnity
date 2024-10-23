@@ -6,6 +6,7 @@ Can only use for `float` properties.
 
 ## Variables
 
-| Name         | Description                 |
-|:-------------|:----------------------------|
-| mShaderProps | Target shader's properties. |
+| Name          | Description                 |
+|:--------------|:----------------------------|
+| mValueTweener | Tweener implementation.     |
+| mShaderProps  | Target shader's properties. |
