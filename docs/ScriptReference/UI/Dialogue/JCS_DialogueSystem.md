@@ -11,7 +11,8 @@ Dialogue system core implementation.
 | mCenterImage                      | Image displayed at the center.                     |
 | mLeftImage                        | Image displayed at the left.                       |
 | mRightImage                       | Image displayed at the right.                      |
-| mNameTag                          | Current name tag.                                  |
+| mNameTag                          | Text box to display names.                         |
+| mTextBox                          | Text box to display content messages.              |
 | mScrollTime                       | Speed of scrolling the text.                       |
 | mButtonSelectionGroup             | Make control from the gamepad.                     |
 | mCompleteTextBeforeAction         | Complete text before run action.                   |
@@ -44,7 +45,9 @@ Dialogue system core implementation.
 | SendRightImage    | Set the sprite to the image component. (Right)                  |
 | IncPage           | Increament one from page.                                       |
 | DecPage           | Decreament one from page.                                       |
-| NextOrDispose     | Continue with default condition.                                |
+| Previous          | Go to previous page of the dialogue.                            |
+| Next              | Go to next page of the dialogue.                                |
+| NextOrDispose     | Like `Next` function but dispose it when possible.              |
 | IsScrolling       | Return true if the dialogue system is still animating the text. |
 | SkipToEnd         | Skip the current text scroll.                                   |
 | IsVisible         | Return true if the dialgoue system is visible.                  |
