@@ -163,6 +163,10 @@ namespace JCSUnity
         private string mSelectStringFront = "#L" + 0 + "##b";
         private string mSelectStringBack = "#k#l";
 
+        [Tooltip("Allow dialogue even the dialogue is hidden.")]
+        [SerializeField]
+        private bool mProgressOnHidden = false;
+
         [Header("Controller")]
 
         [Tooltip("Button selection group for this dialogue system.")]
@@ -208,6 +212,7 @@ namespace JCSUnity
         public bool Scrolling { get { return this.mScrolling; } }
         public bool ScrollingSelectBtnText { get { return this.mScrollingSelectBtnText; } }
         public bool Skip { get { return this.mSkip; } }
+        public bool ProgressOnHidden { get { return this.mProgressOnHidden; } set { this.mProgressOnHidden = value; } }
 
         public Image CenterImage { get { return this.mCenterImage; } }
         public Image LeftImage { get { return this.mLeftImage; } }
@@ -791,8 +796,11 @@ namespace JCSUnity
             if (!mActive || mActiveThisFrame)
                 return false;
 
-            if (!IsVisible())
-                return false;
+            if (!mProgressOnHidden)
+            {
+                if (!IsVisible())
+                    return false;
+            }
 
             if (SkipToEnd(mCompleteTextBeforeAction))
                 return false;
@@ -810,8 +818,11 @@ namespace JCSUnity
             if (!mActive || mActiveThisFrame)
                 return false;
 
-            if (!IsVisible())
-                return false;
+            if (!mProgressOnHidden)
+            {
+                if (!IsVisible())
+                    return false;
+            }
 
             if (SkipToEnd(mCompleteTextBeforeAction))
                 return false;

@@ -4321,7 +4321,7 @@ MonoBehaviour:
   mTextBox: {fileID: 4721417465960552238}
   mScrollTime: 0.01
   mDeltaTimeType: 0
-  mPanelTrans: {fileID: 0}
+  mPanelTrans: {fileID: 5128195222572262980}
   mOkBtn: {fileID: 5028031362586869509}
   mExitBtn: {fileID: 7745303352578131837}
   mYesBtn: {fileID: 1501004296892910144}
@@ -4337,6 +4337,7 @@ MonoBehaviour:
   - {fileID: 6660478124192659684}
   - {fileID: 7296028875851633172}
   - {fileID: 8791215142036938067}
+  mProgressOnHidden: 0
   mButtonSelectionGroup: {fileID: 5080200581021259784}
   mCompleteTextBeforeAction: 0
   mCompleteTextBeforeActionOnButton: 0

@@ -14,6 +14,7 @@ Dialogue system core implementation.
 | mNameTag                          | Text box to display names.                         |
 | mTextBox                          | Text box to display content messages.              |
 | mScrollTime                       | Speed of scrolling the text.                       |
+| mProgressOnHidden                 | Allow progress dialogue even the it is hidden.     |
 | mButtonSelectionGroup             | Make control from the gamepad.                     |
 | mCompleteTextBeforeAction         | Complete text before run action.                   |
 | mCompleteTextBeforeActionOnButton | Complete text before run action on button's event. |
