@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 > Released N/A
 
 * feat(Effects): Add Shader Tweener (a82baff87c87c18839b60a6a36363dbf4524ff3b)
+* feat(UI): Add progress on hidden option to dialogue system (8a6090a10c832f9ffc62376351d7eb32767e32dd)
 
 ## 3.0.0
 > Released Oct 15, 2024

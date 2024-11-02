@@ -4,8 +4,9 @@ Manager that manage the game behaviour.
 
 ## Variables
 
-| Name                 | Description                    |
-|:---------------------|:-------------------------------|
-| TIME_SCALE           | Adjustable current time scale" |
-| GAME_PAUSE           | Is the game pause?             |
-| GAME_DONE_INITIALIZE | Is game done initialize?       |
+| Name              | Description                                 |
+|:------------------|:--------------------------------------------|
+| onAfterInitialize | Callback after the game is done initialize. |
+| TIME_SCALE        | Adjustable current time scale.              |
+| GAME_PAUSE        | Is the game pause?                          |
+| DONE_INITIALIZE   | Is game done initialize?                    |

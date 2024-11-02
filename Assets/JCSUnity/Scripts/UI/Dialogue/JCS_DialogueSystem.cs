@@ -643,7 +643,7 @@ namespace JCSUnity
             mActiveThisFrame = false;
 
             // Check initialize to ignore dispose called at the very beginning!
-            if (JCS_GameManager.instance.GAME_DONE_INITIALIZE && onDispose != null)
+            if (JCS_GameManager.instance.DONE_INITIALIZE && onDispose != null)
                 onDispose.Invoke();
 
             // Play the dispose dialogue sound.
