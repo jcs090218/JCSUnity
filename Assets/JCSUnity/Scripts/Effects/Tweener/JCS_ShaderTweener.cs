@@ -35,8 +35,10 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
+
             this.mValueTweener = this.GetComponent<JCS_ValueTweener>();
 
             mValueTweener.onValueChange = SetValue;
