@@ -12,8 +12,8 @@ All code utility is stored here.
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |
-| WithInArrayRange                     | Check if the index valid within the array length.&nbsp&nbsp(0 ~ (length - 1))                     |
-| LoopInArray                          | Make the index is within the array length by setting the maxinum of (legnth - 1) or mininum of 0. |
+| WithInRange                          | Check if the index valid within the array length.                                                 |
+| LoopIn                               | Make the index is within the array length by setting the maxinum of (legnth - 1) or mininum of 0. |
 | SpawnAnimateObject                   | Spawn a gameobject with animation attached.                                                       |
 | SpawnAnimateObjectDeathEvent         | Spawn a gameobject with the animator and death event on it.                                       |
 | SetActiveToAllChildren               | Active all the child in a transform.                                                              |
