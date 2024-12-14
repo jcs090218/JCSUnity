@@ -11,6 +11,7 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // The canvas this component to control.
         protected JCS_Canvas mCanvas = null;
 
         /* Setter & Getter */
@@ -22,8 +23,8 @@ namespace JCSUnity
             this.mCanvas = this.GetComponent<JCS_Canvas>();
         }
 
-        public void Show() => mCanvas.Show();
-        public void Hide() => mCanvas.Hide();
-        public void ToggleVisibility() => mCanvas.ToggleVisibility();
+        public virtual void Show() => mCanvas.Show();
+        public virtual void Hide() => mCanvas.Hide();
+        public virtual void ToggleVisibility() => mCanvas.ToggleVisibility();
     }
 }
