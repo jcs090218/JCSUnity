@@ -11,6 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Effects): Add Shader Tweener (a82baff87c87c18839b60a6a36363dbf4524ff3b)
 * feat(UI): Add progress on hidden option to dialogue system (8a6090a10c832f9ffc62376351d7eb32767e32dd)
 * feat(Manager): Rename some game initialize variables (1685e188757782d043f83b002eeec8c230371f07)
+* feat(UI): Add `JCS_CanvasComp` (9efce24c24a599df518c0034f9805f699a9841a3)
 
 ## 3.0.0
 > Released Oct 15, 2024
