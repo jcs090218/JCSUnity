@@ -1,3 +1,3 @@
-# JCS_GameConstant
+# JCS_Constants
 
 Place general game constant here.
