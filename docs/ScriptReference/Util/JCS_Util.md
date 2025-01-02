@@ -16,6 +16,7 @@ All code utility is stored here.
 | LoopIn                               | Make the index is within the array length by setting the maxinum of (legnth - 1) or mininum of 0. |
 | SpawnAnimateObject                   | Spawn a gameobject with animation attached.                                                       |
 | SpawnAnimateObjectDeathEvent         | Spawn a gameobject with the animator and death event on it.                                       |
+| GroundVector                         | Make the vector to a ground vector.                                                               |
 | SetActiveToAllChildren               | Active all the child in a transform.                                                              |
 | MoveToTheLastChild                   | Make the transform to the last transform of the current parent transform.                         |
 | SetParentWithoutLosingInfo           | Set the transform to another transform without losing it's info. (position, rotation, scale)      |
