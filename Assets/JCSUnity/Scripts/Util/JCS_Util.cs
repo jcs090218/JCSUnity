@@ -285,6 +285,18 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Make the vector to a ground vector.
+        /// </summary>
+        public static Vector3 GroundVector(Vector3 vec)
+        {
+            return new Vector3(vec.x, 0.0f, vec.z);
+        }
+        public static Vector2 GroundVector(Vector2 vec)
+        {
+            return new Vector3(vec.x, 0.0f);
+        }
+
+        /// <summary>
         /// Set the vector value.
         /// </summary>
         /// <param name="val"></param>
