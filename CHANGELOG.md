@@ -12,6 +12,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(UI): Add progress on hidden option to dialogue system (8a6090a10c832f9ffc62376351d7eb32767e32dd)
 * feat(Manager): Rename some game initialize variables (1685e188757782d043f83b002eeec8c230371f07)
 * feat(UI): Add `JCS_CanvasComp` (9efce24c24a599df518c0034f9805f699a9841a3)
+* feat(Util): Add `JCS_Vector` util; rename original to `JCS_Vec` (18472e42ff23bbd1a80341c90680161e20c87634)
 
 ## 3.0.0
 > Released Oct 15, 2024
