@@ -19,7 +19,7 @@ public class FT_ParticleSytem : MonoBehaviour
     [SerializeField]
     private JCS_ParticleSystem mParticleSystem = null;
 
-    private JCS_Vector<JCS_Particle> mParticles = null;
+    private JCS_Vec<JCS_Particle> mParticles = null;
 
     /* Setter & Getter */
 

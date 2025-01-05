@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $File: JCS_Vector.cs $
  * $Date: $
  * $Revision: $
@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Vector data structure implementation.
     /// </summary>
-    public class JCS_Vector<T>
+    public class JCS_Vec<T>
     {
         private T[] m_array = null;
 
@@ -21,7 +21,7 @@ namespace JCSUnity
         public int length { get { return m_array.Length; } }
         public bool empty { get { return (length == 0); } }
 
-        public JCS_Vector(int length = 0)
+        public JCS_Vec(int length = 0)
         {
             m_array = new T[length];
         }
@@ -158,8 +158,5 @@ namespace JCSUnity
             m_array = null;
             m_array = new T[0];
         }
-
     }
 }
-
-

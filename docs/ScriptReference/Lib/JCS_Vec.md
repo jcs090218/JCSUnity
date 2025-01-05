@@ -1,4 +1,4 @@
-# JCS_Vector
+# JCS_Vec
 
 Vector data structure implementation.
 
