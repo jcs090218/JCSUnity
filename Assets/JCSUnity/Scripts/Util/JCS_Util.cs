@@ -343,59 +343,6 @@ namespace JCSUnity
 
         #endregion
 
-        #region JSON
-
-        /// <summary>
-        /// Return JSON by passing serializable object.
-        /// </summary>
-        /// <param name="obj"> Object that are serializable. </param>
-        /// <returns> JSON string. </returns>
-        public static string ToJson<T>(T obj)
-        {
-            return JsonUtility.ToJson(obj);
-        }
-
-        #endregion
-
-        #region Scene
-
-        /// <summary>
-        /// Check current scene's with NAME.
-        /// </summary>
-        /// <param name="name"> Name of the scene. </param>
-        /// <returns>
-        /// Return true, if the current scene name the same as NAME.
-        /// Return false, if the current scene name NOT the same as NAME.
-        /// </returns>
-        public static bool IsScene(string name)
-        {
-            return SceneManager.GetActiveScene().name == name;
-        }
-
-        /// <summary>
-        /// Returns true if the scene 'name' exists and is in your Build settings, 
-        /// false otherwise.
-        /// </summary>
-        public static bool IsSceneExists(string name)
-        {
-            if (string.IsNullOrEmpty(name))
-                return false;
-
-            for (int index = 0; index < SceneManager.sceneCountInBuildSettings; ++index)
-            {
-                var scenePath = SceneUtility.GetScenePathByBuildIndex(index);
-                var lastSlash = scenePath.LastIndexOf("/");
-                var sceneName = scenePath.Substring(lastSlash + 1, scenePath.LastIndexOf(".") - lastSlash - 1);
-
-                if (string.Compare(name, sceneName, true) == 0)
-                    return true;
-            }
-
-            return false;
-        }
-
-        #endregion
-
         #region String
 
         /// <summary>
@@ -451,6 +398,20 @@ namespace JCSUnity
         {
             url = url.Replace(" ", "%20");
             return url;
+        }
+
+        #endregion
+
+        #region JSON
+
+        /// <summary>
+        /// Return JSON by passing serializable object.
+        /// </summary>
+        /// <param name="obj"> Object that are serializable. </param>
+        /// <returns> JSON string. </returns>
+        public static string ToJson<T>(T obj)
+        {
+            return JsonUtility.ToJson(obj);
         }
 
         #endregion
@@ -687,25 +648,6 @@ namespace JCSUnity
             trans.localPosition = recordPos;
             trans.localScale = recordScale;
             trans.localRotation = recordRot;
-        }
-
-        /// <summary>
-        /// Check if the object are the same tribe.
-        /// </summary>
-        /// <param name="liveObj1"> obj one </param>
-        /// <param name="liveObj2"> obj two </param>
-        /// <returns>
-        /// true: same tribe
-        /// false: not the same tribe
-        /// </returns>
-        public static bool IsSameTribe(JCS_2DLiveObject liveObj1, JCS_2DLiveObject liveObj2)
-        {
-            if (liveObj1 == null || liveObj2 == null)
-                return false;
-
-            // if both player does not need to add in to list.
-            // or if both enemy does not need to add in to list.
-            return (liveObj1.IsPlayer == liveObj2.IsPlayer);
         }
 
         /// <summary>
@@ -1198,6 +1140,64 @@ namespace JCSUnity
                 callback.Invoke(parent);
 
             trans.SetParent(parent);
+        }
+
+        #region Scene
+
+        /// <summary>
+        /// Check current scene's with NAME.
+        /// </summary>
+        /// <param name="name"> Name of the scene. </param>
+        /// <returns>
+        /// Return true, if the current scene name the same as NAME.
+        /// Return false, if the current scene name NOT the same as NAME.
+        /// </returns>
+        public static bool IsScene(string name)
+        {
+            return SceneManager.GetActiveScene().name == name;
+        }
+
+        /// <summary>
+        /// Returns true if the scene 'name' exists and is in your Build settings, 
+        /// false otherwise.
+        /// </summary>
+        public static bool IsSceneExists(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return false;
+
+            for (int index = 0; index < SceneManager.sceneCountInBuildSettings; ++index)
+            {
+                var scenePath = SceneUtility.GetScenePathByBuildIndex(index);
+                var lastSlash = scenePath.LastIndexOf("/");
+                var sceneName = scenePath.Substring(lastSlash + 1, scenePath.LastIndexOf(".") - lastSlash - 1);
+
+                if (string.Compare(name, sceneName, true) == 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Check if the object are the same tribe.
+        /// </summary>
+        /// <param name="liveObj1"> obj one </param>
+        /// <param name="liveObj2"> obj two </param>
+        /// <returns>
+        /// true: same tribe
+        /// false: not the same tribe
+        /// </returns>
+        public static bool IsSameTribe(JCS_2DLiveObject liveObj1, JCS_2DLiveObject liveObj2)
+        {
+            if (liveObj1 == null || liveObj2 == null)
+                return false;
+
+            // if both player does not need to add in to list.
+            // or if both enemy does not need to add in to list.
+            return (liveObj1.IsPlayer == liveObj2.IsPlayer);
         }
     }
 }

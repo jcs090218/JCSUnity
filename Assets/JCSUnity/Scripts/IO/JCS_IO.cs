@@ -129,7 +129,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static int LastFileIndex(string path, string prefixStr, string ext)
         {
-            JCS_IO.CreateDirectory(path);
+            CreateDirectory(path);
 
             var gs = JCS_GameSettings.instance;
 
