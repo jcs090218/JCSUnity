@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +34,427 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Util
     {
+        #region Parse
+
+        /// <summary>
+        /// Is the string the valid number to parse.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsNumberString(string str)
+        {
+            double test;
+            return (double.TryParse(str, out test));
+        }
+
+        /// <summary>
+        /// Parse `str` to integer, return `defaultValue` if failed.
+        /// </summary>
+        public static int Parse(string str, int defaultValue)
+        {
+            int result;
+
+            if (int.TryParse(str, out result))
+                return int.Parse(str);
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Parse `str` to float, return `defaultValue` if failed.
+        /// </summary>
+        public static float Parse(string str, float defaultValue)
+        {
+            float result;
+
+            if (float.TryParse(str, out result))
+                return float.Parse(str);
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Parse `str` to boolean, return `defaultValue` if failed.
+        /// </summary>
+        public static bool Parse(string str, bool defaultValue)
+        {
+            bool result;
+
+            if (bool.TryParse(str, out result))
+                return bool.Parse(str);
+
+            return defaultValue;
+        }
+
+        #endregion
+
+        #region Enum
+
+        /// <summary>
+        /// Enum typed version casting.
+        /// Source: http://stackoverflow.com/questions/972307/can-you-loop-through-all-enum-values
+        /// </summary>
+        public static IEnumerable<T> GetValues<T>()
+        {
+            return System.Enum.GetValues(typeof(T)).Cast<T>();
+        }
+
+        /// <summary>
+        /// Return the length of an enumerator.
+        /// </summary>
+        /// <typeparam name="T"> Enum type. </typeparam>
+        /// <returns> Size of the enum listed. </returns>
+        public static int EnumSize<T>()
+        {
+            return System.Enum.GetNames(typeof(T)).Length;
+        }
+
+        #endregion
+
+        #region Array
+
+        /// <summary>
+        /// Check the value within the range plus acceptable range.
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="acceptRange"></param>
+        /// <param name="currentVal"></param>
+        /// <returns></returns>
+        public static bool WithInAcceptRange(float range, float acceptRange, float currentVal)
+        {
+            return WithInRange(range - acceptRange, range + acceptRange, currentVal);
+        }
+
+        /// <summary>
+        /// Check the value within the range.
+        /// </summary>
+        /// <param name="minRange"></param>
+        /// <param name="maxRange"></param>
+        /// <param name="currentVal"></param>
+        /// <returns></returns>
+        public static bool WithInRange(float minRange, float maxRange, float currentVal)
+        {
+            if (currentVal >= minRange && currentVal <= maxRange)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// With in array range. (Array)
+        /// </summary>
+        /// <returns></returns>
+        public static bool WithInRange<T>(int index, T[] arr)
+        {
+            return index >= 0 && index < arr.Length;
+        }
+
+        /// <summary>
+        /// With in array range. (List)
+        /// </summary>
+        /// <returns></returns>
+        public static bool WithInRange<T>(int index, List<T> arr)
+        {
+            return index >= 0 && index < arr.Count;
+        }
+
+        /// <summary>
+        /// Loop in an array. (Array)
+        /// </summary>
+        /// <typeparam name="T"> Type. </typeparam>
+        /// <param name="index"> Index </param>
+        /// <param name="arr"> Array. </param>
+        /// <returns> index that looped. </returns>
+        public static int LoopIn<T>(int index, T[] arr)
+        {
+            // loop through the array, if at the tail of the array set it to head.
+            if (index < 0)
+                index = arr.Length - 1;
+            // loop through the array, if at head of the array we set it to the tail.
+            else if (index >= arr.Length)
+                index = 0;
+            return index;
+        }
+
+        /// <summary>
+        /// Loop in an array. (List)
+        /// </summary>
+        /// <typeparam name="T"> Type. </typeparam>
+        /// <param name="index"> Index </param>
+        /// <param name="arr"> List. </param>
+        /// <returns> index that looped. </returns>
+        public static int LoopIn<T>(int index, List<T> arr)
+        {
+            // loop through the array, if at the tail of the array set it to head.
+            if (index < 0)
+                index = arr.Count - 1;
+            // loop through the array, if at head of the array we set it to the tail.
+            else if (index >= arr.Count)
+                index = 0;
+
+            return index;
+        }
+
+        /// <summary>
+        /// Merge multiple arrays into one array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static T[] MergeArrays<T>(params T[][] arrList)
+        {
+            if (arrList.Length <= 1)
+            {
+                JCS_Debug.Log("You trying to merge the array less then two array");
+            }
+
+            int arrLen = 0;
+            foreach (var arr in arrList)
+                arrLen += arr.Length;
+
+            // first combine the first two array.
+            T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
+
+            // combine the rest.
+            for (int index = 2; index < arrList.Length; ++index)
+            {
+                data = MergeArrays2<T>(data, arrList[index]);
+            }
+            return data;
+        }
+
+        /// <summary>
+        /// Merging two array and return the new array.
+        /// </summary>
+        /// <typeparam name="T"> Type of the array. </typeparam>
+        /// <param name="arr1"> First array. </param>
+        /// <param name="arr2"> Second array. </param>
+        /// <returns> Merged array. </returns>
+        public static T[] MergeArrays2<T>(T[] arr1, T[] arr2)
+        {
+            T[] data = new T[arr1.Length + arr2.Length];
+
+            System.Array.Copy(arr1, data, arr1.Length);
+            System.Array.Copy(arr2, 0, data, arr1.Length, arr2.Length);
+
+            return data;
+        }
+
+        /// <summary>
+        /// Merging two list and return the new list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lists"></param>
+        /// <returns></returns>
+        public static List<T> MergeList<T>(params List<T>[] lists)
+        {
+            if (lists.Length <= 1)
+            {
+                JCS_Debug.Log("You trying to merge the List less then two array");
+            }
+
+            var newList = new List<T>();
+
+            for (int index = 0; index < lists.Length; ++index)
+            {
+                // Loop through all list.
+                List<T> list = lists[index];
+
+                if (list == null)
+                    continue;
+
+                for (int listIndex = 0; listIndex < list.Count; ++listIndex)
+                {
+                    // Loop through item.
+                    T item = list[listIndex];
+
+                    newList.Add(item);
+                }
+            }
+
+            return newList;
+        }
+
+        /// <summary>
+        /// Copy byte array to another byte array memory space.
+        /// </summary>
+        /// <param name="inBuf"> byte array to copy. </param>
+        /// <param name="start"> Starting index to copy. </param>
+        /// <param name="len"> Length to copy. </param>
+        /// <returns> byte array that are created in new memroy space. </returns>
+        public static byte[] CopyByteArray(byte[] inBuf, int start, int len)
+        {
+            byte[] bytes = new byte[len];
+
+            for (int count = 0; count < len; ++count)
+            {
+                bytes[count] = inBuf[count];
+            }
+
+            return bytes;
+        }
+
+        /// <summary>
+        /// Check if the list empty.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static bool IsArrayEmpty(string[] list)
+        {
+            for (int index = 0; index < list.Length; ++index)
+            {
+                if (list[index] != "")
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Pop the last value from the list.
+        /// </summary>
+        public static T ListPopFront<T>(List<T> list)
+        {
+            if (list.Count == 0)
+                return default(T);
+
+            T data = list[0];
+
+            list.RemoveAt(0);
+
+            return data;
+        }
+
+        /// <summary>
+        /// Pop the last value from the list.
+        /// </summary>
+        public static T ListPopBack<T>(List<T> list)
+        {
+            if (list.Count == 0)
+                return default(T);
+
+            int lastIndex = list.Count - 1;
+
+            T data = list[lastIndex];
+
+            list.RemoveAt(lastIndex);
+
+            return data;
+        }
+
+        #endregion
+
+        #region JSON
+
+        /// <summary>
+        /// Return JSON by passing serializable object.
+        /// </summary>
+        /// <param name="obj"> Object that are serializable. </param>
+        /// <returns> JSON string. </returns>
+        public static string ToJson<T>(T obj)
+        {
+            return JsonUtility.ToJson(obj);
+        }
+
+        #endregion
+
+        #region Scene
+
+        /// <summary>
+        /// Check current scene's with NAME.
+        /// </summary>
+        /// <param name="name"> Name of the scene. </param>
+        /// <returns>
+        /// Return true, if the current scene name the same as NAME.
+        /// Return false, if the current scene name NOT the same as NAME.
+        /// </returns>
+        public static bool IsScene(string name)
+        {
+            return SceneManager.GetActiveScene().name == name;
+        }
+
+        /// <summary>
+        /// Returns true if the scene 'name' exists and is in your Build settings, 
+        /// false otherwise.
+        /// </summary>
+        public static bool IsSceneExists(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return false;
+
+            for (int index = 0; index < SceneManager.sceneCountInBuildSettings; ++index)
+            {
+                var scenePath = SceneUtility.GetScenePathByBuildIndex(index);
+                var lastSlash = scenePath.LastIndexOf("/");
+                var sceneName = scenePath.Substring(lastSlash + 1, scenePath.LastIndexOf(".") - lastSlash - 1);
+
+                if (string.Compare(name, sceneName, true) == 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        #endregion
+
+        #region String
+
+        /// <summary>
+        /// Convert byte array to string by charset type.
+        /// </summary>
+        /// <param name="data"> Byte array data to convert to string data. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> String data that had been converted. </returns>
+        public static string BytesToString(byte[] data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
+            return null;
+        }
+
+        /// <summary>
+        /// Convert string to byte array by charset type.
+        /// </summary>
+        /// <param name="data"> String data to convert to byte array. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> Byte array that had been converted. </returns>
+        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
+            return null;
+        }
+
+        /// <summary>
+        /// Simple version of escape url.
+        /// </summary>
+        /// <param name="url"> Url you want to escape. </param>
+        /// <returns> Return the escaped url. </returns>
+        public static string EscapeURL(string url)
+        {
+            url = url.Replace(" ", "%20");
+            return url;
+        }
+
+        #endregion
+
         /// <summary>
         /// Do enable/distance component.
         /// </summary>
@@ -166,87 +586,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Check the value within the range plus acceptable range.
-        /// </summary>
-        /// <param name="range"></param>
-        /// <param name="acceptRange"></param>
-        /// <param name="currentVal"></param>
-        /// <returns></returns>
-        public static bool WithInAcceptRange(float range, float acceptRange, float currentVal)
-        {
-            return WithInRange(range - acceptRange, range + acceptRange, currentVal);
-        }
-
-        /// <summary>
-        /// Check the value within the range.
-        /// </summary>
-        /// <param name="minRange"></param>
-        /// <param name="maxRange"></param>
-        /// <param name="currentVal"></param>
-        /// <returns></returns>
-        public static bool WithInRange(float minRange, float maxRange, float currentVal)
-        {
-            if (currentVal >= minRange && currentVal <= maxRange)
-                return true;
-            return false;
-        }
-
-        /// <summary>
-        /// With in array range. (Array)
-        /// </summary>
-        /// <returns></returns>
-        public static bool WithInRange<T>(int index, T[] arr)
-        {
-            return index >= 0 && index < arr.Length;
-        }
-
-        /// <summary>
-        /// With in array range. (List)
-        /// </summary>
-        /// <returns></returns>
-        public static bool WithInRange<T>(int index, List<T> arr)
-        {
-            return index >= 0 && index < arr.Count;
-        }
-
-        /// <summary>
-        /// Loop in an array. (Array)
-        /// </summary>
-        /// <typeparam name="T"> Type. </typeparam>
-        /// <param name="index"> Index </param>
-        /// <param name="arr"> Array. </param>
-        /// <returns> index that looped. </returns>
-        public static int LoopIn<T>(int index, T[] arr)
-        {
-            // loop through the array, if at the tail of the array set it to head.
-            if (index < 0)
-                index = arr.Length - 1;
-            // loop through the array, if at head of the array we set it to the tail.
-            else if (index >= arr.Length)
-                index = 0;
-            return index;
-        }
-
-        /// <summary>
-        /// Loop in an array. (List)
-        /// </summary>
-        /// <typeparam name="T"> Type. </typeparam>
-        /// <param name="index"> Index </param>
-        /// <param name="arr"> List. </param>
-        /// <returns> index that looped. </returns>
-        public static int LoopIn<T>(int index, List<T> arr)
-        {
-            // loop through the array, if at the tail of the array set it to head.
-            if (index < 0)
-                index = arr.Count - 1;
-            // loop through the array, if at head of the array we set it to the tail.
-            else if (index >= arr.Count)
-                index = 0;
-
-            return index;
-        }
-
-        /// <summary>
         /// Spawn an animate object.
         /// </summary>
         /// <param name="anim"> anim assign </param>
@@ -367,15 +706,6 @@ namespace JCSUnity
             // if both player does not need to add in to list.
             // or if both enemy does not need to add in to list.
             return (liveObj1.IsPlayer == liveObj2.IsPlayer);
-        }
-
-        /// <summary>
-        /// Enum typed version casting.
-        /// Source: http://stackoverflow.com/questions/972307/can-you-loop-through-all-enum-values
-        /// </summary>
-        public static IEnumerable<T> GetValues<T>()
-        {
-            return System.Enum.GetValues(typeof(T)).Cast<T>();
         }
 
         /// <summary>
@@ -694,174 +1024,6 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Merge multiple arrays into one array.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static T[] MergeArrays<T>(params T[][] arrList)
-        {
-            if (arrList.Length <= 1)
-            {
-                JCS_Debug.Log("You trying to merge the array less then two array");
-            }
-
-            int arrLen = 0;
-            foreach (var arr in arrList)
-                arrLen += arr.Length;
-
-            // first combine the first two array.
-            T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
-
-            // combine the rest.
-            for (int index = 2; index < arrList.Length; ++index)
-            {
-                data = MergeArrays2<T>(data, arrList[index]);
-            }
-            return data;
-        }
-
-        /// <summary>
-        /// Merging two array and return the new array.
-        /// </summary>
-        /// <typeparam name="T"> Type of the array. </typeparam>
-        /// <param name="arr1"> First array. </param>
-        /// <param name="arr2"> Second array. </param>
-        /// <returns> Merged array. </returns>
-        public static T[] MergeArrays2<T>(T[] arr1, T[] arr2)
-        {
-            T[] data = new T[arr1.Length + arr2.Length];
-
-            System.Array.Copy(arr1, data, arr1.Length);
-            System.Array.Copy(arr2, 0, data, arr1.Length, arr2.Length);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Merging two list and return the new list.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="lists"></param>
-        /// <returns></returns>
-        public static List<T> MergeList<T>(params List<T>[] lists)
-        {
-            if (lists.Length <= 1)
-            {
-                JCS_Debug.Log("You trying to merge the List less then two array");
-            }
-
-            var newList = new List<T>();
-
-            for (int index = 0; index < lists.Length; ++index)
-            {
-                // Loop through all list.
-                List<T> list = lists[index];
-
-                if (list == null)
-                    continue;
-
-                for (int listIndex = 0; listIndex < list.Count; ++listIndex)
-                {
-                    // Loop through item.
-                    T item = list[listIndex];
-
-                    newList.Add(item);
-                }
-            }
-
-            return newList;
-        }
-
-        /// <summary>
-        /// Copy byte array to another byte array memory space.
-        /// </summary>
-        /// <param name="inBuf"> byte array to copy. </param>
-        /// <param name="start"> Starting index to copy. </param>
-        /// <param name="len"> Length to copy. </param>
-        /// <returns> byte array that are created in new memroy space. </returns>
-        public static byte[] CopyByteArray(byte[] inBuf, int start, int len)
-        {
-            byte[] bytes = new byte[len];
-
-            for (int count = 0; count < len; ++count)
-            {
-                bytes[count] = inBuf[count];
-            }
-
-            return bytes;
-        }
-
-        /// <summary>
-        /// Return the length of an enumerator.
-        /// </summary>
-        /// <typeparam name="T"> Enum type. </typeparam>
-        /// <returns> Size of the enum listed. </returns>
-        public static int EnumSize<T>()
-        {
-            return System.Enum.GetNames(typeof(T)).Length;
-        }
-
-        /// <summary>
-        /// Check if the list empty.
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static bool IsArrayEmpty(string[] list)
-        {
-            for (int index = 0; index < list.Length; ++index)
-            {
-                if (list[index] != "")
-                    return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Pop the last value from the list.
-        /// </summary>
-        public static T ListPopFront<T>(List<T> list)
-        {
-            if (list.Count == 0)
-                return default(T);
-
-            T data = list[0];
-
-            list.RemoveAt(0);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Pop the last value from the list.
-        /// </summary>
-        public static T ListPopBack<T>(List<T> list)
-        {
-            if (list.Count == 0)
-                return default(T);
-
-            int lastIndex = list.Count - 1;
-
-            T data = list[lastIndex];
-
-            list.RemoveAt(lastIndex);
-
-            return data;
-        }
-
-        /// <summary>
-        /// Is the string the valid number to parse.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static bool IsNumberString(string str)
-        {
-            double test;
-            return (double.TryParse(str, out test));
-        }
-
-        /// <summary>
         /// Detttach all the child from one transform.
         /// </summary>
         /// <param name="trans"> transform you want to remove all 
@@ -1036,157 +1198,6 @@ namespace JCSUnity
                 callback.Invoke(parent);
 
             trans.SetParent(parent);
-        }
-
-        /// <summary>
-        /// Return JSON by passing serializable object.
-        /// </summary>
-        /// <param name="obj"> Object that are serializable. </param>
-        /// <returns> JSON string. </returns>
-        public static string ToJson<T>(T obj)
-        {
-            return JsonUtility.ToJson(obj);
-        }
-
-        /// <summary>
-        /// Check current scene's with NAME.
-        /// </summary>
-        /// <param name="name"> Name of the scene. </param>
-        /// <returns>
-        /// Return true, if the current scene name the same as NAME.
-        /// Return false, if the current scene name NOT the same as NAME.
-        /// </returns>
-        public static bool IsScene(string name)
-        {
-            return SceneManager.GetActiveScene().name == name;
-        }
-
-        /// <summary>
-        /// Returns true if the scene 'name' exists and is in your Build settings, 
-        /// false otherwise.
-        /// </summary>
-        public static bool IsSceneExists(string name)
-        {
-            if (string.IsNullOrEmpty(name))
-                return false;
-
-            for (int index = 0; index < SceneManager.sceneCountInBuildSettings; ++index)
-            {
-                var scenePath = SceneUtility.GetScenePathByBuildIndex(index);
-                var lastSlash = scenePath.LastIndexOf("/");
-                var sceneName = scenePath.Substring(lastSlash + 1, scenePath.LastIndexOf(".") - lastSlash - 1);
-
-                if (string.Compare(name, sceneName, true) == 0)
-                    return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Method to do search directory and get the last file index.
-        /// </summary>
-        /// <param name="path"> path to search index. </param>
-        /// <param name="prefixStr"> Filen name prefix. </param>
-        /// <param name="ext"> Filen name extension. </param>
-        /// <returns></returns>
-        public static int LastFileIndex(string path, string prefixStr, string ext)
-        {
-            JCS_IO.CreateDirectory(path);
-
-            var gs = JCS_GameSettings.instance;
-
-            string fileName = "";
-            string curExt = "";
-            int last_saved_screenshot = -1;
-
-            foreach (string file in Directory.GetFiles(path))
-            {
-                fileName = Path.GetFileNameWithoutExtension(file);
-                curExt = Path.GetExtension(file);
-
-                // check if is the .png file 
-                // (screen shot can only be image file)
-                if (!curExt.Equals(ext))
-                    continue;
-
-                int index = fileName.IndexOf(prefixStr);
-                int len = prefixStr.Length;
-                string startOfString = fileName.Substring(0, index);
-                string endOfString = fileName.Substring(index + len);
-                string cleanPath = startOfString + endOfString;
-
-                last_saved_screenshot = System.Int32.Parse(cleanPath);
-            }
-
-            return last_saved_screenshot;
-        }
-
-        /// <summary>
-        /// Delete all files in directory.
-        /// </summary>
-        /// <param name="dirPath"> Target delete directory. </param>
-        public static void DeleteAllFilesFromDir(string dirPath)
-        {
-            DirectoryInfo di = new DirectoryInfo(dirPath);
-
-            foreach (FileInfo file in di.GetFiles())
-                file.Delete();
-        }
-
-        /// <summary>
-        /// Convert byte array to string by charset type.
-        /// </summary>
-        /// <param name="data"> Byte array data to convert to string data. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> String data that had been converted. </returns>
-        public static string BytesToString(byte[] data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
-            return null;
-        }
-
-        /// <summary>
-        /// Convert string to byte array by charset type.
-        /// </summary>
-        /// <param name="data"> String data to convert to byte array. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> Byte array that had been converted. </returns>
-        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
-            return null;
-        }
-
-        /// <summary>
-        /// Simple version of escape url.
-        /// </summary>
-        /// <param name="url"> Url you want to escape. </param>
-        /// <returns> Return the escaped url. </returns>
-        public static string EscapeURL(string url)
-        {
-            url = url.Replace(" ", "%20");
-            return url;
         }
     }
 }
