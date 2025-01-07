@@ -13,6 +13,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Manager): Rename some game initialize variables (1685e188757782d043f83b002eeec8c230371f07)
 * feat(UI): Add `JCS_CanvasComp` (9efce24c24a599df518c0034f9805f699a9841a3)
 * feat(Util): Add `JCS_Vector` util; rename original to `JCS_Vec` (18472e42ff23bbd1a80341c90680161e20c87634)
+* feat(Util): Add parse (4e6fd732a0045153037d0ee832dfdd745ae7fd01)
 
 ## 3.0.0
 > Released Oct 15, 2024
