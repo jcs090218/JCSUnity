@@ -27,5 +27,10 @@ Example.cs
           // Make the instance singleton.
           instance = CheckInstance(instance, this);
       }
+
+      protected override void TransferData(Example _old, Example _new)
+      {
+          // ..
+      }
   }
 ```

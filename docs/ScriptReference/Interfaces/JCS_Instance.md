@@ -4,6 +4,19 @@ Singleton instance interface.
 
 This file contain three classes.
 
+## Variables
+
+| Name     | Description                                                 |
+|:---------|:------------------------------------------------------------|
+| instance | Hold the settings class instance for ensuring is singleton. |
+
+## Functions
+
+| Name           | Description                                        |
+|:---------------|:---------------------------------------------------|
+| CheckInstance  | Force the setting object singleton.                |
+| TransferData   | Transfter data through one scene to another scene. |
+
 ### 🏛️ JCS_Instance
 
 See `Example.cs`:
@@ -14,6 +27,11 @@ See `Example.cs`:
       private void Awake ()
       {
           instance = this;
+      }
+	  
+      protected override void TransferData(Example _old, Example _new)
+      {
+          // ..
       }
   }
 ```
@@ -31,6 +49,11 @@ See `ExampleOld.cs`:
       {
           CheckInstance(this);
       }
+
+      protected override void TransferData(ExampleOld _old, ExampleOld _new)
+      {
+          // ..
+      }
   }
 ```
 
@@ -46,6 +69,11 @@ See `ExampleNew.cs`:
       private void Awake ()
       {
           CheckInstance(this);
+      }
+
+      protected override void TransferData(ExampleNew _old, ExampleNew _new)
+      {
+          // ..
       }
   }
 ```
