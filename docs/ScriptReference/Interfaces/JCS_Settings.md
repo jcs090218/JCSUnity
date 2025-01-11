@@ -25,7 +25,7 @@ Example.cs
       private void Awake ()
       {
           // Make the instance singleton.
-          instance = CheckInstance(instance, this);
+          CheckInstance(this);
       }
 
       protected override void TransferData(Example _old, Example _new)
