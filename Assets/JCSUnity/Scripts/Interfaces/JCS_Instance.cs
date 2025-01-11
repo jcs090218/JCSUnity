@@ -44,7 +44,7 @@ namespace JCSUnity
         /// <param name="destroyGO"> 
         /// If true, destory the entire game object instead of just the component.
         /// </param>
-        protected void CheckInstance(T _new, bool destroyGO = false)
+        protected virtual void CheckInstance(T _new, bool destroyGO = false)
         {
             if (instance != null)
             {
@@ -97,7 +97,7 @@ namespace JCSUnity
         /// <param name="destroyGO"> 
         /// If true, destory the entire game object instead of just the component.
         /// </param>
-        protected void CheckInstance(T _new, bool destroyGO = false)
+        protected virtual void CheckInstance(T _new, bool destroyGO = false)
         {
             if (instance != null)
             {

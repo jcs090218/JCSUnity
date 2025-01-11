@@ -23,7 +23,7 @@ public class BF_MessageSettings : JCS_Settings<BF_MessageSettings>
 
     private void Awake()
     {
-        instance = CheckInstance(instance, this);
+        CheckInstance(this);
 
         // do something?
     }

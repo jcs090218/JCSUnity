@@ -58,7 +58,7 @@ public class RC_GameSettings : JCS_Settings<RC_GameSettings>
 
     private void Awake()
     {
-        instance = CheckInstance(instance, this);
+        CheckInstance(this);
     }
 
     private void Start()
