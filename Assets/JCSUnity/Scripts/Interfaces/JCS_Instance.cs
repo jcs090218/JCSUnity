@@ -40,17 +40,22 @@ namespace JCSUnity
         /// <summary>
         /// Check singleton for keep the old one.
         /// </summary>
-        /// <param name="_old"> old instance </param>
         /// <param name="_new"> new instance </param>
-        protected void CheckInstance(T _old, T _new)
+        /// <param name="destroyGO"> 
+        /// If true, destory the entire game object instead of just the component.
+        /// </param>
+        protected void CheckInstance(T _new, bool destroyGO = false)
         {
             if (instance != null)
             {
                 // only if needed
-                TransferData(_old, _new);
+                TransferData(instance, _new);
 
                 // Destory the new one; and keep the old one.
-                Destroy(_new.gameObject);
+                if (destroyGO)
+                    Destroy(_new.gameObject);
+                else
+                    Destroy(_new);
 
                 return;
             }
@@ -88,17 +93,22 @@ namespace JCSUnity
         /// <summary>
         /// Check singleton for keep the new one.
         /// </summary>
-        /// <param name="_old"> old instance </param>
         /// <param name="_new"> new instance </param>
-        protected void CheckInstance(T _old, T _new)
+        /// <param name="destroyGO"> 
+        /// If true, destory the entire game object instead of just the component.
+        /// </param>
+        protected void CheckInstance(T _new, bool destroyGO = false)
         {
             if (instance != null)
             {
                 // only if needed
-                TransferData(_old, _new);
+                TransferData(instance, _new);
 
                 // Destory the old one!
-                Destroy(instance);
+                if (destroyGO)
+                    Destroy(instance.gameObject);
+                else
+                    Destroy(instance);
             }
 
             // Assign the new one!
