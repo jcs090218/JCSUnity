@@ -15,6 +15,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Util): Add `JCS_Vector` util; rename original to `JCS_Vec` (18472e42ff23bbd1a80341c90680161e20c87634)
 * feat(Util): Add parse (4e6fd732a0045153037d0ee832dfdd745ae7fd01)
 * feat(Interfaces): Add data transfer to instance (922be716a2fdb723ce607a514a2433896fc5c706)
+* feat(System): Add on system language change callback (d2162da26bfe6a50868ad220df7e51e623813b64)
 
 ## 3.0.0
 > Released Oct 15, 2024
