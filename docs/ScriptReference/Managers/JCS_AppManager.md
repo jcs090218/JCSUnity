@@ -4,15 +4,16 @@ Interface communicate to application layer.
 
 ## Variables
 
-| Name                   | Description                                |
-|:-----------------------|:-------------------------------------------|
-| RequestCamera          | Request permission for camera/webcam.      |
-| RequestMicrophone      | Request permission for microphone.         |
-| RequestLocation        | Request permission for location service.   |
-| SimulatePlatformType   | Target platform type to simulate.          |
-| PlatformType           | This will override Platform Type.          |
-| SimulateSystemLanguage | If true, override current system language. |
-| systemLanguage         | Target language to simulate.               |
+| Name                    | Description                                    |
+|:------------------------|:-----------------------------------------------|
+| onSystemLanguageChanged | Execute after the system language has changed. |
+| RequestCamera           | Request permission for camera/webcam.          |
+| RequestMicrophone       | Request permission for microphone.             |
+| RequestLocation         | Request permission for location service.       |
+| SimulatePlatformType    | Target platform type to simulate.              |
+| PlatformType            | This will override Platform Type.              |
+| SimulateSystemLanguage  | If true, override current system language.     |
+| systemLanguage          | Target language to simulate.                   |
 
 ## Functions
 

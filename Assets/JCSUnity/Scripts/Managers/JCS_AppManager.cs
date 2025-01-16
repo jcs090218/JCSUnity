@@ -30,6 +30,7 @@ namespace JCSUnity
         public static bool APP_QUITTING = false;
         public static bool APP_INITIALIZING = true;
 
+        // Execute after the system language has changed.
         public OnSystemLanguageChanged onSystemLanguageChanged = null;
 
         [Separator("Check Variables (JCS_AppManager)")]
