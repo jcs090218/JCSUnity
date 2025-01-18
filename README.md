@@ -62,12 +62,12 @@ directory at the root of the project directory.
 These are libraries `JCSUnity` uses. Consider the usage, some plugins aren't necessary
 depend on the game your are making.
 
-- [Newtonsoft Json](https://www.newtonsoft.com/json) - Popular high-performance JSON framework for .NET.
-- [MyBox](https://github.com/Deadcows/MyBox) - is a set of attributes, tools and extensions for Unity
-- [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
-- [In-game Debug Console](https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068) - Easier debugging after built.
-- [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) - File browser for UI/tool base application.
-- [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) - Geometry shape UI renderer interface.
+- [Newtonsoft Json](https://www.newtonsoft.com/json) (required) - Popular high-performance JSON framework for .NET.
+- [MyBox](https://github.com/Deadcows/MyBox) (required) - is a set of attributes, tools and extensions for Unity
+- [Tweener](https://github.com/PeterVuorela/Tweener) (required) - Simpler and light weight tweener library.
+- [In-game Debug Console](https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068) (optional) - Easier debugging after built.
+- [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) (optional) - File browser for UI/tool base application.
+- [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) (optional) - Geometry shape UI renderer interface.
 
 ## 🔗 Links
 
