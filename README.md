@@ -59,9 +59,10 @@ directory at the root of the project directory.
 
 ## 📌 Dependencies
 
-These are libraries `JCSUnity` uses. Consider the usage, some plugins
-aren't necessary depend on the game your are making.
+These are libraries `JCSUnity` uses. Consider the usage, some plugins aren't necessary
+depend on the game your are making.
 
+- [Newtonsoft Json](https://www.newtonsoft.com/json) - Popular high-performance JSON framework for .NET.
 - [MyBox](https://github.com/Deadcows/MyBox) - is a set of attributes, tools and extensions for Unity
 - [Tweener](https://github.com/PeterVuorela/Tweener) - Simpler and light weight tweener library.
 - [In-game Debug Console](https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068) - Easier debugging after built.
