@@ -17,13 +17,13 @@ from its component.
 | mColorProps      | Shader's color properties.                                  |
 | LocalType        | Component of this current type.                             |
 | LocalTransform   | Either regular transform or recttransform base on the type. |
+| LocalMaterial    | Local material of this gameobject.                          |
 | Position         | Position of this gameobject.                                |
 | LocalPosition    | Local position of this gameobject.                          |
 | EulerAngles      | Euler angles of this gameobject.                            |
 | LocalEulerAngles | Local euler angles of this gameobject.                      |
 | LocalScale       | Local scale of this gameobject.                             |
 | LocalEnabled     | Enabled/disable this gameobject.                            |
-| LocalMaterial    | Local material of this gameobject.                          |
 | LocalColor       | Color of this gameobject.                                   |
 | LocalAlpha       | Alpha channel of this gameobject.                           |
 | LocalRed         | Red channel of this gameobject.                             |
