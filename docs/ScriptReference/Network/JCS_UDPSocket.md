@@ -1,8 +1,8 @@
-# JCS_UDPGameSocket
+# JCS_UDPSocket
 
 UDP socket class.
 
-Functions
+## Functions
 
 | Name                     | Description                                                 |
 |:-------------------------|:------------------------------------------------------------|

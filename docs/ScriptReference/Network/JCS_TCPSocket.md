@@ -1,4 +1,4 @@
-# JCS_TCPGameSocket
+# JCS_TCPSocket
 
 TCP socket class.
 
