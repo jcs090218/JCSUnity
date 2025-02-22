@@ -111,7 +111,7 @@ namespace JCSUnity
 
         #endregion
 
-        #region Array
+        #region List
 
         /// <summary>
         /// Check the value within the range plus acceptable range.
@@ -339,6 +339,86 @@ namespace JCSUnity
             list.RemoveAt(lastIndex);
 
             return data;
+        }
+
+        /// <summary>
+        /// Fill slots with initialize value type by length.
+        /// </summary>
+        /// <typeparam name="T"> Type from `inArray`. </typeparam>
+        /// <param name="inArray"> Array you would like to fill out. </param>
+        /// <param name="len"> Target length to initialize. </param>
+        /// <param name="with"> Initialize object type. </param>
+        /// <returns> Return filled array. </returns>
+        public static T[] FillSlot<T>(T[] inArray, int len, T with)
+        {
+            return FillSlot(inArray.ToList(), len, with).ToArray();
+        }
+
+        public static List<T> FillSlot<T>(List<T> inList, int len, T with)
+        {
+            for (int index = inList.Count; index < len; ++index)
+                inList.Add(with);
+            return inList;
+        }
+
+        /// <summary>
+        /// Remove the empty slot in the array.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inArray"> Array list. </param>
+        /// <returns> Cleaned up Array object. </returns>
+        public static T[] RemoveEmptySlot<T>(T[] inArray)
+        {
+            return RemoveEmptySlot(inArray.ToList()).ToArray();
+        }
+        public static List<T> RemoveEmptySlot<T>(List<T> inList)
+        {
+            List<T> newArray = new List<T>(inList.Count);
+
+            for (int index = 0; index < inList.Count; ++index)
+            {
+                // Add itself if exists.
+                if (inList[index] != null)
+                    newArray.Add(inList[index]);
+            }
+
+            return newArray;
+        }
+
+        /// <summary>
+        /// Remove the empty slot in the list including remove 
+        /// the missing gameobject too. 
+        /// 
+        /// I guess Unity do the CG collection later a while when 
+        /// you call 'Destory()' function. Before scripting layer 
+        /// acknowledge this game object is destory might be too 
+        /// late in some situation. This will avoid this type of 
+        /// issue/circumstance.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inList"> List object. </param>
+        /// <returns> Cleaned up List object. </returns>
+        public static T[] RemoveEmptySlotIncludeMissing<T>(T[] inArray)
+            where T : UnityEngine.Object
+        {
+            return RemoveEmptySlotIncludeMissing(inArray.ToList()).ToArray();
+        }
+        public static List<T> RemoveEmptySlotIncludeMissing<T>(List<T> inList)
+            where T : UnityEngine.Object
+        {
+            List<T> newArray = new List<T>(inList.Count);
+
+            for (int index = 0; index < inList.Count; ++index)
+            {
+                // Add itself if exists.
+                // 
+                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
+                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
+                if (inList[index] ?? false)
+                    newArray.Add(inList[index]);
+            }
+
+            return newArray;
         }
 
         #endregion
@@ -1086,90 +1166,6 @@ namespace JCSUnity
 
         #endregion
 
-        #region List
-
-        /// <summary>
-        /// Fill slots with initialize value type by length.
-        /// </summary>
-        /// <typeparam name="T"> Type from `inArray`. </typeparam>
-        /// <param name="inArray"> Array you would like to fill out. </param>
-        /// <param name="len"> Target length to initialize. </param>
-        /// <param name="with"> Initialize object type. </param>
-        /// <returns> Return filled array. </returns>
-        public static T[] FillSlot<T>(T[] inArray, int len, T with)
-        {
-            return FillSlot(inArray.ToList(), len, with).ToArray();
-        }
-
-        public static List<T> FillSlot<T>(List<T> inList, int len, T with)
-        {
-            for (int index = inList.Count; index < len; ++index)
-                inList.Add(with);
-            return inList;
-        }
-
-        /// <summary>
-        /// Remove the empty slot in the array.
-        /// </summary>
-        /// <typeparam name="T"> Type of the List. </typeparam>
-        /// <param name="inArray"> Array list. </param>
-        /// <returns> Cleaned up Array object. </returns>
-        public static T[] RemoveEmptySlot<T>(T[] inArray)
-        {
-            return RemoveEmptySlot(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmptySlot<T>(List<T> inList)
-        {
-            List<T> newArray = new List<T>(inList.Count);
-
-            for (int index = 0; index < inList.Count; ++index)
-            {
-                // Add itself if exists.
-                if (inList[index] != null)
-                    newArray.Add(inList[index]);
-            }
-
-            return newArray;
-        }
-
-        /// <summary>
-        /// Remove the empty slot in the list including remove 
-        /// the missing gameobject too. 
-        /// 
-        /// I guess Unity do the CG collection later a while when 
-        /// you call 'Destory()' function. Before scripting layer 
-        /// acknowledge this game object is destory might be too 
-        /// late in some situation. This will avoid this type of 
-        /// issue/circumstance.
-        /// </summary>
-        /// <typeparam name="T"> Type of the List. </typeparam>
-        /// <param name="inList"> List object. </param>
-        /// <returns> Cleaned up List object. </returns>
-        public static T[] RemoveEmptySlotIncludeMissing<T>(T[] inArray)
-            where T : UnityEngine.Object
-        {
-            return RemoveEmptySlotIncludeMissing(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmptySlotIncludeMissing<T>(List<T> inList)
-            where T : UnityEngine.Object
-        {
-            List<T> newArray = new List<T>(inList.Count);
-
-            for (int index = 0; index < inList.Count; ++index)
-            {
-                // Add itself if exists.
-                // 
-                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
-                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
-                if (inList[index] ?? false)
-                    newArray.Add(inList[index]);
-            }
-
-            return newArray;
-        }
-
-        #endregion
-
         #region Scene
 
         /// <summary>
@@ -1212,7 +1208,7 @@ namespace JCSUnity
         #region Animation
 
         /// <summary>
-        /// Sets the weight of the layer at the given index.
+        /// Sets the weight of the layer at the given name.
         /// 
         /// Similar to `Animationr.SetLayerWeight` but accept string name.
         /// </summary>
@@ -1229,7 +1225,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Sets the weight of the layer at the given index.
+        /// Returns the weight of the layer at the specified name.
         /// 
         /// Similar to `Animationr.SetLayerWeight` but accept string name.
         /// </summary>
