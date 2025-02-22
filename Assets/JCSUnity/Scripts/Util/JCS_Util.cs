@@ -416,6 +416,8 @@ namespace JCSUnity
 
         #endregion
 
+        #region Component
+
         /// <summary>
         /// Do enable/distance component.
         /// </summary>
@@ -469,53 +471,21 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Spawn a gmae object.
+        /// Set eabled/disabled to all component in a transform.
         /// </summary>
-        /// <param name="objectPath"> path of the game object </param>
-        /// <param name="position"> position of the game object spawn </param>
-        /// <param name="rotation"> rotation of the game object spawn </param>
-        /// <returns></returns>
-        public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        /// <param name="trans"> transform to apply the effect. </param>
+        /// <param name="act"> enable or disable? </param>
+        public static void SetEnableAllComponents(Transform trans, bool act)
         {
-            return MonoBehaviour.Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
+            foreach (var component in trans.GetComponents<MonoBehaviour>())
+            {
+                component.enabled = act;
+            }
         }
 
-        /// <summary>
-        /// Spawn a gmae object.
-        /// </summary>
-        /// <param name="trans"></param>
-        /// <param name="position"></param>
-        /// <param name="rotation"></param>
-        /// <returns></returns>
-        public static UnityEngine.Object Instantiate(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
-        {
-            if (trans == null) return null;
-            return MonoBehaviour.Instantiate(trans, position, rotation);
-        }
+        #endregion
 
-        /// <summary>
-        /// Retrieves the first active loaded object of Type type.
-        /// </summary>
-        public static Object FindObjectByType(System.Type type)
-        {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindFirstObjectByType(type);
-#else
-            return UnityEngine.Object.FindObjectOfType(type);
-#endif
-        }
-
-        /// <summary>
-        /// Retrieves a list of all loaded objects of Type type.
-        /// </summary>
-        public static Object[] FindObjectsByType(System.Type type)
-        {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
-#else
-            return UnityEngine.Object.FindObjectsOfType(type);
-#endif
-        }
+        #region Transform & Children
 
         /// <summary>
         /// Set active according to it's type.
@@ -544,44 +514,6 @@ namespace JCSUnity
             {
                 transform.GetChild(index).gameObject.SetActive(act);
             }
-        }
-
-        /// <summary>
-        /// Spawn an animate object.
-        /// </summary>
-        /// <param name="anim"> anim assign </param>
-        /// <param name="orderLayer"> sorting order </param>
-        /// <returns> object spawned. </returns>
-        public static GameObject SpawnAnimateObject(RuntimeAnimatorController anim, int orderLayer = 15)
-        {
-            GameObject gm = new GameObject();
-
-            SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
-            sr.sortingOrder = orderLayer;
-            Animator animator = gm.AddComponent<Animator>();
-            animator.runtimeAnimatorController = anim;
-
-            return gm;
-        }
-
-        /// <summary>
-        /// Spawn a animate object with the death event, 
-        /// so after the animate was played serval loop times
-        /// the object will be destroyed.
-        /// </summary>
-        /// <param name="anim"> animation u want to play </param>
-        /// <param name="orderLayer"> sorting order  </param>
-        /// <param name="loopTimes"> loop times </param>
-        /// <returns> object spawned. </returns>
-        public static GameObject SpawnAnimateObjectDeathEvent(RuntimeAnimatorController anim, int orderLayer = 15, int loopTimes = 1)
-        {
-            GameObject gm = SpawnAnimateObject(anim, orderLayer);
-
-            JCS_DestroyAnimEndEvent daee = gm.AddComponent<JCS_DestroyAnimEndEvent>();
-
-            daee.LoopTimes = loopTimes;
-
-            return gm;
         }
 
         /// <summary>
@@ -648,321 +580,6 @@ namespace JCSUnity
             trans.localPosition = recordPos;
             trans.localScale = recordScale;
             trans.localRotation = recordRot;
-        }
-
-        /// <summary>
-        /// Set eabled/disabled to all component in a transform.
-        /// </summary>
-        /// <param name="trans"> transform to apply the effect. </param>
-        /// <param name="act"> enable or disable? </param>
-        public static void SetEnableAllComponents(Transform trans, bool act)
-        {
-            foreach (var component in trans.GetComponents<MonoBehaviour>())
-            {
-                component.enabled = act;
-            }
-        }
-
-        /// <summary>
-        /// Destroy all the 'TYPE' object in the scene.
-        /// </summary>
-        public static void DestroyAllTypeObjectInScene<T>()
-            where T : MonoBehaviour
-        {
-            // Destroy all the live object in the scene.
-            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
-
-            foreach (T e in rrEnemy)
-            {
-                // NOTE(JenChieh): kill the object that are clone!
-                // or else it will effect the prefab object...
-                if (e.gameObject.name.Contains("(Clone)"))
-                    MonoBehaviour.Destroy(e.gameObject);
-            }
-        }
-
-        /// <summary>
-        /// Destroy all the 'TYPE' object in the scene.
-        /// </summary>
-        public static void DestroyImmediateAllTypeObjectInScene<T>()
-            where T : MonoBehaviour
-        {
-            // Destroy all the live object in the scene.
-            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
-
-            foreach (T e in rrEnemy)
-            {
-                // NOTE(JenChieh): kill the object that are clone!
-                // or else it will effect the prefab object...
-                if (e.gameObject.name.Contains("(Clone)"))
-                    MonoBehaviour.DestroyImmediate(e.gameObject);
-            }
-        }
-
-        /// <summary>
-        /// Find all the objects that are clone in the scene by type.
-        /// </summary>
-        /// <typeparam name="T"> Type to find. </typeparam>
-        /// <returns> Type array. </returns>
-        public static T[] FindCloneObjectsOfTypeAll<T>()
-            where T : MonoBehaviour
-        {
-            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
-
-            T[] cleanArr = new T[typeArr.Length];
-            int length = 0;
-
-            foreach (T obj in typeArr)
-            {
-                if (obj.gameObject.name.Contains("(Clone)"))
-                {
-                    cleanArr[length] = obj;
-                    ++length;
-                }
-            }
-
-            return cleanArr;
-        }
-
-        /// <summary>
-        /// Find all the objects that are not clone in the scene by type.
-        /// </summary>
-        /// <typeparam name="T"> Type to find. </typeparam>
-        /// <returns> Type array. </returns>
-        public static T[] FindNotCloneObjectsOfTypeAll<T>()
-            where T : MonoBehaviour
-        {
-            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
-
-            T[] cleanArr = new T[typeArr.Length];
-            int length = 0;
-
-            foreach (T obj in typeArr)
-            {
-                if (!obj.gameObject.name.Contains("(Clone)"))
-                {
-                    cleanArr[length] = obj;
-                    ++length;
-                }
-            }
-
-            return cleanArr;
-        }
-
-        /// <summary>
-        /// Find all objects that only ACTIVE in hierarchy.
-        /// </summary>
-        /// <typeparam name="T"> Type to find. </typeparam>
-        /// <returns> type array, object only in Hierarcrchy. </returns>
-        public static T[] FindObjectsOfTypeAllInHierarchy<T>()
-             where T : MonoBehaviour
-        {
-            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
-
-            T[] cleanArr = new T[typeArr.Length];
-            int length = 0;
-
-            foreach (T obj in typeArr)
-            {
-                if (obj.gameObject.activeInHierarchy)
-                {
-                    cleanArr[length] = obj;
-                    ++length;
-                }
-            }
-
-            return cleanArr;
-        }
-
-        /// <summary>
-        /// Return the easing function pointer base on tweener type.
-        /// </summary>
-        /// <param name="type"> type of the tween formula </param>
-        /// <returns> function pointer </returns>
-        public static TweenDelegate GetEasing(JCS_TweenType type)
-        {
-            TweenDelegate easing = null;
-
-            switch (type)
-            {
-                // default to linear
-                case JCS_TweenType.LINEAR:
-                    easing = Easing.Linear;
-                    break;
-
-                case JCS_TweenType.EASE_IN_SINE:
-                    easing = Easing.SineEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_CUBIC:
-                    easing = Easing.CubicEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_QUINT:
-                    easing = Easing.QuintEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_CIRC:
-                    easing = Easing.CircEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_BACK:
-                    easing = Easing.BackEaseIn;
-                    break;
-                case JCS_TweenType.EASE_OUT_SINE:
-                    easing = Easing.SineEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_CUBIC:
-                    easing = Easing.CubicEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_QUINT:
-                    easing = Easing.QuintEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_CIRC:
-                    easing = Easing.CircEaseOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_BACK:
-                    easing = Easing.BackEaseOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_SINE:
-                    easing = Easing.SineEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_CUBIC:
-                    easing = Easing.CubicEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_QUINT:
-                    easing = Easing.QuintEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_CIRC:
-                    easing = Easing.CircEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_BACK:
-                    easing = Easing.BackEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_QUAD:
-                    easing = Easing.QuadEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_QUART:
-                    easing = Easing.QuartEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_EXPO:
-                    easing = Easing.ExpoEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_ELASTIC:
-                    easing = Easing.ElasticEaseIn;
-                    break;
-                case JCS_TweenType.EASE_IN_BOUNCE:
-                    easing = Easing.BounceEaseIn;
-                    break;
-                case JCS_TweenType.EASE_OUT_QUAD:
-                    easing = Easing.QuadEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_QUART:
-                    easing = Easing.QuartEaseOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_EXPO:
-                    easing = Easing.ExpoEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_ELASTIC:
-                    easing = Easing.ElasticEaseOut;
-                    break;
-                case JCS_TweenType.EASE_OUT_BOUNCE:
-                    easing = Easing.BounceEaseOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_QUAD:
-                    easing = Easing.QuadEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_QUART:
-                    easing = Easing.QuartEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_EXPO:
-                    easing = Easing.ExpoEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_ELASTIC:
-                    easing = Easing.ElasticEaseInOut;
-                    break;
-                case JCS_TweenType.EASE_IN_OUT_BOUNCE:
-                    easing = Easing.BounceEaseInOut;
-                    break;
-            }
-
-            return easing;
-        }
-
-        /// <summary>
-        /// Fill slots with initialize value type by length.
-        /// </summary>
-        /// <typeparam name="T"> Type from `inArray`. </typeparam>
-        /// <param name="inArray"> Array you would like to fill out. </param>
-        /// <param name="len"> Target length to initialize. </param>
-        /// <param name="with"> Initialize object type. </param>
-        /// <returns> Return filled array. </returns>
-        public static T[] FillSlot<T>(T[] inArray, int len, T with)
-        {
-            return FillSlot(inArray.ToList(), len, with).ToArray();
-        }
-
-        public static List<T> FillSlot<T>(List<T> inList, int len, T with)
-        {
-            for (int index = inList.Count; index < len; ++index)
-                inList.Add(with);
-            return inList;
-        }
-
-        /// <summary>
-        /// Remove the empty slot in the array.
-        /// </summary>
-        /// <typeparam name="T"> Type of the List. </typeparam>
-        /// <param name="inArray"> Array list. </param>
-        /// <returns> Cleaned up Array object. </returns>
-        public static T[] RemoveEmptySlot<T>(T[] inArray)
-        {
-            return RemoveEmptySlot(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmptySlot<T>(List<T> inList)
-        {
-            List<T> newArray = new List<T>(inList.Count);
-
-            for (int index = 0; index < inList.Count; ++index)
-            {
-                // Add itself if exists.
-                if (inList[index] != null)
-                    newArray.Add(inList[index]);
-            }
-
-            return newArray;
-        }
-
-        /// <summary>
-        /// Remove the empty slot in the list including remove 
-        /// the missing gameobject too. 
-        /// 
-        /// I guess Unity do the CG collection later a while when 
-        /// you call 'Destory()' function. Before scripting layer 
-        /// acknowledge this game object is destory might be too 
-        /// late in some situation. This will avoid this type of 
-        /// issue/circumstance.
-        /// </summary>
-        /// <typeparam name="T"> Type of the List. </typeparam>
-        /// <param name="inList"> List object. </param>
-        /// <returns> Cleaned up List object. </returns>
-        public static T[] RemoveEmptySlotIncludeMissing<T>(T[] inArray)
-            where T : UnityEngine.Object
-        {
-            return RemoveEmptySlotIncludeMissing(inArray.ToList()).ToArray();
-        }
-        public static List<T> RemoveEmptySlotIncludeMissing<T>(List<T> inList)
-            where T : UnityEngine.Object
-        {
-            List<T> newArray = new List<T>(inList.Count);
-
-            for (int index = 0; index < inList.Count; ++index)
-            {
-                // Add itself if exists.
-                // 
-                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
-                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
-                if (inList[index] ?? false)
-                    newArray.Add(inList[index]);
-            }
-
-            return newArray;
         }
 
         /// <summary>
@@ -1142,6 +759,417 @@ namespace JCSUnity
             trans.SetParent(parent);
         }
 
+        #endregion
+
+        #region Spawning
+
+        /// <summary>
+        /// Spawn a gmae object.
+        /// </summary>
+        /// <param name="objectPath"> path of the game object </param>
+        /// <param name="position"> position of the game object spawn </param>
+        /// <param name="rotation"> rotation of the game object spawn </param>
+        /// <returns></returns>
+        public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        {
+            return MonoBehaviour.Instantiate(Resources.Load<GameObject>(objectPath), position, rotation) as GameObject;
+        }
+
+        /// <summary>
+        /// Spawn a gmae object.
+        /// </summary>
+        /// <param name="trans"></param>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        /// <returns></returns>
+        public static UnityEngine.Object Instantiate(UnityEngine.Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+        {
+            if (trans == null) return null;
+            return MonoBehaviour.Instantiate(trans, position, rotation);
+        }
+
+        /// <summary>
+        /// Retrieves the first active loaded object of Type type.
+        /// </summary>
+        public static Object FindObjectByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindFirstObjectByType(type);
+#else
+            return UnityEngine.Object.FindObjectOfType(type);
+#endif
+        }
+
+        /// <summary>
+        /// Retrieves a list of all loaded objects of Type type.
+        /// </summary>
+        public static Object[] FindObjectsByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
+#else
+            return UnityEngine.Object.FindObjectsOfType(type);
+#endif
+        }
+
+        /// <summary>
+        /// Spawn an animate object.
+        /// </summary>
+        /// <param name="anim"> anim assign </param>
+        /// <param name="orderLayer"> sorting order </param>
+        /// <returns> object spawned. </returns>
+        public static GameObject SpawnAnimateObject(RuntimeAnimatorController anim, int orderLayer = 15)
+        {
+            GameObject gm = new GameObject();
+
+            SpriteRenderer sr = gm.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = orderLayer;
+            Animator animator = gm.AddComponent<Animator>();
+            animator.runtimeAnimatorController = anim;
+
+            return gm;
+        }
+
+        /// <summary>
+        /// Spawn a animate object with the death event, 
+        /// so after the animate was played serval loop times
+        /// the object will be destroyed.
+        /// </summary>
+        /// <param name="anim"> animation u want to play </param>
+        /// <param name="orderLayer"> sorting order  </param>
+        /// <param name="loopTimes"> loop times </param>
+        /// <returns> object spawned. </returns>
+        public static GameObject SpawnAnimateObjectDeathEvent(RuntimeAnimatorController anim, int orderLayer = 15, int loopTimes = 1)
+        {
+            GameObject gm = SpawnAnimateObject(anim, orderLayer);
+
+            JCS_DestroyAnimEndEvent daee = gm.AddComponent<JCS_DestroyAnimEndEvent>();
+
+            daee.LoopTimes = loopTimes;
+
+            return gm;
+        }
+
+        #endregion
+
+        #region Destroy
+
+        /// <summary>
+        /// Destroy all the 'TYPE' object in the scene.
+        /// </summary>
+        public static void DestroyAllTypeObjectInScene<T>()
+            where T : MonoBehaviour
+        {
+            // Destroy all the live object in the scene.
+            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
+
+            foreach (T e in rrEnemy)
+            {
+                // NOTE(JenChieh): kill the object that are clone!
+                // or else it will effect the prefab object...
+                if (e.gameObject.name.Contains("(Clone)"))
+                    MonoBehaviour.Destroy(e.gameObject);
+            }
+        }
+
+        /// <summary>
+        /// Destroy all the 'TYPE' object in the scene.
+        /// </summary>
+        public static void DestroyImmediateAllTypeObjectInScene<T>()
+            where T : MonoBehaviour
+        {
+            // Destroy all the live object in the scene.
+            T[] rrEnemy = Resources.FindObjectsOfTypeAll<T>();
+
+            foreach (T e in rrEnemy)
+            {
+                // NOTE(JenChieh): kill the object that are clone!
+                // or else it will effect the prefab object...
+                if (e.gameObject.name.Contains("(Clone)"))
+                    MonoBehaviour.DestroyImmediate(e.gameObject);
+            }
+        }
+
+        #endregion
+
+        #region Finding
+
+        /// <summary>
+        /// Find all the objects that are clone in the scene by type.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> Type array. </returns>
+        public static T[] FindCloneObjectsOfTypeAll<T>()
+            where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (obj.gameObject.name.Contains("(Clone)"))
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        /// <summary>
+        /// Find all the objects that are not clone in the scene by type.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> Type array. </returns>
+        public static T[] FindNotCloneObjectsOfTypeAll<T>()
+            where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (!obj.gameObject.name.Contains("(Clone)"))
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        /// <summary>
+        /// Find all objects that only ACTIVE in hierarchy.
+        /// </summary>
+        /// <typeparam name="T"> Type to find. </typeparam>
+        /// <returns> type array, object only in Hierarcrchy. </returns>
+        public static T[] FindObjectsOfTypeAllInHierarchy<T>()
+             where T : MonoBehaviour
+        {
+            T[] typeArr = Resources.FindObjectsOfTypeAll<T>();
+
+            T[] cleanArr = new T[typeArr.Length];
+            int length = 0;
+
+            foreach (T obj in typeArr)
+            {
+                if (obj.gameObject.activeInHierarchy)
+                {
+                    cleanArr[length] = obj;
+                    ++length;
+                }
+            }
+
+            return cleanArr;
+        }
+
+        #endregion
+
+        #region Effect
+
+        /// <summary>
+        /// Return the easing function pointer base on tweener type.
+        /// </summary>
+        /// <param name="type"> type of the tween formula </param>
+        /// <returns> function pointer </returns>
+        public static TweenDelegate GetEasing(JCS_TweenType type)
+        {
+            TweenDelegate easing = null;
+
+            switch (type)
+            {
+                // default to linear
+                case JCS_TweenType.LINEAR:
+                    easing = Easing.Linear;
+                    break;
+
+                case JCS_TweenType.EASE_IN_SINE:
+                    easing = Easing.SineEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_CUBIC:
+                    easing = Easing.CubicEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_QUINT:
+                    easing = Easing.QuintEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_CIRC:
+                    easing = Easing.CircEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_BACK:
+                    easing = Easing.BackEaseIn;
+                    break;
+                case JCS_TweenType.EASE_OUT_SINE:
+                    easing = Easing.SineEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_CUBIC:
+                    easing = Easing.CubicEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUINT:
+                    easing = Easing.QuintEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_CIRC:
+                    easing = Easing.CircEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_BACK:
+                    easing = Easing.BackEaseOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_SINE:
+                    easing = Easing.SineEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_CUBIC:
+                    easing = Easing.CubicEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUINT:
+                    easing = Easing.QuintEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_CIRC:
+                    easing = Easing.CircEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_BACK:
+                    easing = Easing.BackEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_QUAD:
+                    easing = Easing.QuadEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_QUART:
+                    easing = Easing.QuartEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_EXPO:
+                    easing = Easing.ExpoEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_ELASTIC:
+                    easing = Easing.ElasticEaseIn;
+                    break;
+                case JCS_TweenType.EASE_IN_BOUNCE:
+                    easing = Easing.BounceEaseIn;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUAD:
+                    easing = Easing.QuadEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_QUART:
+                    easing = Easing.QuartEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_EXPO:
+                    easing = Easing.ExpoEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_ELASTIC:
+                    easing = Easing.ElasticEaseOut;
+                    break;
+                case JCS_TweenType.EASE_OUT_BOUNCE:
+                    easing = Easing.BounceEaseOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUAD:
+                    easing = Easing.QuadEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_QUART:
+                    easing = Easing.QuartEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_EXPO:
+                    easing = Easing.ExpoEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_ELASTIC:
+                    easing = Easing.ElasticEaseInOut;
+                    break;
+                case JCS_TweenType.EASE_IN_OUT_BOUNCE:
+                    easing = Easing.BounceEaseInOut;
+                    break;
+            }
+
+            return easing;
+        }
+
+        #endregion
+
+        #region List
+
+        /// <summary>
+        /// Fill slots with initialize value type by length.
+        /// </summary>
+        /// <typeparam name="T"> Type from `inArray`. </typeparam>
+        /// <param name="inArray"> Array you would like to fill out. </param>
+        /// <param name="len"> Target length to initialize. </param>
+        /// <param name="with"> Initialize object type. </param>
+        /// <returns> Return filled array. </returns>
+        public static T[] FillSlot<T>(T[] inArray, int len, T with)
+        {
+            return FillSlot(inArray.ToList(), len, with).ToArray();
+        }
+
+        public static List<T> FillSlot<T>(List<T> inList, int len, T with)
+        {
+            for (int index = inList.Count; index < len; ++index)
+                inList.Add(with);
+            return inList;
+        }
+
+        /// <summary>
+        /// Remove the empty slot in the array.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inArray"> Array list. </param>
+        /// <returns> Cleaned up Array object. </returns>
+        public static T[] RemoveEmptySlot<T>(T[] inArray)
+        {
+            return RemoveEmptySlot(inArray.ToList()).ToArray();
+        }
+        public static List<T> RemoveEmptySlot<T>(List<T> inList)
+        {
+            List<T> newArray = new List<T>(inList.Count);
+
+            for (int index = 0; index < inList.Count; ++index)
+            {
+                // Add itself if exists.
+                if (inList[index] != null)
+                    newArray.Add(inList[index]);
+            }
+
+            return newArray;
+        }
+
+        /// <summary>
+        /// Remove the empty slot in the list including remove 
+        /// the missing gameobject too. 
+        /// 
+        /// I guess Unity do the CG collection later a while when 
+        /// you call 'Destory()' function. Before scripting layer 
+        /// acknowledge this game object is destory might be too 
+        /// late in some situation. This will avoid this type of 
+        /// issue/circumstance.
+        /// </summary>
+        /// <typeparam name="T"> Type of the List. </typeparam>
+        /// <param name="inList"> List object. </param>
+        /// <returns> Cleaned up List object. </returns>
+        public static T[] RemoveEmptySlotIncludeMissing<T>(T[] inArray)
+            where T : UnityEngine.Object
+        {
+            return RemoveEmptySlotIncludeMissing(inArray.ToList()).ToArray();
+        }
+        public static List<T> RemoveEmptySlotIncludeMissing<T>(List<T> inList)
+            where T : UnityEngine.Object
+        {
+            List<T> newArray = new List<T>(inList.Count);
+
+            for (int index = 0; index < inList.Count; ++index)
+            {
+                // Add itself if exists.
+                // 
+                // SOURCE(jenchieh): https://answers.unity.com/questions/131158/how-can-i-check-if-an-object-is-null.html
+                // INFORMATION(jenchieh): https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/
+                if (inList[index] ?? false)
+                    newArray.Add(inList[index]);
+            }
+
+            return newArray;
+        }
+
+        #endregion
+
         #region Scene
 
         /// <summary>
@@ -1181,6 +1209,46 @@ namespace JCSUnity
 
         #endregion
 
+        #region Animation
+
+        /// <summary>
+        /// Sets the weight of the layer at the given index.
+        /// 
+        /// Similar to `Animationr.SetLayerWeight` but accept string name.
+        /// </summary>
+        public static void SetLayerWeight(Animator ator, string name, float val)
+        {
+            int index = ator.GetLayerIndex(name);
+
+            SetLayerWeight(ator, index, val);
+        }
+        // For compatibility.
+        public static void SetLayerWeight(Animator ator, int index, float val)
+        {
+            ator.SetLayerWeight(index, val);
+        }
+
+        /// <summary>
+        /// Sets the weight of the layer at the given index.
+        /// 
+        /// Similar to `Animationr.SetLayerWeight` but accept string name.
+        /// </summary>
+        public static float GetLayerWeight(Animator ator, string name)
+        {
+            int index = ator.GetLayerIndex(name);
+
+            return GetLayerWeight(ator, index);
+        }
+        // For compatibility.
+        public static float GetLayerWeight(Animator ator, int index)
+        {
+            return ator.GetLayerWeight(index);
+        }
+
+        #endregion
+
+        #region Gameplay
+
         /// <summary>
         /// Check if the object are the same tribe.
         /// </summary>
@@ -1199,5 +1267,7 @@ namespace JCSUnity
             // or if both enemy does not need to add in to list.
             return (liveObj1.IsPlayer == liveObj2.IsPlayer);
         }
+
+        #endregion
     }
 }
