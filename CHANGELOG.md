@@ -18,6 +18,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(System): Add on system language change callback (d2162da26bfe6a50868ad220df7e51e623813b64)
 * feat(SaveLoad): Replace built-int JSON serializer with Newtonsoft JSON (f372c90b5b3405f81b8ec277ca5e9cf596ef0917)
 * fix: Get material from Unity Object (70d35eefa1bb31ed7d2c28234a2173e8df2efbce)
+* feat: Rename `ValueTweener` to `FloatTweener` (47a0193dd99ac3044266c0248f1d3f085fa10e3e)
 
 ## 3.0.0
 > Released Oct 15, 2024
