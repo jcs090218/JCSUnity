@@ -7,7 +7,7 @@ Disable gameobject when certain range was met.
 | Name             | Description                                    |
 |:-----------------|:-----------------------------------------------|
 | mUseLocal        | Use local position instead of global position. |
-| mTargetTransform | Target check with in the range.                |
+| mTarget          | Target check with in the range.                |
 | mTargetPosition  | Position check with in the range.              |
 | mRange           | The range definition.                          |
 | mFadeEffect      | Fade before disable?                           |
