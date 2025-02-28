@@ -20,7 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        private JCS_FloatTweener mFTweener = null;
+        private JCS_FloatTweener mFloatTweener = null;
 
         [Separator("Runtime Variables (JCS_ShaderTweener)")]
 
@@ -30,7 +30,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_FloatTweener FTweener { get { return this.mFTweener; } }
+        public JCS_FloatTweener FloatTweener { get { return this.mFloatTweener; } }
         public List<string> ShaderProps { get { return mShaderProps; } set { this.mShaderProps = value; } }
 
         /* Functions */
@@ -39,10 +39,10 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mFTweener = this.GetComponent<JCS_FloatTweener>();
+            this.mFloatTweener = this.GetComponent<JCS_FloatTweener>();
 
-            mFTweener.onValueChange = SetValue;
-            mFTweener.onValueReturn = GetValue;
+            mFloatTweener.onValueChange = SetValue;
+            mFloatTweener.onValueReturn = GetValue;
         }
 
         /// <summary>

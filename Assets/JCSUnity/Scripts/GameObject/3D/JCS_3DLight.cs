@@ -25,7 +25,7 @@ namespace JCSUnity
 
         private JCS_AdjustTimeTrigger mAdjustTimerTrigger = null;
 
-        private JCS_FloatTweener mFTweener = null;
+        private JCS_FloatTweener mFloatTweener = null;
 
         [Separator("Runtime Variables (JCS_3DLight)")]
 
@@ -56,10 +56,10 @@ namespace JCSUnity
         {
             this.mLight = this.GetComponent<Light>();
             this.mAdjustTimerTrigger = this.GetComponent<JCS_AdjustTimeTrigger>();
-            this.mFTweener = this.GetComponent<JCS_FloatTweener>();
+            this.mFloatTweener = this.GetComponent<JCS_FloatTweener>();
 
-            this.mFTweener.onValueChange = SetLight_Range;
-            this.mFTweener.onValueReturn = GetLight_Range;
+            this.mFloatTweener.onValueChange = SetLight_Range;
+            this.mFloatTweener.onValueReturn = GetLight_Range;
 
             this.mAdjustTimerTrigger.onAction = DoRange;
         }
@@ -74,7 +74,7 @@ namespace JCSUnity
         {
             float newRange = JCS_Random.Range(mMinRangeValue, mMaxRangeValue);
 
-            this.mFTweener.DoTween(newRange);
+            this.mFloatTweener.DoTween(newRange);
         }
     }
 }

@@ -8,5 +8,5 @@ Can only use for `float` properties.
 
 | Name          | Description                 |
 |:--------------|:----------------------------|
-| mValueTweener | Tweener implementation.     |
+| mFloatTweener | Tweener implementation.     |
 | mShaderProps  | Target shader's properties. |
