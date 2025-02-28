@@ -133,6 +133,7 @@ namespace JCSUnity
         public void AddComponentToResizeCanvas(Component com)
         {
             Transform newParent = (mResizeUI != null) ? mResizeUI.transform : this.mCanvas.transform;
+
             if (newParent == null)
                 JCS_Debug.LogError("Attach resize canvas exception: " + com);
             else
@@ -166,12 +167,20 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true if the canvas is currently visible.
+        /// </summary>
+        public bool IsShown()
+        {
+            return mCanvas.enabled;
+        }
+
+        /// <summary>
         /// Toggle the canvas' visibility.
         /// </summary>
         /// <param name="mute"> True to mute the sound. </param>
         public void ToggleVisibility(bool mute = false)
         {
-            if (mCanvas.enabled)
+            if (IsShown())
                 Hide(mute);
             else
                 Show(mute);
