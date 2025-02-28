@@ -40,7 +40,7 @@ namespace JCSUnity
         private float mRealDuration = 1.0f;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_ValueTweener)")]
+        [Separator("Helper Variables (JCS_FloatTweener)")]
 
         [Tooltip("Test component with key?")]
         [SerializeField]
@@ -63,7 +63,7 @@ namespace JCSUnity
         private float mTweenToB = 5.0f;
 #endif
 
-        [Separator("Check Variables (JCS_ValueTweener)")]
+        [Separator("Check Variables (JCS_FloatTweener)")]
 
         [SerializeField]
         [ReadOnly]
@@ -78,7 +78,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mAnimating = false;
 
-        [Separator("Runtime Variables (JCS_ValueTweener)")]
+        [Separator("Runtime Variables (JCS_FloatTweener)")]
 
         [Tooltip("Do the tween effect?")]
         [SerializeField]
