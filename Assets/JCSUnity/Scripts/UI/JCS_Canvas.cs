@@ -147,6 +147,14 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Return true if the canvas is currently visible.
+        /// </summary>
+        public bool IsShown()
+        {
+            return mCanvas.enabled;
+        }
+
+        /// <summary>
         /// Show the canvas so it's visible.
         /// </summary>
         public void Show(bool mute = false)
@@ -164,14 +172,6 @@ namespace JCSUnity
             mCanvas.enabled = false;
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
-        }
-
-        /// <summary>
-        /// Return true if the canvas is currently visible.
-        /// </summary>
-        public bool IsShown()
-        {
-            return mCanvas.enabled;
         }
 
         /// <summary>
