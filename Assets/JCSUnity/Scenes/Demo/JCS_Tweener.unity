@@ -1046,7 +1046,7 @@ GameObject:
   - component: {fileID: 1291896733}
   - component: {fileID: 1291896734}
   m_Layer: 0
-  m_Name: JCS_ValueTweener
+  m_Name: JCS_FloatTweener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1080,6 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTestWithKey: 1
+  mTestCurrentValue: 0
   mTweenToAKey: 97
   mTweenToA: 0
   mTweenToBKey: 98
@@ -2336,7 +2337,7 @@ GameObject:
   - component: {fileID: 1981689529}
   - component: {fileID: 1981689533}
   m_Layer: 0
-  m_Name: Tweener
+  m_Name: JCS_TransformTweener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2446,7 +2447,7 @@ MonoBehaviour:
   mObjectType: 0
   mMakeUnique: 0
   mColorProps: []
-  mTestWithKey: 0
+  mTestWithKey: 1
   mTweenToAKey: 97
   mTweenToA: {x: 0, y: 0, z: 0}
   mTweenToBKey: 98

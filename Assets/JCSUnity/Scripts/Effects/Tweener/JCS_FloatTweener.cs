@@ -46,6 +46,10 @@ namespace JCSUnity
         [SerializeField]
         private bool mTestWithKey = false;
 
+        [Tooltip("The current value used for the test.")]
+        [SerializeField]
+        private float mTestCurrentValue = 0.0f;
+
         [Tooltip("Key to active tween to point A.")]
         [SerializeField]
         private KeyCode mTweenToAKey = KeyCode.A;
@@ -128,6 +132,24 @@ namespace JCSUnity
         public UnityEvent UnityCallback { get { return this.mUnityCallback; } set { this.mUnityCallback = value; } }
 
         /* Functions */
+
+#if UNITY_EDITOR
+        private void Awake()
+        {
+            if (!mTestWithKey)
+                return;
+
+            onValueChange += (val) =>
+            {
+                mTestCurrentValue = val;
+            };
+
+            onValueReturn += () =>
+            {
+                return mTestCurrentValue;
+            };
+        }
+#endif
 
         private void LateUpdate()
         {
