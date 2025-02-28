@@ -15,12 +15,12 @@ namespace JCSUnity
     /// <summary>
     /// Tweener that tween shader's properties.
     /// </summary>
-    [RequireComponent(typeof(JCS_ValueTweener))]
+    [RequireComponent(typeof(JCS_FloatTweener))]
     public class JCS_ShaderTweener : JCS_UnityObject
     {
         /* Variables */
 
-        private JCS_ValueTweener mValueTweener = null;
+        private JCS_FloatTweener mFTweener = null;
 
         [Separator("Runtime Variables (JCS_ShaderTweener)")]
 
@@ -30,7 +30,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public JCS_ValueTweener ValueTweener { get { return this.mValueTweener; } }
+        public JCS_FloatTweener FTweener { get { return this.mFTweener; } }
         public List<string> ShaderProps { get { return mShaderProps; } set { this.mShaderProps = value; } }
 
         /* Functions */
@@ -39,10 +39,10 @@ namespace JCSUnity
         {
             base.Awake();
 
-            this.mValueTweener = this.GetComponent<JCS_ValueTweener>();
+            this.mFTweener = this.GetComponent<JCS_FloatTweener>();
 
-            mValueTweener.onValueChange = SetValue;
-            mValueTweener.onValueReturn = GetValue;
+            mFTweener.onValueChange = SetValue;
+            mFTweener.onValueReturn = GetValue;
         }
 
         /// <summary>

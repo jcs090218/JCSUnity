@@ -1,4 +1,4 @@
-# JCS_ValueTweener
+# JCS_FloatTweener
 
 Tweener that tweens one specific variable value.
 
