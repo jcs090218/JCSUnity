@@ -45,8 +45,8 @@ namespace JCSUnity
         //-- Text
         protected Text mText = null;
 #if TMP_PRO
-        //-- Text Mesh Pro
-        protected TextMeshPro mTextMesh = null;
+        //-- Text Mesh Pro Ui
+        protected TMP_Text mTextMesh = null;
 #endif
 
         [Header("Material")]
@@ -73,7 +73,7 @@ namespace JCSUnity
         public RectTransform GetRectTransform() { return this.mRectTransform; }
         public Text GetText() { return this.mText; }
 #if TMP_PRO
-        public TextMeshPro GetTextMesh() { return this.mTextMesh; }
+        public TMP_Text GetTextMesh() { return this.mTextMesh; }
 #endif
         public bool MakeUnique { get { return this.mMakeUnique; } set { this.mMakeUnique = value; } }
         public List<string> ColorProps { get { return this.mColorProps; } set { this.mColorProps = value; } }
