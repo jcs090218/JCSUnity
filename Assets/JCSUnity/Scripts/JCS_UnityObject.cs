@@ -108,7 +108,7 @@ namespace JCSUnity
                     break;
 #if TMP_PRO
                 case JCS_UnityObjectType.TMP:
-                    this.mTextMesh = this.GetComponent<TextMeshPro>();
+                    this.mTextMesh = this.GetComponent<TMP_Text>();
                     break;
 #endif
             }
@@ -221,7 +221,7 @@ namespace JCSUnity
                         break;
 #if TMP_PRO
                     case JCS_UnityObjectType.TMP:
-                        this.mTextMesh = (TextMeshPro)value;
+                        this.mTextMesh = (TMP_Text)value;
                         break;
 #endif
                 }
