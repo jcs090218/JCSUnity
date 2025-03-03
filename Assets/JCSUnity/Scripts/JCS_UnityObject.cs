@@ -45,7 +45,7 @@ namespace JCSUnity
         //-- Text
         protected Text mText = null;
 #if TMP_PRO
-        //-- Text Mesh Pro Ui
+        //-- Text Mesh 3D/UI
         protected TMP_Text mTextMesh = null;
 #endif
 
