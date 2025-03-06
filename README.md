@@ -88,10 +88,10 @@ Here is a list of applications that are made with JCSUnity.
   <img src="./etc/games/Radiant_Rune_Fist.png" width="18%" align="middle"/>
 </a>
 <a href="https://www.youtube.com/watch?v=vPapMMxzNGg&feature=youtu.be" target="_blank">
-  <img src="./etc/games/might_&_blade.png" width="18%" align="middle"/>
+  <img src="./etc/games/Might_&_Blade.png" width="18%" align="middle"/>
 </a>
 <a href="https://mwgamedesign.itch.io/sugar-sleuths" target="_blank">
-  <img src="./etc/games/SugarSleuths.png" width="15%" align="middle"/>
+  <img src="./etc/games/Sugar_Sleuths.png" width="15%" align="middle"/>
 </a>
 <a href="http://www.jcs-profile.com/public/links/Links_PipelineOfEmperorYu/" target="_blank">
   <img src="./etc/games/PEY.png" width="7%" align="middle"/>
@@ -109,5 +109,5 @@ Here is a list of applications that are made with JCSUnity.
   <img src="./etc/games/AIS.png" width="7%" align="middle"/>
 </a>
 <a href="https://jcs090218.itch.io/you-have-an-order" target="_blank">
-  <img src="./etc/games/CryptAdv.png" width="7%" align="middle"/>
+  <img src="./etc/games/Crypt_Adv.png" width="7%" align="middle"/>
 </a>
