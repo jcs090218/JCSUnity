@@ -4,24 +4,25 @@ Dialogue system core implementation.
 
 ## Variables
 
-| Name                              | Description                                        |
-|:----------------------------------|:---------------------------------------------------|
-| onDispose                         | Callback when successfully dispose the dialogue.   |
-| mMakeHoverSelect                  | If the mouse hover then select the selection.      |
-| mCenterImage                      | Image displayed at the center.                     |
-| mLeftImage                        | Image displayed at the left.                       |
-| mRightImage                       | Image displayed at the right.                      |
-| mNameTag                          | Text box to display names.                         |
-| mTextBox                          | Text box to display content messages.              |
-| mScrollTime                       | Speed of scrolling the text.                       |
-| mProgressOnHidden                 | Allow progress dialogue even the it is hidden.     |
-| mButtonSelectionGroup             | Make control from the gamepad.                     |
-| mCompleteTextBeforeAction         | Complete text before run action.                   |
-| mCompleteTextBeforeActionOnButton | Complete text before run action on button's event. |
-| mAutoProgress                     | If true, auto progress the dialgoue.               |
-| mAutoDelay                        | Delay before start the next text popup.            |
-| mActiveSound                      | Sound plays when active dialogue.                  |
-| mDisposeSound                     | Sound plays when dispose dialogue.                 |
+| Name                              | Description                                                                                                     |
+|:----------------------------------|:----------------------------------------------------------------------------------------------------------------|
+| onDispose                         | Callback when successfully dispose the dialogue.                                                                |
+| onNextOrDisposeCondition          | Callback determine when the dialogue system suppose to be disposed when executing the function `NextOrDispose`. |
+| mMakeHoverSelect                  | If the mouse hover then select the selection.                                                                   |
+| mCenterImage                      | Image displayed at the center.                                                                                  |
+| mLeftImage                        | Image displayed at the left.                                                                                    |
+| mRightImage                       | Image displayed at the right.                                                                                   |
+| mNameTag                          | Text box to display names.                                                                                      |
+| mTextBox                          | Text box to display content messages.                                                                           |
+| mScrollTime                       | Speed of scrolling the text.                                                                                    |
+| mProgressOnHidden                 | Allow progress dialogue even the it is hidden.                                                                  |
+| mButtonSelectionGroup             | Make control from the gamepad.                                                                                  |
+| mCompleteTextBeforeAction         | Complete text before run action.                                                                                |
+| mCompleteTextBeforeActionOnButton | Complete text before run action on button's event.                                                              |
+| mAutoProgress                     | If true, auto progress the dialgoue.                                                                            |
+| mAutoDelay                        | Delay before start the next text popup.                                                                         |
+| mActiveSound                      | Sound plays when active dialogue.                                                                               |
+| mDisposeSound                     | Sound plays when dispose dialogue.                                                                              |
 
 ## Functions
 
