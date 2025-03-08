@@ -888,7 +888,7 @@ issue by using the UDP for network communicattion.
 * Zero out the velocity when the camera stopped, bug fixed.
 * Update JCS_SoundManager with play one shot of bgm.
 * Update JCS_SceneManager with more proper name variables.
-* Update JCS_SoundManaer with 'SwitchBackgroundMusic' function.
+* Update JCS_SoundManaer with 'SwitchBGM' function.
 * Rename JCS_2DDestroyAnimEffect to JCS_3DDestroyAnimEffect.
 * JCS_2DDestroyAnimEffect impelemented.
 * JCS_TransformPool implemented.
