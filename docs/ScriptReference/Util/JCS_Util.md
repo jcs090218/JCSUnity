@@ -53,4 +53,5 @@ All code utility is stored here.
 | IsSceneExists                        | Returns true if the scene 'name' exists and is in your Build settings, false otherwise.           |
 | SetLayerWeight                       | Sets the weight of the layer at the given name.                                                   |
 | GetLayerWeight                       | Returns the weight of the layer at the specified name.                                            |
+| PlayClipAtPoint                      | Same with function `AudioSource.PlayClipAtPoint` with different default `spatialBlend` value.     |
 | IsSameTribe                          | Check if the live object is the same tribe.                                                       |
