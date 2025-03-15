@@ -43,6 +43,8 @@ All code utility is stored here.
 | SpawnAnimateObjectDeathEvent         | Spawn a gameobject with the animator and death event on it.                                       |
 | DestroyAllTypeObjectInScene          | Destory all gameobjects in the scene with the type passed in.                                     |
 | DestroyImmediateAllTypeObjectInScene | Destroy all the gameobject in the scene immediately with the type passed in.                      |
+| IsClone                              | Return true if the game object is a clone.                                                        |
+| RemoveCloneString                    | Remove the text "(Clone)" from game object's name, and return the new name string.                |
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
 | FindCloneObjectsOfTypeAll            | Find all cloned gameobjects in the scene with the type passed in.                                 |
