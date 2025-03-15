@@ -20,6 +20,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix: Get material from Unity Object (70d35eefa1bb31ed7d2c28234a2173e8df2efbce)
 * feat: Rename `ValueTweener` to `FloatTweener` (47a0193dd99ac3044266c0248f1d3f085fa10e3e)
 * feat(UI): Add option to customize next or dispose's condition (a1a9e567cd48d758b80fc0e0c574020a449f5139)
+* feat(Util): Add clone related utility functions (bd09dc9bd308ed82d0447512e007e1fbafa71407)
 
 ## 3.0.0
 > Released Oct 15, 2024
