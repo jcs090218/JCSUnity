@@ -56,4 +56,5 @@ All code utility is stored here.
 | SetLayerWeight                       | Sets the weight of the layer at the given name.                                                   |
 | GetLayerWeight                       | Returns the weight of the layer at the specified name.                                            |
 | PlayClipAtPoint                      | Same with function `AudioSource.PlayClipAtPoint` with different default `spatialBlend` value.     |
+| PlayParticleAtPoint                  | Play the particle at point.                                                                       |
 | IsSameTribe                          | Check if the live object is the same tribe.                                                       |

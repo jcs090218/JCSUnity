@@ -1298,6 +1298,26 @@ namespace JCSUnity
 
         #endregion
 
+        #region Particle
+
+        /// <summary>
+        /// Play the particle at point.
+        /// </summary>
+        public static void PlayParticleAtPoint(ParticleSystem ps, Vector3 position)
+        {
+            PlayParticleAtPoint(ps, position, ps.main.duration);
+        }
+        public static void PlayParticleAtPoint(ParticleSystem ps, Vector3 position, float duration)
+        {
+            ParticleSystem particleSystem = MonoBehaviour.Instantiate(ps);
+            particleSystem.gameObject.name = "One shot particle";
+            particleSystem.transform.position = position;
+            particleSystem.Play();
+            Object.Destroy(particleSystem.gameObject, duration);
+        }
+
+        #endregion
+
         #region Gameplay
 
         /// <summary>
