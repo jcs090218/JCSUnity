@@ -12,8 +12,9 @@ Interface communicate to application layer.
 | RequestLocation         | Request permission for location service.       |
 | SimulatePlatformType    | Target platform type to simulate.              |
 | PlatformType            | This will override Platform Type.              |
+| systemLanguage          | Current systme language.                       |
 | SimulateSystemLanguage  | If true, override current system language.     |
-| systemLanguage          | Target language to simulate.                   |
+| SimulateLanguage        | Target language to simulate.                   |
 
 ## Functions
 
