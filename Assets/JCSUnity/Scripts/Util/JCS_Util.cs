@@ -202,14 +202,18 @@ namespace JCSUnity
         /// <returns></returns>
         public static T[] MergeArrays<T>(params T[][] arrList)
         {
-            if (arrList.Length <= 1)
-            {
-                JCS_Debug.Log("You trying to merge the array less then two array");
-            }
+            if (arrList.Length == 0)
+                return null;
+
+            if (arrList.Length == 1)
+                return arrList[0];
 
             int arrLen = 0;
+
             foreach (var arr in arrList)
+            {
                 arrLen += arr.Length;
+            }
 
             // first combine the first two array.
             T[] data = MergeArrays2<T>(arrList[0], arrList[1]);
