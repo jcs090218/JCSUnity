@@ -21,6 +21,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat: Rename `ValueTweener` to `FloatTweener` (47a0193dd99ac3044266c0248f1d3f085fa10e3e)
 * feat(UI): Add option to customize next or dispose's condition (a1a9e567cd48d758b80fc0e0c574020a449f5139)
 * feat(Util): Add clone related utility functions (bd09dc9bd308ed82d0447512e007e1fbafa71407)
+* feat(Util): Add play particle at point (4bfb0ac273b863d6a115bcd2e100db9de4abeb5d)
 
 ## 3.0.0
 > Released Oct 15, 2024
