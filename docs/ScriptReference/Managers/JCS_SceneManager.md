@@ -22,4 +22,5 @@ Better version of scene manager.
 |:-----------------|:-----------------------------------|
 | LoadScene        | Load the target scene.             |
 | ReloadScene      | Reload the current scene.          |
+| LoadNextScene    | Load the next scene.               |
 | IsSwitchingScene | Check is loading the scene or not. |
