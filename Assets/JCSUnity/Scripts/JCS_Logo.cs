@@ -20,7 +20,7 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_Logo)")]
 
-        [Tooltip("Next scene to load.")]
+        [Tooltip("Next scene to load; if empy, load the next scene instead.")]
         [SerializeField]
         private string mNextLevel = "JCS_AppCloseSimulate";
 
@@ -57,7 +57,21 @@ namespace JCSUnity
             mDelayTimer += JCS_Time.DeltaTime(mDeltaTimeType);
 
             if (mDelayTime < mDelayTimer)
-                JCS_SceneManager.instance.LoadScene(mNextLevel);
+            {
+                LoadLevel();
+            }
+        }
+
+        private void LoadLevel()
+        {
+            var sm = JCS_SceneManager.instance;
+
+            string sceneName = mNextLevel;
+
+            if (sceneName == "")
+                sceneName = sm.NextSceneName();
+
+            sm.LoadScene(sceneName);
         }
     }
 }

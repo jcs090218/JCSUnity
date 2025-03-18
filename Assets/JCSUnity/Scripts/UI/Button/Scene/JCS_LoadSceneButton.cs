@@ -73,7 +73,7 @@ namespace JCSUnity
             else
             {
                 if (sceneName == "")
-                    sceneName = sm.NextScene().name;
+                    sceneName = sm.NextSceneName();
             }
 
             sm.LoadScene(sceneName, mScreenColor, mKeppBGM);

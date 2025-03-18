@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MyBox;
@@ -505,11 +506,14 @@ namespace JCSUnity
         /// <summary>
         /// Return the next scene.
         /// </summary>
-        public Scene NextScene(int offset = 1)
+        public string NextSceneName(int offset = 1)
         {
             int nextIndex = SceneManager.GetActiveScene().buildIndex + offset;
 
-            return SceneManager.GetSceneByBuildIndex(nextIndex);
+            string pathToScene = SceneUtility.GetScenePathByBuildIndex(nextIndex);
+            string sceneName = Path.GetFileNameWithoutExtension(pathToScene);
+
+            return sceneName;
         }
 
         /// <summary>
@@ -600,7 +604,7 @@ namespace JCSUnity
         /// <param name="keepBGM"> Set to true if keep background music playing. </param>
         public void LoadNextScene(float fadeInTime, Color screenColor, bool keepBGM)
         {
-            string sceneName = NextScene().name;
+            string sceneName = NextSceneName();
 
             LoadScene(sceneName, fadeInTime, screenColor, keepBGM);
         }
