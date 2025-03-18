@@ -23,6 +23,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Util): Add clone related utility functions (bd09dc9bd308ed82d0447512e007e1fbafa71407)
 * feat(Util): Add play particle at point (4bfb0ac273b863d6a115bcd2e100db9de4abeb5d)
 * feat(Manager): `OnValidate` the simluate system language (dafc2bb1960161ffc0d553677916675b284a24e9)
+* feat(Scene): Add `LoadNextScene` functions (d6c011db0d80d640549fd5f367c2b305790aafa9)
 
 ## 3.0.0
 > Released Oct 15, 2024
