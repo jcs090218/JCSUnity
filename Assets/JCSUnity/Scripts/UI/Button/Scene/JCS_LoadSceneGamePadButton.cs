@@ -61,22 +61,9 @@ namespace JCSUnity
                     return;
             }
 
-            var sm = JCS_SceneManager.instance;
+            string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
-            string sceneName = mSceneName;
-
-            if (mReloadScene)
-            {
-                // assign current scene name
-                sceneName = SceneManager.GetActiveScene().name;
-            }
-            else
-            {
-                if (sceneName == "")
-                    sceneName = sm.NextSceneName();
-            }
-
-            sm.LoadScene(sceneName, mScreenColor, mKeppBGM);
+            JCS_SceneManager.instance.LoadScene(sceneName, mScreenColor, mKeppBGM);
         }
     }
 }

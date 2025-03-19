@@ -504,9 +504,9 @@ namespace JCSUnity
         #region Next Scene
 
         /// <summary>
-        /// Return the next scene.
+        /// Return the next scene name.
         /// </summary>
-        public string NextSceneName(int offset = 1)
+        public static string NextSceneName(int offset = 1)
         {
             int nextIndex = SceneManager.GetActiveScene().buildIndex + offset;
 
@@ -610,6 +610,27 @@ namespace JCSUnity
         }
 
         #endregion
+
+        /// <summary>
+        /// Return the scene name by their options.
+        /// </summary>
+        /// <param name="sceneName"> The default scene name. </param>
+        /// <param name="reload"> Reload it? </param>
+        /// <param name="offset"> Offset for next scene's build index. </param>
+        public static string GetSceneNameByOption(string sceneName, bool reload, int offset = 1)
+        {
+            if (reload)
+            {
+                return SceneManager.GetActiveScene().name;
+            }
+            else
+            {
+                if (sceneName.IsNullOrEmpty())
+                    sceneName = NextSceneName(offset);
+            }
+
+            return sceneName;
+        }
 
         /// <summary>
         /// Check is loading the scene or not.

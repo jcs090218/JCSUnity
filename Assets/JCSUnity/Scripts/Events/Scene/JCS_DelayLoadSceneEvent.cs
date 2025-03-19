@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_Logo.cs $
+ * $File: JCS_DelayLoadSceneEvent.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -12,17 +12,21 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Logo object for next scene.
+    /// Delay seconds before loading a scene.
     /// </summary>
-    public class JCS_Logo : MonoBehaviour
+    public class JCS_DelayLoadSceneEvent : MonoBehaviour
     {
         /* Variables */
 
-        [Separator("Runtime Variables (JCS_Logo)")]
+        [Separator("Runtime Variables (JCS_DelayLoadSceneEvent)")]
 
         [Tooltip("Next scene to load; if empy, load the next scene instead.")]
         [SerializeField]
-        private string mNextLevel = "JCS_AppCloseSimulate";
+        private string mNextLevel = "";
+
+        [Tooltip("Reload the current scene, and ignore the target scene name.")]
+        [SerializeField]
+        public bool mReloadScene = false;
 
         [Tooltip("Second to show logo and load to the next scene.")]
         [SerializeField]
@@ -58,20 +62,10 @@ namespace JCSUnity
 
             if (mDelayTime < mDelayTimer)
             {
-                LoadLevel();
+                string sceneName = JCS_SceneManager.GetSceneNameByOption(mNextLevel, mReloadScene);
+
+                JCS_SceneManager.instance.LoadScene(sceneName);
             }
-        }
-
-        private void LoadLevel()
-        {
-            var sm = JCS_SceneManager.instance;
-
-            string sceneName = mNextLevel;
-
-            if (sceneName == "")
-                sceneName = sm.NextSceneName();
-
-            sm.LoadScene(sceneName);
         }
     }
 }
