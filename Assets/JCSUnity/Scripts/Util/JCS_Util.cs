@@ -893,7 +893,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Execute with in the active scene without losing the
+        /// Execute within the active scene without losing the
         /// current scene.
         /// </summary>
         /// <param name="scene"> Target scene we want to execute. </param>
