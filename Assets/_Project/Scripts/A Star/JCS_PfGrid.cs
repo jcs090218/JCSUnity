@@ -13,7 +13,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Path finding grid gameobject.
+    /// Path finding grid game object.
     /// </summary>
     public class JCS_PfGrid : MonoBehaviour
     {

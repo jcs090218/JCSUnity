@@ -39,8 +39,9 @@ All code utility is stored here.
 | ForceDetachChildren                  | Force detach all the child from a transform.                                                      |
 | AttachChildren                       | Attach all the childs to this transform.                                                          |
 | Instantiate                          | Spawn a game object.                                                                              |
-| SpawnAnimateObject                   | Spawn a gameobject with animation attached.                                                       |
-| SpawnAnimateObjectDeathEvent         | Spawn a gameobject with the animator and death event on it.                                       |
+| InstantiateToScene                   | Spwan a game object to another scene.                                                             |
+| SpawnAnimateObject                   | Spawn a game object with animation attached.                                                      |
+| SpawnAnimateObjectDeathEvent         | Spawn a game object with the animator and death event on it.                                      |
 | DestroyAllTypeObjectInScene          | Destory all gameobjects in the scene with the type passed in.                                     |
 | DestroyImmediateAllTypeObjectInScene | Destroy all the gameobject in the scene immediately with the type passed in.                      |
 | IsClone                              | Return true if the game object is a clone.                                                        |

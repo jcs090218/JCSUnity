@@ -391,7 +391,7 @@ namespace JCSUnity
 
         /// <summary>
         /// Remove the empty slot in the list including remove 
-        /// the missing gameobject too. 
+        /// the missing game object too. 
         /// 
         /// I guess Unity do the CG collection later a while when 
         /// you call 'Destory()' function. Before scripting layer 

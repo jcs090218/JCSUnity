@@ -26,7 +26,7 @@ public class BF_WaveHandler : MonoBehaviour
 
     [Separator("Initialize Variables (BF_WaveHandler)")]
 
-    [Tooltip(@"All the object spawn form this gameobject, will be 
+    [Tooltip(@"All the object spawn form this game object, will be 
 set to thie scene layer.")]
     [SerializeField]
     private int mOrderLayer = 7;

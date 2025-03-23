@@ -36,7 +36,7 @@ public class RC_GoldObject : JCS_CashObject
         var p = other.GetComponent<RC_Player>();
         if (p == null)
         {
-            JCS_Debug.LogError("You are using RC game object but the player isn't RC gameobject...");
+            JCS_Debug.LogError("You are using RC game object but the player isn't RC game object...");
             return;
         }
 
