@@ -873,27 +873,20 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Retrieves the first active loaded object of Type type.
+        /// Spwan a game object to another scene.
         /// </summary>
-        public static Object FindObjectByType(System.Type type)
+        /// <param name="original"> The original game object. </param>
+        /// <param name="scene"> The target scene </param>
+        /// <returns> Return the newly spawned game object. </returns>
+        public static GameObject InstantiateToScene(GameObject original, Scene scene)
         {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindFirstObjectByType(type);
-#else
-            return UnityEngine.Object.FindObjectOfType(type);
-#endif
-        }
+            GameObject newObj = MonoBehaviour.Instantiate(original);
 
-        /// <summary>
-        /// Retrieves a list of all loaded objects of Type type.
-        /// </summary>
-        public static Object[] FindObjectsByType(System.Type type)
-        {
-#if UNITY_2023_1_OR_NEWER
-            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
-#else
-            return UnityEngine.Object.FindObjectsOfType(type);
-#endif
+            RemoveCloneString(newObj);
+
+            SceneManager.MoveGameObjectToScene(newObj, scene);
+
+            return newObj;
         }
 
         /// <summary>
@@ -1008,6 +1001,30 @@ namespace JCSUnity
         #endregion
 
         #region Finding
+
+        /// <summary>
+        /// Retrieves the first active loaded object of Type type.
+        /// </summary>
+        public static Object FindObjectByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindFirstObjectByType(type);
+#else
+            return UnityEngine.Object.FindObjectOfType(type);
+#endif
+        }
+
+        /// <summary>
+        /// Retrieves a list of all loaded objects of Type type.
+        /// </summary>
+        public static Object[] FindObjectsByType(System.Type type)
+        {
+#if UNITY_2023_1_OR_NEWER
+            return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
+#else
+            return UnityEngine.Object.FindObjectsOfType(type);
+#endif
+        }
 
         /// <summary>
         /// Find all the objects that are clone in the scene by type.
@@ -1285,9 +1302,9 @@ namespace JCSUnity
         /// default `spatialBlend` value.
         /// </summary>
         public static void PlayClipAtPoint(
-            AudioClip clip, 
-            Vector3 position, 
-            float volume, 
+            AudioClip clip,
+            Vector3 position,
+            float volume,
             float spatialBlend)
         {
             var gameObject = new GameObject("One shot audio");
