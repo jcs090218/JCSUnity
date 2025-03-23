@@ -1,6 +1,6 @@
 # JCS_DisableWithCertainRangeEvent
 
-Disable gameobject when certain range was met.
+Disable game object when certain range was met.
 
 ## Variables
 

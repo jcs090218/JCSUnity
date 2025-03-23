@@ -42,15 +42,15 @@ All code utility is stored here.
 | InstantiateToScene                   | Spwan a game object to another scene.                                                             |
 | SpawnAnimateObject                   | Spawn a game object with animation attached.                                                      |
 | SpawnAnimateObjectDeathEvent         | Spawn a game object with the animator and death event on it.                                      |
-| DestroyAllTypeObjectInScene          | Destory all gameobjects in the scene with the type passed in.                                     |
-| DestroyImmediateAllTypeObjectInScene | Destroy all the gameobject in the scene immediately with the type passed in.                      |
+| DestroyAllTypeObjectInScene          | Destory all game objects in the scene with the type passed in.                                    |
+| DestroyImmediateAllTypeObjectInScene | Destroy all the game object in the scene immediately with the type passed in.                     |
 | IsClone                              | Return true if the game object is a clone.                                                        |
 | RemoveCloneString                    | Remove the text "(Clone)" from game object's name, and return the new name string.                |
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
-| FindCloneObjectsOfTypeAll            | Find all cloned gameobjects in the scene with the type passed in.                                 |
-| FindNotCloneObjectsOfTypeAll         | Find all gameobjects that are not clones in the scene with the type passed in.                    |
-| FindObjectsOfTypeAllInHierarchy      | Find all the gameobject that are only active in the hierarchy with the type passed in.            |
+| FindCloneObjectsOfTypeAll            | Find all cloned game objects in the scene with the type passed in.                                |
+| FindNotCloneObjectsOfTypeAll         | Find all game objects that are not clones in the scene with the type passed in.                   |
+| FindObjectsOfTypeAllInHierarchy      | Find all the game object that are only active in the hierarchy with the type passed in.           |
 | GetEasing                            | Returns the easing function pointer base on the tweener type/enum.                                |
 | IsScene                              | Check current scene's with NAME.                                                                  |
 | IsSceneExists                        | Returns true if the scene 'name' exists and is in your Build settings, false otherwise.           |

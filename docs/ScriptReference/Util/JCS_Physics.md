@@ -19,5 +19,5 @@ Physic related functions.
 | TopOfBoxWithSlope           | Check if a collider on top of the box collider including measuring the slop from the box collider. |
 | BottomOfBox                 | Check if a collider under the bottom of the box collider.                                          |
 | JcsOnTriggerCheck           | Check if two collider collapse.                                                                    |
-| FindClosestHit              | Returns the gameobject that the closest to the current pass in transform.                          |
+| FindClosestHit              | Returns the game object that the closest to the current pass in transform.                         |
 | GetColliderPosition         | Returns the position of the collider.                                                              |

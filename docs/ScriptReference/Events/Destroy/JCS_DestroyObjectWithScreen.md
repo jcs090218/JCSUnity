@@ -1,6 +1,6 @@
 # JCS_DestroyObjectWithScreen
 
-Destroy the gameobject when the object is no longer render on the screen.
+Destroy the game object when the object is no longer render on the screen.
 
 ## Variables
 

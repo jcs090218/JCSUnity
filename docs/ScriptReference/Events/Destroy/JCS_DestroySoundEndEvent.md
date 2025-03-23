@@ -1,3 +1,3 @@
 # JCS_DestroySoundEndEvent
 
-Destroy the gameobject after the sound is done playing.
+Destroy the game object after the sound is done playing.

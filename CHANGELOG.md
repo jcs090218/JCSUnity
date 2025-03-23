@@ -26,6 +26,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Scene): Add `LoadNextScene` functions (d6c011db0d80d640549fd5f367c2b305790aafa9)
 * refactor(Scene): Rename `JCS_Logo` to `JCS_DelayLoadSceneEvent` (ebc4c868a53528fea619887955f43eae8a5e07ee)
 * feat(Util): Start off loop utility. (451f51a0b37c71a094860f099033048feb668753)
+* feat(Util): Add instantiate to another scene (c3455fd0581ccfc390bdfe281a4f711e18442226)
 
 ## 3.0.0
 > Released Oct 15, 2024

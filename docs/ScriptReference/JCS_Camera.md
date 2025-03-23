@@ -15,17 +15,17 @@ Camera base class for JCSUnity.
 
 ## Functions
 
-| Name               | Description                                         |
-|:-------------------|:----------------------------------------------------|
-| TakeScreenshot     | Take a snap shot in the game. (Standalone only)     |
-| SavePath           | Get the screenshot images' save path.               |
-| LastImageFileIndex | Last screenshot image's file index.                 |
-| ImagePathByIndex   | Form screenshot image path by index.                |
-| LoadImageByIndex   | Load screenshot image by file index.                |
-| LoadAllImages      | Load all screenshot images.                         |
-| DeleteImageByIndex | Delete screenshot image by image file's index.      |
-| DeleteAllImages    | Delete all screenshot images from disk.             |
-| CheckInScreenSpace | Check if a gameobject is shown in the screen space. |
-| WorldToCanvasSpace | Convert world space point to canvas space point.    |
-| CanvasToWorldSpace | Convert canvas space point to world space point.    |
-| SetPosition        | Proper way to set camera position.                  |
+| Name               | Description                                          |
+|:-------------------|:-----------------------------------------------------|
+| TakeScreenshot     | Take a snap shot in the game. (Standalone only)      |
+| SavePath           | Get the screenshot images' save path.                |
+| LastImageFileIndex | Last screenshot image's file index.                  |
+| ImagePathByIndex   | Form screenshot image path by index.                 |
+| LoadImageByIndex   | Load screenshot image by file index.                 |
+| LoadAllImages      | Load all screenshot images.                          |
+| DeleteImageByIndex | Delete screenshot image by image file's index.       |
+| DeleteAllImages    | Delete all screenshot images from disk.              |
+| CheckInScreenSpace | Check if a game object is shown in the screen space. |
+| WorldToCanvasSpace | Convert world space point to canvas space point.     |
+| CanvasToWorldSpace | Convert canvas space point to world space point.     |
+| SetPosition        | Proper way to set camera position.                   |

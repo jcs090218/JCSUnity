@@ -1,6 +1,6 @@
 # JCS_DisableWithAnimEndEvent
 
-Disable the gameobject after the done playing the animation.
+Disable the game object after the done playing the animation.
 
 ## Variables
 

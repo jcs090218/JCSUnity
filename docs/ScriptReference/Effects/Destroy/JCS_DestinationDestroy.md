@@ -1,6 +1,6 @@
 # JCS_DestinationDestroy
 
-Effect when reach the destination destroy this gameobject.
+Effect when reach the destination destroy this game object.
 
 ## Variables
 

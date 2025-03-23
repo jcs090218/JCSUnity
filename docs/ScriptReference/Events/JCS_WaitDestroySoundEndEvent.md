@@ -1,6 +1,6 @@
 # JCS_WaitDestroySoundEndEvent
 
-Ensure while playing the sound, this gameobject does not get destroyed.
+Ensure while playing the sound, this game object does not get destroyed.
 
 ## Variables
 

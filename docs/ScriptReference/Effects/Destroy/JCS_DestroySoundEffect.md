@@ -1,6 +1,6 @@
 # JCS_DestroySoundEffect
 
-Effect that play the sound after the gameobject is destroyed.
+Effect that play the sound after the game object is destroyed.
 
 ## Variables
 

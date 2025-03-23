@@ -1,6 +1,6 @@
 # JCS_2DRotateAction
 
-Action that make gameobject rotates.
+Action that make game object rotates.
 
 ## Variables
 

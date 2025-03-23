@@ -1,6 +1,6 @@
 # JCS_2DInitLookByTypeAction
 
-Look at the gameobject depends on the find method.
+Look at the game object depends on the find method.
 
 ## Variables
 
@@ -13,6 +13,6 @@ Look at the gameobject depends on the find method.
 
 ## Functions
 
-| Name       | Description                        |
-|:-----------|:-----------------------------------|
-| LockOnInit | Lock a gameobject, and look at it. |
+| Name       | Description                         |
+|:-----------|:------------------------------------|
+| LockOnInit | Lock a game object, and look at it. |

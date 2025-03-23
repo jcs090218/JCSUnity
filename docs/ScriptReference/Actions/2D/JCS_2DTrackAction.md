@@ -1,6 +1,6 @@
 # JCS_2DTrackAction
 
-Track a gameobject on 2D.
+Track a game object on 2D.
 
 ## Variables
 

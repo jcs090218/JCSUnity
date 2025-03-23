@@ -7,5 +7,5 @@ Active the game object after a certain time.
 | Name           | Description                          |
 |:---------------|:-------------------------------------|
 | GameObjects    | GameObjects that take effect.        |
-| time           | Time before inactive the gameobject. |
+| time           | Time before inactive the game object. |
 | mDeltaTimeType | Type of the delta time.              |

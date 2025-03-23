@@ -1,6 +1,6 @@
 # JCS_3DPositionTileAction
 
-If gameobject goes a certain range set back to original positioin.
+If game object goes a certain range set back to original positioin.
 
 ## Variables
 

@@ -1,6 +1,6 @@
 # JCS_SpriteScaleAction
 
-Action scale the sprite's gameobject to the vector direction.
+Action scale the sprite's game object to the vector direction.
 
 ## Variables
 

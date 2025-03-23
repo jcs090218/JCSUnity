@@ -1,6 +1,6 @@
 # JCS_2DWaveEffect
 
-Effect that make wave effect on the gameobject.
+Effect that make wave effect on the game object.
 
 ## Variables
 
