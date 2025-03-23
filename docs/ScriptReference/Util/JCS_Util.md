@@ -40,6 +40,7 @@ All code utility is stored here.
 | AttachChildren                       | Attach all the childs to this transform.                                                          |
 | Instantiate                          | Spawn a game object.                                                                              |
 | InstantiateToScene                   | Spwan a game object to another scene.                                                             |
+| WithActiveScene                      | Execute within the active scene without losing the current scene.                                 |
 | SpawnAnimateObject                   | Spawn a game object with animation attached.                                                      |
 | SpawnAnimateObjectDeathEvent         | Spawn a game object with the animator and death event on it.                                      |
 | DestroyAllTypeObjectInScene          | Destory all game objects in the scene with the type passed in.                                    |
