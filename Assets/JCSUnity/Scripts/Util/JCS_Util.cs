@@ -880,13 +880,45 @@ namespace JCSUnity
         /// <returns> Return the newly spawned game object. </returns>
         public static GameObject InstantiateToScene(GameObject original, Scene scene)
         {
-            GameObject newObj = MonoBehaviour.Instantiate(original);
+            GameObject newObj = null;
 
-            RemoveCloneString(newObj);
+            WithActiveScene(scene, () =>
+            {
+                newObj = MonoBehaviour.Instantiate(original);
 
-            SceneManager.MoveGameObjectToScene(newObj, scene);
+                RemoveCloneString(newObj);
+            });
 
             return newObj;
+        }
+
+        /// <summary>
+        /// Execute with in the active scene without losing the
+        /// current scene.
+        /// </summary>
+        /// <param name="scene"> Target scene we want to execute. </param>
+        /// <param name="action"> The execution body. </param>
+        public static void WithActiveScene(Scene scene, System.Action action)
+        {
+            Scene oldScene = SceneManager.GetActiveScene();
+
+            // If the same scene, just execute and leave.
+            if (oldScene == scene)
+            {
+                if (action != null)
+                    action.Invoke();
+
+                return;
+            }
+
+            // Switch to new scene.
+            SceneManager.SetActiveScene(scene);
+
+            if (action != null)
+                action.Invoke();
+
+            // Revert back to old scene.
+            SceneManager.SetActiveScene(oldScene);
         }
 
         /// <summary>
@@ -1017,7 +1049,7 @@ namespace JCSUnity
         /// <summary>
         /// Retrieves a list of all loaded objects of Type type.
         /// </summary>
-        public static Object[] FindObjectsByType(System.Type type)
+        public static UnityEngine.Object[] FindObjectsByType(System.Type type)
         {
 #if UNITY_2023_1_OR_NEWER
             return UnityEngine.Object.FindObjectsByType(type, FindObjectsSortMode.None);
