@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2023 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 
 namespace JCSUnity
@@ -15,6 +16,12 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Time 
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
+        /* Functions */
+
         /// <summary>
         /// Get the delta time by type.
         /// </summary>
@@ -41,6 +48,30 @@ namespace JCSUnity
             }
 
             return 0.0f;
+        }
+
+        /// <summary>
+        /// Return the time similar to skill time.
+        /// 
+        /// - For day: 1d
+        /// - For hour: 2h
+        /// - For minute: 3m
+        /// - For second: 4s
+        /// </summary>
+        public static string Format(float seconds)
+        {
+            TimeSpan time = TimeSpan.FromSeconds(seconds);
+
+            if (time.Days > 0)
+                return $"{time.Days}d";
+            if (time.Hours > 0)
+                return $"{time.Hours}h";
+            if (time.Minutes > 0)
+                return $"{time.Minutes}m";
+            if (time.Seconds >= 0)
+                return $"{time.Seconds}s";
+
+            return "";
         }
     }
 }
