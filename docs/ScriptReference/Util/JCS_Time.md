@@ -4,7 +4,7 @@ Provides an interface to get time information from Unity.
 
 ## Functions
 
-| Name      | Description                 |
-|:----------|:----------------------------|
-| DeltaTime | Get the delta time by type. |
-
+| Name   | Description                            |
+|:-------|:---------------------------------------|
+| ItTime | Get the time by type.                  |
+| Format | Return the time similar to skill time. |
