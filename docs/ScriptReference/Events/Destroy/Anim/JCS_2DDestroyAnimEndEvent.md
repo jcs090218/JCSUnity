@@ -1,10 +1,10 @@
 # JCS_2DDestroyAnimEndEvent
 
-Destroy the gameobject after done playing the 2D animation.
+Destroy the game object after done playing the 2D animation.
 
 ## Variables
 
 | Name           | Description                                           |
 |:---------------|:------------------------------------------------------|
 | mLoopTimes     | How many times the animation plays before destorying. |
-| mDeltaTimeType | Type of the delta time.                               |
+| mTimeType      | Type of the delta time.                               |

@@ -8,7 +8,7 @@ Camera that track mutliple transforms.
 |:----------------|:---------------------------------|
 | mCamerSpeed     | How fast the caemra moves.       |
 | mCameraFriction | How fast the caemra zoom in/out. |
-| mDeltaTimeType  | Type of the delta time.          |
+| mTimeType       | Type of the delta time.          |
 
 ## Functions
 

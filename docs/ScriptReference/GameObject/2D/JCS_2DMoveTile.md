@@ -8,4 +8,4 @@ Moving tile usually as a background.
 |:---------------|:--------------------------|
 | mMoveSpeed     | How fast this tile moves? |
 | mIsYAxis       | Move in y axis.           |
-| mDeltaTimeType | Type of the delta time.   |
+| mTimeType      | Type of the delta time.   |

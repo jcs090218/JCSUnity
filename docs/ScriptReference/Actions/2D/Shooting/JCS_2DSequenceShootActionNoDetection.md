@@ -12,7 +12,7 @@ Shoot bullets toward the cursor position in the sequence.
 | mKeepShootAngle | Keep all bullets in the same angle per sequence.    |
 | mShootGapEffect | Shoot with gap?                                     |
 | mShootGap       | Gap distance.                                       |
-| mDeltaTimeType  | Type of the delta time.                             |
+| mTimeType       | Type of the delta time.                             |
 
 ## Functionsq
 

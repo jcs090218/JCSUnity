@@ -8,4 +8,4 @@ Slide Panel works with [JCS_SlideScreenPanelHolder](?page=GUI_sl_JCS_SlideScreen
 |:----------------|:-----------------------------------------------|
 | mSlideFrictionX | How fast the this slide panel slide in x axis. |
 | mSlideFrictionY | How fast the this slide panel slide in y axis. |
-| mDeltaTimeType  | Type of the delta time.                        |
+| mTimeType       | Type of the delta time.                        |

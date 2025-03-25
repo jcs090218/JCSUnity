@@ -8,7 +8,7 @@ Action shows invincible time.
 |:-----------------|:--------------------------------------|
 | mInvicibleTime   | Time to do the invincible effect.     |
 | mUnityObjects    | Render target we are going to render. |
-| mDeltaTimeType   | Type of the delta time.               |
+| mTimeType        | Type of the delta time.               |
 | mInvincibleColor | Color when is invincible.             |
 | mFlashTime       | How fast it flashes back and forth?   |
 | mTriggerSound    | Play once while triggered.            |

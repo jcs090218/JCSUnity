@@ -11,7 +11,7 @@ Reusable damage text pool.
 | SpacingPerText  | Spacing per damage text.                           |
 | mTimePerSpawn   | Time per spawns.                                   |
 | FaceCamera      | Face the camera when called damage text.           |
-| mDeltaTimeType  | Type of the delta time.                            |
+| mTimeType       | Type of the delta time.                            |
 | mHitSound       | Sound when spawns.                                 |
 | ZiggeEffect     | Do the zigge effect?                               |
 | RightAlign      | Right align value.                                 |

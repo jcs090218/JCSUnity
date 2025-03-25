@@ -8,4 +8,4 @@ Active the game object after a certain time.
 |:---------------|:-------------------------------------|
 | GameObjects    | GameObjects that take effect.        |
 | time           | Time before inactive the game object. |
-| mDeltaTimeType | Type of the delta time.              |
+| mTimeType      | Type of the delta time.              |

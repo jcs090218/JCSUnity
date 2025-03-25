@@ -8,6 +8,6 @@ Move forward based on their own direction.
 |:-----------------------|:---------------------------------------------------------------------------|
 | mMoveSpeed             | How fast it moves.                                                         |
 | mAxis                  | Which axis it moves.                                                       |
-| mDeltaTimeType         | Type of the delta time.                                                    |
+| mTimeType              | Type of the delta time.                                                    |
 | mRandomizeSpeedAtStart | Randomize the speed depends on positive move speed to negative move speed. |
 | mRandomSpeedValue      | Value randomize the move speed.                                            |

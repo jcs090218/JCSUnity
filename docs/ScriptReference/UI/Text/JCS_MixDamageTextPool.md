@@ -8,7 +8,7 @@ Mixed damage text pool object.
 |:----------------|:-------------------------|
 | mSpacingPerText | Spacing per damage text. |
 | mTimePerSpawn   | Time per spawns.         |
-| mDeltaTimeType  | Type of the delta time.  |
+| mTimeType       | Type of the delta time.  |
 | mHitSound       | Sound when spawns.       |
 | mZiggeEffect    | Do the zigge effect?     |
 | mRightAlign     | Right align value.       |

@@ -12,7 +12,7 @@ Effect that slide the object to one position.
 | mAxis                     | Direction object slides.                             |
 | mDistance                 | How far the object slides.                           |
 | mFriction                 | How fast the object slides.                          |
-| mDeltaTimeType            | Type of the delta time.                              |
+| mTimeType                 | Type of the delta time.                              |
 | mAutoAddEvent             | Add event to event trigger system.                   |
 | mActiveEventTriggerType   | Event trigger type to active the the slide effect.   |
 | mDeactiveEventTriggerType | Event trigger type to deactive the the slide effect. |

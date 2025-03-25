@@ -8,4 +8,4 @@ Scene layer.
 |:---------------|:---------------------------|
 | mOrderLayer    | Scene render layer.        |
 | mLayerFriction | How fast this layer moves. |
-| mDeltaTimeType | Type of the delta time.    |
+| mTimeType      | Type of the delta time.    |

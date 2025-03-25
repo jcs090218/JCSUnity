@@ -9,7 +9,7 @@ Make object hop for a force.
 | mForce         | How much force to jump away from current position.  |
 | mGravity       | How fast the object goes back to original position. |
 | mAxis          | Hop axis.                                           |
-| mDeltaTimeType | Type of the delta time.                             |
+| mTimeType      | Type of the delta time.                             |
 
 ## Functions
 

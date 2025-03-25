@@ -7,7 +7,7 @@ Destroy the game object after playing the animation back and forth once.
 | Name           | Description                                               |
 |:---------------|:----------------------------------------------------------|
 | mPlayTimes     | How many times to plays back and forth before destorying. |
-| mDeltaTimeType | Type of the delta time.                                   |
+| mTimeType      | Type of the delta time.                                   |
 
 ## Functions
 

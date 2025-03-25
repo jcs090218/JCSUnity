@@ -9,4 +9,4 @@ The component make the bubble movement.
 | mDoAction      | Do the effect?          |
 | mShakeMargin   | How intense it shakes?  |
 | mShakeSpeed    | How fast it moves?      |
-| mDeltaTimeType | Type of the delta time. |
+| mTimeType      | Type of the delta time. |

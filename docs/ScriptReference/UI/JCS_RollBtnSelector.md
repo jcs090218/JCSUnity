@@ -9,7 +9,7 @@ A bunch of buttons do roll effect.
 | mButtons           | Array of buttons you want to do in sequence. |
 | mSpacing           | Space to each buttons.                       |
 | mDimension         | Dimension the effect.                        |
-| mDeltaTimeType     | Type of the delta time.                      |
+| mTimeType          | Type of the delta time.                      |
 | mAsympEffect       | Enable the asymptotic order effect?          |
 | mAsympDiffScale    | Asymptotic origin offset.                    |
 | mScrollFriction    | How fast the buttons move?                   |

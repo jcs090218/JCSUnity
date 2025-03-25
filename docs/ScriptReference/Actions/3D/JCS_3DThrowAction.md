@@ -8,7 +8,7 @@ Throws a game object toward another game object.
 |:----------------|:--------------------------|
 | mActive         | Is this component active? |
 | mGravityProduct | Mulitply the gravity.     |
-| mDeltaTimeType  | Type of the delta time.   |
+| mTimeType       | Type of the delta time.   |
 
 ## Functions
 

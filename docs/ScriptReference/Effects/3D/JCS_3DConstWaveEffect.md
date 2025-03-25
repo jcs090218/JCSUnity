@@ -12,6 +12,6 @@ Effect that does constant wave.
 | mAmplitude                 | How much force goes up and down.            |
 | mFrequency                 | How often the wave goes up and down.        |
 | mAxis                      | Effect on which axis.                       |
-| mDeltaTimeType             | Type of the delta time.                     |
+| mTimeType                  | Type of the delta time.                     |
 | mRandomizeAmplitudeAtStart | Randomize the amplitude on the start event. |
 | mRandomizeFrequencyAtStart | Randomize the frequency on the start event. |

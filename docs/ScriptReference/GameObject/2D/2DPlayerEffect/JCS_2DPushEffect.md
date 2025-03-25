@@ -8,4 +8,4 @@ Push effect that pushes the player.
 |:---------------|:------------------------------------------|
 | mDirection     | Direction this effect pushes the player." |
 | mPushSpeed     | How many force to push.                   |
-| mDeltaTimeType | Type of the delta time.                   |
+| mTimeType      | Type of the delta time.                   |

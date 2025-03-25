@@ -10,7 +10,7 @@ Record the velocity for the character controller component.
 | ApplyGravity   | Apply gravity force to the character controller. |
 | MoveSpeed      | How fast it moves?                               |
 | SpeedFriction  | How fast it get back to original speed?          |
-| mDeltaTimeType | Type of the delta time.                          |
+| mTimeType      | Type of the delta time.                          |
 | FreezeX        | Freeze movement on x axis.                       |
 | FreezeY        | Freeze movement on y axis.                       |
 | FreezeZ        | Freeze movement on z axis.                       |

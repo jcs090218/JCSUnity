@@ -9,7 +9,7 @@ Text animation that will display text accordingly.
 | mActive        | Animation active or not active.  |
 | textFrame      | Hold all text animation's frame. |
 | mSPF           | Seconds per frame.               |
-| mDeltaTimeType | Type of the delta time.          |
+| mTimeType      | Type of the delta time.          |
 
 ## Functions
 

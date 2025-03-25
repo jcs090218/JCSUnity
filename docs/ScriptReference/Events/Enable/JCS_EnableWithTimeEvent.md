@@ -8,4 +8,4 @@ Enable components after a certain time.
 |:---------------|:--------------------------------------|
 | Components     | Components that take effect.          |
 | time           | Time before inactive the game object. |
-| mDeltaTimeType | Type of the delta time.               |
+| mTimeType      | Type of the delta time.               |

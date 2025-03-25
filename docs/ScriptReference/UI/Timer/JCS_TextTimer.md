@@ -13,7 +13,7 @@ Render timer in the text.
 | mDelimiterText  | Text add between each unit.            |
 | mRoundUp        | Do round up instead of round down.     |
 | mHideWhenZero   | Hide the number when is zero.          |
-| mDeltaTimeType  | Type of the delta time.                |
+| mTimeType       | Type of the delta time.                |
 | mHourSound      | Sound played when hours get reduced.   |
 | mMinuteSound    | Sound played when minutes get reduced. |
 | mSecondSound    | Sound played when seconds get reduced. |

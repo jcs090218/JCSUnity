@@ -7,4 +7,4 @@ Disable the game object after the done playing the animation.
 | Name           | Description                                              |
 |:---------------|:---------------------------------------------------------|
 | mLoopTimes     | Times the animation need to loops to trigger this event. |
-| mDeltaTimeType | Type of the delta time.                                  |
+| mTimeType      | Type of the delta time.                                  |

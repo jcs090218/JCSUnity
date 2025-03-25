@@ -9,7 +9,7 @@ One shot object.
 | mAxis               | Effect on which axis.         |
 | mEffectOnAwake      | Do the effect on awake event. |
 | mLoop               | Loop one shot?                |
-| mDeltaTimeType      | Type of the delta time.       |
+| mTimeType           | Type of the delta time.       |
 | mStayAtLastPosition | Force in the last position.   |
 | mMoveSpeed          | How fast it moves.            |
 | mDistance           | How far it moves.             |

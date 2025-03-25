@@ -10,7 +10,7 @@ Basic webcam class usage.
 | MustBeFullScreen | Make webcam maximize to the widest edge.                      |
 | FPS              | FPS for webcam.                                               |
 | ResumeTime       | After the screenshot is taken, how fast to resume the webcam. |
-| mDeltaTimeType   | Type of the delta time.                                       |
+| mTimeType        | Type of the delta time.                                       |
 | DelayTime        | Delay time to fade out the splash screen.                     |
 | TakePicKey       | Key to take webcam image.                                     |
 | mSoundPlayer     | Sound player for this component.                              |

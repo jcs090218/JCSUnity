@@ -10,7 +10,7 @@ Rotate on one axis.
 | mRotateSpeed                 | How fast it rotates.                         |
 | mRotateDirection             | Direction it rotates.                        |
 | mBySelf                      | Rotate by its transform.                     |
-| mDeltaTimeType               | Type of the delta time.                      |
+| mTimeType                    | Type of the delta time.                      |
 | mRotateRandomizeAtStart      | Randomize the rotation speed a bit at start. |
 | mRotateRandomizeAtStartValue | Value to randomize.                          |
 | mRandomRotateDirectonAtStart | Randomize the rotation direction on start.   |

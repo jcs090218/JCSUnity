@@ -23,27 +23,27 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
-        /// Get the delta time by type.
+        /// Get the time by type.
         /// </summary>
-        public static float DeltaTime(JCS_DeltaTimeType type)
+        public static float ItTime(JCS_TimeType type)
         {
             switch (type)
             {
-                case JCS_DeltaTimeType.DELTA_TIME:
+                case JCS_TimeType.DELTA_TIME:
                     return Time.deltaTime;
-                case JCS_DeltaTimeType.CAPTURE_DELTA_TIME:
+                case JCS_TimeType.CAPTURE_DELTA_TIME:
                     return Time.captureDeltaTime;
-                case JCS_DeltaTimeType.FIXED_DELTA_TIME:
+                case JCS_TimeType.FIXED_DELTA_TIME:
                     return Time.fixedDeltaTime;
-                case JCS_DeltaTimeType.FIXED_UNSCALED_DELTA_TIME:
+                case JCS_TimeType.FIXED_UNSCALED_TIME:
                     return Time.fixedUnscaledTime;
-                case JCS_DeltaTimeType.MAXIMUM_DELTA_TIME:
+                case JCS_TimeType.MAXIMUM_DELTA_TIME:
                     return Time.maximumDeltaTime;
-                case JCS_DeltaTimeType.MAXIMUM_PARTICLE_DELTA_TIME:
+                case JCS_TimeType.MAXIMUM_PARTICLE_DELTA_TIME:
                     return Time.maximumParticleDeltaTime;
-                case JCS_DeltaTimeType.SMOOTH_DELTA_TIME:
+                case JCS_TimeType.SMOOTH_DELTA_TIME:
                     return Time.smoothDeltaTime;
-                case JCS_DeltaTimeType.UNSCALED_DELTA_TIME:
+                case JCS_TimeType.UNSCALED_DELTA_TIME:
                     return Time.unscaledDeltaTime;
             }
 

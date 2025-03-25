@@ -9,4 +9,4 @@ Action that make game object rotates.
 | mAction          | Do the action?          |
 | mTurnSpeed       | How fast it rotates?    |
 | mRotateDirection | Rotate direction.       |
-| mDeltaTimeType   | Type of the delta time. |
+| mTimeType        | Type of the delta time. |

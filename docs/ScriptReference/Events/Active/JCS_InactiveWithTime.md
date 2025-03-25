@@ -9,4 +9,4 @@ Inactive the game object after a certain time.
 | GameObjects    | Game objects that take effect.        |
 | EffectSelf     | Take effect for this game object.     |
 | time           | Time before inactive the game object. |
-| mDeltaTimeType | Type of the delta time.               |
+| mTimeType      | Type of the delta time.               |

@@ -23,7 +23,7 @@ System that controls 0-9 number sprites and creates a counter effect.
 | mClearEmptyLeftZero   | Clear all the empty zero from the left.       |
 | mVisibleOnZero        | Is visible when is zero?                      |
 | mTextAlign            | Align side.                                   |
-| mDeltaTimeType        | Type of the delta time.                       |
+| mTimeType             | Type of the delta time.                       |
 | mMaxNumber            | Maxinum number.                               |
 | mMinNumber            | Mininum number.                               |
 | mDeltaToCurrentNumber | Show each digit between the number animation. |

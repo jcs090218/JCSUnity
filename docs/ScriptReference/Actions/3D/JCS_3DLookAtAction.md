@@ -16,6 +16,6 @@ Look at the transform in 3D space.
 | mFreezeZ          | Freeze z axis?                               |
 | mAngleOffset      | Offset each angle.                           |
 | mLocalEulerAngles | Track as local euler angles.                 |
-| mDeltaTimeType    | Type of the delta time.                      |
+| mTimeType         | Type of the delta time.                      |
 | mAsympLook        | Did the object gradually look at the target? |
 | mLookFriction     | How it look at the target?"                  |

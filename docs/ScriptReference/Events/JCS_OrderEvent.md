@@ -7,7 +7,7 @@ Execute an operation in order with the interval of time.
 | Name           | Description              |
 |:---------------|:-------------------------|
 | IntervalTime   | Time for each execution. |
-| mDeltaTimeType | Type of the delta time.  |
+| mTimeType      | Type of the delta time.  |
 | unityExecution | Unity execution event.   |
 
 ## Functions

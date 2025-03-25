@@ -9,7 +9,7 @@ Action do spawns a wave repeatedly throughout the time is going.
 | mActive             | Active this component?               |
 | mSpawnList          | List of transform you want to spawn. |
 | mSpawnTime          | Time to spawn a object.              |
-| mDeltaTimeType      | Type of the delta time.              |
+| mTimeType           | Type of the delta time.              |
 | mRandomizeSpawnTime | Randomize the spawn time a bit.      |
 
 ## Functions

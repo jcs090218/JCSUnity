@@ -8,7 +8,7 @@ Effect that fade the sound.
 |:---------------|:------------------------|
 | mFadeOutTime   | Fade out time.          |
 | mFadeInTime    | Fade in time.           |
-| mDeltaTimeType | Type of the delta time. |
+| mTimeType      | Type of the delta time. |
 
 ## Functions
 

@@ -12,7 +12,7 @@ Action that shoot in all angle.
 | mDelayTime        | How long it takes to shoot a bullet.          |
 | mAdjustTimeZone   | Time that will randomly affect the time zone. |
 | mShootAxis        | Axis the bullet shoots.                       |
-| mDeltaTimeType    | Type of the delta time.                       |
+| mTimeType         | Type of the delta time.                       |
 
 ## Functions
 

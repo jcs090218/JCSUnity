@@ -9,4 +9,4 @@ Effect does lightning splash.
 | mLightning     | Lightning effect.                        |
 | mPossiblity    | Possibility to occurs lightning effect.  |
 | mLimitTime     | This amount of time do chance lightning. |
-| mDeltaTimeType | Type of the delta time.                  |
+| mTimeType      | Type of the delta time.                  |

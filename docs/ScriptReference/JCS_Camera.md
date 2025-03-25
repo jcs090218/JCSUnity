@@ -10,7 +10,7 @@ Camera base class for JCSUnity.
 | mGameCamColor           | The color of the camera depth.                                     |
 | mFollowing              | Flag to check if currently the camera following the target object. |
 | PositionOffset          | Offset the camera position from its' original position.            |
-| mDeltaTimeType          | Type of the delta time.                                            |
+| mTimeType               | Type of the delta time.                                            |
 | SmoothTrack             | Flag to check if using smooth track, otherwise hard track.         |
 
 ## Functions

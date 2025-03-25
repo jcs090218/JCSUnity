@@ -8,4 +8,4 @@ Track a game object in 3D space.
 |:-----------------|:-----------------------------|
 | mTargetTransform | Transform we want to target. |
 | mMoveFriction    | Invers of speed.             |
-| mDeltaTimeType   | Type of the delta time.      |
+| mTimeType        | Type of the delta time.      |

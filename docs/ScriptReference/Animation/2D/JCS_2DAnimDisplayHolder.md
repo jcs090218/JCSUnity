@@ -7,7 +7,7 @@ Hold an animation state for few seconds.
 | Name           | Description                      |
 |:---------------|:---------------------------------|
 | mHoldTime      | How long to hold this animation. |
-| mDeltaTimeType | Type of the delta time.          |
+| mTimeType      | Type of the delta time.          |
 
 ## Functions
 

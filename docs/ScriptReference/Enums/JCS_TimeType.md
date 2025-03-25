@@ -1,4 +1,4 @@
-# JCS_DeltaTimeType
+# JCS_TimeType
 
 List of delta time types.
 

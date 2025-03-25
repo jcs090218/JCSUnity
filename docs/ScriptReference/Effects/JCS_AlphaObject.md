@@ -8,4 +8,4 @@ Transition with alpha channel.
 |:---------------|:----------------------------------------|
 | mTargetAlpha   | Alpha value trying to approach. (0 ~ 1) |
 | mFadeFriction  | How fast the alpha channel changes.     |
-| mDeltaTimeType | Type of the delta time.                 |
+| mTimeType      | Type of the delta time.                 |

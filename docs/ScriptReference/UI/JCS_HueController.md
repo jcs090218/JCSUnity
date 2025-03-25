@@ -7,4 +7,4 @@ Simulate the hue control.
 | Name           | Description               |
 |:---------------|:--------------------------|
 | mFriction      | How fast the hue changes? |
-| mDeltaTimeType | Type of the delta time.   |
+| mTimeType      | Type of the delta time.   |

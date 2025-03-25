@@ -6,7 +6,7 @@ The effect makes the item jumps and spreads.
 
 | Name                | Description                                                                  |
 |:--------------------|:-----------------------------------------------------------------------------|
-| mDeltaTimeType      | Type of the delta time.                                                      |
+| mTimeType           | Type of the delta time.                                                      |
 | mJumpForce          | How many force to apply on jump?                                             |
 | mMoveForce          | How fast this item moves?                                                    |
 | mItemGravity        | Item gravity.                                                                |

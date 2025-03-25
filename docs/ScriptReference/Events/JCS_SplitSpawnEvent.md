@@ -11,7 +11,7 @@ Spawn multiple objects in a row.
 | mSpawnWhileDelay   | Spawn once after delay time.                          |
 | mDelayTime         | Delay time.                                           |
 | mDelayContinuous   | Spawn periodically be delay time.                     |
-| mDeltaTimeType     | Type of the delta time.                               |
+| mTimeType          | Type of the delta time.                               |
 | mRandPosX          | Enable random spawn position offset effect on x axis? |
 | mRandPosRangeX     | "Randomize value on x axis.                           |
 | mRandPosY          | Enable random spawn position offset effect on y axis? |

@@ -9,4 +9,4 @@ A simple logo object. It will load and show briefly before loading the next scen
 | mNextLevel     | Next scene to load; if empy, load the next scene instead.   |
 | mReloadScene   | Reload the current scene, and ignore the target scene name. |
 | mDelayTime     | Time to show logo.                                          |
-| mDeltaTimeType | Type of the delta time.                                     |
+| mTimeType      | Type of the delta time.                                     |

@@ -13,7 +13,7 @@ Can only use for `float`.
 | Tween          | Do the tween effect?             |
 | Value offset.  | ValueOffset                      |
 | Duration       | How fast it moves on value.      |
-| mDeltaTimeType | Type of the delta time.          |
+| mTimeType      | Type of the delta time.          |
 | Easing         | Tweener formula on value.        |
 | UnityCallback  | Callback after easing.           |
 

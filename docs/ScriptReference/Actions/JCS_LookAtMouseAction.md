@@ -7,4 +7,4 @@ An action makes the game object look at the mouse position.
 | Name           | Description                    |
 |:---------------|:-------------------------------|
 | mSpeed         | How fast to look at the mouse. |
-| mDeltaTimeType | Type of the delta time.        |
+| mTimeType      | Type of the delta time.        |

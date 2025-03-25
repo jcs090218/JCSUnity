@@ -10,4 +10,4 @@ Action makes the game object drops items.
 | mDropByTime      | Drop by time.                        |
 | mTimePerDrop     | Time to drop one time.               |
 | mRandomTimeRange | Effect the time every time it drops. |
-| mDeltaTimeType   | Type of the delta time.              |
+| mTimeType        | Type of the delta time.              |

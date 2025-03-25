@@ -6,7 +6,7 @@ Color tweener.
 
 | Name           | Description                             |
 |:---------------|:----------------------------------------|
-| mDeltaTimeType | Type of the delta time.                 |
+| mTimeType      | Type of the delta time.                 |
 | mEaseTypeR     | Tween type for red channel.             |
 | mEaseTypeG     | Tween type for green channel.           |
 | mEaseTypeB     | Tween type for blue channel.            |

@@ -12,7 +12,7 @@ instead.
 | mPreString            | String added before rendering the number."       |
 | mPostString           | String added after rendering the number.         |
 | mRoundPlace           | Place you want to round the decimal.             |
-| mDeltaTimeType        | Type of the delta time.                          |
+| mTimeType             | Type of the delta time.                          |
 | mMaxNumber            | Maxinum number.                                  |
 | mMinNumber            | Mininum number.                                  |
 | mDeltaToCurrentNumber | Show each digit between the number animation.    |
