@@ -19,3 +19,4 @@ Vector utilities.
 | LookDegree               | How close player looks toward the target.                                   |
 | SignedLookDegree         | How close player looks toward the target.                                   |
 | InDistance               | Check if distance between pos1 and pos2 is under the threshold.             |
+| PointInDirection         | Return the point in specific direction.                                     |
