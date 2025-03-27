@@ -833,7 +833,7 @@ MonoBehaviour:
   mTargetTransform: {fileID: 0}
   mFollowing: 1
   mPositionOffset: {x: 0, y: 2, z: -10}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSmoothTrack: 1
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
@@ -2512,7 +2512,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5246,7 +5246,7 @@ MonoBehaviour:
   mDurationX: 0.2
   mDurationY: 0.2
   mDurationZ: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mDestroyWhenDoneTweening: 0
   mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
