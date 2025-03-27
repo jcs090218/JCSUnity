@@ -23,6 +23,7 @@ Interface communicate to application layer.
 | IsPC                    | Return true if current platform is personal computer.        |
 | IsMobile                | Return true if current platform is mobile phone.             |
 | Quit                    | Quit the application.                                        |
+| RefreshSimulateLanguage | Refresh the simulate language once.                          |
 | AddLangText             | Register a new language text.                                |
 | RefreshLangTexts        | Refresh all languages text in game.                          |
 | StartRequestCamera      | Start to request permission for camera/webcam.               |
