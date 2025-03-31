@@ -17,6 +17,10 @@ namespace JCSUnity
     [Serializable]
     public struct JCS_ColliderInfo
     {
+        /* Variables */
+
+        /* Setter & Getter */
+
         public float width;
         public float height;
 
@@ -28,6 +32,8 @@ namespace JCSUnity
         public Vector3 bottomBound;
         public Vector3 leftBound;
         public Vector3 rightBound;
+
+        /* Functions */
 
         /// <summary>
         /// Find out all four bounding point.
