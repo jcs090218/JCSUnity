@@ -2,10 +2,20 @@
 
 Physic related functions.
 
+## Variables
+
+| Name          | Description                                     |
+|:--------------|:------------------------------------------------|
+| LOOK_DISTANCE | Distance to look in direction to get the point. |
+| RAY_DISTANCE  | Default ray distance.                           |
+
 ## Functions
 
 | Name                        | Description                                                                                        |
 |:----------------------------|:---------------------------------------------------------------------------------------------------|
+| SortHitsByDistance          | Sort the raycast hits by distance.                                                                 |
+| FindNeareastHit             | Find the nearest raycast hit.                                                                      |
+| FindFurthestHit             | Find the furthest raycast hit.                                                                     |
 | GetColliderWidthHeight      | Returns character controller's collider's with and height.                                         |
 | GetColliderCenterPosition   | Returns character controller's collider's center in world space.                                   |
 | GetColliderInfo             | Returns character controller's infomration.                                                        |
