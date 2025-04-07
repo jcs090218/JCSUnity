@@ -13,7 +13,7 @@ All code utility is stored here.
 | GetValues                            | Get the value for each enum, use to loop through the enum.                                        |
 | EnumSize                             | Returns the length of an enumerator.                                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |
-| WithInRange                          | Check if the index valid within the array length.                                                 |
+| WithInRange                          | Check if the index is valid within the collection's size.                                         |
 | LoopIn                               | Make the index is within the array length by setting the maxinum of (legnth - 1) or mininum of 0. |
 | MergeArrays                          | Merge multiple arrays into one array.                                                             |
 | MergeArrays2                         | Merge two array and return the new array.                                                         |
