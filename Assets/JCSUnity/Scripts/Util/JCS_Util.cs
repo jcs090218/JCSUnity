@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Unity.VisualScripting;
@@ -142,7 +143,7 @@ namespace JCSUnity
         /// With in collection range.
         /// </summary>
         /// <returns></returns>
-        public static bool WithInRange<T>(int index, ICollection<T> arr)
+        public static bool WithInRange(int index, ICollection arr)
         {
             return index >= 0 && index < arr.Count;
         }
@@ -154,7 +155,7 @@ namespace JCSUnity
         /// <param name="index"> Index </param>
         /// <param name="arr"> List. </param>
         /// <returns> index that looped. </returns>
-        public static int LoopIn<T>(int index, ICollection<T> arr)
+        public static int LoopIn(int index, ICollection arr)
         {
             // loop through the array, if at the tail of the array set it to head.
             if (index < 0)
