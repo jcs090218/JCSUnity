@@ -4,11 +4,12 @@ Throws a game object toward another game object.
 
 ## Variables
 
-| Name            | Description               |
-|:----------------|:--------------------------|
-| mActive         | Is this component active? |
-| mGravityProduct | Mulitply the gravity.     |
-| mTimeType       | Type of the delta time.   |
+| Name            | Description                         |
+|:----------------|:------------------------------------|
+| mActive         | Is this component active?           |
+| mGravityProduct | Mulitply the gravity.               |
+| mTimeType       | Type of the delta time.             |
+| mFaceFoward     | Rotate to look at forward location. |
 
 ## Functions
 
