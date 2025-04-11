@@ -28,6 +28,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Util): Start off loop utility. (451f51a0b37c71a094860f099033048feb668753)
 * feat(Util): Add instantiate to another scene (c3455fd0581ccfc390bdfe281a4f711e18442226)
 * feat(Uitl): Start off bounds utility. (f5662741c7dfb43a367777431c7f43b6df4e74af)
+* feat(Actions): Add face forward option to `JCS_3DThrowAction`. (431ab88036d998782a65d868d988dede4bafd954)
 
 ## 3.0.0
 > Released Oct 15, 2024
