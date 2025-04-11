@@ -66,6 +66,10 @@ namespace JCSUnity
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
+        [Tooltip("Rotate to look at forward location.")]
+        [SerializeField]
+        private bool mFaceFoward = false;
+
         /* Setter & Getter */
 
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
@@ -91,6 +95,15 @@ namespace JCSUnity
 
             // add up velocity.
             this.transform.position += mVelocity * dt;
+
+            if (mFaceFoward)
+            {
+                Vector3 direction = mVelocity;
+
+                Vector3 point = transform.position + direction * JCS_Physics.LOOK_DISTANCE;
+
+                this.transform.LookAt(point);
+            }
         }
 
 #if UNITY_EDITOR
@@ -98,6 +111,7 @@ namespace JCSUnity
         {
             if (Input.GetKeyDown(mTestWithVelKey))
                 ThrowByForce(mTestTarget.position, mForce);
+
             if (Input.GetKeyDown(mTestWithTimeKey))
                 ThrowByTime(mTestTarget.position, mTime);
         }
