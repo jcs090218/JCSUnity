@@ -76,6 +76,7 @@ namespace JCSUnity
         public Vector3 Velocity { get { return this.mVelocity; } }
         public float GravityProduct { get { return this.mGravityProduct; } set { this.mGravityProduct = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public bool FaceFoward { get { return this.mFaceFoward; } set { this.mFaceFoward = value; } }
 
         /* Functions */
 
