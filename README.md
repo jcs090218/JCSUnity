@@ -40,7 +40,6 @@ Here is the list of few important and recent changes to this framework.
 - `2.1.1` - Add support for safe area view for iPhone X or above.
 - `2.1.0` - Multiple minor fix for screen module for resizable screen feature.
 - `2.0.7` - Support consistent streaming assets loading with web request.
-- `2.0.6` - Updated project to Unity version `2020.1.0f1`.
 
 ## 🔨 How to use it?
 
