@@ -12,6 +12,8 @@ Throws a game object toward another game object.
 | mTime           | Target time to hit the target.      |
 | mTimeType       | Type of the delta time.             |
 | mFaceFoward     | Rotate to look at forward location. |
+| GetArchByTime   | Return a list of arch positions.    |
+| GetArchByForce  | Return a list of arch positions.    |
 
 ## Functions
 
