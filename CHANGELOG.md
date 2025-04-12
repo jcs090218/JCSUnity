@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 3.0.1 (Unreleased)
+## 3.1.1 (Unreleased)
 > Released N/A
+
+* N/A
+
+## 3.1.0
+> Released Apr 11, 2025
 
 * feat(Effects): Add Shader Tweener (a82baff87c87c18839b60a6a36363dbf4524ff3b)
 * feat(UI): Add progress on hidden option to dialogue system (8a6090a10c832f9ffc62376351d7eb32767e32dd)
