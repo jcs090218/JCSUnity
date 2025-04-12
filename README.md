@@ -31,6 +31,7 @@ any placeholder assets commercially.
 
 Here is the list of few important and recent changes to this framework.
 
+- `3.1.0` - Revamp the framework to reflect current best practices.
 - `3.0.0` - Rename setting function from `CheckSingleton` to `CheckInstance`.
 - `2.3.1` - Use [MyBox](https://github.com/Deadcows/MyBox) to organize variables.
 - `2.3.0` - Fixed resizable screen's calculation in perspective mode.
