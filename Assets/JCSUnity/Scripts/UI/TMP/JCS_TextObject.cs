@@ -37,14 +37,14 @@ namespace JCSUnity
 #if TMP_PRO
         [Tooltip("Target text renderer. (TMP)")]
         [SerializeField]
-        protected TMP_Text mTMP_Text = null;
+        protected TMP_Text mTextTMP = null;
 #endif
 
         /* Setter & Getter */
 
         public Text TextLegacy { get { return this.mTextLegacy; } set { this.mTextLegacy = value; } }
 #if TMP_PRO
-        public TMP_Text TMP_Text { get { return this.mTMP_Text; } set { this.mTMP_Text = value; } }
+        public TMP_Text TextTMP { get { return this.mTextTMP; } set { this.mTextTMP = value; } }
 #endif
 
         /* Functions */
@@ -57,8 +57,8 @@ namespace JCSUnity
                 if (this.mTextLegacy) 
                     this.mTextLegacy.text = value;
 #if TMP_PRO
-                if (this.mTMP_Text) 
-                    this.mTMP_Text.text = value;
+                if (this.mTextTMP) 
+                    this.mTextTMP.text = value;
 #endif
             }
         }

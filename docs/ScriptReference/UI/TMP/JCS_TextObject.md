@@ -7,7 +7,7 @@ Holds all type of UI text objects.
 | Name        | Description                 |
 |:------------|:----------------------------|
 | mTextLegacy | Target text renderer.       |
-| mTMP_Text   | Target text renderer. (TMP) |
+| mTextTMP    | Target text renderer. (TMP) |
 
 ## Functions
 

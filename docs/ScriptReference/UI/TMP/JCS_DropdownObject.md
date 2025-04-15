@@ -7,7 +7,7 @@ Holds all type of UI dropdown objects.
 | Name            | Description                     |
 |:----------------|:--------------------------------|
 | mDropdownLegacy | Target dropdown renderer.       |
-| mTMP_Dropdown   | Target dropdown renderer. (TMP) |
+| mDropdownTMP    | Target dropdown renderer. (TMP) |
 
 ## Functions
 

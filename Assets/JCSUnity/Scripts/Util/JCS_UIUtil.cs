@@ -169,7 +169,7 @@ namespace JCSUnity
             if (dd.DropdownLegacy != null)
                 return Dropdown_GetItemValue(dd.DropdownLegacy, index);
 
-            return Dropdown_GetItemValue(dd.TMP_Dropdown, index);
+            return Dropdown_GetItemValue(dd.DropdownTMP, index);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace JCSUnity
             if (dd.DropdownLegacy != null)
                 return Dropdown_GetSelectedValue(dd.DropdownLegacy);
 
-            return Dropdown_GetSelectedValue(dd.TMP_Dropdown);
+            return Dropdown_GetSelectedValue(dd.DropdownTMP);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace JCSUnity
             if (dd.DropdownLegacy != null)
                 return Dropdown_GetItemIndex(dd.DropdownLegacy, itemName);
 
-            return Dropdown_GetItemIndex(dd.TMP_Dropdown, itemName);
+            return Dropdown_GetItemIndex(dd.DropdownTMP, itemName);
         }
 
         /// <summary>
@@ -213,8 +213,8 @@ namespace JCSUnity
             if (dd.DropdownLegacy != null)
                 Dropdown_SetSelection(dd.DropdownLegacy, itemName);
 
-            if (dd.TMP_Dropdown != null)
-                Dropdown_SetSelection(dd.TMP_Dropdown, itemName);
+            if (dd.DropdownTMP != null)
+                Dropdown_SetSelection(dd.DropdownTMP, itemName);
         }
 
         /// <summary>
@@ -227,8 +227,8 @@ namespace JCSUnity
             if (dd.DropdownLegacy != null)
                 Dropdown_SetSelection(dd.DropdownLegacy, selection);
 
-            if (dd.TMP_Dropdown != null)
-                Dropdown_SetSelection(dd.TMP_Dropdown, selection);
+            if (dd.DropdownTMP != null)
+                Dropdown_SetSelection(dd.DropdownTMP, selection);
         }
 
         /// <summary>
@@ -240,8 +240,8 @@ namespace JCSUnity
             if (dd.DropdownLegacy != null)
                 Dropdown_RefreshSelection(dd.DropdownLegacy);
 
-            if (dd.TMP_Dropdown != null)
-                Dropdown_RefreshSelection(dd.TMP_Dropdown);
+            if (dd.DropdownTMP != null)
+                Dropdown_RefreshSelection(dd.DropdownTMP);
         }
 
         /// <summary>
@@ -254,8 +254,8 @@ namespace JCSUnity
             if (dd.DropdownLegacy != null)
                 Dropdown_AddOption(dd.DropdownLegacy, inText);
 
-            if (dd.TMP_Dropdown != null)
-                Dropdown_AddOption(dd.TMP_Dropdown, inText);
+            if (dd.DropdownTMP != null)
+                Dropdown_AddOption(dd.DropdownTMP, inText);
         }
 
         /*************************************************************************/
@@ -478,91 +478,6 @@ namespace JCSUnity
         public static TMP_Dropdown Dropdown_AddOption(TMP_Dropdown dd, string inText)
         {
             dd.options.Add(new TMP_Dropdown.OptionData() { text = inText });
-
-            return dd;
-        }
-
-        /*************************************************************************/
-        /*   JCSUnity Version                                                    */
-        /*************************************************************************/
-
-        /// <summary>
-        /// Returns item vlaue by index.
-        /// </summary>
-        /// <param name="dd"> JCSUnity dropdown object. </param>
-        /// <param name="index"> item name. </param>
-        /// <returns></returns>
-        public static string Dropdown_GetItemValue(JCS_Dropdown dd, int index)
-        {
-            /* NOTE(jenchieh): this is all the key for JCS_Dropdown
-             * object. We use 'DropdownRealTexts' as our option values.
-             */
-            return dd.DropdownRealTexts[index];
-        }
-
-        /// <summary>
-        /// Get the current selected value of the Dropdown object.
-        /// </summary>
-        /// <param name="dd"> drop down object. </param>
-        /// <returns> current selected text value. </returns>
-        public static string Dropdown_GetSelectedValue(JCS_Dropdown dd)
-        {
-            return Dropdown_GetItemValue(dd, dd.dropdown.value);
-        }
-
-        /// <summary>
-        /// Return the index of item in the dropdown's item.
-        /// If not found, return -1.
-        /// </summary>
-        /// <param name="dd"> JCSUniy dropdown object. </param>
-        /// <param name="itemName"> item name. </param>
-        /// <returns>
-        /// Index of the item value found.
-        /// If not found, will returns -1.
-        /// </returns>
-        public static int Dropdown_GetItemIndex(JCS_Dropdown dd, string itemName)
-        {
-            for (int index = 0; index < dd.DropdownRealTexts.Count; ++index)
-            {
-                if (itemName == Dropdown_GetItemValue(dd, index))
-                    return index;
-            }
-
-            return -1;
-        }
-
-        /// <summary>
-        /// Set selection when using JCS_Dropdown instead of
-        /// UnityEngine.UI.Dropdown object.
-        /// </summary>
-        /// <param name="dd"> JCSUnity dropdown object. </param>
-        /// <param name="itemName"> selection item name. </param>
-        /// <returns>
-        /// true : found the item and set it succesfully.
-        /// false : did not find the item, failed to set.
-        /// </returns>
-        public static bool Dropdown_SetSelection(JCS_Dropdown dd, string itemName)
-        {
-            int index = Dropdown_GetItemIndex(dd, itemName);
-
-            // If not found, will return -1.
-            if (index == -1)
-                return false;
-
-            dd.dropdown.value = index;
-
-            return true;
-        }
-
-        /// <summary>
-        /// Add an option to dropdown.
-        /// </summary>
-        /// <param name="dd"> dropdown object. </param>
-        /// <param name="inText"> input text. </param>
-        /// <returns> JCSUnity's dropdown object. </returns>
-        public static JCS_Dropdown Dropdown_AddOption(JCS_Dropdown dd, string inText)
-        {
-            dd.dropdown.options.Add(new TMP_Dropdown.OptionData() { text = inText });
 
             return dd;
         }

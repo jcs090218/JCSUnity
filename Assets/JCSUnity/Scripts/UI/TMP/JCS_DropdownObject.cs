@@ -37,14 +37,14 @@ namespace JCSUnity
 #if TMP_PRO
         [Tooltip("Target dropdown renderer. (TMP)")]
         [SerializeField]
-        protected TMP_Dropdown mTMP_Dropdown = null;
+        protected TMP_Dropdown mDropdownTMP = null;
 #endif
 
         /* Setter & Getter */
 
         public Dropdown DropdownLegacy { get { return this.mDropdownLegacy; } set { this.mDropdownLegacy = value; } }
 #if TMP_PRO
-        public TMP_Dropdown TMP_Dropdown { get { return this.mTMP_Dropdown; } set { this.mTMP_Dropdown = value; } }
+        public TMP_Dropdown DropdownTMP { get { return this.mDropdownTMP; } set { this.mDropdownTMP = value; } }
 #endif
 
         public int value
@@ -54,7 +54,7 @@ namespace JCSUnity
                 if (this.mDropdownLegacy)
                     return this.mDropdownLegacy.value;
 
-                return this.mTMP_Dropdown.value;
+                return this.mDropdownTMP.value;
             }
 
             set
@@ -62,8 +62,8 @@ namespace JCSUnity
                 if (this.mDropdownLegacy)
                     this.mDropdownLegacy.value = value;
 
-                if (this.mTMP_Dropdown)
-                    this.mTMP_Dropdown.value = value;
+                if (this.mDropdownTMP)
+                    this.mDropdownTMP.value = value;
             }
         }
 
@@ -77,8 +77,8 @@ namespace JCSUnity
             if (this.mDropdownLegacy)
                 this.mDropdownLegacy.ClearOptions();
 
-            if (this.mTMP_Dropdown)
-                this.mTMP_Dropdown.ClearOptions();
+            if (this.mDropdownTMP)
+                this.mDropdownTMP.ClearOptions();
         }
     }
 }

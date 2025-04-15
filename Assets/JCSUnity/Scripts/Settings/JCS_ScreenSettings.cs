@@ -19,11 +19,13 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // In general
         public Action onChanged = null;
         public Action onChangedResolution = null;
         public Action onChangedSize = null;
         public Action onChangedMode = null;
 
+        // Resizable
         public Action onResizableResize = null;
         public Action onResizableIdle = null;
 

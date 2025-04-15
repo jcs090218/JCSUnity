@@ -25,6 +25,13 @@ namespace JCSUnity
     {
         /* Variables */
 
+#if UNITY_EDITOR
+        [Separator("Helper Variables (JCS_DropdownScreenResolution)")]
+
+        [Tooltip("Change the game view editor's window.")]
+        [SerializeField]
+        private bool mChangeEditorWindow = false;
+#endif
 
         [Separator("Initialize Variables (JCS_DropdownScreenResolution)")]
 
@@ -54,19 +61,19 @@ namespace JCSUnity
 
         private void AddListener()
         {
-            DropdownLegacy?.onValueChanged.AddListener(delegate
+            mDropdownLegacy?.onValueChanged.AddListener(delegate
             {
-                OnValueChanged_Legacy(DropdownLegacy);
+                OnValueChanged_Legacy(mDropdownLegacy);
             });
 
-            TMP_Dropdown?.onValueChanged.AddListener(delegate
+            mDropdownTMP?.onValueChanged.AddListener(delegate
             {
-                OnValueChanged_TMP(TMP_Dropdown);
+                OnValueChanged_TMP(mDropdownTMP);
             });
 
             // Run once.
-            OnValueChanged_Legacy(DropdownLegacy);
-            OnValueChanged_TMP(TMP_Dropdown);
+            OnValueChanged_Legacy(mDropdownLegacy);
+            OnValueChanged_TMP(mDropdownTMP);
         }
 
         /// <summary>
@@ -128,10 +135,13 @@ namespace JCSUnity
             Screen.SetResolution(width, height, Screen.fullScreenMode);
 
 #if UNITY_EDITOR
-            GameViewUtils.AddAndSelectCustomSize(
-                GameViewUtils.GameViewSizeType.FixedResolution,
-                GameViewSizeGroupType.Standalone, width, height,
-                text);
+            if (mChangeEditorWindow)
+            {
+                GameViewUtils.AddAndSelectCustomSize(
+                    GameViewUtils.GameViewSizeType.FixedResolution,
+                    GameViewSizeGroupType.Standalone, width, height,
+                    text);
+            }
 #endif
         }
 

@@ -199,7 +199,7 @@ namespace JCSUnity
         public void UpdateTimeUI(float hour, float minute, float second)
         {
 #if TMP_PRO
-            if (mTextLegacy == null && mTMP_Text == null)
+            if (mTextLegacy == null && mTextTMP == null)
 #else
             if (mTextLegacy == null)
 #endif

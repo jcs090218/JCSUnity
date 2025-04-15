@@ -11,18 +11,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using MyBox;
 using TMPro;
+using NUnit.Framework.Interfaces;
+using System;
 
 namespace JCSUnity
 {
     /// <summary>
     /// A better version of dropdown handle for uGUI.
     /// </summary>
-    [RequireComponent(typeof(TMP_Dropdown))]
-    public class JCS_Dropdown : MonoBehaviour
+    public class JCS_Dropdown : JCS_DropdownObject
     {
         /* Variables */
-
-        private TMP_Dropdown mDropdown = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_Dropdown)")]
@@ -64,18 +63,12 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public TMP_Dropdown dropdown { get { return this.mDropdown; } }
         public int MaxLetters { get { return this.mMaxLetters; } set { this.mMaxLetters = value; } }
         public int DotCount { get { return this.mDotCount; } set { this.mDotCount = value; } }
         public List<string> DropdownRealTexts { get { return this.mDropdownRealTexts; } }
         public List<string> DropdownBackupTexts { get { return this.mDropdownBackupTexts; } }
 
         /* Functions */
-
-        private void Awake()
-        {
-            this.mDropdown = this.GetComponent<TMP_Dropdown>();
-        }
 
 #if UNITY_EDITOR
         private void Update()
@@ -118,63 +111,106 @@ namespace JCSUnity
                 }
             }
 
+            UpdateDropdownDataLegacy(centerLetterPos, halfDotCount, dot);
+            UpdateDropdownDataTMP(centerLetterPos, halfDotCount, dot);
+
+
+            // Refresh the selection.
+            JCS_UIUtil.Dropdown_RefreshSelection(mDropdownLegacy);
+            JCS_UIUtil.Dropdown_RefreshSelection(mDropdownTMP);
+        }
+
+        private void UpdateDropdownDataLegacy(int centerLetterPos, int halfDotCount, string dot)
+        {
             int index = -1;
 
-            foreach (TMP_Dropdown.OptionData od in mDropdown.options)
+            foreach (var od in mDropdownLegacy.options)
             {
                 ++index;
 
                 // Check if we need to shortcut this.
                 string textData = od.text;
 
-                if (IsShortcutText(textData, dot))
-                {
-                    // Add the value from backup then.
-                    mDropdownRealTexts.Add(mDropdownBackupTexts[index]);
+                string newTextData = ReplacementString(centerLetterPos, halfDotCount, dot, index, textData);
+
+                if (newTextData == null)
                     continue;
-                }
-
-                // add the text.
-                mDropdownRealTexts.Add(textData);
-
-                // make another backup.
-                mDropdownBackupTexts.Add(textData);
-
-                int textDataLen = textData.Length;
-
-                // Check if we need the fold the option text.
-                if (textDataLen <= mMaxLetters)
-                    continue;
-
-                int firstReplacePos = centerLetterPos - halfDotCount;
-
-                int secondReplacePos = firstReplacePos;
-                if (JCS_Mathf.IsOdd(mDotCount))
-                {
-                    if (mApproachSec)
-                        secondReplacePos += 1;
-                    else
-                        firstReplacePos += 1;
-                }
-
-                // We start counting from the text data length.
-                // So we simply just minus it.
-                secondReplacePos = textDataLen - secondReplacePos;
-
-                string newTextData =
-                    // First half of the text data.
-                    textData.Substring(0, firstReplacePos)
-                    // Add replace dots.
-                    + dot 
-                    // Add the second half of the text data.
-                    + textData.Substring(secondReplacePos, textDataLen - secondReplacePos);
 
                 // Apply new text data.
                 od.text = newTextData;
             }
+        }
 
-            // Refresh the selection.
-            JCS_UIUtil.Dropdown_RefreshSelection(mDropdown);
+        private void UpdateDropdownDataTMP(int centerLetterPos, int halfDotCount, string dot)
+        {
+            int index = -1;
+
+            foreach (var od in mDropdownTMP.options)
+            {
+                ++index;
+
+                // Check if we need to shortcut this.
+                string textData = od.text;
+
+                string newTextData = ReplacementString(centerLetterPos, halfDotCount, dot, index, textData);
+
+                if (newTextData == null)
+                    continue;
+
+                // Apply new text data.
+                od.text = newTextData;
+            }
+        }
+
+        /// <summary>
+        /// Return the truncated string.
+        /// </summary>
+        private string ReplacementString(int centerLetterPos, int halfDotCount, string dot, int index, string textData)
+        {
+            if (IsShortcutText(textData, dot))
+            {
+                // Add the value from backup then.
+                mDropdownRealTexts.Add(mDropdownBackupTexts[index]);
+                return null;
+            }
+
+            // add the text.
+            mDropdownRealTexts.Add(textData);
+
+            // make another backup.
+            mDropdownBackupTexts.Add(textData);
+
+            int textDataLen = textData.Length;
+
+            // Check if we need the fold the option text.
+            if (textDataLen <= mMaxLetters)
+                return null;
+
+            int firstReplacePos = centerLetterPos - halfDotCount;
+
+            int secondReplacePos = firstReplacePos;
+
+            if (JCS_Mathf.IsOdd(mDotCount))
+            {
+                if (mApproachSec)
+                    secondReplacePos += 1;
+                else
+                    firstReplacePos += 1;
+            }
+
+            // We start counting from the text data length.
+            // So we simply just minus it.
+            secondReplacePos = textDataLen - secondReplacePos;
+
+            string newTextData =
+                // First half of the text data.
+                textData.Substring(0, firstReplacePos)
+                // Add replace dots.
+                + dot
+                // Add the second half of the text data.
+                + textData.Substring(secondReplacePos, textDataLen - secondReplacePos);
+
+            return newTextData;
         }
 
         /// <summary>

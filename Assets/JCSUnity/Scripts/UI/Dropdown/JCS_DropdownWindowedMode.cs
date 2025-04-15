@@ -62,14 +62,14 @@ namespace JCSUnity
                 OnValueChanged_Legacy(DropdownLegacy);
             });
 
-            TMP_Dropdown?.onValueChanged.AddListener(delegate
+            mDropdownTMP?.onValueChanged.AddListener(delegate
             {
-                OnValueChanged_TMP(TMP_Dropdown);
+                OnValueChanged_TMP(mDropdownTMP);
             });
 
             // Run once.
             OnValueChanged_Legacy(DropdownLegacy);
-            OnValueChanged_TMP(TMP_Dropdown);
+            OnValueChanged_TMP(mDropdownTMP);
         }
 
         /// <summary>
