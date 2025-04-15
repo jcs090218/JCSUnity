@@ -9,6 +9,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 > Released N/A
 
 * perf(UI): Improve slider components' performance (5665a48ea7db8373739c4acb992e6ffdc02bfacb)
+* feat(UI): Add new component `JCS_DropdownScreenResolution` (0137d70e890ed6bae8e5859ea0cfec4ddb51d2e8)
+* feat(UI): Add new component `JCS_DropdownWindowedMode` (0137d70e890ed6bae8e5859ea0cfec4ddb51d2e8)
+* feat(UI): Add new component `JCS_InputFieldObject` (63e1176bcae0a12f2259f061e2bbac85b927ddd4)
 
 ## 3.1.0
 > Released Apr 11, 2025
@@ -35,8 +38,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Uitl): Start off bounds utility. (f5662741c7dfb43a367777431c7f43b6df4e74af)
 * feat(Action): Add face forward option to `JCS_3DThrowAction`. (431ab88036d998782a65d868d988dede4bafd954)
 * feat(Action): Add simulation for `JCS_3DThrowAction`. (98cf13a648f1dffbb5fea0f13016700f50cd605c)
-* feat(UI): Add new component `JCS_DropdownScreenResolution` (0137d70e890ed6bae8e5859ea0cfec4ddb51d2e8)
-* feat(UI): Add new component `JCS_DropdownWindowedMode` (0137d70e890ed6bae8e5859ea0cfec4ddb51d2e8)
 
 ## 3.0.0
 > Released Oct 15, 2024
