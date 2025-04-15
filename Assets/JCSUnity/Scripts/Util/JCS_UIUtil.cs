@@ -157,7 +157,7 @@ namespace JCSUnity
         /// <param name="dd"> Dropdown object. </param>
         /// <param name="index"> item name. </param>
         /// <returns> Current selected text value. </returns>
-        public static string Dropdown_GetItemValue(Dropdown dd, int index)
+        public static string Dropdown_GetItemValue(TMP_Dropdown dd, int index)
         {
             return dd.options[index].text;
         }
@@ -167,7 +167,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="dd"> drop down object. </param>
         /// <returns> Current selected text value. </returns>
-        public static string Dropdown_GetSelectedValue(Dropdown dd)
+        public static string Dropdown_GetSelectedValue(TMP_Dropdown dd)
         {
             return Dropdown_GetItemValue(dd, dd.value);
         }
@@ -182,7 +182,7 @@ namespace JCSUnity
         /// Index of the item value found.
         /// If not found, will returns -1.
         /// </returns>
-        public static int Dropdown_GetItemIndex(Dropdown dd, string itemName)
+        public static int Dropdown_GetItemIndex(TMP_Dropdown dd, string itemName)
         {
             for (int index = 0; index < dd.options.Count; ++index)
             {
@@ -202,7 +202,7 @@ namespace JCSUnity
         /// true : found the item and set it succesfully.
         /// false : did not find the item, failed to set.
         /// </returns>
-        public static bool Dropdown_SetSelection(Dropdown dd, string itemName)
+        public static bool Dropdown_SetSelection(TMP_Dropdown dd, string itemName)
         {
             int index = Dropdown_GetItemIndex(dd, itemName);
 
@@ -220,7 +220,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="dd"> dropdown object. </param>
         /// <param name="selection"> selection id. </param>
-        public static void Dropdown_SetSelection(Dropdown dd, int selection)
+        public static void Dropdown_SetSelection(TMP_Dropdown dd, int selection)
         {
             dd.value = selection;
         }
@@ -229,7 +229,7 @@ namespace JCSUnity
         /// Refresh the current selection.
         /// </summary>
         /// <param name="dd"> dropdown object. </param>
-        public static void Dropdown_RefreshSelection(Dropdown dd)
+        public static void Dropdown_RefreshSelection(TMP_Dropdown dd)
         {
             int currentSelectionId = dd.value;
 
@@ -341,7 +341,7 @@ namespace JCSUnity
         public static JCS_Dropdown Dropdown_AddOption(JCS_Dropdown dd, string inText)
         {
             dd.dropdown.options.Add(
-                new Dropdown.OptionData() { text = inText });
+                new TMP_Dropdown.OptionData() { text = inText });
 
             return dd;
         }

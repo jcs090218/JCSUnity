@@ -10,18 +10,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MyBox;
+using TMPro;
 
 namespace JCSUnity
 {
     /// <summary>
     /// A better version of dropdown handle for uGUI.
     /// </summary>
-    [RequireComponent(typeof(Dropdown))]
+    [RequireComponent(typeof(TMP_Dropdown))]
     public class JCS_Dropdown : MonoBehaviour
     {
         /* Variables */
 
-        private Dropdown mDropdown = null;
+        private TMP_Dropdown mDropdown = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_Dropdown)")]
@@ -63,18 +64,17 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Dropdown dropdown { get { return this.mDropdown; } }
+        public TMP_Dropdown dropdown { get { return this.mDropdown; } }
         public int MaxLetters { get { return this.mMaxLetters; } set { this.mMaxLetters = value; } }
         public int DotCount { get { return this.mDotCount; } set { this.mDotCount = value; } }
         public List<string> DropdownRealTexts { get { return this.mDropdownRealTexts; } }
         public List<string> DropdownBackupTexts { get { return this.mDropdownBackupTexts; } }
 
-
         /* Functions */
 
         private void Awake()
         {
-            this.mDropdown = this.GetComponent<Dropdown>();
+            this.mDropdown = this.GetComponent<TMP_Dropdown>();
         }
 
 #if UNITY_EDITOR
@@ -102,6 +102,7 @@ namespace JCSUnity
             mDropdownRealTexts.Clear();
 
             int centerLetterPos = mMaxLetters / 2;
+
             if (JCS_Mathf.IsOdd(mMaxLetters))
                 centerLetterPos += 1;
 
@@ -119,7 +120,7 @@ namespace JCSUnity
 
             int index = -1;
 
-            foreach (Dropdown.OptionData od in mDropdown.options)
+            foreach (TMP_Dropdown.OptionData od in mDropdown.options)
             {
                 ++index;
 
