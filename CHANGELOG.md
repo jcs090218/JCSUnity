@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 3.1.1 (Unreleased)
 > Released N/A
 
-* N/A
+* perf(UI): Improve slider components' performance (5665a48ea7db8373739c4acb992e6ffdc02bfacb)
 
 ## 3.1.0
 > Released Apr 11, 2025
