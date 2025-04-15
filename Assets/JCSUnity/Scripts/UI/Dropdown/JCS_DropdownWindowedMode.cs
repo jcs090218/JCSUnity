@@ -91,6 +91,8 @@ namespace JCSUnity
 
                 JCS_UIUtil.Dropdown_SetSelection(this, text);
             }
+
+            JCS_UIUtil.Dropdown_RefreshSelection(this);
         }
 
         private void OnValueChanged_Legacy(Dropdown dropdown)

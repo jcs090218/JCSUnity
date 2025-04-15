@@ -77,8 +77,6 @@ namespace JCSUnity
             if (mRemoveAllOptions)
                 ClearOptions();
 
-            Debug.Log("what?");
-
             foreach (Resolution res in Screen.resolutions.Reverse())
             {
                 string text = FormatName(res.width, res.height);
@@ -96,6 +94,8 @@ namespace JCSUnity
 
                 JCS_UIUtil.Dropdown_SetSelection(this, res);
             }
+
+            JCS_UIUtil.Dropdown_RefreshSelection(this);
         }
 
         private void OnValueChanged_Legacy(Dropdown dropdown)

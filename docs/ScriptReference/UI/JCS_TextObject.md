@@ -4,10 +4,10 @@ Holds all type of UI text objects.
 
 ## Variables
 
-| Name                  | Description                                      |
-|:----------------------|:-------------------------------------------------|
-| mTextContainer        | Target text renderer.                            |
-| mTextMesh             | Target text renderer. (TMP)                      |
+| Name        | Description                 |
+|:------------|:----------------------------|
+| mTextLegacy | Target text renderer.       |
+| mTMP_Text   | Target text renderer. (TMP) |
 
 ## Functions
 

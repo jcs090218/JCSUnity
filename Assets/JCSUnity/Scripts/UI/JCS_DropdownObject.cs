@@ -28,14 +28,14 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_TextObject)")]
+        [Separator("Initialize Variables (JCS_DropdownObject)")]
 
-        [Tooltip("Target text renderer.")]
+        [Tooltip("Target dropdown renderer.")]
         [SerializeField]
         protected Dropdown mDropdownLegacy = null;
 
 #if TMP_PRO
-        [Tooltip("Target text renderer. (TMP)")]
+        [Tooltip("Target dropdown renderer. (TMP)")]
         [SerializeField]
         protected TMP_Dropdown mTMP_Dropdown = null;
 #endif
@@ -69,6 +69,9 @@ namespace JCSUnity
 
         /* Functions */
 
+        /// <summary>
+        /// Clear all options.
+        /// </summary>
         public void ClearOptions()
         {
             if (this.mDropdownLegacy)
