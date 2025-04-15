@@ -29,6 +29,7 @@ namespace JCSUnity
         public Action onResizableResize = null;
         public Action onResizableIdle = null;
 
+        // Record
         private Resolution mPrevResolution = default(Resolution);
 
         private float mSizeWidth = 0;
