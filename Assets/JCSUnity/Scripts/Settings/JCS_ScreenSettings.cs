@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2018 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -18,8 +19,16 @@ namespace JCSUnity
     {
         /* Variables */
 
-        public EmptyFunction onScreenResize = null;
-        public EmptyFunction onScreenIdle = null;
+        public Action onChanged = null;
+        public Action onChangedResolution = null;
+        public Action onChangedMode = null;
+
+        public Action onResizableResize = null;
+        public Action onResizableIdle = null;
+
+        private Resolution mPrevResolution = default(Resolution);
+
+        private FullScreenMode mPrevScreenMode = FullScreenMode.FullScreenWindow;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_ScreenManager)")]
@@ -148,6 +157,10 @@ namespace JCSUnity
                 if (RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED)
                     ForceAspectScreenOnce();
             }
+
+            // Initialize.
+            mPrevResolution = Screen.currentResolution;
+            mPrevScreenMode = Screen.fullScreenMode;
         }
 
         private void Start()
@@ -165,7 +178,39 @@ namespace JCSUnity
 
         private void LateUpdate()
         {
+            OnChanged();
+
             DoScreenType();
+        }
+
+        private void OnChanged()
+        {
+            Resolution currentResolution = Screen.currentResolution;
+            FullScreenMode fullScreenMode = Screen.fullScreenMode;
+
+            bool resolutionChanged = 
+                mPrevResolution.width != currentResolution.width ||
+                mPrevResolution.height != currentResolution.height;
+
+            bool modeChanged = mPrevScreenMode != fullScreenMode;
+
+            if (resolutionChanged)
+            {
+                onChangedResolution?.Invoke();
+            }
+
+            if (modeChanged)
+            {
+                onChangedMode?.Invoke();
+            }
+
+            if (modeChanged || resolutionChanged)
+            {
+                onChanged?.Invoke();
+
+                mPrevResolution = currentResolution;
+                mPrevScreenMode = fullScreenMode;
+            }
         }
 
         /// <summary>
@@ -438,7 +483,8 @@ namespace JCSUnity
 
             if (CURRENT_SCREEN_SIZE.width == width && CURRENT_SCREEN_SIZE.height == height)
             {
-                if (onScreenIdle != null) onScreenIdle.Invoke();
+                if (onResizableIdle != null)
+                    onResizableIdle.Invoke();
                 return;
             }
 
@@ -460,7 +506,8 @@ namespace JCSUnity
             CURRENT_SCREEN_SIZE.height = height;
 
             // Do callback.
-            if (onScreenResize != null) onScreenResize.Invoke();
+            if (onResizableResize != null)
+                onResizableResize.Invoke();
         }
     }
 }

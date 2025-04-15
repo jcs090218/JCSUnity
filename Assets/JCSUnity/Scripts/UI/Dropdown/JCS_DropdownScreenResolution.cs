@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using MyBox;
+using System.Linq;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -21,17 +23,12 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_DropdownScreenResolution)")]
 
-        [Tooltip("A list of resolutions to use.")]
-        [SerializeField]
-        private List<string> mResolutions = null;
-
         [Tooltip("If true, remove all other options at the beginning.")]
         [SerializeField]
         private bool mRemoveAllOptions = true;
 
         /* Setter & Getter */
 
-        public List<string> Resolutions { get { return mResolutions; } set { this.mResolutions = value; } }
         public bool RemoveAllOptions { get { return mRemoveAllOptions; } set { this.mRemoveAllOptions = value; } }
 
         /* Functions */
@@ -43,6 +40,13 @@ namespace JCSUnity
             Refresh();
 
             AddListener();
+        }
+
+        private void Start()
+        {
+            var screens = JCS_ScreenSettings.instance;
+
+            screens.onChangedResolution += Refresh;
         }
 
         private void AddListener()
@@ -64,14 +68,20 @@ namespace JCSUnity
             if (mRemoveAllOptions)
                 mDropdown.ClearOptions();
 
-            foreach (string resolution in mResolutions)
+            foreach (Resolution res in Screen.resolutions.Reverse())
             {
-                JCS_UIUtil.Dropdown_AddOption(mDropdown, resolution);
+                string text = FormatName(res.width, res.height);
+
+                int index = JCS_UIUtil.Dropdown_GetItemIndex(mDropdown, text);
+
+                // Prevent adding the same options.
+                if (index == -1)
+                    JCS_UIUtil.Dropdown_AddOption(mDropdown, text);
             }
 
             // Default to the current screen resolution.
             {
-                string res = Screen.width + "x" + Screen.height;
+                string res = FormatName(Screen.width, Screen.height);
 
                 JCS_UIUtil.Dropdown_SetSelection(mDropdown, res);
             }
@@ -96,6 +106,11 @@ namespace JCSUnity
                 GameViewSizeGroupType.Standalone, width, height,
                 text);
 #endif
+        }
+
+        private string FormatName(int width, int height)
+        {
+            return width + "x" + height;
         }
     }
 }

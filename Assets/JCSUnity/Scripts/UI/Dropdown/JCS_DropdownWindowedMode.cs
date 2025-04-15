@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using MyBox;
-using UnityEditor;
 
 namespace JCSUnity
 {
@@ -16,16 +15,13 @@ namespace JCSUnity
 
         private TMP_Dropdown mDropdown = null;
 
-        [Separator("Initialize Variables (JCS_DropdownWindowedMode)")]
-
-        [Tooltip("A list of windowed option to use.")]
-        [SerializeField]
-        [ReadOnly]
         private List<string> mOptions = new List<string>()
         {
             "Full Screen",
             "Windowed",
         };
+
+        [Separator("Initialize Variables (JCS_DropdownWindowedMode)")]
 
         [Tooltip("If true, remove all other options at the beginning.")]
         [SerializeField]
@@ -45,6 +41,13 @@ namespace JCSUnity
             Refresh();
 
             AddListener();
+        }
+
+        private void Start()
+        {
+            var screens = JCS_ScreenSettings.instance;
+
+            screens.onChangedMode += Refresh;
         }
 
         private void AddListener()
@@ -99,11 +102,9 @@ namespace JCSUnity
             {
                 case FullScreenMode.FullScreenWindow:
                     return "Full Screen";
-                case FullScreenMode.Windowed:
+                default:
                     return "Windowed";
             }
-
-            return JCS_UIUtil.Dropdown_GetSelectedValue(mDropdown);
         }
 
         private FullScreenMode StringToMode(string text)
