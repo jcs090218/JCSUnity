@@ -252,10 +252,9 @@ namespace JCSUnity
         /// <param name="dd"> dropdown object. </param>
         /// <param name="inText"> input text. </param>
         /// <returns> Dropdown pointer. </returns>
-        public static Dropdown Dropdown_AddOption(Dropdown dd, string inText)
+        public static TMP_Dropdown Dropdown_AddOption(TMP_Dropdown dd, string inText)
         {
-            dd.options.Add(
-                new Dropdown.OptionData() { text = inText });
+            dd.options.Add(new TMP_Dropdown.OptionData() { text = inText });
 
             return dd;
         }
