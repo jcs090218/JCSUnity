@@ -1,5 +1,14 @@
+/**
+ * $File: JCS_DropdownWindowedMode.cs $
+ * $Date: 2025-04-15 01:14:38 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright © 2025 by Shen, Jen-Chieh $
+ */
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using MyBox;
 
@@ -9,11 +18,9 @@ namespace JCSUnity
     /// A dropdown menu let you choose the windowed mode.
     /// </summary>
     [RequireComponent(typeof(TMP_Dropdown))]
-    public class JCS_DropdownWindowedMode : MonoBehaviour
+    public class JCS_DropdownWindowedMode : JCS_DropdownObject
     {
         /* Variables */
-
-        private TMP_Dropdown mDropdown = null;
 
         private List<string> mOptions = new List<string>()
         {
@@ -36,8 +43,6 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mDropdown = GetComponent<TMP_Dropdown>();
-
             Refresh();
 
             AddListener();
@@ -52,13 +57,19 @@ namespace JCSUnity
 
         private void AddListener()
         {
-            mDropdown.onValueChanged.AddListener(delegate
+            DropdownLegacy?.onValueChanged.AddListener(delegate
             {
-                OnValueChanged(mDropdown);
+                OnValueChanged_Legacy(DropdownLegacy);
+            });
+
+            TMP_Dropdown?.onValueChanged.AddListener(delegate
+            {
+                OnValueChanged_TMP(TMP_Dropdown);
             });
 
             // Run once.
-            OnValueChanged(mDropdown);
+            OnValueChanged_Legacy(DropdownLegacy);
+            OnValueChanged_TMP(TMP_Dropdown);
         }
 
         /// <summary>
@@ -67,25 +78,41 @@ namespace JCSUnity
         public void Refresh()
         {
             if (mRemoveAllOptions)
-                mDropdown.ClearOptions();
+                ClearOptions();
 
             foreach (string option in mOptions)
             {
-                JCS_UIUtil.Dropdown_AddOption(mDropdown, option);
+                JCS_UIUtil.Dropdown_AddOption(this, option);
             }
 
             // Default to the current windowed mode.
             {
                 string text = ModeToString(Screen.fullScreenMode);
 
-                JCS_UIUtil.Dropdown_SetSelection(mDropdown, text);
+                JCS_UIUtil.Dropdown_SetSelection(this, text);
             }
         }
 
-        private void OnValueChanged(TMP_Dropdown dropdown)
+        private void OnValueChanged_Legacy(Dropdown dropdown)
         {
+            if (dropdown == null)
+                return;
+
             string text = JCS_UIUtil.Dropdown_GetSelectedValue(dropdown);
 
+            OnValueChanged(text);
+        }
+        private void OnValueChanged_TMP(TMP_Dropdown dropdown)
+        {
+            if (dropdown == null)
+                return;
+
+            string text = JCS_UIUtil.Dropdown_GetSelectedValue(dropdown);
+
+            OnValueChanged(text);
+        }
+        private void OnValueChanged(string text)
+        {
             FullScreenMode mode = StringToMode(text);
 
             Resolution res = Screen.currentResolution;

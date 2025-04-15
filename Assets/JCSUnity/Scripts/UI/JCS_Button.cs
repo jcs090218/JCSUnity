@@ -159,8 +159,8 @@ namespace JCSUnity
 
             if (mItText != null)
             {
-                if (mItText.TextContainer == null)
-                    mItText.TextContainer = this.GetComponentInChildren<Text>();
+                if (mItText.TextLegacy == null)
+                    mItText.TextLegacy = this.GetComponentInChildren<Text>();
                 if (mItText.TMP_Text == null)
                     mItText.TMP_Text = this.GetComponentInChildren<TMP_Text>();
             }

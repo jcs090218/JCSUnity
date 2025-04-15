@@ -53,7 +53,7 @@ namespace JCSUnity
         /// </summary>
         public void Refresh()
         {
-            JCS_UIUtil.SetLangText(this.mLangData, this.mTextContainer);
+            JCS_UIUtil.SetLangText(this.mLangData, this.mTextLegacy);
 #if TMP_PRO
             JCS_UIUtil.SetLangText(this.mLangData, this.mTMP_Text);
 #endif

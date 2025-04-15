@@ -1,5 +1,14 @@
+/**
+ * $File: JCS_DropdownScreenResolution.cs $
+ * $Date: 2025-04-15 01:14:38 $
+ * $Revision: $
+ * $Creator: Jen-Chieh Shen $
+ * $Notice: See LICENSE.txt for modification and distribution information
+ *                   Copyright © 2025 by Shen, Jen-Chieh $
+ */
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using MyBox;
 
@@ -12,12 +21,10 @@ namespace JCSUnity
     /// <summary>
     /// A dropdown menu let you choose the screen resolution.
     /// </summary>
-    [RequireComponent(typeof(TMP_Dropdown))]
-    public class JCS_DropdownScreenResolution : MonoBehaviour
+    public class JCS_DropdownScreenResolution : JCS_DropdownObject
     {
         /* Variables */
 
-        private TMP_Dropdown mDropdown = null;
 
         [Separator("Initialize Variables (JCS_DropdownScreenResolution)")]
 
@@ -33,8 +40,6 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mDropdown = GetComponent<TMP_Dropdown>();
-
             Refresh();
 
             AddListener();
@@ -44,18 +49,24 @@ namespace JCSUnity
         {
             var screens = JCS_ScreenSettings.instance;
 
-            screens.onChangedResolution += Refresh;
+            screens.onChangedSize += Refresh;
         }
 
         private void AddListener()
         {
-            mDropdown.onValueChanged.AddListener(delegate
+            DropdownLegacy?.onValueChanged.AddListener(delegate
             {
-                OnValueChanged(mDropdown);
+                OnValueChanged_Legacy(DropdownLegacy);
+            });
+
+            TMP_Dropdown?.onValueChanged.AddListener(delegate
+            {
+                OnValueChanged_TMP(TMP_Dropdown);
             });
 
             // Run once.
-            OnValueChanged(mDropdown);
+            OnValueChanged_Legacy(DropdownLegacy);
+            OnValueChanged_TMP(TMP_Dropdown);
         }
 
         /// <summary>
@@ -64,31 +75,49 @@ namespace JCSUnity
         public void Refresh()
         {
             if (mRemoveAllOptions)
-                mDropdown.ClearOptions();
+                ClearOptions();
+
+            Debug.Log("what?");
 
             foreach (Resolution res in Screen.resolutions.Reverse())
             {
                 string text = FormatName(res.width, res.height);
 
-                int index = JCS_UIUtil.Dropdown_GetItemIndex(mDropdown, text);
+                int index = JCS_UIUtil.Dropdown_GetItemIndex(this, text);
 
                 // Prevent adding the same options.
                 if (index == -1)
-                    JCS_UIUtil.Dropdown_AddOption(mDropdown, text);
+                    JCS_UIUtil.Dropdown_AddOption(this, text);
             }
 
             // Default to the current screen resolution.
             {
                 string res = FormatName(Screen.width, Screen.height);
 
-                JCS_UIUtil.Dropdown_SetSelection(mDropdown, res);
+                JCS_UIUtil.Dropdown_SetSelection(this, res);
             }
         }
 
-        private void OnValueChanged(TMP_Dropdown dropdown)
+        private void OnValueChanged_Legacy(Dropdown dropdown)
         {
+            if (dropdown == null)
+                return;
+
             string text = JCS_UIUtil.Dropdown_GetSelectedValue(dropdown);
 
+            OnValueChanged(text);
+        }
+        private void OnValueChanged_TMP(TMP_Dropdown dropdown)
+        {
+            if (dropdown == null)
+                return;
+
+            string text = JCS_UIUtil.Dropdown_GetSelectedValue(dropdown);
+
+            OnValueChanged(text);
+        }
+        private void OnValueChanged(string text)
+        {
             string[] data = text.Split("x");
 
             Resolution res = Screen.currentResolution;

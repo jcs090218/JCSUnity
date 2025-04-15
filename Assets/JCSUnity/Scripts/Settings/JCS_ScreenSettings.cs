@@ -21,12 +21,16 @@ namespace JCSUnity
 
         public Action onChanged = null;
         public Action onChangedResolution = null;
+        public Action onChangedSize = null;
         public Action onChangedMode = null;
 
         public Action onResizableResize = null;
         public Action onResizableIdle = null;
 
         private Resolution mPrevResolution = default(Resolution);
+
+        private float mSizeWidth = 0;
+        private float mSizeHeight = 0;
 
         private FullScreenMode mPrevScreenMode = FullScreenMode.FullScreenWindow;
 
@@ -159,8 +163,18 @@ namespace JCSUnity
             }
 
             // Initialize.
-            mPrevResolution = Screen.currentResolution;
-            mPrevScreenMode = Screen.fullScreenMode;
+            {
+                Resolution currentResolution = Screen.currentResolution;
+
+                mPrevResolution = new Resolution();
+                mPrevResolution.width = currentResolution.width;
+                mPrevResolution.height = currentResolution.height;
+
+                mSizeWidth = JCS_Screen.width;
+                mSizeHeight = JCS_Screen.height;
+
+                mPrevScreenMode = Screen.fullScreenMode;
+            }
         }
 
         private void Start()
@@ -188,28 +202,41 @@ namespace JCSUnity
             Resolution currentResolution = Screen.currentResolution;
             FullScreenMode fullScreenMode = Screen.fullScreenMode;
 
-            bool resolutionChanged = 
+            bool resolutionChanged =
                 mPrevResolution.width != currentResolution.width ||
                 mPrevResolution.height != currentResolution.height;
-
-            bool modeChanged = mPrevScreenMode != fullScreenMode;
 
             if (resolutionChanged)
             {
                 onChangedResolution?.Invoke();
+
+                mPrevResolution.width = currentResolution.width;
+                mPrevResolution.height = currentResolution.height;
             }
+
+            bool sizeChanged = mSizeWidth != JCS_Screen.width ||
+                mSizeHeight != JCS_Screen.height;
+
+            if (sizeChanged)
+            {
+                onChangedSize?.Invoke();
+
+                mSizeWidth = JCS_Screen.width;
+                mSizeHeight = JCS_Screen.height;
+            }
+
+            bool modeChanged = mPrevScreenMode != fullScreenMode;
 
             if (modeChanged)
             {
                 onChangedMode?.Invoke();
+
+                mPrevScreenMode = fullScreenMode;
             }
 
-            if (modeChanged || resolutionChanged)
+            if (modeChanged || sizeChanged || resolutionChanged)
             {
                 onChanged?.Invoke();
-
-                mPrevResolution = currentResolution;
-                mPrevScreenMode = fullScreenMode;
             }
         }
 
@@ -404,7 +431,7 @@ namespace JCSUnity
             {
                 // These types do not expect resize!
                 return;
-            }    
+            }
 
             switch (SCREEN_TYPE)
             {
@@ -483,8 +510,7 @@ namespace JCSUnity
 
             if (CURRENT_SCREEN_SIZE.width == width && CURRENT_SCREEN_SIZE.height == height)
             {
-                if (onResizableIdle != null)
-                    onResizableIdle.Invoke();
+                onResizableIdle?.Invoke();
                 return;
             }
 
@@ -506,8 +532,7 @@ namespace JCSUnity
             CURRENT_SCREEN_SIZE.height = height;
 
             // Do callback.
-            if (onResizableResize != null)
-                onResizableResize.Invoke();
+            onResizableResize?.Invoke();
         }
     }
 }
