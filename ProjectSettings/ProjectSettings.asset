@@ -879,7 +879,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     : SOOMLA_OPEN_SOURCE
     Android: SOOMLA_OPEN_SOURCE
-    Standalone: SOOMLA_OPEN_SOURCE
+    Standalone: SOOMLA_OPEN_SOURCE;_JCS_USE_GAMEPAD
     iPhone: SOOMLA_OPEN_SOURCE
   additionalCompilerArguments: {}
   platformArchitecture:

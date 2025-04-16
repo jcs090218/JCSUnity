@@ -12,15 +12,20 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Button to select system langauge.
+    /// Button to select the system langauge.
     /// </summary>
-    public class JCS_SelectLanguageButton : JCS_Button
+    public class JCS_SelectLanguageButton :
+#if JCS_USE_GAMEPAD
+        JCS_GamepadButton
+#else
+        JCS_Button
+#endif
     {
         /* Variables */
 
         [Separator("Runtime Variables (JCS_SelectLanguageButton)")]
 
-        [Tooltip("URL to open in the default browser.")]
+        [Tooltip("The newly selected system language.")]
         [SerializeField]
         private SystemLanguage mSystemLanguage = SystemLanguage.Unknown;
 
