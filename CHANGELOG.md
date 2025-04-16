@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(UI): Add new component `JCS_InputFieldObject` (63e1176bcae0a12f2259f061e2bbac85b927ddd4)
 * feat(Util): Add localization utilities `JCS_Locale` (df747dd3ad7e73b08d26c100d1069f69b91ede69)
 * feat(UI): Add new component `JCS_DropdownLanguage` (d1723127fd851e79e04117a2b612f6ffe15f5132)
+* feat(UI): Add new component `JCS_SelectLanguageButton` (f28c03b3ae45300b6e5742c6c0d953105486ea54)
 
 ## 3.1.0
 > Released Apr 11, 2025
