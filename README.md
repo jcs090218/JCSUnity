@@ -50,6 +50,14 @@ from the above tab, or from the link
 . Simply create a new project in Unity then import all of the assets into
 that project. Then you can start all of the tools in the JCSUnity framework.
 
+### Macro
+
+A list of macro supported by this framework.
+
+| Name            | Description                  |
+|:----------------|:-----------------------------|
+| JCS_USE_GAMEPAD | Flag to add gamepad support. |
+
 ## 🏆 Features
 
 So, what does this framework does? Check out the
