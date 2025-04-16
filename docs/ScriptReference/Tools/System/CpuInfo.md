@@ -1,3 +1,0 @@
-# CpuInfo
-
-Gather CPU informations.
