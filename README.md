@@ -50,9 +50,9 @@ from the above tab, or from the link
 . Simply create a new project in Unity then import all of the assets into
 that project. Then you can start all of the tools in the JCSUnity framework.
 
-### Macro
+### Preprocessor Symbols
 
-A list of macro supported by this framework.
+A list of preprocessor symbols supported by this framework.
 
 | Name            | Description                  |
 |:----------------|:-----------------------------|
