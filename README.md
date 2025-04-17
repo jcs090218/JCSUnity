@@ -54,9 +54,9 @@ that project. Then you can start all of the tools in the JCSUnity framework.
 
 A list of preprocessor symbols supported by this framework.
 
-| Name            | Description                  |
-|:----------------|:-----------------------------|
-| JCS_USE_GAMEPAD | Flag to add gamepad support. |
+| Name              | Description                  |
+|:------------------|:-----------------------------|
+| `JCS_USE_GAMEPAD` | Flag to add gamepad support. |
 
 ## 🏆 Features
 
