@@ -46,7 +46,7 @@ namespace JCSUnity
         [Range(0, 15)]
         private int mRoundPlace = 2;
 
-        [Tooltip("Display with custom text.")]
+        [Tooltip("Display with the custom text.")]
         [SerializeField]
         private string mCustomFormat = "{0} / {1}";
 
