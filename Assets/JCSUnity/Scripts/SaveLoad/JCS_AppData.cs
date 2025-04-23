@@ -60,7 +60,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Return true if data is initialized.
+        /// Return true if the data is initialized and ready to use.
         /// </summary>
         public bool Initialized()
         {
@@ -74,7 +74,7 @@ namespace JCSUnity
         public abstract void Save<T>(string fullFilePath);
 
         /// <summary>
-        /// Get complete save data path.
+        /// Return the complete saved data path.
         /// </summary>
         public static string SavePath()
         {
