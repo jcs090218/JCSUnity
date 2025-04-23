@@ -6,6 +6,8 @@ Control of the canvas component.
 
 | Name            | Description                                      |
 |:----------------|:-------------------------------------------------|
+| onShow          | Execution when canvas is shown.                  |
+| onHide          | Execution when canvas is hidden.                 |
 | mDisplayOnAwake | If true, show on awake time; otherwise, hide it. |
 | mMainCanvas     | Resizable screen will be attach to this canvas.  |
 | mActiveSound    | Play sound when active the canvas.               |
