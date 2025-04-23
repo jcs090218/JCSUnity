@@ -8,6 +8,7 @@
  */
 using System;
 using UnityEngine;
+using MyBox;
 
 namespace JCSUnity
 {
@@ -19,14 +20,27 @@ namespace JCSUnity
     {
         /* Variables */
 
+        [Separator("Runtime Variables (JCS_AppData)")]
+
+        [Tooltip("The copyright information.")]
+        public string Copyright = "";
+
+        [Tooltip("The resource version.")]
+        public string Version = "";
+
+        [Tooltip("Set to true when the data is initialized.")]
+        [SerializeField]
+        [ReadOnly]
         private bool mInitialized = false;
 
-        public string Copyright = "";
-        public string Version = "";
-        
         /* Setter & Getter */
 
         /* Functions */
+
+        protected JCS_AppData()
+        {
+            InitFile();
+        }
 
         protected void InitFile()
         {
@@ -41,15 +55,16 @@ namespace JCSUnity
             Copyright = pds.CopyrightString;
             Version = pds.VersionString;
 
-            this.mInitialized = true;
+            // Set init flag.
+            mInitialized = true;
         }
 
         /// <summary>
         /// Return true if data is initialized.
         /// </summary>
-        public bool Initialized() 
-        { 
-            return this.mInitialized; 
+        public bool Initialized()
+        {
+            return this.mInitialized;
         }
 
         /// <summary>
