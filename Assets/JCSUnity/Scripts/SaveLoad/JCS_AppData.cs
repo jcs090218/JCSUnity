@@ -47,10 +47,7 @@ namespace JCSUnity
             var pds = JCS_PackageDataSettings.instance;
 
             if (pds == null)
-            {
-                JCS_Debug.LogError("Failed to load the copyright and version text");
                 return;
-            }
 
             Copyright = pds.CopyrightString;
             Version = pds.VersionString;
