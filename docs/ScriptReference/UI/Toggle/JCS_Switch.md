@@ -6,9 +6,12 @@ Better version of checkbox/toggle GUI.
 
 | Name                      | Description                                                      |
 |:--------------------------|:-----------------------------------------------------------------|
+| onSwitchOn                | Callback when the switch is on.                                  |
+| onSwitchOff               | Callback when the switch is off.                                 |
+| onValueChanged            | Callback when the value changed.                                 |
 | mOnOffStartingPosition    | Set the on/off position the same as the current sign's position. |
 | mColorSameAsEditingStatus | Is the color same as the editing status?                         |
-| mToggleSign               | Sign of this toggle.                                             |
+| mSwitchSign               | Sign of this toggle.                                             |
 | mIsOn                     | Is the toggle currently on or off?                               |
 | mOnPos                    | Position when is on.                                             |
 | mOffPos                   | Position when is off.                                            |
