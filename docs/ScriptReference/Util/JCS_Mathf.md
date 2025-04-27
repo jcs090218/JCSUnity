@@ -20,9 +20,6 @@ Math library class.
 | FindMiddleIndex       | Returns the center of the array length.                                        |
 | OverFlowIndex         | Returns index that are overflow within the array length.                       |
 | ApproachTo            | Make value approach to the target value by increment/decrement one.            |
-| RotatePointX          | RotatePoint by x axis                                                          |
-| RotatePointY          | Rotate point by y axis.                                                        |
-| RotatePointZ          | Rotate point by z axis.                                                        |
 | IsInfinity            | Check if the value is infinity?                                                |
 | Min                   | Returns the mininum value.                                                     |
 | Max                   | Returns the maxinum value.                                                     |
@@ -40,9 +37,13 @@ Math library class.
 | Cos                   | Cosine in degree.                                                              |
 | Sin                   | Sine in degree.                                                                |
 | Tan                   | Tangent in degree.                                                             |
-| CirclePositionX       | Find the point on the circle line base on the degree. (x-axis)                 |
-| CirclePositionY       | Find the point on the circle line base on the degree. (y-axis)                 |
-| CirclePositionZ       | Find the point on the circle line base on the degree. (z-axis)                 |
 | Truncate              | Truncate a decimal number.                                                     |
 | GCD                   | Find the greatest common factor.                                               |
 | GetSign               | Return the positive/negative 1 sign from VAL.                                  |
+| RotatePointAround     | Return a new position after rotate around the pivot.                           |
+| RotatePointX          | RotatePoint by x axis                                                          |
+| RotatePointY          | Rotate point by y axis.                                                        |
+| RotatePointZ          | Rotate point by z axis.                                                        |
+| CirclePositionX       | Find the point on the circle line base on the degree. (x-axis)                 |
+| CirclePositionY       | Find the point on the circle line base on the degree. (y-axis)                 |
+| CirclePositionZ       | Find the point on the circle line base on the degree. (z-axis)                 |
