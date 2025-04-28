@@ -903,7 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a8d1efa6195b54c9ca7188652b2db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MIXER: {fileID: 0}
+  MIXER: {fileID: 24100000, guid: 7db419a1e5067c44fb6780b4f563b20b, type: 2}
   SOUND_FADEOUT_TIME: 1.5
   SOUND_FADEIN_TIME: 1.5
   KEEP_BGM_SWITCH_SCENE: 0
