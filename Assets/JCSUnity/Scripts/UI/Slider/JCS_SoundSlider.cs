@@ -54,7 +54,7 @@ namespace JCSUnity
             if (mMixer == null)
                 mMixer = JCS_SoundSettings.instance.MIXER;
 
-            AddListener();
+            JCS_GameManager.instance.RegisterOnAfterInit(AddListener);
         }
 
         private void OnValidate()
