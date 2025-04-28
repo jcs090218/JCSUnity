@@ -70,6 +70,21 @@ namespace JCSUnity
         }
 
         /// <summary>
+        /// Register event run on the first frame of the game. (system used)
+        /// </summary>
+        public void RegisterOnSystemAfterInit(Action action)
+        {
+            // Already initialize, just execute it.
+            if (mDoneInitialize)
+            {
+                action?.Invoke();
+                return;
+            }
+
+            mOnSystemAfterInitialize += action;
+        }
+
+        /// <summary>
         /// Register event run on the first frame of the game.
         /// </summary>
         public void RegisterOnAfterInit(Action action)
@@ -82,21 +97,6 @@ namespace JCSUnity
             }
 
             mOnAfterInitialize += action;
-        }
-
-        /// <summary>
-        /// Register event run on the first frame of the game.
-        /// </summary>
-        public void RegisterOnSystemAfterInit(Action action)
-        {
-            // Already initialize, just execute it.
-            if (mDoneInitialize)
-            {
-                action?.Invoke();
-                return;
-            }
-
-            mOnSystemAfterInitialize += action;
         }
 
         /// <summary>
