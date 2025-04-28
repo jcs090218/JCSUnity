@@ -8,4 +8,3 @@ the game object will be destroyed.
 | Name              | Description          |
 |:------------------|:---------------------|
 | mAudioClip        | Sound to plays.      |
-| mSoundSettingType | Sound settings type. |

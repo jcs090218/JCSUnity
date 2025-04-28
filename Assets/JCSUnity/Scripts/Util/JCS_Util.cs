@@ -15,7 +15,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using PeterVuorela.Tweener;
-using System.Data.Common;
 
 namespace JCSUnity
 {
@@ -1305,7 +1304,7 @@ namespace JCSUnity
         #region Audio
 
         /// <summary>
-        /// Return the float value from audio mixer.
+        /// Return a float value from the audio mixer.
         /// </summary>
         public static float GetFloat(AudioMixer mixer, string parameter)
         {

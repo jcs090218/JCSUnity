@@ -25,11 +25,11 @@ namespace JCSUnity
 
         [Separator("Initialize Variables (JCS_SoundSlider)")]
 
-        [Tooltip("The mixer to control.")]
+        [Tooltip("The mixer to control; if null assign the default mixer.")]
         [SerializeField]
         private AudioMixer mMixer = null;
 
-        [Tooltip("The target float parameter.")]
+        [Tooltip("The target volume parameter.")]
         [SerializeField]
         private string mParameter = "";
 
@@ -50,6 +50,10 @@ namespace JCSUnity
 
         private void Start()
         {
+            // Assign default mixer.
+            if (mMixer == null)
+                mMixer = JCS_SoundSettings.instance.MIXER;
+
             AddListener();
         }
 

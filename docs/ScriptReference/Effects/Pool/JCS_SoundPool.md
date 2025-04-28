@@ -7,7 +7,6 @@ Pool of sound.
 | Name              | Description                      |
 |:------------------|:---------------------------------|
 | mAudioClips       | Pool of the audio clips.         |
-| mSoundSettingType | Sound type you want to organize. |
 
 ## Functions
 

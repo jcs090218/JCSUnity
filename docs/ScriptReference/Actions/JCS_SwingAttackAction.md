@@ -19,7 +19,6 @@ Action to do swing attack.
 | mAnimOffsetPosition    | Animation offset position value.                                                 |
 | mAnimOffsetScale       | Animation offset scale value.                                                    |
 | mAudioClip             | Sound to play for this action.                                                   |
-| mSoundType             | Sound settings type.                                                             |
 | mApplyDamageTextAction | If you want the action apply damage text add apply this.                         |
 | mKeyCode               | Key to active attack.                                                            |
 | mSpeedLayer            | Speed layer.                                                                     |

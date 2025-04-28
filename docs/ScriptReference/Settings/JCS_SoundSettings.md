@@ -6,12 +6,7 @@ Sound related settings.
 
 | Name                              | Description                                                   |
 |:----------------------------------|:--------------------------------------------------------------|
-| BGM_MUTE                          | Background music mute?                                        |
-| EFFECT_MUTE                       | SFX mute?                                                     |
-| PERFONAL_EFFECT_MUTE              | Player sound effect mute?                                     |
-| BGM_SOUND                         | Background music volume.                                      |
-| SFX_SOUND                         | SFX volume.                                                   |
-| SKILLS_SOUND                      | Play sound volume.                                            |
+| MIXER                             | The current audio mixer.                                      |
 | SOUND_FADEOUT_TIME                | Time to fade out the background music.                        |
 | SOUND_FADEIN_TIME                 | Time to fade in the background music.                         |
 | KEEP_BGM_SWITCH_SCENE             | Keep the background music when switch to next scene.          |

@@ -17,6 +17,3 @@ Manage of all the music, sound and SFX in the game.
 |:------------------|:-----------------------------------------------------|
 | SwitchBGM         | Switch the background music, fading in and out.      |
 | PlayOneShotBGM    | Play one shot background music, after playing it.    |
-| PlayOneShotEffect | Push to the sound effect into array ready for use!   |
-| SetVolume         | Set the sound volume base on type.                   |
-| SetMute           | Set weather the sound are mute or not by sound type. |
