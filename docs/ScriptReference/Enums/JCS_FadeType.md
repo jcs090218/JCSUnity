@@ -4,8 +4,8 @@ Fade in/out and none.
 
 ## Values
 
-| Name     | Description  |
-|:---------|:-------------|
-| NONE     | Not specify. |
-| FADE_OUT | Fade out.    |
-| FADE_IN  | Face in.     |
+| Name | Description  |
+|:-----|:-------------|
+| NONE | Not specify. |
+| OUT  | Fade out.    |
+| IN   | Face in.     |
