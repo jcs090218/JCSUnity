@@ -99,7 +99,7 @@ namespace JCSUnity
         [Tooltip("How fast the canvas fades.")]
         [SerializeField]
         [Range(0.0001f, 30.0f)]
-        private float mFadeFriction = 0.2f;
+        private float mFadeFriction = 0.15f;
 
         [Tooltip("Full fade in amount.")]
         [SerializeField]

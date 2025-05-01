@@ -1797,8 +1797,8 @@ GameObject:
   - component: {fileID: 1680700180}
   - component: {fileID: 1680700179}
   - component: {fileID: 1680700178}
-  - component: {fileID: 1680700182}
   - component: {fileID: 1680700183}
+  - component: {fileID: 1680700182}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   mDisplayOnAwake: 1
   mMainCanvas: 0
   mFade: 1
-  mFadeFriction: 0.2
+  mFadeFriction: 0.15
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
