@@ -9,6 +9,7 @@
 using System;
 using UnityEngine;
 using MyBox;
+using NUnit.Framework.Internal;
 
 namespace JCSUnity
 {
@@ -35,13 +36,39 @@ namespace JCSUnity
         // Execution when canvas is hidden by fading.
         public Action<JCS_Canvas> onHideFade = null;
 
-        private Canvas mCanvas = null;
 
-        private CanvasGroup mCanvasGroup = null;
+
+
 
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
+#if UNITY_EDITOR
+        [Separator("Helper Variables (JCS_Canvas)")]
+
+        [Tooltip("Turn on this to test this behaviour.")]
+        [SerializeField]
+        private bool mTest = false;
+
+        [Tooltip("Key to show canvas.")]
+        [SerializeField]
+        private KeyCode mKeyShow = KeyCode.A;
+
+        [Tooltip("Key to hide canvas.")]
+        [SerializeField]
+        private KeyCode mKeyHide = KeyCode.S;
+#endif
+
         [Separator("Check Variables (JCS_Canvas)")]
+
+        [Tooltip("Canvas.")]
+        [SerializeField]
+        [ReadOnly]
+        private Canvas mCanvas = null;
+
+        [Tooltip("Canvas group.")]
+        [SerializeField]
+        [ReadOnly]
+        private CanvasGroup mCanvasGroup = null;
 
         [Tooltip("Resize object.")]
         [SerializeField]
@@ -161,8 +188,25 @@ namespace JCSUnity
 
         private void Update()
         {
+#if UNITY_EDITOR
+            Test();
+#endif
+
             DoFading();
         }
+
+#if UNITY_EDITOR
+        private void Test()
+        {
+            if (!mTest)
+                return;
+
+            if (Input.GetKeyDown(mKeyShow))
+                Show();
+            else if (Input.GetKeyDown(mKeyHide))
+                Hide();
+        }
+#endif
 
         /// <summary>
         /// Return the `canvas` that is the parent of the `trans` object.
@@ -222,7 +266,9 @@ namespace JCSUnity
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mDeactiveSound, JCS_SoundMethod.PLAY_SOUND);
 
-            if (fade)
+            mCanvas.enabled = true;
+
+            if (fade && mCanvasGroup)
             {
                 mFading = JCS_FadeType.IN;
 
@@ -230,8 +276,6 @@ namespace JCSUnity
             }
             else
             {
-                mCanvas.enabled = true;
-
                 if (mCanvasGroup != null)
                     mCanvasGroup.alpha = mFadeInAmount;
             }
@@ -251,8 +295,11 @@ namespace JCSUnity
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
 
-            if (fade)
+            if (fade && mCanvasGroup)
             {
+                // Remains enabled since we're going to do fading.
+                mCanvas.enabled = true;
+
                 mFading = JCS_FadeType.OUT;
 
                 mFadeAlpa = mFadeOutAmount;
