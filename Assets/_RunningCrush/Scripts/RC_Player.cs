@@ -38,11 +38,13 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     private RC_RevivePointer mRCRevivePointer = null;
 
     [Tooltip("How fast the speed goes back to original speed.")]
-    [SerializeField] 
+    [SerializeField]
+    [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
     private float mSpeedFriction = 0.5f;
 
     [Tooltip("How fast the speed goes back to original jump force.")]
-    [SerializeField] 
+    [SerializeField]
+    [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
     private float mJumpFriction = 0.5f;
 
     private bool mIsDead = false;
