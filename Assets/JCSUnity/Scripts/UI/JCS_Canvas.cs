@@ -82,7 +82,7 @@ namespace JCSUnity
         // Target fading alpha.
         private float mFadeAlpa = 0.0f;
 
-        private JCS_FadeType mFading = JCS_FadeType.IN;
+        private JCS_FadeType mFading = JCS_FadeType.NONE;
 
         [Tooltip("The time type.")]
         [SerializeField]
