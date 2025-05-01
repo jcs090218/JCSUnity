@@ -344,9 +344,9 @@ MonoBehaviour:
   mCanvas: {fileID: 0}
   mCanvasGroup: {fileID: 0}
   mResizeUI: {fileID: 0}
-  mDisplayOnAwake: 1
+  mDisplayOnAwake: 0
   mMainCanvas: 0
-  mFade: 1
+  mFade: 0
   mFadeFriction: 0.2
   mFadeInAmount: 1
   mFadeOutAmount: 0

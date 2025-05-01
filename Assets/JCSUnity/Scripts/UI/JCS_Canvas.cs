@@ -9,7 +9,6 @@
 using System;
 using UnityEngine;
 using MyBox;
-using NUnit.Framework.Internal;
 
 namespace JCSUnity
 {
@@ -35,10 +34,6 @@ namespace JCSUnity
         public Action<JCS_Canvas> onShowFade = null;
         // Execution when canvas is hidden by fading.
         public Action<JCS_Canvas> onHideFade = null;
-
-
-
-
 
         private RectTransform mAppRect = null;  // Application Rect (Window)
 
@@ -69,6 +64,16 @@ namespace JCSUnity
         [SerializeField]
         [ReadOnly]
         private CanvasGroup mCanvasGroup = null;
+
+        [Tooltip("Target fading alpha.")]
+        [SerializeField]
+        [ReadOnly]
+        private float mFadeAlpa = 0.0f;
+
+        [Tooltip("Type of fading currently used.")]
+        [SerializeField]
+        [ReadOnly]
+        private JCS_FadeType mFading = JCS_FadeType.NONE;
 
         [Tooltip("Resize object.")]
         [SerializeField]
@@ -105,11 +110,6 @@ namespace JCSUnity
         [SerializeField]
         [Range(0.0f, 1.0f)]
         private float mFadeOutAmount = 0.0f;
-
-        // Target fading alpha.
-        private float mFadeAlpa = 0.0f;
-
-        private JCS_FadeType mFading = JCS_FadeType.NONE;
 
         [Tooltip("The time type.")]
         [SerializeField]
@@ -268,7 +268,7 @@ namespace JCSUnity
 
             mCanvas.enabled = true;
 
-            if (fade && mCanvasGroup)
+            if (fade)
             {
                 mFading = JCS_FadeType.IN;
 
@@ -295,7 +295,7 @@ namespace JCSUnity
             if (!mute)
                 JCS_SoundPlayer.PlayByAttachment(mActiveSound, JCS_SoundMethod.PLAY_SOUND);
 
-            if (fade && mCanvasGroup)
+            if (fade)
             {
                 // Remains enabled since we're going to do fading.
                 mCanvas.enabled = true;
