@@ -2,12 +2,6 @@
 
 Sound player for any component that need to play sound effect.
 
-## Variables
-
-| Name             | Description                               |
-|:-----------------|:------------------------------------------|
-| SoundSettingType | Sound setting type for this sound player. |
-
 ## Functions
 
 | Name                       | Description                                                                                      |
