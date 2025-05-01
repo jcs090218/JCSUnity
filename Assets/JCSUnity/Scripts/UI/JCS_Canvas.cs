@@ -60,11 +60,11 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_Canvas)")]
 
-        [Tooltip("Fade canvas by default.")]
+        [Tooltip("Turn on when you want to fade the canvas by default.")]
         [SerializeField]
         private bool mFade = false;
 
-        [Tooltip("Fade friction.")]
+        [Tooltip("How fast the canvas fades.")]
         [SerializeField]
         [Range(0.0001f, 30.0f)]
         private float mFadeFriction = 0.2f;
@@ -84,7 +84,7 @@ namespace JCSUnity
 
         private JCS_FadeType mFading = JCS_FadeType.IN;
 
-        [Tooltip("Time type.")]
+        [Tooltip("The time type.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.UNSCALED_DELTA_TIME;
 

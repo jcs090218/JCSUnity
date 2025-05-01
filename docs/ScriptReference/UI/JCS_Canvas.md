@@ -4,14 +4,21 @@ Control of the canvas component.
 
 ## Variables
 
-| Name            | Description                                      |
-|:----------------|:-------------------------------------------------|
-| onShow          | Execution when canvas is shown.                  |
-| onHide          | Execution when canvas is hidden.                 |
-| mDisplayOnAwake | If true, show on awake time; otherwise, hide it. |
-| mMainCanvas     | Resizable screen will be attach to this canvas.  |
-| mActiveSound    | Play sound when active the canvas.               |
-| mDeactiveSound  | Play sound when deactive the canvas.             |
+| Name            | Description                                          |
+|:----------------|:-----------------------------------------------------|
+| onShow          | Execution when canvas is shown.                      |
+| onHide          | Execution when canvas is hidden.                     |
+| onShowFade      | Execution when canvas is shown by fading.            |
+| onHideFade      | Execution when canvas is hidden by fading.           |
+| mDisplayOnAwake | If true, show on awake time; otherwise, hide it.     |
+| mMainCanvas     | Resizable screen will be attach to this canvas.      |
+| mFade           | Turn on when you want to fade the canvas by default. |
+| mFadeFriction   | How fast the canvas fades.                           |
+| mFadeInAmount   | The full fade in amount of alpha.                    |
+| mFadeOutAmount  | The full fade out amount of alpha.                   |
+| mTimeType       | The time type.                                       |
+| mActiveSound    | Play sound when active the canvas.                   |
+| mDeactiveSound  | Play sound when deactive the canvas.                 |
 
 ## Functions
 

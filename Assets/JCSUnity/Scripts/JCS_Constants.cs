@@ -16,10 +16,10 @@ namespace JCSUnity
     {
         /* Variables */
 
-        // Minimum friction value.
+        // The minimum friction value.
         public const float FRICTION_MIN = 0.01f;
 
-        // Default effect friction.
+        // The default effect friction value.
         public const float FRICTION = 0.2f;
 
         // Below this threshold is consider close enough.
