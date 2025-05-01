@@ -412,6 +412,8 @@ namespace JCSUnity
                         {
                             mCanvasGroup.alpha = mFadeOutAmount;
 
+                            mCanvas.enabled = false;
+
                             onHideFade?.Invoke(this);
                         }
                         break;
