@@ -14,10 +14,11 @@ need the pause manager to add it to `JCS_Managers` transform in the Hierarchy.
 
 ## Functions
 
-| Name              | Description                                                                                            |
-|:------------------|:-------------------------------------------------------------------------------------------------------|
-| AddActionToList   | Add the pause action to the list of pause action list, in order to get manage by this "pause manager". |
-| ResetState        | Reset pause state.                                                                                     |
-| Pause             | Pause the game.                                                                                        |
-| Unpase            | Unpause the game.                                                                                      |
-| PauseTheWholeGame | ause/Unpause the whole game.                                                                           |
+| Name            | Description                                                                                            |
+|:----------------|:-------------------------------------------------------------------------------------------------------|
+| AddActionToList | Add the pause action to the list of pause action list, in order to get manage by this "pause manager". |
+| ResetState      | Reset pause state.                                                                                     |
+| Pause           | Pause the game.                                                                                        |
+| Unpase          | Unpause the game.                                                                                      |
+| TogglePause     | Toggle between pause/unpause the game.                                                                 |
+| SetPause        | Set pause/unpause the game.                                                                            |
