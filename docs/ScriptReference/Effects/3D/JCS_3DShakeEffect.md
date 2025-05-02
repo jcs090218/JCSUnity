@@ -7,7 +7,7 @@ Effect that shake the transform in 3D.
 | Name           | Description                                                |
 |:---------------|:-----------------------------------------------------------|
 | TransformType  | Shake on this transform properties.                        |
-| RepeatOverride | Override the effect even when the effect is already taken. |
+| Firce          | Force the effect even when its already in the motion.      |
 | ShakeTime      | How long it shakes.                                        |
 | ShakeMargin    | How intense it shakes.                                     |
 | mTimeType      | Type of the delta time.                                    |
