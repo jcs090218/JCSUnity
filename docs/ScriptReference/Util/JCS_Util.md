@@ -6,10 +6,11 @@ All code utility is stored here.
 
 | Name                                 | Description                                                                                       |
 |:-------------------------------------|:--------------------------------------------------------------------------------------------------|
-| IsNumberString                       | Check if the string is a number string.                                                           |
-| Parse                                | Parse `str` to integer, return `defaultValue` if failed.                                          |
-| Parse                                | Parse `str` to float, return `defaultValue` if failed.                                            |
-| Parse                                | Parse `str` to boolean, return `defaultValue` if failed.                                          |
+| Delta                                | Delta the `num` with `val` and clamp the result with `min` and `max`.                             |
+| DeltaP                               | Delta the `num` with `val` by percentage and clamp the result with `min` and `max`.               |
+| BytesToString                        | Convert byte array to string by charset type.                                                     |
+| StringToBytes                        | Convert string to byte array by charset type.                                                     |
+| EscapeURL                            | Simple version of escape url.                                                                     |
 | GetValues                            | Get the value for each enum, use to loop through the enum.                                        |
 | EnumSize                             | Returns the length of an enumerator.                                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |
@@ -25,9 +26,10 @@ All code utility is stored here.
 | FillSlot                             | Fill slots with initialize value type by length.                                                  |
 | RemoveEmptySlot                      | Remove the null value from a list/array.                                                          |
 | RemoveEmptySlotIncludeMissing        | Remove all the null value including missing reference in the list/array.                          |
-| BytesToString                        | Convert byte array to string by charset type.                                                     |
-| StringToBytes                        | Convert string to byte array by charset type.                                                     |
-| EscapeURL                            | Simple version of escape url.                                                                     |
+| IsNumberString                       | Check if the string is a number string.                                                           |
+| Parse                                | Parse `str` to integer, return `defaultValue` if failed.                                          |
+| Parse                                | Parse `str` to float, return `defaultValue` if failed.                                            |
+| Parse                                | Parse `str` to boolean, return `defaultValue` if failed.                                          |
 | ToJson                               | Serialize object to JSON string.                                                                  |
 | EnableComponent                      | Do enable/distance component.                                                                     |
 | ForceGetComponent                    | Force to get a component, if not found add one new then.                                          |

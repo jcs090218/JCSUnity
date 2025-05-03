@@ -28,60 +28,6 @@ namespace JCSUnity
     /// </summary>
     public static class JCS_Util
     {
-        #region Parse
-
-        /// <summary>
-        /// Is the string the valid number to parse.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static bool IsNumberString(string str)
-        {
-            double test;
-            return (double.TryParse(str, out test));
-        }
-
-        /// <summary>
-        /// Parse `str` to integer, return `defaultValue` if failed.
-        /// </summary>
-        public static int Parse(string str, int defaultValue)
-        {
-            int result;
-
-            if (int.TryParse(str, out result))
-                return int.Parse(str);
-
-            return defaultValue;
-        }
-
-        /// <summary>
-        /// Parse `str` to float, return `defaultValue` if failed.
-        /// </summary>
-        public static float Parse(string str, float defaultValue)
-        {
-            float result;
-
-            if (float.TryParse(str, out result))
-                return float.Parse(str);
-
-            return defaultValue;
-        }
-
-        /// <summary>
-        /// Parse `str` to boolean, return `defaultValue` if failed.
-        /// </summary>
-        public static bool Parse(string str, bool defaultValue)
-        {
-            bool result;
-
-            if (bool.TryParse(str, out result))
-                return bool.Parse(str);
-
-            return defaultValue;
-        }
-
-        #endregion
-
         #region Number
 
         /// <summary>
@@ -499,6 +445,60 @@ namespace JCSUnity
             }
 
             return newArray;
+        }
+
+        #endregion
+
+        #region Parse
+
+        /// <summary>
+        /// Is the string the valid number to parse.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsNumberString(string str)
+        {
+            double test;
+            return (double.TryParse(str, out test));
+        }
+
+        /// <summary>
+        /// Parse `str` to integer, return `defaultValue` if failed.
+        /// </summary>
+        public static int Parse(string str, int defaultValue)
+        {
+            int result;
+
+            if (int.TryParse(str, out result))
+                return int.Parse(str);
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Parse `str` to float, return `defaultValue` if failed.
+        /// </summary>
+        public static float Parse(string str, float defaultValue)
+        {
+            float result;
+
+            if (float.TryParse(str, out result))
+                return float.Parse(str);
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Parse `str` to boolean, return `defaultValue` if failed.
+        /// </summary>
+        public static bool Parse(string str, bool defaultValue)
+        {
+            bool result;
+
+            if (bool.TryParse(str, out result))
+                return bool.Parse(str);
+
+            return defaultValue;
         }
 
         #endregion
