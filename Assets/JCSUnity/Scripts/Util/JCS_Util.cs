@@ -21,13 +21,7 @@ namespace JCSUnity
     // Function pointer
     public delegate float TweenDelegate(float t, float b, float c, float d);
 
-    /// <summary>
-    /// Callback when time is up.
-    /// </summary>
-    public delegate void TimeIsUpFunc();
-
     public delegate int JCS_Range(int min, int max);
-    public delegate void ReattachCallback(Transform parent);
 
     /// <summary>
     /// All the utility function put here.
@@ -84,6 +78,117 @@ namespace JCSUnity
                 return bool.Parse(str);
 
             return defaultValue;
+        }
+
+        #endregion
+
+        #region Number
+
+        /// <summary>
+        /// Delta the `num` with `val` and clamp the result with `min` 
+        /// and `max`.
+        /// </summary>
+        public static int Delta(this int data, int val, int max)
+        {
+            return data.Delta(val, 0, max);
+        }
+        public static int Delta(this int data, int val, int min, int max)
+        {
+            return Mathf.Clamp(data + val, min, max);
+        }
+
+        public static float Delta(this float data, float val, float max)
+        {
+            return data.Delta(val, 0.0f, max);
+        }
+        public static float Delta(this float data, float val, float min, float max)
+        {
+            return Mathf.Clamp(data + val, min, max);
+        }
+
+        /// <summary>
+        /// Delta the `num` with `val` by percentage and clamp the 
+        /// result with `min` and `max`.
+        /// </summary>
+        public static int DeltaP(this int data, int p, int max)
+        {
+            return data.DeltaP(p, 0, max);
+        }
+        public static int DeltaP(this int data, int p, int min, int max)
+        {
+            int val = (int)(max * p / 100.0f);
+
+            return data.Delta(val, min, max);
+        }
+
+        public static float DeltaP(this float data, float p, float max)
+        {
+            return data.DeltaP(p, 0.0f, max);
+        }
+        public static float DeltaP(this float data, float p, float min, float max)
+        {
+            float val = (max * p / 100.0f);
+
+            return data.Delta(val, min, max);
+        }
+
+        #endregion
+
+        #region String
+
+        /// <summary>
+        /// Convert byte array to string by charset type.
+        /// </summary>
+        /// <param name="data"> Byte array data to convert to string data. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> String data that had been converted. </returns>
+        public static string BytesToString(byte[] data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
+            return null;
+        }
+
+        /// <summary>
+        /// Convert string to byte array by charset type.
+        /// </summary>
+        /// <param name="data"> String data to convert to byte array. </param>
+        /// <param name="charset"> Target charset type. </param>
+        /// <returns> Byte array that had been converted. </returns>
+        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
+        {
+            switch (charset)
+            {
+                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
+                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
+                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
+                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
+                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
+                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
+                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
+            }
+            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
+            return null;
+        }
+
+        /// <summary>
+        /// Simple version of escape url.
+        /// </summary>
+        /// <param name="url"> Url you want to escape. </param>
+        /// <returns> Return the escaped url. </returns>
+        public static string EscapeURL(string url)
+        {
+            url = url.Replace(" ", "%20");
+            return url;
         }
 
         #endregion
@@ -394,65 +499,6 @@ namespace JCSUnity
             }
 
             return newArray;
-        }
-
-        #endregion
-
-        #region String
-
-        /// <summary>
-        /// Convert byte array to string by charset type.
-        /// </summary>
-        /// <param name="data"> Byte array data to convert to string data. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> String data that had been converted. </returns>
-        public static string BytesToString(byte[] data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetString(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetString(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetString(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetString(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetString(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
-            return null;
-        }
-
-        /// <summary>
-        /// Convert string to byte array by charset type.
-        /// </summary>
-        /// <param name="data"> String data to convert to byte array. </param>
-        /// <param name="charset"> Target charset type. </param>
-        /// <returns> Byte array that had been converted. </returns>
-        public static byte[] StringToBytes(string data, JCS_CharsetType charset)
-        {
-            switch (charset)
-            {
-                case JCS_CharsetType.DEFAULT: return Encoding.Default.GetBytes(data);
-                case JCS_CharsetType.ASCII: return Encoding.ASCII.GetBytes(data);
-                case JCS_CharsetType.UTF7: return Encoding.UTF7.GetBytes(data);
-                case JCS_CharsetType.UTF8: return Encoding.UTF8.GetBytes(data);
-                case JCS_CharsetType.UTF32: return Encoding.UTF32.GetBytes(data);
-                case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
-                case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
-            }
-            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
-            return null;
-        }
-
-        /// <summary>
-        /// Simple version of escape url.
-        /// </summary>
-        /// <param name="url"> Url you want to escape. </param>
-        /// <returns> Return the escaped url. </returns>
-        public static string EscapeURL(string url)
-        {
-            url = url.Replace(" ", "%20");
-            return url;
         }
 
         #endregion
@@ -785,7 +831,7 @@ namespace JCSUnity
         /// </summary>
         /// <param name="trans"> Transform you want to detach and reattach after callback. </param>
         /// <param name="callback"> Callback after detach and before reattach. </param>
-        public static void ReattachSelf(Transform trans, ReattachCallback callback)
+        public static void ReattachSelf(Transform trans, System.Action<Transform> callback)
         {
             if (trans == null || callback == null)
                 return;
@@ -793,12 +839,11 @@ namespace JCSUnity
             var parent = trans.parent;
             trans.SetParent(null);
 
-            if (callback != null)
-                callback.Invoke(parent);
+            callback?.Invoke(parent);
 
             trans.SetParent(parent);
         }
-        public static void ReattachSelf(RectTransform trans, ReattachCallback callback)
+        public static void ReattachSelf(RectTransform trans, System.Action<Transform> callback)
         {
             if (trans == null || callback == null)
                 return;
@@ -808,8 +853,7 @@ namespace JCSUnity
             var parent = trans.parent;
             trans.SetParent(canvas.AppRect);
 
-            if (callback != null)
-                callback.Invoke(parent);
+            callback?.Invoke(parent);
 
             trans.SetParent(parent);
         }
