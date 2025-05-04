@@ -40,7 +40,11 @@ namespace JCSUnity
         }
         public static int Delta(this int data, int val, int min, int max)
         {
-            return Mathf.Clamp(data + val, min, max);
+            return Mathf.Clamp(data.Delta(val), min, max);
+        }
+        public static int Delta(this int data, int val)
+        {
+            return data + val;
         }
 
         public static float Delta(this float data, float val, float max)
@@ -49,7 +53,11 @@ namespace JCSUnity
         }
         public static float Delta(this float data, float val, float min, float max)
         {
-            return Mathf.Clamp(data + val, min, max);
+            return Mathf.Clamp(data.Delta(val), min, max);
+        }
+        public static float Delta(this float data, float val)
+        {
+            return data + val;
         }
 
         /// <summary>
@@ -62,9 +70,13 @@ namespace JCSUnity
         }
         public static int DeltaP(this int data, int p, int min, int max)
         {
-            int val = (int)(max * p / 100.0f);
+            return Mathf.Clamp(data.DeltaP(p), min, max);
+        }
+        public static int DeltaP(this int data, int p)
+        {
+            int val = (int)(data * p / 100.0f);
 
-            return data.Delta(val, min, max);
+            return data + val;
         }
 
         public static float DeltaP(this float data, float p, float max)
@@ -73,9 +85,13 @@ namespace JCSUnity
         }
         public static float DeltaP(this float data, float p, float min, float max)
         {
-            float val = (max * p / 100.0f);
+            return Mathf.Clamp(data.DeltaP(p), min, max);
+        }
+        public static float DeltaP(this float data, float p)
+        {
+            float val = (data * p / 100.0f);
 
-            return data.Delta(val, min, max);
+            return data + val;
         }
 
         #endregion
