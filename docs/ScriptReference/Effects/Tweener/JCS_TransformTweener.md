@@ -6,6 +6,8 @@ Transform tweener.
 
 | Name                      | Description                                               |
 |:--------------------------|:----------------------------------------------------------|
+| onStart                   | Callback to execute when start tweening.                  |
+| onDone                    | Callback to execute when done tweening.                   |
 | mTween                    | Do the tween effect?                                      |
 | mValueOffset              | Value offset.                                             |
 | mDurationX                | How fast it moves on x axis.                              |
@@ -25,12 +27,11 @@ Transform tweener.
 
 ## Functions
 
-| Name                          | Description                                                        |
-|:------------------------------|:-------------------------------------------------------------------|
-| ResetTweener                  | Reset tweener effect setting.                                      |
-| SetCallback                   | Callback when reach destination.                                   |
-| DoTween                       | Tween to this vector either position, scale, rotation.             |
-| DoTweenContinue               | Continue Tween to this target's either position, scale, rotation.. |
-| GetSelfTransformTypeVector3   | Get itself transform type's vector3 value.                         |
-| SetSelfTransformTypeVector3   | Set self transform value.                                          |
-| GetTargetTransformTypeVector3 | Get target transform type's vector3 value.                         |
+| Name                          | Description                                                       |
+|:------------------------------|:------------------------------------------------------------------|
+| ResetTweener                  | Reset tweener effect setting.                                     |
+| DoTween                       | Tween to this vector either position, scale, rotation.            |
+| DoTweenContinue               | Continue Tween to this target's either position, scale, rotation. |
+| GetSelfTransformTypeVector3   | Get itself transform type's vector3 value.                        |
+| SetSelfTransformTypeVector3   | Set self transform value.                                         |
+| GetTargetTransformTypeVector3 | Get target transform type's vector3 value.                        |
