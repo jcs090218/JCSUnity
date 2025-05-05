@@ -20,8 +20,15 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // Callback to execute when start tweening.
         public Action onStart = null;
+
+        // Callback to execute when done tweening.
         public Action onDone = null;
+
+        // Callback to execute when done tweening but only with that
+        // specific function call.
+        private Action mOnDone = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_TransformTweener)")]
@@ -617,6 +624,7 @@ namespace JCSUnity
             if (!this.mDoneTweenX || !this.mDoneTweenY || !this.mDoneTweenZ)
                 return;
 
+            mOnDone?.Invoke();
             onDone?.Invoke();
         }
 
@@ -664,7 +672,7 @@ namespace JCSUnity
             Action callback = null)
         {
             onStart?.Invoke();
-            onDone = callback;
+            mOnDone = callback;
 
             this.mIsDoneTweening = false;
             this.mDoneTweenX = false;
