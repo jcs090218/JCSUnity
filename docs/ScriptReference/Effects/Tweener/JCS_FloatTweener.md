@@ -6,16 +6,18 @@ Can only use for `float`.
 
 ## Variables
 
-| Name           | Description                      |
-|:---------------|:---------------------------------|
-| onValueChange  | Callback that updates the value. |
-| onValueReturn  | Callback that get the value.     |
-| Tween          | Do the tween effect?             |
-| Value offset.  | ValueOffset                      |
-| Duration       | How fast it moves on value.      |
-| mTimeType      | Type of the delta time.          |
-| Easing         | Tweener formula on value.        |
-| UnityCallback  | Callback after easing.           |
+| Name           | Description                              |
+|:---------------|:-----------------------------------------|
+| onStart        | Callback to execute when start tweening. |
+| onDone         | Callback to execute when done tweening.  |
+| onValueChange  | Callback that updates the value.         |
+| onValueReturn  | Callback that get the value.             |
+| Tween          | Do the tween effect?                     |
+| Value offset.  | ValueOffset                              |
+| Duration       | How fast it moves on value.              |
+| mTimeType      | Type of the delta time.                  |
+| Easing         | Tweener formula on value.                |
+| UnityCallback  | Callback after easing.                   |
 
 ## Functions
 

@@ -17,6 +17,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(UI): Add new component `JCS_SelectLanguageButton` (f28c03b3ae45300b6e5742c6c0d953105486ea54)
 * feat(Audio): Replace the custom audio solution with the built-in mixer (c85e93f68167ebd27c36fa7c0aad2c4b07449081)
 * fix(Effect): Handle pause in 3D shake (ec394963cc6e06cf79b1fae085ab2536f4dec65e)
+* feat(Effect): Add more public hooks for transform tweener (782e62652e9d3f99bd0a09d49af0032dc9eead55)
 
 ## 3.1.0
 > Released Apr 11, 2025
