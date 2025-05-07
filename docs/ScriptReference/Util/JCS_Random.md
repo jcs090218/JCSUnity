@@ -13,3 +13,4 @@ Random library class.
 | ChooseOneE    | Choose one object from the list. (Ellipsis) |
 | EnumValue     | Return a random enum value.                 |
 | PointInBounds | Return a random point in bounds.            |
+| PointInSphere | Return a random position in sphere.         |
