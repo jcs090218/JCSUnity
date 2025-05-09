@@ -41,6 +41,12 @@ we calculate the real time.")]
         [ReadOnly]
         private bool mDidAction = false;
 
+        [Separator("Initialize Variables (JCS_AdjustTimeTrigger)")]
+
+        [Tooltip("Run immediately on start.")]
+        [SerializeField]
+        private bool mRunImmediate = true;
+
         [Separator("Runtime Variables (JCS_AdjustTimeTrigger)")]
 
         [Tooltip("Is this component active?")]
@@ -67,6 +73,7 @@ we calculate the real time.")]
 
         /* Setter & Getter */
 
+        public bool RunImmediate { get { return this.mRunImmediate; } set { this.mRunImmediate = value; } }
         public bool Active { get { return this.mActive; } set { this.mActive = value; } }
         public float TimeZone { get { return this.mTimeZone; } set { this.mTimeZone = value; } }
         public float AdjustTimeZone { get { return this.mAdjustTimeZone; } set { this.mAdjustTimeZone = value; } }
@@ -74,6 +81,13 @@ we calculate the real time.")]
         public UnityEvent OnAction { get { return this.mOnAction; } set { this.mOnAction = value; } }
 
         /* Functions */
+
+        private void Start()
+        {
+            // Run immediately on the first frame.
+            if (mRunImmediate)
+                Invoke(nameof(ExecuteAction), JCS_Constants.FIRST_FRAME_INVOKE_TIME);
+        }
 
         private void Update()
         {
@@ -109,14 +123,19 @@ we calculate the real time.")]
             if (mRealTimeZone > mTimer)
                 return;
 
-            // active actions.
-            if (onAction != null)
-                onAction.Invoke();
-
-            if (mOnAction != null)
-                mOnAction.Invoke();
+            ExecuteAction();
 
             mDidAction = true;
+        }
+
+        /// <summary>
+        /// Execute the action.
+        /// </summary>
+        private void ExecuteAction()
+        {
+            onAction?.Invoke();
+
+            mOnAction?.Invoke();
         }
     }
 }
