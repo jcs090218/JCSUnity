@@ -262,7 +262,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Recalculate the real time.
+        /// Recalculate the time and reset the timer.
         /// </summary>
         private void RecalculateTimeAndResetTimer()
         {

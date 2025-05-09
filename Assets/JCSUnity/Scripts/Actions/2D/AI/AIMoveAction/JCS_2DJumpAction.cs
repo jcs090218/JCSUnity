@@ -189,7 +189,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         private void DoJump()
         {
             if (mJumped)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mTimer += JCS_Time.ItTime(mTimeType);
 
@@ -200,9 +200,9 @@ instance value 5, will generate -5 ~ 5 and add it on to current jump force.")]
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do one jump.
+        /// Recalculate the time and reset the timer.
         /// </summary>
-        private void ResetTimeZone()
+        private void RecalculateTimeAndResetTimer()
         {
             float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
             mRealTime = mTime + adjustTime;

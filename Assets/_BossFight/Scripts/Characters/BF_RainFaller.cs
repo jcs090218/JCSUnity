@@ -102,7 +102,7 @@ public class BF_RainFaller : MonoBehaviour
     private void DoRainFall()
     {
         if (mShooted)
-            ResetTimeZone();
+            RecalculateTimeAndResetTimer();
 
         mTimer += Time.deltaTime;
 
@@ -113,10 +113,9 @@ public class BF_RainFaller : MonoBehaviour
     }
 
     /// <summary>
-    /// Algorithm to calculate the time to do 
-    /// this action include direction.
+    /// Recalculate the time and reset the timer.
     /// </summary>
-    private void ResetTimeZone()
+    private void RecalculateTimeAndResetTimer()
     {
         float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
         mRealTime = mTime + adjustTime;

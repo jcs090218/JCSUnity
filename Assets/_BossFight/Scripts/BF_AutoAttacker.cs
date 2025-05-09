@@ -86,7 +86,7 @@ public class BF_AutoAttacker : MonoBehaviour
     private void DoLockShoot()
     {
         if (mShooted)
-            ResetTimeZone();
+            RecalculateTimeAndResetTimer();
 
         mTimer += Time.deltaTime;
 
@@ -154,10 +154,9 @@ public class BF_AutoAttacker : MonoBehaviour
     }
 
     /// <summary>
-    /// Algorithm to calculate the time to do 
-    /// lock shoot action include direction.
+    /// Recalculate the time and reset the timer.
     /// </summary>
-    private void ResetTimeZone()
+    private void RecalculateTimeAndResetTimer()
     {
         float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
         mRealTime = mTime + adjustTime;

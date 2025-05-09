@@ -178,7 +178,7 @@ namespace JCSUnity
                 return;
 
             if (mShooted)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mDelayTimer += JCS_Time.ItTime(mTimeType);
 
@@ -200,7 +200,7 @@ namespace JCSUnity
                 return;
 
             if (mShooted)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mDelayTimer += JCS_Time.ItTime(mTimeType);
 
@@ -214,9 +214,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Reset the timer.
+        /// Recalculate the time and reset the timer.
         /// </summary>
-        private void ResetTimeZone()
+        private void RecalculateTimeAndResetTimer()
         {
             float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
             mRealTime = mDelayTime + adjustTime;

@@ -331,7 +331,7 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         private void DoWalk()
         {
             if (mWalked)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mTimer += JCS_Time.ItTime(mTimeType);
 
@@ -342,9 +342,9 @@ instance value 5, will generate -5 ~ 5 and add it on to current walk speed.")]
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do walk action include direction.
+        /// Recalculate the time and reset the timer.
         /// </summary>
-        private void ResetTimeZone()
+        private void RecalculateTimeAndResetTimer()
         {
             float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
             mRealTime = mTime + adjustTime;

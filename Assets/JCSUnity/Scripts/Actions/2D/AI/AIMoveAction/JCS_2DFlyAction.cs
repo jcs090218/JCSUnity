@@ -451,7 +451,7 @@ namespace JCSUnity
         private void DoFly()
         {
             if (mFlyed)
-                ResetTimeZone();
+                RecalculateTimeAndResetTimer();
 
             mTimer += JCS_Time.ItTime(mTimeType);
 
@@ -462,9 +462,9 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Algorithm to calculate the time to do fly action include direction.
+        /// Recalculate the time and reset the timer.
         /// </summary>
-        private void ResetTimeZone()
+        private void RecalculateTimeAndResetTimer()
         {
             float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
             mRealTime = mTime + adjustTime;
