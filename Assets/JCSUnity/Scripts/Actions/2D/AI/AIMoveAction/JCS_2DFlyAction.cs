@@ -91,21 +91,21 @@ namespace JCSUnity
         [Tooltip("Time to do one Fly.")]
         [SerializeField]
         [Range(0.0f, 10.0f)]
-        private float mTimeZone = 2.0f;
+        private float mTime = 2.0f;
 
-        [Tooltip("Time that will randomly affect the Time Zone.")]
+        [Tooltip("Time that will randomly affect the time.")]
         [SerializeField]
         [Range(0.0f, 3.0f)]
-        private float mAdjustTimeZone = 1.5f;
+        private float mAdjustTime = 1.5f;
 
         // time to record down the real time to do one fly action after we
         // calculate the real time.
-        private float mRealTimeZone = 0.0f;
+        private float mRealTime = 0.0f;
 
         // timer to do fly.
         private float mTimer = 0.0f;
 
-        // check to see if we can reset our time zone.
+        // check to see if we can reset our time.
         private bool mFlyed = false;
 
         [Tooltip("Type of the delta time.")]
@@ -455,7 +455,7 @@ namespace JCSUnity
 
             mTimer += JCS_Time.ItTime(mTimeType);
 
-            if (mTimer < mRealTimeZone)
+            if (mTimer < mRealTime)
                 return;
 
             FlyByPossiblity();
@@ -466,8 +466,8 @@ namespace JCSUnity
         /// </summary>
         private void ResetTimeZone()
         {
-            float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
-            mRealTimeZone = mTimeZone + adjustTime;
+            float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
+            mRealTime = mTime + adjustTime;
 
             mFlyed = false;
             mTimer = 0;

@@ -40,13 +40,13 @@ public class BF_AutoAttacker : MonoBehaviour
     [Tooltip("How much time per shoot?")]
     [SerializeField]
     [Range(0.01f, 10.0f)]
-    private float mTimeZone = 0;
+    private float mTime = 0;
 
     [SerializeField]
     [Range(0.0f, 5.0f)]
-    private float mAdjustTimeZone = 1.5f;
+    private float mAdjustTime = 1.5f;
 
-    private float mRealTimeZone = 0;
+    private float mRealTime = 0;
 
     private float mTimer = 0;
 
@@ -90,7 +90,7 @@ public class BF_AutoAttacker : MonoBehaviour
 
         mTimer += Time.deltaTime;
 
-        if (mRealTimeZone < mTimer)
+        if (mRealTime < mTimer)
         {
 
             for (int count = 0; count < mShootAction.ShootCount; ++count)
@@ -159,8 +159,8 @@ public class BF_AutoAttacker : MonoBehaviour
     /// </summary>
     private void ResetTimeZone()
     {
-        float adjustTime = JCS_Random.Range(-mAdjustTimeZone, mAdjustTimeZone);
-        mRealTimeZone = mTimeZone + adjustTime;
+        float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
+        mRealTime = mTime + adjustTime;
 
         mShooted = false;
         mTimer = 0;
