@@ -15,8 +15,8 @@ Action does the AI fly action on 2D.
 | mToIdleHorizontal   | Possibility to IDLE in horizontal direction.                              |
 | mToIdleVetical      | Possibility to IDLE in vertical direction.                                |
 | mPossibility        | Possiblity to active this action.                                         |
-| mTimeZone           | Time to do one Fly.                                                       |
-| mAdjustTimeZone     | Time that will randomize the Time Zone value.                             |
+| mTime               | Time to do one Fly.                                                       |
+| mAdjustTime         | Time that will randomize the time value.                                  |
 | mTimeType           | Type of the delta time.                                                   |
 | mMinHeight          | Lowest height the object can go.                                          |
 | mMaxHeight          | Highest height the object can go.                                         |

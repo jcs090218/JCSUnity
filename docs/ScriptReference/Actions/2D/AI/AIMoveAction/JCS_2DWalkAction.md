@@ -11,8 +11,8 @@ Action does the AI walk action in 2D.
 | mToRight              | Possibility to walk RIGHT way.                                       |
 | mToIdle               | Possibility to IDLE.                                                 |
 | mPossibility          | Possiblity to active this action.                                    |
-| mTimeZone             | Time to do one walk.                                                 |
-| mAdjustTimeZone       | Time that will randomize the Time Zone value.                        |
+| mTime                 | Time to do one walk.                                                 |
+| mAdjustTime           | Time that will randomize the time value.                             |
 | mTimeType             | Type of the delta time.                                              |
 | mStartRandomWalkSpeed | Generate a random walk speed at the initilaize time.                 |
 | mRandomWalkSpeedRange | Addition value to the walk speed.                                    |

@@ -10,7 +10,7 @@ Action that shoot in all angle.
 | mAutoShootByOrder | Automatically shoot bullets itself in order.  |
 | mDegreePerShoot   | Degree per bullet shoot.                      |
 | mDelayTime        | How long it takes to shoot a bullet.          |
-| mAdjustTimeZone   | Time that will randomly affect the time zone. |
+| mAdjustTime       | Time that will randomly affect the time. |
 | mShootAxis        | Axis the bullet shoots.                       |
 | mTimeType         | Type of the delta time.                       |
 
