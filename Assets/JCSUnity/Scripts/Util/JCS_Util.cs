@@ -1017,7 +1017,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Remove the text "(Clone)" from object's name,
+        /// Remove the text "(Clone)" from the object's name,
         /// and return the new name string.
         /// </summary>
         public static string RemoveCloneString(Object obj)
