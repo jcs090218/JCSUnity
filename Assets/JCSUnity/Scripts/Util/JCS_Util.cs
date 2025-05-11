@@ -1009,26 +1009,18 @@ namespace JCSUnity
         #region Clone
 
         /// <summary>
-        /// Return true if the game object is a clone.
+        /// Return true if the object is a clone.
         /// </summary>
-        public static bool IsClone(Transform trans)
-        {
-            return IsClone(trans.gameObject);
-        }
-        public static bool IsClone(GameObject obj)
+        public static bool IsClone(Object obj)
         {
             return obj.name.Contains("(Clone)");
         }
 
         /// <summary>
-        /// Remove the text "(Clone)" from game object's name,
+        /// Remove the text "(Clone)" from object's name,
         /// and return the new name string.
         /// </summary>
-        public static string RemoveCloneString(Transform trans)
-        {
-            return RemoveCloneString(trans.gameObject);
-        }
-        public static string RemoveCloneString(GameObject obj)
+        public static string RemoveCloneString(Object obj)
         {
             obj.name = obj.name.Replace("(Clone)", "");
 
