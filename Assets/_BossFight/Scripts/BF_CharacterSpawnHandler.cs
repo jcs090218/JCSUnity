@@ -36,7 +36,7 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
         // so the player and enemy will ignore each other
         // if this does not work, check the setting from 
         // 'JCS_Settings' object's setting variables.
-        JCS_CollisionManager.instance.SetCollisionMode();
+        //JCS_CollisionManager.instance.SetCollisionMode();
     }
 
     /// <summary>
