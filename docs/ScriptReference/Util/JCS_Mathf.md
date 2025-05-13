@@ -37,6 +37,7 @@ Math library class.
 | Cos                   | Cosine in degree.                                                              |
 | Sin                   | Sine in degree.                                                                |
 | Tan                   | Tangent in degree.                                                             |
+| AngleOnAxis           | Return angle on axis.                                                          |
 | Truncate              | Truncate a decimal number.                                                     |
 | GCD                   | Find the greatest common factor.                                               |
 | GetSign               | Return the positive/negative 1 sign from VAL.                                  |
