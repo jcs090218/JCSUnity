@@ -47,8 +47,8 @@ All code utility is stored here.
 | SpawnAnimateObjectDeathEvent         | Spawn a game object with the animator and death event on it.                                      |
 | DestroyAllTypeObjectInScene          | Destory all game objects in the scene with the type passed in.                                    |
 | DestroyImmediateAllTypeObjectInScene | Destroy all the game object in the scene immediately with the type passed in.                     |
-| IsClone                              | Return true if the object is a clone.                                                        |
-| RemoveCloneString                    | Remove the text "(Clone)" from the object's name, and return the new name string.                |
+| IsClone                              | Return true if the object is a clone.                                                             |
+| RemoveCloneString                    | Remove the text "(Clone)" from the object's name, and return the new name string.                 |
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
 | FindCloneObjectsOfTypeAll            | Find all cloned game objects in the scene with the type passed in.                                |
@@ -65,5 +65,7 @@ All code utility is stored here.
 | GetVolume                            | Return the volume level from the audio mixer.                                                     |
 | SetVolume                            | Set the audio mixer's volume.                                                                     |
 | PlayClipAtPoint                      | Same with function `AudioSource.PlayClipAtPoint` with different default `spatialBlend` value.     |
+| DestroyClip                          | Destroy the clip by its clip length.                                                              |
 | PlayParticleAtPoint                  | Play the particle at point.                                                                       |
+| DestroyParticle                      | Destroy the particle by its duration.                                                             |
 | IsSameTribe                          | Check if the live object is the same tribe.                                                       |
