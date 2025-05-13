@@ -26,7 +26,7 @@ public class FT_RotatePoint : MonoBehaviour
 
     private void Awake()
     {
-
+        // ..
     }
 
     private void Update()
@@ -39,21 +39,23 @@ public class FT_RotatePoint : MonoBehaviour
         if (JCS_Input.GetKey(KeyCode.C))
         {
             --angleY;
+
             this.transform.position = JCS_Mathf.CirclePositionY(
-                origin.transform.position, 
+                origin.transform.position,
+                this.transform.position,
                 angleY, 
-                radius, 
-                this.transform.position);
+                radius);
         }
 
         if (JCS_Input.GetKey(KeyCode.V))
         {
             ++angleZ;
+
             this.transform.position = JCS_Mathf.CirclePositionZ(
-                origin.transform.position, 
+                origin.transform.position,
+                this.transform.position,
                 angleZ,
-                radius, 
-                this.transform.position);
+                radius);
         }
     }
 }
