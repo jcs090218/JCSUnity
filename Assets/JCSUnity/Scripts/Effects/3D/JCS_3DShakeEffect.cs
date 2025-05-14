@@ -27,7 +27,7 @@ namespace JCSUnity
 
         [Tooltip("Do wave effect key.")]
         [SerializeField]
-        private KeyCode mDoShakeEffectKey = KeyCode.Y;
+        private KeyCode mDoEffectKey = KeyCode.Y;
 #endif
 
         [Separator("Check Variables (JCS_3DShakeEffect)")]
@@ -55,18 +55,18 @@ namespace JCSUnity
         [Tooltip("How long it shakes.")]
         [SerializeField]
         [Range(0.001f, 360.0f)]
-        private float mShakeTime = 1.0f;
+        private float mTime = 1.0f;
 
         [Tooltip("How intense it shakes.")]
         [SerializeField]
-        private float mShakeMargin = 3.0f;
+        private float mMargin = 3.0f;
 
         [Tooltip("Shake for each steps.")]
         [SerializeField]
-        private float mShakeSteps = 5.0f;
+        private float mSteps = 5.0f;
 
         // Support
-        private float mShakeTimer = 0.0f;
+        private float mTimer = 0.0f;
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
@@ -76,15 +76,15 @@ namespace JCSUnity
 
         [Tooltip("Do shake on z axis.")]
         [SerializeField]
-        private bool mShakeOnX = true;
+        private bool mOnX = true;
 
         [Tooltip("Do shake on y axis.")]
         [SerializeField]
-        private bool mShakeOnY = true;
+        private bool mOnY = true;
 
         [Tooltip("Do shake on z axis.")]
         [SerializeField]
-        private bool mShakeOnZ = true;
+        private bool mOnZ = true;
 
         [Header("- Sound")]
 
@@ -94,7 +94,7 @@ namespace JCSUnity
 
         [Tooltip("Sound played when effect occurs.")]
         [SerializeField]
-        private AudioClip mShakeSound = null;
+        private AudioClip mClip = null;
 
         /* Setter & Getter */
 
@@ -102,18 +102,18 @@ namespace JCSUnity
 
         public JCS_TransformType TransformType { get { return this.mTransformType; } set { this.mTransformType = value; } }
         public bool Force { get { return this.mForce; } set { this.mForce = value; } }
-        public float ShakeTime { get { return this.mShakeTime; } set { this.mShakeTime = value; } }
-        public float ShakeMargin { get { return this.mShakeMargin; } }
-        public float ShakeSteps { get { return this.mShakeSteps; } set { this.mShakeSteps = value; } }
+        public float Time { get { return this.mTime; } set { this.mTime = value; } }
+        public float Margin { get { return this.mMargin; } set { this.mMargin = value; } }
+        public float Steps { get { return this.mSteps; } set { this.mSteps = value; } }
 
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
-        public bool ShakeOnX { get { return this.mShakeOnX; } set { this.mShakeOnX = value; } }
-        public bool ShakeOnY { get { return this.mShakeOnY; } set { this.mShakeOnY = value; } }
-        public bool ShakeOnZ { get { return this.mShakeOnZ; } set { this.mShakeOnZ = value; } }
+        public bool OnX { get { return this.mOnX; } set { this.mOnX = value; } }
+        public bool OnY { get { return this.mOnY; } set { this.mOnY = value; } }
+        public bool OnZ { get { return this.mOnZ; } set { this.mOnZ = value; } }
 
         public JCS_SoundPlayer SoundPlayer { get { return this.mSoundPlayer; } set { this.mSoundPlayer = value; } }
-        public AudioClip ShakeSound { get { return this.mShakeSound; } set { this.mShakeSound = value; } }
+        public AudioClip Clip { get { return this.mClip; } set { this.mClip = value; } }
 
         /* Functions */
 
@@ -132,7 +132,7 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(mDoShakeEffectKey))
+            if (JCS_Input.GetKeyDown(mDoEffectKey))
             {
                 DoShake();
             }
@@ -146,7 +146,7 @@ namespace JCSUnity
         /// <param name="margin"> margin to do the shake. </param>
         public void DoShake()
         {
-            DoShake(mShakeTime, mShakeMargin, mForce);
+            DoShake(mTime, mMargin, mForce);
         }
         public void DoShake(float time, float margin, bool force)
         {
@@ -160,9 +160,9 @@ namespace JCSUnity
                 }
             }
 
-            this.mShakeTime = time;
-            this.mShakeTimer = 0;
-            this.mShakeMargin = margin;
+            this.mTime = time;
+            this.mTimer = 0.0f;
+            this.mMargin = margin;
 
             mShakeDelta = Vector3.zero;
 
@@ -193,23 +193,23 @@ namespace JCSUnity
                     return;
             }
 
-            mShakeTimer += dt;
+            mTimer += dt;
 
-            if (mShakeTimer < mShakeTime)
+            if (mTimer < mTime)
             {
                 // shake randomly
-                if (mShakeOnX)
-                    mShakeDelta.x = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
-                if (mShakeOnY)
-                    mShakeDelta.y = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
-                if (mShakeOnZ)
-                    mShakeDelta.z = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mShakeMargin * (mShakeTime / mShakeTimer) / mShakeSteps;
+                if (mOnX)
+                    mShakeDelta.x = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                if (mOnY)
+                    mShakeDelta.y = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                if (mOnZ)
+                    mShakeDelta.z = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
 
                 ApplyShakeByTransformType(mShakeDelta);
             }
             else
             {
-                mShakeTimer = 0.0f;
+                mTimer = 0.0f;
                 mEffect = false;
             }
         }
@@ -219,10 +219,10 @@ namespace JCSUnity
         /// </summary>
         private void PlayeSound()
         {
-            if (mShakeSound == null)
+            if (mClip == null)
                 return;
 
-            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mShakeSound);
+            JCS_SoundPlayer.PlayByAttachment(mSoundPlayer, mClip);
         }
 
         /// <summary>
