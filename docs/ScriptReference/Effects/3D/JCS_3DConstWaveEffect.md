@@ -7,8 +7,8 @@ Effect that does constant wave.
 | Name                       | Description                                 |
 |:---------------------------|:--------------------------------------------|
 | mTransformType             | Apply to which transform's attribute.       |
-| mEffectLocal               | Effect on the local position.               |
-| mEffect                    | Is the effect current active.               |
+| mEffectLocal               | Turn on to use local properties.            |
+| mEffect                    | Turn on to do the effect.                   |
 | mAmplitude                 | How much force goes up and down.            |
 | mFrequency                 | How often the wave goes up and down.        |
 | mAxis                      | Effect on which axis.                       |

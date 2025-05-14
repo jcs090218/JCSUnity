@@ -4,18 +4,18 @@ Effect that shake the transform in 3D.
 
 ## Variables
 
-| Name           | Description                                                |
-|:---------------|:-----------------------------------------------------------|
-| TransformType  | Shake on this transform properties.                        |
-| Firce          | Force the effect even when its already in the motion.      |
-| ShakeTime      | How long it shakes.                                        |
-| ShakeMargin    | How intense it shakes.                                     |
-| mTimeType      | Type of the delta time.                                    |
-| ShakeOnX       | Do shake on x axis.                                        |
-| ShakeOnY       | Do shake on y axis.                                        |
-| ShakeOnZ       | Do shake on z axis.                                        |
-| SoundPlayer    | Sound player for 3D sounds calculation.                    |
-| ShakeSound     | Sound played when effect occurs.                           |
+| Name           | Description                                           |
+|:---------------|:------------------------------------------------------|
+| TransformType  | Shake on this transform properties.                   |
+| Force          | Force the effect even when its already in the motion. |
+| Time           | How long it shakes.                                   |
+| eMargin        | How intense it shakes.                                |
+| mTimeType      | Type of the delta time.                               |
+| OnX            | Do shake on x axis.                                   |
+| OnY            | Do shake on y axis.                                   |
+| OnZ            | Do shake on z axis.                                   |
+| SoundPlayer    | Sound player for 3D sounds calculation.               |
+| Clip           | Sound played when effect occurs.                      |
 
 ## Functions
 
