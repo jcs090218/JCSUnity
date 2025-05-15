@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information
  *                   Copyright ?2020 by Shen, Jen-Chieh $
  */
+using System;
 using UnityEngine;
 using MyBox;
 
@@ -17,6 +18,10 @@ namespace JCSUnity
     public class JCS_3DShakeEffect : JCS_UnityObject
     {
         /* Variables*/
+
+        public Action onBeforeShake = null;
+        public Action onShake = null;
+        public Action onAfterShake = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_3DShakeEffect)")]
@@ -40,7 +45,7 @@ namespace JCSUnity
         [Tooltip("Shake delta changes on transform properties.")]
         [SerializeField]
         [ReadOnly]
-        private Vector3 mShakeDelta = Vector3.zero;
+        private Vector3 mDelta = Vector3.zero;
 
         [Separator("Runtime Variables (JCS_3DShakeEffect)")]
 
@@ -164,11 +169,13 @@ namespace JCSUnity
             this.mTimer = 0.0f;
             this.mMargin = margin;
 
-            mShakeDelta = Vector3.zero;
+            mDelta = Vector3.zero;
 
             mEffect = true;
 
             PlayeSound();
+
+            onBeforeShake?.Invoke();
         }
 
         /// <summary>
@@ -179,9 +186,9 @@ namespace JCSUnity
             if (!mEffect)
                 return;
 
-            RevertShakeByTransformType(mShakeDelta);
+            RevertShakeByTransformType(mDelta);
 
-            mShakeDelta = Vector3.zero;
+            mDelta = Vector3.zero;
 
             float dt = JCS_Time.ItTime(mTimeType);
 
@@ -199,18 +206,22 @@ namespace JCSUnity
             {
                 // shake randomly
                 if (mOnX)
-                    mShakeDelta.x = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                    mDelta.x = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
                 if (mOnY)
-                    mShakeDelta.y = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                    mDelta.y = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
                 if (mOnZ)
-                    mShakeDelta.z = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
+                    mDelta.z = (JCS_Random.RangeInclude(-1.0f, 1.0f)) * mMargin * (mTime / mTimer) / mSteps;
 
-                ApplyShakeByTransformType(mShakeDelta);
+                ApplyShakeByTransformType(mDelta);
+
+                onShake?.Invoke();
             }
             else
             {
                 mTimer = 0.0f;
                 mEffect = false;
+
+                onAfterShake?.Invoke();
             }
         }
 
