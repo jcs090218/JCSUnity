@@ -19,8 +19,13 @@ namespace JCSUnity
     {
         /* Variables*/
 
+        // Callback executed before the shake effect.
         public Action onBeforeShake = null;
+
+        // Callback executed while doing the shake effect.
         public Action onShake = null;
+
+        // Callback executed after the shake effect. 
         public Action onAfterShake = null;
 
 #if UNITY_EDITOR

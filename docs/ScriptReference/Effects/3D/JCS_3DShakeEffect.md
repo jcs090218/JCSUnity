@@ -6,6 +6,9 @@ Effect that shake the transform in 3D.
 
 | Name           | Description                                           |
 |:---------------|:------------------------------------------------------|
+| onBeforeShake  | Callback executed before the shake effect.            |
+| onShake        | Callback executed while doing the shake effect.       |
+| onAfterShake   | Callback executed after the shake effect.             |
 | TransformType  | Shake on this transform properties.                   |
 | Force          | Force the effect even when its already in the motion. |
 | Time           | How long it shakes.                                   |
