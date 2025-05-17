@@ -39,16 +39,16 @@ public class RC_ShopPageHandler : MonoBehaviour
     private void Awake()
     {
         if (mLeftBtn != null)
-            mLeftBtn.SetCallback(LeftClick);
+            mLeftBtn.onClick += LeftClick;
 
         if (mRightBtn != null)
-            mRightBtn.SetCallback(RightClick);
+            mRightBtn.onClick += RightClick;
 
         if (mBotBtn != null)
-            mBotBtn.SetCallback(BotClick);
+            mBotBtn.onClick += BotClick;
 
         if (mTopBtn != null)
-            mTopBtn.SetCallback(TopClick);
+            mTopBtn.onClick += TopClick;
     }
     private void Start()
     {
@@ -104,7 +104,7 @@ public class RC_ShopPageHandler : MonoBehaviour
     {
         --mVerticalPageCounter;
     }
-    
+
     /// <summary>
     /// Initialize the button the first time entered.
     /// </summary>
@@ -116,7 +116,7 @@ public class RC_ShopPageHandler : MonoBehaviour
                 mLeftBtn.SetInteractable(false);
         }
 
-        if (mRightBtn!= null)
+        if (mRightBtn != null)
         {
             if (mHorizontalPageCounter == mMaxHorizontalPage)
                 mRightBtn.SetInteractable(false);
