@@ -11,3 +11,4 @@ Button will load the target scene.
 | mReloadScene  | Reload the current scene, and ignore the target scene name.                  |
 | mScreenColor  | Screen color when load the scene.                                            |
 | mKeppBGM      | Keep BGM playing when load scene.                                            |
+| mMode         | The way to load scene.                                                       |
