@@ -123,7 +123,7 @@ public class BF_AppSettings : JCS_Settings<BF_AppSettings>
     {
         if (APP_DATA == null)
         {
-            JCS_Debug.LogError("Save Data without data");
+            Debug.LogError("Save Data without data");
             return;
         }
 

@@ -116,7 +116,7 @@ namespace JCSUnity
                 case JCS_CharsetType.Unicode: return Encoding.Unicode.GetString(data);
                 case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetString(data);
             }
-            JCS_Debug.LogError("This shouldn't happens, charset `bytes to string`");
+            Debug.LogError("This shouldn't happens, charset `bytes to string`");
             return null;
         }
 
@@ -138,7 +138,7 @@ namespace JCSUnity
                 case JCS_CharsetType.Unicode: return Encoding.Unicode.GetBytes(data);
                 case JCS_CharsetType.BigEndianUnicode: return Encoding.BigEndianUnicode.GetBytes(data);
             }
-            JCS_Debug.LogError("This shouldn't happens, charset `string to bytes`");
+            Debug.LogError("This shouldn't happens, charset `string to bytes`");
             return null;
         }
 
@@ -291,7 +291,7 @@ namespace JCSUnity
         {
             if (lists.Length <= 1)
             {
-                JCS_Debug.Log("You trying to merge the List less then two array");
+                Debug.Log("You trying to merge the List less then two array");
             }
 
             var newList = new List<T>();

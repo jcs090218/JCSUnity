@@ -92,7 +92,7 @@ set to thie scene layer.")]
         // if the enemy we assign is null, will cause errors.
         if (this.mLevelEnemy[spawnIndex] == null)
         {
-            JCS_Debug.LogReminder("Make sure all the enemy in handler are assigned");
+            Debug.Log("Make sure all the enemy in handler are assigned");
             return;
         }
 
@@ -147,7 +147,7 @@ set to thie scene layer.")]
         // check the length of the enemy array prevent errors.
         if (mLevelEnemy.Length == 0)
         {
-            JCS_Debug.LogReminder("Could not spawn the enemy without enemy object assign");
+            Debug.Log("Could not spawn the enemy without enemy object assign");
             return;
         }
 

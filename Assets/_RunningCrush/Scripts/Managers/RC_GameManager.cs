@@ -6,6 +6,7 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using UnityEngine;
 using JCSUnity;
 
 public class RC_GameManager : JCS_Manager<RC_GameManager>
@@ -67,7 +68,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 
         if (uim.EXIT_PANEL == null)
         {
-            JCS_Debug.Log("No exit panel assign");
+            Debug.Log("No exit panel assign");
             return;
         }
 
@@ -85,7 +86,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
         {
             if (gs.PLAYERS[index] == null)
             {
-                JCS_Debug.LogError("Player List in RC_GameSetting are null");
+                Debug.LogError("Player List in RC_GameSetting are null");
                 return;
             }
 
@@ -113,7 +114,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
                 }
                 else
                 {
-                    JCS_Debug.LogError("No liquid bar attach to `RC_GameSetting` and u still want to access it");
+                    Debug.LogError("No liquid bar attach to `RC_GameSetting` and u still want to access it");
                 }
             }
 

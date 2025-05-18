@@ -126,7 +126,7 @@ public class RC_AppSettings : JCS_Settings<RC_AppSettings>
     {
         if (APP_DATA == null)
         {
-            JCS_Debug.LogError("Save Data without data");
+            Debug.LogError("Save Data without data");
             return;
         }
 

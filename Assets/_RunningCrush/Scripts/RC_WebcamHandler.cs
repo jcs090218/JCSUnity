@@ -97,14 +97,14 @@ public class RC_WebcamHandler : MonoBehaviour
         // check length
         if (mWebcamPanel.Length < mPanelIndex || mPanelIndex < 0)
         {
-            JCS_Debug.LogError("Out of range index");
+            Debug.LogError("Out of range index");
 
             return;
         }
         // check object
         if (mWebcamPanel[mPanelIndex] == null)
         {
-            JCS_Debug.LogError("Call the function but does not assign panel at [" + mPanelIndex + "]...");
+            Debug.LogError("Call the function but does not assign panel at [" + mPanelIndex + "]...");
             return;
         }
 

@@ -80,7 +80,7 @@ public class RC_GameSettings : JCS_Settings<RC_GameSettings>
         {
             if (btn == null)
             {
-                JCS_Debug.LogError("You have open a space for button load in the scene, but does not assigned...");
+                Debug.LogError("You have open a space for button load in the scene, but does not assigned...");
                 continue;
             }
 
@@ -120,7 +120,7 @@ public class RC_GameSettings : JCS_Settings<RC_GameSettings>
         }
 
         // This should not happens...
-        JCS_Debug.LogError("Game mode undefined");
+        Debug.LogError("Game mode undefined");
 
         return RC_GameMode.SINGLE_PLAYERS;
     }

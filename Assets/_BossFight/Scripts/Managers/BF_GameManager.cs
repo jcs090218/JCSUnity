@@ -126,12 +126,12 @@ public class BF_GameManager : MonoBehaviour
             mHealthTarget.LiveObject.CanDamage = false;
         else
         {
-            JCS_Debug.LogReminder("No health object in the assign");
+            Debug.Log("No health object in the assign");
         }
 
         if (GAME_OVER_PANEL == null)
         {
-            JCS_Debug.LogError("No game over panel have been set");
+            Debug.LogError("No game over panel have been set");
             return;
         }
 

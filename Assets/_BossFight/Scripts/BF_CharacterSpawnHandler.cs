@@ -52,13 +52,13 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
         {
             if (mSpawnPos[index] == null)
             {
-                JCS_Debug.LogReminder("No Spawn position references, plz check the transform in the array");
+                Debug.Log("No Spawn position references, plz check the transform in the array");
                 break;
             }
 
             if (bfPlayers[index] == null)
             {
-                JCS_Debug.LogError("Character you want to spawn does not exist");
+                Debug.LogError("Character you want to spawn does not exist");
                 break;
             }
 
