@@ -57,15 +57,6 @@ All code utility is stored here.
 | GetEasing                            | Returns the easing function pointer base on the tweener type/enum.                                |
 | IsScene                              | Check current scene's with NAME.                                                                  |
 | IsSceneExists                        | Returns true if the scene 'name' exists and is in your Build settings, false otherwise.           |
-| SetLayerWeight                       | Sets the weight of the layer at the given name.                                                   |
-| GetLayerWeight                       | Returns the weight of the layer at the specified name.                                            |
-| GetFloat                             | Return a float value from the audio mixer.                                                        |
-| Volume2Decibel                       | Convert volume level to decibel.                                                                  |
-| Decibel2Volume                       | Convert decibel to volume level.                                                                  |
-| GetVolume                            | Return the volume level from the audio mixer.                                                     |
-| SetVolume                            | Set the audio mixer's volume.                                                                     |
-| PlayClipAtPoint                      | Same with function `AudioSource.PlayClipAtPoint` with different default `spatialBlend` value.     |
-| DestroyClip                          | Destroy the clip by its clip length.                                                              |
 | PlayParticleAtPoint                  | Play the particle at point.                                                                       |
 | DestroyParticle                      | Destroy the particle by its duration.                                                             |
 | IsSameTribe                          | Check if the live object is the same tribe.                                                       |
