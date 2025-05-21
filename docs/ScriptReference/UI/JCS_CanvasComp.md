@@ -4,9 +4,13 @@ Component that requires the component `JCS_Canvas` without actually inherit the 
 
 ## Variables
 
-| Name    | Description                           |
-|:--------|:--------------------------------------|
-| mCanvas | The canvas this component to control. |
+| Name       | Description                                |
+|:-----------|:-------------------------------------------|
+| mCanvas    | The canvas this component to control.      |
+| onShow     | Execution when canvas is shown.            |
+| onHide     | Execution when canvas is hidden.           |
+| onShowFade | Execution when canvas is shown by fading.  |
+| onHideFade | Execution when canvas is hidden by fading. |
 
 ## Functions
 
