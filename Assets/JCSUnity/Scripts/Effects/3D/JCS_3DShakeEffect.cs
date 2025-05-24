@@ -28,8 +28,6 @@ namespace JCSUnity
         // Callback executed after the shake effect. 
         public Action onAfterShake = null;
 
-        private Vector3 mStartPosition = Vector3.zero;
-
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_3DShakeEffect)")]
 
