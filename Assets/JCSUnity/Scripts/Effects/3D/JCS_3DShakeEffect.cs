@@ -257,7 +257,7 @@ namespace JCSUnity
         /// <param name="shakeDelta"> Shake delta value. </param>
         private void ApplyShakeByTransformType(Vector3 delta)
         {
-            if (JCS_Mathf.IsNaN(delta) || JCS_Mathf.IsInfinity(delta))
+            if (JCS_Mathf.IsNaNOrInfinity(delta))
                 return;
 
             switch (this.mTransformType)
@@ -306,7 +306,7 @@ namespace JCSUnity
         /// <param name="shakeDelta"> Shake delta value. </param>
         private void RevertShakeByTransformType(Vector3 delta)
         {
-            if (JCS_Mathf.IsNaN(delta) || JCS_Mathf.IsInfinity(delta))
+            if (JCS_Mathf.IsNaNOrInfinity(delta))
                 return;
 
             switch (this.mTransformType)
