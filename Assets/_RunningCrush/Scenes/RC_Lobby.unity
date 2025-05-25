@@ -252,7 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &5275921
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2469,7 +2468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &493965859
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3088,7 +3086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &564829461
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3570,9 +3567,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTest: 0
+  mKeyShow: 97
+  mKeyHide: 115
+  mCanvas: {fileID: 0}
+  mCanvasGroup: {fileID: 0}
+  mFadeAlpa: 0
+  mFading: 0
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
+  mFade: 0
+  mFadeFriction: 0.15
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
+  mTimeType: 7
   mActiveSound: {fileID: 0}
   mDeactiveSound: {fileID: 0}
 --- !u!114 &700641157
@@ -4445,7 +4454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &839503282
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4568,6 +4576,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!1 &845190700
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,7 +4739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &848300445
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5280,7 +5288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &905141623
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6833,6 +6840,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!1 &1191606969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7253,6 +7261,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &1223878390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7477,7 +7486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &1223878397
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7661,7 +7669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1250560761
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8181,7 +8188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1298314159
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8745,7 +8751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &1332170144
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9834,6 +9839,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &1520182247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9846,7 +9852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &1520182248
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10513,7 +10518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &1710001888
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11232,7 +11236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1806888942
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11930,7 +11933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4999acd701f3e6743b7c5518ea7aaa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 1
 --- !u!82 &1998026340
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11940,7 +11942,8 @@ AudioSource:
   m_GameObject: {fileID: 1998026338}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -300667356125292915, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -12302,7 +12305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &2039592620
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12895,7 +12897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &2057691823
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13089,7 +13090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &2061701899
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13239,6 +13239,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &2061701903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13475,7 +13476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &2063362898
 AudioSource:
   m_ObjectHideFlags: 0

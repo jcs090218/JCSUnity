@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -159,7 +158,6 @@ RectTransform:
   m_Children:
   - {fileID: 654722832}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -179,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -199,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &4151049
 AudioSource:
   m_ObjectHideFlags: 0
@@ -235,6 +234,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -462,7 +462,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1605971375}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -542,7 +541,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1348700364}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -622,7 +620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4999acd701f3e6743b7c5518ea7aaa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 1
 --- !u!82 &57533393
 AudioSource:
   m_ObjectHideFlags: 0
@@ -632,8 +629,10 @@ AudioSource:
   m_GameObject: {fileID: 57533391}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -300667356125292915, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -738,13 +737,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57533391}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &107227947
 GameObject:
@@ -777,7 +776,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 589180225}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -861,7 +859,6 @@ RectTransform:
   - {fileID: 1002609779}
   - {fileID: 371789422}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -954,7 +951,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1294710018}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1052,7 +1048,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329572145}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1139,7 +1134,6 @@ RectTransform:
   m_Children:
   - {fileID: 1323322170}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1159,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -1171,6 +1165,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &193455527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -1317,12 +1312,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &193455533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,6 +1336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -1344,7 +1346,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -1381,7 +1383,6 @@ RectTransform:
   m_Children:
   - {fileID: 689504096}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1474,7 +1475,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1925171286}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1554,7 +1554,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1002609779}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1627,7 +1626,6 @@ RectTransform:
   - {fileID: 379940122}
   - {fileID: 865629817}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1665,7 +1663,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329572145}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1753,7 +1750,6 @@ RectTransform:
   - {fileID: 152544071}
   - {fileID: 274551712}
   m_Father: {fileID: 445629392}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1907,7 +1903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &329572152
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1919,6 +1914,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2017,7 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2062,7 +2058,6 @@ RectTransform:
   m_Children:
   - {fileID: 532215904}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2099,6 +2094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -2108,7 +2105,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2239,7 +2236,6 @@ RectTransform:
   m_Children:
   - {fileID: 1031969145}
   m_Father: {fileID: 1078392642}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2259,7 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2269,7 +2265,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -2285,7 +2281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &349720275
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2297,6 +2292,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2424,6 +2420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -2433,7 +2431,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: 50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2596,7 +2594,6 @@ RectTransform:
   - {fileID: 1096481558}
   - {fileID: 689288135}
   m_Father: {fileID: 445629392}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2641,7 +2638,6 @@ RectTransform:
   m_Children:
   - {fileID: 609186888}
   m_Father: {fileID: 119225857}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2661,7 +2657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -2671,7 +2667,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 3
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -2687,7 +2683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &371789425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2699,6 +2694,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2826,6 +2822,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -2835,7 +2833,7 @@ MonoBehaviour:
   mAxis: 1
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -2960,7 +2958,6 @@ RectTransform:
   m_Children:
   - {fileID: 858927527}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3053,7 +3050,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 627022622}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3290,7 +3286,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602746530}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3374,7 +3369,6 @@ RectTransform:
   - {fileID: 358824979}
   - {fileID: 329572145}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3467,7 +3461,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1078392642}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3555,7 +3548,6 @@ RectTransform:
   m_Children:
   - {fileID: 1441416489}
   m_Father: {fileID: 1078392642}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3614,7 +3606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -3633,7 +3625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &528546822
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3645,6 +3636,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3772,6 +3764,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -3781,7 +3775,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -3904,7 +3898,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1720556780}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3984,7 +3977,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 331970206}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4071,7 +4063,6 @@ RectTransform:
   m_Children:
   - {fileID: 2078510432}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4091,7 +4082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -4103,6 +4094,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &537699783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4145,7 +4137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -4249,12 +4241,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &537699789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4268,6 +4265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -4276,7 +4275,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -4315,7 +4314,6 @@ RectTransform:
   m_Children:
   - {fileID: 918927474}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4352,6 +4350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -4361,7 +4361,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -4491,7 +4491,6 @@ RectTransform:
   m_Children:
   - {fileID: 1852640058}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4511,7 +4510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -4523,6 +4522,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &573518711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4565,7 +4565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -4669,12 +4669,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &573518717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4688,6 +4693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -4696,7 +4703,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -4739,7 +4746,6 @@ RectTransform:
   m_Children:
   - {fileID: 107227948}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4759,7 +4765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -4780,6 +4786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -4788,7 +4796,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -4804,7 +4812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &589180229
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4816,6 +4823,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5060,7 +5068,6 @@ RectTransform:
   m_Children:
   - {fileID: 2068116421}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5097,6 +5104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -5106,7 +5115,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5233,7 +5242,6 @@ RectTransform:
   m_Children:
   - {fileID: 891556513}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5270,6 +5278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -5279,7 +5289,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5402,7 +5412,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1589034697}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5489,7 +5498,6 @@ RectTransform:
   m_Children:
   - {fileID: 433695997}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5509,7 +5517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -5521,6 +5529,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &602746532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5563,7 +5572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -5667,12 +5676,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &602746538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5686,6 +5700,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -5694,7 +5710,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5728,7 +5744,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 968011696}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5760,7 +5775,7 @@ MonoBehaviour:
   - {fileID: 1293163317}
   mSpacing: 80
   mDimension: 2
-  mDeltaTimeType: 7
+  mTimeType: 7
   mAsympEffect: 1
   mAsympDiffScale: {x: 0.5, y: 0.5, z: 0.5}
   mScrollFriction: 0.1
@@ -5796,7 +5811,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 371789422}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5884,7 +5898,6 @@ RectTransform:
   m_Children:
   - {fileID: 383005409}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5904,7 +5917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -5925,6 +5938,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -5933,7 +5948,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -5949,7 +5964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &627022626
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5961,6 +5975,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6201,7 +6216,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4151045}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6282,7 +6296,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 267027645}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6383,7 +6396,6 @@ RectTransform:
   m_Children:
   - {fileID: 1819737777}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6403,6 +6415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -6411,7 +6425,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -6428,7 +6442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -6448,7 +6462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &680001382
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6460,6 +6473,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6707,7 +6721,6 @@ RectTransform:
   m_Children:
   - {fileID: 1602313553}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6727,7 +6740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -6739,6 +6752,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &688828981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6781,7 +6795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -6885,12 +6899,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &688828987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6904,6 +6923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -6912,7 +6933,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -6948,7 +6969,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 358824979}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7055,7 +7075,6 @@ RectTransform:
   - {fileID: 1925171286}
   - {fileID: 744377265}
   m_Father: {fileID: 196451054}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7086,7 +7105,7 @@ MonoBehaviour:
   - {fileID: 1925171288}
   - {fileID: 744377267}
   mAreaEffects: []
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSpaceTime: 0.2
   mExitByNoOverGUI: 1
   mActiveClip: {fileID: 0}
@@ -7106,6 +7125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -7115,7 +7136,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -7204,7 +7225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &689504103
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7216,6 +7236,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7336,7 +7357,6 @@ RectTransform:
   m_Children:
   - {fileID: 1266093025}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7373,6 +7393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -7382,7 +7404,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -7562,7 +7584,6 @@ RectTransform:
   - {fileID: 627022622}
   - {fileID: 589180225}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7662,7 +7683,6 @@ RectTransform:
   m_Children:
   - {fileID: 1971645495}
   m_Father: {fileID: 379940122}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7711,6 +7731,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -7720,7 +7742,7 @@ MonoBehaviour:
   mAxis: 1
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -7825,7 +7847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -7835,7 +7857,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -7851,7 +7873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &858927535
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7863,6 +7884,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7982,7 +8004,6 @@ RectTransform:
   m_Children:
   - {fileID: 1901976129}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8094,7 +8115,6 @@ RectTransform:
   m_Children:
   - {fileID: 1308051385}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8131,6 +8151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -8140,7 +8162,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -8263,7 +8285,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 593927672}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8343,7 +8364,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 568001148}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8434,7 +8454,6 @@ RectTransform:
   - {fileID: 1293163314}
   - {fileID: 606409746}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8535,7 +8554,6 @@ RectTransform:
   m_Children:
   - {fileID: 1325691955}
   m_Father: {fileID: 1078392642}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8555,7 +8573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -8565,7 +8583,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -8581,7 +8599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &977721488
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8593,6 +8610,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -8720,6 +8738,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -8729,7 +8749,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -8898,7 +8918,6 @@ RectTransform:
   m_Children:
   - {fileID: 247912259}
   m_Father: {fileID: 119225857}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8918,7 +8937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -8928,7 +8947,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -8944,7 +8963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &1002609782
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8956,6 +8974,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9083,6 +9102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -9092,7 +9113,7 @@ MonoBehaviour:
   mAxis: 1
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -9215,7 +9236,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 349720272}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9295,7 +9315,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1393812412}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9383,7 +9402,6 @@ RectTransform:
   m_Children:
   - {fileID: 1738011414}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9403,7 +9421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -9424,6 +9442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -9432,7 +9452,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -9448,7 +9468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1053367182
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9460,6 +9479,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9706,7 +9726,6 @@ RectTransform:
   - {fileID: 977721485}
   - {fileID: 528546818}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9799,7 +9818,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 358824979}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9949,7 +9967,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1374982440}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10029,7 +10046,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1641297818}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10113,7 +10129,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 782754179}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10156,12 +10171,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &1132112844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10226,6 +10246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 1
   mPlayKey: 113
   mStopKey: 119
@@ -10237,7 +10259,7 @@ MonoBehaviour:
   mActive: 1
   mPlayOnAwake: 1
   mLoop: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mNullSprite: {fileID: 0}
   mNullSpriteAfterDonePlayingAnim: 0
   mSecPerFrame: 0.1
@@ -10277,7 +10299,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1806888933}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10363,7 +10384,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 744377265}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10450,7 +10470,6 @@ RectTransform:
   m_Children:
   - {fileID: 1935524801}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10470,7 +10489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -10482,6 +10501,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &1293163316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10524,7 +10544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -10628,12 +10648,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &1293163322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10647,6 +10672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -10655,7 +10682,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -10697,7 +10724,6 @@ RectTransform:
   m_Children:
   - {fileID: 125373290}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10717,7 +10743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -10729,6 +10755,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &1294710020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10771,7 +10798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -10875,12 +10902,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &1294710026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10894,6 +10926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -10902,7 +10936,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -10945,7 +10979,6 @@ RectTransform:
   m_Children:
   - {fileID: 1794493416}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10965,7 +10998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -10986,6 +11019,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -10994,7 +11029,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -11010,7 +11045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1298234189
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11022,6 +11056,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -11262,7 +11297,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 885410984}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11342,7 +11376,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193455525}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11422,7 +11455,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 977721485}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11569,7 +11601,6 @@ RectTransform:
   m_Children:
   - {fileID: 38130159}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11589,7 +11620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -11610,6 +11641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -11618,7 +11651,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -11634,7 +11667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1348700368
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11646,6 +11678,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -11890,7 +11923,6 @@ RectTransform:
   m_Children:
   - {fileID: 1126457942}
   m_Father: {fileID: 119225857}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11939,6 +11971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -11948,7 +11982,7 @@ MonoBehaviour:
   mAxis: 1
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -12078,7 +12112,6 @@ RectTransform:
   m_Children:
   - {fileID: 1043577568}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12098,7 +12131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -12110,6 +12143,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &1393812414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12152,7 +12186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -12256,12 +12290,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &1393812420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12275,6 +12314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -12283,7 +12324,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -12379,7 +12420,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 528546818}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12463,7 +12503,6 @@ RectTransform:
   m_Children:
   - {fileID: 2111639384}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12500,6 +12539,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -12509,7 +12550,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -12640,7 +12681,6 @@ RectTransform:
   m_Children:
   - {fileID: 1920545562}
   m_Father: {fileID: 2004400550}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12699,7 +12739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -12709,7 +12749,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -12725,7 +12765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1503701739
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12737,6 +12776,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -12864,6 +12904,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -12873,7 +12915,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -13043,7 +13085,6 @@ RectTransform:
   m_Children:
   - {fileID: 1605657660}
   m_Father: {fileID: 1901976129}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13183,7 +13224,6 @@ RectTransform:
   m_Children:
   - {fileID: 2111222621}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13203,7 +13243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -13224,6 +13264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -13232,7 +13274,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -13248,7 +13290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1530114959
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13260,6 +13301,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -13614,7 +13656,6 @@ RectTransform:
   m_Children:
   - {fileID: 595163574}
   m_Father: {fileID: 2004400550}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13673,7 +13714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -13683,7 +13724,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -13699,7 +13740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1589034701
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13711,6 +13751,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -13838,6 +13879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -13847,7 +13890,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -13970,7 +14013,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 688828979}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14050,7 +14092,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1528379103}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14134,7 +14175,6 @@ RectTransform:
   m_Children:
   - {fileID: 31778282}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14171,6 +14211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -14180,7 +14222,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -14311,7 +14353,6 @@ RectTransform:
   m_Children:
   - {fileID: 2082739919}
   m_Father: {fileID: 2004400550}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14370,7 +14411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -14380,7 +14421,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -14396,7 +14437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1638458331
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14408,6 +14448,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -14535,6 +14576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -14544,7 +14587,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -14675,7 +14718,6 @@ RectTransform:
   m_Children:
   - {fileID: 1131823747}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14734,7 +14776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -14744,7 +14786,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 1
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -14760,7 +14802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1641297822
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14772,6 +14813,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -14899,6 +14941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -14908,7 +14952,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -15039,7 +15083,6 @@ RectTransform:
   m_Children:
   - {fileID: 530148347}
   m_Father: {fileID: 782754179}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15059,7 +15102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -15080,6 +15123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -15088,7 +15133,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -15104,7 +15149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1720556784
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15116,6 +15160,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -15356,7 +15401,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1053367178}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15436,7 +15480,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1932695637}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15516,7 +15559,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1298234185}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15604,7 +15646,6 @@ RectTransform:
   m_Children:
   - {fileID: 1149616696}
   m_Father: {fileID: 1078392642}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15637,6 +15678,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 1
   mActiveKey: 97
   mDeactiveKey: 115
@@ -15646,7 +15689,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -15751,7 +15794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -15761,7 +15804,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 5
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -15777,7 +15820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1806888941
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15789,6 +15831,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -15944,7 +15987,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 680001378}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16024,7 +16066,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2110879008}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16104,7 +16145,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 573518709}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16229,7 +16269,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 358824979}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16356,7 +16395,6 @@ RectTransform:
   m_Children:
   - {fileID: 1528379103}
   m_Father: {fileID: 865629817}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16413,7 +16451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1901976133
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16425,6 +16462,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -16544,6 +16582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mTweenToAKey: 97
   mTweenToA: {x: 0, y: 0, z: 0}
@@ -16551,7 +16591,7 @@ MonoBehaviour:
   mTweenToB: {x: 5, y: 5, z: 5}
   mContinueKeyTween: 99
   mContinueTween: 0
-  mTargetTransform: {fileID: 0}
+  mTarget: {fileID: 0}
   mDoneTweenX: 1
   mDoneTweenY: 1
   mDoneTweenZ: 1
@@ -16561,7 +16601,7 @@ MonoBehaviour:
   mDurationX: 1
   mDurationY: 1
   mDurationZ: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mDestroyWhenDoneTweening: 0
   mDestroyDoneTweeningCount: 1
   mRandomizeDuration: 0
@@ -16584,6 +16624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1d481050008994b9557a8d6eb2c8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTestWithKey: 0
+  mTweenToStart: 106
+  mTweenToTarget: 107
   mPanelRoot: {fileID: 0}
   mTweenInfos: []
 --- !u!1 &1920545561
@@ -16617,7 +16660,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1503701735}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16701,7 +16743,6 @@ RectTransform:
   m_Children:
   - {fileID: 242865946}
   m_Father: {fileID: 689504096}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16738,6 +16779,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -16747,7 +16790,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -16878,7 +16921,6 @@ RectTransform:
   m_Children:
   - {fileID: 1775544663}
   m_Father: {fileID: 445629392}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16937,7 +16979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -16947,7 +16989,7 @@ MonoBehaviour:
   mSlideCameras: []
   mDirection: 7
   mCount: 1
-  mDeltaTimeType: 0
+  mTimeType: 0
   mSoundPlayer: {fileID: 0}
   mSlideScreenSound: {fileID: 8300000, guid: ffcf3906540e3b74fa27dc938e19d461, type: 3}
   mDelayTime: 0
@@ -16963,7 +17005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 2
 --- !u!82 &1932695641
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16975,6 +17016,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -17102,6 +17144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mTestWithKey: 0
   mActiveKey: 97
   mDeactiveKey: 115
@@ -17111,7 +17155,7 @@ MonoBehaviour:
   mAxis: 0
   mDistance: -50
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -17234,7 +17278,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293163314}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17314,7 +17357,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858927527}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17387,13 +17429,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990639917}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -82.587326, y: 7.6250725, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1990639919
 MonoBehaviour:
@@ -17442,7 +17484,6 @@ RectTransform:
   - {fileID: 1589034697}
   - {fileID: 1503701735}
   m_Father: {fileID: 267027645}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17536,9 +17577,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTest: 0
+  mKeyShow: 97
+  mKeyHide: 115
+  mCanvas: {fileID: 0}
+  mCanvasGroup: {fileID: 0}
+  mFadeAlpa: 0
+  mFading: 0
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
+  mFade: 0
+  mFadeFriction: 0.15
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
+  mTimeType: 7
   mActiveSound: {fileID: 0}
   mDeactiveSound: {fileID: 0}
 --- !u!114 &2051649832
@@ -17635,7 +17688,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 593563568}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17715,7 +17767,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 537699781}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17795,7 +17846,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1638458327}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17882,7 +17932,6 @@ RectTransform:
   m_Children:
   - {fileID: 1841452572}
   m_Father: {fileID: 968011696}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17902,7 +17951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -17914,6 +17963,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &2110879010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17956,7 +18006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -18060,12 +18110,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
+  mTarget: {fileID: 0}
   mTargetPos: {x: 0, y: 0, z: 0}
   mFriction: 0.2
-  mDeltaTimeType: 0
+  mTimeType: 0
   mIgnoreX: 0
   mIgnoreY: 0
   mIgnoreZ: 0
+  mLocalTarget: 0
+  mLocalSelf: 0
 --- !u!114 &2110879016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18079,6 +18134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -18087,7 +18144,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.5, y: 0.5, z: 0.5}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -18122,7 +18179,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1530114955}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -18202,7 +18258,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449818933}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -18251,3 +18306,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111639383}
   m_CullTransparentMesh: 0
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1566778248}
+  - {fileID: 1109720392}
+  - {fileID: 1341011460}
+  - {fileID: 1859234553}
+  - {fileID: 267027645}
+  - {fileID: 761660593}
+  - {fileID: 1414270698}
+  - {fileID: 1990639918}
+  - {fileID: 1510948335}
+  - {fileID: 1894564641}
+  - {fileID: 57533395}

@@ -485,6 +485,7 @@ MonoBehaviour:
   mReloadScene: 1
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 1
+  mMode: 0
 --- !u!114 &681896492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,6 +1112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SWITCHING_SCENE: 0
+  NEXT_SCENE_NAME: 
+  PREVIOUS_SCENE:
+    m_Handle: 0
+  MODE: 0
   SCENE_FADEOUT_TIME: 1.5
   SCENE_FADEIN_TIME: 1.5
   SCREEN_COLOR: {r: 0, g: 0, b: 0, a: 1}
@@ -1139,7 +1144,6 @@ MonoBehaviour:
   ACTIVE_ONE_PLAYER: 1
   PLAYER_IGNORE_EACH_OTHER: 1
   TRIBE_DAMAGE_EACH_OTHER: 0
-  IGNORE_EACH_OTHER_CHARACTER_CONTROLLER: 1
   STREAMING_BASE_URL: https://wwww.example.com/
   STREAMING_CACHE_PATH: /Data_jcs/Cache_StreamingAssets/
   SCREENSHOT_PATH: /Data_jcs/Screenshot/
@@ -1718,9 +1722,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTest: 0
+  mKeyShow: 97
+  mKeyHide: 115
+  mCanvas: {fileID: 0}
+  mCanvasGroup: {fileID: 0}
+  mFadeAlpa: 0
+  mFading: 0
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
+  mFade: 0
+  mFadeFriction: 0.15
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
+  mTimeType: 7
   mActiveSound: {fileID: 0}
   mDeactiveSound: {fileID: 0}
 --- !u!114 &1383243422
@@ -2073,9 +2089,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTest: 0
+  mKeyShow: 97
+  mKeyHide: 115
+  mCanvas: {fileID: 0}
+  mCanvasGroup: {fileID: 0}
+  mFadeAlpa: 0
+  mFading: 0
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 0
+  mFade: 0
+  mFadeFriction: 0.15
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
+  mTimeType: 7
   mActiveSound: {fileID: 0}
   mDeactiveSound: {fileID: 0}
 --- !u!1 &1798221721
@@ -2102,7 +2130,6 @@ GameObject:
   - component: {fileID: 1798221726}
   - component: {fileID: 1798221725}
   - component: {fileID: 1798221724}
-  - component: {fileID: 1798221723}
   - component: {fileID: 1798221722}
   m_Layer: 0
   m_Name: JCS_Managers
@@ -2124,7 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTimeScale: 1
-  mTestWithKey: 0
+  mTest: 0
   mToggleGamePause: 112
   mIncTime: 110
   mDecTime: 109
@@ -2137,18 +2164,6 @@ MonoBehaviour:
   mOverrideSetting: 0
   mAsymptotic: 0
   mFriction: 0.2
---- !u!114 &1798221723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798221721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d95829d00ae724e81ce51e880130fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1798221724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2368,7 +2383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ceabc1c1c745c44a60262572a8c61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNextSceneName: 
   mBlackScreen: {fileID: 0}
   mBlackSlideScreen: {fileID: 0}
   mAlign: 0
@@ -2554,6 +2568,7 @@ MonoBehaviour:
   mReloadScene: 1
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &2110640544
 MonoBehaviour:
   m_ObjectHideFlags: 0

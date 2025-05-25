@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -152,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4999acd701f3e6743b7c5518ea7aaa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 1
 --- !u!82 &240725755
 AudioSource:
   m_ObjectHideFlags: 0
@@ -162,8 +160,10 @@ AudioSource:
   m_GameObject: {fileID: 240725753}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -300667356125292915, guid: 7db419a1e5067c44fb6780b4f563b20b,
+    type: 2}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -268,13 +268,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240725753}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &284713936
 PrefabInstance:
@@ -372,7 +372,6 @@ RectTransform:
   m_Children:
   - {fileID: 1464663859}
   m_Father: {fileID: 1064198703}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -474,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDialogueSelection: -1
-  mButtonText: {fileID: 0}
+  mItText: {fileID: 0}
   mButtonSelection: {fileID: 0}
   mAutoListener: 1
   mDialogueIndex: -1
@@ -486,6 +485,7 @@ MonoBehaviour:
   mReloadScene: 0
   mScreenColor: {r: 0, g: 0, b: 0, a: 1}
   mKeppBGM: 0
+  mMode: 0
 --- !u!114 &486325587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mObjectType: 1
+  mMakeUnique: 0
+  mColorProps: []
   mEffect: 0
   mPanelRoot: {fileID: 0}
   mEventTrigger: {fileID: 0}
@@ -507,7 +509,7 @@ MonoBehaviour:
   mScaleZ: 1
   mScaleValue: {x: 0.2, y: 0.2, z: 0.2}
   mScaleFriction: {x: 0.2, y: 0.2, z: 0.2}
-  mDeltaTimeType: 0
+  mTimeType: 0
   mAutoAddEvent: 1
   mActiveEventTriggerType: 0
   mDeactiveEventTriggerType: 1
@@ -591,7 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfbfab4c3b19c642ac2df0576c95e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSoundSettingType: 0
 --- !u!82 &486325591
 AudioSource:
   m_ObjectHideFlags: 0
@@ -603,6 +604,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -771,7 +773,6 @@ RectTransform:
   m_Children:
   - {fileID: 1064198703}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -854,7 +855,6 @@ RectTransform:
   m_Children:
   - {fileID: 486325582}
   m_Father: {fileID: 953878243}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1003,7 +1003,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 486325582}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1131,6 +1130,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1173,13 +1175,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681174887}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1771921099
 PrefabInstance:
@@ -1258,9 +1260,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ead9775289064eaae6c9fb96c82b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTest: 0
+  mKeyShow: 97
+  mKeyHide: 115
+  mCanvas: {fileID: 0}
+  mCanvasGroup: {fileID: 0}
+  mFadeAlpa: 0
+  mFading: 0
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
+  mFade: 0
+  mFadeFriction: 0.15
+  mFadeInAmount: 1
+  mFadeOutAmount: 0
+  mTimeType: 7
   mActiveSound: {fileID: 0}
   mDeactiveSound: {fileID: 0}
 --- !u!114 &2098421392
@@ -1326,3 +1340,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 25
   m_TargetDisplay: 0
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 284713936}
+  - {fileID: 1070657508}
+  - {fileID: 1771921099}
+  - {fileID: 964172948}
+  - {fileID: 953878243}
+  - {fileID: 903062035}
+  - {fileID: 1681174889}
+  - {fileID: 1521378240}
+  - {fileID: 1385090196}
+  - {fileID: 240725757}
