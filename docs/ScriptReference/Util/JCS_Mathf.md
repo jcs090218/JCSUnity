@@ -9,10 +9,10 @@ Math library class.
 | AbsoluteValue              | Returns the absolute value from a pass in value.                               |
 | ToPositive                 | Returns a positive value of the pass in value.                                 |
 | ToNegative                 | Returns a negative value of the pass in value.                                 |
-| IsPositive                 | Check if the value is positive.                                                |
-| IsNegative                 | Check if the value is negative.                                                |
-| ToReverse                  | Reverse a value, turn negative to positive, turn positive to negative.         |
-| Reciprocal                 | Reciprocal the value pass in.                                                  |
+| IsPositive                 | Return true if the number is positive.                                         |
+| IsNegative                 | Return true if the number is negative.                                         |
+| ToReverse                  | To reverse a value, turn negative to positive, turn positive to negative.      |
+| Reciprocal                 | To reciprocal the value pass in.                                               |
 | Sqr                        | Square root the value pass in.                                                 |
 | DistanceOfUnitVector       | Returns the distacne of the two floats.                                        |
 | IsOdd                      | Check if the value is the odd number.                                          |
@@ -20,10 +20,11 @@ Math library class.
 | FindMiddleIndex            | Returns the center of the array length.                                        |
 | OverFlowIndex              | Returns index that are overflow within the array length.                       |
 | ApproachTo                 | Make value approach to the target value by increment/decrement one.            |
-| IsInfinity                 | Check if the value is infinity?                                                |
 | Min                        | Returns the mininum value.                                                     |
 | Max                        | Returns the maxinum value.                                                     |
-| IsNaN                      | Check if the number is invalid.                                                |
+| IsInfinity                 | Return true if the number is infinity.                                         |
+| IsNaN                      | Return true if the number is NaN.                                              |
+| IsNaNOrInfinity            | Return true if the number is either NaN or infinity.                           |
 | LawOfSine                  | Do law of sin.                                                                 |
 | LawOfConsine               | Do law of cosine.                                                              |
 | IsPossible                 | Use to check if something is possible by pasing in the percentage. (0% ~ 100%) |

@@ -322,7 +322,6 @@ namespace JCSUnity
             return IsNaN(vec) || IsInfinity(vec);
         }
 
-
         /// <summary>
         /// Do law of sine.
         /// </summary>
