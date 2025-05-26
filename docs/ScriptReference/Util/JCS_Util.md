@@ -51,6 +51,7 @@ All code utility is stored here.
 | RemoveCloneString                    | Remove the text "(Clone)" from the object's name, and return the new name string.                 |
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
+| FindGameObjectsWithTag               | Return a list of game object with the tag name.                                                   |
 | FindCloneObjectsOfTypeAll            | Find all cloned game objects in the scene with the type passed in.                                |
 | FindNotCloneObjectsOfTypeAll         | Find all game objects that are not clones in the scene with the type passed in.                   |
 | FindObjectsOfTypeAllInHierarchy      | Find all the game object that are only active in the hierarchy with the type passed in.           |
