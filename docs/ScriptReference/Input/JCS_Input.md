@@ -23,6 +23,9 @@ Rewrap Input from Unity Engine and add more functionalities.
 | GetKeyDown                 | Is the key down?                                                      |
 | GetKey                     | Is the key held down?                                                 |
 | GetKeyUp                   | Is the key up?                                                        |
+| AllKeys                    | Check all of these key are preseed.                                   |
+| AllKeysDown                | Check all of these key are down.                                      |
+| AllKeysUp                  | Check all of these key are up.                                        |
 | GetButtonByAction          | Get the boolean check depends on the button status.                   |
 | GetButton                  | Is the button pressed?                                                |
 | GetButtonDown              | Is the button down?                                                   |
@@ -39,15 +42,6 @@ Rewrap Input from Unity Engine and add more functionalities.
 | GetJoystickKeyDown         | Check if joystick id, down the key?                                   |
 | GetJoystickKeyByAction     | Check if the joystick key is doing something by these certain events. |
 | IsJoystickConnected        | Check if there is joy stick connect to the pc.                        |
-| OneKeys                    | Check either of these key are preseed.                                |
-| OneKeysDown                | Check either of these key are down.                                   |
-| OneKeysUp                  | Check either of these key are up.                                     |
-| AllKeys                    | Check all of these key are preseed.                                   |
-| AllKeysDown                | Check all of these key are down.                                      |
-| AllKeysUp                  | Check all of these key are up.                                        |
-| OneJoystickButtons         | Check either of these key are preseed.                                |
-| OneJoystickKeysDown        | Check either of these key are down.                                   |
-| OneJoystickKeysUp          | Check either of these key are up.                                     |
 | AllJoystickButtons         | Check all of these key are preseed.                                   |
 | AllJoystickKeysDown        | Check all of these key are down.                                      |
 | AllJoystickKeysUp          | Check all of these key are up.                                        |

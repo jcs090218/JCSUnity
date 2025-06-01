@@ -52,21 +52,21 @@ namespace JCSUnity
     /// <summary>
     /// Support joystick up to 30 people.
     /// </summary>
-    public enum JCS_JoystickIndex
+    public enum JCS_JoystickId
     {
         // Joystick 0 - 10 (1 ~ 11)
-        FROM_ALL_JOYSTICK = 0x00,
-        JOYSTICK_01 = 0x01,
-        JOYSTICK_02 = 0x02,
-        JOYSTICK_03 = 0x03,
-        JOYSTICK_04 = 0x04,
-        JOYSTICK_05 = 0x05,
-        JOYSTICK_06 = 0x06,
-        JOYSTICK_07 = 0x07,
-        JOYSTICK_08 = 0x08,
-        JOYSTICK_09 = 0x09,
-        JOYSTICK_10 = 0x0A,
-        JOYSTICK_11 = 0x0B,
+        ANY = 0x00,
+        ID_01 = 0x01,
+        ID_02 = 0x02,
+        ID_03 = 0x03,
+        ID_04 = 0x04,
+        ID_05 = 0x05,
+        ID_06 = 0x06,
+        ID_07 = 0x07,
+        ID_08 = 0x08,
+        ID_09 = 0x09,
+        ID_10 = 0x0A,
+        ID_11 = 0x0B,
     };
 
     /// <summary>
@@ -89,39 +89,50 @@ namespace JCSUnity
     public class JCS_Input
     {
         #region DOUBLE_CLICK
+
         // Boolean to indentify the first click.
         private static bool CLICK = false;
         // Interval time between the first click and the second click.
         private static float CLICK_TIME = 0.25f;
         // Timer to check with 'CLICK_TIME'.
         private static float CLICK_TIMER = 0.0f;
+
         #endregion
 
         #region DRAG
+
         private static bool START_DRAGGING = false;
         private static bool DRAGGING = false;
         private static Vector3 START_DRAG_POINT = Vector3.zero;
+
         #endregion
 
         #region JOYSTICK
-        private static Dictionary<string, bool>
-            mJoystickKeyPressed = new Dictionary<string, bool>();
-        private static Dictionary<string, bool>
-            mJoystickKeyReleased = new Dictionary<string, bool>();
 
-        private static List<string> mJoystickKeyWasPreseed = new List<string>();
-        private static List<string> mJoystickKeyWasReleased = new List<string>();
+        private static Dictionary<string, bool> mJoystickKeyPressed = new();
+        private static Dictionary<string, bool> mJoystickKeyReleased = new();
 
-        public static JoystickPlugged joystickPluggedCallback = JoystickPluggedDefaultCallback;
-        public static JoystickUnPlugged joystickUnPluggedCallback = JoystickUnPluggedDefaultCallback;
+        private static List<string> mJoystickKeyWasPreseed = new();
+        private static List<string> mJoystickKeyWasReleased = new();
+
+        public static Action onJoystickPlugged = JoystickPluggedDefaultCallback;
+        public static Action onJoystickUnplugged = JoystickUnPluggedDefaultCallback;
 
         // record down the if the joystick was connected.
         private static bool mIsJoystickConnected = IsJoystickConnected();
+
         #endregion
 
         /* Default callback function pointer. */
-        private static void JoystickPluggedDefaultCallback() { Debug.Log("At least one joystick connected!!!"); }
-        private static void JoystickUnPluggedDefaultCallback() { Debug.Log("No joystick connected..."); }
+
+        private static void JoystickPluggedDefaultCallback()
+        {
+            Debug.Log("At least one joystick connected!!!");
+        }
+        private static void JoystickUnPluggedDefaultCallback()
+        {
+            Debug.Log("No joystick connected...");
+        }
 
         /// <summary>
         /// Main loop for input.
@@ -129,6 +140,7 @@ namespace JCSUnity
         public static void LateUpdate()
         {
             #region DOUBLE_CLICK
+
             if (CLICK)
             {
                 CLICK_TIMER += Time.unscaledDeltaTime;
@@ -139,6 +151,7 @@ namespace JCSUnity
                     CLICK_TIMER = 0.0f;
                 }
             }
+
             #endregion
 
             DoJoystickCallback();
@@ -168,9 +181,11 @@ namespace JCSUnity
         {
             if (GetKeyByAction(action, key))
             {
-                callback.Invoke();
+                callback?.Invoke();
+
                 return true;
             }
+
             return false;
         }
 
@@ -180,9 +195,9 @@ namespace JCSUnity
         public static void InputCallbackOnce()
         {
             if (mIsJoystickConnected)
-                joystickPluggedCallback.Invoke();
+                onJoystickPlugged?.Invoke();
             else
-                joystickUnPluggedCallback.Invoke();
+                onJoystickUnplugged?.Invoke();
         }
 
         /// <summary>
@@ -821,7 +836,7 @@ namespace JCSUnity
         /// <param name="index"></param>
         /// <param name="btn"></param>
         /// <returns></returns>
-        public static float GetAxis(JCS_JoystickIndex index, JCS_JoystickButton btn)
+        public static float GetAxis(JCS_JoystickId index, JCS_JoystickButton btn)
         {
             return GetAxis((int)index, btn);
         }
@@ -851,7 +866,7 @@ namespace JCSUnity
         /// <param name="joystickIndex"></param>
         /// <param name="btn"></param>
         /// <returns> buffer pressure from hardware. </returns>
-        public static bool GetJoystickButton(JCS_JoystickIndex index, params JCS_JoystickButton[] btns)
+        public static bool GetJoystickButton(JCS_JoystickId index, params JCS_JoystickButton[] btns)
         {
             return GetJoystickButton((int)index, btns);
         }
@@ -889,7 +904,7 @@ namespace JCSUnity
         /// true: did pressed.
         /// false: not pressed.
         /// </returns>
-        public static bool GetJoystickKey(JCS_JoystickIndex index, JCS_JoystickButton btn)
+        public static bool GetJoystickKey(JCS_JoystickId index, JCS_JoystickButton btn)
         {
             return GetJoystickKey((int)index, btn);
         }
@@ -919,7 +934,7 @@ namespace JCSUnity
         /// </returns>
         public static bool GetJoystickKeyUp(int index, JCS_JoystickButton btn)
         {
-            return GetJoystickKeyUp((JCS_JoystickIndex)index, btn);
+            return GetJoystickKeyUp((JCS_JoystickId)index, btn);
         }
 
         /// <summary>
@@ -931,7 +946,7 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyUp(JCS_JoystickIndex index, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyUp(JCS_JoystickId index, JCS_JoystickButton btn)
         {
             string id = JCS_InputSettings.GetJoystickButtonIdName(index, btn);
 
@@ -973,7 +988,7 @@ namespace JCSUnity
         /// </returns>
         public static bool GetJoystickKeyDown(int index, JCS_JoystickButton btn)
         {
-            return GetJoystickKeyDown((JCS_JoystickIndex)index, btn);
+            return GetJoystickKeyDown((JCS_JoystickId)index, btn);
         }
 
         /// <summary>
@@ -985,7 +1000,7 @@ namespace JCSUnity
         /// true: did uo.
         /// false: not up.
         /// </returns>
-        public static bool GetJoystickKeyDown(JCS_JoystickIndex index, JCS_JoystickButton btn)
+        public static bool GetJoystickKeyDown(JCS_JoystickId index, JCS_JoystickButton btn)
         {
             string id = JCS_InputSettings.GetJoystickButtonIdName(index, btn);
 
@@ -1031,7 +1046,7 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool GetJoystickKeyByAction(
             JCS_KeyActionType act,
-            JCS_JoystickIndex id,
+            JCS_JoystickId id,
             JCS_JoystickButton key)
         {
             switch (act)
@@ -1096,9 +1111,9 @@ namespace JCSUnity
         /// </returns>
         public static bool AllJoystickButtons(int index, params JCS_JoystickButton[] keys)
         {
-            return AllJoystickButtons((JCS_JoystickIndex)index, keys);
+            return AllJoystickButtons((JCS_JoystickId)index, keys);
         }
-        public static bool AllJoystickButtons(JCS_JoystickIndex index, params JCS_JoystickButton[] keys)
+        public static bool AllJoystickButtons(JCS_JoystickId index, params JCS_JoystickButton[] keys)
         {
             foreach (JCS_JoystickButton key in keys)
             {
@@ -1122,9 +1137,9 @@ namespace JCSUnity
         /// </returns>
         public static bool AllJoystickKeysDown(int index, params JCS_JoystickButton[] keys)
         {
-            return AllJoystickKeysDown((JCS_JoystickIndex)index, keys);
+            return AllJoystickKeysDown((JCS_JoystickId)index, keys);
         }
-        public static bool AllJoystickKeysDown(JCS_JoystickIndex index, params JCS_JoystickButton[] keys)
+        public static bool AllJoystickKeysDown(JCS_JoystickId index, params JCS_JoystickButton[] keys)
         {
             foreach (JCS_JoystickButton key in keys)
             {
@@ -1148,9 +1163,9 @@ namespace JCSUnity
         /// </returns>
         public static bool AllJoystickKeysUp(int index, params JCS_JoystickButton[] keys)
         {
-            return AllJoystickKeysUp((JCS_JoystickIndex)index, keys);
+            return AllJoystickKeysUp((JCS_JoystickId)index, keys);
         }
-        public static bool AllJoystickKeysUp(JCS_JoystickIndex index, params JCS_JoystickButton[] keys)
+        public static bool AllJoystickKeysUp(JCS_JoystickId index, params JCS_JoystickButton[] keys)
         {
             foreach (JCS_JoystickButton key in keys)
             {
