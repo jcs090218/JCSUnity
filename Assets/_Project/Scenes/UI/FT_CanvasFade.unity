@@ -895,13 +895,13 @@ MonoBehaviour:
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
-  mFade: 0
+  mShowMethod: 1
   mFadeFriction: 0.2
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}
 --- !u!114 &1383243422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,13 +1357,13 @@ MonoBehaviour:
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 0
-  mFade: 1
+  mShowMethod: 2
   mFadeFriction: 0.15
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}
 --- !u!225 &1680700183
 CanvasGroup:
   m_ObjectHideFlags: 0
