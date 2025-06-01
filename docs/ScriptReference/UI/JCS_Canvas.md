@@ -6,13 +6,15 @@ Control of the canvas component.
 
 | Name            | Description                                          |
 |:----------------|:-----------------------------------------------------|
+| doShow          | Execution to show canvas.                            |
+| doHide          | Execution to hide canvas.                            |
 | onShow          | Execution when canvas is shown.                      |
 | onHide          | Execution when canvas is hidden.                     |
 | onShowFade      | Execution when canvas is shown by fading.            |
 | onHideFade      | Execution when canvas is hidden by fading.           |
 | mDisplayOnAwake | If true, show on awake time; otherwise, hide it.     |
 | mMainCanvas     | Resizable screen will be attach to this canvas.      |
-| mFade           | Turn on when you want to fade the canvas by default. |
+| mShowMethod     | The method to display this canvas.                   |
 | mFadeFriction   | How fast the canvas fades.                           |
 | mFadeInAmount   | The full fade in amount of alpha.                    |
 | mFadeOutAmount  | The full fade out amount of alpha.                   |
