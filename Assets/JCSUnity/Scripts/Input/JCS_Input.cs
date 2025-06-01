@@ -6,7 +6,6 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
-using MyBox;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -115,8 +114,8 @@ namespace JCSUnity
         private static List<string> mJoystickKeyWasPreseed = new();
         private static List<string> mJoystickKeyWasReleased = new();
 
-        public static Action onJoystickPlugged = JoystickPluggedDefaultCallback;
-        public static Action onJoystickUnplugged = JoystickUnPluggedDefaultCallback;
+        public static Action onJoystickPlugged = DefaultJoystickPlugged;
+        public static Action onJoystickUnplugged = DefaultJoystickUnplugged;
 
         // record down the if the joystick was connected.
         private static bool mIsJoystickConnected = IsJoystickConnected();
@@ -125,11 +124,11 @@ namespace JCSUnity
 
         /* Default callback function pointer. */
 
-        private static void JoystickPluggedDefaultCallback()
+        private static void DefaultJoystickPlugged()
         {
             Debug.Log("At least one joystick connected!!!");
         }
-        private static void JoystickUnPluggedDefaultCallback()
+        private static void DefaultJoystickUnplugged()
         {
             Debug.Log("No joystick connected...");
         }
@@ -851,7 +850,7 @@ namespace JCSUnity
         }
         public static float GetAxis(string name)
         {
-            if (name.IsNullOrEmpty())
+            if (name == "")
             {
                 Debug.LogError("InputManager's name variable can't be an empty string");
                 return 0;
