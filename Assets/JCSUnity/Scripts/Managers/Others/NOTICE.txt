@@ -1,1 +1,0 @@
-This directory will put all the game dependent game manager scripts.

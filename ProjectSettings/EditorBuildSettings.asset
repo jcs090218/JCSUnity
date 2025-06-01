@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/System/FT_Resizable.unity
     guid: be4c2ec23b20bb449b1a0c85bc684b40
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/Demo/GUI/JCS_GUI.unity
+    path: Assets/JCSUnity/Scenes/Demo/UI/JCS_UI.unity
     guid: ecc9dddb602ab8b4cac997a044d17085
   - enabled: 1
     path: Assets/JCSUnity/Scenes/Demo/JCS_Webcam.unity
@@ -66,7 +66,7 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Obsolete/JCS_2DAI.unity
     guid: a7192e9fe705d574c8b921528811f52f
   - enabled: 1
-    path: Assets/JCSUnity/Scenes/Demo/GUI/JCS_GamePadUIHandler.unity
+    path: Assets/JCSUnity/Scenes/Demo/UI/JCS_GamepadUIHandler.unity
     guid: c6763af20233ccb43b62412e9dab766a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
