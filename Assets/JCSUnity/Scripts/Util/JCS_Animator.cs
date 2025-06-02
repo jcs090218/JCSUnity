@@ -58,7 +58,7 @@ namespace JCSUnity
         public static bool HasState(Animator animator, int layer, string name)
         {
             // First check if the layer exists.
-            if (HasLayer(animator, layer))
+            if (!HasLayer(animator, layer))
                 return false;
 
             // Convert name to hash.
