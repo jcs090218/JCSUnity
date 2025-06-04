@@ -19,7 +19,7 @@ in order to have JCSUnity work correctly in Unity Engine.
 - `JCS_PlayerManager`
 - `JCS_Player`
 - `JCS_2DCamera`
-- `JCS_SlideInput`
+- `JCS_TouchInput`
 - `JCS_MobileMouseEvent`
 - `JCS_2DPlatform`
 - `JCS_Logo`

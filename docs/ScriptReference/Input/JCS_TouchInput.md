@@ -1,4 +1,4 @@
-# JCS_SlideInput
+# JCS_TouchInput
 
 Use this to receive the slide input from the device buffer.
 
