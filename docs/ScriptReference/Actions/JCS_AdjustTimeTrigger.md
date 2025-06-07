@@ -4,15 +4,17 @@ Trigger an event while the time is reached.
 
 ## Variables
 
-| Name           | Description                               |
-|:---------------|:------------------------------------------|
-| onAction       | Action to trigger if the time is reached. |
-| mInvokeOnStart | Run immediately on the first frame.       |
-| mActive        | Is this component active?"                |
-| mTime          | Time to trigger the event.                |
-| mAdjustTime    | Time that will randomly affect the time.  |
-| mTimeType      | Type of the delta time.                   |
-| mUnityEvents   | Event that will be triggered.             |
+| Name           | Description                                |
+|:---------------|:-------------------------------------------|
+| onAction       | Action to trigger if the time is reached.  |
+| onBeforeAction | Execution before action is being executed. |
+| onAfterAction  | Execution after action is being executed.  |
+| mInvokeOnStart | Run immediately on the first frame.        |
+| mActive        | Is this component active?"                 |
+| mTime          | Time to trigger the event.                 |
+| mAdjustTime    | Time that will randomly affect the time.   |
+| mTimeType      | Type of the delta time.                    |
+| mUnityEvents   | Event that will be triggered.              |
 
 ## Functions
 
