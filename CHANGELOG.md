@@ -18,6 +18,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Audio): Replace the custom audio solution with the built-in mixer (c85e93f68167ebd27c36fa7c0aad2c4b07449081)
 * fix(Effect): Handle pause in 3D shake (ec394963cc6e06cf79b1fae085ab2536f4dec65e)
 * feat(Effect): Add more public hooks for transform tweener (782e62652e9d3f99bd0a09d49af0032dc9eead55)
+* refactor(Util): Split some array manipulation to to `JCS_Array` (a6419b876f2d41ef35aa9644d4c414caf89d9122)
 
 ## 3.1.0
 > Released Apr 11, 2025
