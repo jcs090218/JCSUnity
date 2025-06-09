@@ -15,17 +15,7 @@ All code utility is stored here.
 | EnumSize                             | Returns the length of an enumerator.                                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |
 | WithInRange                          | Check if the index is valid within the collection's size.                                         |
-| LoopIn                               | Make the index is within the array length by setting the maxinum of (legnth - 1) or mininum of 0. |
-| MergeArrays                          | Merge multiple arrays into one array.                                                             |
-| MergeArrays2                         | Merge two array and return the new array.                                                         |
-| MergeList                            | Merge the two lists and return the new list.                                                      |
 | CopyBtyeArray                        | Copy byte array to another byte array memory space.                                               |
-| IsArrayEmpty                         | Check if the string array is empty.                                                               |
-| ListPopFront                         | Pop the first value from the list.                                                                |
-| ListPopBack                          | Pop the last value from the list.                                                                 |
-| FillSlot                             | Fill slots with initialize value type by length.                                                  |
-| RemoveEmptySlot                      | Remove the null value from a list/array.                                                          |
-| RemoveEmptySlotIncludeMissing        | Remove all the null value including missing reference in the list/array.                          |
 | IsNumberString                       | Check if the string is a number string.                                                           |
 | Parse                                | Parse `str` to integer, return `defaultValue` if failed.                                          |
 | Parse                                | Parse `str` to float, return `defaultValue` if failed.                                            |

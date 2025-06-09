@@ -8,6 +8,7 @@
  */
 using System.Collections.Generic;
 using UnityEngine;
+using JCSUnity;
 
 public class FT_Utility : MonoBehaviour
 {
@@ -21,6 +22,6 @@ public class FT_Utility : MonoBehaviour
 
     private void Awake()
     {
-        something = JCSUnity.JCS_Util.RemoveEmptySlot<SpriteRenderer>(something);
+        something = JCS_Array.RemoveEmpty(something);
     }
 }
