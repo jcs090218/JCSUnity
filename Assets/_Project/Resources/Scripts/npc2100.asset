@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab47c026913b03240ac5acab10521433, type: 3}
+  m_Name: npc2100
+  m_EditorClassIdentifier: 
+  Status: -1
+  mCenterSprite: {fileID: 21300000, guid: 799cc00ecb4e72a42a71fc2225d6215d, type: 3}
+  mLeftSprite: {fileID: 21300000, guid: bcaae22f1dcf34e429817838cbb0dc5d, type: 3}
+  mRightSprite: {fileID: 21300000, guid: 943da21c7b31b9941a2d28b9a869b6f2, type: 3}

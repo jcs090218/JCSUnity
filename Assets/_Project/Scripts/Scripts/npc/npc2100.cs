@@ -6,6 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using MyBox;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -14,11 +16,30 @@ namespace JCSUnity
     /// 
     /// Here show the basic usage of the dialogue script system.
     /// </summary>
+    [CreateAssetMenu(fileName = "npc2100", menuName = "Scriptable Objects/npc2100")]
     public class npc2100 : JCS_DialogueScript
     {
         /* Variables */
 
+        [Separator("Runtime Variables (npc2100)")]
+
+        [Tooltip("Sprite visualize at the center.")]
+        [SerializeField]
+        private Sprite mCenterSprite = null;
+
+        [Tooltip("Sprite visualize at the left.")]
+        [SerializeField]
+        private Sprite mLeftSprite = null;
+
+        [Tooltip("Sprite visualize at the right.")]
+        [SerializeField]
+        private Sprite mRightSprite = null;
+
         /* Setter & Getter */
+
+        public Sprite CenterSprite { get { return this.mCenterSprite; } }
+        public Sprite LeftSprite { get { return this.mLeftSprite; } }
+        public Sprite RightSprite { get { return this.mRightSprite; } }
 
         /* Functions */
 
