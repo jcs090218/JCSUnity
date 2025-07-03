@@ -25,11 +25,6 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_MixDamageTextPool mMixDamageTextPool = null;
 
-        [Tooltip("In Game Log System util.")]
-        [SerializeField]
-        [ReadOnly]
-        private JCS_IGLogSystem mIGLogSystem = null;
-
         [Separator("Initialize Variables (JCS_UtilManager)")]
 
         [Tooltip("Trasnparent sprite.")]
@@ -38,13 +33,10 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
+        public Sprite SpriteTransparent { get { return this.mSpriteTransparent; } }
+
         public void SetMixDamageTextPool(JCS_MixDamageTextPool tp) { this.mMixDamageTextPool = tp; }
         public JCS_MixDamageTextPool GetMixDamageTextPool() { return this.mMixDamageTextPool; }
-
-        public void SetIGLogSystem(JCS_IGLogSystem sys) { this.mIGLogSystem = sys; }
-        public JCS_IGLogSystem GetIGLogSystem() { return this.mIGLogSystem; }
-
-        public Sprite SpriteTransparent { get { return this.mSpriteTransparent; } }
 
         /* Functions */
 
