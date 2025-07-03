@@ -30,11 +30,6 @@ namespace JCSUnity
         [ReadOnly]
         private JCS_IGLogSystem mIGLogSystem = null;
 
-        [Tooltip("In Game Dialogue System.")]
-        [SerializeField]
-        [ReadOnly]
-        private JCS_DialogueSystem mDialogueSystem = null;
-
         [Separator("Initialize Variables (JCS_UtilManager)")]
 
         [Tooltip("Trasnparent sprite.")]
@@ -49,16 +44,13 @@ namespace JCSUnity
         public void SetIGLogSystem(JCS_IGLogSystem sys) { this.mIGLogSystem = sys; }
         public JCS_IGLogSystem GetIGLogSystem() { return this.mIGLogSystem; }
 
-        public void SetDiaglogueSystem(JCS_DialogueSystem ds) { this.mDialogueSystem = ds; }
-        public JCS_DialogueSystem GetDialogueSystem() { return this.mDialogueSystem; }
-
         public Sprite SpriteTransparent { get { return this.mSpriteTransparent; } }
 
         /* Functions */
 
         private void Awake()
         {
-            instance = this;   
+            instance = this;
         }
     }
 }
