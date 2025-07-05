@@ -26,3 +26,4 @@ Better version of scene manager.
 | NextSceneName        | Return the next scene name.             |
 | GetSceneNameByOption | Return the scene name by their options. |
 | IsSwitchingScene     | Check is loading the scene or not.      |
+| GetAllScenes         | Return a list of all scenes.            |
