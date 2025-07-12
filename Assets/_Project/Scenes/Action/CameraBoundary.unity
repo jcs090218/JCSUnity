@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 498945770}
   - component: {fileID: 498945771}
   m_Layer: 5
-  m_Name: JCS Describe Panel
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 1549593534}
   - component: {fileID: 1549593533}
   m_Layer: 5
-  m_Name: Please delete this description text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1479,12 +1479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "===========================================================\r\n* Something
-    you need to do before using this scene.\r\n----------------------------------------------------\r\n\r\n1.
-    `JCS_GameSetting->THIS_IS_GAME_SCENE` check or uncheck.\r\n\r\n2. [Audio Listener]
-    either on `Player` or on `Camera`.\r\n\t* Recommanded\r\n        -> if isnt a
-    game scene add [Aduio Listener] on `Camera`.\r\n        -> if is a game scene,
-    add [Aduio Listener] either on \"Player\" or on \"Camera\" is fine.\r\n"
+  m_Text: '# Camera Boundary'
 --- !u!222 &1549593534
 CanvasRenderer:
   m_ObjectHideFlags: 0
