@@ -12,7 +12,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Boundary definition.
+    /// The boundary definition.
     /// </summary>
     public class JCS_Boundary : MonoBehaviour
     {
@@ -39,7 +39,7 @@ namespace JCSUnity
 #endif
 
         /// <summary>
-        /// Bounds of this spawner; now is only a cube space.
+        /// The bounds of this boundary.
         /// </summary>
         public Bounds GetBounds()
         {

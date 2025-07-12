@@ -1,6 +1,6 @@
 # JCS_Camera
 
-Camera base class for JCSUnity.
+Camera based class.
 
 ## Variables
 
@@ -12,6 +12,7 @@ Camera base class for JCSUnity.
 | PositionOffset          | Offset the camera position from its' original position.            |
 | mTimeType               | Type of the delta time.                                            |
 | SmoothTrack             | Flag to check if using smooth track, otherwise hard track.         |
+| mBoundary               | The movement boundary.                                             |
 
 ## Functions
 

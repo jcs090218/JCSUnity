@@ -20,10 +20,6 @@ Basic camera for 2d Games.
 | ScrollRange_Mouse                  | Distance once you scroll with mouse.                          |
 | ScrollRange_Touch                  | Distance once you scroll with multi-touch.                    |
 | mScrollFriction                    | How fast it scroll. (Zoom In/Out)                             |
-| mMax_X_PositionInScene             | Maxinum this camera can go in x-axis.                         |
-| mMin_X_PositionInScene             | Mininum this camera can go in x-axis.                         |
-| mMax_Y_PositionInScene             | Maxinum this camera can go in y-axis.                         |
-| mMin_Y_PositionInScene             | ininum this camera can go in y-axis.                          |
 
 ## Functions
 
