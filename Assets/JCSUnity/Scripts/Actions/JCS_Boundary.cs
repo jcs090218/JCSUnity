@@ -34,7 +34,8 @@ namespace JCSUnity
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = mWireColor;
-            Gizmos.DrawWireCube(transform.position, transform.localScale);
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
         }
 #endif
 
@@ -43,7 +44,21 @@ namespace JCSUnity
         /// </summary>
         public Bounds GetBounds()
         {
-            return new Bounds(transform.position, transform.localScale);
+            Matrix4x4 matrix = transform.localToWorldMatrix;
+
+            // Transform each corner to world space
+            Vector3 worldCorner = matrix.MultiplyPoint3x4(JCS_Constants.CORNERS_CUBE[0]);
+
+            var bounds = new Bounds(worldCorner, Vector3.zero);
+
+            for (int index = 1; index < JCS_Constants.CORNERS_CUBE.Length; ++index)
+            {
+                worldCorner = matrix.MultiplyPoint3x4(JCS_Constants.CORNERS_CUBE[index]);
+
+                bounds.Encapsulate(worldCorner);
+            }
+
+            return bounds;
         }
     }
 }
