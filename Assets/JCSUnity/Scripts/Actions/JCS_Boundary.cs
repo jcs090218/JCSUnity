@@ -34,8 +34,8 @@ namespace JCSUnity
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = mWireColor;
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+            Bounds b = GetBounds();
+            Gizmos.DrawWireCube(b.center, b.size);
         }
 #endif
 
@@ -44,19 +44,21 @@ namespace JCSUnity
         /// </summary>
         public Bounds GetBounds()
         {
-            Matrix4x4 matrix = transform.localToWorldMatrix;
+            // Transform all corners into world space
+            Vector3 min = Vector3.positiveInfinity;
+            Vector3 max = Vector3.negativeInfinity;
 
-            // Transform each corner to world space
-            Vector3 worldCorner = matrix.MultiplyPoint3x4(JCS_Constants.CORNERS_CUBE[0]);
-
-            var bounds = new Bounds(worldCorner, Vector3.zero);
-
-            for (int index = 1; index < JCS_Constants.CORNERS_CUBE.Length; ++index)
+            foreach (Vector3 corner in JCS_Constants.CORNERS_CUBE)
             {
-                worldCorner = matrix.MultiplyPoint3x4(JCS_Constants.CORNERS_CUBE[index]);
+                // Scale, then rotate and translate
+                Vector3 worldCorner = transform.TransformPoint(corner);
 
-                bounds.Encapsulate(worldCorner);
+                min = Vector3.Min(min, worldCorner);
+                max = Vector3.Max(max, worldCorner);
             }
+
+            var bounds = new Bounds();
+            bounds.SetMinMax(min, max);
 
             return bounds;
         }
