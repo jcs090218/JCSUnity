@@ -305,6 +305,7 @@ MonoBehaviour:
   mPositionOffset: {x: 0, y: 2, z: -10}
   mTimeType: 0
   mSmoothTrack: 1
+  mBoundary: {fileID: 0}
   mTargetPosition: {x: 0, y: 0, z: 0}
   mSetToPlayerPositionAtStart: 1
   mResetVelocityToZeroWhileNotActive: 0
@@ -319,10 +320,6 @@ MonoBehaviour:
   mScrollRange_Mouse: 2
   mScrollRange_Touch: 1
   mScrollFriction: 0.6
-  mMax_X_PositionInScene: Infinity
-  mMin_X_PositionInScene: -Infinity
-  mMax_Y_PositionInScene: Infinity
-  mMin_Y_PositionInScene: -Infinity
 --- !u!124 &746281158
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1907,13 +1904,13 @@ MonoBehaviour:
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
-  mFade: 0
+  mShowMethod: 1
   mFadeFriction: 0.15
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}
 --- !u!114 &1413681460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1963,7 +1960,7 @@ Canvas:
   m_GameObject: {fileID: 1413681458}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 746281159}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

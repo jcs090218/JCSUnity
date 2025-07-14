@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/JCSUnity/Scenes/System/JCS_AppSkip.unity
     guid: 108ae7f86943bb248b2be397529ebdd1
   - enabled: 1
+    path: Assets/_Project/Scenes/System/FT_Quality.unity
+    guid: f6593afbe97e31d4792befffc23af412
+  - enabled: 1
+    path: Assets/_Project/Scenes/System/FT_Resizable.unity
+    guid: be4c2ec23b20bb449b1a0c85bc684b40
+  - enabled: 1
     path: Assets/_Project/Scenes/Sound/FT_Music.unity
     guid: 9f123df19b39c1446a2c82c64b0e693c
   - enabled: 1
     path: Assets/_Project/Scenes/System/FT_Screen.unity
     guid: d00dc40c9c1c8d94bb46b9d6baea2d93
-  - enabled: 1
-    path: Assets/_Project/Scenes/System/FT_Resizable.unity
-    guid: be4c2ec23b20bb449b1a0c85bc684b40
   - enabled: 1
     path: Assets/JCSUnity/Scenes/Demo/UI/JCS_UI.unity
     guid: ecc9dddb602ab8b4cac997a044d17085
