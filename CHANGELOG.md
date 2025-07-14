@@ -19,7 +19,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix(Effect): Handle pause in 3D shake ([`ec39496`](../../commit/ec394963cc6e06cf79b1fae085ab2536f4dec65e))
 * feat(Effect): Add more public hooks for transform tweener ([`782e626`](../../commit/782e62652e9d3f99bd0a09d49af0032dc9eead55))
 * refactor(Util): Split some array manipulation to to `JCS_Array` ([`a6419b8`](../../commit/a6419b876f2d41ef35aa9644d4c414caf89d9122))
-* feat: Add boundary class for camera ([`ba9c7fd`](../../commit/ba9c7fd2a82ec618d8df1bfa451331f1318a736b))
+* feat(Action): Add boundary class for camera ([`ba9c7fd`](../../commit/ba9c7fd2a82ec618d8df1bfa451331f1318a736b))
+* feat(UI): Add quality settings dropdown ([`8202d95`](../../commit/8202d95b110219ac56c27c7a2a9689535330eb4c))
 
 ## 3.1.0
 > Released Apr 11, 2025
