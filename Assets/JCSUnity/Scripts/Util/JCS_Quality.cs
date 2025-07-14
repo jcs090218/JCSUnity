@@ -51,14 +51,22 @@ namespace JCSUnity
         /// </summary>
         public static void SetLevel(string name)
         {
+            SetLevel(name, false);
+        }
+        public static void SetLevel(string name, bool applyExpensiveChanges)
+        {
             int level = ByName(name);
 
-            SetLevel(level);
+            SetLevel(level, applyExpensiveChanges);
         }
         // @compatible
         public static void SetLevel(int level)
         {
-            QualitySettings.SetQualityLevel(level);
+            SetLevel(level, false);
+        }
+        public static void SetLevel(int level, bool applyExpensiveChanges)
+        {
+            QualitySettings.SetQualityLevel(level, applyExpensiveChanges);
         }
 
         /// <summary>
