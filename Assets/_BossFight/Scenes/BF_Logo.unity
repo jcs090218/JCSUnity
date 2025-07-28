@@ -162,13 +162,13 @@ MonoBehaviour:
   mResizeUI: {fileID: 0}
   mDisplayOnAwake: 1
   mMainCanvas: 1
-  mFade: 0
+  mShowMethod: 1
   mFadeFriction: 0.15
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
-  mActiveSound: {fileID: 0}
-  mDeactiveSound: {fileID: 0}
+  mSoundOnShow: {fileID: 0}
+  mSoundOnHide: {fileID: 0}
 --- !u!114 &170838951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a88ee96a8132b46a0ef0fe762d1b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mNextLevel: BF_Lobby
+  mSceneName: BF_Lobby
   mReloadScene: 0
   mDelayTime: 1.5
   mTimeType: 0

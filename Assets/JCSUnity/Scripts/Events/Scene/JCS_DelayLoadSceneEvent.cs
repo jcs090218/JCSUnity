@@ -22,7 +22,8 @@ namespace JCSUnity
 
         [Tooltip("Next scene to load; if empy, load the next scene instead.")]
         [SerializeField]
-        private string mNextLevel = "";
+        [Scene]
+        private string mSceneName = "";
 
         [Tooltip("Reload the current scene, and ignore the target scene name.")]
         [SerializeField]
@@ -41,7 +42,7 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public string NextLevel { get { return this.mNextLevel; } set { this.mNextLevel = value; } }
+        public string SceneName { get { return this.mSceneName; } set { this.mSceneName = value; } }
         public float DelayTime { get { return this.mDelayTime; } set { this.mDelayTime = value; } }
         public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
@@ -62,7 +63,7 @@ namespace JCSUnity
 
             if (mDelayTime < mDelayTimer)
             {
-                string sceneName = JCS_SceneManager.GetSceneNameByOption(mNextLevel, mReloadScene);
+                string sceneName = JCS_SceneManager.GetSceneNameByOption(mSceneName, mReloadScene);
 
                 JCS_SceneManager.instance.LoadScene(sceneName);
             }

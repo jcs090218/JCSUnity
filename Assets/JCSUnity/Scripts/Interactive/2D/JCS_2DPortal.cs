@@ -40,7 +40,8 @@ namespace JCSUnity
 
         [Tooltip("Name of the scene.")]
         [SerializeField]
-        private string mSceneName = "JCS_AppCloseSimulate";
+        [Scene]
+        private string mSceneName = "";
 
         [Tooltip("Label of the portal.")]
         [SerializeField]

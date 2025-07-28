@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using JCSUnity;
+using MyBox;
 
 /// <summary>
 /// 
@@ -18,6 +19,7 @@ public class BF_SelectLevelButton : JCS_Button
 
     [Tooltip("Name of the scene you want to load for game.")]
     [SerializeField]
+    [Scene]
     private string mSceneName = "";
 
     /* Setter & Getter */

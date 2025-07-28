@@ -36,7 +36,8 @@ namespace JCSUnity
 
         [Tooltip("Scene name when portal load this scene.")]
         [SerializeField]
-        private string mSceneName = "JCS_Demo";
+        [Scene]
+        private string mSceneName = "";
 
         [Header("- Transfer Portal")]
 

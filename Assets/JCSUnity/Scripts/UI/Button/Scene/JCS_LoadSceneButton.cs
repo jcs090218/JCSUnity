@@ -9,7 +9,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MyBox;
-using Unity.Hierarchy;
 
 namespace JCSUnity
 {
@@ -33,6 +32,7 @@ namespace JCSUnity
 
         [Tooltip("Scene name you want to load the scene; if empy, load the next scene instead.")]
         [SerializeField]
+        [Scene]
         private string mSceneName = "";
 
         [Tooltip("Reload the current scene, and ignore the target scene name.")]
