@@ -32,7 +32,7 @@ public class RC_EffectItem : JCS_Item
         // disable auto detect
         mEffectObject.AutoEffect = false;
 
-        pickedCallback = AfterPicked;
+        onPicked = AfterPicked;
     }
 
     private void AfterPicked(Collider other)

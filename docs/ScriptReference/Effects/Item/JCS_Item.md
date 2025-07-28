@@ -6,6 +6,7 @@ Base class for all the item subclasses.
 
 | Name                                      | Description                                                |
 |:------------------------------------------|:-----------------------------------------------------------|
+| onPicked                                  | Execution after the item is picked.                        |
 | mMustBeActivePlayer                       | Must be an active player in order to pick this item up.    |
 | mPickKey                                  | Key to pick this item up.                                  |
 | mPickByMouseDown                          | Pick up the item by mouse.                                 |

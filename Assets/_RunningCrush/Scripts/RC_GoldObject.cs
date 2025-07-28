@@ -27,7 +27,7 @@ public class RC_GoldObject : JCS_CashObject
         // set to auto pick auto matically.
         mAutoPickColliderTouched = true;
 
-        pickedCallback = AfterPicked;
+        onPicked = AfterPicked;
     }
 
     private void AfterPicked(Collider other)
