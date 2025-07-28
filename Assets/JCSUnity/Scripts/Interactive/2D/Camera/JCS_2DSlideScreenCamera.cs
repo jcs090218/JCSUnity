@@ -8,6 +8,7 @@
  */
 using UnityEngine;
 using MyBox;
+using System;
 
 namespace JCSUnity
 {
@@ -18,16 +19,13 @@ namespace JCSUnity
     /// </summary>
     public class JCS_2DSlideScreenCamera : MonoBehaviour
     {
-        public delegate void AfterSceneSwitchedCallback(Vector2 page);
-        public delegate void AfterSwipeCallback(Vector2 page);
-
         /* Variables */
 
         // Function call after the scene changed
-        public AfterSceneSwitchedCallback afterSceneSwitched = null;
+        public Action<Vector2> afterSceneSwitched = null;
 
         // Function call after the user has swiped
-        public AfterSwipeCallback afterSwiped = null;
+        public Action<Vector2> afterSwiped = null;
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_2DSlideScreenCamera)")]

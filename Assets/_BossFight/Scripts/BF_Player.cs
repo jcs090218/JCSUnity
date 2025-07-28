@@ -24,7 +24,8 @@ public class BF_Player : JCS_2DSideScrollerPlayer
 
     private JCS_SequenceShootAction mSequenceShootAction = null;
 
-    [SerializeField] [Range(0, 100)]
+    [SerializeField]
+    [Range(0, 100)]
     private float mManaCastPerShoot = 1;
 
     /* Setter & Getter */
