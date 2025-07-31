@@ -44,7 +44,7 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
     /// </summary>
     private void SpawnPlayers()
     {
-        var bfgs = BF_GameSettings.instance;
+        var bfgs = BF_GameSettings.FirstInstance();
 
         BF_Player[] bfPlayers = bfgs.CHARACTERS_IN_GAME;
 
@@ -74,7 +74,7 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
 
             // Set player in the order layer (scene layer).
             var solo = bfp.GetComponent<JCS_OrderLayerObject>();
-            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
+            JCS_2DDynamicSceneManager.FirstInstance().SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
         }
     }
 }

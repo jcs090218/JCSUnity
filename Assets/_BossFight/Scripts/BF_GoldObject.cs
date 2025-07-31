@@ -42,6 +42,6 @@ public class BF_GoldObject : JCS_CashObject
     /// <param name="other"> collider detection if needed. </param>
     public void AfterPicked(Collider other)
     {
-        BF_AppSettings.instance.APP_DATA.Cash += mCashValue;
+        BF_AppSettings.FirstInstance().APP_DATA.Cash += mCashValue;
     }
 }

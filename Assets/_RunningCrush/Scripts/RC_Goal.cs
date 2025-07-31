@@ -22,9 +22,9 @@ public class RC_Goal : MonoBehaviour
         if (p != null)
         {
             // reach the goal! game is over.
-            RC_GameSettings.instance.GAME_OVER = true;
+            RC_GameSettings.FirstInstance().GAME_OVER = true;
 
-            RC_GameManager.instance.DoExitGame();
+            RC_GameManager.FirstInstance().DoExitGame();
         }
     }
 }

@@ -98,7 +98,7 @@ public class BF_LiveObject : JCS_2DLiveObject
 
         if (igls != null)
         {
-            string expMsg = BF_MessageSettings.instance.EXP_BASE + EXP.ToString();
+            string expMsg = BF_MessageSettings.FirstInstance().EXP_BASE + EXP.ToString();
 
             igls.SendLogMessage(expMsg);
         }
@@ -124,7 +124,7 @@ public class BF_LiveObject : JCS_2DLiveObject
 
         LiveObjectAnimator.StopAnimationInFrame();
 
-        spriteRenderer.color = BF_GameSettings.instance.FREEZE_COLOR;
+        spriteRenderer.color = BF_GameSettings.FirstInstance().FREEZE_COLOR;
 
         mFreezeTime = freezeTime;
 
@@ -158,7 +158,7 @@ public class BF_LiveObject : JCS_2DLiveObject
         if (!mCanBurn)
             return;
 
-        spriteRenderer.color = BF_GameSettings.instance.BURN_COLOR;
+        spriteRenderer.color = BF_GameSettings.FirstInstance().BURN_COLOR;
 
         mBurnTime = burnTime;
 

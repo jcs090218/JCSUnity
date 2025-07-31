@@ -77,6 +77,8 @@ namespace JCSUnity
         /// <param name="player"> Player that do the portal event. </param>
         public void DoPortal(JCS_3DPortalType type, JCS_Player player)
         {
+            var sm = JCS_SceneManager.FirstInstance();
+
             switch (type)
             {
                 case JCS_3DPortalType.SCENE_PORTAL:
@@ -84,12 +86,12 @@ namespace JCSUnity
                         if (!mAutoTrigger)
                         {
                             if (JCS_Input.GetKey(mKeyToTrigger))
-                                JCS_SceneManager.instance.LoadScene(mSceneName);
+                                sm.LoadScene(mSceneName);
                         }
                         else
                         {
                             // auto do the action
-                            JCS_SceneManager.instance.LoadScene(mSceneName);
+                            sm.LoadScene(mSceneName);
                         }
                     }
                     break;

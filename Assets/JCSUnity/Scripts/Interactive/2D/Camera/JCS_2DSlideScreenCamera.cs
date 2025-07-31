@@ -355,7 +355,7 @@ namespace JCSUnity
         /// </summary>
         private void DoMobileSwipe()
         {
-            var ti = JCS_TouchInput.instance;
+            var ti = JCS_TouchInput.FirstInstance();
             if (ti == null)
                 return;
 
@@ -401,7 +401,7 @@ namespace JCSUnity
             if (mInteractableSwipe && JCS_Input.GetMouseButtonUp(JCS_MouseButton.LEFT))
             {
                 Vector3 posDiff = ti.DragDistance;
-                JCS_ScreenSizef vs = JCS_ScreenSettings.instance.VisibleScreenSize();
+                JCS_ScreenSizef vs = JCS_ScreenSettings.FirstInstance().VisibleScreenSize();
                 var target_vs = new JCS_ScreenSizef(vs.width * mSwipeArea.x, vs.height * mSwipeArea.y);
 
                 var speedX = ti.DragDistance.x / ti.TouchTime;
@@ -442,7 +442,7 @@ namespace JCSUnity
         /// </summary>
         private void PlaySwitchSceneSound()
         {
-            JCS_SoundPlayer sp = JCS_SoundManager.instance.GlobalSoundPlayer();
+            JCS_SoundPlayer sp = JCS_SoundManager.FirstInstance().GlobalSoundPlayer();
             sp.PlayOneShot(this.mSwitchSceneSound);
         }
 
@@ -457,7 +457,7 @@ namespace JCSUnity
             float screenWidth = 0.0f;
             float screenHeight = 0.0f;
 
-            var screenS = JCS_ScreenSettings.instance;
+            var screenS = JCS_ScreenSettings.FirstInstance();
             var cam = JCS_Camera.main;
 
             RectTransform slidePanel = mPanelHolder.slidePanels[0];

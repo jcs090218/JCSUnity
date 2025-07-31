@@ -25,12 +25,14 @@ public class FT_BGM : MonoBehaviour
 
     private void Update()
     {
+        var sm = JCS_SoundManager.FirstInstance();
+
         if (JCS_Input.GetKeyDown(KeyCode.A))
-            JCS_SoundManager.instance.SwitchBGM(mBGM_01, 0.5f, 0.5f);
+            sm.SwitchBGM(mBGM_01, 0.5f, 0.5f);
         if (JCS_Input.GetKeyDown(KeyCode.S))
-            JCS_SoundManager.instance.SwitchBGM(mBGM_02, 0.5f, 0.5f);
+            sm.SwitchBGM(mBGM_02, 0.5f, 0.5f);
 
         if (JCS_Input.GetKeyDown(KeyCode.D))
-            JCS_SoundManager.instance.PlayOneShotBGM(mOneShotBGM, mOnStackBGM);
+            sm.PlayOneShotBGM(mOneShotBGM, mOnStackBGM);
     }
 }

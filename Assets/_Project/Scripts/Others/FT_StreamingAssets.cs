@@ -29,7 +29,7 @@ public class FT_StreamingAssets : MonoBehaviour
 
     private void Update()
     {
-        var sa = JCS_StreamingAssets.instance;
+        var sa = JCS_StreamingAssets.FirstInstance();
 
         byte[] data = null;
 

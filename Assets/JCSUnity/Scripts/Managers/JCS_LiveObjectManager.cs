@@ -22,27 +22,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
-        }
-
-        private void Start()
-        {
-            SetSpecificGameTypeGameManager();
-        }
-
-        /// <summary>
-        /// Base on different type of game add different type of manager.
-        /// </summary>
-        private void SetSpecificGameTypeGameManager()
-        {
-            var gs = JCS_GameSettings.instance;
-
-            switch (gs.GAME_TYPE)
-            {
-                case JCS_GameType.GAME_2D:
-                    this.gameObject.AddComponent<JCS_2DLiveObjectManager>();
-                    break;
-            }
+            RegisterInstance(this);
         }
     }
 }

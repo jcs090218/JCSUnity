@@ -28,6 +28,6 @@ public class RC_UIManager : JCS_Manager<RC_UIManager>
 
     private void Awake()
     {
-        instance = this;
+        RegisterInstance(this);
     }
 }

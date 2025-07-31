@@ -23,7 +23,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 
     private void Awake()
     {
-        instance = this;
+        RegisterInstance(this);
     }
 
     private void Start()
@@ -40,9 +40,9 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 
         if (!mDoIgnoreOnce)
         {
-            var pm = JCS_PlayerManager.instance;
+            var pm = JCS_PlayerManager.FirstInstance();
 
-            if (pm.GetPlayerList().Count == RC_GameSettings.instance.PLAYER_IN_GAME)
+            if (pm.GetPlayerList().Count == RC_GameSettings.FirstInstance().PLAYER_IN_GAME)
             {
                 // ignore player once.
                 pm.DoIgnorePlayersToEachOthers();
@@ -64,7 +64,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
     /// </summary>
     public void DoExitGame()
     {
-        var uim = RC_UIManager.instance;
+        var uim = RC_UIManager.FirstInstance();
 
         if (uim.EXIT_PANEL == null)
         {
@@ -80,9 +80,9 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
     /// </summary>
     private void SpawnPlayer()
     {
-        var gs = RC_GameSettings.instance;
+        var gs = RC_GameSettings.FirstInstance();
 
-        for (int index = 0; index < RC_GameSettings.instance.PLAYER_IN_GAME; ++index)
+        for (int index = 0; index < gs.PLAYER_IN_GAME; ++index)
         {
             if (gs.PLAYERS[index] == null)
             {
@@ -98,7 +98,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
             var olo = rcp.GetComponent<JCS_OrderLayerObject>();
             if (olo != null)
             {
-                var dsm = JCS_2DDynamicSceneManager.instance;
+                var dsm = JCS_2DDynamicSceneManager.FirstInstance();
                 dsm.SetObjectParentToOrderLayerByOrderLayerIndex(
                     ref olo,
                     ORDER_LAYER_FOR_ALL_PLAYER);

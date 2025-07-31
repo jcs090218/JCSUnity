@@ -139,7 +139,7 @@ public class BF_GameManager : MonoBehaviour
         GAME_OVER_PANEL.Active();
 
         // Destroy all the live object in the scene.
-        JCS_2DLiveObjectManager.instance.DestroyAllLiveObject();
+        JCS_2DLiveObjectManager.FirstInstance().DestroyAllLiveObject();
     }
 
     private void CheckLevelUp()

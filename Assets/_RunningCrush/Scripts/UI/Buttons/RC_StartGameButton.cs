@@ -35,7 +35,7 @@ public class RC_StartGameButton : MonoBehaviour
 
     private void Update()
     {
-        if (RC_GameSettings.instance.READY_TO_START_GAME)
+        if (RC_GameSettings.FirstInstance().READY_TO_START_GAME)
         {
             mImage.enabled = true;
             JCS_Util.SetActiveToAllChildren(this.transform, true);

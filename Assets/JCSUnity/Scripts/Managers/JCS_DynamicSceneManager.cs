@@ -22,25 +22,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            instance = this;
-
-            SetSpecificGameTypeDynamicSceneManager();
-        }
-
-        /// <summary>
-        /// Base on different type of game use different 
-        /// type of manager.
-        /// </summary>
-        private void SetSpecificGameTypeDynamicSceneManager()
-        {
-            var gs = JCS_GameSettings.instance;
-
-            switch (gs.GAME_TYPE)
-            {
-                case JCS_GameType.GAME_2D:
-                    this.gameObject.AddComponent<JCS_2DDynamicSceneManager>();
-                    break;
-            }
+            RegisterInstance(this);
         }
     }
 }

@@ -98,7 +98,7 @@ set to thie scene layer.")]
 
 
         var gm = BF_GameManager.instance;
-        var gs = BF_GameSettings.instance;
+        var gs = BF_GameSettings.FirstInstance();
 
         for (int count = 0; count < mEnemyPerWave; ++count)
         {
@@ -118,7 +118,7 @@ set to thie scene layer.")]
 
             // Set live object in the scene layer.
             var solo = bf_liveObject.GetComponent<JCS_OrderLayerObject>();
-            JCS_2DDynamicSceneManager.instance.SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
+            JCS_2DDynamicSceneManager.FirstInstance().SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
         }
     }
 

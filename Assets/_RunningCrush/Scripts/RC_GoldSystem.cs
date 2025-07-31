@@ -32,7 +32,7 @@ public class RC_GoldSystem : MonoBehaviour
     private void Start()
     {
         // get the gold from game data.
-        mCurrentGold = RC_AppSettings.instance.APP_DATA.Gold;
+        mCurrentGold = RC_AppSettings.FirstInstance().APP_DATA.Gold;
     }
 
     private void Update()

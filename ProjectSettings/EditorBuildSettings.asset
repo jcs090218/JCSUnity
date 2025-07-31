@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/JCSUnity/Scenes/System/JCS_AppSkip.unity
     guid: 108ae7f86943bb248b2be397529ebdd1
   - enabled: 1
+    path: Assets/_Project/Scenes/System/FT_Instance 0.unity
+    guid: fafda6258a4825447a4fd8fcecb7b259
+  - enabled: 1
+    path: Assets/_Project/Scenes/System/FT_Instance 1.unity
+    guid: d5d1cc86e9c67d949b209c6ccd1e3ae4
+  - enabled: 1
     path: Assets/_Project/Scenes/System/FT_Quality.unity
     guid: f6593afbe97e31d4792befffc23af412
   - enabled: 1

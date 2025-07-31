@@ -12,7 +12,7 @@ namespace JCSUnity
     /// <summary>
     /// Type of the game.
     /// </summary>
-    public enum JCS_GameType
+    public enum JCS_GameTypes
     {
         GAME_2D,
         GAME_25D,

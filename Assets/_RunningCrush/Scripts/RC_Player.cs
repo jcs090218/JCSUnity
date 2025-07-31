@@ -109,7 +109,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         base.Start();
 
         // load the gold information from game data.
-        mCurrentGold = RC_AppSettings.instance.APP_DATA.Gold;
+        mCurrentGold = RC_AppSettings.FirstInstance().APP_DATA.Gold;
     }
 
     protected override void Update()
@@ -207,11 +207,11 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
     private void ProcessInput()
     {
-        if (RC_GameSettings.instance.GAME_OVER)
+        if (RC_GameSettings.FirstInstance().GAME_OVER)
             return;
 
         // process cross platform input.
-        switch (JCS_AppManager.instance.PlatformType)
+        switch (JCS_AppManager.FirstInstance().PlatformType)
         {
             case JCS_PlatformType.PC:
                 PCInput();
@@ -271,7 +271,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         MoveRight();
 
         if (JCS_Input.GetKeyDown(KeyCode.P))
-            JCS_SceneManager.instance.LoadScene("RC_LogoScene");
+            JCS_SceneManager.FirstInstance().LoadScene("RC_LogoScene");
 
     }
     private void MobileInput()
@@ -281,7 +281,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     private void DoIsDead()
     {
         // if is game over no need to check.
-        if (RC_GameSettings.instance.GAME_OVER)
+        if (RC_GameSettings.FirstInstance().GAME_OVER)
             return;
 
         if (!mIsDead)
@@ -294,7 +294,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
                 Die();
 
-                JCS_DynamicScene ds = JCS_SceneManager.instance.GetDynamicScene();
+                JCS_DynamicScene ds = JCS_SceneManager.FirstInstance().GetDynamicScene();
                 JCS_3DShakeEffect se = ds.GetComponent<JCS_3DShakeEffect>();
 
                 // shake once! if player is dead
@@ -359,7 +359,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     }
     private void WinLose()
     {
-        if (!RC_GameSettings.instance.GAME_OVER)
+        if (!RC_GameSettings.FirstInstance().GAME_OVER)
             return;
 
         // the winning player does not need to prone.
@@ -383,7 +383,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             return;
 
         Vector3 newPos = this.transform.position;
-        newPos += RC_GameSettings.instance.LIQUIDBAR_OFFSET;
+        newPos += RC_GameSettings.FirstInstance().LIQUIDBAR_OFFSET;
         mLiquidBar.transform.position = newPos;
     }
 }
