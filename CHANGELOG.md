@@ -21,6 +21,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * refactor(Util): Split some array manipulation to to `JCS_Array` ([`a6419b8`](../../commit/a6419b876f2d41ef35aa9644d4c414caf89d9122))
 * feat(Action): Add boundary class for camera ([`ba9c7fd`](../../commit/ba9c7fd2a82ec618d8df1bfa451331f1318a736b))
 * feat(UI): Add quality settings dropdown ([`8202d95`](../../commit/8202d95b110219ac56c27c7a2a9689535330eb4c))
+* feat(Mngr): Extend `Instance` interface ([`f523fca`](../../commit/f523fcae52915077c6052e19b6c20f57f9c0eb23))
 
 ## 3.1.0
 > Released Apr 11, 2025
