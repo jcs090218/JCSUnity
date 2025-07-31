@@ -1,0 +1,12 @@
+<h1 id="jcs_instanceold">JCS_InstanceOld</h1><p>Singleton instance that keep the old one and delete the new one.<h2 id="functions">Functions</h2><table><thead><tr><th id="name" style="text-align:left">Name<th id="description" style="text-align:left">Description<tbody><tr><td style="text-align:left">CheckInstance<td style="text-align:left">Force the setting object singleton.<tr><td style="text-align:left">TransferData<td style="text-align:left">Transfter data through one scene to another scene.</table><h3 id="🏛️-example">🏛️ Example</h3><p>See <code>Example.cs</code>:<pre class="cs language-cs"><code class="hljs cs language-cs">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ExampleNew</span> : <span class="hljs-title">JCS_InstanceNew</span>&lt;<span class="hljs-title">Example</span>&gt;
+  {
+      <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span> (<span class="hljs-params"></span>)</span>
+      {
+          CheckInstance(<span class="hljs-keyword">this</span>);
+      }
+
+      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TransferData</span>(<span class="hljs-params">ExampleNew _old, ExampleNew _new</span>)</span>
+      {
+          <span class="hljs-comment">// ..</span>
+      }
+  }</code></pre>
