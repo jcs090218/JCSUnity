@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 3.1.1 (Unreleased)
+## 4.0.1 (Unreleased)
 > Released N/A
+
+* N/A
+
+## 4.0.0
+> Released Aug 01, 2025
 
 * perf(UI): Improve slider components' performance ([`5665a48`](../../commit/5665a48ea7db8373739c4acb992e6ffdc02bfacb))
 * feat(UI): Add new component `JCS_DropdownScreenResolution` ([`0137d70`](../../commit/0137d70e890ed6bae8e5859ea0cfec4ddb51d2e8))
