@@ -41,12 +41,12 @@ public class BF_Player : JCS_2DSideScrollerPlayer
     {
         base.Start();
 
-        mSequenceShootAction = this.GetComponent<JCS_SequenceShootAction>();
+        mSequenceShootAction = GetComponent<JCS_SequenceShootAction>();
         // set the call back
         if (mSequenceShootAction != null)
             mSequenceShootAction.SetShootCallback(ShootActionFunc);
 
-        mCursorShootAction = this.GetComponent<JCS_2DCursorShootAction>();
+        mCursorShootAction = GetComponent<JCS_2DCursorShootAction>();
         // set the call back
         if (mCursorShootAction != null)
         {
@@ -55,11 +55,12 @@ public class BF_Player : JCS_2DSideScrollerPlayer
         }
 
         // turn off can damage if is player
-        JCS_2DLiveObject obj = this.GetComponent<JCS_2DLiveObject>();
+        var obj = GetComponent<JCS_2DLiveObject>();
+
         if (obj != null)
         {
             // this object is player, dont damage him.
-            obj.CanDamage = false;
+            obj.canDamage = false;
         }
 
     }

@@ -56,13 +56,13 @@ public class BF_RainFaller : MonoBehaviour
 
     private void Awake()
     {
-        mShootAction = this.GetComponent<JCS_ShootAction>();
-        mBFPlayer = this.GetComponent<BF_Player>();
+        mShootAction = GetComponent<JCS_ShootAction>();
+        mBFPlayer = GetComponent<BF_Player>();
     }
 
     private void Start()
     {
-        switch (mBFPlayer.Face)
+        switch (mBFPlayer.face)
         {
             case JCS_2DFaceType.FACE_LEFT:
                 mShootAngle = 90;
@@ -83,9 +83,10 @@ public class BF_RainFaller : MonoBehaviour
         if (!mCanShoot)
             return;
 
-        for (int count = 0; count < mShootAction.ShootCount; ++count)
+        for (int count = 0; count < mShootAction.shootCount; ++count)
         {
             JCS_Bullet bullet = mShootAction.Shoot();
+
             if (bullet != null)
             {
                 bullet.transform.eulerAngles = new Vector3(0, 0, mShootAngle);

@@ -33,7 +33,7 @@ public class RC_EffectObject : MonoBehaviour
 
     /* Setter & Getter */
 
-    public bool AutoEffect { get { return this.mAutoEffect; } set { this.mAutoEffect = value; } }
+    public bool autoEffect { get { return mAutoEffect; } set { mAutoEffect = value; } }
 
     /* Functions */
 

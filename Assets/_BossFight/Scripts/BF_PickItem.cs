@@ -37,13 +37,13 @@ public class BF_PickItem : JCS_Item
         SetPickMode(this);
 
         // set the picking collider
-        PickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
+        pickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
 
         onPicked = AfterPicked;
 
         // try to get the optional variables.
         if (mEffectPickItem == null)
-            mEffectPickItem = this.GetComponent<BF_EffectPickItem>();
+            mEffectPickItem = GetComponent<BF_EffectPickItem>();
     }
 
     /// <summary>
@@ -68,14 +68,14 @@ public class BF_PickItem : JCS_Item
         if (am.IsPC())
         {
             // pc version will have to pick by mouse
-            item.PickByMouseDown = true;
+            item.pickByMouseDown = true;
         }
 
         if (am.IsMobile())
         {
             // set to true so when the item hit the ground, 
             // pick event will be activate.
-            item.AutoPickWhileCan = true;
+            item.autoPickWhileCan = true;
         }
     }
 }

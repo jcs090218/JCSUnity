@@ -108,7 +108,7 @@ public class RC_WebcamHandler : MonoBehaviour
             return;
         }
 
-        RectTransform appRectTransform = JCS_Canvas.GuessCanvas().AppRect;
+        RectTransform appRectTransform = JCS_Canvas.GuessCanvas().appRect;
         Vector2 appRect = appRectTransform.sizeDelta;
 
         Vector3 newPosButton = mRectTransform.localPosition;

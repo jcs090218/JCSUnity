@@ -55,7 +55,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 #if UNITY_EDITOR
     private void Test()
     {
-
+        // ..
     }
 #endif
 
@@ -93,7 +93,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
             var rcp = (RC_Player)JCS_Util.Instantiate(gs.PLAYERS[index]);
 
             // set control index
-            rcp.ControlIndex = index;
+            rcp.controlIndex = index;
 
             var olo = rcp.GetComponent<JCS_OrderLayerObject>();
             if (olo != null)

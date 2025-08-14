@@ -60,9 +60,9 @@ set to thie scene layer.")]
 
     /* Setter & Getter */
 
-    public Transform SpawnTransform { get { return this.mSpawnTransform; } set { this.mSpawnTransform = value; } }
-    public int EnemyPerWave { get { return this.mEnemyPerWave; } set { this.mEnemyPerWave = value; } }
-    public int CurrentSpawnIndex { get { return this.mCurrentSpawnIndex; } }
+    public Transform spawnTransform { get { return mSpawnTransform; } set { mSpawnTransform = value; } }
+    public int enemyPerWave { get { return mEnemyPerWave; } set { mEnemyPerWave = value; } }
+    public int currentSpawnIndex { get { return mCurrentSpawnIndex; } }
 
     /* Functions */
 
@@ -71,7 +71,7 @@ set to thie scene layer.")]
         // if nothing assigned then set itself 
         // as the spawn position.
         if (mSpawnTransform == null)
-            mSpawnTransform = this.transform;
+            mSpawnTransform = transform;
     }
 
     private void Update()
@@ -90,7 +90,7 @@ set to thie scene layer.")]
     public void SpawnAWave(int spawnIndex)
     {
         // if the enemy we assign is null, will cause errors.
-        if (this.mLevelEnemy[spawnIndex] == null)
+        if (mLevelEnemy[spawnIndex] == null)
         {
             Debug.Log("Make sure all the enemy in handler are assigned");
             return;
@@ -113,8 +113,8 @@ set to thie scene layer.")]
             ++gm.MOB_CURRENT_IN_SCENE;
 
             var bf_liveObject = (BF_LiveObject)JCS_Util.Instantiate(
-                this.mLevelEnemy[spawnIndex],
-                this.mSpawnTransform.position);
+                mLevelEnemy[spawnIndex],
+                mSpawnTransform.position);
 
             // Set live object in the scene layer.
             var solo = bf_liveObject.GetComponent<JCS_OrderLayerObject>();

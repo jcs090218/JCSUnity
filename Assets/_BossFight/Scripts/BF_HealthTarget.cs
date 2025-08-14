@@ -24,7 +24,7 @@ public class BF_HealthTarget : MonoBehaviour
 
     /* Setter & Getter */
     
-    public BF_LiveObject LiveObject { get { return this.mLiveObject; } }
+    public BF_LiveObject liveObject { get { return this.mLiveObject; } }
 
     /* Functions */
 
@@ -38,8 +38,8 @@ public class BF_HealthTarget : MonoBehaviour
         mLiquidBarHandler = BF_GameManager.instance.HEALTH_LIQUIDBAR;
 
         // set the info.
-        mLiquidBarHandler.AttachInfo(mLiveObject.HPInfo);
+        mLiquidBarHandler.AttachInfo(mLiveObject.hpInfo);
 
-        mLiveObject.IsPlayer = true;
+        mLiveObject.isPlayer = true;
     }
 }

@@ -31,8 +31,8 @@ public class RC_ShopPageHandler : MonoBehaviour
 
     /* Setter & Getter */
 
-    private int MaxVeticalPage { get { return this.mMaxVerticalPage; } }
-    private int MinVerticalPage { get { return this.mMinVerticalPage; } }
+    private int maxVeticalPage { get { return mMaxVerticalPage; } }
+    private int minVerticalPage { get { return mMinVerticalPage; } }
 
     /* Functions */
 

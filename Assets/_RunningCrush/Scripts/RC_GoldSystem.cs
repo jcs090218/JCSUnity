@@ -21,8 +21,9 @@ public class RC_GoldSystem : MonoBehaviour
 
     /* Setter & Getter */
 
+    public int GetCurrentGold() { return mCurrentGold; }
+
     /* Functions */
-    public int GetCurrentGold() { return this.mCurrentGold; }
 
     private void Awake()
     {
@@ -32,7 +33,7 @@ public class RC_GoldSystem : MonoBehaviour
     private void Start()
     {
         // get the gold from game data.
-        mCurrentGold = RC_AppSettings.FirstInstance().APP_DATA.Gold;
+        mCurrentGold = RC_AppSettings.FirstInstance().APP_DATA.gold;
     }
 
     private void Update()

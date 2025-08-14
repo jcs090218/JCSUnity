@@ -73,7 +73,7 @@ namespace JCSUnity
 
         public Transform Target { get { return this.mTarget; } set { this.mTarget = value; } }
         public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
-        public JCS_TimeType DeltaTimeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
 
         /* Functions */
 

@@ -84,7 +84,7 @@ public class RC_GameSettings : JCS_Settings<RC_GameSettings>
                 continue;
             }
 
-            btn.SceneName = LEVEL_SELECTED_NAME;
+            btn.sceneName = LEVEL_SELECTED_NAME;
         }
     }
 

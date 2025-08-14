@@ -17,9 +17,9 @@ public class RC_AppData : JCS_XMLData
 {
     /* Variables */
 
-    public string Name { get; set; }        // name of the player
-    public int Gold { get; set; }           // cash in the game
-    public int[] ItemNo { get; set; }       // Array of item unlocked.
+    public string name { get; set; }        // name of the player
+    public int gold { get; set; }           // cash in the game
+    public int[] itemNo { get; set; }       // Array of item unlocked.
 
     /* Setter & Getter */
 

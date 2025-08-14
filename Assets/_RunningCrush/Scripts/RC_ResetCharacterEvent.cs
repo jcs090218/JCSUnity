@@ -18,6 +18,6 @@ public class RC_ResetCharacterEvent : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        
+        // ..
     }
 }

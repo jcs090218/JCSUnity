@@ -112,7 +112,7 @@ namespace JCSUnity
         public float touchDistanceDelta { get { return this.mTouchDistanceDelta; } }
         public int detectTouchCount { get { return this.mDetectTouchCount; } set { this.mDetectTouchCount = value; } }
 #else
-        public JCS_MouseButton MouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
+        public JCS_MouseButton mouseType { get { return this.mMouseType; } set { this.mMouseType = value; } }
 #endif
 
         /* Functions */

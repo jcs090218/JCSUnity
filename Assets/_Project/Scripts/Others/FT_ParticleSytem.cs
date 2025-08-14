@@ -27,7 +27,7 @@ public class FT_ParticleSytem : MonoBehaviour
 
     private void Start()
     {
-        this.mParticle.transform.SetParent(this.transform);
+        mParticle.transform.SetParent(transform);
 
         mParticles = mParticleSystem.GetParticles();
     }
@@ -36,27 +36,27 @@ public class FT_ParticleSytem : MonoBehaviour
     {
         if (JCS_Input.GetKeyDown(KeyCode.G))
         {
-            JCS_TransformTweener masterTweener = mParticle.GetComponent<JCS_TransformTweener>();
-            JCS_TowardTarget masterTt = mParticle.GetComponent<JCS_TowardTarget>();
+            var masterTweener = mParticle.GetComponent<JCS_TransformTweener>();
+            var masterTt = mParticle.GetComponent<JCS_TowardTarget>();
 
             for (int index = 0; index < mParticles.length; ++index)
             {
-                JCS_TransformTweener tweener = mParticles.at(index).GetComponent<JCS_TransformTweener>();
+                var tweener = mParticles.at(index).GetComponent<JCS_TransformTweener>();
 
-                tweener.EasingX = masterTweener.EasingX;
-                tweener.EasingY = masterTweener.EasingY;
-                tweener.EasingZ = masterTweener.EasingZ;
+                tweener.easingX = masterTweener.easingX;
+                tweener.easingY = masterTweener.easingY;
+                tweener.easingZ = masterTweener.easingZ;
 
-                tweener.DurationX = masterTweener.DurationX;
-                tweener.DurationY = masterTweener.DurationY;
-                tweener.DurationZ = masterTweener.DurationZ;
+                tweener.durationX = masterTweener.durationX;
+                tweener.durationY = masterTweener.durationY;
+                tweener.durationZ = masterTweener.durationZ;
 
 
                 JCS_TowardTarget tt = mParticles.at(index).GetComponent<JCS_TowardTarget>();
 
-                tt.Range = masterTt.Range;
-                tt.AdjustRange = masterTt.AdjustRange;
-                tt.IncludeDepth = masterTt.IncludeDepth;
+                tt.range = masterTt.range;
+                tt.adjustRange = masterTt.adjustRange;
+                tt.includeDepth = masterTt.includeDepth;
             }
 
             print("Particles updated.");

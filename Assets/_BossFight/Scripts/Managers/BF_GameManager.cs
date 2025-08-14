@@ -99,7 +99,7 @@ public class BF_GameManager : MonoBehaviour
         if (HEALTH_LIQUIDBAR != null)
         {
             // set call back when the hp bar is zero.
-            HEALTH_LIQUIDBAR.LiquidBar.callback_min = LostTheGame;
+            HEALTH_LIQUIDBAR.liquidBar.callback_min = LostTheGame;
         }
     }
 
@@ -123,7 +123,7 @@ public class BF_GameManager : MonoBehaviour
         GAME_IS_OVER = true;
 
         if (mHealthTarget != null)
-            mHealthTarget.LiveObject.CanDamage = false;
+            mHealthTarget.liveObject.canDamage = false;
         else
         {
             Debug.Log("No health object in the assign");

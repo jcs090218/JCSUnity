@@ -52,7 +52,7 @@ public class RC_RevivePointer : MonoBehaviour
         }
 
         // if player still reviving
-        if (mRCPlayer.Reviving || !mRCPlayer.IsDead)
+        if (mRCPlayer.reviving || !mRCPlayer.isDead)
         {
             // disable this.
             mSpriteRenderer.enabled = false;
@@ -73,7 +73,7 @@ public class RC_RevivePointer : MonoBehaviour
         //newPos.x = mRCPlayer.transform.localPosition.x;
 
         // get camera top bound.
-        float camTop = JCS_Camera.main.CamRect.y;
+        float camTop = JCS_Camera.main.camRect.y;
 
         // set offset 
         newPos.y = camTop + mOffsetY;

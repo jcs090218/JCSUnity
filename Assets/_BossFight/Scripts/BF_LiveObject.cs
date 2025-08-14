@@ -56,9 +56,9 @@ public class BF_LiveObject : JCS_2DLiveObject
     protected void Start()
     {
         /* This will make the object follow the mad target. */
-        var ar = this.GetComponent<JCS_AttackerRecorder>();
+        var ar = GetComponent<JCS_AttackerRecorder>();
         if (ar != null)
-            ar.LastAttacker = BF_GameManager.instance.PROTECT_OBJECT.transform;
+            ar.lastAttacker = BF_GameManager.instance.PROTECT_OBJECT.transform;
     }
 
     private void Update()
@@ -89,7 +89,7 @@ public class BF_LiveObject : JCS_2DLiveObject
         var bggm = BF_GameManager.instance;
 
         // add experience to the current level.
-        bggm.DeltaCurrentExp(EXP);
+        bggm.DeltaCurrentExp(exp);
 
         // minus monster count.
         --bggm.MOB_CURRENT_IN_SCENE;
@@ -98,7 +98,7 @@ public class BF_LiveObject : JCS_2DLiveObject
 
         if (igls != null)
         {
-            string expMsg = BF_MessageSettings.FirstInstance().EXP_BASE + EXP.ToString();
+            string expMsg = BF_MessageSettings.FirstInstance().EXP_BASE + exp.ToString();
 
             igls.SendLogMessage(expMsg);
         }
@@ -111,7 +111,7 @@ public class BF_LiveObject : JCS_2DLiveObject
     /// </summary>
     public void Freeze(float freezeTime)
     {
-        if (!CanDamage)
+        if (!canDamage)
             return;
 
         // cannot be freeze.
@@ -119,10 +119,10 @@ public class BF_LiveObject : JCS_2DLiveObject
             return;
 
         // freeze x velocity.
-        if (VelocityInfo != null)
-            VelocityInfo.Freeze();
+        if (velocityInfo != null)
+            velocityInfo.Freeze();
 
-        LiveObjectAnimator.StopAnimationInFrame();
+        liveObjectAnimator.StopAnimationInFrame();
 
         spriteRenderer.color = BF_GameSettings.FirstInstance().FREEZE_COLOR;
 
@@ -136,13 +136,13 @@ public class BF_LiveObject : JCS_2DLiveObject
     /// </summary>
     public void UnFreeze()
     {
-        if (VelocityInfo != null)
-            VelocityInfo.UnFreeze();
+        if (velocityInfo != null)
+            velocityInfo.UnFreeze();
 
         spriteRenderer.color = Color.white;
         mIsFreeze = false;
 
-        LiveObjectAnimator.PlayAnimationInFrame();
+        liveObjectAnimator.PlayAnimationInFrame();
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class BF_LiveObject : JCS_2DLiveObject
     /// <param name="burnTime"></param>
     public void Burn(float burnTime)
     {
-        if (!CanDamage)
+        if (!canDamage)
             return;
 
         // cannot be burned.

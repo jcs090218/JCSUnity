@@ -93,7 +93,7 @@ public class RC_Camera : MonoBehaviour
             var rcPlayer = ((RC_Player)players[index]);
 
             // only player that are not dead.
-            if (!rcPlayer.IsDead)
+            if (!rcPlayer.isDead)
                 activePlayers.Add(rcPlayer);
         }
 

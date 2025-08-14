@@ -25,15 +25,15 @@ public class BF_AbilityFormat : JCS_AbilityFormat
 
     /* Setter & Getter */
 
-    public int Str { get { return this.mStr; } set { this.mStr = value; } }
-    public int Dex { get { return this.mDex; } set { this.mDex = value; } }
-    public int Int { get { return this.mInt; } set { this.mInt = value; } }
-    public int Luc { get { return this.mLuc; } set { this.mLuc = value; } }
-    public int MinDamage { get { return this.mMinDamage; } set { this.mMinDamage = value; } }
-    public int MaxDamage { get { return this.mMaxDamage; } set { this.mMaxDamage = value; } }
-    public int CriticalChance { get { return this.mCriticalChance; } set { this.mCriticalChance = value; } }
-    public int AttackValue { get { return this.mAttackValue; } set { this.mAttackValue = value; } }
-    public int DefenseValue { get { return this.mDefenseValue; } set { this.mDefenseValue = value; } }
+    public int str { get { return mStr; } set { mStr = value; } }
+    public int dex { get { return mDex; } set { mDex = value; } }
+    public int inte { get { return mInt; } set { mInt = value; } }
+    public int luc { get { return mLuc; } set { mLuc = value; } }
+    public int minDamage { get { return mMinDamage; } set { mMinDamage = value; } }
+    public int maxDamage { get { return mMaxDamage; } set { mMaxDamage = value; } }
+    public int criticalChance { get { return mCriticalChance; } set { mCriticalChance = value; } }
+    public int attackValue { get { return mAttackValue; } set { mAttackValue = value; } }
+    public int defenseValue { get { return mDefenseValue; } set { mDefenseValue = value; } }
 
     /* Functions */
 
@@ -45,12 +45,12 @@ public class BF_AbilityFormat : JCS_AbilityFormat
 
     public override int GetMaxDamage()
     {
-        return this.mMaxDamage;
+        return mMaxDamage;
     }
 
     public override int GetMinDamage()
     {
-        return this.mMinDamage;
+        return mMinDamage;
     }
 
     public override int GetCriticalChance()

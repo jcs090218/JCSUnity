@@ -112,10 +112,10 @@ public class RC_AppSettings : JCS_Settings<RC_AppSettings>
 
         // Set game data's default values
         {
-            APP_DATA.Name = "";
-            APP_DATA.Gold = 1500;       // [default: 1500]
+            APP_DATA.name = "";
+            APP_DATA.gold = 1500;       // [default: 1500]
 
-            APP_DATA.ItemNo = null;
+            APP_DATA.itemNo = null;
         }
 
         // save it once

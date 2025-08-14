@@ -19,10 +19,11 @@ public class BF_Ground : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var bfLivObject = other.GetComponent<BF_LiveObject>();
+
         if (bfLivObject == null)
             return;
 
         // in some reason collider keep breaking...
-        bfLivObject.VelocityInfo.VelY = 0;
+        bfLivObject.velocityInfo.velY = 0;
     }
 }

@@ -71,19 +71,19 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
     /* Setter & Getter */
 
-    public void SetRCPlayerPointer(RC_PlayerPointer pp) { this.mRCPlayerPointer = pp; }
-    public void SetRCRevivePointer(RC_RevivePointer rp) { this.mRCRevivePointer = rp; }
-    public bool IsDead { get { return this.mIsDead; } set { this.mIsDead = value; } }
-    public bool Reviving { get { return this.mReviving; } set { this.mReviving = value; } }
-    public int ControlIndex { get { return this.mControlIndex; } set { this.mControlIndex = value; } }
+    public void SetRCPlayerPointer(RC_PlayerPointer pp) { mRCPlayerPointer = pp; }
+    public void SetRCRevivePointer(RC_RevivePointer rp) { mRCRevivePointer = rp; }
+    public bool isDead { get { return mIsDead; } set { mIsDead = value; } }
+    public bool reviving { get { return mReviving; } set { mReviving = value; } }
+    public int controlIndex { get { return mControlIndex; } set { mControlIndex = value; } }
     public void SetWait(bool act)
     {
-        this.mWait = act;
+        mWait = act;
     }
-    public int CurrentGold { get { return this.mCurrentGold; } set { this.mCurrentGold = value; } }
-    public void SetLiquidBar(JCS_3DLiquidBar rb) { this.mLiquidBar = rb; }
-    public RC_PlayerPointer GetRCPlayerPointer() { return this.mRCPlayerPointer; }
-    public RC_RevivePointer GetRCRevivePointer() { return this.mRCRevivePointer; }
+    public int currentGold { get { return mCurrentGold; } set { mCurrentGold = value; } }
+    public void SetLiquidBar(JCS_3DLiquidBar rb) { mLiquidBar = rb; }
+    public RC_PlayerPointer GetRCPlayerPointer() { return mRCPlayerPointer; }
+    public RC_RevivePointer GetRCRevivePointer() { return mRCRevivePointer; }
 
     /* Functions */
 
@@ -91,15 +91,16 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     {
         base.Awake();
 
-        this.mRecordSpeed = MoveSpeed;
+        mRecordSpeed = mMoveSpeed;
 
         // record down the jump force
         {
             mRecordJumpForce = new float[mJumpYForces.Length];
-            this.mRecordJumpForce[0] = mJumpYForces[0];
+            mRecordJumpForce[0] = mJumpYForces[0];
+
             for (int index = 0; index < mRecordJumpForce.Length; ++index)
             {
-                this.mRecordJumpForce[index] = mJumpYForces[index];
+                mRecordJumpForce[index] = mJumpYForces[index];
             }
         }
     }
@@ -109,7 +110,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         base.Start();
 
         // load the gold information from game data.
-        mCurrentGold = RC_AppSettings.FirstInstance().APP_DATA.Gold;
+        mCurrentGold = RC_AppSettings.FirstInstance().APP_DATA.gold;
     }
 
     protected override void Update()
@@ -121,11 +122,11 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
         // when get effect, trying to get back to orignal power
         {
-            this.MoveSpeed += (this.mRecordSpeed - this.MoveSpeed) / mSpeedFriction * Time.deltaTime;
+            mMoveSpeed += (mRecordSpeed - mMoveSpeed) / mSpeedFriction * Time.deltaTime;
 
             for (int index = 0; index < mRecordJumpForce.Length; ++index)
             {
-                mJumpYForces[index] += (this.mRecordJumpForce[index] - mJumpYForces[index]) / mJumpFriction * Time.deltaTime;
+                mJumpYForces[index] += (mRecordJumpForce[index] - mJumpYForces[index]) / mJumpFriction * Time.deltaTime;
             }
         }
 
@@ -134,7 +135,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 #endif
 
         if (mWait)
-            MoveSpeed = 0;
+            mMoveSpeed = 0;
 
         WinLose();
     }
@@ -164,12 +165,12 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
     public void DeltaSpeed(float deltaSpeed)
     {
-        this.MoveSpeed += deltaSpeed;
+        mMoveSpeed += deltaSpeed;
     }
 
     public void DeltaJumpForce(float deltaVal, int index)
     {
-        this.mJumpYForces[index] += deltaVal;
+        mJumpYForces[index] += deltaVal;
     }
     /// <summary>
     /// 挑釁用...
@@ -177,7 +178,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     public void ToggleWait()
     {
         // if is climbing return!
-        if (CharacterState == JCS_2DCharacterState.CLIMBING)
+        if (characterState == JCS_2DCharacterState.CLIMBING)
             return;
 
         mWait = !mWait;
@@ -198,7 +199,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
     public void PushY(float val)
     {
-        this.mVelocity.y += val;
+        mVelocity.y += val;
     }
     public void DeltaPoint(float val)
     {
@@ -211,7 +212,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             return;
 
         // process cross platform input.
-        switch (JCS_AppManager.FirstInstance().PlatformType)
+        switch (JCS_AppManager.FirstInstance().platformType)
         {
             case JCS_PlatformType.PC:
                 PCInput();
@@ -332,14 +333,14 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             else
             {
                 // do this only when is following
-                Vector3 newPos = this.transform.position;
+                Vector3 newPos = transform.position;
 
                 // set to the same depth
                 newPos.x = JCS_Camera.main.transform.position.x;
 
-                this.transform.position = newPos;
+                transform.position = newPos;
 
-                VelX = MoveSpeed;
+                velX = mMoveSpeed;
 
                 // check if the player in the scene or not.
                 if (JCS_Camera.main.CheckInScreenSpace(GetCharacterController()))
@@ -352,10 +353,10 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     }
     private void Revive()
     {
-        Vector3 newPos = this.transform.position;
+        Vector3 newPos = transform.position;
         newPos.y = mReviveHeight;
         newPos.x = JCS_Camera.main.transform.position.x;
-        this.transform.position = newPos;
+        transform.position = newPos;
     }
     private void WinLose()
     {
@@ -363,7 +364,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             return;
 
         // the winning player does not need to prone.
-        if (RC_Camera.instance.GetTrackingPlayer().transform == this.transform)
+        if (RC_Camera.instance.GetTrackingPlayer().transform == transform)
         {
             // Do Win animation
             DoAnimation(JCS_LiveObjectState.STAND);
@@ -382,7 +383,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         if (mLiquidBar == null)
             return;
 
-        Vector3 newPos = this.transform.position;
+        Vector3 newPos = transform.position;
         newPos += RC_GameSettings.FirstInstance().LIQUIDBAR_OFFSET;
         mLiquidBar.transform.position = newPos;
     }

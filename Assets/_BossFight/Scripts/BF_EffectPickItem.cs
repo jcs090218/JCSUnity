@@ -87,12 +87,12 @@ public class BF_EffectPickItem : MonoBehaviour
                 break;
             case BF_PickItemEffectType.INC_RC_MP:
                 {
-                    bfGm.MANA_LIQUIDBAR.LiquidBar.RecoverValue += JCS_Mathf.ToPositive(mEffectValue);
+                    bfGm.MANA_LIQUIDBAR.liquidBar.recoverValue += JCS_Mathf.ToPositive(mEffectValue);
                 }
                 break;
             case BF_PickItemEffectType.DEC_RC_MP:
                 {
-                    bfGm.MANA_LIQUIDBAR.LiquidBar.RecoverValue += JCS_Mathf.ToNegative(mEffectValue);
+                    bfGm.MANA_LIQUIDBAR.liquidBar.recoverValue += JCS_Mathf.ToNegative(mEffectValue);
                 }
                 break;
         }
@@ -114,14 +114,14 @@ public class BF_EffectPickItem : MonoBehaviour
             case BF_PickItemEffectType.SUB_HP:
             case BF_PickItemEffectType.ADD_HP:
                 {
-                    mPickItem.PickCollider = bfGm.HEALTH_OBJECT;
+                    mPickItem.pickCollider = bfGm.HEALTH_OBJECT;
                 }
                 break;
 
             case BF_PickItemEffectType.SUB_MP:
             case BF_PickItemEffectType.ADD_MP:
                 {
-                    mPickItem.PickCollider = bfGm.MANA_OBJECT;
+                    mPickItem.pickCollider = bfGm.MANA_OBJECT;
                 }
                 break;
         }

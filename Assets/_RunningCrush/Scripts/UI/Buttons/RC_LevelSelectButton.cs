@@ -12,11 +12,12 @@ using JCSUnity;
 /// <summary>
 /// Use this button to select the level.
 /// </summary>
-public class RC_LevelSelectButton : JCS_Button 
+public class RC_LevelSelectButton : JCS_Button
 {
     /* Variables */
 
-    [SerializeField] private string mLevelName = "RC_Game";
+    [SerializeField] 
+    private string mLevelName = "RC_Game";
 
     /* Setter & Getter */
 

@@ -115,7 +115,7 @@ namespace JCSUnity
                 if (mHits.Contains(hit))
                     continue;
 
-                if (im.Support_OnMouseEnter)
+                if (im.support_OnMouseEnter)
                     _SendMessage(obj, "OnMouseEnter");
             }
 
@@ -129,7 +129,7 @@ namespace JCSUnity
                 if (hits.Contains(hit))
                     continue;
 
-                if (im.Support_OnMouseExit)
+                if (im.support_OnMouseExit)
                     _SendMessage(obj, "OnMouseExit");
 
                 PrintName(hit.transform);
@@ -158,10 +158,10 @@ namespace JCSUnity
 
                 GameObject obj = hit.transform.gameObject;
 
-                if (im.Support_OnMouseOver)
+                if (im.support_OnMouseOver)
                     _SendMessage(obj, "OnMouseOver");
 
-                if (im.Support_OnMouseUp)
+                if (im.support_OnMouseUp)
                 {
                     if (mTouchedLastFrame && !ti.touched)
                         _SendMessage(obj, "OnMouseUp");
@@ -202,13 +202,13 @@ namespace JCSUnity
 
                 if (ti.touched)
                 {
-                    if (im.Support_OnMouseDown)
+                    if (im.support_OnMouseDown)
                     {
                         if (!mTouchedLastFrame)
                             _SendMessage(obj, "OnMouseDown");
                     }
 
-                    if (im.Support_OnMouseDrag)
+                    if (im.support_OnMouseDrag)
                     {
                         if (ti.deltaPos != Vector2.zero)
                             _SendMessage(obj, "OnMouseDrag");

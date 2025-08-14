@@ -34,13 +34,12 @@ public class RC_Ladder : JCS_2DLadder
 
         if (isTopOfBox)
         {
-            p.AutoClimb = false;
+            p.autoClimb = false;
             return;
         }
 
-        p.AutoClimb = true;
-        p.AutoClimbDirection = mAutoClimbDirection;
-
+        p.autoClimb = true;
+        p.autoClimbDirection = mAutoClimbDirection;
 
         // auto climb
         switch (mAutoClimbDirection)
@@ -62,6 +61,6 @@ public class RC_Ladder : JCS_2DLadder
         if (p == null)
             return;
 
-        p.AutoClimb = false;
+        p.autoClimb = false;
     }
 }

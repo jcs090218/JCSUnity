@@ -93,7 +93,7 @@ public class BF_AutoAttacker : MonoBehaviour
         if (mRealTime < mTimer)
         {
 
-            for (int count = 0; count < mShootAction.ShootCount; ++count)
+            for (int count = 0; count < mShootAction.shootCount; ++count)
             {
                 LockShoot();
             }
@@ -123,10 +123,10 @@ public class BF_AutoAttacker : MonoBehaviour
         {
             bullet.transform.Rotate(0, 90, 0);
 
-            switch (mBFPlayer.Face)
+            switch (mBFPlayer.face)
             {
                 case JCS_2DFaceType.FACE_LEFT:
-                    bullet.MoveSpeed = -bullet.MoveSpeed;
+                    bullet.moveSpeed = -bullet.moveSpeed;
                     break;
                 case JCS_2DFaceType.FACE_RIGHT:
 
@@ -137,13 +137,13 @@ public class BF_AutoAttacker : MonoBehaviour
         {
             bullet.transform.Rotate(0, -90, 0);
 
-            switch (mBFPlayer.Face)
+            switch (mBFPlayer.face)
             {
                 case JCS_2DFaceType.FACE_LEFT:
 
                     break;
                 case JCS_2DFaceType.FACE_RIGHT:
-                    bullet.MoveSpeed = -bullet.MoveSpeed;
+                    bullet.moveSpeed = -bullet.moveSpeed;
                     break;
             }
         }

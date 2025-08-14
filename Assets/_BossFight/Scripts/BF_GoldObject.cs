@@ -31,7 +31,7 @@ public class BF_GoldObject : JCS_CashObject
         BF_PickItem.SetPickMode(this);
 
         // set the picking collider
-        PickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
+        mPickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
 
         onPicked = AfterPicked;
     }

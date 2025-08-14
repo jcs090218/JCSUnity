@@ -45,7 +45,7 @@ public class BF_BuyButton :  JCS_Button
     private void Update()
     {
         if (BF_AppSettings.FirstInstance().APP_DATA.Cash < mBuyValue)
-            this.Interactable = false;
+            interactable = false;
     }
 
     public override void OnClick()

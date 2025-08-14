@@ -27,10 +27,10 @@ public class RC_EffectItem : JCS_Item
         // set to auto pick auto matically.
         mAutoPickColliderTouched = true;
 
-        mEffectObject = this.GetComponent<RC_EffectObject>();
+        mEffectObject = GetComponent<RC_EffectObject>();
 
         // disable auto detect
-        mEffectObject.AutoEffect = false;
+        mEffectObject.autoEffect = false;
 
         onPicked = AfterPicked;
     }
@@ -39,6 +39,7 @@ public class RC_EffectItem : JCS_Item
     {
         // apply effect to player
         var p = other.GetComponent<RC_Player>();
+
         if (p == null)
         {
             Debug.LogError("You are using RC game object but the player isn't RC game object...");

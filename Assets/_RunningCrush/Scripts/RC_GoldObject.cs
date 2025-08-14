@@ -40,11 +40,11 @@ public class RC_GoldObject : JCS_CashObject
             return;
         }
 
-        p.CurrentGold += mCashValue;
+        p.currentGold += mCashValue;
 
         // if is single player mode, 
         // then we can just save to data directly.
         if (RC_GameSettings.FirstInstance().GAME_MODE == RC_GameMode.SINGLE_PLAYERS)
-            RC_AppSettings.FirstInstance().APP_DATA.Gold += mCashValue;
+            RC_AppSettings.FirstInstance().APP_DATA.gold += mCashValue;
     }
 }
