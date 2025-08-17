@@ -374,6 +374,9 @@ namespace JCSUnity
 
         private void HideEnable()
         {
+            if (mCanvas == null)
+                return;
+
             mCanvas.enabled = false;
 
             if (mCanvasGroup != null)
@@ -382,6 +385,9 @@ namespace JCSUnity
 
         private void HideFade()
         {
+            if (mCanvas == null)
+                return;
+
             // Remains enabled since we're going to do fading.
             mCanvas.enabled = true;
 
