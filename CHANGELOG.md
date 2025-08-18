@@ -10,6 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * fix(UI): Canvas issue on display awake ([`3a118c0`](../../commit/3a118c0a712c8b93c6a10e50128ef77979199af6))
 * style: Match modern C# standard ([`5e9761d`](../../commit/5e9761d9ffa040fb64f99858d27f56bf217994d8))
+* fix(Util): Over GUI on mobile ([`2a4679c`](../../commit/2a4679c3d3cc7a081beb314624d7d4c90121a905))
 
 ## 4.0.0
 > Released Aug 01, 2025
