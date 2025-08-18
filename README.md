@@ -31,6 +31,7 @@ any placeholder assets commercially.
 
 Here is the list of few important and recent changes to this framework.
 
+- `4.0.0` - Extend `Instance` interface.
 - `3.1.0` - Revamp the framework to reflect current best practices.
 - `3.0.0` - Rename setting function from `CheckSingleton` to `CheckInstance`.
 - `2.3.1` - Use [MyBox](https://github.com/Deadcows/MyBox) to organize variables.
@@ -40,7 +41,6 @@ Here is the list of few important and recent changes to this framework.
 - `2.1.2` - Add support for multiple languages.
 - `2.1.1` - Add support for safe area view for iPhone X or above.
 - `2.1.0` - Multiple minor fix for screen module for resizable screen feature.
-- `2.0.7` - Support consistent streaming assets loading with web request.
 
 ## 🔨 How to use it?
 
