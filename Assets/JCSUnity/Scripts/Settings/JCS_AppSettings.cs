@@ -38,7 +38,7 @@ namespace JCSUnity
         public bool SET_FRAME_RATE = false;
 
         [Tooltip("Target frame rate.")]
-        [Range(30, 120)]
+        [Range(-1, 120)]
         public int FRAME_RATE = 120;
 
         [Separator("Runtime Variables (JCS_AppSettings)")]
