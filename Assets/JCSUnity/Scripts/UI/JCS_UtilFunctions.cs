@@ -11,7 +11,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Util Function put here, usually systematic.
+    /// Util functions put here, usually systematic.
     /// </summary>
     public class JCS_UtilFunctions : MonoBehaviour
     {

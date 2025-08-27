@@ -1,5 +1,5 @@
 /**
- * $File: JCS_AddictiveSceneLoadEvent.cs $
+ * $File: JCS_AdditiveSceneLoadEvent.cs $
  * $Date: 2025-08-27 05:10:36 $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
