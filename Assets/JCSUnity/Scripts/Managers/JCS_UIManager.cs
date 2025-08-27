@@ -144,35 +144,16 @@ namespace JCSUnity
             this.mFadeScreen = JCS_Util.Instantiate(path).GetComponent<JCS_FadeScreen>();
         }
 
+#if UNITY_EDITOR
         private void Update()
         {
-#if UNITY_EDITOR
             Test();
-#endif
-
-#if (UNITY_EDITOR || UNITY_STANDALONE)
-
-            // Exit in game diagloue not in game UI!!
-            // (Admin input)
-            if (Input.GetKeyDown(KeyCode.Escape))
-                JCS_UtilFunctions.DestoryCurrentDialogue(JCS_DialogueType.PLAYER_DIALOGUE);
-#endif
         }
 
-#if UNITY_EDITOR
         private void Test()
         {
             if (!mTestWithKey)
                 return;
-
-            //if (JCS_Input.GetKeyDown(KeyCode.A))
-            //    JCS_UtilFunctions.PopIsConnectDialogue();
-            //if (JCS_Input.GetKeyDown(KeyCode.S))
-            //    JCS_UtilFunctions.PopSettingDialogue();
-            //if (JCS_Input.GetKeyDown(KeyCode.D))
-            //    JCS_UtilFunctions.PopInGameUI();
-            //if (JCS_Input.GetKeyDown(KeyCode.F))
-            //    JCS_UtilFunctions.PopTalkDialogue();
 
             if (JCS_Input.GetKeyDown(KeyCode.A))
             {
