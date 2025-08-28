@@ -27,7 +27,7 @@ public class BF_EffectPickItem : MonoBehaviour
     [SerializeField]
     private BF_PickItemEffectType mEffectType = BF_PickItemEffectType.NONE;
 
-    [Header("- Liquid Variables")]
+    [Header("Liquid Variables")]
 
     [Tooltip("Any value with liquid.")]
     [SerializeField]

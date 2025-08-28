@@ -27,7 +27,7 @@ public class BF_AppSettings : JCS_Settings<BF_AppSettings>
 
     [Separator("Runtime Variables (BF_AppSettings)")]
 
-    [Header("- Save Load")]
+    [Header("Save Load")]
 
     public string FILE_PATH = "SavedData/";
 

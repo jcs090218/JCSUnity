@@ -88,7 +88,7 @@ namespace JCSUnity
         [SerializeField]
         protected bool mSmoothTrack = true;
 
-        [Header("- Boundary")]
+        [Header("Boundary")]
 
         [Tooltip("The movement boundary.")]
         [SerializeField]

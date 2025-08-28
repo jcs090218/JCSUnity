@@ -58,7 +58,7 @@ namespace JCSUnity
         // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
 
-        [Header("- UI Screen")]
+        [Header("UI Screen")]
 
         [Tooltip("Panel that could do the fade loose focus effect.")]
         [SerializeField]

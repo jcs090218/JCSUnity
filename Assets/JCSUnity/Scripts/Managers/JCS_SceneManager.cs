@@ -64,17 +64,18 @@ namespace JCSUnity
 
         [Header("Overlay")]
 
+        [Tooltip("Load additive overlay scenes asynchronously.")]
+        [SerializeField]
+        private bool mOverlayUseAsync = false;
+
         [Tooltip("A list of addictive scene to load.")]
+        [SerializeField]
         [Scene]
         private List<string> mOverlaySceneNames = null;
 
-        [Tooltip("Load scene asynchronously.")]
-        [SerializeField]
-        private bool mUseAsync = false;
-
         [Separator("Runtime Variables (JCS_SceneManager)")]
 
-        [Header("- Screen")]
+        [Header("Screen")]
 
         [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]
@@ -102,7 +103,7 @@ namespace JCSUnity
 
         public JCS_SwitchSceneType switchSceneType { get { return mSwitchSceneType; } set { mSwitchSceneType = value; } }
         public List<string> overlaySceneNames { get { return mOverlaySceneNames; } set { mOverlaySceneNames = value; } }
-        public bool useAsync { get { return mUseAsync; } set { mUseAsync = value; } }
+        public bool overlayUseAsync { get { return mOverlayUseAsync; } set { mOverlayUseAsync = value; } }
 
         public JCS_DynamicScene GetDynamicScene() { return mDynamicScene; }
         public void SetDynamicScene(JCS_DynamicScene ds) { mDynamicScene = ds; }
@@ -232,7 +233,7 @@ namespace JCSUnity
         {
             foreach (string sceneName in mOverlaySceneNames)
             {
-                if (mUseAsync)
+                if (mOverlayUseAsync)
                     SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
                 else
                     SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);

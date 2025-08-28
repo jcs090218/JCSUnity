@@ -19,7 +19,7 @@ public class BF_GameSettings : JCS_Settings<BF_GameSettings>
 
     [Separator("Runtime Variables (BF_GameSettings)")]
 
-    [Header("- Player")]
+    [Header("Player")]
 
     [Tooltip("How many character on players team.")]
     public int CHARACTERS_IN_TEAM = 4;
@@ -29,7 +29,7 @@ public class BF_GameSettings : JCS_Settings<BF_GameSettings>
     [Tooltip("Player in the game will be store here.")]
     public BF_Player[] CHARACTERS_IN_GAME = null;
 
-    [Header("- Game Feature")]
+    [Header("Game Feature")]
 
     [Tooltip("Maximum mob in the scene.")]
     [Range(10, 100)]
@@ -41,7 +41,7 @@ public class BF_GameSettings : JCS_Settings<BF_GameSettings>
     [Tooltip("Color that represent the burning effect.")]
     public Color BURN_COLOR = Color.red;
 
-    [Header("- Level")]
+    [Header("Level")]
 
     [Tooltip("Name of the scene player selected.")]
     public string LEVEL_SELECTED_NAME = "";

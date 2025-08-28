@@ -43,7 +43,7 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_AppSettings)")]
 
-        [Header("- Save Load")]
+        [Header("Save Load")]
 
         [Tooltip("Data folder path.")]
         public string DATA_PATH = "/Data_jcs/";

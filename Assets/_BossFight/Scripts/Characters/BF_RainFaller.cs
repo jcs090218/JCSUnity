@@ -28,7 +28,7 @@ public class BF_RainFaller : MonoBehaviour
     [SerializeField]
     private bool mCanShoot = true;
 
-    [Header("- Time")]
+    [Header("Time")]
 
     [Tooltip("Time to do one walk.")]
     [SerializeField]

@@ -31,7 +31,7 @@ public class RC_GameSettings : JCS_Settings<RC_GameSettings>
 
     public bool LIQUID_MODE = true;
 
-    [Header("- Game")]
+    [Header("Game")]
 
     public RC_GameMode GAME_MODE = RC_GameMode.SINGLE_PLAYERS;
 
@@ -40,7 +40,7 @@ public class RC_GameSettings : JCS_Settings<RC_GameSettings>
     [Tooltip("Any button u need to load the correct level.")]
     public JCS_LoadSceneButton[] SCENE_BUTTONS = null;
 
-    [Header("- Player")]
+    [Header("Player")]
 
     public JCS_3DLiquidBar GLOBAL_LIQUIDBAR = null;
 

@@ -27,7 +27,7 @@ public class RC_AppSettings : JCS_Settings<RC_AppSettings>
 
     [Separator("Runtime Variables (RC_AppSettings)")]
 
-    [Header("- Save Load")]
+    [Header("Save Load")]
 
     public string FILE_PATH = "SavedData/";
 
