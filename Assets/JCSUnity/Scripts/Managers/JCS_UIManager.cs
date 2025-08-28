@@ -58,7 +58,7 @@ namespace JCSUnity
         // List of all the window that are opened!
         private LinkedList<JCS_DialogueObject> mOpenWindow = null;
 
-        [Header("UI Screen")]
+        [Header("- UI Screen")]
 
         [Tooltip("Panel that could do the fade loose focus effect.")]
         [SerializeField]
@@ -177,6 +177,7 @@ namespace JCSUnity
         public void AddCanvas(JCS_Canvas canvas)
         {
             mCanvases.Add(canvas);
+            mCanvases = JCS_Array.RemoveEmptyMissing(mCanvases);
             mCanvases = mCanvases.OrderBy(x => x.canvas.sortingOrder).ToList();
         }
 
