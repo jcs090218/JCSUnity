@@ -26,7 +26,7 @@ public class FT_TextMesh : MonoBehaviour
 
     private void Awake()
     {
-        this.textMesh = GetComponent<TextMeshPro>();
-        this.tmpText = GetComponent<TMP_Text>();
+        textMesh = GetComponent<TextMeshPro>();
+        tmpText = GetComponent<TMP_Text>();
     }
 }
