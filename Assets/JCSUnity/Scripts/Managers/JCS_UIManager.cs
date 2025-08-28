@@ -89,7 +89,7 @@ namespace JCSUnity
                         //    return;
                         //}
 
-                        this.mFocusGameDialogue = jdo;
+                        mFocusGameDialogue = jdo;
                     }
                     break;
                 case JCS_DialogueType.SYSTEM_DIALOGUE:
@@ -105,7 +105,7 @@ namespace JCSUnity
                     break;
             }
         }
-        public JCS_DialogueObject GetJCSDialogue(JCS_DialogueType type)
+        public JCS_DialogueObject GetDialogue(JCS_DialogueType type)
         {
             switch (type)
             {
@@ -133,15 +133,15 @@ namespace JCSUnity
         {
             RegisterInstance(this);
 
-            this.mOpenWindow = new LinkedList<JCS_DialogueObject>();
+            mOpenWindow = new LinkedList<JCS_DialogueObject>();
 
-            this.mGlobalUndoRedoSystem = this.gameObject.AddComponent<JCS_UndoRedoSystem>();
+            mGlobalUndoRedoSystem = gameObject.AddComponent<JCS_UndoRedoSystem>();
         }
         private void Start()
         {
             // pop the fade screen.
             string path = JCS_UISettings.FADE_SCREEN_PATH;
-            this.mFadeScreen = JCS_Util.Instantiate(path).GetComponent<JCS_FadeScreen>();
+            mFadeScreen = JCS_Util.Instantiate(path).GetComponent<JCS_FadeScreen>();
         }
 
 #if UNITY_EDITOR
@@ -165,7 +165,7 @@ namespace JCSUnity
 
             if (JCS_Input.GetKeyDown(KeyCode.S))
             {
-                UnFocus();
+                Unfocus();
             }
         }
 #endif
@@ -175,7 +175,7 @@ namespace JCSUnity
         /// </summary>
         public void AddCanvas(JCS_Canvas canvas)
         {
-            this.mCanvases.Add(canvas);
+            mCanvases.Add(canvas);
             mCanvases = JCS_Array.RemoveEmptyMissing(mCanvases);
             mCanvases = SortCanvases_Insertion();
         }
@@ -194,6 +194,20 @@ namespace JCSUnity
                 }
             }
             return mCanvases;
+        }
+
+        /// <summary>
+        /// Return the canvas by name.
+        /// </summary>
+        public JCS_Canvas CanvasByName(string name)
+        {
+            foreach (JCS_Canvas canvas in mCanvases)
+            {
+                if (canvas.name == name)
+                    return canvas;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -286,7 +300,7 @@ namespace JCSUnity
         /// <summary>
         /// Fade out the screen, back to original amount of value.
         /// </summary>
-        public void UnFocus()
+        public void Unfocus()
         {
             JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeOut();
@@ -295,7 +309,7 @@ namespace JCSUnity
         /// <summary>
         /// Fade out the screen, back to original amount of value.
         /// </summary>
-        public void UnFocus(float time)
+        public void Unfocus(float time)
         {
             JCS_FadeObject fadeObj = mFadeScreen.fadeObject;
             fadeObj.FadeOut(time);
