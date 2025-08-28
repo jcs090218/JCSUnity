@@ -7,6 +7,7 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -21,7 +22,7 @@ namespace JCSUnity
 
 #if UNITY_EDITOR
         [Separator("Helper Variables (JCS_UIManager)")]
-        
+
         [Tooltip("Test this component with key?")]
         [SerializeField]
         private bool mTestWithKey = false;
@@ -176,24 +177,7 @@ namespace JCSUnity
         public void AddCanvas(JCS_Canvas canvas)
         {
             mCanvases.Add(canvas);
-            mCanvases = JCS_Array.RemoveEmptyMissing(mCanvases);
-            mCanvases = SortCanvases_Insertion();
-        }
-        private List<JCS_Canvas> SortCanvases_Insertion()
-        {
-            for (int i = 0; i < mCanvases.Count; ++i)
-            {
-                for (int j = i; j > 0; --j)
-                {
-                    if (mCanvases[j].canvas.sortingOrder < mCanvases[j - 1].canvas.sortingOrder)
-                    {
-                        JCS_Canvas temp = mCanvases[j];
-                        mCanvases[j] = mCanvases[j - 1];
-                        mCanvases[j - 1] = temp;
-                    }
-                }
-            }
-            return mCanvases;
+            mCanvases = mCanvases.OrderBy(x => x.canvas.sortingOrder).ToList();
         }
 
         /// <summary>
@@ -201,6 +185,8 @@ namespace JCSUnity
         /// </summary>
         public JCS_Canvas CanvasByName(string name)
         {
+            mCanvases = JCS_Array.RemoveEmptyMissing(mCanvases);
+
             foreach (JCS_Canvas canvas in mCanvases)
             {
                 if (canvas.name == name)
@@ -219,10 +205,10 @@ namespace JCSUnity
             if (GetOpenWindow().Count == 0)
                 return;
 
-            JCS_DialogueObject jdo = GetOpenWindow().Last.Value;
+            JCS_DialogueObject dialogue = GetOpenWindow().Last.Value;
 
             // once it hide it will remove from the list it self!
-            jdo.Hide();
+            dialogue.Hide();
         }
 
         /// <summary>
