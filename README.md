@@ -34,7 +34,7 @@ Here is the list of few important and recent changes to this framework.
 - `4.0.0` - Extend `Instance` interface.
 - `3.1.0` - Revamp the framework to reflect current best practices.
 - `3.0.0` - Rename setting function from `CheckSingleton` to `CheckInstance`.
-- `2.3.1` - Use [MyBox](https://github.com/Deadcows/MyBox) to organize variables.
+- `2.3.1` - Use [MyBox][] to organize variables.
 - `2.3.0` - Fixed resizable screen's calculation in perspective mode.
 - `2.2.1` - Implement new screen type, `MIXED` for responsive UI.
 - `2.2.0` - Add `trimmed` version to release.
@@ -61,13 +61,13 @@ directory at the root of the project directory.
 These are libraries `JCSUnity` uses. Consider the usage, some plugins aren't necessary
 depend on the game your are making.
 
-- [Newtonsoft Json](https://www.newtonsoft.com/json) (required) - Popular high-performance JSON framework for .NET.
-  - Install with url [`com.unity.nuget.newtonsoft-json`](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html); see [Newtonsoft.Json-for-Unity/wiki](https://github.com/applejag/Newtonsoft.Json-for-Unity/wiki).
-- [MyBox](https://github.com/Deadcows/MyBox) (required) - is a set of attributes, tools and extensions for Unity
-- [Tweener](https://github.com/PeterVuorela/Tweener) (required) - Simpler and light weight tweener library.
-- [In-game Debug Console](https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068) (optional) - Easier debugging after built.
-- [StandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser) (optional) - File browser for UI/tool base application.
-- [UI-Polygon](https://github.com/CiaccoDavide/Unity-UI-Polygon) (optional) - Geometry shape UI renderer interface.
+- [Newtonsoft Json][] (required) - Popular high-performance JSON framework for .NET.
+  - Install with url [`com.unity.nuget.newtonsoft-json`](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html); see [Newtonsoft.Json-for-Unity/wiki][].
+- [MyBox][] (required) - is a set of attributes, tools and extensions for Unity
+- [Tweener][] (required) - Simpler and light weight tweener library.
+- [In-game Debug Console][] (optional) - Easier debugging after built.
+- [StandaloneFileBrowser][] (optional) - File browser for UI/tool base application.
+- [UI-Polygon][] (optional) - Geometry shape UI renderer interface.
 
 ## 🔗 Links
 
@@ -112,3 +112,20 @@ Here is a list of applications that are made with JCSUnity.
 <a href="https://jcs090218.itch.io/you-have-an-order" target="_blank">
   <img src="./etc/games/Crypt_Adv.png" width="7%" align="middle"/>
 </a>
+
+## ⚜️ License
+
+Copyright (c) Jen-Chieh Shen. All rights reserved.
+
+See [`LICENSE`](./LICENSE) for details.
+
+
+<!-- Links -->
+
+[Newtonsoft Json]: https://www.newtonsoft.com/json
+[Newtonsoft.Json-for-Unity/wiki]: https://github.com/applejag/Newtonsoft.Json-for-Unity/wiki
+[MyBox]: https://github.com/Deadcows/MyBox
+[Tweener]: https://github.com/PeterVuorela/Tweener
+[In-game Debug Console]: https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068
+[StandaloneFileBrowser]: https://github.com/gkngkc/UnityStandaloneFileBrowser
+[UI-Polygon]: https://github.com/CiaccoDavide/Unity-UI-Polygon
