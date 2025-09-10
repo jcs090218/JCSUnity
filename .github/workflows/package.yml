@@ -13,10 +13,10 @@ env:
   # License
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   # Project
-  UNITY_VERSION: 6000.0.11f1
+  UNITY_VERSION: 6000.2.0f1
   PROJECT_PATH: .
   # Packaging
-  PKG_VERSION: 2.4.1
+  PKG_VERSION: 4.0.1
   BUILD_METHOD: jcs090218.PackageExporter.BatchMode.Export
 
 jobs:
