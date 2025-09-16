@@ -20,12 +20,13 @@ Better version of scene manager.
 
 ## Functions
 
-| Name                 | Description                             |
-|:---------------------|:----------------------------------------|
-| LoadScene            | Load the target scene.                  |
-| ReloadScene          | Reload the current scene.               |
-| LoadNextScene        | Load the next scene.                    |
-| NextSceneName        | Return the next scene name.             |
-| GetSceneNameByOption | Return the scene name by their options. |
-| IsSwitchingScene     | Check is loading the scene or not.      |
-| GetAllScenes         | Return a list of all scenes.            |
+| Name                       | Description                                                        |
+|:---------------------------|:-------------------------------------------------------------------|
+| RegisterOverlaySceneLoaded | Register an event call after the targeted overlay scene is loaded. |
+| LoadScene                  | Load the target scene.                                             |
+| ReloadScene                | Reload the current scene.                                          |
+| LoadNextScene              | Load the next scene.                                               |
+| NextSceneName              | Return the next scene name.                                        |
+| GetSceneNameByOption       | Return the scene name by their options.                            |
+| IsSwitchingScene           | Check is loading the scene or not.                                 |
+| GetAllScenes               | Return a list of all scenes.                                       |
