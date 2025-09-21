@@ -791,7 +791,11 @@ namespace JCSUnity
         /// </summary>
         public static bool IsClone(Object obj)
         {
-            return obj.name.Contains("(Clone)");
+            return IsClone(obj.name);
+        }
+        public static bool IsClone(string name)
+        {
+            return name.Contains("(Clone)");
         }
 
         /// <summary>
@@ -800,9 +804,11 @@ namespace JCSUnity
         /// </summary>
         public static string RemoveCloneString(Object obj)
         {
-            obj.name = obj.name.Replace("(Clone)", "");
-
-            return obj.name;
+            return RemoveCloneString(obj.name);
+        }
+        public static string RemoveCloneString(string name)
+        {
+            return name.Replace("(Clone)", "");
         }
 
         #endregion
