@@ -804,7 +804,8 @@ namespace JCSUnity
         /// </summary>
         public static string RemoveCloneString(Object obj)
         {
-            return RemoveCloneString(obj.name);
+            obj.name = RemoveCloneString(obj.name);
+            return obj.name;
         }
         public static string RemoveCloneString(string name)
         {
