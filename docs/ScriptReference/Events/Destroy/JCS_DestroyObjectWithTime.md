@@ -15,6 +15,7 @@ Destroy the game object by time.
 
 ## Functions
 
-| Name            | Description                     |
-|:----------------|:--------------------------------|
-| FirstFadeObject | Retrieve the first fade object. |
+| Name            | Description                            |
+|:----------------|:---------------------------------------|
+| FirstFadeObject | Retrieve the first fade object.        |
+| DestroyFade     | Destroy game object by using fade out. |
