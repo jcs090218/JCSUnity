@@ -14,6 +14,7 @@ Random library class.
 | Vector3       | Return a random `Vector3`.                  |
 | Quaternion    | Return a random `Quaternion`.               |
 | Color         | Returns a random color.                     |
+| Color32       | Returns a random color in 32-bit format.    |
 | ChooseOne     | Choose one object from the list.            |
 | ChooseOneE    | Choose one object from the list. (Ellipsis) |
 | EnumValue     | Return a random enum value.                 |
