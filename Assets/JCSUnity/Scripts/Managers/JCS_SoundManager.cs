@@ -23,7 +23,7 @@ namespace JCSUnity
 
         private JCS_SoundPlayer mGlobalSoundPlayer = null;
 
-        private JCS_FadeSound mJCSFadeSound = null;
+        private JCS_FadeSound mFadeSound = null;
 
         // this only hold one audio clip on stack. I do not want
         // to get to messy about this.
@@ -105,9 +105,9 @@ namespace JCSUnity
             RegisterInstance(this);
 
             // try to get component, this is not guarantee.
-            this.mJCSFadeSound = this.GetComponent<JCS_FadeSound>();
+            mFadeSound = GetComponent<JCS_FadeSound>();
 
-            mGlobalSoundPlayer = this.GetComponent<JCS_SoundPlayer>();
+            mGlobalSoundPlayer = GetComponent<JCS_SoundPlayer>();
         }
 
         private void Start()
@@ -167,12 +167,12 @@ namespace JCSUnity
              *  
              *  Since we have multiple component have 
              */
-            if (mJCSFadeSound == null)
+            if (mFadeSound == null)
             {
-                mJCSFadeSound = this.GetComponent<JCS_FadeSound>();
+                mFadeSound = GetComponent<JCS_FadeSound>();
 
-                if (mJCSFadeSound == null)
-                    mJCSFadeSound = this.gameObject.AddComponent<JCS_FadeSound>();
+                if (mFadeSound == null)
+                    mFadeSound = gameObject.AddComponent<JCS_FadeSound>();
             }
 
             // get the background music audio source.
@@ -182,20 +182,20 @@ namespace JCSUnity
             bgmAudioSource.loop = loop;
 
             // set the audio source.
-            mJCSFadeSound.SetAudioSource(bgmAudioSource);
+            mFadeSound.SetAudioSource(bgmAudioSource);
 
             // active the fade sound in effect.
-            mJCSFadeSound.FadeOut(
+            mFadeSound.FadeOut(
                 0,
                 /* Fade in the sound base on the setting. */
                 fadeInTime);
 
-            this.mRealSoundFadeOutTime = fadeOutTime;
+            mRealSoundFadeOutTime = fadeOutTime;
 
-            this.mSwitchingBGM = true;
-            this.mDoneFadingOut = false;
+            mSwitchingBGM = true;
+            mDoneFadingOut = false;
 
-            this.mCurrentBGM = soundClip;
+            mCurrentBGM = soundClip;
         }
 
         /// <summary>
@@ -236,10 +236,10 @@ namespace JCSUnity
                 return false;
 
             // store audio clip on stack.
-            this.mOnStackAudioClip = onStackClip;
+            mOnStackAudioClip = onStackClip;
 
-            this.mOnStackFadeInTime = fadeInTime;
-            this.mOnStackFadeOutTime = fadeOutTime;
+            mOnStackFadeInTime = fadeInTime;
+            mOnStackFadeOutTime = fadeOutTime;
 
             // Play one shot the BGM
             SwitchBGM(
@@ -291,28 +291,28 @@ namespace JCSUnity
             if (!mDoneFadingOut)
             {
                 // check if the sound is fade out.
-                if (!mJCSFadeSound.IsReachTargetVolume())
+                if (!mFadeSound.IsReachTargetVolume())
                     return;
 
                 // get the background music audio source.
                 AudioSource bgmAudioSource = JCS_BGMPlayer.instance.audioSource;
 
                 // set the audio source.
-                mJCSFadeSound.SetAudioSource(bgmAudioSource);
+                mFadeSound.SetAudioSource(bgmAudioSource);
 
                 // set the bgm and play it
-                bgmAudioSource.clip = this.mCurrentBGM;
+                bgmAudioSource.clip = mCurrentBGM;
                 bgmAudioSource.Play();
 
                 // active the fade sound in effect.
-                mJCSFadeSound.FadeIn(1.0f, this.mRealSoundFadeOutTime);
+                mFadeSound.FadeIn(1.0f, mRealSoundFadeOutTime);
 
                 mDoneFadingOut = true;
             }
             else
             {
                 // check if the sound is fade in.
-                if (!mJCSFadeSound.IsReachTargetVolume())
+                if (!mFadeSound.IsReachTargetVolume())
                     return;
 
                 // done switching the bgm.

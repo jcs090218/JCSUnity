@@ -51,7 +51,7 @@ namespace JCSUnity
             // if the game only allow one play do the function
             // in order to take the effect.
             if (JCS_GameSettings.FirstInstance().activeOnePlayer)
-                ActiveOnePlayer(JCS_GameManager.FirstInstance().Player);
+                ActiveOnePlayer(JCS_GameManager.FirstInstance().player);
         }
 
         /// <summary>

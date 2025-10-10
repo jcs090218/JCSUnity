@@ -6,8 +6,12 @@ Manager that manage the game behaviour.
 
 | Name                      | Description                                                      |
 |:--------------------------|:-----------------------------------------------------------------|
+| gamePaused                | Is the game pause?                                               |
+| doneInitialized           | Is game done initialize?                                         |
+
+## Functions
+
+| Name                      | Description                                                      |
+|:--------------------------|:-----------------------------------------------------------------|
 | RegisterOnAfterInit       | Register event run on the first frame of the game.               |
 | RegisterOnSystemAfterInit | Register event run on the first frame of the game. (system used) |
-| TIME_SCALE                | Adjustable current time scale.                                   |
-| GAME_PAUSE                | Is the game pause?                                               |
-| DONE_INITIALIZE           | Is game done initialize?                                         |
