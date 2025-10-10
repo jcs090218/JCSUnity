@@ -4,6 +4,6 @@ UI related settings.
 
 ## Variables
 
-| Name      | Description                   |
-|:----------|:------------------------------|
-| RESIZE_UI | Resize the UI in the runtime. |
+| Name     | Description                   |
+|:---------|:------------------------------|
+| resizeUI | Resize the UI in the runtime. |

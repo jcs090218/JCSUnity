@@ -147,7 +147,7 @@ which to target which not to.")]
 
 #if UNITY_EDITOR
             // print out the name.
-            if (JCS_GameSettings.FirstInstance().DEBUG_MODE)
+            if (JCS_GameSettings.FirstInstance().debugMode)
                 Debug.Log(closestliveObj.transform.name);
 #endif
         }
@@ -172,7 +172,7 @@ which to target which not to.")]
 
                 JCS_2DLiveObject owenerLiveObject = mAttackerInfo.attacker.GetComponent<JCS_2DLiveObject>();
 
-                if (!JCS_GameSettings.FirstInstance().TRIBE_DAMAGE_EACH_OTHER)
+                if (!JCS_GameSettings.FirstInstance().tribeDamageEachOther)
                 {
                     // check same tribe.
                     if (JCS_Util.IsSameTribe(liveObj, owenerLiveObject))

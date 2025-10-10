@@ -4,16 +4,16 @@ Store all the network settings.
 
 ## Variables
 
-| Name                | Description                                                  |
-|:--------------------|:-------------------------------------------------------------|
-| CLIENT_MODE         | Current mode this client in, should be update by the server! |
-| ON_SWITCH_SERVER    | On switching the server?                                     |
-| FORCE_SWITCH_SERVER | Flag to check if is force switching the server.              |
-| ONLINE_MODE         | Is the current game with online mode active?                 |
-| PROTOCAL_TYPE       | Type of the client protocal.                                 |
-| HOST_NAME           | Client hostname.                                             |
-| PORT                | Client port.                                                 |
-| CHANNEL_COUNT       | Channel count in this game.                                  |
+| Name              | Description                                                  |
+|:------------------|:-------------------------------------------------------------|
+| clientMode        | Current mode this client in, should be update by the server! |
+| switchingServer   | On switching the server?                                     |
+| forceSwitchServer | Flag to check if is force switching the server.              |
+| onlineMode        | Is the current game with online mode active?                 |
+| protocolType      | Type of the client protocal.                                 |
+| host              | Client hostname.                                             |
+| port              | Client port.                                                 |
+| channelCount      | Channel count in this game.                                  |
 
 ## Functions
 

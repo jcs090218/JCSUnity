@@ -11,6 +11,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 using MyBox;
 
 namespace JCSUnity
@@ -83,7 +84,7 @@ namespace JCSUnity
 
         [Separator("Runtime Variables (JCS_SceneManager)")]
 
-        [Header("Screen")]
+        [Header("Transition")]
 
         [Tooltip("Do this scene using the specific setting.")]
         [SerializeField]
@@ -92,12 +93,20 @@ namespace JCSUnity
         [Tooltip("Fade in time. (For this scene)")]
         [SerializeField]
         [Range(0.0f, 5.0f)]
-        private float mSceneFadeInTime = 1.0f;
+        private float mTimeIn = 1.0f;
 
         [Tooltip("Fade out time. (For this scene)")]
         [SerializeField]
         [Range(0.0f, 5.0f)]
-        private float mSceneFadeOutTime = 1.0f;
+        private float mTimeOut = 1.0f;
+
+        [Tooltip("The video clip to play for fade in.")]
+        [SerializeField]
+        private VideoClip mClipIn = null;
+
+        [Tooltip("The video clip to play for fade out.")]
+        [SerializeField]
+        private VideoClip mClipOut = null;
 
         // fade the sound while switching the scene.
         private JCS_FadeSound mFadeSound = null;
@@ -122,8 +131,10 @@ namespace JCSUnity
         public JCS_BlackScreen GetBlackScreen() { return mBlackScreen; }
 
         public bool overrideSetting { get { return mOverrideSetting; } }
-        public float sceneFadeInTime { get { return mSceneFadeInTime; } set { mSceneFadeInTime = value; } }
-        public float sceneFadeOutTime { get { return mSceneFadeOutTime; } set { mSceneFadeOutTime = value; } }
+        public float timeIn { get { return mTimeIn; } set { mTimeIn = value; } }
+        public float timeOut { get { return mTimeOut; } set { mTimeOut = value; } }
+        public VideoClip clipIn { get { return mClipIn; } set { mClipIn = value; } }
+        public VideoClip clipOut { get { return mClipOut; } set { mClipOut = value; } }
 
         /* Functions */
 
@@ -146,6 +157,14 @@ namespace JCSUnity
                         JCS_UtilFunctions.PopBlackSlideScreen();
                     }
                     break;
+
+                case JCS_SwitchSceneType.VIDEO:
+                    {
+                        var ss = JCS_SceneSettings.FirstInstance();
+
+                        ss.videoPlayer.enabled = false;
+                    }
+                    break;
             }
 
             // Pop white screen depends on game needs.
@@ -164,7 +183,7 @@ namespace JCSUnity
 
             // NOTE(jenchieh): get the fade out time base on  the scene setting
             // and scene manager specific.
-            float fadeoutTime = ss.SceneFadeInTimeBaseOnSetting();
+            float fadeoutTime = ss.TimeIn();
 
             switch (mSwitchSceneType)
             {
@@ -173,10 +192,11 @@ namespace JCSUnity
                         onSwitchSceneInit?.Invoke();
                     }
                     break;
+
                 case JCS_SwitchSceneType.FADE:
                     {
                         // get the current screen color.
-                        mBlackScreen.localColor = ss.SCREEN_COLOR;
+                        mBlackScreen.localColor = ss.screenColor;
 
                         mBlackScreen.FadeOut(fadeoutTime);
                     }
@@ -187,14 +207,26 @@ namespace JCSUnity
                         mBlackSlideScreen.StartSlideOut(mAlign, fadeoutTime);
                     }
                     break;
+
+                case JCS_SwitchSceneType.VIDEO:
+                    {
+                        ss.videoPlayer.enabled = true;
+
+                        ss.videoPlayer.clip = ss.ClipOut();
+
+                        ss.videoPlayer.StepForward();
+
+                        ss.videoPlayer.Play();
+                    }
+                    break;
             }
 
             // Only need to fade BGM when BGM is not switch between scene.
             var soundS = JCS_SoundSettings.FirstInstance();
 
-            if (!soundS.KEEP_BGM_SWITCH_SCENE)
+            if (!soundS.keepBGMSwitchScene)
             {
-                if (soundS.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
+                if (soundS.smoothSwithBetweenScene)
                 {
                     // get the component.
                     if (mFadeSound == null)
@@ -209,7 +241,7 @@ namespace JCSUnity
                     mFadeSound.FadeIn(
                         1.0f,
                         /* Fade in the sound base on the setting. */
-                        soundS.GetSoundFadeInTimeBaseOnSetting());
+                        soundS.TimeIn());
                 }
             }
             else
@@ -219,7 +251,7 @@ namespace JCSUnity
                 // 
                 // ATTENTION(jenchieh): This should be place for the last use
                 // of the variable 'KEEP_BGM_SWITCH_SCENE'.
-                soundS.KEEP_BGM_SWITCH_SCENE = false;
+                soundS.keepBGMSwitchScene = false;
             }
 
             // the game is loaded start the game agian
@@ -309,8 +341,8 @@ namespace JCSUnity
         {
             var ss = JCS_SceneSettings.FirstInstance();
 
-            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
-            Color screenColor = ss.SCREEN_COLOR;
+            float fadeInTime = ss.TimeIn();
+            Color screenColor = ss.screenColor;
             bool keepBGM = false;
 
             LoadScene(sceneName, mode, fadeInTime, screenColor, keepBGM);
@@ -331,25 +363,25 @@ namespace JCSUnity
             var scs = JCS_SceneSettings.FirstInstance();
 
             // if is loading already, dont load it agian
-            if (scs.SWITCHING_SCENE)
+            if (scs.switchingScene)
                 return;
 
             // set the next scene name
-            scs.NEXT_SCENE_NAME = sceneName;
+            scs.nextSceneName = sceneName;
 
-            scs.PREVIOUS_SCENE = SceneManager.GetActiveScene();
-            scs.MODE = mode;
+            scs.previousScene = SceneManager.GetActiveScene();
+            scs.mode = mode;
 
             var apps = JCS_AppSettings.FirstInstance();
 
-            if (apps.SAVE_ON_SWITCH_SCENE)
+            if (apps.saveOnSwitchScene)
             {
                 // do the saving.
-                apps.SAVE_APP_DATA_FUNC?.Invoke();
+                apps.onSaveAppData?.Invoke();
             }
 
             // preload the scene
-            mAsyncOperation = SceneManager.LoadSceneAsync(scs.NEXT_SCENE_NAME, mode);
+            mAsyncOperation = SceneManager.LoadSceneAsync(scs.nextSceneName, mode);
             mAsyncOperation.allowSceneActivation = false;
 
             switch (mSwitchSceneType)
@@ -374,7 +406,7 @@ namespace JCSUnity
                         mBlackScreen.localColor = screenColor;
 
                         // record down the screen color.
-                        JCS_SceneSettings.FirstInstance().SCREEN_COLOR = screenColor;
+                        scs.screenColor = screenColor;
 
                         // start fading in (black screen)
                         mBlackScreen.FadeIn(fadeInTime);
@@ -388,16 +420,28 @@ namespace JCSUnity
                         mBlackSlideScreen.StartSlideIn(mAlign, fadeInTime);
                     }
                     break;
+
+                case JCS_SwitchSceneType.VIDEO:
+                    {
+                        scs.videoPlayer.enabled = true;
+
+                        scs.videoPlayer.clip = scs.ClipIn();
+
+                        scs.videoPlayer.StepForward();
+
+                        scs.videoPlayer.Play();
+                    }
+                    break;
             }
 
             var sos = JCS_SoundSettings.FirstInstance();
 
-            sos.KEEP_BGM_SWITCH_SCENE = keepBGM;
+            sos.keepBGMSwitchScene = keepBGM;
 
             if (!keepBGM)
             {
                 // start fading sound
-                if (sos.SMOOTH_SWITCH_SOUND_BETWEEN_SCENE)
+                if (sos.smoothSwithBetweenScene)
                 {
                     // get the component.
                     if (mFadeSound == null)
@@ -413,7 +457,7 @@ namespace JCSUnity
             }
 
             // start check to switch scene or not
-            scs.SWITCHING_SCENE = true;
+            scs.switchingScene = true;
         }
 
         #endregion
@@ -431,8 +475,8 @@ namespace JCSUnity
         {
             var ss = JCS_SceneSettings.FirstInstance();
 
-            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
-            Color screenColor = ss.SCREEN_COLOR;
+            float fadeInTime = ss.TimeIn();
+            Color screenColor = ss.screenColor;
             bool keepBGM = false;
 
             // load scene and pass the value in.
@@ -474,8 +518,8 @@ namespace JCSUnity
         {
             var ss = JCS_SceneSettings.FirstInstance();
 
-            float fadeInTime = ss.SceneFadeInTimeBaseOnSetting();
-            Color screenColor = ss.SCREEN_COLOR;
+            float fadeInTime = ss.TimeIn();
+            Color screenColor = ss.screenColor;
             bool keepBGM = false;
 
             LoadNextScene(mode, fadeInTime, screenColor, keepBGM);
@@ -534,7 +578,7 @@ namespace JCSUnity
         /// <returns> return result. </returns>
         public bool IsSwitchingScene()
         {
-            return JCS_SceneSettings.FirstInstance().SWITCHING_SCENE;
+            return JCS_SceneSettings.FirstInstance().switchingScene;
         }
 
         /// <summary>
@@ -545,7 +589,7 @@ namespace JCSUnity
             var ss = JCS_SceneSettings.FirstInstance();
 
             // check if during the switch scene?
-            if (!ss.SWITCHING_SCENE)
+            if (!ss.switchingScene)
                 return;
 
             switch (mSwitchSceneType)
@@ -555,9 +599,7 @@ namespace JCSUnity
                         if (onSwitchSceneIn != null)
                         {
                             if (onSwitchSceneIn.Invoke())
-                            {
                                 AllowSceneActivation();
-                            }
                         }
                     }
                     break;
@@ -565,17 +607,24 @@ namespace JCSUnity
                 case JCS_SwitchSceneType.FADE:
                     {
                         if (mBlackScreen.IsFadeIn())
-                        {
                             AllowSceneActivation();
-                        }
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE:
                     {
                         if (mBlackSlideScreen.IsDoneSliding())
+                            AllowSceneActivation();
+                    }
+                    break;
+
+                case JCS_SwitchSceneType.VIDEO:
+                    {
+                        if (!ss.videoPlayer.isPlaying)
                         {
                             AllowSceneActivation();
+
+                            ss.videoPlayer.enabled = false;
                         }
                     }
                     break;
@@ -587,7 +636,7 @@ namespace JCSUnity
             var ss = JCS_SceneSettings.FirstInstance();
 
             // check if during the switch scene?
-            if (!ss.SWITCHING_SCENE)
+            if (!ss.switchingScene)
                 return;
 
             switch (mSwitchSceneType)
@@ -597,7 +646,7 @@ namespace JCSUnity
                         if (onSwitchSceneOut != null)
                         {
                             if (onSwitchSceneOut.Invoke())
-                                ss.SWITCHING_SCENE = false;
+                                ss.switchingScene = false;
                         }
                     }
                     break;
@@ -605,18 +654,21 @@ namespace JCSUnity
                 case JCS_SwitchSceneType.FADE:
                     {
                         if (mBlackScreen.IsFadeOut())
-                        {
-                            ss.SWITCHING_SCENE = false;
-                        }
+                            ss.switchingScene = false;
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE:
                     {
                         if (mBlackSlideScreen.IsDoneSliding())
-                        {
-                            ss.SWITCHING_SCENE = false;
-                        }
+                            ss.switchingScene = false;
+                    }
+                    break;
+
+                case JCS_SwitchSceneType.VIDEO:
+                    {
+                        if (!ss.videoPlayer.isPlaying)
+                            ss.switchingScene = false;
                     }
                     break;
             }

@@ -662,7 +662,6 @@ namespace JCSUnity
         /// <param name="objectPath"> path of the game object </param>
         /// <param name="position"> position of the game object spawn </param>
         /// <param name="rotation"> rotation of the game object spawn </param>
-        /// <returns></returns>
         public static GameObject Instantiate(string objectPath, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             var original = Resources.Load<GameObject>(objectPath);
@@ -675,7 +674,6 @@ namespace JCSUnity
         /// <param name="trans"></param>
         /// <param name="position"></param>
         /// <param name="rotation"></param>
-        /// <returns></returns>
         public static Object Instantiate(Object trans, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
         {
             if (trans == null) return null;

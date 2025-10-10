@@ -6,12 +6,12 @@ Handle the pause settings.
 
 | Name       | Description                                   |
 |:-----------|:----------------------------------------------|
-| ASYMPTOTIC | Pause and unpause with asymptotic transition. |
-| FRICTION   | How fast the asymptotic transition?           |
+| asymptotic | Pause and unpause with asymptotic transition. |
+| friction   | How fast the asymptotic transition?           |
 
 ## Functions
 
-| Name                    | Description                                         |
-|:------------------------|:----------------------------------------------------|
-| AsymptoticBaseOnSetting | Return weather to asymptotic on pause/unpause.      |
-| FrictionBaseOnSetting   | Return the friction to asymptotic on pause/unpause. |
+| Name       | Description                                         |
+|:-----------|:----------------------------------------------------|
+| Asymptotic | Return weather to asymptotic on pause/unpause.      |
+| Friction   | Return the friction to asymptotic on pause/unpause. |

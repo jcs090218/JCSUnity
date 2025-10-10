@@ -15,8 +15,10 @@ Better version of scene manager.
 | mOverlayUseAsync   | Load additive overlay scenes asynchronously.            |
 | mAlign             | Which direction to fade slide.                          |
 | mOverrideSetting   | Do this scene using the specific setting.               |
-| mSceneFadeInTime   | Fade in time. (For this scene)                          |
-| mSceneFadeOutTime  | Fade out time. (For this scene)                         |
+| mTimeIn            | Fade in time. (For this scene)                          |
+| mTimeOut           | Fade out time. (For this scene)                         |
+| mClipIn            | The video clip to play for fade in.                     |
+| mClipOut           | The video clip to play for fade out.                    |
 
 ## Functions
 

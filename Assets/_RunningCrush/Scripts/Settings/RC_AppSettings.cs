@@ -55,8 +55,8 @@ public class RC_AppSettings : JCS_Settings<RC_AppSettings>
 
         // set load and save game data
         var apps = JCS_AppSettings.FirstInstance();
-        apps.SAVE_APP_DATA_FUNC = SaveAppData;
-        apps.LOAD_APP_DATA_FUNC = LoadAppData;
+        apps.onSaveAppData = SaveAppData;
+        apps.onLoadAppData = LoadAppData;
     }
 
     /// <summary>
@@ -83,8 +83,8 @@ public class RC_AppSettings : JCS_Settings<RC_AppSettings>
     {
         var apps = JCS_AppSettings.FirstInstance();
 
-        mFullFilePath = JCS_Path.Combine(Application.persistentDataPath, apps.DATA_PATH, FILE_PATH);
-        mFullFileName = FILE_NAME + apps.DATA_EXTENSION;
+        mFullFilePath = JCS_Path.Combine(Application.persistentDataPath, apps.dataPath, FILE_PATH);
+        mFullFileName = FILE_NAME + apps.dataExt;
     }
 
     private void LoadAppData()

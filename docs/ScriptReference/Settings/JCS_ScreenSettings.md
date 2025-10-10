@@ -4,20 +4,20 @@ Screen related settings.
 
 ## Variables
 
-| Name                                    | Description                                                                      |
-|:----------------------------------------|:---------------------------------------------------------------------------------|
-| onChanged                               | Callback when screen changed.                                                    |
-| onChangedResolution                     | Callback when screen resolution changed.                                         |
-| onChangedMode                           | Callback when screen mode changed.                                               |
-| onResizableResize                       | Callback when the screen resized in resizable mode.                              |
-| onResizableIdle                         | Callback when the screen is not resizing in resizable mode.                      |
-| RESIZE_TO_ASPECT_WHEN_APP_STARTS        | Resize the screen/window to certain aspect when the application starts.          |
-| RESIZE_TO_STANDARD_WHEN_APP_STARTS      | Resize the screen/window to standard resoltuion when application starts.         |
-| RESIZE_TO_ASPECT_EVERYTIME_SCENE_LOADED | Resize the screen/window everytime a scene are loaded.                           |
-| RESIZE_TO_SMALLER_EDGE                  | When resize, resize to the smaller edge, if not true will resize to larger edge. |
-| mResizablePanelsColor                   | Defualt color to aspect panels.                                                  |
-| STANDARD_SCREEN_SIZE                    | Standard screen size to calculate the worldspace obejct's camera view.           |
-| SCREEN_TYPE                             | Type of the screen handle.                                                       |
+| Name                               | Description                                                                      |
+|:-----------------------------------|:---------------------------------------------------------------------------------|
+| onChanged                          | Callback when screen changed.                                                    |
+| onChangedResolution                | Callback when screen resolution changed.                                         |
+| onChangedMode                      | Callback when screen mode changed.                                               |
+| onResizableResize                  | Callback when the screen resized in resizable mode.                              |
+| onResizableIdle                    | Callback when the screen is not resizing in resizable mode.                      |
+| resizeToAspectWhenAppStarts        | Resize the screen/window to certain aspect when the application starts.          |
+| resizeToStandardWhenAppStarts      | Resize the screen/window to standard resoltuion when application starts.         |
+| resizeToAspectEverytimeSceneLoaded | Resize the screen/window everytime a scene are loaded.                           |
+| resizeToSmallerEdge                | When resize, resize to the smaller edge, if not true will resize to larger edge. |
+| mResizablePanelsColor              | Defualt color to aspect panels.                                                  |
+| standardSize                       | Standard screen size to calculate the worldspace obejct's camera view.           |
+| screenType                         | Type of the screen handle.                                                       |
 
 ## Functions
 
@@ -25,7 +25,7 @@ Screen related settings.
 |:---------------------------|:---------------------------------------------------------------------------------|
 | ShouldSpawnResizablePanels | Return true, if we should use resizalbe panels.                                  |
 | IsResponsive               | Return true, if current screen type is responsive.                               |
-| StartingScreenSize         | Return the starting screen size by the current screen type.                      |
+| StartingSize         | Return the starting screen size by the current screen type.                      |
 | ScreenRatio                | Return the ratio from expected screen size to actual screen size.                |
 | BlackspaceWidth            | Return width of the blackspace on the screen, if any after resizing the screen.  |
 | BlackspaceHeight           | Return height of the blackspace on the screen, if any after resizing the screen. |

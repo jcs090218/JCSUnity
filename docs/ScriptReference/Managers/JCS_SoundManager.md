@@ -7,8 +7,8 @@ Manage of all the music, sound and SFX in the game.
 | Name                           | Description                                |
 |:-------------------------------|:-------------------------------------------|
 | mOverrideSetting               | Do this scene using the specific setting?  |
-| mSoundFadeInTime               | Time to fade in the sound.                 |
-| mSoundFadeOutTime              | Time to fade out the sound.                |
+| mTimeIn                        | Time to fade in the sound.                 |
+| mTimeOut                       | Time to fade out the sound.                |
 | mDisableSoundWheWindowNotFocus | Disable the sound when window isn't focus. |
 
 ## Functions

@@ -53,12 +53,12 @@ namespace JCSUnity
         [Tooltip("Time to fade in the sound.")]
         [SerializeField]
         [Range(JCS_SoundSettings.MIN_FADEOUT_TIME, JCS_SoundSettings.MAX_FADEOUT_TIME)]
-        private float mSoundFadeInTime = 1.5f;
+        private float mTimeIn = 1.5f;
 
         [Tooltip("Time to fade out the sound.")]
         [SerializeField]
         [Range(JCS_SoundSettings.MIN_FADEOUT_TIME, JCS_SoundSettings.MAX_FADEOUT_TIME)]
-        private float mSoundFadeOutTime = 1.5f;
+        private float mTimeOut = 1.5f;
 
         [Tooltip("Disable the sound when window isn't focus.")]
         [SerializeField]
@@ -76,8 +76,8 @@ namespace JCSUnity
         public JCS_SoundPlayer GlobalSoundPlayer() { return mGlobalSoundPlayer; }
 
         public bool overrideSetting { get { return mOverrideSetting; } }
-        public float soundFadeInTime { get { return mSoundFadeInTime; } set { mSoundFadeInTime = value; } }
-        public float soundFadeOutTime { get { return mSoundFadeOutTime; } set { mSoundFadeOutTime = value; } }
+        public float timeIn { get { return mTimeIn; } set { mTimeIn = value; } }
+        public float timeOut { get { return mTimeOut; } set { mTimeOut = value; } }
         public bool disableSoundWheWindowNotFocus { get { return mDisableSoundWheWindowNotFocus; } set { mDisableSoundWheWindowNotFocus = value; } }
 
         /* Functions */
@@ -138,8 +138,8 @@ namespace JCSUnity
 
             SwitchBGM(
                 clip,
-                ss.GetSoundFadeOutTimeBaseOnSetting(),
-                ss.GetSoundFadeInTimeBaseOnSetting());
+                ss.TimeOut(),
+                ss.TimeIn());
         }
 
         /// /// <summary>
@@ -211,10 +211,10 @@ namespace JCSUnity
             var ss = JCS_SoundSettings.FirstInstance();
 
             return PlayOneShotBGM(
-                oneShotClip, 
+                oneShotClip,
                 onStackClip,
-                ss.GetSoundFadeOutTimeBaseOnSetting(),
-                ss.GetSoundFadeInTimeBaseOnSetting());
+                ss.TimeOut(),
+                ss.TimeIn());
         }
 
         /// <summary>
@@ -226,9 +226,9 @@ namespace JCSUnity
         /// <param name="fadeInTime"> time to fade in the bgm </param>
         /// <param name="fadeOutTime"> time to fade out the bgm </param>
         public bool PlayOneShotBGM(
-            AudioClip oneShotClip, 
-            AudioClip onStackClip, 
-            float fadeInTime, 
+            AudioClip oneShotClip,
+            AudioClip onStackClip,
+            float fadeInTime,
             float fadeOutTime)
         {
             // stack must be empty before we play it.
@@ -346,7 +346,7 @@ namespace JCSUnity
 
             // switch bgm
             SwitchBGM(
-                this.mOnStackAudioClip, 
+                this.mOnStackAudioClip,
                 this.mOnStackFadeInTime,
                 this.mOnStackFadeOutTime);
 

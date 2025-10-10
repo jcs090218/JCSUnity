@@ -20,19 +20,19 @@ namespace JCSUnity
 
         // No one care about how black screen look so I just make it unseen 
         // in the inspector.
-        public static string BLACK_SCREEN_PATH = "UI/System/JCS_BlackScreen";
-        public static string BLACK_SLIDE_SCREEN_PATH = "UI/System/JCS_BlackSlideScreen";
-        public static string BLACK_SCREEN_NAME = "JCS_BlackScreen";
-        public static string WHITE_SCREEN_PATH = "UI/System/JCS_WhiteScreen";
-        public static string WHITE_SCREEN_NAME = "JCS_WhiteScreen";
+        public const string BLACK_SCREEN_PATH = "UI/System/JCS_BlackScreen";
+        public const string BLACK_SLIDE_SCREEN_PATH = "UI/System/JCS_BlackSlideScreen";
+        public const string BLACK_SCREEN_NAME = "JCS_BlackScreen";
+        public const string WHITE_SCREEN_PATH = "UI/System/JCS_WhiteScreen";
+        public const string WHITE_SCREEN_NAME = "JCS_WhiteScreen";
 
-        public static string FADE_SCREEN_PATH = "UI/System/JCS_FadeScreen";
-        public static string FADE_SCREEN_NAME = "JCS_FadeScreen";
+        public const string FADE_SCREEN_PATH = "UI/System/JCS_FadeScreen";
+        public const string FADE_SCREEN_NAME = "JCS_FadeScreen";
 
         [Separator("Initialize Variables (JCS_UISettings)")]
 
         [Tooltip("Resize the UI in runtime.")]
-        public bool RESIZE_UI = true;
+        public bool resizeUI = true;
 
         /* Setter & Getter */
 
@@ -51,7 +51,7 @@ namespace JCSUnity
         protected override void TransferData(JCS_UISettings _old, JCS_UISettings _new)
         {
             // ResizeUI option should always be the same!
-            _new.RESIZE_UI = _old.RESIZE_UI;
+            _new.resizeUI = _old.resizeUI;
         }
     }
 }
