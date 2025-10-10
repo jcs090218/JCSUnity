@@ -1,4 +1,4 @@
-/**
+﻿/**
  * $File: JCS_SceneSettings.cs $
  * $Date: 2016-10-28 13:59:35 $
  * $Revision: $
@@ -35,7 +35,7 @@ namespace JCSUnity
 
         [Tooltip("Previous scene mode.")]
         [ReadOnly]
-        public Scene previousScene = default(Scene);
+        public Scene previousScene = default;
 
         [Tooltip("Load scene mode.")]
         [ReadOnly]
@@ -75,6 +75,9 @@ namespace JCSUnity
             CheckInstance(this);
 
             mVideoPlayer = GetComponent<VideoPlayer>();
+
+            // 預設關閉的, Unity 不能同時撥放兩個以上的影片.
+            mVideoPlayer.enabled = false;
         }
 
         /// <summary>

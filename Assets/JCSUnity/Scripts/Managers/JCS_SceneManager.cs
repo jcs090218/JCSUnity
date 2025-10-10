@@ -13,6 +13,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using MyBox;
+using UnityEngine.UI;
 
 namespace JCSUnity
 {
@@ -42,6 +43,11 @@ namespace JCSUnity
         [SerializeField]
         [ReadOnly]
         private JCS_BlackSlideScreen mBlackSlideScreen = null;
+
+        [Tooltip("The raw image used to play video transition.")]
+        [SerializeField]
+        [ReadOnly]
+        private RawImage mRawImgVideoTransition = null;
 
         [Tooltip("Which direction to fade slide.")]
         [SerializeField]
@@ -124,9 +130,6 @@ namespace JCSUnity
 
         public JCS_DynamicScene GetDynamicScene() { return mDynamicScene; }
         public void SetDynamicScene(JCS_DynamicScene ds) { mDynamicScene = ds; }
-        public void SetBlackScreen(JCS_BlackScreen bs) { mBlackScreen = bs; }
-        public void SetBlackSlideScreen(JCS_BlackSlideScreen bs) { mBlackSlideScreen = bs; }
-        public void SetWhiteScreen(JCS_WhiteScreen ws) { mWhiteScreen = ws; }
         public JCS_WhiteScreen GetWhiteScreen() { return mWhiteScreen; }
         public JCS_BlackScreen GetBlackScreen() { return mBlackScreen; }
 
@@ -148,28 +151,26 @@ namespace JCSUnity
             {
                 case JCS_SwitchSceneType.FADE:
                     {
-                        JCS_UtilFunctions.PopBlackScreen();
+                        mBlackScreen = JCS_UISettings.PopBlackScreen();
                     }
                     break;
 
                 case JCS_SwitchSceneType.SLIDE:
                     {
-                        JCS_UtilFunctions.PopBlackSlideScreen();
+                        mBlackSlideScreen = JCS_UISettings.PopBlackSlideScreen();
                     }
                     break;
 
                 case JCS_SwitchSceneType.VIDEO:
                     {
-                        var ss = JCS_SceneSettings.FirstInstance();
-
-                        ss.videoPlayer.enabled = false;
+                        mRawImgVideoTransition = JCS_UISettings.PopVideoTransition();
                     }
                     break;
             }
 
             // Pop white screen depends on game needs.
             if (mPopWhiteScreen)
-                JCS_UtilFunctions.PopWhiteScreen();
+                mWhiteScreen = JCS_UISettings.PopWhiteScreen();
 
 #if UNITY_EDITOR
             // add the tool in editor mode.

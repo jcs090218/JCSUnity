@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/JCSUnity/Scenes/System/JCS_AppSkip.unity
     guid: 108ae7f86943bb248b2be397529ebdd1
   - enabled: 1
-    path: Assets/_Project/Scenes/Effects/FT_VideoTransition.unity
+    path: Assets/JCSUnity/Scenes/Effects/JCS_VideoTransition.unity
     guid: 4202f392b635e0448b2c7a7e2bec5f64
   - enabled: 1
     path: Assets/_Project/Scenes/System/FT_Instance 0.unity

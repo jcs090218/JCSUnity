@@ -218,7 +218,7 @@ namespace JCSUnity
                 var sm = JCS_SceneManager.FirstInstance();
 
                 if (sm.GetWhiteScreen() == null)
-                    JCS_UtilFunctions.PopWhiteScreen();
+                    JCS_UISettings.PopWhiteScreen();
 
                 sm.GetWhiteScreen().FadeIn();
 

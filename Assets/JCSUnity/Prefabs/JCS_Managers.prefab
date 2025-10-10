@@ -156,11 +156,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mBlackScreen: {fileID: 0}
   mBlackSlideScreen: {fileID: 0}
+  mRawImgVideoTransition: {fileID: 0}
   mAlign: 0
   mPopWhiteScreen: 1
   mWhiteScreen: {fileID: 0}
   mLoadedOverlaySceneNames: []
-  mSwitchSceneType: 4
+  mSwitchSceneType: 2
   mOverlayUseAsync: 0
   mOverlaySceneNames: []
   mOverrideSetting: 0
@@ -293,8 +294,8 @@ MonoBehaviour:
   mCurrentBGM: {fileID: 0}
   mSwitchingBGM: 0
   mOverrideSetting: 0
-  mSoundFadeInTime: 1.5
-  mSoundFadeOutTime: 1.5
+  mTimeIn: 1.5
+  mTimeOut: 1.5
   mDisableSoundWheWindowNotFocus: 1
 --- !u!114 &11476444
 MonoBehaviour:
