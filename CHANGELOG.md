@@ -5,13 +5,19 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 4.0.1 (Unreleased)
+## 4.1.1 (Unreleased)
 > Released N/A
+
+* N/A
+
+## 4.1.1
+> Released Oct 11, 2025
 
 * fix(UI): Canvas issue on display awake ([`3a118c0`](../../commit/3a118c0a712c8b93c6a10e50128ef77979199af6))
 * style: Match modern C# standard ([`5e9761d`](../../commit/5e9761d9ffa040fb64f99858d27f56bf217994d8))
 * fix(Util): Over GUI on mobile ([`2a4679c`](../../commit/2a4679c3d3cc7a081beb314624d7d4c90121a905))
 * feat(Scene): Add scene overlays option  ([`32f59fb`](../../commit/32f59fb4d9690c847974305d1561d0e455734d29))
+* feat(Effects): Add video option for scene transition ([`1dc0b0d`](../../commits/1dc0b0d9e6ef8166632710997a47119dd5e86beb))
 
 ## 4.0.0
 > Released Aug 01, 2025
