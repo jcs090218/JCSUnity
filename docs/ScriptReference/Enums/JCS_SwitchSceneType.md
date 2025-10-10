@@ -4,9 +4,10 @@ Type to switch the scene.
 
 ## Values
 
-| Name   | Description         |
-|:-------|:--------------------|
-| NONE   | Not specify         |
-| CUSTOM | Custom effect       |
-| FADE   | Black screen effect |
-| SLIDE  | Slide screen effect |
+| Name   | Description      |
+|:-------|:-----------------|
+| NONE   | Not specify      |
+| CUSTOM | Custom           |
+| FADE   | Black screen     |
+| SLIDE  | Slide screen     |
+| VIDEO  | Video transition |
