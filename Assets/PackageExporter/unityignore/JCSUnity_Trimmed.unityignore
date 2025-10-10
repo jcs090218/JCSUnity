@@ -35,9 +35,13 @@ Plugins/
 
 # Trimmed
 JCSUnity/Animations/
-JCSUnity/Materials/
+JCSUnity/Materials/Colors/
+JCSUnity/Materials/Models/
+JCSUnity/Materials/UI/
 JCSUnity/Models/
-JCSUnity/Movies/
-JCSUnity/Shaders/
+JCSUnity/Shaders/Camera/
+JCSUnity/Shaders/Fog of War/
+JCSUnity/Shaders/Model/
 JCSUnity/Sounds/
 JCSUnity/Sprites/
+JCSUnity/Videos/Others/

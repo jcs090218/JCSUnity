@@ -87,9 +87,9 @@ MonoBehaviour:
   mBottomASP: {fileID: 0}
   mLeftASP: {fileID: 0}
   mRightASP: {fileID: 0}
-  RESIZE_SCREEN_THIS_SCENE: 0
-  ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE: 16
-  ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE: 9
+  resizeScreen: 0
+  aspectRatioWidth: 16
+  aspectRatioHeight: 9
 --- !u!114 &11474736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,7 +444,6 @@ GameObject:
   - component: {fileID: 2102792924}
   - component: {fileID: 3569791717532981135}
   - component: {fileID: 15417793814345643}
-  - component: {fileID: 4178066354548462249}
   m_Layer: 0
   m_Name: 2D
   m_TagString: Untagged
@@ -479,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82864c8dd8ee15f4d9769d79389865c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mPlatforms: []
 --- !u!114 &15417793814345643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,20 +492,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOrderLayers: []
---- !u!114 &4178066354548462249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102792923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79d040d41583d2145a83d7f1e2d3a9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LIVE_OBJECT_LIST: []
-  TIME_TO_FIND_ALL_LIVE_OBJECT_IN_SCENE: 3
 --- !u!1 &1000012022687026
 GameObject:
   m_ObjectHideFlags: 0
