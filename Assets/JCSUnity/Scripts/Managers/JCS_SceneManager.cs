@@ -68,7 +68,7 @@ namespace JCSUnity
 
         [Tooltip("Type/Method to switch the scene.")]
         [SerializeField]
-        private JCS_SwitchSceneType mSwitchSceneType = JCS_SwitchSceneType.BLACK_SCREEN;
+        private JCS_SwitchSceneType mSwitchSceneType = JCS_SwitchSceneType.FADE;
 
         [Header("Overlay")]
 
@@ -135,13 +135,13 @@ namespace JCSUnity
 
             switch (mSwitchSceneType)
             {
-                case JCS_SwitchSceneType.BLACK_SCREEN:
+                case JCS_SwitchSceneType.FADE:
                     {
                         JCS_UtilFunctions.PopBlackScreen();
                     }
                     break;
 
-                case JCS_SwitchSceneType.SLIDE_SCREEN:
+                case JCS_SwitchSceneType.SLIDE:
                     {
                         JCS_UtilFunctions.PopBlackSlideScreen();
                     }
@@ -173,7 +173,7 @@ namespace JCSUnity
                         onSwitchSceneInit?.Invoke();
                     }
                     break;
-                case JCS_SwitchSceneType.BLACK_SCREEN:
+                case JCS_SwitchSceneType.FADE:
                     {
                         // get the current screen color.
                         mBlackScreen.localColor = ss.SCREEN_COLOR;
@@ -182,7 +182,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_SwitchSceneType.SLIDE_SCREEN:
+                case JCS_SwitchSceneType.SLIDE:
                     {
                         mBlackSlideScreen.StartSlideOut(mAlign, fadeoutTime);
                     }
@@ -360,7 +360,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_SwitchSceneType.BLACK_SCREEN:
+                case JCS_SwitchSceneType.FADE:
                     {
                         // move to the last child in order
                         // to render the black screen in front of 
@@ -381,7 +381,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_SwitchSceneType.SLIDE_SCREEN:
+                case JCS_SwitchSceneType.SLIDE:
                     {
                         mBlackSlideScreen.MoveToTheLastChild();
 
@@ -562,7 +562,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_SwitchSceneType.BLACK_SCREEN:
+                case JCS_SwitchSceneType.FADE:
                     {
                         if (mBlackScreen.IsFadeIn())
                         {
@@ -571,7 +571,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_SwitchSceneType.SLIDE_SCREEN:
+                case JCS_SwitchSceneType.SLIDE:
                     {
                         if (mBlackSlideScreen.IsDoneSliding())
                         {
@@ -602,7 +602,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_SwitchSceneType.BLACK_SCREEN:
+                case JCS_SwitchSceneType.FADE:
                     {
                         if (mBlackScreen.IsFadeOut())
                         {
@@ -611,7 +611,7 @@ namespace JCSUnity
                     }
                     break;
 
-                case JCS_SwitchSceneType.SLIDE_SCREEN:
+                case JCS_SwitchSceneType.SLIDE:
                     {
                         if (mBlackSlideScreen.IsDoneSliding())
                         {
