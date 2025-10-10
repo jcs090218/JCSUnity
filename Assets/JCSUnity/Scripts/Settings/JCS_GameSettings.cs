@@ -39,7 +39,7 @@ namespace JCSUnity
         [Separator("Runtime Variables (JCS_GameSettings)")]
 
         [Tooltip("Debug mode flag.")]
-        public bool debugMode = true;
+        public bool debugMode = false;
 
         [Tooltip("Gravity production. (For game that have gravity in it)")]
         public float gravityProduct = 4.5f;
