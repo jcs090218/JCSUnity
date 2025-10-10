@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 4.1.1 (Unreleased)
 > Released N/A
 
-* N/A
+* feat(Editor): Allow create using prefab ([`0424ac5`](../../commits/0424ac58f02ef326dedc32448523a212c2c4ded0))
 
 ## 4.1.1
 > Released Oct 11, 2025
