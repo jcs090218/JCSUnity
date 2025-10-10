@@ -4,11 +4,11 @@ Manages screen action.
 
 ## Variables
 
-| Name                                   | Description                                                   |
-|:---------------------------------------|:--------------------------------------------------------------|
-| RESIZE_SCREEN_THIS_SCENE               | Resize screen once on this scene?                             |
-| ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE  | Aspect ratio screen width for this scene you want to resize.  |
-| ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE | Aspect ratio screen height for this scene you want to resize. |
+| Name              | Description                                                   |
+|:------------------|:--------------------------------------------------------------|
+| resizeScreen      | Resize screen once on this scene?                             |
+| aspectRatioWidth  | Aspect ratio screen width for this scene you want to resize.  |
+| aspectRatioHeight | Aspect ratio screen height for this scene you want to resize. |
 
 ## Functions
 

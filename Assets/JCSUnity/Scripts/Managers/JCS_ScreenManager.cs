@@ -45,13 +45,13 @@ namespace JCSUnity
         [Separator("Initialize Variables (JCS_ScreenManager)")]
 
         [Tooltip("Resize screen once on this scene?")]
-        public bool RESIZE_SCREEN_THIS_SCENE = false;
+        public bool resizeScreen = false;
 
         [Tooltip("Aspect ratio screen width for this scene you want to resize.")]
-        public int ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE = 16;
+        public int aspectRatioWidth = 16;
 
         [Tooltip("Aspect ratio screen height for this scene you want to resize.")]
-        public int ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE = 9;
+        public int aspectRatioHeight = 9;
 
         /* Setter & Getter */
 
@@ -86,11 +86,11 @@ namespace JCSUnity
         {
             var ss = JCS_ScreenSettings.FirstInstance();
 
-            if (RESIZE_SCREEN_THIS_SCENE)
+            if (resizeScreen)
             {
                 // Apply new screen aspect ratio.
-                ss.aspectRatioSize.width = ASPECT_RATION_SCREEN_WIDTH_THIS_SCENE;
-                ss.aspectRatioSize.height = ASPECT_RATION_SCREEN_HEIGHT_THIS_SCENE;
+                ss.aspectRatioSize.width = aspectRatioWidth;
+                ss.aspectRatioSize.height = aspectRatioHeight;
 
                 // Resize the screen base on the new screen aspect ratio.
                 ss.ForceAspectScreenOnce();
