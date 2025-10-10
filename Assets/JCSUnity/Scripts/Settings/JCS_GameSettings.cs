@@ -41,12 +41,6 @@ namespace JCSUnity
         [Tooltip("Debug mode flag.")]
         public bool debugMode = true;
 
-        [Tooltip("Game scene flag.")]
-        public bool thisIsGameScene = false;
-
-        [Tooltip("Level design mode flag.")]
-        public bool levelDesignMode = true;
-
         [Tooltip("Gravity production. (For game that have gravity in it)")]
         public float gravityProduct = 4.5f;
 
@@ -123,24 +117,6 @@ namespace JCSUnity
             JCS_IO.CreateDirectory(fullScreenshotPath);
             JCS_IO.CreateDirectory(fullWebcamPath);
             JCS_IO.CreateDirectory(fullStreamingCachePath);
-        }
-
-        private void Start()
-        {
-            var gwh = JCS_GameWindowHandler.FirstInstance();
-
-            // if this is the game scene, enable the game ui.
-            if (thisIsGameScene)
-            {
-                if (gwh != null)
-                    gwh.ShowGameUI();
-            }
-            // if this is NOT the game scene, disable the game ui.
-            else
-            {
-                if (gwh != null)
-                    gwh.HideGameUI();
-            }
         }
 
         private void Update()

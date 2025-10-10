@@ -7,8 +7,6 @@ Hold the general game settings.
 | Name                  | Description                                                 |
 |:----------------------|:------------------------------------------------------------|
 | debugMode             | Debug mode scripting flag.                                  |
-| thisIsGameScene       | Game scene flag.                                            |
-| levelDesignMode       | Level design mode flag.                                     |
 | gameType              | Type of the game flag.                                      |
 | gravityProduct        | Gravity production. (For game that have gravity in it)      |
 | cameraType            | Type of the camera use in the game.                         |
