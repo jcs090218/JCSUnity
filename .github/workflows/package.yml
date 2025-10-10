@@ -16,7 +16,7 @@ env:
   UNITY_VERSION: 6000.2.6f2
   PROJECT_PATH: .
   # Packaging
-  PKG_VERSION: 4.0.1
+  PKG_VERSION: 4.1.1
   BUILD_METHOD: jcs090218.PackageExporter.BatchMode.Export
 
 jobs:
