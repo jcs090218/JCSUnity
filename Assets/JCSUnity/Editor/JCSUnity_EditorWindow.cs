@@ -353,7 +353,7 @@ namespace JCSUnity
         private static GameObject CreateManagers()
         {
             const string path = "JCS_Managers.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, true);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create JCS Managers");
 
@@ -367,7 +367,7 @@ namespace JCSUnity
         private static GameObject CreateSettings()
         {
             const string path = "JCS_Settings.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, true);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create JCS Settings");
 
@@ -381,7 +381,7 @@ namespace JCSUnity
         private static void CreateBGMPlayer()
         {
             const string path = "Sound/JCS_BGMPlayer.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, true);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create BGM Player");
         }
@@ -393,7 +393,7 @@ namespace JCSUnity
         private static void CreateDebugTools()
         {
             const string path = "Tools/JCS_Tools.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, true);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create Debug Tools");
         }
@@ -426,7 +426,7 @@ namespace JCSUnity
         {
             /* Canvas */
             const string path = "UI/JCS_Canvas.prefab";
-            GameObject canvasObj = CreateHierarchyObject(path);
+            GameObject canvasObj = CreateHierarchyObject(path, true);
 
             var canvas = canvasObj.GetComponent<Canvas>();
             {
@@ -443,7 +443,7 @@ namespace JCSUnity
 
             /* Event System */
             const string esPath = "UI/EventSystem.prefab";
-            GameObject evtSystemObj = CreateHierarchyObject(esPath);
+            GameObject evtSystemObj = CreateHierarchyObject(esPath, true);
 
             Undo.RegisterCreatedObjectUndo(evtSystemObj, "Create Event System");
 
@@ -515,7 +515,7 @@ namespace JCSUnity
         private static GameObject Create2DCurosr()
         {
             const string path = "UI/JCS_2DCursor.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, true);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create 3D Cursor");
 
@@ -530,7 +530,7 @@ namespace JCSUnity
         private static GameObject Create3DCurosr()
         {
             const string path = "UI/JCS_3DCursor.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, true);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create 3D Cursor");
 
@@ -662,7 +662,7 @@ namespace JCSUnity
             }
 
             const string slideScreenCameraPath = "Camera/JCS_2DSlideScreenCamera.prefab";
-            var slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath).GetComponent<JCS_2DSlideScreenCamera>();
+            var slideScreenCamera = CreateHierarchyObject(slideScreenCameraPath, false).GetComponent<JCS_2DSlideScreenCamera>();
 
             Undo.RegisterCreatedObjectUndo(slideScreenCamera, "Create 2D Slide Screen Camera");
 
@@ -706,7 +706,7 @@ namespace JCSUnity
         private static GameObject CreateUndoRedoSystem()
         {
             const string path = "UI/JCS_UndoRedoSystem.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, false);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create Undo Redo System");
 
@@ -726,7 +726,7 @@ namespace JCSUnity
         private static void Create2DCamera()
         {
             const string path = "Camera/JCS_2DCamera.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, false);
 
             // set camera depth to default -10.
             spawned.transform.position = new Vector3(0, 0, -10);
@@ -740,7 +740,7 @@ namespace JCSUnity
         private static void CreateMixDamageTextPool()
         {
             const string path = "UI/DamageText/JCS_MixDamageTextPool.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, false);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create Min Damage Text Pool");
         }
@@ -756,7 +756,7 @@ namespace JCSUnity
         private static void Create3DCamera()
         {
             const string path = "Camera/JCS_3DCamera.prefab";
-            GameObject spawned = CreateHierarchyObject(path);
+            GameObject spawned = CreateHierarchyObject(path, false);
 
             Undo.RegisterCreatedObjectUndo(spawned, "Create JCS 3D Camera");
         }
@@ -778,12 +778,21 @@ namespace JCSUnity
         /// <summary>
         /// Create the Game Object during editing time.
         /// </summary>
-        private static GameObject CreateHierarchyObject(string path)
+        private static GameObject CreateHierarchyObject(string path, bool prefab)
         {
-            var obj = LoadAssetAtPath<GameObject>(path);
+            var obj = LoadAssetAtPath<Object>(path);
 
             // spawn the game object.
-            GameObject spawned = Instantiate(obj);
+            GameObject spawned;
+
+            if (prefab)
+            {
+                spawned = PrefabUtility.InstantiatePrefab(obj) as GameObject;
+            }
+            else
+            {
+                spawned = Instantiate(obj) as GameObject;
+            }
 
             // take away clone sign.
             JCS_Util.RemoveCloneString(spawned);
@@ -824,7 +833,7 @@ namespace JCSUnity
             }
 
             // spawn the object first.
-            GameObject hierarchyObj = CreateHierarchyObject(settingPath);
+            GameObject hierarchyObj = CreateHierarchyObject(settingPath, false);
 
             // set the canvas as parent.
             hierarchyObj.transform.SetParent(canvas.transform);
