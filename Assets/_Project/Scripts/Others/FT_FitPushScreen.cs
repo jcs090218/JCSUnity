@@ -32,27 +32,27 @@ public class FT_FitPushScreen : MonoBehaviour
 
         if (JCS_Input.GetKey(KeyCode.D))
         {
-            Vector3 newPos = this.mPanelRectTransform.localPosition;
+            Vector3 newPos = mPanelRectTransform.localPosition;
             newPos.x += 10;
-            this.mPanelRectTransform.localPosition = newPos;
+            mPanelRectTransform.localPosition = newPos;
         }
         if (JCS_Input.GetKey(KeyCode.A))
         {
-            Vector3 newPos = this.mPanelRectTransform.localPosition;
+            Vector3 newPos = mPanelRectTransform.localPosition;
             newPos.x -= 10;
-            this.mPanelRectTransform.localPosition = newPos;
+            mPanelRectTransform.localPosition = newPos;
         }
         if (JCS_Input.GetKey(KeyCode.S))
         {
-            Vector3 newPos = this.mPanelRectTransform.localPosition;
+            Vector3 newPos = mPanelRectTransform.localPosition;
             newPos.y -= 10;
-            this.mPanelRectTransform.localPosition = newPos;
+            mPanelRectTransform.localPosition = newPos;
         }
         if (JCS_Input.GetKey(KeyCode.W))
         {
-            Vector3 newPos = this.mPanelRectTransform.localPosition;
+            Vector3 newPos = mPanelRectTransform.localPosition;
             newPos.y += 10;
-            this.mPanelRectTransform.localPosition = newPos;
+            mPanelRectTransform.localPosition = newPos;
         }
 
         FitPushScreen();
@@ -87,7 +87,7 @@ public class FT_FitPushScreen : MonoBehaviour
 
 
 
-        Vector3 newShowPoint = this.mPanelRectTransform.localPosition;
+        Vector3 newShowPoint = mPanelRectTransform.localPosition;
 
         if (panelRightBorder > camRightBorder)
         {
@@ -107,6 +107,6 @@ public class FT_FitPushScreen : MonoBehaviour
             newShowPoint.y -= panelBottomBorder - camBottomBorder;
         }
 
-        this.mPanelRectTransform.localPosition = newShowPoint;
+        mPanelRectTransform.localPosition = newShowPoint;
     }
 }

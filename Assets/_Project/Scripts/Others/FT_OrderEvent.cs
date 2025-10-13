@@ -37,7 +37,7 @@ public class FT_OrderEvent : MonoBehaviour
 
     private void Awake()
     {
-        mOrderEvent = this.GetComponent<JCS_OrderEvent>();
+        mOrderEvent = GetComponent<JCS_OrderEvent>();
 
         mOrderEvent.StartEvent(intervalTime, () => {
             Debug.Log(word);

@@ -22,7 +22,7 @@ public class FT_CamInScreenSpace : MonoBehaviour
 
     private void Awake() 
     {
-        mRectTransform = this.GetComponent<RectTransform>();
+        mRectTransform = GetComponent<RectTransform>();
 
     }
     

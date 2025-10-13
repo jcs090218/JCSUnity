@@ -55,7 +55,7 @@ namespace JCSUnity
         {
             instance = this;
 
-            mPathfinding = this.GetComponent<JCS_Pathfinding>();
+            mPathfinding = GetComponent<JCS_Pathfinding>();
         }
 
         /// <summary>

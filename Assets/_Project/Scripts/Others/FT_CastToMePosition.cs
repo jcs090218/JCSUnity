@@ -31,8 +31,8 @@ public class FT_CastToMePosition : MonoBehaviour
     private void Update()
     {
         if (JCS_Input.GetKeyDown(KeyCode.G))
-            castAction.CastToScreen(this.transform.position);
+            castAction.CastToScreen(transform.position);
         if (JCS_Input.GetKeyDown(KeyCode.T))
-            castAction.CastToScreen(this.transform.localPosition);
+            castAction.CastToScreen(transform.localPosition);
     }
 }

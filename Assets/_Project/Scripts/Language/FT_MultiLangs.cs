@@ -42,8 +42,8 @@ public class FT_MultiLangs : MonoBehaviour
 
     private void Awake()
     {
-        this.mBtn1.onClick.AddListener(Btn1_Click);
-        this.mBtn2.onClick.AddListener(Btn2_Click);
+        mBtn1.onClick.AddListener(Btn1_Click);
+        mBtn2.onClick.AddListener(Btn2_Click);
     }
 
     private void Btn1_Click()

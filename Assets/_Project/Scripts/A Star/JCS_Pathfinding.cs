@@ -31,7 +31,7 @@ namespace JCSUnity
 
         private void Awake()
         {
-            this.mPfGrid = this.GetComponent<JCS_PfGrid>();
+            mPfGrid = GetComponent<JCS_PfGrid>();
         }
 
         /// <summary>

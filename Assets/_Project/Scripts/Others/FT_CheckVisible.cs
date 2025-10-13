@@ -32,6 +32,6 @@ public class FT_CheckVisible : JCS_UnityObject
 
     private void Update()
     {
-        print(this.localIsVisible);
+        print(localIsVisible);
     }
 }

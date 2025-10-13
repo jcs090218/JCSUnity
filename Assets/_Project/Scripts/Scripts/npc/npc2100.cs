@@ -37,9 +37,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Sprite CenterSprite { get { return this.mCenterSprite; } }
-        public Sprite LeftSprite { get { return this.mLeftSprite; } }
-        public Sprite RightSprite { get { return this.mRightSprite; } }
+        public Sprite CenterSprite { get { return mCenterSprite; } }
+        public Sprite LeftSprite { get { return mLeftSprite; } }
+        public Sprite RightSprite { get { return mRightSprite; } }
 
         /* Functions */
 

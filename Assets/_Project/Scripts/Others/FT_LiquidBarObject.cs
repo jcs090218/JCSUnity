@@ -35,7 +35,7 @@ public class FT_LiquidBarObject : MonoBehaviour
     {
         Camera cam = JCS_Camera.main.GetCamera();
 
-        Vector3 newPos = cam.WorldToViewportPoint(this.transform.position);;
+        Vector3 newPos = cam.WorldToViewportPoint(transform.position);;
         newPos.z = mBar.GetMask().rectTransform.parent.position.z;
         mBar.GetMask().rectTransform.parent.position = newPos;
     }

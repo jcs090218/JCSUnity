@@ -33,16 +33,16 @@ public class FT_RotatePoint : MonoBehaviour
     {
         if (JCS_Input.GetKeyDown(KeyCode.C))
         {
-            //this.transform.position = JCS_Mathf.RotatePointY(this.transform.position, mOrigin.transform.position, mAngle);
+            //transform.position = JCS_Mathf.RotatePointY(transform.position, mOrigin.transform.position, mAngle);
         }
 
         if (JCS_Input.GetKey(KeyCode.C))
         {
             --angleY;
 
-            this.transform.position = JCS_Mathf.CirclePositionY(
+            transform.position = JCS_Mathf.CirclePositionY(
                 origin.transform.position,
-                this.transform.position,
+                transform.position,
                 angleY, 
                 radius);
         }
@@ -51,9 +51,9 @@ public class FT_RotatePoint : MonoBehaviour
         {
             ++angleZ;
 
-            this.transform.position = JCS_Mathf.CirclePositionZ(
+            transform.position = JCS_Mathf.CirclePositionZ(
                 origin.transform.position,
-                this.transform.position,
+                transform.position,
                 angleZ,
                 radius);
         }

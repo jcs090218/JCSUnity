@@ -16,13 +16,13 @@ public class FT_Raycast : MonoBehaviour
 
     /* Setter & Getter */
 
-    public CharacterController GetCC() { return this.mCharacterController; }
+    public CharacterController GetCC() { return mCharacterController; }
 
     /* Functions */
 
     private void Awake()
     {
-        mCharacterController = this.GetComponent<CharacterController>();
+        mCharacterController = GetComponent<CharacterController>();
     }
 
     private void Update()

@@ -32,16 +32,16 @@ namespace JCSUnity
         /* Setter & Getter */
 
         public int fCost { get { return gCost + hCost; } }
-        public int HeapIndex { get { return this.mHeapIndex; } set { this.mHeapIndex = value; } }
+        public int HeapIndex { get { return mHeapIndex; } set { mHeapIndex = value; } }
 
         /* Functions */
 
         public JCS_PfNode(bool walkable, Vector3 worldPos, int gridX, int gridY)
         {
-            this.Walkable = walkable;
-            this.mWorldPosition = worldPos;
-            this.GridX = gridX;
-            this.GridY = gridY;
+            Walkable = walkable;
+            mWorldPosition = worldPos;
+            GridX = gridX;
+            GridY = gridY;
         }
 
         /// <summary>

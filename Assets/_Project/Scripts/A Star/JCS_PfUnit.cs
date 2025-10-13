@@ -71,9 +71,9 @@ namespace JCSUnity
 
         /* Setter & Getter */
 
-        public Transform Target { get { return this.mTarget; } set { this.mTarget = value; } }
-        public float Speed { get { return this.mSpeed; } set { this.mSpeed = value; } }
-        public JCS_TimeType timeType { get { return this.mTimeType; } set { this.mTimeType = value; } }
+        public Transform Target { get { return mTarget; } set { mTarget = value; } }
+        public float Speed { get { return mSpeed; } set { mSpeed = value; } }
+        public JCS_TimeType timeType { get { return mTimeType; } set { mTimeType = value; } }
 
         /* Functions */
 
@@ -122,7 +122,7 @@ namespace JCSUnity
         /// </summary>
         public void ActivePathfinding()
         {
-            ActivePathfinding(this.mTarget);
+            ActivePathfinding(mTarget);
         }
         /// <summary>
         /// Make the path finding request and 
@@ -148,7 +148,7 @@ namespace JCSUnity
 
             // make path finding request
             JCS_PathRequestManager.RequestPath(
-                this.transform.position,
+                transform.position,
                 pos,
                 OnPathFound);
         }

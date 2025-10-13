@@ -25,14 +25,14 @@ public class FT_BoxCollider : MonoBehaviour
 
     /* Setter & Getter */
 
-    public float Width { get { return this.mWidth; } }
-    public float Height { get { return this.mHeight; } }
+    public float Width { get { return mWidth; } }
+    public float Height { get { return mHeight; } }
 
     /* Functions */
 
     private void Awake()
     {
-        mBoxCollider = this.GetComponent<BoxCollider>();
+        mBoxCollider = GetComponent<BoxCollider>();
 
         Vector2 widthHeight = JCSUnity.JCS_Physics.GetColliderWidthHeight(mBoxCollider);
 
@@ -42,7 +42,7 @@ public class FT_BoxCollider : MonoBehaviour
 
     private void Update()
     {
-        Vector3 pos = this.transform.position;
+        Vector3 pos = transform.position;
 
         Debug.DrawLine(new Vector3(pos.x, pos.y - (Height / 2), pos.z),
             new Vector3(pos.x, pos.y + (Height / 2), pos.z));

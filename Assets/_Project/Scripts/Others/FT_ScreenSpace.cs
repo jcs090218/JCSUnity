@@ -27,16 +27,16 @@ public class FT_ScreenSpace : MonoBehaviour
 
     /* Setter & Getter */
 
-    public SpriteRenderer SpriteRenderer { get { return this.mSpriteRenderer; } }
-    public Transform TransformTemp { get { return this.mTransform; } }
-    public Transform TransformShow { get { return this.mTransformShow; } }
+    public SpriteRenderer SpriteRenderer { get { return mSpriteRenderer; } }
+    public Transform TransformTemp { get { return mTransform; } }
+    public Transform TransformShow { get { return mTransformShow; } }
 
     /* Functions */
 
     private void Awake()
     {
-        mSpriteRenderer = this.GetComponent<SpriteRenderer>();
-        mCharacterController = this.GetComponent<CharacterController>();
+        mSpriteRenderer = GetComponent<SpriteRenderer>();
+        mCharacterController = GetComponent<CharacterController>();
     }
 
     private void Start()

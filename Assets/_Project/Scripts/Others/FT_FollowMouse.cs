@@ -24,7 +24,7 @@ public class FT_FollowMouse : MonoBehaviour
     
     private void Update() 
     {
-        //this.transform.position = Input.mousePosition;
+        //transform.position = Input.mousePosition;
 
         Vector2 pos;
         Canvas myCanvas = JCS_Canvas.GuessCanvas().canvas;

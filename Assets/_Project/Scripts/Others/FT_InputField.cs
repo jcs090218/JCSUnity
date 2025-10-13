@@ -25,7 +25,7 @@ public class FT_InputField : MonoBehaviour
 
     private void Awake()
     {
-        this.inputField = this.GetComponent<InputField>();
+        inputField = GetComponent<InputField>();
 
         inputField.text = "Hello World";
     }
