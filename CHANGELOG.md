@@ -9,6 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 > Released N/A
 
 * feat(Editor): Allow create using prefab ([`0424ac5`](../../commits/0424ac58f02ef326dedc32448523a212c2c4ded0))
+* fix: Workaround for async load scene ([`4244929`](../../commits/4244929f22a8076b887291bb4031aaa71b3029ce))
 
 ## 4.1.1
 > Released Oct 11, 2025
