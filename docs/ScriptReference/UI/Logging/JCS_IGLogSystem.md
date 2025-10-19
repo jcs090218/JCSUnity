@@ -12,8 +12,7 @@ In game log system.
 
 | Name                | Description                                      |
 |:--------------------|:-------------------------------------------------|
-| SendLogMessage      | Make single log message on the screen.           |
-| SendLogMessages     | Make multiple log messages on the screen.        |
+| Send                | Make log message(s) on the screen.               |
 | RemoveFromRenderVec | Remove the log message that are outdated.        |
 | UpdateSpace         | Update all current active log messages' spacing. |
 

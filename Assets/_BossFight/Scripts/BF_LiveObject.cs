@@ -100,7 +100,7 @@ public class BF_LiveObject : JCS_2DLiveObject
         {
             string expMsg = BF_MessageSettings.FirstInstance().EXP_BASE + exp.ToString();
 
-            igls.SendLogMessage(expMsg);
+            igls.Send(expMsg);
         }
 
         base.Die();
