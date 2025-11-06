@@ -6,6 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright © 2021 by Shen, Jen-Chieh $
  */
+using System.IO;
+using UnityEngine;
 
 namespace JCSUnity
 {
@@ -21,6 +23,16 @@ namespace JCSUnity
         /* Functions */
 
         /// <summary>
+        /// Return the normalized path.
+        /// </summary>
+        public static string Normalize(string path)
+        {
+            return path.Replace(
+                Path.DirectorySeparatorChar,
+                Path.AltDirectorySeparatorChar);
+        }
+
+        /// <summary>
         /// Safe way to combine multiple path to one path with slash.
         /// </summary>
         /// <param name="list"> List of path. </param>
@@ -28,14 +40,27 @@ namespace JCSUnity
         public static string Combine(params string[] list)
         {
             string result = list[0];
+
             for (int index = 1; index < list.Length; ++index)
             {
                 string path = list[index];
                 result += "/" + path;
             }
-            result = result.Replace("\\", "/");
+
+            result = Normalize(result);
             result = result.Replace("//", "/");
+
             return result;
+        }
+
+        /// <summary>
+        /// Convert a path to asset compatible path.
+        /// 
+        /// The returned string should start with `Assets/`.
+        /// </summary>
+        public static string ToAsset(string path)
+        {
+            return path.Replace(Application.dataPath, "Assets");
         }
     }
 }
