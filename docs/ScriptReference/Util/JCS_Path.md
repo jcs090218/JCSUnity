@@ -1,7 +1,9 @@
 # JCS_Path
 
-Wrapper for .NET module `Path`.
+The utility module for handling path issues.
 
-| Name        | Description                                               |
-|:------------|:----------------------------------------------------------|
-| PathCombine | Safe way to combine multiple path to one path with slash. |
+| Name      | Description                                               |
+|:----------|:----------------------------------------------------------|
+| Normalize | Return the normalized path.                               |
+| Combine   | Safe way to combine multiple path to one path with slash. |
+| ToAsset   | Convert a path to asset compatible path.                  |

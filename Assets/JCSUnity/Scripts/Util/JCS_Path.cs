@@ -12,7 +12,7 @@ using UnityEngine;
 namespace JCSUnity
 {
     /// <summary>
-    /// Wrapper for .NET module `Path`.
+    /// The utility module for handling path issues.
     /// </summary>
     public static class JCS_Path
     {
