@@ -144,6 +144,7 @@ namespace JCSUnity
         {
             RegisterInstance(this);
 
+            // Load early for better execution order for scripts.
             HandleAdditive();
 
             switch (mSwitchSceneType)
@@ -273,6 +274,13 @@ namespace JCSUnity
         {
             foreach (string sceneName in mOverlaySceneNames)
             {
+                // Ensure only one scene name is loaded.
+                if (mLoadedOverlaySceneNames.Contains(sceneName))
+                    continue;
+
+                // Prevent scene loaded twice.
+                mLoadedOverlaySceneNames.Add(sceneName);
+
                 if (mOverlayUseAsync)
                     SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
                 else
@@ -297,8 +305,6 @@ namespace JCSUnity
                 return;
 
             string sceneName = scene.name;
-
-            mLoadedOverlaySceneNames.Add(sceneName);
 
             // Execute event.
             if (mOnOverlaySceneLoaded.ContainsKey(sceneName))
@@ -678,9 +684,13 @@ namespace JCSUnity
         /// </summary>
         private void EnterNextScene()
         {
+            // Don't set it to low, or else it will still be
+            // not fade out when trying to load the next scnee.
+            const float delay = 0.1f;
+
             // Delay a bit of time to make sure it's completely
             // fade out.
-            Invoke(nameof(InvokeEnterNextScene), 0.01f);
+            Invoke(nameof(InvokeEnterNextScene), delay);
         }
         private void InvokeEnterNextScene()
         {
