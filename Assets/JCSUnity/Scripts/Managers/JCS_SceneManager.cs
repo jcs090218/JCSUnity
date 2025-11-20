@@ -29,7 +29,9 @@ namespace JCSUnity
         public Func<bool> onSwitchSceneIn = null;
         public Func<bool> onSwitchSceneOut = null;
 
-        private bool mIsEnteringSwitchScene = false;
+        private bool mSwitchSceneEntering = false;
+
+        private bool mIsEnteringNextScene = false;
 
         [Separator("Check Variables (JCS_SceneManager)")]
 
@@ -261,7 +263,7 @@ namespace JCSUnity
 
         private void Update()
         {
-            if (mIsEnteringSwitchScene)
+            if (mSwitchSceneEntering)
                 DoEnterSwitchScene();
             else
                 DoExitSwitchScene();
@@ -277,9 +279,6 @@ namespace JCSUnity
                 // Ensure only one scene name is loaded.
                 if (mLoadedOverlaySceneNames.Contains(sceneName))
                     continue;
-
-                // Prevent scene loaded twice.
-                mLoadedOverlaySceneNames.Add(sceneName);
 
                 if (mOverlayUseAsync)
                     SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
@@ -305,6 +304,9 @@ namespace JCSUnity
                 return;
 
             string sceneName = scene.name;
+
+            // Prevent scene loaded twice.
+            mLoadedOverlaySceneNames.Add(sceneName);
 
             // Execute event.
             if (mOnOverlaySceneLoaded.ContainsKey(sceneName))
@@ -387,7 +389,7 @@ namespace JCSUnity
             }
 
             // Mark loading scene.
-            mIsEnteringSwitchScene = true;
+            mSwitchSceneEntering = true;
 
             switch (mSwitchSceneType)
             {
@@ -684,6 +686,11 @@ namespace JCSUnity
         /// </summary>
         private void EnterNextScene()
         {
+            if (mIsEnteringNextScene)
+                return;
+
+            mIsEnteringNextScene = true;
+
             // Don't set it to low, or else it will still be
             // not fade out when trying to load the next scnee.
             const float delay = 0.1f;
