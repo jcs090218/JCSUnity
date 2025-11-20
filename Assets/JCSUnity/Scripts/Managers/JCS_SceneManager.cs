@@ -276,10 +276,6 @@ namespace JCSUnity
         {
             foreach (string sceneName in mOverlaySceneNames)
             {
-                // Ensure only one scene name is loaded.
-                if (mLoadedOverlaySceneNames.Contains(sceneName))
-                    continue;
-
                 if (mOverlayUseAsync)
                     SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
                 else
