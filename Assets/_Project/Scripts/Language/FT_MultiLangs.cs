@@ -16,7 +16,7 @@ using JCSUnity;
 ///   1. At least two buttons for different languages.
 ///   2. Assign callback and call language refresh.
 /// </summary>
-public class FT_MultiLangs : MonoBehaviour 
+public class FT_MultiLangs : MonoBehaviour
 {
     /* Variables */
 
