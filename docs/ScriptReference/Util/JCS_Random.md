@@ -20,5 +20,7 @@ Random library class.
 | Choose        | Choose object(s) from the collection.             |
 | ChooseE       | Choose object(s) from the collection. (Ellipsis)  |
 | EnumValue     | Return a random enum value.                       |
+| Shuffle       | Return a shuffled collection.                     |
+| ShuffleE      | Return a shuffled collection. (Ellipsis)          |
 | PointInBounds | Return a random point in bounds.                  |
 | PointInSphere | Return a random position in sphere.               |
