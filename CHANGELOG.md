@@ -12,6 +12,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix: Workaround for async load scene ([`4244929`](../../commits/4244929f22a8076b887291bb4031aaa71b3029ce))
 * fix(Scene): Prevent overlay scenes being load multiple times ([`073087a`](../../commits/073087ab0df69a40214b35216935edda61bd2053))
 * fix(Util): Add to data path ([`e117a0a`](../../commits/e117a0a32e0fa7cb99fac9e12712daae55c832da))
+* chore(Util): Add shuffle to collection ([`f43030d`](../../commits/f43030d1a1021da2e83bf346737b0c63c992c348))
 
 ## 4.1.1
 > Released Oct 11, 2025
