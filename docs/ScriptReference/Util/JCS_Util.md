@@ -11,8 +11,6 @@ All code utility is stored here.
 | BytesToString                        | Convert byte array to string by charset type.                                                     |
 | StringToBytes                        | Convert string to byte array by charset type.                                                     |
 | EscapeURL                            | Simple version of escape url.                                                                     |
-| GetValues                            | Get the value for each enum, use to loop through the enum.                                        |
-| EnumSize                             | Returns the length of an enumerator.                                                              |
 | WithInRange                          | Check if the value is within the range.                                                           |
 | WithInRange                          | Check if the index is valid within the collection's size.                                         |
 | CopyBtyeArray                        | Copy byte array to another byte array memory space.                                               |
