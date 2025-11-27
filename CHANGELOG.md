@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix(Util): Add to data path ([`e117a0a`](../../commits/e117a0a32e0fa7cb99fac9e12712daae55c832da))
 * chore(Util): Add shuffle to collection ([`f43030d`](../../commits/f43030d1a1021da2e83bf346737b0c63c992c348))
 * feat(Util): Add enum module ([`e05d063`](../../commits/e05d063c05fbb385cc5c6bbb89d17e2258c05660))
+* feat(Util): Add get component(s) above/below/all ([`7f753db`](../../commits/7f753db4d079536b2e8f9a52543a949af27f7631))
 
 ## 4.1.1
 > Released Oct 11, 2025
