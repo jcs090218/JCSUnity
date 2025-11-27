@@ -32,6 +32,7 @@ jobs:
       with:
         path: 'gh-pages'
         ref: gh-pages
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Move .git to build
       run: mv './gh-pages/.git' './build'
