@@ -29,7 +29,6 @@ jobs:
       with:
         path: 'gh-pages'
         ref: gh-pages
-        tokeb: ${{ secrets.PAT }}
 
     - name: Move .git to build
       run: mv './gh-pages/.git' './build'
