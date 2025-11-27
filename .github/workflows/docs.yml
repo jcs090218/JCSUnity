@@ -33,12 +33,16 @@ jobs:
     - name: Move .git to build
       run: mv './gh-pages/.git' './build'
 
+    - name: Set git config
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+
     - name: Push to pages
       continue-on-error: true
       run: |
         cd './build'
-        git config user.name github-actions
-        git config user.email github-actions@github.com
         git add .
         git commit -m "Update pages"
         git push
