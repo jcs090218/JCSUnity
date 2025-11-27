@@ -43,6 +43,7 @@ jobs:
 
     - name: Push to pages
       continue-on-error: true
+      working-directory: ./build
       uses: jcs-actions/github-push-action@master
       with:
         github_token: ${{ secrets.PAT }}
