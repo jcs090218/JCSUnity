@@ -291,55 +291,99 @@ namespace JCSUnity
         #region Component
 
         /// <summary>
+        /// Get component from current and above layers. 
+        /// </summary>
+        public static T GetComponentAbove<T>(this Component comp)
+        {
+            T result = comp.GetComponent<T>();
+
+            if (result != null)
+                return result;
+
+            return comp.GetComponentInParent<T>();
+        }
+
+        /// <summary>
+        /// Get component from current and below layers. 
+        /// </summary>
+        public static T GetComponentBelow<T>(this Component comp)
+        {
+            T result = comp.GetComponent<T>();
+
+            if (result != null)
+                return result;
+
+            return comp.GetComponentInChildren<T>();
+        }
+
+        /// <summary>
+        /// Get component from all layers.
+        /// </summary>
+        public static T GetComponentAll<T>(this Component comp)
+        {
+            T result = comp.GetComponentAbove<T>();
+
+            if (result != null)
+                return result;
+
+            return comp.GetComponentBelow<T>();
+        }
+
+        /// <summary>
+        /// Get components from current and above layers. 
+        /// </summary>
+        public static T[] GetComponentsAbove<T>(this Component comp)
+        {
+            T[] result = comp.GetComponents<T>();
+
+            if (result != null)
+                return result;
+
+            return comp.GetComponentsInParent<T>();
+        }
+
+        /// <summary>
+        /// Get components from current and below layers. 
+        /// </summary>
+        public static T[] GetComponentsBelow<T>(this Component comp)
+        {
+            T[] result = comp.GetComponents<T>();
+
+            if (result != null)
+                return result;
+
+            return comp.GetComponentsInChildren<T>();
+        }
+
+        /// <summary>
+        /// Get components from all layers.
+        /// </summary>
+        public static T[] GetComponentsAll<T>(this Component comp)
+        {
+            T[] result = comp.GetComponentsAbove<T>();
+
+            if (result != null)
+                return result;
+
+            return comp.GetComponentsBelow<T>();
+        }
+
+        /// <summary>
         /// Do enable/distance component.
         /// </summary>
         /// <param name="comp"> Component reference you want to act. </param>
         /// <param name="act"> Boolean to assign to enabled variable. </param>
-        public static void EnableComponent(Component comp, bool act)
+        public static void EnableComponent(this Component comp, bool act)
         {
-            /* Behaviour */
+            switch (comp)
             {
-                var behaviour = comp as Behaviour;
-                if (behaviour != null)
-                {
-                    behaviour.enabled = act;
-                    return;
-                }
+                case Behaviour result:
+                    result.enabled = act;
+                    break;
+                case Collider result:
+                    result.enabled = act;
+                    break;
             }
-
-            /* Collider */
-            {
-                var collider = comp as Collider;
-                if (collider != null)
-                {
-                    collider.enabled = act;
-                    return;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Force to get a component, if not found we will add one then.
-        /// </summary>
-        /// <typeparam name="T"> Got or Added component. </typeparam>
-        /// <param name="mb"> Any MonoBehaviour. </param>
-        /// <returns>
-        /// Got or new added component.
-        /// </returns>
-        public static T ForceGetComponent<T>(Component component)
-            where T : Component
-        {
-            T target = component.GetComponent<T>();
-
-            // Did found! great just returns it.
-            if (target != null)
-                return target;
-
-            // Sadly, we have to add it ourselves.
-            target = component.gameObject.AddComponent<T>();
-
-            // Returns the new added component.
-            return target;
         }
 
         /// <summary>
@@ -347,11 +391,11 @@ namespace JCSUnity
         /// </summary>
         /// <param name="trans"> transform to apply the effect. </param>
         /// <param name="act"> enable or disable? </param>
-        public static void SetEnableAllComponents(Transform trans, bool act)
+        public static void EnableComponents(Transform trans, bool act)
         {
-            foreach (var component in trans.GetComponents<MonoBehaviour>())
+            foreach (var comp in trans.GetComponents<Component>())
             {
-                component.enabled = act;
+                comp.EnableComponent(act);
             }
         }
 
