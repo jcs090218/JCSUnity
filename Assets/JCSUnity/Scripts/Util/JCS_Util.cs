@@ -291,7 +291,7 @@ namespace JCSUnity
         #region Component
 
         /// <summary>
-        /// Get component from current and above layers. 
+        /// Get the component from current and above layers. 
         /// </summary>
         public static T GetComponentAbove<T>(this Component comp)
         {
@@ -304,7 +304,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get component from current and below layers. 
+        /// Get the component from current and below layers. 
         /// </summary>
         public static T GetComponentBelow<T>(this Component comp)
         {
@@ -317,7 +317,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Get component from all layers.
+        /// Get the component from all layers.
         /// </summary>
         public static T GetComponentAll<T>(this Component comp)
         {
