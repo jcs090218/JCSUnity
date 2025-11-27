@@ -794,13 +794,15 @@ namespace JCSUnity
         /// <summary>
         /// Retrieves the first active loaded object of Type type.
         /// </summary>
-        public static Object FindObjectByType(System.Type type)
+        public static T FindObjectByType<T>()
+            where T : Object
         {
-            return Object.FindFirstObjectByType(type);
+            return Object.FindFirstObjectByType<T>();
         }
-        public static Object FindObjectByType(System.Type type, Scene scene)
+        public static T FindObjectByType<T>(Scene scene)
+            where T : Object
         {
-            Object[] objects = FindObjectsByType(type, scene);
+            T[] objects = FindObjectsByType<T>(scene);
 
             if (objects.Length == 0)
                 return null;
@@ -811,13 +813,17 @@ namespace JCSUnity
         /// <summary>
         /// Retrieves a list of all loaded objects of Type type.
         /// </summary>
-        public static Object[] FindObjectsByType(System.Type type)
+        public static T[] FindObjectsByType<T>()
+            where T : Object
         {
-            return Object.FindObjectsByType(type, FindObjectsSortMode.None);
+            return Object.FindObjectsByType<T>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
         }
-        public static Object[] FindObjectsByType(System.Type type, Scene scene)
+        public static T[] FindObjectsByType<T>(Scene scene)
+            where T : Object
         {
-            Object[] objects = FindObjectsByType(type);
+            T[] objects = FindObjectsByType<T>();
 
             return objects.Where((obj) =>
             {

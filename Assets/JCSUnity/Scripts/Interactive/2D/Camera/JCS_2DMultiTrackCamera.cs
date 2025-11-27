@@ -85,7 +85,7 @@ namespace JCSUnity
             mAudioListener = GetComponent<AudioListener>();
 
             // find the camera in the scene first
-            mCamera = JCS_Util.FindObjectByType(typeof(JCS_2DCamera)) as JCS_2DCamera;
+            mCamera = JCS_Util.FindObjectByType<JCS_2DCamera>();
 
             if (mCamera == null)
                 return;

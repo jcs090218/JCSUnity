@@ -84,7 +84,7 @@ namespace JCSUnity
                 mSoundPlayer = GetComponent<JCS_SoundPlayer>();
 
             // try to get it from the scene by type.
-            mSlideCameras = JCS_Util.FindObjectsByType(typeof(JCS_2DSlideScreenCamera)) as JCS_2DSlideScreenCamera[];
+            mSlideCameras = JCS_Util.FindObjectsByType<JCS_2DSlideScreenCamera>();
         }
 
 #if JCS_USE_GAMEPAD
