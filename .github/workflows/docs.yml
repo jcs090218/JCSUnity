@@ -11,6 +11,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,7 +42,6 @@ jobs:
         cd './build'
         git config user.name github-actions
         git config user.email github-actions@github.com
-        git config receive.denynonfastforwards false
         git add .
         git commit -m "Update pages"
         git push
