@@ -19,12 +19,6 @@ All code utility is stored here.
 | Parse                                | Parse `str` to float, return `defaultValue` if failed.                                            |
 | Parse                                | Parse `str` to boolean, return `defaultValue` if failed.                                          |
 | ToJson                               | Serialize object to JSON string.                                                                  |
-| GetComponentAbove                    | Get the component from current and above layers.                                                  |
-| GetComponentBelow                    | Get the component from current and below layers.                                                  |
-| GetComponentAll                      | Get the component from all layers.                                                                |
-| GetComponentsAbove                   | Get components from current and above layers.                                                     |
-| GetComponentsBelow                   | Get components from current and below layers.                                                     |
-| GetComponentsAll                     | Get components from all layers.                                                                   |
 | EnableComponent                      | Do enable/distance component.                                                                     |
 | EnableComponents                     | Set enable/disable to all component on this transform.                                            |
 | SetActiveToAllChildren               | Active all the child in a transform.                                                              |
