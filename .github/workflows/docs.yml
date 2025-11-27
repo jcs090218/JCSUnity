@@ -29,16 +29,21 @@ jobs:
       with:
         path: 'gh-pages'
         ref: gh-pages
+        persist-credentials: false
+        fetch-depth: 0
 
     - name: Move .git to build
       run: mv './gh-pages/.git' './build'
 
-    - name: Push to pages
-      continue-on-error: true
+    - name: Set git config
       run: |
-        cd './build'
         git config user.name github-actions
         git config user.email github-actions@github.com
-        git add .
-        git commit -m "Update pages"
-        git push
+        git config receive.denynonfastforwards false
+
+    - name: Push to pages
+      continue-on-error: true
+      uses: jcs-actions/github-push-action@master
+      with:
+        github_token: ${{ secrets.PAT }}
+        branch: gh-pages
