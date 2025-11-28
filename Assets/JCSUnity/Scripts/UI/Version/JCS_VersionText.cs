@@ -35,12 +35,19 @@ namespace JCSUnity
             UpdateVersionNo();
         }
 
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            UpdateVersionNo();
+        }
+#endif
+
         /// <summary>
         /// Update the version number once.
         /// </summary>
         public void UpdateVersionNo()
         {
-            text  = string.Format(mFormat, Application.version);
+            text = string.Format(mFormat, Application.version);
         }
     }
 }
