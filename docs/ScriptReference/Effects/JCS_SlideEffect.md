@@ -25,10 +25,10 @@ Effect that slide the object to one position.
 
 ## Functions
 
-| Name            | Description                    |
-|:----------------|:-------------------------------|
-| JCS_OnMouseOver | Call it when is on mouse over. |
-| JCS_OnMouseExit | Call it When is on mouse exit. |
-| Active          | Active the effect.             |
-| Deactive        | Deactive the effect.           |
-| IsIdle          | Is the object idle.            |
+| Name          | Description                    |
+|:--------------|:-------------------------------|
+| ItOnMouseOver | Call it when is on mouse over. |
+| ItOnMouseExit | Call it When is on mouse exit. |
+| Active        | Active the effect.             |
+| Deactive      | Deactive the effect.           |
+| IsIdle        | Is the object idle.            |

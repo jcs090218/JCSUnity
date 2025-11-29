@@ -18,9 +18,9 @@ Scale the object to a specific value.
 
 ## Functions
 
-| Name            | Description                    |
-|:----------------|:-------------------------------|
-| JCS_OnMouseOver | Call it when is on mouse over. |
-| JCS_OnMouseExit | Call it When is on mouse exit. |
-| Active          | Active the effect.             |
-| Deactive        | Deactive the effect.           |
+| Name          | Description                    |
+|:--------------|:-------------------------------|
+| ItOnMouseOver | Call it when is on mouse over. |
+| ItOnMouseExit | Call it When is on mouse exit. |
+| Active        | Active the effect.             |
+| Deactive      | Deactive the effect.           |

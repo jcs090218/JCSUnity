@@ -10,6 +10,7 @@ Drag and drop effect.
 
 ## Functions
 
-| Name       | Description        |   |            |                    |
-|:-----------|:-------------------|---|------------|--------------------|
-| JCS_OnDrag | Call when on drag. |   | JCS_OnDrop | Call when on drop. |
+| Name   | Description        |
+|:-------|:-------------------|
+| OnDrag | Call when on drag. |   
+| OnDrop | Call when on drop. |

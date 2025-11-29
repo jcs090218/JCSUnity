@@ -36,11 +36,11 @@ Customize your own button sound base on different circumstance.
 
 ## Functions
 
-| Name                   | Description                      |
-|:-----------------------|:---------------------------------|
-| JCS_OnMouseOver        | Call when on mouse over.         |
-| JCS_OnMouseExit        | Call when on mouse exit.         |
-| JCS_OnMouseDown        | Call when on mouse down.         |
-| JCS_OnMouseUp          | Call when on mouse up.           |
-| JCS_OnMouseClick       | Call when on mouse click.        |
-| JCS_OnMouseDoubleClick | Call when on mouse double click. |
+| Name                 | Description                      |
+|:---------------------|:---------------------------------|
+| ItOnMouseOver        | Call when on mouse over.         |
+| ItOnMouseExit        | Call when on mouse exit.         |
+| ItOnMouseDown        | Call when on mouse down.         |
+| ItOnMouseUp          | Call when on mouse up.           |
+| ItOnMouseClick       | Call when on mouse click.        |
+| ItOnMouseDoubleClick | Call when on mouse double click. |
