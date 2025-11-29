@@ -179,7 +179,7 @@ namespace JCSUnity
 
             // set the call back function if there is button assigned.
             if (mActiveButton != null)
-                mActiveButton.SetSystemCallback(JCS_OnMouseOver);
+                mActiveButton.SetSystemCallback(ItOnMouseOver);
         }
 
         private void Start()
@@ -200,12 +200,12 @@ namespace JCSUnity
 
                     foreach (EventTriggerType evt in mActiveEventTriggerType)
                     {
-                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseOver);
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, ItOnMouseOver);
                     }
 
                     foreach (EventTriggerType evt in mDeactiveEventTriggerType)
                     {
-                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, JCS_OnMouseExit);
+                        JCS_UIUtil.AddEventTriggerEvent(mEventTrigger, evt, ItOnMouseExit);
                     }
                 }
             }
@@ -275,11 +275,11 @@ namespace JCSUnity
         /// 
         /// Use in inspector for Event Trigger System. (Active)
         /// </summary>
-        public void JCS_OnMouseOver(PointerEventData data)
+        public void ItOnMouseOver()
         {
-            JCS_OnMouseOver();
+            ItOnMouseOver(null);
         }
-        public void JCS_OnMouseOver()
+        public void ItOnMouseOver(PointerEventData data)
         {
             Active();
         }
@@ -291,11 +291,11 @@ namespace JCSUnity
         /// Use in inspector for Event Trigger System. (Deactive)
         /// </summary>
         /// <returns></returns>
-        public void JCS_OnMouseExit(PointerEventData data)
+        public void ItOnMouseExit()
         {
-            JCS_OnMouseExit();
+            ItOnMouseExit();
         }
-        public void JCS_OnMouseExit()
+        public void ItOnMouseExit(PointerEventData data)
         {
             Deactive();
         }
