@@ -138,11 +138,9 @@ namespace JCSUnity
         /// </summary>
         public void DoSelection()
         {
-            if (mButton != null)
-                mButton.ButtonClick();
+            mButton?.InterBtnClick();
 
-            if (mSelectedEvent != null)
-                mSelectedEvent.Invoke();
+            mSelectedEvent?.Invoke();
         }
 
         /// <summary>

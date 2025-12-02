@@ -60,11 +60,13 @@ namespace JCSUnity
         /// <param name="te"></param>
         /// <param name="type"></param>
         /// <param name="func"></param>
-        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, Action<PointerEventData> func)
+        public static void AddEventTriggerEvent(
+            EventTrigger te, EventTriggerType type,
+            Action<PointerEventData> func)
         {
-            EventTrigger.Entry entry = new EventTrigger.Entry();
+            var entry = new EventTrigger.Entry();
             entry.eventID = type;
-            entry.callback.AddListener((data) => { func((PointerEventData)data); });
+            entry.callback.AddListener((data) => { func?.Invoke((PointerEventData)data); });
             te.triggers.Add(entry);
         }
 
@@ -74,11 +76,14 @@ namespace JCSUnity
         /// <param name="te"></param>
         /// <param name="type"></param>
         /// <param name="func"></param>
-        public static void AddEventTriggerEvent(EventTrigger te, EventTriggerType type, Action<PointerEventData, JCS_ButtonSelection> func, JCS_ButtonSelection selection)
+        public static void AddEventTriggerEvent(
+            EventTrigger te, EventTriggerType type,
+            Action<PointerEventData, JCS_ButtonSelection> func,
+            JCS_ButtonSelection selection)
         {
-            EventTrigger.Entry entry = new EventTrigger.Entry();
+            var entry = new EventTrigger.Entry();
             entry.eventID = type;
-            entry.callback.AddListener((data) => { func((PointerEventData)data, selection); });
+            entry.callback.AddListener((data) => { func?.Invoke((PointerEventData)data, selection); });
             te.triggers.Add(entry);
         }
 

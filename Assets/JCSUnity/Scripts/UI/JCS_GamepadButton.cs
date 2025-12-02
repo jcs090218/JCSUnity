@@ -85,7 +85,7 @@ namespace JCSUnity
             {
                 if (JCS_Input.IsAnyKeyBuffer(mKeyActionType))
                 {
-                    ButtonClick();
+                    InterBtnClick();
                     PlayButtonClickSound();
                 }
             }
@@ -97,7 +97,7 @@ namespace JCSUnity
                     // listen to game pad.
                     JCS_Input.GetJoystickKeyByAction(mKeyActionType, mJoystickLitener, mJKeyToListen))
                 {
-                    ButtonClick();
+                    InterBtnClick();
                     PlayButtonClickSound();
                 }
             }
