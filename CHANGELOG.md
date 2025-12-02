@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix(Util): Add to data path ([`e117a0a`](../../commits/e117a0a32e0fa7cb99fac9e12712daae55c832da))
 * chore(Util): Add shuffle to collection ([`f43030d`](../../commits/f43030d1a1021da2e83bf346737b0c63c992c348))
 * feat(Util): Add enum module ([`e05d063`](../../commits/e05d063c05fbb385cc5c6bbb89d17e2258c05660))
+* fix(UI): Make sure the button sound plays only on hover ([`00ee7b7`](../../commits/00ee7b717af15f2f33c26752aca3c484026bf18c))
 
 ## 4.1.1
 > Released Oct 11, 2025
