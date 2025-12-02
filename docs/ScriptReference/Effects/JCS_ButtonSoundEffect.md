@@ -43,4 +43,3 @@ Customize your own button sound base on different circumstance.
 | ItOnMouseDown        | Call when on mouse down.         |
 | ItOnMouseUp          | Call when on mouse up.           |
 | ItOnMouseClick       | Call when on mouse click.        |
-| ItOnMouseDoubleClick | Call when on mouse double click. |
