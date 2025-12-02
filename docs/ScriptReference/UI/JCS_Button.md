@@ -22,8 +22,10 @@ Button wrapper for more usable functionalities.
 ExampleButton.cs
 
 ```cs
-  class ExampleButton : JCS_Button {
-      public override void OnClick() {
+  public class ExampleButton : JCS_Button
+  {
+      public override void OnClick()
+      {
           Debug.Log("On click!"");
       }
   }

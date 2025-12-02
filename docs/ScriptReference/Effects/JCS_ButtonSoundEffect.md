@@ -36,10 +36,10 @@ Customize your own button sound base on different circumstance.
 
 ## Functions
 
-| Name                 | Description                      |
-|:---------------------|:---------------------------------|
-| ItOnMouseOver        | Call when on mouse over.         |
-| ItOnMouseExit        | Call when on mouse exit.         |
-| ItOnMouseDown        | Call when on mouse down.         |
-| ItOnMouseUp          | Call when on mouse up.           |
-| ItOnMouseClick       | Call when on mouse click.        |
+| Name           | Description               |
+|:---------------|:--------------------------|
+| ItOnMouseEnter | Call when on mouse enter. |
+| ItOnMouseExit  | Call when on mouse exit.  |
+| ItOnMouseDown  | Call when on mouse down.  |
+| ItOnMouseUp    | Call when on mouse up.    |
+| ItOnMouseClick | Call when on mouse click. |
