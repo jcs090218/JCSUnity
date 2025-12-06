@@ -37,7 +37,7 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Return enum in true form.
+        /// Get the value for each enum, in the type of `Enum`.
         /// </summary>
         public static IEnumerable<Enum> GetValuesE<T>()
         {
