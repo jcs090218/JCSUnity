@@ -23,9 +23,11 @@ Fade object to a particular alpha channel.
 
 ## Functions
 
-| Name      | Description                            |
-|:----------|:---------------------------------------|
-| IsFadeIn  | Return true if the object is fade in.  |
-| IsFadeOut | Return true if the object is fade out. |
-| FadeOut   | Fade out the object.                   |
-| FadeIn    | Fade in the object.                    |
+| Name        | Description                            |
+|:------------|:---------------------------------------|
+| IsFadeIn    | Return true if the object is fade in.  |
+| IsFadeOut   | Return true if the object is fade out. |
+| IsFadingIn  | Return true if we are fading in.       |
+| IsFadingOut | Return true if we are fading out.      |
+| FadeOut     | Fade out the object.                   |
+| FadeIn      | Fade in the object.                    |
