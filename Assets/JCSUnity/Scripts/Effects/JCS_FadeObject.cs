@@ -92,6 +92,7 @@ namespace JCSUnity
 
         public bool effect { get { return mEffect; } set { mEffect = value; } }
         public bool visible { get { return mVisible; } set { mVisible = value; } }
+        public JCS_FadeType fadeType { get { return mFadeType; } }
         public float fadeTime { get { return mFadeTime; } set { mFadeTime = value; } }
         public bool overrideFade { get { return mOverrideFade; } set { mOverrideFade = value; } }
         public float alpha { get { return mAlpha; } set { mAlpha = value; } }
@@ -144,6 +145,22 @@ namespace JCSUnity
         public bool IsFadeOut()
         {
             return (mAlpha <= mFadeOutAmount);
+        }
+
+        /// <summary>
+        /// Return true if we are fading in.
+        /// </summary>
+        public bool IsFadingIn()
+        {
+            return mEffect && mFadeType == JCS_FadeType.IN;
+        }
+
+        /// <summary>
+        /// Return true if we are fading out.
+        /// </summary>
+        public bool IsFadingOut()
+        {
+            return mEffect && mFadeType == JCS_FadeType.OUT;
         }
 
         /// <summary>
@@ -244,6 +261,7 @@ namespace JCSUnity
                             localEnabled = false;
 
                             mEffect = false;
+                            mFadeType = JCS_FadeType.NONE;
 
                             // do callback
                             {
@@ -264,6 +282,7 @@ namespace JCSUnity
                         if (mAlpha > mFadeInAmount)
                         {
                             mEffect = false;
+                            mFadeType = JCS_FadeType.NONE;
 
                             // do callback
                             {
