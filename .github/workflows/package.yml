@@ -68,7 +68,7 @@ jobs:
           customParameters: -nographics _name "${{ matrix.package-name }}" _version "${{ env.PKG_VERSION }}" _savePath "."
 
       - name: Upload package as artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.package-name }}_v${{ env.PKG_VERSION }}.unitypackage
           path: ${{ env.PROJECT_PATH }}/${{ matrix.package-name }}_v${{ env.PKG_VERSION }}.unitypackage
