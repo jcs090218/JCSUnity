@@ -1,0 +1,8 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="MyBox.csproj" />
+  <Project Path="IngameDebugConsole.Runtime.csproj" />
+  <Project Path="Assembly-CSharp-Editor-firstpass.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="IngameDebugConsole.Editor.csproj" />
+</Solution>
