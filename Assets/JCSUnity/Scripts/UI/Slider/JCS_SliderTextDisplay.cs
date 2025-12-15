@@ -43,29 +43,49 @@ namespace JCSUnity
 
         /* Functions */
 
-        private void Awake()
+        private void OnEnable()
         {
             AddListener();
         }
 
+        private void OnDisable()
+        {
+            RemoveListener();
+        }
+
+#if UNITY_EDITOR
         private void OnValidate()
         {
-            AddListener();
+            Refresh();
         }
+#endif
 
         private void AddListener()
+        {
+            mSlider?.onValueChanged.AddListener(OnValueChanged);
+
+            // Call once.
+            Refresh();
+        }
+
+        private void RemoveListener()
+        {
+            mSlider?.onValueChanged.RemoveListener(OnValueChanged);
+        }
+
+        private void OnValueChanged(float val)
+        {
+            Refresh();
+        }
+
+        /// <summary>
+        /// Refresh the text once.
+        /// </summary>
+        public void Refresh()
         {
             if (mSlider == null)
                 return;
 
-            mSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
-
-            // Call once.
-            OnValueChanged();
-        }
-
-        private void OnValueChanged()
-        {
             text = string.Format(mFormat,
                     Math.Round(mSlider.value, mRoundPlace),
                     Math.Round(mSlider.maxValue, mRoundPlace),
