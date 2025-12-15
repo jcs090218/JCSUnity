@@ -20,6 +20,7 @@ namespace JCSUnity
     {
         /* Variables */
 
+        // The execution when the text data is refreshed.
         public Action onRefresh = null;
 
         // Record for last min value.
@@ -110,6 +111,9 @@ namespace JCSUnity
             onRefresh?.Invoke();
         }
 
+        /// <summary>
+        /// Handle min/max value changed.
+        /// </summary>
         private void HandleMinMaxValueChanged()
         {
             if (mMinVal != mSlider.minValue ||

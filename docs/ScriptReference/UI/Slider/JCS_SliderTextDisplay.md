@@ -6,6 +6,7 @@ Text that display slider's value.
 
 | Name        | Description                                        |
 |:------------|:---------------------------------------------------|
+| onRefresh   | The execution when the text data is refreshed.     |
 | mSlider     | To update the text along with this slider's value. |
 | mFormat     | Format text to display.                            |
 | mRoundPlace | Place you want to round the decimal.               |
