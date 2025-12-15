@@ -16,6 +16,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Util): Add enum module ([`e05d063`](../../commits/e05d063c05fbb385cc5c6bbb89d17e2258c05660))
 * fix(UI): Make sure the button sound plays only on hover ([`00ee7b7`](../../commits/00ee7b717af15f2f33c26752aca3c484026bf18c))
 * feat(Util): Support more on `IEnumerable` ([`e825427`](../../commits/e8254274e23a4c29b35f1136b079c65c57b0d8f4))
+* feat(UI): Expose refreshing text slider ([`ef69454`](../../commits/ef69454e936a1a7213a586eb5b82ee6e636022b8))
 
 ## 4.1.1
 > Released Oct 11, 2025
