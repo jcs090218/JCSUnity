@@ -688,6 +688,17 @@ namespace JCSUnity
         #region Destroy
 
         /// <summary>
+        /// Destroy all children under the transform.
+        /// </summary>
+        public static void DestroyChildren(Transform transform)
+        {
+            foreach (Transform child in transform)
+            {
+                MonoBehaviour.Destroy(child.gameObject);
+            }
+        }
+
+        /// <summary>
         /// Destroy all the 'TYPE' object in the scene.
         /// </summary>
         public static void DestroyAllTypeObjectInScene<T>()
