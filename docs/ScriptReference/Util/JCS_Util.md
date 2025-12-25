@@ -32,6 +32,7 @@ All code utility is stored here.
 | WithActiveScene                      | Execute within the active scene without losing the current scene.                                 |
 | SpawnAnimateObject                   | Spawn a game object with animation attached.                                                      |
 | SpawnAnimateObjectDeathEvent         | Spawn a game object with the animator and death event on it.                                      |
+| DestroyChildren                      | Destroy all children under the transform.                                                         |
 | DestroyAllTypeObjectInScene          | Destory all game objects in the scene with the type passed in.                                    |
 | DestroyImmediateAllTypeObjectInScene | Destroy all the game object in the scene immediately with the type passed in.                     |
 | IsClone                              | Return true if the object is a clone.                                                             |
