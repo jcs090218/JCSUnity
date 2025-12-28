@@ -11,6 +11,10 @@ Tutorials/
 Publish/
 UserSettings/
 
+# Backups
+/_Recovery/
+/_Recovery.*
+
 # 3rd party plugins
 /Assets/GaussianBlur/
 /Assets/GaussianBlur.*
