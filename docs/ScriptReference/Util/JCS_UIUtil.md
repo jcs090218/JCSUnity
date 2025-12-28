@@ -7,6 +7,7 @@ User interface related utilities functions.
 | Name                             | Description                                                               |
 |:---------------------------------|:--------------------------------------------------------------------------|
 | IsUnityDefinedUI                 | Return true if GameObject contains built-in UI components.                |
+| GetBounds                        | Return the bounds of the UI element.                                      |
 | AddEventTriggerEvent             | Add an event to EventTrigger component from Unity API.                    |
 | SetLangText                      | Set text by system language and language data.                            |
 | SetText                          | Set the text with data.                                                   |

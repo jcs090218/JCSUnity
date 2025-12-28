@@ -52,6 +52,36 @@ namespace JCSUnity
                 comp.GetComponent<TMP_InputField>());
         }
 
+        /// <summary>
+        /// Return the bounds of the UI element.
+        /// </summary>
+        public static Bounds GetBounds(Transform transform)
+        {
+            var min = Vector3.positiveInfinity;
+            var max = Vector3.negativeInfinity;
+
+            RectTransform[] rts = transform.GetComponentsInChildren<RectTransform>();
+
+            foreach (RectTransform rt in rts)
+            {
+                // Get the 4 corners in world coordinates
+                var v = new Vector3[4];
+                rt.GetWorldCorners(v);
+
+                // update min and max
+                foreach (var vector3 in v)
+                {
+                    min = Vector3.Min(min, vector3);
+                    max = Vector3.Max(max, vector3);
+                }
+            }
+
+            var bounds = new Bounds();
+            bounds.SetMinMax(min, max);
+
+            return bounds;
+        }
+
         #region EVENT
 
         /// <summary>
