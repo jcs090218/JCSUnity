@@ -18,7 +18,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Initialize Variables (JCS_VersionText)")]
+        [Separator("🌱 Initialize Variables (JCS_VersionText)")]
 
         [Tooltip("Format string to show version text.")]
         [SerializeField]

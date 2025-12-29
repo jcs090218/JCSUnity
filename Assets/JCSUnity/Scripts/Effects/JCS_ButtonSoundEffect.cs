@@ -26,7 +26,7 @@ namespace JCSUnity
 
         private EventTrigger mEventTrigger = null;
 
-        [Separator("Check Variables (JCS_ButtonSoundEffect)")]
+        [Separator("📋 Check Variabless (JCS_ButtonSoundEffect)")]
 
         [Tooltip("Is true when mouse is over this button.")]
         [SerializeField]
@@ -40,13 +40,13 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundPlayer mSoundPlayer = null;
 
-        [Header("Auto add to Unity's \"Event Trigger(Script)\" or not?")]
+        [Header("🔍 Auto add to Unity's \"Event Trigger(Script)\" or not?")]
 
         [Tooltip("is true u dont have to add manully!")]
         [SerializeField]
         private bool mAutoAddEvent = true;
 
-        [Header("*USAGE: Please use this component with Unity's \"Event Trigger(Script)\"!!!")]
+        [Header("🔍 *USAGE: Please use this component with Unity's \"Event Trigger(Script)\"!!!")]
 
         [SerializeField]
         private AudioClip mOnMouseOverSound = null;
@@ -75,7 +75,7 @@ have the 'JCS_Soundplayer' then it will grab the global sound player.")]
         [SerializeField]
         private JCS_SoundMethod mOnMouseDoubleClickSoundMethod = JCS_SoundMethod.PLAY_SOUND;
 
-        [Header("Optional")]
+        [Header("🔍 Optional")]
 
         [Tooltip("Use to detect to see if the button is interactable or not.")]
         [SerializeField]

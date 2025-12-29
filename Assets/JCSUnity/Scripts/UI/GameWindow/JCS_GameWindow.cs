@@ -32,7 +32,7 @@ namespace JCSUnity
 
         private JCS_DialogueObject mDialogueObject = null;
 
-        [Separator("Initialize Variables (JCS_GameWindow)")]
+        [Separator("🌱 Initialize Variables (JCS_GameWindow)")]
 
         [Tooltip("Drag drop type.")]
         [SerializeField]

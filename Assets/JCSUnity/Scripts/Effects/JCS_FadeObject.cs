@@ -39,7 +39,7 @@ namespace JCSUnity
         private float mAlpha = 1.0f;
 
 #if UNITY_EDITOR
-        [Separator("Helper Variables (JCS_FadeObject)")]
+        [Separator("🧪 Helper Variables (JCS_FadeObject)")]
 
         [Tooltip("Test Fade in/out with key.")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace JCSUnity
         private KeyCode mFadeOutKey = KeyCode.N;
 #endif
 
-        [Separator("Check Variables (JCS_FadeObject)")]
+        [Separator("📋 Check Variabless (JCS_FadeObject)")]
 
         [Tooltip("Is current fade object doing the effect? (fade in/out)")]
         [SerializeField]
@@ -63,7 +63,7 @@ namespace JCSUnity
         [ReadOnly]
         private bool mVisible = true;
 
-        [Separator("Runtime Variables (JCS_FadeObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_FadeObject)")]
 
         [Tooltip("How long it fades.")]
         [SerializeField]

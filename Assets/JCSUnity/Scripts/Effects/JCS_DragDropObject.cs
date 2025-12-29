@@ -24,7 +24,7 @@ namespace JCSUnity
             Drop,
         };
 
-        [Separator("Runtime Variables (JCS_DragDropObject)")]
+        [Separator("⚡️ Runtime Variables (JCS_DragDropObject)")]
 
         [Tooltip("Type of the drag and drop target.")]
         [SerializeField]

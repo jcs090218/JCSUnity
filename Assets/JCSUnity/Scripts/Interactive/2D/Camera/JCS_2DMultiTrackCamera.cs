@@ -27,7 +27,7 @@ namespace JCSUnity
 
         private AudioListener mAudioListener = null;
 
-        [Separator("Runtime Variables (JCS_2DMultiTrackCamera)")]
+        [Separator("⚡️ Runtime Variables (JCS_2DMultiTrackCamera)")]
 
         [Tooltip("Camera use to do the action.")]
         [SerializeField]

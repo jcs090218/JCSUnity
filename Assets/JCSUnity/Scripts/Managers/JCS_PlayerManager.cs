@@ -19,7 +19,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("Check Variables (JCS_PlayerManager)")]
+        [Separator("📋 Check Variabless (JCS_PlayerManager)")]
 
         [Tooltip("current player that are active")]
         [SerializeField]

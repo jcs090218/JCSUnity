@@ -23,7 +23,7 @@ namespace JCSUnity
         private Vector3 mRecordScale = Vector3.zero;
         private Vector3 mTargetScale = Vector3.zero;
 
-        [Separator("Check Variables (JCS_ScaleEffect)")]
+        [Separator("📋 Check Variabless (JCS_ScaleEffect)")]
 
         [Tooltip("Is the current component doing the effect now?")]
         [SerializeField]
@@ -40,7 +40,7 @@ namespace JCSUnity
         [ReadOnly]
         private EventTrigger mEventTrigger = null;
 
-        [Separator("Initialize Variables (JCS_ScaleEffect)")]
+        [Separator("🌱 Initialize Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Do scale in x axis.")]
         [SerializeField]
@@ -62,13 +62,13 @@ namespace JCSUnity
         [SerializeField]
         private Vector3 mScaleFriction = new Vector3(0.2f, 0.2f, 0.2f);
 
-        [Separator("Runtime Variables (JCS_ScaleEffect)")]
+        [Separator("⚡️ Runtime Variables (JCS_ScaleEffect)")]
 
         [Tooltip("Type of the delta time.")]
         [SerializeField]
         private JCS_TimeType mTimeType = JCS_TimeType.DELTA_TIME;
 
-        [Header("UI")]
+        [Header("🔍 UI")]
 
         [Tooltip("Add event to event trigger system.")]
         [SerializeField]

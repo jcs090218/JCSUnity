@@ -43,7 +43,7 @@ namespace JCSUnity
 
         public Action onInteractableStateChanged = null;
 
-        [Separator("Check Variables (JCS_Button)")]
+        [Separator("📋 Check Variabless (JCS_Button)")]
 
         [Tooltip("Record down the selection choice for dialogue system.")]
         [SerializeField]
@@ -66,7 +66,7 @@ namespace JCSUnity
         // 'JCS_ButtonSelectionGroup' and 'JCS_ButtonSelection'.
         protected bool mIsSelectedInGroup = false;
 
-        [Separator("Initialize Variables (JCS_Button)")]
+        [Separator("🌱 Initialize Variables (JCS_Button)")]
 
         [Tooltip("Auto add listner to button click event?")]
         [SerializeField]
@@ -76,7 +76,7 @@ namespace JCSUnity
         [SerializeField]
         protected int mDialogueIndex = -1;
 
-        [Separator("Runtime Variables (JCS_Button)")]
+        [Separator("⚡️ Runtime Variables (JCS_Button)")]
 
         [Tooltip("Is the button interactable or not. (Default: true)")]
         [SerializeField]

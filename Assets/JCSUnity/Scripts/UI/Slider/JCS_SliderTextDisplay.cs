@@ -29,7 +29,7 @@ namespace JCSUnity
         // Record for last max value.
         private float mMaxVal = 0;
 
-        [Separator("Runtime Variables (JCS_TextSliderDisplay)")]
+        [Separator("⚡️ Runtime Variables (JCS_TextSliderDisplay)")]
 
         [Tooltip("To update the text along with this slider's value.")]
         [SerializeField]
