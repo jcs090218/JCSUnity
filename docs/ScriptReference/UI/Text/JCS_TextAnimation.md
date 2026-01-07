@@ -19,8 +19,8 @@ Text animation that will display text accordingly.
 
 ## Demo
 
-<img src="./images/JCS_TextAnimation/demo.gif"/>
+![](./images/JCS_TextAnimation/demo.gif)
 
 ## Inpsector View
 
-<img src="./images/JCS_TextAnimation/inspector.png"/>
+![](./images/JCS_TextAnimation/inspector.png)
