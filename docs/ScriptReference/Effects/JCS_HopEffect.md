@@ -4,12 +4,14 @@ Make object hop for a force.
 
 ## Variables
 
-| Name           | Description                                         |
-|:---------------|:----------------------------------------------------|
-| mForce         | How much force to jump away from current position.  |
-| mGravity       | How fast the object goes back to original position. |
-| mAxis          | Hop axis.                                           |
-| mTimeType      | Type of the delta time.                             |
+| Name      | Description                                         |
+|:----------|:----------------------------------------------------|
+| onStart   | Exection after we just start hopping.               |
+| onDone    | Exection after we are done hopping.                 |
+| mForce    | How much force to jump away from current position.  |
+| mGravity  | How fast the object goes back to original position. |
+| mAxis     | Hop axis.                                           |
+| mTimeType | Type of the delta time.                             |
 
 ## Functions
 
@@ -20,4 +22,4 @@ Make object hop for a force.
 
 ## Demo
 
-<img src="./images/JCS_HopEffect.gif"/>
+![](./images/JCS_HopEffect.gif)
