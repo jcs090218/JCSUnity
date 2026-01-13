@@ -19,8 +19,10 @@ All code utility is stored here.
 | Parse                                | Parse `str` to float, return `defaultValue` if failed.                                            |
 | Parse                                | Parse `str` to boolean, return `defaultValue` if failed.                                          |
 | ToJson                               | Serialize object to JSON string.                                                                  |
+| IsMissing                            | Return true if the object is destroyed and remain missing.                                        |
 | EnableComponent                      | Do enable/distance component.                                                                     |
 | EnableComponents                     | Set enable/disable to all component on this transform.                                            |
+| SetActive                            | Set active according to its type.                                                                 |
 | SetActiveToAllChildren               | Active all the child in a transform.                                                              |
 | MoveToTheLastChild                   | Make the transform to the last transform of the current parent transform.                         |
 | SetParentWithoutLosingInfo           | Set the transform to another transform without losing it's info. (position, rotation, scale)      |
