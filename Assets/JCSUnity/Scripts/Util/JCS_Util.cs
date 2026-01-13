@@ -323,6 +323,20 @@ namespace JCSUnity
 
         #endregion
 
+        #region Object
+
+        /// <summary>
+        /// Return true if the object is destroyed.
+        /// 
+        /// Source in https://discussions.unity.com/t/how-can-i-check-if-an-object-is-null/23224/4
+        /// </summary>
+        public static bool IsMissing(Object obj)
+        {
+            return !(obj ?? false);
+        }
+
+        #endregion
+
         #region Transform & Children
 
         /// <summary>
