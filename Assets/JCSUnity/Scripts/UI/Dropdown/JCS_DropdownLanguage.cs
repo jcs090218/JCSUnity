@@ -71,7 +71,11 @@ namespace JCSUnity
         /// </summary>
         public void Refresh()
         {
-            if (mRemoveAllOptions)
+            Refresh(mRemoveAllOptions);
+        }
+        public void Refresh(bool removeAllOptions)
+        {
+            if (removeAllOptions)
                 ClearOptions();
 
             foreach (SystemLanguage option in mOptions)
