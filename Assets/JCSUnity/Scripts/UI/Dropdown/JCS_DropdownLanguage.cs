@@ -78,6 +78,9 @@ namespace JCSUnity
             if (removeAllOptions)
                 ClearOptions();
 
+            if (mOptions.Count == 0)
+                return;
+
             foreach (SystemLanguage option in mOptions)
             {
                 string text = JCS_Locale.SystemLangToString(option);
@@ -87,7 +90,9 @@ namespace JCSUnity
 
             // Default to the current windowed mode.
             {
-                string text = JCS_Locale.SystemLangToString(JCS_AppManager.FirstInstance().systemLanguage);
+                SystemLanguage lang = JCS_AppManager.FirstInstance().systemLanguage;
+
+                string text = JCS_Locale.SystemLangToString(lang);
 
                 JCS_UIUtil.Dropdown_SetSelection(this, text);
             }
@@ -115,6 +120,9 @@ namespace JCSUnity
         }
         private void OnValueChanged(string text)
         {
+            if (mOptions.Count == 0)
+                return;
+
             SystemLanguage selected = JCS_Locale.StringToSystemLang(text);
 
             JCS_AppManager.FirstInstance().systemLanguage = selected;
