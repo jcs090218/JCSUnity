@@ -6,8 +6,6 @@ All code utility is stored here.
 
 | Name                                 | Description                                                                                       |
 |:-------------------------------------|:--------------------------------------------------------------------------------------------------|
-| Delta                                | Delta the `num` with `val` and clamp the result with `min` and `max`.                             |
-| DeltaP                               | Delta the `num` with `val` by percentage and clamp the result with `min` and `max`.               |
 | BytesToString                        | Convert byte array to string by charset type.                                                     |
 | StringToBytes                        | Convert string to byte array by charset type.                                                     |
 | EscapeURL                            | Simple version of escape url.                                                                     |
