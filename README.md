@@ -66,7 +66,6 @@ depend on the game your are making.
 - [MyBox][] (required) - is a set of attributes, tools and extensions for Unity
 - [Tweener][] (required) - Simpler and light weight tweener library.
 - [In-game Debug Console][] (optional) - Easier debugging after built.
-- [StandaloneFileBrowser][] (optional) - File browser for UI/tool base application.
 - [UI-Polygon][] (optional) - Geometry shape UI renderer interface.
 
 ## 🔗 Links
