@@ -26,7 +26,7 @@ jobs:
 
     # XXX: The checkout v6 is broken; therefore, we can't push to `gh-pages`.
     - name: Clone branch gh-pages
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         path: 'gh-pages'
         ref: gh-pages
