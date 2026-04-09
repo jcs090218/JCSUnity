@@ -227,7 +227,7 @@ namespace JCSUnity
     {
         /* Variables */
 
-        [Separator("📋 Check Variabless (JCS_VideoPlayer)")]
+        [Separator("📋 Check Variables (JCS_VideoPlayer)")]
 
         [Tooltip("Full path of the clip")]
         [SerializeField]
