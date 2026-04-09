@@ -19,6 +19,7 @@ Control of the canvas component.
 | mFadeInAmount   | The full fade in amount of alpha.                    |
 | mFadeOutAmount  | The full fade out amount of alpha.                   |
 | mTimeType       | The time type.                                       |
+| mPauseOnShow    | Pause when this canvas is shown.                     |
 | mActiveSound    | Play sound when active the canvas.                   |
 | mDeactiveSound  | Play sound when deactive the canvas.                 |
 
