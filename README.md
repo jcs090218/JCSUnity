@@ -64,6 +64,7 @@ depend on the game your are making.
 - [Newtonsoft Json][] (required) - Popular high-performance JSON framework for .NET.
   - Install with url [`com.unity.nuget.newtonsoft-json`](https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.0/manual/index.html); see [Newtonsoft.Json-for-Unity/wiki][].
 - [MyBox][] (required) - is a set of attributes, tools and extensions for Unity
+  - Install with url `https://github.com/Deadcows/MyBox.git`.
 - [Tweener][] (required) - Simpler and light weight tweener library.
 - [In-game Debug Console][] (optional) - Easier debugging after built.
 - [UI-Polygon][] (optional) - Geometry shape UI renderer interface.
