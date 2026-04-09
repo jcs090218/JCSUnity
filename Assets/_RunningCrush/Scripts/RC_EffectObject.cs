@@ -16,18 +16,18 @@ public class RC_EffectObject : MonoBehaviour
     [SerializeField] private RC_EffectType mEffectType = RC_EffectType.BLOCK;
     [SerializeField] private bool mAutoEffect = true;
 
-    [Header("Speed Type")]
+    [Header("🔍 Speed Type")]
     [SerializeField] private float mSpeedUp = 10;
     [SerializeField] private float mSpeedDown = -10;
 
-    [Header("Push Type")]
+    [Header("🔍 Push Type")]
     [SerializeField] private float mPushForce = 10;
 
-    [Header("Jump Force")]
+    [Header("🔍Jump Force")]
     [SerializeField] private float mJumpForceUp = 10;
     [SerializeField] private float mJumpForceDown = -10;
 
-    [Header("Point Type")]
+    [Header("🔍 Point Type")]
     [Tooltip("If add point absolute number of this value, if lose point then opposite of this method.")]
     [SerializeField] private float mPoint = 10;
 

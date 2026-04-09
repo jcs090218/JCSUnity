@@ -168,7 +168,7 @@ namespace JCSUnity
         [Range(0.0f, 10.0f)]
         private float mRandPosRangeZ = 1.0f;
 
-        [Header("🔍 Audio (plz use \"JCS_SoundPoolAction\")")]
+        [Header("🔍 Audio (please use \"JCS_SoundPoolAction\")")]
 
         [Tooltip("Sound when shoot action occurs.")]
         [SerializeField]

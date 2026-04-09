@@ -279,7 +279,7 @@ namespace JCSUnity
         // check if the clip played?
         private bool mClipPlayed = false;
 
-        [Header("🔍 *Usage: plz fill the clip time until next scene.")]
+        [Header("🔍 Usage: please fill the clip time until next scene.")]
 
         [Tooltip("Time to load next scene, in seconds.")]
         [SerializeField]
