@@ -13,7 +13,7 @@ using MyBox;
 namespace JCSUnity
 {
     /// <summary>
-    /// Make sure u have this execute first!!!
+    /// The overall game manager.
     /// </summary>
     public class JCS_GameManager : JCS_Manager<JCS_GameManager>
     {
@@ -102,13 +102,13 @@ namespace JCSUnity
         /// </summary>
         private void OnFirstFrame()
         {
-            SetDoneInitializeFlag();
+            ExecDoneInitialize();
         }
 
         /// <summary>
         /// Set the game done initialize flag.
         /// </summary>
-        private void SetDoneInitializeFlag()
+        private void ExecDoneInitialize()
         {
             if (mDoneInitialize)
                 return;
