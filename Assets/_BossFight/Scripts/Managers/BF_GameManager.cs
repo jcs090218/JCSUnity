@@ -15,11 +15,9 @@ using MyBox;
 /// Record down all the game information in order 
 /// to have the correct conditional judgment.
 /// </summary>
-public class BF_GameManager : MonoBehaviour
+public class BF_GameManager : JCS_Manager<BF_GameManager>
 {
     /* Variables */
-
-    public static BF_GameManager instance = null;
 
     [Separator("Check Varaibles (BF_GameManager)")]
 
@@ -90,7 +88,7 @@ public class BF_GameManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        RegisterInstance(this);
 
         // initialize the level string.
         if (LEVEL_TEXT != null)

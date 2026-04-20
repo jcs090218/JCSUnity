@@ -40,7 +40,7 @@ public class BF_EffectPickItem : MonoBehaviour
 
     private void Awake()
     {
-        mPickItem = this.GetComponent<BF_PickItem>();
+        mPickItem = GetComponent<BF_PickItem>();
     }
 
     private void Start()
@@ -61,38 +61,36 @@ public class BF_EffectPickItem : MonoBehaviour
     /// <param name="effectType"> effect type. </param>
     public void DoEffect(BF_PickItemEffectType effectType)
     {
-        var bfGm = BF_GameManager.instance;
-
         switch (effectType)
         {
             case BF_PickItemEffectType.ADD_HP:
                 {
-                    bfGm.HEALTH_LIQUIDBAR.DeltaAdd(mEffectValue);
+                    BF_Glob.gamem.HEALTH_LIQUIDBAR.DeltaAdd(mEffectValue);
                 }
                 break;
             case BF_PickItemEffectType.SUB_HP:
                 {
-                    bfGm.HEALTH_LIQUIDBAR.DeltaSub(mEffectValue);
+                    BF_Glob.gamem.HEALTH_LIQUIDBAR.DeltaSub(mEffectValue);
                 }
                 break;
             case BF_PickItemEffectType.ADD_MP:
                 {
-                    bfGm.MANA_LIQUIDBAR.DeltaAdd(mEffectValue);
+                    BF_Glob.gamem.MANA_LIQUIDBAR.DeltaAdd(mEffectValue);
                 }
                 break;
             case BF_PickItemEffectType.SUB_MP:
                 {
-                    bfGm.MANA_LIQUIDBAR.DeltaSub(mEffectValue);
+                    BF_Glob.gamem.MANA_LIQUIDBAR.DeltaSub(mEffectValue);
                 }
                 break;
             case BF_PickItemEffectType.INC_RC_MP:
                 {
-                    bfGm.MANA_LIQUIDBAR.liquidBar.recoverValue += JCS_Mathf.ToPositive(mEffectValue);
+                    BF_Glob.gamem.MANA_LIQUIDBAR.liquidBar.recoverValue += JCS_Mathf.ToPositive(mEffectValue);
                 }
                 break;
             case BF_PickItemEffectType.DEC_RC_MP:
                 {
-                    bfGm.MANA_LIQUIDBAR.liquidBar.recoverValue += JCS_Mathf.ToNegative(mEffectValue);
+                    BF_Glob.gamem.MANA_LIQUIDBAR.liquidBar.recoverValue += JCS_Mathf.ToNegative(mEffectValue);
                 }
                 break;
         }
@@ -107,21 +105,19 @@ public class BF_EffectPickItem : MonoBehaviour
     /// </summary>
     public void SetPickColliderByObject(BF_PickItemEffectType effectType)
     {
-        var bfGm = BF_GameManager.instance;
-
         switch (effectType)
         {
             case BF_PickItemEffectType.SUB_HP:
             case BF_PickItemEffectType.ADD_HP:
                 {
-                    mPickItem.pickCollider = bfGm.HEALTH_OBJECT;
+                    mPickItem.pickCollider = BF_Glob.gamem.HEALTH_OBJECT;
                 }
                 break;
 
             case BF_PickItemEffectType.SUB_MP:
             case BF_PickItemEffectType.ADD_MP:
                 {
-                    mPickItem.pickCollider = bfGm.MANA_OBJECT;
+                    mPickItem.pickCollider = BF_Glob.gamem.MANA_OBJECT;
                 }
                 break;
         }

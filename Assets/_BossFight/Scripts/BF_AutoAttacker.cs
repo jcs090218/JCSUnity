@@ -58,9 +58,9 @@ public class BF_AutoAttacker : MonoBehaviour
 
     private void Awake()
     {
-        mDetectAreaAction = this.GetComponentInParent<JCS_DetectAreaAction>();
-        mShootAction = this.GetComponentInParent<JCS_ShootAction>();
-        mBFPlayer = this.GetComponentInParent<BF_Player>();
+        mDetectAreaAction = GetComponentInParent<JCS_DetectAreaAction>();
+        mShootAction = GetComponentInParent<JCS_ShootAction>();
+        mBFPlayer = GetComponentInParent<BF_Player>();
     }
 
     private void Update()
@@ -109,6 +109,7 @@ public class BF_AutoAttacker : MonoBehaviour
     {
         // get the closest object's transform.
         JCS_DetectAreaObject dao = mDetectAreaAction.FindTheClosest();
+
         if (dao == null)
             return;
 
@@ -119,7 +120,7 @@ public class BF_AutoAttacker : MonoBehaviour
 
         bullet.transform.LookAt(dao.transform);
 
-        if (dao.transform.position.x < this.transform.position.x)
+        if (dao.transform.position.x < transform.position.x)
         {
             bullet.transform.Rotate(0, 90, 0);
 

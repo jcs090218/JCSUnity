@@ -37,7 +37,7 @@ public class BF_PickItem : JCS_Item
         SetPickMode(this);
 
         // set the picking collider
-        pickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
+        pickCollider = BF_Glob.gamem.COLLECT_GOLD_OBJECT;
 
         onPicked = AfterPicked;
 
@@ -63,15 +63,13 @@ public class BF_PickItem : JCS_Item
     /// <param name="item"> item to do the effect. </param>
     public static void SetPickMode(JCS_Item item)
     {
-        var am = JCS_AppManager.FirstInstance();
-
-        if (am.IsPC())
+        if (JCS_Glob.appm.IsPC())
         {
             // pc version will have to pick by mouse
             item.pickByMouseDown = true;
         }
 
-        if (am.IsMobile())
+        if (JCS_Glob.appm.IsMobile())
         {
             // set to true so when the item hit the ground, 
             // pick event will be activate.

@@ -15,7 +15,6 @@ using MyBox;
 /// </summary>
 public class BF_WaveHandler : MonoBehaviour
 {
-
     /* Variables */
 
     [Separator("Check Variables (BF_WaveHandler)")]
@@ -77,7 +76,7 @@ set to thie scene layer.")]
     private void Update()
     {
         // if the game is over returned.
-        if (BF_GameManager.instance.GAME_IS_OVER)
+        if (BF_Glob.gamem.GAME_IS_OVER)
             return;
 
         DoSpawn();
@@ -96,13 +95,9 @@ set to thie scene layer.")]
             return;
         }
 
-
-        var gm = BF_GameManager.instance;
-        var gs = BF_GameSettings.FirstInstance();
-
         for (int count = 0; count < mEnemyPerWave; ++count)
         {
-            if (gm.MOB_CURRENT_IN_SCENE >= gs.TOTAL_MOB_IN_SCENE)
+            if (BF_Glob.gamem.MOB_CURRENT_IN_SCENE >= BF_Glob.games.TOTAL_MOB_IN_SCENE)
             {
                 // don't spawn any more monster if there are too many monster in the scene.
                 break;
@@ -110,7 +105,7 @@ set to thie scene layer.")]
 
             // Spawn a monster.
             // add monster count in scene.
-            ++gm.MOB_CURRENT_IN_SCENE;
+            ++BF_Glob.gamem.MOB_CURRENT_IN_SCENE;
 
             var bf_liveObject = (BF_LiveObject)JCS_Util.Instantiate(
                 mLevelEnemy[spawnIndex],
@@ -118,7 +113,8 @@ set to thie scene layer.")]
 
             // Set live object in the scene layer.
             var solo = bf_liveObject.GetComponent<JCS_OrderLayerObject>();
-            JCS_2DDynamicSceneManager.FirstInstance().SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
+
+            JCS_Glob.dsm2d.SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
         }
     }
 
@@ -154,7 +150,7 @@ set to thie scene layer.")]
         // 1) Check if the wave is ready to spawn.
 
         // get the current level
-        int currentLevel = BF_GameManager.instance.CURRENT_LEVEL;
+        int currentLevel = BF_Glob.gamem.CURRENT_LEVEL;
 
         // check if the current level reach to the starting level
         if (currentLevel < mStartingWave)

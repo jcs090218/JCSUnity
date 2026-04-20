@@ -32,10 +32,10 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
         // is at Awake function.
         SpawnPlayers();
 
-        // Update collision after spawn, 
-        // so the player and enemy will ignore each other
-        // if this does not work, check the setting from 
-        // 'JCS_Settings' object's setting variables.
+        // Update collision after spawn, so the player and
+        // enemy will ignore each other if this does not work,
+        // check the setting from  `JCS_Settings` object's
+        // setting variables.
         //JCS_CollisionManager.instance.SetCollisionMode();
     }
 
@@ -44,11 +44,9 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
     /// </summary>
     private void SpawnPlayers()
     {
-        var bfgs = BF_GameSettings.FirstInstance();
+        BF_Player[] bfPlayers = BF_Glob.games.CHARACTERS_IN_GAME;
 
-        BF_Player[] bfPlayers = bfgs.CHARACTERS_IN_GAME;
-
-        for (int index = 0; index < bfgs.CHARACTERS_IN_TEAM; ++index)
+        for (int index = 0; index < BF_Glob.games.CHARACTERS_IN_TEAM; ++index)
         {
             if (mSpawnPos[index] == null)
             {
@@ -74,7 +72,7 @@ public class BF_CharacterSpawnHandler : MonoBehaviour
 
             // Set player in the order layer (scene layer).
             var solo = bfp.GetComponent<JCS_OrderLayerObject>();
-            JCS_2DDynamicSceneManager.FirstInstance().SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
+            JCS_Glob.dsm2d.SetObjectParentToOrderLayerByOrderLayerIndex(ref solo, mOrderLayer);
         }
     }
 }

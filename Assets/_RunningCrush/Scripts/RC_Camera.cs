@@ -59,7 +59,7 @@ public class RC_Camera : MonoBehaviour
     /// </summary>
     private void DecideTrack()
     {
-        if (RC_GameSettings.FirstInstance().GAME_OVER)
+        if (RC_Glob.games.GAME_OVER)
         {
             // stop tracking if the game is over.
             mJCSCamera.SetFollowing(false);
@@ -83,9 +83,7 @@ public class RC_Camera : MonoBehaviour
 
     private RC_Player FindActivePlayer()
     {
-        var pm = JCS_PlayerManager.FirstInstance();
-
-        List<JCS_Player> players = pm.GetPlayerList();
+        List<JCS_Player> players = JCS_Glob.playerm.GetPlayerList();
         var activePlayers = new List<JCS_Player>();
 
         for (int index= 0; index < players.Count; ++index)
@@ -98,7 +96,7 @@ public class RC_Camera : MonoBehaviour
         }
 
         JCS_Player currentPlayerAndNotDead =
-            pm.FindPlayerByDirectionUsingList(mTrackingTarget, activePlayers);
+            JCS_Glob.playerm.FindPlayerByDirectionUsingList(mTrackingTarget, activePlayers);
 
         return (RC_Player)currentPlayerAndNotDead;
     }

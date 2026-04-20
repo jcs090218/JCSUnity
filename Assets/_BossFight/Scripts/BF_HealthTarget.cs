@@ -24,18 +24,18 @@ public class BF_HealthTarget : MonoBehaviour
 
     /* Setter & Getter */
     
-    public BF_LiveObject liveObject { get { return this.mLiveObject; } }
+    public BF_LiveObject liveObject { get { return mLiveObject; } }
 
     /* Functions */
 
     private void Awake()
     {
-        mLiveObject = this.GetComponent<BF_LiveObject>();
+        mLiveObject = GetComponent<BF_LiveObject>();
     }
     
     private void Start()
     {
-        mLiquidBarHandler = BF_GameManager.instance.HEALTH_LIQUIDBAR;
+        mLiquidBarHandler = BF_Glob.gamem.HEALTH_LIQUIDBAR;
 
         // set the info.
         mLiquidBarHandler.AttachInfo(mLiveObject.hpInfo);

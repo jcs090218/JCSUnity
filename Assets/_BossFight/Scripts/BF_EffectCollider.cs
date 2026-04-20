@@ -30,7 +30,8 @@ public class BF_EffectCollider : MonoBehaviour
     [SerializeField]
     private EffectType mEffectType = EffectType.NONE;
 
-    [SerializeField] [Range(1, 10)]
+    [SerializeField] 
+    [Range(1, 10)]
     private float mEffectTime = 1;
 
     /* Setter & Getter */
@@ -40,6 +41,7 @@ public class BF_EffectCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var liveObject = other.GetComponent<BF_LiveObject>();
+
         if (liveObject == null)
             return;
 

@@ -1,5 +1,5 @@
 ﻿/**
- * $File: JCS_Constants.cs $
+ * $File: JCS_Consts.cs $
  * $Date: $
  * $Revision: $
  * $Creator: Jen-Chieh Shen $
@@ -13,7 +13,7 @@ namespace JCSUnity
     /// <summary>
     /// Hold all the game constant here.
     /// </summary>
-    public static class JCS_Constants
+    public static class JCS_Consts
     {
         /* Variables */
 

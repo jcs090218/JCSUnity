@@ -39,12 +39,12 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
     [Tooltip("How fast the speed goes back to original speed.")]
     [SerializeField]
-    [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
+    [Range(JCS_Consts.FRICTION_MIN, 5.0f)]
     private float mSpeedFriction = 0.5f;
 
     [Tooltip("How fast the speed goes back to original jump force.")]
     [SerializeField]
-    [Range(JCS_Constants.FRICTION_MIN, 5.0f)]
+    [Range(JCS_Consts.FRICTION_MIN, 5.0f)]
     private float mJumpFriction = 0.5f;
 
     private bool mIsDead = false;
@@ -110,7 +110,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         base.Start();
 
         // load the gold information from game data.
-        mCurrentGold = RC_AppSettings.FirstInstance().APP_DATA.gold;
+        mCurrentGold = RC_Glob.apps.APP_DATA.gold;
     }
 
     protected override void Update()
@@ -208,11 +208,11 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
     private void ProcessInput()
     {
-        if (RC_GameSettings.FirstInstance().GAME_OVER)
+        if (RC_Glob.games.GAME_OVER)
             return;
 
         // process cross platform input.
-        switch (JCS_AppManager.FirstInstance().platformType)
+        switch (JCS_Glob.appm.platformType)
         {
             case JCS_PlatformType.PC:
                 PCInput();
@@ -272,7 +272,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
         MoveRight();
 
         if (JCS_Input.GetKeyDown(KeyCode.P))
-            JCS_SceneManager.FirstInstance().LoadScene("RC_LogoScene");
+            JCS_Glob.scenem.LoadScene("RC_LogoScene");
 
     }
     private void MobileInput()
@@ -282,7 +282,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     private void DoIsDead()
     {
         // if is game over no need to check.
-        if (RC_GameSettings.FirstInstance().GAME_OVER)
+        if (RC_Glob.games.GAME_OVER)
             return;
 
         if (!mIsDead)
@@ -295,8 +295,9 @@ public class RC_Player : JCS_2DSideScrollerPlayer
 
                 Die();
 
-                JCS_DynamicScene ds = JCS_SceneManager.FirstInstance().GetDynamicScene();
-                JCS_3DShakeEffect se = ds.GetComponent<JCS_3DShakeEffect>();
+                JCS_DynamicScene ds = JCS_Glob.scenem.GetDynamicScene();
+
+                var se = ds.GetComponent<JCS_3DShakeEffect>();
 
                 // shake once! if player is dead
                 if (se != null)
@@ -360,7 +361,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
     }
     private void WinLose()
     {
-        if (!RC_GameSettings.FirstInstance().GAME_OVER)
+        if (!RC_Glob.games.GAME_OVER)
             return;
 
         // the winning player does not need to prone.
@@ -384,7 +385,7 @@ public class RC_Player : JCS_2DSideScrollerPlayer
             return;
 
         Vector3 newPos = transform.position;
-        newPos += RC_GameSettings.FirstInstance().LIQUIDBAR_OFFSET;
+        newPos += RC_Glob.games.LIQUIDBAR_OFFSET;
         mLiquidBar.transform.position = newPos;
     }
 }

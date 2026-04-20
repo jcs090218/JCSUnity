@@ -316,7 +316,7 @@ namespace JCSUnity
 
             mCanvasesPause.Add(canvas);
 
-            JCS_PauseManager.FirstInstance().Pause();
+            JCS_Glob.pausem.Pause();
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace JCSUnity
 
             // Unpause it when no more blocking UI.
             if (!ShouldPause())
-                JCS_PauseManager.FirstInstance().Unpause();
+                JCS_Glob.pausem.Unpause();
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace JCSUnity
         {
             mCanvasesPause.Clear();
 
-            JCS_PauseManager.FirstInstance().Unpause();
+            JCS_Glob.pausem.Unpause();
         }
 
         /// <summary>

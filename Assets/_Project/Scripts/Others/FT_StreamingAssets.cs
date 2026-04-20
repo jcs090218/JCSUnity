@@ -29,24 +29,22 @@ public class FT_StreamingAssets : MonoBehaviour
 
     private void Update()
     {
-        var sa = JCS_StreamingAssets.FirstInstance();
-
         byte[] data = null;
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
-            data = sa.ReadAllBytes(dataPath[0]);
+            data = JCS_Glob.streams.ReadAllBytes(dataPath[0]);
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            data = sa.ReadAllBytes(dataPath[1]);
+            data = JCS_Glob.streams.ReadAllBytes(dataPath[1]);
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
-            data = sa.ReadAllBytes(dataPath[2]);
+            data = JCS_Glob.streams.ReadAllBytes(dataPath[2]);
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
-            data = sa.ReadAllBytes(dataPath[3]);
+            data = JCS_Glob.streams.ReadAllBytes(dataPath[3]);
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
-            data = sa.ReadAllBytes(dataPath[4]);
+            data = JCS_Glob.streams.ReadAllBytes(dataPath[4]);
 
         if (data != null)
         {

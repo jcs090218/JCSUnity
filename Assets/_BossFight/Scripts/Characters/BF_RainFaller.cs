@@ -67,6 +67,7 @@ public class BF_RainFaller : MonoBehaviour
             case JCS_2DFaceType.FACE_LEFT:
                 mShootAngle = 90;
                 break;
+
             case JCS_2DFaceType.FACE_RIGHT:
                 mShootAngle = -90;
                 break;

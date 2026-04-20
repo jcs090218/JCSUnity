@@ -40,13 +40,11 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 
         if (!mDoIgnoreOnce)
         {
-            var pm = JCS_PlayerManager.FirstInstance();
-
-            if (pm.GetPlayerList().Count == RC_GameSettings.FirstInstance().PLAYER_IN_GAME)
+            if (JCS_Glob.playerm.GetPlayerList().Count == RC_Glob.games.PLAYER_IN_GAME)
             {
                 // ignore player once.
-                pm.DoIgnorePlayersToEachOthers();
-                pm.AddAllPlayerToMultiTrack();
+                JCS_Glob.playerm.DoIgnorePlayersToEachOthers();
+                JCS_Glob.playerm.AddAllPlayerToMultiTrack();
                 mDoIgnoreOnce = true;
             }
         }
@@ -64,15 +62,13 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
     /// </summary>
     public void DoExitGame()
     {
-        var uim = RC_UIManager.FirstInstance();
-
-        if (uim.EXIT_PANEL == null)
+        if (RC_Glob.uim.EXIT_PANEL == null)
         {
             Debug.Log("No exit panel assign");
             return;
         }
 
-        uim.EXIT_PANEL.Active();
+        RC_Glob.uim.EXIT_PANEL.Active();
     }
 
     /// <summary>
@@ -80,36 +76,34 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
     /// </summary>
     private void SpawnPlayer()
     {
-        var gs = RC_GameSettings.FirstInstance();
-
-        for (int index = 0; index < gs.PLAYER_IN_GAME; ++index)
+        for (int index = 0; index < RC_Glob.games.PLAYER_IN_GAME; ++index)
         {
-            if (gs.PLAYERS[index] == null)
+            if (RC_Glob.games.PLAYERS[index] == null)
             {
                 Debug.LogError("Player List in RC_GameSetting are null");
                 return;
             }
 
-            var rcp = (RC_Player)JCS_Util.Instantiate(gs.PLAYERS[index]);
+            var rcp = (RC_Player)JCS_Util.Instantiate(RC_Glob.games.PLAYERS[index]);
 
             // set control index
             rcp.controlIndex = index;
 
             var olo = rcp.GetComponent<JCS_OrderLayerObject>();
+
             if (olo != null)
             {
-                var dsm = JCS_2DDynamicSceneManager.FirstInstance();
-                dsm.SetObjectParentToOrderLayerByOrderLayerIndex(
+                JCS_Glob.dsm2d.SetObjectParentToOrderLayerByOrderLayerIndex(
                     ref olo,
                     ORDER_LAYER_FOR_ALL_PLAYER);
             }
 
-            if (gs.LIQUID_MODE)
+            if (RC_Glob.games.LIQUID_MODE)
             {
-                if (gs.GLOBAL_LIQUIDBAR != null)
+                if (RC_Glob.games.GLOBAL_LIQUIDBAR != null)
                 {
                     // spawn a 3d liquid bar
-                    var lb = (JCS_3DLiquidBar)JCS_Util.Instantiate(gs.GLOBAL_LIQUIDBAR);
+                    var lb = (JCS_3DLiquidBar)JCS_Util.Instantiate(RC_Glob.games.GLOBAL_LIQUIDBAR);
                     rcp.SetLiquidBar(lb);
                 }
                 else
@@ -119,9 +113,9 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
             }
 
             // only webcam mode need the pointer.
-            if (gs.WEBCAM_MODE)
+            if (RC_Glob.games.WEBCAM_MODE)
             {
-                var rcpp = (RC_PlayerPointer)JCS_Util.Instantiate(gs.PLAYER_POINTERS[index]);
+                var rcpp = (RC_PlayerPointer)JCS_Util.Instantiate(RC_Glob.games.PLAYER_POINTERS[index]);
 
                 // let rc pp knows the rc player.
                 rcpp.SetRCPlayer(rcp);
@@ -136,7 +130,7 @@ public class RC_GameManager : JCS_Manager<RC_GameManager>
 
             // create Revive Pointer
             {
-                var rcrp = (RC_RevivePointer)JCS_Util.Instantiate(gs.PLAYER_REVIVE_POINTERS[index]);
+                var rcrp = (RC_RevivePointer)JCS_Util.Instantiate(RC_Glob.games.PLAYER_REVIVE_POINTERS[index]);
                 rcrp.SetRCPlayer(rcp);
                 rcp.SetRCRevivePointer(rcrp);
 

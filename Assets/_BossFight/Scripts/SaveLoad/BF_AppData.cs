@@ -24,7 +24,6 @@ public class BF_AppData : JCS_BinData
         public BF_ItemId ItemId;
     };
 
-
     //---------------------------------------------------
     // Data Struct
 
@@ -41,7 +40,6 @@ public class BF_AppData : JCS_BinData
     public int Cash = 0;            // cash in the game
 
     public ItemIdInclude[] ItemsInclude = null;
-
 
     /* Setter & Getter */
 
@@ -67,6 +65,7 @@ public class BF_AppData : JCS_BinData
     private void InitItemInclude()
     {
         int index = 0;
+
         foreach (BF_ItemId val in Enum.GetValues(typeof(BF_ItemId)))
         {
             ItemsInclude[index].ItemId = val;

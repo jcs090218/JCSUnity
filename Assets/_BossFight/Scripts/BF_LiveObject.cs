@@ -35,7 +35,7 @@ public class BF_LiveObject : JCS_2DLiveObject
     [ReadOnly]
     private float mBurnTimer = 0;
 
-    [Separator("- Game Feature")]
+    [Header("Features")]
 
     [Tooltip("Can this live object be freeze?")]
     [SerializeField]
@@ -57,8 +57,9 @@ public class BF_LiveObject : JCS_2DLiveObject
     {
         /* This will make the object follow the mad target. */
         var ar = GetComponent<JCS_AttackerRecorder>();
+
         if (ar != null)
-            ar.lastAttacker = BF_GameManager.instance.PROTECT_OBJECT.transform;
+            ar.lastAttacker = BF_Glob.gamem.PROTECT_OBJECT.transform;
     }
 
     private void Update()
@@ -76,6 +77,7 @@ public class BF_LiveObject : JCS_2DLiveObject
     {
         if (JCS_Input.GetKeyDown(KeyCode.V))
             Freeze(2);
+
         if (JCS_Input.GetKeyDown(KeyCode.C))
             Burn(2);
     }
@@ -86,21 +88,17 @@ public class BF_LiveObject : JCS_2DLiveObject
     /// </summary>
     public override void Die()
     {
-        var bggm = BF_GameManager.instance;
-
         // add experience to the current level.
-        bggm.DeltaCurrentExp(exp);
+        BF_Glob.gamem.DeltaCurrentExp(exp);
 
         // minus monster count.
-        --bggm.MOB_CURRENT_IN_SCENE;
+        --BF_Glob.gamem.MOB_CURRENT_IN_SCENE;
 
-        var igls = JCS_IGLogSystem.instance;
-
-        if (igls != null)
+        if (JCS_Glob.igls != null)
         {
-            string expMsg = BF_MessageSettings.FirstInstance().EXP_BASE + exp.ToString();
+            string expMsg = BF_Glob.msgs.EXP_BASE + exp.ToString();
 
-            igls.Send(expMsg);
+            JCS_Glob.igls.Send(expMsg);
         }
 
         base.Die();
@@ -124,7 +122,7 @@ public class BF_LiveObject : JCS_2DLiveObject
 
         liveObjectAnimator.StopAnimationInFrame();
 
-        spriteRenderer.color = BF_GameSettings.FirstInstance().FREEZE_COLOR;
+        spriteRenderer.color = BF_Glob.games.FREEZE_COLOR;
 
         mFreezeTime = freezeTime;
 
@@ -158,7 +156,7 @@ public class BF_LiveObject : JCS_2DLiveObject
         if (!mCanBurn)
             return;
 
-        spriteRenderer.color = BF_GameSettings.FirstInstance().BURN_COLOR;
+        spriteRenderer.color = BF_Glob.games.BURN_COLOR;
 
         mBurnTime = burnTime;
 

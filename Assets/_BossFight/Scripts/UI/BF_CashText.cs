@@ -27,7 +27,7 @@ public class BF_CashText : MonoBehaviour
     private void Awake()
     {
         if (mCashText == null)
-            mCashText = this.GetComponent<Text>();
+            mCashText = GetComponent<Text>();
     }
 
     private void Update()
@@ -38,7 +38,7 @@ public class BF_CashText : MonoBehaviour
 
     public void UpdateText()
     {
-        UpdateText(BF_AppSettings.FirstInstance().APP_DATA.Cash);
+        UpdateText(BF_Glob.apps.APP_DATA.Cash);
     }
     public void UpdateText(int val)
     {

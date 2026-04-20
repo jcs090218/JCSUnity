@@ -31,7 +31,7 @@ public class BF_GoldObject : JCS_CashObject
         BF_PickItem.SetPickMode(this);
 
         // set the picking collider
-        mPickCollider = BF_GameManager.instance.COLLECT_GOLD_OBJECT;
+        mPickCollider = BF_Glob.gamem.COLLECT_GOLD_OBJECT;
 
         onPicked = AfterPicked;
     }
@@ -42,6 +42,6 @@ public class BF_GoldObject : JCS_CashObject
     /// <param name="other"> collider detection if needed. </param>
     public void AfterPicked(Collider other)
     {
-        BF_AppSettings.FirstInstance().APP_DATA.Cash += mCashValue;
+        BF_Glob.apps.APP_DATA.Cash += mCashValue;
     }
 }

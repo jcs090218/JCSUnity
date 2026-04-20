@@ -76,7 +76,6 @@ public class BF_Player : JCS_2DSideScrollerPlayer
             JCS_Input.GetKeyDown(KeyCode.RightAlt))
             Jump();
 
-
         if (JCS_Input.GetKey(KeyCode.Space))
             Attack();
         else if (JCS_Input.GetKey(KeyCode.UpArrow))
@@ -98,10 +97,10 @@ public class BF_Player : JCS_2DSideScrollerPlayer
 
     private bool CheckAbleToShoot()
     {
-        if (BF_GameManager.instance.GAME_IS_OVER)
+        if (BF_Glob.gamem.GAME_IS_OVER)
             return false;
 
-        BF_LiquidBarHandler bfmh = BF_GameManager.instance.MANA_LIQUIDBAR;
+        BF_LiquidBarHandler bfmh = BF_Glob.gamem.MANA_LIQUIDBAR;
 
         // if is enough mana, will shoot.
         return bfmh.IsAbleToCastCast(JCS_Mathf.ToNegative(mManaCastPerShoot));

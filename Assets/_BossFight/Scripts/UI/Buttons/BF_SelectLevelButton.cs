@@ -28,6 +28,6 @@ public class BF_SelectLevelButton : JCS_Button
 
     public override void OnClick()
     {
-        BF_GameSettings.FirstInstance().LEVEL_SELECTED_NAME = mSceneName;
+        BF_Glob.games.LEVEL_SELECTED_NAME = mSceneName;
     }
 }

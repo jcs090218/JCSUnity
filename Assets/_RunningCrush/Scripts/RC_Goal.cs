@@ -19,12 +19,13 @@ public class RC_Goal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var p = other.GetComponent<RC_Player>();
+        
         if (p != null)
         {
             // reach the goal! game is over.
-            RC_GameSettings.FirstInstance().GAME_OVER = true;
+            RC_Glob.games.GAME_OVER = true;
 
-            RC_GameManager.FirstInstance().DoExitGame();
+            RC_Glob.gamem.DoExitGame();
         }
     }
 }

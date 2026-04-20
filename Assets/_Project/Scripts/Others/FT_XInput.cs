@@ -26,7 +26,7 @@ public class FT_XInput : MonoBehaviour
     {
         PrintGamepadInfo(false);
 
-        switch (JCS_InputSettings.FirstInstance().targetGamepad)
+        switch (JCS_Glob.inputs.targetGamepad)
         {
             case JCS_GamepadType.PS4:
                 {

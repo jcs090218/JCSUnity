@@ -120,9 +120,9 @@ public class RC_WebcamHandler : MonoBehaviour
         newStartGameButtonPos.x += appRect.x;
 
 
-        if ((mPanelIndex) == RC_GameSettings.FirstInstance().PLAYER_IN_GAME)
+        if ((mPanelIndex) == RC_Glob.games.PLAYER_IN_GAME)
         {
-            RC_GameSettings.FirstInstance().READY_TO_START_GAME = true;
+            RC_Glob.games.READY_TO_START_GAME = true;
         }
         else
         {
