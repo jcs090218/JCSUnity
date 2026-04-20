@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 4.1.1 (Unreleased)
+## 4.2.1 (Unreleased)
 > Released N/A
+
+* N/A
+
+## 4.2.0
+> Released Apr 21, 2026
 
 * feat(Editor): Allow create using prefab ([`0424ac5`](../../commits/0424ac58f02ef326dedc32448523a212c2c4ded0))
 * fix: Workaround for async load scene ([`4244929`](../../commits/4244929f22a8076b887291bb4031aaa71b3029ce))
