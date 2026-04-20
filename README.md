@@ -31,6 +31,7 @@ any placeholder assets commercially.
 
 Here is the list of few important and recent changes to this framework.
 
+- `4.2.0` - Use glob class for global entrance.
 - `4.0.0` - Extend `Instance` interface.
 - `3.1.0` - Revamp the framework to reflect current best practices.
 - `3.0.0` - Rename setting function from `CheckSingleton` to `CheckInstance`.
@@ -40,7 +41,6 @@ Here is the list of few important and recent changes to this framework.
 - `2.2.0` - Add `trimmed` version to release.
 - `2.1.2` - Add support for multiple languages.
 - `2.1.1` - Add support for safe area view for iPhone X or above.
-- `2.1.0` - Multiple minor fix for screen module for resizable screen feature.
 
 ## 🔨 How to use it?
 

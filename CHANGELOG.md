@@ -23,7 +23,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Util): Support more on `IEnumerable` ([`e825427`](../../commits/e8254274e23a4c29b35f1136b079c65c57b0d8f4))
 * feat(UI): Expose refreshing text slider ([`ef69454`](../../commits/ef69454e936a1a7213a586eb5b82ee6e636022b8))
 * feat(UI): Add pause state option to canvas ([`4f7e99a`](../../commits/4f7e99a1d01a7f86b54714a8765b488ca22e7670))
-* feat: Use glob ([`ac602d4`](../../commits/ac602d43a7e71cb59d449d2ec197aec4d7bc13d5))
+* feat: Use glob class for global entrance ([`ac602d4`](../../commits/ac602d43a7e71cb59d449d2ec197aec4d7bc13d5))
 
 ## 4.1.0
 > Released Oct 11, 2025
