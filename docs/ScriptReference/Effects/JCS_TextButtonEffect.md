@@ -6,7 +6,7 @@ Treat this button object just a text button.
 
 | Name              | Description                                |
 |:------------------|:-------------------------------------------|
-| mText             | Text object to change color.               |
+| mTextObject       | Text object to change color.               |
 | mNormalColor      | Color text when the button is normal.      |
 | mHighlightedColor | Color text when the button is highlighted. |
 | mPressedColor     | Color text when the button is pressed.     |

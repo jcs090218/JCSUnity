@@ -7,7 +7,6 @@ Customize your own button sound base on different circumstance.
 | Name                                 | Description                                              |
 |:-------------------------------------|:---------------------------------------------------------|
 | mSoundPlayer                         | Sound player for this button sound.                      |
-| mAutoAddEvent                        | Automatically add the button event.                      |
 | mOnMouseOverSound                    | Sound to play when on mouse over.                        |
 | mOnMouseExitSound                    | Sound to play when on mouse exit.                        |
 | mOnMouseDownSound                    | Sound to play when on mouse down.                        |
@@ -38,8 +37,8 @@ Customize your own button sound base on different circumstance.
 
 | Name           | Description               |
 |:---------------|:--------------------------|
-| ItOnMouseEnter | Call when on mouse enter. |
-| ItOnMouseExit  | Call when on mouse exit.  |
-| ItOnMouseDown  | Call when on mouse down.  |
-| ItOnMouseUp    | Call when on mouse up.    |
-| ItOnMouseClick | Call when on mouse click. |
+| OnPointerEnter | Call when on mouse enter. |
+| OnPointerExit  | Call when on mouse exit.  |
+| OnPointerDown  | Call when on mouse down.  |
+| OnPointerUp    | Call when on mouse up.    |
+| OnPointerClick | Call when on mouse click. |
