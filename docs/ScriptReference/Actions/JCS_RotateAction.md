@@ -1,4 +1,4 @@
-# JCS_Rotation
+# JCS_RotateAction
 
 Rotate on one axis.
 

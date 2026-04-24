@@ -1,3 +1,3 @@
-# JCS_ItemRotation
+# JCS_ItemRotate
 
 Item rotation effect.
