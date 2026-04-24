@@ -57,6 +57,11 @@ namespace JCSUnity
 
             for (int i = 1, ni = renderers.Length; i < ni; ++i)
             {
+                // NOTE(jenchieh): Normally a particle system could
+                // mess up the bounds; simply ignore it here.
+                if (renderers[i] is ParticleSystemRenderer)
+                    continue;
+
                 bounds.Encapsulate(renderers[i].bounds);
             }
 
