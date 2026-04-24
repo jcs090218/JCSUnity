@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 4.2.1 (Unreleased)
 > Released N/A
 
-* N/A
+* fix(Effects): Avoid using event trigger in UI effects ([`a9af109`](../../commits/a9af10979fad29771002211776f46f5fb8c9c13d))
 
 ## 4.2.0
 > Released Apr 21, 2026
