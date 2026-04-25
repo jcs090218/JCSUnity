@@ -15,3 +15,4 @@ Manager that manage the game behaviour.
 |:--------------------------|:-----------------------------------------------------------------|
 | RegisterOnAfterInit       | Register event run on the first frame of the game.               |
 | RegisterOnSystemAfterInit | Register event run on the first frame of the game. (system used) |
+| RegisterExecThisFrame     | Register the execution only execute this frame.                  |
