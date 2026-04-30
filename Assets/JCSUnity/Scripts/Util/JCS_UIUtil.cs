@@ -39,18 +39,18 @@ namespace JCSUnity
         /// </summary>
         public static bool IsUnityDefinedUI(Component comp)
         {
-            return (comp.GetComponent<RawImage>() ||
-                comp.GetComponent<Image>() ||
-                comp.GetComponent<Button>() ||
-                comp.GetComponent<Dropdown>() ||
-                comp.GetComponent<TMP_Dropdown>() ||
-                comp.GetComponent<Slider>() ||
-                comp.GetComponent<Scrollbar>() ||
-                comp.GetComponent<Text>() ||
-                comp.GetComponent<TMP_Text>() ||
-                comp.GetComponent<Toggle>() ||
-                comp.GetComponent<InputField>() ||
-                comp.GetComponent<TMP_InputField>());
+            return comp.GetComponent<RawImage>() 
+                || comp.GetComponent<Image>() 
+                || comp.GetComponent<Button>() 
+                || comp.GetComponent<Dropdown>() 
+                || comp.GetComponent<TMP_Dropdown>() 
+                || comp.GetComponent<Slider>() 
+                || comp.GetComponent<Scrollbar>() 
+                || comp.GetComponent<Text>() 
+                || comp.GetComponent<TMP_Text>() 
+                || comp.GetComponent<Toggle>() 
+                || comp.GetComponent<InputField>() 
+                || comp.GetComponent<TMP_InputField>();
         }
 
         /// <summary>

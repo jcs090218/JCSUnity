@@ -37,6 +37,7 @@ All code utility is stored here.
 | DestroyImmediateAllTypeObjectInScene | Destroy all the game object in the scene immediately with the type passed in.                     |
 | IsClone                              | Return true if the object is a clone.                                                             |
 | RemoveCloneString                    | Remove the text "(Clone)" from the object's name, and return the new name string.                 |
+| UncloneString                        | Return the name without the clone string.                                                         |
 | FindObjectByType                     | Retrieves the first active loaded object of Type type.                                            |
 | FindObjectsByType                    | Retrieves a list of all loaded objects of Type type.                                              |
 | FindGameObjectsWithTag               | Return a list of game object with the tag name.                                                   |

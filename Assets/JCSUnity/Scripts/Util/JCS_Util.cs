@@ -711,6 +711,14 @@ namespace JCSUnity
             return name.Replace("(Clone)", "");
         }
 
+        /// <summary>
+        /// Return the name without the clone string.
+        /// </summary>
+        public static string UncloneString(this string name)
+        {
+            return RemoveCloneString(name);
+        }
+
         #endregion
 
         #region Finding
