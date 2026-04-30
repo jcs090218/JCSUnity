@@ -11,6 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix(Effects): Avoid using event trigger in UI effects ([`a9af109`](../../commits/a9af10979fad29771002211776f46f5fb8c9c13d))
 * feat(Util): Add mesh and render bounds utility functions ([`9f44490`](../../commits/9f44490959b072e100acc28955e7122c9b4cd790))
 * feat: Register execution this frame only ([`1fc644a`](../../commits/1fc644a858f0afeec09a7d4d8bde54a4890af13e))
+* feat(Util): Unclone string from name ([`ef9b958`](../../commits/ef9b9586450475cd47d6fdc5f4fe08185a1869a5))
 
 ## 4.2.0
 > Released Apr 21, 2026
