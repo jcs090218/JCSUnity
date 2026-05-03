@@ -864,11 +864,27 @@ namespace JCSUnity
         #region Sprite
 
         /// <summary>
-        /// Return transparent sprite.
+        /// Return a transparent sprite.
         /// </summary>
         public static Sprite SpriteTransparent()
         {
-            return JCS_Glob.utilm.spriteTransparent;
+            return JCS_Glob.utilm.spTransparent;
+        }
+
+        /// <summary>
+        /// Return a black sprite.
+        /// </summary>
+        public static Sprite SpriteBlack()
+        {
+            return JCS_Glob.utilm.spBlack;
+        }
+
+        /// <summary>
+        /// Return a white sprite.
+        /// </summary>
+        public static Sprite SpriteWhite()
+        {
+            return JCS_Glob.utilm.spWhite;
         }
 
         /// <summary>

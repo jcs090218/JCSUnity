@@ -1162,6 +1162,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -1215,6 +1216,7 @@ MonoBehaviour:
   mFadeInAmount: 1
   mFadeOutAmount: 0
   mTimeType: 7
+  mPauseOnShow: 0
   mSoundOnShow: {fileID: 0}
   mSoundOnHide: {fileID: 0}
 --- !u!1001 &2087577278
