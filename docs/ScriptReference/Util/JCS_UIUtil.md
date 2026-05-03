@@ -30,6 +30,7 @@ User interface related utilities functions.
 | HideCanvas                       | Hide the canvas, so it's invisible on the screen.                         |
 | ActivePanels                     | Active panels in the array.                                               |
 | DeactivePanels                   | Deactive panels in the array.                                             |
+| ForceBuildLayout                 | Trigger to force build the entire transform's layout.                     |
 | GetImageRect                     | Returns the size of the image.                                            |
 | SpriteTransparent                | Return transparent sprite.                                                |
 | GetSpriteRendererRectWithNoScale | Returns the size of the sprite renderer without the scale value multiply. |
