@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -260,7 +259,8 @@ namespace JCSUnity
 
             for (int index = mLastSpawnPos; index < mNumberOfHandle; ++index)
             {
-                dt = mDamageTexts.ElementAt(index);
+                dt = mDamageTexts[index];
+
                 // if not active, meaning we can spawn the text
                 if (!dt.isActive())
                 {

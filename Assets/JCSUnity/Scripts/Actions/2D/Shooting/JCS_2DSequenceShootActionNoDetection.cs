@@ -8,7 +8,6 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -203,7 +202,7 @@ namespace JCSUnity
         private void Sequence(int processIndex)
         {
             // get the timer from the thread
-            float newTimer = mTimers.ElementAt(processIndex);
+            float newTimer = mTimers[processIndex];
 
             // add time to timer
             newTimer += JCS_Time.ItTime(mTimeType);
@@ -211,8 +210,8 @@ namespace JCSUnity
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)
             {
-                int totalShootCount = mShootCount.ElementAt(processIndex);
-                int currentShootCount = mShootCounter.ElementAt(processIndex);
+                int totalShootCount = mShootCount[processIndex];
+                int currentShootCount = mShootCounter[processIndex];
                 if (currentShootCount == totalShootCount)
                 {
                     // Remove Thread.
@@ -225,13 +224,13 @@ namespace JCSUnity
 
                 // if stay in the same position
                 if (mSequenceStay)
-                    spawnPos = mShootPos.ElementAt(processIndex);
+                    spawnPos = mShootPos[processIndex];
 
                 if (mShootGapEffect)
                     spawnPos.y += currentShootCount * mShootGap;
 
                 if (mKeepShootAngle)
-                    shootAngle = mShootAngles.ElementAt(processIndex);
+                    shootAngle = mShootAngles[processIndex];
 
                 // do shooting
                 mShootAction.ShootWithShootCount(spawnPos, shootAngle);

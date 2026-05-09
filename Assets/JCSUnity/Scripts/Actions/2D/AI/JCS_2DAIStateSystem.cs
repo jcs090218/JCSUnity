@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -159,7 +158,7 @@ namespace JCSUnity
         {
             for (int index = 0; index < mAIActions.Count; ++index)
             {
-                JCS_AIAction aa = mAIActions.ElementAt(index);
+                JCS_AIAction aa = mAIActions[index];
                 aa.enabled = false;
             }
         }

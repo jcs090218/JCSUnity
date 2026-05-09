@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -60,7 +59,7 @@ namespace JCSUnity
             // loop through and see any not active log text we can use in the pool
             for (int index = mLastSpawnPos; index < mNumberOfHandle; ++index)
             {
-                logText = mLogTexts.ElementAt(index);
+                logText = mLogTexts[index];
 
                 // if not active, meaning we can 
                 // active the log text

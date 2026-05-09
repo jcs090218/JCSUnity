@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -438,8 +437,10 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
 
             for (int index = mLastAvaliableIndex; index < mParticles.Count; ++index)
             {
-                JCS_Particle particle = mParticles.ElementAt(index);
+                JCS_Particle particle = mParticles[index];
+
                 bool isActive = particle.gameObject.activeInHierarchy;
+
                 if (isActive == false)
                 {
                     particle.gameObject.SetActive(true);
@@ -484,7 +485,7 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
         private void Sequence(int processIndex)
         {
             // get the timer from the thread
-            float newTimer = mTimers.ElementAt(processIndex);
+            float newTimer = mTimers[processIndex];
 
             // add time to timer
             newTimer += JCS_Time.ItTime(mTimeType);
@@ -492,8 +493,9 @@ mRandScaleX as a standard and ignore mRandScaleY and mRandScaleZ variables.")]
             // check if we can do the particle or not
             if (mTimeAParticle < newTimer)
             {
-                int totalParticleCount = mParticleCount.ElementAt(processIndex);
-                int currentParticleCount = mParticleCounter.ElementAt(processIndex);
+                int totalParticleCount = mParticleCount[processIndex];
+                int currentParticleCount = mParticleCounter[processIndex];
+
                 if (currentParticleCount == totalParticleCount)
                 {
                     // Remove Thread.

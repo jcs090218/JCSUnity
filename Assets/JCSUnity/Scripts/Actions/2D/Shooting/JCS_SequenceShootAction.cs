@@ -8,7 +8,6 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -245,7 +244,7 @@ namespace JCSUnity
         private void Sequence(int processIndex)
         {
             // get the timer from the thread
-            float newTimer = mTimers.ElementAt(processIndex);
+            float newTimer = mTimers[processIndex];
 
             // add time to timer
             newTimer += JCS_Time.ItTime(mTimeType);
@@ -253,8 +252,8 @@ namespace JCSUnity
             // check if we can shoot or not
             if (mTimePerShoot < newTimer)
             {
-                int totalShootCount = mShootCount.ElementAt(processIndex);
-                int currentShootCount = mShootCounter.ElementAt(processIndex);
+                int totalShootCount = mShootCount[processIndex];
+                int currentShootCount = mShootCounter[processIndex];
                 if (currentShootCount == totalShootCount)
                 {
                     // Remove Thread.
@@ -266,7 +265,7 @@ namespace JCSUnity
 
                 // if stay in the same position
                 if (mSequenceStay)
-                    spawnPos = mShootPos.ElementAt(processIndex);
+                    spawnPos = mShootPos[processIndex];
 
                 if (mShootGapEffect)
                 {
@@ -274,7 +273,7 @@ namespace JCSUnity
                 }
 
                 // direction.
-                bool direction = mShootDirection.ElementAt(processIndex);
+                bool direction = mShootDirection[processIndex];
 
                 // shoot a bullet
                 if (mInSequenceEffect)
@@ -286,9 +285,9 @@ namespace JCSUnity
                     {
                         theSub = false;
                         if (mDamageApplying != null)
-                            mShootAction.Shoot(spawnPos, direction, mDamageApplying, currentShootCount, theSub, mTargetsPerSequence.ElementAt(processIndex));
+                            mShootAction.Shoot(spawnPos, direction, mDamageApplying, currentShootCount, theSub, mTargetsPerSequence[processIndex]);
                         else
-                            mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence.ElementAt(processIndex));
+                            mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence[processIndex]);
 
                         // after set the damage set it back to null
                         mDamageApplying = null;
@@ -297,7 +296,7 @@ namespace JCSUnity
                     // process the sub bullet in sequence
                     else
                     {
-                        mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence.ElementAt(processIndex));
+                        mShootAction.Shoot(spawnPos, direction, mHit, currentShootCount, theSub, mTargetsPerSequence[processIndex]);
                     }
                 }
                 else

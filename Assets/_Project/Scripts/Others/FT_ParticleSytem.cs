@@ -7,7 +7,6 @@
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using JCSUnity;
 
@@ -43,7 +42,7 @@ public class FT_ParticleSytem : MonoBehaviour
 
             for (int index = 0; index < mParticles.Count; ++index)
             {
-                var tweener = mParticles.ElementAt(index).GetComponent<JCS_TransformTweener>();
+                var tweener = mParticles[index].GetComponent<JCS_TransformTweener>();
 
                 tweener.easingX = masterTweener.easingX;
                 tweener.easingY = masterTweener.easingY;
@@ -54,7 +53,7 @@ public class FT_ParticleSytem : MonoBehaviour
                 tweener.durationZ = masterTweener.durationZ;
 
 
-                JCS_TowardTarget tt = mParticles.ElementAt(index).GetComponent<JCS_TowardTarget>();
+                var tt = mParticles[index].GetComponent<JCS_TowardTarget>();
 
                 tt.range = masterTt.range;
                 tt.adjustRange = masterTt.adjustRange;

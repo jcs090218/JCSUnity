@@ -7,7 +7,6 @@
  *                   Copyright (c) 2016 by Shen, Jen-Chieh $
  */
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using MyBox;
 
@@ -110,8 +109,8 @@ namespace JCSUnity
 
             for (int index = 0; index < mDetectedObjects.Count; ++index)
             {
-                JCS_DetectAreaObject obj = mDetectedObjects.ElementAt(index);
-                if (mDetectedObjects.ElementAt(index) == null)
+                JCS_DetectAreaObject obj = mDetectedObjects[index];
+                if (mDetectedObjects[index] == null)
                 {
                     // remove from the list, 
                     // the object could be dead for some reason.
@@ -128,7 +127,7 @@ namespace JCSUnity
                         continue;
                 }
 
-                Vector3 objectPos = mDetectedObjects.ElementAt(index).transform.position;
+                Vector3 objectPos = mDetectedObjects[index].transform.position;
                 Vector3 areaPos = transform.position;
 
                 float distance = Vector3.Distance(objectPos, areaPos);
@@ -155,7 +154,7 @@ namespace JCSUnity
                 return null;
 
             // return result
-            return mDetectedObjects.ElementAt(furthestIndex);
+            return mDetectedObjects[furthestIndex];
         }
 
         /// <summary>
@@ -172,8 +171,8 @@ namespace JCSUnity
 
             for (int index = 0; index < mDetectedObjects.Count; ++index)
             {
-                JCS_DetectAreaObject obj = mDetectedObjects.ElementAt(index);
-                if (mDetectedObjects.ElementAt(index) == null)
+                JCS_DetectAreaObject obj = mDetectedObjects[index];
+                if (mDetectedObjects[index] == null)
                 {
                     // remove from the list, 
                     // the object could be dead for some reason.
@@ -217,7 +216,7 @@ namespace JCSUnity
                 return null;
 
             // return result
-            return mDetectedObjects.ElementAt(closestIndex);
+            return mDetectedObjects[closestIndex];
         }
     }
 }
