@@ -33,6 +33,9 @@ namespace JCSUnity
         // optimize
         private int mLastSpawnPos = 0;
 
+        [Tooltip("The pool text.")]
+        [SerializeField]
+        [ReadOnly]
         private List<JCS_LogText> mLogTexts = null;
 
         /* Setter & Getter */
@@ -51,7 +54,7 @@ namespace JCSUnity
         /// <returns></returns>
         public JCS_LogText ExecuteOneFromPool(bool secondSearch = false)
         {
-            if (mNumberOfHandle == 0)
+            if (mLogTexts.IsNullOrEmpty())
                 return null;
 
             JCS_LogText logText;
@@ -113,15 +116,13 @@ namespace JCSUnity
             // Get the log system from the same transfrom/node.
             var logSystem = GetComponent<JCS_IGLogSystem>();
 
-            mLogTexts = new List<JCS_LogText>(mNumberOfHandle);
-
             for (int count = 0; count < mNumberOfHandle; ++count)
             {
                 // spawn a new game object, and get the component
                 var logText = JCS_Util.Instantiate(mLogText) as JCS_LogText;
 
                 // add to array
-                mLogTexts[count] = logText;
+                mLogTexts.Add(logText);
 
                 // set parent
                 JCS_Util.SetParentWithoutLosingInfo(logText.transform, transform);
