@@ -15,7 +15,7 @@ Vector utilities.
 | Direction                | Returns vector direction by passing the vector direction enum.              |
 | ApplyRandVector3         | Add random value to a vector.                                               |
 | GetFinalLocalEulerAngles | Get the final local euler angles by accumilate all the parent game objects. |
-| GroundVector             | Make the vector to a ground vector.                                         |
+| GroundIt                 | Make the vector to a ground vector.                                         |
 | LookDegree               | How close player looks toward the target.                                   |
 | SignedLookDegree         | How close player looks toward the target.                                   |
 | InDistance               | Check if distance between pos1 and pos2 is under the threshold.             |
