@@ -6,6 +6,8 @@
  * $Notice: See LICENSE.txt for modification and distribution information 
  *	                 Copyright (c) 2016 by Shen, Jen-Chieh $
  */
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using JCSUnity;
 
@@ -19,7 +21,7 @@ public class FT_ParticleSytem : MonoBehaviour
     [SerializeField]
     private JCS_ParticleSystem mParticleSystem = null;
 
-    private JCS_Vec<JCS_Particle> mParticles = null;
+    private List<JCS_Particle> mParticles = null;
 
     /* Setter & Getter */
 
@@ -39,9 +41,9 @@ public class FT_ParticleSytem : MonoBehaviour
             var masterTweener = mParticle.GetComponent<JCS_TransformTweener>();
             var masterTt = mParticle.GetComponent<JCS_TowardTarget>();
 
-            for (int index = 0; index < mParticles.length; ++index)
+            for (int index = 0; index < mParticles.Count; ++index)
             {
-                var tweener = mParticles.at(index).GetComponent<JCS_TransformTweener>();
+                var tweener = mParticles.ElementAt(index).GetComponent<JCS_TransformTweener>();
 
                 tweener.easingX = masterTweener.easingX;
                 tweener.easingY = masterTweener.easingY;
@@ -52,7 +54,7 @@ public class FT_ParticleSytem : MonoBehaviour
                 tweener.durationZ = masterTweener.durationZ;
 
 
-                JCS_TowardTarget tt = mParticles.at(index).GetComponent<JCS_TowardTarget>();
+                JCS_TowardTarget tt = mParticles.ElementAt(index).GetComponent<JCS_TowardTarget>();
 
                 tt.range = masterTt.range;
                 tt.adjustRange = masterTt.adjustRange;
