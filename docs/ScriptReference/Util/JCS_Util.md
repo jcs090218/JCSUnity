@@ -27,6 +27,8 @@ All code utility is stored here.
 | DetachChildren                       | Detach all the child from a transform.                                                            |
 | ForceDetachChildren                  | Force detach all the child from a transform.                                                      |
 | AttachChildren                       | Attach all the childs to this transform.                                                          |
+| ReattachSelf                         | Execution callback after detach and reattach.                                                     |
+| SetLayer                             | Set the layer by name, and then return the layer index.                                           |
 | Instantiate                          | Spawn a game object.                                                                              |
 | InstantiateToScene                   | Spwan a game object to another scene.                                                             |
 | WithActiveScene                      | Execute within the active scene without losing the current scene.                                 |
