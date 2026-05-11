@@ -6,6 +6,7 @@ Bounds util.
 
 | Name     | Description                       |
 |:---------|:----------------------------------|
-| Corners  | Return 8 corners from the bounds. |
-| ByRender | Return the bounds by renderer. |
+| Default  | Return the default bounds.        |
+| ByRender | Return the bounds by renderer.    |
 | ByMesh   | Return the bounds by mesh filter. |
+| Corners  | Return 8 corners from the bounds. |
