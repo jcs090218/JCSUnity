@@ -33,7 +33,7 @@ namespace JCSUnity
         /// Return true if the renderer should be ignored 
         /// when calculating bounds.
         /// </summary>
-        private static bool IgnoreComponents(Component renderer)
+        public static bool IgnoreComponents(Component renderer)
         {
             // NOTE(jenchieh): Normally a particle system could
             // mess up the bounds; simply ignore it here.
