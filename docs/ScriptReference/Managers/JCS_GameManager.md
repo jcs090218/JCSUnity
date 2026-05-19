@@ -11,8 +11,9 @@ Manager that manage the game behaviour.
 
 ## Functions
 
-| Name                      | Description                                                      |
-|:--------------------------|:-----------------------------------------------------------------|
-| RegisterOnAfterInit       | Register event run on the first frame of the game.               |
-| RegisterOnSystemAfterInit | Register event run on the first frame of the game. (system used) |
-| RegisterExecThisFrame     | Register the execution only execute this frame.                  |
+| Name                       | Description                                                      |
+|:---------------------------|:-----------------------------------------------------------------|
+| RegisterOnAfterInit        | Register event run on the first frame of the game.               |
+| RegisterOnSystemAfterInit  | Register event run on the first frame of the game. (system used) |
+| RegisterExecThisFrame      | Register the execution only execute this frame.                  |
+| RegisterExecLateThisFrame  | Register the execution only execute late this frame.             |
