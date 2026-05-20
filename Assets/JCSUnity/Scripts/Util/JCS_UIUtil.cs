@@ -824,14 +824,13 @@ namespace JCSUnity
         /// <summary>
         /// Trigger to force build the entire transform's layout.
         /// </summary>
-        public static void ForceBuildLayout(Transform trans)
+        public static void ForceBuildLayout(Transform tfm)
         {
-            foreach (LayoutGroup lg in trans.GetComponentsInChildren<LayoutGroup>())
-            {
-                var rt = lg.transform as RectTransform;
-
-                LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
-            }
+            ForceBuildLayout(tfm as RectTransform);
+        }
+        public static void ForceBuildLayout(RectTransform rt)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
         }
 
         #endregion
