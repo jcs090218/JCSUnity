@@ -371,9 +371,9 @@ namespace JCSUnity
         /// <returns></returns>
         public static bool IsPossible(float val)
         {
-            float possibility = JCS_Random.Range(0, 100);
+            float possibility = JCS_Random.Range(0.0f, 100.0f);
 
-            return (val > possibility) ? true : false;
+            return val > possibility;
         }
 
         /// <summary>
