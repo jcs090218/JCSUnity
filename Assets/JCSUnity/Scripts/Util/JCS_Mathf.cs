@@ -365,15 +365,19 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Use to check if something possible by percentage.
-        /// 0 ~ 100.
+        /// Use to check if something possible by percentage (0% ~ 100%).
         /// </summary>
-        /// <returns></returns>
+        public static bool IsPossible(int val)
+        {
+            int possibility = JCS_Random.RangeInclude(0, 100);
+
+            return val >= possibility;
+        }
         public static bool IsPossible(float val)
         {
-            float possibility = JCS_Random.Range(0.0f, 100.0f);
+            float possibility = JCS_Random.RangeInclude(0.0f, 100.0f);
 
-            return val > possibility;
+            return val >= possibility;
         }
 
         /// <summary>
