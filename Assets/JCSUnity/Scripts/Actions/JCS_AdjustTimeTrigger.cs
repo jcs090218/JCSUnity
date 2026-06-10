@@ -66,7 +66,7 @@ we calculate the real time.")]
 
         [Tooltip("Time that will randomly affect the time.")]
         [SerializeField]
-        [Range(0.0f, 20.0f)]
+        [MinValue(0.0f)]
         private float mAdjustTime = 1.5f;
 
         [Tooltip("Type of the delta time.")]

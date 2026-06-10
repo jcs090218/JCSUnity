@@ -19,6 +19,9 @@ namespace JCSUnity
 
         #region System
 
+        // The minimum time value.
+        public const float MIN_TIME = 0.00001f;
+
         // The time delay to be invoked for the first frame.
         //
         // First frame invocation can't be set to 0; therefore, we set
