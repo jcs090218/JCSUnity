@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * feat(Util): Unclone string from name ([`ef9b958`](../../commits/ef9b9586450475cd47d6fdc5f4fe08185a1869a5))
 * feat(Util): Add to under asset path ([`9dd18ef`](../../commits/9dd18ef56103a32620a0667a4214edb9ff970312))
 * feat(Lib): Remove old legacy `JCS_Vec` array implementation ([`8a8b9bd`](../../commits/8a8b9bd1331100495ac0f56476cb137b0b8c8b26))
+* feat(Actions): Remove adjust timer's time cap. ([`bd0510f`](../../commits/bd0510f93cdb6a96718c39fd3bf96ada5236c098))
 
 ## 4.2.0
 > Released Apr 21, 2026
