@@ -61,7 +61,7 @@ we calculate the real time.")]
 
         [Tooltip("Time to trigger the event.")]
         [SerializeField]
-        [Range(0.0f, 30.0f)]
+        [MinValue(0.0f)]
         private float mTime = 2.0f;
 
         [Tooltip("Time that will randomly affect the time.")]
@@ -129,7 +129,10 @@ we calculate the real time.")]
         public void RecalculateTime()
         {
             float adjustTime = JCS_Random.Range(-mAdjustTime, mAdjustTime);
+
             mRealTime = mTime + adjustTime;
+
+            mRealTime = Mathf.Max(mRealTime, 0.0f);
         }
 
         /// <summary>
