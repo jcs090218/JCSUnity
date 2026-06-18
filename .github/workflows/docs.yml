@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Install SiraDoc
       run: npm install --global @siradoc/siradoc
@@ -26,7 +26,7 @@ jobs:
 
     # XXX: The checkout v6 is broken; therefore, we can't push to `gh-pages`.
     - name: Clone branch gh-pages
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
       with:
         path: 'gh-pages'
         ref: gh-pages
