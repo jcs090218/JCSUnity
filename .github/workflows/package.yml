@@ -51,7 +51,7 @@ jobs:
         with:
           lfs: true
 
-      - uses: actions/cache@v6.0.0
+      - uses: actions/cache@v6.1.0
         with:
           path: Library
           key: Library-test-project-${{ matrix.targetPlatform }}
